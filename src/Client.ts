@@ -55,9 +55,9 @@ import { Reports } from "./api/resources/reports/client/Client.js";
 import { Settings } from "./api/resources/settings/client/Client.js";
 import { Tachograph } from "./api/resources/tachograph/client/Client.js";
 
-export declare namespace SamsaraApiClient {
+export declare namespace SamsaraClient {
     export interface Options {
-        environment?: core.Supplier<environments.SamsaraApiEnvironment | string>;
+        environment?: core.Supplier<environments.SamsaraEnvironment | string>;
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
@@ -81,8 +81,8 @@ export declare namespace SamsaraApiClient {
     }
 }
 
-export class SamsaraApiClient {
-    protected readonly _options: SamsaraApiClient.Options;
+export class SamsaraClient {
+    protected readonly _options: SamsaraClient.Options;
     protected _addresses: Addresses | undefined;
     protected _assets: Assets | undefined;
     protected _inputs: Inputs | undefined;
@@ -133,14 +133,14 @@ export class SamsaraApiClient {
     protected _settings: Settings | undefined;
     protected _tachograph: Tachograph | undefined;
 
-    constructor(_options: SamsaraApiClient.Options = {}) {
+    constructor(_options: SamsaraClient.Options = {}) {
         this._options = {
             ..._options,
             headers: mergeHeaders(
                 {
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "samsara-api",
-                    "X-Fern-SDK-Version": "0.0.156",
+                    "X-Fern-SDK-Version": "0.0.171",
                     "X-Samsara-Version": _options?.version ?? "2025-05-12",
                     "X-Fern-Runtime": core.RUNTIME.type,
                     "X-Fern-Runtime-Version": core.RUNTIME.version,

@@ -3,12 +3,12 @@
  */
 
 import { mockServerPool } from "../../mock-server/MockServerPool.js";
-import { SamsaraApiClient } from "../../../src/Client";
+import { SamsaraClient } from "../../../src/Client";
 
 describe("QrCodes", () => {
     test("list", async () => {
         const server = mockServerPool.createServer();
-        const client = new SamsaraApiClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
+        const client = new SamsaraClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
 
         const rawResponseBody = {
             data: [
@@ -35,7 +35,7 @@ describe("QrCodes", () => {
 
     test("create", async () => {
         const server = mockServerPool.createServer();
-        const client = new SamsaraApiClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
+        const client = new SamsaraClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
         const rawRequestBody = { driverId: 494123 };
         const rawResponseBody = {
             data: {
@@ -65,7 +65,7 @@ describe("QrCodes", () => {
 
     test("delete", async () => {
         const server = mockServerPool.createServer();
-        const client = new SamsaraApiClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
+        const client = new SamsaraClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
         const rawRequestBody = { driverId: 494123 };
 
         server

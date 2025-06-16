@@ -4,7 +4,7 @@
 
 import * as environments from "../../../../environments.js";
 import * as core from "../../../../core/index.js";
-import * as SamsaraApi from "../../../index.js";
+import * as Samsara from "../../../index.js";
 import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../core/headers.js";
 import urlJoin from "url-join";
 import * as errors from "../../../../errors/index.js";
@@ -12,7 +12,7 @@ import { Pdfs } from "../resources/pdfs/client/Client.js";
 
 export declare namespace Documents {
     export interface Options {
-        environment?: core.Supplier<environments.SamsaraApiEnvironment | string>;
+        environment?: core.Supplier<environments.SamsaraEnvironment | string>;
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
@@ -58,18 +58,18 @@ export class Documents {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * @param {SamsaraApi.DocumentsListRequest} request
+     * @param {Samsara.DocumentsListRequest} request
      * @param {Documents.RequestOptions} requestOptions - Request-specific configuration.
      *
-     * @throws {@link SamsaraApi.UnauthorizedError}
-     * @throws {@link SamsaraApi.NotFoundError}
-     * @throws {@link SamsaraApi.MethodNotAllowedError}
-     * @throws {@link SamsaraApi.TooManyRequestsError}
-     * @throws {@link SamsaraApi.InternalServerError}
-     * @throws {@link SamsaraApi.NotImplementedError}
-     * @throws {@link SamsaraApi.BadGatewayError}
-     * @throws {@link SamsaraApi.ServiceUnavailableError}
-     * @throws {@link SamsaraApi.GatewayTimeoutError}
+     * @throws {@link Samsara.UnauthorizedError}
+     * @throws {@link Samsara.NotFoundError}
+     * @throws {@link Samsara.MethodNotAllowedError}
+     * @throws {@link Samsara.TooManyRequestsError}
+     * @throws {@link Samsara.InternalServerError}
+     * @throws {@link Samsara.NotImplementedError}
+     * @throws {@link Samsara.BadGatewayError}
+     * @throws {@link Samsara.ServiceUnavailableError}
+     * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
      *     await client.documents.list({
@@ -78,13 +78,13 @@ export class Documents {
      *     })
      */
     public async list(
-        request: SamsaraApi.DocumentsListRequest,
+        request: Samsara.DocumentsListRequest,
         requestOptions?: Documents.RequestOptions,
-    ): Promise<core.Page<SamsaraApi.DocumentResponseObjectResponseBody>> {
+    ): Promise<core.Page<Samsara.DocumentResponseObjectResponseBody>> {
         const list = core.HttpResponsePromise.interceptFunction(
             async (
-                request: SamsaraApi.DocumentsListRequest,
-            ): Promise<core.WithRawResponse<SamsaraApi.DocumentsGetDocumentsResponseBody>> => {
+                request: Samsara.DocumentsListRequest,
+            ): Promise<core.WithRawResponse<Samsara.DocumentsGetDocumentsResponseBody>> => {
                 const { startTime, endTime, after, documentTypeId, queryBy } = request;
                 const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
                 _queryParams["startTime"] = startTime;
@@ -102,7 +102,7 @@ export class Documents {
                     url: urlJoin(
                         (await core.Supplier.get(this._options.baseUrl)) ??
                             (await core.Supplier.get(this._options.environment)) ??
-                            environments.SamsaraApiEnvironment.ProductionApi,
+                            environments.SamsaraEnvironment.ProductionApi,
                         "fleet/documents",
                     ),
                     method: "GET",
@@ -122,56 +122,50 @@ export class Documents {
                 });
                 if (_response.ok) {
                     return {
-                        data: _response.body as SamsaraApi.DocumentsGetDocumentsResponseBody,
+                        data: _response.body as Samsara.DocumentsGetDocumentsResponseBody,
                         rawResponse: _response.rawResponse,
                     };
                 }
                 if (_response.error.reason === "status-code") {
                     switch (_response.error.statusCode) {
                         case 401:
-                            throw new SamsaraApi.UnauthorizedError(
-                                _response.error.body as unknown,
-                                _response.rawResponse,
-                            );
+                            throw new Samsara.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
                         case 404:
-                            throw new SamsaraApi.NotFoundError(_response.error.body as unknown, _response.rawResponse);
+                            throw new Samsara.NotFoundError(_response.error.body as unknown, _response.rawResponse);
                         case 405:
-                            throw new SamsaraApi.MethodNotAllowedError(
+                            throw new Samsara.MethodNotAllowedError(
                                 _response.error.body as unknown,
                                 _response.rawResponse,
                             );
                         case 429:
-                            throw new SamsaraApi.TooManyRequestsError(
+                            throw new Samsara.TooManyRequestsError(
                                 _response.error.body as unknown,
                                 _response.rawResponse,
                             );
                         case 500:
-                            throw new SamsaraApi.InternalServerError(
+                            throw new Samsara.InternalServerError(
                                 _response.error.body as unknown,
                                 _response.rawResponse,
                             );
                         case 501:
-                            throw new SamsaraApi.NotImplementedError(
+                            throw new Samsara.NotImplementedError(
                                 _response.error.body as unknown,
                                 _response.rawResponse,
                             );
                         case 502:
-                            throw new SamsaraApi.BadGatewayError(
-                                _response.error.body as unknown,
-                                _response.rawResponse,
-                            );
+                            throw new Samsara.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
                         case 503:
-                            throw new SamsaraApi.ServiceUnavailableError(
+                            throw new Samsara.ServiceUnavailableError(
                                 _response.error.body as unknown,
                                 _response.rawResponse,
                             );
                         case 504:
-                            throw new SamsaraApi.GatewayTimeoutError(
+                            throw new Samsara.GatewayTimeoutError(
                                 _response.error.body as unknown,
                                 _response.rawResponse,
                             );
                         default:
-                            throw new errors.SamsaraApiError({
+                            throw new errors.SamsaraError({
                                 statusCode: _response.error.statusCode,
                                 body: _response.error.body,
                                 rawResponse: _response.rawResponse,
@@ -180,15 +174,15 @@ export class Documents {
                 }
                 switch (_response.error.reason) {
                     case "non-json":
-                        throw new errors.SamsaraApiError({
+                        throw new errors.SamsaraError({
                             statusCode: _response.error.statusCode,
                             body: _response.error.rawBody,
                             rawResponse: _response.rawResponse,
                         });
                     case "timeout":
-                        throw new errors.SamsaraApiTimeoutError("Timeout exceeded when calling GET /fleet/documents.");
+                        throw new errors.SamsaraTimeoutError("Timeout exceeded when calling GET /fleet/documents.");
                     case "unknown":
-                        throw new errors.SamsaraApiError({
+                        throw new errors.SamsaraError({
                             message: _response.error.errorMessage,
                             rawResponse: _response.rawResponse,
                         });
@@ -196,18 +190,17 @@ export class Documents {
             },
         );
         const dataWithRawResponse = await list(request).withRawResponse();
-        return new core.Pageable<
-            SamsaraApi.DocumentsGetDocumentsResponseBody,
-            SamsaraApi.DocumentResponseObjectResponseBody
-        >({
-            response: dataWithRawResponse.data,
-            rawResponse: dataWithRawResponse.rawResponse,
-            hasNextPage: (response) => response?.pagination?.endCursor != null,
-            getItems: (response) => response?.data ?? [],
-            loadPage: (response) => {
-                return list(core.setObjectProperty(request, "after", response?.pagination?.endCursor));
+        return new core.Pageable<Samsara.DocumentsGetDocumentsResponseBody, Samsara.DocumentResponseObjectResponseBody>(
+            {
+                response: dataWithRawResponse.data,
+                rawResponse: dataWithRawResponse.rawResponse,
+                hasNextPage: (response) => response?.pagination?.endCursor != null,
+                getItems: (response) => response?.data ?? [],
+                loadPage: (response) => {
+                    return list(core.setObjectProperty(request, "after", response?.pagination?.endCursor));
+                },
             },
-        });
+        );
     }
 
     /**
@@ -220,18 +213,18 @@ export class Documents {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * @param {SamsaraApi.DocumentsPostDocumentRequestBody} request
+     * @param {Samsara.DocumentsPostDocumentRequestBody} request
      * @param {Documents.RequestOptions} requestOptions - Request-specific configuration.
      *
-     * @throws {@link SamsaraApi.UnauthorizedError}
-     * @throws {@link SamsaraApi.NotFoundError}
-     * @throws {@link SamsaraApi.MethodNotAllowedError}
-     * @throws {@link SamsaraApi.TooManyRequestsError}
-     * @throws {@link SamsaraApi.InternalServerError}
-     * @throws {@link SamsaraApi.NotImplementedError}
-     * @throws {@link SamsaraApi.BadGatewayError}
-     * @throws {@link SamsaraApi.ServiceUnavailableError}
-     * @throws {@link SamsaraApi.GatewayTimeoutError}
+     * @throws {@link Samsara.UnauthorizedError}
+     * @throws {@link Samsara.NotFoundError}
+     * @throws {@link Samsara.MethodNotAllowedError}
+     * @throws {@link Samsara.TooManyRequestsError}
+     * @throws {@link Samsara.InternalServerError}
+     * @throws {@link Samsara.NotImplementedError}
+     * @throws {@link Samsara.BadGatewayError}
+     * @throws {@link Samsara.ServiceUnavailableError}
+     * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
      *     await client.documents.create({
@@ -240,21 +233,21 @@ export class Documents {
      *     })
      */
     public create(
-        request: SamsaraApi.DocumentsPostDocumentRequestBody,
+        request: Samsara.DocumentsPostDocumentRequestBody,
         requestOptions?: Documents.RequestOptions,
-    ): core.HttpResponsePromise<SamsaraApi.DocumentsPostDocumentResponseBody> {
+    ): core.HttpResponsePromise<Samsara.DocumentsPostDocumentResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__create(request, requestOptions));
     }
 
     private async __create(
-        request: SamsaraApi.DocumentsPostDocumentRequestBody,
+        request: Samsara.DocumentsPostDocumentRequestBody,
         requestOptions?: Documents.RequestOptions,
-    ): Promise<core.WithRawResponse<SamsaraApi.DocumentsPostDocumentResponseBody>> {
+    ): Promise<core.WithRawResponse<Samsara.DocumentsPostDocumentResponseBody>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.SamsaraApiEnvironment.ProductionApi,
+                    environments.SamsaraEnvironment.ProductionApi,
                 "fleet/documents",
             ),
             method: "POST",
@@ -275,7 +268,7 @@ export class Documents {
         });
         if (_response.ok) {
             return {
-                data: _response.body as SamsaraApi.DocumentsPostDocumentResponseBody,
+                data: _response.body as Samsara.DocumentsPostDocumentResponseBody,
                 rawResponse: _response.rawResponse,
             };
         }
@@ -283,28 +276,25 @@ export class Documents {
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 401:
-                    throw new SamsaraApi.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
                 case 404:
-                    throw new SamsaraApi.NotFoundError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.NotFoundError(_response.error.body as unknown, _response.rawResponse);
                 case 405:
-                    throw new SamsaraApi.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
                 case 429:
-                    throw new SamsaraApi.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
                 case 500:
-                    throw new SamsaraApi.InternalServerError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.InternalServerError(_response.error.body as unknown, _response.rawResponse);
                 case 501:
-                    throw new SamsaraApi.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
                 case 502:
-                    throw new SamsaraApi.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
                 case 503:
-                    throw new SamsaraApi.ServiceUnavailableError(
-                        _response.error.body as unknown,
-                        _response.rawResponse,
-                    );
+                    throw new Samsara.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
                 case 504:
-                    throw new SamsaraApi.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
                 default:
-                    throw new errors.SamsaraApiError({
+                    throw new errors.SamsaraError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                         rawResponse: _response.rawResponse,
@@ -314,15 +304,15 @@ export class Documents {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.SamsaraApiTimeoutError("Timeout exceeded when calling POST /fleet/documents.");
+                throw new errors.SamsaraTimeoutError("Timeout exceeded when calling POST /fleet/documents.");
             case "unknown":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     message: _response.error.errorMessage,
                     rawResponse: _response.rawResponse,
                 });
@@ -342,15 +332,15 @@ export class Documents {
      * @param {string} id - ID of the document
      * @param {Documents.RequestOptions} requestOptions - Request-specific configuration.
      *
-     * @throws {@link SamsaraApi.UnauthorizedError}
-     * @throws {@link SamsaraApi.NotFoundError}
-     * @throws {@link SamsaraApi.MethodNotAllowedError}
-     * @throws {@link SamsaraApi.TooManyRequestsError}
-     * @throws {@link SamsaraApi.InternalServerError}
-     * @throws {@link SamsaraApi.NotImplementedError}
-     * @throws {@link SamsaraApi.BadGatewayError}
-     * @throws {@link SamsaraApi.ServiceUnavailableError}
-     * @throws {@link SamsaraApi.GatewayTimeoutError}
+     * @throws {@link Samsara.UnauthorizedError}
+     * @throws {@link Samsara.NotFoundError}
+     * @throws {@link Samsara.MethodNotAllowedError}
+     * @throws {@link Samsara.TooManyRequestsError}
+     * @throws {@link Samsara.InternalServerError}
+     * @throws {@link Samsara.NotImplementedError}
+     * @throws {@link Samsara.BadGatewayError}
+     * @throws {@link Samsara.ServiceUnavailableError}
+     * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
      *     await client.documents.get("id")
@@ -358,19 +348,19 @@ export class Documents {
     public get(
         id: string,
         requestOptions?: Documents.RequestOptions,
-    ): core.HttpResponsePromise<SamsaraApi.DocumentsGetDocumentResponseBody> {
+    ): core.HttpResponsePromise<Samsara.DocumentsGetDocumentResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__get(id, requestOptions));
     }
 
     private async __get(
         id: string,
         requestOptions?: Documents.RequestOptions,
-    ): Promise<core.WithRawResponse<SamsaraApi.DocumentsGetDocumentResponseBody>> {
+    ): Promise<core.WithRawResponse<Samsara.DocumentsGetDocumentResponseBody>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.SamsaraApiEnvironment.ProductionApi,
+                    environments.SamsaraEnvironment.ProductionApi,
                 `fleet/documents/${encodeURIComponent(id)}`,
             ),
             method: "GET",
@@ -388,7 +378,7 @@ export class Documents {
         });
         if (_response.ok) {
             return {
-                data: _response.body as SamsaraApi.DocumentsGetDocumentResponseBody,
+                data: _response.body as Samsara.DocumentsGetDocumentResponseBody,
                 rawResponse: _response.rawResponse,
             };
         }
@@ -396,28 +386,25 @@ export class Documents {
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 401:
-                    throw new SamsaraApi.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
                 case 404:
-                    throw new SamsaraApi.NotFoundError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.NotFoundError(_response.error.body as unknown, _response.rawResponse);
                 case 405:
-                    throw new SamsaraApi.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
                 case 429:
-                    throw new SamsaraApi.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
                 case 500:
-                    throw new SamsaraApi.InternalServerError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.InternalServerError(_response.error.body as unknown, _response.rawResponse);
                 case 501:
-                    throw new SamsaraApi.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
                 case 502:
-                    throw new SamsaraApi.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
                 case 503:
-                    throw new SamsaraApi.ServiceUnavailableError(
-                        _response.error.body as unknown,
-                        _response.rawResponse,
-                    );
+                    throw new Samsara.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
                 case 504:
-                    throw new SamsaraApi.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
                 default:
-                    throw new errors.SamsaraApiError({
+                    throw new errors.SamsaraError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                         rawResponse: _response.rawResponse,
@@ -427,15 +414,15 @@ export class Documents {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.SamsaraApiTimeoutError("Timeout exceeded when calling GET /fleet/documents/{id}.");
+                throw new errors.SamsaraTimeoutError("Timeout exceeded when calling GET /fleet/documents/{id}.");
             case "unknown":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     message: _response.error.errorMessage,
                     rawResponse: _response.rawResponse,
                 });
@@ -455,15 +442,15 @@ export class Documents {
      * @param {string} id - ID of the document to delete
      * @param {Documents.RequestOptions} requestOptions - Request-specific configuration.
      *
-     * @throws {@link SamsaraApi.UnauthorizedError}
-     * @throws {@link SamsaraApi.NotFoundError}
-     * @throws {@link SamsaraApi.MethodNotAllowedError}
-     * @throws {@link SamsaraApi.TooManyRequestsError}
-     * @throws {@link SamsaraApi.InternalServerError}
-     * @throws {@link SamsaraApi.NotImplementedError}
-     * @throws {@link SamsaraApi.BadGatewayError}
-     * @throws {@link SamsaraApi.ServiceUnavailableError}
-     * @throws {@link SamsaraApi.GatewayTimeoutError}
+     * @throws {@link Samsara.UnauthorizedError}
+     * @throws {@link Samsara.NotFoundError}
+     * @throws {@link Samsara.MethodNotAllowedError}
+     * @throws {@link Samsara.TooManyRequestsError}
+     * @throws {@link Samsara.InternalServerError}
+     * @throws {@link Samsara.NotImplementedError}
+     * @throws {@link Samsara.BadGatewayError}
+     * @throws {@link Samsara.ServiceUnavailableError}
+     * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
      *     await client.documents.delete("id")
@@ -477,7 +464,7 @@ export class Documents {
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.SamsaraApiEnvironment.ProductionApi,
+                    environments.SamsaraEnvironment.ProductionApi,
                 `fleet/documents/${encodeURIComponent(id)}`,
             ),
             method: "DELETE",
@@ -500,28 +487,25 @@ export class Documents {
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 401:
-                    throw new SamsaraApi.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
                 case 404:
-                    throw new SamsaraApi.NotFoundError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.NotFoundError(_response.error.body as unknown, _response.rawResponse);
                 case 405:
-                    throw new SamsaraApi.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
                 case 429:
-                    throw new SamsaraApi.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
                 case 500:
-                    throw new SamsaraApi.InternalServerError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.InternalServerError(_response.error.body as unknown, _response.rawResponse);
                 case 501:
-                    throw new SamsaraApi.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
                 case 502:
-                    throw new SamsaraApi.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
                 case 503:
-                    throw new SamsaraApi.ServiceUnavailableError(
-                        _response.error.body as unknown,
-                        _response.rawResponse,
-                    );
+                    throw new Samsara.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
                 case 504:
-                    throw new SamsaraApi.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
                 default:
-                    throw new errors.SamsaraApiError({
+                    throw new errors.SamsaraError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                         rawResponse: _response.rawResponse,
@@ -531,15 +515,15 @@ export class Documents {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.SamsaraApiTimeoutError("Timeout exceeded when calling DELETE /fleet/documents/{id}.");
+                throw new errors.SamsaraTimeoutError("Timeout exceeded when calling DELETE /fleet/documents/{id}.");
             case "unknown":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     message: _response.error.errorMessage,
                     rawResponse: _response.rawResponse,
                 });
@@ -549,7 +533,7 @@ export class Documents {
     protected async _getAuthorizationHeader(): Promise<string> {
         const bearer = (await core.Supplier.get(this._options.token)) ?? process?.env["SAMSARA_API_KEY"];
         if (bearer == null) {
-            throw new errors.SamsaraApiError({
+            throw new errors.SamsaraError({
                 message:
                     "Please specify a bearer by either passing it in to the constructor or initializing a SAMSARA_API_KEY environment variable",
             });

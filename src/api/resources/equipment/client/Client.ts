@@ -4,7 +4,7 @@
 
 import * as environments from "../../../../environments.js";
 import * as core from "../../../../core/index.js";
-import * as SamsaraApi from "../../../index.js";
+import * as Samsara from "../../../index.js";
 import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../core/headers.js";
 import urlJoin from "url-join";
 import * as errors from "../../../../errors/index.js";
@@ -13,7 +13,7 @@ import { Stats } from "../resources/stats/client/Client.js";
 
 export declare namespace Equipment {
     export interface Options {
-        environment?: core.Supplier<environments.SamsaraApiEnvironment | string>;
+        environment?: core.Supplier<environments.SamsaraEnvironment | string>;
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
@@ -57,20 +57,20 @@ export class Equipment {
     /**
      * Returns a list of all equipment in an organization.
      *
-     * @param {SamsaraApi.EquipmentListRequest} request
+     * @param {Samsara.EquipmentListRequest} request
      * @param {Equipment.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
      *     await client.equipment.list()
      */
     public async list(
-        request: SamsaraApi.EquipmentListRequest = {},
+        request: Samsara.EquipmentListRequest = {},
         requestOptions?: Equipment.RequestOptions,
-    ): Promise<core.Page<SamsaraApi.EquipmentObject>> {
+    ): Promise<core.Page<Samsara.EquipmentObject>> {
         const list = core.HttpResponsePromise.interceptFunction(
             async (
-                request: SamsaraApi.EquipmentListRequest,
-            ): Promise<core.WithRawResponse<SamsaraApi.EquipmentListResponse>> => {
+                request: Samsara.EquipmentListRequest,
+            ): Promise<core.WithRawResponse<Samsara.EquipmentListResponse>> => {
                 const { limit, after, parentTagIds, tagIds } = request;
                 const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
                 if (limit != null) {
@@ -97,7 +97,7 @@ export class Equipment {
                     url: urlJoin(
                         (await core.Supplier.get(this._options.baseUrl)) ??
                             (await core.Supplier.get(this._options.environment)) ??
-                            environments.SamsaraApiEnvironment.ProductionApi,
+                            environments.SamsaraEnvironment.ProductionApi,
                         "fleet/equipment",
                     ),
                     method: "GET",
@@ -117,12 +117,12 @@ export class Equipment {
                 });
                 if (_response.ok) {
                     return {
-                        data: _response.body as SamsaraApi.EquipmentListResponse,
+                        data: _response.body as Samsara.EquipmentListResponse,
                         rawResponse: _response.rawResponse,
                     };
                 }
                 if (_response.error.reason === "status-code") {
-                    throw new errors.SamsaraApiError({
+                    throw new errors.SamsaraError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                         rawResponse: _response.rawResponse,
@@ -130,15 +130,15 @@ export class Equipment {
                 }
                 switch (_response.error.reason) {
                     case "non-json":
-                        throw new errors.SamsaraApiError({
+                        throw new errors.SamsaraError({
                             statusCode: _response.error.statusCode,
                             body: _response.error.rawBody,
                             rawResponse: _response.rawResponse,
                         });
                     case "timeout":
-                        throw new errors.SamsaraApiTimeoutError("Timeout exceeded when calling GET /fleet/equipment.");
+                        throw new errors.SamsaraTimeoutError("Timeout exceeded when calling GET /fleet/equipment.");
                     case "unknown":
-                        throw new errors.SamsaraApiError({
+                        throw new errors.SamsaraError({
                             message: _response.error.errorMessage,
                             rawResponse: _response.rawResponse,
                         });
@@ -146,7 +146,7 @@ export class Equipment {
             },
         );
         const dataWithRawResponse = await list(request).withRawResponse();
-        return new core.Pageable<SamsaraApi.EquipmentListResponse, SamsaraApi.EquipmentObject>({
+        return new core.Pageable<Samsara.EquipmentListResponse, Samsara.EquipmentObject>({
             response: dataWithRawResponse.data,
             rawResponse: dataWithRawResponse.rawResponse,
             hasNextPage: (response) => response?.pagination?.endCursor != null,
@@ -173,19 +173,19 @@ export class Equipment {
     public get(
         id: string,
         requestOptions?: Equipment.RequestOptions,
-    ): core.HttpResponsePromise<SamsaraApi.EquipmentResponse> {
+    ): core.HttpResponsePromise<Samsara.EquipmentResponse> {
         return core.HttpResponsePromise.fromPromise(this.__get(id, requestOptions));
     }
 
     private async __get(
         id: string,
         requestOptions?: Equipment.RequestOptions,
-    ): Promise<core.WithRawResponse<SamsaraApi.EquipmentResponse>> {
+    ): Promise<core.WithRawResponse<Samsara.EquipmentResponse>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.SamsaraApiEnvironment.ProductionApi,
+                    environments.SamsaraEnvironment.ProductionApi,
                 `fleet/equipment/${encodeURIComponent(id)}`,
             ),
             method: "GET",
@@ -202,11 +202,11 @@ export class Equipment {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return { data: _response.body as SamsaraApi.EquipmentResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Samsara.EquipmentResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.SamsaraApiError({
+            throw new errors.SamsaraError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
                 rawResponse: _response.rawResponse,
@@ -215,15 +215,15 @@ export class Equipment {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.SamsaraApiTimeoutError("Timeout exceeded when calling GET /fleet/equipment/{id}.");
+                throw new errors.SamsaraTimeoutError("Timeout exceeded when calling GET /fleet/equipment/{id}.");
             case "unknown":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     message: _response.error.errorMessage,
                     rawResponse: _response.rawResponse,
                 });
@@ -233,7 +233,7 @@ export class Equipment {
     protected async _getAuthorizationHeader(): Promise<string> {
         const bearer = (await core.Supplier.get(this._options.token)) ?? process?.env["SAMSARA_API_KEY"];
         if (bearer == null) {
-            throw new errors.SamsaraApiError({
+            throw new errors.SamsaraError({
                 message:
                     "Please specify a bearer by either passing it in to the constructor or initializing a SAMSARA_API_KEY environment variable",
             });

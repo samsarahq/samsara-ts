@@ -4,14 +4,14 @@
 
 import * as environments from "../../../../environments.js";
 import * as core from "../../../../core/index.js";
-import * as SamsaraApi from "../../../index.js";
+import * as Samsara from "../../../index.js";
 import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../core/headers.js";
 import urlJoin from "url-join";
 import * as errors from "../../../../errors/index.js";
 
 export declare namespace Me {
     export interface Options {
-        environment?: core.Supplier<environments.SamsaraApiEnvironment | string>;
+        environment?: core.Supplier<environments.SamsaraEnvironment | string>;
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
@@ -54,18 +54,18 @@ export class Me {
      * @example
      *     await client.me.get()
      */
-    public get(requestOptions?: Me.RequestOptions): core.HttpResponsePromise<SamsaraApi.OrganizationInfoResponse> {
+    public get(requestOptions?: Me.RequestOptions): core.HttpResponsePromise<Samsara.OrganizationInfoResponse> {
         return core.HttpResponsePromise.fromPromise(this.__get(requestOptions));
     }
 
     private async __get(
         requestOptions?: Me.RequestOptions,
-    ): Promise<core.WithRawResponse<SamsaraApi.OrganizationInfoResponse>> {
+    ): Promise<core.WithRawResponse<Samsara.OrganizationInfoResponse>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.SamsaraApiEnvironment.ProductionApi,
+                    environments.SamsaraEnvironment.ProductionApi,
                 "me",
             ),
             method: "GET",
@@ -82,11 +82,11 @@ export class Me {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return { data: _response.body as SamsaraApi.OrganizationInfoResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Samsara.OrganizationInfoResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.SamsaraApiError({
+            throw new errors.SamsaraError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
                 rawResponse: _response.rawResponse,
@@ -95,15 +95,15 @@ export class Me {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.SamsaraApiTimeoutError("Timeout exceeded when calling GET /me.");
+                throw new errors.SamsaraTimeoutError("Timeout exceeded when calling GET /me.");
             case "unknown":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     message: _response.error.errorMessage,
                     rawResponse: _response.rawResponse,
                 });
@@ -113,7 +113,7 @@ export class Me {
     protected async _getAuthorizationHeader(): Promise<string> {
         const bearer = (await core.Supplier.get(this._options.token)) ?? process?.env["SAMSARA_API_KEY"];
         if (bearer == null) {
-            throw new errors.SamsaraApiError({
+            throw new errors.SamsaraError({
                 message:
                     "Please specify a bearer by either passing it in to the constructor or initializing a SAMSARA_API_KEY environment variable",
             });

@@ -4,7 +4,7 @@
 
 import * as environments from "../../../../environments.js";
 import * as core from "../../../../core/index.js";
-import * as SamsaraApi from "../../../index.js";
+import * as Samsara from "../../../index.js";
 import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../core/headers.js";
 import urlJoin from "url-join";
 import * as errors from "../../../../errors/index.js";
@@ -12,7 +12,7 @@ import { AuditLogs } from "../resources/auditLogs/client/Client.js";
 
 export declare namespace SafetyEvents {
     export interface Options {
-        environment?: core.Supplier<environments.SamsaraApiEnvironment | string>;
+        environment?: core.Supplier<environments.SamsaraEnvironment | string>;
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
@@ -55,7 +55,7 @@ export class SafetyEvents {
      *
      * To use this endpoint, select **Read Safety Events & Scores** under the Safety & Cameras category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
-     * @param {SamsaraApi.SafetyEventsListRequest} request
+     * @param {Samsara.SafetyEventsListRequest} request
      * @param {SafetyEvents.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -65,13 +65,13 @@ export class SafetyEvents {
      *     })
      */
     public async list(
-        request: SamsaraApi.SafetyEventsListRequest,
+        request: Samsara.SafetyEventsListRequest,
         requestOptions?: SafetyEvents.RequestOptions,
-    ): Promise<core.Page<SamsaraApi.SafetyEvent>> {
+    ): Promise<core.Page<Samsara.SafetyEvent>> {
         const list = core.HttpResponsePromise.interceptFunction(
             async (
-                request: SamsaraApi.SafetyEventsListRequest,
-            ): Promise<core.WithRawResponse<SamsaraApi.SafetyEventsListResponse>> => {
+                request: Samsara.SafetyEventsListRequest,
+            ): Promise<core.WithRawResponse<Samsara.SafetyEventsListResponse>> => {
                 const { after, startTime, endTime, tagIds, parentTagIds, vehicleIds } = request;
                 const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
                 if (after != null) {
@@ -104,7 +104,7 @@ export class SafetyEvents {
                     url: urlJoin(
                         (await core.Supplier.get(this._options.baseUrl)) ??
                             (await core.Supplier.get(this._options.environment)) ??
-                            environments.SamsaraApiEnvironment.ProductionApi,
+                            environments.SamsaraEnvironment.ProductionApi,
                         "fleet/safety-events",
                     ),
                     method: "GET",
@@ -124,12 +124,12 @@ export class SafetyEvents {
                 });
                 if (_response.ok) {
                     return {
-                        data: _response.body as SamsaraApi.SafetyEventsListResponse,
+                        data: _response.body as Samsara.SafetyEventsListResponse,
                         rawResponse: _response.rawResponse,
                     };
                 }
                 if (_response.error.reason === "status-code") {
-                    throw new errors.SamsaraApiError({
+                    throw new errors.SamsaraError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                         rawResponse: _response.rawResponse,
@@ -137,17 +137,15 @@ export class SafetyEvents {
                 }
                 switch (_response.error.reason) {
                     case "non-json":
-                        throw new errors.SamsaraApiError({
+                        throw new errors.SamsaraError({
                             statusCode: _response.error.statusCode,
                             body: _response.error.rawBody,
                             rawResponse: _response.rawResponse,
                         });
                     case "timeout":
-                        throw new errors.SamsaraApiTimeoutError(
-                            "Timeout exceeded when calling GET /fleet/safety-events.",
-                        );
+                        throw new errors.SamsaraTimeoutError("Timeout exceeded when calling GET /fleet/safety-events.");
                     case "unknown":
-                        throw new errors.SamsaraApiError({
+                        throw new errors.SamsaraError({
                             message: _response.error.errorMessage,
                             rawResponse: _response.rawResponse,
                         });
@@ -155,7 +153,7 @@ export class SafetyEvents {
             },
         );
         const dataWithRawResponse = await list(request).withRawResponse();
-        return new core.Pageable<SamsaraApi.SafetyEventsListResponse, SamsaraApi.SafetyEvent>({
+        return new core.Pageable<Samsara.SafetyEventsListResponse, Samsara.SafetyEvent>({
             response: dataWithRawResponse.data,
             rawResponse: dataWithRawResponse.rawResponse,
             hasNextPage: (response) => response?.pagination?.endCursor != null,
@@ -169,7 +167,7 @@ export class SafetyEvents {
     protected async _getAuthorizationHeader(): Promise<string> {
         const bearer = (await core.Supplier.get(this._options.token)) ?? process?.env["SAMSARA_API_KEY"];
         if (bearer == null) {
-            throw new errors.SamsaraApiError({
+            throw new errors.SamsaraError({
                 message:
                     "Please specify a bearer by either passing it in to the constructor or initializing a SAMSARA_API_KEY environment variable",
             });

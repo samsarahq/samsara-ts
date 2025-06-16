@@ -4,14 +4,14 @@
 
 import * as environments from "../../../../environments.js";
 import * as core from "../../../../core/index.js";
-import * as SamsaraApi from "../../../index.js";
+import * as Samsara from "../../../index.js";
 import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../core/headers.js";
 import urlJoin from "url-join";
 import * as errors from "../../../../errors/index.js";
 
 export declare namespace Gateways {
     export interface Options {
-        environment?: core.Supplier<environments.SamsaraApiEnvironment | string>;
+        environment?: core.Supplier<environments.SamsaraEnvironment | string>;
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
@@ -52,30 +52,30 @@ export class Gateways {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * @param {SamsaraApi.GatewaysListRequest} request
+     * @param {Samsara.GatewaysListRequest} request
      * @param {Gateways.RequestOptions} requestOptions - Request-specific configuration.
      *
-     * @throws {@link SamsaraApi.UnauthorizedError}
-     * @throws {@link SamsaraApi.NotFoundError}
-     * @throws {@link SamsaraApi.MethodNotAllowedError}
-     * @throws {@link SamsaraApi.TooManyRequestsError}
-     * @throws {@link SamsaraApi.InternalServerError}
-     * @throws {@link SamsaraApi.NotImplementedError}
-     * @throws {@link SamsaraApi.BadGatewayError}
-     * @throws {@link SamsaraApi.ServiceUnavailableError}
-     * @throws {@link SamsaraApi.GatewayTimeoutError}
+     * @throws {@link Samsara.UnauthorizedError}
+     * @throws {@link Samsara.NotFoundError}
+     * @throws {@link Samsara.MethodNotAllowedError}
+     * @throws {@link Samsara.TooManyRequestsError}
+     * @throws {@link Samsara.InternalServerError}
+     * @throws {@link Samsara.NotImplementedError}
+     * @throws {@link Samsara.BadGatewayError}
+     * @throws {@link Samsara.ServiceUnavailableError}
+     * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
      *     await client.gateways.list()
      */
     public async list(
-        request: SamsaraApi.GatewaysListRequest = {},
+        request: Samsara.GatewaysListRequest = {},
         requestOptions?: Gateways.RequestOptions,
-    ): Promise<core.Page<SamsaraApi.GatewayResponseObjectResponseBody>> {
+    ): Promise<core.Page<Samsara.GatewayResponseObjectResponseBody>> {
         const list = core.HttpResponsePromise.interceptFunction(
             async (
-                request: SamsaraApi.GatewaysListRequest,
-            ): Promise<core.WithRawResponse<SamsaraApi.GatewaysGetGatewaysResponseBody>> => {
+                request: Samsara.GatewaysListRequest,
+            ): Promise<core.WithRawResponse<Samsara.GatewaysGetGatewaysResponseBody>> => {
                 const { models, after } = request;
                 const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
                 if (models != null) {
@@ -92,7 +92,7 @@ export class Gateways {
                     url: urlJoin(
                         (await core.Supplier.get(this._options.baseUrl)) ??
                             (await core.Supplier.get(this._options.environment)) ??
-                            environments.SamsaraApiEnvironment.ProductionApi,
+                            environments.SamsaraEnvironment.ProductionApi,
                         "gateways",
                     ),
                     method: "GET",
@@ -112,56 +112,50 @@ export class Gateways {
                 });
                 if (_response.ok) {
                     return {
-                        data: _response.body as SamsaraApi.GatewaysGetGatewaysResponseBody,
+                        data: _response.body as Samsara.GatewaysGetGatewaysResponseBody,
                         rawResponse: _response.rawResponse,
                     };
                 }
                 if (_response.error.reason === "status-code") {
                     switch (_response.error.statusCode) {
                         case 401:
-                            throw new SamsaraApi.UnauthorizedError(
-                                _response.error.body as unknown,
-                                _response.rawResponse,
-                            );
+                            throw new Samsara.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
                         case 404:
-                            throw new SamsaraApi.NotFoundError(_response.error.body as unknown, _response.rawResponse);
+                            throw new Samsara.NotFoundError(_response.error.body as unknown, _response.rawResponse);
                         case 405:
-                            throw new SamsaraApi.MethodNotAllowedError(
+                            throw new Samsara.MethodNotAllowedError(
                                 _response.error.body as unknown,
                                 _response.rawResponse,
                             );
                         case 429:
-                            throw new SamsaraApi.TooManyRequestsError(
+                            throw new Samsara.TooManyRequestsError(
                                 _response.error.body as unknown,
                                 _response.rawResponse,
                             );
                         case 500:
-                            throw new SamsaraApi.InternalServerError(
+                            throw new Samsara.InternalServerError(
                                 _response.error.body as unknown,
                                 _response.rawResponse,
                             );
                         case 501:
-                            throw new SamsaraApi.NotImplementedError(
+                            throw new Samsara.NotImplementedError(
                                 _response.error.body as unknown,
                                 _response.rawResponse,
                             );
                         case 502:
-                            throw new SamsaraApi.BadGatewayError(
-                                _response.error.body as unknown,
-                                _response.rawResponse,
-                            );
+                            throw new Samsara.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
                         case 503:
-                            throw new SamsaraApi.ServiceUnavailableError(
+                            throw new Samsara.ServiceUnavailableError(
                                 _response.error.body as unknown,
                                 _response.rawResponse,
                             );
                         case 504:
-                            throw new SamsaraApi.GatewayTimeoutError(
+                            throw new Samsara.GatewayTimeoutError(
                                 _response.error.body as unknown,
                                 _response.rawResponse,
                             );
                         default:
-                            throw new errors.SamsaraApiError({
+                            throw new errors.SamsaraError({
                                 statusCode: _response.error.statusCode,
                                 body: _response.error.body,
                                 rawResponse: _response.rawResponse,
@@ -170,15 +164,15 @@ export class Gateways {
                 }
                 switch (_response.error.reason) {
                     case "non-json":
-                        throw new errors.SamsaraApiError({
+                        throw new errors.SamsaraError({
                             statusCode: _response.error.statusCode,
                             body: _response.error.rawBody,
                             rawResponse: _response.rawResponse,
                         });
                     case "timeout":
-                        throw new errors.SamsaraApiTimeoutError("Timeout exceeded when calling GET /gateways.");
+                        throw new errors.SamsaraTimeoutError("Timeout exceeded when calling GET /gateways.");
                     case "unknown":
-                        throw new errors.SamsaraApiError({
+                        throw new errors.SamsaraError({
                             message: _response.error.errorMessage,
                             rawResponse: _response.rawResponse,
                         });
@@ -186,10 +180,7 @@ export class Gateways {
             },
         );
         const dataWithRawResponse = await list(request).withRawResponse();
-        return new core.Pageable<
-            SamsaraApi.GatewaysGetGatewaysResponseBody,
-            SamsaraApi.GatewayResponseObjectResponseBody
-        >({
+        return new core.Pageable<Samsara.GatewaysGetGatewaysResponseBody, Samsara.GatewayResponseObjectResponseBody>({
             response: dataWithRawResponse.data,
             rawResponse: dataWithRawResponse.rawResponse,
             hasNextPage: (response) => response?.pagination?.endCursor != null,
@@ -210,18 +201,18 @@ export class Gateways {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * @param {SamsaraApi.GatewaysPostGatewayRequestBody} request
+     * @param {Samsara.GatewaysPostGatewayRequestBody} request
      * @param {Gateways.RequestOptions} requestOptions - Request-specific configuration.
      *
-     * @throws {@link SamsaraApi.UnauthorizedError}
-     * @throws {@link SamsaraApi.NotFoundError}
-     * @throws {@link SamsaraApi.MethodNotAllowedError}
-     * @throws {@link SamsaraApi.TooManyRequestsError}
-     * @throws {@link SamsaraApi.InternalServerError}
-     * @throws {@link SamsaraApi.NotImplementedError}
-     * @throws {@link SamsaraApi.BadGatewayError}
-     * @throws {@link SamsaraApi.ServiceUnavailableError}
-     * @throws {@link SamsaraApi.GatewayTimeoutError}
+     * @throws {@link Samsara.UnauthorizedError}
+     * @throws {@link Samsara.NotFoundError}
+     * @throws {@link Samsara.MethodNotAllowedError}
+     * @throws {@link Samsara.TooManyRequestsError}
+     * @throws {@link Samsara.InternalServerError}
+     * @throws {@link Samsara.NotImplementedError}
+     * @throws {@link Samsara.BadGatewayError}
+     * @throws {@link Samsara.ServiceUnavailableError}
+     * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
      *     await client.gateways.create({
@@ -229,21 +220,21 @@ export class Gateways {
      *     })
      */
     public create(
-        request: SamsaraApi.GatewaysPostGatewayRequestBody,
+        request: Samsara.GatewaysPostGatewayRequestBody,
         requestOptions?: Gateways.RequestOptions,
-    ): core.HttpResponsePromise<SamsaraApi.GatewaysPostGatewayResponseBody> {
+    ): core.HttpResponsePromise<Samsara.GatewaysPostGatewayResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__create(request, requestOptions));
     }
 
     private async __create(
-        request: SamsaraApi.GatewaysPostGatewayRequestBody,
+        request: Samsara.GatewaysPostGatewayRequestBody,
         requestOptions?: Gateways.RequestOptions,
-    ): Promise<core.WithRawResponse<SamsaraApi.GatewaysPostGatewayResponseBody>> {
+    ): Promise<core.WithRawResponse<Samsara.GatewaysPostGatewayResponseBody>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.SamsaraApiEnvironment.ProductionApi,
+                    environments.SamsaraEnvironment.ProductionApi,
                 "gateways",
             ),
             method: "POST",
@@ -264,7 +255,7 @@ export class Gateways {
         });
         if (_response.ok) {
             return {
-                data: _response.body as SamsaraApi.GatewaysPostGatewayResponseBody,
+                data: _response.body as Samsara.GatewaysPostGatewayResponseBody,
                 rawResponse: _response.rawResponse,
             };
         }
@@ -272,28 +263,25 @@ export class Gateways {
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 401:
-                    throw new SamsaraApi.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
                 case 404:
-                    throw new SamsaraApi.NotFoundError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.NotFoundError(_response.error.body as unknown, _response.rawResponse);
                 case 405:
-                    throw new SamsaraApi.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
                 case 429:
-                    throw new SamsaraApi.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
                 case 500:
-                    throw new SamsaraApi.InternalServerError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.InternalServerError(_response.error.body as unknown, _response.rawResponse);
                 case 501:
-                    throw new SamsaraApi.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
                 case 502:
-                    throw new SamsaraApi.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
                 case 503:
-                    throw new SamsaraApi.ServiceUnavailableError(
-                        _response.error.body as unknown,
-                        _response.rawResponse,
-                    );
+                    throw new Samsara.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
                 case 504:
-                    throw new SamsaraApi.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
                 default:
-                    throw new errors.SamsaraApiError({
+                    throw new errors.SamsaraError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                         rawResponse: _response.rawResponse,
@@ -303,15 +291,15 @@ export class Gateways {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.SamsaraApiTimeoutError("Timeout exceeded when calling POST /gateways.");
+                throw new errors.SamsaraTimeoutError("Timeout exceeded when calling POST /gateways.");
             case "unknown":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     message: _response.error.errorMessage,
                     rawResponse: _response.rawResponse,
                 });
@@ -331,15 +319,15 @@ export class Gateways {
      * @param {string} id - Gateway serial number
      * @param {Gateways.RequestOptions} requestOptions - Request-specific configuration.
      *
-     * @throws {@link SamsaraApi.UnauthorizedError}
-     * @throws {@link SamsaraApi.NotFoundError}
-     * @throws {@link SamsaraApi.MethodNotAllowedError}
-     * @throws {@link SamsaraApi.TooManyRequestsError}
-     * @throws {@link SamsaraApi.InternalServerError}
-     * @throws {@link SamsaraApi.NotImplementedError}
-     * @throws {@link SamsaraApi.BadGatewayError}
-     * @throws {@link SamsaraApi.ServiceUnavailableError}
-     * @throws {@link SamsaraApi.GatewayTimeoutError}
+     * @throws {@link Samsara.UnauthorizedError}
+     * @throws {@link Samsara.NotFoundError}
+     * @throws {@link Samsara.MethodNotAllowedError}
+     * @throws {@link Samsara.TooManyRequestsError}
+     * @throws {@link Samsara.InternalServerError}
+     * @throws {@link Samsara.NotImplementedError}
+     * @throws {@link Samsara.BadGatewayError}
+     * @throws {@link Samsara.ServiceUnavailableError}
+     * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
      *     await client.gateways.delete("id")
@@ -353,7 +341,7 @@ export class Gateways {
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.SamsaraApiEnvironment.ProductionApi,
+                    environments.SamsaraEnvironment.ProductionApi,
                 `gateways/${encodeURIComponent(id)}`,
             ),
             method: "DELETE",
@@ -376,28 +364,25 @@ export class Gateways {
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 401:
-                    throw new SamsaraApi.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
                 case 404:
-                    throw new SamsaraApi.NotFoundError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.NotFoundError(_response.error.body as unknown, _response.rawResponse);
                 case 405:
-                    throw new SamsaraApi.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
                 case 429:
-                    throw new SamsaraApi.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
                 case 500:
-                    throw new SamsaraApi.InternalServerError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.InternalServerError(_response.error.body as unknown, _response.rawResponse);
                 case 501:
-                    throw new SamsaraApi.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
                 case 502:
-                    throw new SamsaraApi.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
                 case 503:
-                    throw new SamsaraApi.ServiceUnavailableError(
-                        _response.error.body as unknown,
-                        _response.rawResponse,
-                    );
+                    throw new Samsara.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
                 case 504:
-                    throw new SamsaraApi.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
                 default:
-                    throw new errors.SamsaraApiError({
+                    throw new errors.SamsaraError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                         rawResponse: _response.rawResponse,
@@ -407,15 +392,15 @@ export class Gateways {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.SamsaraApiTimeoutError("Timeout exceeded when calling DELETE /gateways/{id}.");
+                throw new errors.SamsaraTimeoutError("Timeout exceeded when calling DELETE /gateways/{id}.");
             case "unknown":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     message: _response.error.errorMessage,
                     rawResponse: _response.rawResponse,
                 });
@@ -425,7 +410,7 @@ export class Gateways {
     protected async _getAuthorizationHeader(): Promise<string> {
         const bearer = (await core.Supplier.get(this._options.token)) ?? process?.env["SAMSARA_API_KEY"];
         if (bearer == null) {
-            throw new errors.SamsaraApiError({
+            throw new errors.SamsaraError({
                 message:
                     "Please specify a bearer by either passing it in to the constructor or initializing a SAMSARA_API_KEY environment variable",
             });

@@ -3,12 +3,12 @@
  */
 
 import { mockServerPool } from "../mock-server/MockServerPool.js";
-import { SamsaraApiClient } from "../../src/Client";
+import { SamsaraClient } from "../../src/Client";
 
 describe("Gateways", () => {
     test("create", async () => {
         const server = mockServerPool.createServer();
-        const client = new SamsaraApiClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
+        const client = new SamsaraClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
         const rawRequestBody = { serial: "GFRV-43N-VGX" };
         const rawResponseBody = {
             data: {
@@ -65,7 +65,7 @@ describe("Gateways", () => {
 
     test("delete", async () => {
         const server = mockServerPool.createServer();
-        const client = new SamsaraApiClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
+        const client = new SamsaraClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
 
         server.mockEndpoint().delete("/gateways/id").respondWith().statusCode(200).build();
 

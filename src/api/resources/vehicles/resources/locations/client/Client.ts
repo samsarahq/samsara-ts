@@ -4,14 +4,14 @@
 
 import * as environments from "../../../../../../environments.js";
 import * as core from "../../../../../../core/index.js";
-import * as SamsaraApi from "../../../../../index.js";
+import * as Samsara from "../../../../../index.js";
 import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../../../core/headers.js";
 import urlJoin from "url-join";
 import * as errors from "../../../../../../errors/index.js";
 
 export declare namespace Locations {
     export interface Options {
-        environment?: core.Supplier<environments.SamsaraApiEnvironment | string>;
+        environment?: core.Supplier<environments.SamsaraEnvironment | string>;
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
@@ -53,20 +53,20 @@ export class Locations {
      *
      * To use this endpoint, select **Read Vehicle Statistics** under the Vehicles category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
-     * @param {SamsaraApi.vehicles.LocationsListRequest} request
+     * @param {Samsara.vehicles.LocationsListRequest} request
      * @param {Locations.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
      *     await client.vehicles.locations.list()
      */
     public async list(
-        request: SamsaraApi.vehicles.LocationsListRequest = {},
+        request: Samsara.vehicles.LocationsListRequest = {},
         requestOptions?: Locations.RequestOptions,
-    ): Promise<core.Page<SamsaraApi.VehicleLocationsResponseData>> {
+    ): Promise<core.Page<Samsara.VehicleLocationsResponseData>> {
         const list = core.HttpResponsePromise.interceptFunction(
             async (
-                request: SamsaraApi.vehicles.LocationsListRequest,
-            ): Promise<core.WithRawResponse<SamsaraApi.VehicleLocationsResponse>> => {
+                request: Samsara.vehicles.LocationsListRequest,
+            ): Promise<core.WithRawResponse<Samsara.VehicleLocationsResponse>> => {
                 const { after, time, parentTagIds, tagIds, vehicleIds } = request;
                 const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
                 if (after != null) {
@@ -100,7 +100,7 @@ export class Locations {
                     url: urlJoin(
                         (await core.Supplier.get(this._options.baseUrl)) ??
                             (await core.Supplier.get(this._options.environment)) ??
-                            environments.SamsaraApiEnvironment.ProductionApi,
+                            environments.SamsaraEnvironment.ProductionApi,
                         "fleet/vehicles/locations",
                     ),
                     method: "GET",
@@ -120,12 +120,12 @@ export class Locations {
                 });
                 if (_response.ok) {
                     return {
-                        data: _response.body as SamsaraApi.VehicleLocationsResponse,
+                        data: _response.body as Samsara.VehicleLocationsResponse,
                         rawResponse: _response.rawResponse,
                     };
                 }
                 if (_response.error.reason === "status-code") {
-                    throw new errors.SamsaraApiError({
+                    throw new errors.SamsaraError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                         rawResponse: _response.rawResponse,
@@ -133,17 +133,17 @@ export class Locations {
                 }
                 switch (_response.error.reason) {
                     case "non-json":
-                        throw new errors.SamsaraApiError({
+                        throw new errors.SamsaraError({
                             statusCode: _response.error.statusCode,
                             body: _response.error.rawBody,
                             rawResponse: _response.rawResponse,
                         });
                     case "timeout":
-                        throw new errors.SamsaraApiTimeoutError(
+                        throw new errors.SamsaraTimeoutError(
                             "Timeout exceeded when calling GET /fleet/vehicles/locations.",
                         );
                     case "unknown":
-                        throw new errors.SamsaraApiError({
+                        throw new errors.SamsaraError({
                             message: _response.error.errorMessage,
                             rawResponse: _response.rawResponse,
                         });
@@ -151,7 +151,7 @@ export class Locations {
             },
         );
         const dataWithRawResponse = await list(request).withRawResponse();
-        return new core.Pageable<SamsaraApi.VehicleLocationsResponse, SamsaraApi.VehicleLocationsResponseData>({
+        return new core.Pageable<Samsara.VehicleLocationsResponse, Samsara.VehicleLocationsResponseData>({
             response: dataWithRawResponse.data,
             rawResponse: dataWithRawResponse.rawResponse,
             hasNextPage: (response) => response?.pagination?.endCursor != null,
@@ -179,20 +179,20 @@ export class Locations {
      *
      * To use this endpoint, select **Read Vehicle Statistics** under the Vehicle category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
-     * @param {SamsaraApi.vehicles.LocationsFeedRequest} request
+     * @param {Samsara.vehicles.LocationsFeedRequest} request
      * @param {Locations.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
      *     await client.vehicles.locations.feed()
      */
     public async feed(
-        request: SamsaraApi.vehicles.LocationsFeedRequest = {},
+        request: Samsara.vehicles.LocationsFeedRequest = {},
         requestOptions?: Locations.RequestOptions,
-    ): Promise<core.Page<SamsaraApi.VehicleLocationsListResponseData>> {
+    ): Promise<core.Page<Samsara.VehicleLocationsListResponseData>> {
         const list = core.HttpResponsePromise.interceptFunction(
             async (
-                request: SamsaraApi.vehicles.LocationsFeedRequest,
-            ): Promise<core.WithRawResponse<SamsaraApi.VehicleLocationsListResponse>> => {
+                request: Samsara.vehicles.LocationsFeedRequest,
+            ): Promise<core.WithRawResponse<Samsara.VehicleLocationsListResponse>> => {
                 const { after, parentTagIds, tagIds, vehicleIds } = request;
                 const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
                 if (after != null) {
@@ -223,7 +223,7 @@ export class Locations {
                     url: urlJoin(
                         (await core.Supplier.get(this._options.baseUrl)) ??
                             (await core.Supplier.get(this._options.environment)) ??
-                            environments.SamsaraApiEnvironment.ProductionApi,
+                            environments.SamsaraEnvironment.ProductionApi,
                         "fleet/vehicles/locations/feed",
                     ),
                     method: "GET",
@@ -243,12 +243,12 @@ export class Locations {
                 });
                 if (_response.ok) {
                     return {
-                        data: _response.body as SamsaraApi.VehicleLocationsListResponse,
+                        data: _response.body as Samsara.VehicleLocationsListResponse,
                         rawResponse: _response.rawResponse,
                     };
                 }
                 if (_response.error.reason === "status-code") {
-                    throw new errors.SamsaraApiError({
+                    throw new errors.SamsaraError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                         rawResponse: _response.rawResponse,
@@ -256,17 +256,17 @@ export class Locations {
                 }
                 switch (_response.error.reason) {
                     case "non-json":
-                        throw new errors.SamsaraApiError({
+                        throw new errors.SamsaraError({
                             statusCode: _response.error.statusCode,
                             body: _response.error.rawBody,
                             rawResponse: _response.rawResponse,
                         });
                     case "timeout":
-                        throw new errors.SamsaraApiTimeoutError(
+                        throw new errors.SamsaraTimeoutError(
                             "Timeout exceeded when calling GET /fleet/vehicles/locations/feed.",
                         );
                     case "unknown":
-                        throw new errors.SamsaraApiError({
+                        throw new errors.SamsaraError({
                             message: _response.error.errorMessage,
                             rawResponse: _response.rawResponse,
                         });
@@ -274,7 +274,7 @@ export class Locations {
             },
         );
         const dataWithRawResponse = await list(request).withRawResponse();
-        return new core.Pageable<SamsaraApi.VehicleLocationsListResponse, SamsaraApi.VehicleLocationsListResponseData>({
+        return new core.Pageable<Samsara.VehicleLocationsListResponse, Samsara.VehicleLocationsListResponseData>({
             response: dataWithRawResponse.data,
             rawResponse: dataWithRawResponse.rawResponse,
             hasNextPage: (response) => response?.pagination?.endCursor != null,
@@ -296,7 +296,7 @@ export class Locations {
      *
      * To use this endpoint, select **Read Vehicle Statistics** under the Vehicle category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
-     * @param {SamsaraApi.vehicles.LocationsHistoryRequest} request
+     * @param {Samsara.vehicles.LocationsHistoryRequest} request
      * @param {Locations.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -306,13 +306,13 @@ export class Locations {
      *     })
      */
     public async history(
-        request: SamsaraApi.vehicles.LocationsHistoryRequest,
+        request: Samsara.vehicles.LocationsHistoryRequest,
         requestOptions?: Locations.RequestOptions,
-    ): Promise<core.Page<SamsaraApi.VehicleLocationsListResponseData>> {
+    ): Promise<core.Page<Samsara.VehicleLocationsListResponseData>> {
         const list = core.HttpResponsePromise.interceptFunction(
             async (
-                request: SamsaraApi.vehicles.LocationsHistoryRequest,
-            ): Promise<core.WithRawResponse<SamsaraApi.VehicleLocationsListResponse>> => {
+                request: Samsara.vehicles.LocationsHistoryRequest,
+            ): Promise<core.WithRawResponse<Samsara.VehicleLocationsListResponse>> => {
                 const { after, startTime, endTime, parentTagIds, tagIds, vehicleIds } = request;
                 const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
                 if (after != null) {
@@ -345,7 +345,7 @@ export class Locations {
                     url: urlJoin(
                         (await core.Supplier.get(this._options.baseUrl)) ??
                             (await core.Supplier.get(this._options.environment)) ??
-                            environments.SamsaraApiEnvironment.ProductionApi,
+                            environments.SamsaraEnvironment.ProductionApi,
                         "fleet/vehicles/locations/history",
                     ),
                     method: "GET",
@@ -365,12 +365,12 @@ export class Locations {
                 });
                 if (_response.ok) {
                     return {
-                        data: _response.body as SamsaraApi.VehicleLocationsListResponse,
+                        data: _response.body as Samsara.VehicleLocationsListResponse,
                         rawResponse: _response.rawResponse,
                     };
                 }
                 if (_response.error.reason === "status-code") {
-                    throw new errors.SamsaraApiError({
+                    throw new errors.SamsaraError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                         rawResponse: _response.rawResponse,
@@ -378,17 +378,17 @@ export class Locations {
                 }
                 switch (_response.error.reason) {
                     case "non-json":
-                        throw new errors.SamsaraApiError({
+                        throw new errors.SamsaraError({
                             statusCode: _response.error.statusCode,
                             body: _response.error.rawBody,
                             rawResponse: _response.rawResponse,
                         });
                     case "timeout":
-                        throw new errors.SamsaraApiTimeoutError(
+                        throw new errors.SamsaraTimeoutError(
                             "Timeout exceeded when calling GET /fleet/vehicles/locations/history.",
                         );
                     case "unknown":
-                        throw new errors.SamsaraApiError({
+                        throw new errors.SamsaraError({
                             message: _response.error.errorMessage,
                             rawResponse: _response.rawResponse,
                         });
@@ -396,7 +396,7 @@ export class Locations {
             },
         );
         const dataWithRawResponse = await list(request).withRawResponse();
-        return new core.Pageable<SamsaraApi.VehicleLocationsListResponse, SamsaraApi.VehicleLocationsListResponseData>({
+        return new core.Pageable<Samsara.VehicleLocationsListResponse, Samsara.VehicleLocationsListResponseData>({
             response: dataWithRawResponse.data,
             rawResponse: dataWithRawResponse.rawResponse,
             hasNextPage: (response) => response?.pagination?.endCursor != null,
@@ -410,7 +410,7 @@ export class Locations {
     protected async _getAuthorizationHeader(): Promise<string> {
         const bearer = (await core.Supplier.get(this._options.token)) ?? process?.env["SAMSARA_API_KEY"];
         if (bearer == null) {
-            throw new errors.SamsaraApiError({
+            throw new errors.SamsaraError({
                 message:
                     "Please specify a bearer by either passing it in to the constructor or initializing a SAMSARA_API_KEY environment variable",
             });

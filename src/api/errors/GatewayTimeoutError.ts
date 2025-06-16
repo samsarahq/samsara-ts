@@ -5,7 +5,7 @@
 import * as errors from "../../errors/index.js";
 import * as core from "../../core/index.js";
 
-export class GatewayTimeoutError extends errors.SamsaraApiError {
+export class GatewayTimeoutError extends errors.SamsaraError {
     constructor(body?: unknown, rawResponse?: core.RawResponse) {
         super({
             message: "GatewayTimeoutError",

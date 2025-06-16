@@ -3,12 +3,12 @@
  */
 
 import { mockServerPool } from "../mock-server/MockServerPool.js";
-import { SamsaraApiClient } from "../../src/Client";
+import { SamsaraClient } from "../../src/Client";
 
 describe("Dvirs", () => {
     test("get", async () => {
         const server = mockServerPool.createServer();
-        const client = new SamsaraApiClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
+        const client = new SamsaraClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
 
         const rawResponseBody = {
             authorSignature: { signatoryUser: { id: "938172" }, signedAtTime: "2020-01-27T07:06:25Z", type: "driver" },
@@ -93,7 +93,7 @@ describe("Dvirs", () => {
 
     test("create", async () => {
         const server = mockServerPool.createServer();
-        const client = new SamsaraApiClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
+        const client = new SamsaraClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
         const rawRequestBody = { authorId: "11", safetyStatus: "safe", type: "mechanic" };
         const rawResponseBody = {
             data: {
@@ -245,7 +245,7 @@ describe("Dvirs", () => {
 
     test("history", async () => {
         const server = mockServerPool.createServer();
-        const client = new SamsaraApiClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
+        const client = new SamsaraClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
 
         const rawResponseBody = {
             data: [
@@ -378,7 +378,7 @@ describe("Dvirs", () => {
 
     test("update", async () => {
         const server = mockServerPool.createServer();
-        const client = new SamsaraApiClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
+        const client = new SamsaraClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
         const rawRequestBody = { authorId: "11", isResolved: true };
         const rawResponseBody = {
             data: {

@@ -3,12 +3,12 @@
  */
 
 import { mockServerPool } from "../mock-server/MockServerPool.js";
-import { SamsaraApiClient } from "../../src/Client";
+import { SamsaraClient } from "../../src/Client";
 
 describe("Webhooks", () => {
     test("create", async () => {
         const server = mockServerPool.createServer();
-        const client = new SamsaraApiClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
+        const client = new SamsaraClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
         const rawRequestBody = { name: "Webhook-123", url: "https://www.Webhook-123.com/webhook/listener" };
         const rawResponseBody = {
             customHeaders: [{ key: "format", value: "xcmol-532" }],
@@ -50,7 +50,7 @@ describe("Webhooks", () => {
 
     test("get", async () => {
         const server = mockServerPool.createServer();
-        const client = new SamsaraApiClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
+        const client = new SamsaraClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
 
         const rawResponseBody = {
             customHeaders: [{ key: "format", value: "xcmol-532" }],
@@ -82,7 +82,7 @@ describe("Webhooks", () => {
 
     test("delete", async () => {
         const server = mockServerPool.createServer();
-        const client = new SamsaraApiClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
+        const client = new SamsaraClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
 
         server.mockEndpoint().delete("/webhooks/id").respondWith().statusCode(200).build();
 
@@ -92,7 +92,7 @@ describe("Webhooks", () => {
 
     test("patch", async () => {
         const server = mockServerPool.createServer();
-        const client = new SamsaraApiClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
+        const client = new SamsaraClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = {
             customHeaders: [{ key: "format", value: "xcmol-532" }],

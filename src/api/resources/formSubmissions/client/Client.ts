@@ -4,7 +4,7 @@
 
 import * as environments from "../../../../environments.js";
 import * as core from "../../../../core/index.js";
-import * as SamsaraApi from "../../../index.js";
+import * as Samsara from "../../../index.js";
 import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../core/headers.js";
 import urlJoin from "url-join";
 import * as errors from "../../../../errors/index.js";
@@ -12,7 +12,7 @@ import { PdfExports } from "../resources/pdfExports/client/Client.js";
 
 export declare namespace FormSubmissions {
     export interface Options {
-        environment?: core.Supplier<environments.SamsaraApiEnvironment | string>;
+        environment?: core.Supplier<environments.SamsaraEnvironment | string>;
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
@@ -58,33 +58,33 @@ export class FormSubmissions {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * @param {SamsaraApi.FormSubmissionsListRequest} request
+     * @param {Samsara.FormSubmissionsListRequest} request
      * @param {FormSubmissions.RequestOptions} requestOptions - Request-specific configuration.
      *
-     * @throws {@link SamsaraApi.UnauthorizedError}
-     * @throws {@link SamsaraApi.NotFoundError}
-     * @throws {@link SamsaraApi.MethodNotAllowedError}
-     * @throws {@link SamsaraApi.TooManyRequestsError}
-     * @throws {@link SamsaraApi.InternalServerError}
-     * @throws {@link SamsaraApi.NotImplementedError}
-     * @throws {@link SamsaraApi.BadGatewayError}
-     * @throws {@link SamsaraApi.ServiceUnavailableError}
-     * @throws {@link SamsaraApi.GatewayTimeoutError}
+     * @throws {@link Samsara.UnauthorizedError}
+     * @throws {@link Samsara.NotFoundError}
+     * @throws {@link Samsara.MethodNotAllowedError}
+     * @throws {@link Samsara.TooManyRequestsError}
+     * @throws {@link Samsara.InternalServerError}
+     * @throws {@link Samsara.NotImplementedError}
+     * @throws {@link Samsara.BadGatewayError}
+     * @throws {@link Samsara.ServiceUnavailableError}
+     * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
      *     await client.formSubmissions.list()
      */
     public list(
-        request: SamsaraApi.FormSubmissionsListRequest = {},
+        request: Samsara.FormSubmissionsListRequest = {},
         requestOptions?: FormSubmissions.RequestOptions,
-    ): core.HttpResponsePromise<SamsaraApi.FormSubmissionsGetFormSubmissionsResponseBody> {
+    ): core.HttpResponsePromise<Samsara.FormSubmissionsGetFormSubmissionsResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__list(request, requestOptions));
     }
 
     private async __list(
-        request: SamsaraApi.FormSubmissionsListRequest = {},
+        request: Samsara.FormSubmissionsListRequest = {},
         requestOptions?: FormSubmissions.RequestOptions,
-    ): Promise<core.WithRawResponse<SamsaraApi.FormSubmissionsGetFormSubmissionsResponseBody>> {
+    ): Promise<core.WithRawResponse<Samsara.FormSubmissionsGetFormSubmissionsResponseBody>> {
         const { ids, include } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (ids != null) {
@@ -107,7 +107,7 @@ export class FormSubmissions {
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.SamsaraApiEnvironment.ProductionApi,
+                    environments.SamsaraEnvironment.ProductionApi,
                 "form-submissions",
             ),
             method: "GET",
@@ -126,7 +126,7 @@ export class FormSubmissions {
         });
         if (_response.ok) {
             return {
-                data: _response.body as SamsaraApi.FormSubmissionsGetFormSubmissionsResponseBody,
+                data: _response.body as Samsara.FormSubmissionsGetFormSubmissionsResponseBody,
                 rawResponse: _response.rawResponse,
             };
         }
@@ -134,28 +134,25 @@ export class FormSubmissions {
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 401:
-                    throw new SamsaraApi.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
                 case 404:
-                    throw new SamsaraApi.NotFoundError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.NotFoundError(_response.error.body as unknown, _response.rawResponse);
                 case 405:
-                    throw new SamsaraApi.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
                 case 429:
-                    throw new SamsaraApi.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
                 case 500:
-                    throw new SamsaraApi.InternalServerError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.InternalServerError(_response.error.body as unknown, _response.rawResponse);
                 case 501:
-                    throw new SamsaraApi.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
                 case 502:
-                    throw new SamsaraApi.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
                 case 503:
-                    throw new SamsaraApi.ServiceUnavailableError(
-                        _response.error.body as unknown,
-                        _response.rawResponse,
-                    );
+                    throw new Samsara.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
                 case 504:
-                    throw new SamsaraApi.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
                 default:
-                    throw new errors.SamsaraApiError({
+                    throw new errors.SamsaraError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                         rawResponse: _response.rawResponse,
@@ -165,15 +162,15 @@ export class FormSubmissions {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.SamsaraApiTimeoutError("Timeout exceeded when calling GET /form-submissions.");
+                throw new errors.SamsaraTimeoutError("Timeout exceeded when calling GET /form-submissions.");
             case "unknown":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     message: _response.error.errorMessage,
                     rawResponse: _response.rawResponse,
                 });
@@ -190,18 +187,18 @@ export class FormSubmissions {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * @param {SamsaraApi.FormSubmissionsPostFormSubmissionRequestBody} request
+     * @param {Samsara.FormSubmissionsPostFormSubmissionRequestBody} request
      * @param {FormSubmissions.RequestOptions} requestOptions - Request-specific configuration.
      *
-     * @throws {@link SamsaraApi.UnauthorizedError}
-     * @throws {@link SamsaraApi.NotFoundError}
-     * @throws {@link SamsaraApi.MethodNotAllowedError}
-     * @throws {@link SamsaraApi.TooManyRequestsError}
-     * @throws {@link SamsaraApi.InternalServerError}
-     * @throws {@link SamsaraApi.NotImplementedError}
-     * @throws {@link SamsaraApi.BadGatewayError}
-     * @throws {@link SamsaraApi.ServiceUnavailableError}
-     * @throws {@link SamsaraApi.GatewayTimeoutError}
+     * @throws {@link Samsara.UnauthorizedError}
+     * @throws {@link Samsara.NotFoundError}
+     * @throws {@link Samsara.MethodNotAllowedError}
+     * @throws {@link Samsara.TooManyRequestsError}
+     * @throws {@link Samsara.InternalServerError}
+     * @throws {@link Samsara.NotImplementedError}
+     * @throws {@link Samsara.BadGatewayError}
+     * @throws {@link Samsara.ServiceUnavailableError}
+     * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
      *     await client.formSubmissions.create({
@@ -212,21 +209,21 @@ export class FormSubmissions {
      *     })
      */
     public create(
-        request: SamsaraApi.FormSubmissionsPostFormSubmissionRequestBody,
+        request: Samsara.FormSubmissionsPostFormSubmissionRequestBody,
         requestOptions?: FormSubmissions.RequestOptions,
-    ): core.HttpResponsePromise<SamsaraApi.FormSubmissionsPostFormSubmissionResponseBody> {
+    ): core.HttpResponsePromise<Samsara.FormSubmissionsPostFormSubmissionResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__create(request, requestOptions));
     }
 
     private async __create(
-        request: SamsaraApi.FormSubmissionsPostFormSubmissionRequestBody,
+        request: Samsara.FormSubmissionsPostFormSubmissionRequestBody,
         requestOptions?: FormSubmissions.RequestOptions,
-    ): Promise<core.WithRawResponse<SamsaraApi.FormSubmissionsPostFormSubmissionResponseBody>> {
+    ): Promise<core.WithRawResponse<Samsara.FormSubmissionsPostFormSubmissionResponseBody>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.SamsaraApiEnvironment.ProductionApi,
+                    environments.SamsaraEnvironment.ProductionApi,
                 "form-submissions",
             ),
             method: "POST",
@@ -247,7 +244,7 @@ export class FormSubmissions {
         });
         if (_response.ok) {
             return {
-                data: _response.body as SamsaraApi.FormSubmissionsPostFormSubmissionResponseBody,
+                data: _response.body as Samsara.FormSubmissionsPostFormSubmissionResponseBody,
                 rawResponse: _response.rawResponse,
             };
         }
@@ -255,28 +252,25 @@ export class FormSubmissions {
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 401:
-                    throw new SamsaraApi.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
                 case 404:
-                    throw new SamsaraApi.NotFoundError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.NotFoundError(_response.error.body as unknown, _response.rawResponse);
                 case 405:
-                    throw new SamsaraApi.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
                 case 429:
-                    throw new SamsaraApi.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
                 case 500:
-                    throw new SamsaraApi.InternalServerError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.InternalServerError(_response.error.body as unknown, _response.rawResponse);
                 case 501:
-                    throw new SamsaraApi.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
                 case 502:
-                    throw new SamsaraApi.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
                 case 503:
-                    throw new SamsaraApi.ServiceUnavailableError(
-                        _response.error.body as unknown,
-                        _response.rawResponse,
-                    );
+                    throw new Samsara.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
                 case 504:
-                    throw new SamsaraApi.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
                 default:
-                    throw new errors.SamsaraApiError({
+                    throw new errors.SamsaraError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                         rawResponse: _response.rawResponse,
@@ -286,15 +280,15 @@ export class FormSubmissions {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.SamsaraApiTimeoutError("Timeout exceeded when calling POST /form-submissions.");
+                throw new errors.SamsaraTimeoutError("Timeout exceeded when calling POST /form-submissions.");
             case "unknown":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     message: _response.error.errorMessage,
                     rawResponse: _response.rawResponse,
                 });
@@ -311,18 +305,18 @@ export class FormSubmissions {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * @param {SamsaraApi.FormSubmissionsPatchFormSubmissionRequestBody} request
+     * @param {Samsara.FormSubmissionsPatchFormSubmissionRequestBody} request
      * @param {FormSubmissions.RequestOptions} requestOptions - Request-specific configuration.
      *
-     * @throws {@link SamsaraApi.UnauthorizedError}
-     * @throws {@link SamsaraApi.NotFoundError}
-     * @throws {@link SamsaraApi.MethodNotAllowedError}
-     * @throws {@link SamsaraApi.TooManyRequestsError}
-     * @throws {@link SamsaraApi.InternalServerError}
-     * @throws {@link SamsaraApi.NotImplementedError}
-     * @throws {@link SamsaraApi.BadGatewayError}
-     * @throws {@link SamsaraApi.ServiceUnavailableError}
-     * @throws {@link SamsaraApi.GatewayTimeoutError}
+     * @throws {@link Samsara.UnauthorizedError}
+     * @throws {@link Samsara.NotFoundError}
+     * @throws {@link Samsara.MethodNotAllowedError}
+     * @throws {@link Samsara.TooManyRequestsError}
+     * @throws {@link Samsara.InternalServerError}
+     * @throws {@link Samsara.NotImplementedError}
+     * @throws {@link Samsara.BadGatewayError}
+     * @throws {@link Samsara.ServiceUnavailableError}
+     * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
      *     await client.formSubmissions.update({
@@ -331,21 +325,21 @@ export class FormSubmissions {
      *     })
      */
     public update(
-        request: SamsaraApi.FormSubmissionsPatchFormSubmissionRequestBody,
+        request: Samsara.FormSubmissionsPatchFormSubmissionRequestBody,
         requestOptions?: FormSubmissions.RequestOptions,
-    ): core.HttpResponsePromise<SamsaraApi.FormSubmissionsPatchFormSubmissionResponseBody> {
+    ): core.HttpResponsePromise<Samsara.FormSubmissionsPatchFormSubmissionResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__update(request, requestOptions));
     }
 
     private async __update(
-        request: SamsaraApi.FormSubmissionsPatchFormSubmissionRequestBody,
+        request: Samsara.FormSubmissionsPatchFormSubmissionRequestBody,
         requestOptions?: FormSubmissions.RequestOptions,
-    ): Promise<core.WithRawResponse<SamsaraApi.FormSubmissionsPatchFormSubmissionResponseBody>> {
+    ): Promise<core.WithRawResponse<Samsara.FormSubmissionsPatchFormSubmissionResponseBody>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.SamsaraApiEnvironment.ProductionApi,
+                    environments.SamsaraEnvironment.ProductionApi,
                 "form-submissions",
             ),
             method: "PATCH",
@@ -366,7 +360,7 @@ export class FormSubmissions {
         });
         if (_response.ok) {
             return {
-                data: _response.body as SamsaraApi.FormSubmissionsPatchFormSubmissionResponseBody,
+                data: _response.body as Samsara.FormSubmissionsPatchFormSubmissionResponseBody,
                 rawResponse: _response.rawResponse,
             };
         }
@@ -374,28 +368,25 @@ export class FormSubmissions {
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 401:
-                    throw new SamsaraApi.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
                 case 404:
-                    throw new SamsaraApi.NotFoundError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.NotFoundError(_response.error.body as unknown, _response.rawResponse);
                 case 405:
-                    throw new SamsaraApi.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
                 case 429:
-                    throw new SamsaraApi.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
                 case 500:
-                    throw new SamsaraApi.InternalServerError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.InternalServerError(_response.error.body as unknown, _response.rawResponse);
                 case 501:
-                    throw new SamsaraApi.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
                 case 502:
-                    throw new SamsaraApi.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
                 case 503:
-                    throw new SamsaraApi.ServiceUnavailableError(
-                        _response.error.body as unknown,
-                        _response.rawResponse,
-                    );
+                    throw new Samsara.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
                 case 504:
-                    throw new SamsaraApi.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
                 default:
-                    throw new errors.SamsaraApiError({
+                    throw new errors.SamsaraError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                         rawResponse: _response.rawResponse,
@@ -405,15 +396,15 @@ export class FormSubmissions {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.SamsaraApiTimeoutError("Timeout exceeded when calling PATCH /form-submissions.");
+                throw new errors.SamsaraTimeoutError("Timeout exceeded when calling PATCH /form-submissions.");
             case "unknown":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     message: _response.error.errorMessage,
                     rawResponse: _response.rawResponse,
                 });
@@ -430,18 +421,18 @@ export class FormSubmissions {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * @param {SamsaraApi.FormSubmissionsStreamRequest} request
+     * @param {Samsara.FormSubmissionsStreamRequest} request
      * @param {FormSubmissions.RequestOptions} requestOptions - Request-specific configuration.
      *
-     * @throws {@link SamsaraApi.UnauthorizedError}
-     * @throws {@link SamsaraApi.NotFoundError}
-     * @throws {@link SamsaraApi.MethodNotAllowedError}
-     * @throws {@link SamsaraApi.TooManyRequestsError}
-     * @throws {@link SamsaraApi.InternalServerError}
-     * @throws {@link SamsaraApi.NotImplementedError}
-     * @throws {@link SamsaraApi.BadGatewayError}
-     * @throws {@link SamsaraApi.ServiceUnavailableError}
-     * @throws {@link SamsaraApi.GatewayTimeoutError}
+     * @throws {@link Samsara.UnauthorizedError}
+     * @throws {@link Samsara.NotFoundError}
+     * @throws {@link Samsara.MethodNotAllowedError}
+     * @throws {@link Samsara.TooManyRequestsError}
+     * @throws {@link Samsara.InternalServerError}
+     * @throws {@link Samsara.NotImplementedError}
+     * @throws {@link Samsara.BadGatewayError}
+     * @throws {@link Samsara.ServiceUnavailableError}
+     * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
      *     await client.formSubmissions.stream({
@@ -449,13 +440,13 @@ export class FormSubmissions {
      *     })
      */
     public async stream(
-        request: SamsaraApi.FormSubmissionsStreamRequest,
+        request: Samsara.FormSubmissionsStreamRequest,
         requestOptions?: FormSubmissions.RequestOptions,
-    ): Promise<core.Page<SamsaraApi.FormSubmissionResponseObjectResponseBody>> {
+    ): Promise<core.Page<Samsara.FormSubmissionResponseObjectResponseBody>> {
         const list = core.HttpResponsePromise.interceptFunction(
             async (
-                request: SamsaraApi.FormSubmissionsStreamRequest,
-            ): Promise<core.WithRawResponse<SamsaraApi.FormSubmissionsGetFormSubmissionsStreamResponseBody>> => {
+                request: Samsara.FormSubmissionsStreamRequest,
+            ): Promise<core.WithRawResponse<Samsara.FormSubmissionsGetFormSubmissionsStreamResponseBody>> => {
                 const {
                     startTime,
                     endTime,
@@ -513,7 +504,7 @@ export class FormSubmissions {
                     url: urlJoin(
                         (await core.Supplier.get(this._options.baseUrl)) ??
                             (await core.Supplier.get(this._options.environment)) ??
-                            environments.SamsaraApiEnvironment.ProductionApi,
+                            environments.SamsaraEnvironment.ProductionApi,
                         "form-submissions/stream",
                     ),
                     method: "GET",
@@ -533,56 +524,50 @@ export class FormSubmissions {
                 });
                 if (_response.ok) {
                     return {
-                        data: _response.body as SamsaraApi.FormSubmissionsGetFormSubmissionsStreamResponseBody,
+                        data: _response.body as Samsara.FormSubmissionsGetFormSubmissionsStreamResponseBody,
                         rawResponse: _response.rawResponse,
                     };
                 }
                 if (_response.error.reason === "status-code") {
                     switch (_response.error.statusCode) {
                         case 401:
-                            throw new SamsaraApi.UnauthorizedError(
-                                _response.error.body as unknown,
-                                _response.rawResponse,
-                            );
+                            throw new Samsara.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
                         case 404:
-                            throw new SamsaraApi.NotFoundError(_response.error.body as unknown, _response.rawResponse);
+                            throw new Samsara.NotFoundError(_response.error.body as unknown, _response.rawResponse);
                         case 405:
-                            throw new SamsaraApi.MethodNotAllowedError(
+                            throw new Samsara.MethodNotAllowedError(
                                 _response.error.body as unknown,
                                 _response.rawResponse,
                             );
                         case 429:
-                            throw new SamsaraApi.TooManyRequestsError(
+                            throw new Samsara.TooManyRequestsError(
                                 _response.error.body as unknown,
                                 _response.rawResponse,
                             );
                         case 500:
-                            throw new SamsaraApi.InternalServerError(
+                            throw new Samsara.InternalServerError(
                                 _response.error.body as unknown,
                                 _response.rawResponse,
                             );
                         case 501:
-                            throw new SamsaraApi.NotImplementedError(
+                            throw new Samsara.NotImplementedError(
                                 _response.error.body as unknown,
                                 _response.rawResponse,
                             );
                         case 502:
-                            throw new SamsaraApi.BadGatewayError(
-                                _response.error.body as unknown,
-                                _response.rawResponse,
-                            );
+                            throw new Samsara.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
                         case 503:
-                            throw new SamsaraApi.ServiceUnavailableError(
+                            throw new Samsara.ServiceUnavailableError(
                                 _response.error.body as unknown,
                                 _response.rawResponse,
                             );
                         case 504:
-                            throw new SamsaraApi.GatewayTimeoutError(
+                            throw new Samsara.GatewayTimeoutError(
                                 _response.error.body as unknown,
                                 _response.rawResponse,
                             );
                         default:
-                            throw new errors.SamsaraApiError({
+                            throw new errors.SamsaraError({
                                 statusCode: _response.error.statusCode,
                                 body: _response.error.body,
                                 rawResponse: _response.rawResponse,
@@ -591,17 +576,17 @@ export class FormSubmissions {
                 }
                 switch (_response.error.reason) {
                     case "non-json":
-                        throw new errors.SamsaraApiError({
+                        throw new errors.SamsaraError({
                             statusCode: _response.error.statusCode,
                             body: _response.error.rawBody,
                             rawResponse: _response.rawResponse,
                         });
                     case "timeout":
-                        throw new errors.SamsaraApiTimeoutError(
+                        throw new errors.SamsaraTimeoutError(
                             "Timeout exceeded when calling GET /form-submissions/stream.",
                         );
                     case "unknown":
-                        throw new errors.SamsaraApiError({
+                        throw new errors.SamsaraError({
                             message: _response.error.errorMessage,
                             rawResponse: _response.rawResponse,
                         });
@@ -610,8 +595,8 @@ export class FormSubmissions {
         );
         const dataWithRawResponse = await list(request).withRawResponse();
         return new core.Pageable<
-            SamsaraApi.FormSubmissionsGetFormSubmissionsStreamResponseBody,
-            SamsaraApi.FormSubmissionResponseObjectResponseBody
+            Samsara.FormSubmissionsGetFormSubmissionsStreamResponseBody,
+            Samsara.FormSubmissionResponseObjectResponseBody
         >({
             response: dataWithRawResponse.data,
             rawResponse: dataWithRawResponse.rawResponse,
@@ -626,7 +611,7 @@ export class FormSubmissions {
     protected async _getAuthorizationHeader(): Promise<string> {
         const bearer = (await core.Supplier.get(this._options.token)) ?? process?.env["SAMSARA_API_KEY"];
         if (bearer == null) {
-            throw new errors.SamsaraApiError({
+            throw new errors.SamsaraError({
                 message:
                     "Please specify a bearer by either passing it in to the constructor or initializing a SAMSARA_API_KEY environment variable",
             });

@@ -4,14 +4,14 @@
 
 import * as environments from "../../../../../../environments.js";
 import * as core from "../../../../../../core/index.js";
-import * as SamsaraApi from "../../../../../index.js";
+import * as Samsara from "../../../../../index.js";
 import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../../../core/headers.js";
 import urlJoin from "url-join";
 import * as errors from "../../../../../../errors/index.js";
 
 export declare namespace WorkOrders {
     export interface Options {
-        environment?: core.Supplier<environments.SamsaraApiEnvironment | string>;
+        environment?: core.Supplier<environments.SamsaraEnvironment | string>;
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
@@ -52,30 +52,30 @@ export class WorkOrders {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * @param {SamsaraApi.maintenance.WorkOrdersListRequest} request
+     * @param {Samsara.maintenance.WorkOrdersListRequest} request
      * @param {WorkOrders.RequestOptions} requestOptions - Request-specific configuration.
      *
-     * @throws {@link SamsaraApi.UnauthorizedError}
-     * @throws {@link SamsaraApi.NotFoundError}
-     * @throws {@link SamsaraApi.MethodNotAllowedError}
-     * @throws {@link SamsaraApi.TooManyRequestsError}
-     * @throws {@link SamsaraApi.InternalServerError}
-     * @throws {@link SamsaraApi.NotImplementedError}
-     * @throws {@link SamsaraApi.BadGatewayError}
-     * @throws {@link SamsaraApi.ServiceUnavailableError}
-     * @throws {@link SamsaraApi.GatewayTimeoutError}
+     * @throws {@link Samsara.UnauthorizedError}
+     * @throws {@link Samsara.NotFoundError}
+     * @throws {@link Samsara.MethodNotAllowedError}
+     * @throws {@link Samsara.TooManyRequestsError}
+     * @throws {@link Samsara.InternalServerError}
+     * @throws {@link Samsara.NotImplementedError}
+     * @throws {@link Samsara.BadGatewayError}
+     * @throws {@link Samsara.ServiceUnavailableError}
+     * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
      *     await client.maintenance.workOrders.list()
      */
     public async list(
-        request: SamsaraApi.maintenance.WorkOrdersListRequest = {},
+        request: Samsara.maintenance.WorkOrdersListRequest = {},
         requestOptions?: WorkOrders.RequestOptions,
-    ): Promise<core.Page<SamsaraApi.WorkOrderObjectResponseBody>> {
+    ): Promise<core.Page<Samsara.WorkOrderObjectResponseBody>> {
         const list = core.HttpResponsePromise.interceptFunction(
             async (
-                request: SamsaraApi.maintenance.WorkOrdersListRequest,
-            ): Promise<core.WithRawResponse<SamsaraApi.WorkOrdersGetWorkOrdersResponseBody>> => {
+                request: Samsara.maintenance.WorkOrdersListRequest,
+            ): Promise<core.WithRawResponse<Samsara.WorkOrdersGetWorkOrdersResponseBody>> => {
                 const { ids, after } = request;
                 const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
                 if (ids != null) {
@@ -92,7 +92,7 @@ export class WorkOrders {
                     url: urlJoin(
                         (await core.Supplier.get(this._options.baseUrl)) ??
                             (await core.Supplier.get(this._options.environment)) ??
-                            environments.SamsaraApiEnvironment.ProductionApi,
+                            environments.SamsaraEnvironment.ProductionApi,
                         "maintenance/work-orders",
                     ),
                     method: "GET",
@@ -112,56 +112,50 @@ export class WorkOrders {
                 });
                 if (_response.ok) {
                     return {
-                        data: _response.body as SamsaraApi.WorkOrdersGetWorkOrdersResponseBody,
+                        data: _response.body as Samsara.WorkOrdersGetWorkOrdersResponseBody,
                         rawResponse: _response.rawResponse,
                     };
                 }
                 if (_response.error.reason === "status-code") {
                     switch (_response.error.statusCode) {
                         case 401:
-                            throw new SamsaraApi.UnauthorizedError(
-                                _response.error.body as unknown,
-                                _response.rawResponse,
-                            );
+                            throw new Samsara.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
                         case 404:
-                            throw new SamsaraApi.NotFoundError(_response.error.body as unknown, _response.rawResponse);
+                            throw new Samsara.NotFoundError(_response.error.body as unknown, _response.rawResponse);
                         case 405:
-                            throw new SamsaraApi.MethodNotAllowedError(
+                            throw new Samsara.MethodNotAllowedError(
                                 _response.error.body as unknown,
                                 _response.rawResponse,
                             );
                         case 429:
-                            throw new SamsaraApi.TooManyRequestsError(
+                            throw new Samsara.TooManyRequestsError(
                                 _response.error.body as unknown,
                                 _response.rawResponse,
                             );
                         case 500:
-                            throw new SamsaraApi.InternalServerError(
+                            throw new Samsara.InternalServerError(
                                 _response.error.body as unknown,
                                 _response.rawResponse,
                             );
                         case 501:
-                            throw new SamsaraApi.NotImplementedError(
+                            throw new Samsara.NotImplementedError(
                                 _response.error.body as unknown,
                                 _response.rawResponse,
                             );
                         case 502:
-                            throw new SamsaraApi.BadGatewayError(
-                                _response.error.body as unknown,
-                                _response.rawResponse,
-                            );
+                            throw new Samsara.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
                         case 503:
-                            throw new SamsaraApi.ServiceUnavailableError(
+                            throw new Samsara.ServiceUnavailableError(
                                 _response.error.body as unknown,
                                 _response.rawResponse,
                             );
                         case 504:
-                            throw new SamsaraApi.GatewayTimeoutError(
+                            throw new Samsara.GatewayTimeoutError(
                                 _response.error.body as unknown,
                                 _response.rawResponse,
                             );
                         default:
-                            throw new errors.SamsaraApiError({
+                            throw new errors.SamsaraError({
                                 statusCode: _response.error.statusCode,
                                 body: _response.error.body,
                                 rawResponse: _response.rawResponse,
@@ -170,17 +164,17 @@ export class WorkOrders {
                 }
                 switch (_response.error.reason) {
                     case "non-json":
-                        throw new errors.SamsaraApiError({
+                        throw new errors.SamsaraError({
                             statusCode: _response.error.statusCode,
                             body: _response.error.rawBody,
                             rawResponse: _response.rawResponse,
                         });
                     case "timeout":
-                        throw new errors.SamsaraApiTimeoutError(
+                        throw new errors.SamsaraTimeoutError(
                             "Timeout exceeded when calling GET /maintenance/work-orders.",
                         );
                     case "unknown":
-                        throw new errors.SamsaraApiError({
+                        throw new errors.SamsaraError({
                             message: _response.error.errorMessage,
                             rawResponse: _response.rawResponse,
                         });
@@ -188,10 +182,7 @@ export class WorkOrders {
             },
         );
         const dataWithRawResponse = await list(request).withRawResponse();
-        return new core.Pageable<
-            SamsaraApi.WorkOrdersGetWorkOrdersResponseBody,
-            SamsaraApi.WorkOrderObjectResponseBody
-        >({
+        return new core.Pageable<Samsara.WorkOrdersGetWorkOrdersResponseBody, Samsara.WorkOrderObjectResponseBody>({
             response: dataWithRawResponse.data,
             rawResponse: dataWithRawResponse.rawResponse,
             hasNextPage: (response) => response?.pagination?.endCursor != null,
@@ -212,18 +203,18 @@ export class WorkOrders {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * @param {SamsaraApi.maintenance.WorkOrdersPostWorkOrdersRequestBody} request
+     * @param {Samsara.maintenance.WorkOrdersPostWorkOrdersRequestBody} request
      * @param {WorkOrders.RequestOptions} requestOptions - Request-specific configuration.
      *
-     * @throws {@link SamsaraApi.UnauthorizedError}
-     * @throws {@link SamsaraApi.NotFoundError}
-     * @throws {@link SamsaraApi.MethodNotAllowedError}
-     * @throws {@link SamsaraApi.TooManyRequestsError}
-     * @throws {@link SamsaraApi.InternalServerError}
-     * @throws {@link SamsaraApi.NotImplementedError}
-     * @throws {@link SamsaraApi.BadGatewayError}
-     * @throws {@link SamsaraApi.ServiceUnavailableError}
-     * @throws {@link SamsaraApi.GatewayTimeoutError}
+     * @throws {@link Samsara.UnauthorizedError}
+     * @throws {@link Samsara.NotFoundError}
+     * @throws {@link Samsara.MethodNotAllowedError}
+     * @throws {@link Samsara.TooManyRequestsError}
+     * @throws {@link Samsara.InternalServerError}
+     * @throws {@link Samsara.NotImplementedError}
+     * @throws {@link Samsara.BadGatewayError}
+     * @throws {@link Samsara.ServiceUnavailableError}
+     * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
      *     await client.maintenance.workOrders.create({
@@ -231,21 +222,21 @@ export class WorkOrders {
      *     })
      */
     public create(
-        request: SamsaraApi.maintenance.WorkOrdersPostWorkOrdersRequestBody,
+        request: Samsara.maintenance.WorkOrdersPostWorkOrdersRequestBody,
         requestOptions?: WorkOrders.RequestOptions,
-    ): core.HttpResponsePromise<SamsaraApi.WorkOrdersPostWorkOrdersResponseBody> {
+    ): core.HttpResponsePromise<Samsara.WorkOrdersPostWorkOrdersResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__create(request, requestOptions));
     }
 
     private async __create(
-        request: SamsaraApi.maintenance.WorkOrdersPostWorkOrdersRequestBody,
+        request: Samsara.maintenance.WorkOrdersPostWorkOrdersRequestBody,
         requestOptions?: WorkOrders.RequestOptions,
-    ): Promise<core.WithRawResponse<SamsaraApi.WorkOrdersPostWorkOrdersResponseBody>> {
+    ): Promise<core.WithRawResponse<Samsara.WorkOrdersPostWorkOrdersResponseBody>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.SamsaraApiEnvironment.ProductionApi,
+                    environments.SamsaraEnvironment.ProductionApi,
                 "maintenance/work-orders",
             ),
             method: "POST",
@@ -266,7 +257,7 @@ export class WorkOrders {
         });
         if (_response.ok) {
             return {
-                data: _response.body as SamsaraApi.WorkOrdersPostWorkOrdersResponseBody,
+                data: _response.body as Samsara.WorkOrdersPostWorkOrdersResponseBody,
                 rawResponse: _response.rawResponse,
             };
         }
@@ -274,28 +265,25 @@ export class WorkOrders {
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 401:
-                    throw new SamsaraApi.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
                 case 404:
-                    throw new SamsaraApi.NotFoundError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.NotFoundError(_response.error.body as unknown, _response.rawResponse);
                 case 405:
-                    throw new SamsaraApi.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
                 case 429:
-                    throw new SamsaraApi.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
                 case 500:
-                    throw new SamsaraApi.InternalServerError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.InternalServerError(_response.error.body as unknown, _response.rawResponse);
                 case 501:
-                    throw new SamsaraApi.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
                 case 502:
-                    throw new SamsaraApi.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
                 case 503:
-                    throw new SamsaraApi.ServiceUnavailableError(
-                        _response.error.body as unknown,
-                        _response.rawResponse,
-                    );
+                    throw new Samsara.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
                 case 504:
-                    throw new SamsaraApi.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
                 default:
-                    throw new errors.SamsaraApiError({
+                    throw new errors.SamsaraError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                         rawResponse: _response.rawResponse,
@@ -305,15 +293,15 @@ export class WorkOrders {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.SamsaraApiTimeoutError("Timeout exceeded when calling POST /maintenance/work-orders.");
+                throw new errors.SamsaraTimeoutError("Timeout exceeded when calling POST /maintenance/work-orders.");
             case "unknown":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     message: _response.error.errorMessage,
                     rawResponse: _response.rawResponse,
                 });
@@ -330,18 +318,18 @@ export class WorkOrders {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * @param {SamsaraApi.maintenance.WorkOrdersDeleteRequest} request
+     * @param {Samsara.maintenance.WorkOrdersDeleteRequest} request
      * @param {WorkOrders.RequestOptions} requestOptions - Request-specific configuration.
      *
-     * @throws {@link SamsaraApi.UnauthorizedError}
-     * @throws {@link SamsaraApi.NotFoundError}
-     * @throws {@link SamsaraApi.MethodNotAllowedError}
-     * @throws {@link SamsaraApi.TooManyRequestsError}
-     * @throws {@link SamsaraApi.InternalServerError}
-     * @throws {@link SamsaraApi.NotImplementedError}
-     * @throws {@link SamsaraApi.BadGatewayError}
-     * @throws {@link SamsaraApi.ServiceUnavailableError}
-     * @throws {@link SamsaraApi.GatewayTimeoutError}
+     * @throws {@link Samsara.UnauthorizedError}
+     * @throws {@link Samsara.NotFoundError}
+     * @throws {@link Samsara.MethodNotAllowedError}
+     * @throws {@link Samsara.TooManyRequestsError}
+     * @throws {@link Samsara.InternalServerError}
+     * @throws {@link Samsara.NotImplementedError}
+     * @throws {@link Samsara.BadGatewayError}
+     * @throws {@link Samsara.ServiceUnavailableError}
+     * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
      *     await client.maintenance.workOrders.delete({
@@ -349,14 +337,14 @@ export class WorkOrders {
      *     })
      */
     public delete(
-        request: SamsaraApi.maintenance.WorkOrdersDeleteRequest,
+        request: Samsara.maintenance.WorkOrdersDeleteRequest,
         requestOptions?: WorkOrders.RequestOptions,
     ): core.HttpResponsePromise<void> {
         return core.HttpResponsePromise.fromPromise(this.__delete(request, requestOptions));
     }
 
     private async __delete(
-        request: SamsaraApi.maintenance.WorkOrdersDeleteRequest,
+        request: Samsara.maintenance.WorkOrdersDeleteRequest,
         requestOptions?: WorkOrders.RequestOptions,
     ): Promise<core.WithRawResponse<void>> {
         const { id } = request;
@@ -366,7 +354,7 @@ export class WorkOrders {
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.SamsaraApiEnvironment.ProductionApi,
+                    environments.SamsaraEnvironment.ProductionApi,
                 "maintenance/work-orders",
             ),
             method: "DELETE",
@@ -390,28 +378,25 @@ export class WorkOrders {
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 401:
-                    throw new SamsaraApi.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
                 case 404:
-                    throw new SamsaraApi.NotFoundError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.NotFoundError(_response.error.body as unknown, _response.rawResponse);
                 case 405:
-                    throw new SamsaraApi.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
                 case 429:
-                    throw new SamsaraApi.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
                 case 500:
-                    throw new SamsaraApi.InternalServerError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.InternalServerError(_response.error.body as unknown, _response.rawResponse);
                 case 501:
-                    throw new SamsaraApi.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
                 case 502:
-                    throw new SamsaraApi.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
                 case 503:
-                    throw new SamsaraApi.ServiceUnavailableError(
-                        _response.error.body as unknown,
-                        _response.rawResponse,
-                    );
+                    throw new Samsara.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
                 case 504:
-                    throw new SamsaraApi.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
                 default:
-                    throw new errors.SamsaraApiError({
+                    throw new errors.SamsaraError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                         rawResponse: _response.rawResponse,
@@ -421,17 +406,15 @@ export class WorkOrders {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.SamsaraApiTimeoutError(
-                    "Timeout exceeded when calling DELETE /maintenance/work-orders.",
-                );
+                throw new errors.SamsaraTimeoutError("Timeout exceeded when calling DELETE /maintenance/work-orders.");
             case "unknown":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     message: _response.error.errorMessage,
                     rawResponse: _response.rawResponse,
                 });
@@ -448,18 +431,18 @@ export class WorkOrders {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * @param {SamsaraApi.maintenance.WorkOrdersPatchWorkOrdersRequestBody} request
+     * @param {Samsara.maintenance.WorkOrdersPatchWorkOrdersRequestBody} request
      * @param {WorkOrders.RequestOptions} requestOptions - Request-specific configuration.
      *
-     * @throws {@link SamsaraApi.UnauthorizedError}
-     * @throws {@link SamsaraApi.NotFoundError}
-     * @throws {@link SamsaraApi.MethodNotAllowedError}
-     * @throws {@link SamsaraApi.TooManyRequestsError}
-     * @throws {@link SamsaraApi.InternalServerError}
-     * @throws {@link SamsaraApi.NotImplementedError}
-     * @throws {@link SamsaraApi.BadGatewayError}
-     * @throws {@link SamsaraApi.ServiceUnavailableError}
-     * @throws {@link SamsaraApi.GatewayTimeoutError}
+     * @throws {@link Samsara.UnauthorizedError}
+     * @throws {@link Samsara.NotFoundError}
+     * @throws {@link Samsara.MethodNotAllowedError}
+     * @throws {@link Samsara.TooManyRequestsError}
+     * @throws {@link Samsara.InternalServerError}
+     * @throws {@link Samsara.NotImplementedError}
+     * @throws {@link Samsara.BadGatewayError}
+     * @throws {@link Samsara.ServiceUnavailableError}
+     * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
      *     await client.maintenance.workOrders.update({
@@ -467,21 +450,21 @@ export class WorkOrders {
      *     })
      */
     public update(
-        request: SamsaraApi.maintenance.WorkOrdersPatchWorkOrdersRequestBody,
+        request: Samsara.maintenance.WorkOrdersPatchWorkOrdersRequestBody,
         requestOptions?: WorkOrders.RequestOptions,
-    ): core.HttpResponsePromise<SamsaraApi.WorkOrdersPatchWorkOrdersResponseBody> {
+    ): core.HttpResponsePromise<Samsara.WorkOrdersPatchWorkOrdersResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__update(request, requestOptions));
     }
 
     private async __update(
-        request: SamsaraApi.maintenance.WorkOrdersPatchWorkOrdersRequestBody,
+        request: Samsara.maintenance.WorkOrdersPatchWorkOrdersRequestBody,
         requestOptions?: WorkOrders.RequestOptions,
-    ): Promise<core.WithRawResponse<SamsaraApi.WorkOrdersPatchWorkOrdersResponseBody>> {
+    ): Promise<core.WithRawResponse<Samsara.WorkOrdersPatchWorkOrdersResponseBody>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.SamsaraApiEnvironment.ProductionApi,
+                    environments.SamsaraEnvironment.ProductionApi,
                 "maintenance/work-orders",
             ),
             method: "PATCH",
@@ -502,7 +485,7 @@ export class WorkOrders {
         });
         if (_response.ok) {
             return {
-                data: _response.body as SamsaraApi.WorkOrdersPatchWorkOrdersResponseBody,
+                data: _response.body as Samsara.WorkOrdersPatchWorkOrdersResponseBody,
                 rawResponse: _response.rawResponse,
             };
         }
@@ -510,28 +493,25 @@ export class WorkOrders {
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 401:
-                    throw new SamsaraApi.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
                 case 404:
-                    throw new SamsaraApi.NotFoundError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.NotFoundError(_response.error.body as unknown, _response.rawResponse);
                 case 405:
-                    throw new SamsaraApi.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
                 case 429:
-                    throw new SamsaraApi.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
                 case 500:
-                    throw new SamsaraApi.InternalServerError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.InternalServerError(_response.error.body as unknown, _response.rawResponse);
                 case 501:
-                    throw new SamsaraApi.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
                 case 502:
-                    throw new SamsaraApi.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
                 case 503:
-                    throw new SamsaraApi.ServiceUnavailableError(
-                        _response.error.body as unknown,
-                        _response.rawResponse,
-                    );
+                    throw new Samsara.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
                 case 504:
-                    throw new SamsaraApi.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
                 default:
-                    throw new errors.SamsaraApiError({
+                    throw new errors.SamsaraError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                         rawResponse: _response.rawResponse,
@@ -541,17 +521,15 @@ export class WorkOrders {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.SamsaraApiTimeoutError(
-                    "Timeout exceeded when calling PATCH /maintenance/work-orders.",
-                );
+                throw new errors.SamsaraTimeoutError("Timeout exceeded when calling PATCH /maintenance/work-orders.");
             case "unknown":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     message: _response.error.errorMessage,
                     rawResponse: _response.rawResponse,
                 });
@@ -568,18 +546,18 @@ export class WorkOrders {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * @param {SamsaraApi.maintenance.WorkOrdersStreamRequest} request
+     * @param {Samsara.maintenance.WorkOrdersStreamRequest} request
      * @param {WorkOrders.RequestOptions} requestOptions - Request-specific configuration.
      *
-     * @throws {@link SamsaraApi.UnauthorizedError}
-     * @throws {@link SamsaraApi.NotFoundError}
-     * @throws {@link SamsaraApi.MethodNotAllowedError}
-     * @throws {@link SamsaraApi.TooManyRequestsError}
-     * @throws {@link SamsaraApi.InternalServerError}
-     * @throws {@link SamsaraApi.NotImplementedError}
-     * @throws {@link SamsaraApi.BadGatewayError}
-     * @throws {@link SamsaraApi.ServiceUnavailableError}
-     * @throws {@link SamsaraApi.GatewayTimeoutError}
+     * @throws {@link Samsara.UnauthorizedError}
+     * @throws {@link Samsara.NotFoundError}
+     * @throws {@link Samsara.MethodNotAllowedError}
+     * @throws {@link Samsara.TooManyRequestsError}
+     * @throws {@link Samsara.InternalServerError}
+     * @throws {@link Samsara.NotImplementedError}
+     * @throws {@link Samsara.BadGatewayError}
+     * @throws {@link Samsara.ServiceUnavailableError}
+     * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
      *     await client.maintenance.workOrders.stream({
@@ -587,13 +565,13 @@ export class WorkOrders {
      *     })
      */
     public async stream(
-        request: SamsaraApi.maintenance.WorkOrdersStreamRequest,
+        request: Samsara.maintenance.WorkOrdersStreamRequest,
         requestOptions?: WorkOrders.RequestOptions,
-    ): Promise<core.Page<SamsaraApi.WorkOrderObjectResponseBody>> {
+    ): Promise<core.Page<Samsara.WorkOrderObjectResponseBody>> {
         const list = core.HttpResponsePromise.interceptFunction(
             async (
-                request: SamsaraApi.maintenance.WorkOrdersStreamRequest,
-            ): Promise<core.WithRawResponse<SamsaraApi.WorkOrdersStreamWorkOrdersResponseBody>> => {
+                request: Samsara.maintenance.WorkOrdersStreamRequest,
+            ): Promise<core.WithRawResponse<Samsara.WorkOrdersStreamWorkOrdersResponseBody>> => {
                 const { after, startTime, endTime, workOrderStatuses, assetIds, assignedUserIds } = request;
                 const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
                 if (after != null) {
@@ -628,7 +606,7 @@ export class WorkOrders {
                     url: urlJoin(
                         (await core.Supplier.get(this._options.baseUrl)) ??
                             (await core.Supplier.get(this._options.environment)) ??
-                            environments.SamsaraApiEnvironment.ProductionApi,
+                            environments.SamsaraEnvironment.ProductionApi,
                         "maintenance/work-orders/stream",
                     ),
                     method: "GET",
@@ -648,56 +626,50 @@ export class WorkOrders {
                 });
                 if (_response.ok) {
                     return {
-                        data: _response.body as SamsaraApi.WorkOrdersStreamWorkOrdersResponseBody,
+                        data: _response.body as Samsara.WorkOrdersStreamWorkOrdersResponseBody,
                         rawResponse: _response.rawResponse,
                     };
                 }
                 if (_response.error.reason === "status-code") {
                     switch (_response.error.statusCode) {
                         case 401:
-                            throw new SamsaraApi.UnauthorizedError(
-                                _response.error.body as unknown,
-                                _response.rawResponse,
-                            );
+                            throw new Samsara.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
                         case 404:
-                            throw new SamsaraApi.NotFoundError(_response.error.body as unknown, _response.rawResponse);
+                            throw new Samsara.NotFoundError(_response.error.body as unknown, _response.rawResponse);
                         case 405:
-                            throw new SamsaraApi.MethodNotAllowedError(
+                            throw new Samsara.MethodNotAllowedError(
                                 _response.error.body as unknown,
                                 _response.rawResponse,
                             );
                         case 429:
-                            throw new SamsaraApi.TooManyRequestsError(
+                            throw new Samsara.TooManyRequestsError(
                                 _response.error.body as unknown,
                                 _response.rawResponse,
                             );
                         case 500:
-                            throw new SamsaraApi.InternalServerError(
+                            throw new Samsara.InternalServerError(
                                 _response.error.body as unknown,
                                 _response.rawResponse,
                             );
                         case 501:
-                            throw new SamsaraApi.NotImplementedError(
+                            throw new Samsara.NotImplementedError(
                                 _response.error.body as unknown,
                                 _response.rawResponse,
                             );
                         case 502:
-                            throw new SamsaraApi.BadGatewayError(
-                                _response.error.body as unknown,
-                                _response.rawResponse,
-                            );
+                            throw new Samsara.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
                         case 503:
-                            throw new SamsaraApi.ServiceUnavailableError(
+                            throw new Samsara.ServiceUnavailableError(
                                 _response.error.body as unknown,
                                 _response.rawResponse,
                             );
                         case 504:
-                            throw new SamsaraApi.GatewayTimeoutError(
+                            throw new Samsara.GatewayTimeoutError(
                                 _response.error.body as unknown,
                                 _response.rawResponse,
                             );
                         default:
-                            throw new errors.SamsaraApiError({
+                            throw new errors.SamsaraError({
                                 statusCode: _response.error.statusCode,
                                 body: _response.error.body,
                                 rawResponse: _response.rawResponse,
@@ -706,17 +678,17 @@ export class WorkOrders {
                 }
                 switch (_response.error.reason) {
                     case "non-json":
-                        throw new errors.SamsaraApiError({
+                        throw new errors.SamsaraError({
                             statusCode: _response.error.statusCode,
                             body: _response.error.rawBody,
                             rawResponse: _response.rawResponse,
                         });
                     case "timeout":
-                        throw new errors.SamsaraApiTimeoutError(
+                        throw new errors.SamsaraTimeoutError(
                             "Timeout exceeded when calling GET /maintenance/work-orders/stream.",
                         );
                     case "unknown":
-                        throw new errors.SamsaraApiError({
+                        throw new errors.SamsaraError({
                             message: _response.error.errorMessage,
                             rawResponse: _response.rawResponse,
                         });
@@ -724,10 +696,7 @@ export class WorkOrders {
             },
         );
         const dataWithRawResponse = await list(request).withRawResponse();
-        return new core.Pageable<
-            SamsaraApi.WorkOrdersStreamWorkOrdersResponseBody,
-            SamsaraApi.WorkOrderObjectResponseBody
-        >({
+        return new core.Pageable<Samsara.WorkOrdersStreamWorkOrdersResponseBody, Samsara.WorkOrderObjectResponseBody>({
             response: dataWithRawResponse.data,
             rawResponse: dataWithRawResponse.rawResponse,
             hasNextPage: (response) => response?.pagination?.endCursor != null,
@@ -741,7 +710,7 @@ export class WorkOrders {
     protected async _getAuthorizationHeader(): Promise<string> {
         const bearer = (await core.Supplier.get(this._options.token)) ?? process?.env["SAMSARA_API_KEY"];
         if (bearer == null) {
-            throw new errors.SamsaraApiError({
+            throw new errors.SamsaraError({
                 message:
                     "Please specify a bearer by either passing it in to the constructor or initializing a SAMSARA_API_KEY environment variable",
             });

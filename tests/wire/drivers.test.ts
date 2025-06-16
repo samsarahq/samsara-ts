@@ -3,12 +3,12 @@
  */
 
 import { mockServerPool } from "../mock-server/MockServerPool.js";
-import { SamsaraApiClient } from "../../src/Client";
+import { SamsaraClient } from "../../src/Client";
 
 describe("Drivers", () => {
     test("create", async () => {
         const server = mockServerPool.createServer();
-        const client = new SamsaraApiClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
+        const client = new SamsaraClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
         const rawRequestBody = { name: "Susan Jones", password: "aSecurePassword1234", username: "SusanJones" };
         const rawResponseBody = {
             data: {
@@ -155,7 +155,7 @@ describe("Drivers", () => {
 
     test("sign_out", async () => {
         const server = mockServerPool.createServer();
-        const client = new SamsaraApiClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
+        const client = new SamsaraClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
         const rawRequestBody = { driverId: "12434" };
         const rawResponseBody = { driverName: "Michael" };
         server
@@ -177,7 +177,7 @@ describe("Drivers", () => {
 
     test("get", async () => {
         const server = mockServerPool.createServer();
-        const client = new SamsaraApiClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
+        const client = new SamsaraClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
 
         const rawResponseBody = {
             data: {
@@ -313,7 +313,7 @@ describe("Drivers", () => {
 
     test("update", async () => {
         const server = mockServerPool.createServer();
-        const client = new SamsaraApiClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
+        const client = new SamsaraClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
         const rawRequestBody = {};
         const rawResponseBody = {
             data: {

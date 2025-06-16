@@ -1,2 +1,2 @@
-export { SamsaraApiError } from "./SamsaraApiError.js";
-export { SamsaraApiTimeoutError } from "./SamsaraApiTimeoutError.js";
+export { SamsaraError } from "./SamsaraError.js";
+export { SamsaraTimeoutError } from "./SamsaraTimeoutError.js";

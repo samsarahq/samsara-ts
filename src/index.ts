@@ -1,4 +1,4 @@
-export * as SamsaraApi from "./api/index.js";
-export { SamsaraApiClient } from "./Client.js";
-export { SamsaraApiEnvironment } from "./environments.js";
-export { SamsaraApiError, SamsaraApiTimeoutError } from "./errors/index.js";
+export * as Samsara from "./api/index.js";
+export { SamsaraClient } from "./Client.js";
+export { SamsaraEnvironment } from "./environments.js";
+export { SamsaraError, SamsaraTimeoutError } from "./errors/index.js";

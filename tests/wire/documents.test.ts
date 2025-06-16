@@ -3,12 +3,12 @@
  */
 
 import { mockServerPool } from "../mock-server/MockServerPool.js";
-import { SamsaraApiClient } from "../../src/Client";
+import { SamsaraClient } from "../../src/Client";
 
 describe("Documents", () => {
     test("create", async () => {
         const server = mockServerPool.createServer();
-        const client = new SamsaraApiClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
+        const client = new SamsaraClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
         const rawRequestBody = { documentTypeId: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7", driverId: "45646" };
         const rawResponseBody = {
             data: {
@@ -113,7 +113,7 @@ describe("Documents", () => {
 
     test("get", async () => {
         const server = mockServerPool.createServer();
-        const client = new SamsaraApiClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
+        const client = new SamsaraClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
 
         const rawResponseBody = {
             data: {
@@ -214,7 +214,7 @@ describe("Documents", () => {
 
     test("delete", async () => {
         const server = mockServerPool.createServer();
-        const client = new SamsaraApiClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
+        const client = new SamsaraClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
 
         server.mockEndpoint().delete("/fleet/documents/id").respondWith().statusCode(200).build();
 

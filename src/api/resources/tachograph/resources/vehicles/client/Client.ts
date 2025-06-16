@@ -4,14 +4,14 @@
 
 import * as environments from "../../../../../../environments.js";
 import * as core from "../../../../../../core/index.js";
-import * as SamsaraApi from "../../../../../index.js";
+import * as Samsara from "../../../../../index.js";
 import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../../../core/headers.js";
 import urlJoin from "url-join";
 import * as errors from "../../../../../../errors/index.js";
 
 export declare namespace Vehicles {
     export interface Options {
-        environment?: core.Supplier<environments.SamsaraApiEnvironment | string>;
+        environment?: core.Supplier<environments.SamsaraEnvironment | string>;
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
@@ -51,7 +51,7 @@ export class Vehicles {
      *
      * To use this endpoint, select **Read Tachograph (EU)** under the Compliance category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
-     * @param {SamsaraApi.tachograph.VehiclesFilesRequest} request
+     * @param {Samsara.tachograph.VehiclesFilesRequest} request
      * @param {Vehicles.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -61,16 +61,16 @@ export class Vehicles {
      *     })
      */
     public files(
-        request: SamsaraApi.tachograph.VehiclesFilesRequest,
+        request: Samsara.tachograph.VehiclesFilesRequest,
         requestOptions?: Vehicles.RequestOptions,
-    ): core.HttpResponsePromise<SamsaraApi.TachographVehicleFilesResponse> {
+    ): core.HttpResponsePromise<Samsara.TachographVehicleFilesResponse> {
         return core.HttpResponsePromise.fromPromise(this.__files(request, requestOptions));
     }
 
     private async __files(
-        request: SamsaraApi.tachograph.VehiclesFilesRequest,
+        request: Samsara.tachograph.VehiclesFilesRequest,
         requestOptions?: Vehicles.RequestOptions,
-    ): Promise<core.WithRawResponse<SamsaraApi.TachographVehicleFilesResponse>> {
+    ): Promise<core.WithRawResponse<Samsara.TachographVehicleFilesResponse>> {
         const { after, startTime, endTime, vehicleIds, parentTagIds, tagIds } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (after != null) {
@@ -107,7 +107,7 @@ export class Vehicles {
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.SamsaraApiEnvironment.ProductionApi,
+                    environments.SamsaraEnvironment.ProductionApi,
                 "fleet/vehicles/tachograph-files/history",
             ),
             method: "GET",
@@ -126,13 +126,13 @@ export class Vehicles {
         });
         if (_response.ok) {
             return {
-                data: _response.body as SamsaraApi.TachographVehicleFilesResponse,
+                data: _response.body as Samsara.TachographVehicleFilesResponse,
                 rawResponse: _response.rawResponse,
             };
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.SamsaraApiError({
+            throw new errors.SamsaraError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
                 rawResponse: _response.rawResponse,
@@ -141,17 +141,17 @@ export class Vehicles {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.SamsaraApiTimeoutError(
+                throw new errors.SamsaraTimeoutError(
                     "Timeout exceeded when calling GET /fleet/vehicles/tachograph-files/history.",
                 );
             case "unknown":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     message: _response.error.errorMessage,
                     rawResponse: _response.rawResponse,
                 });
@@ -161,7 +161,7 @@ export class Vehicles {
     protected async _getAuthorizationHeader(): Promise<string> {
         const bearer = (await core.Supplier.get(this._options.token)) ?? process?.env["SAMSARA_API_KEY"];
         if (bearer == null) {
-            throw new errors.SamsaraApiError({
+            throw new errors.SamsaraError({
                 message:
                     "Please specify a bearer by either passing it in to the constructor or initializing a SAMSARA_API_KEY environment variable",
             });

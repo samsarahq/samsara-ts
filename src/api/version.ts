@@ -3,4 +3,4 @@
  */
 
 /** The version of the API, sent as the X-Samsara-Version header. */
-export type SamsaraApiVersion = "2025-05-12";
+export type SamsaraVersion = "2025-05-12";

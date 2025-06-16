@@ -4,14 +4,14 @@
 
 import * as environments from "../../../../../../environments.js";
 import * as core from "../../../../../../core/index.js";
-import * as SamsaraApi from "../../../../../index.js";
+import * as Samsara from "../../../../../index.js";
 import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../../../core/headers.js";
 import urlJoin from "url-join";
 import * as errors from "../../../../../../errors/index.js";
 
 export declare namespace Tokens {
     export interface Options {
-        environment?: core.Supplier<environments.SamsaraApiEnvironment | string>;
+        environment?: core.Supplier<environments.SamsaraEnvironment | string>;
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
@@ -45,28 +45,28 @@ export class Tokens {
     /**
      * Exchange an authorization code for access and refresh tokens.
      *
-     * @param {SamsaraApi.auth.TokensCreateRequest} request
+     * @param {Samsara.auth.TokensCreateRequest} request
      * @param {Tokens.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
      *     await client.auth.tokens.create({})
      */
     public create(
-        request: SamsaraApi.auth.TokensCreateRequest,
+        request: Samsara.auth.TokensCreateRequest,
         requestOptions?: Tokens.RequestOptions,
-    ): core.HttpResponsePromise<SamsaraApi.auth.CreateTokensResponse> {
+    ): core.HttpResponsePromise<Samsara.auth.CreateTokensResponse> {
         return core.HttpResponsePromise.fromPromise(this.__create(request, requestOptions));
     }
 
     private async __create(
-        request: SamsaraApi.auth.TokensCreateRequest,
+        request: Samsara.auth.TokensCreateRequest,
         requestOptions?: Tokens.RequestOptions,
-    ): Promise<core.WithRawResponse<SamsaraApi.auth.CreateTokensResponse>> {
+    ): Promise<core.WithRawResponse<Samsara.auth.CreateTokensResponse>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.SamsaraApiEnvironment.ProductionApi,
+                    environments.SamsaraEnvironment.ProductionApi,
                 "oauth2/token",
             ),
             method: "POST",
@@ -86,11 +86,11 @@ export class Tokens {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return { data: _response.body as SamsaraApi.auth.CreateTokensResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Samsara.auth.CreateTokensResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.SamsaraApiError({
+            throw new errors.SamsaraError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
                 rawResponse: _response.rawResponse,
@@ -99,15 +99,15 @@ export class Tokens {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.SamsaraApiTimeoutError("Timeout exceeded when calling POST /oauth2/token.");
+                throw new errors.SamsaraTimeoutError("Timeout exceeded when calling POST /oauth2/token.");
             case "unknown":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     message: _response.error.errorMessage,
                     rawResponse: _response.rawResponse,
                 });
@@ -117,7 +117,7 @@ export class Tokens {
     /**
      * Invalidates access tokens and refresh tokens for that organization
      *
-     * @param {SamsaraApi.auth.TokensRevokeRequest} request
+     * @param {Samsara.auth.TokensRevokeRequest} request
      * @param {Tokens.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -126,21 +126,21 @@ export class Tokens {
      *     })
      */
     public revoke(
-        request: SamsaraApi.auth.TokensRevokeRequest,
+        request: Samsara.auth.TokensRevokeRequest,
         requestOptions?: Tokens.RequestOptions,
-    ): core.HttpResponsePromise<SamsaraApi.auth.CreateTokensResponse> {
+    ): core.HttpResponsePromise<Samsara.auth.CreateTokensResponse> {
         return core.HttpResponsePromise.fromPromise(this.__revoke(request, requestOptions));
     }
 
     private async __revoke(
-        request: SamsaraApi.auth.TokensRevokeRequest,
+        request: Samsara.auth.TokensRevokeRequest,
         requestOptions?: Tokens.RequestOptions,
-    ): Promise<core.WithRawResponse<SamsaraApi.auth.CreateTokensResponse>> {
+    ): Promise<core.WithRawResponse<Samsara.auth.CreateTokensResponse>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.SamsaraApiEnvironment.ProductionApi,
+                    environments.SamsaraEnvironment.ProductionApi,
                 "oauth2/revoke",
             ),
             method: "POST",
@@ -160,11 +160,11 @@ export class Tokens {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return { data: _response.body as SamsaraApi.auth.CreateTokensResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Samsara.auth.CreateTokensResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.SamsaraApiError({
+            throw new errors.SamsaraError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
                 rawResponse: _response.rawResponse,
@@ -173,15 +173,15 @@ export class Tokens {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.SamsaraApiTimeoutError("Timeout exceeded when calling POST /oauth2/revoke.");
+                throw new errors.SamsaraTimeoutError("Timeout exceeded when calling POST /oauth2/revoke.");
             case "unknown":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     message: _response.error.errorMessage,
                     rawResponse: _response.rawResponse,
                 });
@@ -191,7 +191,7 @@ export class Tokens {
     protected async _getAuthorizationHeader(): Promise<string> {
         const bearer = (await core.Supplier.get(this._options.token)) ?? process?.env["SAMSARA_API_KEY"];
         if (bearer == null) {
-            throw new errors.SamsaraApiError({
+            throw new errors.SamsaraError({
                 message:
                     "Please specify a bearer by either passing it in to the constructor or initializing a SAMSARA_API_KEY environment variable",
             });

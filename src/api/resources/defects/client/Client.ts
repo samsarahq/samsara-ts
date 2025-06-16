@@ -4,14 +4,14 @@
 
 import * as environments from "../../../../environments.js";
 import * as core from "../../../../core/index.js";
-import * as SamsaraApi from "../../../index.js";
+import * as Samsara from "../../../index.js";
 import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../core/headers.js";
 import urlJoin from "url-join";
 import * as errors from "../../../../errors/index.js";
 
 export declare namespace Defects {
     export interface Options {
-        environment?: core.Supplier<environments.SamsaraApiEnvironment | string>;
+        environment?: core.Supplier<environments.SamsaraEnvironment | string>;
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
@@ -52,18 +52,18 @@ export class Defects {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * @param {SamsaraApi.DefectsStreamRequest} request
+     * @param {Samsara.DefectsStreamRequest} request
      * @param {Defects.RequestOptions} requestOptions - Request-specific configuration.
      *
-     * @throws {@link SamsaraApi.UnauthorizedError}
-     * @throws {@link SamsaraApi.NotFoundError}
-     * @throws {@link SamsaraApi.MethodNotAllowedError}
-     * @throws {@link SamsaraApi.TooManyRequestsError}
-     * @throws {@link SamsaraApi.InternalServerError}
-     * @throws {@link SamsaraApi.NotImplementedError}
-     * @throws {@link SamsaraApi.BadGatewayError}
-     * @throws {@link SamsaraApi.ServiceUnavailableError}
-     * @throws {@link SamsaraApi.GatewayTimeoutError}
+     * @throws {@link Samsara.UnauthorizedError}
+     * @throws {@link Samsara.NotFoundError}
+     * @throws {@link Samsara.MethodNotAllowedError}
+     * @throws {@link Samsara.TooManyRequestsError}
+     * @throws {@link Samsara.InternalServerError}
+     * @throws {@link Samsara.NotImplementedError}
+     * @throws {@link Samsara.BadGatewayError}
+     * @throws {@link Samsara.ServiceUnavailableError}
+     * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
      *     await client.defects.stream({
@@ -71,13 +71,13 @@ export class Defects {
      *     })
      */
     public async stream(
-        request: SamsaraApi.DefectsStreamRequest,
+        request: Samsara.DefectsStreamRequest,
         requestOptions?: Defects.RequestOptions,
-    ): Promise<core.Page<SamsaraApi.DefectsResponseDataResponseBody>> {
+    ): Promise<core.Page<Samsara.DefectsResponseDataResponseBody>> {
         const list = core.HttpResponsePromise.interceptFunction(
             async (
-                request: SamsaraApi.DefectsStreamRequest,
-            ): Promise<core.WithRawResponse<SamsaraApi.DvirDefectStreamDefectsResponseBody>> => {
+                request: Samsara.DefectsStreamRequest,
+            ): Promise<core.WithRawResponse<Samsara.DvirDefectStreamDefectsResponseBody>> => {
                 const { after, limit, startTime, endTime, includeExternalIds, isResolved } = request;
                 const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
                 if (after != null) {
@@ -100,7 +100,7 @@ export class Defects {
                     url: urlJoin(
                         (await core.Supplier.get(this._options.baseUrl)) ??
                             (await core.Supplier.get(this._options.environment)) ??
-                            environments.SamsaraApiEnvironment.ProductionApi,
+                            environments.SamsaraEnvironment.ProductionApi,
                         "defects/stream",
                     ),
                     method: "GET",
@@ -120,56 +120,50 @@ export class Defects {
                 });
                 if (_response.ok) {
                     return {
-                        data: _response.body as SamsaraApi.DvirDefectStreamDefectsResponseBody,
+                        data: _response.body as Samsara.DvirDefectStreamDefectsResponseBody,
                         rawResponse: _response.rawResponse,
                     };
                 }
                 if (_response.error.reason === "status-code") {
                     switch (_response.error.statusCode) {
                         case 401:
-                            throw new SamsaraApi.UnauthorizedError(
-                                _response.error.body as unknown,
-                                _response.rawResponse,
-                            );
+                            throw new Samsara.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
                         case 404:
-                            throw new SamsaraApi.NotFoundError(_response.error.body as unknown, _response.rawResponse);
+                            throw new Samsara.NotFoundError(_response.error.body as unknown, _response.rawResponse);
                         case 405:
-                            throw new SamsaraApi.MethodNotAllowedError(
+                            throw new Samsara.MethodNotAllowedError(
                                 _response.error.body as unknown,
                                 _response.rawResponse,
                             );
                         case 429:
-                            throw new SamsaraApi.TooManyRequestsError(
+                            throw new Samsara.TooManyRequestsError(
                                 _response.error.body as unknown,
                                 _response.rawResponse,
                             );
                         case 500:
-                            throw new SamsaraApi.InternalServerError(
+                            throw new Samsara.InternalServerError(
                                 _response.error.body as unknown,
                                 _response.rawResponse,
                             );
                         case 501:
-                            throw new SamsaraApi.NotImplementedError(
+                            throw new Samsara.NotImplementedError(
                                 _response.error.body as unknown,
                                 _response.rawResponse,
                             );
                         case 502:
-                            throw new SamsaraApi.BadGatewayError(
-                                _response.error.body as unknown,
-                                _response.rawResponse,
-                            );
+                            throw new Samsara.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
                         case 503:
-                            throw new SamsaraApi.ServiceUnavailableError(
+                            throw new Samsara.ServiceUnavailableError(
                                 _response.error.body as unknown,
                                 _response.rawResponse,
                             );
                         case 504:
-                            throw new SamsaraApi.GatewayTimeoutError(
+                            throw new Samsara.GatewayTimeoutError(
                                 _response.error.body as unknown,
                                 _response.rawResponse,
                             );
                         default:
-                            throw new errors.SamsaraApiError({
+                            throw new errors.SamsaraError({
                                 statusCode: _response.error.statusCode,
                                 body: _response.error.body,
                                 rawResponse: _response.rawResponse,
@@ -178,15 +172,15 @@ export class Defects {
                 }
                 switch (_response.error.reason) {
                     case "non-json":
-                        throw new errors.SamsaraApiError({
+                        throw new errors.SamsaraError({
                             statusCode: _response.error.statusCode,
                             body: _response.error.rawBody,
                             rawResponse: _response.rawResponse,
                         });
                     case "timeout":
-                        throw new errors.SamsaraApiTimeoutError("Timeout exceeded when calling GET /defects/stream.");
+                        throw new errors.SamsaraTimeoutError("Timeout exceeded when calling GET /defects/stream.");
                     case "unknown":
-                        throw new errors.SamsaraApiError({
+                        throw new errors.SamsaraError({
                             message: _response.error.errorMessage,
                             rawResponse: _response.rawResponse,
                         });
@@ -194,10 +188,7 @@ export class Defects {
             },
         );
         const dataWithRawResponse = await list(request).withRawResponse();
-        return new core.Pageable<
-            SamsaraApi.DvirDefectStreamDefectsResponseBody,
-            SamsaraApi.DefectsResponseDataResponseBody
-        >({
+        return new core.Pageable<Samsara.DvirDefectStreamDefectsResponseBody, Samsara.DefectsResponseDataResponseBody>({
             response: dataWithRawResponse.data,
             rawResponse: dataWithRawResponse.rawResponse,
             hasNextPage: (response) => response?.pagination?.endCursor != null,
@@ -219,35 +210,35 @@ export class Defects {
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
      * @param {string} id - The unique ID of the DVIR defect.
-     * @param {SamsaraApi.DefectsGetRequest} request
+     * @param {Samsara.DefectsGetRequest} request
      * @param {Defects.RequestOptions} requestOptions - Request-specific configuration.
      *
-     * @throws {@link SamsaraApi.UnauthorizedError}
-     * @throws {@link SamsaraApi.NotFoundError}
-     * @throws {@link SamsaraApi.MethodNotAllowedError}
-     * @throws {@link SamsaraApi.TooManyRequestsError}
-     * @throws {@link SamsaraApi.InternalServerError}
-     * @throws {@link SamsaraApi.NotImplementedError}
-     * @throws {@link SamsaraApi.BadGatewayError}
-     * @throws {@link SamsaraApi.ServiceUnavailableError}
-     * @throws {@link SamsaraApi.GatewayTimeoutError}
+     * @throws {@link Samsara.UnauthorizedError}
+     * @throws {@link Samsara.NotFoundError}
+     * @throws {@link Samsara.MethodNotAllowedError}
+     * @throws {@link Samsara.TooManyRequestsError}
+     * @throws {@link Samsara.InternalServerError}
+     * @throws {@link Samsara.NotImplementedError}
+     * @throws {@link Samsara.BadGatewayError}
+     * @throws {@link Samsara.ServiceUnavailableError}
+     * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
      *     await client.defects.get("id")
      */
     public get(
         id: string,
-        request: SamsaraApi.DefectsGetRequest = {},
+        request: Samsara.DefectsGetRequest = {},
         requestOptions?: Defects.RequestOptions,
-    ): core.HttpResponsePromise<SamsaraApi.DvirDefectGetDefectResponseBody> {
+    ): core.HttpResponsePromise<Samsara.DvirDefectGetDefectResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__get(id, request, requestOptions));
     }
 
     private async __get(
         id: string,
-        request: SamsaraApi.DefectsGetRequest = {},
+        request: Samsara.DefectsGetRequest = {},
         requestOptions?: Defects.RequestOptions,
-    ): Promise<core.WithRawResponse<SamsaraApi.DvirDefectGetDefectResponseBody>> {
+    ): Promise<core.WithRawResponse<Samsara.DvirDefectGetDefectResponseBody>> {
         const { includeExternalIds } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (includeExternalIds != null) {
@@ -258,7 +249,7 @@ export class Defects {
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.SamsaraApiEnvironment.ProductionApi,
+                    environments.SamsaraEnvironment.ProductionApi,
                 `defects/${encodeURIComponent(id)}`,
             ),
             method: "GET",
@@ -277,7 +268,7 @@ export class Defects {
         });
         if (_response.ok) {
             return {
-                data: _response.body as SamsaraApi.DvirDefectGetDefectResponseBody,
+                data: _response.body as Samsara.DvirDefectGetDefectResponseBody,
                 rawResponse: _response.rawResponse,
             };
         }
@@ -285,28 +276,25 @@ export class Defects {
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 401:
-                    throw new SamsaraApi.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
                 case 404:
-                    throw new SamsaraApi.NotFoundError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.NotFoundError(_response.error.body as unknown, _response.rawResponse);
                 case 405:
-                    throw new SamsaraApi.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
                 case 429:
-                    throw new SamsaraApi.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
                 case 500:
-                    throw new SamsaraApi.InternalServerError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.InternalServerError(_response.error.body as unknown, _response.rawResponse);
                 case 501:
-                    throw new SamsaraApi.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
                 case 502:
-                    throw new SamsaraApi.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
                 case 503:
-                    throw new SamsaraApi.ServiceUnavailableError(
-                        _response.error.body as unknown,
-                        _response.rawResponse,
-                    );
+                    throw new Samsara.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
                 case 504:
-                    throw new SamsaraApi.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
                 default:
-                    throw new errors.SamsaraApiError({
+                    throw new errors.SamsaraError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                         rawResponse: _response.rawResponse,
@@ -316,15 +304,15 @@ export class Defects {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.SamsaraApiTimeoutError("Timeout exceeded when calling GET /defects/{id}.");
+                throw new errors.SamsaraTimeoutError("Timeout exceeded when calling GET /defects/{id}.");
             case "unknown":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     message: _response.error.errorMessage,
                     rawResponse: _response.rawResponse,
                 });
@@ -340,7 +328,7 @@ export class Defects {
      *
      * To use this endpoint, select **Read Defects** under the Maintenance category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
-     * @param {SamsaraApi.DefectsHistoryRequest} request
+     * @param {Samsara.DefectsHistoryRequest} request
      * @param {Defects.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -350,16 +338,16 @@ export class Defects {
      *     })
      */
     public history(
-        request: SamsaraApi.DefectsHistoryRequest,
+        request: Samsara.DefectsHistoryRequest,
         requestOptions?: Defects.RequestOptions,
-    ): core.HttpResponsePromise<SamsaraApi.DefectsResponse> {
+    ): core.HttpResponsePromise<Samsara.DefectsResponse> {
         return core.HttpResponsePromise.fromPromise(this.__history(request, requestOptions));
     }
 
     private async __history(
-        request: SamsaraApi.DefectsHistoryRequest,
+        request: Samsara.DefectsHistoryRequest,
         requestOptions?: Defects.RequestOptions,
-    ): Promise<core.WithRawResponse<SamsaraApi.DefectsResponse>> {
+    ): Promise<core.WithRawResponse<Samsara.DefectsResponse>> {
         const { limit, after, startTime, endTime, isResolved } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (limit != null) {
@@ -380,7 +368,7 @@ export class Defects {
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.SamsaraApiEnvironment.ProductionApi,
+                    environments.SamsaraEnvironment.ProductionApi,
                 "fleet/defects/history",
             ),
             method: "GET",
@@ -398,11 +386,11 @@ export class Defects {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return { data: _response.body as SamsaraApi.DefectsResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Samsara.DefectsResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.SamsaraApiError({
+            throw new errors.SamsaraError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
                 rawResponse: _response.rawResponse,
@@ -411,15 +399,15 @@ export class Defects {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.SamsaraApiTimeoutError("Timeout exceeded when calling GET /fleet/defects/history.");
+                throw new errors.SamsaraTimeoutError("Timeout exceeded when calling GET /fleet/defects/history.");
             case "unknown":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     message: _response.error.errorMessage,
                     rawResponse: _response.rawResponse,
                 });
@@ -434,7 +422,7 @@ export class Defects {
      * To use this endpoint, select **Write Defects** under the Maintenance category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
      * @param {string} id - ID of the defect.
-     * @param {SamsaraApi.DefectPatch} request
+     * @param {Samsara.DefectPatch} request
      * @param {Defects.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -442,22 +430,22 @@ export class Defects {
      */
     public update(
         id: string,
-        request: SamsaraApi.DefectPatch = {},
+        request: Samsara.DefectPatch = {},
         requestOptions?: Defects.RequestOptions,
-    ): core.HttpResponsePromise<SamsaraApi.DefectResponse> {
+    ): core.HttpResponsePromise<Samsara.DefectResponse> {
         return core.HttpResponsePromise.fromPromise(this.__update(id, request, requestOptions));
     }
 
     private async __update(
         id: string,
-        request: SamsaraApi.DefectPatch = {},
+        request: Samsara.DefectPatch = {},
         requestOptions?: Defects.RequestOptions,
-    ): Promise<core.WithRawResponse<SamsaraApi.DefectResponse>> {
+    ): Promise<core.WithRawResponse<Samsara.DefectResponse>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.SamsaraApiEnvironment.ProductionApi,
+                    environments.SamsaraEnvironment.ProductionApi,
                 `fleet/defects/${encodeURIComponent(id)}`,
             ),
             method: "PATCH",
@@ -477,11 +465,11 @@ export class Defects {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return { data: _response.body as SamsaraApi.DefectResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Samsara.DefectResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.SamsaraApiError({
+            throw new errors.SamsaraError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
                 rawResponse: _response.rawResponse,
@@ -490,15 +478,15 @@ export class Defects {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.SamsaraApiTimeoutError("Timeout exceeded when calling PATCH /fleet/defects/{id}.");
+                throw new errors.SamsaraTimeoutError("Timeout exceeded when calling PATCH /fleet/defects/{id}.");
             case "unknown":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     message: _response.error.errorMessage,
                     rawResponse: _response.rawResponse,
                 });
@@ -508,7 +496,7 @@ export class Defects {
     protected async _getAuthorizationHeader(): Promise<string> {
         const bearer = (await core.Supplier.get(this._options.token)) ?? process?.env["SAMSARA_API_KEY"];
         if (bearer == null) {
-            throw new errors.SamsaraApiError({
+            throw new errors.SamsaraError({
                 message:
                     "Please specify a bearer by either passing it in to the constructor or initializing a SAMSARA_API_KEY environment variable",
             });

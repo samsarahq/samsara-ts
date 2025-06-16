@@ -2,7 +2,7 @@
 
 ## Addresses
 
-<details><summary><code>client.addresses.<a href="/src/api/resources/addresses/client/Client.ts">list</a>({ ...params }) -> core.Page<SamsaraApi.Address></code></summary>
+<details><summary><code>client.addresses.<a href="/src/api/resources/addresses/client/Client.ts">list</a>({ ...params }) -> core.Page<Samsara.Address></code></summary>
 <dl>
 <dd>
 
@@ -59,7 +59,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.AddressesListRequest`
+**request:** `Samsara.AddressesListRequest`
 
 </dd>
 </dl>
@@ -78,7 +78,7 @@ while (page.hasNextPage()) {
 </dl>
 </details>
 
-<details><summary><code>client.addresses.<a href="/src/api/resources/addresses/client/Client.ts">create</a>({ ...params }) -> SamsaraApi.AddressResponse</code></summary>
+<details><summary><code>client.addresses.<a href="/src/api/resources/addresses/client/Client.ts">create</a>({ ...params }) -> Samsara.AddressResponse</code></summary>
 <dl>
 <dd>
 
@@ -130,7 +130,7 @@ await client.addresses.create({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.CreateAddressRequest`
+**request:** `Samsara.CreateAddressRequest`
 
 </dd>
 </dl>
@@ -149,7 +149,7 @@ await client.addresses.create({
 </dl>
 </details>
 
-<details><summary><code>client.addresses.<a href="/src/api/resources/addresses/client/Client.ts">get</a>(id) -> SamsaraApi.AddressResponse</code></summary>
+<details><summary><code>client.addresses.<a href="/src/api/resources/addresses/client/Client.ts">get</a>(id) -> Samsara.AddressResponse</code></summary>
 <dl>
 <dd>
 
@@ -283,7 +283,7 @@ await client.addresses.delete("id");
 </dl>
 </details>
 
-<details><summary><code>client.addresses.<a href="/src/api/resources/addresses/client/Client.ts">update</a>(id, { ...params }) -> SamsaraApi.AddressResponse</code></summary>
+<details><summary><code>client.addresses.<a href="/src/api/resources/addresses/client/Client.ts">update</a>(id, { ...params }) -> Samsara.AddressResponse</code></summary>
 <dl>
 <dd>
 
@@ -339,7 +339,7 @@ await client.addresses.update("id");
 <dl>
 <dd>
 
-**request:** `SamsaraApi.UpdateAddressRequest`
+**request:** `Samsara.UpdateAddressRequest`
 
 </dd>
 </dl>
@@ -360,7 +360,7 @@ await client.addresses.update("id");
 
 ## Assets
 
-<details><summary><code>client.assets.<a href="/src/api/resources/assets/client/Client.ts">list</a>({ ...params }) -> core.Page<SamsaraApi.AssetResponseBody></code></summary>
+<details><summary><code>client.assets.<a href="/src/api/resources/assets/client/Client.ts">list</a>({ ...params }) -> core.Page<Samsara.AssetResponseBody></code></summary>
 <dl>
 <dd>
 
@@ -419,7 +419,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.AssetsListRequest`
+**request:** `Samsara.AssetsListRequest`
 
 </dd>
 </dl>
@@ -438,7 +438,7 @@ while (page.hasNextPage()) {
 </dl>
 </details>
 
-<details><summary><code>client.assets.<a href="/src/api/resources/assets/client/Client.ts">create</a>({ ...params }) -> SamsaraApi.AssetsCreateAssetResponseBody</code></summary>
+<details><summary><code>client.assets.<a href="/src/api/resources/assets/client/Client.ts">create</a>({ ...params }) -> Samsara.AssetsCreateAssetResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -488,7 +488,7 @@ await client.assets.create();
 <dl>
 <dd>
 
-**request:** `SamsaraApi.AssetsCreateAssetRequestBody`
+**request:** `Samsara.AssetsCreateAssetRequestBody`
 
 </dd>
 </dl>
@@ -559,7 +559,7 @@ await client.assets.delete({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.AssetsDeleteRequest`
+**request:** `Samsara.AssetsDeleteRequest`
 
 </dd>
 </dl>
@@ -578,7 +578,7 @@ await client.assets.delete({
 </dl>
 </details>
 
-<details><summary><code>client.assets.<a href="/src/api/resources/assets/client/Client.ts">update</a>({ ...params }) -> SamsaraApi.AssetsUpdateAssetResponseBody</code></summary>
+<details><summary><code>client.assets.<a href="/src/api/resources/assets/client/Client.ts">update</a>({ ...params }) -> Samsara.AssetsUpdateAssetResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -630,7 +630,7 @@ await client.assets.update({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.AssetsUpdateAssetRequestBody`
+**request:** `Samsara.AssetsUpdateAssetRequestBody`
 
 </dd>
 </dl>
@@ -651,7 +651,7 @@ await client.assets.update({
 
 ## Inputs
 
-<details><summary><code>client.inputs.<a href="/src/api/resources/inputs/client/Client.ts">stream</a>({ ...params }) -> core.Page<SamsaraApi.AssetsInputsResponseResponseBody></code></summary>
+<details><summary><code>client.inputs.<a href="/src/api/resources/inputs/client/Client.ts">stream</a>({ ...params }) -> core.Page<Samsara.AssetsInputsResponseResponseBody></code></summary>
 <dl>
 <dd>
 
@@ -716,7 +716,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.InputsStreamRequest`
+**request:** `Samsara.InputsStreamRequest`
 
 </dd>
 </dl>
@@ -737,7 +737,7 @@ while (page.hasNextPage()) {
 
 ## Attributes
 
-<details><summary><code>client.attributes.<a href="/src/api/resources/attributes/client/Client.ts">list</a>({ ...params }) -> core.Page<SamsaraApi.Attribute></code></summary>
+<details><summary><code>client.attributes.<a href="/src/api/resources/attributes/client/Client.ts">list</a>({ ...params }) -> core.Page<Samsara.Attribute></code></summary>
 <dl>
 <dd>
 
@@ -798,7 +798,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.AttributesListRequest`
+**request:** `Samsara.AttributesListRequest`
 
 </dd>
 </dl>
@@ -817,7 +817,7 @@ while (page.hasNextPage()) {
 </dl>
 </details>
 
-<details><summary><code>client.attributes.<a href="/src/api/resources/attributes/client/Client.ts">create</a>({ ...params }) -> SamsaraApi.AttributeExpandedResponse</code></summary>
+<details><summary><code>client.attributes.<a href="/src/api/resources/attributes/client/Client.ts">create</a>({ ...params }) -> Samsara.AttributeExpandedResponse</code></summary>
 <dl>
 <dd>
 
@@ -870,7 +870,7 @@ await client.attributes.create({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.CreateAttributeRequest`
+**request:** `Samsara.CreateAttributeRequest`
 
 </dd>
 </dl>
@@ -889,7 +889,7 @@ await client.attributes.create({
 </dl>
 </details>
 
-<details><summary><code>client.attributes.<a href="/src/api/resources/attributes/client/Client.ts">get</a>(id, { ...params }) -> SamsaraApi.AttributeExpandedResponse</code></summary>
+<details><summary><code>client.attributes.<a href="/src/api/resources/attributes/client/Client.ts">get</a>(id, { ...params }) -> Samsara.AttributeExpandedResponse</code></summary>
 <dl>
 <dd>
 
@@ -947,7 +947,7 @@ await client.attributes.get("id", {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.AttributesGetRequest`
+**request:** `Samsara.AttributesGetRequest`
 
 </dd>
 </dl>
@@ -1024,7 +1024,7 @@ await client.attributes.delete("id", {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.AttributesDeleteRequest`
+**request:** `Samsara.AttributesDeleteRequest`
 
 </dd>
 </dl>
@@ -1043,7 +1043,7 @@ await client.attributes.delete("id", {
 </dl>
 </details>
 
-<details><summary><code>client.attributes.<a href="/src/api/resources/attributes/client/Client.ts">update</a>(id, { ...params }) -> SamsaraApi.AttributeExpandedResponse</code></summary>
+<details><summary><code>client.attributes.<a href="/src/api/resources/attributes/client/Client.ts">update</a>(id, { ...params }) -> Samsara.AttributeExpandedResponse</code></summary>
 <dl>
 <dd>
 
@@ -1101,7 +1101,7 @@ await client.attributes.update("id", {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.UpdateAttributeRequest`
+**request:** `Samsara.UpdateAttributeRequest`
 
 </dd>
 </dl>
@@ -1122,7 +1122,7 @@ await client.attributes.update("id", {
 
 ## Contacts
 
-<details><summary><code>client.contacts.<a href="/src/api/resources/contacts/client/Client.ts">list</a>({ ...params }) -> core.Page<SamsaraApi.Contact></code></summary>
+<details><summary><code>client.contacts.<a href="/src/api/resources/contacts/client/Client.ts">list</a>({ ...params }) -> core.Page<Samsara.Contact></code></summary>
 <dl>
 <dd>
 
@@ -1179,7 +1179,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.ContactsListRequest`
+**request:** `Samsara.ContactsListRequest`
 
 </dd>
 </dl>
@@ -1198,7 +1198,7 @@ while (page.hasNextPage()) {
 </dl>
 </details>
 
-<details><summary><code>client.contacts.<a href="/src/api/resources/contacts/client/Client.ts">create</a>({ ...params }) -> SamsaraApi.ContactResponse</code></summary>
+<details><summary><code>client.contacts.<a href="/src/api/resources/contacts/client/Client.ts">create</a>({ ...params }) -> Samsara.ContactResponse</code></summary>
 <dl>
 <dd>
 
@@ -1246,7 +1246,7 @@ await client.contacts.create();
 <dl>
 <dd>
 
-**request:** `SamsaraApi.CreateContactRequest`
+**request:** `Samsara.CreateContactRequest`
 
 </dd>
 </dl>
@@ -1265,7 +1265,7 @@ await client.contacts.create();
 </dl>
 </details>
 
-<details><summary><code>client.contacts.<a href="/src/api/resources/contacts/client/Client.ts">get</a>(id) -> SamsaraApi.ContactResponse</code></summary>
+<details><summary><code>client.contacts.<a href="/src/api/resources/contacts/client/Client.ts">get</a>(id) -> Samsara.ContactResponse</code></summary>
 <dl>
 <dd>
 
@@ -1399,7 +1399,7 @@ await client.contacts.delete("id");
 </dl>
 </details>
 
-<details><summary><code>client.contacts.<a href="/src/api/resources/contacts/client/Client.ts">update</a>(id, { ...params }) -> SamsaraApi.ContactResponse</code></summary>
+<details><summary><code>client.contacts.<a href="/src/api/resources/contacts/client/Client.ts">update</a>(id, { ...params }) -> Samsara.ContactResponse</code></summary>
 <dl>
 <dd>
 
@@ -1455,7 +1455,7 @@ await client.contacts.update("id");
 <dl>
 <dd>
 
-**request:** `SamsaraApi.UpdateContactRequest`
+**request:** `Samsara.UpdateContactRequest`
 
 </dd>
 </dl>
@@ -1476,7 +1476,7 @@ await client.contacts.update("id");
 
 ## DefectTypes
 
-<details><summary><code>client.defectTypes.<a href="/src/api/resources/defectTypes/client/Client.ts">list</a>({ ...params }) -> core.Page<SamsaraApi.DefectTypesResponseDataResponseBody></code></summary>
+<details><summary><code>client.defectTypes.<a href="/src/api/resources/defectTypes/client/Client.ts">list</a>({ ...params }) -> core.Page<Samsara.DefectTypesResponseDataResponseBody></code></summary>
 <dl>
 <dd>
 
@@ -1535,7 +1535,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.DefectTypesListRequest`
+**request:** `Samsara.DefectTypesListRequest`
 
 </dd>
 </dl>
@@ -1556,7 +1556,7 @@ while (page.hasNextPage()) {
 
 ## Defects
 
-<details><summary><code>client.defects.<a href="/src/api/resources/defects/client/Client.ts">stream</a>({ ...params }) -> core.Page<SamsaraApi.DefectsResponseDataResponseBody></code></summary>
+<details><summary><code>client.defects.<a href="/src/api/resources/defects/client/Client.ts">stream</a>({ ...params }) -> core.Page<Samsara.DefectsResponseDataResponseBody></code></summary>
 <dl>
 <dd>
 
@@ -1619,7 +1619,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.DefectsStreamRequest`
+**request:** `Samsara.DefectsStreamRequest`
 
 </dd>
 </dl>
@@ -1638,7 +1638,7 @@ while (page.hasNextPage()) {
 </dl>
 </details>
 
-<details><summary><code>client.defects.<a href="/src/api/resources/defects/client/Client.ts">get</a>(id, { ...params }) -> SamsaraApi.DvirDefectGetDefectResponseBody</code></summary>
+<details><summary><code>client.defects.<a href="/src/api/resources/defects/client/Client.ts">get</a>(id, { ...params }) -> Samsara.DvirDefectGetDefectResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -1696,7 +1696,7 @@ await client.defects.get("id");
 <dl>
 <dd>
 
-**request:** `SamsaraApi.DefectsGetRequest`
+**request:** `Samsara.DefectsGetRequest`
 
 </dd>
 </dl>
@@ -1715,7 +1715,7 @@ await client.defects.get("id");
 </dl>
 </details>
 
-<details><summary><code>client.defects.<a href="/src/api/resources/defects/client/Client.ts">history</a>({ ...params }) -> SamsaraApi.DefectsResponse</code></summary>
+<details><summary><code>client.defects.<a href="/src/api/resources/defects/client/Client.ts">history</a>({ ...params }) -> Samsara.DefectsResponse</code></summary>
 <dl>
 <dd>
 
@@ -1768,7 +1768,7 @@ await client.defects.history({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.DefectsHistoryRequest`
+**request:** `Samsara.DefectsHistoryRequest`
 
 </dd>
 </dl>
@@ -1787,7 +1787,7 @@ await client.defects.history({
 </dl>
 </details>
 
-<details><summary><code>client.defects.<a href="/src/api/resources/defects/client/Client.ts">update</a>(id, { ...params }) -> SamsaraApi.DefectResponse</code></summary>
+<details><summary><code>client.defects.<a href="/src/api/resources/defects/client/Client.ts">update</a>(id, { ...params }) -> Samsara.DefectResponse</code></summary>
 <dl>
 <dd>
 
@@ -1843,7 +1843,7 @@ await client.defects.update("id");
 <dl>
 <dd>
 
-**request:** `SamsaraApi.DefectPatch`
+**request:** `Samsara.DefectPatch`
 
 </dd>
 </dl>
@@ -1864,7 +1864,7 @@ await client.defects.update("id");
 
 ## Devices
 
-<details><summary><code>client.devices.<a href="/src/api/resources/devices/client/Client.ts">list</a>({ ...params }) -> core.Page<SamsaraApi.DeviceResponseResponseBody></code></summary>
+<details><summary><code>client.devices.<a href="/src/api/resources/devices/client/Client.ts">list</a>({ ...params }) -> core.Page<Samsara.DeviceResponseResponseBody></code></summary>
 <dl>
 <dd>
 
@@ -1925,7 +1925,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.DevicesListRequest`
+**request:** `Samsara.DevicesListRequest`
 
 </dd>
 </dl>
@@ -1946,7 +1946,7 @@ while (page.hasNextPage()) {
 
 ## DriverTrailerAssignments
 
-<details><summary><code>client.driverTrailerAssignments.<a href="/src/api/resources/driverTrailerAssignments/client/Client.ts">list</a>({ ...params }) -> core.Page<SamsaraApi.GetDriverTrailerAssignmentsResponseBodyResponseBody></code></summary>
+<details><summary><code>client.driverTrailerAssignments.<a href="/src/api/resources/driverTrailerAssignments/client/Client.ts">list</a>({ ...params }) -> core.Page<Samsara.GetDriverTrailerAssignmentsResponseBodyResponseBody></code></summary>
 <dl>
 <dd>
 
@@ -2005,7 +2005,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.DriverTrailerAssignmentsListRequest`
+**request:** `Samsara.DriverTrailerAssignmentsListRequest`
 
 </dd>
 </dl>
@@ -2024,7 +2024,7 @@ while (page.hasNextPage()) {
 </dl>
 </details>
 
-<details><summary><code>client.driverTrailerAssignments.<a href="/src/api/resources/driverTrailerAssignments/client/Client.ts">create</a>({ ...params }) -> SamsaraApi.TrailerAssignmentsCreateDriverTrailerAssignmentResponseBody</code></summary>
+<details><summary><code>client.driverTrailerAssignments.<a href="/src/api/resources/driverTrailerAssignments/client/Client.ts">create</a>({ ...params }) -> Samsara.TrailerAssignmentsCreateDriverTrailerAssignmentResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -2077,7 +2077,7 @@ await client.driverTrailerAssignments.create({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.TrailerAssignmentsCreateDriverTrailerAssignmentRequestBody`
+**request:** `Samsara.TrailerAssignmentsCreateDriverTrailerAssignmentRequestBody`
 
 </dd>
 </dl>
@@ -2096,7 +2096,7 @@ await client.driverTrailerAssignments.create({
 </dl>
 </details>
 
-<details><summary><code>client.driverTrailerAssignments.<a href="/src/api/resources/driverTrailerAssignments/client/Client.ts">update</a>({ ...params }) -> SamsaraApi.TrailerAssignmentsUpdateDriverTrailerAssignmentResponseBody</code></summary>
+<details><summary><code>client.driverTrailerAssignments.<a href="/src/api/resources/driverTrailerAssignments/client/Client.ts">update</a>({ ...params }) -> Samsara.TrailerAssignmentsUpdateDriverTrailerAssignmentResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -2149,7 +2149,7 @@ await client.driverTrailerAssignments.update({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.TrailerAssignmentsUpdateDriverTrailerAssignmentRequestBody`
+**request:** `Samsara.TrailerAssignmentsUpdateDriverTrailerAssignmentRequestBody`
 
 </dd>
 </dl>
@@ -2170,7 +2170,7 @@ await client.driverTrailerAssignments.update({
 
 ## Dvirs
 
-<details><summary><code>client.dvirs.<a href="/src/api/resources/dvirs/client/Client.ts">stream</a>({ ...params }) -> core.Page<SamsaraApi.DvirStreamResponseDataResponseBody></code></summary>
+<details><summary><code>client.dvirs.<a href="/src/api/resources/dvirs/client/Client.ts">stream</a>({ ...params }) -> core.Page<Samsara.DvirStreamResponseDataResponseBody></code></summary>
 <dl>
 <dd>
 
@@ -2233,7 +2233,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.DvirsStreamRequest`
+**request:** `Samsara.DvirsStreamRequest`
 
 </dd>
 </dl>
@@ -2252,7 +2252,7 @@ while (page.hasNextPage()) {
 </dl>
 </details>
 
-<details><summary><code>client.dvirs.<a href="/src/api/resources/dvirs/client/Client.ts">get</a>(id, { ...params }) -> SamsaraApi.DvirGetDvirResponseBody</code></summary>
+<details><summary><code>client.dvirs.<a href="/src/api/resources/dvirs/client/Client.ts">get</a>(id, { ...params }) -> Samsara.DvirGetDvirResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -2310,7 +2310,7 @@ await client.dvirs.get("id");
 <dl>
 <dd>
 
-**request:** `SamsaraApi.DvirsGetRequest`
+**request:** `Samsara.DvirsGetRequest`
 
 </dd>
 </dl>
@@ -2329,7 +2329,7 @@ await client.dvirs.get("id");
 </dl>
 </details>
 
-<details><summary><code>client.dvirs.<a href="/src/api/resources/dvirs/client/Client.ts">create</a>({ ...params }) -> SamsaraApi.DvirResponse</code></summary>
+<details><summary><code>client.dvirs.<a href="/src/api/resources/dvirs/client/Client.ts">create</a>({ ...params }) -> Samsara.DvirResponse</code></summary>
 <dl>
 <dd>
 
@@ -2380,7 +2380,7 @@ await client.dvirs.create({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.CreateDvirRequest`
+**request:** `Samsara.CreateDvirRequest`
 
 </dd>
 </dl>
@@ -2399,7 +2399,7 @@ await client.dvirs.create({
 </dl>
 </details>
 
-<details><summary><code>client.dvirs.<a href="/src/api/resources/dvirs/client/Client.ts">history</a>({ ...params }) -> SamsaraApi.DvirsListResponse</code></summary>
+<details><summary><code>client.dvirs.<a href="/src/api/resources/dvirs/client/Client.ts">history</a>({ ...params }) -> Samsara.DvirsListResponse</code></summary>
 <dl>
 <dd>
 
@@ -2452,7 +2452,7 @@ await client.dvirs.history({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.DvirsHistoryRequest`
+**request:** `Samsara.DvirsHistoryRequest`
 
 </dd>
 </dl>
@@ -2471,7 +2471,7 @@ await client.dvirs.history({
 </dl>
 </details>
 
-<details><summary><code>client.dvirs.<a href="/src/api/resources/dvirs/client/Client.ts">update</a>(id, { ...params }) -> SamsaraApi.DvirResponse</code></summary>
+<details><summary><code>client.dvirs.<a href="/src/api/resources/dvirs/client/Client.ts">update</a>(id, { ...params }) -> Samsara.DvirResponse</code></summary>
 <dl>
 <dd>
 
@@ -2530,7 +2530,7 @@ await client.dvirs.update("id", {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.UpdateDvirRequest`
+**request:** `Samsara.UpdateDvirRequest`
 
 </dd>
 </dl>
@@ -2551,7 +2551,7 @@ await client.dvirs.update("id", {
 
 ## Carrier Proposed Assignments
 
-<details><summary><code>client.carrierProposedAssignments.<a href="/src/api/resources/carrierProposedAssignments/client/Client.ts">list</a>({ ...params }) -> core.Page<SamsaraApi.CarrierProposedAssignment></code></summary>
+<details><summary><code>client.carrierProposedAssignments.<a href="/src/api/resources/carrierProposedAssignments/client/Client.ts">list</a>({ ...params }) -> core.Page<Samsara.CarrierProposedAssignment></code></summary>
 <dl>
 <dd>
 
@@ -2608,7 +2608,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.CarrierProposedAssignmentsListRequest`
+**request:** `Samsara.CarrierProposedAssignmentsListRequest`
 
 </dd>
 </dl>
@@ -2627,7 +2627,7 @@ while (page.hasNextPage()) {
 </dl>
 </details>
 
-<details><summary><code>client.carrierProposedAssignments.<a href="/src/api/resources/carrierProposedAssignments/client/Client.ts">create</a>({ ...params }) -> SamsaraApi.CarrierProposedAssignmentResponse</code></summary>
+<details><summary><code>client.carrierProposedAssignments.<a href="/src/api/resources/carrierProposedAssignments/client/Client.ts">create</a>({ ...params }) -> Samsara.CarrierProposedAssignmentResponse</code></summary>
 <dl>
 <dd>
 
@@ -2678,7 +2678,7 @@ await client.carrierProposedAssignments.create({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.CreateCarrierProposedAssignmentRequest`
+**request:** `Samsara.CreateCarrierProposedAssignmentRequest`
 
 </dd>
 </dl>
@@ -2766,7 +2766,7 @@ await client.carrierProposedAssignments.delete("id");
 
 ## DocumentTypes
 
-<details><summary><code>client.documentTypes.<a href="/src/api/resources/documentTypes/client/Client.ts">list</a>({ ...params }) -> core.Page<SamsaraApi.GetDocumentTypeResponseObjectResponseBody></code></summary>
+<details><summary><code>client.documentTypes.<a href="/src/api/resources/documentTypes/client/Client.ts">list</a>({ ...params }) -> core.Page<Samsara.GetDocumentTypeResponseObjectResponseBody></code></summary>
 <dl>
 <dd>
 
@@ -2825,7 +2825,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.DocumentTypesListRequest`
+**request:** `Samsara.DocumentTypesListRequest`
 
 </dd>
 </dl>
@@ -2846,7 +2846,7 @@ while (page.hasNextPage()) {
 
 ## Documents
 
-<details><summary><code>client.documents.<a href="/src/api/resources/documents/client/Client.ts">list</a>({ ...params }) -> core.Page<SamsaraApi.DocumentResponseObjectResponseBody></code></summary>
+<details><summary><code>client.documents.<a href="/src/api/resources/documents/client/Client.ts">list</a>({ ...params }) -> core.Page<Samsara.DocumentResponseObjectResponseBody></code></summary>
 <dl>
 <dd>
 
@@ -2911,7 +2911,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.DocumentsListRequest`
+**request:** `Samsara.DocumentsListRequest`
 
 </dd>
 </dl>
@@ -2930,7 +2930,7 @@ while (page.hasNextPage()) {
 </dl>
 </details>
 
-<details><summary><code>client.documents.<a href="/src/api/resources/documents/client/Client.ts">create</a>({ ...params }) -> SamsaraApi.DocumentsPostDocumentResponseBody</code></summary>
+<details><summary><code>client.documents.<a href="/src/api/resources/documents/client/Client.ts">create</a>({ ...params }) -> Samsara.DocumentsPostDocumentResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -2983,7 +2983,7 @@ await client.documents.create({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.DocumentsPostDocumentRequestBody`
+**request:** `Samsara.DocumentsPostDocumentRequestBody`
 
 </dd>
 </dl>
@@ -3002,7 +3002,7 @@ await client.documents.create({
 </dl>
 </details>
 
-<details><summary><code>client.documents.<a href="/src/api/resources/documents/client/Client.ts">get</a>(id) -> SamsaraApi.DocumentsGetDocumentResponseBody</code></summary>
+<details><summary><code>client.documents.<a href="/src/api/resources/documents/client/Client.ts">get</a>(id) -> Samsara.DocumentsGetDocumentResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -3142,7 +3142,7 @@ await client.documents.delete("id");
 
 ## DriverVehicleAssignments
 
-<details><summary><code>client.driverVehicleAssignments.<a href="/src/api/resources/driverVehicleAssignments/client/Client.ts">get</a>({ ...params }) -> SamsaraApi.DriverVehicleAssignmentsV2GetDriverVehicleAssignmentsResponseBody</code></summary>
+<details><summary><code>client.driverVehicleAssignments.<a href="/src/api/resources/driverVehicleAssignments/client/Client.ts">get</a>({ ...params }) -> Samsara.DriverVehicleAssignmentsV2GetDriverVehicleAssignmentsResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -3194,7 +3194,7 @@ await client.driverVehicleAssignments.get({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.DriverVehicleAssignmentsGetRequest`
+**request:** `Samsara.DriverVehicleAssignmentsGetRequest`
 
 </dd>
 </dl>
@@ -3213,7 +3213,7 @@ await client.driverVehicleAssignments.get({
 </dl>
 </details>
 
-<details><summary><code>client.driverVehicleAssignments.<a href="/src/api/resources/driverVehicleAssignments/client/Client.ts">create</a>({ ...params }) -> SamsaraApi.DriverVehicleAssignmentsV2CreateDriverVehicleAssignmentResponseBody</code></summary>
+<details><summary><code>client.driverVehicleAssignments.<a href="/src/api/resources/driverVehicleAssignments/client/Client.ts">create</a>({ ...params }) -> Samsara.DriverVehicleAssignmentsV2CreateDriverVehicleAssignmentResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -3266,7 +3266,7 @@ await client.driverVehicleAssignments.create({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.DriverVehicleAssignmentsV2CreateDriverVehicleAssignmentRequestBody`
+**request:** `Samsara.DriverVehicleAssignmentsV2CreateDriverVehicleAssignmentRequestBody`
 
 </dd>
 </dl>
@@ -3337,7 +3337,7 @@ await client.driverVehicleAssignments.delete({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.DriverVehicleAssignmentsV2DeleteDriverVehicleAssignmentsRequestBody`
+**request:** `Samsara.DriverVehicleAssignmentsV2DeleteDriverVehicleAssignmentsRequestBody`
 
 </dd>
 </dl>
@@ -3356,7 +3356,7 @@ await client.driverVehicleAssignments.delete({
 </dl>
 </details>
 
-<details><summary><code>client.driverVehicleAssignments.<a href="/src/api/resources/driverVehicleAssignments/client/Client.ts">update</a>({ ...params }) -> SamsaraApi.DriverVehicleAssignmentsV2UpdateDriverVehicleAssignmentResponseBody</code></summary>
+<details><summary><code>client.driverVehicleAssignments.<a href="/src/api/resources/driverVehicleAssignments/client/Client.ts">update</a>({ ...params }) -> Samsara.DriverVehicleAssignmentsV2UpdateDriverVehicleAssignmentResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -3410,7 +3410,7 @@ await client.driverVehicleAssignments.update({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.DriverVehicleAssignmentsV2UpdateDriverVehicleAssignmentRequestBody`
+**request:** `Samsara.DriverVehicleAssignmentsV2UpdateDriverVehicleAssignmentRequestBody`
 
 </dd>
 </dl>
@@ -3431,7 +3431,7 @@ await client.driverVehicleAssignments.update({
 
 ## Drivers
 
-<details><summary><code>client.drivers.<a href="/src/api/resources/drivers/client/Client.ts">list</a>({ ...params }) -> core.Page<SamsaraApi.Driver></code></summary>
+<details><summary><code>client.drivers.<a href="/src/api/resources/drivers/client/Client.ts">list</a>({ ...params }) -> core.Page<Samsara.Driver></code></summary>
 <dl>
 <dd>
 
@@ -3488,7 +3488,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.DriversListRequest`
+**request:** `Samsara.DriversListRequest`
 
 </dd>
 </dl>
@@ -3507,7 +3507,7 @@ while (page.hasNextPage()) {
 </dl>
 </details>
 
-<details><summary><code>client.drivers.<a href="/src/api/resources/drivers/client/Client.ts">create</a>({ ...params }) -> SamsaraApi.DriverResponse</code></summary>
+<details><summary><code>client.drivers.<a href="/src/api/resources/drivers/client/Client.ts">create</a>({ ...params }) -> Samsara.DriverResponse</code></summary>
 <dl>
 <dd>
 
@@ -3559,7 +3559,7 @@ await client.drivers.create({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.CreateDriverRequest`
+**request:** `Samsara.CreateDriverRequest`
 
 </dd>
 </dl>
@@ -3578,7 +3578,7 @@ await client.drivers.create({
 </dl>
 </details>
 
-<details><summary><code>client.drivers.<a href="/src/api/resources/drivers/client/Client.ts">signOut</a>({ ...params }) -> SamsaraApi.DriverRemoteSignoutPostDriverRemoteSignoutResponseBody</code></summary>
+<details><summary><code>client.drivers.<a href="/src/api/resources/drivers/client/Client.ts">signOut</a>({ ...params }) -> Samsara.DriverRemoteSignoutPostDriverRemoteSignoutResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -3634,7 +3634,7 @@ await client.drivers.signOut({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.DriverRemoteSignoutPostDriverRemoteSignoutRequestBody`
+**request:** `Samsara.DriverRemoteSignoutPostDriverRemoteSignoutRequestBody`
 
 </dd>
 </dl>
@@ -3653,7 +3653,7 @@ await client.drivers.signOut({
 </dl>
 </details>
 
-<details><summary><code>client.drivers.<a href="/src/api/resources/drivers/client/Client.ts">get</a>(id) -> SamsaraApi.DriverResponse</code></summary>
+<details><summary><code>client.drivers.<a href="/src/api/resources/drivers/client/Client.ts">get</a>(id) -> Samsara.DriverResponse</code></summary>
 <dl>
 <dd>
 
@@ -3720,7 +3720,7 @@ await client.drivers.get("id");
 </dl>
 </details>
 
-<details><summary><code>client.drivers.<a href="/src/api/resources/drivers/client/Client.ts">update</a>(id, { ...params }) -> SamsaraApi.DriverResponse</code></summary>
+<details><summary><code>client.drivers.<a href="/src/api/resources/drivers/client/Client.ts">update</a>(id, { ...params }) -> Samsara.DriverResponse</code></summary>
 <dl>
 <dd>
 
@@ -3776,7 +3776,7 @@ await client.drivers.update("id");
 <dl>
 <dd>
 
-**request:** `SamsaraApi.UpdateDriverRequest`
+**request:** `Samsara.UpdateDriverRequest`
 
 </dd>
 </dl>
@@ -3797,7 +3797,7 @@ await client.drivers.update("id");
 
 ## Equipment
 
-<details><summary><code>client.equipment.<a href="/src/api/resources/equipment/client/Client.ts">list</a>({ ...params }) -> core.Page<SamsaraApi.EquipmentObject></code></summary>
+<details><summary><code>client.equipment.<a href="/src/api/resources/equipment/client/Client.ts">list</a>({ ...params }) -> core.Page<Samsara.EquipmentObject></code></summary>
 <dl>
 <dd>
 
@@ -3850,7 +3850,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.EquipmentListRequest`
+**request:** `Samsara.EquipmentListRequest`
 
 </dd>
 </dl>
@@ -3869,7 +3869,7 @@ while (page.hasNextPage()) {
 </dl>
 </details>
 
-<details><summary><code>client.equipment.<a href="/src/api/resources/equipment/client/Client.ts">get</a>(id) -> SamsaraApi.EquipmentResponse</code></summary>
+<details><summary><code>client.equipment.<a href="/src/api/resources/equipment/client/Client.ts">get</a>(id) -> Samsara.EquipmentResponse</code></summary>
 <dl>
 <dd>
 
@@ -3938,7 +3938,7 @@ await client.equipment.get("id");
 
 ## Hos
 
-<details><summary><code>client.hos.<a href="/src/api/resources/hos/client/Client.ts">clocks</a>({ ...params }) -> SamsaraApi.HosClocksResponse</code></summary>
+<details><summary><code>client.hos.<a href="/src/api/resources/hos/client/Client.ts">clocks</a>({ ...params }) -> Samsara.HosClocksResponse</code></summary>
 <dl>
 <dd>
 
@@ -3986,7 +3986,7 @@ await client.hos.clocks();
 <dl>
 <dd>
 
-**request:** `SamsaraApi.HosClocksRequest`
+**request:** `Samsara.HosClocksRequest`
 
 </dd>
 </dl>
@@ -4005,7 +4005,7 @@ await client.hos.clocks();
 </dl>
 </details>
 
-<details><summary><code>client.hos.<a href="/src/api/resources/hos/client/Client.ts">dailyLogs</a>({ ...params }) -> core.Page<SamsaraApi.HosDailyLogsObjectResponseBody></code></summary>
+<details><summary><code>client.hos.<a href="/src/api/resources/hos/client/Client.ts">dailyLogs</a>({ ...params }) -> core.Page<Samsara.HosDailyLogsObjectResponseBody></code></summary>
 <dl>
 <dd>
 
@@ -4072,7 +4072,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.HosDailyLogsRequest`
+**request:** `Samsara.HosDailyLogsRequest`
 
 </dd>
 </dl>
@@ -4091,7 +4091,7 @@ while (page.hasNextPage()) {
 </dl>
 </details>
 
-<details><summary><code>client.hos.<a href="/src/api/resources/hos/client/Client.ts">logs</a>({ ...params }) -> SamsaraApi.HosLogsResponse</code></summary>
+<details><summary><code>client.hos.<a href="/src/api/resources/hos/client/Client.ts">logs</a>({ ...params }) -> Samsara.HosLogsResponse</code></summary>
 <dl>
 <dd>
 
@@ -4143,7 +4143,7 @@ await client.hos.logs();
 <dl>
 <dd>
 
-**request:** `SamsaraApi.HosLogsRequest`
+**request:** `Samsara.HosLogsRequest`
 
 </dd>
 </dl>
@@ -4162,7 +4162,7 @@ await client.hos.logs();
 </dl>
 </details>
 
-<details><summary><code>client.hos.<a href="/src/api/resources/hos/client/Client.ts">violations</a>({ ...params }) -> core.Page<SamsaraApi.HosViolationsObjectResponseBody></code></summary>
+<details><summary><code>client.hos.<a href="/src/api/resources/hos/client/Client.ts">violations</a>({ ...params }) -> core.Page<Samsara.HosViolationsObjectResponseBody></code></summary>
 <dl>
 <dd>
 
@@ -4227,7 +4227,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.HosViolationsRequest`
+**request:** `Samsara.HosViolationsRequest`
 
 </dd>
 </dl>
@@ -4248,7 +4248,7 @@ while (page.hasNextPage()) {
 
 ## Routes
 
-<details><summary><code>client.routes.<a href="/src/api/resources/routes/client/Client.ts">list</a>({ ...params }) -> core.Page<SamsaraApi.BaseRouteResponseObjectResponseBody></code></summary>
+<details><summary><code>client.routes.<a href="/src/api/resources/routes/client/Client.ts">list</a>({ ...params }) -> core.Page<Samsara.BaseRouteResponseObjectResponseBody></code></summary>
 <dl>
 <dd>
 
@@ -4313,7 +4313,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.RoutesListRequest`
+**request:** `Samsara.RoutesListRequest`
 
 </dd>
 </dl>
@@ -4332,7 +4332,7 @@ while (page.hasNextPage()) {
 </dl>
 </details>
 
-<details><summary><code>client.routes.<a href="/src/api/resources/routes/client/Client.ts">create</a>({ ...params }) -> SamsaraApi.RoutesCreateRouteResponseBody</code></summary>
+<details><summary><code>client.routes.<a href="/src/api/resources/routes/client/Client.ts">create</a>({ ...params }) -> Samsara.RoutesCreateRouteResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -4385,7 +4385,7 @@ await client.routes.create({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.RoutesCreateRouteRequestBody`
+**request:** `Samsara.RoutesCreateRouteRequestBody`
 
 </dd>
 </dl>
@@ -4404,7 +4404,7 @@ await client.routes.create({
 </dl>
 </details>
 
-<details><summary><code>client.routes.<a href="/src/api/resources/routes/client/Client.ts">get</a>(id) -> SamsaraApi.RoutesFetchRouteResponseBody</code></summary>
+<details><summary><code>client.routes.<a href="/src/api/resources/routes/client/Client.ts">get</a>(id) -> Samsara.RoutesFetchRouteResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -4542,7 +4542,7 @@ await client.routes.delete("id");
 </dl>
 </details>
 
-<details><summary><code>client.routes.<a href="/src/api/resources/routes/client/Client.ts">update</a>(id, { ...params }) -> SamsaraApi.RoutesPatchRouteResponseBody</code></summary>
+<details><summary><code>client.routes.<a href="/src/api/resources/routes/client/Client.ts">update</a>(id, { ...params }) -> Samsara.RoutesPatchRouteResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -4604,7 +4604,7 @@ await client.routes.update("id");
 <dl>
 <dd>
 
-**request:** `SamsaraApi.RoutesPatchRouteRequestBody`
+**request:** `Samsara.RoutesPatchRouteRequestBody`
 
 </dd>
 </dl>
@@ -4625,7 +4625,7 @@ await client.routes.update("id");
 
 ## SafetyEvents
 
-<details><summary><code>client.safetyEvents.<a href="/src/api/resources/safetyEvents/client/Client.ts">list</a>({ ...params }) -> core.Page<SamsaraApi.SafetyEvent></code></summary>
+<details><summary><code>client.safetyEvents.<a href="/src/api/resources/safetyEvents/client/Client.ts">list</a>({ ...params }) -> core.Page<Samsara.SafetyEvent></code></summary>
 <dl>
 <dd>
 
@@ -4688,7 +4688,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.SafetyEventsListRequest`
+**request:** `Samsara.SafetyEventsListRequest`
 
 </dd>
 </dl>
@@ -4709,7 +4709,7 @@ while (page.hasNextPage()) {
 
 ## Trailers
 
-<details><summary><code>client.trailers.<a href="/src/api/resources/trailers/client/Client.ts">list</a>({ ...params }) -> core.Page<SamsaraApi.TrailerResponseObjectResponseBody></code></summary>
+<details><summary><code>client.trailers.<a href="/src/api/resources/trailers/client/Client.ts">list</a>({ ...params }) -> core.Page<Samsara.TrailerResponseObjectResponseBody></code></summary>
 <dl>
 <dd>
 
@@ -4768,7 +4768,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.TrailersListRequest`
+**request:** `Samsara.TrailersListRequest`
 
 </dd>
 </dl>
@@ -4787,7 +4787,7 @@ while (page.hasNextPage()) {
 </dl>
 </details>
 
-<details><summary><code>client.trailers.<a href="/src/api/resources/trailers/client/Client.ts">create</a>({ ...params }) -> SamsaraApi.TrailersCreateTrailerResponseBody</code></summary>
+<details><summary><code>client.trailers.<a href="/src/api/resources/trailers/client/Client.ts">create</a>({ ...params }) -> Samsara.TrailersCreateTrailerResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -4839,7 +4839,7 @@ await client.trailers.create({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.TrailersCreateTrailerRequestBody`
+**request:** `Samsara.TrailersCreateTrailerRequestBody`
 
 </dd>
 </dl>
@@ -4858,7 +4858,7 @@ await client.trailers.create({
 </dl>
 </details>
 
-<details><summary><code>client.trailers.<a href="/src/api/resources/trailers/client/Client.ts">get</a>(id) -> SamsaraApi.TrailersGetTrailerResponseBody</code></summary>
+<details><summary><code>client.trailers.<a href="/src/api/resources/trailers/client/Client.ts">get</a>(id) -> Samsara.TrailersGetTrailerResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -4996,7 +4996,7 @@ await client.trailers.delete("id");
 </dl>
 </details>
 
-<details><summary><code>client.trailers.<a href="/src/api/resources/trailers/client/Client.ts">update</a>(id, { ...params }) -> SamsaraApi.TrailersUpdateTrailerResponseBody</code></summary>
+<details><summary><code>client.trailers.<a href="/src/api/resources/trailers/client/Client.ts">update</a>(id, { ...params }) -> Samsara.TrailersUpdateTrailerResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -5056,7 +5056,7 @@ await client.trailers.update("id");
 <dl>
 <dd>
 
-**request:** `SamsaraApi.TrailersUpdateTrailerRequestBody`
+**request:** `Samsara.TrailersUpdateTrailerRequestBody`
 
 </dd>
 </dl>
@@ -5077,7 +5077,7 @@ await client.trailers.update("id");
 
 ## Vehicles
 
-<details><summary><code>client.vehicles.<a href="/src/api/resources/vehicles/client/Client.ts">list</a>({ ...params }) -> core.Page<SamsaraApi.VehicleResponseObjectResponseBody></code></summary>
+<details><summary><code>client.vehicles.<a href="/src/api/resources/vehicles/client/Client.ts">list</a>({ ...params }) -> core.Page<Samsara.VehicleResponseObjectResponseBody></code></summary>
 <dl>
 <dd>
 
@@ -5136,7 +5136,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.VehiclesListRequest`
+**request:** `Samsara.VehiclesListRequest`
 
 </dd>
 </dl>
@@ -5155,7 +5155,7 @@ while (page.hasNextPage()) {
 </dl>
 </details>
 
-<details><summary><code>client.vehicles.<a href="/src/api/resources/vehicles/client/Client.ts">get</a>(id) -> SamsaraApi.VehicleResponse</code></summary>
+<details><summary><code>client.vehicles.<a href="/src/api/resources/vehicles/client/Client.ts">get</a>(id) -> Samsara.VehicleResponse</code></summary>
 <dl>
 <dd>
 
@@ -5222,7 +5222,7 @@ await client.vehicles.get("id");
 </dl>
 </details>
 
-<details><summary><code>client.vehicles.<a href="/src/api/resources/vehicles/client/Client.ts">update</a>(id, { ...params }) -> SamsaraApi.VehicleResponse</code></summary>
+<details><summary><code>client.vehicles.<a href="/src/api/resources/vehicles/client/Client.ts">update</a>(id, { ...params }) -> Samsara.VehicleResponse</code></summary>
 <dl>
 <dd>
 
@@ -5284,7 +5284,7 @@ await client.vehicles.update("id");
 <dl>
 <dd>
 
-**request:** `SamsaraApi.UpdateVehicleRequest`
+**request:** `Samsara.UpdateVehicleRequest`
 
 </dd>
 </dl>
@@ -5305,7 +5305,7 @@ await client.vehicles.update("id");
 
 ## Legacy
 
-<details><summary><code>client.legacy.<a href="/src/api/resources/legacy/client/Client.ts">getVehiclesDriverAssignments</a>({ ...params }) -> SamsaraApi.VehiclesDriverAssignmentsGetVehiclesDriverAssignmentsResponseBody</code></summary>
+<details><summary><code>client.legacy.<a href="/src/api/resources/legacy/client/Client.ts">getVehiclesDriverAssignments</a>({ ...params }) -> Samsara.VehiclesDriverAssignmentsGetVehiclesDriverAssignmentsResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -5355,7 +5355,7 @@ await client.legacy.getVehiclesDriverAssignments();
 <dl>
 <dd>
 
-**request:** `SamsaraApi.LegacyGetVehiclesDriverAssignmentsRequest`
+**request:** `Samsara.LegacyGetVehiclesDriverAssignmentsRequest`
 
 </dd>
 </dl>
@@ -5376,7 +5376,7 @@ await client.legacy.getVehiclesDriverAssignments();
 
 ## FormSubmissions
 
-<details><summary><code>client.formSubmissions.<a href="/src/api/resources/formSubmissions/client/Client.ts">list</a>({ ...params }) -> SamsaraApi.FormSubmissionsGetFormSubmissionsResponseBody</code></summary>
+<details><summary><code>client.formSubmissions.<a href="/src/api/resources/formSubmissions/client/Client.ts">list</a>({ ...params }) -> Samsara.FormSubmissionsGetFormSubmissionsResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -5426,7 +5426,7 @@ await client.formSubmissions.list();
 <dl>
 <dd>
 
-**request:** `SamsaraApi.FormSubmissionsListRequest`
+**request:** `Samsara.FormSubmissionsListRequest`
 
 </dd>
 </dl>
@@ -5445,7 +5445,7 @@ await client.formSubmissions.list();
 </dl>
 </details>
 
-<details><summary><code>client.formSubmissions.<a href="/src/api/resources/formSubmissions/client/Client.ts">create</a>({ ...params }) -> SamsaraApi.FormSubmissionsPostFormSubmissionResponseBody</code></summary>
+<details><summary><code>client.formSubmissions.<a href="/src/api/resources/formSubmissions/client/Client.ts">create</a>({ ...params }) -> Samsara.FormSubmissionsPostFormSubmissionResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -5500,7 +5500,7 @@ await client.formSubmissions.create({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.FormSubmissionsPostFormSubmissionRequestBody`
+**request:** `Samsara.FormSubmissionsPostFormSubmissionRequestBody`
 
 </dd>
 </dl>
@@ -5519,7 +5519,7 @@ await client.formSubmissions.create({
 </dl>
 </details>
 
-<details><summary><code>client.formSubmissions.<a href="/src/api/resources/formSubmissions/client/Client.ts">update</a>({ ...params }) -> SamsaraApi.FormSubmissionsPatchFormSubmissionResponseBody</code></summary>
+<details><summary><code>client.formSubmissions.<a href="/src/api/resources/formSubmissions/client/Client.ts">update</a>({ ...params }) -> Samsara.FormSubmissionsPatchFormSubmissionResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -5572,7 +5572,7 @@ await client.formSubmissions.update({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.FormSubmissionsPatchFormSubmissionRequestBody`
+**request:** `Samsara.FormSubmissionsPatchFormSubmissionRequestBody`
 
 </dd>
 </dl>
@@ -5591,7 +5591,7 @@ await client.formSubmissions.update({
 </dl>
 </details>
 
-<details><summary><code>client.formSubmissions.<a href="/src/api/resources/formSubmissions/client/Client.ts">stream</a>({ ...params }) -> core.Page<SamsaraApi.FormSubmissionResponseObjectResponseBody></code></summary>
+<details><summary><code>client.formSubmissions.<a href="/src/api/resources/formSubmissions/client/Client.ts">stream</a>({ ...params }) -> core.Page<Samsara.FormSubmissionResponseObjectResponseBody></code></summary>
 <dl>
 <dd>
 
@@ -5654,7 +5654,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.FormSubmissionsStreamRequest`
+**request:** `Samsara.FormSubmissionsStreamRequest`
 
 </dd>
 </dl>
@@ -5675,7 +5675,7 @@ while (page.hasNextPage()) {
 
 ## Forms
 
-<details><summary><code>client.forms.<a href="/src/api/resources/forms/client/Client.ts">getFormTemplates</a>({ ...params }) -> SamsaraApi.FormTemplatesGetFormTemplatesResponseBody</code></summary>
+<details><summary><code>client.forms.<a href="/src/api/resources/forms/client/Client.ts">getFormTemplates</a>({ ...params }) -> Samsara.FormTemplatesGetFormTemplatesResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -5725,7 +5725,7 @@ await client.forms.getFormTemplates();
 <dl>
 <dd>
 
-**request:** `SamsaraApi.GetFormTemplatesRequest`
+**request:** `Samsara.GetFormTemplatesRequest`
 
 </dd>
 </dl>
@@ -5746,7 +5746,7 @@ await client.forms.getFormTemplates();
 
 ## FuelPurchases
 
-<details><summary><code>client.fuelPurchases.<a href="/src/api/resources/fuelPurchases/client/Client.ts">create</a>({ ...params }) -> SamsaraApi.FuelPurchasePostFuelPurchaseResponseBody</code></summary>
+<details><summary><code>client.fuelPurchases.<a href="/src/api/resources/fuelPurchases/client/Client.ts">create</a>({ ...params }) -> Samsara.FuelPurchasePostFuelPurchaseResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -5805,7 +5805,7 @@ await client.fuelPurchases.create({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.FuelPurchasePostFuelPurchaseRequestBody`
+**request:** `Samsara.FuelPurchasePostFuelPurchaseRequestBody`
 
 </dd>
 </dl>
@@ -5826,7 +5826,7 @@ await client.fuelPurchases.create({
 
 ## Gateways
 
-<details><summary><code>client.gateways.<a href="/src/api/resources/gateways/client/Client.ts">list</a>({ ...params }) -> core.Page<SamsaraApi.GatewayResponseObjectResponseBody></code></summary>
+<details><summary><code>client.gateways.<a href="/src/api/resources/gateways/client/Client.ts">list</a>({ ...params }) -> core.Page<Samsara.GatewayResponseObjectResponseBody></code></summary>
 <dl>
 <dd>
 
@@ -5885,7 +5885,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.GatewaysListRequest`
+**request:** `Samsara.GatewaysListRequest`
 
 </dd>
 </dl>
@@ -5904,7 +5904,7 @@ while (page.hasNextPage()) {
 </dl>
 </details>
 
-<details><summary><code>client.gateways.<a href="/src/api/resources/gateways/client/Client.ts">create</a>({ ...params }) -> SamsaraApi.GatewaysPostGatewayResponseBody</code></summary>
+<details><summary><code>client.gateways.<a href="/src/api/resources/gateways/client/Client.ts">create</a>({ ...params }) -> Samsara.GatewaysPostGatewayResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -5956,7 +5956,7 @@ await client.gateways.create({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.GatewaysPostGatewayRequestBody`
+**request:** `Samsara.GatewaysPostGatewayRequestBody`
 
 </dd>
 </dl>
@@ -6046,7 +6046,7 @@ await client.gateways.delete("id");
 
 ## Idling
 
-<details><summary><code>client.idling.<a href="/src/api/resources/idling/client/Client.ts">list</a>({ ...params }) -> core.Page<SamsaraApi.IdlingEventObjectResponseBody></code></summary>
+<details><summary><code>client.idling.<a href="/src/api/resources/idling/client/Client.ts">list</a>({ ...params }) -> core.Page<Samsara.IdlingEventObjectResponseBody></code></summary>
 <dl>
 <dd>
 
@@ -6113,7 +6113,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.IdlingListRequest`
+**request:** `Samsara.IdlingListRequest`
 
 </dd>
 </dl>
@@ -6134,7 +6134,7 @@ while (page.hasNextPage()) {
 
 ## Issues
 
-<details><summary><code>client.issues.<a href="/src/api/resources/issues/client/Client.ts">list</a>({ ...params }) -> SamsaraApi.IssuesGetIssuesResponseBody</code></summary>
+<details><summary><code>client.issues.<a href="/src/api/resources/issues/client/Client.ts">list</a>({ ...params }) -> Samsara.IssuesGetIssuesResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -6184,7 +6184,7 @@ await client.issues.list();
 <dl>
 <dd>
 
-**request:** `SamsaraApi.IssuesListRequest`
+**request:** `Samsara.IssuesListRequest`
 
 </dd>
 </dl>
@@ -6203,7 +6203,7 @@ await client.issues.list();
 </dl>
 </details>
 
-<details><summary><code>client.issues.<a href="/src/api/resources/issues/client/Client.ts">update</a>({ ...params }) -> SamsaraApi.IssuesPatchIssueResponseBody</code></summary>
+<details><summary><code>client.issues.<a href="/src/api/resources/issues/client/Client.ts">update</a>({ ...params }) -> Samsara.IssuesPatchIssueResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -6255,7 +6255,7 @@ await client.issues.update({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.IssuesPatchIssueRequestBody`
+**request:** `Samsara.IssuesPatchIssueRequestBody`
 
 </dd>
 </dl>
@@ -6274,7 +6274,7 @@ await client.issues.update({
 </dl>
 </details>
 
-<details><summary><code>client.issues.<a href="/src/api/resources/issues/client/Client.ts">stream</a>({ ...params }) -> core.Page<SamsaraApi.IssueResponseObjectResponseBody></code></summary>
+<details><summary><code>client.issues.<a href="/src/api/resources/issues/client/Client.ts">stream</a>({ ...params }) -> core.Page<Samsara.IssueResponseObjectResponseBody></code></summary>
 <dl>
 <dd>
 
@@ -6337,7 +6337,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.IssuesStreamRequest`
+**request:** `Samsara.IssuesStreamRequest`
 
 </dd>
 </dl>
@@ -6358,7 +6358,7 @@ while (page.hasNextPage()) {
 
 ## LiveShares
 
-<details><summary><code>client.liveShares.<a href="/src/api/resources/liveShares/client/Client.ts">list</a>({ ...params }) -> core.Page<SamsaraApi.LiveSharingLinkFullResponseObjectResponseBody></code></summary>
+<details><summary><code>client.liveShares.<a href="/src/api/resources/liveShares/client/Client.ts">list</a>({ ...params }) -> core.Page<Samsara.LiveSharingLinkFullResponseObjectResponseBody></code></summary>
 <dl>
 <dd>
 
@@ -6417,7 +6417,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.LiveSharesListRequest`
+**request:** `Samsara.LiveSharesListRequest`
 
 </dd>
 </dl>
@@ -6436,7 +6436,7 @@ while (page.hasNextPage()) {
 </dl>
 </details>
 
-<details><summary><code>client.liveShares.<a href="/src/api/resources/liveShares/client/Client.ts">create</a>({ ...params }) -> SamsaraApi.LiveSharingLinksCreateLiveSharingLinkResponseBody</code></summary>
+<details><summary><code>client.liveShares.<a href="/src/api/resources/liveShares/client/Client.ts">create</a>({ ...params }) -> Samsara.LiveSharingLinksCreateLiveSharingLinkResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -6489,7 +6489,7 @@ await client.liveShares.create({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.LiveSharingLinksCreateLiveSharingLinkRequestBody`
+**request:** `Samsara.LiveSharingLinksCreateLiveSharingLinkRequestBody`
 
 </dd>
 </dl>
@@ -6560,7 +6560,7 @@ await client.liveShares.delete({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.LiveSharesDeleteRequest`
+**request:** `Samsara.LiveSharesDeleteRequest`
 
 </dd>
 </dl>
@@ -6579,7 +6579,7 @@ await client.liveShares.delete({
 </dl>
 </details>
 
-<details><summary><code>client.liveShares.<a href="/src/api/resources/liveShares/client/Client.ts">update</a>({ ...params }) -> SamsaraApi.LiveSharingLinksUpdateLiveSharingLinkResponseBody</code></summary>
+<details><summary><code>client.liveShares.<a href="/src/api/resources/liveShares/client/Client.ts">update</a>({ ...params }) -> Samsara.LiveSharingLinksUpdateLiveSharingLinkResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -6632,7 +6632,7 @@ await client.liveShares.update({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.LiveSharingLinksUpdateLiveSharingLinkRequestBody`
+**request:** `Samsara.LiveSharingLinksUpdateLiveSharingLinkRequestBody`
 
 </dd>
 </dl>
@@ -6653,7 +6653,7 @@ await client.liveShares.update({
 
 ## Me
 
-<details><summary><code>client.me.<a href="/src/api/resources/me/client/Client.ts">get</a>() -> SamsaraApi.OrganizationInfoResponse</code></summary>
+<details><summary><code>client.me.<a href="/src/api/resources/me/client/Client.ts">get</a>() -> Samsara.OrganizationInfoResponse</code></summary>
 <dl>
 <dd>
 
@@ -6714,7 +6714,7 @@ await client.me.get();
 
 ## Readings
 
-<details><summary><code>client.readings.<a href="/src/api/resources/readings/client/Client.ts">definitions</a>({ ...params }) -> core.Page<SamsaraApi.ReadingDefinitionResponseBody></code></summary>
+<details><summary><code>client.readings.<a href="/src/api/resources/readings/client/Client.ts">definitions</a>({ ...params }) -> core.Page<Samsara.ReadingDefinitionResponseBody></code></summary>
 <dl>
 <dd>
 
@@ -6773,7 +6773,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.ReadingsDefinitionsRequest`
+**request:** `Samsara.ReadingsDefinitionsRequest`
 
 </dd>
 </dl>
@@ -6792,7 +6792,7 @@ while (page.hasNextPage()) {
 </dl>
 </details>
 
-<details><summary><code>client.readings.<a href="/src/api/resources/readings/client/Client.ts">history</a>({ ...params }) -> core.Page<SamsaraApi.ReadingHistoryResponseBody></code></summary>
+<details><summary><code>client.readings.<a href="/src/api/resources/readings/client/Client.ts">history</a>({ ...params }) -> core.Page<Samsara.ReadingHistoryResponseBody></code></summary>
 <dl>
 <dd>
 
@@ -6857,7 +6857,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.ReadingsHistoryRequest`
+**request:** `Samsara.ReadingsHistoryRequest`
 
 </dd>
 </dl>
@@ -6876,7 +6876,7 @@ while (page.hasNextPage()) {
 </dl>
 </details>
 
-<details><summary><code>client.readings.<a href="/src/api/resources/readings/client/Client.ts">latest</a>({ ...params }) -> core.Page<SamsaraApi.ReadingSnapshotResponseBody></code></summary>
+<details><summary><code>client.readings.<a href="/src/api/resources/readings/client/Client.ts">latest</a>({ ...params }) -> core.Page<Samsara.ReadingSnapshotResponseBody></code></summary>
 <dl>
 <dd>
 
@@ -6941,7 +6941,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.ReadingsLatestRequest`
+**request:** `Samsara.ReadingsLatestRequest`
 
 </dd>
 </dl>
@@ -6962,7 +6962,7 @@ while (page.hasNextPage()) {
 
 ## SpeedingIntervals
 
-<details><summary><code>client.speedingIntervals.<a href="/src/api/resources/speedingIntervals/client/Client.ts">stream</a>({ ...params }) -> core.Page<SamsaraApi.TripSpeedingIntervalsResponseBody></code></summary>
+<details><summary><code>client.speedingIntervals.<a href="/src/api/resources/speedingIntervals/client/Client.ts">stream</a>({ ...params }) -> core.Page<Samsara.TripSpeedingIntervalsResponseBody></code></summary>
 <dl>
 <dd>
 
@@ -7025,7 +7025,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.SpeedingIntervalsStreamRequest`
+**request:** `Samsara.SpeedingIntervalsStreamRequest`
 
 </dd>
 </dl>
@@ -7046,7 +7046,7 @@ while (page.hasNextPage()) {
 
 ## Tags
 
-<details><summary><code>client.tags.<a href="/src/api/resources/tags/client/Client.ts">list</a>({ ...params }) -> core.Page<SamsaraApi.Tag></code></summary>
+<details><summary><code>client.tags.<a href="/src/api/resources/tags/client/Client.ts">list</a>({ ...params }) -> core.Page<Samsara.Tag></code></summary>
 <dl>
 <dd>
 
@@ -7103,7 +7103,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.TagsListRequest`
+**request:** `Samsara.TagsListRequest`
 
 </dd>
 </dl>
@@ -7122,7 +7122,7 @@ while (page.hasNextPage()) {
 </dl>
 </details>
 
-<details><summary><code>client.tags.<a href="/src/api/resources/tags/client/Client.ts">create</a>({ ...params }) -> SamsaraApi.TagResponse</code></summary>
+<details><summary><code>client.tags.<a href="/src/api/resources/tags/client/Client.ts">create</a>({ ...params }) -> Samsara.TagResponse</code></summary>
 <dl>
 <dd>
 
@@ -7172,7 +7172,7 @@ await client.tags.create({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.CreateTagRequest`
+**request:** `Samsara.CreateTagRequest`
 
 </dd>
 </dl>
@@ -7191,7 +7191,7 @@ await client.tags.create({
 </dl>
 </details>
 
-<details><summary><code>client.tags.<a href="/src/api/resources/tags/client/Client.ts">get</a>(id) -> SamsaraApi.TagResponse</code></summary>
+<details><summary><code>client.tags.<a href="/src/api/resources/tags/client/Client.ts">get</a>(id) -> Samsara.TagResponse</code></summary>
 <dl>
 <dd>
 
@@ -7258,7 +7258,7 @@ await client.tags.get("id");
 </dl>
 </details>
 
-<details><summary><code>client.tags.<a href="/src/api/resources/tags/client/Client.ts">replace</a>(id, { ...params }) -> SamsaraApi.TagResponse</code></summary>
+<details><summary><code>client.tags.<a href="/src/api/resources/tags/client/Client.ts">replace</a>(id, { ...params }) -> Samsara.TagResponse</code></summary>
 <dl>
 <dd>
 
@@ -7314,7 +7314,7 @@ await client.tags.replace("id");
 <dl>
 <dd>
 
-**request:** `SamsaraApi.ReplaceTagRequest`
+**request:** `Samsara.ReplaceTagRequest`
 
 </dd>
 </dl>
@@ -7400,7 +7400,7 @@ await client.tags.delete("id");
 </dl>
 </details>
 
-<details><summary><code>client.tags.<a href="/src/api/resources/tags/client/Client.ts">patch</a>(id, { ...params }) -> SamsaraApi.TagResponse</code></summary>
+<details><summary><code>client.tags.<a href="/src/api/resources/tags/client/Client.ts">patch</a>(id, { ...params }) -> Samsara.TagResponse</code></summary>
 <dl>
 <dd>
 
@@ -7460,7 +7460,7 @@ await client.tags.patch("id");
 <dl>
 <dd>
 
-**request:** `SamsaraApi.PatchTagRequest`
+**request:** `Samsara.PatchTagRequest`
 
 </dd>
 </dl>
@@ -7481,7 +7481,7 @@ await client.tags.patch("id");
 
 ## TrainingAssignments
 
-<details><summary><code>client.trainingAssignments.<a href="/src/api/resources/trainingAssignments/client/Client.ts">create</a>({ ...params }) -> SamsaraApi.TrainingAssignmentsPostTrainingAssignmentsResponseBody</code></summary>
+<details><summary><code>client.trainingAssignments.<a href="/src/api/resources/trainingAssignments/client/Client.ts">create</a>({ ...params }) -> Samsara.TrainingAssignmentsPostTrainingAssignmentsResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -7536,7 +7536,7 @@ await client.trainingAssignments.create({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.TrainingAssignmentsCreateRequest`
+**request:** `Samsara.TrainingAssignmentsCreateRequest`
 
 </dd>
 </dl>
@@ -7607,7 +7607,7 @@ await client.trainingAssignments.delete();
 <dl>
 <dd>
 
-**request:** `SamsaraApi.TrainingAssignmentsDeleteRequest`
+**request:** `Samsara.TrainingAssignmentsDeleteRequest`
 
 </dd>
 </dl>
@@ -7626,7 +7626,7 @@ await client.trainingAssignments.delete();
 </dl>
 </details>
 
-<details><summary><code>client.trainingAssignments.<a href="/src/api/resources/trainingAssignments/client/Client.ts">update</a>({ ...params }) -> SamsaraApi.TrainingAssignmentsPatchTrainingAssignmentsResponseBody</code></summary>
+<details><summary><code>client.trainingAssignments.<a href="/src/api/resources/trainingAssignments/client/Client.ts">update</a>({ ...params }) -> Samsara.TrainingAssignmentsPatchTrainingAssignmentsResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -7680,7 +7680,7 @@ await client.trainingAssignments.update({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.TrainingAssignmentsUpdateRequest`
+**request:** `Samsara.TrainingAssignmentsUpdateRequest`
 
 </dd>
 </dl>
@@ -7699,7 +7699,7 @@ await client.trainingAssignments.update({
 </dl>
 </details>
 
-<details><summary><code>client.trainingAssignments.<a href="/src/api/resources/trainingAssignments/client/Client.ts">stream</a>({ ...params }) -> SamsaraApi.TrainingAssignmentsGetTrainingAssignmentsStreamResponseBody</code></summary>
+<details><summary><code>client.trainingAssignments.<a href="/src/api/resources/trainingAssignments/client/Client.ts">stream</a>({ ...params }) -> Samsara.TrainingAssignmentsGetTrainingAssignmentsStreamResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -7753,7 +7753,7 @@ await client.trainingAssignments.stream({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.TrainingAssignmentsStreamRequest`
+**request:** `Samsara.TrainingAssignmentsStreamRequest`
 
 </dd>
 </dl>
@@ -7774,7 +7774,7 @@ await client.trainingAssignments.stream({
 
 ## TrainingCourses
 
-<details><summary><code>client.trainingCourses.<a href="/src/api/resources/trainingCourses/client/Client.ts">list</a>({ ...params }) -> core.Page<SamsaraApi.TrainingCourseResponseObjectResponseBody></code></summary>
+<details><summary><code>client.trainingCourses.<a href="/src/api/resources/trainingCourses/client/Client.ts">list</a>({ ...params }) -> core.Page<Samsara.TrainingCourseResponseObjectResponseBody></code></summary>
 <dl>
 <dd>
 
@@ -7834,7 +7834,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.TrainingCoursesListRequest`
+**request:** `Samsara.TrainingCoursesListRequest`
 
 </dd>
 </dl>
@@ -7855,7 +7855,7 @@ while (page.hasNextPage()) {
 
 ## Trips
 
-<details><summary><code>client.trips.<a href="/src/api/resources/trips/client/Client.ts">stream</a>({ ...params }) -> core.Page<SamsaraApi.TripResponseBody></code></summary>
+<details><summary><code>client.trips.<a href="/src/api/resources/trips/client/Client.ts">stream</a>({ ...params }) -> core.Page<Samsara.TripResponseBody></code></summary>
 <dl>
 <dd>
 
@@ -7918,7 +7918,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.TripsStreamRequest`
+**request:** `Samsara.TripsStreamRequest`
 
 </dd>
 </dl>
@@ -7939,7 +7939,7 @@ while (page.hasNextPage()) {
 
 ## UserRoles
 
-<details><summary><code>client.userRoles.<a href="/src/api/resources/userRoles/client/Client.ts">list</a>({ ...params }) -> core.Page<SamsaraApi.UserRole></code></summary>
+<details><summary><code>client.userRoles.<a href="/src/api/resources/userRoles/client/Client.ts">list</a>({ ...params }) -> core.Page<Samsara.UserRole></code></summary>
 <dl>
 <dd>
 
@@ -7996,7 +7996,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.UserRolesListRequest`
+**request:** `Samsara.UserRolesListRequest`
 
 </dd>
 </dl>
@@ -8017,7 +8017,7 @@ while (page.hasNextPage()) {
 
 ## Users
 
-<details><summary><code>client.users.<a href="/src/api/resources/users/client/Client.ts">list</a>({ ...params }) -> core.Page<SamsaraApi.User></code></summary>
+<details><summary><code>client.users.<a href="/src/api/resources/users/client/Client.ts">list</a>({ ...params }) -> core.Page<Samsara.User></code></summary>
 <dl>
 <dd>
 
@@ -8074,7 +8074,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.UsersListRequest`
+**request:** `Samsara.UsersListRequest`
 
 </dd>
 </dl>
@@ -8093,7 +8093,7 @@ while (page.hasNextPage()) {
 </dl>
 </details>
 
-<details><summary><code>client.users.<a href="/src/api/resources/users/client/Client.ts">create</a>({ ...params }) -> SamsaraApi.UserResponse</code></summary>
+<details><summary><code>client.users.<a href="/src/api/resources/users/client/Client.ts">create</a>({ ...params }) -> Samsara.UserResponse</code></summary>
 <dl>
 <dd>
 
@@ -8150,7 +8150,7 @@ await client.users.create({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.CreateUserRequest`
+**request:** `Samsara.CreateUserRequest`
 
 </dd>
 </dl>
@@ -8169,7 +8169,7 @@ await client.users.create({
 </dl>
 </details>
 
-<details><summary><code>client.users.<a href="/src/api/resources/users/client/Client.ts">get</a>(id) -> SamsaraApi.UserResponse</code></summary>
+<details><summary><code>client.users.<a href="/src/api/resources/users/client/Client.ts">get</a>(id) -> Samsara.UserResponse</code></summary>
 <dl>
 <dd>
 
@@ -8303,7 +8303,7 @@ await client.users.delete("id");
 </dl>
 </details>
 
-<details><summary><code>client.users.<a href="/src/api/resources/users/client/Client.ts">update</a>(id, { ...params }) -> SamsaraApi.UserResponse</code></summary>
+<details><summary><code>client.users.<a href="/src/api/resources/users/client/Client.ts">update</a>(id, { ...params }) -> Samsara.UserResponse</code></summary>
 <dl>
 <dd>
 
@@ -8359,7 +8359,7 @@ await client.users.update("id");
 <dl>
 <dd>
 
-**request:** `SamsaraApi.UpdateUserRequest`
+**request:** `Samsara.UpdateUserRequest`
 
 </dd>
 </dl>
@@ -8380,7 +8380,7 @@ await client.users.update("id");
 
 ## V1Messages
 
-<details><summary><code>client.v1Messages.<a href="/src/api/resources/v1Messages/client/Client.ts">list</a>({ ...params }) -> SamsaraApi.InlineResponse2005</code></summary>
+<details><summary><code>client.v1Messages.<a href="/src/api/resources/v1Messages/client/Client.ts">list</a>({ ...params }) -> Samsara.InlineResponse2005</code></summary>
 <dl>
 <dd>
 
@@ -8437,7 +8437,7 @@ await client.v1Messages.list();
 <dl>
 <dd>
 
-**request:** `SamsaraApi.V1MessagesListRequest`
+**request:** `Samsara.V1MessagesListRequest`
 
 </dd>
 </dl>
@@ -8456,7 +8456,7 @@ await client.v1Messages.list();
 </dl>
 </details>
 
-<details><summary><code>client.v1Messages.<a href="/src/api/resources/v1Messages/client/Client.ts">create</a>({ ...params }) -> SamsaraApi.InlineResponse2006</code></summary>
+<details><summary><code>client.v1Messages.<a href="/src/api/resources/v1Messages/client/Client.ts">create</a>({ ...params }) -> Samsara.InlineResponse2006</code></summary>
 <dl>
 <dd>
 
@@ -8514,7 +8514,7 @@ await client.v1Messages.create({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.InlineObject2`
+**request:** `Samsara.InlineObject2`
 
 </dd>
 </dl>
@@ -8535,7 +8535,7 @@ await client.v1Messages.create({
 
 ## Webhooks
 
-<details><summary><code>client.webhooks.<a href="/src/api/resources/webhooks/client/Client.ts">list</a>({ ...params }) -> core.Page<SamsaraApi.WebhookResponseResponseBody></code></summary>
+<details><summary><code>client.webhooks.<a href="/src/api/resources/webhooks/client/Client.ts">list</a>({ ...params }) -> core.Page<Samsara.WebhookResponseResponseBody></code></summary>
 <dl>
 <dd>
 
@@ -8594,7 +8594,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.WebhooksListRequest`
+**request:** `Samsara.WebhooksListRequest`
 
 </dd>
 </dl>
@@ -8613,7 +8613,7 @@ while (page.hasNextPage()) {
 </dl>
 </details>
 
-<details><summary><code>client.webhooks.<a href="/src/api/resources/webhooks/client/Client.ts">create</a>({ ...params }) -> SamsaraApi.WebhooksPostWebhooksResponseBody</code></summary>
+<details><summary><code>client.webhooks.<a href="/src/api/resources/webhooks/client/Client.ts">create</a>({ ...params }) -> Samsara.WebhooksPostWebhooksResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -8666,7 +8666,7 @@ await client.webhooks.create({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.WebhooksPostWebhooksRequestBody`
+**request:** `Samsara.WebhooksPostWebhooksRequestBody`
 
 </dd>
 </dl>
@@ -8685,7 +8685,7 @@ await client.webhooks.create({
 </dl>
 </details>
 
-<details><summary><code>client.webhooks.<a href="/src/api/resources/webhooks/client/Client.ts">get</a>(id) -> SamsaraApi.WebhooksGetWebhookResponseBody</code></summary>
+<details><summary><code>client.webhooks.<a href="/src/api/resources/webhooks/client/Client.ts">get</a>(id) -> Samsara.WebhooksGetWebhookResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -8823,7 +8823,7 @@ await client.webhooks.delete("id");
 </dl>
 </details>
 
-<details><summary><code>client.webhooks.<a href="/src/api/resources/webhooks/client/Client.ts">patch</a>(id, { ...params }) -> SamsaraApi.WebhooksPatchWebhookResponseBody</code></summary>
+<details><summary><code>client.webhooks.<a href="/src/api/resources/webhooks/client/Client.ts">patch</a>(id, { ...params }) -> Samsara.WebhooksPatchWebhookResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -8883,7 +8883,7 @@ await client.webhooks.patch("id");
 <dl>
 <dd>
 
-**request:** `SamsaraApi.WebhooksPatchWebhookRequestBody`
+**request:** `Samsara.WebhooksPatchWebhookRequestBody`
 
 </dd>
 </dl>
@@ -8904,7 +8904,7 @@ await client.webhooks.patch("id");
 
 ## Alerts Configurations
 
-<details><summary><code>client.alerts.configurations.<a href="/src/api/resources/alerts/resources/configurations/client/Client.ts">list</a>({ ...params }) -> core.Page<SamsaraApi.GetResponseWorkflowConfigurationObjectResponseBody></code></summary>
+<details><summary><code>client.alerts.configurations.<a href="/src/api/resources/alerts/resources/configurations/client/Client.ts">list</a>({ ...params }) -> core.Page<Samsara.GetResponseWorkflowConfigurationObjectResponseBody></code></summary>
 <dl>
 <dd>
 
@@ -9008,7 +9008,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.alerts.ConfigurationsListRequest`
+**request:** `Samsara.alerts.ConfigurationsListRequest`
 
 </dd>
 </dl>
@@ -9027,7 +9027,7 @@ while (page.hasNextPage()) {
 </dl>
 </details>
 
-<details><summary><code>client.alerts.configurations.<a href="/src/api/resources/alerts/resources/configurations/client/Client.ts">create</a>({ ...params }) -> SamsaraApi.AlertsPostConfigurationsResponseBody</code></summary>
+<details><summary><code>client.alerts.configurations.<a href="/src/api/resources/alerts/resources/configurations/client/Client.ts">create</a>({ ...params }) -> Samsara.AlertsPostConfigurationsResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -9093,7 +9093,7 @@ await client.alerts.configurations.create({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.alerts.AlertsPostConfigurationsRequestBody`
+**request:** `Samsara.alerts.AlertsPostConfigurationsRequestBody`
 
 </dd>
 </dl>
@@ -9164,7 +9164,7 @@ await client.alerts.configurations.delete({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.alerts.ConfigurationsDeleteRequest`
+**request:** `Samsara.alerts.ConfigurationsDeleteRequest`
 
 </dd>
 </dl>
@@ -9183,7 +9183,7 @@ await client.alerts.configurations.delete({
 </dl>
 </details>
 
-<details><summary><code>client.alerts.configurations.<a href="/src/api/resources/alerts/resources/configurations/client/Client.ts">update</a>({ ...params }) -> SamsaraApi.AlertsPatchConfigurationsResponseBody</code></summary>
+<details><summary><code>client.alerts.configurations.<a href="/src/api/resources/alerts/resources/configurations/client/Client.ts">update</a>({ ...params }) -> Samsara.AlertsPatchConfigurationsResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -9235,7 +9235,7 @@ await client.alerts.configurations.update({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.alerts.AlertsPatchConfigurationsRequestBody`
+**request:** `Samsara.alerts.AlertsPatchConfigurationsRequestBody`
 
 </dd>
 </dl>
@@ -9256,7 +9256,7 @@ await client.alerts.configurations.update({
 
 ## Alerts Incidents
 
-<details><summary><code>client.alerts.incidents.<a href="/src/api/resources/alerts/resources/incidents/client/Client.ts">stream</a>({ ...params }) -> core.Page<SamsaraApi.GetWorkflowIncidentResponseObjectResponseBody></code></summary>
+<details><summary><code>client.alerts.incidents.<a href="/src/api/resources/alerts/resources/incidents/client/Client.ts">stream</a>({ ...params }) -> core.Page<Samsara.GetWorkflowIncidentResponseObjectResponseBody></code></summary>
 <dl>
 <dd>
 
@@ -9319,7 +9319,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.alerts.IncidentsStreamRequest`
+**request:** `Samsara.alerts.IncidentsStreamRequest`
 
 </dd>
 </dl>
@@ -9340,7 +9340,7 @@ while (page.hasNextPage()) {
 
 ## Assets LocationAndSpeed
 
-<details><summary><code>client.assets.locationAndSpeed.<a href="/src/api/resources/assets/resources/locationAndSpeed/client/Client.ts">stream</a>({ ...params }) -> core.Page<SamsaraApi.LocationAndSpeedResponseResponseBody></code></summary>
+<details><summary><code>client.assets.locationAndSpeed.<a href="/src/api/resources/assets/resources/locationAndSpeed/client/Client.ts">stream</a>({ ...params }) -> core.Page<Samsara.LocationAndSpeedResponseResponseBody></code></summary>
 <dl>
 <dd>
 
@@ -9399,7 +9399,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.assets.LocationAndSpeedStreamRequest`
+**request:** `Samsara.assets.LocationAndSpeedStreamRequest`
 
 </dd>
 </dl>
@@ -9420,7 +9420,7 @@ while (page.hasNextPage()) {
 
 ## Auth Tokens
 
-<details><summary><code>client.auth.tokens.<a href="/src/api/resources/auth/resources/tokens/client/Client.ts">create</a>({ ...params }) -> SamsaraApi.CreateTokensResponse</code></summary>
+<details><summary><code>client.auth.tokens.<a href="/src/api/resources/auth/resources/tokens/client/Client.ts">create</a>({ ...params }) -> Samsara.CreateTokensResponse</code></summary>
 <dl>
 <dd>
 
@@ -9464,7 +9464,7 @@ await client.auth.tokens.create({});
 <dl>
 <dd>
 
-**request:** `SamsaraApi.auth.TokensCreateRequest`
+**request:** `Samsara.auth.TokensCreateRequest`
 
 </dd>
 </dl>
@@ -9483,7 +9483,7 @@ await client.auth.tokens.create({});
 </dl>
 </details>
 
-<details><summary><code>client.auth.tokens.<a href="/src/api/resources/auth/resources/tokens/client/Client.ts">revoke</a>({ ...params }) -> SamsaraApi.CreateTokensResponse</code></summary>
+<details><summary><code>client.auth.tokens.<a href="/src/api/resources/auth/resources/tokens/client/Client.ts">revoke</a>({ ...params }) -> Samsara.CreateTokensResponse</code></summary>
 <dl>
 <dd>
 
@@ -9529,7 +9529,7 @@ await client.auth.tokens.revoke({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.auth.TokensRevokeRequest`
+**request:** `Samsara.auth.TokensRevokeRequest`
 
 </dd>
 </dl>
@@ -9550,7 +9550,7 @@ await client.auth.tokens.revoke({
 
 ## Cameras Media
 
-<details><summary><code>client.cameras.media.<a href="/src/api/resources/cameras/resources/media/client/Client.ts">list</a>({ ...params }) -> SamsaraApi.MediaRetrievalListUploadedMediaResponseBody</code></summary>
+<details><summary><code>client.cameras.media.<a href="/src/api/resources/cameras/resources/media/client/Client.ts">list</a>({ ...params }) -> Samsara.MediaRetrievalListUploadedMediaResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -9604,7 +9604,7 @@ await client.cameras.media.list({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.cameras.MediaListRequest`
+**request:** `Samsara.cameras.MediaListRequest`
 
 </dd>
 </dl>
@@ -9625,7 +9625,7 @@ await client.cameras.media.list({
 
 ## Cameras Media Retrieval
 
-<details><summary><code>client.cameras.media.retrieval.<a href="/src/api/resources/cameras/resources/media/resources/retrieval/client/Client.ts">get</a>({ ...params }) -> SamsaraApi.MediaRetrievalGetMediaRetrievalResponseBody</code></summary>
+<details><summary><code>client.cameras.media.retrieval.<a href="/src/api/resources/cameras/resources/media/resources/retrieval/client/Client.ts">get</a>({ ...params }) -> Samsara.MediaRetrievalGetMediaRetrievalResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -9677,7 +9677,7 @@ await client.cameras.media.retrieval.get({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.cameras.media.RetrievalGetRequest`
+**request:** `Samsara.cameras.media.RetrievalGetRequest`
 
 </dd>
 </dl>
@@ -9696,7 +9696,7 @@ await client.cameras.media.retrieval.get({
 </dl>
 </details>
 
-<details><summary><code>client.cameras.media.retrieval.<a href="/src/api/resources/cameras/resources/media/resources/retrieval/client/Client.ts">create</a>({ ...params }) -> SamsaraApi.MediaRetrievalPostMediaRetrievalResponseBody</code></summary>
+<details><summary><code>client.cameras.media.retrieval.<a href="/src/api/resources/cameras/resources/media/resources/retrieval/client/Client.ts">create</a>({ ...params }) -> Samsara.MediaRetrievalPostMediaRetrievalResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -9752,7 +9752,7 @@ await client.cameras.media.retrieval.create({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.cameras.media.MediaRetrievalPostMediaRetrievalRequestBody`
+**request:** `Samsara.cameras.media.MediaRetrievalPostMediaRetrievalRequestBody`
 
 </dd>
 </dl>
@@ -9773,7 +9773,7 @@ await client.cameras.media.retrieval.create({
 
 ## Coaching DriverCoachAssignments
 
-<details><summary><code>client.coaching.driverCoachAssignments.<a href="/src/api/resources/coaching/resources/driverCoachAssignments/client/Client.ts">list</a>({ ...params }) -> core.Page<SamsaraApi.CoachAssignmentWithDriverExternalIdsResponseResponseBody></code></summary>
+<details><summary><code>client.coaching.driverCoachAssignments.<a href="/src/api/resources/coaching/resources/driverCoachAssignments/client/Client.ts">list</a>({ ...params }) -> core.Page<Samsara.CoachAssignmentWithDriverExternalIdsResponseResponseBody></code></summary>
 <dl>
 <dd>
 
@@ -9832,7 +9832,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.coaching.DriverCoachAssignmentsListRequest`
+**request:** `Samsara.coaching.DriverCoachAssignmentsListRequest`
 
 </dd>
 </dl>
@@ -9851,7 +9851,7 @@ while (page.hasNextPage()) {
 </dl>
 </details>
 
-<details><summary><code>client.coaching.driverCoachAssignments.<a href="/src/api/resources/coaching/resources/driverCoachAssignments/client/Client.ts">update</a>({ ...params }) -> SamsaraApi.DriverCoachAssignmentsPutDriverCoachAssignmentResponseBody</code></summary>
+<details><summary><code>client.coaching.driverCoachAssignments.<a href="/src/api/resources/coaching/resources/driverCoachAssignments/client/Client.ts">update</a>({ ...params }) -> Samsara.DriverCoachAssignmentsPutDriverCoachAssignmentResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -9903,7 +9903,7 @@ await client.coaching.driverCoachAssignments.update({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.coaching.DriverCoachAssignmentsUpdateRequest`
+**request:** `Samsara.coaching.DriverCoachAssignmentsUpdateRequest`
 
 </dd>
 </dl>
@@ -9924,7 +9924,7 @@ await client.coaching.driverCoachAssignments.update({
 
 ## Coaching Sessions
 
-<details><summary><code>client.coaching.sessions.<a href="/src/api/resources/coaching/resources/sessions/client/Client.ts">stream</a>({ ...params }) -> core.Page<SamsaraApi.CoachingSessionsResponseResponseBody></code></summary>
+<details><summary><code>client.coaching.sessions.<a href="/src/api/resources/coaching/resources/sessions/client/Client.ts">stream</a>({ ...params }) -> core.Page<Samsara.CoachingSessionsResponseResponseBody></code></summary>
 <dl>
 <dd>
 
@@ -9987,7 +9987,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.coaching.SessionsStreamRequest`
+**request:** `Samsara.coaching.SessionsStreamRequest`
 
 </dd>
 </dl>
@@ -10008,7 +10008,7 @@ while (page.hasNextPage()) {
 
 ## Documents Pdfs
 
-<details><summary><code>client.documents.pdfs.<a href="/src/api/resources/documents/resources/pdfs/client/Client.ts">create</a>({ ...params }) -> SamsaraApi.DocumentPdfGenerationResponse</code></summary>
+<details><summary><code>client.documents.pdfs.<a href="/src/api/resources/documents/resources/pdfs/client/Client.ts">create</a>({ ...params }) -> Samsara.DocumentPdfGenerationResponse</code></summary>
 <dl>
 <dd>
 
@@ -10058,7 +10058,7 @@ await client.documents.pdfs.create({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.documents.DocumentPdfGenerationRequest`
+**request:** `Samsara.documents.DocumentPdfGenerationRequest`
 
 </dd>
 </dl>
@@ -10077,7 +10077,7 @@ await client.documents.pdfs.create({
 </dl>
 </details>
 
-<details><summary><code>client.documents.pdfs.<a href="/src/api/resources/documents/resources/pdfs/client/Client.ts">get</a>(id) -> SamsaraApi.DocumentPdfQueryResponse</code></summary>
+<details><summary><code>client.documents.pdfs.<a href="/src/api/resources/documents/resources/pdfs/client/Client.ts">get</a>(id) -> Samsara.DocumentPdfQueryResponse</code></summary>
 <dl>
 <dd>
 
@@ -10146,7 +10146,7 @@ await client.documents.pdfs.get("id");
 
 ## Drivers QrCodes
 
-<details><summary><code>client.drivers.qrCodes.<a href="/src/api/resources/drivers/resources/qrCodes/client/Client.ts">list</a>({ ...params }) -> SamsaraApi.DriverQrCodesGetDriversQrCodesResponseBody</code></summary>
+<details><summary><code>client.drivers.qrCodes.<a href="/src/api/resources/drivers/resources/qrCodes/client/Client.ts">list</a>({ ...params }) -> Samsara.DriverQrCodesGetDriversQrCodesResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -10196,7 +10196,7 @@ await client.drivers.qrCodes.list();
 <dl>
 <dd>
 
-**request:** `SamsaraApi.drivers.QrCodesListRequest`
+**request:** `Samsara.drivers.QrCodesListRequest`
 
 </dd>
 </dl>
@@ -10215,7 +10215,7 @@ await client.drivers.qrCodes.list();
 </dl>
 </details>
 
-<details><summary><code>client.drivers.qrCodes.<a href="/src/api/resources/drivers/resources/qrCodes/client/Client.ts">create</a>({ ...params }) -> SamsaraApi.DriverQrCodesCreateDriverQrCodeResponseBody</code></summary>
+<details><summary><code>client.drivers.qrCodes.<a href="/src/api/resources/drivers/resources/qrCodes/client/Client.ts">create</a>({ ...params }) -> Samsara.DriverQrCodesCreateDriverQrCodeResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -10267,7 +10267,7 @@ await client.drivers.qrCodes.create({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.drivers.DriverQrCodesCreateDriverQrCodeRequestBody`
+**request:** `Samsara.drivers.DriverQrCodesCreateDriverQrCodeRequestBody`
 
 </dd>
 </dl>
@@ -10338,7 +10338,7 @@ await client.drivers.qrCodes.delete({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.drivers.DriverQrCodesDeleteDriverQrCodeRequestBody`
+**request:** `Samsara.drivers.DriverQrCodesDeleteDriverQrCodeRequestBody`
 
 </dd>
 </dl>
@@ -10359,7 +10359,7 @@ await client.drivers.qrCodes.delete({
 
 ## Drivers VehicleAssignments
 
-<details><summary><code>client.drivers.vehicleAssignments.<a href="/src/api/resources/drivers/resources/vehicleAssignments/client/Client.ts">list</a>({ ...params }) -> SamsaraApi.DriversVehicleAssignmentsGetDriversVehicleAssignmentsResponseBody</code></summary>
+<details><summary><code>client.drivers.vehicleAssignments.<a href="/src/api/resources/drivers/resources/vehicleAssignments/client/Client.ts">list</a>({ ...params }) -> Samsara.DriversVehicleAssignmentsGetDriversVehicleAssignmentsResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -10409,7 +10409,7 @@ await client.drivers.vehicleAssignments.list();
 <dl>
 <dd>
 
-**request:** `SamsaraApi.drivers.VehicleAssignmentsListRequest`
+**request:** `Samsara.drivers.VehicleAssignmentsListRequest`
 
 </dd>
 </dl>
@@ -10430,7 +10430,7 @@ await client.drivers.vehicleAssignments.list();
 
 ## Equipment Locations
 
-<details><summary><code>client.equipment.locations.<a href="/src/api/resources/equipment/resources/locations/client/Client.ts">list</a>({ ...params }) -> core.Page<SamsaraApi.EquipmentLocationsResponseData></code></summary>
+<details><summary><code>client.equipment.locations.<a href="/src/api/resources/equipment/resources/locations/client/Client.ts">list</a>({ ...params }) -> core.Page<Samsara.EquipmentLocationsResponseData></code></summary>
 <dl>
 <dd>
 
@@ -10487,7 +10487,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.equipment.LocationsListRequest`
+**request:** `Samsara.equipment.LocationsListRequest`
 
 </dd>
 </dl>
@@ -10506,7 +10506,7 @@ while (page.hasNextPage()) {
 </dl>
 </details>
 
-<details><summary><code>client.equipment.locations.<a href="/src/api/resources/equipment/resources/locations/client/Client.ts">feed</a>({ ...params }) -> core.Page<SamsaraApi.EquipmentLocationsListResponseData></code></summary>
+<details><summary><code>client.equipment.locations.<a href="/src/api/resources/equipment/resources/locations/client/Client.ts">feed</a>({ ...params }) -> core.Page<Samsara.EquipmentLocationsListResponseData></code></summary>
 <dl>
 <dd>
 
@@ -10569,7 +10569,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.equipment.LocationsFeedRequest`
+**request:** `Samsara.equipment.LocationsFeedRequest`
 
 </dd>
 </dl>
@@ -10588,7 +10588,7 @@ while (page.hasNextPage()) {
 </dl>
 </details>
 
-<details><summary><code>client.equipment.locations.<a href="/src/api/resources/equipment/resources/locations/client/Client.ts">history</a>({ ...params }) -> core.Page<SamsaraApi.EquipmentLocationsListResponseData></code></summary>
+<details><summary><code>client.equipment.locations.<a href="/src/api/resources/equipment/resources/locations/client/Client.ts">history</a>({ ...params }) -> core.Page<Samsara.EquipmentLocationsListResponseData></code></summary>
 <dl>
 <dd>
 
@@ -10651,7 +10651,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.equipment.LocationsHistoryRequest`
+**request:** `Samsara.equipment.LocationsHistoryRequest`
 
 </dd>
 </dl>
@@ -10672,7 +10672,7 @@ while (page.hasNextPage()) {
 
 ## Equipment Stats
 
-<details><summary><code>client.equipment.stats.<a href="/src/api/resources/equipment/resources/stats/client/Client.ts">list</a>({ ...params }) -> core.Page<SamsaraApi.EquipmentStatsResponseData></code></summary>
+<details><summary><code>client.equipment.stats.<a href="/src/api/resources/equipment/resources/stats/client/Client.ts">list</a>({ ...params }) -> core.Page<Samsara.EquipmentStatsResponseData></code></summary>
 <dl>
 <dd>
 
@@ -10731,7 +10731,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.equipment.StatsListRequest`
+**request:** `Samsara.equipment.StatsListRequest`
 
 </dd>
 </dl>
@@ -10750,7 +10750,7 @@ while (page.hasNextPage()) {
 </dl>
 </details>
 
-<details><summary><code>client.equipment.stats.<a href="/src/api/resources/equipment/resources/stats/client/Client.ts">feed</a>({ ...params }) -> core.Page<SamsaraApi.EquipmentStatsListResponseData></code></summary>
+<details><summary><code>client.equipment.stats.<a href="/src/api/resources/equipment/resources/stats/client/Client.ts">feed</a>({ ...params }) -> core.Page<Samsara.EquipmentStatsListResponseData></code></summary>
 <dl>
 <dd>
 
@@ -10815,7 +10815,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.equipment.StatsFeedRequest`
+**request:** `Samsara.equipment.StatsFeedRequest`
 
 </dd>
 </dl>
@@ -10834,7 +10834,7 @@ while (page.hasNextPage()) {
 </dl>
 </details>
 
-<details><summary><code>client.equipment.stats.<a href="/src/api/resources/equipment/resources/stats/client/Client.ts">history</a>({ ...params }) -> core.Page<SamsaraApi.EquipmentStatsListResponseData></code></summary>
+<details><summary><code>client.equipment.stats.<a href="/src/api/resources/equipment/resources/stats/client/Client.ts">history</a>({ ...params }) -> core.Page<Samsara.EquipmentStatsListResponseData></code></summary>
 <dl>
 <dd>
 
@@ -10899,7 +10899,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.equipment.StatsHistoryRequest`
+**request:** `Samsara.equipment.StatsHistoryRequest`
 
 </dd>
 </dl>
@@ -10920,7 +10920,7 @@ while (page.hasNextPage()) {
 
 ## FormSubmissions PdfExports
 
-<details><summary><code>client.formSubmissions.pdfExports.<a href="/src/api/resources/formSubmissions/resources/pdfExports/client/Client.ts">get</a>({ ...params }) -> SamsaraApi.FormSubmissionsGetFormSubmissionsPdfExportsResponseBody</code></summary>
+<details><summary><code>client.formSubmissions.pdfExports.<a href="/src/api/resources/formSubmissions/resources/pdfExports/client/Client.ts">get</a>({ ...params }) -> Samsara.FormSubmissionsGetFormSubmissionsPdfExportsResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -10972,7 +10972,7 @@ await client.formSubmissions.pdfExports.get({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.formSubmissions.PdfExportsGetRequest`
+**request:** `Samsara.formSubmissions.PdfExportsGetRequest`
 
 </dd>
 </dl>
@@ -10991,7 +10991,7 @@ await client.formSubmissions.pdfExports.get({
 </dl>
 </details>
 
-<details><summary><code>client.formSubmissions.pdfExports.<a href="/src/api/resources/formSubmissions/resources/pdfExports/client/Client.ts">create</a>({ ...params }) -> SamsaraApi.FormSubmissionsPostFormSubmissionsPdfExportsResponseBody</code></summary>
+<details><summary><code>client.formSubmissions.pdfExports.<a href="/src/api/resources/formSubmissions/resources/pdfExports/client/Client.ts">create</a>({ ...params }) -> Samsara.FormSubmissionsPostFormSubmissionsPdfExportsResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -11043,7 +11043,7 @@ await client.formSubmissions.pdfExports.create({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.formSubmissions.PdfExportsCreateRequest`
+**request:** `Samsara.formSubmissions.PdfExportsCreateRequest`
 
 </dd>
 </dl>
@@ -11064,7 +11064,7 @@ await client.formSubmissions.pdfExports.create({
 
 ## Ifta Csv
 
-<details><summary><code>client.ifta.csv.<a href="/src/api/resources/ifta/resources/csv/client/Client.ts">create</a>({ ...params }) -> SamsaraApi.IftaCreateIftaDetailJobResponseBody</code></summary>
+<details><summary><code>client.ifta.csv.<a href="/src/api/resources/ifta/resources/csv/client/Client.ts">create</a>({ ...params }) -> Samsara.IftaCreateIftaDetailJobResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -11117,7 +11117,7 @@ await client.ifta.csv.create({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.ifta.IftaCreateIftaDetailJobRequestBody`
+**request:** `Samsara.ifta.IftaCreateIftaDetailJobRequestBody`
 
 </dd>
 </dl>
@@ -11136,7 +11136,7 @@ await client.ifta.csv.create({
 </dl>
 </details>
 
-<details><summary><code>client.ifta.csv.<a href="/src/api/resources/ifta/resources/csv/client/Client.ts">get</a>(id) -> SamsaraApi.IftaGetIftaDetailJobResponseBody</code></summary>
+<details><summary><code>client.ifta.csv.<a href="/src/api/resources/ifta/resources/csv/client/Client.ts">get</a>(id) -> Samsara.IftaGetIftaDetailJobResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -11207,7 +11207,7 @@ await client.ifta.csv.get("id");
 
 ## Maintenance ServiceTasks
 
-<details><summary><code>client.maintenance.serviceTasks.<a href="/src/api/resources/maintenance/resources/serviceTasks/client/Client.ts">list</a>({ ...params }) -> core.Page<SamsaraApi.ServiceTaskDefinitionObjectResponseBody></code></summary>
+<details><summary><code>client.maintenance.serviceTasks.<a href="/src/api/resources/maintenance/resources/serviceTasks/client/Client.ts">list</a>({ ...params }) -> core.Page<Samsara.ServiceTaskDefinitionObjectResponseBody></code></summary>
 <dl>
 <dd>
 
@@ -11266,7 +11266,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.maintenance.ServiceTasksListRequest`
+**request:** `Samsara.maintenance.ServiceTasksListRequest`
 
 </dd>
 </dl>
@@ -11407,7 +11407,7 @@ await client.maintenance.serviceTasks.update();
 
 ## Maintenance WorkOrders
 
-<details><summary><code>client.maintenance.workOrders.<a href="/src/api/resources/maintenance/resources/workOrders/client/Client.ts">list</a>({ ...params }) -> core.Page<SamsaraApi.WorkOrderObjectResponseBody></code></summary>
+<details><summary><code>client.maintenance.workOrders.<a href="/src/api/resources/maintenance/resources/workOrders/client/Client.ts">list</a>({ ...params }) -> core.Page<Samsara.WorkOrderObjectResponseBody></code></summary>
 <dl>
 <dd>
 
@@ -11466,7 +11466,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.maintenance.WorkOrdersListRequest`
+**request:** `Samsara.maintenance.WorkOrdersListRequest`
 
 </dd>
 </dl>
@@ -11485,7 +11485,7 @@ while (page.hasNextPage()) {
 </dl>
 </details>
 
-<details><summary><code>client.maintenance.workOrders.<a href="/src/api/resources/maintenance/resources/workOrders/client/Client.ts">create</a>({ ...params }) -> SamsaraApi.WorkOrdersPostWorkOrdersResponseBody</code></summary>
+<details><summary><code>client.maintenance.workOrders.<a href="/src/api/resources/maintenance/resources/workOrders/client/Client.ts">create</a>({ ...params }) -> Samsara.WorkOrdersPostWorkOrdersResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -11537,7 +11537,7 @@ await client.maintenance.workOrders.create({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.maintenance.WorkOrdersPostWorkOrdersRequestBody`
+**request:** `Samsara.maintenance.WorkOrdersPostWorkOrdersRequestBody`
 
 </dd>
 </dl>
@@ -11608,7 +11608,7 @@ await client.maintenance.workOrders.delete({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.maintenance.WorkOrdersDeleteRequest`
+**request:** `Samsara.maintenance.WorkOrdersDeleteRequest`
 
 </dd>
 </dl>
@@ -11627,7 +11627,7 @@ await client.maintenance.workOrders.delete({
 </dl>
 </details>
 
-<details><summary><code>client.maintenance.workOrders.<a href="/src/api/resources/maintenance/resources/workOrders/client/Client.ts">update</a>({ ...params }) -> SamsaraApi.WorkOrdersPatchWorkOrdersResponseBody</code></summary>
+<details><summary><code>client.maintenance.workOrders.<a href="/src/api/resources/maintenance/resources/workOrders/client/Client.ts">update</a>({ ...params }) -> Samsara.WorkOrdersPatchWorkOrdersResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -11679,7 +11679,7 @@ await client.maintenance.workOrders.update({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.maintenance.WorkOrdersPatchWorkOrdersRequestBody`
+**request:** `Samsara.maintenance.WorkOrdersPatchWorkOrdersRequestBody`
 
 </dd>
 </dl>
@@ -11698,7 +11698,7 @@ await client.maintenance.workOrders.update({
 </dl>
 </details>
 
-<details><summary><code>client.maintenance.workOrders.<a href="/src/api/resources/maintenance/resources/workOrders/client/Client.ts">stream</a>({ ...params }) -> core.Page<SamsaraApi.WorkOrderObjectResponseBody></code></summary>
+<details><summary><code>client.maintenance.workOrders.<a href="/src/api/resources/maintenance/resources/workOrders/client/Client.ts">stream</a>({ ...params }) -> core.Page<Samsara.WorkOrderObjectResponseBody></code></summary>
 <dl>
 <dd>
 
@@ -11761,7 +11761,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.maintenance.WorkOrdersStreamRequest`
+**request:** `Samsara.maintenance.WorkOrdersStreamRequest`
 
 </dd>
 </dl>
@@ -11782,7 +11782,7 @@ while (page.hasNextPage()) {
 
 ## Reports Drivers FuelEnergy
 
-<details><summary><code>client.reports.drivers.fuelEnergy.<a href="/src/api/resources/reports/resources/drivers/resources/fuelEnergy/client/Client.ts">list</a>({ ...params }) -> SamsaraApi.FuelEnergyGetFuelEnergyDriverReportsResponseBody</code></summary>
+<details><summary><code>client.reports.drivers.fuelEnergy.<a href="/src/api/resources/reports/resources/drivers/resources/fuelEnergy/client/Client.ts">list</a>({ ...params }) -> Samsara.FuelEnergyGetFuelEnergyDriverReportsResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -11835,7 +11835,7 @@ await client.reports.drivers.fuelEnergy.list({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.reports.drivers.FuelEnergyListRequest`
+**request:** `Samsara.reports.drivers.FuelEnergyListRequest`
 
 </dd>
 </dl>
@@ -11856,7 +11856,7 @@ await client.reports.drivers.fuelEnergy.list({
 
 ## Reports Ifta Jurisdiction
 
-<details><summary><code>client.reports.ifta.jurisdiction.<a href="/src/api/resources/reports/resources/ifta/resources/jurisdiction/client/Client.ts">get</a>({ ...params }) -> SamsaraApi.IftaGetIftaJurisdictionReportsResponseBody</code></summary>
+<details><summary><code>client.reports.ifta.jurisdiction.<a href="/src/api/resources/reports/resources/ifta/resources/jurisdiction/client/Client.ts">get</a>({ ...params }) -> Samsara.IftaGetIftaJurisdictionReportsResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -11910,7 +11910,7 @@ await client.reports.ifta.jurisdiction.get({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.reports.ifta.JurisdictionGetRequest`
+**request:** `Samsara.reports.ifta.JurisdictionGetRequest`
 
 </dd>
 </dl>
@@ -11931,7 +11931,7 @@ await client.reports.ifta.jurisdiction.get({
 
 ## Reports Ifta Vehicle
 
-<details><summary><code>client.reports.ifta.vehicle.<a href="/src/api/resources/reports/resources/ifta/resources/vehicle/client/Client.ts">list</a>({ ...params }) -> SamsaraApi.IftaGetIftaVehicleReportsResponseBody</code></summary>
+<details><summary><code>client.reports.ifta.vehicle.<a href="/src/api/resources/reports/resources/ifta/resources/vehicle/client/Client.ts">list</a>({ ...params }) -> Samsara.IftaGetIftaVehicleReportsResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -11985,7 +11985,7 @@ await client.reports.ifta.vehicle.list({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.reports.ifta.VehicleListRequest`
+**request:** `Samsara.reports.ifta.VehicleListRequest`
 
 </dd>
 </dl>
@@ -12006,7 +12006,7 @@ await client.reports.ifta.vehicle.list({
 
 ## Reports Vehicles Idling
 
-<details><summary><code>client.reports.vehicles.idling.<a href="/src/api/resources/reports/resources/vehicles/resources/idling/client/Client.ts">list</a>({ ...params }) -> core.Page<SamsaraApi.IdlingReportEventResponseBody></code></summary>
+<details><summary><code>client.reports.vehicles.idling.<a href="/src/api/resources/reports/resources/vehicles/resources/idling/client/Client.ts">list</a>({ ...params }) -> core.Page<Samsara.IdlingReportEventResponseBody></code></summary>
 <dl>
 <dd>
 
@@ -12073,7 +12073,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.reports.vehicles.IdlingListRequest`
+**request:** `Samsara.reports.vehicles.IdlingListRequest`
 
 </dd>
 </dl>
@@ -12094,7 +12094,7 @@ while (page.hasNextPage()) {
 
 ## Reports Vehicles FuelEnergy
 
-<details><summary><code>client.reports.vehicles.fuelEnergy.<a href="/src/api/resources/reports/resources/vehicles/resources/fuelEnergy/client/Client.ts">list</a>({ ...params }) -> SamsaraApi.FuelEnergyGetFuelEnergyVehicleReportsResponseBody</code></summary>
+<details><summary><code>client.reports.vehicles.fuelEnergy.<a href="/src/api/resources/reports/resources/vehicles/resources/fuelEnergy/client/Client.ts">list</a>({ ...params }) -> Samsara.FuelEnergyGetFuelEnergyVehicleReportsResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -12147,7 +12147,7 @@ await client.reports.vehicles.fuelEnergy.list({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.reports.vehicles.FuelEnergyListRequest`
+**request:** `Samsara.reports.vehicles.FuelEnergyListRequest`
 
 </dd>
 </dl>
@@ -12168,7 +12168,7 @@ await client.reports.vehicles.fuelEnergy.list({
 
 ## Routes AuditLogs
 
-<details><summary><code>client.routes.auditLogs.<a href="/src/api/resources/routes/resources/auditLogs/client/Client.ts">feed</a>({ ...params }) -> SamsaraApi.RoutesGetRoutesFeedResponseBody</code></summary>
+<details><summary><code>client.routes.auditLogs.<a href="/src/api/resources/routes/resources/auditLogs/client/Client.ts">feed</a>({ ...params }) -> Samsara.RoutesGetRoutesFeedResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -12220,7 +12220,7 @@ await client.routes.auditLogs.feed();
 <dl>
 <dd>
 
-**request:** `SamsaraApi.routes.AuditLogsFeedRequest`
+**request:** `Samsara.routes.AuditLogsFeedRequest`
 
 </dd>
 </dl>
@@ -12241,7 +12241,7 @@ await client.routes.auditLogs.feed();
 
 ## SafetyEvents AuditLogs
 
-<details><summary><code>client.safetyEvents.auditLogs.<a href="/src/api/resources/safetyEvents/resources/auditLogs/client/Client.ts">feed</a>({ ...params }) -> core.Page<SamsaraApi.SafetyEventActivityFeedItemResponseBody></code></summary>
+<details><summary><code>client.safetyEvents.auditLogs.<a href="/src/api/resources/safetyEvents/resources/auditLogs/client/Client.ts">feed</a>({ ...params }) -> core.Page<Samsara.SafetyEventActivityFeedItemResponseBody></code></summary>
 <dl>
 <dd>
 
@@ -12306,7 +12306,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.safetyEvents.AuditLogsFeedRequest`
+**request:** `Samsara.safetyEvents.AuditLogsFeedRequest`
 
 </dd>
 </dl>
@@ -12327,7 +12327,7 @@ while (page.hasNextPage()) {
 
 ## Settings Compliance
 
-<details><summary><code>client.settings.compliance.<a href="/src/api/resources/settings/resources/compliance/client/Client.ts">get</a>() -> SamsaraApi.SettingsGetComplianceSettingsResponseBody</code></summary>
+<details><summary><code>client.settings.compliance.<a href="/src/api/resources/settings/resources/compliance/client/Client.ts">get</a>() -> Samsara.SettingsGetComplianceSettingsResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -12388,7 +12388,7 @@ await client.settings.compliance.get();
 </dl>
 </details>
 
-<details><summary><code>client.settings.compliance.<a href="/src/api/resources/settings/resources/compliance/client/Client.ts">update</a>({ ...params }) -> SamsaraApi.SettingsPatchComplianceSettingsResponseBody</code></summary>
+<details><summary><code>client.settings.compliance.<a href="/src/api/resources/settings/resources/compliance/client/Client.ts">update</a>({ ...params }) -> Samsara.SettingsPatchComplianceSettingsResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -12438,7 +12438,7 @@ await client.settings.compliance.update();
 <dl>
 <dd>
 
-**request:** `SamsaraApi.settings.SettingsPatchComplianceSettingsRequestBody`
+**request:** `Samsara.settings.SettingsPatchComplianceSettingsRequestBody`
 
 </dd>
 </dl>
@@ -12459,7 +12459,7 @@ await client.settings.compliance.update();
 
 ## Settings DriverApp
 
-<details><summary><code>client.settings.driverApp.<a href="/src/api/resources/settings/resources/driverApp/client/Client.ts">get</a>() -> SamsaraApi.SettingsGetDriverAppSettingsResponseBody</code></summary>
+<details><summary><code>client.settings.driverApp.<a href="/src/api/resources/settings/resources/driverApp/client/Client.ts">get</a>() -> Samsara.SettingsGetDriverAppSettingsResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -12520,7 +12520,7 @@ await client.settings.driverApp.get();
 </dl>
 </details>
 
-<details><summary><code>client.settings.driverApp.<a href="/src/api/resources/settings/resources/driverApp/client/Client.ts">update</a>({ ...params }) -> SamsaraApi.SettingsPatchDriverAppSettingsResponseBody</code></summary>
+<details><summary><code>client.settings.driverApp.<a href="/src/api/resources/settings/resources/driverApp/client/Client.ts">update</a>({ ...params }) -> Samsara.SettingsPatchDriverAppSettingsResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -12570,7 +12570,7 @@ await client.settings.driverApp.update();
 <dl>
 <dd>
 
-**request:** `SamsaraApi.settings.SettingsPatchDriverAppSettingsRequestBody`
+**request:** `Samsara.settings.SettingsPatchDriverAppSettingsRequestBody`
 
 </dd>
 </dl>
@@ -12591,7 +12591,7 @@ await client.settings.driverApp.update();
 
 ## Settings Safety
 
-<details><summary><code>client.settings.safety.<a href="/src/api/resources/settings/resources/safety/client/Client.ts">get</a>() -> SamsaraApi.SafetySettingsGetSafetySettingsResponseBody</code></summary>
+<details><summary><code>client.settings.safety.<a href="/src/api/resources/settings/resources/safety/client/Client.ts">get</a>() -> Samsara.SafetySettingsGetSafetySettingsResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -12654,7 +12654,7 @@ await client.settings.safety.get();
 
 ## Tachograph Driver
 
-<details><summary><code>client.tachograph.driver.<a href="/src/api/resources/tachograph/resources/driver/client/Client.ts">activity</a>({ ...params }) -> SamsaraApi.DriverTachographActivityResponse</code></summary>
+<details><summary><code>client.tachograph.driver.<a href="/src/api/resources/tachograph/resources/driver/client/Client.ts">activity</a>({ ...params }) -> Samsara.DriverTachographActivityResponse</code></summary>
 <dl>
 <dd>
 
@@ -12705,7 +12705,7 @@ await client.tachograph.driver.activity({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.tachograph.DriverActivityRequest`
+**request:** `Samsara.tachograph.DriverActivityRequest`
 
 </dd>
 </dl>
@@ -12724,7 +12724,7 @@ await client.tachograph.driver.activity({
 </dl>
 </details>
 
-<details><summary><code>client.tachograph.driver.<a href="/src/api/resources/tachograph/resources/driver/client/Client.ts">files</a>({ ...params }) -> SamsaraApi.TachographDriverFilesResponse</code></summary>
+<details><summary><code>client.tachograph.driver.<a href="/src/api/resources/tachograph/resources/driver/client/Client.ts">files</a>({ ...params }) -> Samsara.TachographDriverFilesResponse</code></summary>
 <dl>
 <dd>
 
@@ -12777,7 +12777,7 @@ await client.tachograph.driver.files({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.tachograph.DriverFilesRequest`
+**request:** `Samsara.tachograph.DriverFilesRequest`
 
 </dd>
 </dl>
@@ -12798,7 +12798,7 @@ await client.tachograph.driver.files({
 
 ## Tachograph Vehicles
 
-<details><summary><code>client.tachograph.vehicles.<a href="/src/api/resources/tachograph/resources/vehicles/client/Client.ts">files</a>({ ...params }) -> SamsaraApi.TachographVehicleFilesResponse</code></summary>
+<details><summary><code>client.tachograph.vehicles.<a href="/src/api/resources/tachograph/resources/vehicles/client/Client.ts">files</a>({ ...params }) -> Samsara.TachographVehicleFilesResponse</code></summary>
 <dl>
 <dd>
 
@@ -12851,7 +12851,7 @@ await client.tachograph.vehicles.files({
 <dl>
 <dd>
 
-**request:** `SamsaraApi.tachograph.VehiclesFilesRequest`
+**request:** `Samsara.tachograph.VehiclesFilesRequest`
 
 </dd>
 </dl>
@@ -12872,7 +12872,7 @@ await client.tachograph.vehicles.files({
 
 ## Vehicles Immobilizer
 
-<details><summary><code>client.vehicles.immobilizer.<a href="/src/api/resources/vehicles/resources/immobilizer/client/Client.ts">stream</a>({ ...params }) -> core.Page<SamsaraApi.EngineImmobilizerStateResponseBody></code></summary>
+<details><summary><code>client.vehicles.immobilizer.<a href="/src/api/resources/vehicles/resources/immobilizer/client/Client.ts">stream</a>({ ...params }) -> core.Page<Samsara.EngineImmobilizerStateResponseBody></code></summary>
 <dl>
 <dd>
 
@@ -12937,7 +12937,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.vehicles.ImmobilizerStreamRequest`
+**request:** `Samsara.vehicles.ImmobilizerStreamRequest`
 
 </dd>
 </dl>
@@ -12958,7 +12958,7 @@ while (page.hasNextPage()) {
 
 ## Vehicles Locations
 
-<details><summary><code>client.vehicles.locations.<a href="/src/api/resources/vehicles/resources/locations/client/Client.ts">list</a>({ ...params }) -> core.Page<SamsaraApi.VehicleLocationsResponseData></code></summary>
+<details><summary><code>client.vehicles.locations.<a href="/src/api/resources/vehicles/resources/locations/client/Client.ts">list</a>({ ...params }) -> core.Page<Samsara.VehicleLocationsResponseData></code></summary>
 <dl>
 <dd>
 
@@ -13019,7 +13019,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.vehicles.LocationsListRequest`
+**request:** `Samsara.vehicles.LocationsListRequest`
 
 </dd>
 </dl>
@@ -13038,7 +13038,7 @@ while (page.hasNextPage()) {
 </dl>
 </details>
 
-<details><summary><code>client.vehicles.locations.<a href="/src/api/resources/vehicles/resources/locations/client/Client.ts">feed</a>({ ...params }) -> core.Page<SamsaraApi.VehicleLocationsListResponseData></code></summary>
+<details><summary><code>client.vehicles.locations.<a href="/src/api/resources/vehicles/resources/locations/client/Client.ts">feed</a>({ ...params }) -> core.Page<Samsara.VehicleLocationsListResponseData></code></summary>
 <dl>
 <dd>
 
@@ -13105,7 +13105,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.vehicles.LocationsFeedRequest`
+**request:** `Samsara.vehicles.LocationsFeedRequest`
 
 </dd>
 </dl>
@@ -13124,7 +13124,7 @@ while (page.hasNextPage()) {
 </dl>
 </details>
 
-<details><summary><code>client.vehicles.locations.<a href="/src/api/resources/vehicles/resources/locations/client/Client.ts">history</a>({ ...params }) -> core.Page<SamsaraApi.VehicleLocationsListResponseData></code></summary>
+<details><summary><code>client.vehicles.locations.<a href="/src/api/resources/vehicles/resources/locations/client/Client.ts">history</a>({ ...params }) -> core.Page<Samsara.VehicleLocationsListResponseData></code></summary>
 <dl>
 <dd>
 
@@ -13191,7 +13191,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.vehicles.LocationsHistoryRequest`
+**request:** `Samsara.vehicles.LocationsHistoryRequest`
 
 </dd>
 </dl>
@@ -13212,7 +13212,7 @@ while (page.hasNextPage()) {
 
 ## Vehicles Stats
 
-<details><summary><code>client.vehicles.stats.<a href="/src/api/resources/vehicles/resources/stats/client/Client.ts">list</a>({ ...params }) -> core.Page<SamsaraApi.VehicleStatsResponseData></code></summary>
+<details><summary><code>client.vehicles.stats.<a href="/src/api/resources/vehicles/resources/stats/client/Client.ts">list</a>({ ...params }) -> core.Page<Samsara.VehicleStatsResponseData></code></summary>
 <dl>
 <dd>
 
@@ -13271,7 +13271,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.vehicles.StatsListRequest`
+**request:** `Samsara.vehicles.StatsListRequest`
 
 </dd>
 </dl>
@@ -13290,7 +13290,7 @@ while (page.hasNextPage()) {
 </dl>
 </details>
 
-<details><summary><code>client.vehicles.stats.<a href="/src/api/resources/vehicles/resources/stats/client/Client.ts">feed</a>({ ...params }) -> core.Page<SamsaraApi.VehicleStatsListResponseData></code></summary>
+<details><summary><code>client.vehicles.stats.<a href="/src/api/resources/vehicles/resources/stats/client/Client.ts">feed</a>({ ...params }) -> core.Page<Samsara.VehicleStatsListResponseData></code></summary>
 <dl>
 <dd>
 
@@ -13355,7 +13355,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.vehicles.StatsFeedRequest`
+**request:** `Samsara.vehicles.StatsFeedRequest`
 
 </dd>
 </dl>
@@ -13374,7 +13374,7 @@ while (page.hasNextPage()) {
 </dl>
 </details>
 
-<details><summary><code>client.vehicles.stats.<a href="/src/api/resources/vehicles/resources/stats/client/Client.ts">history</a>({ ...params }) -> core.Page<SamsaraApi.VehicleStatsListResponseData></code></summary>
+<details><summary><code>client.vehicles.stats.<a href="/src/api/resources/vehicles/resources/stats/client/Client.ts">history</a>({ ...params }) -> core.Page<Samsara.VehicleStatsListResponseData></code></summary>
 <dl>
 <dd>
 
@@ -13439,7 +13439,7 @@ while (page.hasNextPage()) {
 <dl>
 <dd>
 
-**request:** `SamsaraApi.vehicles.StatsHistoryRequest`
+**request:** `Samsara.vehicles.StatsHistoryRequest`
 
 </dd>
 </dl>

@@ -4,14 +4,14 @@
 
 import * as environments from "../../../../../../environments.js";
 import * as core from "../../../../../../core/index.js";
-import * as SamsaraApi from "../../../../../index.js";
+import * as Samsara from "../../../../../index.js";
 import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../../../core/headers.js";
 import urlJoin from "url-join";
 import * as errors from "../../../../../../errors/index.js";
 
 export declare namespace Locations {
     export interface Options {
-        environment?: core.Supplier<environments.SamsaraApiEnvironment | string>;
+        environment?: core.Supplier<environments.SamsaraEnvironment | string>;
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
@@ -49,20 +49,20 @@ export class Locations {
      *
      * To use this endpoint, select **Read Equipment Statistics** under the Equipment category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
-     * @param {SamsaraApi.equipment.LocationsListRequest} request
+     * @param {Samsara.equipment.LocationsListRequest} request
      * @param {Locations.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
      *     await client.equipment.locations.list()
      */
     public async list(
-        request: SamsaraApi.equipment.LocationsListRequest = {},
+        request: Samsara.equipment.LocationsListRequest = {},
         requestOptions?: Locations.RequestOptions,
-    ): Promise<core.Page<SamsaraApi.EquipmentLocationsResponseData>> {
+    ): Promise<core.Page<Samsara.EquipmentLocationsResponseData>> {
         const list = core.HttpResponsePromise.interceptFunction(
             async (
-                request: SamsaraApi.equipment.LocationsListRequest,
-            ): Promise<core.WithRawResponse<SamsaraApi.EquipmentLocationsResponse>> => {
+                request: Samsara.equipment.LocationsListRequest,
+            ): Promise<core.WithRawResponse<Samsara.EquipmentLocationsResponse>> => {
                 const { after, parentTagIds, tagIds, equipmentIds } = request;
                 const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
                 if (after != null) {
@@ -93,7 +93,7 @@ export class Locations {
                     url: urlJoin(
                         (await core.Supplier.get(this._options.baseUrl)) ??
                             (await core.Supplier.get(this._options.environment)) ??
-                            environments.SamsaraApiEnvironment.ProductionApi,
+                            environments.SamsaraEnvironment.ProductionApi,
                         "fleet/equipment/locations",
                     ),
                     method: "GET",
@@ -113,12 +113,12 @@ export class Locations {
                 });
                 if (_response.ok) {
                     return {
-                        data: _response.body as SamsaraApi.EquipmentLocationsResponse,
+                        data: _response.body as Samsara.EquipmentLocationsResponse,
                         rawResponse: _response.rawResponse,
                     };
                 }
                 if (_response.error.reason === "status-code") {
-                    throw new errors.SamsaraApiError({
+                    throw new errors.SamsaraError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                         rawResponse: _response.rawResponse,
@@ -126,17 +126,17 @@ export class Locations {
                 }
                 switch (_response.error.reason) {
                     case "non-json":
-                        throw new errors.SamsaraApiError({
+                        throw new errors.SamsaraError({
                             statusCode: _response.error.statusCode,
                             body: _response.error.rawBody,
                             rawResponse: _response.rawResponse,
                         });
                     case "timeout":
-                        throw new errors.SamsaraApiTimeoutError(
+                        throw new errors.SamsaraTimeoutError(
                             "Timeout exceeded when calling GET /fleet/equipment/locations.",
                         );
                     case "unknown":
-                        throw new errors.SamsaraApiError({
+                        throw new errors.SamsaraError({
                             message: _response.error.errorMessage,
                             rawResponse: _response.rawResponse,
                         });
@@ -144,7 +144,7 @@ export class Locations {
             },
         );
         const dataWithRawResponse = await list(request).withRawResponse();
-        return new core.Pageable<SamsaraApi.EquipmentLocationsResponse, SamsaraApi.EquipmentLocationsResponseData>({
+        return new core.Pageable<Samsara.EquipmentLocationsResponse, Samsara.EquipmentLocationsResponseData>({
             response: dataWithRawResponse.data,
             rawResponse: dataWithRawResponse.rawResponse,
             hasNextPage: (response) => response?.pagination?.endCursor != null,
@@ -168,20 +168,20 @@ export class Locations {
      *
      * To use this endpoint, select **Read Equipment Statistics** under the Equipment category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
-     * @param {SamsaraApi.equipment.LocationsFeedRequest} request
+     * @param {Samsara.equipment.LocationsFeedRequest} request
      * @param {Locations.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
      *     await client.equipment.locations.feed()
      */
     public async feed(
-        request: SamsaraApi.equipment.LocationsFeedRequest = {},
+        request: Samsara.equipment.LocationsFeedRequest = {},
         requestOptions?: Locations.RequestOptions,
-    ): Promise<core.Page<SamsaraApi.EquipmentLocationsListResponseData>> {
+    ): Promise<core.Page<Samsara.EquipmentLocationsListResponseData>> {
         const list = core.HttpResponsePromise.interceptFunction(
             async (
-                request: SamsaraApi.equipment.LocationsFeedRequest,
-            ): Promise<core.WithRawResponse<SamsaraApi.EquipmentLocationsListResponse>> => {
+                request: Samsara.equipment.LocationsFeedRequest,
+            ): Promise<core.WithRawResponse<Samsara.EquipmentLocationsListResponse>> => {
                 const { after, parentTagIds, tagIds, equipmentIds } = request;
                 const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
                 if (after != null) {
@@ -212,7 +212,7 @@ export class Locations {
                     url: urlJoin(
                         (await core.Supplier.get(this._options.baseUrl)) ??
                             (await core.Supplier.get(this._options.environment)) ??
-                            environments.SamsaraApiEnvironment.ProductionApi,
+                            environments.SamsaraEnvironment.ProductionApi,
                         "fleet/equipment/locations/feed",
                     ),
                     method: "GET",
@@ -232,12 +232,12 @@ export class Locations {
                 });
                 if (_response.ok) {
                     return {
-                        data: _response.body as SamsaraApi.EquipmentLocationsListResponse,
+                        data: _response.body as Samsara.EquipmentLocationsListResponse,
                         rawResponse: _response.rawResponse,
                     };
                 }
                 if (_response.error.reason === "status-code") {
-                    throw new errors.SamsaraApiError({
+                    throw new errors.SamsaraError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                         rawResponse: _response.rawResponse,
@@ -245,17 +245,17 @@ export class Locations {
                 }
                 switch (_response.error.reason) {
                     case "non-json":
-                        throw new errors.SamsaraApiError({
+                        throw new errors.SamsaraError({
                             statusCode: _response.error.statusCode,
                             body: _response.error.rawBody,
                             rawResponse: _response.rawResponse,
                         });
                     case "timeout":
-                        throw new errors.SamsaraApiTimeoutError(
+                        throw new errors.SamsaraTimeoutError(
                             "Timeout exceeded when calling GET /fleet/equipment/locations/feed.",
                         );
                     case "unknown":
-                        throw new errors.SamsaraApiError({
+                        throw new errors.SamsaraError({
                             message: _response.error.errorMessage,
                             rawResponse: _response.rawResponse,
                         });
@@ -263,10 +263,7 @@ export class Locations {
             },
         );
         const dataWithRawResponse = await list(request).withRawResponse();
-        return new core.Pageable<
-            SamsaraApi.EquipmentLocationsListResponse,
-            SamsaraApi.EquipmentLocationsListResponseData
-        >({
+        return new core.Pageable<Samsara.EquipmentLocationsListResponse, Samsara.EquipmentLocationsListResponseData>({
             response: dataWithRawResponse.data,
             rawResponse: dataWithRawResponse.rawResponse,
             hasNextPage: (response) => response?.pagination?.endCursor != null,
@@ -284,7 +281,7 @@ export class Locations {
      *
      * To use this endpoint, select **Read Equipment Statistics** under the Equipment category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
-     * @param {SamsaraApi.equipment.LocationsHistoryRequest} request
+     * @param {Samsara.equipment.LocationsHistoryRequest} request
      * @param {Locations.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -294,13 +291,13 @@ export class Locations {
      *     })
      */
     public async history(
-        request: SamsaraApi.equipment.LocationsHistoryRequest,
+        request: Samsara.equipment.LocationsHistoryRequest,
         requestOptions?: Locations.RequestOptions,
-    ): Promise<core.Page<SamsaraApi.EquipmentLocationsListResponseData>> {
+    ): Promise<core.Page<Samsara.EquipmentLocationsListResponseData>> {
         const list = core.HttpResponsePromise.interceptFunction(
             async (
-                request: SamsaraApi.equipment.LocationsHistoryRequest,
-            ): Promise<core.WithRawResponse<SamsaraApi.EquipmentLocationsListResponse>> => {
+                request: Samsara.equipment.LocationsHistoryRequest,
+            ): Promise<core.WithRawResponse<Samsara.EquipmentLocationsListResponse>> => {
                 const { after, startTime, endTime, parentTagIds, tagIds, equipmentIds } = request;
                 const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
                 if (after != null) {
@@ -333,7 +330,7 @@ export class Locations {
                     url: urlJoin(
                         (await core.Supplier.get(this._options.baseUrl)) ??
                             (await core.Supplier.get(this._options.environment)) ??
-                            environments.SamsaraApiEnvironment.ProductionApi,
+                            environments.SamsaraEnvironment.ProductionApi,
                         "fleet/equipment/locations/history",
                     ),
                     method: "GET",
@@ -353,12 +350,12 @@ export class Locations {
                 });
                 if (_response.ok) {
                     return {
-                        data: _response.body as SamsaraApi.EquipmentLocationsListResponse,
+                        data: _response.body as Samsara.EquipmentLocationsListResponse,
                         rawResponse: _response.rawResponse,
                     };
                 }
                 if (_response.error.reason === "status-code") {
-                    throw new errors.SamsaraApiError({
+                    throw new errors.SamsaraError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                         rawResponse: _response.rawResponse,
@@ -366,17 +363,17 @@ export class Locations {
                 }
                 switch (_response.error.reason) {
                     case "non-json":
-                        throw new errors.SamsaraApiError({
+                        throw new errors.SamsaraError({
                             statusCode: _response.error.statusCode,
                             body: _response.error.rawBody,
                             rawResponse: _response.rawResponse,
                         });
                     case "timeout":
-                        throw new errors.SamsaraApiTimeoutError(
+                        throw new errors.SamsaraTimeoutError(
                             "Timeout exceeded when calling GET /fleet/equipment/locations/history.",
                         );
                     case "unknown":
-                        throw new errors.SamsaraApiError({
+                        throw new errors.SamsaraError({
                             message: _response.error.errorMessage,
                             rawResponse: _response.rawResponse,
                         });
@@ -384,10 +381,7 @@ export class Locations {
             },
         );
         const dataWithRawResponse = await list(request).withRawResponse();
-        return new core.Pageable<
-            SamsaraApi.EquipmentLocationsListResponse,
-            SamsaraApi.EquipmentLocationsListResponseData
-        >({
+        return new core.Pageable<Samsara.EquipmentLocationsListResponse, Samsara.EquipmentLocationsListResponseData>({
             response: dataWithRawResponse.data,
             rawResponse: dataWithRawResponse.rawResponse,
             hasNextPage: (response) => response?.pagination?.endCursor != null,
@@ -401,7 +395,7 @@ export class Locations {
     protected async _getAuthorizationHeader(): Promise<string> {
         const bearer = (await core.Supplier.get(this._options.token)) ?? process?.env["SAMSARA_API_KEY"];
         if (bearer == null) {
-            throw new errors.SamsaraApiError({
+            throw new errors.SamsaraError({
                 message:
                     "Please specify a bearer by either passing it in to the constructor or initializing a SAMSARA_API_KEY environment variable",
             });

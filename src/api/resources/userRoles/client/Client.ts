@@ -4,14 +4,14 @@
 
 import * as environments from "../../../../environments.js";
 import * as core from "../../../../core/index.js";
-import * as SamsaraApi from "../../../index.js";
+import * as Samsara from "../../../index.js";
 import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../core/headers.js";
 import urlJoin from "url-join";
 import * as errors from "../../../../errors/index.js";
 
 export declare namespace UserRoles {
     export interface Options {
-        environment?: core.Supplier<environments.SamsaraApiEnvironment | string>;
+        environment?: core.Supplier<environments.SamsaraEnvironment | string>;
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
@@ -49,20 +49,20 @@ export class UserRoles {
      *
      * To use this endpoint, select **Read Users** under the Setup & Administration category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
-     * @param {SamsaraApi.UserRolesListRequest} request
+     * @param {Samsara.UserRolesListRequest} request
      * @param {UserRoles.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
      *     await client.userRoles.list()
      */
     public async list(
-        request: SamsaraApi.UserRolesListRequest = {},
+        request: Samsara.UserRolesListRequest = {},
         requestOptions?: UserRoles.RequestOptions,
-    ): Promise<core.Page<SamsaraApi.UserRole>> {
+    ): Promise<core.Page<Samsara.UserRole>> {
         const list = core.HttpResponsePromise.interceptFunction(
             async (
-                request: SamsaraApi.UserRolesListRequest,
-            ): Promise<core.WithRawResponse<SamsaraApi.ListUserRolesResponse>> => {
+                request: Samsara.UserRolesListRequest,
+            ): Promise<core.WithRawResponse<Samsara.ListUserRolesResponse>> => {
                 const { limit, after } = request;
                 const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
                 if (limit != null) {
@@ -75,7 +75,7 @@ export class UserRoles {
                     url: urlJoin(
                         (await core.Supplier.get(this._options.baseUrl)) ??
                             (await core.Supplier.get(this._options.environment)) ??
-                            environments.SamsaraApiEnvironment.ProductionApi,
+                            environments.SamsaraEnvironment.ProductionApi,
                         "user-roles",
                     ),
                     method: "GET",
@@ -95,12 +95,12 @@ export class UserRoles {
                 });
                 if (_response.ok) {
                     return {
-                        data: _response.body as SamsaraApi.ListUserRolesResponse,
+                        data: _response.body as Samsara.ListUserRolesResponse,
                         rawResponse: _response.rawResponse,
                     };
                 }
                 if (_response.error.reason === "status-code") {
-                    throw new errors.SamsaraApiError({
+                    throw new errors.SamsaraError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                         rawResponse: _response.rawResponse,
@@ -108,15 +108,15 @@ export class UserRoles {
                 }
                 switch (_response.error.reason) {
                     case "non-json":
-                        throw new errors.SamsaraApiError({
+                        throw new errors.SamsaraError({
                             statusCode: _response.error.statusCode,
                             body: _response.error.rawBody,
                             rawResponse: _response.rawResponse,
                         });
                     case "timeout":
-                        throw new errors.SamsaraApiTimeoutError("Timeout exceeded when calling GET /user-roles.");
+                        throw new errors.SamsaraTimeoutError("Timeout exceeded when calling GET /user-roles.");
                     case "unknown":
-                        throw new errors.SamsaraApiError({
+                        throw new errors.SamsaraError({
                             message: _response.error.errorMessage,
                             rawResponse: _response.rawResponse,
                         });
@@ -124,7 +124,7 @@ export class UserRoles {
             },
         );
         const dataWithRawResponse = await list(request).withRawResponse();
-        return new core.Pageable<SamsaraApi.ListUserRolesResponse, SamsaraApi.UserRole>({
+        return new core.Pageable<Samsara.ListUserRolesResponse, Samsara.UserRole>({
             response: dataWithRawResponse.data,
             rawResponse: dataWithRawResponse.rawResponse,
             hasNextPage: (response) => response?.pagination?.endCursor != null,
@@ -138,7 +138,7 @@ export class UserRoles {
     protected async _getAuthorizationHeader(): Promise<string> {
         const bearer = (await core.Supplier.get(this._options.token)) ?? process?.env["SAMSARA_API_KEY"];
         if (bearer == null) {
-            throw new errors.SamsaraApiError({
+            throw new errors.SamsaraError({
                 message:
                     "Please specify a bearer by either passing it in to the constructor or initializing a SAMSARA_API_KEY environment variable",
             });

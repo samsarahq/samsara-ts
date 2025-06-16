@@ -3,12 +3,12 @@
  */
 
 import { mockServerPool } from "../../../mock-server/MockServerPool.js";
-import { SamsaraApiClient } from "../../../../src/Client";
+import { SamsaraClient } from "../../../../src/Client";
 
 describe("Retrieval", () => {
     test("get", async () => {
         const server = mockServerPool.createServer();
-        const client = new SamsaraApiClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
+        const client = new SamsaraClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
 
         const rawResponseBody = {
             data: {
@@ -63,7 +63,7 @@ describe("Retrieval", () => {
 
     test("create", async () => {
         const server = mockServerPool.createServer();
-        const client = new SamsaraApiClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
+        const client = new SamsaraClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
         const rawRequestBody = {
             endTime: "2019-06-13T19:08:55Z",
             inputs: ["dashcamRoadFacing", "dashcamRoadFacing"],

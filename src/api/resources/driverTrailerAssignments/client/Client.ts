@@ -4,14 +4,14 @@
 
 import * as environments from "../../../../environments.js";
 import * as core from "../../../../core/index.js";
-import * as SamsaraApi from "../../../index.js";
+import * as Samsara from "../../../index.js";
 import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../core/headers.js";
 import urlJoin from "url-join";
 import * as errors from "../../../../errors/index.js";
 
 export declare namespace DriverTrailerAssignments {
     export interface Options {
-        environment?: core.Supplier<environments.SamsaraApiEnvironment | string>;
+        environment?: core.Supplier<environments.SamsaraEnvironment | string>;
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
@@ -52,30 +52,30 @@ export class DriverTrailerAssignments {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * @param {SamsaraApi.DriverTrailerAssignmentsListRequest} request
+     * @param {Samsara.DriverTrailerAssignmentsListRequest} request
      * @param {DriverTrailerAssignments.RequestOptions} requestOptions - Request-specific configuration.
      *
-     * @throws {@link SamsaraApi.UnauthorizedError}
-     * @throws {@link SamsaraApi.NotFoundError}
-     * @throws {@link SamsaraApi.MethodNotAllowedError}
-     * @throws {@link SamsaraApi.TooManyRequestsError}
-     * @throws {@link SamsaraApi.InternalServerError}
-     * @throws {@link SamsaraApi.NotImplementedError}
-     * @throws {@link SamsaraApi.BadGatewayError}
-     * @throws {@link SamsaraApi.ServiceUnavailableError}
-     * @throws {@link SamsaraApi.GatewayTimeoutError}
+     * @throws {@link Samsara.UnauthorizedError}
+     * @throws {@link Samsara.NotFoundError}
+     * @throws {@link Samsara.MethodNotAllowedError}
+     * @throws {@link Samsara.TooManyRequestsError}
+     * @throws {@link Samsara.InternalServerError}
+     * @throws {@link Samsara.NotImplementedError}
+     * @throws {@link Samsara.BadGatewayError}
+     * @throws {@link Samsara.ServiceUnavailableError}
+     * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
      *     await client.driverTrailerAssignments.list()
      */
     public async list(
-        request: SamsaraApi.DriverTrailerAssignmentsListRequest = {},
+        request: Samsara.DriverTrailerAssignmentsListRequest = {},
         requestOptions?: DriverTrailerAssignments.RequestOptions,
-    ): Promise<core.Page<SamsaraApi.GetDriverTrailerAssignmentsResponseBodyResponseBody>> {
+    ): Promise<core.Page<Samsara.GetDriverTrailerAssignmentsResponseBodyResponseBody>> {
         const list = core.HttpResponsePromise.interceptFunction(
             async (
-                request: SamsaraApi.DriverTrailerAssignmentsListRequest,
-            ): Promise<core.WithRawResponse<SamsaraApi.TrailerAssignmentsGetDriverTrailerAssignmentsResponseBody>> => {
+                request: Samsara.DriverTrailerAssignmentsListRequest,
+            ): Promise<core.WithRawResponse<Samsara.TrailerAssignmentsGetDriverTrailerAssignmentsResponseBody>> => {
                 const { driverIds, after, includeExternalIds } = request;
                 const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
                 if (driverIds != null) {
@@ -95,7 +95,7 @@ export class DriverTrailerAssignments {
                     url: urlJoin(
                         (await core.Supplier.get(this._options.baseUrl)) ??
                             (await core.Supplier.get(this._options.environment)) ??
-                            environments.SamsaraApiEnvironment.ProductionApi,
+                            environments.SamsaraEnvironment.ProductionApi,
                         "driver-trailer-assignments",
                     ),
                     method: "GET",
@@ -115,56 +115,50 @@ export class DriverTrailerAssignments {
                 });
                 if (_response.ok) {
                     return {
-                        data: _response.body as SamsaraApi.TrailerAssignmentsGetDriverTrailerAssignmentsResponseBody,
+                        data: _response.body as Samsara.TrailerAssignmentsGetDriverTrailerAssignmentsResponseBody,
                         rawResponse: _response.rawResponse,
                     };
                 }
                 if (_response.error.reason === "status-code") {
                     switch (_response.error.statusCode) {
                         case 401:
-                            throw new SamsaraApi.UnauthorizedError(
-                                _response.error.body as unknown,
-                                _response.rawResponse,
-                            );
+                            throw new Samsara.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
                         case 404:
-                            throw new SamsaraApi.NotFoundError(_response.error.body as unknown, _response.rawResponse);
+                            throw new Samsara.NotFoundError(_response.error.body as unknown, _response.rawResponse);
                         case 405:
-                            throw new SamsaraApi.MethodNotAllowedError(
+                            throw new Samsara.MethodNotAllowedError(
                                 _response.error.body as unknown,
                                 _response.rawResponse,
                             );
                         case 429:
-                            throw new SamsaraApi.TooManyRequestsError(
+                            throw new Samsara.TooManyRequestsError(
                                 _response.error.body as unknown,
                                 _response.rawResponse,
                             );
                         case 500:
-                            throw new SamsaraApi.InternalServerError(
+                            throw new Samsara.InternalServerError(
                                 _response.error.body as unknown,
                                 _response.rawResponse,
                             );
                         case 501:
-                            throw new SamsaraApi.NotImplementedError(
+                            throw new Samsara.NotImplementedError(
                                 _response.error.body as unknown,
                                 _response.rawResponse,
                             );
                         case 502:
-                            throw new SamsaraApi.BadGatewayError(
-                                _response.error.body as unknown,
-                                _response.rawResponse,
-                            );
+                            throw new Samsara.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
                         case 503:
-                            throw new SamsaraApi.ServiceUnavailableError(
+                            throw new Samsara.ServiceUnavailableError(
                                 _response.error.body as unknown,
                                 _response.rawResponse,
                             );
                         case 504:
-                            throw new SamsaraApi.GatewayTimeoutError(
+                            throw new Samsara.GatewayTimeoutError(
                                 _response.error.body as unknown,
                                 _response.rawResponse,
                             );
                         default:
-                            throw new errors.SamsaraApiError({
+                            throw new errors.SamsaraError({
                                 statusCode: _response.error.statusCode,
                                 body: _response.error.body,
                                 rawResponse: _response.rawResponse,
@@ -173,17 +167,17 @@ export class DriverTrailerAssignments {
                 }
                 switch (_response.error.reason) {
                     case "non-json":
-                        throw new errors.SamsaraApiError({
+                        throw new errors.SamsaraError({
                             statusCode: _response.error.statusCode,
                             body: _response.error.rawBody,
                             rawResponse: _response.rawResponse,
                         });
                     case "timeout":
-                        throw new errors.SamsaraApiTimeoutError(
+                        throw new errors.SamsaraTimeoutError(
                             "Timeout exceeded when calling GET /driver-trailer-assignments.",
                         );
                     case "unknown":
-                        throw new errors.SamsaraApiError({
+                        throw new errors.SamsaraError({
                             message: _response.error.errorMessage,
                             rawResponse: _response.rawResponse,
                         });
@@ -192,8 +186,8 @@ export class DriverTrailerAssignments {
         );
         const dataWithRawResponse = await list(request).withRawResponse();
         return new core.Pageable<
-            SamsaraApi.TrailerAssignmentsGetDriverTrailerAssignmentsResponseBody,
-            SamsaraApi.GetDriverTrailerAssignmentsResponseBodyResponseBody
+            Samsara.TrailerAssignmentsGetDriverTrailerAssignmentsResponseBody,
+            Samsara.GetDriverTrailerAssignmentsResponseBodyResponseBody
         >({
             response: dataWithRawResponse.data,
             rawResponse: dataWithRawResponse.rawResponse,
@@ -215,18 +209,18 @@ export class DriverTrailerAssignments {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * @param {SamsaraApi.TrailerAssignmentsCreateDriverTrailerAssignmentRequestBody} request
+     * @param {Samsara.TrailerAssignmentsCreateDriverTrailerAssignmentRequestBody} request
      * @param {DriverTrailerAssignments.RequestOptions} requestOptions - Request-specific configuration.
      *
-     * @throws {@link SamsaraApi.UnauthorizedError}
-     * @throws {@link SamsaraApi.NotFoundError}
-     * @throws {@link SamsaraApi.MethodNotAllowedError}
-     * @throws {@link SamsaraApi.TooManyRequestsError}
-     * @throws {@link SamsaraApi.InternalServerError}
-     * @throws {@link SamsaraApi.NotImplementedError}
-     * @throws {@link SamsaraApi.BadGatewayError}
-     * @throws {@link SamsaraApi.ServiceUnavailableError}
-     * @throws {@link SamsaraApi.GatewayTimeoutError}
+     * @throws {@link Samsara.UnauthorizedError}
+     * @throws {@link Samsara.NotFoundError}
+     * @throws {@link Samsara.MethodNotAllowedError}
+     * @throws {@link Samsara.TooManyRequestsError}
+     * @throws {@link Samsara.InternalServerError}
+     * @throws {@link Samsara.NotImplementedError}
+     * @throws {@link Samsara.BadGatewayError}
+     * @throws {@link Samsara.ServiceUnavailableError}
+     * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
      *     await client.driverTrailerAssignments.create({
@@ -235,21 +229,21 @@ export class DriverTrailerAssignments {
      *     })
      */
     public create(
-        request: SamsaraApi.TrailerAssignmentsCreateDriverTrailerAssignmentRequestBody,
+        request: Samsara.TrailerAssignmentsCreateDriverTrailerAssignmentRequestBody,
         requestOptions?: DriverTrailerAssignments.RequestOptions,
-    ): core.HttpResponsePromise<SamsaraApi.TrailerAssignmentsCreateDriverTrailerAssignmentResponseBody> {
+    ): core.HttpResponsePromise<Samsara.TrailerAssignmentsCreateDriverTrailerAssignmentResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__create(request, requestOptions));
     }
 
     private async __create(
-        request: SamsaraApi.TrailerAssignmentsCreateDriverTrailerAssignmentRequestBody,
+        request: Samsara.TrailerAssignmentsCreateDriverTrailerAssignmentRequestBody,
         requestOptions?: DriverTrailerAssignments.RequestOptions,
-    ): Promise<core.WithRawResponse<SamsaraApi.TrailerAssignmentsCreateDriverTrailerAssignmentResponseBody>> {
+    ): Promise<core.WithRawResponse<Samsara.TrailerAssignmentsCreateDriverTrailerAssignmentResponseBody>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.SamsaraApiEnvironment.ProductionApi,
+                    environments.SamsaraEnvironment.ProductionApi,
                 "driver-trailer-assignments",
             ),
             method: "POST",
@@ -270,7 +264,7 @@ export class DriverTrailerAssignments {
         });
         if (_response.ok) {
             return {
-                data: _response.body as SamsaraApi.TrailerAssignmentsCreateDriverTrailerAssignmentResponseBody,
+                data: _response.body as Samsara.TrailerAssignmentsCreateDriverTrailerAssignmentResponseBody,
                 rawResponse: _response.rawResponse,
             };
         }
@@ -278,28 +272,25 @@ export class DriverTrailerAssignments {
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 401:
-                    throw new SamsaraApi.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
                 case 404:
-                    throw new SamsaraApi.NotFoundError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.NotFoundError(_response.error.body as unknown, _response.rawResponse);
                 case 405:
-                    throw new SamsaraApi.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
                 case 429:
-                    throw new SamsaraApi.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
                 case 500:
-                    throw new SamsaraApi.InternalServerError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.InternalServerError(_response.error.body as unknown, _response.rawResponse);
                 case 501:
-                    throw new SamsaraApi.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
                 case 502:
-                    throw new SamsaraApi.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
                 case 503:
-                    throw new SamsaraApi.ServiceUnavailableError(
-                        _response.error.body as unknown,
-                        _response.rawResponse,
-                    );
+                    throw new Samsara.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
                 case 504:
-                    throw new SamsaraApi.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
                 default:
-                    throw new errors.SamsaraApiError({
+                    throw new errors.SamsaraError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                         rawResponse: _response.rawResponse,
@@ -309,17 +300,15 @@ export class DriverTrailerAssignments {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.SamsaraApiTimeoutError(
-                    "Timeout exceeded when calling POST /driver-trailer-assignments.",
-                );
+                throw new errors.SamsaraTimeoutError("Timeout exceeded when calling POST /driver-trailer-assignments.");
             case "unknown":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     message: _response.error.errorMessage,
                     rawResponse: _response.rawResponse,
                 });
@@ -336,18 +325,18 @@ export class DriverTrailerAssignments {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * @param {SamsaraApi.TrailerAssignmentsUpdateDriverTrailerAssignmentRequestBody} request
+     * @param {Samsara.TrailerAssignmentsUpdateDriverTrailerAssignmentRequestBody} request
      * @param {DriverTrailerAssignments.RequestOptions} requestOptions - Request-specific configuration.
      *
-     * @throws {@link SamsaraApi.UnauthorizedError}
-     * @throws {@link SamsaraApi.NotFoundError}
-     * @throws {@link SamsaraApi.MethodNotAllowedError}
-     * @throws {@link SamsaraApi.TooManyRequestsError}
-     * @throws {@link SamsaraApi.InternalServerError}
-     * @throws {@link SamsaraApi.NotImplementedError}
-     * @throws {@link SamsaraApi.BadGatewayError}
-     * @throws {@link SamsaraApi.ServiceUnavailableError}
-     * @throws {@link SamsaraApi.GatewayTimeoutError}
+     * @throws {@link Samsara.UnauthorizedError}
+     * @throws {@link Samsara.NotFoundError}
+     * @throws {@link Samsara.MethodNotAllowedError}
+     * @throws {@link Samsara.TooManyRequestsError}
+     * @throws {@link Samsara.InternalServerError}
+     * @throws {@link Samsara.NotImplementedError}
+     * @throws {@link Samsara.BadGatewayError}
+     * @throws {@link Samsara.ServiceUnavailableError}
+     * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
      *     await client.driverTrailerAssignments.update({
@@ -356,16 +345,16 @@ export class DriverTrailerAssignments {
      *     })
      */
     public update(
-        request: SamsaraApi.TrailerAssignmentsUpdateDriverTrailerAssignmentRequestBody,
+        request: Samsara.TrailerAssignmentsUpdateDriverTrailerAssignmentRequestBody,
         requestOptions?: DriverTrailerAssignments.RequestOptions,
-    ): core.HttpResponsePromise<SamsaraApi.TrailerAssignmentsUpdateDriverTrailerAssignmentResponseBody> {
+    ): core.HttpResponsePromise<Samsara.TrailerAssignmentsUpdateDriverTrailerAssignmentResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__update(request, requestOptions));
     }
 
     private async __update(
-        request: SamsaraApi.TrailerAssignmentsUpdateDriverTrailerAssignmentRequestBody,
+        request: Samsara.TrailerAssignmentsUpdateDriverTrailerAssignmentRequestBody,
         requestOptions?: DriverTrailerAssignments.RequestOptions,
-    ): Promise<core.WithRawResponse<SamsaraApi.TrailerAssignmentsUpdateDriverTrailerAssignmentResponseBody>> {
+    ): Promise<core.WithRawResponse<Samsara.TrailerAssignmentsUpdateDriverTrailerAssignmentResponseBody>> {
         const { id, ..._body } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         _queryParams["id"] = id;
@@ -373,7 +362,7 @@ export class DriverTrailerAssignments {
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.SamsaraApiEnvironment.ProductionApi,
+                    environments.SamsaraEnvironment.ProductionApi,
                 "driver-trailer-assignments",
             ),
             method: "PATCH",
@@ -395,7 +384,7 @@ export class DriverTrailerAssignments {
         });
         if (_response.ok) {
             return {
-                data: _response.body as SamsaraApi.TrailerAssignmentsUpdateDriverTrailerAssignmentResponseBody,
+                data: _response.body as Samsara.TrailerAssignmentsUpdateDriverTrailerAssignmentResponseBody,
                 rawResponse: _response.rawResponse,
             };
         }
@@ -403,28 +392,25 @@ export class DriverTrailerAssignments {
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 401:
-                    throw new SamsaraApi.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
                 case 404:
-                    throw new SamsaraApi.NotFoundError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.NotFoundError(_response.error.body as unknown, _response.rawResponse);
                 case 405:
-                    throw new SamsaraApi.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
                 case 429:
-                    throw new SamsaraApi.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
                 case 500:
-                    throw new SamsaraApi.InternalServerError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.InternalServerError(_response.error.body as unknown, _response.rawResponse);
                 case 501:
-                    throw new SamsaraApi.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
                 case 502:
-                    throw new SamsaraApi.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
                 case 503:
-                    throw new SamsaraApi.ServiceUnavailableError(
-                        _response.error.body as unknown,
-                        _response.rawResponse,
-                    );
+                    throw new Samsara.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
                 case 504:
-                    throw new SamsaraApi.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
                 default:
-                    throw new errors.SamsaraApiError({
+                    throw new errors.SamsaraError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                         rawResponse: _response.rawResponse,
@@ -434,17 +420,17 @@ export class DriverTrailerAssignments {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.SamsaraApiTimeoutError(
+                throw new errors.SamsaraTimeoutError(
                     "Timeout exceeded when calling PATCH /driver-trailer-assignments.",
                 );
             case "unknown":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     message: _response.error.errorMessage,
                     rawResponse: _response.rawResponse,
                 });
@@ -454,7 +440,7 @@ export class DriverTrailerAssignments {
     protected async _getAuthorizationHeader(): Promise<string> {
         const bearer = (await core.Supplier.get(this._options.token)) ?? process?.env["SAMSARA_API_KEY"];
         if (bearer == null) {
-            throw new errors.SamsaraApiError({
+            throw new errors.SamsaraError({
                 message:
                     "Please specify a bearer by either passing it in to the constructor or initializing a SAMSARA_API_KEY environment variable",
             });

@@ -4,14 +4,14 @@
 
 import * as environments from "../../../../environments.js";
 import * as core from "../../../../core/index.js";
-import * as SamsaraApi from "../../../index.js";
+import * as Samsara from "../../../index.js";
 import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../core/headers.js";
 import urlJoin from "url-join";
 import * as errors from "../../../../errors/index.js";
 
 export declare namespace CarrierProposedAssignments {
     export interface Options {
-        environment?: core.Supplier<environments.SamsaraApiEnvironment | string>;
+        environment?: core.Supplier<environments.SamsaraEnvironment | string>;
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
@@ -49,20 +49,20 @@ export class CarrierProposedAssignments {
      *
      * To use this endpoint, select **Read Carrier-Proposed Assignments** under the Assignments category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
-     * @param {SamsaraApi.CarrierProposedAssignmentsListRequest} request
+     * @param {Samsara.CarrierProposedAssignmentsListRequest} request
      * @param {CarrierProposedAssignments.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
      *     await client.carrierProposedAssignments.list()
      */
     public async list(
-        request: SamsaraApi.CarrierProposedAssignmentsListRequest = {},
+        request: Samsara.CarrierProposedAssignmentsListRequest = {},
         requestOptions?: CarrierProposedAssignments.RequestOptions,
-    ): Promise<core.Page<SamsaraApi.CarrierProposedAssignment>> {
+    ): Promise<core.Page<Samsara.CarrierProposedAssignment>> {
         const list = core.HttpResponsePromise.interceptFunction(
             async (
-                request: SamsaraApi.CarrierProposedAssignmentsListRequest,
-            ): Promise<core.WithRawResponse<SamsaraApi.ListCarrierProposedAssignmentResponse>> => {
+                request: Samsara.CarrierProposedAssignmentsListRequest,
+            ): Promise<core.WithRawResponse<Samsara.ListCarrierProposedAssignmentResponse>> => {
                 const { limit, after, driverIds, activeTime } = request;
                 const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
                 if (limit != null) {
@@ -85,7 +85,7 @@ export class CarrierProposedAssignments {
                     url: urlJoin(
                         (await core.Supplier.get(this._options.baseUrl)) ??
                             (await core.Supplier.get(this._options.environment)) ??
-                            environments.SamsaraApiEnvironment.ProductionApi,
+                            environments.SamsaraEnvironment.ProductionApi,
                         "fleet/carrier-proposed-assignments",
                     ),
                     method: "GET",
@@ -105,12 +105,12 @@ export class CarrierProposedAssignments {
                 });
                 if (_response.ok) {
                     return {
-                        data: _response.body as SamsaraApi.ListCarrierProposedAssignmentResponse,
+                        data: _response.body as Samsara.ListCarrierProposedAssignmentResponse,
                         rawResponse: _response.rawResponse,
                     };
                 }
                 if (_response.error.reason === "status-code") {
-                    throw new errors.SamsaraApiError({
+                    throw new errors.SamsaraError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                         rawResponse: _response.rawResponse,
@@ -118,17 +118,17 @@ export class CarrierProposedAssignments {
                 }
                 switch (_response.error.reason) {
                     case "non-json":
-                        throw new errors.SamsaraApiError({
+                        throw new errors.SamsaraError({
                             statusCode: _response.error.statusCode,
                             body: _response.error.rawBody,
                             rawResponse: _response.rawResponse,
                         });
                     case "timeout":
-                        throw new errors.SamsaraApiTimeoutError(
+                        throw new errors.SamsaraTimeoutError(
                             "Timeout exceeded when calling GET /fleet/carrier-proposed-assignments.",
                         );
                     case "unknown":
-                        throw new errors.SamsaraApiError({
+                        throw new errors.SamsaraError({
                             message: _response.error.errorMessage,
                             rawResponse: _response.rawResponse,
                         });
@@ -136,10 +136,7 @@ export class CarrierProposedAssignments {
             },
         );
         const dataWithRawResponse = await list(request).withRawResponse();
-        return new core.Pageable<
-            SamsaraApi.ListCarrierProposedAssignmentResponse,
-            SamsaraApi.CarrierProposedAssignment
-        >({
+        return new core.Pageable<Samsara.ListCarrierProposedAssignmentResponse, Samsara.CarrierProposedAssignment>({
             response: dataWithRawResponse.data,
             rawResponse: dataWithRawResponse.rawResponse,
             hasNextPage: (response) => response?.pagination?.endCursor != null,
@@ -157,7 +154,7 @@ export class CarrierProposedAssignments {
      *
      * To use this endpoint, select **Write Carrier-Proposed Assignments** under the Assignments category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
-     * @param {SamsaraApi.CreateCarrierProposedAssignmentRequest} request
+     * @param {Samsara.CreateCarrierProposedAssignmentRequest} request
      * @param {CarrierProposedAssignments.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -167,21 +164,21 @@ export class CarrierProposedAssignments {
      *     })
      */
     public create(
-        request: SamsaraApi.CreateCarrierProposedAssignmentRequest,
+        request: Samsara.CreateCarrierProposedAssignmentRequest,
         requestOptions?: CarrierProposedAssignments.RequestOptions,
-    ): core.HttpResponsePromise<SamsaraApi.CarrierProposedAssignmentResponse> {
+    ): core.HttpResponsePromise<Samsara.CarrierProposedAssignmentResponse> {
         return core.HttpResponsePromise.fromPromise(this.__create(request, requestOptions));
     }
 
     private async __create(
-        request: SamsaraApi.CreateCarrierProposedAssignmentRequest,
+        request: Samsara.CreateCarrierProposedAssignmentRequest,
         requestOptions?: CarrierProposedAssignments.RequestOptions,
-    ): Promise<core.WithRawResponse<SamsaraApi.CarrierProposedAssignmentResponse>> {
+    ): Promise<core.WithRawResponse<Samsara.CarrierProposedAssignmentResponse>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.SamsaraApiEnvironment.ProductionApi,
+                    environments.SamsaraEnvironment.ProductionApi,
                 "fleet/carrier-proposed-assignments",
             ),
             method: "POST",
@@ -202,13 +199,13 @@ export class CarrierProposedAssignments {
         });
         if (_response.ok) {
             return {
-                data: _response.body as SamsaraApi.CarrierProposedAssignmentResponse,
+                data: _response.body as Samsara.CarrierProposedAssignmentResponse,
                 rawResponse: _response.rawResponse,
             };
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.SamsaraApiError({
+            throw new errors.SamsaraError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
                 rawResponse: _response.rawResponse,
@@ -217,17 +214,17 @@ export class CarrierProposedAssignments {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.SamsaraApiTimeoutError(
+                throw new errors.SamsaraTimeoutError(
                     "Timeout exceeded when calling POST /fleet/carrier-proposed-assignments.",
                 );
             case "unknown":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     message: _response.error.errorMessage,
                     rawResponse: _response.rawResponse,
                 });
@@ -262,7 +259,7 @@ export class CarrierProposedAssignments {
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.SamsaraApiEnvironment.ProductionApi,
+                    environments.SamsaraEnvironment.ProductionApi,
                 `fleet/carrier-proposed-assignments/${encodeURIComponent(id)}`,
             ),
             method: "DELETE",
@@ -283,7 +280,7 @@ export class CarrierProposedAssignments {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.SamsaraApiError({
+            throw new errors.SamsaraError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
                 rawResponse: _response.rawResponse,
@@ -292,17 +289,17 @@ export class CarrierProposedAssignments {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.SamsaraApiTimeoutError(
+                throw new errors.SamsaraTimeoutError(
                     "Timeout exceeded when calling DELETE /fleet/carrier-proposed-assignments/{id}.",
                 );
             case "unknown":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     message: _response.error.errorMessage,
                     rawResponse: _response.rawResponse,
                 });
@@ -312,7 +309,7 @@ export class CarrierProposedAssignments {
     protected async _getAuthorizationHeader(): Promise<string> {
         const bearer = (await core.Supplier.get(this._options.token)) ?? process?.env["SAMSARA_API_KEY"];
         if (bearer == null) {
-            throw new errors.SamsaraApiError({
+            throw new errors.SamsaraError({
                 message:
                     "Please specify a bearer by either passing it in to the constructor or initializing a SAMSARA_API_KEY environment variable",
             });

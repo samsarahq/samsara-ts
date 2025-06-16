@@ -3,12 +3,12 @@
  */
 
 import { mockServerPool } from "../../mock-server/MockServerPool.js";
-import { SamsaraApiClient } from "../../../src/Client";
+import { SamsaraClient } from "../../../src/Client";
 
 describe("Pdfs", () => {
     test("create", async () => {
         const server = mockServerPool.createServer();
-        const client = new SamsaraApiClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
+        const client = new SamsaraClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
         const rawRequestBody = { documentId: "6c8c0c01-206a-41a4-9d21-15b9978d04cb" };
         const rawResponseBody = {
             data: { documentId: "6c8c0c01-206a-41a4-9d21-15b9978d04cb", id: "5c8c0c01-206a-41a4-9d21-15b9978d04cb" },
@@ -35,7 +35,7 @@ describe("Pdfs", () => {
 
     test("get", async () => {
         const server = mockServerPool.createServer();
-        const client = new SamsaraApiClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
+        const client = new SamsaraClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
 
         const rawResponseBody = {
             data: {

@@ -3,12 +3,12 @@
  */
 
 import { mockServerPool } from "../../mock-server/MockServerPool.js";
-import { SamsaraApiClient } from "../../../src/Client";
+import { SamsaraClient } from "../../../src/Client";
 
 describe("Tokens", () => {
     test("create", async () => {
         const server = mockServerPool.createServer();
-        const client = new SamsaraApiClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
+        const client = new SamsaraClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
         const rawRequestBody = { grant_type: "authorization_code" };
         const rawResponseBody = {
             access_token: "access_token",
@@ -38,7 +38,7 @@ describe("Tokens", () => {
 
     test("revoke", async () => {
         const server = mockServerPool.createServer();
-        const client = new SamsaraApiClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
+        const client = new SamsaraClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
         const rawRequestBody = { token: "token" };
         const rawResponseBody = {
             access_token: "access_token",

@@ -4,14 +4,14 @@
 
 import * as environments from "../../../../environments.js";
 import * as core from "../../../../core/index.js";
-import * as SamsaraApi from "../../../index.js";
+import * as Samsara from "../../../index.js";
 import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../core/headers.js";
 import urlJoin from "url-join";
 import * as errors from "../../../../errors/index.js";
 
 export declare namespace Users {
     export interface Options {
-        environment?: core.Supplier<environments.SamsaraApiEnvironment | string>;
+        environment?: core.Supplier<environments.SamsaraEnvironment | string>;
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
@@ -49,20 +49,18 @@ export class Users {
      *
      * To use this endpoint, select **Read Users** under the Setup & Administration category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
-     * @param {SamsaraApi.UsersListRequest} request
+     * @param {Samsara.UsersListRequest} request
      * @param {Users.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
      *     await client.users.list()
      */
     public async list(
-        request: SamsaraApi.UsersListRequest = {},
+        request: Samsara.UsersListRequest = {},
         requestOptions?: Users.RequestOptions,
-    ): Promise<core.Page<SamsaraApi.User>> {
+    ): Promise<core.Page<Samsara.User>> {
         const list = core.HttpResponsePromise.interceptFunction(
-            async (
-                request: SamsaraApi.UsersListRequest,
-            ): Promise<core.WithRawResponse<SamsaraApi.ListUsersResponse>> => {
+            async (request: Samsara.UsersListRequest): Promise<core.WithRawResponse<Samsara.ListUsersResponse>> => {
                 const { limit, after } = request;
                 const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
                 if (limit != null) {
@@ -75,7 +73,7 @@ export class Users {
                     url: urlJoin(
                         (await core.Supplier.get(this._options.baseUrl)) ??
                             (await core.Supplier.get(this._options.environment)) ??
-                            environments.SamsaraApiEnvironment.ProductionApi,
+                            environments.SamsaraEnvironment.ProductionApi,
                         "users",
                     ),
                     method: "GET",
@@ -94,10 +92,10 @@ export class Users {
                     abortSignal: requestOptions?.abortSignal,
                 });
                 if (_response.ok) {
-                    return { data: _response.body as SamsaraApi.ListUsersResponse, rawResponse: _response.rawResponse };
+                    return { data: _response.body as Samsara.ListUsersResponse, rawResponse: _response.rawResponse };
                 }
                 if (_response.error.reason === "status-code") {
-                    throw new errors.SamsaraApiError({
+                    throw new errors.SamsaraError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                         rawResponse: _response.rawResponse,
@@ -105,15 +103,15 @@ export class Users {
                 }
                 switch (_response.error.reason) {
                     case "non-json":
-                        throw new errors.SamsaraApiError({
+                        throw new errors.SamsaraError({
                             statusCode: _response.error.statusCode,
                             body: _response.error.rawBody,
                             rawResponse: _response.rawResponse,
                         });
                     case "timeout":
-                        throw new errors.SamsaraApiTimeoutError("Timeout exceeded when calling GET /users.");
+                        throw new errors.SamsaraTimeoutError("Timeout exceeded when calling GET /users.");
                     case "unknown":
-                        throw new errors.SamsaraApiError({
+                        throw new errors.SamsaraError({
                             message: _response.error.errorMessage,
                             rawResponse: _response.rawResponse,
                         });
@@ -121,7 +119,7 @@ export class Users {
             },
         );
         const dataWithRawResponse = await list(request).withRawResponse();
-        return new core.Pageable<SamsaraApi.ListUsersResponse, SamsaraApi.User>({
+        return new core.Pageable<Samsara.ListUsersResponse, Samsara.User>({
             response: dataWithRawResponse.data,
             rawResponse: dataWithRawResponse.rawResponse,
             hasNextPage: (response) => response?.pagination?.endCursor != null,
@@ -139,7 +137,7 @@ export class Users {
      *
      * To use this endpoint, select **Write Users** under the Setup & Administration category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
-     * @param {SamsaraApi.CreateUserRequest} request
+     * @param {Samsara.CreateUserRequest} request
      * @param {Users.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -153,21 +151,21 @@ export class Users {
      *     })
      */
     public create(
-        request: SamsaraApi.CreateUserRequest,
+        request: Samsara.CreateUserRequest,
         requestOptions?: Users.RequestOptions,
-    ): core.HttpResponsePromise<SamsaraApi.UserResponse> {
+    ): core.HttpResponsePromise<Samsara.UserResponse> {
         return core.HttpResponsePromise.fromPromise(this.__create(request, requestOptions));
     }
 
     private async __create(
-        request: SamsaraApi.CreateUserRequest,
+        request: Samsara.CreateUserRequest,
         requestOptions?: Users.RequestOptions,
-    ): Promise<core.WithRawResponse<SamsaraApi.UserResponse>> {
+    ): Promise<core.WithRawResponse<Samsara.UserResponse>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.SamsaraApiEnvironment.ProductionApi,
+                    environments.SamsaraEnvironment.ProductionApi,
                 "users",
             ),
             method: "POST",
@@ -187,11 +185,11 @@ export class Users {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return { data: _response.body as SamsaraApi.UserResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Samsara.UserResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.SamsaraApiError({
+            throw new errors.SamsaraError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
                 rawResponse: _response.rawResponse,
@@ -200,15 +198,15 @@ export class Users {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.SamsaraApiTimeoutError("Timeout exceeded when calling POST /users.");
+                throw new errors.SamsaraTimeoutError("Timeout exceeded when calling POST /users.");
             case "unknown":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     message: _response.error.errorMessage,
                     rawResponse: _response.rawResponse,
                 });
@@ -228,19 +226,19 @@ export class Users {
      * @example
      *     await client.users.get("id")
      */
-    public get(id: string, requestOptions?: Users.RequestOptions): core.HttpResponsePromise<SamsaraApi.UserResponse> {
+    public get(id: string, requestOptions?: Users.RequestOptions): core.HttpResponsePromise<Samsara.UserResponse> {
         return core.HttpResponsePromise.fromPromise(this.__get(id, requestOptions));
     }
 
     private async __get(
         id: string,
         requestOptions?: Users.RequestOptions,
-    ): Promise<core.WithRawResponse<SamsaraApi.UserResponse>> {
+    ): Promise<core.WithRawResponse<Samsara.UserResponse>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.SamsaraApiEnvironment.ProductionApi,
+                    environments.SamsaraEnvironment.ProductionApi,
                 `users/${encodeURIComponent(id)}`,
             ),
             method: "GET",
@@ -257,11 +255,11 @@ export class Users {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return { data: _response.body as SamsaraApi.UserResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Samsara.UserResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.SamsaraApiError({
+            throw new errors.SamsaraError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
                 rawResponse: _response.rawResponse,
@@ -270,15 +268,15 @@ export class Users {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.SamsaraApiTimeoutError("Timeout exceeded when calling GET /users/{id}.");
+                throw new errors.SamsaraTimeoutError("Timeout exceeded when calling GET /users/{id}.");
             case "unknown":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     message: _response.error.errorMessage,
                     rawResponse: _response.rawResponse,
                 });
@@ -307,7 +305,7 @@ export class Users {
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.SamsaraApiEnvironment.ProductionApi,
+                    environments.SamsaraEnvironment.ProductionApi,
                 `users/${encodeURIComponent(id)}`,
             ),
             method: "DELETE",
@@ -328,7 +326,7 @@ export class Users {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.SamsaraApiError({
+            throw new errors.SamsaraError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
                 rawResponse: _response.rawResponse,
@@ -337,15 +335,15 @@ export class Users {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.SamsaraApiTimeoutError("Timeout exceeded when calling DELETE /users/{id}.");
+                throw new errors.SamsaraTimeoutError("Timeout exceeded when calling DELETE /users/{id}.");
             case "unknown":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     message: _response.error.errorMessage,
                     rawResponse: _response.rawResponse,
                 });
@@ -360,7 +358,7 @@ export class Users {
      * To use this endpoint, select **Write Users** under the Setup & Administration category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
      * @param {string} id - Unique identifier for the user.
-     * @param {SamsaraApi.UpdateUserRequest} request
+     * @param {Samsara.UpdateUserRequest} request
      * @param {Users.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -368,22 +366,22 @@ export class Users {
      */
     public update(
         id: string,
-        request: SamsaraApi.UpdateUserRequest = {},
+        request: Samsara.UpdateUserRequest = {},
         requestOptions?: Users.RequestOptions,
-    ): core.HttpResponsePromise<SamsaraApi.UserResponse> {
+    ): core.HttpResponsePromise<Samsara.UserResponse> {
         return core.HttpResponsePromise.fromPromise(this.__update(id, request, requestOptions));
     }
 
     private async __update(
         id: string,
-        request: SamsaraApi.UpdateUserRequest = {},
+        request: Samsara.UpdateUserRequest = {},
         requestOptions?: Users.RequestOptions,
-    ): Promise<core.WithRawResponse<SamsaraApi.UserResponse>> {
+    ): Promise<core.WithRawResponse<Samsara.UserResponse>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.SamsaraApiEnvironment.ProductionApi,
+                    environments.SamsaraEnvironment.ProductionApi,
                 `users/${encodeURIComponent(id)}`,
             ),
             method: "PATCH",
@@ -403,11 +401,11 @@ export class Users {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return { data: _response.body as SamsaraApi.UserResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Samsara.UserResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.SamsaraApiError({
+            throw new errors.SamsaraError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
                 rawResponse: _response.rawResponse,
@@ -416,15 +414,15 @@ export class Users {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.SamsaraApiTimeoutError("Timeout exceeded when calling PATCH /users/{id}.");
+                throw new errors.SamsaraTimeoutError("Timeout exceeded when calling PATCH /users/{id}.");
             case "unknown":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     message: _response.error.errorMessage,
                     rawResponse: _response.rawResponse,
                 });
@@ -434,7 +432,7 @@ export class Users {
     protected async _getAuthorizationHeader(): Promise<string> {
         const bearer = (await core.Supplier.get(this._options.token)) ?? process?.env["SAMSARA_API_KEY"];
         if (bearer == null) {
-            throw new errors.SamsaraApiError({
+            throw new errors.SamsaraError({
                 message:
                     "Please specify a bearer by either passing it in to the constructor or initializing a SAMSARA_API_KEY environment variable",
             });

@@ -4,14 +4,14 @@
 
 import * as environments from "../../../../environments.js";
 import * as core from "../../../../core/index.js";
-import * as SamsaraApi from "../../../index.js";
+import * as Samsara from "../../../index.js";
 import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../core/headers.js";
 import urlJoin from "url-join";
 import * as errors from "../../../../errors/index.js";
 
 export declare namespace V1Messages {
     export interface Options {
-        environment?: core.Supplier<environments.SamsaraApiEnvironment | string>;
+        environment?: core.Supplier<environments.SamsaraEnvironment | string>;
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
@@ -58,23 +58,23 @@ export class V1Messages {
      *
      * To use this endpoint, select **Read Messages** under the Driver Workflow category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
-     * @param {SamsaraApi.V1MessagesListRequest} request
+     * @param {Samsara.V1MessagesListRequest} request
      * @param {V1Messages.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
      *     await client.v1Messages.list()
      */
     public list(
-        request: SamsaraApi.V1MessagesListRequest = {},
+        request: Samsara.V1MessagesListRequest = {},
         requestOptions?: V1Messages.RequestOptions,
-    ): core.HttpResponsePromise<SamsaraApi.InlineResponse2005> {
+    ): core.HttpResponsePromise<Samsara.InlineResponse2005> {
         return core.HttpResponsePromise.fromPromise(this.__list(request, requestOptions));
     }
 
     private async __list(
-        request: SamsaraApi.V1MessagesListRequest = {},
+        request: Samsara.V1MessagesListRequest = {},
         requestOptions?: V1Messages.RequestOptions,
-    ): Promise<core.WithRawResponse<SamsaraApi.InlineResponse2005>> {
+    ): Promise<core.WithRawResponse<Samsara.InlineResponse2005>> {
         const { endMs, durationMs } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (endMs != null) {
@@ -89,7 +89,7 @@ export class V1Messages {
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.SamsaraApiEnvironment.ProductionApi,
+                    environments.SamsaraEnvironment.ProductionApi,
                 "v1/fleet/messages",
             ),
             method: "GET",
@@ -107,11 +107,11 @@ export class V1Messages {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return { data: _response.body as SamsaraApi.InlineResponse2005, rawResponse: _response.rawResponse };
+            return { data: _response.body as Samsara.InlineResponse2005, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.SamsaraApiError({
+            throw new errors.SamsaraError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
                 rawResponse: _response.rawResponse,
@@ -120,15 +120,15 @@ export class V1Messages {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.SamsaraApiTimeoutError("Timeout exceeded when calling GET /v1/fleet/messages.");
+                throw new errors.SamsaraTimeoutError("Timeout exceeded when calling GET /v1/fleet/messages.");
             case "unknown":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     message: _response.error.errorMessage,
                     rawResponse: _response.rawResponse,
                 });
@@ -149,7 +149,7 @@ export class V1Messages {
      *
      * To use this endpoint, select **Write Messages** under the Driver Workflow category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
-     * @param {SamsaraApi.InlineObject2} request
+     * @param {Samsara.InlineObject2} request
      * @param {V1Messages.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -159,21 +159,21 @@ export class V1Messages {
      *     })
      */
     public create(
-        request: SamsaraApi.InlineObject2,
+        request: Samsara.InlineObject2,
         requestOptions?: V1Messages.RequestOptions,
-    ): core.HttpResponsePromise<SamsaraApi.InlineResponse2006> {
+    ): core.HttpResponsePromise<Samsara.InlineResponse2006> {
         return core.HttpResponsePromise.fromPromise(this.__create(request, requestOptions));
     }
 
     private async __create(
-        request: SamsaraApi.InlineObject2,
+        request: Samsara.InlineObject2,
         requestOptions?: V1Messages.RequestOptions,
-    ): Promise<core.WithRawResponse<SamsaraApi.InlineResponse2006>> {
+    ): Promise<core.WithRawResponse<Samsara.InlineResponse2006>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.SamsaraApiEnvironment.ProductionApi,
+                    environments.SamsaraEnvironment.ProductionApi,
                 "v1/fleet/messages",
             ),
             method: "POST",
@@ -193,11 +193,11 @@ export class V1Messages {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return { data: _response.body as SamsaraApi.InlineResponse2006, rawResponse: _response.rawResponse };
+            return { data: _response.body as Samsara.InlineResponse2006, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.SamsaraApiError({
+            throw new errors.SamsaraError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
                 rawResponse: _response.rawResponse,
@@ -206,15 +206,15 @@ export class V1Messages {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.SamsaraApiTimeoutError("Timeout exceeded when calling POST /v1/fleet/messages.");
+                throw new errors.SamsaraTimeoutError("Timeout exceeded when calling POST /v1/fleet/messages.");
             case "unknown":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     message: _response.error.errorMessage,
                     rawResponse: _response.rawResponse,
                 });
@@ -224,7 +224,7 @@ export class V1Messages {
     protected async _getAuthorizationHeader(): Promise<string> {
         const bearer = (await core.Supplier.get(this._options.token)) ?? process?.env["SAMSARA_API_KEY"];
         if (bearer == null) {
-            throw new errors.SamsaraApiError({
+            throw new errors.SamsaraError({
                 message:
                     "Please specify a bearer by either passing it in to the constructor or initializing a SAMSARA_API_KEY environment variable",
             });

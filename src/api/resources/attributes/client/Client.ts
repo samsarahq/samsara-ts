@@ -4,14 +4,14 @@
 
 import * as environments from "../../../../environments.js";
 import * as core from "../../../../core/index.js";
-import * as SamsaraApi from "../../../index.js";
+import * as Samsara from "../../../index.js";
 import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../core/headers.js";
 import urlJoin from "url-join";
 import * as errors from "../../../../errors/index.js";
 
 export declare namespace Attributes {
     export interface Options {
-        environment?: core.Supplier<environments.SamsaraApiEnvironment | string>;
+        environment?: core.Supplier<environments.SamsaraEnvironment | string>;
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
@@ -49,7 +49,7 @@ export class Attributes {
      *
      * To use this endpoint, select **Read Attributes** under the Setup & Administration category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
-     * @param {SamsaraApi.AttributesListRequest} request
+     * @param {Samsara.AttributesListRequest} request
      * @param {Attributes.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -58,13 +58,13 @@ export class Attributes {
      *     })
      */
     public async list(
-        request: SamsaraApi.AttributesListRequest,
+        request: Samsara.AttributesListRequest,
         requestOptions?: Attributes.RequestOptions,
-    ): Promise<core.Page<SamsaraApi.Attribute>> {
+    ): Promise<core.Page<Samsara.Attribute>> {
         const list = core.HttpResponsePromise.interceptFunction(
             async (
-                request: SamsaraApi.AttributesListRequest,
-            ): Promise<core.WithRawResponse<SamsaraApi.GetAttributesByEntityTypeResponse>> => {
+                request: Samsara.AttributesListRequest,
+            ): Promise<core.WithRawResponse<Samsara.GetAttributesByEntityTypeResponse>> => {
                 const { entityType, limit, after } = request;
                 const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
                 _queryParams["entityType"] = entityType;
@@ -78,7 +78,7 @@ export class Attributes {
                     url: urlJoin(
                         (await core.Supplier.get(this._options.baseUrl)) ??
                             (await core.Supplier.get(this._options.environment)) ??
-                            environments.SamsaraApiEnvironment.ProductionApi,
+                            environments.SamsaraEnvironment.ProductionApi,
                         "attributes",
                     ),
                     method: "GET",
@@ -98,12 +98,12 @@ export class Attributes {
                 });
                 if (_response.ok) {
                     return {
-                        data: _response.body as SamsaraApi.GetAttributesByEntityTypeResponse,
+                        data: _response.body as Samsara.GetAttributesByEntityTypeResponse,
                         rawResponse: _response.rawResponse,
                     };
                 }
                 if (_response.error.reason === "status-code") {
-                    throw new errors.SamsaraApiError({
+                    throw new errors.SamsaraError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                         rawResponse: _response.rawResponse,
@@ -111,15 +111,15 @@ export class Attributes {
                 }
                 switch (_response.error.reason) {
                     case "non-json":
-                        throw new errors.SamsaraApiError({
+                        throw new errors.SamsaraError({
                             statusCode: _response.error.statusCode,
                             body: _response.error.rawBody,
                             rawResponse: _response.rawResponse,
                         });
                     case "timeout":
-                        throw new errors.SamsaraApiTimeoutError("Timeout exceeded when calling GET /attributes.");
+                        throw new errors.SamsaraTimeoutError("Timeout exceeded when calling GET /attributes.");
                     case "unknown":
-                        throw new errors.SamsaraApiError({
+                        throw new errors.SamsaraError({
                             message: _response.error.errorMessage,
                             rawResponse: _response.rawResponse,
                         });
@@ -127,7 +127,7 @@ export class Attributes {
             },
         );
         const dataWithRawResponse = await list(request).withRawResponse();
-        return new core.Pageable<SamsaraApi.GetAttributesByEntityTypeResponse, SamsaraApi.Attribute>({
+        return new core.Pageable<Samsara.GetAttributesByEntityTypeResponse, Samsara.Attribute>({
             response: dataWithRawResponse.data,
             rawResponse: dataWithRawResponse.rawResponse,
             hasNextPage: (response) => response?.pagination?.endCursor != null,
@@ -145,7 +145,7 @@ export class Attributes {
      *
      * To use this endpoint, select **Write Attributes** under the Setup & Administration category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
-     * @param {SamsaraApi.CreateAttributeRequest} request
+     * @param {Samsara.CreateAttributeRequest} request
      * @param {Attributes.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -157,21 +157,21 @@ export class Attributes {
      *     })
      */
     public create(
-        request: SamsaraApi.CreateAttributeRequest,
+        request: Samsara.CreateAttributeRequest,
         requestOptions?: Attributes.RequestOptions,
-    ): core.HttpResponsePromise<SamsaraApi.AttributeExpandedResponse> {
+    ): core.HttpResponsePromise<Samsara.AttributeExpandedResponse> {
         return core.HttpResponsePromise.fromPromise(this.__create(request, requestOptions));
     }
 
     private async __create(
-        request: SamsaraApi.CreateAttributeRequest,
+        request: Samsara.CreateAttributeRequest,
         requestOptions?: Attributes.RequestOptions,
-    ): Promise<core.WithRawResponse<SamsaraApi.AttributeExpandedResponse>> {
+    ): Promise<core.WithRawResponse<Samsara.AttributeExpandedResponse>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.SamsaraApiEnvironment.ProductionApi,
+                    environments.SamsaraEnvironment.ProductionApi,
                 "attributes",
             ),
             method: "POST",
@@ -191,11 +191,11 @@ export class Attributes {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return { data: _response.body as SamsaraApi.AttributeExpandedResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Samsara.AttributeExpandedResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.SamsaraApiError({
+            throw new errors.SamsaraError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
                 rawResponse: _response.rawResponse,
@@ -204,15 +204,15 @@ export class Attributes {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.SamsaraApiTimeoutError("Timeout exceeded when calling POST /attributes.");
+                throw new errors.SamsaraTimeoutError("Timeout exceeded when calling POST /attributes.");
             case "unknown":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     message: _response.error.errorMessage,
                     rawResponse: _response.rawResponse,
                 });
@@ -227,7 +227,7 @@ export class Attributes {
      * To use this endpoint, select **Read Attributes** under the Setup & Administration category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
      * @param {string} id - Samsara-provided UUID of the attribute.
-     * @param {SamsaraApi.AttributesGetRequest} request
+     * @param {Samsara.AttributesGetRequest} request
      * @param {Attributes.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -237,17 +237,17 @@ export class Attributes {
      */
     public get(
         id: string,
-        request: SamsaraApi.AttributesGetRequest,
+        request: Samsara.AttributesGetRequest,
         requestOptions?: Attributes.RequestOptions,
-    ): core.HttpResponsePromise<SamsaraApi.AttributeExpandedResponse> {
+    ): core.HttpResponsePromise<Samsara.AttributeExpandedResponse> {
         return core.HttpResponsePromise.fromPromise(this.__get(id, request, requestOptions));
     }
 
     private async __get(
         id: string,
-        request: SamsaraApi.AttributesGetRequest,
+        request: Samsara.AttributesGetRequest,
         requestOptions?: Attributes.RequestOptions,
-    ): Promise<core.WithRawResponse<SamsaraApi.AttributeExpandedResponse>> {
+    ): Promise<core.WithRawResponse<Samsara.AttributeExpandedResponse>> {
         const { entityType } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         _queryParams["entityType"] = entityType;
@@ -255,7 +255,7 @@ export class Attributes {
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.SamsaraApiEnvironment.ProductionApi,
+                    environments.SamsaraEnvironment.ProductionApi,
                 `attributes/${encodeURIComponent(id)}`,
             ),
             method: "GET",
@@ -273,11 +273,11 @@ export class Attributes {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return { data: _response.body as SamsaraApi.AttributeExpandedResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Samsara.AttributeExpandedResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.SamsaraApiError({
+            throw new errors.SamsaraError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
                 rawResponse: _response.rawResponse,
@@ -286,15 +286,15 @@ export class Attributes {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.SamsaraApiTimeoutError("Timeout exceeded when calling GET /attributes/{id}.");
+                throw new errors.SamsaraTimeoutError("Timeout exceeded when calling GET /attributes/{id}.");
             case "unknown":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     message: _response.error.errorMessage,
                     rawResponse: _response.rawResponse,
                 });
@@ -309,7 +309,7 @@ export class Attributes {
      * To use this endpoint, select **Write Attributes** under the Setup & Administration category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
      * @param {string} id - Samsara-provided UUID of the attribute.
-     * @param {SamsaraApi.AttributesDeleteRequest} request
+     * @param {Samsara.AttributesDeleteRequest} request
      * @param {Attributes.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -319,7 +319,7 @@ export class Attributes {
      */
     public delete(
         id: string,
-        request: SamsaraApi.AttributesDeleteRequest,
+        request: Samsara.AttributesDeleteRequest,
         requestOptions?: Attributes.RequestOptions,
     ): core.HttpResponsePromise<unknown> {
         return core.HttpResponsePromise.fromPromise(this.__delete(id, request, requestOptions));
@@ -327,7 +327,7 @@ export class Attributes {
 
     private async __delete(
         id: string,
-        request: SamsaraApi.AttributesDeleteRequest,
+        request: Samsara.AttributesDeleteRequest,
         requestOptions?: Attributes.RequestOptions,
     ): Promise<core.WithRawResponse<unknown>> {
         const { entityType } = request;
@@ -337,7 +337,7 @@ export class Attributes {
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.SamsaraApiEnvironment.ProductionApi,
+                    environments.SamsaraEnvironment.ProductionApi,
                 `attributes/${encodeURIComponent(id)}`,
             ),
             method: "DELETE",
@@ -359,7 +359,7 @@ export class Attributes {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.SamsaraApiError({
+            throw new errors.SamsaraError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
                 rawResponse: _response.rawResponse,
@@ -368,15 +368,15 @@ export class Attributes {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.SamsaraApiTimeoutError("Timeout exceeded when calling DELETE /attributes/{id}.");
+                throw new errors.SamsaraTimeoutError("Timeout exceeded when calling DELETE /attributes/{id}.");
             case "unknown":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     message: _response.error.errorMessage,
                     rawResponse: _response.rawResponse,
                 });
@@ -391,7 +391,7 @@ export class Attributes {
      * To use this endpoint, select **Write Attributes** under the Setup & Administration category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
      * @param {string} id - Samsara-provided UUID of the attribute.
-     * @param {SamsaraApi.UpdateAttributeRequest} request
+     * @param {Samsara.UpdateAttributeRequest} request
      * @param {Attributes.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -401,22 +401,22 @@ export class Attributes {
      */
     public update(
         id: string,
-        request: SamsaraApi.UpdateAttributeRequest,
+        request: Samsara.UpdateAttributeRequest,
         requestOptions?: Attributes.RequestOptions,
-    ): core.HttpResponsePromise<SamsaraApi.AttributeExpandedResponse> {
+    ): core.HttpResponsePromise<Samsara.AttributeExpandedResponse> {
         return core.HttpResponsePromise.fromPromise(this.__update(id, request, requestOptions));
     }
 
     private async __update(
         id: string,
-        request: SamsaraApi.UpdateAttributeRequest,
+        request: Samsara.UpdateAttributeRequest,
         requestOptions?: Attributes.RequestOptions,
-    ): Promise<core.WithRawResponse<SamsaraApi.AttributeExpandedResponse>> {
+    ): Promise<core.WithRawResponse<Samsara.AttributeExpandedResponse>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.SamsaraApiEnvironment.ProductionApi,
+                    environments.SamsaraEnvironment.ProductionApi,
                 `attributes/${encodeURIComponent(id)}`,
             ),
             method: "PATCH",
@@ -436,11 +436,11 @@ export class Attributes {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return { data: _response.body as SamsaraApi.AttributeExpandedResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Samsara.AttributeExpandedResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.SamsaraApiError({
+            throw new errors.SamsaraError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
                 rawResponse: _response.rawResponse,
@@ -449,15 +449,15 @@ export class Attributes {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.SamsaraApiTimeoutError("Timeout exceeded when calling PATCH /attributes/{id}.");
+                throw new errors.SamsaraTimeoutError("Timeout exceeded when calling PATCH /attributes/{id}.");
             case "unknown":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     message: _response.error.errorMessage,
                     rawResponse: _response.rawResponse,
                 });
@@ -467,7 +467,7 @@ export class Attributes {
     protected async _getAuthorizationHeader(): Promise<string> {
         const bearer = (await core.Supplier.get(this._options.token)) ?? process?.env["SAMSARA_API_KEY"];
         if (bearer == null) {
-            throw new errors.SamsaraApiError({
+            throw new errors.SamsaraError({
                 message:
                     "Please specify a bearer by either passing it in to the constructor or initializing a SAMSARA_API_KEY environment variable",
             });

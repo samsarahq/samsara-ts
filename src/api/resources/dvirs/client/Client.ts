@@ -4,14 +4,14 @@
 
 import * as environments from "../../../../environments.js";
 import * as core from "../../../../core/index.js";
-import * as SamsaraApi from "../../../index.js";
+import * as Samsara from "../../../index.js";
 import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../core/headers.js";
 import urlJoin from "url-join";
 import * as errors from "../../../../errors/index.js";
 
 export declare namespace Dvirs {
     export interface Options {
-        environment?: core.Supplier<environments.SamsaraApiEnvironment | string>;
+        environment?: core.Supplier<environments.SamsaraEnvironment | string>;
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
@@ -52,18 +52,18 @@ export class Dvirs {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * @param {SamsaraApi.DvirsStreamRequest} request
+     * @param {Samsara.DvirsStreamRequest} request
      * @param {Dvirs.RequestOptions} requestOptions - Request-specific configuration.
      *
-     * @throws {@link SamsaraApi.UnauthorizedError}
-     * @throws {@link SamsaraApi.NotFoundError}
-     * @throws {@link SamsaraApi.MethodNotAllowedError}
-     * @throws {@link SamsaraApi.TooManyRequestsError}
-     * @throws {@link SamsaraApi.InternalServerError}
-     * @throws {@link SamsaraApi.NotImplementedError}
-     * @throws {@link SamsaraApi.BadGatewayError}
-     * @throws {@link SamsaraApi.ServiceUnavailableError}
-     * @throws {@link SamsaraApi.GatewayTimeoutError}
+     * @throws {@link Samsara.UnauthorizedError}
+     * @throws {@link Samsara.NotFoundError}
+     * @throws {@link Samsara.MethodNotAllowedError}
+     * @throws {@link Samsara.TooManyRequestsError}
+     * @throws {@link Samsara.InternalServerError}
+     * @throws {@link Samsara.NotImplementedError}
+     * @throws {@link Samsara.BadGatewayError}
+     * @throws {@link Samsara.ServiceUnavailableError}
+     * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
      *     await client.dvirs.stream({
@@ -71,13 +71,13 @@ export class Dvirs {
      *     })
      */
     public async stream(
-        request: SamsaraApi.DvirsStreamRequest,
+        request: Samsara.DvirsStreamRequest,
         requestOptions?: Dvirs.RequestOptions,
-    ): Promise<core.Page<SamsaraApi.DvirStreamResponseDataResponseBody>> {
+    ): Promise<core.Page<Samsara.DvirStreamResponseDataResponseBody>> {
         const list = core.HttpResponsePromise.interceptFunction(
             async (
-                request: SamsaraApi.DvirsStreamRequest,
-            ): Promise<core.WithRawResponse<SamsaraApi.DvirGetDvirsResponseBody>> => {
+                request: Samsara.DvirsStreamRequest,
+            ): Promise<core.WithRawResponse<Samsara.DvirGetDvirsResponseBody>> => {
                 const { after, limit, includeExternalIds, startTime, endTime, safetyStatus } = request;
                 const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
                 if (after != null) {
@@ -104,7 +104,7 @@ export class Dvirs {
                     url: urlJoin(
                         (await core.Supplier.get(this._options.baseUrl)) ??
                             (await core.Supplier.get(this._options.environment)) ??
-                            environments.SamsaraApiEnvironment.ProductionApi,
+                            environments.SamsaraEnvironment.ProductionApi,
                         "dvirs/stream",
                     ),
                     method: "GET",
@@ -124,56 +124,50 @@ export class Dvirs {
                 });
                 if (_response.ok) {
                     return {
-                        data: _response.body as SamsaraApi.DvirGetDvirsResponseBody,
+                        data: _response.body as Samsara.DvirGetDvirsResponseBody,
                         rawResponse: _response.rawResponse,
                     };
                 }
                 if (_response.error.reason === "status-code") {
                     switch (_response.error.statusCode) {
                         case 401:
-                            throw new SamsaraApi.UnauthorizedError(
-                                _response.error.body as unknown,
-                                _response.rawResponse,
-                            );
+                            throw new Samsara.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
                         case 404:
-                            throw new SamsaraApi.NotFoundError(_response.error.body as unknown, _response.rawResponse);
+                            throw new Samsara.NotFoundError(_response.error.body as unknown, _response.rawResponse);
                         case 405:
-                            throw new SamsaraApi.MethodNotAllowedError(
+                            throw new Samsara.MethodNotAllowedError(
                                 _response.error.body as unknown,
                                 _response.rawResponse,
                             );
                         case 429:
-                            throw new SamsaraApi.TooManyRequestsError(
+                            throw new Samsara.TooManyRequestsError(
                                 _response.error.body as unknown,
                                 _response.rawResponse,
                             );
                         case 500:
-                            throw new SamsaraApi.InternalServerError(
+                            throw new Samsara.InternalServerError(
                                 _response.error.body as unknown,
                                 _response.rawResponse,
                             );
                         case 501:
-                            throw new SamsaraApi.NotImplementedError(
+                            throw new Samsara.NotImplementedError(
                                 _response.error.body as unknown,
                                 _response.rawResponse,
                             );
                         case 502:
-                            throw new SamsaraApi.BadGatewayError(
-                                _response.error.body as unknown,
-                                _response.rawResponse,
-                            );
+                            throw new Samsara.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
                         case 503:
-                            throw new SamsaraApi.ServiceUnavailableError(
+                            throw new Samsara.ServiceUnavailableError(
                                 _response.error.body as unknown,
                                 _response.rawResponse,
                             );
                         case 504:
-                            throw new SamsaraApi.GatewayTimeoutError(
+                            throw new Samsara.GatewayTimeoutError(
                                 _response.error.body as unknown,
                                 _response.rawResponse,
                             );
                         default:
-                            throw new errors.SamsaraApiError({
+                            throw new errors.SamsaraError({
                                 statusCode: _response.error.statusCode,
                                 body: _response.error.body,
                                 rawResponse: _response.rawResponse,
@@ -182,15 +176,15 @@ export class Dvirs {
                 }
                 switch (_response.error.reason) {
                     case "non-json":
-                        throw new errors.SamsaraApiError({
+                        throw new errors.SamsaraError({
                             statusCode: _response.error.statusCode,
                             body: _response.error.rawBody,
                             rawResponse: _response.rawResponse,
                         });
                     case "timeout":
-                        throw new errors.SamsaraApiTimeoutError("Timeout exceeded when calling GET /dvirs/stream.");
+                        throw new errors.SamsaraTimeoutError("Timeout exceeded when calling GET /dvirs/stream.");
                     case "unknown":
-                        throw new errors.SamsaraApiError({
+                        throw new errors.SamsaraError({
                             message: _response.error.errorMessage,
                             rawResponse: _response.rawResponse,
                         });
@@ -198,7 +192,7 @@ export class Dvirs {
             },
         );
         const dataWithRawResponse = await list(request).withRawResponse();
-        return new core.Pageable<SamsaraApi.DvirGetDvirsResponseBody, SamsaraApi.DvirStreamResponseDataResponseBody>({
+        return new core.Pageable<Samsara.DvirGetDvirsResponseBody, Samsara.DvirStreamResponseDataResponseBody>({
             response: dataWithRawResponse.data,
             rawResponse: dataWithRawResponse.rawResponse,
             hasNextPage: (response) => response?.pagination?.endCursor != null,
@@ -220,35 +214,35 @@ export class Dvirs {
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
      * @param {string} id - Id of the DVIR.
-     * @param {SamsaraApi.DvirsGetRequest} request
+     * @param {Samsara.DvirsGetRequest} request
      * @param {Dvirs.RequestOptions} requestOptions - Request-specific configuration.
      *
-     * @throws {@link SamsaraApi.UnauthorizedError}
-     * @throws {@link SamsaraApi.NotFoundError}
-     * @throws {@link SamsaraApi.MethodNotAllowedError}
-     * @throws {@link SamsaraApi.TooManyRequestsError}
-     * @throws {@link SamsaraApi.InternalServerError}
-     * @throws {@link SamsaraApi.NotImplementedError}
-     * @throws {@link SamsaraApi.BadGatewayError}
-     * @throws {@link SamsaraApi.ServiceUnavailableError}
-     * @throws {@link SamsaraApi.GatewayTimeoutError}
+     * @throws {@link Samsara.UnauthorizedError}
+     * @throws {@link Samsara.NotFoundError}
+     * @throws {@link Samsara.MethodNotAllowedError}
+     * @throws {@link Samsara.TooManyRequestsError}
+     * @throws {@link Samsara.InternalServerError}
+     * @throws {@link Samsara.NotImplementedError}
+     * @throws {@link Samsara.BadGatewayError}
+     * @throws {@link Samsara.ServiceUnavailableError}
+     * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
      *     await client.dvirs.get("id")
      */
     public get(
         id: string,
-        request: SamsaraApi.DvirsGetRequest = {},
+        request: Samsara.DvirsGetRequest = {},
         requestOptions?: Dvirs.RequestOptions,
-    ): core.HttpResponsePromise<SamsaraApi.DvirGetDvirResponseBody> {
+    ): core.HttpResponsePromise<Samsara.DvirGetDvirResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__get(id, request, requestOptions));
     }
 
     private async __get(
         id: string,
-        request: SamsaraApi.DvirsGetRequest = {},
+        request: Samsara.DvirsGetRequest = {},
         requestOptions?: Dvirs.RequestOptions,
-    ): Promise<core.WithRawResponse<SamsaraApi.DvirGetDvirResponseBody>> {
+    ): Promise<core.WithRawResponse<Samsara.DvirGetDvirResponseBody>> {
         const { includeExternalIds } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (includeExternalIds != null) {
@@ -259,7 +253,7 @@ export class Dvirs {
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.SamsaraApiEnvironment.ProductionApi,
+                    environments.SamsaraEnvironment.ProductionApi,
                 `dvirs/${encodeURIComponent(id)}`,
             ),
             method: "GET",
@@ -277,34 +271,31 @@ export class Dvirs {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return { data: _response.body as SamsaraApi.DvirGetDvirResponseBody, rawResponse: _response.rawResponse };
+            return { data: _response.body as Samsara.DvirGetDvirResponseBody, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 401:
-                    throw new SamsaraApi.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
                 case 404:
-                    throw new SamsaraApi.NotFoundError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.NotFoundError(_response.error.body as unknown, _response.rawResponse);
                 case 405:
-                    throw new SamsaraApi.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
                 case 429:
-                    throw new SamsaraApi.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
                 case 500:
-                    throw new SamsaraApi.InternalServerError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.InternalServerError(_response.error.body as unknown, _response.rawResponse);
                 case 501:
-                    throw new SamsaraApi.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
                 case 502:
-                    throw new SamsaraApi.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
                 case 503:
-                    throw new SamsaraApi.ServiceUnavailableError(
-                        _response.error.body as unknown,
-                        _response.rawResponse,
-                    );
+                    throw new Samsara.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
                 case 504:
-                    throw new SamsaraApi.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
                 default:
-                    throw new errors.SamsaraApiError({
+                    throw new errors.SamsaraError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                         rawResponse: _response.rawResponse,
@@ -314,15 +305,15 @@ export class Dvirs {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.SamsaraApiTimeoutError("Timeout exceeded when calling GET /dvirs/{id}.");
+                throw new errors.SamsaraTimeoutError("Timeout exceeded when calling GET /dvirs/{id}.");
             case "unknown":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     message: _response.error.errorMessage,
                     rawResponse: _response.rawResponse,
                 });
@@ -336,7 +327,7 @@ export class Dvirs {
      *
      * To use this endpoint, select **Write DVIRs** under the Maintenance category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
-     * @param {SamsaraApi.CreateDvirRequest} request
+     * @param {Samsara.CreateDvirRequest} request
      * @param {Dvirs.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -346,21 +337,21 @@ export class Dvirs {
      *     })
      */
     public create(
-        request: SamsaraApi.CreateDvirRequest,
+        request: Samsara.CreateDvirRequest,
         requestOptions?: Dvirs.RequestOptions,
-    ): core.HttpResponsePromise<SamsaraApi.DvirResponse> {
+    ): core.HttpResponsePromise<Samsara.DvirResponse> {
         return core.HttpResponsePromise.fromPromise(this.__create(request, requestOptions));
     }
 
     private async __create(
-        request: SamsaraApi.CreateDvirRequest,
+        request: Samsara.CreateDvirRequest,
         requestOptions?: Dvirs.RequestOptions,
-    ): Promise<core.WithRawResponse<SamsaraApi.DvirResponse>> {
+    ): Promise<core.WithRawResponse<Samsara.DvirResponse>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.SamsaraApiEnvironment.ProductionApi,
+                    environments.SamsaraEnvironment.ProductionApi,
                 "fleet/dvirs",
             ),
             method: "POST",
@@ -380,11 +371,11 @@ export class Dvirs {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return { data: _response.body as SamsaraApi.DvirResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Samsara.DvirResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.SamsaraApiError({
+            throw new errors.SamsaraError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
                 rawResponse: _response.rawResponse,
@@ -393,15 +384,15 @@ export class Dvirs {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.SamsaraApiTimeoutError("Timeout exceeded when calling POST /fleet/dvirs.");
+                throw new errors.SamsaraTimeoutError("Timeout exceeded when calling POST /fleet/dvirs.");
             case "unknown":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     message: _response.error.errorMessage,
                     rawResponse: _response.rawResponse,
                 });
@@ -417,7 +408,7 @@ export class Dvirs {
      *
      * To use this endpoint, select **Read DVIRs** under the Maintenance category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
-     * @param {SamsaraApi.DvirsHistoryRequest} request
+     * @param {Samsara.DvirsHistoryRequest} request
      * @param {Dvirs.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -427,16 +418,16 @@ export class Dvirs {
      *     })
      */
     public history(
-        request: SamsaraApi.DvirsHistoryRequest,
+        request: Samsara.DvirsHistoryRequest,
         requestOptions?: Dvirs.RequestOptions,
-    ): core.HttpResponsePromise<SamsaraApi.DvirsListResponse> {
+    ): core.HttpResponsePromise<Samsara.DvirsListResponse> {
         return core.HttpResponsePromise.fromPromise(this.__history(request, requestOptions));
     }
 
     private async __history(
-        request: SamsaraApi.DvirsHistoryRequest,
+        request: Samsara.DvirsHistoryRequest,
         requestOptions?: Dvirs.RequestOptions,
-    ): Promise<core.WithRawResponse<SamsaraApi.DvirsListResponse>> {
+    ): Promise<core.WithRawResponse<Samsara.DvirsListResponse>> {
         const { limit, after, parentTagIds, tagIds, startTime, endTime } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (limit != null) {
@@ -469,7 +460,7 @@ export class Dvirs {
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.SamsaraApiEnvironment.ProductionApi,
+                    environments.SamsaraEnvironment.ProductionApi,
                 "fleet/dvirs/history",
             ),
             method: "GET",
@@ -487,11 +478,11 @@ export class Dvirs {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return { data: _response.body as SamsaraApi.DvirsListResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Samsara.DvirsListResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.SamsaraApiError({
+            throw new errors.SamsaraError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
                 rawResponse: _response.rawResponse,
@@ -500,15 +491,15 @@ export class Dvirs {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.SamsaraApiTimeoutError("Timeout exceeded when calling GET /fleet/dvirs/history.");
+                throw new errors.SamsaraTimeoutError("Timeout exceeded when calling GET /fleet/dvirs/history.");
             case "unknown":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     message: _response.error.errorMessage,
                     rawResponse: _response.rawResponse,
                 });
@@ -523,7 +514,7 @@ export class Dvirs {
      * To use this endpoint, select **Write DVIRs** under the Maintenance category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
      * @param {string} id - ID of the DVIR.
-     * @param {SamsaraApi.UpdateDvirRequest} request
+     * @param {Samsara.UpdateDvirRequest} request
      * @param {Dvirs.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -534,22 +525,22 @@ export class Dvirs {
      */
     public update(
         id: string,
-        request: SamsaraApi.UpdateDvirRequest,
+        request: Samsara.UpdateDvirRequest,
         requestOptions?: Dvirs.RequestOptions,
-    ): core.HttpResponsePromise<SamsaraApi.DvirResponse> {
+    ): core.HttpResponsePromise<Samsara.DvirResponse> {
         return core.HttpResponsePromise.fromPromise(this.__update(id, request, requestOptions));
     }
 
     private async __update(
         id: string,
-        request: SamsaraApi.UpdateDvirRequest,
+        request: Samsara.UpdateDvirRequest,
         requestOptions?: Dvirs.RequestOptions,
-    ): Promise<core.WithRawResponse<SamsaraApi.DvirResponse>> {
+    ): Promise<core.WithRawResponse<Samsara.DvirResponse>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.SamsaraApiEnvironment.ProductionApi,
+                    environments.SamsaraEnvironment.ProductionApi,
                 `fleet/dvirs/${encodeURIComponent(id)}`,
             ),
             method: "PATCH",
@@ -569,11 +560,11 @@ export class Dvirs {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return { data: _response.body as SamsaraApi.DvirResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Samsara.DvirResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.SamsaraApiError({
+            throw new errors.SamsaraError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
                 rawResponse: _response.rawResponse,
@@ -582,15 +573,15 @@ export class Dvirs {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.SamsaraApiTimeoutError("Timeout exceeded when calling PATCH /fleet/dvirs/{id}.");
+                throw new errors.SamsaraTimeoutError("Timeout exceeded when calling PATCH /fleet/dvirs/{id}.");
             case "unknown":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     message: _response.error.errorMessage,
                     rawResponse: _response.rawResponse,
                 });
@@ -600,7 +591,7 @@ export class Dvirs {
     protected async _getAuthorizationHeader(): Promise<string> {
         const bearer = (await core.Supplier.get(this._options.token)) ?? process?.env["SAMSARA_API_KEY"];
         if (bearer == null) {
-            throw new errors.SamsaraApiError({
+            throw new errors.SamsaraError({
                 message:
                     "Please specify a bearer by either passing it in to the constructor or initializing a SAMSARA_API_KEY environment variable",
             });

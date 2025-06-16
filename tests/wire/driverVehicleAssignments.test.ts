@@ -3,12 +3,12 @@
  */
 
 import { mockServerPool } from "../mock-server/MockServerPool.js";
-import { SamsaraApiClient } from "../../src/Client";
+import { SamsaraClient } from "../../src/Client";
 
 describe("DriverVehicleAssignments", () => {
     test("get", async () => {
         const server = mockServerPool.createServer();
-        const client = new SamsaraApiClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
+        const client = new SamsaraClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
 
         const rawResponseBody = {
             data: [
@@ -66,7 +66,7 @@ describe("DriverVehicleAssignments", () => {
 
     test("create", async () => {
         const server = mockServerPool.createServer();
-        const client = new SamsaraApiClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
+        const client = new SamsaraClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
         const rawRequestBody = { driverId: "494123", vehicleId: "281474978683353" };
         const rawResponseBody = { data: { message: "Driver assignment was successfully submitted" } };
         server
@@ -91,7 +91,7 @@ describe("DriverVehicleAssignments", () => {
 
     test("delete", async () => {
         const server = mockServerPool.createServer();
-        const client = new SamsaraApiClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
+        const client = new SamsaraClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
         const rawRequestBody = { vehicleId: "281474978683353" };
 
         server
@@ -110,7 +110,7 @@ describe("DriverVehicleAssignments", () => {
 
     test("update", async () => {
         const server = mockServerPool.createServer();
-        const client = new SamsaraApiClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
+        const client = new SamsaraClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
         const rawRequestBody = { driverId: "494123", startTime: "2019-06-13T19:08:25Z", vehicleId: "281474978683353" };
         const rawResponseBody = { data: { message: "Driver assignment was successfully updated" } };
         server

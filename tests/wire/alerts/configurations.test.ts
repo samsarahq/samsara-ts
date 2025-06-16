@@ -3,12 +3,12 @@
  */
 
 import { mockServerPool } from "../../mock-server/MockServerPool.js";
-import { SamsaraApiClient } from "../../../src/Client";
+import { SamsaraClient } from "../../../src/Client";
 
 describe("Configurations", () => {
     test("create", async () => {
         const server = mockServerPool.createServer();
-        const client = new SamsaraApiClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
+        const client = new SamsaraClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
         const rawRequestBody = {
             actions: [{ actionTypeId: 1 }],
             isEnabled: true,
@@ -135,7 +135,7 @@ describe("Configurations", () => {
 
     test("delete", async () => {
         const server = mockServerPool.createServer();
-        const client = new SamsaraApiClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
+        const client = new SamsaraClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
 
         server.mockEndpoint().delete("/alerts/configurations").respondWith().statusCode(200).build();
 
@@ -147,7 +147,7 @@ describe("Configurations", () => {
 
     test("update", async () => {
         const server = mockServerPool.createServer();
-        const client = new SamsaraApiClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
+        const client = new SamsaraClient({ token: "test", version: "2025-05-12", environment: server.baseUrl });
         const rawRequestBody = { id: "e1c5dffc-c7b7-47b0-a778-6a65de638abf" };
         const rawResponseBody = {
             data: {

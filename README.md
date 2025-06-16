@@ -24,9 +24,9 @@ A full reference for this library is available [here](https://github.com/samsara
 Instantiate and use the client with the following:
 
 ```typescript
-import { SamsaraApiClient } from "samsara-api";
+import { SamsaraClient } from "samsara-api";
 
-const client = new SamsaraApiClient({ token: "YOUR_TOKEN" });
+const client = new SamsaraClient({ token: "YOUR_TOKEN" });
 const response = await client.vehicles.list();
 for await (const item of response) {
     console.log(item);
@@ -45,9 +45,9 @@ The SDK exports all request and response types as TypeScript interfaces. Simply 
 following namespace:
 
 ```typescript
-import { SamsaraApi } from "samsara-api";
+import { Samsara } from "samsara-api";
 
-const request: SamsaraApi.AddressesListRequest = {
+const request: Samsara.AddressesListRequest = {
     ...
 };
 ```
@@ -58,12 +58,12 @@ When the API returns a non-success status code (4xx or 5xx response), a subclass
 will be thrown.
 
 ```typescript
-import { SamsaraApiError } from "samsara-api";
+import { SamsaraError } from "samsara-api";
 
 try {
     await client.vehicles.list(...);
 } catch (err) {
-    if (err instanceof SamsaraApiError) {
+    if (err instanceof SamsaraError) {
         console.log(err.statusCode);
         console.log(err.message);
         console.log(err.body);
@@ -77,9 +77,9 @@ try {
 List endpoints are paginated. The SDK provides an iterator so that you can simply loop over the items:
 
 ```typescript
-import { SamsaraApiClient } from "samsara-api";
+import { SamsaraClient } from "samsara-api";
 
-const client = new SamsaraApiClient({ token: "YOUR_TOKEN" });
+const client = new SamsaraClient({ token: "YOUR_TOKEN" });
 const response = await client.addresses.list();
 for await (const item of response) {
     console.log(item);
@@ -178,9 +178,9 @@ The SDK provides a way for you to customize the underlying HTTP client / Fetch f
 unsupported environment, this provides a way for you to break glass and ensure the SDK works.
 
 ```typescript
-import { SamsaraApiClient } from "samsara-api";
+import { SamsaraClient } from "samsara-api";
 
-const client = new SamsaraApiClient({
+const client = new SamsaraClient({
     ...
     fetcher: // provide your implementation here
 });

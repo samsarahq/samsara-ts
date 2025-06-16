@@ -4,14 +4,14 @@
 
 import * as environments from "../../../../environments.js";
 import * as core from "../../../../core/index.js";
-import * as SamsaraApi from "../../../index.js";
+import * as Samsara from "../../../index.js";
 import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../core/headers.js";
 import urlJoin from "url-join";
 import * as errors from "../../../../errors/index.js";
 
 export declare namespace Tags {
     export interface Options {
-        environment?: core.Supplier<environments.SamsaraApiEnvironment | string>;
+        environment?: core.Supplier<environments.SamsaraEnvironment | string>;
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
@@ -49,18 +49,18 @@ export class Tags {
      *
      * To use this endpoint, select **Read Tags** under the Setup & Administration category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
-     * @param {SamsaraApi.TagsListRequest} request
+     * @param {Samsara.TagsListRequest} request
      * @param {Tags.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
      *     await client.tags.list()
      */
     public async list(
-        request: SamsaraApi.TagsListRequest = {},
+        request: Samsara.TagsListRequest = {},
         requestOptions?: Tags.RequestOptions,
-    ): Promise<core.Page<SamsaraApi.Tag>> {
+    ): Promise<core.Page<Samsara.Tag>> {
         const list = core.HttpResponsePromise.interceptFunction(
-            async (request: SamsaraApi.TagsListRequest): Promise<core.WithRawResponse<SamsaraApi.ListTagsResponse>> => {
+            async (request: Samsara.TagsListRequest): Promise<core.WithRawResponse<Samsara.ListTagsResponse>> => {
                 const { limit, after } = request;
                 const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
                 if (limit != null) {
@@ -73,7 +73,7 @@ export class Tags {
                     url: urlJoin(
                         (await core.Supplier.get(this._options.baseUrl)) ??
                             (await core.Supplier.get(this._options.environment)) ??
-                            environments.SamsaraApiEnvironment.ProductionApi,
+                            environments.SamsaraEnvironment.ProductionApi,
                         "tags",
                     ),
                     method: "GET",
@@ -92,10 +92,10 @@ export class Tags {
                     abortSignal: requestOptions?.abortSignal,
                 });
                 if (_response.ok) {
-                    return { data: _response.body as SamsaraApi.ListTagsResponse, rawResponse: _response.rawResponse };
+                    return { data: _response.body as Samsara.ListTagsResponse, rawResponse: _response.rawResponse };
                 }
                 if (_response.error.reason === "status-code") {
-                    throw new errors.SamsaraApiError({
+                    throw new errors.SamsaraError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                         rawResponse: _response.rawResponse,
@@ -103,15 +103,15 @@ export class Tags {
                 }
                 switch (_response.error.reason) {
                     case "non-json":
-                        throw new errors.SamsaraApiError({
+                        throw new errors.SamsaraError({
                             statusCode: _response.error.statusCode,
                             body: _response.error.rawBody,
                             rawResponse: _response.rawResponse,
                         });
                     case "timeout":
-                        throw new errors.SamsaraApiTimeoutError("Timeout exceeded when calling GET /tags.");
+                        throw new errors.SamsaraTimeoutError("Timeout exceeded when calling GET /tags.");
                     case "unknown":
-                        throw new errors.SamsaraApiError({
+                        throw new errors.SamsaraError({
                             message: _response.error.errorMessage,
                             rawResponse: _response.rawResponse,
                         });
@@ -119,7 +119,7 @@ export class Tags {
             },
         );
         const dataWithRawResponse = await list(request).withRawResponse();
-        return new core.Pageable<SamsaraApi.ListTagsResponse, SamsaraApi.Tag>({
+        return new core.Pageable<Samsara.ListTagsResponse, Samsara.Tag>({
             response: dataWithRawResponse.data,
             rawResponse: dataWithRawResponse.rawResponse,
             hasNextPage: (response) => response?.pagination?.endCursor != null,
@@ -137,7 +137,7 @@ export class Tags {
      *
      * To use this endpoint, select **Write Tags** under the Setup & Administration category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
-     * @param {SamsaraApi.CreateTagRequest} request
+     * @param {Samsara.CreateTagRequest} request
      * @param {Tags.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -146,21 +146,21 @@ export class Tags {
      *     })
      */
     public create(
-        request: SamsaraApi.CreateTagRequest,
+        request: Samsara.CreateTagRequest,
         requestOptions?: Tags.RequestOptions,
-    ): core.HttpResponsePromise<SamsaraApi.TagResponse> {
+    ): core.HttpResponsePromise<Samsara.TagResponse> {
         return core.HttpResponsePromise.fromPromise(this.__create(request, requestOptions));
     }
 
     private async __create(
-        request: SamsaraApi.CreateTagRequest,
+        request: Samsara.CreateTagRequest,
         requestOptions?: Tags.RequestOptions,
-    ): Promise<core.WithRawResponse<SamsaraApi.TagResponse>> {
+    ): Promise<core.WithRawResponse<Samsara.TagResponse>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.SamsaraApiEnvironment.ProductionApi,
+                    environments.SamsaraEnvironment.ProductionApi,
                 "tags",
             ),
             method: "POST",
@@ -180,11 +180,11 @@ export class Tags {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return { data: _response.body as SamsaraApi.TagResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Samsara.TagResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.SamsaraApiError({
+            throw new errors.SamsaraError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
                 rawResponse: _response.rawResponse,
@@ -193,15 +193,15 @@ export class Tags {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.SamsaraApiTimeoutError("Timeout exceeded when calling POST /tags.");
+                throw new errors.SamsaraTimeoutError("Timeout exceeded when calling POST /tags.");
             case "unknown":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     message: _response.error.errorMessage,
                     rawResponse: _response.rawResponse,
                 });
@@ -221,19 +221,19 @@ export class Tags {
      * @example
      *     await client.tags.get("id")
      */
-    public get(id: string, requestOptions?: Tags.RequestOptions): core.HttpResponsePromise<SamsaraApi.TagResponse> {
+    public get(id: string, requestOptions?: Tags.RequestOptions): core.HttpResponsePromise<Samsara.TagResponse> {
         return core.HttpResponsePromise.fromPromise(this.__get(id, requestOptions));
     }
 
     private async __get(
         id: string,
         requestOptions?: Tags.RequestOptions,
-    ): Promise<core.WithRawResponse<SamsaraApi.TagResponse>> {
+    ): Promise<core.WithRawResponse<Samsara.TagResponse>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.SamsaraApiEnvironment.ProductionApi,
+                    environments.SamsaraEnvironment.ProductionApi,
                 `tags/${encodeURIComponent(id)}`,
             ),
             method: "GET",
@@ -250,11 +250,11 @@ export class Tags {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return { data: _response.body as SamsaraApi.TagResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Samsara.TagResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.SamsaraApiError({
+            throw new errors.SamsaraError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
                 rawResponse: _response.rawResponse,
@@ -263,15 +263,15 @@ export class Tags {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.SamsaraApiTimeoutError("Timeout exceeded when calling GET /tags/{id}.");
+                throw new errors.SamsaraTimeoutError("Timeout exceeded when calling GET /tags/{id}.");
             case "unknown":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     message: _response.error.errorMessage,
                     rawResponse: _response.rawResponse,
                 });
@@ -286,7 +286,7 @@ export class Tags {
      * To use this endpoint, select **Write Tags** under the Setup & Administration category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
      * @param {string} id - ID of the Tag. This can either be the Samsara-provided ID or an external ID. External IDs are customer-specified key-value pairs created in the POST or PATCH requests of this resource. To specify an external ID as part of a path parameter, use the following format: `key:value`. For example, `crmId:abc123`. Automatically populated external IDs are prefixed with `samsara.`. For example, `samsara.name:ELD-exempt`.
-     * @param {SamsaraApi.ReplaceTagRequest} request
+     * @param {Samsara.ReplaceTagRequest} request
      * @param {Tags.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -294,22 +294,22 @@ export class Tags {
      */
     public replace(
         id: string,
-        request: SamsaraApi.ReplaceTagRequest = {},
+        request: Samsara.ReplaceTagRequest = {},
         requestOptions?: Tags.RequestOptions,
-    ): core.HttpResponsePromise<SamsaraApi.TagResponse> {
+    ): core.HttpResponsePromise<Samsara.TagResponse> {
         return core.HttpResponsePromise.fromPromise(this.__replace(id, request, requestOptions));
     }
 
     private async __replace(
         id: string,
-        request: SamsaraApi.ReplaceTagRequest = {},
+        request: Samsara.ReplaceTagRequest = {},
         requestOptions?: Tags.RequestOptions,
-    ): Promise<core.WithRawResponse<SamsaraApi.TagResponse>> {
+    ): Promise<core.WithRawResponse<Samsara.TagResponse>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.SamsaraApiEnvironment.ProductionApi,
+                    environments.SamsaraEnvironment.ProductionApi,
                 `tags/${encodeURIComponent(id)}`,
             ),
             method: "PUT",
@@ -329,11 +329,11 @@ export class Tags {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return { data: _response.body as SamsaraApi.TagResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Samsara.TagResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.SamsaraApiError({
+            throw new errors.SamsaraError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
                 rawResponse: _response.rawResponse,
@@ -342,15 +342,15 @@ export class Tags {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.SamsaraApiTimeoutError("Timeout exceeded when calling PUT /tags/{id}.");
+                throw new errors.SamsaraTimeoutError("Timeout exceeded when calling PUT /tags/{id}.");
             case "unknown":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     message: _response.error.errorMessage,
                     rawResponse: _response.rawResponse,
                 });
@@ -379,7 +379,7 @@ export class Tags {
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.SamsaraApiEnvironment.ProductionApi,
+                    environments.SamsaraEnvironment.ProductionApi,
                 `tags/${encodeURIComponent(id)}`,
             ),
             method: "DELETE",
@@ -400,7 +400,7 @@ export class Tags {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.SamsaraApiError({
+            throw new errors.SamsaraError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
                 rawResponse: _response.rawResponse,
@@ -409,15 +409,15 @@ export class Tags {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.SamsaraApiTimeoutError("Timeout exceeded when calling DELETE /tags/{id}.");
+                throw new errors.SamsaraTimeoutError("Timeout exceeded when calling DELETE /tags/{id}.");
             case "unknown":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     message: _response.error.errorMessage,
                     rawResponse: _response.rawResponse,
                 });
@@ -436,7 +436,7 @@ export class Tags {
      * To use this endpoint, select **Write Tags** under the Setup & Administration category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
      * @param {string} id - ID of the Tag. This can either be the Samsara-provided ID or an external ID. External IDs are customer-specified key-value pairs created in the POST or PATCH requests of this resource. To specify an external ID as part of a path parameter, use the following format: `key:value`. For example, `crmId:abc123`. Automatically populated external IDs are prefixed with `samsara.`. For example, `samsara.name:ELD-exempt`.
-     * @param {SamsaraApi.PatchTagRequest} request
+     * @param {Samsara.PatchTagRequest} request
      * @param {Tags.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -444,22 +444,22 @@ export class Tags {
      */
     public patch(
         id: string,
-        request: SamsaraApi.PatchTagRequest = {},
+        request: Samsara.PatchTagRequest = {},
         requestOptions?: Tags.RequestOptions,
-    ): core.HttpResponsePromise<SamsaraApi.TagResponse> {
+    ): core.HttpResponsePromise<Samsara.TagResponse> {
         return core.HttpResponsePromise.fromPromise(this.__patch(id, request, requestOptions));
     }
 
     private async __patch(
         id: string,
-        request: SamsaraApi.PatchTagRequest = {},
+        request: Samsara.PatchTagRequest = {},
         requestOptions?: Tags.RequestOptions,
-    ): Promise<core.WithRawResponse<SamsaraApi.TagResponse>> {
+    ): Promise<core.WithRawResponse<Samsara.TagResponse>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.SamsaraApiEnvironment.ProductionApi,
+                    environments.SamsaraEnvironment.ProductionApi,
                 `tags/${encodeURIComponent(id)}`,
             ),
             method: "PATCH",
@@ -479,11 +479,11 @@ export class Tags {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return { data: _response.body as SamsaraApi.TagResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Samsara.TagResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.SamsaraApiError({
+            throw new errors.SamsaraError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
                 rawResponse: _response.rawResponse,
@@ -492,15 +492,15 @@ export class Tags {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.SamsaraApiTimeoutError("Timeout exceeded when calling PATCH /tags/{id}.");
+                throw new errors.SamsaraTimeoutError("Timeout exceeded when calling PATCH /tags/{id}.");
             case "unknown":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     message: _response.error.errorMessage,
                     rawResponse: _response.rawResponse,
                 });
@@ -510,7 +510,7 @@ export class Tags {
     protected async _getAuthorizationHeader(): Promise<string> {
         const bearer = (await core.Supplier.get(this._options.token)) ?? process?.env["SAMSARA_API_KEY"];
         if (bearer == null) {
-            throw new errors.SamsaraApiError({
+            throw new errors.SamsaraError({
                 message:
                     "Please specify a bearer by either passing it in to the constructor or initializing a SAMSARA_API_KEY environment variable",
             });

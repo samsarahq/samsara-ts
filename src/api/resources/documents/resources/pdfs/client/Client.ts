@@ -4,14 +4,14 @@
 
 import * as environments from "../../../../../../environments.js";
 import * as core from "../../../../../../core/index.js";
-import * as SamsaraApi from "../../../../../index.js";
+import * as Samsara from "../../../../../index.js";
 import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../../../core/headers.js";
 import urlJoin from "url-join";
 import * as errors from "../../../../../../errors/index.js";
 
 export declare namespace Pdfs {
     export interface Options {
-        environment?: core.Supplier<environments.SamsaraApiEnvironment | string>;
+        environment?: core.Supplier<environments.SamsaraEnvironment | string>;
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
@@ -49,7 +49,7 @@ export class Pdfs {
      *
      * To use this endpoint, select **Write Documents** under the Driver Workflow category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
-     * @param {SamsaraApi.documents.DocumentPdfGenerationRequest} request
+     * @param {Samsara.documents.DocumentPdfGenerationRequest} request
      * @param {Pdfs.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -58,21 +58,21 @@ export class Pdfs {
      *     })
      */
     public create(
-        request: SamsaraApi.documents.DocumentPdfGenerationRequest,
+        request: Samsara.documents.DocumentPdfGenerationRequest,
         requestOptions?: Pdfs.RequestOptions,
-    ): core.HttpResponsePromise<SamsaraApi.DocumentPdfGenerationResponse> {
+    ): core.HttpResponsePromise<Samsara.DocumentPdfGenerationResponse> {
         return core.HttpResponsePromise.fromPromise(this.__create(request, requestOptions));
     }
 
     private async __create(
-        request: SamsaraApi.documents.DocumentPdfGenerationRequest,
+        request: Samsara.documents.DocumentPdfGenerationRequest,
         requestOptions?: Pdfs.RequestOptions,
-    ): Promise<core.WithRawResponse<SamsaraApi.DocumentPdfGenerationResponse>> {
+    ): Promise<core.WithRawResponse<Samsara.DocumentPdfGenerationResponse>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.SamsaraApiEnvironment.ProductionApi,
+                    environments.SamsaraEnvironment.ProductionApi,
                 "fleet/documents/pdfs",
             ),
             method: "POST",
@@ -93,13 +93,13 @@ export class Pdfs {
         });
         if (_response.ok) {
             return {
-                data: _response.body as SamsaraApi.DocumentPdfGenerationResponse,
+                data: _response.body as Samsara.DocumentPdfGenerationResponse,
                 rawResponse: _response.rawResponse,
             };
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.SamsaraApiError({
+            throw new errors.SamsaraError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
                 rawResponse: _response.rawResponse,
@@ -108,15 +108,15 @@ export class Pdfs {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.SamsaraApiTimeoutError("Timeout exceeded when calling POST /fleet/documents/pdfs.");
+                throw new errors.SamsaraTimeoutError("Timeout exceeded when calling POST /fleet/documents/pdfs.");
             case "unknown":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     message: _response.error.errorMessage,
                     rawResponse: _response.rawResponse,
                 });
@@ -139,19 +139,19 @@ export class Pdfs {
     public get(
         id: string,
         requestOptions?: Pdfs.RequestOptions,
-    ): core.HttpResponsePromise<SamsaraApi.DocumentPdfQueryResponse> {
+    ): core.HttpResponsePromise<Samsara.DocumentPdfQueryResponse> {
         return core.HttpResponsePromise.fromPromise(this.__get(id, requestOptions));
     }
 
     private async __get(
         id: string,
         requestOptions?: Pdfs.RequestOptions,
-    ): Promise<core.WithRawResponse<SamsaraApi.DocumentPdfQueryResponse>> {
+    ): Promise<core.WithRawResponse<Samsara.DocumentPdfQueryResponse>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.SamsaraApiEnvironment.ProductionApi,
+                    environments.SamsaraEnvironment.ProductionApi,
                 `fleet/documents/pdfs/${encodeURIComponent(id)}`,
             ),
             method: "GET",
@@ -168,11 +168,11 @@ export class Pdfs {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return { data: _response.body as SamsaraApi.DocumentPdfQueryResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Samsara.DocumentPdfQueryResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.SamsaraApiError({
+            throw new errors.SamsaraError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
                 rawResponse: _response.rawResponse,
@@ -181,17 +181,15 @@ export class Pdfs {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.SamsaraApiTimeoutError(
-                    "Timeout exceeded when calling GET /fleet/documents/pdfs/{id}.",
-                );
+                throw new errors.SamsaraTimeoutError("Timeout exceeded when calling GET /fleet/documents/pdfs/{id}.");
             case "unknown":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     message: _response.error.errorMessage,
                     rawResponse: _response.rawResponse,
                 });
@@ -201,7 +199,7 @@ export class Pdfs {
     protected async _getAuthorizationHeader(): Promise<string> {
         const bearer = (await core.Supplier.get(this._options.token)) ?? process?.env["SAMSARA_API_KEY"];
         if (bearer == null) {
-            throw new errors.SamsaraApiError({
+            throw new errors.SamsaraError({
                 message:
                     "Please specify a bearer by either passing it in to the constructor or initializing a SAMSARA_API_KEY environment variable",
             });

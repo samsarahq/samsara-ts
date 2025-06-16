@@ -4,7 +4,7 @@
 
 import * as environments from "../../../../environments.js";
 import * as core from "../../../../core/index.js";
-import * as SamsaraApi from "../../../index.js";
+import * as Samsara from "../../../index.js";
 import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../core/headers.js";
 import urlJoin from "url-join";
 import * as errors from "../../../../errors/index.js";
@@ -13,7 +13,7 @@ import { VehicleAssignments } from "../resources/vehicleAssignments/client/Clien
 
 export declare namespace Drivers {
     export interface Options {
-        environment?: core.Supplier<environments.SamsaraApiEnvironment | string>;
+        environment?: core.Supplier<environments.SamsaraEnvironment | string>;
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         token?: core.Supplier<core.BearerToken | undefined>;
@@ -61,20 +61,18 @@ export class Drivers {
      *
      * To use this endpoint, select **Read Drivers** under the Drivers category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
-     * @param {SamsaraApi.DriversListRequest} request
+     * @param {Samsara.DriversListRequest} request
      * @param {Drivers.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
      *     await client.drivers.list()
      */
     public async list(
-        request: SamsaraApi.DriversListRequest = {},
+        request: Samsara.DriversListRequest = {},
         requestOptions?: Drivers.RequestOptions,
-    ): Promise<core.Page<SamsaraApi.Driver>> {
+    ): Promise<core.Page<Samsara.Driver>> {
         const list = core.HttpResponsePromise.interceptFunction(
-            async (
-                request: SamsaraApi.DriversListRequest,
-            ): Promise<core.WithRawResponse<SamsaraApi.ListDriversResponse>> => {
+            async (request: Samsara.DriversListRequest): Promise<core.WithRawResponse<Samsara.ListDriversResponse>> => {
                 const {
                     driverActivationStatus,
                     limit,
@@ -82,6 +80,7 @@ export class Drivers {
                     parentTagIds,
                     tagIds,
                     attributeValueIds,
+                    attributes,
                     updatedAfterTime,
                     createdAfterTime,
                 } = request;
@@ -116,6 +115,13 @@ export class Drivers {
                         _queryParams["attributeValueIds"] = attributeValueIds;
                     }
                 }
+                if (attributes != null) {
+                    if (Array.isArray(attributes)) {
+                        _queryParams["attributes"] = attributes.map((item) => item);
+                    } else {
+                        _queryParams["attributes"] = attributes;
+                    }
+                }
                 if (updatedAfterTime != null) {
                     _queryParams["updatedAfterTime"] = updatedAfterTime;
                 }
@@ -126,7 +132,7 @@ export class Drivers {
                     url: urlJoin(
                         (await core.Supplier.get(this._options.baseUrl)) ??
                             (await core.Supplier.get(this._options.environment)) ??
-                            environments.SamsaraApiEnvironment.ProductionApi,
+                            environments.SamsaraEnvironment.ProductionApi,
                         "fleet/drivers",
                     ),
                     method: "GET",
@@ -145,13 +151,10 @@ export class Drivers {
                     abortSignal: requestOptions?.abortSignal,
                 });
                 if (_response.ok) {
-                    return {
-                        data: _response.body as SamsaraApi.ListDriversResponse,
-                        rawResponse: _response.rawResponse,
-                    };
+                    return { data: _response.body as Samsara.ListDriversResponse, rawResponse: _response.rawResponse };
                 }
                 if (_response.error.reason === "status-code") {
-                    throw new errors.SamsaraApiError({
+                    throw new errors.SamsaraError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                         rawResponse: _response.rawResponse,
@@ -159,15 +162,15 @@ export class Drivers {
                 }
                 switch (_response.error.reason) {
                     case "non-json":
-                        throw new errors.SamsaraApiError({
+                        throw new errors.SamsaraError({
                             statusCode: _response.error.statusCode,
                             body: _response.error.rawBody,
                             rawResponse: _response.rawResponse,
                         });
                     case "timeout":
-                        throw new errors.SamsaraApiTimeoutError("Timeout exceeded when calling GET /fleet/drivers.");
+                        throw new errors.SamsaraTimeoutError("Timeout exceeded when calling GET /fleet/drivers.");
                     case "unknown":
-                        throw new errors.SamsaraApiError({
+                        throw new errors.SamsaraError({
                             message: _response.error.errorMessage,
                             rawResponse: _response.rawResponse,
                         });
@@ -175,7 +178,7 @@ export class Drivers {
             },
         );
         const dataWithRawResponse = await list(request).withRawResponse();
-        return new core.Pageable<SamsaraApi.ListDriversResponse, SamsaraApi.Driver>({
+        return new core.Pageable<Samsara.ListDriversResponse, Samsara.Driver>({
             response: dataWithRawResponse.data,
             rawResponse: dataWithRawResponse.rawResponse,
             hasNextPage: (response) => response?.pagination?.endCursor != null,
@@ -193,7 +196,7 @@ export class Drivers {
      *
      * To use this endpoint, select **Write Drivers** under the Drivers category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
-     * @param {SamsaraApi.CreateDriverRequest} request
+     * @param {Samsara.CreateDriverRequest} request
      * @param {Drivers.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -204,21 +207,21 @@ export class Drivers {
      *     })
      */
     public create(
-        request: SamsaraApi.CreateDriverRequest,
+        request: Samsara.CreateDriverRequest,
         requestOptions?: Drivers.RequestOptions,
-    ): core.HttpResponsePromise<SamsaraApi.DriverResponse> {
+    ): core.HttpResponsePromise<Samsara.DriverResponse> {
         return core.HttpResponsePromise.fromPromise(this.__create(request, requestOptions));
     }
 
     private async __create(
-        request: SamsaraApi.CreateDriverRequest,
+        request: Samsara.CreateDriverRequest,
         requestOptions?: Drivers.RequestOptions,
-    ): Promise<core.WithRawResponse<SamsaraApi.DriverResponse>> {
+    ): Promise<core.WithRawResponse<Samsara.DriverResponse>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.SamsaraApiEnvironment.ProductionApi,
+                    environments.SamsaraEnvironment.ProductionApi,
                 "fleet/drivers",
             ),
             method: "POST",
@@ -238,11 +241,11 @@ export class Drivers {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return { data: _response.body as SamsaraApi.DriverResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Samsara.DriverResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.SamsaraApiError({
+            throw new errors.SamsaraError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
                 rawResponse: _response.rawResponse,
@@ -251,15 +254,15 @@ export class Drivers {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.SamsaraApiTimeoutError("Timeout exceeded when calling POST /fleet/drivers.");
+                throw new errors.SamsaraTimeoutError("Timeout exceeded when calling POST /fleet/drivers.");
             case "unknown":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     message: _response.error.errorMessage,
                     rawResponse: _response.rawResponse,
                 });
@@ -280,18 +283,18 @@ export class Drivers {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * @param {SamsaraApi.DriverRemoteSignoutPostDriverRemoteSignoutRequestBody} request
+     * @param {Samsara.DriverRemoteSignoutPostDriverRemoteSignoutRequestBody} request
      * @param {Drivers.RequestOptions} requestOptions - Request-specific configuration.
      *
-     * @throws {@link SamsaraApi.UnauthorizedError}
-     * @throws {@link SamsaraApi.NotFoundError}
-     * @throws {@link SamsaraApi.MethodNotAllowedError}
-     * @throws {@link SamsaraApi.TooManyRequestsError}
-     * @throws {@link SamsaraApi.InternalServerError}
-     * @throws {@link SamsaraApi.NotImplementedError}
-     * @throws {@link SamsaraApi.BadGatewayError}
-     * @throws {@link SamsaraApi.ServiceUnavailableError}
-     * @throws {@link SamsaraApi.GatewayTimeoutError}
+     * @throws {@link Samsara.UnauthorizedError}
+     * @throws {@link Samsara.NotFoundError}
+     * @throws {@link Samsara.MethodNotAllowedError}
+     * @throws {@link Samsara.TooManyRequestsError}
+     * @throws {@link Samsara.InternalServerError}
+     * @throws {@link Samsara.NotImplementedError}
+     * @throws {@link Samsara.BadGatewayError}
+     * @throws {@link Samsara.ServiceUnavailableError}
+     * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
      *     await client.drivers.signOut({
@@ -299,21 +302,21 @@ export class Drivers {
      *     })
      */
     public signOut(
-        request: SamsaraApi.DriverRemoteSignoutPostDriverRemoteSignoutRequestBody,
+        request: Samsara.DriverRemoteSignoutPostDriverRemoteSignoutRequestBody,
         requestOptions?: Drivers.RequestOptions,
-    ): core.HttpResponsePromise<SamsaraApi.DriverRemoteSignoutPostDriverRemoteSignoutResponseBody> {
+    ): core.HttpResponsePromise<Samsara.DriverRemoteSignoutPostDriverRemoteSignoutResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__signOut(request, requestOptions));
     }
 
     private async __signOut(
-        request: SamsaraApi.DriverRemoteSignoutPostDriverRemoteSignoutRequestBody,
+        request: Samsara.DriverRemoteSignoutPostDriverRemoteSignoutRequestBody,
         requestOptions?: Drivers.RequestOptions,
-    ): Promise<core.WithRawResponse<SamsaraApi.DriverRemoteSignoutPostDriverRemoteSignoutResponseBody>> {
+    ): Promise<core.WithRawResponse<Samsara.DriverRemoteSignoutPostDriverRemoteSignoutResponseBody>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.SamsaraApiEnvironment.ProductionApi,
+                    environments.SamsaraEnvironment.ProductionApi,
                 "fleet/drivers/remote-sign-out",
             ),
             method: "POST",
@@ -334,7 +337,7 @@ export class Drivers {
         });
         if (_response.ok) {
             return {
-                data: _response.body as SamsaraApi.DriverRemoteSignoutPostDriverRemoteSignoutResponseBody,
+                data: _response.body as Samsara.DriverRemoteSignoutPostDriverRemoteSignoutResponseBody,
                 rawResponse: _response.rawResponse,
             };
         }
@@ -342,28 +345,25 @@ export class Drivers {
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 401:
-                    throw new SamsaraApi.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
                 case 404:
-                    throw new SamsaraApi.NotFoundError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.NotFoundError(_response.error.body as unknown, _response.rawResponse);
                 case 405:
-                    throw new SamsaraApi.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
                 case 429:
-                    throw new SamsaraApi.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
                 case 500:
-                    throw new SamsaraApi.InternalServerError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.InternalServerError(_response.error.body as unknown, _response.rawResponse);
                 case 501:
-                    throw new SamsaraApi.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
                 case 502:
-                    throw new SamsaraApi.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
                 case 503:
-                    throw new SamsaraApi.ServiceUnavailableError(
-                        _response.error.body as unknown,
-                        _response.rawResponse,
-                    );
+                    throw new Samsara.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
                 case 504:
-                    throw new SamsaraApi.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
+                    throw new Samsara.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
                 default:
-                    throw new errors.SamsaraApiError({
+                    throw new errors.SamsaraError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                         rawResponse: _response.rawResponse,
@@ -373,17 +373,17 @@ export class Drivers {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.SamsaraApiTimeoutError(
+                throw new errors.SamsaraTimeoutError(
                     "Timeout exceeded when calling POST /fleet/drivers/remote-sign-out.",
                 );
             case "unknown":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     message: _response.error.errorMessage,
                     rawResponse: _response.rawResponse,
                 });
@@ -403,22 +403,19 @@ export class Drivers {
      * @example
      *     await client.drivers.get("id")
      */
-    public get(
-        id: string,
-        requestOptions?: Drivers.RequestOptions,
-    ): core.HttpResponsePromise<SamsaraApi.DriverResponse> {
+    public get(id: string, requestOptions?: Drivers.RequestOptions): core.HttpResponsePromise<Samsara.DriverResponse> {
         return core.HttpResponsePromise.fromPromise(this.__get(id, requestOptions));
     }
 
     private async __get(
         id: string,
         requestOptions?: Drivers.RequestOptions,
-    ): Promise<core.WithRawResponse<SamsaraApi.DriverResponse>> {
+    ): Promise<core.WithRawResponse<Samsara.DriverResponse>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.SamsaraApiEnvironment.ProductionApi,
+                    environments.SamsaraEnvironment.ProductionApi,
                 `fleet/drivers/${encodeURIComponent(id)}`,
             ),
             method: "GET",
@@ -435,11 +432,11 @@ export class Drivers {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return { data: _response.body as SamsaraApi.DriverResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Samsara.DriverResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.SamsaraApiError({
+            throw new errors.SamsaraError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
                 rawResponse: _response.rawResponse,
@@ -448,15 +445,15 @@ export class Drivers {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.SamsaraApiTimeoutError("Timeout exceeded when calling GET /fleet/drivers/{id}.");
+                throw new errors.SamsaraTimeoutError("Timeout exceeded when calling GET /fleet/drivers/{id}.");
             case "unknown":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     message: _response.error.errorMessage,
                     rawResponse: _response.rawResponse,
                 });
@@ -471,7 +468,7 @@ export class Drivers {
      * To use this endpoint, select **Write Drivers** under the Drivers category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
      * @param {string} id - ID of the driver. This can either be the Samsara-specified ID, or an external ID. External IDs are customer specified key-value pairs created in the POST or PATCH requests of this resource. To specify an external ID as part of a path parameter, use the following format: `key:value`. For example, `payrollId:ABFS18600`
-     * @param {SamsaraApi.UpdateDriverRequest} request
+     * @param {Samsara.UpdateDriverRequest} request
      * @param {Drivers.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
@@ -479,22 +476,22 @@ export class Drivers {
      */
     public update(
         id: string,
-        request: SamsaraApi.UpdateDriverRequest = {},
+        request: Samsara.UpdateDriverRequest = {},
         requestOptions?: Drivers.RequestOptions,
-    ): core.HttpResponsePromise<SamsaraApi.DriverResponse> {
+    ): core.HttpResponsePromise<Samsara.DriverResponse> {
         return core.HttpResponsePromise.fromPromise(this.__update(id, request, requestOptions));
     }
 
     private async __update(
         id: string,
-        request: SamsaraApi.UpdateDriverRequest = {},
+        request: Samsara.UpdateDriverRequest = {},
         requestOptions?: Drivers.RequestOptions,
-    ): Promise<core.WithRawResponse<SamsaraApi.DriverResponse>> {
+    ): Promise<core.WithRawResponse<Samsara.DriverResponse>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
-                    environments.SamsaraApiEnvironment.ProductionApi,
+                    environments.SamsaraEnvironment.ProductionApi,
                 `fleet/drivers/${encodeURIComponent(id)}`,
             ),
             method: "PATCH",
@@ -514,11 +511,11 @@ export class Drivers {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return { data: _response.body as SamsaraApi.DriverResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Samsara.DriverResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.SamsaraApiError({
+            throw new errors.SamsaraError({
                 statusCode: _response.error.statusCode,
                 body: _response.error.body,
                 rawResponse: _response.rawResponse,
@@ -527,15 +524,15 @@ export class Drivers {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.SamsaraApiTimeoutError("Timeout exceeded when calling PATCH /fleet/drivers/{id}.");
+                throw new errors.SamsaraTimeoutError("Timeout exceeded when calling PATCH /fleet/drivers/{id}.");
             case "unknown":
-                throw new errors.SamsaraApiError({
+                throw new errors.SamsaraError({
                     message: _response.error.errorMessage,
                     rawResponse: _response.rawResponse,
                 });
@@ -545,7 +542,7 @@ export class Drivers {
     protected async _getAuthorizationHeader(): Promise<string> {
         const bearer = (await core.Supplier.get(this._options.token)) ?? process?.env["SAMSARA_API_KEY"];
         if (bearer == null) {
-            throw new errors.SamsaraApiError({
+            throw new errors.SamsaraError({
                 message:
                     "Please specify a bearer by either passing it in to the constructor or initializing a SAMSARA_API_KEY environment variable",
             });

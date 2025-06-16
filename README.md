@@ -1,7 +1,7 @@
 # Samsara TypeScript Library
 
 [![fern shield](https://img.shields.io/badge/%F0%9F%8C%BF-Built%20with%20Fern-brightgreen)](https://buildwithfern.com?utm_source=github&utm_medium=github&utm_campaign=readme&utm_source=https%3A%2F%2Fgithub.com%2Fsamsarahq%2Fsamsara-ts)
-[![npm shield](https://img.shields.io/npm/v/samsara-api)](https://www.npmjs.com/package/samsara-api)
+[![npm shield](https://img.shields.io/npm/v/@samsarahq/samsara)](https://www.npmjs.com/package/@samsarahq/samsara)
 
 The Samsara TypeScript library provides convenient access to the Samsara API from TypeScript.
 
@@ -12,7 +12,7 @@ API reference documentation is available [here](https://developers.samsara.com/r
 ## Installation
 
 ```sh
-npm i -s samsara-api
+npm i -s @samsarahq/samsara
 ```
 
 ## Reference
@@ -24,7 +24,7 @@ A full reference for this library is available [here](https://github.com/samsara
 Instantiate and use the client with the following:
 
 ```typescript
-import { SamsaraClient } from "samsara-api";
+import { SamsaraClient } from "@samsarahq/samsara";
 
 const client = new SamsaraClient({ token: "YOUR_TOKEN" });
 const response = await client.vehicles.list();
@@ -45,7 +45,7 @@ The SDK exports all request and response types as TypeScript interfaces. Simply 
 following namespace:
 
 ```typescript
-import { Samsara } from "samsara-api";
+import { Samsara } from "@samsarahq/samsara";
 
 const request: Samsara.AddressesListRequest = {
     ...
@@ -58,7 +58,7 @@ When the API returns a non-success status code (4xx or 5xx response), a subclass
 will be thrown.
 
 ```typescript
-import { SamsaraError } from "samsara-api";
+import { SamsaraError } from "@samsarahq/samsara";
 
 try {
     await client.vehicles.list(...);
@@ -77,7 +77,7 @@ try {
 List endpoints are paginated. The SDK provides an iterator so that you can simply loop over the items:
 
 ```typescript
-import { SamsaraClient } from "samsara-api";
+import { SamsaraClient } from "@samsarahq/samsara";
 
 const client = new SamsaraClient({ token: "YOUR_TOKEN" });
 const response = await client.addresses.list();
@@ -178,7 +178,7 @@ The SDK provides a way for you to customize the underlying HTTP client / Fetch f
 unsupported environment, this provides a way for you to break glass and ensure the SDK works.
 
 ```typescript
-import { SamsaraClient } from "samsara-api";
+import { SamsaraClient } from "@samsarahq/samsara";
 
 const client = new SamsaraClient({
     ...

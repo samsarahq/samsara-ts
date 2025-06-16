@@ -139,8 +139,8 @@ export class SamsaraClient {
             headers: mergeHeaders(
                 {
                     "X-Fern-Language": "JavaScript",
-                    "X-Fern-SDK-Name": "samsara-api",
-                    "X-Fern-SDK-Version": "0.0.171",
+                    "X-Fern-SDK-Name": "@samsarahq/samsara",
+                    "X-Fern-SDK-Version": "0.0.174",
                     "X-Samsara-Version": _options?.version ?? "2025-05-12",
                     "X-Fern-Runtime": core.RUNTIME.type,
                     "X-Fern-Runtime-Version": core.RUNTIME.version,

@@ -140,7 +140,8 @@ export class SamsaraClient {
                 {
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@samsarahq/samsara",
-                    "X-Fern-SDK-Version": "0.0.174",
+                    "X-Fern-SDK-Version": "0.0.175",
+                    "User-Agent": "@samsarahq/samsara/0.0.175",
                     "X-Samsara-Version": _options?.version ?? "2025-05-12",
                     "X-Fern-Runtime": core.RUNTIME.type,
                     "X-Fern-Runtime-Version": core.RUNTIME.version,

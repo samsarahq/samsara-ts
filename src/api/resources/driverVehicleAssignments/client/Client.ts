@@ -220,7 +220,7 @@ export class DriverVehicleAssignments {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * @param {Samsara.DriverVehicleAssignmentsV2CreateDriverVehicleAssignmentRequestBody} request
+     * @param {Samsara.CreateDriverVehicleAssignmentRequestBody} request
      * @param {DriverVehicleAssignments.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
@@ -240,14 +240,14 @@ export class DriverVehicleAssignments {
      *     })
      */
     public create(
-        request: Samsara.DriverVehicleAssignmentsV2CreateDriverVehicleAssignmentRequestBody,
+        request: Samsara.CreateDriverVehicleAssignmentRequestBody,
         requestOptions?: DriverVehicleAssignments.RequestOptions,
     ): core.HttpResponsePromise<Samsara.DriverVehicleAssignmentsV2CreateDriverVehicleAssignmentResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__create(request, requestOptions));
     }
 
     private async __create(
-        request: Samsara.DriverVehicleAssignmentsV2CreateDriverVehicleAssignmentRequestBody,
+        request: Samsara.CreateDriverVehicleAssignmentRequestBody,
         requestOptions?: DriverVehicleAssignments.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.DriverVehicleAssignmentsV2CreateDriverVehicleAssignmentResponseBody>> {
         const _response = await core.fetcher({
@@ -338,7 +338,7 @@ export class DriverVehicleAssignments {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * @param {Samsara.DriverVehicleAssignmentsV2DeleteDriverVehicleAssignmentsRequestBody} request
+     * @param {Samsara.DeleteDriverVehicleAssignmentsRequestBody} request
      * @param {DriverVehicleAssignments.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
@@ -357,14 +357,14 @@ export class DriverVehicleAssignments {
      *     })
      */
     public delete(
-        request: Samsara.DriverVehicleAssignmentsV2DeleteDriverVehicleAssignmentsRequestBody,
+        request: Samsara.DeleteDriverVehicleAssignmentsRequestBody,
         requestOptions?: DriverVehicleAssignments.RequestOptions,
     ): core.HttpResponsePromise<void> {
         return core.HttpResponsePromise.fromPromise(this.__delete(request, requestOptions));
     }
 
     private async __delete(
-        request: Samsara.DriverVehicleAssignmentsV2DeleteDriverVehicleAssignmentsRequestBody,
+        request: Samsara.DeleteDriverVehicleAssignmentsRequestBody,
         requestOptions?: DriverVehicleAssignments.RequestOptions,
     ): Promise<core.WithRawResponse<void>> {
         const _response = await core.fetcher({
@@ -452,7 +452,7 @@ export class DriverVehicleAssignments {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * @param {Samsara.DriverVehicleAssignmentsV2UpdateDriverVehicleAssignmentRequestBody} request
+     * @param {Samsara.UpdateDriverVehicleAssignmentRequestBody} request
      * @param {DriverVehicleAssignments.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
@@ -473,14 +473,14 @@ export class DriverVehicleAssignments {
      *     })
      */
     public update(
-        request: Samsara.DriverVehicleAssignmentsV2UpdateDriverVehicleAssignmentRequestBody,
+        request: Samsara.UpdateDriverVehicleAssignmentRequestBody,
         requestOptions?: DriverVehicleAssignments.RequestOptions,
     ): core.HttpResponsePromise<Samsara.DriverVehicleAssignmentsV2UpdateDriverVehicleAssignmentResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__update(request, requestOptions));
     }
 
     private async __update(
-        request: Samsara.DriverVehicleAssignmentsV2UpdateDriverVehicleAssignmentRequestBody,
+        request: Samsara.UpdateDriverVehicleAssignmentRequestBody,
         requestOptions?: DriverVehicleAssignments.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.DriverVehicleAssignmentsV2UpdateDriverVehicleAssignmentResponseBody>> {
         const _response = await core.fetcher({

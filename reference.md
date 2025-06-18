@@ -3266,7 +3266,7 @@ await client.driverVehicleAssignments.create({
 <dl>
 <dd>
 
-**request:** `Samsara.DriverVehicleAssignmentsV2CreateDriverVehicleAssignmentRequestBody`
+**request:** `Samsara.CreateDriverVehicleAssignmentRequestBody`
 
 </dd>
 </dl>
@@ -3337,7 +3337,7 @@ await client.driverVehicleAssignments.delete({
 <dl>
 <dd>
 
-**request:** `Samsara.DriverVehicleAssignmentsV2DeleteDriverVehicleAssignmentsRequestBody`
+**request:** `Samsara.DeleteDriverVehicleAssignmentsRequestBody`
 
 </dd>
 </dl>
@@ -3410,7 +3410,7 @@ await client.driverVehicleAssignments.update({
 <dl>
 <dd>
 
-**request:** `Samsara.DriverVehicleAssignmentsV2UpdateDriverVehicleAssignmentRequestBody`
+**request:** `Samsara.UpdateDriverVehicleAssignmentRequestBody`
 
 </dd>
 </dl>
@@ -5305,7 +5305,7 @@ await client.vehicles.update("id");
 
 ## Legacy
 
-<details><summary><code>client.legacy.<a href="/src/api/resources/legacy/client/Client.ts">getVehiclesDriverAssignments</a>({ ...params }) -> Samsara.VehiclesDriverAssignmentsGetVehiclesDriverAssignmentsResponseBody</code></summary>
+<details><summary><code>client.legacy.<a href="/src/api/resources/legacy/client/Client.ts">getVehiclesDriverAssignments</a>({ ...params }) -> Samsara.GetVehiclesDriverAssignmentsResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -11485,7 +11485,7 @@ while (page.hasNextPage()) {
 </dl>
 </details>
 
-<details><summary><code>client.maintenance.workOrders.<a href="/src/api/resources/maintenance/resources/workOrders/client/Client.ts">create</a>({ ...params }) -> Samsara.WorkOrdersPostWorkOrdersResponseBody</code></summary>
+<details><summary><code>client.maintenance.workOrders.<a href="/src/api/resources/maintenance/resources/workOrders/client/Client.ts">create</a>({ ...params }) -> Samsara.PostWorkOrdersResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -11537,7 +11537,7 @@ await client.maintenance.workOrders.create({
 <dl>
 <dd>
 
-**request:** `Samsara.maintenance.WorkOrdersPostWorkOrdersRequestBody`
+**request:** `Samsara.maintenance.PostWorkOrdersRequestBody`
 
 </dd>
 </dl>
@@ -11627,7 +11627,7 @@ await client.maintenance.workOrders.delete({
 </dl>
 </details>
 
-<details><summary><code>client.maintenance.workOrders.<a href="/src/api/resources/maintenance/resources/workOrders/client/Client.ts">update</a>({ ...params }) -> Samsara.WorkOrdersPatchWorkOrdersResponseBody</code></summary>
+<details><summary><code>client.maintenance.workOrders.<a href="/src/api/resources/maintenance/resources/workOrders/client/Client.ts">update</a>({ ...params }) -> Samsara.PatchWorkOrdersResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -11679,7 +11679,7 @@ await client.maintenance.workOrders.update({
 <dl>
 <dd>
 
-**request:** `Samsara.maintenance.WorkOrdersPatchWorkOrdersRequestBody`
+**request:** `Samsara.maintenance.PatchWorkOrdersRequestBody`
 
 </dd>
 </dl>

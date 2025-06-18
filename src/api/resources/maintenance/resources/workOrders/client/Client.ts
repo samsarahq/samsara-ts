@@ -75,7 +75,7 @@ export class WorkOrders {
         const list = core.HttpResponsePromise.interceptFunction(
             async (
                 request: Samsara.maintenance.WorkOrdersListRequest,
-            ): Promise<core.WithRawResponse<Samsara.WorkOrdersGetWorkOrdersResponseBody>> => {
+            ): Promise<core.WithRawResponse<Samsara.GetWorkOrdersResponseBody>> => {
                 const { ids, after } = request;
                 const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
                 if (ids != null) {
@@ -112,7 +112,7 @@ export class WorkOrders {
                 });
                 if (_response.ok) {
                     return {
-                        data: _response.body as Samsara.WorkOrdersGetWorkOrdersResponseBody,
+                        data: _response.body as Samsara.GetWorkOrdersResponseBody,
                         rawResponse: _response.rawResponse,
                     };
                 }
@@ -182,7 +182,7 @@ export class WorkOrders {
             },
         );
         const dataWithRawResponse = await list(request).withRawResponse();
-        return new core.Pageable<Samsara.WorkOrdersGetWorkOrdersResponseBody, Samsara.WorkOrderObjectResponseBody>({
+        return new core.Pageable<Samsara.GetWorkOrdersResponseBody, Samsara.WorkOrderObjectResponseBody>({
             response: dataWithRawResponse.data,
             rawResponse: dataWithRawResponse.rawResponse,
             hasNextPage: (response) => response?.pagination?.endCursor != null,
@@ -203,7 +203,7 @@ export class WorkOrders {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * @param {Samsara.maintenance.WorkOrdersPostWorkOrdersRequestBody} request
+     * @param {Samsara.maintenance.PostWorkOrdersRequestBody} request
      * @param {WorkOrders.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
@@ -222,16 +222,16 @@ export class WorkOrders {
      *     })
      */
     public create(
-        request: Samsara.maintenance.WorkOrdersPostWorkOrdersRequestBody,
+        request: Samsara.maintenance.PostWorkOrdersRequestBody,
         requestOptions?: WorkOrders.RequestOptions,
-    ): core.HttpResponsePromise<Samsara.WorkOrdersPostWorkOrdersResponseBody> {
+    ): core.HttpResponsePromise<Samsara.PostWorkOrdersResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__create(request, requestOptions));
     }
 
     private async __create(
-        request: Samsara.maintenance.WorkOrdersPostWorkOrdersRequestBody,
+        request: Samsara.maintenance.PostWorkOrdersRequestBody,
         requestOptions?: WorkOrders.RequestOptions,
-    ): Promise<core.WithRawResponse<Samsara.WorkOrdersPostWorkOrdersResponseBody>> {
+    ): Promise<core.WithRawResponse<Samsara.PostWorkOrdersResponseBody>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
@@ -256,10 +256,7 @@ export class WorkOrders {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return {
-                data: _response.body as Samsara.WorkOrdersPostWorkOrdersResponseBody,
-                rawResponse: _response.rawResponse,
-            };
+            return { data: _response.body as Samsara.PostWorkOrdersResponseBody, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
@@ -431,7 +428,7 @@ export class WorkOrders {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * @param {Samsara.maintenance.WorkOrdersPatchWorkOrdersRequestBody} request
+     * @param {Samsara.maintenance.PatchWorkOrdersRequestBody} request
      * @param {WorkOrders.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
@@ -450,16 +447,16 @@ export class WorkOrders {
      *     })
      */
     public update(
-        request: Samsara.maintenance.WorkOrdersPatchWorkOrdersRequestBody,
+        request: Samsara.maintenance.PatchWorkOrdersRequestBody,
         requestOptions?: WorkOrders.RequestOptions,
-    ): core.HttpResponsePromise<Samsara.WorkOrdersPatchWorkOrdersResponseBody> {
+    ): core.HttpResponsePromise<Samsara.PatchWorkOrdersResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__update(request, requestOptions));
     }
 
     private async __update(
-        request: Samsara.maintenance.WorkOrdersPatchWorkOrdersRequestBody,
+        request: Samsara.maintenance.PatchWorkOrdersRequestBody,
         requestOptions?: WorkOrders.RequestOptions,
-    ): Promise<core.WithRawResponse<Samsara.WorkOrdersPatchWorkOrdersResponseBody>> {
+    ): Promise<core.WithRawResponse<Samsara.PatchWorkOrdersResponseBody>> {
         const _response = await core.fetcher({
             url: urlJoin(
                 (await core.Supplier.get(this._options.baseUrl)) ??
@@ -484,10 +481,7 @@ export class WorkOrders {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return {
-                data: _response.body as Samsara.WorkOrdersPatchWorkOrdersResponseBody,
-                rawResponse: _response.rawResponse,
-            };
+            return { data: _response.body as Samsara.PatchWorkOrdersResponseBody, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
@@ -571,7 +565,7 @@ export class WorkOrders {
         const list = core.HttpResponsePromise.interceptFunction(
             async (
                 request: Samsara.maintenance.WorkOrdersStreamRequest,
-            ): Promise<core.WithRawResponse<Samsara.WorkOrdersStreamWorkOrdersResponseBody>> => {
+            ): Promise<core.WithRawResponse<Samsara.StreamWorkOrdersResponseBody>> => {
                 const { after, startTime, endTime, workOrderStatuses, assetIds, assignedUserIds } = request;
                 const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
                 if (after != null) {
@@ -626,7 +620,7 @@ export class WorkOrders {
                 });
                 if (_response.ok) {
                     return {
-                        data: _response.body as Samsara.WorkOrdersStreamWorkOrdersResponseBody,
+                        data: _response.body as Samsara.StreamWorkOrdersResponseBody,
                         rawResponse: _response.rawResponse,
                     };
                 }
@@ -696,7 +690,7 @@ export class WorkOrders {
             },
         );
         const dataWithRawResponse = await list(request).withRawResponse();
-        return new core.Pageable<Samsara.WorkOrdersStreamWorkOrdersResponseBody, Samsara.WorkOrderObjectResponseBody>({
+        return new core.Pageable<Samsara.StreamWorkOrdersResponseBody, Samsara.WorkOrderObjectResponseBody>({
             response: dataWithRawResponse.data,
             rawResponse: dataWithRawResponse.rawResponse,
             hasNextPage: (response) => response?.pagination?.endCursor != null,

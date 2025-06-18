@@ -3,9 +3,9 @@
  */
 
 /**
- * Requested endpoint is not yet implemented
+ * Service unavailable
  */
-export interface HosDailyLogsGetHosDailyLogsNotImplementedErrorResponseBody {
+export interface ServiceUnavailableErrorResponseBody {
     /** Message of error */
     message: string;
     /** The request ID; used when reaching out to support for issues with requests. */

@@ -76,7 +76,7 @@ export class TrainingCourses {
         const list = core.HttpResponsePromise.interceptFunction(
             async (
                 request: Samsara.TrainingCoursesListRequest,
-            ): Promise<core.WithRawResponse<Samsara.TrainingCoursesGetTrainingCoursesResponseBody>> => {
+            ): Promise<core.WithRawResponse<Samsara.GetTrainingCoursesResponseBody>> => {
                 const { after, courseIds, categoryIds, status } = request;
                 const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
                 if (after != null) {
@@ -127,7 +127,7 @@ export class TrainingCourses {
                 });
                 if (_response.ok) {
                     return {
-                        data: _response.body as Samsara.TrainingCoursesGetTrainingCoursesResponseBody,
+                        data: _response.body as Samsara.GetTrainingCoursesResponseBody,
                         rawResponse: _response.rawResponse,
                     };
                 }
@@ -196,7 +196,7 @@ export class TrainingCourses {
         );
         const dataWithRawResponse = await list(request).withRawResponse();
         return new core.Pageable<
-            Samsara.TrainingCoursesGetTrainingCoursesResponseBody,
+            Samsara.GetTrainingCoursesResponseBody,
             Samsara.TrainingCourseResponseObjectResponseBody
         >({
             response: dataWithRawResponse.data,

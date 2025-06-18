@@ -71,14 +71,14 @@ export class Legacy {
     public getVehiclesDriverAssignments(
         request: Samsara.LegacyGetVehiclesDriverAssignmentsRequest = {},
         requestOptions?: Legacy.RequestOptions,
-    ): core.HttpResponsePromise<Samsara.VehiclesDriverAssignmentsGetVehiclesDriverAssignmentsResponseBody> {
+    ): core.HttpResponsePromise<Samsara.GetVehiclesDriverAssignmentsResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__getVehiclesDriverAssignments(request, requestOptions));
     }
 
     private async __getVehiclesDriverAssignments(
         request: Samsara.LegacyGetVehiclesDriverAssignmentsRequest = {},
         requestOptions?: Legacy.RequestOptions,
-    ): Promise<core.WithRawResponse<Samsara.VehiclesDriverAssignmentsGetVehiclesDriverAssignmentsResponseBody>> {
+    ): Promise<core.WithRawResponse<Samsara.GetVehiclesDriverAssignmentsResponseBody>> {
         const { startTime, endTime, vehicleIds, tagIds, parentTagIds, after } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (startTime != null) {
@@ -128,7 +128,7 @@ export class Legacy {
         });
         if (_response.ok) {
             return {
-                data: _response.body as Samsara.VehiclesDriverAssignmentsGetVehiclesDriverAssignmentsResponseBody,
+                data: _response.body as Samsara.GetVehiclesDriverAssignmentsResponseBody,
                 rawResponse: _response.rawResponse,
             };
         }

@@ -75,7 +75,7 @@ export class ServiceTasks {
         const list = core.HttpResponsePromise.interceptFunction(
             async (
                 request: Samsara.maintenance.ServiceTasksListRequest,
-            ): Promise<core.WithRawResponse<Samsara.WorkOrdersGetServiceTasksResponseBody>> => {
+            ): Promise<core.WithRawResponse<Samsara.GetServiceTasksResponseBody>> => {
                 const { ids, includeArchived, after } = request;
                 const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
                 if (ids != null) {
@@ -115,7 +115,7 @@ export class ServiceTasks {
                 });
                 if (_response.ok) {
                     return {
-                        data: _response.body as Samsara.WorkOrdersGetServiceTasksResponseBody,
+                        data: _response.body as Samsara.GetServiceTasksResponseBody,
                         rawResponse: _response.rawResponse,
                     };
                 }
@@ -185,10 +185,7 @@ export class ServiceTasks {
             },
         );
         const dataWithRawResponse = await list(request).withRawResponse();
-        return new core.Pageable<
-            Samsara.WorkOrdersGetServiceTasksResponseBody,
-            Samsara.ServiceTaskDefinitionObjectResponseBody
-        >({
+        return new core.Pageable<Samsara.GetServiceTasksResponseBody, Samsara.ServiceTaskDefinitionObjectResponseBody>({
             response: dataWithRawResponse.data,
             rawResponse: dataWithRawResponse.rawResponse,
             hasNextPage: (response) => response?.pagination?.endCursor != null,

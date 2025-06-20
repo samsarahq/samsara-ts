@@ -38,7 +38,7 @@ export interface TriggerParamsObjectResponseBody {
     suddenFuelLevelDrop?: Samsara.SuddenFuelLevelDropTriggerDetailsObjectResponseBody;
     suddenFuelLevelRise?: Samsara.SuddenFuelLevelRiseTriggerDetailsObjectResponseBody;
     tireFaultCode?: Samsara.TireFaultCodeDetailsObjectResponseBody;
-    trainingAssignmentNearDueDate?: Samsara.TrainingAssignmentNearDueDateTriggerDetailsObjectResponseBody;
+    trainingAssignmentNearDueDate?: unknown;
     unassignedDriving?: Samsara.UnassignedDrivingTriggerDetailsObjectResponseBody;
     vehicleBatteryVoltage?: Samsara.VehicleBatterVoltageDetailsObjectResponseBody;
     vehicleFaultCode?: Samsara.VehicleFaultCodeDetailsObjectResponseBody;

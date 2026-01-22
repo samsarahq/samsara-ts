@@ -1,3 +1,3 @@
-export * from "./AttributesListRequestEntityType.js";
-export * from "./AttributesGetRequestEntityType.js";
-export * from "./AttributesDeleteRequestEntityType.js";
+export * from "./DeleteAttributeRequestEntityType.js";
+export * from "./GetAttributeRequestEntityType.js";
+export * from "./GetAttributesByEntityTypeRequestEntityType.js";

@@ -1,9 +1,29 @@
 # Samsara TypeScript Library
 
 [![fern shield](https://img.shields.io/badge/%F0%9F%8C%BF-Built%20with%20Fern-brightgreen)](https://buildwithfern.com?utm_source=github&utm_medium=github&utm_campaign=readme&utm_source=https%3A%2F%2Fgithub.com%2Fsamsarahq%2Fsamsara-ts)
-[![npm shield](https://img.shields.io/npm/v/@samsarahq/samsara)](https://www.npmjs.com/package/@samsarahq/samsara)
+[![npm shield](https://img.shields.io/npm/v/)](https://www.npmjs.com/package/)
 
-The Samsara TypeScript library provides convenient access to the Samsara API from TypeScript.
+The Samsara TypeScript library provides convenient access to the Samsara APIs from TypeScript.
+
+## Table of Contents
+
+- [Documentation](#documentation)
+- [Installation](#installation)
+- [Reference](#reference)
+- [Usage](#usage)
+- [Request and Response Types](#request-and-response-types)
+- [Exception Handling](#exception-handling)
+- [Pagination](#pagination)
+- [Advanced](#advanced)
+  - [Additional Headers](#additional-headers)
+  - [Additional Query String Parameters](#additional-query-string-parameters)
+  - [Retries](#retries)
+  - [Timeouts](#timeouts)
+  - [Aborting Requests](#aborting-requests)
+  - [Access Raw Response Data](#access-raw-response-data)
+  - [Logging](#logging)
+  - [Runtime Compatibility](#runtime-compatibility)
+- [Contributing](#contributing)
 
 ## Documentation
 
@@ -12,7 +32,7 @@ API reference documentation is available [here](https://developers.samsara.com/r
 ## Installation
 
 ```sh
-npm i -s @samsarahq/samsara
+npm i -s 
 ```
 
 ## Reference
@@ -24,30 +44,33 @@ A full reference for this library is available [here](https://github.com/samsara
 Instantiate and use the client with the following:
 
 ```typescript
-import { SamsaraClient } from "@samsarahq/samsara";
+import { SamsaraClient } from "";
 
 const client = new SamsaraClient({ token: "YOUR_TOKEN" });
-const response = await client.vehicles.list();
-for await (const item of response) {
+const pageableResponse = await client.vehicles.list();
+for await (const item of pageableResponse) {
     console.log(item);
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.vehicles.list();
+let page = await client.vehicles.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
+
+// You can also access the underlying response
+const response = page.response;
 ```
 
-## Request And Response Types
+## Request and Response Types
 
 The SDK exports all request and response types as TypeScript interfaces. Simply import them with the
 following namespace:
 
 ```typescript
-import { Samsara } from "@samsarahq/samsara";
+import { Samsara } from "Samsara";
 
-const request: Samsara.AddressesListRequest = {
+const request: Samsara.ListAddressesRequest = {
     ...
 };
 ```
@@ -58,7 +81,7 @@ When the API returns a non-success status code (4xx or 5xx response), a subclass
 will be thrown.
 
 ```typescript
-import { SamsaraError } from "@samsarahq/samsara";
+import { SamsaraError } from "Samsara";
 
 try {
     await client.vehicles.list(...);
@@ -77,19 +100,22 @@ try {
 List endpoints are paginated. The SDK provides an iterator so that you can simply loop over the items:
 
 ```typescript
-import { SamsaraClient } from "@samsarahq/samsara";
+import { SamsaraClient } from "";
 
 const client = new SamsaraClient({ token: "YOUR_TOKEN" });
-const response = await client.addresses.list();
-for await (const item of response) {
+const pageableResponse = await client.addresses.list();
+for await (const item of pageableResponse) {
     console.log(item);
 }
 
 // Or you can manually iterate page-by-page
-const page = await client.addresses.list();
+let page = await client.addresses.list();
 while (page.hasNextPage()) {
     page = page.getNextPage();
 }
+
+// You can also access the underlying response
+const response = page.response;
 ```
 
 ## Advanced
@@ -99,9 +125,30 @@ while (page.hasNextPage()) {
 If you would like to send additional headers as part of the request, use the `headers` request option.
 
 ```typescript
+import { SamsaraClient } from "Samsara";
+
+const client = new SamsaraClient({
+    ...
+    headers: {
+        'X-Custom-Header': 'custom value'
+    }
+});
+
 const response = await client.vehicles.list(..., {
     headers: {
         'X-Custom-Header': 'custom value'
+    }
+});
+```
+
+### Additional Query String Parameters
+
+If you would like to send additional query string parameters as part of the request, use the `queryParams` request option.
+
+```typescript
+const response = await client.vehicles.list(..., {
+    queryParams: {
+        'customQueryParamKey': 'custom query param value'
     }
 });
 ```
@@ -160,10 +207,75 @@ console.log(data);
 console.log(rawResponse.headers['X-My-Header']);
 ```
 
+### Logging
+
+The SDK supports logging. You can configure the logger by passing in a `logging` object to the client options.
+
+```typescript
+import { SamsaraClient, logging } from "Samsara";
+
+const client = new SamsaraClient({
+    ...
+    logging: {
+        level: logging.LogLevel.Debug, // defaults to logging.LogLevel.Info
+        logger: new logging.ConsoleLogger(), // defaults to ConsoleLogger
+        silent: false, // defaults to true, set to false to enable logging
+    }
+});
+```
+The `logging` object can have the following properties:
+- `level`: The log level to use. Defaults to `logging.LogLevel.Info`.
+- `logger`: The logger to use. Defaults to a `logging.ConsoleLogger`.
+- `silent`: Whether to silence the logger. Defaults to `true`.
+
+The `level` property can be one of the following values:
+- `logging.LogLevel.Debug`
+- `logging.LogLevel.Info`
+- `logging.LogLevel.Warn`
+- `logging.LogLevel.Error`
+
+To provide a custom logger, you can pass in an object that implements the `logging.ILogger` interface.
+
+<details>
+<summary>Custom logger examples</summary>
+
+Here's an example using the popular `winston` logging library.
+```ts
+import winston from 'winston';
+
+const winstonLogger = winston.createLogger({...});
+
+const logger: logging.ILogger = {
+    debug: (msg, ...args) => winstonLogger.debug(msg, ...args),
+    info: (msg, ...args) => winstonLogger.info(msg, ...args),
+    warn: (msg, ...args) => winstonLogger.warn(msg, ...args),
+    error: (msg, ...args) => winstonLogger.error(msg, ...args),
+};
+```
+
+Here's an example using the popular `pino` logging library.
+
+```ts
+import pino from 'pino';
+
+const pinoLogger = pino({...});
+
+const logger: logging.ILogger = {
+  debug: (msg, ...args) => pinoLogger.debug(args, msg),
+  info: (msg, ...args) => pinoLogger.info(args, msg),
+  warn: (msg, ...args) => pinoLogger.warn(args, msg),
+  error: (msg, ...args) => pinoLogger.error(args, msg),
+};
+```
+</details>
+
+
 ### Runtime Compatibility
 
-The SDK defaults to `node-fetch` but will use the global fetch client if present. The SDK works in the following
-runtimes:
+
+The SDK works in the following runtimes:
+
+
 
 - Node.js 18+
 - Vercel
@@ -178,7 +290,7 @@ The SDK provides a way for you to customize the underlying HTTP client / Fetch f
 unsupported environment, this provides a way for you to break glass and ensure the SDK works.
 
 ```typescript
-import { SamsaraClient } from "@samsarahq/samsara";
+import { SamsaraClient } from "Samsara";
 
 const client = new SamsaraClient({
     ...

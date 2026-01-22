@@ -1,1 +1,1 @@
-export * from "./DriversListRequestDriverActivationStatus.js";
+export * from "./ListDriversRequestDriverActivationStatus.js";

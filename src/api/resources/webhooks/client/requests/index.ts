@@ -1,3 +1,5 @@
-export { type WebhooksListRequest } from "./WebhooksListRequest.js";
-export { type WebhooksPostWebhooksRequestBody } from "./WebhooksPostWebhooksRequestBody.js";
-export { type WebhooksPatchWebhookRequestBody } from "./WebhooksPatchWebhookRequestBody.js";
+export type { DeleteWebhookRequest } from "./DeleteWebhookRequest.js";
+export type { GetWebhookRequest } from "./GetWebhookRequest.js";
+export type { ListWebhooksRequest } from "./ListWebhooksRequest.js";
+export { WebhooksPatchWebhookRequestBody } from "./WebhooksPatchWebhookRequestBody.js";
+export { WebhooksPostWebhooksRequestBody } from "./WebhooksPostWebhooksRequestBody.js";

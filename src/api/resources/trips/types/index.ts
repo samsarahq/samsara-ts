@@ -1,2 +1,2 @@
-export * from "./TripsStreamRequestCompletionStatus.js";
-export * from "./TripsStreamRequestQueryBy.js";
+export * from "./GetTripsRequestCompletionStatus.js";
+export * from "./GetTripsRequestQueryBy.js";

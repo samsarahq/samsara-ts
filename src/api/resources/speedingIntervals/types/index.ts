@@ -1,1 +1,1 @@
-export * from "./SpeedingIntervalsStreamRequestQueryBy.js";
+export * from "./GetSpeedingIntervalsRequestQueryBy.js";

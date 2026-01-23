@@ -1,2 +1,3 @@
-export { type GatewaysListRequest } from "./GatewaysListRequest.js";
-export { type GatewaysPostGatewayRequestBody } from "./GatewaysPostGatewayRequestBody.js";
+export type { DeleteGatewayRequest } from "./DeleteGatewayRequest.js";
+export type { GatewaysPostGatewayRequestBody } from "./GatewaysPostGatewayRequestBody.js";
+export type { GetGatewaysRequest } from "./GetGatewaysRequest.js";

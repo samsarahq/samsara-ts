@@ -1,3 +1,3 @@
-export { type IssuesListRequest } from "./IssuesListRequest.js";
-export { type IssuesPatchIssueRequestBody } from "./IssuesPatchIssueRequestBody.js";
-export { type IssuesStreamRequest } from "./IssuesStreamRequest.js";
+export type { GetIssuesRequest } from "./GetIssuesRequest.js";
+export type { GetIssuesStreamRequest } from "./GetIssuesStreamRequest.js";
+export { IssuesPatchIssueRequestBody } from "./IssuesPatchIssueRequestBody.js";

@@ -1,4 +1,4 @@
-export { type DriverVehicleAssignmentsGetRequest } from "./DriverVehicleAssignmentsGetRequest.js";
-export { type CreateDriverVehicleAssignmentRequestBody } from "./CreateDriverVehicleAssignmentRequestBody.js";
-export { type DeleteDriverVehicleAssignmentsRequestBody } from "./DeleteDriverVehicleAssignmentsRequestBody.js";
-export { type UpdateDriverVehicleAssignmentRequestBody } from "./UpdateDriverVehicleAssignmentRequestBody.js";
+export type { DriverVehicleAssignmentsV2CreateDriverVehicleAssignmentRequestBody } from "./DriverVehicleAssignmentsV2CreateDriverVehicleAssignmentRequestBody.js";
+export type { DriverVehicleAssignmentsV2DeleteDriverVehicleAssignmentsRequestBody } from "./DriverVehicleAssignmentsV2DeleteDriverVehicleAssignmentsRequestBody.js";
+export type { DriverVehicleAssignmentsV2UpdateDriverVehicleAssignmentRequestBody } from "./DriverVehicleAssignmentsV2UpdateDriverVehicleAssignmentRequestBody.js";
+export type { GetDriverVehicleAssignmentsRequest } from "./GetDriverVehicleAssignmentsRequest.js";

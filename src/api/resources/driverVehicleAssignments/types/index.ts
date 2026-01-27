@@ -1,2 +1,2 @@
-export * from "./DriverVehicleAssignmentsGetRequestFilterBy.js";
-export * from "./DriverVehicleAssignmentsGetRequestAssignmentType.js";
+export * from "./GetDriverVehicleAssignmentsRequestAssignmentType.js";
+export * from "./GetDriverVehicleAssignmentsRequestFilterBy.js";

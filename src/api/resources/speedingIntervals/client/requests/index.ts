@@ -1,1 +1,1 @@
-export { type SpeedingIntervalsStreamRequest } from "./SpeedingIntervalsStreamRequest.js";
+export type { GetSpeedingIntervalsRequest } from "./GetSpeedingIntervalsRequest.js";

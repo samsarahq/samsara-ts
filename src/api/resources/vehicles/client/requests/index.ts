@@ -1,2 +1,3 @@
-export { type VehiclesListRequest } from "./VehiclesListRequest.js";
-export { type UpdateVehicleRequest } from "./UpdateVehicleRequest.js";
+export type { GetVehiclesRequest } from "./GetVehiclesRequest.js";
+export type { ListVehiclesRequest } from "./ListVehiclesRequest.js";
+export { UpdateVehicleRequest } from "./UpdateVehicleRequest.js";

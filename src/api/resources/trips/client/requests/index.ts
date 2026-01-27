@@ -1,1 +1,2 @@
-export { type TripsStreamRequest } from "./TripsStreamRequest.js";
+export type { GetTripsRequest } from "./GetTripsRequest.js";
+export type { V1GetFleetTripsRequest } from "./V1GetFleetTripsRequest.js";

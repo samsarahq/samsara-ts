@@ -1,1 +1,1 @@
-export { type IdlingListRequest } from "./IdlingListRequest.js";
+export type { GetIdlingEventsRequest } from "./GetIdlingEventsRequest.js";

@@ -26,3 +26,11 @@ jobs:
                   npm publish --access public
               env:
                   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+            - name: Upload npm logs on failure
+              if: failure()
+              uses: actions/upload-artifact@v4
+              with:
+                  name: npm-debug-logs
+                  path: /home/runner/.npm/_logs/
+                  retention-days: 5

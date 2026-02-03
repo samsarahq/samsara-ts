@@ -1,7 +1,7 @@
 # Samsara TypeScript Library
 
 [![fern shield](https://img.shields.io/badge/%F0%9F%8C%BF-Built%20with%20Fern-brightgreen)](https://buildwithfern.com?utm_source=github&utm_medium=github&utm_campaign=readme&utm_source=https%3A%2F%2Fgithub.com%2Fsamsarahq%2Fsamsara-ts)
-[![npm shield](https://img.shields.io/npm/v/)](https://www.npmjs.com/package/)
+[![npm shield](https://img.shields.io/npm/v/samsarahq/samsara)](https://www.npmjs.com/package/samsarahq/samsara)
 
 The Samsara TypeScript library provides convenient access to the Samsara APIs from TypeScript.
 
@@ -32,7 +32,7 @@ API reference documentation is available [here](https://developers.samsara.com/r
 ## Installation
 
 ```sh
-npm i -s 
+npm i -s samsarahq/samsara
 ```
 
 ## Reference
@@ -44,7 +44,7 @@ A full reference for this library is available [here](https://github.com/samsara
 Instantiate and use the client with the following:
 
 ```typescript
-import { SamsaraClient } from "";
+import { SamsaraClient } from "samsarahq/samsara";
 
 const client = new SamsaraClient({ token: "YOUR_TOKEN" });
 const pageableResponse = await client.vehicles.list();
@@ -68,7 +68,7 @@ The SDK exports all request and response types as TypeScript interfaces. Simply 
 following namespace:
 
 ```typescript
-import { Samsara } from "Samsara";
+import { Samsara } from "samsarahq/samsara";
 
 const request: Samsara.ListAddressesRequest = {
     ...
@@ -81,7 +81,7 @@ When the API returns a non-success status code (4xx or 5xx response), a subclass
 will be thrown.
 
 ```typescript
-import { SamsaraError } from "Samsara";
+import { SamsaraError } from "samsarahq/samsara";
 
 try {
     await client.vehicles.list(...);
@@ -100,7 +100,7 @@ try {
 List endpoints are paginated. The SDK provides an iterator so that you can simply loop over the items:
 
 ```typescript
-import { SamsaraClient } from "";
+import { SamsaraClient } from "samsarahq/samsara";
 
 const client = new SamsaraClient({ token: "YOUR_TOKEN" });
 const pageableResponse = await client.addresses.list();
@@ -125,7 +125,7 @@ const response = page.response;
 If you would like to send additional headers as part of the request, use the `headers` request option.
 
 ```typescript
-import { SamsaraClient } from "Samsara";
+import { SamsaraClient } from "samsarahq/samsara";
 
 const client = new SamsaraClient({
     ...
@@ -212,7 +212,7 @@ console.log(rawResponse.headers['X-My-Header']);
 The SDK supports logging. You can configure the logger by passing in a `logging` object to the client options.
 
 ```typescript
-import { SamsaraClient, logging } from "Samsara";
+import { SamsaraClient, logging } from "samsarahq/samsara";
 
 const client = new SamsaraClient({
     ...
@@ -290,7 +290,7 @@ The SDK provides a way for you to customize the underlying HTTP client / Fetch f
 unsupported environment, this provides a way for you to break glass and ensure the SDK works.
 
 ```typescript
-import { SamsaraClient } from "Samsara";
+import { SamsaraClient } from "samsarahq/samsara";
 
 const client = new SamsaraClient({
     ...

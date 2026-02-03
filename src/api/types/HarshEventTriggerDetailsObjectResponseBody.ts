@@ -12,7 +12,7 @@ export namespace HarshEventTriggerDetailsObjectResponseBody {
     export type Types = Types.Item[];
 
     export namespace Types {
-        /** The type of harsh event.  Valid values: `haAccel`, `haBraking`, `haCameraMisaligned`, `haCrash`, `haDistractedDriving`, `haDistractedDrivingCalibration`, `haDrinkPolicy`, `haDriverObstructionPolicy`, `haDrowsinessDetection`, `haEvent`, `haFalsePositive`, `haFoodPolicy`, `haHighSpeedSuddenDisconnect`, `haInvalid`, `haLaneDeparture`, `haMaskPolicy`, `haNearCollision`, `haOutwardObstructionPolicy`, `haPassengerPolicy`, `haPersonalProtectiveEquipment`, `haPhonePolicy`, `haPolicyDetector`, `haRearCollisionWarning`, `haRedLightViolation`, `haRolledStopSign`, `haRollover`, `haRolloverProtectionBrakeControlActivated`, `haRolloverProtectionEngineControlActivated`, `haSeatbeltPolicy`, `haSharpTurn`, `haSignDetection`, `haSmokingPolicy`, `haSpeeding`, `haTailgating`, `haTileRollingRailroadCrossing`, `haTileRollingStopSign`, `haTrafficLightDetection`, `haUnsafeParking`, `haVehicleInBlindSpotWarning`, `haVulnerableRoadUserCollisionWarning`, `haYawControlBrakeControlActivated`, `haYawControlEngineControlActivated` */
+        /** The type of harsh event.  Valid values: `haAccel`, `haBraking`, `haCameraMisaligned`, `haCrash`, `haDistractedDriving`, `haDistractedDrivingCalibration`, `haDrinkPolicy`, `haDriverObstructionPolicy`, `haDrowsinessDetection`, `haEvent`, `haFalsePositive`, `haFoodPolicy`, `haHighSpeedSuddenDisconnect`, `haInvalid`, `haLaneDeparture`, `haMaskPolicy`, `haNearCollision`, `haOutwardObstructionPolicy`, `haPassengerPolicy`, `haPersonalProtectiveEquipment`, `haPhonePolicy`, `haPolicyDetector`, `haRearCollisionWarning`, `haRedLightViolation`, `haReversing`, `haRolledStopSign`, `haRollover`, `haRolloverProtectionBrakeControlActivated`, `haRolloverProtectionEngineControlActivated`, `haSeatbeltPolicy`, `haSharpTurn`, `haSignDetection`, `haSmokingPolicy`, `haSpeeding`, `haTailgating`, `haTileRollingRailroadCrossing`, `haTileRollingStopSign`, `haTrafficLightDetection`, `haUnsafeParking`, `haVehicleInBlindSpotWarning`, `haVulnerableRoadUserCollisionWarning`, `haYawControlBrakeControlActivated`, `haYawControlEngineControlActivated` */
         export const Item = {
             HaAccel: "haAccel",
             HaBraking: "haBraking",
@@ -38,6 +38,7 @@ export namespace HarshEventTriggerDetailsObjectResponseBody {
             HaPolicyDetector: "haPolicyDetector",
             HaRearCollisionWarning: "haRearCollisionWarning",
             HaRedLightViolation: "haRedLightViolation",
+            HaReversing: "haReversing",
             HaRolledStopSign: "haRolledStopSign",
             HaRollover: "haRollover",
             HaRolloverProtectionBrakeControlActivated: "haRolloverProtectionBrakeControlActivated",

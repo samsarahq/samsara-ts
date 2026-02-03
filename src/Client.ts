@@ -45,6 +45,8 @@ import { TachographEuOnlyClient } from "./api/resources/tachographEuOnly/client/
 import { TagsClient } from "./api/resources/tags/client/Client.js";
 import { TrailerAssignmentsClient } from "./api/resources/trailerAssignments/client/Client.js";
 import { TrailersClient } from "./api/resources/trailers/client/Client.js";
+import { TrainingAssignmentsClient } from "./api/resources/trainingAssignments/client/Client.js";
+import { TrainingCoursesClient } from "./api/resources/trainingCourses/client/Client.js";
 import { TripsClient } from "./api/resources/trips/client/Client.js";
 import { UsersClient } from "./api/resources/users/client/Client.js";
 import { VehicleLocationsClient } from "./api/resources/vehicleLocations/client/Client.js";
@@ -107,6 +109,8 @@ export class SamsaraClient {
     protected _safety: SafetyClient | undefined;
     protected _speedingIntervals: SpeedingIntervalsClient | undefined;
     protected _tags: TagsClient | undefined;
+    protected _trainingAssignments: TrainingAssignmentsClient | undefined;
+    protected _trainingCourses: TrainingCoursesClient | undefined;
     protected _trips: TripsClient | undefined;
     protected _users: UsersClient | undefined;
     protected _legacy: LegacyClient | undefined;
@@ -294,6 +298,14 @@ export class SamsaraClient {
 
     public get tags(): TagsClient {
         return (this._tags ??= new TagsClient(this._options));
+    }
+
+    public get trainingAssignments(): TrainingAssignmentsClient {
+        return (this._trainingAssignments ??= new TrainingAssignmentsClient(this._options));
+    }
+
+    public get trainingCourses(): TrainingCoursesClient {
+        return (this._trainingCourses ??= new TrainingCoursesClient(this._options));
     }
 
     public get trips(): TripsClient {

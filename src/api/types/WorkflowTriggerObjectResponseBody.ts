@@ -52,11 +52,9 @@ export interface WorkflowTriggerObjectResponseBody {
      * Geofence Entry = 5016
      * Geofence Exit = 5017
      * Route Stop ETA Alert = 5018
-     * Scheduled Date And Time = 8001
-     *
-     * The following trigger types are in Preview:
-     * A safety event occurred = 5033
+     * A safety event occurred with a driver assigned = 5033
      * A safety event occurred = 5039
+     * Scheduled Date And Time = 8001
      */
     triggerTypeId: number;
 }

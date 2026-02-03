@@ -26,7 +26,7 @@ export namespace WebhookResponseResponseBody {
     export type EventTypes = EventTypes.Item[];
 
     export namespace EventTypes {
-        /** This is the name of the event type.  Valid values: `AddressCreated`, `AddressDeleted`, `AddressUpdated`, `AlertIncident`, `AlertObjectEvent`, `DocumentSubmitted`, `DriverCreated`, `DriverUpdated`, `DvirSubmitted`, `EngineFaultOff`, `EngineFaultOn`, `FormSubmitted`, `FormUpdated`, `GatewayUnplugged`, `GeofenceEntry`, `GeofenceExit`, `IssueCreated`, `PredictiveMaintenanceAlert`, `RouteStopArrival`, `RouteStopDeparture`, `RouteStopEarlyLateArrival`, `RouteStopEtaUpdated`, `RouteStopResequence`, `SevereSpeedingEnded`, `SevereSpeedingStarted`, `SpeedingEventEnded`, `SpeedingEventStarted`, `SuddenFuelLevelDrop`, `SuddenFuelLevelRise`, `VehicleCreated`, `VehicleUpdated` */
+        /** This is the name of the event type.  Valid values: `AddressCreated`, `AddressDeleted`, `AddressUpdated`, `AlertIncident`, `AlertObjectEvent`, `DocumentSubmitted`, `DriverCreated`, `DriverUpdated`, `DvirSubmitted`, `EngineFaultOff`, `EngineFaultOn`, `FormSubmitted`, `FormUpdated`, `GatewayUnplugged`, `GeofenceEntry`, `GeofenceExit`, `IssueCreated`, `MissingDvirPastDue`, `PredictiveMaintenanceAlert`, `RouteStopArrival`, `RouteStopDeparture`, `RouteStopEarlyLateArrival`, `RouteStopEtaUpdated`, `RouteStopResequence`, `SevereSpeedingEnded`, `SevereSpeedingStarted`, `SpeedingEventEnded`, `SpeedingEventStarted`, `SuddenFuelLevelDrop`, `SuddenFuelLevelRise`, `VehicleCreated`, `VehicleUpdated` */
         export const Item = {
             AddressCreated: "AddressCreated",
             AddressDeleted: "AddressDeleted",
@@ -45,6 +45,7 @@ export namespace WebhookResponseResponseBody {
             GeofenceEntry: "GeofenceEntry",
             GeofenceExit: "GeofenceExit",
             IssueCreated: "IssueCreated",
+            MissingDvirPastDue: "MissingDvirPastDue",
             PredictiveMaintenanceAlert: "PredictiveMaintenanceAlert",
             RouteStopArrival: "RouteStopArrival",
             RouteStopDeparture: "RouteStopDeparture",

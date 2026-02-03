@@ -1,8 +1,11 @@
 {
-    "name": "samsarahq/samsara",
-    "version": "5.4.1",
+    "name": "@samsarahq/samsara",
+    "version": "5.4.2",
     "private": false,
-    "repository": "git+https://github.com/samsarahq/samsara-ts",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/samsarahq/samsara-ts.git"
+    },
     "license": "MIT",
     "type": "commonjs",
     "main": "./dist/cjs/index.js",

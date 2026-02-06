@@ -15,7 +15,7 @@ export interface MediaRetrievalPostMediaRetrievalRequestBody {
     endTime: string;
     /** A list of desired camera inputs for which to capture media. Only media with valid inputs (e.g. device has that input stream and device was recording at the time) will be uploaded. An empty list is invalid. */
     inputs: MediaRetrievalPostMediaRetrievalRequestBody.Inputs.Item[];
-    /** The desired media type. If a video is requested, endTime must be after startTime. If an image is requested, endTime must be the same as startTime. Must be one of: image, videoHighRes, videoLowRes. Examples: image, videoHighRes, videoLowRes.  Valid values: `image`, `videoHighRes`, `videoLowRes` */
+    /** The desired media type. If a video is requested, endTime must be after startTime. If an image is requested, endTime must be the same as startTime. Must be one of: image, videoHighRes, videoLowRes. Examples: image, videoHighRes, videoLowRes, hyperlapse.  Valid values: `image`, `videoHighRes`, `videoLowRes`, `hyperlapse` */
     mediaType: MediaRetrievalPostMediaRetrievalRequestBody.MediaType;
     /** A start time in RFC 3339 format. Millisecond precision and timezones are supported. (Examples: 2019-06-13T19:08:25Z, 2019-06-13T19:08:25.455Z, OR 2015-09-15T14:00:12-04:00). */
     startTime: string;
@@ -39,11 +39,12 @@ export namespace MediaRetrievalPostMediaRetrievalRequestBody {
         export type Item = (typeof Item)[keyof typeof Item];
     }
 
-    /** The desired media type. If a video is requested, endTime must be after startTime. If an image is requested, endTime must be the same as startTime. Must be one of: image, videoHighRes, videoLowRes. Examples: image, videoHighRes, videoLowRes.  Valid values: `image`, `videoHighRes`, `videoLowRes` */
+    /** The desired media type. If a video is requested, endTime must be after startTime. If an image is requested, endTime must be the same as startTime. Must be one of: image, videoHighRes, videoLowRes. Examples: image, videoHighRes, videoLowRes, hyperlapse.  Valid values: `image`, `videoHighRes`, `videoLowRes`, `hyperlapse` */
     export const MediaType = {
         Image: "image",
         VideoHighRes: "videoHighRes",
         VideoLowRes: "videoLowRes",
+        Hyperlapse: "hyperlapse",
     } as const;
     export type MediaType = (typeof MediaType)[keyof typeof MediaType];
 }

@@ -6,12 +6,12 @@
 export interface SafetyEventBehaviorLabelsResponseBody {
     /** Name of the behavior label. */
     name?: string;
-    /** Type of the BehaviorLabel.  Valid values: `Acceleration`, `Braking`, `Crash`, `DefensiveDriving`, `DidNotYield`, `Drinking`, `Drowsy`, `Eating`, `EatingDrinking`, `EdgeDistractedDriving`, `EdgeRailroadCrossingViolation`, `FollowingDistance`, `FollowingDistanceModerate`, `FollowingDistanceSevere`, `ForwardCollisionWarning`, `GenericDistraction`, `GenericTailgating`, `HarshTurn`, `HighSpeedSuddenDisconnect`, `Invalid`, `LaneDeparture`, `LateResponse`, `MobileUsage`, `NearCollison`, `NoSeatbelt`, `ObstructedCamera`, `Passenger`, `PolicyViolationMask`, `ProtectiveEquipment`, `RanRedLight`, `RearCollisionWarning`, `RollingStop`, `RolloverProtection`, `Smoking`, `Speeding`, `VehicleInBlindSpotWarning`, `VulnerableRoadUserCollisionWarning`, `YawControl` */
+    /** Type of the BehaviorLabel.  Valid values: `Acceleration`, `Braking`, `Crash`, `DefensiveDriving`, `DidNotYield`, `Drinking`, `Drowsy`, `Eating`, `EatingDrinking`, `EdgeDistractedDriving`, `EdgeRailroadCrossingViolation`, `FollowingDistance`, `FollowingDistanceModerate`, `FollowingDistanceSevere`, `ForwardCollisionWarning`, `GenericDistraction`, `GenericTailgating`, `HarshTurn`, `HighSpeedSuddenDisconnect`, `Invalid`, `LaneDeparture`, `LateResponse`, `MobileUsage`, `NearCollison`, `NoSeatbelt`, `ObstructedCamera`, `OperationalEvent`, `Passenger`, `PolicyViolationMask`, `ProtectiveEquipment`, `RanRedLight`, `RearCollisionWarning`, `RollingStop`, `RolloverProtection`, `Smoking`, `Speeding`, `VehicleInBlindSpotWarning`, `VulnerableRoadUserCollisionWarning`, `YawControl` */
     type?: SafetyEventBehaviorLabelsResponseBody.Type;
 }
 
 export namespace SafetyEventBehaviorLabelsResponseBody {
-    /** Type of the BehaviorLabel.  Valid values: `Acceleration`, `Braking`, `Crash`, `DefensiveDriving`, `DidNotYield`, `Drinking`, `Drowsy`, `Eating`, `EatingDrinking`, `EdgeDistractedDriving`, `EdgeRailroadCrossingViolation`, `FollowingDistance`, `FollowingDistanceModerate`, `FollowingDistanceSevere`, `ForwardCollisionWarning`, `GenericDistraction`, `GenericTailgating`, `HarshTurn`, `HighSpeedSuddenDisconnect`, `Invalid`, `LaneDeparture`, `LateResponse`, `MobileUsage`, `NearCollison`, `NoSeatbelt`, `ObstructedCamera`, `Passenger`, `PolicyViolationMask`, `ProtectiveEquipment`, `RanRedLight`, `RearCollisionWarning`, `RollingStop`, `RolloverProtection`, `Smoking`, `Speeding`, `VehicleInBlindSpotWarning`, `VulnerableRoadUserCollisionWarning`, `YawControl` */
+    /** Type of the BehaviorLabel.  Valid values: `Acceleration`, `Braking`, `Crash`, `DefensiveDriving`, `DidNotYield`, `Drinking`, `Drowsy`, `Eating`, `EatingDrinking`, `EdgeDistractedDriving`, `EdgeRailroadCrossingViolation`, `FollowingDistance`, `FollowingDistanceModerate`, `FollowingDistanceSevere`, `ForwardCollisionWarning`, `GenericDistraction`, `GenericTailgating`, `HarshTurn`, `HighSpeedSuddenDisconnect`, `Invalid`, `LaneDeparture`, `LateResponse`, `MobileUsage`, `NearCollison`, `NoSeatbelt`, `ObstructedCamera`, `OperationalEvent`, `Passenger`, `PolicyViolationMask`, `ProtectiveEquipment`, `RanRedLight`, `RearCollisionWarning`, `RollingStop`, `RolloverProtection`, `Smoking`, `Speeding`, `VehicleInBlindSpotWarning`, `VulnerableRoadUserCollisionWarning`, `YawControl` */
     export const Type = {
         Acceleration: "Acceleration",
         Braking: "Braking",
@@ -39,6 +39,7 @@ export namespace SafetyEventBehaviorLabelsResponseBody {
         NearCollison: "NearCollison",
         NoSeatbelt: "NoSeatbelt",
         ObstructedCamera: "ObstructedCamera",
+        OperationalEvent: "OperationalEvent",
         Passenger: "Passenger",
         PolicyViolationMask: "PolicyViolationMask",
         ProtectiveEquipment: "ProtectiveEquipment",

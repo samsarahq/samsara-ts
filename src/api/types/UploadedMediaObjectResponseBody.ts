@@ -11,7 +11,7 @@ export interface UploadedMediaObjectResponseBody {
     endTime: string;
     /** Input type for this media.  Valid values: `dashcamForwardFacing`, `dashcamInwardFacing`, `analog1`, `analog2`, `analog3`, `analog4` */
     input: UploadedMediaObjectResponseBody.Input;
-    /** Type of media.  Valid values: `image`, `video` */
+    /** Type of media.  Valid values: `image`, `videoHighRes`, `videoLowRes`, `hyperlapse` */
     mediaType: UploadedMediaObjectResponseBody.MediaType;
     /**  A start time in RFC 3339 format. Millisecond precision and timezones are supported. (Examples: 2019-06-13T19:08:25Z, 2019-06-13T19:08:25.455Z, OR 2015-09-15T14:00:12-04:00). */
     startTime: string;
@@ -56,10 +56,12 @@ export namespace UploadedMediaObjectResponseBody {
         Analog4: "analog4",
     } as const;
     export type Input = (typeof Input)[keyof typeof Input];
-    /** Type of media.  Valid values: `image`, `video` */
+    /** Type of media.  Valid values: `image`, `videoHighRes`, `videoLowRes`, `hyperlapse` */
     export const MediaType = {
         Image: "image",
-        Video: "video",
+        VideoHighRes: "videoHighRes",
+        VideoLowRes: "videoLowRes",
+        Hyperlapse: "hyperlapse",
     } as const;
     export type MediaType = (typeof MediaType)[keyof typeof MediaType];
     /** Trigger reason for this media capture.  Valid values: `api`, `panicButton`, `periodicStill`, `rfidEvent`, `safetyEvent`, `tripEndStill`, `tripStartStill`, `videoRetrieval` */

@@ -240,24 +240,24 @@ export class AttributesClient {
      *
      * To use this endpoint, select **Write Attributes** under the Setup & Administration category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
-     * @param {Samsara.DeleteAttributeRequest} request
+     * @param {Samsara.DeleteAttributesRequest} request
      * @param {AttributesClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.attributes.deleteAttribute({
+     *     await client.attributes.delete({
      *         id: "id",
      *         entityType: "driver"
      *     })
      */
-    public deleteAttribute(
-        request: Samsara.DeleteAttributeRequest,
+    public delete(
+        request: Samsara.DeleteAttributesRequest,
         requestOptions?: AttributesClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.StandardDeleteResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__deleteAttribute(request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__delete(request, requestOptions));
     }
 
-    private async __deleteAttribute(
-        request: Samsara.DeleteAttributeRequest,
+    private async __delete(
+        request: Samsara.DeleteAttributesRequest,
         requestOptions?: AttributesClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.StandardDeleteResponse>> {
         const { id, entityType } = request;

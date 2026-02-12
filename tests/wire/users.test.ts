@@ -174,7 +174,7 @@ describe("UsersClient", () => {
         });
     });
 
-    test("deleteUser", async () => {
+    test("delete", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -186,7 +186,7 @@ describe("UsersClient", () => {
         const rawResponseBody = "";
         server.mockEndpoint().delete("/users/id").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
-        const response = await client.users.deleteUser({
+        const response = await client.users.delete({
             id: "id",
         });
         expect(response).toEqual("");

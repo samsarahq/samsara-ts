@@ -6,7 +6,7 @@
  *         id: "id"
  *     }
  */
-export interface DeleteUserRequest {
-    /** Unique identifier for the user. */
+export interface DeleteAssetsRequest {
+    /** Id of the asset to be deleted. */
     id: string;
 }

@@ -9,9 +9,9 @@ import type * as Samsara from "../../../../index.js";
  *         entityType: "driver"
  *     }
  */
-export interface DeleteAttributeRequest {
+export interface DeleteAttributesRequest {
     /** Samsara-provided UUID of the attribute. */
     id: string;
     /** Denotes the type of entity, driver or asset. */
-    entityType: Samsara.DeleteAttributeRequestEntityType;
+    entityType: Samsara.DeleteAttributesRequestEntityType;
 }

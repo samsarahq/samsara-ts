@@ -8,6 +8,7 @@ import * as environments from "../../../../environments.js";
 import { handleNonStatusCodeError } from "../../../../errors/handleNonStatusCodeError.js";
 import * as errors from "../../../../errors/index.js";
 import * as Samsara from "../../../index.js";
+import { AssetsClient } from "../resources/assets/client/Client.js";
 
 export declare namespace IndustrialClient {
     export type Options = BaseClientOptions;
@@ -17,9 +18,14 @@ export declare namespace IndustrialClient {
 
 export class IndustrialClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<IndustrialClient.Options>;
+    protected _assets: AssetsClient | undefined;
 
     constructor(options: IndustrialClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
+    }
+
+    public get assets(): AssetsClient {
+        return (this._assets ??= new AssetsClient(this._options));
     }
 
     /**
@@ -157,71 +163,6 @@ export class IndustrialClient {
         }
 
         return handleNonStatusCodeError(_response.error, _response.rawResponse, "POST", "/industrial/assets");
-    }
-
-    /**
-     * Delete asset.
-     *
-     *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
-     *
-     * To use this endpoint, select **Write Equipment** under the Equipment category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
-     *
-     * @param {Samsara.DeleteIndustrialAssetRequest} request
-     * @param {IndustrialClient.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @example
-     *     await client.industrial.deleteIndustrialAsset({
-     *         id: "id"
-     *     })
-     */
-    public deleteIndustrialAsset(
-        request: Samsara.DeleteIndustrialAssetRequest,
-        requestOptions?: IndustrialClient.RequestOptions,
-    ): core.HttpResponsePromise<Samsara.StandardDeleteResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__deleteIndustrialAsset(request, requestOptions));
-    }
-
-    private async __deleteIndustrialAsset(
-        request: Samsara.DeleteIndustrialAssetRequest,
-        requestOptions?: IndustrialClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Samsara.StandardDeleteResponse>> {
-        const { id } = request;
-        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
-        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
-            _authRequest.headers,
-            this._options?.headers,
-            mergeOnlyDefinedHeaders({ "X-Samsara-Version": requestOptions?.version }),
-            requestOptions?.headers,
-        );
-        const _response = await core.fetcher({
-            url: core.url.join(
-                (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.SamsaraEnvironment.ProductionApi,
-                `industrial/assets/${core.url.encodePathParam(id)}`,
-            ),
-            method: "DELETE",
-            headers: _headers,
-            queryParameters: requestOptions?.queryParams,
-            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
-            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
-            fetchFn: this._options?.fetch,
-            logging: this._options.logging,
-        });
-        if (_response.ok) {
-            return { data: _response.body as Samsara.StandardDeleteResponse, rawResponse: _response.rawResponse };
-        }
-
-        if (_response.error.reason === "status-code") {
-            throw new errors.SamsaraError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-                rawResponse: _response.rawResponse,
-            });
-        }
-
-        return handleNonStatusCodeError(_response.error, _response.rawResponse, "DELETE", "/industrial/assets/{id}");
     }
 
     /**

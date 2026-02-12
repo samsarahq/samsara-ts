@@ -61,8 +61,8 @@ export class BetaApIsClient {
     ): Promise<core.WithRawResponse<Samsara.DepreciationGetDepreciationTransactionsResponseBody>> {
         const { startTime, endTime, assetIds, after } = request;
         const _queryParams: Record<string, unknown> = {
-            startTime,
-            endTime,
+            startTime: startTime != null ? startTime : undefined,
+            endTime: endTime != null ? endTime : undefined,
             assetIds,
             after,
         };
@@ -388,8 +388,8 @@ export class BetaApIsClient {
             after,
             driverTagIds,
             driverParentTagIds,
-            startTime,
-            endTime,
+            startTime: startTime != null ? startTime : undefined,
+            endTime: endTime != null ? endTime : undefined,
         };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -2158,8 +2158,8 @@ export class BetaApIsClient {
             hubId,
             customPropertyIds,
             customPropertyNames,
-            startTime,
-            endTime,
+            startTime: startTime != null ? startTime : undefined,
+            endTime: endTime != null ? endTime : undefined,
             after,
             limit,
         };
@@ -2923,7 +2923,7 @@ export class BetaApIsClient {
         const _queryParams: Record<string, unknown> = {
             entityType,
             startTime,
-            endTime,
+            endTime: endTime != null ? endTime : undefined,
             after,
             qualificationTypeIds,
             ownerIds,

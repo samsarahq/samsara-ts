@@ -1,7 +1,6 @@
 export type { AssetCreate } from "./AssetCreate.js";
 export type { AssetDataOutputsPatchAssetDataOutputsRequestBody } from "./AssetDataOutputsPatchAssetDataOutputsRequestBody.js";
 export type { AssetPatch } from "./AssetPatch.js";
-export type { DeleteIndustrialAssetRequest } from "./DeleteIndustrialAssetRequest.js";
 export type { GetDataInputDataFeedRequest } from "./GetDataInputDataFeedRequest.js";
 export type { GetDataInputDataHistoryRequest } from "./GetDataInputDataHistoryRequest.js";
 export type { GetDataInputDataSnapshotRequest } from "./GetDataInputDataSnapshotRequest.js";

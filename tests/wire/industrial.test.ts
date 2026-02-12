@@ -187,30 +187,6 @@ describe("IndustrialClient", () => {
         });
     });
 
-    test("deleteIndustrialAsset", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = "";
-        server
-            .mockEndpoint()
-            .delete("/industrial/assets/id")
-            .respondWith()
-            .statusCode(200)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        const response = await client.industrial.deleteIndustrialAsset({
-            id: "id",
-        });
-        expect(response).toEqual("");
-    });
-
     test("patchIndustrialAsset", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({

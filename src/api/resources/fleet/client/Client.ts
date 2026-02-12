@@ -3,6 +3,7 @@
 import type { BaseClientOptions } from "../../../../BaseClient.js";
 import { type NormalizedClientOptionsWithAuth, normalizeClientOptionsWithAuth } from "../../../../BaseClient.js";
 import { AttributesClient } from "../resources/attributes/client/Client.js";
+import { CarrierProposedAssignmentsClient } from "../resources/carrierProposedAssignments/client/Client.js";
 
 export declare namespace FleetClient {
     export type Options = BaseClientOptions;
@@ -10,10 +11,15 @@ export declare namespace FleetClient {
 
 export class FleetClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<FleetClient.Options>;
+    protected _carrierProposedAssignments: CarrierProposedAssignmentsClient | undefined;
     protected _attributes: AttributesClient | undefined;
 
     constructor(options: FleetClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
+    }
+
+    public get carrierProposedAssignments(): CarrierProposedAssignmentsClient {
+        return (this._carrierProposedAssignments ??= new CarrierProposedAssignmentsClient(this._options));
     }
 
     public get attributes(): AttributesClient {

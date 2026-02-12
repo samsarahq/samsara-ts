@@ -170,8 +170,8 @@ export class PlansClient {
         const _queryParams: Record<string, unknown> = {
             hubId,
             planIds,
-            startTime,
-            endTime,
+            startTime: startTime != null ? startTime : undefined,
+            endTime: endTime != null ? endTime : undefined,
             after,
             limit,
         };

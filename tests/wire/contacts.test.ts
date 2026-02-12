@@ -118,7 +118,7 @@ describe("ContactsClient", () => {
         });
     });
 
-    test("deleteContact", async () => {
+    test("delete", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -130,7 +130,7 @@ describe("ContactsClient", () => {
         const rawResponseBody = "";
         server.mockEndpoint().delete("/contacts/id").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
-        const response = await client.contacts.deleteContact({
+        const response = await client.contacts.delete({
             id: "id",
         });
         expect(response).toEqual("");

@@ -6,7 +6,7 @@
  *         id: "id"
  *     }
  */
-export interface DeleteCarrierProposedAssignmentRequest {
+export interface DeleteCarrierProposedAssignmentsRequest {
     /** ID of the assignment. */
     id: string;
 }

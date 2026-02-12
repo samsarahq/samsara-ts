@@ -333,7 +333,7 @@ describe("TagsClient", () => {
         });
     });
 
-    test("deleteTag", async () => {
+    test("delete", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -345,7 +345,7 @@ describe("TagsClient", () => {
         const rawResponseBody = "";
         server.mockEndpoint().delete("/tags/id").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
-        const response = await client.tags.deleteTag({
+        const response = await client.tags.delete({
             id: "id",
         });
         expect(response).toEqual("");

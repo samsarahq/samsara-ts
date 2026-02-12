@@ -6,7 +6,7 @@
  *         id: "id"
  *     }
  */
-export interface DeleteContactRequest {
-    /** Unique identifier for the contact. */
+export interface DeleteUsersRequest {
+    /** Unique identifier for the user. */
     id: string;
 }

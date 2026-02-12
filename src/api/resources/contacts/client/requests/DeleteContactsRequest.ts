@@ -6,7 +6,7 @@
  *         id: "id"
  *     }
  */
-export interface DeleteIndustrialAssetRequest {
-    /** Id of the asset to be deleted. */
+export interface DeleteContactsRequest {
+    /** Unique identifier for the contact. */
     id: string;
 }

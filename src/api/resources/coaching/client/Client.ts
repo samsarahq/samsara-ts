@@ -299,7 +299,7 @@ export class CoachingClient {
             sessionStatuses,
             includeCoachableEvents,
             startTime,
-            endTime,
+            endTime: endTime != null ? endTime : undefined,
             after,
             includeExternalIds,
         };

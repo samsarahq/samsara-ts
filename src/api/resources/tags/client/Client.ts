@@ -296,23 +296,23 @@ export class TagsClient {
      *
      * To use this endpoint, select **Write Tags** under the Setup & Administration category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
-     * @param {Samsara.DeleteTagRequest} request
+     * @param {Samsara.DeleteTagsRequest} request
      * @param {TagsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.tags.deleteTag({
+     *     await client.tags.delete({
      *         id: "id"
      *     })
      */
-    public deleteTag(
-        request: Samsara.DeleteTagRequest,
+    public delete(
+        request: Samsara.DeleteTagsRequest,
         requestOptions?: TagsClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.StandardDeleteResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__deleteTag(request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__delete(request, requestOptions));
     }
 
-    private async __deleteTag(
-        request: Samsara.DeleteTagRequest,
+    private async __delete(
+        request: Samsara.DeleteTagsRequest,
         requestOptions?: TagsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.StandardDeleteResponse>> {
         const { id } = request;

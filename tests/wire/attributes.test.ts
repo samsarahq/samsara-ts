@@ -162,7 +162,7 @@ describe("AttributesClient", () => {
         });
     });
 
-    test("deleteAttribute", async () => {
+    test("delete", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -174,7 +174,7 @@ describe("AttributesClient", () => {
         const rawResponseBody = "";
         server.mockEndpoint().delete("/attributes/id").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
-        const response = await client.attributes.deleteAttribute({
+        const response = await client.attributes.delete({
             id: "id",
             entityType: "driver",
         });

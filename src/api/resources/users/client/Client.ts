@@ -300,23 +300,23 @@ export class UsersClient {
      *
      * To use this endpoint, select **Write Users** under the Setup & Administration category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
-     * @param {Samsara.DeleteUserRequest} request
+     * @param {Samsara.DeleteUsersRequest} request
      * @param {UsersClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.users.deleteUser({
+     *     await client.users.delete({
      *         id: "id"
      *     })
      */
-    public deleteUser(
-        request: Samsara.DeleteUserRequest,
+    public delete(
+        request: Samsara.DeleteUsersRequest,
         requestOptions?: UsersClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.StandardDeleteResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__deleteUser(request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__delete(request, requestOptions));
     }
 
-    private async __deleteUser(
-        request: Samsara.DeleteUserRequest,
+    private async __delete(
+        request: Samsara.DeleteUsersRequest,
         requestOptions?: UsersClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.StandardDeleteResponse>> {
         const { id } = request;

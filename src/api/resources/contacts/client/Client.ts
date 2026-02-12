@@ -226,23 +226,23 @@ export class ContactsClient {
      *
      * To use this endpoint, select **Write Alert Contacts** under the Setup & Administration category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
-     * @param {Samsara.DeleteContactRequest} request
+     * @param {Samsara.DeleteContactsRequest} request
      * @param {ContactsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.contacts.deleteContact({
+     *     await client.contacts.delete({
      *         id: "id"
      *     })
      */
-    public deleteContact(
-        request: Samsara.DeleteContactRequest,
+    public delete(
+        request: Samsara.DeleteContactsRequest,
         requestOptions?: ContactsClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.StandardDeleteResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__deleteContact(request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__delete(request, requestOptions));
     }
 
-    private async __deleteContact(
-        request: Samsara.DeleteContactRequest,
+    private async __delete(
+        request: Samsara.DeleteContactsRequest,
         requestOptions?: ContactsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.StandardDeleteResponse>> {
         const { id } = request;

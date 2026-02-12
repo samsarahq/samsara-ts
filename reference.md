@@ -389,7 +389,6 @@ Driver HOS Violation
 Vehicle Engine Idle
 Asset Engine On
 Asset Engine Off
-Harsh Event
 Scheduled Maintenance
 Scheduled Maintenance by Odometer
 Scheduled Maintenance by Engine Hours
@@ -4980,7 +4979,7 @@ await client.attributes.getAttribute({
 </dl>
 </details>
 
-<details><summary><code>client.attributes.<a href="/src/api/resources/attributes/client/Client.ts">deleteAttribute</a>({ ...params }) -> Samsara.StandardDeleteResponse</code></summary>
+<details><summary><code>client.attributes.<a href="/src/api/resources/attributes/client/Client.ts">delete</a>({ ...params }) -> Samsara.StandardDeleteResponse</code></summary>
 <dl>
 <dd>
 
@@ -5011,7 +5010,7 @@ To use this endpoint, select **Write Attributes** under the Setup & Administrati
 <dd>
 
 ```typescript
-await client.attributes.deleteAttribute({
+await client.attributes.delete({
     id: "id",
     entityType: "driver"
 });
@@ -5030,7 +5029,7 @@ await client.attributes.deleteAttribute({
 <dl>
 <dd>
 
-**request:** `Samsara.DeleteAttributeRequest` 
+**request:** `Samsara.DeleteAttributesRequest` 
     
 </dd>
 </dl>
@@ -5762,7 +5761,7 @@ await client.contacts.getContact({
 </dl>
 </details>
 
-<details><summary><code>client.contacts.<a href="/src/api/resources/contacts/client/Client.ts">deleteContact</a>({ ...params }) -> Samsara.StandardDeleteResponse</code></summary>
+<details><summary><code>client.contacts.<a href="/src/api/resources/contacts/client/Client.ts">delete</a>({ ...params }) -> Samsara.StandardDeleteResponse</code></summary>
 <dl>
 <dd>
 
@@ -5793,7 +5792,7 @@ To use this endpoint, select **Write Alert Contacts** under the Setup & Administ
 <dd>
 
 ```typescript
-await client.contacts.deleteContact({
+await client.contacts.delete({
     id: "id"
 });
 
@@ -5811,7 +5810,7 @@ await client.contacts.deleteContact({
 <dl>
 <dd>
 
-**request:** `Samsara.DeleteContactRequest` 
+**request:** `Samsara.DeleteContactsRequest` 
     
 </dd>
 </dl>
@@ -7463,75 +7462,6 @@ await client.carrierProposedAssignments.createCarrierProposedAssignment({
 <dd>
 
 **request:** `Samsara.CreateCarrierProposedAssignmentRequest` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `CarrierProposedAssignmentsClient.RequestOptions` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.carrierProposedAssignments.<a href="/src/api/resources/carrierProposedAssignments/client/Client.ts">deleteCarrierProposedAssignment</a>({ ...params }) -> Samsara.StandardDeleteResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Permanently delete an assignment. You can only delete assignments that are not yet active. To override a currently active assignment, create a new empty one, instead. 
-
- **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
-
-To use this endpoint, select **Write Carrier-Proposed Assignments** under the Assignments category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.carrierProposedAssignments.deleteCarrierProposedAssignment({
-    id: "id"
-});
-
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `Samsara.DeleteCarrierProposedAssignmentRequest` 
     
 </dd>
 </dl>
@@ -14423,75 +14353,6 @@ await client.industrial.createIndustrialAsset({
 </dl>
 </details>
 
-<details><summary><code>client.industrial.<a href="/src/api/resources/industrial/client/Client.ts">deleteIndustrialAsset</a>({ ...params }) -> Samsara.StandardDeleteResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Delete asset. 
-
- **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
-
-To use this endpoint, select **Write Equipment** under the Equipment category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.industrial.deleteIndustrialAsset({
-    id: "id"
-});
-
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `Samsara.DeleteIndustrialAssetRequest` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `IndustrialClient.RequestOptions` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
 <details><summary><code>client.industrial.<a href="/src/api/resources/industrial/client/Client.ts">patchIndustrialAsset</a>({ ...params }) -> Samsara.InlineResponse200</code></summary>
 <dl>
 <dd>
@@ -17523,7 +17384,7 @@ await client.tags.replaceTag({
 </dl>
 </details>
 
-<details><summary><code>client.tags.<a href="/src/api/resources/tags/client/Client.ts">deleteTag</a>({ ...params }) -> Samsara.StandardDeleteResponse</code></summary>
+<details><summary><code>client.tags.<a href="/src/api/resources/tags/client/Client.ts">delete</a>({ ...params }) -> Samsara.StandardDeleteResponse</code></summary>
 <dl>
 <dd>
 
@@ -17554,7 +17415,7 @@ To use this endpoint, select **Write Tags** under the Setup & Administration cat
 <dd>
 
 ```typescript
-await client.tags.deleteTag({
+await client.tags.delete({
     id: "id"
 });
 
@@ -17572,7 +17433,7 @@ await client.tags.deleteTag({
 <dl>
 <dd>
 
-**request:** `Samsara.DeleteTagRequest` 
+**request:** `Samsara.DeleteTagsRequest` 
     
 </dd>
 </dl>
@@ -18454,7 +18315,7 @@ await client.users.getUser({
 </dl>
 </details>
 
-<details><summary><code>client.users.<a href="/src/api/resources/users/client/Client.ts">deleteUser</a>({ ...params }) -> Samsara.StandardDeleteResponse</code></summary>
+<details><summary><code>client.users.<a href="/src/api/resources/users/client/Client.ts">delete</a>({ ...params }) -> Samsara.StandardDeleteResponse</code></summary>
 <dl>
 <dd>
 
@@ -18485,7 +18346,7 @@ To use this endpoint, select **Write Users** under the Setup & Administration ca
 <dd>
 
 ```typescript
-await client.users.deleteUser({
+await client.users.delete({
     id: "id"
 });
 
@@ -18503,7 +18364,7 @@ await client.users.deleteUser({
 <dl>
 <dd>
 
-**request:** `Samsara.DeleteUserRequest` 
+**request:** `Samsara.DeleteUsersRequest` 
     
 </dd>
 </dl>
@@ -19780,6 +19641,76 @@ await client.webhooks.patchWebhook({
 </dl>
 </details>
 
+## Fleet CarrierProposedAssignments
+<details><summary><code>client.fleet.carrierProposedAssignments.<a href="/src/api/resources/fleet/resources/carrierProposedAssignments/client/Client.ts">delete</a>({ ...params }) -> Samsara.StandardDeleteResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Permanently delete an assignment. You can only delete assignments that are not yet active. To override a currently active assignment, create a new empty one, instead. 
+
+ **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
+
+To use this endpoint, select **Write Carrier-Proposed Assignments** under the Assignments category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.fleet.carrierProposedAssignments.delete({
+    id: "id"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Samsara.fleet.DeleteCarrierProposedAssignmentsRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CarrierProposedAssignmentsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## Fleet Attributes
 <details><summary><code>client.fleet.attributes.<a href="/src/api/resources/fleet/resources/attributes/client/Client.ts">update</a>({ ...params }) -> void</code></summary>
 <dl>
@@ -19821,6 +19752,76 @@ await client.fleet.attributes.update({
 <dd>
 
 **requestOptions:** `AttributesClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Industrial Assets
+<details><summary><code>client.industrial.assets.<a href="/src/api/resources/industrial/resources/assets/client/Client.ts">delete</a>({ ...params }) -> Samsara.StandardDeleteResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Delete asset. 
+
+ **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
+
+To use this endpoint, select **Write Equipment** under the Equipment category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.industrial.assets.delete({
+    id: "id"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Samsara.industrial.DeleteAssetsRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `AssetsClient.RequestOptions` 
     
 </dd>
 </dl>

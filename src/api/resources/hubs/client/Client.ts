@@ -66,8 +66,8 @@ export class HubsClient {
             hubId,
             capacityIds,
             capacityNames,
-            startTime,
-            endTime,
+            startTime: startTime != null ? startTime : undefined,
+            endTime: endTime != null ? endTime : undefined,
             after,
             limit,
         };
@@ -299,8 +299,8 @@ export class HubsClient {
             hubId,
             locationIds,
             customerLocationIds,
-            startTime,
-            endTime,
+            startTime: startTime != null ? startTime : undefined,
+            endTime: endTime != null ? endTime : undefined,
             after,
             limit,
         };
@@ -531,8 +531,8 @@ export class HubsClient {
             hubId,
             skillIds,
             skillNames,
-            startTime,
-            endTime,
+            startTime: startTime != null ? startTime : undefined,
+            endTime: endTime != null ? endTime : undefined,
             after,
             limit,
         };
@@ -638,8 +638,8 @@ export class HubsClient {
         const { hubIds, startTime, endTime, after, limit } = request;
         const _queryParams: Record<string, unknown> = {
             hubIds,
-            startTime,
-            endTime,
+            startTime: startTime != null ? startTime : undefined,
+            endTime: endTime != null ? endTime : undefined,
             after,
             limit,
         };

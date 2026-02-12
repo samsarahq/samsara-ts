@@ -33,7 +33,6 @@ export interface WorkflowTriggerObjectResponseBody {
      * Vehicle Engine Idle = 1019
      * Asset Engine On = 1021
      * Asset Engine Off = 1022
-     * Harsh Event = 1023
      * Scheduled Maintenance = 1024
      * Scheduled Maintenance by Odometer = 1025
      * Scheduled Maintenance by Engine Hours = 1026
@@ -55,6 +54,9 @@ export interface WorkflowTriggerObjectResponseBody {
      * A safety event occurred with a driver assigned = 5033
      * A safety event occurred = 5039
      * Scheduled Date And Time = 8001
+     *
+     * The following trigger types are Deprecated:
+     * Harsh Event = 1023
      */
     triggerTypeId: number;
 }

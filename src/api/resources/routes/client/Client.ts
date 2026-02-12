@@ -693,8 +693,8 @@ export class RoutesClient {
         const _queryParams: Record<string, unknown> = {
             planId,
             routeIds,
-            startTime,
-            endTime,
+            startTime: startTime != null ? startTime : undefined,
+            endTime: endTime != null ? endTime : undefined,
             after,
             limit,
         };

@@ -260,7 +260,7 @@ export class BetaApIsClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * @param {Samsara.GetAempEquipmentListRequest} request
+     * @param {string} pageNumber - The number corresponding to a specific page of paginated results, defaulting to the first page if not provided. The default page size is 100 records.
      * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
@@ -274,22 +274,19 @@ export class BetaApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.betaApIs.getAempEquipmentList({
-     *         pageNumber: "pageNumber"
-     *     })
+     *     await client.betaApIs.getAempEquipmentList("pageNumber")
      */
     public getAempEquipmentList(
-        request: Samsara.GetAempEquipmentListRequest,
+        pageNumber: string,
         requestOptions?: BetaApIsClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.AempEquipmentGetAempEquipmentListResponseBody> {
-        return core.HttpResponsePromise.fromPromise(this.__getAempEquipmentList(request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__getAempEquipmentList(pageNumber, requestOptions));
     }
 
     private async __getAempEquipmentList(
-        request: Samsara.GetAempEquipmentListRequest,
+        pageNumber: string,
         requestOptions?: BetaApIsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.AempEquipmentGetAempEquipmentListResponseBody>> {
-        const { pageNumber } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -446,6 +443,7 @@ export class BetaApIsClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
+     * @param {string} id - The unique Samsara ID of the Equipment. This is automatically generated when the Equipment object is created. It cannot be changed.
      * @param {Samsara.EquipmentPatchEquipmentRequestBody} request
      * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -460,22 +458,21 @@ export class BetaApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.betaApIs.patchEquipment({
-     *         id: "id"
-     *     })
+     *     await client.betaApIs.patchEquipment("id")
      */
     public patchEquipment(
-        request: Samsara.EquipmentPatchEquipmentRequestBody,
+        id: string,
+        request: Samsara.EquipmentPatchEquipmentRequestBody = {},
         requestOptions?: BetaApIsClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.EquipmentPatchEquipmentResponseBody> {
-        return core.HttpResponsePromise.fromPromise(this.__patchEquipment(request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__patchEquipment(id, request, requestOptions));
     }
 
     private async __patchEquipment(
-        request: Samsara.EquipmentPatchEquipmentRequestBody,
+        id: string,
+        request: Samsara.EquipmentPatchEquipmentRequestBody = {},
         requestOptions?: BetaApIsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.EquipmentPatchEquipmentResponseBody>> {
-        const { id, ..._body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -495,7 +492,7 @@ export class BetaApIsClient {
             contentType: "application/json",
             queryParameters: requestOptions?.queryParams,
             requestType: "json",
-            body: _body,
+            body: request,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -1019,6 +1016,7 @@ export class BetaApIsClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
+     * @param {number} id - Vehicle ID
      * @param {Samsara.EngineImmobilizerUpdateEngineImmobilizerStateRequestBody} request
      * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -1033,8 +1031,7 @@ export class BetaApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.betaApIs.updateEngineImmobilizerState({
-     *         id: 1000000,
+     *     await client.betaApIs.updateEngineImmobilizerState(1000000, {
      *         relayStates: [{
      *                 id: "relay1",
      *                 isOpen: true
@@ -1042,17 +1039,18 @@ export class BetaApIsClient {
      *     })
      */
     public updateEngineImmobilizerState(
+        id: number,
         request: Samsara.EngineImmobilizerUpdateEngineImmobilizerStateRequestBody,
         requestOptions?: BetaApIsClient.RequestOptions,
     ): core.HttpResponsePromise<void> {
-        return core.HttpResponsePromise.fromPromise(this.__updateEngineImmobilizerState(request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__updateEngineImmobilizerState(id, request, requestOptions));
     }
 
     private async __updateEngineImmobilizerState(
+        id: number,
         request: Samsara.EngineImmobilizerUpdateEngineImmobilizerStateRequestBody,
         requestOptions?: BetaApIsClient.RequestOptions,
     ): Promise<core.WithRawResponse<void>> {
-        const { id, ..._body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -1072,7 +1070,7 @@ export class BetaApIsClient {
             contentType: "application/json",
             queryParameters: requestOptions?.queryParams,
             requestType: "json",
-            body: _body,
+            body: request,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -1900,6 +1898,7 @@ export class BetaApIsClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
+     * @param {string} name - The name of the Function to run.
      * @param {Samsara.FunctionsStartFunctionRunRequestBody} request
      * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -1914,23 +1913,23 @@ export class BetaApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.betaApIs.startFunctionRun({
-     *         name: "name",
+     *     await client.betaApIs.startFunctionRun("name", {
      *         paramsOverride: {}
      *     })
      */
     public startFunctionRun(
+        name: string,
         request: Samsara.FunctionsStartFunctionRunRequestBody,
         requestOptions?: BetaApIsClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.FunctionsStartFunctionRunResponseBody> {
-        return core.HttpResponsePromise.fromPromise(this.__startFunctionRun(request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__startFunctionRun(name, request, requestOptions));
     }
 
     private async __startFunctionRun(
+        name: string,
         request: Samsara.FunctionsStartFunctionRunRequestBody,
         requestOptions?: BetaApIsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.FunctionsStartFunctionRunResponseBody>> {
-        const { name, ..._body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -1950,7 +1949,7 @@ export class BetaApIsClient {
             contentType: "application/json",
             queryParameters: requestOptions?.queryParams,
             requestType: "json",
-            body: _body,
+            body: request,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,

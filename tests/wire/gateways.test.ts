@@ -523,9 +523,7 @@ describe("GatewaysClient", () => {
 
         server.mockEndpoint().delete("/gateways/id").respondWith().statusCode(200).build();
 
-        const response = await client.gateways.deleteGateway({
-            id: "id",
-        });
+        const response = await client.gateways.deleteGateway("id");
         expect(response).toEqual(undefined);
     });
 
@@ -542,9 +540,7 @@ describe("GatewaysClient", () => {
         server.mockEndpoint().delete("/gateways/id").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.gateways.deleteGateway({
-                id: "id",
-            });
+            return await client.gateways.deleteGateway("id");
         }).rejects.toThrow(Samsara.UnauthorizedError);
     });
 
@@ -561,9 +557,7 @@ describe("GatewaysClient", () => {
         server.mockEndpoint().delete("/gateways/id").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.gateways.deleteGateway({
-                id: "id",
-            });
+            return await client.gateways.deleteGateway("id");
         }).rejects.toThrow(Samsara.NotFoundError);
     });
 
@@ -580,9 +574,7 @@ describe("GatewaysClient", () => {
         server.mockEndpoint().delete("/gateways/id").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.gateways.deleteGateway({
-                id: "id",
-            });
+            return await client.gateways.deleteGateway("id");
         }).rejects.toThrow(Samsara.MethodNotAllowedError);
     });
 
@@ -599,9 +591,7 @@ describe("GatewaysClient", () => {
         server.mockEndpoint().delete("/gateways/id").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.gateways.deleteGateway({
-                id: "id",
-            });
+            return await client.gateways.deleteGateway("id");
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
@@ -618,9 +608,7 @@ describe("GatewaysClient", () => {
         server.mockEndpoint().delete("/gateways/id").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.gateways.deleteGateway({
-                id: "id",
-            });
+            return await client.gateways.deleteGateway("id");
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
@@ -637,9 +625,7 @@ describe("GatewaysClient", () => {
         server.mockEndpoint().delete("/gateways/id").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.gateways.deleteGateway({
-                id: "id",
-            });
+            return await client.gateways.deleteGateway("id");
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
@@ -656,9 +642,7 @@ describe("GatewaysClient", () => {
         server.mockEndpoint().delete("/gateways/id").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.gateways.deleteGateway({
-                id: "id",
-            });
+            return await client.gateways.deleteGateway("id");
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
@@ -675,9 +659,7 @@ describe("GatewaysClient", () => {
         server.mockEndpoint().delete("/gateways/id").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.gateways.deleteGateway({
-                id: "id",
-            });
+            return await client.gateways.deleteGateway("id");
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
@@ -694,9 +676,7 @@ describe("GatewaysClient", () => {
         server.mockEndpoint().delete("/gateways/id").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.gateways.deleteGateway({
-                id: "id",
-            });
+            return await client.gateways.deleteGateway("id");
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 });

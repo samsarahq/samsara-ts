@@ -560,26 +560,23 @@ export class EquipmentClient {
      *
      * To use this endpoint, select **Read Equipment** under the Equipment category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
-     * @param {Samsara.GetEquipmentRequest} request
+     * @param {string} id - Samsara ID of the Equipment.
      * @param {EquipmentClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.equipment.getEquipment({
-     *         id: "id"
-     *     })
+     *     await client.equipment.getEquipment("id")
      */
     public getEquipment(
-        request: Samsara.GetEquipmentRequest,
+        id: string,
         requestOptions?: EquipmentClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.EquipmentResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__getEquipment(request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__getEquipment(id, requestOptions));
     }
 
     private async __getEquipment(
-        request: Samsara.GetEquipmentRequest,
+        id: string,
         requestOptions?: EquipmentClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.EquipmentResponse>> {
-        const { id } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,

@@ -353,6 +353,7 @@ export class RoutesClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
+     * @param {string} id - ID of the route. This can either be the Samsara-specified ID, or an external ID. External IDs are customer specified key-value pairs created in the POST or PATCH requests of this resource. To specify an external ID as part of a path parameter, use the following format: `key:value`. For example, `payrollId:ABFS18600`
      * @param {Samsara.FetchRouteRequest} request
      * @param {RoutesClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -367,22 +368,22 @@ export class RoutesClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.routes.fetchRoute({
-     *         id: "id"
-     *     })
+     *     await client.routes.fetchRoute("id")
      */
     public fetchRoute(
-        request: Samsara.FetchRouteRequest,
+        id: string,
+        request: Samsara.FetchRouteRequest = {},
         requestOptions?: RoutesClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.RoutesFetchRouteResponseBody> {
-        return core.HttpResponsePromise.fromPromise(this.__fetchRoute(request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__fetchRoute(id, request, requestOptions));
     }
 
     private async __fetchRoute(
-        request: Samsara.FetchRouteRequest,
+        id: string,
+        request: Samsara.FetchRouteRequest = {},
         requestOptions?: RoutesClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.RoutesFetchRouteResponseBody>> {
-        const { id, include } = request;
+        const { include } = request;
         const _queryParams: Record<string, unknown> = {
             include,
         };
@@ -455,7 +456,7 @@ export class RoutesClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * @param {Samsara.DeleteRouteRequest} request
+     * @param {string} id - ID of the route. This can either be the Samsara-specified ID, or an external ID. External IDs are customer specified key-value pairs created in the POST or PATCH requests of this resource. To specify an external ID as part of a path parameter, use the following format: `key:value`. For example, `payrollId:ABFS18600`
      * @param {RoutesClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
@@ -469,22 +470,16 @@ export class RoutesClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.routes.deleteRoute({
-     *         id: "id"
-     *     })
+     *     await client.routes.deleteRoute("id")
      */
-    public deleteRoute(
-        request: Samsara.DeleteRouteRequest,
-        requestOptions?: RoutesClient.RequestOptions,
-    ): core.HttpResponsePromise<void> {
-        return core.HttpResponsePromise.fromPromise(this.__deleteRoute(request, requestOptions));
+    public deleteRoute(id: string, requestOptions?: RoutesClient.RequestOptions): core.HttpResponsePromise<void> {
+        return core.HttpResponsePromise.fromPromise(this.__deleteRoute(id, requestOptions));
     }
 
     private async __deleteRoute(
-        request: Samsara.DeleteRouteRequest,
+        id: string,
         requestOptions?: RoutesClient.RequestOptions,
     ): Promise<core.WithRawResponse<void>> {
-        const { id } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -558,6 +553,7 @@ export class RoutesClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
+     * @param {string} id - ID of the route. This can either be the Samsara-specified ID, or an external ID. External IDs are customer specified key-value pairs created in the POST or PATCH requests of this resource. To specify an external ID as part of a path parameter, use the following format: `key:value`. For example, `payrollId:ABFS18600`
      * @param {Samsara.RoutesPatchRouteRequestBody} request
      * @param {RoutesClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -572,22 +568,21 @@ export class RoutesClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.routes.patchRoute({
-     *         id: "id"
-     *     })
+     *     await client.routes.patchRoute("id")
      */
     public patchRoute(
-        request: Samsara.RoutesPatchRouteRequestBody,
+        id: string,
+        request: Samsara.RoutesPatchRouteRequestBody = {},
         requestOptions?: RoutesClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.RoutesPatchRouteResponseBody> {
-        return core.HttpResponsePromise.fromPromise(this.__patchRoute(request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__patchRoute(id, request, requestOptions));
     }
 
     private async __patchRoute(
-        request: Samsara.RoutesPatchRouteRequestBody,
+        id: string,
+        request: Samsara.RoutesPatchRouteRequestBody = {},
         requestOptions?: RoutesClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.RoutesPatchRouteResponseBody>> {
-        const { id, ..._body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -607,7 +602,7 @@ export class RoutesClient {
             contentType: "application/json",
             queryParameters: requestOptions?.queryParams,
             requestType: "json",
-            body: _body,
+            body: request,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -774,26 +769,28 @@ export class RoutesClient {
      *
      * To use this endpoint, select **Write Routes** under the Driver Workflow category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
+     * @param {string} route_id_or_external_id - ID of the route. This can either be the Samsara-specified ID, or an external ID. External IDs are customer specified key-value pairs created in the POST or PATCH requests of this resource. To specify an external ID as part of a path parameter, use the following format: `key:value`. For example, `payrollId:ABFS18600`
      * @param {Samsara.InlineObject} request
      * @param {RoutesClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.routes.v1DeleteDispatchRouteById({
-     *         route_id_or_external_id: "route_id_or_external_id"
-     *     })
+     *     await client.routes.v1DeleteDispatchRouteById("route_id_or_external_id")
      */
     public v1DeleteDispatchRouteById(
-        request: Samsara.InlineObject,
+        route_id_or_external_id: string,
+        request: Samsara.InlineObject = {},
         requestOptions?: RoutesClient.RequestOptions,
     ): core.HttpResponsePromise<void> {
-        return core.HttpResponsePromise.fromPromise(this.__v1DeleteDispatchRouteById(request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(
+            this.__v1DeleteDispatchRouteById(route_id_or_external_id, request, requestOptions),
+        );
     }
 
     private async __v1DeleteDispatchRouteById(
-        request: Samsara.InlineObject,
+        route_id_or_external_id: string,
+        request: Samsara.InlineObject = {},
         requestOptions?: RoutesClient.RequestOptions,
     ): Promise<core.WithRawResponse<void>> {
-        const { route_id_or_external_id: routeIdOrExternalId, ..._body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -806,14 +803,14 @@ export class RoutesClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.SamsaraEnvironment.ProductionApi,
-                `v1/fleet/dispatch/routes/${core.url.encodePathParam(routeIdOrExternalId)}`,
+                `v1/fleet/dispatch/routes/${core.url.encodePathParam(route_id_or_external_id)}`,
             ),
             method: "DELETE",
             headers: _headers,
             contentType: "application/json",
             queryParameters: requestOptions?.queryParams,
             requestType: "json",
-            body: _body,
+            body: request,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,

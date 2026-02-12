@@ -138,8 +138,7 @@ describe("AttributesClient", () => {
         };
         server.mockEndpoint().get("/attributes/id").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
-        const response = await client.attributes.getAttribute({
-            id: "id",
+        const response = await client.attributes.getAttribute("id", {
             entityType: "driver",
         });
         expect(response).toEqual({
@@ -174,8 +173,7 @@ describe("AttributesClient", () => {
         const rawResponseBody = "";
         server.mockEndpoint().delete("/attributes/id").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
-        const response = await client.attributes.delete({
-            id: "id",
+        const response = await client.attributes.delete("id", {
             entityType: "driver",
         });
         expect(response).toEqual("");
@@ -212,8 +210,7 @@ describe("AttributesClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.attributes.updateAttribute({
-            id: "id",
+        const response = await client.attributes.updateAttribute("id", {
             entityType: "driver",
         });
         expect(response).toEqual({

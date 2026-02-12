@@ -3,13 +3,10 @@
 /**
  * @example
  *     {
- *         driver_id: 1000000,
  *         duty_status: "ON_DUTY"
  *     }
  */
 export interface InlineObject1 {
-    /** ID of the driver for whom the duty status is being set. */
-    driver_id: number;
     /** Duty status to set the driver to. The only supported values are 'ON_DUTY' and 'OFF_DUTY'. */
     duty_status: string;
     /** Location to associate the duty status change with. */

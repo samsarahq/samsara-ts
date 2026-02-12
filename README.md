@@ -47,19 +47,11 @@ Instantiate and use the client with the following:
 import { SamsaraClient } from "@samsarahq/samsara";
 
 const client = new SamsaraClient({ token: "YOUR_TOKEN" });
-const pageableResponse = await client.vehicles.list();
-for await (const item of pageableResponse) {
-    console.log(item);
-}
-
-// Or you can manually iterate page-by-page
-let page = await client.vehicles.list();
-while (page.hasNextPage()) {
-    page = page.getNextPage();
-}
-
-// You can also access the underlying response
-const response = page.response;
+await client.addresses.create({
+    formattedAddress: "350 Rhode Island St, San Francisco, CA",
+    geofence: {},
+    name: "Samsara HQ"
+});
 ```
 
 ## Request and Response Types
@@ -84,7 +76,7 @@ will be thrown.
 import { SamsaraError } from "@samsarahq/samsara";
 
 try {
-    await client.vehicles.list(...);
+    await client.addresses.create(...);
 } catch (err) {
     if (err instanceof SamsaraError) {
         console.log(err.statusCode);
@@ -134,7 +126,7 @@ const client = new SamsaraClient({
     }
 });
 
-const response = await client.vehicles.list(..., {
+const response = await client.addresses.create(..., {
     headers: {
         'X-Custom-Header': 'custom value'
     }
@@ -146,7 +138,7 @@ const response = await client.vehicles.list(..., {
 If you would like to send additional query string parameters as part of the request, use the `queryParams` request option.
 
 ```typescript
-const response = await client.vehicles.list(..., {
+const response = await client.addresses.create(..., {
     queryParams: {
         'customQueryParamKey': 'custom query param value'
     }
@@ -168,7 +160,7 @@ A request is deemed retryable when any of the following HTTP status codes is ret
 Use the `maxRetries` request option to configure this behavior.
 
 ```typescript
-const response = await client.vehicles.list(..., {
+const response = await client.addresses.create(..., {
     maxRetries: 0 // override maxRetries at the request level
 });
 ```
@@ -178,7 +170,7 @@ const response = await client.vehicles.list(..., {
 The SDK defaults to a 60 second timeout. Use the `timeoutInSeconds` option to configure this behavior.
 
 ```typescript
-const response = await client.vehicles.list(..., {
+const response = await client.addresses.create(..., {
     timeoutInSeconds: 30 // override timeout to 30s
 });
 ```
@@ -189,7 +181,7 @@ The SDK allows users to abort requests at any point by passing in an abort signa
 
 ```typescript
 const controller = new AbortController();
-const response = await client.vehicles.list(..., {
+const response = await client.addresses.create(..., {
     abortSignal: controller.signal
 });
 controller.abort(); // aborts the request
@@ -201,7 +193,7 @@ The SDK provides access to raw response data, including headers, through the `.w
 The `.withRawResponse()` method returns a promise that results to an object with a `data` and a `rawResponse` property.
 
 ```typescript
-const { data, rawResponse } = await client.vehicles.list(...).withRawResponse();
+const { data, rawResponse } = await client.addresses.create(...).withRawResponse();
 
 console.log(data);
 console.log(rawResponse.headers['X-My-Header']);

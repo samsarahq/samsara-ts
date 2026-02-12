@@ -7,13 +7,5 @@ export interface WorkOrderMoneyObjectResponseBody {
     /** Amount of the currency. */
     amount: string;
     /** Type of the currency. We currently only support usd.  Valid values: `usd` */
-    currency: WorkOrderMoneyObjectResponseBody.Currency;
-}
-
-export namespace WorkOrderMoneyObjectResponseBody {
-    /** Type of the currency. We currently only support usd.  Valid values: `usd` */
-    export const Currency = {
-        Usd: "usd",
-    } as const;
-    export type Currency = (typeof Currency)[keyof typeof Currency];
+    currency: "usd";
 }

@@ -161,26 +161,23 @@ export class ContactsClient {
      *
      * To use this endpoint, select **Read Alert Contacts** under the Setup & Administration category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
-     * @param {Samsara.GetContactRequest} request
+     * @param {string} id - Unique identifier for the contact.
      * @param {ContactsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.contacts.getContact({
-     *         id: "id"
-     *     })
+     *     await client.contacts.getContact("id")
      */
     public getContact(
-        request: Samsara.GetContactRequest,
+        id: string,
         requestOptions?: ContactsClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.ContactResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__getContact(request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__getContact(id, requestOptions));
     }
 
     private async __getContact(
-        request: Samsara.GetContactRequest,
+        id: string,
         requestOptions?: ContactsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.ContactResponse>> {
-        const { id } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -226,26 +223,23 @@ export class ContactsClient {
      *
      * To use this endpoint, select **Write Alert Contacts** under the Setup & Administration category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
-     * @param {Samsara.DeleteContactsRequest} request
+     * @param {string} id - Unique identifier for the contact.
      * @param {ContactsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.contacts.delete({
-     *         id: "id"
-     *     })
+     *     await client.contacts.delete("id")
      */
     public delete(
-        request: Samsara.DeleteContactsRequest,
+        id: string,
         requestOptions?: ContactsClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.StandardDeleteResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__delete(request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__delete(id, requestOptions));
     }
 
     private async __delete(
-        request: Samsara.DeleteContactsRequest,
+        id: string,
         requestOptions?: ContactsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.StandardDeleteResponse>> {
-        const { id } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -291,26 +285,26 @@ export class ContactsClient {
      *
      * To use this endpoint, select **Write Alert Contacts** under the Setup & Administration category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
+     * @param {string} id - Unique identifier for the contact.
      * @param {Samsara.UpdateContactRequest} request
      * @param {ContactsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.contacts.updateContact({
-     *         id: "id"
-     *     })
+     *     await client.contacts.updateContact("id")
      */
     public updateContact(
-        request: Samsara.UpdateContactRequest,
+        id: string,
+        request: Samsara.UpdateContactRequest = {},
         requestOptions?: ContactsClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.ContactResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__updateContact(request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__updateContact(id, request, requestOptions));
     }
 
     private async __updateContact(
-        request: Samsara.UpdateContactRequest,
+        id: string,
+        request: Samsara.UpdateContactRequest = {},
         requestOptions?: ContactsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.ContactResponse>> {
-        const { id, ..._body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -330,7 +324,7 @@ export class ContactsClient {
             contentType: "application/json",
             queryParameters: requestOptions?.queryParams,
             requestType: "json",
-            body: _body,
+            body: request,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,

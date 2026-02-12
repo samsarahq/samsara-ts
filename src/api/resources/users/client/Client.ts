@@ -235,26 +235,23 @@ export class UsersClient {
      *
      * To use this endpoint, select **Read Users** under the Setup & Administration category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
-     * @param {Samsara.GetUserRequest} request
+     * @param {string} id - Unique identifier for the user.
      * @param {UsersClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.users.getUser({
-     *         id: "id"
-     *     })
+     *     await client.users.getUser("id")
      */
     public getUser(
-        request: Samsara.GetUserRequest,
+        id: string,
         requestOptions?: UsersClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.UserResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__getUser(request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__getUser(id, requestOptions));
     }
 
     private async __getUser(
-        request: Samsara.GetUserRequest,
+        id: string,
         requestOptions?: UsersClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.UserResponse>> {
-        const { id } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -300,26 +297,23 @@ export class UsersClient {
      *
      * To use this endpoint, select **Write Users** under the Setup & Administration category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
-     * @param {Samsara.DeleteUsersRequest} request
+     * @param {string} id - Unique identifier for the user.
      * @param {UsersClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.users.delete({
-     *         id: "id"
-     *     })
+     *     await client.users.delete("id")
      */
     public delete(
-        request: Samsara.DeleteUsersRequest,
+        id: string,
         requestOptions?: UsersClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.StandardDeleteResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__delete(request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__delete(id, requestOptions));
     }
 
     private async __delete(
-        request: Samsara.DeleteUsersRequest,
+        id: string,
         requestOptions?: UsersClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.StandardDeleteResponse>> {
-        const { id } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -365,26 +359,26 @@ export class UsersClient {
      *
      * To use this endpoint, select **Write Users** under the Setup & Administration category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
+     * @param {string} id - Unique identifier for the user.
      * @param {Samsara.UpdateUserRequest} request
      * @param {UsersClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.users.updateUser({
-     *         id: "id"
-     *     })
+     *     await client.users.updateUser("id")
      */
     public updateUser(
-        request: Samsara.UpdateUserRequest,
+        id: string,
+        request: Samsara.UpdateUserRequest = {},
         requestOptions?: UsersClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.UserResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__updateUser(request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__updateUser(id, request, requestOptions));
     }
 
     private async __updateUser(
-        request: Samsara.UpdateUserRequest,
+        id: string,
+        request: Samsara.UpdateUserRequest = {},
         requestOptions?: UsersClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.UserResponse>> {
-        const { id, ..._body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -404,7 +398,7 @@ export class UsersClient {
             contentType: "application/json",
             queryParameters: requestOptions?.queryParams,
             requestType: "json",
-            body: _body,
+            body: request,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,

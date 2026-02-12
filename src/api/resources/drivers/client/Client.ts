@@ -302,26 +302,23 @@ export class DriversClient {
      *
      * To use this endpoint, select **Read Drivers** under the Drivers category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
-     * @param {Samsara.GetDriversRequest} request
+     * @param {string} id - ID of the driver. This can either be the Samsara-specified ID, or an external ID. External IDs are customer specified key-value pairs created in the POST or PATCH requests of this resource. To specify an external ID as part of a path parameter, use the following format: `key:value`. For example, `payrollId:ABFS18600`
      * @param {DriversClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.drivers.get({
-     *         id: "id"
-     *     })
+     *     await client.drivers.get("id")
      */
     public get(
-        request: Samsara.GetDriversRequest,
+        id: string,
         requestOptions?: DriversClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.DriverResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__get(request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__get(id, requestOptions));
     }
 
     private async __get(
-        request: Samsara.GetDriversRequest,
+        id: string,
         requestOptions?: DriversClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.DriverResponse>> {
-        const { id } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -361,26 +358,20 @@ export class DriversClient {
     }
 
     /**
-     * @param {Samsara.DeleteDriversRequest} request
+     * @param {string} id
      * @param {DriversClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.drivers.delete({
-     *         id: "id"
-     *     })
+     *     await client.drivers.delete("id")
      */
-    public delete(
-        request: Samsara.DeleteDriversRequest,
-        requestOptions?: DriversClient.RequestOptions,
-    ): core.HttpResponsePromise<void> {
-        return core.HttpResponsePromise.fromPromise(this.__delete(request, requestOptions));
+    public delete(id: string, requestOptions?: DriversClient.RequestOptions): core.HttpResponsePromise<void> {
+        return core.HttpResponsePromise.fromPromise(this.__delete(id, requestOptions));
     }
 
     private async __delete(
-        request: Samsara.DeleteDriversRequest,
+        id: string,
         requestOptions?: DriversClient.RequestOptions,
     ): Promise<core.WithRawResponse<void>> {
-        const { id } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -426,26 +417,26 @@ export class DriversClient {
      *
      * To use this endpoint, select **Write Drivers** under the Drivers category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
+     * @param {string} id - ID of the driver. This can either be the Samsara-specified ID, or an external ID. External IDs are customer specified key-value pairs created in the POST or PATCH requests of this resource. To specify an external ID as part of a path parameter, use the following format: `key:value`. For example, `payrollId:ABFS18600`
      * @param {Samsara.UpdateDriverRequest} request
      * @param {DriversClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.drivers.update({
-     *         id: "id"
-     *     })
+     *     await client.drivers.update("id")
      */
     public update(
-        request: Samsara.UpdateDriverRequest,
+        id: string,
+        request: Samsara.UpdateDriverRequest = {},
         requestOptions?: DriversClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.DriverResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__update(request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__update(id, request, requestOptions));
     }
 
     private async __update(
-        request: Samsara.UpdateDriverRequest,
+        id: string,
+        request: Samsara.UpdateDriverRequest = {},
         requestOptions?: DriversClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.DriverResponse>> {
-        const { id, ..._body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -465,7 +456,7 @@ export class DriversClient {
             contentType: "application/json",
             queryParameters: requestOptions?.queryParams,
             requestType: "json",
-            body: _body,
+            body: request,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,

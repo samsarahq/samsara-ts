@@ -8,8 +8,7 @@ import type * as Samsara from "../../../../index.js";
  *         formTemplate: {
  *             id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
  *             revisionId: "1214a1fa-f0c6-408b-bf85-51dc3bc71ac7"
- *         },
- *         status: "notStarted"
+ *         }
  *     }
  */
 export interface FormSubmissionsPostFormSubmissionRequestBody {
@@ -23,16 +22,6 @@ export interface FormSubmissionsPostFormSubmissionRequestBody {
     isRequired?: boolean;
     /** ID of the route stop the form submission is assigned to. Must be a unique Samsara ID. */
     routeStopId?: string;
-    /** Status of the form submission.  Valid values: `notStarted` */
-    status: FormSubmissionsPostFormSubmissionRequestBody.Status;
     /** Title of the form submission. */
     title?: string;
-}
-
-export namespace FormSubmissionsPostFormSubmissionRequestBody {
-    /** Status of the form submission.  Valid values: `notStarted` */
-    export const Status = {
-        NotStarted: "notStarted",
-    } as const;
-    export type Status = (typeof Status)[keyof typeof Status];
 }

@@ -11,7 +11,7 @@ export interface RouteStopDetailsObjectResponseBody {
     /** The timestamp of the route in RFC 3339 format. */
     time: string;
     /** The type of route update. The route tracking updates occur as a route is completed and stops transition from one state to another. Currently only Route Tracking updates are supported, but this will change in the future when additional types are added.  Valid values: `route tracking` */
-    type: RouteStopDetailsObjectResponseBody.Type;
+    type: "route tracking";
     vehicle?: Samsara.VehicleWithGatewayTinyResponseResponseBody;
 }
 
@@ -22,9 +22,4 @@ export namespace RouteStopDetailsObjectResponseBody {
         StopDeparted: "stop departed",
     } as const;
     export type Operation = (typeof Operation)[keyof typeof Operation];
-    /** The type of route update. The route tracking updates occur as a route is completed and stops transition from one state to another. Currently only Route Tracking updates are supported, but this will change in the future when additional types are added.  Valid values: `route tracking` */
-    export const Type = {
-        RouteTracking: "route tracking",
-    } as const;
-    export type Type = (typeof Type)[keyof typeof Type];
 }

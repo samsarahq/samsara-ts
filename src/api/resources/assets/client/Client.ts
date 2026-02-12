@@ -653,28 +653,30 @@ export class AssetsClient {
      *
      * To use this endpoint, select **Read Equipment Statistics** under the Equipment category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
+     * @param {number} asset_id - ID of the asset. Must contain only digits 0-9.
      * @param {Samsara.V1GetAssetLocationRequest} request
      * @param {AssetsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.assets.v1GetAssetLocation({
-     *         asset_id: 1000000,
+     *     await client.assets.v1GetAssetLocation(1000000, {
      *         startMs: 1000000,
      *         endMs: 1000000
      *     })
      */
     public v1GetAssetLocation(
+        asset_id: number,
         request: Samsara.V1GetAssetLocationRequest,
         requestOptions?: AssetsClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.V1AssetLocationResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__v1GetAssetLocation(request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__v1GetAssetLocation(asset_id, request, requestOptions));
     }
 
     private async __v1GetAssetLocation(
+        asset_id: number,
         request: Samsara.V1GetAssetLocationRequest,
         requestOptions?: AssetsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.V1AssetLocationResponse>> {
-        const { asset_id: assetId, startMs, endMs } = request;
+        const { startMs, endMs } = request;
         const _queryParams: Record<string, unknown> = {
             startMs,
             endMs,
@@ -691,7 +693,7 @@ export class AssetsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.SamsaraEnvironment.ProductionApi,
-                `v1/fleet/assets/${core.url.encodePathParam(assetId)}/locations`,
+                `v1/fleet/assets/${core.url.encodePathParam(asset_id)}/locations`,
             ),
             method: "GET",
             headers: _headers,
@@ -736,28 +738,30 @@ export class AssetsClient {
      *
      * To use this endpoint, select **Read Trailers** under the Trailers category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
+     * @param {number} asset_id - ID of the asset. Must contain only digits 0-9.
      * @param {Samsara.V1GetAssetReeferRequest} request
      * @param {AssetsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.assets.v1GetAssetReefer({
-     *         asset_id: 1000000,
+     *     await client.assets.v1GetAssetReefer(1000000, {
      *         startMs: 1000000,
      *         endMs: 1000000
      *     })
      */
     public v1GetAssetReefer(
+        asset_id: number,
         request: Samsara.V1GetAssetReeferRequest,
         requestOptions?: AssetsClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.V1AssetReeferResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__v1GetAssetReefer(request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__v1GetAssetReefer(asset_id, request, requestOptions));
     }
 
     private async __v1GetAssetReefer(
+        asset_id: number,
         request: Samsara.V1GetAssetReeferRequest,
         requestOptions?: AssetsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.V1AssetReeferResponse>> {
-        const { asset_id: assetId, startMs, endMs } = request;
+        const { startMs, endMs } = request;
         const _queryParams: Record<string, unknown> = {
             startMs,
             endMs,
@@ -774,7 +778,7 @@ export class AssetsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.SamsaraEnvironment.ProductionApi,
-                `v1/fleet/assets/${core.url.encodePathParam(assetId)}/reefer`,
+                `v1/fleet/assets/${core.url.encodePathParam(asset_id)}/reefer`,
             ),
             method: "GET",
             headers: _headers,
@@ -806,26 +810,17 @@ export class AssetsClient {
     }
 
     /**
-     * @param {Samsara.GetAssetsRequest} request
+     * @param {string} id
      * @param {AssetsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.assets.get({
-     *         id: "id"
-     *     })
+     *     await client.assets.get("id")
      */
-    public get(
-        request: Samsara.GetAssetsRequest,
-        requestOptions?: AssetsClient.RequestOptions,
-    ): core.HttpResponsePromise<void> {
-        return core.HttpResponsePromise.fromPromise(this.__get(request, requestOptions));
+    public get(id: string, requestOptions?: AssetsClient.RequestOptions): core.HttpResponsePromise<void> {
+        return core.HttpResponsePromise.fromPromise(this.__get(id, requestOptions));
     }
 
-    private async __get(
-        request: Samsara.GetAssetsRequest,
-        requestOptions?: AssetsClient.RequestOptions,
-    ): Promise<core.WithRawResponse<void>> {
-        const { id } = request;
+    private async __get(id: string, requestOptions?: AssetsClient.RequestOptions): Promise<core.WithRawResponse<void>> {
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -865,26 +860,20 @@ export class AssetsClient {
     }
 
     /**
-     * @param {Samsara.UpdateAssetsRequest} request
+     * @param {string} id
      * @param {AssetsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.assets.update({
-     *         id: "id"
-     *     })
+     *     await client.assets.update("id")
      */
-    public update(
-        request: Samsara.UpdateAssetsRequest,
-        requestOptions?: AssetsClient.RequestOptions,
-    ): core.HttpResponsePromise<void> {
-        return core.HttpResponsePromise.fromPromise(this.__update(request, requestOptions));
+    public update(id: string, requestOptions?: AssetsClient.RequestOptions): core.HttpResponsePromise<void> {
+        return core.HttpResponsePromise.fromPromise(this.__update(id, requestOptions));
     }
 
     private async __update(
-        request: Samsara.UpdateAssetsRequest,
+        id: string,
         requestOptions?: AssetsClient.RequestOptions,
     ): Promise<core.WithRawResponse<void>> {
-        const { id } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,

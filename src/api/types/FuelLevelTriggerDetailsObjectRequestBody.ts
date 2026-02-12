@@ -9,13 +9,5 @@ export interface FuelLevelTriggerDetailsObjectRequestBody {
     /** The number of milliseconds the trigger needs to stay active before alerting. */
     minDurationMilliseconds: number;
     /** How to evaluate the threshold.  Valid values: `LESS` */
-    operation: FuelLevelTriggerDetailsObjectRequestBody.Operation;
-}
-
-export namespace FuelLevelTriggerDetailsObjectRequestBody {
-    /** How to evaluate the threshold.  Valid values: `LESS` */
-    export const Operation = {
-        Less: "LESS",
-    } as const;
-    export type Operation = (typeof Operation)[keyof typeof Operation];
+    operation: "LESS";
 }

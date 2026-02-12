@@ -371,7 +371,7 @@ export class IftaClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * @param {Samsara.GetIftaDetailJobRequest} request
+     * @param {string} id - ID of the requested job.
      * @param {IftaClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
@@ -385,22 +385,19 @@ export class IftaClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.ifta.getIftaDetailJob({
-     *         id: "id"
-     *     })
+     *     await client.ifta.getIftaDetailJob("id")
      */
     public getIftaDetailJob(
-        request: Samsara.GetIftaDetailJobRequest,
+        id: string,
         requestOptions?: IftaClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.IftaGetIftaDetailJobResponseBody> {
-        return core.HttpResponsePromise.fromPromise(this.__getIftaDetailJob(request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__getIftaDetailJob(id, requestOptions));
     }
 
     private async __getIftaDetailJob(
-        request: Samsara.GetIftaDetailJobRequest,
+        id: string,
         requestOptions?: IftaClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.IftaGetIftaDetailJobResponseBody>> {
-        const { id } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,

@@ -175,26 +175,23 @@ export class VehiclesClient {
      *
      * To use this endpoint, select **Read Vehicles** under the Vehicles category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
-     * @param {Samsara.GetVehiclesRequest} request
+     * @param {string} id - ID of the vehicle. This can either be the Samsara-specified ID, or an external ID. External IDs are customer specified key-value pairs created in the POST or PATCH requests of this resource, or automatically populated by fields on the vehicle. To specify an external ID as part of a path parameter, use the following format: `key:value`. For example, `maintenanceId:250020`. Automatically populated external IDs are prefixed with `samsara.`. For example, `samsara.vin:1HGBH41JXMN109186`.
      * @param {VehiclesClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.vehicles.get({
-     *         id: "id"
-     *     })
+     *     await client.vehicles.get("id")
      */
     public get(
-        request: Samsara.GetVehiclesRequest,
+        id: string,
         requestOptions?: VehiclesClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.VehicleResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__get(request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__get(id, requestOptions));
     }
 
     private async __get(
-        request: Samsara.GetVehiclesRequest,
+        id: string,
         requestOptions?: VehiclesClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.VehicleResponse>> {
-        const { id } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -246,26 +243,26 @@ export class VehiclesClient {
      *
      * To use this endpoint, select **Write Vehicles** under the Vehicles category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
+     * @param {string} id - ID of the vehicle. This can either be the Samsara-specified ID, or an external ID. External IDs are customer specified key-value pairs created in the POST or PATCH requests of this resource, or automatically populated by fields on the vehicle. To specify an external ID as part of a path parameter, use the following format: `key:value`. For example, `maintenanceId:250020`. Automatically populated external IDs are prefixed with `samsara.`. For example, `samsara.vin:1HGBH41JXMN109186`.
      * @param {Samsara.UpdateVehicleRequest} request
      * @param {VehiclesClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.vehicles.update({
-     *         id: "id"
-     *     })
+     *     await client.vehicles.update("id")
      */
     public update(
-        request: Samsara.UpdateVehicleRequest,
+        id: string,
+        request: Samsara.UpdateVehicleRequest = {},
         requestOptions?: VehiclesClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.VehicleResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__update(request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__update(id, request, requestOptions));
     }
 
     private async __update(
-        request: Samsara.UpdateVehicleRequest,
+        id: string,
+        request: Samsara.UpdateVehicleRequest = {},
         requestOptions?: VehiclesClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.VehicleResponse>> {
-        const { id, ..._body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -285,7 +282,7 @@ export class VehiclesClient {
             contentType: "application/json",
             queryParameters: requestOptions?.queryParams,
             requestType: "json",
-            body: _body,
+            body: request,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,

@@ -172,26 +172,26 @@ export class IndustrialClient {
      *
      * To use this endpoint, select **Write Equipment** under the Equipment category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
+     * @param {string} id - Id of the asset to be updated
      * @param {Samsara.AssetPatch} request
      * @param {IndustrialClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.industrial.patchIndustrialAsset({
-     *         id: "id"
-     *     })
+     *     await client.industrial.patchIndustrialAsset("id")
      */
     public patchIndustrialAsset(
-        request: Samsara.AssetPatch,
+        id: string,
+        request: Samsara.AssetPatch = {},
         requestOptions?: IndustrialClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.InlineResponse200> {
-        return core.HttpResponsePromise.fromPromise(this.__patchIndustrialAsset(request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__patchIndustrialAsset(id, request, requestOptions));
     }
 
     private async __patchIndustrialAsset(
-        request: Samsara.AssetPatch,
+        id: string,
+        request: Samsara.AssetPatch = {},
         requestOptions?: IndustrialClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.InlineResponse200>> {
-        const { id, ..._body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -211,7 +211,7 @@ export class IndustrialClient {
             contentType: "application/json",
             queryParameters: requestOptions?.queryParams,
             requestType: "json",
-            body: _body,
+            body: request,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -243,6 +243,7 @@ export class IndustrialClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
+     * @param {string} id - Asset ID
      * @param {Samsara.AssetDataOutputsPatchAssetDataOutputsRequestBody} request
      * @param {IndustrialClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -257,25 +258,25 @@ export class IndustrialClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.industrial.patchAssetDataOutputs({
-     *         id: "id",
+     *     await client.industrial.patchAssetDataOutputs("id", {
      *         values: {
      *             "key": "value"
      *         }
      *     })
      */
     public patchAssetDataOutputs(
+        id: string,
         request: Samsara.AssetDataOutputsPatchAssetDataOutputsRequestBody,
         requestOptions?: IndustrialClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.AssetDataOutputsPatchAssetDataOutputsResponseBody> {
-        return core.HttpResponsePromise.fromPromise(this.__patchAssetDataOutputs(request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__patchAssetDataOutputs(id, request, requestOptions));
     }
 
     private async __patchAssetDataOutputs(
+        id: string,
         request: Samsara.AssetDataOutputsPatchAssetDataOutputsRequestBody,
         requestOptions?: IndustrialClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.AssetDataOutputsPatchAssetDataOutputsResponseBody>> {
-        const { id, ..._body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -295,7 +296,7 @@ export class IndustrialClient {
             contentType: "application/json",
             queryParameters: requestOptions?.queryParams,
             requestType: "json",
-            body: _body,
+            body: request,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -732,26 +733,23 @@ export class IndustrialClient {
      *
      * To use this endpoint, select **Read Industrial** under the Industrial category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
-     * @param {Samsara.V1GetVisionProgramsByCameraRequest} request
+     * @param {number} camera_id - The camera_id should be valid for the given accessToken.
      * @param {IndustrialClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.industrial.v1GetVisionProgramsByCamera({
-     *         camera_id: 1000000
-     *     })
+     *     await client.industrial.v1GetVisionProgramsByCamera(1000000)
      */
     public v1GetVisionProgramsByCamera(
-        request: Samsara.V1GetVisionProgramsByCameraRequest,
+        camera_id: number,
         requestOptions?: IndustrialClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.V1ProgramsForTheCameraResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__v1GetVisionProgramsByCamera(request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__v1GetVisionProgramsByCamera(camera_id, requestOptions));
     }
 
     private async __v1GetVisionProgramsByCamera(
-        request: Samsara.V1GetVisionProgramsByCameraRequest,
+        camera_id: number,
         requestOptions?: IndustrialClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.V1ProgramsForTheCameraResponse>> {
-        const { camera_id: cameraId } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -764,7 +762,7 @@ export class IndustrialClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.SamsaraEnvironment.ProductionApi,
-                `v1/industrial/vision/cameras/${core.url.encodePathParam(cameraId)}/programs`,
+                `v1/industrial/vision/cameras/${core.url.encodePathParam(camera_id)}/programs`,
             ),
             method: "GET",
             headers: _headers,
@@ -805,26 +803,29 @@ export class IndustrialClient {
      *
      * To use this endpoint, select **Read Industrial** under the Industrial category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
+     * @param {number} camera_id - The camera_id should be valid for the given accessToken.
      * @param {Samsara.V1GetVisionLatestRunCameraRequest} request
      * @param {IndustrialClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.industrial.v1GetVisionLatestRunCamera({
-     *         camera_id: 1000000
-     *     })
+     *     await client.industrial.v1GetVisionLatestRunCamera(1000000)
      */
     public v1GetVisionLatestRunCamera(
-        request: Samsara.V1GetVisionLatestRunCameraRequest,
+        camera_id: number,
+        request: Samsara.V1GetVisionLatestRunCameraRequest = {},
         requestOptions?: IndustrialClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.V1VisionRunByCameraResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__v1GetVisionLatestRunCamera(request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(
+            this.__v1GetVisionLatestRunCamera(camera_id, request, requestOptions),
+        );
     }
 
     private async __v1GetVisionLatestRunCamera(
-        request: Samsara.V1GetVisionLatestRunCameraRequest,
+        camera_id: number,
+        request: Samsara.V1GetVisionLatestRunCameraRequest = {},
         requestOptions?: IndustrialClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.V1VisionRunByCameraResponse>> {
-        const { camera_id: cameraId, program_id: programId, startedAtMs, include, limit } = request;
+        const { program_id: programId, startedAtMs, include, limit } = request;
         const _queryParams: Record<string, unknown> = {
             program_id: programId,
             startedAtMs,
@@ -843,7 +844,7 @@ export class IndustrialClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.SamsaraEnvironment.ProductionApi,
-                `v1/industrial/vision/run/camera/${core.url.encodePathParam(cameraId)}`,
+                `v1/industrial/vision/run/camera/${core.url.encodePathParam(camera_id)}`,
             ),
             method: "GET",
             headers: _headers,
@@ -964,27 +965,29 @@ export class IndustrialClient {
      *
      * To use this endpoint, select **Read Industrial** under the Industrial category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
+     * @param {number} camera_id - The camera_id should be valid for the given accessToken.
      * @param {Samsara.GetVisionRunsByCameraRequest} request
      * @param {IndustrialClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.industrial.getVisionRunsByCamera({
-     *         camera_id: 1000000,
+     *     await client.industrial.getVisionRunsByCamera(1000000, {
      *         durationMs: 1000000
      *     })
      */
     public getVisionRunsByCamera(
+        camera_id: number,
         request: Samsara.GetVisionRunsByCameraRequest,
         requestOptions?: IndustrialClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.V1VisionRunsByCameraResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__getVisionRunsByCamera(request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__getVisionRunsByCamera(camera_id, request, requestOptions));
     }
 
     private async __getVisionRunsByCamera(
+        camera_id: number,
         request: Samsara.GetVisionRunsByCameraRequest,
         requestOptions?: IndustrialClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.V1VisionRunsByCameraResponse>> {
-        const { camera_id: cameraId, durationMs, endMs } = request;
+        const { durationMs, endMs } = request;
         const _queryParams: Record<string, unknown> = {
             durationMs,
             endMs,
@@ -1001,7 +1004,7 @@ export class IndustrialClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.SamsaraEnvironment.ProductionApi,
-                `v1/industrial/vision/runs/${core.url.encodePathParam(cameraId)}`,
+                `v1/industrial/vision/runs/${core.url.encodePathParam(camera_id)}`,
             ),
             method: "GET",
             headers: _headers,
@@ -1046,28 +1049,35 @@ export class IndustrialClient {
      *
      * To use this endpoint, select **Read Industrial** under the Industrial category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
+     * @param {number} camera_id - The camera_id should be valid for the given accessToken.
+     * @param {number} program_id - The configured program's ID on the camera.
+     * @param {number} started_at_ms - Started_at_ms is a required param. Indicates the start time of the run to be fetched.
      * @param {Samsara.V1GetVisionRunsByCameraAndProgramRequest} request
      * @param {IndustrialClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.industrial.v1GetVisionRunsByCameraAndProgram({
-     *         camera_id: 1000000,
-     *         program_id: 1000000,
-     *         started_at_ms: 1000000
-     *     })
+     *     await client.industrial.v1GetVisionRunsByCameraAndProgram(1000000, 1000000, 1000000)
      */
     public v1GetVisionRunsByCameraAndProgram(
-        request: Samsara.V1GetVisionRunsByCameraAndProgramRequest,
+        camera_id: number,
+        program_id: number,
+        started_at_ms: number,
+        request: Samsara.V1GetVisionRunsByCameraAndProgramRequest = {},
         requestOptions?: IndustrialClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.V1VisionRunsByCameraAndProgramResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__v1GetVisionRunsByCameraAndProgram(request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(
+            this.__v1GetVisionRunsByCameraAndProgram(camera_id, program_id, started_at_ms, request, requestOptions),
+        );
     }
 
     private async __v1GetVisionRunsByCameraAndProgram(
-        request: Samsara.V1GetVisionRunsByCameraAndProgramRequest,
+        camera_id: number,
+        program_id: number,
+        started_at_ms: number,
+        request: Samsara.V1GetVisionRunsByCameraAndProgramRequest = {},
         requestOptions?: IndustrialClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.V1VisionRunsByCameraAndProgramResponse>> {
-        const { camera_id: cameraId, program_id: programId, started_at_ms: startedAtMs, include } = request;
+        const { include } = request;
         const _queryParams: Record<string, unknown> = {
             include,
         };
@@ -1083,7 +1093,7 @@ export class IndustrialClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.SamsaraEnvironment.ProductionApi,
-                `v1/industrial/vision/runs/${core.url.encodePathParam(cameraId)}/${core.url.encodePathParam(programId)}/${core.url.encodePathParam(startedAtMs)}`,
+                `v1/industrial/vision/runs/${core.url.encodePathParam(camera_id)}/${core.url.encodePathParam(program_id)}/${core.url.encodePathParam(started_at_ms)}`,
             ),
             method: "GET",
             headers: _headers,

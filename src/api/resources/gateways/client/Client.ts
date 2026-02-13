@@ -240,7 +240,7 @@ export class GatewaysClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * @param {Samsara.DeleteGatewayRequest} request
+     * @param {string} id - Gateway serial number
      * @param {GatewaysClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
@@ -254,22 +254,16 @@ export class GatewaysClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.gateways.deleteGateway({
-     *         id: "id"
-     *     })
+     *     await client.gateways.deleteGateway("id")
      */
-    public deleteGateway(
-        request: Samsara.DeleteGatewayRequest,
-        requestOptions?: GatewaysClient.RequestOptions,
-    ): core.HttpResponsePromise<void> {
-        return core.HttpResponsePromise.fromPromise(this.__deleteGateway(request, requestOptions));
+    public deleteGateway(id: string, requestOptions?: GatewaysClient.RequestOptions): core.HttpResponsePromise<void> {
+        return core.HttpResponsePromise.fromPromise(this.__deleteGateway(id, requestOptions));
     }
 
     private async __deleteGateway(
-        request: Samsara.DeleteGatewayRequest,
+        id: string,
         requestOptions?: GatewaysClient.RequestOptions,
     ): Promise<core.WithRawResponse<void>> {
-        const { id } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,

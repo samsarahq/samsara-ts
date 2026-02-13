@@ -518,9 +518,7 @@ describe("WebhooksClient", () => {
         };
         server.mockEndpoint().get("/webhooks/id").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
-        const response = await client.webhooks.getWebhook({
-            id: "id",
-        });
+        const response = await client.webhooks.getWebhook("id");
         expect(response).toEqual({
             customHeaders: [
                 {
@@ -550,9 +548,7 @@ describe("WebhooksClient", () => {
         server.mockEndpoint().get("/webhooks/id").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.webhooks.getWebhook({
-                id: "id",
-            });
+            return await client.webhooks.getWebhook("id");
         }).rejects.toThrow(Samsara.UnauthorizedError);
     });
 
@@ -569,9 +565,7 @@ describe("WebhooksClient", () => {
         server.mockEndpoint().get("/webhooks/id").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.webhooks.getWebhook({
-                id: "id",
-            });
+            return await client.webhooks.getWebhook("id");
         }).rejects.toThrow(Samsara.NotFoundError);
     });
 
@@ -588,9 +582,7 @@ describe("WebhooksClient", () => {
         server.mockEndpoint().get("/webhooks/id").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.webhooks.getWebhook({
-                id: "id",
-            });
+            return await client.webhooks.getWebhook("id");
         }).rejects.toThrow(Samsara.MethodNotAllowedError);
     });
 
@@ -607,9 +599,7 @@ describe("WebhooksClient", () => {
         server.mockEndpoint().get("/webhooks/id").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.webhooks.getWebhook({
-                id: "id",
-            });
+            return await client.webhooks.getWebhook("id");
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
@@ -626,9 +616,7 @@ describe("WebhooksClient", () => {
         server.mockEndpoint().get("/webhooks/id").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.webhooks.getWebhook({
-                id: "id",
-            });
+            return await client.webhooks.getWebhook("id");
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
@@ -645,9 +633,7 @@ describe("WebhooksClient", () => {
         server.mockEndpoint().get("/webhooks/id").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.webhooks.getWebhook({
-                id: "id",
-            });
+            return await client.webhooks.getWebhook("id");
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
@@ -664,9 +650,7 @@ describe("WebhooksClient", () => {
         server.mockEndpoint().get("/webhooks/id").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.webhooks.getWebhook({
-                id: "id",
-            });
+            return await client.webhooks.getWebhook("id");
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
@@ -683,9 +667,7 @@ describe("WebhooksClient", () => {
         server.mockEndpoint().get("/webhooks/id").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.webhooks.getWebhook({
-                id: "id",
-            });
+            return await client.webhooks.getWebhook("id");
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
@@ -702,9 +684,7 @@ describe("WebhooksClient", () => {
         server.mockEndpoint().get("/webhooks/id").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.webhooks.getWebhook({
-                id: "id",
-            });
+            return await client.webhooks.getWebhook("id");
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 
@@ -719,9 +699,7 @@ describe("WebhooksClient", () => {
 
         server.mockEndpoint().delete("/webhooks/id").respondWith().statusCode(200).build();
 
-        const response = await client.webhooks.deleteWebhook({
-            id: "id",
-        });
+        const response = await client.webhooks.deleteWebhook("id");
         expect(response).toEqual(undefined);
     });
 
@@ -738,9 +716,7 @@ describe("WebhooksClient", () => {
         server.mockEndpoint().delete("/webhooks/id").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.webhooks.deleteWebhook({
-                id: "id",
-            });
+            return await client.webhooks.deleteWebhook("id");
         }).rejects.toThrow(Samsara.UnauthorizedError);
     });
 
@@ -757,9 +733,7 @@ describe("WebhooksClient", () => {
         server.mockEndpoint().delete("/webhooks/id").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.webhooks.deleteWebhook({
-                id: "id",
-            });
+            return await client.webhooks.deleteWebhook("id");
         }).rejects.toThrow(Samsara.NotFoundError);
     });
 
@@ -776,9 +750,7 @@ describe("WebhooksClient", () => {
         server.mockEndpoint().delete("/webhooks/id").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.webhooks.deleteWebhook({
-                id: "id",
-            });
+            return await client.webhooks.deleteWebhook("id");
         }).rejects.toThrow(Samsara.MethodNotAllowedError);
     });
 
@@ -795,9 +767,7 @@ describe("WebhooksClient", () => {
         server.mockEndpoint().delete("/webhooks/id").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.webhooks.deleteWebhook({
-                id: "id",
-            });
+            return await client.webhooks.deleteWebhook("id");
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
@@ -814,9 +784,7 @@ describe("WebhooksClient", () => {
         server.mockEndpoint().delete("/webhooks/id").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.webhooks.deleteWebhook({
-                id: "id",
-            });
+            return await client.webhooks.deleteWebhook("id");
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
@@ -833,9 +801,7 @@ describe("WebhooksClient", () => {
         server.mockEndpoint().delete("/webhooks/id").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.webhooks.deleteWebhook({
-                id: "id",
-            });
+            return await client.webhooks.deleteWebhook("id");
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
@@ -852,9 +818,7 @@ describe("WebhooksClient", () => {
         server.mockEndpoint().delete("/webhooks/id").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.webhooks.deleteWebhook({
-                id: "id",
-            });
+            return await client.webhooks.deleteWebhook("id");
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
@@ -871,9 +835,7 @@ describe("WebhooksClient", () => {
         server.mockEndpoint().delete("/webhooks/id").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.webhooks.deleteWebhook({
-                id: "id",
-            });
+            return await client.webhooks.deleteWebhook("id");
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
@@ -890,9 +852,7 @@ describe("WebhooksClient", () => {
         server.mockEndpoint().delete("/webhooks/id").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.webhooks.deleteWebhook({
-                id: "id",
-            });
+            return await client.webhooks.deleteWebhook("id");
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 
@@ -923,9 +883,7 @@ describe("WebhooksClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.webhooks.patchWebhook({
-            id: "id",
-        });
+        const response = await client.webhooks.patchWebhook("id");
         expect(response).toEqual({
             customHeaders: [
                 {
@@ -962,9 +920,7 @@ describe("WebhooksClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.webhooks.patchWebhook({
-                id: "id",
-            });
+            return await client.webhooks.patchWebhook("id");
         }).rejects.toThrow(Samsara.UnauthorizedError);
     });
 
@@ -988,9 +944,7 @@ describe("WebhooksClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.webhooks.patchWebhook({
-                id: "id",
-            });
+            return await client.webhooks.patchWebhook("id");
         }).rejects.toThrow(Samsara.NotFoundError);
     });
 
@@ -1014,9 +968,7 @@ describe("WebhooksClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.webhooks.patchWebhook({
-                id: "id",
-            });
+            return await client.webhooks.patchWebhook("id");
         }).rejects.toThrow(Samsara.MethodNotAllowedError);
     });
 
@@ -1040,9 +992,7 @@ describe("WebhooksClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.webhooks.patchWebhook({
-                id: "id",
-            });
+            return await client.webhooks.patchWebhook("id");
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
@@ -1066,9 +1016,7 @@ describe("WebhooksClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.webhooks.patchWebhook({
-                id: "id",
-            });
+            return await client.webhooks.patchWebhook("id");
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
@@ -1092,9 +1040,7 @@ describe("WebhooksClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.webhooks.patchWebhook({
-                id: "id",
-            });
+            return await client.webhooks.patchWebhook("id");
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
@@ -1118,9 +1064,7 @@ describe("WebhooksClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.webhooks.patchWebhook({
-                id: "id",
-            });
+            return await client.webhooks.patchWebhook("id");
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
@@ -1144,9 +1088,7 @@ describe("WebhooksClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.webhooks.patchWebhook({
-                id: "id",
-            });
+            return await client.webhooks.patchWebhook("id");
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
@@ -1170,9 +1112,7 @@ describe("WebhooksClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.webhooks.patchWebhook({
-                id: "id",
-            });
+            return await client.webhooks.patchWebhook("id");
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 });

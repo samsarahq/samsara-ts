@@ -26,15 +26,7 @@ export interface IdlingEventObjectV20251023ResponseBody {
     longitude?: number;
     operator?: Samsara.IdlingEventOperatorObjectResponseBody;
     /** The PTO (Power Take-Off) state during the idling event.  Valid values: `active, inactive` */
-    ptoState: IdlingEventObjectV20251023ResponseBody.PtoState;
+    ptoState: "active, inactive";
     /** The start time of the idling event in RFC 3339 format. */
     startTime: string;
-}
-
-export namespace IdlingEventObjectV20251023ResponseBody {
-    /** The PTO (Power Take-Off) state during the idling event.  Valid values: `active, inactive` */
-    export const PtoState = {
-        ActiveInactive: "active, inactive",
-    } as const;
-    export type PtoState = (typeof PtoState)[keyof typeof PtoState];
 }

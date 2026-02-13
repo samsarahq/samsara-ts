@@ -154,8 +154,7 @@ export class FormsClient {
      *         formTemplate: {
      *             id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
      *             revisionId: "1214a1fa-f0c6-408b-bf85-51dc3bc71ac7"
-     *         },
-     *         status: "notStarted"
+     *         }
      *     })
      */
     public postFormSubmission(
@@ -188,7 +187,7 @@ export class FormsClient {
             contentType: "application/json",
             queryParameters: requestOptions?.queryParams,
             requestType: "json",
-            body: request,
+            body: { ...request, status: "notStarted" },
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,

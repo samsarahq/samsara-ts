@@ -29,26 +29,23 @@ export class AssetsClient {
      *
      * To use this endpoint, select **Write Equipment** under the Equipment category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
-     * @param {Samsara.industrial.DeleteAssetsRequest} request
+     * @param {string} id - Id of the asset to be deleted.
      * @param {AssetsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.industrial.assets.delete({
-     *         id: "id"
-     *     })
+     *     await client.industrial.assets.delete("id")
      */
     public delete(
-        request: Samsara.industrial.DeleteAssetsRequest,
+        id: string,
         requestOptions?: AssetsClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.StandardDeleteResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__delete(request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__delete(id, requestOptions));
     }
 
     private async __delete(
-        request: Samsara.industrial.DeleteAssetsRequest,
+        id: string,
         requestOptions?: AssetsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.StandardDeleteResponse>> {
-        const { id } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,

@@ -4,3 +4,4 @@
 .github/workflows/publish.yml
 .github/workflows/release.yml
 .gitignore
+changelog.md

@@ -4,13 +4,9 @@ import type * as Samsara from "../../../../index.js";
 
 /**
  * @example
- *     {
- *         id: "id"
- *     }
+ *     {}
  */
 export interface TrailersUpdateTrailerRequestBody {
-    /** ID of the trailer. Can be either unique Samsara ID or an [external ID](https://developers.samsara.com/docs/external-ids) for the trailer. */
-    id: string;
     /** A list of attributes to assign to the trailer. */
     attributes?: Samsara.GoaAttributeTinyRequestBody[];
     /** Indicates if the trailer is visible on the Samsara mobile apps. */

@@ -3,13 +3,10 @@
 /**
  * @example
  *     {
- *         camera_id: 1000000,
  *         durationMs: 1000000
  *     }
  */
 export interface GetVisionRunsByCameraRequest {
-    /** The camera_id should be valid for the given accessToken. */
-    camera_id: number;
     /** DurationMs is a required param. This works with the EndMs parameter. Indicates the duration in which the visionRuns will be fetched */
     durationMs: number;
     /** EndMs is an optional param. It will default to the current time. */

@@ -2,7 +2,6 @@ export type { DeleteJobRequest } from "./DeleteJobRequest.js";
 export type { EngineImmobilizerUpdateEngineImmobilizerStateRequestBody } from "./EngineImmobilizerUpdateEngineImmobilizerStateRequestBody.js";
 export type { EquipmentPatchEquipmentRequestBody } from "./EquipmentPatchEquipmentRequestBody.js";
 export type { FunctionsStartFunctionRunRequestBody } from "./FunctionsStartFunctionRunRequestBody.js";
-export type { GetAempEquipmentListRequest } from "./GetAempEquipmentListRequest.js";
 export type { GetAssetsInputsRequest } from "./GetAssetsInputsRequest.js";
 export type { GetDatasetsRequest } from "./GetDatasetsRequest.js";
 export type { GetDepreciationTransactionsRequest } from "./GetDepreciationTransactionsRequest.js";

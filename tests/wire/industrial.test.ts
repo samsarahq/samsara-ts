@@ -231,9 +231,7 @@ describe("IndustrialClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.industrial.patchIndustrialAsset({
-            id: "id",
-        });
+        const response = await client.industrial.patchIndustrialAsset("id");
         expect(response).toEqual({
             data: {
                 customMetadata: {
@@ -305,8 +303,7 @@ describe("IndustrialClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.industrial.patchAssetDataOutputs({
-            id: "id",
+        const response = await client.industrial.patchAssetDataOutputs("id", {
             values: {
                 key: "value",
             },
@@ -342,8 +339,7 @@ describe("IndustrialClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.industrial.patchAssetDataOutputs({
-                id: "id",
+            return await client.industrial.patchAssetDataOutputs("id", {
                 values: {
                     values: {
                         key: "value",
@@ -373,8 +369,7 @@ describe("IndustrialClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.industrial.patchAssetDataOutputs({
-                id: "id",
+            return await client.industrial.patchAssetDataOutputs("id", {
                 values: {
                     values: {
                         key: "value",
@@ -404,8 +399,7 @@ describe("IndustrialClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.industrial.patchAssetDataOutputs({
-                id: "id",
+            return await client.industrial.patchAssetDataOutputs("id", {
                 values: {
                     values: {
                         key: "value",
@@ -435,8 +429,7 @@ describe("IndustrialClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.industrial.patchAssetDataOutputs({
-                id: "id",
+            return await client.industrial.patchAssetDataOutputs("id", {
                 values: {
                     values: {
                         key: "value",
@@ -466,8 +459,7 @@ describe("IndustrialClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.industrial.patchAssetDataOutputs({
-                id: "id",
+            return await client.industrial.patchAssetDataOutputs("id", {
                 values: {
                     values: {
                         key: "value",
@@ -497,8 +489,7 @@ describe("IndustrialClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.industrial.patchAssetDataOutputs({
-                id: "id",
+            return await client.industrial.patchAssetDataOutputs("id", {
                 values: {
                     values: {
                         key: "value",
@@ -528,8 +519,7 @@ describe("IndustrialClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.industrial.patchAssetDataOutputs({
-                id: "id",
+            return await client.industrial.patchAssetDataOutputs("id", {
                 values: {
                     values: {
                         key: "value",
@@ -559,8 +549,7 @@ describe("IndustrialClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.industrial.patchAssetDataOutputs({
-                id: "id",
+            return await client.industrial.patchAssetDataOutputs("id", {
                 values: {
                     values: {
                         key: "value",
@@ -590,8 +579,7 @@ describe("IndustrialClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.industrial.patchAssetDataOutputs({
-                id: "id",
+            return await client.industrial.patchAssetDataOutputs("id", {
                 values: {
                     values: {
                         key: "value",
@@ -927,9 +915,7 @@ describe("IndustrialClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.industrial.v1GetVisionProgramsByCamera({
-            camera_id: 1000000,
-        });
+        const response = await client.industrial.v1GetVisionProgramsByCamera(1000000);
         expect(response).toEqual([
             {
                 programId: 1,
@@ -970,9 +956,7 @@ describe("IndustrialClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.industrial.v1GetVisionLatestRunCamera({
-            camera_id: 1000000,
-        });
+        const response = await client.industrial.v1GetVisionLatestRunCamera(1000000);
         expect(response).toEqual({
             cameraId: 1234512345123,
             endedAtMs: 0,
@@ -1078,8 +1062,7 @@ describe("IndustrialClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.industrial.getVisionRunsByCamera({
-            camera_id: 1000000,
+        const response = await client.industrial.getVisionRunsByCamera(1000000, {
             durationMs: 1000000,
         });
         expect(response).toEqual([
@@ -1132,11 +1115,7 @@ describe("IndustrialClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.industrial.v1GetVisionRunsByCameraAndProgram({
-            camera_id: 1000000,
-            program_id: 1000000,
-            started_at_ms: 1000000,
-        });
+        const response = await client.industrial.v1GetVisionRunsByCameraAndProgram(1000000, 1000000, 1000000);
         expect(response).toEqual({
             deviceId: 1234512345123,
             endedAtMs: 0,

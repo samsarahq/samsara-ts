@@ -22,9 +22,7 @@ describe("CarrierProposedAssignmentsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.fleet.carrierProposedAssignments.delete({
-            id: "id",
-        });
+        const response = await client.fleet.carrierProposedAssignments.delete("id");
         expect(response).toEqual("");
     });
 });

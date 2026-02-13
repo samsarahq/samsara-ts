@@ -122,26 +122,29 @@ export class TrailerAssignmentsClient {
      *
      * To use this endpoint, select **Read Assignments** under the Assignments category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
+     * @param {number} trailerId - ID of trailer. Must contain only digits 0-9.
      * @param {Samsara.V1GetFleetTrailerAssignmentsRequest} request
      * @param {TrailerAssignmentsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.trailerAssignments.v1GetFleetTrailerAssignments({
-     *         trailerId: 1000000
-     *     })
+     *     await client.trailerAssignments.v1GetFleetTrailerAssignments(1000000)
      */
     public v1GetFleetTrailerAssignments(
-        request: Samsara.V1GetFleetTrailerAssignmentsRequest,
+        trailerId: number,
+        request: Samsara.V1GetFleetTrailerAssignmentsRequest = {},
         requestOptions?: TrailerAssignmentsClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.V1TrailerAssignmentsResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__v1GetFleetTrailerAssignments(request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(
+            this.__v1GetFleetTrailerAssignments(trailerId, request, requestOptions),
+        );
     }
 
     private async __v1GetFleetTrailerAssignments(
-        request: Samsara.V1GetFleetTrailerAssignmentsRequest,
+        trailerId: number,
+        request: Samsara.V1GetFleetTrailerAssignmentsRequest = {},
         requestOptions?: TrailerAssignmentsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.V1TrailerAssignmentsResponse>> {
-        const { trailerId, startMs, endMs } = request;
+        const { startMs, endMs } = request;
         const _queryParams: Record<string, unknown> = {
             startMs,
             endMs,

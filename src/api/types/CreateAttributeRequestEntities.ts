@@ -5,7 +5,7 @@ export interface CreateAttributeRequestEntities {
     dateValues?: string[];
     /** Entity id, based on the entity type. */
     entityId?: string;
-    /** The [external IDs](https://developers.samsara.com/docs/external-ids) for the given object. */
+    /** The [external IDs](/docs/external-ids) for the given object. */
     externalIds?: Record<string, string>;
     /** Number values that can be associated with this attribute */
     numberValues?: number[];

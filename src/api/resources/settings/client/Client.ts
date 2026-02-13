@@ -25,9 +25,9 @@ export class SettingsClient {
     /**
      * Get organization's compliance settings, including carrier name, office address, and DOT number
      *
-     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Read ELD Compliance Settings (US)** under the Compliance category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read ELD Compliance Settings (US)** under the Compliance category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
@@ -121,9 +121,9 @@ export class SettingsClient {
     /**
      * Update organization's compliance settings, including carrier name, office address, and DOT number
      *
-     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Write ELD Compliance Settings (US)** under the Compliance category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Write ELD Compliance Settings (US)** under the Compliance category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
@@ -223,9 +223,9 @@ export class SettingsClient {
     /**
      * Get driver app settings.
      *
-     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Read Driver App Settings** under the Drivers category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Driver App Settings** under the Drivers category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
@@ -319,9 +319,9 @@ export class SettingsClient {
     /**
      * Update driver app settings.
      *
-     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Write Driver App Settings** under the Drivers category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Write Driver App Settings** under the Drivers category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
@@ -421,9 +421,9 @@ export class SettingsClient {
     /**
      * Get safety settings
      *
-     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Read Safety Events & Scores** under the Safety & Cameras category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Safety Events & Scores** under the Safety & Cameras category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.

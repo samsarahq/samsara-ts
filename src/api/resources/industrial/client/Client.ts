@@ -33,7 +33,7 @@ export class IndustrialClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * To use this endpoint, select **Read Equipment** under the Equipment category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Equipment** under the Equipment category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      * @param {Samsara.GetIndustrialAssetsRequest} request
      * @param {IndustrialClient.RequestOptions} requestOptions - Request-specific configuration.
@@ -103,7 +103,7 @@ export class IndustrialClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * To use this endpoint, select **Write Equipment** under the Equipment category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Write Equipment** under the Equipment category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      * @param {Samsara.AssetCreate} request
      * @param {IndustrialClient.RequestOptions} requestOptions - Request-specific configuration.
@@ -170,7 +170,7 @@ export class IndustrialClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * To use this endpoint, select **Write Equipment** under the Equipment category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Write Equipment** under the Equipment category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      * @param {string} id - Id of the asset to be updated
      * @param {Samsara.AssetPatch} request
@@ -236,9 +236,9 @@ export class IndustrialClient {
     /**
      * Writes values to multiple data outputs on an asset simultaneously. Only the provided data outputs will be updated.
      *
-     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Write Equipment Statistics** under the Equipment category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Write Equipment Statistics** under the Equipment category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
@@ -352,7 +352,7 @@ export class IndustrialClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * To use this endpoint, select **Read Equipment Statistics** under the Equipment category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Equipment Statistics** under the Equipment category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      * @param {Samsara.GetDataInputsRequest} request
      * @param {IndustrialClient.RequestOptions} requestOptions - Request-specific configuration.
@@ -422,7 +422,7 @@ export class IndustrialClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * To use this endpoint, select **Read Equipment Statistics** under the Equipment category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Equipment Statistics** under the Equipment category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      * @param {Samsara.GetDataInputDataSnapshotRequest} request
      * @param {IndustrialClient.RequestOptions} requestOptions - Request-specific configuration.
@@ -503,7 +503,7 @@ export class IndustrialClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * To use this endpoint, select **Read Equipment Statistics** under the Equipment category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Equipment Statistics** under the Equipment category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      * @param {Samsara.GetDataInputDataFeedRequest} request
      * @param {IndustrialClient.RequestOptions} requestOptions - Request-specific configuration.
@@ -578,7 +578,7 @@ export class IndustrialClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * To use this endpoint, select **Read Equipment Statistics** under the Equipment category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Equipment Statistics** under the Equipment category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      * @param {Samsara.GetDataInputDataHistoryRequest} request
      * @param {IndustrialClient.RequestOptions} requestOptions - Request-specific configuration.
@@ -665,7 +665,7 @@ export class IndustrialClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * To use this endpoint, select **Read Industrial** under the Industrial category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Industrial** under the Industrial category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      * @param {IndustrialClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -731,7 +731,7 @@ export class IndustrialClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * To use this endpoint, select **Read Industrial** under the Industrial category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Industrial** under the Industrial category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      * @param {number} camera_id - The camera_id should be valid for the given accessToken.
      * @param {IndustrialClient.RequestOptions} requestOptions - Request-specific configuration.
@@ -801,7 +801,7 @@ export class IndustrialClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * To use this endpoint, select **Read Industrial** under the Industrial category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Industrial** under the Industrial category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      * @param {number} camera_id - The camera_id should be valid for the given accessToken.
      * @param {Samsara.V1GetVisionLatestRunCameraRequest} request
@@ -887,7 +887,7 @@ export class IndustrialClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * To use this endpoint, select **Read Industrial** under the Industrial category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Industrial** under the Industrial category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      * @param {Samsara.V1GetVisionRunsRequest} request
      * @param {IndustrialClient.RequestOptions} requestOptions - Request-specific configuration.
@@ -963,7 +963,7 @@ export class IndustrialClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * To use this endpoint, select **Read Industrial** under the Industrial category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Industrial** under the Industrial category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      * @param {number} camera_id - The camera_id should be valid for the given accessToken.
      * @param {Samsara.GetVisionRunsByCameraRequest} request
@@ -1047,7 +1047,7 @@ export class IndustrialClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * To use this endpoint, select **Read Industrial** under the Industrial category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Industrial** under the Industrial category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      * @param {number} camera_id - The camera_id should be valid for the given accessToken.
      * @param {number} program_id - The configured program's ID on the camera.
@@ -1139,7 +1139,7 @@ export class IndustrialClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * To use this endpoint, select **Write Industrial** under the Industrial category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Write Industrial** under the Industrial category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      * @param {Samsara.InlineObject3} request
      * @param {IndustrialClient.RequestOptions} requestOptions - Request-specific configuration.
@@ -1214,7 +1214,7 @@ export class IndustrialClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * To use this endpoint, select **Write Industrial** under the Industrial category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Write Industrial** under the Industrial category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      * @param {IndustrialClient.RequestOptions} requestOptions - Request-specific configuration.
      *

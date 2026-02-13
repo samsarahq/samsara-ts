@@ -12,7 +12,7 @@ import type * as Samsara from "../../../../index.js";
 export interface DocumentsPostDocumentRequestBody {
     /** ID for the document type. */
     documentTypeId: string;
-    /** ID of the driver. Can be either unique Samsara ID or an [external ID](https://developers.samsara.com/docs/external-ids) for the driver. */
+    /** ID of the driver. Can be either unique Samsara ID or an [external ID](/docs/external-ids) for the driver. */
     driverId: string;
     /** The fields associated with this document. */
     fields?: Samsara.FieldObjectPostRequestBody[];
@@ -20,11 +20,11 @@ export interface DocumentsPostDocumentRequestBody {
     name?: string;
     /** Notes on the document. */
     notes?: string;
-    /** ID of the route stop. Can be either unique Samsara ID or an [external ID](https://developers.samsara.com/docs/external-ids) for the route stop. */
+    /** ID of the route stop. Can be either unique Samsara ID or an [external ID](/docs/external-ids) for the route stop. */
     routeStopId?: string;
     /** The condition of the document created for the driver. Can be either `required` or `submitted`, if no value is specified, `state` defaults to `required`. `required` documents are pre-populated documents for the Driver to fill out in the Driver App.  Valid values: `submitted`, `required` */
     state?: DocumentsPostDocumentRequestBody.State;
-    /** ID of the vehicle. Can be either unique Samsara ID or an [external ID](https://developers.samsara.com/docs/external-ids) for the vehicle. */
+    /** ID of the vehicle. Can be either unique Samsara ID or an [external ID](/docs/external-ids) for the vehicle. */
     vehicleId?: string;
 }
 

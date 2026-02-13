@@ -11,7 +11,7 @@ export interface UpdateAddressRequest {
     addressTypes?: UpdateAddressRequest.AddressTypes.Item[];
     /** An array of Contact IDs associated with this Address. */
     contactIds?: string[];
-    /** The [external IDs](https://developers.samsara.com/docs/external-ids) for the given object. */
+    /** The [external IDs](/docs/external-ids) for the given object. */
     externalIds?: Record<string, string>;
     /** The full street address for this address/geofence, as it might be recognized by Google Maps. */
     formattedAddress?: string;

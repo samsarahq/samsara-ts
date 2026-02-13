@@ -9,31 +9,31 @@ import { handleNonStatusCodeError } from "../../../../errors/handleNonStatusCode
 import * as errors from "../../../../errors/index.js";
 import * as Samsara from "../../../index.js";
 
-export declare namespace BetaApIsClient {
+export declare namespace BetaApisClient {
     export type Options = BaseClientOptions;
 
     export interface RequestOptions extends BaseRequestOptions {}
 }
 
-export class BetaApIsClient {
-    protected readonly _options: NormalizedClientOptionsWithAuth<BetaApIsClient.Options>;
+export class BetaApisClient {
+    protected readonly _options: NormalizedClientOptionsWithAuth<BetaApisClient.Options>;
 
-    constructor(options: BetaApIsClient.Options = {}) {
+    constructor(options: BetaApisClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 
     /**
      * Returns depreciation and adjustment transactions for assets. Transactions are returned ordered by updatedAt in ascending order (oldest to newest). Use startTime parameter for incremental sync.
      *
-     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Read Assets** under the Assets category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Assets** under the Assets category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
      * @param {Samsara.GetDepreciationTransactionsRequest} request
-     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {BetaApisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
@@ -46,18 +46,18 @@ export class BetaApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.betaApIs.getDepreciationTransactions()
+     *     await client.betaApis.getDepreciationTransactions()
      */
     public getDepreciationTransactions(
         request: Samsara.GetDepreciationTransactionsRequest = {},
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.DepreciationGetDepreciationTransactionsResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__getDepreciationTransactions(request, requestOptions));
     }
 
     private async __getDepreciationTransactions(
         request: Samsara.GetDepreciationTransactionsRequest = {},
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.DepreciationGetDepreciationTransactionsResponseBody>> {
         const { startTime, endTime, assetIds, after } = request;
         const _queryParams: Record<string, unknown> = {
@@ -131,15 +131,15 @@ export class BetaApIsClient {
     /**
      * This endpoint will return data collected from the inputs of your organization's assets based on the time parameters passed in. Results are paginated. If you include an endTime, the endpoint will return data up until that point. If you don’t include an endTime, you can continue to poll the API real-time with the pagination cursor that gets returned on every call. The endpoint will only return data up until the endTime that has been processed by the server at the time of the original request. You will need to request the same [startTime, endTime) range again to receive data for assets processed after the original request time. This endpoint sorts data by time ascending.
      *
-     *  <b>Rate limit:</b> 10 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 10 requests/sec (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Read Assets** under the Assets category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Assets** under the Assets category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
      * @param {Samsara.GetAssetsInputsRequest} request
-     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {BetaApisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
@@ -152,21 +152,21 @@ export class BetaApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.betaApIs.getAssetsInputs({
+     *     await client.betaApis.getAssetsInputs({
      *         type: "auxInput1",
      *         startTime: "startTime"
      *     })
      */
     public getAssetsInputs(
         request: Samsara.GetAssetsInputsRequest,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.AssetsInputsGetAssetsInputsResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__getAssetsInputs(request, requestOptions));
     }
 
     private async __getAssetsInputs(
         request: Samsara.GetAssetsInputsRequest,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.AssetsInputsGetAssetsInputsResponseBody>> {
         const {
             ids,
@@ -253,15 +253,15 @@ export class BetaApIsClient {
     /**
      * Get a list of equipment following the AEMP ISO 15143-3 standard.
      *
-     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Read AEMP** under the Equipment category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read AEMP** under the Equipment category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
      * @param {string} pageNumber - The number corresponding to a specific page of paginated results, defaulting to the first page if not provided. The default page size is 100 records.
-     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {BetaApisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
@@ -274,18 +274,18 @@ export class BetaApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.betaApIs.getAempEquipmentList("pageNumber")
+     *     await client.betaApis.getAempEquipmentList("pageNumber")
      */
     public getAempEquipmentList(
         pageNumber: string,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.AempEquipmentGetAempEquipmentListResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__getAempEquipmentList(pageNumber, requestOptions));
     }
 
     private async __getAempEquipmentList(
         pageNumber: string,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.AempEquipmentGetAempEquipmentListResponseBody>> {
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -352,30 +352,30 @@ export class BetaApIsClient {
     /**
      * Get all driver and associated vehicle efficiency data.
      *
-     *  This is a legacy endpoint, consider using this endpoint [/driver-efficiency/drivers](https://developers.samsara.com/reference/getdriverefficiencybydrivers) instead. The endpoint will continue to function as documented.
+     *  This is a legacy endpoint, consider using this endpoint [/driver-efficiency/drivers](/api-reference/fuel-and-efficiency/fuel-and-energy/get-driver-efficiency-by-drivers) instead. The endpoint will continue to function as documented.
      *
-     *  <b>Rate limit:</b> 50 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 50 requests/sec (learn more about rate limits [here](/docs/rate-limits)).
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * To use this endpoint, select **Read Fuel & Energy** under the Fuel & Energy category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Fuel & Energy** under the Fuel & Energy category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      * @param {Samsara.GetDriverEfficiencyRequest} request
-     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {BetaApisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.betaApIs.getDriverEfficiency()
+     *     await client.betaApis.getDriverEfficiency()
      */
     public getDriverEfficiency(
         request: Samsara.GetDriverEfficiencyRequest = {},
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.DriverEfficienciesResponse> {
         return core.HttpResponsePromise.fromPromise(this.__getDriverEfficiency(request, requestOptions));
     }
 
     private async __getDriverEfficiency(
         request: Samsara.GetDriverEfficiencyRequest = {},
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.DriverEfficienciesResponse>> {
         const { driverActivationStatus, driverIds, after, driverTagIds, driverParentTagIds, startTime, endTime } =
             request;
@@ -436,16 +436,16 @@ export class BetaApIsClient {
      *  This means that any fields included in the patch request will _overwrite_ fields which exist on the target resource.
      *  For arrays, this means any array included in the request will _replace_ the array that exists at the specified path, it will not _add_ to the existing array
      *
-     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Write Equipment** under the Equipment category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Write Equipment** under the Equipment category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
      * @param {string} id - The unique Samsara ID of the Equipment. This is automatically generated when the Equipment object is created. It cannot be changed.
      * @param {Samsara.EquipmentPatchEquipmentRequestBody} request
-     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {BetaApisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
@@ -458,12 +458,12 @@ export class BetaApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.betaApIs.patchEquipment("id")
+     *     await client.betaApis.patchEquipment("id")
      */
     public patchEquipment(
         id: string,
         request: Samsara.EquipmentPatchEquipmentRequestBody = {},
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.EquipmentPatchEquipmentResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__patchEquipment(id, request, requestOptions));
     }
@@ -471,7 +471,7 @@ export class BetaApIsClient {
     private async __patchEquipment(
         id: string,
         request: Samsara.EquipmentPatchEquipmentRequestBody = {},
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.EquipmentPatchEquipmentResponseBody>> {
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -541,15 +541,15 @@ export class BetaApIsClient {
     /**
      * Get all HOS ELD events in a time range, grouped by driver. Attributes will be populated depending on which ELD Event Type is being returned.
      *
-     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Read ELD Compliance Settings (US)** under the Compliance category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read ELD Compliance Settings (US)** under the Compliance category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
      * @param {Samsara.GetHosEldEventsRequest} request
-     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {BetaApisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
@@ -562,21 +562,21 @@ export class BetaApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.betaApIs.getHosEldEvents({
+     *     await client.betaApis.getHosEldEvents({
      *         startTime: "startTime",
      *         endTime: "endTime"
      *     })
      */
     public getHosEldEvents(
         request: Samsara.GetHosEldEventsRequest,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.HosEldEventsGetHosEldEventsResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__getHosEldEvents(request, requestOptions));
     }
 
     private async __getHosEldEvents(
         request: Samsara.GetHosEldEventsRequest,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.HosEldEventsGetHosEldEventsResponseBody>> {
         const { startTime, endTime, driverIds, tagIds, parentTagIds, driverActivationStatus, after, limit } = request;
         const _queryParams: Record<string, unknown> = {
@@ -659,15 +659,15 @@ export class BetaApIsClient {
     /**
      * Returns the last known stats of all trailers at the given `time`. If no `time` is specified, the current time is used.
      *
-     *  <b>Rate limit:</b> 25 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 25 requests/sec (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Read Trailer Statistics** under the Trailers category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Trailer Statistics** under the Trailers category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
      * @param {Samsara.GetTrailerStatsSnapshotRequest} request
-     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {BetaApisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
@@ -680,20 +680,20 @@ export class BetaApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.betaApIs.getTrailerStatsSnapshot({
+     *     await client.betaApis.getTrailerStatsSnapshot({
      *         types: "types"
      *     })
      */
     public getTrailerStatsSnapshot(
         request: Samsara.GetTrailerStatsSnapshotRequest,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.TrailerStatsGetTrailerStatsSnapshotResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__getTrailerStatsSnapshot(request, requestOptions));
     }
 
     private async __getTrailerStatsSnapshot(
         request: Samsara.GetTrailerStatsSnapshotRequest,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.TrailerStatsGetTrailerStatsSnapshotResponseBody>> {
         const { types, tagIds, parentTagIds, after, trailerIds, time } = request;
         const _queryParams: Record<string, unknown> = {
@@ -775,15 +775,15 @@ export class BetaApIsClient {
      *
      * If `hasNextPage` is false, no new data is immediately available. Please wait a minimum of 5 seconds before making a subsequent request.
      *
-     *  <b>Rate limit:</b> 25 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 25 requests/sec (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Read Trailer Statistics** under the Trailers category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Trailer Statistics** under the Trailers category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
      * @param {Samsara.GetTrailerStatsFeedRequest} request
-     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {BetaApisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
@@ -796,20 +796,20 @@ export class BetaApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.betaApIs.getTrailerStatsFeed({
+     *     await client.betaApis.getTrailerStatsFeed({
      *         types: "types"
      *     })
      */
     public getTrailerStatsFeed(
         request: Samsara.GetTrailerStatsFeedRequest,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.TrailerStatsGetTrailerStatsFeedResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__getTrailerStatsFeed(request, requestOptions));
     }
 
     private async __getTrailerStatsFeed(
         request: Samsara.GetTrailerStatsFeedRequest,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.TrailerStatsGetTrailerStatsFeedResponseBody>> {
         const { types, tagIds, parentTagIds, after, trailerIds, decorations } = request;
         const _queryParams: Record<string, unknown> = {
@@ -890,15 +890,15 @@ export class BetaApIsClient {
     /**
      * Returns trailer stats during the given time range for all trailers. This can be optionally filtered by tags or specific trailer IDs.
      *
-     *  <b>Rate limit:</b> 10 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 10 requests/sec (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Read Trailer Statistics** under the Trailers category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Trailer Statistics** under the Trailers category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
      * @param {Samsara.GetTrailerStatsHistoryRequest} request
-     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {BetaApisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
@@ -911,7 +911,7 @@ export class BetaApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.betaApIs.getTrailerStatsHistory({
+     *     await client.betaApis.getTrailerStatsHistory({
      *         startTime: "startTime",
      *         endTime: "endTime",
      *         types: "types"
@@ -919,14 +919,14 @@ export class BetaApIsClient {
      */
     public getTrailerStatsHistory(
         request: Samsara.GetTrailerStatsHistoryRequest,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.TrailerStatsGetTrailerStatsHistoryResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__getTrailerStatsHistory(request, requestOptions));
     }
 
     private async __getTrailerStatsHistory(
         request: Samsara.GetTrailerStatsHistoryRequest,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.TrailerStatsGetTrailerStatsHistoryResponseBody>> {
         const { startTime, endTime, types, tagIds, parentTagIds, after, trailerIds, decorations } = request;
         const _queryParams: Record<string, unknown> = {
@@ -1009,16 +1009,16 @@ export class BetaApIsClient {
     /**
      * Update the engine immobilizer state of a vehicle. This requires an engine immobilizer to be installed on the vehicle gateway.
      *
-     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Write Vehicle Immobilization** under the Vehicles category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Write Vehicle Immobilization** under the Vehicles category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
      * @param {number} id - Vehicle ID
      * @param {Samsara.EngineImmobilizerUpdateEngineImmobilizerStateRequestBody} request
-     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {BetaApisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
@@ -1031,7 +1031,7 @@ export class BetaApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.betaApIs.updateEngineImmobilizerState(1000000, {
+     *     await client.betaApis.updateEngineImmobilizerState(1000000, {
      *         relayStates: [{
      *                 id: "relay1",
      *                 isOpen: true
@@ -1041,7 +1041,7 @@ export class BetaApIsClient {
     public updateEngineImmobilizerState(
         id: number,
         request: Samsara.EngineImmobilizerUpdateEngineImmobilizerStateRequestBody,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): core.HttpResponsePromise<void> {
         return core.HttpResponsePromise.fromPromise(this.__updateEngineImmobilizerState(id, request, requestOptions));
     }
@@ -1049,7 +1049,7 @@ export class BetaApIsClient {
     private async __updateEngineImmobilizerState(
         id: number,
         request: Samsara.EngineImmobilizerUpdateEngineImmobilizerStateRequestBody,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): Promise<core.WithRawResponse<void>> {
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -1121,13 +1121,13 @@ export class BetaApIsClient {
     /**
      * Fetches jobs based on id/uuid or provided filters.
      *
-     * To use this endpoint, select **Read Jobs** under the Equipment category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Jobs** under the Equipment category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
      * @param {Samsara.GetJobsRequest} request
-     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {BetaApisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
@@ -1140,18 +1140,18 @@ export class BetaApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.betaApIs.getJobs()
+     *     await client.betaApis.getJobs()
      */
     public getJobs(
         request: Samsara.GetJobsRequest = {},
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.JobsGetJobsResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__getJobs(request, requestOptions));
     }
 
     private async __getJobs(
         request: Samsara.GetJobsRequest = {},
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.JobsGetJobsResponseBody>> {
         const { id, startDate, endDate, industrialAssetIds, fleetDeviceIds, status, customerName, after } = request;
         const _queryParams: Record<string, unknown> = {
@@ -1226,13 +1226,13 @@ export class BetaApIsClient {
     /**
      * Creates a new job and returns it.
      *
-     * To use this endpoint, select **Write Jobs** under the Equipment category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Write Jobs** under the Equipment category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
      * @param {Samsara.JobsCreateJobRequestBody} request
-     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {BetaApisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
@@ -1245,7 +1245,7 @@ export class BetaApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.betaApIs.createJob({
+     *     await client.betaApis.createJob({
      *         job: {
      *             endDate: "2019-06-13T19:08:25Z",
      *             id: "8d218e6c-7a16-4f9f-90f7-cc1d93b9e596",
@@ -1256,14 +1256,14 @@ export class BetaApIsClient {
      */
     public createJob(
         request: Samsara.JobsCreateJobRequestBody,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.JobsCreateJobResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__createJob(request, requestOptions));
     }
 
     private async __createJob(
         request: Samsara.JobsCreateJobRequestBody,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.JobsCreateJobResponseBody>> {
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -1330,13 +1330,13 @@ export class BetaApIsClient {
     /**
      * Deletes an existing job.
      *
-     * To use this endpoint, select **Write Jobs** under the Equipment category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Write Jobs** under the Equipment category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
      * @param {Samsara.DeleteJobRequest} request
-     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {BetaApisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
@@ -1349,20 +1349,20 @@ export class BetaApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.betaApIs.deleteJob({
+     *     await client.betaApis.deleteJob({
      *         id: "id"
      *     })
      */
     public deleteJob(
         request: Samsara.DeleteJobRequest,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.JobsDeleteJobResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__deleteJob(request, requestOptions));
     }
 
     private async __deleteJob(
         request: Samsara.DeleteJobRequest,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.JobsDeleteJobResponseBody>> {
         const { id } = request;
         const _queryParams: Record<string, unknown> = {
@@ -1430,13 +1430,13 @@ export class BetaApIsClient {
     /**
      * Patches an existing job and returns it.
      *
-     * To use this endpoint, select **Write Jobs** under the Equipment category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Write Jobs** under the Equipment category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
      * @param {Samsara.JobsPatchJobRequestBody} request
-     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {BetaApisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
@@ -1449,21 +1449,21 @@ export class BetaApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.betaApIs.patchJob({
+     *     await client.betaApis.patchJob({
      *         id: "id",
      *         job: {}
      *     })
      */
     public patchJob(
         request: Samsara.JobsPatchJobRequestBody,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.JobsPatchJobResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__patchJob(request, requestOptions));
     }
 
     private async __patchJob(
         request: Samsara.JobsPatchJobRequestBody,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.JobsPatchJobResponseBody>> {
         const { id, ..._body } = request;
         const _queryParams: Record<string, unknown> = {
@@ -1536,15 +1536,15 @@ export class BetaApIsClient {
      *
      * If you include an endTime, the endpoint will return data up until that point. If you don’t include an endTime, you can continue to poll the API real-time with the pagination cursor that gets returned on every call. Results are paginated.
      *
-     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Read Detection Log** under the Safety & Cameras category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Detection Log** under the Safety & Cameras category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
      * @param {Samsara.GetDetectionsRequest} request
-     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {BetaApisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
@@ -1557,20 +1557,20 @@ export class BetaApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.betaApIs.getDetections({
+     *     await client.betaApis.getDetections({
      *         startTime: "startTime"
      *     })
      */
     public getDetections(
         request: Samsara.GetDetectionsRequest,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.DetectionLogGetDetectionsResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__getDetections(request, requestOptions));
     }
 
     private async __getDetections(
         request: Samsara.GetDetectionsRequest,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.DetectionLogGetDetectionsResponseBody>> {
         const {
             driverIds,
@@ -1667,15 +1667,15 @@ export class BetaApIsClient {
      *
      * **Beta:** This endpoint is in beta and is likely to change before being broadly available. Reach out to your Samsara Representative to have Devices API enabled for your organization.
      *
-     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Read Devices** under the Devices category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Devices** under the Devices category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
      * @param {Samsara.GetDevicesRequest} request
-     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {BetaApisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
@@ -1688,18 +1688,18 @@ export class BetaApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.betaApIs.getDevices()
+     *     await client.betaApis.getDevices()
      */
     public getDevices(
         request: Samsara.GetDevicesRequest = {},
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.DevicesGetDevicesResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__getDevices(request, requestOptions));
     }
 
     private async __getDevices(
         request: Samsara.GetDevicesRequest = {},
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.DevicesGetDevicesResponseBody>> {
         const { models, healthStatuses, includeHealth, after, limit, includeTags, tagIds, parentTagIds } = request;
         const _queryParams: Record<string, unknown> = {
@@ -1777,15 +1777,15 @@ export class BetaApIsClient {
     /**
      * Get the engine immobilizer states of the queried vehicles. If a vehicle has never had an engine immobilizer connected, there won't be any state returned for that vehicle.
      *
-     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Read Vehicle Immobilization** under the Vehicles category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Vehicle Immobilization** under the Vehicles category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
      * @param {Samsara.GetEngineImmobilizerStatesRequest} request
-     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {BetaApisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
@@ -1798,21 +1798,21 @@ export class BetaApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.betaApIs.getEngineImmobilizerStates({
+     *     await client.betaApis.getEngineImmobilizerStates({
      *         vehicleIds: "vehicleIds",
      *         startTime: "startTime"
      *     })
      */
     public getEngineImmobilizerStates(
         request: Samsara.GetEngineImmobilizerStatesRequest,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.EngineImmobilizerGetEngineImmobilizerStatesResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__getEngineImmobilizerStates(request, requestOptions));
     }
 
     private async __getEngineImmobilizerStates(
         request: Samsara.GetEngineImmobilizerStatesRequest,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.EngineImmobilizerGetEngineImmobilizerStatesResponseBody>> {
         const { vehicleIds, startTime, endTime, after } = request;
         const _queryParams: Record<string, unknown> = {
@@ -1891,16 +1891,16 @@ export class BetaApIsClient {
     /**
      * Start an asynchronous run for the specified Function. This endpoint allows you to override parameters available at runtime.
      *
-     *  <b>Rate limit:</b> 2 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 2 requests/min (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Write Functions** under the Closed Beta category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Write Functions** under the Closed Beta category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
      * @param {string} name - The name of the Function to run.
      * @param {Samsara.FunctionsStartFunctionRunRequestBody} request
-     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {BetaApisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
@@ -1913,14 +1913,14 @@ export class BetaApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.betaApIs.startFunctionRun("name", {
+     *     await client.betaApis.startFunctionRun("name", {
      *         paramsOverride: {}
      *     })
      */
     public startFunctionRun(
         name: string,
         request: Samsara.FunctionsStartFunctionRunRequestBody,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.FunctionsStartFunctionRunResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__startFunctionRun(name, request, requestOptions));
     }
@@ -1928,7 +1928,7 @@ export class BetaApIsClient {
     private async __startFunctionRun(
         name: string,
         request: Samsara.FunctionsStartFunctionRunRequestBody,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.FunctionsStartFunctionRunResponseBody>> {
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -1998,15 +1998,15 @@ export class BetaApIsClient {
     /**
      * Update the shippingDocs field of an existing assignment.
      *
-     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Write ELD Hours of Service (US)** under the Compliance category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Write ELD Hours of Service (US)** under the Compliance category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
      * @param {Samsara.HosDailyLogsUpdateShippingDocsRequestBody} request
-     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {BetaApisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
@@ -2019,7 +2019,7 @@ export class BetaApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.betaApIs.updateShippingDocs({
+     *     await client.betaApis.updateShippingDocs({
      *         hosDate: "hosDate",
      *         driverID: "driverID",
      *         shippingDocs: "ShippingID1, ShippingID2"
@@ -2027,14 +2027,14 @@ export class BetaApIsClient {
      */
     public updateShippingDocs(
         request: Samsara.HosDailyLogsUpdateShippingDocsRequestBody,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.HosDailyLogsUpdateShippingDocsResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__updateShippingDocs(request, requestOptions));
     }
 
     private async __updateShippingDocs(
         request: Samsara.HosDailyLogsUpdateShippingDocsRequestBody,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.HosDailyLogsUpdateShippingDocsResponseBody>> {
         const { hosDate, driverID: driverId, ..._body } = request;
         const _queryParams: Record<string, unknown> = {
@@ -2116,15 +2116,15 @@ export class BetaApIsClient {
      *
      * **Beta:** This endpoint is in beta and is likely to change before being broadly available. Reach out to your Samsara Representative to have RoutePlanning APIs enabled for your organization.
      *
-     *  <b>Rate limit:</b> 10 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 10 requests/sec (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Read Routes** under the Driver Workflow category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Routes** under the Driver Workflow category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
      * @param {Samsara.ListHubCustomPropertiesRequest} request
-     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {BetaApisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
@@ -2137,20 +2137,20 @@ export class BetaApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.betaApIs.listHubCustomProperties({
+     *     await client.betaApis.listHubCustomProperties({
      *         hubId: "hubId"
      *     })
      */
     public listHubCustomProperties(
         request: Samsara.ListHubCustomPropertiesRequest,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.HubCustomPropertiesListHubCustomPropertiesResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__listHubCustomProperties(request, requestOptions));
     }
 
     private async __listHubCustomProperties(
         request: Samsara.ListHubCustomPropertiesRequest,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.HubCustomPropertiesListHubCustomPropertiesResponseBody>> {
         const { hubId, customPropertyIds, customPropertyNames, startTime, endTime, after, limit } = request;
         const _queryParams: Record<string, unknown> = {
@@ -2229,15 +2229,15 @@ export class BetaApIsClient {
      *
      * **Beta:** This endpoint is in beta and is likely to change before being broadly available. Reach out to your Samsara Representative to have RoutePlanning APIs enabled for your organization.
      *
-     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Write Routes** under the Driver Workflow category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Write Routes** under the Driver Workflow category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
      * @param {Samsara.PlanOrdersCreatePlanOrdersRequestBody} request
-     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {BetaApisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
@@ -2250,7 +2250,7 @@ export class BetaApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.betaApIs.createPlanOrders({
+     *     await client.betaApis.createPlanOrders({
      *         data: [{
      *                 customerOrderId: "ORDER-2024-001",
      *                 hubId: "550e8400-e29b-41d4-a716-446655440000",
@@ -2260,14 +2260,14 @@ export class BetaApIsClient {
      */
     public createPlanOrders(
         request: Samsara.PlanOrdersCreatePlanOrdersRequestBody,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.PlanOrdersCreatePlanOrdersResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__createPlanOrders(request, requestOptions));
     }
 
     private async __createPlanOrders(
         request: Samsara.PlanOrdersCreatePlanOrdersRequestBody,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.PlanOrdersCreatePlanOrdersResponseBody>> {
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -2337,15 +2337,15 @@ export class BetaApIsClient {
     /**
      * Returns qualification records for the specified list of IDs.
      *
-     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Read Qualification Records** under the Qualification Records category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Qualification Records** under the Qualification Records category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
      * @param {Samsara.GetQualificationRecordsRequest} request
-     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {BetaApisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
@@ -2358,18 +2358,18 @@ export class BetaApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.betaApIs.getQualificationRecords()
+     *     await client.betaApis.getQualificationRecords()
      */
     public getQualificationRecords(
         request: Samsara.GetQualificationRecordsRequest = {},
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.QualificationsGetQualificationRecordsResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__getQualificationRecords(request, requestOptions));
     }
 
     private async __getQualificationRecords(
         request: Samsara.GetQualificationRecordsRequest = {},
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.QualificationsGetQualificationRecordsResponseBody>> {
         const { ids, includeExternalIds } = request;
         const _queryParams: Record<string, unknown> = {
@@ -2441,15 +2441,15 @@ export class BetaApIsClient {
     /**
      * Creates a new qualification record.
      *
-     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Write Qualification Records** under the Qualification Records category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Write Qualification Records** under the Qualification Records category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
      * @param {Samsara.QualificationsPostQualificationRecordRequestBody} request
-     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {BetaApisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
@@ -2462,7 +2462,7 @@ export class BetaApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.betaApIs.postQualificationRecord({
+     *     await client.betaApis.postQualificationRecord({
      *         fields: [{
      *                 id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
      *                 type: "number"
@@ -2479,14 +2479,14 @@ export class BetaApIsClient {
      */
     public postQualificationRecord(
         request: Samsara.QualificationsPostQualificationRecordRequestBody,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.QualificationsPostQualificationRecordResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__postQualificationRecord(request, requestOptions));
     }
 
     private async __postQualificationRecord(
         request: Samsara.QualificationsPostQualificationRecordRequestBody,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.QualificationsPostQualificationRecordResponseBody>> {
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -2556,15 +2556,15 @@ export class BetaApIsClient {
     /**
      * Deletes an existing qualification record.
      *
-     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Write Qualification Records** under the Qualification Records category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Write Qualification Records** under the Qualification Records category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
      * @param {Samsara.QualificationsDeleteQualificationRecordRequestBody} request
-     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {BetaApisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
@@ -2577,20 +2577,20 @@ export class BetaApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.betaApIs.deleteQualificationRecord({
+     *     await client.betaApis.deleteQualificationRecord({
      *         id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7"
      *     })
      */
     public deleteQualificationRecord(
         request: Samsara.QualificationsDeleteQualificationRecordRequestBody,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): core.HttpResponsePromise<void> {
         return core.HttpResponsePromise.fromPromise(this.__deleteQualificationRecord(request, requestOptions));
     }
 
     private async __deleteQualificationRecord(
         request: Samsara.QualificationsDeleteQualificationRecordRequestBody,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): Promise<core.WithRawResponse<void>> {
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -2657,15 +2657,15 @@ export class BetaApIsClient {
     /**
      * Updates an existing qualification record.
      *
-     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Write Qualification Records** under the Qualification Records category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Write Qualification Records** under the Qualification Records category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
      * @param {Samsara.QualificationsPatchQualificationRecordRequestBody} request
-     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {BetaApisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
@@ -2678,7 +2678,7 @@ export class BetaApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.betaApIs.patchQualificationRecord({
+     *     await client.betaApis.patchQualificationRecord({
      *         id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
      *         issueDate: "2025-08-27T10:20:30Z",
      *         owner: {
@@ -2689,14 +2689,14 @@ export class BetaApIsClient {
      */
     public patchQualificationRecord(
         request: Samsara.QualificationsPatchQualificationRecordRequestBody,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.QualificationsPatchQualificationRecordResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__patchQualificationRecord(request, requestOptions));
     }
 
     private async __patchQualificationRecord(
         request: Samsara.QualificationsPatchQualificationRecordRequestBody,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.QualificationsPatchQualificationRecordResponseBody>> {
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -2766,15 +2766,15 @@ export class BetaApIsClient {
     /**
      * Archives an existing qualification record.
      *
-     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Write Qualification Records** under the Qualification Records category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Write Qualification Records** under the Qualification Records category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
      * @param {Samsara.QualificationsArchiveQualificationRecordRequestBody} request
-     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {BetaApisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
@@ -2787,20 +2787,20 @@ export class BetaApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.betaApIs.archiveQualificationRecord({
+     *     await client.betaApis.archiveQualificationRecord({
      *         id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7"
      *     })
      */
     public archiveQualificationRecord(
         request: Samsara.QualificationsArchiveQualificationRecordRequestBody,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): core.HttpResponsePromise<void> {
         return core.HttpResponsePromise.fromPromise(this.__archiveQualificationRecord(request, requestOptions));
     }
 
     private async __archiveQualificationRecord(
         request: Samsara.QualificationsArchiveQualificationRecordRequestBody,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): Promise<core.WithRawResponse<void>> {
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -2872,15 +2872,15 @@ export class BetaApIsClient {
     /**
      * Returns all qualification records that have been created or modified for your organization based on the time parameters passed in. Results are paginated and are sorted by last modified date. If you include an endTime, the endpoint will return data up until that point (exclusive). If you don't include an endTime, the API will continue to poll with the pagination cursor that gets returned on every call. The hasNextPage response value will be true if there is no endTime specified and endCursor is nonempty.
      *
-     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Read Qualification Records** under the Qualification Records category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Qualification Records** under the Qualification Records category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
      * @param {Samsara.GetQualificationRecordsStreamRequest} request
-     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {BetaApisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
@@ -2893,21 +2893,21 @@ export class BetaApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.betaApIs.getQualificationRecordsStream({
+     *     await client.betaApis.getQualificationRecordsStream({
      *         entityType: "worker",
      *         startTime: "2024-01-15T09:30:00Z"
      *     })
      */
     public getQualificationRecordsStream(
         request: Samsara.GetQualificationRecordsStreamRequest,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.QualificationsGetQualificationRecordsStreamResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__getQualificationRecordsStream(request, requestOptions));
     }
 
     private async __getQualificationRecordsStream(
         request: Samsara.GetQualificationRecordsStreamRequest,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.QualificationsGetQualificationRecordsStreamResponseBody>> {
         const {
             entityType,
@@ -2994,15 +2994,15 @@ export class BetaApIsClient {
     /**
      * Unarchives an existing qualification record.
      *
-     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Write Qualification Records** under the Qualification Records category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Write Qualification Records** under the Qualification Records category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
      * @param {Samsara.QualificationsUnarchiveQualificationRecordRequestBody} request
-     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {BetaApisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
@@ -3015,20 +3015,20 @@ export class BetaApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.betaApIs.unarchiveQualificationRecord({
+     *     await client.betaApis.unarchiveQualificationRecord({
      *         id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7"
      *     })
      */
     public unarchiveQualificationRecord(
         request: Samsara.QualificationsUnarchiveQualificationRecordRequestBody,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): core.HttpResponsePromise<void> {
         return core.HttpResponsePromise.fromPromise(this.__unarchiveQualificationRecord(request, requestOptions));
     }
 
     private async __unarchiveQualificationRecord(
         request: Samsara.QualificationsUnarchiveQualificationRecordRequestBody,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): Promise<core.WithRawResponse<void>> {
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -3100,15 +3100,15 @@ export class BetaApIsClient {
     /**
      * Returns a list of qualification types for the specified list of IDs. If no IDs are provided, all qualification types will be returned.
      *
-     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Read Qualification Records** under the Qualification Records category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Qualification Records** under the Qualification Records category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
      * @param {Samsara.GetQualificationTypesRequest} request
-     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {BetaApisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
@@ -3121,20 +3121,20 @@ export class BetaApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.betaApIs.getQualificationTypes({
+     *     await client.betaApis.getQualificationTypes({
      *         entityType: "worker"
      *     })
      */
     public getQualificationTypes(
         request: Samsara.GetQualificationTypesRequest,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.QualificationsGetQualificationTypesResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__getQualificationTypes(request, requestOptions));
     }
 
     private async __getQualificationTypes(
         request: Samsara.GetQualificationTypesRequest,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.QualificationsGetQualificationTypesResponseBody>> {
         const { entityType, ids, after } = request;
         const _queryParams: Record<string, unknown> = {
@@ -3209,15 +3209,15 @@ export class BetaApIsClient {
      *
      * Ingesting readings is only supported for assets created using the POST /assets API endpoint with readingsIngestionEnabled set to true. To see a full list of readings available for ingestion use the GET readings definitions API. When ingesting location data, the readingID 'location' must be used and the value object must contain at least the following fields: 'speed', 'latitude', 'longitude'.
      *
-     *  <b>Rate limit:</b> 10 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 10 requests/sec (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Write Readings** under the Closed Beta category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Write Readings** under the Closed Beta category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
      * @param {Samsara.ReadingsPostReadingsRequestBody} request
-     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {BetaApisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
@@ -3230,7 +3230,7 @@ export class BetaApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.betaApIs.postReadings({
+     *     await client.betaApis.postReadings({
      *         data: [{
      *                 entityId: "123451234512345",
      *                 entityType: "asset",
@@ -3244,14 +3244,14 @@ export class BetaApIsClient {
      */
     public postReadings(
         request: Samsara.ReadingsPostReadingsRequestBody,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): core.HttpResponsePromise<void> {
         return core.HttpResponsePromise.fromPromise(this.__postReadings(request, requestOptions));
     }
 
     private async __postReadings(
         request: Samsara.ReadingsPostReadingsRequestBody,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): Promise<core.WithRawResponse<void>> {
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -3318,15 +3318,15 @@ export class BetaApIsClient {
     /**
      * An introspection endpoint for discovering the set of readings including their name, description, data type, unit, and other metadata.
      *
-     *  <b>Rate limit:</b> 10 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 10 requests/sec (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Read Readings** under the Closed Beta category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Readings** under the Closed Beta category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
      * @param {Samsara.ListReadingsDefinitionsRequest} request
-     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {BetaApisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
@@ -3339,18 +3339,18 @@ export class BetaApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.betaApIs.listReadingsDefinitions()
+     *     await client.betaApis.listReadingsDefinitions()
      */
     public listReadingsDefinitions(
         request: Samsara.ListReadingsDefinitionsRequest = {},
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.ReadingsListReadingsDefinitionsResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__listReadingsDefinitions(request, requestOptions));
     }
 
     private async __listReadingsDefinitions(
         request: Samsara.ListReadingsDefinitionsRequest = {},
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.ReadingsListReadingsDefinitionsResponseBody>> {
         const { after, ids, entityTypes } = request;
         const _queryParams: Record<string, unknown> = {
@@ -3423,15 +3423,15 @@ export class BetaApIsClient {
     /**
      * Get the values of a reading for a set of entities within the specified time range. Returns a paginated response with data for the specified resource IDs where startTime <= happenedAtTime < endTime. End time of null implies endTime is infinite and all known readings are returned.
      *
-     *  <b>Rate limit:</b> 10 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 10 requests/sec (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Read Readings** under the Closed Beta category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Readings** under the Closed Beta category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
      * @param {Samsara.GetReadingsHistoryRequest} request
-     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {BetaApisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
@@ -3444,21 +3444,21 @@ export class BetaApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.betaApIs.getReadingsHistory({
+     *     await client.betaApis.getReadingsHistory({
      *         readingId: "readingId",
      *         entityType: "entityType"
      *     })
      */
     public getReadingsHistory(
         request: Samsara.GetReadingsHistoryRequest,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.ReadingsGetReadingsHistoryResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__getReadingsHistory(request, requestOptions));
     }
 
     private async __getReadingsHistory(
         request: Samsara.GetReadingsHistoryRequest,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.ReadingsGetReadingsHistoryResponseBody>> {
         const { after, readingId, entityIds, entityType, externalIds, startTime, endTime, feed, includeExternalIds } =
             request;
@@ -3538,15 +3538,15 @@ export class BetaApIsClient {
     /**
      * An endpoint to get the last value of a reading for a set of entities at the specified time.
      *
-     *  <b>Rate limit:</b> 10 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 10 requests/sec (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Read Readings** under the Closed Beta category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Readings** under the Closed Beta category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
      * @param {Samsara.GetReadingsSnapshotRequest} request
-     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {BetaApisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
@@ -3559,21 +3559,21 @@ export class BetaApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.betaApIs.getReadingsSnapshot({
+     *     await client.betaApis.getReadingsSnapshot({
      *         readingIds: "readingIds",
      *         entityType: "entityType"
      *     })
      */
     public getReadingsSnapshot(
         request: Samsara.GetReadingsSnapshotRequest,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.ReadingsGetReadingsSnapshotResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__getReadingsSnapshot(request, requestOptions));
     }
 
     private async __getReadingsSnapshot(
         request: Samsara.GetReadingsSnapshotRequest,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.ReadingsGetReadingsSnapshotResponseBody>> {
         const { after, readingIds, entityIds, externalIds, asOfTime, entityType, includeExternalIds } = request;
         const _queryParams: Record<string, unknown> = {
@@ -3650,15 +3650,15 @@ export class BetaApIsClient {
     /**
      * Get report configs created in the organization.
      *
-     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Read Custom Reports** under the Custom Reports category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Custom Reports** under the Custom Reports category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
      * @param {Samsara.GetReportConfigsRequest} request
-     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {BetaApisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
@@ -3671,18 +3671,18 @@ export class BetaApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.betaApIs.getReportConfigs()
+     *     await client.betaApis.getReportConfigs()
      */
     public getReportConfigs(
         request: Samsara.GetReportConfigsRequest = {},
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.ReportsGetReportConfigsResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__getReportConfigs(request, requestOptions));
     }
 
     private async __getReportConfigs(
         request: Samsara.GetReportConfigsRequest = {},
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.ReportsGetReportConfigsResponseBody>> {
         const { after, limit, ids } = request;
         const _queryParams: Record<string, unknown> = {
@@ -3755,15 +3755,15 @@ export class BetaApIsClient {
     /**
      * Get datasets for custom reports.
      *
-     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Read Custom Reports** under the Custom Reports category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Custom Reports** under the Custom Reports category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
      * @param {Samsara.GetDatasetsRequest} request
-     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {BetaApisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
@@ -3776,18 +3776,18 @@ export class BetaApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.betaApIs.getDatasets()
+     *     await client.betaApis.getDatasets()
      */
     public getDatasets(
         request: Samsara.GetDatasetsRequest = {},
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.ReportsGetDatasetsResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__getDatasets(request, requestOptions));
     }
 
     private async __getDatasets(
         request: Samsara.GetDatasetsRequest = {},
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.ReportsGetDatasetsResponseBody>> {
         const { ids, after, limit } = request;
         const _queryParams: Record<string, unknown> = {
@@ -3860,15 +3860,15 @@ export class BetaApIsClient {
     /**
      * Get custom report runs created by the user.
      *
-     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Read Custom Reports** under the Custom Reports category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Custom Reports** under the Custom Reports category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
      * @param {Samsara.GetReportRunsRequest} request
-     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {BetaApisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
@@ -3881,18 +3881,18 @@ export class BetaApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.betaApIs.getReportRuns()
+     *     await client.betaApis.getReportRuns()
      */
     public getReportRuns(
         request: Samsara.GetReportRunsRequest = {},
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.ReportsGetReportRunsResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__getReportRuns(request, requestOptions));
     }
 
     private async __getReportRuns(
         request: Samsara.GetReportRunsRequest = {},
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.ReportsGetReportRunsResponseBody>> {
         const { reportConfigIds, ids, after, limit } = request;
         const _queryParams: Record<string, unknown> = {
@@ -3966,15 +3966,15 @@ export class BetaApIsClient {
     /**
      * Triggers a new custom report run based on the provided configuration.
      *
-     *  <b>Rate limit:</b> 50 requests/hour (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 50 requests/hour (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Write Custom Reports** under the Custom Reports category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Write Custom Reports** under the Custom Reports category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
      * @param {Samsara.ReportsCreateReportRunRequestBody} request
-     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {BetaApisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
@@ -3987,20 +3987,20 @@ export class BetaApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.betaApIs.createReportRun({
+     *     await client.betaApis.createReportRun({
      *         reportConfig: {}
      *     })
      */
     public createReportRun(
         request: Samsara.ReportsCreateReportRunRequestBody,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.ReportsCreateReportRunResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__createReportRun(request, requestOptions));
     }
 
     private async __createReportRun(
         request: Samsara.ReportsCreateReportRunRequestBody,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.ReportsCreateReportRunResponseBody>> {
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -4070,15 +4070,15 @@ export class BetaApIsClient {
     /**
      * Get data for the given custom report run.
      *
-     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Read Custom Reports** under the Custom Reports category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Custom Reports** under the Custom Reports category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
      * @param {Samsara.GetReportRunDataRequest} request
-     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {BetaApisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
@@ -4091,20 +4091,20 @@ export class BetaApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.betaApIs.getReportRunData({
+     *     await client.betaApis.getReportRunData({
      *         id: "id"
      *     })
      */
     public getReportRunData(
         request: Samsara.GetReportRunDataRequest,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.ReportsGetReportRunDataResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__getReportRunData(request, requestOptions));
     }
 
     private async __getReportRunData(
         request: Samsara.GetReportRunDataRequest,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.ReportsGetReportRunDataResponseBody>> {
         const { id, after, limit } = request;
         const _queryParams: Record<string, unknown> = {
@@ -4177,15 +4177,15 @@ export class BetaApIsClient {
     /**
      * Get safety scores and overall risk factors for drivers.
      *
-     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Read Safety Events & Scores** under the Safety & Cameras category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Safety Events & Scores** under the Safety & Cameras category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
      * @param {Samsara.GetDriverSafetyScoresRequest} request
-     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {BetaApisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
@@ -4198,21 +4198,21 @@ export class BetaApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.betaApIs.getDriverSafetyScores({
+     *     await client.betaApis.getDriverSafetyScores({
      *         endTime: "endTime",
      *         startTime: "startTime"
      *     })
      */
     public getDriverSafetyScores(
         request: Samsara.GetDriverSafetyScoresRequest,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.SafetyScoresGetDriverSafetyScoresResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__getDriverSafetyScores(request, requestOptions));
     }
 
     private async __getDriverSafetyScores(
         request: Samsara.GetDriverSafetyScoresRequest,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.SafetyScoresGetDriverSafetyScoresResponseBody>> {
         const { endTime, startTime, driverIds, after } = request;
         const _queryParams: Record<string, unknown> = {
@@ -4286,15 +4286,15 @@ export class BetaApIsClient {
     /**
      * Get trips contributing to a driver's safety score, and risk factors in each trip.
      *
-     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Read Safety Events & Scores** under the Safety & Cameras category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Safety Events & Scores** under the Safety & Cameras category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
      * @param {Samsara.GetDriverSafetyScoreTripsRequest} request
-     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {BetaApisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
@@ -4307,21 +4307,21 @@ export class BetaApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.betaApIs.getDriverSafetyScoreTrips({
+     *     await client.betaApis.getDriverSafetyScoreTrips({
      *         endTime: "endTime",
      *         startTime: "startTime"
      *     })
      */
     public getDriverSafetyScoreTrips(
         request: Samsara.GetDriverSafetyScoreTripsRequest,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.SafetyScoresGetDriverSafetyScoreTripsResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__getDriverSafetyScoreTrips(request, requestOptions));
     }
 
     private async __getDriverSafetyScoreTrips(
         request: Samsara.GetDriverSafetyScoreTripsRequest,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.SafetyScoresGetDriverSafetyScoreTripsResponseBody>> {
         const { endTime, startTime, driverIds, after } = request;
         const _queryParams: Record<string, unknown> = {
@@ -4395,15 +4395,15 @@ export class BetaApIsClient {
     /**
      * Get a combined safety score and risk factors for a set of tags.
      *
-     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Read Safety Events & Scores** under the Safety & Cameras category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Safety Events & Scores** under the Safety & Cameras category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
      * @param {Samsara.GetTagGroupSafetyScoresRequest} request
-     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {BetaApisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
@@ -4416,7 +4416,7 @@ export class BetaApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.betaApIs.getTagGroupSafetyScores({
+     *     await client.betaApis.getTagGroupSafetyScores({
      *         endTime: "endTime",
      *         startTime: "startTime",
      *         scoreType: "driver"
@@ -4424,14 +4424,14 @@ export class BetaApIsClient {
      */
     public getTagGroupSafetyScores(
         request: Samsara.GetTagGroupSafetyScoresRequest,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.SafetyScoresGetTagGroupSafetyScoresResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__getTagGroupSafetyScores(request, requestOptions));
     }
 
     private async __getTagGroupSafetyScores(
         request: Samsara.GetTagGroupSafetyScoresRequest,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.SafetyScoresGetTagGroupSafetyScoresResponseBody>> {
         const { endTime, startTime, scoreType, tagIds } = request;
         const _queryParams: Record<string, unknown> = {
@@ -4505,15 +4505,15 @@ export class BetaApIsClient {
     /**
      * Get safety scores and overall risk factors for tags.
      *
-     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Read Safety Events & Scores** under the Safety & Cameras category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Safety Events & Scores** under the Safety & Cameras category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
      * @param {Samsara.GetTagSafetyScoresRequest} request
-     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {BetaApisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
@@ -4526,7 +4526,7 @@ export class BetaApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.betaApIs.getTagSafetyScores({
+     *     await client.betaApis.getTagSafetyScores({
      *         endTime: "endTime",
      *         startTime: "startTime",
      *         scoreType: "driver"
@@ -4534,14 +4534,14 @@ export class BetaApIsClient {
      */
     public getTagSafetyScores(
         request: Samsara.GetTagSafetyScoresRequest,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.SafetyScoresGetTagSafetyScoresResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__getTagSafetyScores(request, requestOptions));
     }
 
     private async __getTagSafetyScores(
         request: Samsara.GetTagSafetyScoresRequest,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.SafetyScoresGetTagSafetyScoresResponseBody>> {
         const { endTime, startTime, scoreType, tagIds, after } = request;
         const _queryParams: Record<string, unknown> = {
@@ -4616,15 +4616,15 @@ export class BetaApIsClient {
     /**
      * Get safety scores and overall risk factors for vehicles.
      *
-     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Read Safety Events & Scores** under the Safety & Cameras category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Safety Events & Scores** under the Safety & Cameras category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
      * @param {Samsara.GetVehicleSafetyScoresRequest} request
-     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {BetaApisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
@@ -4637,21 +4637,21 @@ export class BetaApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.betaApIs.getVehicleSafetyScores({
+     *     await client.betaApis.getVehicleSafetyScores({
      *         endTime: "endTime",
      *         startTime: "startTime"
      *     })
      */
     public getVehicleSafetyScores(
         request: Samsara.GetVehicleSafetyScoresRequest,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.SafetyScoresGetVehicleSafetyScoresResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__getVehicleSafetyScores(request, requestOptions));
     }
 
     private async __getVehicleSafetyScores(
         request: Samsara.GetVehicleSafetyScoresRequest,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.SafetyScoresGetVehicleSafetyScoresResponseBody>> {
         const { endTime, startTime, vehicleIds, after } = request;
         const _queryParams: Record<string, unknown> = {
@@ -4725,15 +4725,15 @@ export class BetaApIsClient {
     /**
      * Get trips contributing to a vehicle's safety score, and risk factors in each trip.
      *
-     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Read Safety Events & Scores** under the Safety & Cameras category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Safety Events & Scores** under the Safety & Cameras category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
      * @param {Samsara.GetVehicleSafetyScoreTripsRequest} request
-     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {BetaApisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
@@ -4746,21 +4746,21 @@ export class BetaApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.betaApIs.getVehicleSafetyScoreTrips({
+     *     await client.betaApis.getVehicleSafetyScoreTrips({
      *         endTime: "endTime",
      *         startTime: "startTime"
      *     })
      */
     public getVehicleSafetyScoreTrips(
         request: Samsara.GetVehicleSafetyScoreTripsRequest,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.SafetyScoresGetVehicleSafetyScoreTripsResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__getVehicleSafetyScoreTrips(request, requestOptions));
     }
 
     private async __getVehicleSafetyScoreTrips(
         request: Samsara.GetVehicleSafetyScoreTripsRequest,
-        requestOptions?: BetaApIsClient.RequestOptions,
+        requestOptions?: BetaApisClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.SafetyScoresGetVehicleSafetyScoreTripsResponseBody>> {
         const { endTime, startTime, vehicleIds, after } = request;
         const _queryParams: Record<string, unknown> = {

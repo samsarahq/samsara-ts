@@ -4,7 +4,7 @@
  * A minified driver object.
  */
 export interface ExtendedDriverTinyResponse {
-    /** The [external IDs](https://developers.samsara.com/docs/external-ids) for the given object. */
+    /** The [external IDs](/docs/external-ids) for the given object. */
     externalIds?: ExtendedDriverTinyResponse.ExternalIds;
     /** ID of the driver. */
     id?: string;
@@ -16,7 +16,7 @@ export interface ExtendedDriverTinyResponse {
 
 export namespace ExtendedDriverTinyResponse {
     /**
-     * The [external IDs](https://developers.samsara.com/docs/external-ids) for the given object.
+     * The [external IDs](/docs/external-ids) for the given object.
      */
     export type ExternalIds = {};
 }

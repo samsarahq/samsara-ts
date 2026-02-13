@@ -13,7 +13,7 @@ export interface PatchTagRequest {
     assets?: Samsara.TaggedObjectId[];
     /** The drivers that belong to this tag. */
     drivers?: Samsara.TaggedObjectId[];
-    /** The [external IDs](https://developers.samsara.com/docs/external-ids) for the given object. */
+    /** The [external IDs](/docs/external-ids) for the given object. */
     externalIds?: Record<string, string>;
     /** The machines that belong to this tag. */
     machines?: Samsara.TaggedObjectId[];

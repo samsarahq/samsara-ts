@@ -33,7 +33,7 @@ export namespace DvirTrailerDefectsItems {
     }
 
     export interface Vehicle {
-        /** The [external IDs](https://developers.samsara.com/docs/external-ids) for the given object. */
+        /** The [external IDs](/docs/external-ids) for the given object. */
         ExternalIds?: Record<string, string>;
         /** ID of the vehicle. */
         id?: string;

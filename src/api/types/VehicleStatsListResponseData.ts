@@ -83,7 +83,7 @@ export interface VehicleStatsListResponseData {
     externalIds?: Samsara.VehicleExternalIds;
     /** A list of engine fault codes. */
     faultCodes?: Samsara.VehicleStatsFaultCodesWithDecoration[];
-    /** A list of cumulative fuel consumption readings in milliliters for the given vehicle. Cumulative values always increase. This includes all fuel consumption reported by vehicles without filtering of invalid data points. For filtered fuel consumption that matches the Fuel & Energy Report, please use <a href="https://developers.samsara.com/reference/getfuelenergyvehiclereports" target="_blank">the Fuel and Energy API</a>. */
+    /** A list of cumulative fuel consumption readings in milliliters for the given vehicle. Cumulative values always increase. This includes all fuel consumption reported by vehicles without filtering of invalid data points. For filtered fuel consumption that matches the Fuel & Energy Report, please use <a href="/api-reference/fuel-and-efficiency/fuel-and-energy/get-fuel-and-energy-vehicle-reports" target="_blank">the Fuel and Energy API</a>. */
     fuelConsumedMilliliters?: Samsara.VehicleStatsFuelConsumedMillilitersWithDecoration[];
     /** A list of fuel percentage readings for the given vehicle. */
     fuelPercents?: Samsara.VehicleStatsFuelPercentWithDecoration[];
@@ -94,7 +94,7 @@ export interface VehicleStatsListResponseData {
     /** A list of GPS odometer events for the given vehicle. */
     gpsOdometerMeters?: Samsara.VehicleStatsGpsOdometerMetersWithDecoration[];
     id?: Samsara.VehicleId;
-    /** A list of cumulative idling duration readings in milliseconds for the given vehicle. Cumulative values always increase. For filtering of idling duration please use <a href="https://developers.samsara.com/reference/getvehicleidlingreports" target="_blank">the Idling Events API</a>. */
+    /** A list of cumulative idling duration readings in milliseconds for the given vehicle. Cumulative values always increase. For filtering of idling duration please use <a href="/api-reference/fuel-and-efficiency/idling/get-idling-events" target="_blank">the Idling Events API</a>. */
     idlingDurationMilliseconds?: Samsara.VehicleStatsIdlingDurationMillisecondsWithDecoration[];
     /** A list of intake manifold temperature readings in millidegree Celsius for the given vehicle. */
     intakeManifoldTemperatureMilliC?: Samsara.VehicleStatsIntakeManifoldTempMilliCWithDecoration[];

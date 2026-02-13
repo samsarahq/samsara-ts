@@ -9,47 +9,47 @@ import { handleNonStatusCodeError } from "../../../../errors/handleNonStatusCode
 import * as errors from "../../../../errors/index.js";
 import * as Samsara from "../../../index.js";
 
-export declare namespace LegacyApIsClient {
+export declare namespace LegacyApisClient {
     export type Options = BaseClientOptions;
 
     export interface RequestOptions extends BaseRequestOptions {}
 }
 
-export class LegacyApIsClient {
-    protected readonly _options: NormalizedClientOptionsWithAuth<LegacyApIsClient.Options>;
+export class LegacyApisClient {
+    protected readonly _options: NormalizedClientOptionsWithAuth<LegacyApisClient.Options>;
 
-    constructor(options: LegacyApIsClient.Options = {}) {
+    constructor(options: LegacyApisClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 
     /**
-     * **Note: This is a legacy endpoint, consider using [this endpoint](https://developers.samsara.com/reference/streamdefects) instead. The endpoint will continue to function as documented.**
+     * **Note: This is a legacy endpoint, consider using [Stream DVIR defects](/api-reference/maintenance/maintenance/stream-defects) instead. The endpoint will continue to function as documented.**
      *
      * Returns a list of DVIR defects in an organization, filtered by creation time. The maximum time period you can query for is 30 days.
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * To use this endpoint, select **Read Defects** under the Maintenance category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Defects** under the Maintenance category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      * @param {Samsara.GetDvirDefectsRequest} request
-     * @param {LegacyApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {LegacyApisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.legacyApIs.getDvirDefects({
+     *     await client.legacyApis.getDvirDefects({
      *         startTime: "startTime",
      *         endTime: "endTime"
      *     })
      */
     public getDvirDefects(
         request: Samsara.GetDvirDefectsRequest,
-        requestOptions?: LegacyApIsClient.RequestOptions,
+        requestOptions?: LegacyApisClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.DefectsResponse> {
         return core.HttpResponsePromise.fromPromise(this.__getDvirDefects(request, requestOptions));
     }
 
     private async __getDvirDefects(
         request: Samsara.GetDvirDefectsRequest,
-        requestOptions?: LegacyApIsClient.RequestOptions,
+        requestOptions?: LegacyApisClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.DefectsResponse>> {
         const { limit, after, startTime, endTime, isResolved } = request;
         const _queryParams: Record<string, unknown> = {
@@ -98,17 +98,17 @@ export class LegacyApIsClient {
     }
 
     /**
-     * **Note: This is a legacy endpoint, consider using [this endpoint](https://developers.samsara.com/reference/getdrivervehicleassignments) instead. The endpoint will continue to function as documented.** Get all vehicle assignments for the requested drivers in the requested time range. The only type of assignment supported right now are assignments created through the driver app.
+     * **Note: This is a legacy endpoint, consider using [Get all driver-vehicle assignments](/api-reference/drivers/driver-vehicle-assignments/get-driver-vehicle-assignments) instead. The endpoint will continue to function as documented.** Get all vehicle assignments for the requested drivers in the requested time range. The only type of assignment supported right now are assignments created through the driver app.
      *
-     *  <b>Rate limit:</b> 25 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 25 requests/sec (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Read Assignments** under the Assignments category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Assignments** under the Assignments category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
      * @param {Samsara.GetDriversVehicleAssignmentsRequest} request
-     * @param {LegacyApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {LegacyApisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
@@ -121,18 +121,18 @@ export class LegacyApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.legacyApIs.getDriversVehicleAssignments()
+     *     await client.legacyApis.getDriversVehicleAssignments()
      */
     public getDriversVehicleAssignments(
         request: Samsara.GetDriversVehicleAssignmentsRequest = {},
-        requestOptions?: LegacyApIsClient.RequestOptions,
+        requestOptions?: LegacyApisClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.DriversVehicleAssignmentsGetDriversVehicleAssignmentsResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__getDriversVehicleAssignments(request, requestOptions));
     }
 
     private async __getDriversVehicleAssignments(
         request: Samsara.GetDriversVehicleAssignmentsRequest = {},
-        requestOptions?: LegacyApIsClient.RequestOptions,
+        requestOptions?: LegacyApisClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.DriversVehicleAssignmentsGetDriversVehicleAssignmentsResponseBody>> {
         const { driverIds, startTime, endTime, tagIds, parentTagIds, driverActivationStatus, after } = request;
         const _queryParams: Record<string, unknown> = {
@@ -212,33 +212,33 @@ export class LegacyApIsClient {
     }
 
     /**
-     * **Note: This is a legacy endpoint, consider using [this endpoint](https://developers.samsara.com/reference/getdvirs) instead. The endpoint will continue to function as documented.**
+     * **Note: This is a legacy endpoint, consider using [Stream DVIRs](/api-reference/maintenance/maintenance/get-dvirs) instead. The endpoint will continue to function as documented.**
      *
      *  Returns a list of all DVIRs in an organization.
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * To use this endpoint, select **Read DVIRs** under the Maintenance category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read DVIRs** under the Maintenance category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      * @param {Samsara.GetDvirHistoryRequest} request
-     * @param {LegacyApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {LegacyApisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.legacyApIs.getDvirHistory({
+     *     await client.legacyApis.getDvirHistory({
      *         startTime: "startTime",
      *         endTime: "endTime"
      *     })
      */
     public getDvirHistory(
         request: Samsara.GetDvirHistoryRequest,
-        requestOptions?: LegacyApIsClient.RequestOptions,
+        requestOptions?: LegacyApisClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.DvirsListResponse> {
         return core.HttpResponsePromise.fromPromise(this.__getDvirHistory(request, requestOptions));
     }
 
     private async __getDvirHistory(
         request: Samsara.GetDvirHistoryRequest,
-        requestOptions?: LegacyApIsClient.RequestOptions,
+        requestOptions?: LegacyApisClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.DvirsListResponse>> {
         const { limit, after, parentTagIds, tagIds, startTime, endTime } = request;
         const _queryParams: Record<string, unknown> = {
@@ -288,17 +288,17 @@ export class LegacyApIsClient {
     }
 
     /**
-     * **Note: This is a legacy endpoint, consider using [this endpoint](https://developers.samsara.com/reference/getidlingevents) instead. The endpoint will continue to function as documented.** Get all vehicle idling reports for the requested time duration.
+     * **Note: This is a legacy endpoint, consider using [Get idling events](/api-reference/fuel-and-efficiency/idling/get-idling-events) instead. The endpoint will continue to function as documented.** Get all vehicle idling reports for the requested time duration.
      *
-     *  <b>Rate limit:</b> 25 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 25 requests/sec (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Read Fuel & Energy** under the Fuel & Energy category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Fuel & Energy** under the Fuel & Energy category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
      * @param {Samsara.GetVehicleIdlingReportsRequest} request
-     * @param {LegacyApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {LegacyApisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
@@ -311,21 +311,21 @@ export class LegacyApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.legacyApIs.getVehicleIdlingReports({
+     *     await client.legacyApis.getVehicleIdlingReports({
      *         startTime: "startTime",
      *         endTime: "endTime"
      *     })
      */
     public getVehicleIdlingReports(
         request: Samsara.GetVehicleIdlingReportsRequest,
-        requestOptions?: LegacyApIsClient.RequestOptions,
+        requestOptions?: LegacyApisClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.IdlingReportsGetVehicleIdlingReportsResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__getVehicleIdlingReports(request, requestOptions));
     }
 
     private async __getVehicleIdlingReports(
         request: Samsara.GetVehicleIdlingReportsRequest,
-        requestOptions?: LegacyApIsClient.RequestOptions,
+        requestOptions?: LegacyApisClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.IdlingReportsGetVehicleIdlingReportsResponseBody>> {
         const {
             after,
@@ -412,33 +412,33 @@ export class LegacyApIsClient {
     }
 
     /**
-     * **Note: This is a legacy endpoint, consider using [this endpoint](https://developers.samsara.com/reference/getsafetyeventsv2stream) instead. The endpoint will continue to function as documented.**
+     * **Note: This is a legacy endpoint, consider using [Get Safety Events Stream](/api-reference/safety/safety/get-safety-events-v-2-stream) instead. The endpoint will continue to function as documented.**
      *
      *  Fetch safety events for the organization in a given time period.
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * To use this endpoint, select **Read Safety Events & Scores** under the Safety & Cameras category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Safety Events & Scores** under the Safety & Cameras category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      * @param {Samsara.GetSafetyEventsRequest} request
-     * @param {LegacyApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {LegacyApisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.legacyApIs.getSafetyEvents({
+     *     await client.legacyApis.getSafetyEvents({
      *         startTime: "startTime",
      *         endTime: "endTime"
      *     })
      */
     public getSafetyEvents(
         request: Samsara.GetSafetyEventsRequest,
-        requestOptions?: LegacyApIsClient.RequestOptions,
+        requestOptions?: LegacyApisClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.SafetyEventsListResponse> {
         return core.HttpResponsePromise.fromPromise(this.__getSafetyEvents(request, requestOptions));
     }
 
     private async __getSafetyEvents(
         request: Samsara.GetSafetyEventsRequest,
-        requestOptions?: LegacyApIsClient.RequestOptions,
+        requestOptions?: LegacyApisClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.SafetyEventsListResponse>> {
         const { after, startTime, endTime, tagIds, parentTagIds, vehicleIds } = request;
         const _queryParams: Record<string, unknown> = {
@@ -488,7 +488,7 @@ export class LegacyApIsClient {
     }
 
     /**
-     * **Note: This is a legacy endpoint, consider using [this endpoint](https://developers.samsara.com/reference/getsafetyeventsv2stream) instead. The endpoint will continue to function as documented.**
+     * **Note: This is a legacy endpoint, consider using [Get Safety Events Stream](/api-reference/safety/safety/get-safety-events-v-2-stream) instead. The endpoint will continue to function as documented.**
      *
      * Get continuous safety events. The safety activity event feed offers a change-log for safety events. Use this endpoint to subscribe to safety event changes. See documentation below for all supported change-log types.
      *
@@ -498,15 +498,15 @@ export class LegacyApIsClient {
      * | BehaviorLabelActivityType     | a label is added or removed from a safety event |
      * | CoachingStateActivityType     | a safety event coaching state is updated        |
      *
-     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Read Safety Events & Scores** under the Safety & Cameras category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Safety Events & Scores** under the Safety & Cameras category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
      * @param {Samsara.GetSafetyActivityEventFeedRequest} request
-     * @param {LegacyApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {LegacyApisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
@@ -519,18 +519,18 @@ export class LegacyApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.legacyApIs.getSafetyActivityEventFeed()
+     *     await client.legacyApis.getSafetyActivityEventFeed()
      */
     public getSafetyActivityEventFeed(
         request: Samsara.GetSafetyActivityEventFeedRequest = {},
-        requestOptions?: LegacyApIsClient.RequestOptions,
+        requestOptions?: LegacyApisClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.SafetyEventsGetSafetyActivityEventFeedResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__getSafetyActivityEventFeed(request, requestOptions));
     }
 
     private async __getSafetyActivityEventFeed(
         request: Samsara.GetSafetyActivityEventFeedRequest = {},
-        requestOptions?: LegacyApIsClient.RequestOptions,
+        requestOptions?: LegacyApisClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.SafetyEventsGetSafetyActivityEventFeedResponseBody>> {
         const { after, startTime } = request;
         const _queryParams: Record<string, unknown> = {
@@ -605,17 +605,17 @@ export class LegacyApIsClient {
     }
 
     /**
-     * **Note: This is a legacy endpoint, consider using [this endpoint](https://developers.samsara.com/reference/getdrivervehicleassignments) instead. The endpoint will continue to function as documented.** Get all driver assignments for the requested vehicles in the requested time range. The only type of assignment supported right now are assignments created through the driver app.
+     * **Note: This is a legacy endpoint, consider using [Get all driver-vehicle assignments](/api-reference/drivers/driver-vehicle-assignments/get-driver-vehicle-assignments) instead. The endpoint will continue to function as documented.** Get all driver assignments for the requested vehicles in the requested time range. The only type of assignment supported right now are assignments created through the driver app.
      *
-     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Read Assignments** under the Assignments category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Assignments** under the Assignments category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
      * @param {Samsara.GetVehiclesDriverAssignmentsRequest} request
-     * @param {LegacyApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {LegacyApisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
@@ -628,18 +628,18 @@ export class LegacyApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.legacyApIs.getVehiclesDriverAssignments()
+     *     await client.legacyApis.getVehiclesDriverAssignments()
      */
     public getVehiclesDriverAssignments(
         request: Samsara.GetVehiclesDriverAssignmentsRequest = {},
-        requestOptions?: LegacyApIsClient.RequestOptions,
+        requestOptions?: LegacyApisClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.VehiclesDriverAssignmentsGetVehiclesDriverAssignmentsResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__getVehiclesDriverAssignments(request, requestOptions));
     }
 
     private async __getVehiclesDriverAssignments(
         request: Samsara.GetVehiclesDriverAssignmentsRequest = {},
-        requestOptions?: LegacyApIsClient.RequestOptions,
+        requestOptions?: LegacyApisClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.VehiclesDriverAssignmentsGetVehiclesDriverAssignmentsResponseBody>> {
         const { startTime, endTime, vehicleIds, tagIds, parentTagIds, after } = request;
         const _queryParams: Record<string, unknown> = {
@@ -718,7 +718,68 @@ export class LegacyApIsClient {
     }
 
     /**
-     * **Note: This is a legacy endpoint, consider using [this endpoint](https://developers.samsara.com/reference/getsafetyeventsv2stream) instead. The endpoint will continue to function as documented.** <n class="warning">
+     * **Note: This is a legacy endpoint, consider using [List all assets](/api-reference/assets-vehicles-trailers-equipment/assets/list) instead. The endpoint will continue to function as documented.**
+     *
+     *  Fetch all powered and unpowered equipment.
+     *
+     *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
+     *
+     * To use this endpoint, select **Read Equipment** under the Equipment category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
+     *
+     * @param {LegacyApisClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.legacyApis.v1GetAllAssets()
+     */
+    public v1GetAllAssets(
+        requestOptions?: LegacyApisClient.RequestOptions,
+    ): core.HttpResponsePromise<Samsara.InlineResponse2001> {
+        return core.HttpResponsePromise.fromPromise(this.__v1GetAllAssets(requestOptions));
+    }
+
+    private async __v1GetAllAssets(
+        requestOptions?: LegacyApisClient.RequestOptions,
+    ): Promise<core.WithRawResponse<Samsara.InlineResponse2001>> {
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ "X-Samsara-Version": requestOptions?.version }),
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.SamsaraEnvironment.ProductionApi,
+                "v1/fleet/assets",
+            ),
+            method: "GET",
+            headers: _headers,
+            queryParameters: requestOptions?.queryParams,
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return { data: _response.body as Samsara.InlineResponse2001, rawResponse: _response.rawResponse };
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.SamsaraError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+                rawResponse: _response.rawResponse,
+            });
+        }
+
+        return handleNonStatusCodeError(_response.error, _response.rawResponse, "GET", "/v1/fleet/assets");
+    }
+
+    /**
+     * **Note: This is a legacy endpoint, consider using [Get Safety Events](/api-reference/safety/safety/get-safety-events-v-2) instead. The endpoint will continue to function as documented.** <n class="warning">
      * <nh>
      * <i class="fa fa-exclamation-circle"></i>
      * This endpoint is still on our legacy API.
@@ -729,21 +790,21 @@ export class LegacyApIsClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * To use this endpoint, select **Read Safety Events & Scores** under the Safety & Cameras category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Safety Events & Scores** under the Safety & Cameras category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      * @param {number} vehicleId - ID of the vehicle. Must contain only digits 0-9.
      * @param {Samsara.V1GetVehicleHarshEventRequest} request
-     * @param {LegacyApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {LegacyApisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.legacyApIs.v1GetVehicleHarshEvent(1000000, {
+     *     await client.legacyApis.v1GetVehicleHarshEvent(1000000, {
      *         timestamp: 1000000
      *     })
      */
     public v1GetVehicleHarshEvent(
         vehicleId: number,
         request: Samsara.V1GetVehicleHarshEventRequest,
-        requestOptions?: LegacyApIsClient.RequestOptions,
+        requestOptions?: LegacyApisClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.V1VehicleHarshEventResponse> {
         return core.HttpResponsePromise.fromPromise(this.__v1GetVehicleHarshEvent(vehicleId, request, requestOptions));
     }
@@ -751,7 +812,7 @@ export class LegacyApIsClient {
     private async __v1GetVehicleHarshEvent(
         vehicleId: number,
         request: Samsara.V1GetVehicleHarshEventRequest,
-        requestOptions?: LegacyApIsClient.RequestOptions,
+        requestOptions?: LegacyApisClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.V1VehicleHarshEventResponse>> {
         const { timestamp } = request;
         const _queryParams: Record<string, unknown> = {

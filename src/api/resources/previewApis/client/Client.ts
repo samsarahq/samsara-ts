@@ -9,37 +9,37 @@ import { handleNonStatusCodeError } from "../../../../errors/handleNonStatusCode
 import * as errors from "../../../../errors/index.js";
 import * as Samsara from "../../../index.js";
 
-export declare namespace PreviewApIsClient {
+export declare namespace PreviewApisClient {
     export type Options = BaseClientOptions;
 
     export interface RequestOptions extends BaseRequestOptions {}
 }
 
-export class PreviewApIsClient {
-    protected readonly _options: NormalizedClientOptionsWithAuth<PreviewApIsClient.Options>;
+export class PreviewApisClient {
+    protected readonly _options: NormalizedClientOptionsWithAuth<PreviewApisClient.Options>;
 
-    constructor(options: PreviewApIsClient.Options = {}) {
+    constructor(options: PreviewApisClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 
     /**
      * Creates a short-lived auth token for a driver.
      *
-     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Write Driver Auth Token** under the Drivers category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Write Driver Auth Token** under the Drivers category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      * Endpoints in this section are in Preview. These APIs are not functional and are instead for soliciting feedback from our API users on the intended design of this API. Additionally, it is not guaranteed that we will be releasing an endpoint included in this section to production. This means that developers should **NOT** rely on these APIs to build business critical applications
      *
      * - Samsara may change the structure of a preview API's interface without versioning or any notice to API users.
      *
-     * - When an endpoint becomes generally available, it will be announced in the API [changelog](https://developers.samsara.com/changelog).
+     * - When an endpoint becomes generally available, it will be announced in the API [changelog](/docs/subscribe-to-api-updates).
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
      * @param {Samsara.DriversAuthTokenCreateDriverAuthTokenRequestBody} request
-     * @param {PreviewApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {PreviewApisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
@@ -52,20 +52,20 @@ export class PreviewApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.previewApIs.createDriverAuthToken({
+     *     await client.previewApis.createDriverAuthToken({
      *         code: "dp[gZc1wAigz4uGa0Hh"
      *     })
      */
     public createDriverAuthToken(
         request: Samsara.DriversAuthTokenCreateDriverAuthTokenRequestBody,
-        requestOptions?: PreviewApIsClient.RequestOptions,
+        requestOptions?: PreviewApisClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.DriversAuthTokenCreateDriverAuthTokenResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__createDriverAuthToken(request, requestOptions));
     }
 
     private async __createDriverAuthToken(
         request: Samsara.DriversAuthTokenCreateDriverAuthTokenRequestBody,
-        requestOptions?: PreviewApIsClient.RequestOptions,
+        requestOptions?: PreviewApisClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.DriversAuthTokenCreateDriverAuthTokenResponseBody>> {
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -140,21 +140,21 @@ export class PreviewApIsClient {
     /**
      * Lock a vehicle. This requires a vehicle gateway with locking capabilities.
      *
-     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Write Vehicle Lock/Unlock** under the Vehicles category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Write Vehicle Lock/Unlock** under the Vehicles category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      * Endpoints in this section are in Preview. These APIs are not functional and are instead for soliciting feedback from our API users on the intended design of this API. Additionally, it is not guaranteed that we will be releasing an endpoint included in this section to production. This means that developers should **NOT** rely on these APIs to build business critical applications
      *
      * - Samsara may change the structure of a preview API's interface without versioning or any notice to API users.
      *
-     * - When an endpoint becomes generally available, it will be announced in the API [changelog](https://developers.samsara.com/changelog).
+     * - When an endpoint becomes generally available, it will be announced in the API [changelog](/docs/subscribe-to-api-updates).
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
      * @param {string} id - The ID of the vehicle to lock or unlock. This can be a Samsara internal ID or an external ID in the format `samsara.vin:{VIN}`.
-     * @param {PreviewApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {PreviewApisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
@@ -167,15 +167,15 @@ export class PreviewApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.previewApIs.lockVehicle("id")
+     *     await client.previewApis.lockVehicle("id")
      */
-    public lockVehicle(id: string, requestOptions?: PreviewApIsClient.RequestOptions): core.HttpResponsePromise<void> {
+    public lockVehicle(id: string, requestOptions?: PreviewApisClient.RequestOptions): core.HttpResponsePromise<void> {
         return core.HttpResponsePromise.fromPromise(this.__lockVehicle(id, requestOptions));
     }
 
     private async __lockVehicle(
         id: string,
-        requestOptions?: PreviewApIsClient.RequestOptions,
+        requestOptions?: PreviewApisClient.RequestOptions,
     ): Promise<core.WithRawResponse<void>> {
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -244,21 +244,21 @@ export class PreviewApIsClient {
     /**
      * Unlock a vehicle.
      *
-     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Write Vehicle Lock/Unlock** under the Vehicles category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Write Vehicle Lock/Unlock** under the Vehicles category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      * Endpoints in this section are in Preview. These APIs are not functional and are instead for soliciting feedback from our API users on the intended design of this API. Additionally, it is not guaranteed that we will be releasing an endpoint included in this section to production. This means that developers should **NOT** rely on these APIs to build business critical applications
      *
      * - Samsara may change the structure of a preview API's interface without versioning or any notice to API users.
      *
-     * - When an endpoint becomes generally available, it will be announced in the API [changelog](https://developers.samsara.com/changelog).
+     * - When an endpoint becomes generally available, it will be announced in the API [changelog](/docs/subscribe-to-api-updates).
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
      * @param {string} id - The ID of the vehicle to lock or unlock. This can be a Samsara internal ID or an external ID in the format `samsara.vin:{VIN}`.
-     * @param {PreviewApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {PreviewApisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
@@ -271,18 +271,18 @@ export class PreviewApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.previewApIs.unlockVehicle("id")
+     *     await client.previewApis.unlockVehicle("id")
      */
     public unlockVehicle(
         id: string,
-        requestOptions?: PreviewApIsClient.RequestOptions,
+        requestOptions?: PreviewApisClient.RequestOptions,
     ): core.HttpResponsePromise<void> {
         return core.HttpResponsePromise.fromPromise(this.__unlockVehicle(id, requestOptions));
     }
 
     private async __unlockVehicle(
         id: string,
-        requestOptions?: PreviewApIsClient.RequestOptions,
+        requestOptions?: PreviewApisClient.RequestOptions,
     ): Promise<core.WithRawResponse<void>> {
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(

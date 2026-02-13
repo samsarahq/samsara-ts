@@ -9,7 +9,7 @@ export interface TagAllOf {
     assets?: Samsara.TaggedObject[];
     /** The drivers that belong to this tag. */
     drivers?: Samsara.TaggedObject[];
-    /** The [external IDs](https://developers.samsara.com/docs/external-ids) for the given object. */
+    /** The [external IDs](/docs/external-ids) for the given object. */
     externalIds?: TagAllOf.ExternalIds;
     /** The machines that belong to thistag. */
     machines?: Samsara.TaggedObject[];
@@ -22,7 +22,7 @@ export interface TagAllOf {
 
 export namespace TagAllOf {
     /**
-     * The [external IDs](https://developers.samsara.com/docs/external-ids) for the given object.
+     * The [external IDs](/docs/external-ids) for the given object.
      */
     export type ExternalIds = {};
 }

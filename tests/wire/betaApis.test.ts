@@ -4,7 +4,7 @@ import * as Samsara from "../../src/api/index";
 import { SamsaraClient } from "../../src/Client";
 import { mockServerPool } from "../mock-server/MockServerPool";
 
-describe("BetaApIsClient", () => {
+describe("BetaApisClient", () => {
     test("getDepreciationTransactions (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
@@ -38,7 +38,7 @@ describe("BetaApIsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.betaApIs.getDepreciationTransactions();
+        const response = await client.betaApis.getDepreciationTransactions();
         expect(response).toEqual({
             data: [
                 {
@@ -82,7 +82,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getDepreciationTransactions();
+            return await client.betaApis.getDepreciationTransactions();
         }).rejects.toThrow(Samsara.UnauthorizedError);
     });
 
@@ -105,7 +105,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getDepreciationTransactions();
+            return await client.betaApis.getDepreciationTransactions();
         }).rejects.toThrow(Samsara.NotFoundError);
     });
 
@@ -128,7 +128,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getDepreciationTransactions();
+            return await client.betaApis.getDepreciationTransactions();
         }).rejects.toThrow(Samsara.MethodNotAllowedError);
     });
 
@@ -151,7 +151,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getDepreciationTransactions();
+            return await client.betaApis.getDepreciationTransactions();
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
@@ -174,7 +174,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getDepreciationTransactions();
+            return await client.betaApis.getDepreciationTransactions();
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
@@ -197,7 +197,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getDepreciationTransactions();
+            return await client.betaApis.getDepreciationTransactions();
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
@@ -220,7 +220,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getDepreciationTransactions();
+            return await client.betaApis.getDepreciationTransactions();
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
@@ -243,7 +243,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getDepreciationTransactions();
+            return await client.betaApis.getDepreciationTransactions();
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
@@ -266,7 +266,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getDepreciationTransactions();
+            return await client.betaApis.getDepreciationTransactions();
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 
@@ -352,7 +352,7 @@ describe("BetaApIsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.betaApIs.getAssetsInputs({
+        const response = await client.betaApis.getAssetsInputs({
             type: "auxInput1",
             startTime: "startTime",
         });
@@ -469,7 +469,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getAssetsInputs({
+            return await client.betaApis.getAssetsInputs({
                 type: "auxInput1",
                 startTime: "startTime",
             });
@@ -495,7 +495,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getAssetsInputs({
+            return await client.betaApis.getAssetsInputs({
                 type: "auxInput1",
                 startTime: "startTime",
             });
@@ -521,7 +521,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getAssetsInputs({
+            return await client.betaApis.getAssetsInputs({
                 type: "auxInput1",
                 startTime: "startTime",
             });
@@ -547,7 +547,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getAssetsInputs({
+            return await client.betaApis.getAssetsInputs({
                 type: "auxInput1",
                 startTime: "startTime",
             });
@@ -573,7 +573,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getAssetsInputs({
+            return await client.betaApis.getAssetsInputs({
                 type: "auxInput1",
                 startTime: "startTime",
             });
@@ -599,7 +599,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getAssetsInputs({
+            return await client.betaApis.getAssetsInputs({
                 type: "auxInput1",
                 startTime: "startTime",
             });
@@ -625,7 +625,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getAssetsInputs({
+            return await client.betaApis.getAssetsInputs({
                 type: "auxInput1",
                 startTime: "startTime",
             });
@@ -651,7 +651,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getAssetsInputs({
+            return await client.betaApis.getAssetsInputs({
                 type: "auxInput1",
                 startTime: "startTime",
             });
@@ -677,7 +677,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getAssetsInputs({
+            return await client.betaApis.getAssetsInputs({
                 type: "auxInput1",
                 startTime: "startTime",
             });
@@ -721,7 +721,7 @@ describe("BetaApIsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.betaApIs.getAempEquipmentList("pageNumber");
+        const response = await client.betaApis.getAempEquipmentList("pageNumber");
         expect(response).toEqual({
             Fleet: {
                 Equipment: [
@@ -772,7 +772,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getAempEquipmentList("pageNumber");
+            return await client.betaApis.getAempEquipmentList("pageNumber");
         }).rejects.toThrow(Samsara.UnauthorizedError);
     });
 
@@ -795,7 +795,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getAempEquipmentList("pageNumber");
+            return await client.betaApis.getAempEquipmentList("pageNumber");
         }).rejects.toThrow(Samsara.NotFoundError);
     });
 
@@ -818,7 +818,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getAempEquipmentList("pageNumber");
+            return await client.betaApis.getAempEquipmentList("pageNumber");
         }).rejects.toThrow(Samsara.MethodNotAllowedError);
     });
 
@@ -841,7 +841,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getAempEquipmentList("pageNumber");
+            return await client.betaApis.getAempEquipmentList("pageNumber");
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
@@ -864,7 +864,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getAempEquipmentList("pageNumber");
+            return await client.betaApis.getAempEquipmentList("pageNumber");
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
@@ -887,7 +887,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getAempEquipmentList("pageNumber");
+            return await client.betaApis.getAempEquipmentList("pageNumber");
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
@@ -910,7 +910,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getAempEquipmentList("pageNumber");
+            return await client.betaApis.getAempEquipmentList("pageNumber");
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
@@ -933,7 +933,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getAempEquipmentList("pageNumber");
+            return await client.betaApis.getAempEquipmentList("pageNumber");
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
@@ -956,7 +956,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getAempEquipmentList("pageNumber");
+            return await client.betaApis.getAempEquipmentList("pageNumber");
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 
@@ -985,7 +985,7 @@ describe("BetaApIsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.betaApIs.getDriverEfficiency();
+        const response = await client.betaApis.getDriverEfficiency();
         expect(response).toEqual({
             data: {
                 driverSummaries: [{}],
@@ -1037,7 +1037,7 @@ describe("BetaApIsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.betaApIs.patchEquipment("id");
+        const response = await client.betaApis.patchEquipment("id");
         expect(response).toEqual({
             data: {
                 attributes: [
@@ -1091,7 +1091,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.patchEquipment("id");
+            return await client.betaApis.patchEquipment("id");
         }).rejects.toThrow(Samsara.UnauthorizedError);
     });
 
@@ -1115,7 +1115,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.patchEquipment("id");
+            return await client.betaApis.patchEquipment("id");
         }).rejects.toThrow(Samsara.NotFoundError);
     });
 
@@ -1139,7 +1139,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.patchEquipment("id");
+            return await client.betaApis.patchEquipment("id");
         }).rejects.toThrow(Samsara.MethodNotAllowedError);
     });
 
@@ -1163,7 +1163,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.patchEquipment("id");
+            return await client.betaApis.patchEquipment("id");
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
@@ -1187,7 +1187,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.patchEquipment("id");
+            return await client.betaApis.patchEquipment("id");
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
@@ -1211,7 +1211,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.patchEquipment("id");
+            return await client.betaApis.patchEquipment("id");
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
@@ -1235,7 +1235,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.patchEquipment("id");
+            return await client.betaApis.patchEquipment("id");
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
@@ -1259,7 +1259,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.patchEquipment("id");
+            return await client.betaApis.patchEquipment("id");
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
@@ -1283,7 +1283,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.patchEquipment("id");
+            return await client.betaApis.patchEquipment("id");
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 
@@ -1333,7 +1333,7 @@ describe("BetaApIsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.betaApIs.getHosEldEvents({
+        const response = await client.betaApis.getHosEldEvents({
             startTime: "startTime",
             endTime: "endTime",
         });
@@ -1392,7 +1392,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getHosEldEvents({
+            return await client.betaApis.getHosEldEvents({
                 startTime: "startTime",
                 endTime: "endTime",
             });
@@ -1418,7 +1418,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getHosEldEvents({
+            return await client.betaApis.getHosEldEvents({
                 startTime: "startTime",
                 endTime: "endTime",
             });
@@ -1444,7 +1444,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getHosEldEvents({
+            return await client.betaApis.getHosEldEvents({
                 startTime: "startTime",
                 endTime: "endTime",
             });
@@ -1470,7 +1470,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getHosEldEvents({
+            return await client.betaApis.getHosEldEvents({
                 startTime: "startTime",
                 endTime: "endTime",
             });
@@ -1496,7 +1496,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getHosEldEvents({
+            return await client.betaApis.getHosEldEvents({
                 startTime: "startTime",
                 endTime: "endTime",
             });
@@ -1522,7 +1522,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getHosEldEvents({
+            return await client.betaApis.getHosEldEvents({
                 startTime: "startTime",
                 endTime: "endTime",
             });
@@ -1548,7 +1548,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getHosEldEvents({
+            return await client.betaApis.getHosEldEvents({
                 startTime: "startTime",
                 endTime: "endTime",
             });
@@ -1574,7 +1574,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getHosEldEvents({
+            return await client.betaApis.getHosEldEvents({
                 startTime: "startTime",
                 endTime: "endTime",
             });
@@ -1600,7 +1600,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getHosEldEvents({
+            return await client.betaApis.getHosEldEvents({
                 startTime: "startTime",
                 endTime: "endTime",
             });
@@ -1688,7 +1688,7 @@ describe("BetaApIsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.betaApIs.getTrailerStatsSnapshot({
+        const response = await client.betaApis.getTrailerStatsSnapshot({
             types: "types",
         });
         expect(response).toEqual({
@@ -1830,7 +1830,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getTrailerStatsSnapshot({
+            return await client.betaApis.getTrailerStatsSnapshot({
                 types: "types",
             });
         }).rejects.toThrow(Samsara.UnauthorizedError);
@@ -1855,7 +1855,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getTrailerStatsSnapshot({
+            return await client.betaApis.getTrailerStatsSnapshot({
                 types: "types",
             });
         }).rejects.toThrow(Samsara.NotFoundError);
@@ -1880,7 +1880,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getTrailerStatsSnapshot({
+            return await client.betaApis.getTrailerStatsSnapshot({
                 types: "types",
             });
         }).rejects.toThrow(Samsara.MethodNotAllowedError);
@@ -1905,7 +1905,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getTrailerStatsSnapshot({
+            return await client.betaApis.getTrailerStatsSnapshot({
                 types: "types",
             });
         }).rejects.toThrow(Samsara.TooManyRequestsError);
@@ -1930,7 +1930,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getTrailerStatsSnapshot({
+            return await client.betaApis.getTrailerStatsSnapshot({
                 types: "types",
             });
         }).rejects.toThrow(Samsara.InternalServerError);
@@ -1955,7 +1955,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getTrailerStatsSnapshot({
+            return await client.betaApis.getTrailerStatsSnapshot({
                 types: "types",
             });
         }).rejects.toThrow(Samsara.NotImplementedError);
@@ -1980,7 +1980,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getTrailerStatsSnapshot({
+            return await client.betaApis.getTrailerStatsSnapshot({
                 types: "types",
             });
         }).rejects.toThrow(Samsara.BadGatewayError);
@@ -2005,7 +2005,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getTrailerStatsSnapshot({
+            return await client.betaApis.getTrailerStatsSnapshot({
                 types: "types",
             });
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
@@ -2030,7 +2030,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getTrailerStatsSnapshot({
+            return await client.betaApis.getTrailerStatsSnapshot({
                 types: "types",
             });
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
@@ -2113,7 +2113,7 @@ describe("BetaApIsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.betaApIs.getTrailerStatsFeed({
+        const response = await client.betaApis.getTrailerStatsFeed({
             types: "types",
         });
         expect(response).toEqual({
@@ -2301,7 +2301,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getTrailerStatsFeed({
+            return await client.betaApis.getTrailerStatsFeed({
                 types: "types",
             });
         }).rejects.toThrow(Samsara.UnauthorizedError);
@@ -2326,7 +2326,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getTrailerStatsFeed({
+            return await client.betaApis.getTrailerStatsFeed({
                 types: "types",
             });
         }).rejects.toThrow(Samsara.NotFoundError);
@@ -2351,7 +2351,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getTrailerStatsFeed({
+            return await client.betaApis.getTrailerStatsFeed({
                 types: "types",
             });
         }).rejects.toThrow(Samsara.MethodNotAllowedError);
@@ -2376,7 +2376,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getTrailerStatsFeed({
+            return await client.betaApis.getTrailerStatsFeed({
                 types: "types",
             });
         }).rejects.toThrow(Samsara.TooManyRequestsError);
@@ -2401,7 +2401,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getTrailerStatsFeed({
+            return await client.betaApis.getTrailerStatsFeed({
                 types: "types",
             });
         }).rejects.toThrow(Samsara.InternalServerError);
@@ -2426,7 +2426,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getTrailerStatsFeed({
+            return await client.betaApis.getTrailerStatsFeed({
                 types: "types",
             });
         }).rejects.toThrow(Samsara.NotImplementedError);
@@ -2451,7 +2451,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getTrailerStatsFeed({
+            return await client.betaApis.getTrailerStatsFeed({
                 types: "types",
             });
         }).rejects.toThrow(Samsara.BadGatewayError);
@@ -2476,7 +2476,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getTrailerStatsFeed({
+            return await client.betaApis.getTrailerStatsFeed({
                 types: "types",
             });
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
@@ -2501,7 +2501,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getTrailerStatsFeed({
+            return await client.betaApis.getTrailerStatsFeed({
                 types: "types",
             });
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
@@ -2584,7 +2584,7 @@ describe("BetaApIsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.betaApIs.getTrailerStatsHistory({
+        const response = await client.betaApis.getTrailerStatsHistory({
             startTime: "startTime",
             endTime: "endTime",
             types: "types",
@@ -2774,7 +2774,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getTrailerStatsHistory({
+            return await client.betaApis.getTrailerStatsHistory({
                 startTime: "startTime",
                 endTime: "endTime",
                 types: "types",
@@ -2801,7 +2801,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getTrailerStatsHistory({
+            return await client.betaApis.getTrailerStatsHistory({
                 startTime: "startTime",
                 endTime: "endTime",
                 types: "types",
@@ -2828,7 +2828,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getTrailerStatsHistory({
+            return await client.betaApis.getTrailerStatsHistory({
                 startTime: "startTime",
                 endTime: "endTime",
                 types: "types",
@@ -2855,7 +2855,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getTrailerStatsHistory({
+            return await client.betaApis.getTrailerStatsHistory({
                 startTime: "startTime",
                 endTime: "endTime",
                 types: "types",
@@ -2882,7 +2882,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getTrailerStatsHistory({
+            return await client.betaApis.getTrailerStatsHistory({
                 startTime: "startTime",
                 endTime: "endTime",
                 types: "types",
@@ -2909,7 +2909,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getTrailerStatsHistory({
+            return await client.betaApis.getTrailerStatsHistory({
                 startTime: "startTime",
                 endTime: "endTime",
                 types: "types",
@@ -2936,7 +2936,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getTrailerStatsHistory({
+            return await client.betaApis.getTrailerStatsHistory({
                 startTime: "startTime",
                 endTime: "endTime",
                 types: "types",
@@ -2963,7 +2963,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getTrailerStatsHistory({
+            return await client.betaApis.getTrailerStatsHistory({
                 startTime: "startTime",
                 endTime: "endTime",
                 types: "types",
@@ -2990,7 +2990,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getTrailerStatsHistory({
+            return await client.betaApis.getTrailerStatsHistory({
                 startTime: "startTime",
                 endTime: "endTime",
                 types: "types",
@@ -3016,7 +3016,7 @@ describe("BetaApIsClient", () => {
             .statusCode(200)
             .build();
 
-        const response = await client.betaApIs.updateEngineImmobilizerState(1000000, {
+        const response = await client.betaApis.updateEngineImmobilizerState(1000000, {
             relayStates: [
                 {
                     id: "relay1",
@@ -3052,7 +3052,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.updateEngineImmobilizerState(1000000, {
+            return await client.betaApis.updateEngineImmobilizerState(1000000, {
                 relayStates: [
                     {
                         id: "relay1",
@@ -3092,7 +3092,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.updateEngineImmobilizerState(1000000, {
+            return await client.betaApis.updateEngineImmobilizerState(1000000, {
                 relayStates: [
                     {
                         id: "relay1",
@@ -3132,7 +3132,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.updateEngineImmobilizerState(1000000, {
+            return await client.betaApis.updateEngineImmobilizerState(1000000, {
                 relayStates: [
                     {
                         id: "relay1",
@@ -3172,7 +3172,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.updateEngineImmobilizerState(1000000, {
+            return await client.betaApis.updateEngineImmobilizerState(1000000, {
                 relayStates: [
                     {
                         id: "relay1",
@@ -3212,7 +3212,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.updateEngineImmobilizerState(1000000, {
+            return await client.betaApis.updateEngineImmobilizerState(1000000, {
                 relayStates: [
                     {
                         id: "relay1",
@@ -3252,7 +3252,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.updateEngineImmobilizerState(1000000, {
+            return await client.betaApis.updateEngineImmobilizerState(1000000, {
                 relayStates: [
                     {
                         id: "relay1",
@@ -3292,7 +3292,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.updateEngineImmobilizerState(1000000, {
+            return await client.betaApis.updateEngineImmobilizerState(1000000, {
                 relayStates: [
                     {
                         id: "relay1",
@@ -3332,7 +3332,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.updateEngineImmobilizerState(1000000, {
+            return await client.betaApis.updateEngineImmobilizerState(1000000, {
                 relayStates: [
                     {
                         id: "relay1",
@@ -3372,7 +3372,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.updateEngineImmobilizerState(1000000, {
+            return await client.betaApis.updateEngineImmobilizerState(1000000, {
                 relayStates: [
                     {
                         id: "relay1",
@@ -3433,7 +3433,7 @@ describe("BetaApIsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.betaApIs.getJobs();
+        const response = await client.betaApis.getJobs();
         expect(response).toEqual({
             data: [
                 {
@@ -3497,7 +3497,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getJobs();
+            return await client.betaApis.getJobs();
         }).rejects.toThrow(Samsara.UnauthorizedError);
     });
 
@@ -3520,7 +3520,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getJobs();
+            return await client.betaApis.getJobs();
         }).rejects.toThrow(Samsara.NotFoundError);
     });
 
@@ -3543,7 +3543,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getJobs();
+            return await client.betaApis.getJobs();
         }).rejects.toThrow(Samsara.MethodNotAllowedError);
     });
 
@@ -3566,7 +3566,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getJobs();
+            return await client.betaApis.getJobs();
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
@@ -3589,7 +3589,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getJobs();
+            return await client.betaApis.getJobs();
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
@@ -3612,7 +3612,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getJobs();
+            return await client.betaApis.getJobs();
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
@@ -3635,7 +3635,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getJobs();
+            return await client.betaApis.getJobs();
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
@@ -3658,7 +3658,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getJobs();
+            return await client.betaApis.getJobs();
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
@@ -3681,7 +3681,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getJobs();
+            return await client.betaApis.getJobs();
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 
@@ -3736,7 +3736,7 @@ describe("BetaApIsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.betaApIs.createJob({
+        const response = await client.betaApis.createJob({
             job: {
                 endDate: "2019-06-13T19:08:25Z",
                 id: "8d218e6c-7a16-4f9f-90f7-cc1d93b9e596",
@@ -3802,7 +3802,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.createJob({
+            return await client.betaApis.createJob({
                 job: {
                     endDate: "endDate",
                     id: "id",
@@ -3833,7 +3833,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.createJob({
+            return await client.betaApis.createJob({
                 job: {
                     endDate: "endDate",
                     id: "id",
@@ -3864,7 +3864,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.createJob({
+            return await client.betaApis.createJob({
                 job: {
                     endDate: "endDate",
                     id: "id",
@@ -3895,7 +3895,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.createJob({
+            return await client.betaApis.createJob({
                 job: {
                     endDate: "endDate",
                     id: "id",
@@ -3926,7 +3926,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.createJob({
+            return await client.betaApis.createJob({
                 job: {
                     endDate: "endDate",
                     id: "id",
@@ -3957,7 +3957,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.createJob({
+            return await client.betaApis.createJob({
                 job: {
                     endDate: "endDate",
                     id: "id",
@@ -3988,7 +3988,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.createJob({
+            return await client.betaApis.createJob({
                 job: {
                     endDate: "endDate",
                     id: "id",
@@ -4019,7 +4019,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.createJob({
+            return await client.betaApis.createJob({
                 job: {
                     endDate: "endDate",
                     id: "id",
@@ -4050,7 +4050,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.createJob({
+            return await client.betaApis.createJob({
                 job: {
                     endDate: "endDate",
                     id: "id",
@@ -4079,7 +4079,7 @@ describe("BetaApIsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.betaApIs.deleteJob({
+        const response = await client.betaApis.deleteJob({
             id: "id",
         });
         expect(response).toEqual({
@@ -4107,7 +4107,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.deleteJob({
+            return await client.betaApis.deleteJob({
                 id: "id",
             });
         }).rejects.toThrow(Samsara.UnauthorizedError);
@@ -4132,7 +4132,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.deleteJob({
+            return await client.betaApis.deleteJob({
                 id: "id",
             });
         }).rejects.toThrow(Samsara.NotFoundError);
@@ -4157,7 +4157,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.deleteJob({
+            return await client.betaApis.deleteJob({
                 id: "id",
             });
         }).rejects.toThrow(Samsara.MethodNotAllowedError);
@@ -4182,7 +4182,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.deleteJob({
+            return await client.betaApis.deleteJob({
                 id: "id",
             });
         }).rejects.toThrow(Samsara.TooManyRequestsError);
@@ -4207,7 +4207,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.deleteJob({
+            return await client.betaApis.deleteJob({
                 id: "id",
             });
         }).rejects.toThrow(Samsara.InternalServerError);
@@ -4232,7 +4232,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.deleteJob({
+            return await client.betaApis.deleteJob({
                 id: "id",
             });
         }).rejects.toThrow(Samsara.NotImplementedError);
@@ -4257,7 +4257,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.deleteJob({
+            return await client.betaApis.deleteJob({
                 id: "id",
             });
         }).rejects.toThrow(Samsara.BadGatewayError);
@@ -4282,7 +4282,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.deleteJob({
+            return await client.betaApis.deleteJob({
                 id: "id",
             });
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
@@ -4307,7 +4307,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.deleteJob({
+            return await client.betaApis.deleteJob({
                 id: "id",
             });
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
@@ -4357,7 +4357,7 @@ describe("BetaApIsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.betaApIs.patchJob({
+        const response = await client.betaApis.patchJob({
             id: "id",
             job: {},
         });
@@ -4419,7 +4419,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.patchJob({
+            return await client.betaApis.patchJob({
                 id: "id",
                 job: {},
             });
@@ -4446,7 +4446,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.patchJob({
+            return await client.betaApis.patchJob({
                 id: "id",
                 job: {},
             });
@@ -4473,7 +4473,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.patchJob({
+            return await client.betaApis.patchJob({
                 id: "id",
                 job: {},
             });
@@ -4500,7 +4500,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.patchJob({
+            return await client.betaApis.patchJob({
                 id: "id",
                 job: {},
             });
@@ -4527,7 +4527,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.patchJob({
+            return await client.betaApis.patchJob({
                 id: "id",
                 job: {},
             });
@@ -4554,7 +4554,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.patchJob({
+            return await client.betaApis.patchJob({
                 id: "id",
                 job: {},
             });
@@ -4581,7 +4581,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.patchJob({
+            return await client.betaApis.patchJob({
                 id: "id",
                 job: {},
             });
@@ -4608,7 +4608,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.patchJob({
+            return await client.betaApis.patchJob({
                 id: "id",
                 job: {},
             });
@@ -4635,7 +4635,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.patchJob({
+            return await client.betaApis.patchJob({
                 id: "id",
                 job: {},
             });
@@ -4676,7 +4676,7 @@ describe("BetaApIsClient", () => {
         };
         server.mockEndpoint().get("/detections/stream").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
-        const response = await client.betaApIs.getDetections({
+        const response = await client.betaApis.getDetections({
             startTime: "startTime",
         });
         expect(response).toEqual({
@@ -4737,7 +4737,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/detections/stream").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getDetections({
+            return await client.betaApis.getDetections({
                 startTime: "startTime",
             });
         }).rejects.toThrow(Samsara.UnauthorizedError);
@@ -4756,7 +4756,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/detections/stream").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getDetections({
+            return await client.betaApis.getDetections({
                 startTime: "startTime",
             });
         }).rejects.toThrow(Samsara.NotFoundError);
@@ -4775,7 +4775,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/detections/stream").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getDetections({
+            return await client.betaApis.getDetections({
                 startTime: "startTime",
             });
         }).rejects.toThrow(Samsara.MethodNotAllowedError);
@@ -4794,7 +4794,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/detections/stream").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getDetections({
+            return await client.betaApis.getDetections({
                 startTime: "startTime",
             });
         }).rejects.toThrow(Samsara.TooManyRequestsError);
@@ -4813,7 +4813,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/detections/stream").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getDetections({
+            return await client.betaApis.getDetections({
                 startTime: "startTime",
             });
         }).rejects.toThrow(Samsara.InternalServerError);
@@ -4832,7 +4832,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/detections/stream").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getDetections({
+            return await client.betaApis.getDetections({
                 startTime: "startTime",
             });
         }).rejects.toThrow(Samsara.NotImplementedError);
@@ -4851,7 +4851,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/detections/stream").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getDetections({
+            return await client.betaApis.getDetections({
                 startTime: "startTime",
             });
         }).rejects.toThrow(Samsara.BadGatewayError);
@@ -4870,7 +4870,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/detections/stream").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getDetections({
+            return await client.betaApis.getDetections({
                 startTime: "startTime",
             });
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
@@ -4889,7 +4889,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/detections/stream").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getDetections({
+            return await client.betaApis.getDetections({
                 startTime: "startTime",
             });
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
@@ -4920,7 +4920,7 @@ describe("BetaApIsClient", () => {
         };
         server.mockEndpoint().get("/devices").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
-        const response = await client.betaApIs.getDevices();
+        const response = await client.betaApis.getDevices();
         expect(response).toEqual({
             data: [
                 {
@@ -4968,7 +4968,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/devices").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getDevices();
+            return await client.betaApis.getDevices();
         }).rejects.toThrow(Samsara.UnauthorizedError);
     });
 
@@ -4985,7 +4985,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/devices").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getDevices();
+            return await client.betaApis.getDevices();
         }).rejects.toThrow(Samsara.NotFoundError);
     });
 
@@ -5002,7 +5002,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/devices").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getDevices();
+            return await client.betaApis.getDevices();
         }).rejects.toThrow(Samsara.MethodNotAllowedError);
     });
 
@@ -5019,7 +5019,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/devices").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getDevices();
+            return await client.betaApis.getDevices();
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
@@ -5036,7 +5036,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/devices").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getDevices();
+            return await client.betaApis.getDevices();
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
@@ -5053,7 +5053,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/devices").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getDevices();
+            return await client.betaApis.getDevices();
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
@@ -5070,7 +5070,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/devices").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getDevices();
+            return await client.betaApis.getDevices();
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
@@ -5087,7 +5087,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/devices").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getDevices();
+            return await client.betaApis.getDevices();
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
@@ -5104,7 +5104,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/devices").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getDevices();
+            return await client.betaApis.getDevices();
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 
@@ -5136,7 +5136,7 @@ describe("BetaApIsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.betaApIs.getEngineImmobilizerStates({
+        const response = await client.betaApis.getEngineImmobilizerStates({
             vehicleIds: "vehicleIds",
             startTime: "startTime",
         });
@@ -5180,7 +5180,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getEngineImmobilizerStates({
+            return await client.betaApis.getEngineImmobilizerStates({
                 vehicleIds: "vehicleIds",
                 startTime: "startTime",
             });
@@ -5206,7 +5206,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getEngineImmobilizerStates({
+            return await client.betaApis.getEngineImmobilizerStates({
                 vehicleIds: "vehicleIds",
                 startTime: "startTime",
             });
@@ -5232,7 +5232,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getEngineImmobilizerStates({
+            return await client.betaApis.getEngineImmobilizerStates({
                 vehicleIds: "vehicleIds",
                 startTime: "startTime",
             });
@@ -5258,7 +5258,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getEngineImmobilizerStates({
+            return await client.betaApis.getEngineImmobilizerStates({
                 vehicleIds: "vehicleIds",
                 startTime: "startTime",
             });
@@ -5284,7 +5284,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getEngineImmobilizerStates({
+            return await client.betaApis.getEngineImmobilizerStates({
                 vehicleIds: "vehicleIds",
                 startTime: "startTime",
             });
@@ -5310,7 +5310,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getEngineImmobilizerStates({
+            return await client.betaApis.getEngineImmobilizerStates({
                 vehicleIds: "vehicleIds",
                 startTime: "startTime",
             });
@@ -5336,7 +5336,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getEngineImmobilizerStates({
+            return await client.betaApis.getEngineImmobilizerStates({
                 vehicleIds: "vehicleIds",
                 startTime: "startTime",
             });
@@ -5362,7 +5362,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getEngineImmobilizerStates({
+            return await client.betaApis.getEngineImmobilizerStates({
                 vehicleIds: "vehicleIds",
                 startTime: "startTime",
             });
@@ -5388,7 +5388,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getEngineImmobilizerStates({
+            return await client.betaApis.getEngineImmobilizerStates({
                 vehicleIds: "vehicleIds",
                 startTime: "startTime",
             });
@@ -5414,7 +5414,7 @@ describe("BetaApIsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.betaApIs.startFunctionRun("name", {
+        const response = await client.betaApis.startFunctionRun("name", {
             paramsOverride: {},
         });
         expect(response).toEqual({
@@ -5444,7 +5444,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.startFunctionRun("name", {
+            return await client.betaApis.startFunctionRun("name", {
                 paramsOverride: {},
             });
         }).rejects.toThrow(Samsara.UnauthorizedError);
@@ -5470,7 +5470,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.startFunctionRun("name", {
+            return await client.betaApis.startFunctionRun("name", {
                 paramsOverride: {},
             });
         }).rejects.toThrow(Samsara.NotFoundError);
@@ -5496,7 +5496,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.startFunctionRun("name", {
+            return await client.betaApis.startFunctionRun("name", {
                 paramsOverride: {},
             });
         }).rejects.toThrow(Samsara.MethodNotAllowedError);
@@ -5522,7 +5522,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.startFunctionRun("name", {
+            return await client.betaApis.startFunctionRun("name", {
                 paramsOverride: {},
             });
         }).rejects.toThrow(Samsara.TooManyRequestsError);
@@ -5548,7 +5548,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.startFunctionRun("name", {
+            return await client.betaApis.startFunctionRun("name", {
                 paramsOverride: {},
             });
         }).rejects.toThrow(Samsara.InternalServerError);
@@ -5574,7 +5574,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.startFunctionRun("name", {
+            return await client.betaApis.startFunctionRun("name", {
                 paramsOverride: {},
             });
         }).rejects.toThrow(Samsara.NotImplementedError);
@@ -5600,7 +5600,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.startFunctionRun("name", {
+            return await client.betaApis.startFunctionRun("name", {
                 paramsOverride: {},
             });
         }).rejects.toThrow(Samsara.BadGatewayError);
@@ -5626,7 +5626,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.startFunctionRun("name", {
+            return await client.betaApis.startFunctionRun("name", {
                 paramsOverride: {},
             });
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
@@ -5652,7 +5652,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.startFunctionRun("name", {
+            return await client.betaApis.startFunctionRun("name", {
                 paramsOverride: {},
             });
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
@@ -5690,7 +5690,7 @@ describe("BetaApIsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.betaApIs.updateShippingDocs({
+        const response = await client.betaApis.updateShippingDocs({
             hosDate: "hosDate",
             driverID: "driverID",
             shippingDocs: "ShippingID1, ShippingID2",
@@ -5731,7 +5731,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.updateShippingDocs({
+            return await client.betaApis.updateShippingDocs({
                 hosDate: "hosDate",
                 driverID: "driverID",
                 shippingDocs: "shippingDocs",
@@ -5759,7 +5759,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.updateShippingDocs({
+            return await client.betaApis.updateShippingDocs({
                 hosDate: "hosDate",
                 driverID: "driverID",
                 shippingDocs: "shippingDocs",
@@ -5787,7 +5787,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.updateShippingDocs({
+            return await client.betaApis.updateShippingDocs({
                 hosDate: "hosDate",
                 driverID: "driverID",
                 shippingDocs: "shippingDocs",
@@ -5815,7 +5815,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.updateShippingDocs({
+            return await client.betaApis.updateShippingDocs({
                 hosDate: "hosDate",
                 driverID: "driverID",
                 shippingDocs: "shippingDocs",
@@ -5843,7 +5843,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.updateShippingDocs({
+            return await client.betaApis.updateShippingDocs({
                 hosDate: "hosDate",
                 driverID: "driverID",
                 shippingDocs: "shippingDocs",
@@ -5871,7 +5871,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.updateShippingDocs({
+            return await client.betaApis.updateShippingDocs({
                 hosDate: "hosDate",
                 driverID: "driverID",
                 shippingDocs: "shippingDocs",
@@ -5899,7 +5899,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.updateShippingDocs({
+            return await client.betaApis.updateShippingDocs({
                 hosDate: "hosDate",
                 driverID: "driverID",
                 shippingDocs: "shippingDocs",
@@ -5927,7 +5927,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.updateShippingDocs({
+            return await client.betaApis.updateShippingDocs({
                 hosDate: "hosDate",
                 driverID: "driverID",
                 shippingDocs: "shippingDocs",
@@ -5955,7 +5955,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.updateShippingDocs({
+            return await client.betaApis.updateShippingDocs({
                 hosDate: "hosDate",
                 driverID: "driverID",
                 shippingDocs: "shippingDocs",
@@ -5993,7 +5993,7 @@ describe("BetaApIsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.betaApIs.listHubCustomProperties({
+        const response = await client.betaApis.listHubCustomProperties({
             hubId: "hubId",
         });
         expect(response).toEqual({
@@ -6033,7 +6033,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.listHubCustomProperties({
+            return await client.betaApis.listHubCustomProperties({
                 hubId: "hubId",
             });
         }).rejects.toThrow(Samsara.UnauthorizedError);
@@ -6058,7 +6058,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.listHubCustomProperties({
+            return await client.betaApis.listHubCustomProperties({
                 hubId: "hubId",
             });
         }).rejects.toThrow(Samsara.NotFoundError);
@@ -6083,7 +6083,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.listHubCustomProperties({
+            return await client.betaApis.listHubCustomProperties({
                 hubId: "hubId",
             });
         }).rejects.toThrow(Samsara.MethodNotAllowedError);
@@ -6108,7 +6108,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.listHubCustomProperties({
+            return await client.betaApis.listHubCustomProperties({
                 hubId: "hubId",
             });
         }).rejects.toThrow(Samsara.TooManyRequestsError);
@@ -6133,7 +6133,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.listHubCustomProperties({
+            return await client.betaApis.listHubCustomProperties({
                 hubId: "hubId",
             });
         }).rejects.toThrow(Samsara.InternalServerError);
@@ -6158,7 +6158,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.listHubCustomProperties({
+            return await client.betaApis.listHubCustomProperties({
                 hubId: "hubId",
             });
         }).rejects.toThrow(Samsara.NotImplementedError);
@@ -6183,7 +6183,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.listHubCustomProperties({
+            return await client.betaApis.listHubCustomProperties({
                 hubId: "hubId",
             });
         }).rejects.toThrow(Samsara.BadGatewayError);
@@ -6208,7 +6208,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.listHubCustomProperties({
+            return await client.betaApis.listHubCustomProperties({
                 hubId: "hubId",
             });
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
@@ -6233,7 +6233,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.listHubCustomProperties({
+            return await client.betaApis.listHubCustomProperties({
                 hubId: "hubId",
             });
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
@@ -6305,7 +6305,7 @@ describe("BetaApIsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.betaApIs.createPlanOrders({
+        const response = await client.betaApis.createPlanOrders({
             data: [
                 {
                     customerOrderId: "ORDER-2024-001",
@@ -6392,7 +6392,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.createPlanOrders({
+            return await client.betaApis.createPlanOrders({
                 data: [
                     {
                         customerOrderId: "customerOrderId",
@@ -6434,7 +6434,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.createPlanOrders({
+            return await client.betaApis.createPlanOrders({
                 data: [
                     {
                         customerOrderId: "customerOrderId",
@@ -6476,7 +6476,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.createPlanOrders({
+            return await client.betaApis.createPlanOrders({
                 data: [
                     {
                         customerOrderId: "customerOrderId",
@@ -6518,7 +6518,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.createPlanOrders({
+            return await client.betaApis.createPlanOrders({
                 data: [
                     {
                         customerOrderId: "customerOrderId",
@@ -6560,7 +6560,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.createPlanOrders({
+            return await client.betaApis.createPlanOrders({
                 data: [
                     {
                         customerOrderId: "customerOrderId",
@@ -6602,7 +6602,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.createPlanOrders({
+            return await client.betaApis.createPlanOrders({
                 data: [
                     {
                         customerOrderId: "customerOrderId",
@@ -6644,7 +6644,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.createPlanOrders({
+            return await client.betaApis.createPlanOrders({
                 data: [
                     {
                         customerOrderId: "customerOrderId",
@@ -6686,7 +6686,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.createPlanOrders({
+            return await client.betaApis.createPlanOrders({
                 data: [
                     {
                         customerOrderId: "customerOrderId",
@@ -6728,7 +6728,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.createPlanOrders({
+            return await client.betaApis.createPlanOrders({
                 data: [
                     {
                         customerOrderId: "customerOrderId",
@@ -6964,7 +6964,7 @@ describe("BetaApIsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.betaApIs.getQualificationRecords();
+        const response = await client.betaApis.getQualificationRecords();
         expect(response).toEqual({
             data: [
                 {
@@ -7332,7 +7332,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getQualificationRecords();
+            return await client.betaApis.getQualificationRecords();
         }).rejects.toThrow(Samsara.UnauthorizedError);
     });
 
@@ -7355,7 +7355,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getQualificationRecords();
+            return await client.betaApis.getQualificationRecords();
         }).rejects.toThrow(Samsara.NotFoundError);
     });
 
@@ -7378,7 +7378,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getQualificationRecords();
+            return await client.betaApis.getQualificationRecords();
         }).rejects.toThrow(Samsara.MethodNotAllowedError);
     });
 
@@ -7401,7 +7401,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getQualificationRecords();
+            return await client.betaApis.getQualificationRecords();
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
@@ -7424,7 +7424,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getQualificationRecords();
+            return await client.betaApis.getQualificationRecords();
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
@@ -7447,7 +7447,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getQualificationRecords();
+            return await client.betaApis.getQualificationRecords();
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
@@ -7470,7 +7470,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getQualificationRecords();
+            return await client.betaApis.getQualificationRecords();
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
@@ -7493,7 +7493,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getQualificationRecords();
+            return await client.betaApis.getQualificationRecords();
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
@@ -7516,7 +7516,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getQualificationRecords();
+            return await client.betaApis.getQualificationRecords();
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 
@@ -7639,7 +7639,7 @@ describe("BetaApIsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.betaApIs.postQualificationRecord({
+        const response = await client.betaApis.postQualificationRecord({
             fields: [
                 {
                     id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
@@ -7814,7 +7814,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.postQualificationRecord({
+            return await client.betaApis.postQualificationRecord({
                 issueDate: "2024-01-15T09:30:00Z",
                 owner: {
                     entityType: "worker",
@@ -7851,7 +7851,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.postQualificationRecord({
+            return await client.betaApis.postQualificationRecord({
                 issueDate: "2024-01-15T09:30:00Z",
                 owner: {
                     entityType: "worker",
@@ -7888,7 +7888,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.postQualificationRecord({
+            return await client.betaApis.postQualificationRecord({
                 issueDate: "2024-01-15T09:30:00Z",
                 owner: {
                     entityType: "worker",
@@ -7925,7 +7925,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.postQualificationRecord({
+            return await client.betaApis.postQualificationRecord({
                 issueDate: "2024-01-15T09:30:00Z",
                 owner: {
                     entityType: "worker",
@@ -7962,7 +7962,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.postQualificationRecord({
+            return await client.betaApis.postQualificationRecord({
                 issueDate: "2024-01-15T09:30:00Z",
                 owner: {
                     entityType: "worker",
@@ -7999,7 +7999,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.postQualificationRecord({
+            return await client.betaApis.postQualificationRecord({
                 issueDate: "2024-01-15T09:30:00Z",
                 owner: {
                     entityType: "worker",
@@ -8036,7 +8036,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.postQualificationRecord({
+            return await client.betaApis.postQualificationRecord({
                 issueDate: "2024-01-15T09:30:00Z",
                 owner: {
                     entityType: "worker",
@@ -8073,7 +8073,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.postQualificationRecord({
+            return await client.betaApis.postQualificationRecord({
                 issueDate: "2024-01-15T09:30:00Z",
                 owner: {
                     entityType: "worker",
@@ -8110,7 +8110,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.postQualificationRecord({
+            return await client.betaApis.postQualificationRecord({
                 issueDate: "2024-01-15T09:30:00Z",
                 owner: {
                     entityType: "worker",
@@ -8141,7 +8141,7 @@ describe("BetaApIsClient", () => {
             .statusCode(200)
             .build();
 
-        const response = await client.betaApIs.deleteQualificationRecord({
+        const response = await client.betaApis.deleteQualificationRecord({
             id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
         });
         expect(response).toEqual(undefined);
@@ -8167,7 +8167,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.deleteQualificationRecord({
+            return await client.betaApis.deleteQualificationRecord({
                 id: "id",
             });
         }).rejects.toThrow(Samsara.UnauthorizedError);
@@ -8193,7 +8193,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.deleteQualificationRecord({
+            return await client.betaApis.deleteQualificationRecord({
                 id: "id",
             });
         }).rejects.toThrow(Samsara.NotFoundError);
@@ -8219,7 +8219,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.deleteQualificationRecord({
+            return await client.betaApis.deleteQualificationRecord({
                 id: "id",
             });
         }).rejects.toThrow(Samsara.MethodNotAllowedError);
@@ -8245,7 +8245,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.deleteQualificationRecord({
+            return await client.betaApis.deleteQualificationRecord({
                 id: "id",
             });
         }).rejects.toThrow(Samsara.TooManyRequestsError);
@@ -8271,7 +8271,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.deleteQualificationRecord({
+            return await client.betaApis.deleteQualificationRecord({
                 id: "id",
             });
         }).rejects.toThrow(Samsara.InternalServerError);
@@ -8297,7 +8297,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.deleteQualificationRecord({
+            return await client.betaApis.deleteQualificationRecord({
                 id: "id",
             });
         }).rejects.toThrow(Samsara.NotImplementedError);
@@ -8323,7 +8323,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.deleteQualificationRecord({
+            return await client.betaApis.deleteQualificationRecord({
                 id: "id",
             });
         }).rejects.toThrow(Samsara.BadGatewayError);
@@ -8349,7 +8349,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.deleteQualificationRecord({
+            return await client.betaApis.deleteQualificationRecord({
                 id: "id",
             });
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
@@ -8375,7 +8375,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.deleteQualificationRecord({
+            return await client.betaApis.deleteQualificationRecord({
                 id: "id",
             });
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
@@ -8499,7 +8499,7 @@ describe("BetaApIsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.betaApIs.patchQualificationRecord({
+        const response = await client.betaApis.patchQualificationRecord({
             id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
             issueDate: "2025-08-27T10:20:30Z",
             owner: {
@@ -8662,7 +8662,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.patchQualificationRecord({
+            return await client.betaApis.patchQualificationRecord({
                 id: "id",
             });
         }).rejects.toThrow(Samsara.UnauthorizedError);
@@ -8688,7 +8688,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.patchQualificationRecord({
+            return await client.betaApis.patchQualificationRecord({
                 id: "id",
             });
         }).rejects.toThrow(Samsara.NotFoundError);
@@ -8714,7 +8714,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.patchQualificationRecord({
+            return await client.betaApis.patchQualificationRecord({
                 id: "id",
             });
         }).rejects.toThrow(Samsara.MethodNotAllowedError);
@@ -8740,7 +8740,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.patchQualificationRecord({
+            return await client.betaApis.patchQualificationRecord({
                 id: "id",
             });
         }).rejects.toThrow(Samsara.TooManyRequestsError);
@@ -8766,7 +8766,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.patchQualificationRecord({
+            return await client.betaApis.patchQualificationRecord({
                 id: "id",
             });
         }).rejects.toThrow(Samsara.InternalServerError);
@@ -8792,7 +8792,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.patchQualificationRecord({
+            return await client.betaApis.patchQualificationRecord({
                 id: "id",
             });
         }).rejects.toThrow(Samsara.NotImplementedError);
@@ -8818,7 +8818,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.patchQualificationRecord({
+            return await client.betaApis.patchQualificationRecord({
                 id: "id",
             });
         }).rejects.toThrow(Samsara.BadGatewayError);
@@ -8844,7 +8844,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.patchQualificationRecord({
+            return await client.betaApis.patchQualificationRecord({
                 id: "id",
             });
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
@@ -8870,7 +8870,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.patchQualificationRecord({
+            return await client.betaApis.patchQualificationRecord({
                 id: "id",
             });
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
@@ -8894,7 +8894,7 @@ describe("BetaApIsClient", () => {
             .statusCode(200)
             .build();
 
-        const response = await client.betaApIs.archiveQualificationRecord({
+        const response = await client.betaApis.archiveQualificationRecord({
             id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
         });
         expect(response).toEqual(undefined);
@@ -8920,7 +8920,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.archiveQualificationRecord({
+            return await client.betaApis.archiveQualificationRecord({
                 id: "id",
             });
         }).rejects.toThrow(Samsara.UnauthorizedError);
@@ -8946,7 +8946,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.archiveQualificationRecord({
+            return await client.betaApis.archiveQualificationRecord({
                 id: "id",
             });
         }).rejects.toThrow(Samsara.NotFoundError);
@@ -8972,7 +8972,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.archiveQualificationRecord({
+            return await client.betaApis.archiveQualificationRecord({
                 id: "id",
             });
         }).rejects.toThrow(Samsara.MethodNotAllowedError);
@@ -8998,7 +8998,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.archiveQualificationRecord({
+            return await client.betaApis.archiveQualificationRecord({
                 id: "id",
             });
         }).rejects.toThrow(Samsara.TooManyRequestsError);
@@ -9024,7 +9024,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.archiveQualificationRecord({
+            return await client.betaApis.archiveQualificationRecord({
                 id: "id",
             });
         }).rejects.toThrow(Samsara.InternalServerError);
@@ -9050,7 +9050,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.archiveQualificationRecord({
+            return await client.betaApis.archiveQualificationRecord({
                 id: "id",
             });
         }).rejects.toThrow(Samsara.NotImplementedError);
@@ -9076,7 +9076,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.archiveQualificationRecord({
+            return await client.betaApis.archiveQualificationRecord({
                 id: "id",
             });
         }).rejects.toThrow(Samsara.BadGatewayError);
@@ -9102,7 +9102,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.archiveQualificationRecord({
+            return await client.betaApis.archiveQualificationRecord({
                 id: "id",
             });
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
@@ -9128,7 +9128,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.archiveQualificationRecord({
+            return await client.betaApis.archiveQualificationRecord({
                 id: "id",
             });
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
@@ -9253,7 +9253,7 @@ describe("BetaApIsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.betaApIs.getQualificationRecordsStream({
+        const response = await client.betaApis.getQualificationRecordsStream({
             entityType: "worker",
             startTime: "2024-01-15T09:30:00Z",
         });
@@ -9417,7 +9417,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getQualificationRecordsStream({
+            return await client.betaApis.getQualificationRecordsStream({
                 entityType: "worker",
                 startTime: "2024-01-15T09:30:00Z",
             });
@@ -9443,7 +9443,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getQualificationRecordsStream({
+            return await client.betaApis.getQualificationRecordsStream({
                 entityType: "worker",
                 startTime: "2024-01-15T09:30:00Z",
             });
@@ -9469,7 +9469,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getQualificationRecordsStream({
+            return await client.betaApis.getQualificationRecordsStream({
                 entityType: "worker",
                 startTime: "2024-01-15T09:30:00Z",
             });
@@ -9495,7 +9495,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getQualificationRecordsStream({
+            return await client.betaApis.getQualificationRecordsStream({
                 entityType: "worker",
                 startTime: "2024-01-15T09:30:00Z",
             });
@@ -9521,7 +9521,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getQualificationRecordsStream({
+            return await client.betaApis.getQualificationRecordsStream({
                 entityType: "worker",
                 startTime: "2024-01-15T09:30:00Z",
             });
@@ -9547,7 +9547,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getQualificationRecordsStream({
+            return await client.betaApis.getQualificationRecordsStream({
                 entityType: "worker",
                 startTime: "2024-01-15T09:30:00Z",
             });
@@ -9573,7 +9573,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getQualificationRecordsStream({
+            return await client.betaApis.getQualificationRecordsStream({
                 entityType: "worker",
                 startTime: "2024-01-15T09:30:00Z",
             });
@@ -9599,7 +9599,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getQualificationRecordsStream({
+            return await client.betaApis.getQualificationRecordsStream({
                 entityType: "worker",
                 startTime: "2024-01-15T09:30:00Z",
             });
@@ -9625,7 +9625,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getQualificationRecordsStream({
+            return await client.betaApis.getQualificationRecordsStream({
                 entityType: "worker",
                 startTime: "2024-01-15T09:30:00Z",
             });
@@ -9650,7 +9650,7 @@ describe("BetaApIsClient", () => {
             .statusCode(200)
             .build();
 
-        const response = await client.betaApIs.unarchiveQualificationRecord({
+        const response = await client.betaApis.unarchiveQualificationRecord({
             id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
         });
         expect(response).toEqual(undefined);
@@ -9676,7 +9676,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.unarchiveQualificationRecord({
+            return await client.betaApis.unarchiveQualificationRecord({
                 id: "id",
             });
         }).rejects.toThrow(Samsara.UnauthorizedError);
@@ -9702,7 +9702,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.unarchiveQualificationRecord({
+            return await client.betaApis.unarchiveQualificationRecord({
                 id: "id",
             });
         }).rejects.toThrow(Samsara.NotFoundError);
@@ -9728,7 +9728,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.unarchiveQualificationRecord({
+            return await client.betaApis.unarchiveQualificationRecord({
                 id: "id",
             });
         }).rejects.toThrow(Samsara.MethodNotAllowedError);
@@ -9754,7 +9754,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.unarchiveQualificationRecord({
+            return await client.betaApis.unarchiveQualificationRecord({
                 id: "id",
             });
         }).rejects.toThrow(Samsara.TooManyRequestsError);
@@ -9780,7 +9780,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.unarchiveQualificationRecord({
+            return await client.betaApis.unarchiveQualificationRecord({
                 id: "id",
             });
         }).rejects.toThrow(Samsara.InternalServerError);
@@ -9806,7 +9806,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.unarchiveQualificationRecord({
+            return await client.betaApis.unarchiveQualificationRecord({
                 id: "id",
             });
         }).rejects.toThrow(Samsara.NotImplementedError);
@@ -9832,7 +9832,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.unarchiveQualificationRecord({
+            return await client.betaApis.unarchiveQualificationRecord({
                 id: "id",
             });
         }).rejects.toThrow(Samsara.BadGatewayError);
@@ -9858,7 +9858,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.unarchiveQualificationRecord({
+            return await client.betaApis.unarchiveQualificationRecord({
                 id: "id",
             });
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
@@ -9884,7 +9884,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.unarchiveQualificationRecord({
+            return await client.betaApis.unarchiveQualificationRecord({
                 id: "id",
             });
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
@@ -9967,7 +9967,7 @@ describe("BetaApIsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.betaApIs.getQualificationTypes({
+        const response = await client.betaApis.getQualificationTypes({
             entityType: "worker",
         });
         expect(response).toEqual({
@@ -10060,7 +10060,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getQualificationTypes({
+            return await client.betaApis.getQualificationTypes({
                 entityType: "worker",
             });
         }).rejects.toThrow(Samsara.UnauthorizedError);
@@ -10085,7 +10085,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getQualificationTypes({
+            return await client.betaApis.getQualificationTypes({
                 entityType: "worker",
             });
         }).rejects.toThrow(Samsara.NotFoundError);
@@ -10110,7 +10110,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getQualificationTypes({
+            return await client.betaApis.getQualificationTypes({
                 entityType: "worker",
             });
         }).rejects.toThrow(Samsara.MethodNotAllowedError);
@@ -10135,7 +10135,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getQualificationTypes({
+            return await client.betaApis.getQualificationTypes({
                 entityType: "worker",
             });
         }).rejects.toThrow(Samsara.TooManyRequestsError);
@@ -10160,7 +10160,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getQualificationTypes({
+            return await client.betaApis.getQualificationTypes({
                 entityType: "worker",
             });
         }).rejects.toThrow(Samsara.InternalServerError);
@@ -10185,7 +10185,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getQualificationTypes({
+            return await client.betaApis.getQualificationTypes({
                 entityType: "worker",
             });
         }).rejects.toThrow(Samsara.NotImplementedError);
@@ -10210,7 +10210,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getQualificationTypes({
+            return await client.betaApis.getQualificationTypes({
                 entityType: "worker",
             });
         }).rejects.toThrow(Samsara.BadGatewayError);
@@ -10235,7 +10235,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getQualificationTypes({
+            return await client.betaApis.getQualificationTypes({
                 entityType: "worker",
             });
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
@@ -10260,7 +10260,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getQualificationTypes({
+            return await client.betaApis.getQualificationTypes({
                 entityType: "worker",
             });
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
@@ -10288,7 +10288,7 @@ describe("BetaApIsClient", () => {
 
         server.mockEndpoint().post("/readings").jsonBody(rawRequestBody).respondWith().statusCode(200).build();
 
-        const response = await client.betaApIs.postReadings({
+        const response = await client.betaApis.postReadings({
             data: [
                 {
                     entityId: "123451234512345",
@@ -10341,7 +10341,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.postReadings({
+            return await client.betaApis.postReadings({
                 data: [
                     {
                         entityId: "entityId",
@@ -10407,7 +10407,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.postReadings({
+            return await client.betaApis.postReadings({
                 data: [
                     {
                         entityId: "entityId",
@@ -10473,7 +10473,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.postReadings({
+            return await client.betaApis.postReadings({
                 data: [
                     {
                         entityId: "entityId",
@@ -10539,7 +10539,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.postReadings({
+            return await client.betaApis.postReadings({
                 data: [
                     {
                         entityId: "entityId",
@@ -10605,7 +10605,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.postReadings({
+            return await client.betaApis.postReadings({
                 data: [
                     {
                         entityId: "entityId",
@@ -10671,7 +10671,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.postReadings({
+            return await client.betaApis.postReadings({
                 data: [
                     {
                         entityId: "entityId",
@@ -10737,7 +10737,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.postReadings({
+            return await client.betaApis.postReadings({
                 data: [
                     {
                         entityId: "entityId",
@@ -10803,7 +10803,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.postReadings({
+            return await client.betaApis.postReadings({
                 data: [
                     {
                         entityId: "entityId",
@@ -10869,7 +10869,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.postReadings({
+            return await client.betaApis.postReadings({
                 data: [
                     {
                         entityId: "entityId",
@@ -10930,7 +10930,7 @@ describe("BetaApIsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.betaApIs.listReadingsDefinitions();
+        const response = await client.betaApis.listReadingsDefinitions();
         expect(response).toEqual({
             data: [
                 {
@@ -10977,7 +10977,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.listReadingsDefinitions();
+            return await client.betaApis.listReadingsDefinitions();
         }).rejects.toThrow(Samsara.UnauthorizedError);
     });
 
@@ -11000,7 +11000,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.listReadingsDefinitions();
+            return await client.betaApis.listReadingsDefinitions();
         }).rejects.toThrow(Samsara.NotFoundError);
     });
 
@@ -11023,7 +11023,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.listReadingsDefinitions();
+            return await client.betaApis.listReadingsDefinitions();
         }).rejects.toThrow(Samsara.MethodNotAllowedError);
     });
 
@@ -11046,7 +11046,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.listReadingsDefinitions();
+            return await client.betaApis.listReadingsDefinitions();
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
@@ -11069,7 +11069,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.listReadingsDefinitions();
+            return await client.betaApis.listReadingsDefinitions();
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
@@ -11092,7 +11092,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.listReadingsDefinitions();
+            return await client.betaApis.listReadingsDefinitions();
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
@@ -11115,7 +11115,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.listReadingsDefinitions();
+            return await client.betaApis.listReadingsDefinitions();
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
@@ -11138,7 +11138,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.listReadingsDefinitions();
+            return await client.betaApis.listReadingsDefinitions();
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
@@ -11161,7 +11161,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.listReadingsDefinitions();
+            return await client.betaApis.listReadingsDefinitions();
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 
@@ -11187,7 +11187,7 @@ describe("BetaApIsClient", () => {
         };
         server.mockEndpoint().get("/readings/history").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
-        const response = await client.betaApIs.getReadingsHistory({
+        const response = await client.betaApis.getReadingsHistory({
             readingId: "readingId",
             entityType: "entityType",
         });
@@ -11224,7 +11224,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/readings/history").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getReadingsHistory({
+            return await client.betaApis.getReadingsHistory({
                 readingId: "readingId",
                 entityType: "entityType",
             });
@@ -11244,7 +11244,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/readings/history").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getReadingsHistory({
+            return await client.betaApis.getReadingsHistory({
                 readingId: "readingId",
                 entityType: "entityType",
             });
@@ -11264,7 +11264,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/readings/history").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getReadingsHistory({
+            return await client.betaApis.getReadingsHistory({
                 readingId: "readingId",
                 entityType: "entityType",
             });
@@ -11284,7 +11284,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/readings/history").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getReadingsHistory({
+            return await client.betaApis.getReadingsHistory({
                 readingId: "readingId",
                 entityType: "entityType",
             });
@@ -11304,7 +11304,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/readings/history").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getReadingsHistory({
+            return await client.betaApis.getReadingsHistory({
                 readingId: "readingId",
                 entityType: "entityType",
             });
@@ -11324,7 +11324,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/readings/history").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getReadingsHistory({
+            return await client.betaApis.getReadingsHistory({
                 readingId: "readingId",
                 entityType: "entityType",
             });
@@ -11344,7 +11344,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/readings/history").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getReadingsHistory({
+            return await client.betaApis.getReadingsHistory({
                 readingId: "readingId",
                 entityType: "entityType",
             });
@@ -11364,7 +11364,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/readings/history").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getReadingsHistory({
+            return await client.betaApis.getReadingsHistory({
                 readingId: "readingId",
                 entityType: "entityType",
             });
@@ -11384,7 +11384,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/readings/history").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getReadingsHistory({
+            return await client.betaApis.getReadingsHistory({
                 readingId: "readingId",
                 entityType: "entityType",
             });
@@ -11414,7 +11414,7 @@ describe("BetaApIsClient", () => {
         };
         server.mockEndpoint().get("/readings/latest").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
-        const response = await client.betaApIs.getReadingsSnapshot({
+        const response = await client.betaApis.getReadingsSnapshot({
             readingIds: "readingIds",
             entityType: "entityType",
         });
@@ -11452,7 +11452,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/readings/latest").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getReadingsSnapshot({
+            return await client.betaApis.getReadingsSnapshot({
                 readingIds: "readingIds",
                 entityType: "entityType",
             });
@@ -11472,7 +11472,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/readings/latest").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getReadingsSnapshot({
+            return await client.betaApis.getReadingsSnapshot({
                 readingIds: "readingIds",
                 entityType: "entityType",
             });
@@ -11492,7 +11492,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/readings/latest").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getReadingsSnapshot({
+            return await client.betaApis.getReadingsSnapshot({
                 readingIds: "readingIds",
                 entityType: "entityType",
             });
@@ -11512,7 +11512,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/readings/latest").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getReadingsSnapshot({
+            return await client.betaApis.getReadingsSnapshot({
                 readingIds: "readingIds",
                 entityType: "entityType",
             });
@@ -11532,7 +11532,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/readings/latest").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getReadingsSnapshot({
+            return await client.betaApis.getReadingsSnapshot({
                 readingIds: "readingIds",
                 entityType: "entityType",
             });
@@ -11552,7 +11552,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/readings/latest").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getReadingsSnapshot({
+            return await client.betaApis.getReadingsSnapshot({
                 readingIds: "readingIds",
                 entityType: "entityType",
             });
@@ -11572,7 +11572,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/readings/latest").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getReadingsSnapshot({
+            return await client.betaApis.getReadingsSnapshot({
                 readingIds: "readingIds",
                 entityType: "entityType",
             });
@@ -11592,7 +11592,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/readings/latest").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getReadingsSnapshot({
+            return await client.betaApis.getReadingsSnapshot({
                 readingIds: "readingIds",
                 entityType: "entityType",
             });
@@ -11612,7 +11612,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/readings/latest").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getReadingsSnapshot({
+            return await client.betaApis.getReadingsSnapshot({
                 readingIds: "readingIds",
                 entityType: "entityType",
             });
@@ -11644,7 +11644,7 @@ describe("BetaApIsClient", () => {
         };
         server.mockEndpoint().get("/reports/configs").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
-        const response = await client.betaApIs.getReportConfigs();
+        const response = await client.betaApis.getReportConfigs();
         expect(response).toEqual({
             data: [
                 {
@@ -11685,7 +11685,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/reports/configs").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getReportConfigs();
+            return await client.betaApis.getReportConfigs();
         }).rejects.toThrow(Samsara.UnauthorizedError);
     });
 
@@ -11702,7 +11702,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/reports/configs").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getReportConfigs();
+            return await client.betaApis.getReportConfigs();
         }).rejects.toThrow(Samsara.NotFoundError);
     });
 
@@ -11719,7 +11719,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/reports/configs").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getReportConfigs();
+            return await client.betaApis.getReportConfigs();
         }).rejects.toThrow(Samsara.MethodNotAllowedError);
     });
 
@@ -11736,7 +11736,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/reports/configs").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getReportConfigs();
+            return await client.betaApis.getReportConfigs();
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
@@ -11753,7 +11753,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/reports/configs").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getReportConfigs();
+            return await client.betaApis.getReportConfigs();
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
@@ -11770,7 +11770,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/reports/configs").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getReportConfigs();
+            return await client.betaApis.getReportConfigs();
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
@@ -11787,7 +11787,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/reports/configs").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getReportConfigs();
+            return await client.betaApis.getReportConfigs();
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
@@ -11804,7 +11804,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/reports/configs").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getReportConfigs();
+            return await client.betaApis.getReportConfigs();
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
@@ -11821,7 +11821,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/reports/configs").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getReportConfigs();
+            return await client.betaApis.getReportConfigs();
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 
@@ -11848,7 +11848,7 @@ describe("BetaApIsClient", () => {
         };
         server.mockEndpoint().get("/reports/datasets").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
-        const response = await client.betaApIs.getDatasets();
+        const response = await client.betaApis.getDatasets();
         expect(response).toEqual({
             data: [
                 {
@@ -11885,7 +11885,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/reports/datasets").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getDatasets();
+            return await client.betaApis.getDatasets();
         }).rejects.toThrow(Samsara.UnauthorizedError);
     });
 
@@ -11902,7 +11902,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/reports/datasets").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getDatasets();
+            return await client.betaApis.getDatasets();
         }).rejects.toThrow(Samsara.NotFoundError);
     });
 
@@ -11919,7 +11919,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/reports/datasets").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getDatasets();
+            return await client.betaApis.getDatasets();
         }).rejects.toThrow(Samsara.MethodNotAllowedError);
     });
 
@@ -11936,7 +11936,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/reports/datasets").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getDatasets();
+            return await client.betaApis.getDatasets();
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
@@ -11953,7 +11953,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/reports/datasets").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getDatasets();
+            return await client.betaApis.getDatasets();
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
@@ -11970,7 +11970,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/reports/datasets").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getDatasets();
+            return await client.betaApis.getDatasets();
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
@@ -11987,7 +11987,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/reports/datasets").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getDatasets();
+            return await client.betaApis.getDatasets();
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
@@ -12004,7 +12004,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/reports/datasets").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getDatasets();
+            return await client.betaApis.getDatasets();
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
@@ -12021,7 +12021,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/reports/datasets").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getDatasets();
+            return await client.betaApis.getDatasets();
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 
@@ -12047,7 +12047,7 @@ describe("BetaApIsClient", () => {
         };
         server.mockEndpoint().get("/reports/runs").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
-        const response = await client.betaApIs.getReportRuns();
+        const response = await client.betaApis.getReportRuns();
         expect(response).toEqual({
             data: [
                 {
@@ -12077,7 +12077,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/reports/runs").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getReportRuns();
+            return await client.betaApis.getReportRuns();
         }).rejects.toThrow(Samsara.UnauthorizedError);
     });
 
@@ -12094,7 +12094,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/reports/runs").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getReportRuns();
+            return await client.betaApis.getReportRuns();
         }).rejects.toThrow(Samsara.NotFoundError);
     });
 
@@ -12111,7 +12111,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/reports/runs").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getReportRuns();
+            return await client.betaApis.getReportRuns();
         }).rejects.toThrow(Samsara.MethodNotAllowedError);
     });
 
@@ -12128,7 +12128,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/reports/runs").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getReportRuns();
+            return await client.betaApis.getReportRuns();
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
@@ -12145,7 +12145,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/reports/runs").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getReportRuns();
+            return await client.betaApis.getReportRuns();
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
@@ -12162,7 +12162,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/reports/runs").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getReportRuns();
+            return await client.betaApis.getReportRuns();
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
@@ -12179,7 +12179,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/reports/runs").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getReportRuns();
+            return await client.betaApis.getReportRuns();
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
@@ -12196,7 +12196,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/reports/runs").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getReportRuns();
+            return await client.betaApis.getReportRuns();
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
@@ -12213,7 +12213,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/reports/runs").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getReportRuns();
+            return await client.betaApis.getReportRuns();
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 
@@ -12243,7 +12243,7 @@ describe("BetaApIsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.betaApIs.createReportRun({
+        const response = await client.betaApis.createReportRun({
             reportConfig: {},
         });
         expect(response).toEqual({
@@ -12276,7 +12276,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.createReportRun({
+            return await client.betaApis.createReportRun({
                 reportConfig: {},
             });
         }).rejects.toThrow(Samsara.UnauthorizedError);
@@ -12302,7 +12302,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.createReportRun({
+            return await client.betaApis.createReportRun({
                 reportConfig: {},
             });
         }).rejects.toThrow(Samsara.NotFoundError);
@@ -12328,7 +12328,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.createReportRun({
+            return await client.betaApis.createReportRun({
                 reportConfig: {},
             });
         }).rejects.toThrow(Samsara.MethodNotAllowedError);
@@ -12354,7 +12354,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.createReportRun({
+            return await client.betaApis.createReportRun({
                 reportConfig: {},
             });
         }).rejects.toThrow(Samsara.TooManyRequestsError);
@@ -12380,7 +12380,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.createReportRun({
+            return await client.betaApis.createReportRun({
                 reportConfig: {},
             });
         }).rejects.toThrow(Samsara.InternalServerError);
@@ -12406,7 +12406,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.createReportRun({
+            return await client.betaApis.createReportRun({
                 reportConfig: {},
             });
         }).rejects.toThrow(Samsara.NotImplementedError);
@@ -12432,7 +12432,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.createReportRun({
+            return await client.betaApis.createReportRun({
                 reportConfig: {},
             });
         }).rejects.toThrow(Samsara.BadGatewayError);
@@ -12458,7 +12458,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.createReportRun({
+            return await client.betaApis.createReportRun({
                 reportConfig: {},
             });
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
@@ -12484,7 +12484,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.createReportRun({
+            return await client.betaApis.createReportRun({
                 reportConfig: {},
             });
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
@@ -12514,7 +12514,7 @@ describe("BetaApIsClient", () => {
         };
         server.mockEndpoint().get("/reports/runs/data").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
-        const response = await client.betaApIs.getReportRunData({
+        const response = await client.betaApis.getReportRunData({
             id: "id",
         });
         expect(response).toEqual({
@@ -12599,7 +12599,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/reports/runs/data").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getReportRunData({
+            return await client.betaApis.getReportRunData({
                 id: "id",
             });
         }).rejects.toThrow(Samsara.UnauthorizedError);
@@ -12618,7 +12618,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/reports/runs/data").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getReportRunData({
+            return await client.betaApis.getReportRunData({
                 id: "id",
             });
         }).rejects.toThrow(Samsara.NotFoundError);
@@ -12637,7 +12637,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/reports/runs/data").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getReportRunData({
+            return await client.betaApis.getReportRunData({
                 id: "id",
             });
         }).rejects.toThrow(Samsara.MethodNotAllowedError);
@@ -12656,7 +12656,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/reports/runs/data").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getReportRunData({
+            return await client.betaApis.getReportRunData({
                 id: "id",
             });
         }).rejects.toThrow(Samsara.TooManyRequestsError);
@@ -12675,7 +12675,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/reports/runs/data").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getReportRunData({
+            return await client.betaApis.getReportRunData({
                 id: "id",
             });
         }).rejects.toThrow(Samsara.InternalServerError);
@@ -12694,7 +12694,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/reports/runs/data").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getReportRunData({
+            return await client.betaApis.getReportRunData({
                 id: "id",
             });
         }).rejects.toThrow(Samsara.NotImplementedError);
@@ -12713,7 +12713,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/reports/runs/data").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getReportRunData({
+            return await client.betaApis.getReportRunData({
                 id: "id",
             });
         }).rejects.toThrow(Samsara.BadGatewayError);
@@ -12732,7 +12732,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/reports/runs/data").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getReportRunData({
+            return await client.betaApis.getReportRunData({
                 id: "id",
             });
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
@@ -12751,7 +12751,7 @@ describe("BetaApIsClient", () => {
         server.mockEndpoint().get("/reports/runs/data").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.betaApIs.getReportRunData({
+            return await client.betaApis.getReportRunData({
                 id: "id",
             });
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
@@ -12789,7 +12789,7 @@ describe("BetaApIsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.betaApIs.getDriverSafetyScores({
+        const response = await client.betaApis.getDriverSafetyScores({
             endTime: "endTime",
             startTime: "startTime",
         });
@@ -12842,7 +12842,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getDriverSafetyScores({
+            return await client.betaApis.getDriverSafetyScores({
                 endTime: "endTime",
                 startTime: "startTime",
             });
@@ -12868,7 +12868,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getDriverSafetyScores({
+            return await client.betaApis.getDriverSafetyScores({
                 endTime: "endTime",
                 startTime: "startTime",
             });
@@ -12894,7 +12894,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getDriverSafetyScores({
+            return await client.betaApis.getDriverSafetyScores({
                 endTime: "endTime",
                 startTime: "startTime",
             });
@@ -12920,7 +12920,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getDriverSafetyScores({
+            return await client.betaApis.getDriverSafetyScores({
                 endTime: "endTime",
                 startTime: "startTime",
             });
@@ -12946,7 +12946,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getDriverSafetyScores({
+            return await client.betaApis.getDriverSafetyScores({
                 endTime: "endTime",
                 startTime: "startTime",
             });
@@ -12972,7 +12972,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getDriverSafetyScores({
+            return await client.betaApis.getDriverSafetyScores({
                 endTime: "endTime",
                 startTime: "startTime",
             });
@@ -12998,7 +12998,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getDriverSafetyScores({
+            return await client.betaApis.getDriverSafetyScores({
                 endTime: "endTime",
                 startTime: "startTime",
             });
@@ -13024,7 +13024,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getDriverSafetyScores({
+            return await client.betaApis.getDriverSafetyScores({
                 endTime: "endTime",
                 startTime: "startTime",
             });
@@ -13050,7 +13050,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getDriverSafetyScores({
+            return await client.betaApis.getDriverSafetyScores({
                 endTime: "endTime",
                 startTime: "startTime",
             });
@@ -13111,7 +13111,7 @@ describe("BetaApIsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.betaApIs.getDriverSafetyScoreTrips({
+        const response = await client.betaApis.getDriverSafetyScoreTrips({
             endTime: "endTime",
             startTime: "startTime",
         });
@@ -13208,7 +13208,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getDriverSafetyScoreTrips({
+            return await client.betaApis.getDriverSafetyScoreTrips({
                 endTime: "endTime",
                 startTime: "startTime",
             });
@@ -13234,7 +13234,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getDriverSafetyScoreTrips({
+            return await client.betaApis.getDriverSafetyScoreTrips({
                 endTime: "endTime",
                 startTime: "startTime",
             });
@@ -13260,7 +13260,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getDriverSafetyScoreTrips({
+            return await client.betaApis.getDriverSafetyScoreTrips({
                 endTime: "endTime",
                 startTime: "startTime",
             });
@@ -13286,7 +13286,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getDriverSafetyScoreTrips({
+            return await client.betaApis.getDriverSafetyScoreTrips({
                 endTime: "endTime",
                 startTime: "startTime",
             });
@@ -13312,7 +13312,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getDriverSafetyScoreTrips({
+            return await client.betaApis.getDriverSafetyScoreTrips({
                 endTime: "endTime",
                 startTime: "startTime",
             });
@@ -13338,7 +13338,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getDriverSafetyScoreTrips({
+            return await client.betaApis.getDriverSafetyScoreTrips({
                 endTime: "endTime",
                 startTime: "startTime",
             });
@@ -13364,7 +13364,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getDriverSafetyScoreTrips({
+            return await client.betaApis.getDriverSafetyScoreTrips({
                 endTime: "endTime",
                 startTime: "startTime",
             });
@@ -13390,7 +13390,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getDriverSafetyScoreTrips({
+            return await client.betaApis.getDriverSafetyScoreTrips({
                 endTime: "endTime",
                 startTime: "startTime",
             });
@@ -13416,7 +13416,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getDriverSafetyScoreTrips({
+            return await client.betaApis.getDriverSafetyScoreTrips({
                 endTime: "endTime",
                 startTime: "startTime",
             });
@@ -13449,7 +13449,7 @@ describe("BetaApIsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.betaApIs.getTagGroupSafetyScores({
+        const response = await client.betaApis.getTagGroupSafetyScores({
             endTime: "endTime",
             startTime: "startTime",
             scoreType: "driver",
@@ -13496,7 +13496,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getTagGroupSafetyScores({
+            return await client.betaApis.getTagGroupSafetyScores({
                 endTime: "endTime",
                 startTime: "startTime",
                 scoreType: "driver",
@@ -13523,7 +13523,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getTagGroupSafetyScores({
+            return await client.betaApis.getTagGroupSafetyScores({
                 endTime: "endTime",
                 startTime: "startTime",
                 scoreType: "driver",
@@ -13550,7 +13550,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getTagGroupSafetyScores({
+            return await client.betaApis.getTagGroupSafetyScores({
                 endTime: "endTime",
                 startTime: "startTime",
                 scoreType: "driver",
@@ -13577,7 +13577,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getTagGroupSafetyScores({
+            return await client.betaApis.getTagGroupSafetyScores({
                 endTime: "endTime",
                 startTime: "startTime",
                 scoreType: "driver",
@@ -13604,7 +13604,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getTagGroupSafetyScores({
+            return await client.betaApis.getTagGroupSafetyScores({
                 endTime: "endTime",
                 startTime: "startTime",
                 scoreType: "driver",
@@ -13631,7 +13631,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getTagGroupSafetyScores({
+            return await client.betaApis.getTagGroupSafetyScores({
                 endTime: "endTime",
                 startTime: "startTime",
                 scoreType: "driver",
@@ -13658,7 +13658,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getTagGroupSafetyScores({
+            return await client.betaApis.getTagGroupSafetyScores({
                 endTime: "endTime",
                 startTime: "startTime",
                 scoreType: "driver",
@@ -13685,7 +13685,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getTagGroupSafetyScores({
+            return await client.betaApis.getTagGroupSafetyScores({
                 endTime: "endTime",
                 startTime: "startTime",
                 scoreType: "driver",
@@ -13712,7 +13712,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getTagGroupSafetyScores({
+            return await client.betaApis.getTagGroupSafetyScores({
                 endTime: "endTime",
                 startTime: "startTime",
                 scoreType: "driver",
@@ -13752,7 +13752,7 @@ describe("BetaApIsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.betaApIs.getTagSafetyScores({
+        const response = await client.betaApis.getTagSafetyScores({
             endTime: "endTime",
             startTime: "startTime",
             scoreType: "driver",
@@ -13806,7 +13806,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getTagSafetyScores({
+            return await client.betaApis.getTagSafetyScores({
                 endTime: "endTime",
                 startTime: "startTime",
                 scoreType: "driver",
@@ -13833,7 +13833,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getTagSafetyScores({
+            return await client.betaApis.getTagSafetyScores({
                 endTime: "endTime",
                 startTime: "startTime",
                 scoreType: "driver",
@@ -13860,7 +13860,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getTagSafetyScores({
+            return await client.betaApis.getTagSafetyScores({
                 endTime: "endTime",
                 startTime: "startTime",
                 scoreType: "driver",
@@ -13887,7 +13887,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getTagSafetyScores({
+            return await client.betaApis.getTagSafetyScores({
                 endTime: "endTime",
                 startTime: "startTime",
                 scoreType: "driver",
@@ -13914,7 +13914,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getTagSafetyScores({
+            return await client.betaApis.getTagSafetyScores({
                 endTime: "endTime",
                 startTime: "startTime",
                 scoreType: "driver",
@@ -13941,7 +13941,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getTagSafetyScores({
+            return await client.betaApis.getTagSafetyScores({
                 endTime: "endTime",
                 startTime: "startTime",
                 scoreType: "driver",
@@ -13968,7 +13968,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getTagSafetyScores({
+            return await client.betaApis.getTagSafetyScores({
                 endTime: "endTime",
                 startTime: "startTime",
                 scoreType: "driver",
@@ -13995,7 +13995,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getTagSafetyScores({
+            return await client.betaApis.getTagSafetyScores({
                 endTime: "endTime",
                 startTime: "startTime",
                 scoreType: "driver",
@@ -14022,7 +14022,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getTagSafetyScores({
+            return await client.betaApis.getTagSafetyScores({
                 endTime: "endTime",
                 startTime: "startTime",
                 scoreType: "driver",
@@ -14062,7 +14062,7 @@ describe("BetaApIsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.betaApIs.getVehicleSafetyScores({
+        const response = await client.betaApis.getVehicleSafetyScores({
             endTime: "endTime",
             startTime: "startTime",
         });
@@ -14115,7 +14115,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getVehicleSafetyScores({
+            return await client.betaApis.getVehicleSafetyScores({
                 endTime: "endTime",
                 startTime: "startTime",
             });
@@ -14141,7 +14141,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getVehicleSafetyScores({
+            return await client.betaApis.getVehicleSafetyScores({
                 endTime: "endTime",
                 startTime: "startTime",
             });
@@ -14167,7 +14167,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getVehicleSafetyScores({
+            return await client.betaApis.getVehicleSafetyScores({
                 endTime: "endTime",
                 startTime: "startTime",
             });
@@ -14193,7 +14193,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getVehicleSafetyScores({
+            return await client.betaApis.getVehicleSafetyScores({
                 endTime: "endTime",
                 startTime: "startTime",
             });
@@ -14219,7 +14219,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getVehicleSafetyScores({
+            return await client.betaApis.getVehicleSafetyScores({
                 endTime: "endTime",
                 startTime: "startTime",
             });
@@ -14245,7 +14245,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getVehicleSafetyScores({
+            return await client.betaApis.getVehicleSafetyScores({
                 endTime: "endTime",
                 startTime: "startTime",
             });
@@ -14271,7 +14271,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getVehicleSafetyScores({
+            return await client.betaApis.getVehicleSafetyScores({
                 endTime: "endTime",
                 startTime: "startTime",
             });
@@ -14297,7 +14297,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getVehicleSafetyScores({
+            return await client.betaApis.getVehicleSafetyScores({
                 endTime: "endTime",
                 startTime: "startTime",
             });
@@ -14323,7 +14323,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getVehicleSafetyScores({
+            return await client.betaApis.getVehicleSafetyScores({
                 endTime: "endTime",
                 startTime: "startTime",
             });
@@ -14384,7 +14384,7 @@ describe("BetaApIsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.betaApIs.getVehicleSafetyScoreTrips({
+        const response = await client.betaApis.getVehicleSafetyScoreTrips({
             endTime: "endTime",
             startTime: "startTime",
         });
@@ -14481,7 +14481,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getVehicleSafetyScoreTrips({
+            return await client.betaApis.getVehicleSafetyScoreTrips({
                 endTime: "endTime",
                 startTime: "startTime",
             });
@@ -14507,7 +14507,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getVehicleSafetyScoreTrips({
+            return await client.betaApis.getVehicleSafetyScoreTrips({
                 endTime: "endTime",
                 startTime: "startTime",
             });
@@ -14533,7 +14533,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getVehicleSafetyScoreTrips({
+            return await client.betaApis.getVehicleSafetyScoreTrips({
                 endTime: "endTime",
                 startTime: "startTime",
             });
@@ -14559,7 +14559,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getVehicleSafetyScoreTrips({
+            return await client.betaApis.getVehicleSafetyScoreTrips({
                 endTime: "endTime",
                 startTime: "startTime",
             });
@@ -14585,7 +14585,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getVehicleSafetyScoreTrips({
+            return await client.betaApis.getVehicleSafetyScoreTrips({
                 endTime: "endTime",
                 startTime: "startTime",
             });
@@ -14611,7 +14611,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getVehicleSafetyScoreTrips({
+            return await client.betaApis.getVehicleSafetyScoreTrips({
                 endTime: "endTime",
                 startTime: "startTime",
             });
@@ -14637,7 +14637,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getVehicleSafetyScoreTrips({
+            return await client.betaApis.getVehicleSafetyScoreTrips({
                 endTime: "endTime",
                 startTime: "startTime",
             });
@@ -14663,7 +14663,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getVehicleSafetyScoreTrips({
+            return await client.betaApis.getVehicleSafetyScoreTrips({
                 endTime: "endTime",
                 startTime: "startTime",
             });
@@ -14689,7 +14689,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.getVehicleSafetyScoreTrips({
+            return await client.betaApis.getVehicleSafetyScoreTrips({
                 endTime: "endTime",
                 startTime: "startTime",
             });

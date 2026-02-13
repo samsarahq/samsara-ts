@@ -8,6 +8,6 @@ import type * as Samsara from "../index.js";
 export interface VehicleStatsIdlingDurationMillisecondsWithDecoration {
     decorations?: Samsara.VehicleStatsDecorations;
     time: Samsara.Time;
-    /** The cumulative idling duration in milliseconds. Cumulative values always increase. For filtering of idling duration please use <a href="https://developers.samsara.com/reference/getvehicleidlingreports" target="_blank">the Idling Events API</a>. */
+    /** The cumulative idling duration in milliseconds. Cumulative values always increase. For filtering of idling duration please use <a href="/api-reference/fuel-and-efficiency/idling/get-idling-events" target="_blank">the Idling Events API</a>. */
     value: number;
 }

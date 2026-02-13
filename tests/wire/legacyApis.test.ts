@@ -4,7 +4,7 @@ import * as Samsara from "../../src/api/index";
 import { SamsaraClient } from "../../src/Client";
 import { mockServerPool } from "../mock-server/MockServerPool";
 
-describe("LegacyApIsClient", () => {
+describe("LegacyApisClient", () => {
     test("getDvirDefects", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
@@ -44,7 +44,7 @@ describe("LegacyApIsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.legacyApIs.getDvirDefects({
+        const response = await client.legacyApis.getDvirDefects({
             startTime: "startTime",
             endTime: "endTime",
         });
@@ -121,7 +121,7 @@ describe("LegacyApIsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.legacyApIs.getDriversVehicleAssignments();
+        const response = await client.legacyApis.getDriversVehicleAssignments();
         expect(response).toEqual({
             data: [
                 {
@@ -171,7 +171,7 @@ describe("LegacyApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.legacyApIs.getDriversVehicleAssignments();
+            return await client.legacyApis.getDriversVehicleAssignments();
         }).rejects.toThrow(Samsara.UnauthorizedError);
     });
 
@@ -194,7 +194,7 @@ describe("LegacyApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.legacyApIs.getDriversVehicleAssignments();
+            return await client.legacyApis.getDriversVehicleAssignments();
         }).rejects.toThrow(Samsara.NotFoundError);
     });
 
@@ -217,7 +217,7 @@ describe("LegacyApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.legacyApIs.getDriversVehicleAssignments();
+            return await client.legacyApis.getDriversVehicleAssignments();
         }).rejects.toThrow(Samsara.MethodNotAllowedError);
     });
 
@@ -240,7 +240,7 @@ describe("LegacyApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.legacyApIs.getDriversVehicleAssignments();
+            return await client.legacyApis.getDriversVehicleAssignments();
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
@@ -263,7 +263,7 @@ describe("LegacyApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.legacyApIs.getDriversVehicleAssignments();
+            return await client.legacyApis.getDriversVehicleAssignments();
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
@@ -286,7 +286,7 @@ describe("LegacyApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.legacyApIs.getDriversVehicleAssignments();
+            return await client.legacyApis.getDriversVehicleAssignments();
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
@@ -309,7 +309,7 @@ describe("LegacyApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.legacyApIs.getDriversVehicleAssignments();
+            return await client.legacyApis.getDriversVehicleAssignments();
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
@@ -332,7 +332,7 @@ describe("LegacyApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.legacyApIs.getDriversVehicleAssignments();
+            return await client.legacyApis.getDriversVehicleAssignments();
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
@@ -355,7 +355,7 @@ describe("LegacyApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.legacyApIs.getDriversVehicleAssignments();
+            return await client.legacyApis.getDriversVehicleAssignments();
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 
@@ -426,7 +426,7 @@ describe("LegacyApIsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.legacyApIs.getDvirHistory({
+        const response = await client.legacyApis.getDvirHistory({
             startTime: "startTime",
             endTime: "endTime",
         });
@@ -534,7 +534,7 @@ describe("LegacyApIsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.legacyApIs.getVehicleIdlingReports({
+        const response = await client.legacyApis.getVehicleIdlingReports({
             startTime: "startTime",
             endTime: "endTime",
         });
@@ -585,7 +585,7 @@ describe("LegacyApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.legacyApIs.getVehicleIdlingReports({
+            return await client.legacyApis.getVehicleIdlingReports({
                 startTime: "startTime",
                 endTime: "endTime",
             });
@@ -611,7 +611,7 @@ describe("LegacyApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.legacyApIs.getVehicleIdlingReports({
+            return await client.legacyApis.getVehicleIdlingReports({
                 startTime: "startTime",
                 endTime: "endTime",
             });
@@ -637,7 +637,7 @@ describe("LegacyApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.legacyApIs.getVehicleIdlingReports({
+            return await client.legacyApis.getVehicleIdlingReports({
                 startTime: "startTime",
                 endTime: "endTime",
             });
@@ -663,7 +663,7 @@ describe("LegacyApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.legacyApIs.getVehicleIdlingReports({
+            return await client.legacyApis.getVehicleIdlingReports({
                 startTime: "startTime",
                 endTime: "endTime",
             });
@@ -689,7 +689,7 @@ describe("LegacyApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.legacyApIs.getVehicleIdlingReports({
+            return await client.legacyApis.getVehicleIdlingReports({
                 startTime: "startTime",
                 endTime: "endTime",
             });
@@ -715,7 +715,7 @@ describe("LegacyApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.legacyApIs.getVehicleIdlingReports({
+            return await client.legacyApis.getVehicleIdlingReports({
                 startTime: "startTime",
                 endTime: "endTime",
             });
@@ -741,7 +741,7 @@ describe("LegacyApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.legacyApIs.getVehicleIdlingReports({
+            return await client.legacyApis.getVehicleIdlingReports({
                 startTime: "startTime",
                 endTime: "endTime",
             });
@@ -767,7 +767,7 @@ describe("LegacyApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.legacyApIs.getVehicleIdlingReports({
+            return await client.legacyApis.getVehicleIdlingReports({
                 startTime: "startTime",
                 endTime: "endTime",
             });
@@ -793,7 +793,7 @@ describe("LegacyApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.legacyApIs.getVehicleIdlingReports({
+            return await client.legacyApis.getVehicleIdlingReports({
                 startTime: "startTime",
                 endTime: "endTime",
             });
@@ -842,7 +842,7 @@ describe("LegacyApIsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.legacyApIs.getSafetyEvents({
+        const response = await client.legacyApis.getSafetyEvents({
             startTime: "startTime",
             endTime: "endTime",
         });
@@ -919,7 +919,7 @@ describe("LegacyApIsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.legacyApIs.getSafetyActivityEventFeed();
+        const response = await client.legacyApis.getSafetyActivityEventFeed();
         expect(response).toEqual({
             data: [
                 {
@@ -958,7 +958,7 @@ describe("LegacyApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.legacyApIs.getSafetyActivityEventFeed();
+            return await client.legacyApis.getSafetyActivityEventFeed();
         }).rejects.toThrow(Samsara.UnauthorizedError);
     });
 
@@ -981,7 +981,7 @@ describe("LegacyApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.legacyApIs.getSafetyActivityEventFeed();
+            return await client.legacyApis.getSafetyActivityEventFeed();
         }).rejects.toThrow(Samsara.NotFoundError);
     });
 
@@ -1004,7 +1004,7 @@ describe("LegacyApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.legacyApIs.getSafetyActivityEventFeed();
+            return await client.legacyApis.getSafetyActivityEventFeed();
         }).rejects.toThrow(Samsara.MethodNotAllowedError);
     });
 
@@ -1027,7 +1027,7 @@ describe("LegacyApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.legacyApIs.getSafetyActivityEventFeed();
+            return await client.legacyApis.getSafetyActivityEventFeed();
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
@@ -1050,7 +1050,7 @@ describe("LegacyApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.legacyApIs.getSafetyActivityEventFeed();
+            return await client.legacyApis.getSafetyActivityEventFeed();
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
@@ -1073,7 +1073,7 @@ describe("LegacyApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.legacyApIs.getSafetyActivityEventFeed();
+            return await client.legacyApis.getSafetyActivityEventFeed();
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
@@ -1096,7 +1096,7 @@ describe("LegacyApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.legacyApIs.getSafetyActivityEventFeed();
+            return await client.legacyApis.getSafetyActivityEventFeed();
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
@@ -1119,7 +1119,7 @@ describe("LegacyApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.legacyApIs.getSafetyActivityEventFeed();
+            return await client.legacyApis.getSafetyActivityEventFeed();
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
@@ -1142,7 +1142,7 @@ describe("LegacyApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.legacyApIs.getSafetyActivityEventFeed();
+            return await client.legacyApis.getSafetyActivityEventFeed();
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 
@@ -1181,7 +1181,7 @@ describe("LegacyApIsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.legacyApIs.getVehiclesDriverAssignments();
+        const response = await client.legacyApis.getVehiclesDriverAssignments();
         expect(response).toEqual({
             data: [
                 {
@@ -1229,7 +1229,7 @@ describe("LegacyApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.legacyApIs.getVehiclesDriverAssignments();
+            return await client.legacyApis.getVehiclesDriverAssignments();
         }).rejects.toThrow(Samsara.UnauthorizedError);
     });
 
@@ -1252,7 +1252,7 @@ describe("LegacyApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.legacyApIs.getVehiclesDriverAssignments();
+            return await client.legacyApis.getVehiclesDriverAssignments();
         }).rejects.toThrow(Samsara.NotFoundError);
     });
 
@@ -1275,7 +1275,7 @@ describe("LegacyApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.legacyApIs.getVehiclesDriverAssignments();
+            return await client.legacyApis.getVehiclesDriverAssignments();
         }).rejects.toThrow(Samsara.MethodNotAllowedError);
     });
 
@@ -1298,7 +1298,7 @@ describe("LegacyApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.legacyApIs.getVehiclesDriverAssignments();
+            return await client.legacyApis.getVehiclesDriverAssignments();
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
@@ -1321,7 +1321,7 @@ describe("LegacyApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.legacyApIs.getVehiclesDriverAssignments();
+            return await client.legacyApis.getVehiclesDriverAssignments();
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
@@ -1344,7 +1344,7 @@ describe("LegacyApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.legacyApIs.getVehiclesDriverAssignments();
+            return await client.legacyApis.getVehiclesDriverAssignments();
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
@@ -1367,7 +1367,7 @@ describe("LegacyApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.legacyApIs.getVehiclesDriverAssignments();
+            return await client.legacyApis.getVehiclesDriverAssignments();
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
@@ -1390,7 +1390,7 @@ describe("LegacyApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.legacyApIs.getVehiclesDriverAssignments();
+            return await client.legacyApis.getVehiclesDriverAssignments();
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
@@ -1413,8 +1413,48 @@ describe("LegacyApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.legacyApIs.getVehiclesDriverAssignments();
+            return await client.legacyApis.getVehiclesDriverAssignments();
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("V1getAllAssets", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = {
+            assets: [
+                {
+                    assetSerialNumber: "SNTEST123",
+                    cable: { assetType: "Thermo King" },
+                    engineHours: 104,
+                    id: 1,
+                    name: "Trailer 123",
+                    vehicleId: 2,
+                },
+            ],
+        };
+        server.mockEndpoint().get("/v1/fleet/assets").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
+
+        const response = await client.legacyApis.v1GetAllAssets();
+        expect(response).toEqual({
+            assets: [
+                {
+                    assetSerialNumber: "SNTEST123",
+                    cable: {
+                        assetType: "Thermo King",
+                    },
+                    engineHours: 104,
+                    id: 1,
+                    name: "Trailer 123",
+                    vehicleId: 2,
+                },
+            ],
+        });
     });
 
     test("V1getVehicleHarshEvent", async () => {
@@ -1451,7 +1491,7 @@ describe("LegacyApIsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.legacyApIs.v1GetVehicleHarshEvent(1000000, {
+        const response = await client.legacyApis.v1GetVehicleHarshEvent(1000000, {
             timestamp: 1000000,
         });
         expect(response).toEqual({

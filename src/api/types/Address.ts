@@ -12,7 +12,7 @@ export interface Address {
     contacts?: Samsara.ContactTinyResponse[];
     /** The date and time this address was created in RFC 3339 format. */
     createdAtTime?: string;
-    /** The [external IDs](https://developers.samsara.com/docs/external-ids) for the given object. */
+    /** The [external IDs](/docs/external-ids) for the given object. */
     externalIds?: Address.ExternalIds;
     /** The full street address for this address/geofence, as it might be recognized by Google Maps. */
     formattedAddress: string;
@@ -52,7 +52,7 @@ export namespace Address {
     }
 
     /**
-     * The [external IDs](https://developers.samsara.com/docs/external-ids) for the given object.
+     * The [external IDs](/docs/external-ids) for the given object.
      */
     export type ExternalIds = {};
 }

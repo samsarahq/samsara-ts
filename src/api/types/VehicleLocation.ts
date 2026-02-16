@@ -6,10 +6,10 @@ import type * as Samsara from "../index.js";
  * Vehicle location event.
  */
 export interface VehicleLocation {
-    heading?: Samsara.VehicleLocationHeading;
+    heading?: Samsara.VehicleLocationHeading | undefined;
     latitude: Samsara.VehicleLocationLatitude;
     longitude: Samsara.VehicleLocationLongitude;
-    reverseGeo?: Samsara.ReverseGeo;
-    speed?: Samsara.VehicleLocationSpeed;
+    reverseGeo?: Samsara.ReverseGeo | undefined;
+    speed?: Samsara.VehicleLocationSpeed | undefined;
     time: Samsara.Time;
 }

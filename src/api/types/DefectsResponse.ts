@@ -6,6 +6,6 @@ import type * as Samsara from "../index.js";
  * A list of defects.
  */
 export interface DefectsResponse {
-    data?: Samsara.Defect[];
-    pagination?: Samsara.PaginationResponse;
+    data?: Samsara.Defect[] | undefined;
+    pagination?: Samsara.PaginationResponse | undefined;
 }

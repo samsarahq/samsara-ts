@@ -7,7 +7,7 @@ import type * as Samsara from "../index.js";
  */
 export interface SpeedingIntervalLocationResponseResponseBody {
     /** Radial accuracy of gps location in meters. This will only return if strong GPS is not available. */
-    accuracyMeters?: number;
+    accuracyMeters?: number | undefined;
     address: Samsara.AddressResponseResponseBody;
     /** Heading of the asset in degrees. May be 0 if the asset is not moving. */
     headingDegrees: number;

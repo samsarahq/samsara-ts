@@ -6,7 +6,7 @@ import type * as Samsara from "../index.js";
  * Vehicle intake manifold temperature reading.
  */
 export interface VehicleStatsIntakeManifoldTempMilliCWithDecoration {
-    decorations?: Samsara.VehicleStatsDecorations;
+    decorations?: Samsara.VehicleStatsDecorations | undefined;
     time: Samsara.Time;
     /** The intake manifold temperature reading in millidegree Celsius. */
     value: number;

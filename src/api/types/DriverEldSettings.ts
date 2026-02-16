@@ -6,5 +6,5 @@ import type * as Samsara from "../index.js";
  * The driver's ELD settings.
  */
 export interface DriverEldSettings {
-    rulesets?: Samsara.DriverEldRulesets;
+    rulesets?: Samsara.DriverEldRulesets | undefined;
 }

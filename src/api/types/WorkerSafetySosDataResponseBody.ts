@@ -6,11 +6,11 @@ import type * as Samsara from "../index.js";
  * Details specific to Worker Safety SOS.
  */
 export interface WorkerSafetySosDataResponseBody {
-    driver?: Samsara.AlertObjectDriverResponseBody;
-    location?: Samsara.EventLocationResponseBody;
+    driver?: Samsara.AlertObjectDriverResponseBody | undefined;
+    location?: Samsara.EventLocationResponseBody | undefined;
     /** The source of the SOS signal.  Valid values: `appSos`, `noResponseCheckIn`, `wearableSos`, `fallDetected` */
     sourceType: WorkerSafetySosDataResponseBody.SourceType;
-    vehicle?: Samsara.AlertObjectVehicleResponseBody;
+    vehicle?: Samsara.AlertObjectVehicleResponseBody | undefined;
     /** URL of the Worker Safety incident in the cloud dashboard. */
     workerSafetyIncidentUrl: string;
 }

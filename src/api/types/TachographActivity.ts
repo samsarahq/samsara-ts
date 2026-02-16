@@ -5,13 +5,13 @@
  */
 export interface TachographActivity {
     /** End time of state in RFC 3339 format. */
-    endTime?: string;
+    endTime?: string | undefined;
     /** A flag indicating whether the activity was manually entered by the driver. If this is `true`, the state cannot be "UNKNOWN" */
-    isManualEntry?: boolean;
+    isManualEntry?: boolean | undefined;
     /** Start time of state in RFC 3339 format. */
-    startTime?: string;
+    startTime?: string | undefined;
     /** Tachograph activity state. Valid values: `BREAK/REST`, `WORK`, `AVAILABILITY`, `DRIVING`, `UNKNOWN`. */
-    state?: TachographActivity.State;
+    state?: TachographActivity.State | undefined;
 }
 
 export namespace TachographActivity {

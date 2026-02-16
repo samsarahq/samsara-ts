@@ -5,9 +5,9 @@
  */
 export interface GrossVehicleWeight {
     /** The unit of weight for the vehicle. */
-    unit?: GrossVehicleWeight.Unit;
+    unit?: GrossVehicleWeight.Unit | undefined;
     /** The weight value of the vehicle. */
-    weight?: number;
+    weight?: number | undefined;
 }
 
 export namespace GrossVehicleWeight {

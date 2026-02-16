@@ -5,5 +5,5 @@
  */
 export interface HosBreak {
     /** Time until the driver has a required break in milliseconds. */
-    timeUntilBreakDurationMs?: number;
+    timeUntilBreakDurationMs?: number | undefined;
 }

@@ -3,10 +3,13 @@
 /**
  * @example
  *     {
+ *         name: "name",
  *         paramsOverride: {}
  *     }
  */
 export interface FunctionsStartFunctionRunRequestBody {
+    /** The name of the Function to run. */
+    name: string;
     /** Parameter overrides for the Function execution. Can be an empty object but must be provided. */
     paramsOverride: FunctionsStartFunctionRunRequestBody.ParamsOverride;
 }

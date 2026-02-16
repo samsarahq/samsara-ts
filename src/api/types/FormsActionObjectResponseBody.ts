@@ -5,9 +5,9 @@
  */
 export interface FormsActionObjectResponseBody {
     /** Identifier of the followup question that will be shown if the condition is met. Only returned when the action type is `askFollowupQuestion`. */
-    fieldId?: string;
+    fieldId?: string | undefined;
     /** Identifier of the conditional section that will be shown if the condition is met. Only returned when the action type is `showSection`. */
-    sectionId?: string;
+    sectionId?: string | undefined;
     /** Type of action to take if corresponding condition is met.  Valid values: `askFollowupQuestion`, `showSection`, `requirePhoto`, `requireNote`, `createIssue` */
     type: FormsActionObjectResponseBody.Type;
 }

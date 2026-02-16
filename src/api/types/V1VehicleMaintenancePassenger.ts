@@ -6,7 +6,7 @@ import type * as Samsara from "../index.js";
  * Passenger vehicle data. Null if no data is available.
  */
 export interface V1VehicleMaintenancePassenger {
-    checkEngineLight?: Samsara.V1VehicleMaintenancePassengerCheckEngineLight;
+    checkEngineLight?: Samsara.V1VehicleMaintenancePassengerCheckEngineLight | undefined;
     /** Passenger vehicle DTCs. */
-    diagnosticTroubleCodes?: Samsara.V1VehicleMaintenancePassengerDiagnosticTroubleCodes[];
+    diagnosticTroubleCodes?: Samsara.V1VehicleMaintenancePassengerDiagnosticTroubleCodes[] | undefined;
 }

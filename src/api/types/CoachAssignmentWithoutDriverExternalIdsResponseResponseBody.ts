@@ -5,7 +5,7 @@
  */
 export interface CoachAssignmentWithoutDriverExternalIdsResponseResponseBody {
     /** Coach ID associated with coach assignment. Optional. Will be empty if no driver coach is assigned */
-    coachId?: string;
+    coachId?: string | undefined;
     /** Time coach assignment was created in UTC. Always returned. */
     createdAtTime: string;
     /** Unique user ID for the driver of the driver coach assignment */

@@ -282,7 +282,9 @@ describe("PreviewApIsClient", () => {
 
         server.mockEndpoint().put("/preview/fleet/vehicles/id/lock").respondWith().statusCode(200).build();
 
-        const response = await client.previewApIs.lockVehicle("id");
+        const response = await client.previewApIs.lockVehicle({
+            id: "id",
+        });
         expect(response).toEqual(undefined);
     });
 
@@ -305,7 +307,9 @@ describe("PreviewApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.previewApIs.lockVehicle("id");
+            return await client.previewApIs.lockVehicle({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.UnauthorizedError);
     });
 
@@ -328,7 +332,9 @@ describe("PreviewApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.previewApIs.lockVehicle("id");
+            return await client.previewApIs.lockVehicle({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.NotFoundError);
     });
 
@@ -351,7 +357,9 @@ describe("PreviewApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.previewApIs.lockVehicle("id");
+            return await client.previewApIs.lockVehicle({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.MethodNotAllowedError);
     });
 
@@ -374,7 +382,9 @@ describe("PreviewApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.previewApIs.lockVehicle("id");
+            return await client.previewApIs.lockVehicle({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
@@ -397,7 +407,9 @@ describe("PreviewApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.previewApIs.lockVehicle("id");
+            return await client.previewApIs.lockVehicle({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
@@ -420,7 +432,9 @@ describe("PreviewApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.previewApIs.lockVehicle("id");
+            return await client.previewApIs.lockVehicle({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
@@ -443,7 +457,9 @@ describe("PreviewApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.previewApIs.lockVehicle("id");
+            return await client.previewApIs.lockVehicle({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
@@ -466,7 +482,9 @@ describe("PreviewApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.previewApIs.lockVehicle("id");
+            return await client.previewApIs.lockVehicle({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
@@ -489,7 +507,9 @@ describe("PreviewApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.previewApIs.lockVehicle("id");
+            return await client.previewApIs.lockVehicle({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 
@@ -504,7 +524,9 @@ describe("PreviewApIsClient", () => {
 
         server.mockEndpoint().delete("/preview/fleet/vehicles/id/lock").respondWith().statusCode(200).build();
 
-        const response = await client.previewApIs.unlockVehicle("id");
+        const response = await client.previewApIs.unlockVehicle({
+            id: "id",
+        });
         expect(response).toEqual(undefined);
     });
 
@@ -527,7 +549,9 @@ describe("PreviewApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.previewApIs.unlockVehicle("id");
+            return await client.previewApIs.unlockVehicle({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.UnauthorizedError);
     });
 
@@ -550,7 +574,9 @@ describe("PreviewApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.previewApIs.unlockVehicle("id");
+            return await client.previewApIs.unlockVehicle({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.NotFoundError);
     });
 
@@ -573,7 +599,9 @@ describe("PreviewApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.previewApIs.unlockVehicle("id");
+            return await client.previewApIs.unlockVehicle({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.MethodNotAllowedError);
     });
 
@@ -596,7 +624,9 @@ describe("PreviewApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.previewApIs.unlockVehicle("id");
+            return await client.previewApIs.unlockVehicle({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
@@ -619,7 +649,9 @@ describe("PreviewApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.previewApIs.unlockVehicle("id");
+            return await client.previewApIs.unlockVehicle({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
@@ -642,7 +674,9 @@ describe("PreviewApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.previewApIs.unlockVehicle("id");
+            return await client.previewApIs.unlockVehicle({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
@@ -665,7 +699,9 @@ describe("PreviewApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.previewApIs.unlockVehicle("id");
+            return await client.previewApIs.unlockVehicle({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
@@ -688,7 +724,9 @@ describe("PreviewApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.previewApIs.unlockVehicle("id");
+            return await client.previewApIs.unlockVehicle({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
@@ -711,7 +749,9 @@ describe("PreviewApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.previewApIs.unlockVehicle("id");
+            return await client.previewApIs.unlockVehicle({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 });

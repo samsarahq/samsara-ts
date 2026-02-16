@@ -7,6 +7,6 @@ import type * as Samsara from "../index.js";
  */
 export interface ListUserRolesResponse {
     /** A list of user roles */
-    data?: Samsara.UserRole[];
-    pagination?: Samsara.PaginationResponse;
+    data?: Samsara.UserRole[] | undefined;
+    pagination?: Samsara.PaginationResponse | undefined;
 }

@@ -6,15 +6,15 @@ import type * as Samsara from "../index.js";
  * Details specific to Safety Behavior
  */
 export interface SafetyBehaviorTriggerDetailsObjectRequestBody {
-    behaviorCount?: Samsara.BehaviorCountDetailsRequestBody;
+    behaviorCount?: Samsara.BehaviorCountDetailsRequestBody | undefined;
     /** On which safety behaviors to trigger on. */
     behaviors: SafetyBehaviorTriggerDetailsObjectRequestBody.Behaviors.Item[];
-    drivers?: Samsara.DriverOrTagIdsDetailsRequestBody;
-    safetyScore?: Samsara.SafetyScoreDetailsRequestBody;
+    drivers?: Samsara.DriverOrTagIdsDetailsRequestBody | undefined;
+    safetyScore?: Samsara.SafetyScoreDetailsRequestBody | undefined;
     /** On which event severity to trigger on. */
-    severities?: SafetyBehaviorTriggerDetailsObjectRequestBody.Severities.Item[];
+    severities?: SafetyBehaviorTriggerDetailsObjectRequestBody.Severities.Item[] | undefined;
     /** On which event status to trigger on. */
-    statuses?: SafetyBehaviorTriggerDetailsObjectRequestBody.Statuses.Item[];
+    statuses?: SafetyBehaviorTriggerDetailsObjectRequestBody.Statuses.Item[] | undefined;
 }
 
 export namespace SafetyBehaviorTriggerDetailsObjectRequestBody {

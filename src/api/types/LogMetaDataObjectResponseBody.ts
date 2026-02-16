@@ -7,29 +7,29 @@ import type * as Samsara from "../index.js";
  */
 export interface LogMetaDataObjectResponseBody {
     /** Whether the driver has claimed the [Adverse Driving Exemption](https://kb.samsara.com/hc/en-us/articles/360047336792-Adverse-Driving-Exemption) for this HOS day chart. */
-    adverseDrivingClaimed?: boolean;
+    adverseDrivingClaimed?: boolean | undefined;
     /** Whether the driver has claimed the [Big Day Exemption](https://kb.samsara.com/hc/en-us/articles/360057113891-16-Hour-Short-Haul-Exemption-Big-Day-) for this HOS day chart. */
-    bigDayClaimed?: boolean;
+    bigDayClaimed?: boolean | undefined;
     /** The address of the carrier used for this HOS chart. */
-    carrierFormattedAddress?: string;
+    carrierFormattedAddress?: string | undefined;
     /** The name of the carrier used for this HOS chart. */
-    carrierName?: string;
+    carrierName?: string | undefined;
     /** The US DOT number of the carrier used for this HOS chart. */
-    carrierUsDotNumber?: number;
+    carrierUsDotNumber?: number | undefined;
     /** The time this log was certified in RFC 3339 format. */
-    certifiedAtTime?: string;
+    certifiedAtTime?: string | undefined;
     /** The address of the Home Terminal used for this HOS chart. */
-    homeTerminalFormattedAddress?: string;
+    homeTerminalFormattedAddress?: string | undefined;
     /** The name of the Home Terminal used for this HOS chart. */
-    homeTerminalName?: string;
+    homeTerminalName?: string | undefined;
     /** Whether this HOS day chart was certified by the driver. */
-    isCertified?: boolean;
+    isCertified?: boolean | undefined;
     /** Whether the driver has the 150 air-mile Short Haul Exemption active for this HOS day chart. */
-    isUsShortHaulActive?: boolean;
+    isUsShortHaulActive?: boolean | undefined;
     /** List of shipping document names associated with the driver for the day. This field maps to Shipping ID in the dashboard. */
-    shippingDocs?: string;
+    shippingDocs?: string | undefined;
     /** List of trailer names associated with the driver for the day. If a trailer was associated with a log through the driver app the trailer name will be the trailer ID. */
-    trailerNames?: string[];
+    trailerNames?: string[] | undefined;
     /** List of vehicles associated with the driver for the day. */
-    vehicles?: Samsara.VehicleResponseResponseBody[];
+    vehicles?: Samsara.VehicleResponseResponseBody[] | undefined;
 }

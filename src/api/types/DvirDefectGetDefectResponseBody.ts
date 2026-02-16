@@ -6,11 +6,11 @@ export interface DvirDefectGetDefectResponseBody {
     /** Comment on the defect. */
     comment: string;
     /** Time when defect was created in RFC 3339 format. */
-    createdAtTime?: string;
+    createdAtTime?: string | undefined;
     /** List of DVIR defect's photos */
-    defectPhotos?: Samsara.DefectPhotoResponseResponseBody[];
+    defectPhotos?: Samsara.DefectPhotoResponseResponseBody[] | undefined;
     /** The unique ID of the defect type. */
-    defectTypeId?: string;
+    defectTypeId?: string | undefined;
     /** The unique ID of the defect's DVIR. */
     dvirId: string;
     /** The unique ID of the DVIR defect. */
@@ -18,12 +18,12 @@ export interface DvirDefectGetDefectResponseBody {
     /** Signifies if this defect is resolved. */
     isResolved: boolean;
     /** The mechanics notes on the defect. */
-    mechanicNotes?: string;
+    mechanicNotes?: string | undefined;
     /** Time when this defect was resolved in RFC 3339 format. Will not be returned if the defect is unresolved. */
-    resolvedAtTime?: string;
-    resolvedBy?: Samsara.DvirResolvedByObjectResponseBody;
-    trailer?: Samsara.DefectTrailerResponseResponseBody;
+    resolvedAtTime?: string | undefined;
+    resolvedBy?: Samsara.DvirResolvedByObjectResponseBody | undefined;
+    trailer?: Samsara.DefectTrailerResponseResponseBody | undefined;
     /** Time when defect was last updated in RFC 3339 format. */
-    updatedAtTime?: string;
-    vehicle?: Samsara.DefectVehicleResponseResponseBody;
+    updatedAtTime?: string | undefined;
+    vehicle?: Samsara.DefectVehicleResponseResponseBody | undefined;
 }

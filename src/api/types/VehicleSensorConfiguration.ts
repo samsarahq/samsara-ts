@@ -6,6 +6,6 @@ import type * as Samsara from "../index.js";
  * The sensors configured on a vehicle
  */
 export interface VehicleSensorConfiguration {
-    areas?: Samsara.VehicleSensorConfigurationArea[];
-    doors?: Samsara.VehicleSensorConfigurationDoor[];
+    areas?: Samsara.VehicleSensorConfigurationArea[] | undefined;
+    doors?: Samsara.VehicleSensorConfigurationDoor[] | undefined;
 }

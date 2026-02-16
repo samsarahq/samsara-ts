@@ -7,15 +7,15 @@ import type * as Samsara from "../index.js";
  */
 export interface HosLogEntry {
     /** The codriver information. */
-    codrivers?: Samsara.DriverTinyResponse[];
+    codrivers?: Samsara.DriverTinyResponse[] | undefined;
     /** The Hours of Service status type. Valid values: `offDuty`, `sleeperBed`, `driving`, `onDuty`, `yardMove`, `personalConveyance`. */
-    hosStatusType?: HosLogEntry.HosStatusType;
-    logEndTime?: Samsara.Time;
-    logRecordedLocation?: Samsara.HosLogLocation;
+    hosStatusType?: HosLogEntry.HosStatusType | undefined;
+    logEndTime?: Samsara.Time | undefined;
+    logRecordedLocation?: Samsara.HosLogLocation | undefined;
     logStartTime: Samsara.Time;
     /** Remark associated with the log entry. */
-    remark?: string;
-    vehicle?: Samsara.VehicleTinyResponse;
+    remark?: string | undefined;
+    vehicle?: Samsara.VehicleTinyResponse | undefined;
 }
 
 export namespace HosLogEntry {

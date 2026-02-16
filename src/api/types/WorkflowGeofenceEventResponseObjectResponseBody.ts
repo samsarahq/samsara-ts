@@ -3,7 +3,7 @@
 import type * as Samsara from "../index.js";
 
 export interface WorkflowGeofenceEventResponseObjectResponseBody {
-    address?: Samsara.WorkflowAddressEventWithGeofenceObjectResponseBody;
-    fuelVolume?: Samsara.FuelVolumeResponseBody;
-    vehicle?: Samsara.VehicleWithGatewayTinyResponseResponseBody;
+    address?: Samsara.WorkflowAddressEventWithGeofenceObjectResponseBody | undefined;
+    fuelVolume?: Samsara.FuelVolumeResponseBody | undefined;
+    vehicle?: Samsara.VehicleWithGatewayTinyResponseResponseBody | undefined;
 }

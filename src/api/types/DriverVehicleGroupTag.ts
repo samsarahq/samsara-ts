@@ -5,9 +5,9 @@
  */
 export interface DriverVehicleGroupTag {
     /** ID of the tag. */
-    id?: string;
+    id?: string | undefined;
     /** Name of the tag. */
-    name?: string;
+    name?: string | undefined;
     /** If this tag is part a hierarchical tag tree, this is the ID of the parent tag, otherwise this will be omitted. */
-    parentTagId?: string;
+    parentTagId?: string | undefined;
 }

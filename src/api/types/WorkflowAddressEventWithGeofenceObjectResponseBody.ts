@@ -7,10 +7,10 @@ import type * as Samsara from "../index.js";
  */
 export interface WorkflowAddressEventWithGeofenceObjectResponseBody {
     /** A map of external ids */
-    externalIds?: Record<string, string>;
+    externalIds?: Record<string, string> | undefined;
     /** The full street address for this address/geofence, as it might be recognized by Google Maps. */
     formattedAddress: string;
-    geofence?: Samsara.WorkflowGeofenceResponseBody;
+    geofence?: Samsara.WorkflowGeofenceResponseBody | undefined;
     /** Id of the address */
     id: string;
     /** Name of the address */

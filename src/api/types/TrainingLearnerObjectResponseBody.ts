@@ -7,5 +7,13 @@ export interface TrainingLearnerObjectResponseBody {
     /** ID of the polymorphic user. */
     id: string;
     /** The type of the polymorphic user.  Valid values: `driver` */
-    type: "driver";
+    type: TrainingLearnerObjectResponseBody.Type;
+}
+
+export namespace TrainingLearnerObjectResponseBody {
+    /** The type of the polymorphic user.  Valid values: `driver` */
+    export const Type = {
+        Driver: "driver",
+    } as const;
+    export type Type = (typeof Type)[keyof typeof Type];
 }

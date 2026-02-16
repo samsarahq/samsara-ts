@@ -3,16 +3,16 @@
 import type * as Samsara from "../index.js";
 
 export interface RouteStopDetailsObjectResponseBody {
-    driver?: Samsara.GoaDriverTinyResponseResponseBody;
+    driver?: Samsara.GoaDriverTinyResponseResponseBody | undefined;
     /** The operation that was performed as part of this route update.  Valid values: `stop arrived`, `stop departed` */
-    operation?: RouteStopDetailsObjectResponseBody.Operation;
+    operation?: RouteStopDetailsObjectResponseBody.Operation | undefined;
     route: Samsara.WebhookRouteResponseObjectResponseBody;
     routeStopDetails: Samsara.MinimalRouteStopResponseBody;
     /** The timestamp of the route in RFC 3339 format. */
     time: string;
     /** The type of route update. The route tracking updates occur as a route is completed and stops transition from one state to another. Currently only Route Tracking updates are supported, but this will change in the future when additional types are added.  Valid values: `route tracking` */
-    type: "route tracking";
-    vehicle?: Samsara.VehicleWithGatewayTinyResponseResponseBody;
+    type: RouteStopDetailsObjectResponseBody.Type;
+    vehicle?: Samsara.VehicleWithGatewayTinyResponseResponseBody | undefined;
 }
 
 export namespace RouteStopDetailsObjectResponseBody {
@@ -22,4 +22,9 @@ export namespace RouteStopDetailsObjectResponseBody {
         StopDeparted: "stop departed",
     } as const;
     export type Operation = (typeof Operation)[keyof typeof Operation];
+    /** The type of route update. The route tracking updates occur as a route is completed and stops transition from one state to another. Currently only Route Tracking updates are supported, but this will change in the future when additional types are added.  Valid values: `route tracking` */
+    export const Type = {
+        RouteTracking: "route tracking",
+    } as const;
+    export type Type = (typeof Type)[keyof typeof Type];
 }

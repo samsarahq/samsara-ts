@@ -2,7 +2,7 @@
 
 export interface BarcodeValueObjectResponseBody {
     /** The barcode type that was scanned. */
-    barcodeType?: string;
+    barcodeType?: string | undefined;
     /** The captured barcode value. */
-    barcodeValue?: string;
+    barcodeValue?: string | undefined;
 }

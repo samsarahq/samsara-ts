@@ -2,9 +2,9 @@
 
 export interface V1VehicleHarshEventResponseLocation {
     /** Address of location where the harsh event occurred */
-    address?: string;
+    address?: string | undefined;
     /** Latitude of location where the harsh event occurred */
-    latitude?: number;
+    latitude?: number | undefined;
     /** Longitude of location where the harsh event occurred */
-    longitude?: number;
+    longitude?: number | undefined;
 }

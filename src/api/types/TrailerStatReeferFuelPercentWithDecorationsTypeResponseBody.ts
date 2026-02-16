@@ -6,7 +6,7 @@ import type * as Samsara from "../index.js";
  * The fuel percentage of the reefer.
  */
 export interface TrailerStatReeferFuelPercentWithDecorationsTypeResponseBody {
-    decorations?: Samsara.TrailerStatDecorationResponseBody;
+    decorations?: Samsara.TrailerStatDecorationResponseBody | undefined;
     /** UTC timestamp in RFC 3339 format. */
     time: string;
     /** The fuel level in percentage points (e.g. `99`, `50`, etc). */

@@ -6,9 +6,9 @@ import type * as Samsara from "../index.js";
  * HOS clock values for a specific driver, including remaining times and violations.
  */
 export interface HosClocksForDriver {
-    clocks?: Samsara.HosClocks;
-    currentDutyStatus?: Samsara.CurrentDutyStatus;
-    currentVehicle?: Samsara.VehicleTinyResponse;
-    driver?: Samsara.DriverTinyResponse;
-    violations?: Samsara.HosViolations;
+    clocks?: Samsara.HosClocks | undefined;
+    currentDutyStatus?: Samsara.CurrentDutyStatus | undefined;
+    currentVehicle?: Samsara.VehicleTinyResponse | undefined;
+    driver?: Samsara.DriverTinyResponse | undefined;
+    violations?: Samsara.HosViolations | undefined;
 }

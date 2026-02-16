@@ -6,7 +6,7 @@ import type * as Samsara from "../index.js";
  * Vehicle engine coolant temperature reading.
  */
 export interface VehicleStatsEngineCoolantTempMilliCWithDecoration {
-    decorations?: Samsara.VehicleStatsDecorations;
+    decorations?: Samsara.VehicleStatsDecorations | undefined;
     time: Samsara.Time;
     /** The engine coolant temperature reading in millidegree Celsius. */
     value: number;

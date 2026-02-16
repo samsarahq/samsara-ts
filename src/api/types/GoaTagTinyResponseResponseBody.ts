@@ -9,5 +9,5 @@ export interface GoaTagTinyResponseResponseBody {
     /** Name of the tag. */
     name: string;
     /** If this tag is part a hierarchical tag tree, this is the ID of the parent tag, otherwise this will be omitted. */
-    parentTagId?: string;
+    parentTagId?: string | undefined;
 }

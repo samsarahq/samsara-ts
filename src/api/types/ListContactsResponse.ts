@@ -6,6 +6,6 @@ import type * as Samsara from "../index.js";
  * A list of contacts.
  */
 export interface ListContactsResponse {
-    data?: Samsara.Contact[];
-    pagination?: Samsara.PaginationResponse;
+    data?: Samsara.Contact[] | undefined;
+    pagination?: Samsara.PaginationResponse | undefined;
 }

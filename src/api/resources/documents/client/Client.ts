@@ -417,23 +417,26 @@ export class DocumentsClient {
      *
      * To use this endpoint, select **Read Documents** under the Driver Workflow category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
-     * @param {string} id - ID of the pdf.
+     * @param {Samsara.GetDocumentPdfRequest} request
      * @param {DocumentsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.documents.getDocumentPdf("id")
+     *     await client.documents.getDocumentPdf({
+     *         id: "id"
+     *     })
      */
     public getDocumentPdf(
-        id: string,
+        request: Samsara.GetDocumentPdfRequest,
         requestOptions?: DocumentsClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.DocumentPdfQueryResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__getDocumentPdf(id, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__getDocumentPdf(request, requestOptions));
     }
 
     private async __getDocumentPdf(
-        id: string,
+        request: Samsara.GetDocumentPdfRequest,
         requestOptions?: DocumentsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.DocumentPdfQueryResponse>> {
+        const { id } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -482,7 +485,7 @@ export class DocumentsClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * @param {string} id - ID of the document
+     * @param {Samsara.GetDocumentRequest} request
      * @param {DocumentsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
@@ -496,19 +499,22 @@ export class DocumentsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.documents.getDocument("id")
+     *     await client.documents.getDocument({
+     *         id: "id"
+     *     })
      */
     public getDocument(
-        id: string,
+        request: Samsara.GetDocumentRequest,
         requestOptions?: DocumentsClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.DocumentsGetDocumentResponseBody> {
-        return core.HttpResponsePromise.fromPromise(this.__getDocument(id, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__getDocument(request, requestOptions));
     }
 
     private async __getDocument(
-        id: string,
+        request: Samsara.GetDocumentRequest,
         requestOptions?: DocumentsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.DocumentsGetDocumentResponseBody>> {
+        const { id } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -581,7 +587,7 @@ export class DocumentsClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * @param {string} id - ID of the document to delete
+     * @param {Samsara.DeleteDocumentRequest} request
      * @param {DocumentsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
@@ -595,16 +601,22 @@ export class DocumentsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.documents.deleteDocument("id")
+     *     await client.documents.deleteDocument({
+     *         id: "id"
+     *     })
      */
-    public deleteDocument(id: string, requestOptions?: DocumentsClient.RequestOptions): core.HttpResponsePromise<void> {
-        return core.HttpResponsePromise.fromPromise(this.__deleteDocument(id, requestOptions));
+    public deleteDocument(
+        request: Samsara.DeleteDocumentRequest,
+        requestOptions?: DocumentsClient.RequestOptions,
+    ): core.HttpResponsePromise<void> {
+        return core.HttpResponsePromise.fromPromise(this.__deleteDocument(request, requestOptions));
     }
 
     private async __deleteDocument(
-        id: string,
+        request: Samsara.DeleteDocumentRequest,
         requestOptions?: DocumentsClient.RequestOptions,
     ): Promise<core.WithRawResponse<void>> {
+        const { id } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,

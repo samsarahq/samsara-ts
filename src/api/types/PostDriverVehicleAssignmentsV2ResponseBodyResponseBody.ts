@@ -5,5 +5,5 @@
  */
 export interface PostDriverVehicleAssignmentsV2ResponseBodyResponseBody {
     /** A description of the outcome from submitting Driver Assignment information */
-    message?: string;
+    message?: string | undefined;
 }

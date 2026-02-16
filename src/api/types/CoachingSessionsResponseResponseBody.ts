@@ -7,22 +7,22 @@ import type * as Samsara from "../index.js";
  */
 export interface CoachingSessionsResponseResponseBody {
     /** Unique user ID for a coaching session. Returned when a coaching session status is “incomplete”. */
-    assignedCoachId?: string;
+    assignedCoachId?: string | undefined;
     /** Object references for the behaviors within the session. */
     behaviors: Samsara.BehaviorResponseBody[];
     /** Coaching type for the coaching session.  Valid values: `fullySharedWithManager`, `selfCoaching`, `unknown`, `unshared`, `withManager` */
     coachingType: CoachingSessionsResponseResponseBody.CoachingType;
     /** Time coaching session is completed in UTC. Returned when a coaching session status is “completed”. */
-    completedAtTime?: string;
+    completedAtTime?: string | undefined;
     /** Unique user ID for a completed coaching session. Returned when a coaching session status is “completed”. */
-    completedCoachId?: string;
+    completedCoachId?: string | undefined;
     driver: Samsara.DriverWithExternalIdObjectResponseBody;
     /** Time coaching session is due in UTC. */
     dueAtTime: string;
     /** Unique ID for the coaching session. */
     id: string;
     /** Associated note for the coaching session. Returned when present. */
-    sessionNote?: string;
+    sessionNote?: string | undefined;
     /** Status for the coaching session.  Valid values: `unknown`, `upcoming`, `completed`, `deleted` */
     sessionStatus: CoachingSessionsResponseResponseBody.SessionStatus;
     /** Time coaching session was updated in UTC. */

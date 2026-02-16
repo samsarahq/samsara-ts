@@ -8,15 +8,15 @@ import type * as Samsara from "../index.js";
 export interface SpeedDataResponseBody {
     /** Current speed of the vehicle in kilometers per hour. */
     currentSpeedKilometersPerHour: number;
-    driver?: Samsara.AlertObjectDriverResponseBody;
+    driver?: Samsara.AlertObjectDriverResponseBody | undefined;
     /** Minimum duration of the current speed in milliseconds. */
     minDurationMilliseconds: number;
     /** Operation of the current and threshold comparison.  Valid values: `GREATER`, `INSIDE_RANGE`, `LESS`, `OUTSIDE_RANGE` */
     operation: SpeedDataResponseBody.Operation;
     /** Threshold speed of the vehicle in kilometers per hour. */
     thresholdSpeedKilometersPerHour: number;
-    trailer?: Samsara.AlertObjectTrailerResponseBody;
-    vehicle?: Samsara.AlertObjectVehicleResponseBody;
+    trailer?: Samsara.AlertObjectTrailerResponseBody | undefined;
+    vehicle?: Samsara.AlertObjectVehicleResponseBody | undefined;
 }
 
 export namespace SpeedDataResponseBody {

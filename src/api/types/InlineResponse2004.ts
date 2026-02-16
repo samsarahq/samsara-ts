@@ -3,5 +3,5 @@
 import type * as Samsara from "../index.js";
 
 export interface InlineResponse2004 {
-    vehicles?: Samsara.V1VehicleMaintenance[];
+    vehicles?: Samsara.V1VehicleMaintenance[] | undefined;
 }

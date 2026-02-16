@@ -5,9 +5,9 @@
  */
 export interface CellConnectivityResponseResponseBody {
     /** The cellular network provider name. */
-    operator?: string;
+    operator?: string | undefined;
     /** The cellular signal strength indicator.  Valid values: `1/4`, `2/4`, `3/4`, `4/4`, `unknown` */
-    signalBar?: CellConnectivityResponseResponseBody.SignalBar;
+    signalBar?: CellConnectivityResponseResponseBody.SignalBar | undefined;
 }
 
 export namespace CellConnectivityResponseResponseBody {

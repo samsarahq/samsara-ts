@@ -2,11 +2,11 @@
 
 export interface V1AssetReeferResponseReeferStatsAlarms {
     /** ID of the alarm */
-    alarmCode?: number;
+    alarmCode?: number | undefined;
     /** Description of the alarm */
-    description?: string;
+    description?: string | undefined;
     /** Recommended operator action */
-    operatorAction?: string;
+    operatorAction?: string | undefined;
     /** Severity of the alarm: 1: OK to run, 2: Check as specified, 3: Take immediate action */
-    severity?: number;
+    severity?: number | undefined;
 }

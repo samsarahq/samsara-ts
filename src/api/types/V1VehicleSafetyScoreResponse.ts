@@ -7,26 +7,26 @@ import type * as Samsara from "../index.js";
  */
 export interface V1VehicleSafetyScoreResponse {
     /** Crash event count */
-    crashCount?: number;
+    crashCount?: number | undefined;
     /** Harsh acceleration event count */
-    harshAccelCount?: number;
+    harshAccelCount?: number | undefined;
     /** Harsh braking event count */
-    harshBrakingCount?: number;
-    harshEvents?: Samsara.V1SafetyReportHarshEvent[];
+    harshBrakingCount?: number | undefined;
+    harshEvents?: Samsara.V1SafetyReportHarshEvent[] | undefined;
     /** Harsh turning event count */
-    harshTurningCount?: number;
+    harshTurningCount?: number | undefined;
     /** The vehicle’s Safety Score for the requested period. Note that if the vehicle has zero drive time in this period, the Safety Score will be returned as 100. */
-    safetyScore?: number;
+    safetyScore?: number | undefined;
     /** Safety Score Rank */
-    safetyScoreRank?: string;
+    safetyScoreRank?: string | undefined;
     /** Amount of time driven over the speed limit in milliseconds */
-    timeOverSpeedLimitMs?: number;
+    timeOverSpeedLimitMs?: number | undefined;
     /** Total distance driven in meters */
-    totalDistanceDrivenMeters?: number;
+    totalDistanceDrivenMeters?: number | undefined;
     /** Total harsh event count */
-    totalHarshEventCount?: number;
+    totalHarshEventCount?: number | undefined;
     /** Amount of time driven in milliseconds */
-    totalTimeDrivenMs?: number;
+    totalTimeDrivenMs?: number | undefined;
     /** Vehicle ID */
-    vehicleId?: number;
+    vehicleId?: number | undefined;
 }

@@ -7,6 +7,6 @@ import type * as Samsara from "../index.js";
  */
 export interface SafetyEventBehaviorLabel {
     label: Samsara.SafetyEventBehaviorLabelType;
-    name?: Samsara.SafetyEventBehaviorLabelName;
+    name?: Samsara.SafetyEventBehaviorLabelName | undefined;
     source: Samsara.SafetyEventBehaviorLabelSource;
 }

@@ -8,13 +8,13 @@ import type * as Samsara from "../index.js";
 export interface TrainingCourseResponseObjectResponseBody {
     category: Samsara.TrainingCategoryObjectResponseBody;
     /** Description of the course. */
-    description?: string;
+    description?: string | undefined;
     /** Estimated time it takes to complete the course. */
     estimatedTimeToCompleteMinutes: number;
     /** ID of the training course. */
     id: string;
     /** List of course labels. */
-    labels?: Samsara.TrainingCourseLabelObjectResponseBody[];
+    labels?: Samsara.TrainingCourseLabelObjectResponseBody[] | undefined;
     /** ID of the course's specific version. */
     revisionId: string;
     /**

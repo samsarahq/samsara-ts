@@ -5,7 +5,7 @@
  */
 export interface GatewayAssetResponseObjectResponseBody {
     /** A map of external ids */
-    externalIds?: Record<string, string>;
+    externalIds?: Record<string, string> | undefined;
     /** The unique Samsara ID of the asset where the gateway is installed. This is automatically generated when the asset is created and cannot be changed. Use this ID on PATCH vehicle, equipment, or trailer endpoints to update the asset */
-    id?: string;
+    id?: string | undefined;
 }

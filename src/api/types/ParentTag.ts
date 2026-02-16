@@ -7,5 +7,5 @@ import type * as Samsara from "../index.js";
  */
 export interface ParentTag {
     id: Samsara.TaggedObjectId;
-    name?: Samsara.ParentTagName;
+    name?: Samsara.ParentTagName | undefined;
 }

@@ -9,9 +9,9 @@ export interface AlertObjectWorkforceCameraDeviceResponseBody {
     /** The ID of the camera device associated with the alert */
     id: string;
     /** The name of the camera device */
-    name?: string;
+    name?: string | undefined;
     /** The list of sites associated with the camera device. */
-    sites?: Samsara.AlertObjectSitesResponseBody[];
+    sites?: Samsara.AlertObjectSitesResponseBody[] | undefined;
     /** The list of [tags](https://kb.samsara.com/hc/en-us/articles/360026674631-Using-Tags-and-Tag-Nesting) associated with the camera device. */
-    tags?: Samsara.GoaTagTinyResponseResponseBody[];
+    tags?: Samsara.GoaTagTinyResponseResponseBody[] | undefined;
 }

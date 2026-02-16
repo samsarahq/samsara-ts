@@ -6,9 +6,9 @@ import type * as Samsara from "../index.js";
  * An ELD ruleset for a driver.
  */
 export interface DriverEldRuleset {
-    break?: Samsara.DriverEldRulesetRestBreak;
-    cycle?: Samsara.DriverEldRulesetCycle;
-    jurisdiction?: Samsara.DriverEldRulesetJurisdiction;
-    restart?: Samsara.DriverEldRulesetRestart;
-    shift?: Samsara.DriverEldRulesetShift;
+    break?: Samsara.DriverEldRulesetRestBreak | undefined;
+    cycle?: Samsara.DriverEldRulesetCycle | undefined;
+    jurisdiction?: Samsara.DriverEldRulesetJurisdiction | undefined;
+    restart?: Samsara.DriverEldRulesetRestart | undefined;
+    shift?: Samsara.DriverEldRulesetShift | undefined;
 }

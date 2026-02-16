@@ -7,7 +7,7 @@ import type * as Samsara from "../index.js";
  */
 export interface VehicleSensorConfigurationResponseBody {
     /** Configured sensor areas on the vehicle with its associated sensors */
-    areas?: Samsara.VehicleSensorConfigurationAreaResponseBody[];
+    areas?: Samsara.VehicleSensorConfigurationAreaResponseBody[] | undefined;
     /** Configured door monitors on the vehicle */
-    doors?: Samsara.VehicleSensorConfigurationDoorResponseBody[];
+    doors?: Samsara.VehicleSensorConfigurationDoorResponseBody[] | undefined;
 }

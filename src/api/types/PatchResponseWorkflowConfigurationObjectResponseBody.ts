@@ -11,7 +11,7 @@ export interface PatchResponseWorkflowConfigurationObjectResponseBody {
     /** The time the configuration was created in RFC 3339 format. */
     createdAtTime: string;
     /** A map of external ids */
-    externalIds?: Record<string, string>;
+    externalIds?: Record<string, string> | undefined;
     /** The unqiue Samsara id of the alert configuration. */
     id: string;
     /** Whether the alert is enabled or not. */
@@ -20,7 +20,7 @@ export interface PatchResponseWorkflowConfigurationObjectResponseBody {
     lastModifiedAtTime: string;
     /** The custom name of the configuration. */
     name: string;
-    operationalSettings?: Samsara.OperationalSettingsObjectResponseBody;
+    operationalSettings?: Samsara.OperationalSettingsObjectResponseBody | undefined;
     scope: Samsara.ScopeObjectResponseBody;
     /** An array of triggers. */
     triggers: Samsara.WorkflowTriggerObjectResponseBody[];

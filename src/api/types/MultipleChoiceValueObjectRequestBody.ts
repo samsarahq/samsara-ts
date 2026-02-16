@@ -2,7 +2,7 @@
 
 export interface MultipleChoiceValueObjectRequestBody {
     /** Boolean representing if the choice has been selected. */
-    selected?: boolean;
+    selected?: boolean | undefined;
     /** Description of the choice. */
-    value?: string;
+    value?: string | undefined;
 }

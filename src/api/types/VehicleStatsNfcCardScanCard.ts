@@ -5,5 +5,5 @@
  */
 export interface VehicleStatsNfcCardScanCard {
     /** The id code of the card that was scanned. */
-    id?: string;
+    id?: string | undefined;
 }

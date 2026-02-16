@@ -1031,7 +1031,9 @@ describe("DocumentsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.documents.getDocumentPdf("id");
+        const response = await client.documents.getDocumentPdf({
+            id: "id",
+        });
         expect(response).toEqual({
             data: {
                 completedAtTime: "2020-01-02T15:04:06+07:00",
@@ -1088,7 +1090,9 @@ describe("DocumentsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.documents.getDocument("id");
+        const response = await client.documents.getDocument({
+            id: "id",
+        });
         expect(response).toEqual({
             data: {
                 conditionalFieldSections: [
@@ -1170,7 +1174,9 @@ describe("DocumentsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.documents.getDocument("id");
+            return await client.documents.getDocument({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.UnauthorizedError);
     });
 
@@ -1193,7 +1199,9 @@ describe("DocumentsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.documents.getDocument("id");
+            return await client.documents.getDocument({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.NotFoundError);
     });
 
@@ -1216,7 +1224,9 @@ describe("DocumentsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.documents.getDocument("id");
+            return await client.documents.getDocument({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.MethodNotAllowedError);
     });
 
@@ -1239,7 +1249,9 @@ describe("DocumentsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.documents.getDocument("id");
+            return await client.documents.getDocument({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
@@ -1262,7 +1274,9 @@ describe("DocumentsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.documents.getDocument("id");
+            return await client.documents.getDocument({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
@@ -1285,7 +1299,9 @@ describe("DocumentsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.documents.getDocument("id");
+            return await client.documents.getDocument({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
@@ -1308,7 +1324,9 @@ describe("DocumentsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.documents.getDocument("id");
+            return await client.documents.getDocument({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
@@ -1331,7 +1349,9 @@ describe("DocumentsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.documents.getDocument("id");
+            return await client.documents.getDocument({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
@@ -1354,7 +1374,9 @@ describe("DocumentsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.documents.getDocument("id");
+            return await client.documents.getDocument({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 
@@ -1369,7 +1391,9 @@ describe("DocumentsClient", () => {
 
         server.mockEndpoint().delete("/fleet/documents/id").respondWith().statusCode(200).build();
 
-        const response = await client.documents.deleteDocument("id");
+        const response = await client.documents.deleteDocument({
+            id: "id",
+        });
         expect(response).toEqual(undefined);
     });
 
@@ -1392,7 +1416,9 @@ describe("DocumentsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.documents.deleteDocument("id");
+            return await client.documents.deleteDocument({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.UnauthorizedError);
     });
 
@@ -1415,7 +1441,9 @@ describe("DocumentsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.documents.deleteDocument("id");
+            return await client.documents.deleteDocument({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.NotFoundError);
     });
 
@@ -1438,7 +1466,9 @@ describe("DocumentsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.documents.deleteDocument("id");
+            return await client.documents.deleteDocument({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.MethodNotAllowedError);
     });
 
@@ -1461,7 +1491,9 @@ describe("DocumentsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.documents.deleteDocument("id");
+            return await client.documents.deleteDocument({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
@@ -1484,7 +1516,9 @@ describe("DocumentsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.documents.deleteDocument("id");
+            return await client.documents.deleteDocument({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
@@ -1507,7 +1541,9 @@ describe("DocumentsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.documents.deleteDocument("id");
+            return await client.documents.deleteDocument({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
@@ -1530,7 +1566,9 @@ describe("DocumentsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.documents.deleteDocument("id");
+            return await client.documents.deleteDocument({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
@@ -1553,7 +1591,9 @@ describe("DocumentsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.documents.deleteDocument("id");
+            return await client.documents.deleteDocument({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
@@ -1576,7 +1616,9 @@ describe("DocumentsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.documents.deleteDocument("id");
+            return await client.documents.deleteDocument({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 });

@@ -7,14 +7,14 @@ import type * as Samsara from "../index.js";
  */
 export interface LocationDataPointGpsLocation {
     /** Formatted address of the location */
-    formattedAddress?: string;
+    formattedAddress?: string | undefined;
     /** Speed of GPS (meters per second) */
-    gpsMetersPerSecond?: number;
+    gpsMetersPerSecond?: number | undefined;
     /** Heading degrees */
-    headingDegrees?: number;
+    headingDegrees?: number | undefined;
     /** Latitude of the location */
-    latitude?: number;
+    latitude?: number | undefined;
     /** Longitude of the location */
-    longitude?: number;
-    place?: Samsara.LocationDataPointGpsLocationPlace;
+    longitude?: number | undefined;
+    place?: Samsara.LocationDataPointGpsLocationPlace | undefined;
 }

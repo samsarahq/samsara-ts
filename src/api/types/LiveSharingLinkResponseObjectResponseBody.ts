@@ -5,7 +5,7 @@
  */
 export interface LiveSharingLinkResponseObjectResponseBody {
     /** Date that this link expires, in RFC 3339 format. */
-    expiresAtTime?: string;
+    expiresAtTime?: string | undefined;
     /** The shareable URL of the vehicle's location. */
     liveSharingUrl: string;
     /** Name of the Live Sharing Link. */

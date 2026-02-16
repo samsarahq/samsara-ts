@@ -5,9 +5,9 @@
  */
 export interface HarshBrakeSensitivityGForceSettingsObjectResponseBody {
     /** Harsh brake sensitivity settings for heavy duty vehicle. */
-    heavyDuty?: string;
+    heavyDuty?: string | undefined;
     /** Harsh brake sensitivity settings for light duty vehicle. */
-    lightDuty?: string;
+    lightDuty?: string | undefined;
     /** Harsh brake sensitivity settings for passenger car. */
-    passenger?: string;
+    passenger?: string | undefined;
 }

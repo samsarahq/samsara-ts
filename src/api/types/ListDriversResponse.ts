@@ -6,6 +6,6 @@ import type * as Samsara from "../index.js";
  * A list of drivers.
  */
 export interface ListDriversResponse {
-    data?: Samsara.Driver[];
-    pagination?: Samsara.PaginationResponse;
+    data?: Samsara.Driver[] | undefined;
+    pagination?: Samsara.PaginationResponse | undefined;
 }

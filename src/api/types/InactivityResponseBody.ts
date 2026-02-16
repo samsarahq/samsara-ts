@@ -6,5 +6,5 @@ import type * as Samsara from "../index.js";
  * Details specific to Inactivity.
  */
 export interface InactivityResponseBody {
-    cameraStream?: Samsara.AlertObjectOnvifCameraStreamResponseBody;
+    cameraStream?: Samsara.AlertObjectOnvifCameraStreamResponseBody | undefined;
 }

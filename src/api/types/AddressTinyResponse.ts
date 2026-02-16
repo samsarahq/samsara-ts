@@ -5,7 +5,7 @@
  */
 export interface AddressTinyResponse {
     /** Address book identifier */
-    id?: string;
+    id?: string | undefined;
     /** Name of this address book entry */
-    name?: string;
+    name?: string | undefined;
 }

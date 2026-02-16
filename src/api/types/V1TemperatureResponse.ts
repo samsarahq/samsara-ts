@@ -7,6 +7,6 @@ import type * as Samsara from "../index.js";
  */
 export interface V1TemperatureResponse {
     /** Deprecated. */
-    groupId?: number;
-    sensors?: Samsara.V1TemperatureResponseSensors[];
+    groupId?: number | undefined;
+    sensors?: Samsara.V1TemperatureResponseSensors[] | undefined;
 }

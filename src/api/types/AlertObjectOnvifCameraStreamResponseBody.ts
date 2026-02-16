@@ -6,11 +6,11 @@ import type * as Samsara from "../index.js";
  * A camera stream associated with the alert.
  */
 export interface AlertObjectOnvifCameraStreamResponseBody {
-    cameraDevice?: Samsara.AlertObjectWorkforceCameraDeviceResponseBody;
+    cameraDevice?: Samsara.AlertObjectWorkforceCameraDeviceResponseBody | undefined;
     /** The ID of the camera stream associated with the alert. */
     id: string;
     /** The name of the camera stream. */
-    name?: string;
+    name?: string | undefined;
     /** The list of [tags](https://kb.samsara.com/hc/en-us/articles/360026674631-Using-Tags-and-Tag-Nesting) associated with the camera stream. */
-    tags?: Samsara.GoaTagTinyResponseResponseBody[];
+    tags?: Samsara.GoaTagTinyResponseResponseBody[] | undefined;
 }

@@ -7,15 +7,15 @@ import type * as Samsara from "../index.js";
  */
 export interface AlertObjectTrailerResponseBody {
     /** List of attributes associated with the entity */
-    attributes?: Samsara.GoaAttributeTinyResponseBody[];
+    attributes?: Samsara.GoaAttributeTinyResponseBody[] | undefined;
     /** A map of external ids */
-    externalIds?: Record<string, string>;
+    externalIds?: Record<string, string> | undefined;
     /** The ID of the trailer. This is automatically generated when the trailer is created. It cannot be changed. */
     id: string;
     /** The name of the trailer. This is set by a fleet administrator and will appear in both Samsara’s cloud dashboard as well as the Samsara Driver mobile app. By default, this name is the serial number of the Samsara Asset Gateway. It can be set or updated through the Samsara Dashboard or through the API at any time. */
-    name?: string;
+    name?: string | undefined;
     /** The list of [tags](https://kb.samsara.com/hc/en-us/articles/360026674631-Using-Tags-and-Tag-Nesting) associated with the Trailer. */
-    tags?: Samsara.GoaTagTinyResponseResponseBody[];
+    tags?: Samsara.GoaTagTinyResponseResponseBody[] | undefined;
     /** The serial number of the trailer. */
-    trailerSerialNumber?: string;
+    trailerSerialNumber?: string | undefined;
 }

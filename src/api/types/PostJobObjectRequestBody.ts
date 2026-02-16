@@ -6,25 +6,25 @@ import type * as Samsara from "../index.js";
  * Job object to be created
  */
 export interface PostJobObjectRequestBody {
-    address?: Samsara.PostJobObjectjobLocationRequestObjectRequestBody;
+    address?: Samsara.PostJobObjectjobLocationRequestObjectRequestBody | undefined;
     /** Customer name for job */
-    customerName?: string;
+    customerName?: string | undefined;
     /** End date of job in RFC 3339 format. Must be greater than or equal to the start date */
     endDate: string;
     /** Fleet devices to be added to this job (cannot have both industrial assets and fleet devices in the same job) */
-    fleetDeviceIds?: number[];
+    fleetDeviceIds?: number[] | undefined;
     /** Job Id */
     id: string;
     /** IndustrialAssets to be added to this job (cannot have both industrial assets and fleet devices in the same job) */
-    industrialAssetIds?: string[];
+    industrialAssetIds?: string[] | undefined;
     /** Job name */
     name: string;
     /** Notes for the upcoming job */
-    notes?: string;
+    notes?: string | undefined;
     /** Specifies the time window (in milliseconds) after a stop's scheduled arrival time during which the stop is considered 'on-time'. */
-    ontimeWindowAfterArrivalMs?: number;
+    ontimeWindowAfterArrivalMs?: number | undefined;
     /** Specifies the time window (in milliseconds) before a stop's scheduled arrival time during which the stop is considered 'on-time'. */
-    ontimeWindowBeforeArrivalMs?: number;
+    ontimeWindowBeforeArrivalMs?: number | undefined;
     /** Start date of job in RFC 3339 format. */
     startDate: string;
 }

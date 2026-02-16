@@ -4,15 +4,15 @@ import type * as Samsara from "../index.js";
 
 export interface V1AssetReeferResponseReeferStats {
     /** Reefer alarms */
-    alarms?: Samsara.V1AssetReeferResponseReeferStatsAlarms1[];
+    alarms?: Samsara.V1AssetReeferResponseReeferStatsAlarms1[] | undefined;
     /** Engine hours of the reefer */
-    engineHours?: Samsara.V1AssetReeferResponseReeferStatsEngineHours[];
+    engineHours?: Samsara.V1AssetReeferResponseReeferStatsEngineHours[] | undefined;
     /** Fuel percentage of the reefer */
-    fuelPercentage?: Samsara.V1AssetReeferResponseReeferStatsFuelPercentage[];
+    fuelPercentage?: Samsara.V1AssetReeferResponseReeferStatsFuelPercentage[] | undefined;
     /** Power status of the reefer */
-    powerStatus?: Samsara.V1AssetReeferResponseReeferStatsPowerStatus[];
+    powerStatus?: Samsara.V1AssetReeferResponseReeferStatsPowerStatus[] | undefined;
     /** Return air temperature of the reefer */
-    returnAirTemp?: Samsara.V1AssetReeferResponseReeferStatsReturnAirTemp[];
+    returnAirTemp?: Samsara.V1AssetReeferResponseReeferStatsReturnAirTemp[] | undefined;
     /** Set point temperature of the reefer */
-    setPoint?: Samsara.V1AssetReeferResponseReeferStatsSetPoint[];
+    setPoint?: Samsara.V1AssetReeferResponseReeferStatsSetPoint[] | undefined;
 }

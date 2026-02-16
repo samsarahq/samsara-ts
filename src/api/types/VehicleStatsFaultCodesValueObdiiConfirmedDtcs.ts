@@ -5,9 +5,9 @@
  */
 export interface VehicleStatsFaultCodesValueObdiiConfirmedDtcs {
     /** The DTC description, if available. */
-    dtcDescription?: string;
+    dtcDescription?: string | undefined;
     /** The DTC identifier. */
     dtcId: number;
     /** The DTC short code, if available. */
-    dtcShortCode?: string;
+    dtcShortCode?: string | undefined;
 }

@@ -2,17 +2,17 @@
 
 export interface V1CargoResponseSensors {
     /** Flag indicating whether the current cargo is empty or loaded. */
-    cargoEmpty?: boolean;
+    cargoEmpty?: boolean | undefined;
     /** The timestamp of reported cargo status, specified in RFC 3339 time. */
-    cargoStatusTime?: string;
+    cargoStatusTime?: string | undefined;
     /** ID of the sensor. */
-    id?: number;
+    id?: number | undefined;
     /** Name of the sensor. */
-    name?: string;
+    name?: string | undefined;
     /** The distance between red eye detector and the closest object in cm. */
-    redEyeDistance?: number;
+    redEyeDistance?: number | undefined;
     /** ID of the trailer associated with the sensor for the data point. If no trailer is connected, this parameter will not be reported. */
-    trailerId?: number;
+    trailerId?: number | undefined;
     /** ID of the vehicle associated with the sensor for the data point. If no vehicle is connected, this parameter will not be reported. */
-    vehicleId?: number;
+    vehicleId?: number | undefined;
 }

@@ -3,11 +3,14 @@
 /**
  * @example
  *     {
+ *         id: "id",
  *         authorId: "11",
  *         isResolved: true
  *     }
  */
 export interface UpdateDvirRequest {
+    /** ID of the DVIR. */
+    id: string;
     /** The user who is resolving the dvir. */
     authorId: string;
     /** Resolves the DVIR. Must be `true`. */

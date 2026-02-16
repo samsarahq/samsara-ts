@@ -4,6 +4,6 @@ import type * as Samsara from "../index.js";
 
 export interface DataInputListResponse {
     /** An array of data input data points. Each object in the array represents a data input and will contain its associated data points. */
-    data?: Samsara.DataInputResponse[];
-    pagination?: Samsara.PaginationResponse;
+    data?: Samsara.DataInputResponse[] | undefined;
+    pagination?: Samsara.PaginationResponse | undefined;
 }

@@ -640,7 +640,9 @@ describe("DriversClient", () => {
         };
         server.mockEndpoint().get("/fleet/drivers/id").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
-        const response = await client.drivers.get("id");
+        const response = await client.drivers.get({
+            id: "id",
+        });
         expect(response).toEqual({
             data: {
                 attributes: [
@@ -735,7 +737,9 @@ describe("DriversClient", () => {
 
         server.mockEndpoint().delete("/fleet/drivers/id").respondWith().statusCode(200).build();
 
-        const response = await client.drivers.delete("id");
+        const response = await client.drivers.delete({
+            id: "id",
+        });
         expect(response).toEqual(undefined);
     });
 
@@ -807,7 +811,9 @@ describe("DriversClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.drivers.update("id");
+        const response = await client.drivers.update({
+            id: "id",
+        });
         expect(response).toEqual({
             data: {
                 attributes: [

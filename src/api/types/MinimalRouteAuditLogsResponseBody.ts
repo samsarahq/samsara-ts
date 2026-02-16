@@ -7,5 +7,5 @@ import type * as Samsara from "../index.js";
  */
 export interface MinimalRouteAuditLogsResponseBody {
     /** The route stops in the route. Only stops that have been updated will be included in the response. */
-    stops?: Samsara.MinimalRouteStopAuditLogsResponseBody[];
+    stops?: Samsara.MinimalRouteStopAuditLogsResponseBody[] | undefined;
 }

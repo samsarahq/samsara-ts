@@ -5,5 +5,5 @@
  */
 export interface AlertObjectProductResponseBody {
     /** The short name associated with the product. */
-    shortName?: string;
+    shortName?: string | undefined;
 }

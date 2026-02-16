@@ -7,6 +7,6 @@ import type * as Samsara from "../index.js";
  */
 export interface ListUsersResponse {
     /** A list of users. */
-    data?: Samsara.User[];
-    pagination?: Samsara.PaginationResponse;
+    data?: Samsara.User[] | undefined;
+    pagination?: Samsara.PaginationResponse | undefined;
 }

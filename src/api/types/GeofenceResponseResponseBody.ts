@@ -5,7 +5,7 @@
  */
 export interface GeofenceResponseResponseBody {
     /** A map of external ids */
-    externalIds?: Record<string, string>;
+    externalIds?: Record<string, string> | undefined;
     /** Unique ID of the geofence object. */
-    id?: string;
+    id?: string | undefined;
 }

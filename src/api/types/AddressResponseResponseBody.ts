@@ -5,19 +5,19 @@
  */
 export interface AddressResponseResponseBody {
     /** The name of the city */
-    city?: string;
+    city?: string | undefined;
     /** The country */
-    country?: string;
+    country?: string | undefined;
     /** The name of the neighborhood if one exists */
-    neighborhood?: string;
+    neighborhood?: string | undefined;
     /** Point that may be of interest to the user */
-    pointOfInterest?: string;
+    pointOfInterest?: string | undefined;
     /** The zip code */
-    postalCode?: string;
+    postalCode?: string | undefined;
     /** The name of the state */
-    state?: string;
+    state?: string | undefined;
     /** The street name */
-    street?: string;
+    street?: string | undefined;
     /** Street number of the address */
-    streetNumber?: string;
+    streetNumber?: string | undefined;
 }

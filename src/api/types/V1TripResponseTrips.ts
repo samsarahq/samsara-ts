@@ -4,31 +4,31 @@ import type * as Samsara from "../index.js";
 
 export interface V1TripResponseTrips {
     /** List of associated asset IDs */
-    assetIds?: number[];
+    assetIds?: number[] | undefined;
     /** List of codriver IDs */
-    codriverIds?: number[];
+    codriverIds?: number[] | undefined;
     /** Length of the trip in meters. This value is calculated from the GPS data collected by the Samsara Vehicle Gateway. */
-    distanceMeters?: number;
+    distanceMeters?: number | undefined;
     /** ID of the driver. */
-    driverId?: number;
-    endAddress?: Samsara.V1TripResponseEndAddress;
-    endCoordinates?: Samsara.V1TripResponseEndCoordinates;
+    driverId?: number | undefined;
+    endAddress?: Samsara.V1TripResponseEndAddress | undefined;
+    endCoordinates?: Samsara.V1TripResponseEndCoordinates | undefined;
     /** Geocoded street address of start (latitude, longitude) coordinates. */
-    endLocation?: string;
+    endLocation?: string | undefined;
     /** End of the trip in UNIX milliseconds. Ongoing trips are indicated by an endMs value of 9223372036854775807. */
-    endMs?: number;
+    endMs?: number | undefined;
     /** Odometer reading (in meters) at the end of the trip. This is read from the vehicle's on-board diagnostics. If Samsara cannot read the vehicle's odometer values from on-board diagnostics, this value will be 0. */
-    endOdometer?: number;
+    endOdometer?: number | undefined;
     /** Amount in milliliters of fuel consumed on this trip. */
-    fuelConsumedMl?: number;
-    startAddress?: Samsara.V1TripResponseStartAddress;
-    startCoordinates?: Samsara.V1TripResponseStartCoordinates;
+    fuelConsumedMl?: number | undefined;
+    startAddress?: Samsara.V1TripResponseStartAddress | undefined;
+    startCoordinates?: Samsara.V1TripResponseStartCoordinates | undefined;
     /** Geocoded street address of start (latitude, longitude) coordinates. */
-    startLocation?: string;
+    startLocation?: string | undefined;
     /** Beginning of the trip in UNIX milliseconds. */
-    startMs?: number;
+    startMs?: number | undefined;
     /** Odometer reading (in meters) at the beginning of the trip. This is read from the vehicle's on-board diagnostics. If Samsara cannot read the vehicle's odometer values from on-board diagnostics, this value will be 0. */
-    startOdometer?: number;
+    startOdometer?: number | undefined;
     /** Length in meters trip spent on toll roads. */
-    tollMeters?: number;
+    tollMeters?: number | undefined;
 }

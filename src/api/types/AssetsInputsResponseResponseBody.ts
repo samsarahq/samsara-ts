@@ -7,7 +7,7 @@ import type * as Samsara from "../index.js";
  */
 export interface AssetsInputsResponseResponseBody {
     asset: Samsara.AssetsInputsAssetResponseResponseBody;
-    auxInput?: Samsara.AssetsInputsAuxInputResponseBody;
+    auxInput?: Samsara.AssetsInputsAuxInputResponseBody | undefined;
     /** UTC timestamp in RFC 3339 format of the event. */
     happenedAtTime: string;
     /** Units of the values in the returned data.  Valid values: `boolean`, `millivolts`, `microamps` */

@@ -6,19 +6,19 @@ import type * as Samsara from "../index.js";
  * Qualification input field object.
  */
 export interface QualificationFieldInputObjectResponseBody {
-    checkBoxesValue?: Samsara.FormsCheckBoxesValueObjectResponseBody;
-    dateTimeValue?: Samsara.FormsDateTimeValueObjectResponseBody;
+    checkBoxesValue?: Samsara.FormsCheckBoxesValueObjectResponseBody | undefined;
+    dateTimeValue?: Samsara.FormsDateTimeValueObjectResponseBody | undefined;
     /** ID of the qualification input field object. */
     id: string;
     /** Qualification input field label. */
-    label?: string;
+    label?: string | undefined;
     /** List of qualification media record objects. */
-    mediaList?: Samsara.FormsMediaRecordObjectResponseBody[];
-    multipleChoiceValue?: Samsara.FormsMultipleChoiceValueObjectResponseBody;
-    numberValue?: Samsara.FormsNumberValueObjectResponseBody;
-    signatureValue?: Samsara.FormsSignatureValueObjectResponseBody;
-    tableValue?: Samsara.FormsTableValueObjectResponseBody;
-    textValue?: Samsara.FormsTextValueObjectResponseBody;
+    mediaList?: Samsara.FormsMediaRecordObjectResponseBody[] | undefined;
+    multipleChoiceValue?: Samsara.FormsMultipleChoiceValueObjectResponseBody | undefined;
+    numberValue?: Samsara.FormsNumberValueObjectResponseBody | undefined;
+    signatureValue?: Samsara.FormsSignatureValueObjectResponseBody | undefined;
+    tableValue?: Samsara.FormsTableValueObjectResponseBody | undefined;
+    textValue?: Samsara.FormsTextValueObjectResponseBody | undefined;
     /** Type of the qualification field.  Valid values: `number`, `text`, `multiple_choice`, `check_boxes`, `datetime`, `signature`, `media`, `table` */
     type: QualificationFieldInputObjectResponseBody.Type;
 }

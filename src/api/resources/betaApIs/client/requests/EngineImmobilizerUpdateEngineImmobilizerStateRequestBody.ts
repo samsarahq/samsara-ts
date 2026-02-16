@@ -5,6 +5,7 @@ import type * as Samsara from "../../../../index.js";
 /**
  * @example
  *     {
+ *         id: 1000000,
  *         relayStates: [{
  *                 id: "relay1",
  *                 isOpen: true
@@ -12,6 +13,8 @@ import type * as Samsara from "../../../../index.js";
  *     }
  */
 export interface EngineImmobilizerUpdateEngineImmobilizerStateRequestBody {
+    /** Vehicle ID */
+    id: number;
     /** A list of relay states. If a relay is omitted, its state won't be updated. If the list is empty, a 400 bad request status code will be returned. If there are multiple states for the same relay, a 400 bad request status code will be returned. */
     relayStates: Samsara.UpdateEngineImmobilizerRelayStateRequestBodyRequestBody[];
 }

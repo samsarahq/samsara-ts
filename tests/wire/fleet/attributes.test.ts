@@ -15,7 +15,9 @@ describe("AttributesClient", () => {
 
         server.mockEndpoint().patch("/fleet/attributes/id").respondWith().statusCode(200).build();
 
-        const response = await client.fleet.attributes.update("id");
+        const response = await client.fleet.attributes.update({
+            id: "id",
+        });
         expect(response).toEqual(undefined);
     });
 });

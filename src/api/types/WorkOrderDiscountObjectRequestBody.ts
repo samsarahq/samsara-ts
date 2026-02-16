@@ -7,6 +7,6 @@ import type * as Samsara from "../index.js";
  */
 export interface WorkOrderDiscountObjectRequestBody {
     /** The discount in basis points. 100 basis points = 1%. */
-    basisPoints?: number;
-    money?: Samsara.WorkOrderMoneyObjectRequestBody;
+    basisPoints?: number | undefined;
+    money?: Samsara.WorkOrderMoneyObjectRequestBody | undefined;
 }

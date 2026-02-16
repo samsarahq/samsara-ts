@@ -104,7 +104,9 @@ describe("ContactsClient", () => {
         };
         server.mockEndpoint().get("/contacts/id").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
-        const response = await client.contacts.getContact("id");
+        const response = await client.contacts.getContact({
+            id: "id",
+        });
         expect(response).toEqual({
             data: {
                 email: "jane.jones@yahoo.com",
@@ -128,7 +130,9 @@ describe("ContactsClient", () => {
         const rawResponseBody = "";
         server.mockEndpoint().delete("/contacts/id").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
-        const response = await client.contacts.delete("id");
+        const response = await client.contacts.delete({
+            id: "id",
+        });
         expect(response).toEqual("");
     });
 
@@ -159,7 +163,9 @@ describe("ContactsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.contacts.updateContact("id");
+        const response = await client.contacts.updateContact({
+            id: "id",
+        });
         expect(response).toEqual({
             data: {
                 email: "jane.jones@yahoo.com",

@@ -416,28 +416,27 @@ export class HoursOfServiceClient {
      *
      * To use this endpoint, select **Write ELD Hours of Service (US)** under the Compliance category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
-     * @param {number} driver_id - ID of the driver for whom the duty status is being set.
      * @param {Samsara.InlineObject1} request
      * @param {HoursOfServiceClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.hoursOfService.setCurrentDutyStatus(1000000, {
+     *     await client.hoursOfService.setCurrentDutyStatus({
+     *         driver_id: 1000000,
      *         duty_status: "ON_DUTY"
      *     })
      */
     public setCurrentDutyStatus(
-        driver_id: number,
         request: Samsara.InlineObject1,
         requestOptions?: HoursOfServiceClient.RequestOptions,
     ): core.HttpResponsePromise<void> {
-        return core.HttpResponsePromise.fromPromise(this.__setCurrentDutyStatus(driver_id, request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__setCurrentDutyStatus(request, requestOptions));
     }
 
     private async __setCurrentDutyStatus(
-        driver_id: number,
         request: Samsara.InlineObject1,
         requestOptions?: HoursOfServiceClient.RequestOptions,
     ): Promise<core.WithRawResponse<void>> {
+        const { driver_id: driverId, ..._body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -450,14 +449,14 @@ export class HoursOfServiceClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.SamsaraEnvironment.ProductionApi,
-                `v1/fleet/drivers/${core.url.encodePathParam(driver_id)}/hos/duty_status`,
+                `v1/fleet/drivers/${core.url.encodePathParam(driverId)}/hos/duty_status`,
             ),
             method: "POST",
             headers: _headers,
             contentType: "application/json",
             queryParameters: requestOptions?.queryParams,
             requestType: "json",
-            body: request,
+            body: _body,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,

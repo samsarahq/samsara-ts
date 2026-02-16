@@ -3,11 +3,14 @@
 /**
  * @example
  *     {
+ *         asset_id: 1000000,
  *         startMs: 1000000,
  *         endMs: 1000000
  *     }
  */
 export interface V1GetAssetLocationRequest {
+    /** ID of the asset. Must contain only digits 0-9. */
+    asset_id: number;
     /** Timestamp in milliseconds representing the start of the period to fetch, inclusive. Used in combination with endMs. */
     startMs: number;
     /** Timestamp in milliseconds representing the end of the period to fetch, inclusive. Used in combination with startMs. */

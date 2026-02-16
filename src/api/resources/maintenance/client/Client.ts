@@ -247,7 +247,6 @@ export class MaintenanceClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * @param {string} id - The unique ID of the DVIR defect.
      * @param {Samsara.GetDefectRequest} request
      * @param {MaintenanceClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -262,22 +261,22 @@ export class MaintenanceClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.maintenance.getDefect("id")
+     *     await client.maintenance.getDefect({
+     *         id: "id"
+     *     })
      */
     public getDefect(
-        id: string,
-        request: Samsara.GetDefectRequest = {},
+        request: Samsara.GetDefectRequest,
         requestOptions?: MaintenanceClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.DvirDefectGetDefectResponseBody> {
-        return core.HttpResponsePromise.fromPromise(this.__getDefect(id, request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__getDefect(request, requestOptions));
     }
 
     private async __getDefect(
-        id: string,
-        request: Samsara.GetDefectRequest = {},
+        request: Samsara.GetDefectRequest,
         requestOptions?: MaintenanceClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.DvirDefectGetDefectResponseBody>> {
-        const { includeExternalIds } = request;
+        const { id, includeExternalIds } = request;
         const _queryParams: Record<string, unknown> = {
             includeExternalIds,
         };
@@ -460,7 +459,6 @@ export class MaintenanceClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * @param {string} id - Id of the DVIR.
      * @param {Samsara.GetDvirRequest} request
      * @param {MaintenanceClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -475,22 +473,22 @@ export class MaintenanceClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.maintenance.getDvir("id")
+     *     await client.maintenance.getDvir({
+     *         id: "id"
+     *     })
      */
     public getDvir(
-        id: string,
-        request: Samsara.GetDvirRequest = {},
+        request: Samsara.GetDvirRequest,
         requestOptions?: MaintenanceClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.DvirGetDvirResponseBody> {
-        return core.HttpResponsePromise.fromPromise(this.__getDvir(id, request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__getDvir(request, requestOptions));
     }
 
     private async __getDvir(
-        id: string,
-        request: Samsara.GetDvirRequest = {},
+        request: Samsara.GetDvirRequest,
         requestOptions?: MaintenanceClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.DvirGetDvirResponseBody>> {
-        const { includeExternalIds } = request;
+        const { id, includeExternalIds } = request;
         const _queryParams: Record<string, unknown> = {
             includeExternalIds,
         };
@@ -560,26 +558,26 @@ export class MaintenanceClient {
      *
      * To use this endpoint, select **Write Defects** under the Maintenance category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
-     * @param {string} id - ID of the defect.
      * @param {Samsara.DefectPatch} request
      * @param {MaintenanceClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.maintenance.updateDvirDefect("id")
+     *     await client.maintenance.updateDvirDefect({
+     *         id: "id"
+     *     })
      */
     public updateDvirDefect(
-        id: string,
-        request: Samsara.DefectPatch = {},
+        request: Samsara.DefectPatch,
         requestOptions?: MaintenanceClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.DefectResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__updateDvirDefect(id, request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__updateDvirDefect(request, requestOptions));
     }
 
     private async __updateDvirDefect(
-        id: string,
-        request: Samsara.DefectPatch = {},
+        request: Samsara.DefectPatch,
         requestOptions?: MaintenanceClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.DefectResponse>> {
+        const { id, ..._body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -599,7 +597,7 @@ export class MaintenanceClient {
             contentType: "application/json",
             queryParameters: requestOptions?.queryParams,
             requestType: "json",
-            body: request,
+            body: _body,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -634,7 +632,8 @@ export class MaintenanceClient {
      * @example
      *     await client.maintenance.createDvir({
      *         authorId: "11",
-     *         safetyStatus: "safe"
+     *         safetyStatus: "safe",
+     *         type: "mechanic"
      *     })
      */
     public createDvir(
@@ -667,7 +666,7 @@ export class MaintenanceClient {
             contentType: "application/json",
             queryParameters: requestOptions?.queryParams,
             requestType: "json",
-            body: { ...request, type: "mechanic" },
+            body: request,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -696,29 +695,28 @@ export class MaintenanceClient {
      *
      * To use this endpoint, select **Write DVIRs** under the Maintenance category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
-     * @param {string} id - ID of the DVIR.
      * @param {Samsara.UpdateDvirRequest} request
      * @param {MaintenanceClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.maintenance.updateDvir("id", {
+     *     await client.maintenance.updateDvir({
+     *         id: "id",
      *         authorId: "11",
      *         isResolved: true
      *     })
      */
     public updateDvir(
-        id: string,
         request: Samsara.UpdateDvirRequest,
         requestOptions?: MaintenanceClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.DvirResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__updateDvir(id, request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__updateDvir(request, requestOptions));
     }
 
     private async __updateDvir(
-        id: string,
         request: Samsara.UpdateDvirRequest,
         requestOptions?: MaintenanceClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.DvirResponse>> {
+        const { id, ..._body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -738,7 +736,7 @@ export class MaintenanceClient {
             contentType: "application/json",
             queryParameters: requestOptions?.queryParams,
             requestType: "json",
-            body: request,
+            body: _body,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,

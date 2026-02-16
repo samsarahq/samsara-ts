@@ -950,7 +950,9 @@ describe("IftaClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.ifta.getIftaDetailJob("id");
+        const response = await client.ifta.getIftaDetailJob({
+            id: "id",
+        });
         expect(response).toEqual({
             data: {
                 args: {
@@ -997,7 +999,9 @@ describe("IftaClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.ifta.getIftaDetailJob("id");
+            return await client.ifta.getIftaDetailJob({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.UnauthorizedError);
     });
 
@@ -1020,7 +1024,9 @@ describe("IftaClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.ifta.getIftaDetailJob("id");
+            return await client.ifta.getIftaDetailJob({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.NotFoundError);
     });
 
@@ -1043,7 +1049,9 @@ describe("IftaClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.ifta.getIftaDetailJob("id");
+            return await client.ifta.getIftaDetailJob({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.MethodNotAllowedError);
     });
 
@@ -1066,7 +1074,9 @@ describe("IftaClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.ifta.getIftaDetailJob("id");
+            return await client.ifta.getIftaDetailJob({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
@@ -1089,7 +1099,9 @@ describe("IftaClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.ifta.getIftaDetailJob("id");
+            return await client.ifta.getIftaDetailJob({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
@@ -1112,7 +1124,9 @@ describe("IftaClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.ifta.getIftaDetailJob("id");
+            return await client.ifta.getIftaDetailJob({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
@@ -1135,7 +1149,9 @@ describe("IftaClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.ifta.getIftaDetailJob("id");
+            return await client.ifta.getIftaDetailJob({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
@@ -1158,7 +1174,9 @@ describe("IftaClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.ifta.getIftaDetailJob("id");
+            return await client.ifta.getIftaDetailJob({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
@@ -1181,7 +1199,9 @@ describe("IftaClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.ifta.getIftaDetailJob("id");
+            return await client.ifta.getIftaDetailJob({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 });

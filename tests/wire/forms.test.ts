@@ -1352,6 +1352,7 @@ describe("FormsClient", () => {
                 id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
                 revisionId: "1214a1fa-f0c6-408b-bf85-51dc3bc71ac7",
             },
+            status: "notStarted",
         });
         expect(response).toEqual({
             data: {
@@ -1552,6 +1553,7 @@ describe("FormsClient", () => {
                 formTemplate: {
                     id: "id",
                 },
+                status: "notStarted",
             });
         }).rejects.toThrow(Samsara.UnauthorizedError);
     });
@@ -1580,6 +1582,7 @@ describe("FormsClient", () => {
                 formTemplate: {
                     id: "id",
                 },
+                status: "notStarted",
             });
         }).rejects.toThrow(Samsara.NotFoundError);
     });
@@ -1608,6 +1611,7 @@ describe("FormsClient", () => {
                 formTemplate: {
                     id: "id",
                 },
+                status: "notStarted",
             });
         }).rejects.toThrow(Samsara.MethodNotAllowedError);
     });
@@ -1636,6 +1640,7 @@ describe("FormsClient", () => {
                 formTemplate: {
                     id: "id",
                 },
+                status: "notStarted",
             });
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
@@ -1664,6 +1669,7 @@ describe("FormsClient", () => {
                 formTemplate: {
                     id: "id",
                 },
+                status: "notStarted",
             });
         }).rejects.toThrow(Samsara.InternalServerError);
     });
@@ -1692,6 +1698,7 @@ describe("FormsClient", () => {
                 formTemplate: {
                     id: "id",
                 },
+                status: "notStarted",
             });
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
@@ -1720,6 +1727,7 @@ describe("FormsClient", () => {
                 formTemplate: {
                     id: "id",
                 },
+                status: "notStarted",
             });
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
@@ -1748,6 +1756,7 @@ describe("FormsClient", () => {
                 formTemplate: {
                     id: "id",
                 },
+                status: "notStarted",
             });
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
@@ -1776,6 +1785,7 @@ describe("FormsClient", () => {
                 formTemplate: {
                     id: "id",
                 },
+                status: "notStarted",
             });
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });

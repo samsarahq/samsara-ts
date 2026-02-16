@@ -1323,7 +1323,9 @@ describe("RoutesClient", () => {
         };
         server.mockEndpoint().get("/fleet/routes/id").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
-        const response = await client.routes.fetchRoute("id");
+        const response = await client.routes.fetchRoute({
+            id: "id",
+        });
         expect(response).toEqual({
             data: {
                 actualRouteEndTime: "2019-06-13T19:08:25Z",
@@ -1436,7 +1438,9 @@ describe("RoutesClient", () => {
         server.mockEndpoint().get("/fleet/routes/id").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.routes.fetchRoute("id");
+            return await client.routes.fetchRoute({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.UnauthorizedError);
     });
 
@@ -1453,7 +1457,9 @@ describe("RoutesClient", () => {
         server.mockEndpoint().get("/fleet/routes/id").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.routes.fetchRoute("id");
+            return await client.routes.fetchRoute({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.NotFoundError);
     });
 
@@ -1470,7 +1476,9 @@ describe("RoutesClient", () => {
         server.mockEndpoint().get("/fleet/routes/id").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.routes.fetchRoute("id");
+            return await client.routes.fetchRoute({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.MethodNotAllowedError);
     });
 
@@ -1487,7 +1495,9 @@ describe("RoutesClient", () => {
         server.mockEndpoint().get("/fleet/routes/id").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.routes.fetchRoute("id");
+            return await client.routes.fetchRoute({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
@@ -1504,7 +1514,9 @@ describe("RoutesClient", () => {
         server.mockEndpoint().get("/fleet/routes/id").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.routes.fetchRoute("id");
+            return await client.routes.fetchRoute({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
@@ -1521,7 +1533,9 @@ describe("RoutesClient", () => {
         server.mockEndpoint().get("/fleet/routes/id").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.routes.fetchRoute("id");
+            return await client.routes.fetchRoute({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
@@ -1538,7 +1552,9 @@ describe("RoutesClient", () => {
         server.mockEndpoint().get("/fleet/routes/id").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.routes.fetchRoute("id");
+            return await client.routes.fetchRoute({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
@@ -1555,7 +1571,9 @@ describe("RoutesClient", () => {
         server.mockEndpoint().get("/fleet/routes/id").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.routes.fetchRoute("id");
+            return await client.routes.fetchRoute({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
@@ -1572,7 +1590,9 @@ describe("RoutesClient", () => {
         server.mockEndpoint().get("/fleet/routes/id").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.routes.fetchRoute("id");
+            return await client.routes.fetchRoute({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 
@@ -1587,7 +1607,9 @@ describe("RoutesClient", () => {
 
         server.mockEndpoint().delete("/fleet/routes/id").respondWith().statusCode(200).build();
 
-        const response = await client.routes.deleteRoute("id");
+        const response = await client.routes.deleteRoute({
+            id: "id",
+        });
         expect(response).toEqual(undefined);
     });
 
@@ -1610,7 +1632,9 @@ describe("RoutesClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.routes.deleteRoute("id");
+            return await client.routes.deleteRoute({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.UnauthorizedError);
     });
 
@@ -1633,7 +1657,9 @@ describe("RoutesClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.routes.deleteRoute("id");
+            return await client.routes.deleteRoute({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.NotFoundError);
     });
 
@@ -1656,7 +1682,9 @@ describe("RoutesClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.routes.deleteRoute("id");
+            return await client.routes.deleteRoute({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.MethodNotAllowedError);
     });
 
@@ -1679,7 +1707,9 @@ describe("RoutesClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.routes.deleteRoute("id");
+            return await client.routes.deleteRoute({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
@@ -1702,7 +1732,9 @@ describe("RoutesClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.routes.deleteRoute("id");
+            return await client.routes.deleteRoute({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
@@ -1725,7 +1757,9 @@ describe("RoutesClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.routes.deleteRoute("id");
+            return await client.routes.deleteRoute({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
@@ -1748,7 +1782,9 @@ describe("RoutesClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.routes.deleteRoute("id");
+            return await client.routes.deleteRoute({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
@@ -1771,7 +1807,9 @@ describe("RoutesClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.routes.deleteRoute("id");
+            return await client.routes.deleteRoute({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
@@ -1794,7 +1832,9 @@ describe("RoutesClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.routes.deleteRoute("id");
+            return await client.routes.deleteRoute({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 
@@ -1883,7 +1923,9 @@ describe("RoutesClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.routes.patchRoute("id");
+        const response = await client.routes.patchRoute({
+            id: "id",
+        });
         expect(response).toEqual({
             data: {
                 actualRouteEndTime: "2019-06-13T19:08:25Z",
@@ -2003,7 +2045,9 @@ describe("RoutesClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.routes.patchRoute("id");
+            return await client.routes.patchRoute({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.UnauthorizedError);
     });
 
@@ -2027,7 +2071,9 @@ describe("RoutesClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.routes.patchRoute("id");
+            return await client.routes.patchRoute({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.NotFoundError);
     });
 
@@ -2051,7 +2097,9 @@ describe("RoutesClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.routes.patchRoute("id");
+            return await client.routes.patchRoute({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.MethodNotAllowedError);
     });
 
@@ -2075,7 +2123,9 @@ describe("RoutesClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.routes.patchRoute("id");
+            return await client.routes.patchRoute({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
@@ -2099,7 +2149,9 @@ describe("RoutesClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.routes.patchRoute("id");
+            return await client.routes.patchRoute({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
@@ -2123,7 +2175,9 @@ describe("RoutesClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.routes.patchRoute("id");
+            return await client.routes.patchRoute({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
@@ -2147,7 +2201,9 @@ describe("RoutesClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.routes.patchRoute("id");
+            return await client.routes.patchRoute({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
@@ -2171,7 +2227,9 @@ describe("RoutesClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.routes.patchRoute("id");
+            return await client.routes.patchRoute({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
@@ -2195,7 +2253,9 @@ describe("RoutesClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.routes.patchRoute("id");
+            return await client.routes.patchRoute({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 
@@ -2534,7 +2594,9 @@ describe("RoutesClient", () => {
             .statusCode(200)
             .build();
 
-        const response = await client.routes.v1DeleteDispatchRouteById("route_id_or_external_id");
+        const response = await client.routes.v1DeleteDispatchRouteById({
+            route_id_or_external_id: "route_id_or_external_id",
+        });
         expect(response).toEqual(undefined);
     });
 });

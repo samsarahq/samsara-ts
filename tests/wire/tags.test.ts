@@ -197,7 +197,9 @@ describe("TagsClient", () => {
         };
         server.mockEndpoint().get("/tags/id").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
-        const response = await client.tags.getTag("id");
+        const response = await client.tags.getTag({
+            id: "id",
+        });
         expect(response).toEqual({
             data: {
                 addresses: [
@@ -279,7 +281,9 @@ describe("TagsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.tags.replaceTag("id");
+        const response = await client.tags.replaceTag({
+            id: "id",
+        });
         expect(response).toEqual({
             data: {
                 addresses: [
@@ -341,7 +345,9 @@ describe("TagsClient", () => {
         const rawResponseBody = "";
         server.mockEndpoint().delete("/tags/id").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
-        const response = await client.tags.delete("id");
+        const response = await client.tags.delete({
+            id: "id",
+        });
         expect(response).toEqual("");
     });
 
@@ -377,7 +383,9 @@ describe("TagsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.tags.patchTag("id");
+        const response = await client.tags.patchTag({
+            id: "id",
+        });
         expect(response).toEqual({
             data: {
                 addresses: [

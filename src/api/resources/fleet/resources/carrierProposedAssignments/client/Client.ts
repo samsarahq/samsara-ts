@@ -29,23 +29,26 @@ export class CarrierProposedAssignmentsClient {
      *
      * To use this endpoint, select **Write Carrier-Proposed Assignments** under the Assignments category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
-     * @param {string} id - ID of the assignment.
+     * @param {Samsara.fleet.DeleteCarrierProposedAssignmentsRequest} request
      * @param {CarrierProposedAssignmentsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.fleet.carrierProposedAssignments.delete("id")
+     *     await client.fleet.carrierProposedAssignments.delete({
+     *         id: "id"
+     *     })
      */
     public delete(
-        id: string,
+        request: Samsara.fleet.DeleteCarrierProposedAssignmentsRequest,
         requestOptions?: CarrierProposedAssignmentsClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.StandardDeleteResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__delete(id, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__delete(request, requestOptions));
     }
 
     private async __delete(
-        id: string,
+        request: Samsara.fleet.DeleteCarrierProposedAssignmentsRequest,
         requestOptions?: CarrierProposedAssignmentsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.StandardDeleteResponse>> {
+        const { id } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,

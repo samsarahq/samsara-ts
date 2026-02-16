@@ -8,5 +8,13 @@ import type * as Samsara from "../index.js";
 export interface FormsApprovalConfigObjectResponseBody {
     singleApprovalConfig?: Samsara.FormsSingleApprovalConfigObjectResponseBody;
     /** Type of approval.  Valid values: `singleApproval` */
-    type: "singleApproval";
+    type: FormsApprovalConfigObjectResponseBody.Type;
+}
+
+export namespace FormsApprovalConfigObjectResponseBody {
+    /** Type of approval.  Valid values: `singleApproval` */
+    export const Type = {
+        SingleApproval: "singleApproval",
+    } as const;
+    export type Type = (typeof Type)[keyof typeof Type];
 }

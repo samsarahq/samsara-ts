@@ -150,7 +150,7 @@ await client.addresses.create({
 </dl>
 </details>
 
-<details><summary><code>client.addresses.<a href="/src/api/resources/addresses/client/Client.ts">get</a>(id) -> Samsara.AddressResponse</code></summary>
+<details><summary><code>client.addresses.<a href="/src/api/resources/addresses/client/Client.ts">get</a>({ ...params }) -> Samsara.AddressResponse</code></summary>
 <dl>
 <dd>
 
@@ -181,7 +181,9 @@ To use this endpoint, select **Read Addresses** under the Addresses category whe
 <dd>
 
 ```typescript
-await client.addresses.get("id");
+await client.addresses.get({
+    id: "id"
+});
 
 ```
 </dd>
@@ -197,7 +199,7 @@ await client.addresses.get("id");
 <dl>
 <dd>
 
-**id:** `string` — ID of the Address. This can either be the Samsara-provided ID or an external ID. External IDs are customer-specified key-value pairs created in the POST or PATCH requests of this resource. To specify an external ID as part of a path parameter, use the following format: `key:value`. For example, `crmId:abc123`
+**request:** `Samsara.GetAddressesRequest` 
     
 </dd>
 </dl>
@@ -217,7 +219,7 @@ await client.addresses.get("id");
 </dl>
 </details>
 
-<details><summary><code>client.addresses.<a href="/src/api/resources/addresses/client/Client.ts">delete</a>(id) -> Samsara.StandardDeleteResponse</code></summary>
+<details><summary><code>client.addresses.<a href="/src/api/resources/addresses/client/Client.ts">delete</a>({ ...params }) -> Samsara.StandardDeleteResponse</code></summary>
 <dl>
 <dd>
 
@@ -248,7 +250,9 @@ To use this endpoint, select **Write Addresses** under the Addresses category wh
 <dd>
 
 ```typescript
-await client.addresses.delete("id");
+await client.addresses.delete({
+    id: "id"
+});
 
 ```
 </dd>
@@ -264,7 +268,7 @@ await client.addresses.delete("id");
 <dl>
 <dd>
 
-**id:** `string` — ID of the Address. This can either be the Samsara-provided ID or an external ID. External IDs are customer-specified key-value pairs created in the POST or PATCH requests of this resource. To specify an external ID as part of a path parameter, use the following format: `key:value`. For example, `crmId:abc123`
+**request:** `Samsara.DeleteAddressesRequest` 
     
 </dd>
 </dl>
@@ -284,7 +288,7 @@ await client.addresses.delete("id");
 </dl>
 </details>
 
-<details><summary><code>client.addresses.<a href="/src/api/resources/addresses/client/Client.ts">update</a>(id, { ...params }) -> Samsara.AddressResponse</code></summary>
+<details><summary><code>client.addresses.<a href="/src/api/resources/addresses/client/Client.ts">update</a>({ ...params }) -> Samsara.AddressResponse</code></summary>
 <dl>
 <dd>
 
@@ -315,7 +319,9 @@ To use this endpoint, select **Write Addresses** under the Addresses category wh
 <dd>
 
 ```typescript
-await client.addresses.update("id");
+await client.addresses.update({
+    id: "id"
+});
 
 ```
 </dd>
@@ -327,14 +333,6 @@ await client.addresses.update("id");
 
 <dl>
 <dd>
-
-<dl>
-<dd>
-
-**id:** `string` — ID of the Address. This can either be the Samsara-provided ID or an external ID. External IDs are customer-specified key-value pairs created in the POST or PATCH requests of this resource. To specify an external ID as part of a path parameter, use the following format: `key:value`. For example, `crmId:abc123`
-    
-</dd>
-</dl>
 
 <dl>
 <dd>
@@ -1222,7 +1220,7 @@ await client.assets.v1GetAssetsReefers({
 </dl>
 </details>
 
-<details><summary><code>client.assets.<a href="/src/api/resources/assets/client/Client.ts">v1GetAssetLocation</a>(asset_id, { ...params }) -> Samsara.V1AssetLocationResponse</code></summary>
+<details><summary><code>client.assets.<a href="/src/api/resources/assets/client/Client.ts">v1GetAssetLocation</a>({ ...params }) -> Samsara.V1AssetLocationResponse</code></summary>
 <dl>
 <dd>
 
@@ -1260,7 +1258,8 @@ To use this endpoint, select **Read Equipment Statistics** under the Equipment c
 <dd>
 
 ```typescript
-await client.assets.v1GetAssetLocation(1000000, {
+await client.assets.v1GetAssetLocation({
+    asset_id: 1000000,
     startMs: 1000000,
     endMs: 1000000
 });
@@ -1275,14 +1274,6 @@ await client.assets.v1GetAssetLocation(1000000, {
 
 <dl>
 <dd>
-
-<dl>
-<dd>
-
-**asset_id:** `number` — ID of the asset. Must contain only digits 0-9.
-    
-</dd>
-</dl>
 
 <dl>
 <dd>
@@ -1307,7 +1298,7 @@ await client.assets.v1GetAssetLocation(1000000, {
 </dl>
 </details>
 
-<details><summary><code>client.assets.<a href="/src/api/resources/assets/client/Client.ts">v1GetAssetReefer</a>(asset_id, { ...params }) -> Samsara.V1AssetReeferResponse</code></summary>
+<details><summary><code>client.assets.<a href="/src/api/resources/assets/client/Client.ts">v1GetAssetReefer</a>({ ...params }) -> Samsara.V1AssetReeferResponse</code></summary>
 <dl>
 <dd>
 
@@ -1345,7 +1336,8 @@ To use this endpoint, select **Read Trailers** under the Trailers category when 
 <dd>
 
 ```typescript
-await client.assets.v1GetAssetReefer(1000000, {
+await client.assets.v1GetAssetReefer({
+    asset_id: 1000000,
     startMs: 1000000,
     endMs: 1000000
 });
@@ -1360,14 +1352,6 @@ await client.assets.v1GetAssetReefer(1000000, {
 
 <dl>
 <dd>
-
-<dl>
-<dd>
-
-**asset_id:** `number` — ID of the asset. Must contain only digits 0-9.
-    
-</dd>
-</dl>
 
 <dl>
 <dd>
@@ -1392,7 +1376,7 @@ await client.assets.v1GetAssetReefer(1000000, {
 </dl>
 </details>
 
-<details><summary><code>client.assets.<a href="/src/api/resources/assets/client/Client.ts">get</a>(id) -> void</code></summary>
+<details><summary><code>client.assets.<a href="/src/api/resources/assets/client/Client.ts">get</a>({ ...params }) -> void</code></summary>
 <dl>
 <dd>
 
@@ -1405,7 +1389,9 @@ await client.assets.v1GetAssetReefer(1000000, {
 <dd>
 
 ```typescript
-await client.assets.get("id");
+await client.assets.get({
+    id: "id"
+});
 
 ```
 </dd>
@@ -1421,7 +1407,7 @@ await client.assets.get("id");
 <dl>
 <dd>
 
-**id:** `string` 
+**request:** `Samsara.GetAssetsRequest` 
     
 </dd>
 </dl>
@@ -1441,7 +1427,7 @@ await client.assets.get("id");
 </dl>
 </details>
 
-<details><summary><code>client.assets.<a href="/src/api/resources/assets/client/Client.ts">update</a>(id) -> void</code></summary>
+<details><summary><code>client.assets.<a href="/src/api/resources/assets/client/Client.ts">update</a>({ ...params }) -> void</code></summary>
 <dl>
 <dd>
 
@@ -1454,7 +1440,9 @@ await client.assets.get("id");
 <dd>
 
 ```typescript
-await client.assets.update("id");
+await client.assets.update({
+    id: "id"
+});
 
 ```
 </dd>
@@ -1470,7 +1458,7 @@ await client.assets.update("id");
 <dl>
 <dd>
 
-**id:** `string` 
+**request:** `Samsara.UpdateAssetsRequest` 
     
 </dd>
 </dl>
@@ -1634,7 +1622,7 @@ await client.betaApIs.getAssetsInputs({
 </dl>
 </details>
 
-<details><summary><code>client.betaApIs.<a href="/src/api/resources/betaApIs/client/Client.ts">getAempEquipmentList</a>(pageNumber) -> Samsara.AempEquipmentGetAempEquipmentListResponseBody</code></summary>
+<details><summary><code>client.betaApIs.<a href="/src/api/resources/betaApIs/client/Client.ts">getAempEquipmentList</a>({ ...params }) -> Samsara.AempEquipmentGetAempEquipmentListResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -1668,7 +1656,9 @@ To use this endpoint, select **Read AEMP** under the Equipment category when cre
 <dd>
 
 ```typescript
-await client.betaApIs.getAempEquipmentList("pageNumber");
+await client.betaApIs.getAempEquipmentList({
+    pageNumber: "pageNumber"
+});
 
 ```
 </dd>
@@ -1684,7 +1674,7 @@ await client.betaApIs.getAempEquipmentList("pageNumber");
 <dl>
 <dd>
 
-**pageNumber:** `string` — The number corresponding to a specific page of paginated results, defaulting to the first page if not provided. The default page size is 100 records.
+**request:** `Samsara.GetAempEquipmentListRequest` 
     
 </dd>
 </dl>
@@ -1775,7 +1765,7 @@ await client.betaApIs.getDriverEfficiency();
 </dl>
 </details>
 
-<details><summary><code>client.betaApIs.<a href="/src/api/resources/betaApIs/client/Client.ts">patchEquipment</a>(id, { ...params }) -> Samsara.EquipmentPatchEquipmentResponseBody</code></summary>
+<details><summary><code>client.betaApIs.<a href="/src/api/resources/betaApIs/client/Client.ts">patchEquipment</a>({ ...params }) -> Samsara.EquipmentPatchEquipmentResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -1811,7 +1801,9 @@ To use this endpoint, select **Write Equipment** under the Equipment category wh
 <dd>
 
 ```typescript
-await client.betaApIs.patchEquipment("id");
+await client.betaApIs.patchEquipment({
+    id: "id"
+});
 
 ```
 </dd>
@@ -1823,14 +1815,6 @@ await client.betaApIs.patchEquipment("id");
 
 <dl>
 <dd>
-
-<dl>
-<dd>
-
-**id:** `string` — The unique Samsara ID of the Equipment. This is automatically generated when the Equipment object is created. It cannot be changed.
-    
-</dd>
-</dl>
 
 <dl>
 <dd>
@@ -2152,7 +2136,7 @@ await client.betaApIs.getTrailerStatsHistory({
 </dl>
 </details>
 
-<details><summary><code>client.betaApIs.<a href="/src/api/resources/betaApIs/client/Client.ts">updateEngineImmobilizerState</a>(id, { ...params }) -> void</code></summary>
+<details><summary><code>client.betaApIs.<a href="/src/api/resources/betaApIs/client/Client.ts">updateEngineImmobilizerState</a>({ ...params }) -> void</code></summary>
 <dl>
 <dd>
 
@@ -2186,7 +2170,8 @@ To use this endpoint, select **Write Vehicle Immobilization** under the Vehicles
 <dd>
 
 ```typescript
-await client.betaApIs.updateEngineImmobilizerState(1000000, {
+await client.betaApIs.updateEngineImmobilizerState({
+    id: 1000000,
     relayStates: [{
             id: "relay1",
             isOpen: true
@@ -2203,14 +2188,6 @@ await client.betaApIs.updateEngineImmobilizerState(1000000, {
 
 <dl>
 <dd>
-
-<dl>
-<dd>
-
-**id:** `number` — Vehicle ID
-    
-</dd>
-</dl>
 
 <dl>
 <dd>
@@ -2738,7 +2715,7 @@ await client.betaApIs.getEngineImmobilizerStates({
 </dl>
 </details>
 
-<details><summary><code>client.betaApIs.<a href="/src/api/resources/betaApIs/client/Client.ts">startFunctionRun</a>(name, { ...params }) -> Samsara.FunctionsStartFunctionRunResponseBody</code></summary>
+<details><summary><code>client.betaApIs.<a href="/src/api/resources/betaApIs/client/Client.ts">startFunctionRun</a>({ ...params }) -> Samsara.FunctionsStartFunctionRunResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -2772,7 +2749,8 @@ To use this endpoint, select **Write Functions** under the Closed Beta category 
 <dd>
 
 ```typescript
-await client.betaApIs.startFunctionRun("name", {
+await client.betaApIs.startFunctionRun({
+    name: "name",
     paramsOverride: {}
 });
 
@@ -2786,14 +2764,6 @@ await client.betaApIs.startFunctionRun("name", {
 
 <dl>
 <dd>
-
-<dl>
-<dd>
-
-**name:** `string` — The name of the Function to run.
-    
-</dd>
-</dl>
 
 <dl>
 <dd>
@@ -4939,7 +4909,7 @@ await client.attributes.createAttribute({
 </dl>
 </details>
 
-<details><summary><code>client.attributes.<a href="/src/api/resources/attributes/client/Client.ts">getAttribute</a>(id, { ...params }) -> Samsara.AttributeExpandedResponse</code></summary>
+<details><summary><code>client.attributes.<a href="/src/api/resources/attributes/client/Client.ts">getAttribute</a>({ ...params }) -> Samsara.AttributeExpandedResponse</code></summary>
 <dl>
 <dd>
 
@@ -4970,7 +4940,8 @@ To use this endpoint, select **Read Attributes** under the Setup & Administratio
 <dd>
 
 ```typescript
-await client.attributes.getAttribute("id", {
+await client.attributes.getAttribute({
+    id: "id",
     entityType: "driver"
 });
 
@@ -4984,14 +4955,6 @@ await client.attributes.getAttribute("id", {
 
 <dl>
 <dd>
-
-<dl>
-<dd>
-
-**id:** `string` — Samsara-provided UUID of the attribute.
-    
-</dd>
-</dl>
 
 <dl>
 <dd>
@@ -5016,7 +4979,7 @@ await client.attributes.getAttribute("id", {
 </dl>
 </details>
 
-<details><summary><code>client.attributes.<a href="/src/api/resources/attributes/client/Client.ts">delete</a>(id, { ...params }) -> Samsara.StandardDeleteResponse</code></summary>
+<details><summary><code>client.attributes.<a href="/src/api/resources/attributes/client/Client.ts">delete</a>({ ...params }) -> Samsara.StandardDeleteResponse</code></summary>
 <dl>
 <dd>
 
@@ -5047,7 +5010,8 @@ To use this endpoint, select **Write Attributes** under the Setup & Administrati
 <dd>
 
 ```typescript
-await client.attributes.delete("id", {
+await client.attributes.delete({
+    id: "id",
     entityType: "driver"
 });
 
@@ -5061,14 +5025,6 @@ await client.attributes.delete("id", {
 
 <dl>
 <dd>
-
-<dl>
-<dd>
-
-**id:** `string` — Samsara-provided UUID of the attribute.
-    
-</dd>
-</dl>
 
 <dl>
 <dd>
@@ -5093,7 +5049,7 @@ await client.attributes.delete("id", {
 </dl>
 </details>
 
-<details><summary><code>client.attributes.<a href="/src/api/resources/attributes/client/Client.ts">updateAttribute</a>(id, { ...params }) -> Samsara.AttributeExpandedResponse</code></summary>
+<details><summary><code>client.attributes.<a href="/src/api/resources/attributes/client/Client.ts">updateAttribute</a>({ ...params }) -> Samsara.AttributeExpandedResponse</code></summary>
 <dl>
 <dd>
 
@@ -5124,7 +5080,8 @@ To use this endpoint, select **Write Attributes** under the Setup & Administrati
 <dd>
 
 ```typescript
-await client.attributes.updateAttribute("id", {
+await client.attributes.updateAttribute({
+    id: "id",
     entityType: "driver"
 });
 
@@ -5138,14 +5095,6 @@ await client.attributes.updateAttribute("id", {
 
 <dl>
 <dd>
-
-<dl>
-<dd>
-
-**id:** `string` — Samsara-provided UUID of the attribute.
-    
-</dd>
-</dl>
 
 <dl>
 <dd>
@@ -5743,7 +5692,7 @@ await client.contacts.createContact();
 </dl>
 </details>
 
-<details><summary><code>client.contacts.<a href="/src/api/resources/contacts/client/Client.ts">getContact</a>(id) -> Samsara.ContactResponse</code></summary>
+<details><summary><code>client.contacts.<a href="/src/api/resources/contacts/client/Client.ts">getContact</a>({ ...params }) -> Samsara.ContactResponse</code></summary>
 <dl>
 <dd>
 
@@ -5774,7 +5723,9 @@ To use this endpoint, select **Read Alert Contacts** under the Setup & Administr
 <dd>
 
 ```typescript
-await client.contacts.getContact("id");
+await client.contacts.getContact({
+    id: "id"
+});
 
 ```
 </dd>
@@ -5790,7 +5741,7 @@ await client.contacts.getContact("id");
 <dl>
 <dd>
 
-**id:** `string` — Unique identifier for the contact.
+**request:** `Samsara.GetContactRequest` 
     
 </dd>
 </dl>
@@ -5810,7 +5761,7 @@ await client.contacts.getContact("id");
 </dl>
 </details>
 
-<details><summary><code>client.contacts.<a href="/src/api/resources/contacts/client/Client.ts">delete</a>(id) -> Samsara.StandardDeleteResponse</code></summary>
+<details><summary><code>client.contacts.<a href="/src/api/resources/contacts/client/Client.ts">delete</a>({ ...params }) -> Samsara.StandardDeleteResponse</code></summary>
 <dl>
 <dd>
 
@@ -5841,7 +5792,9 @@ To use this endpoint, select **Write Alert Contacts** under the Setup & Administ
 <dd>
 
 ```typescript
-await client.contacts.delete("id");
+await client.contacts.delete({
+    id: "id"
+});
 
 ```
 </dd>
@@ -5857,7 +5810,7 @@ await client.contacts.delete("id");
 <dl>
 <dd>
 
-**id:** `string` — Unique identifier for the contact.
+**request:** `Samsara.DeleteContactsRequest` 
     
 </dd>
 </dl>
@@ -5877,7 +5830,7 @@ await client.contacts.delete("id");
 </dl>
 </details>
 
-<details><summary><code>client.contacts.<a href="/src/api/resources/contacts/client/Client.ts">updateContact</a>(id, { ...params }) -> Samsara.ContactResponse</code></summary>
+<details><summary><code>client.contacts.<a href="/src/api/resources/contacts/client/Client.ts">updateContact</a>({ ...params }) -> Samsara.ContactResponse</code></summary>
 <dl>
 <dd>
 
@@ -5908,7 +5861,9 @@ To use this endpoint, select **Write Alert Contacts** under the Setup & Administ
 <dd>
 
 ```typescript
-await client.contacts.updateContact("id");
+await client.contacts.updateContact({
+    id: "id"
+});
 
 ```
 </dd>
@@ -5920,14 +5875,6 @@ await client.contacts.updateContact("id");
 
 <dl>
 <dd>
-
-<dl>
-<dd>
-
-**id:** `string` — Unique identifier for the contact.
-    
-</dd>
-</dl>
 
 <dl>
 <dd>
@@ -6095,7 +6042,7 @@ await client.maintenance.streamDefects({
 </dl>
 </details>
 
-<details><summary><code>client.maintenance.<a href="/src/api/resources/maintenance/client/Client.ts">getDefect</a>(id, { ...params }) -> Samsara.DvirDefectGetDefectResponseBody</code></summary>
+<details><summary><code>client.maintenance.<a href="/src/api/resources/maintenance/client/Client.ts">getDefect</a>({ ...params }) -> Samsara.DvirDefectGetDefectResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -6129,7 +6076,9 @@ To use this endpoint, select **Read Defects** under the Maintenance category whe
 <dd>
 
 ```typescript
-await client.maintenance.getDefect("id");
+await client.maintenance.getDefect({
+    id: "id"
+});
 
 ```
 </dd>
@@ -6141,14 +6090,6 @@ await client.maintenance.getDefect("id");
 
 <dl>
 <dd>
-
-<dl>
-<dd>
-
-**id:** `string` — The unique ID of the DVIR defect.
-    
-</dd>
-</dl>
 
 <dl>
 <dd>
@@ -6245,7 +6186,7 @@ await client.maintenance.getDvirs({
 </dl>
 </details>
 
-<details><summary><code>client.maintenance.<a href="/src/api/resources/maintenance/client/Client.ts">getDvir</a>(id, { ...params }) -> Samsara.DvirGetDvirResponseBody</code></summary>
+<details><summary><code>client.maintenance.<a href="/src/api/resources/maintenance/client/Client.ts">getDvir</a>({ ...params }) -> Samsara.DvirGetDvirResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -6279,7 +6220,9 @@ To use this endpoint, select **Read DVIRs** under the Maintenance category when 
 <dd>
 
 ```typescript
-await client.maintenance.getDvir("id");
+await client.maintenance.getDvir({
+    id: "id"
+});
 
 ```
 </dd>
@@ -6291,14 +6234,6 @@ await client.maintenance.getDvir("id");
 
 <dl>
 <dd>
-
-<dl>
-<dd>
-
-**id:** `string` — Id of the DVIR.
-    
-</dd>
-</dl>
 
 <dl>
 <dd>
@@ -6323,7 +6258,7 @@ await client.maintenance.getDvir("id");
 </dl>
 </details>
 
-<details><summary><code>client.maintenance.<a href="/src/api/resources/maintenance/client/Client.ts">updateDvirDefect</a>(id, { ...params }) -> Samsara.DefectResponse</code></summary>
+<details><summary><code>client.maintenance.<a href="/src/api/resources/maintenance/client/Client.ts">updateDvirDefect</a>({ ...params }) -> Samsara.DefectResponse</code></summary>
 <dl>
 <dd>
 
@@ -6354,7 +6289,9 @@ To use this endpoint, select **Write Defects** under the Maintenance category wh
 <dd>
 
 ```typescript
-await client.maintenance.updateDvirDefect("id");
+await client.maintenance.updateDvirDefect({
+    id: "id"
+});
 
 ```
 </dd>
@@ -6366,14 +6303,6 @@ await client.maintenance.updateDvirDefect("id");
 
 <dl>
 <dd>
-
-<dl>
-<dd>
-
-**id:** `string` — ID of the defect.
-    
-</dd>
-</dl>
 
 <dl>
 <dd>
@@ -6431,7 +6360,8 @@ To use this endpoint, select **Write DVIRs** under the Maintenance category when
 ```typescript
 await client.maintenance.createDvir({
     authorId: "11",
-    safetyStatus: "safe"
+    safetyStatus: "safe",
+    type: "mechanic"
 });
 
 ```
@@ -6468,7 +6398,7 @@ await client.maintenance.createDvir({
 </dl>
 </details>
 
-<details><summary><code>client.maintenance.<a href="/src/api/resources/maintenance/client/Client.ts">updateDvir</a>(id, { ...params }) -> Samsara.DvirResponse</code></summary>
+<details><summary><code>client.maintenance.<a href="/src/api/resources/maintenance/client/Client.ts">updateDvir</a>({ ...params }) -> Samsara.DvirResponse</code></summary>
 <dl>
 <dd>
 
@@ -6499,7 +6429,8 @@ To use this endpoint, select **Write DVIRs** under the Maintenance category when
 <dd>
 
 ```typescript
-await client.maintenance.updateDvir("id", {
+await client.maintenance.updateDvir({
+    id: "id",
     authorId: "11",
     isResolved: true
 });
@@ -6514,14 +6445,6 @@ await client.maintenance.updateDvir("id", {
 
 <dl>
 <dd>
-
-<dl>
-<dd>
-
-**id:** `string` — ID of the DVIR.
-    
-</dd>
-</dl>
 
 <dl>
 <dd>
@@ -8066,7 +7989,7 @@ await client.legacyApIs.getVehiclesDriverAssignments();
 </dl>
 </details>
 
-<details><summary><code>client.legacyApIs.<a href="/src/api/resources/legacyApIs/client/Client.ts">v1GetVehicleHarshEvent</a>(vehicleId, { ...params }) -> Samsara.V1VehicleHarshEventResponse</code></summary>
+<details><summary><code>client.legacyApIs.<a href="/src/api/resources/legacyApIs/client/Client.ts">v1GetVehicleHarshEvent</a>({ ...params }) -> Samsara.V1VehicleHarshEventResponse</code></summary>
 <dl>
 <dd>
 
@@ -8104,7 +8027,8 @@ To use this endpoint, select **Read Safety Events & Scores** under the Safety & 
 <dd>
 
 ```typescript
-await client.legacyApIs.v1GetVehicleHarshEvent(1000000, {
+await client.legacyApIs.v1GetVehicleHarshEvent({
+    vehicleId: 1000000,
     timestamp: 1000000
 });
 
@@ -8118,14 +8042,6 @@ await client.legacyApIs.v1GetVehicleHarshEvent(1000000, {
 
 <dl>
 <dd>
-
-<dl>
-<dd>
-
-**vehicleId:** `number` — ID of the vehicle. Must contain only digits 0-9.
-    
-</dd>
-</dl>
 
 <dl>
 <dd>
@@ -8436,7 +8352,7 @@ await client.documents.generateDocumentPdf({
 </dl>
 </details>
 
-<details><summary><code>client.documents.<a href="/src/api/resources/documents/client/Client.ts">getDocumentPdf</a>(id) -> Samsara.DocumentPdfQueryResponse</code></summary>
+<details><summary><code>client.documents.<a href="/src/api/resources/documents/client/Client.ts">getDocumentPdf</a>({ ...params }) -> Samsara.DocumentPdfQueryResponse</code></summary>
 <dl>
 <dd>
 
@@ -8467,7 +8383,9 @@ To use this endpoint, select **Read Documents** under the Driver Workflow catego
 <dd>
 
 ```typescript
-await client.documents.getDocumentPdf("id");
+await client.documents.getDocumentPdf({
+    id: "id"
+});
 
 ```
 </dd>
@@ -8483,7 +8401,7 @@ await client.documents.getDocumentPdf("id");
 <dl>
 <dd>
 
-**id:** `string` — ID of the pdf.
+**request:** `Samsara.GetDocumentPdfRequest` 
     
 </dd>
 </dl>
@@ -8503,7 +8421,7 @@ await client.documents.getDocumentPdf("id");
 </dl>
 </details>
 
-<details><summary><code>client.documents.<a href="/src/api/resources/documents/client/Client.ts">getDocument</a>(id) -> Samsara.DocumentsGetDocumentResponseBody</code></summary>
+<details><summary><code>client.documents.<a href="/src/api/resources/documents/client/Client.ts">getDocument</a>({ ...params }) -> Samsara.DocumentsGetDocumentResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -8537,7 +8455,9 @@ To use this endpoint, select **Read Documents** under the Driver Workflow catego
 <dd>
 
 ```typescript
-await client.documents.getDocument("id");
+await client.documents.getDocument({
+    id: "id"
+});
 
 ```
 </dd>
@@ -8553,7 +8473,7 @@ await client.documents.getDocument("id");
 <dl>
 <dd>
 
-**id:** `string` — ID of the document
+**request:** `Samsara.GetDocumentRequest` 
     
 </dd>
 </dl>
@@ -8573,7 +8493,7 @@ await client.documents.getDocument("id");
 </dl>
 </details>
 
-<details><summary><code>client.documents.<a href="/src/api/resources/documents/client/Client.ts">deleteDocument</a>(id) -> void</code></summary>
+<details><summary><code>client.documents.<a href="/src/api/resources/documents/client/Client.ts">deleteDocument</a>({ ...params }) -> void</code></summary>
 <dl>
 <dd>
 
@@ -8607,7 +8527,9 @@ To use this endpoint, select **Write Documents** under the Driver Workflow categ
 <dd>
 
 ```typescript
-await client.documents.deleteDocument("id");
+await client.documents.deleteDocument({
+    id: "id"
+});
 
 ```
 </dd>
@@ -8623,7 +8545,7 @@ await client.documents.deleteDocument("id");
 <dl>
 <dd>
 
-**id:** `string` — ID of the document to delete
+**request:** `Samsara.DeleteDocumentRequest` 
     
 </dd>
 </dl>
@@ -9162,7 +9084,7 @@ await client.drivers.postDriverRemoteSignout({
 </dl>
 </details>
 
-<details><summary><code>client.drivers.<a href="/src/api/resources/drivers/client/Client.ts">get</a>(id) -> Samsara.DriverResponse</code></summary>
+<details><summary><code>client.drivers.<a href="/src/api/resources/drivers/client/Client.ts">get</a>({ ...params }) -> Samsara.DriverResponse</code></summary>
 <dl>
 <dd>
 
@@ -9193,7 +9115,9 @@ To use this endpoint, select **Read Drivers** under the Drivers category when cr
 <dd>
 
 ```typescript
-await client.drivers.get("id");
+await client.drivers.get({
+    id: "id"
+});
 
 ```
 </dd>
@@ -9209,7 +9133,7 @@ await client.drivers.get("id");
 <dl>
 <dd>
 
-**id:** `string` — ID of the driver. This can either be the Samsara-specified ID, or an external ID. External IDs are customer specified key-value pairs created in the POST or PATCH requests of this resource. To specify an external ID as part of a path parameter, use the following format: `key:value`. For example, `payrollId:ABFS18600`
+**request:** `Samsara.GetDriversRequest` 
     
 </dd>
 </dl>
@@ -9229,7 +9153,7 @@ await client.drivers.get("id");
 </dl>
 </details>
 
-<details><summary><code>client.drivers.<a href="/src/api/resources/drivers/client/Client.ts">delete</a>(id) -> void</code></summary>
+<details><summary><code>client.drivers.<a href="/src/api/resources/drivers/client/Client.ts">delete</a>({ ...params }) -> void</code></summary>
 <dl>
 <dd>
 
@@ -9242,7 +9166,9 @@ await client.drivers.get("id");
 <dd>
 
 ```typescript
-await client.drivers.delete("id");
+await client.drivers.delete({
+    id: "id"
+});
 
 ```
 </dd>
@@ -9258,7 +9184,7 @@ await client.drivers.delete("id");
 <dl>
 <dd>
 
-**id:** `string` 
+**request:** `Samsara.DeleteDriversRequest` 
     
 </dd>
 </dl>
@@ -9278,7 +9204,7 @@ await client.drivers.delete("id");
 </dl>
 </details>
 
-<details><summary><code>client.drivers.<a href="/src/api/resources/drivers/client/Client.ts">update</a>(id, { ...params }) -> Samsara.DriverResponse</code></summary>
+<details><summary><code>client.drivers.<a href="/src/api/resources/drivers/client/Client.ts">update</a>({ ...params }) -> Samsara.DriverResponse</code></summary>
 <dl>
 <dd>
 
@@ -9309,7 +9235,9 @@ To use this endpoint, select **Write Drivers** under the Drivers category when c
 <dd>
 
 ```typescript
-await client.drivers.update("id");
+await client.drivers.update({
+    id: "id"
+});
 
 ```
 </dd>
@@ -9321,14 +9249,6 @@ await client.drivers.update("id");
 
 <dl>
 <dd>
-
-<dl>
-<dd>
-
-**id:** `string` — ID of the driver. This can either be the Samsara-specified ID, or an external ID. External IDs are customer specified key-value pairs created in the POST or PATCH requests of this resource. To specify an external ID as part of a path parameter, use the following format: `key:value`. For example, `payrollId:ABFS18600`
-    
-</dd>
-</dl>
 
 <dl>
 <dd>
@@ -10131,7 +10051,7 @@ await client.equipment.getEquipmentStatsHistory({
 </dl>
 </details>
 
-<details><summary><code>client.equipment.<a href="/src/api/resources/equipment/client/Client.ts">getEquipment</a>(id) -> Samsara.EquipmentResponse</code></summary>
+<details><summary><code>client.equipment.<a href="/src/api/resources/equipment/client/Client.ts">getEquipment</a>({ ...params }) -> Samsara.EquipmentResponse</code></summary>
 <dl>
 <dd>
 
@@ -10162,7 +10082,9 @@ To use this endpoint, select **Read Equipment** under the Equipment category whe
 <dd>
 
 ```typescript
-await client.equipment.getEquipment("id");
+await client.equipment.getEquipment({
+    id: "id"
+});
 
 ```
 </dd>
@@ -10178,7 +10100,7 @@ await client.equipment.getEquipment("id");
 <dl>
 <dd>
 
-**id:** `string` — Samsara ID of the Equipment.
+**request:** `Samsara.GetEquipmentRequest` 
     
 </dd>
 </dl>
@@ -10491,7 +10413,7 @@ await client.hoursOfService.getHosViolations();
 </dl>
 </details>
 
-<details><summary><code>client.hoursOfService.<a href="/src/api/resources/hoursOfService/client/Client.ts">setCurrentDutyStatus</a>(driver_id, { ...params }) -> void</code></summary>
+<details><summary><code>client.hoursOfService.<a href="/src/api/resources/hoursOfService/client/Client.ts">setCurrentDutyStatus</a>({ ...params }) -> void</code></summary>
 <dl>
 <dd>
 
@@ -10531,7 +10453,8 @@ To use this endpoint, select **Write ELD Hours of Service (US)** under the Compl
 <dd>
 
 ```typescript
-await client.hoursOfService.setCurrentDutyStatus(1000000, {
+await client.hoursOfService.setCurrentDutyStatus({
+    driver_id: 1000000,
     duty_status: "ON_DUTY"
 });
 
@@ -10545,14 +10468,6 @@ await client.hoursOfService.setCurrentDutyStatus(1000000, {
 
 <dl>
 <dd>
-
-<dl>
-<dd>
-
-**driver_id:** `number` — ID of the driver for whom the duty status is being set.
-    
-</dd>
-</dl>
 
 <dl>
 <dd>
@@ -10879,7 +10794,7 @@ await client.ifta.createIftaDetailJob({
 </dl>
 </details>
 
-<details><summary><code>client.ifta.<a href="/src/api/resources/ifta/client/Client.ts">getIftaDetailJob</a>(id) -> Samsara.IftaGetIftaDetailJobResponseBody</code></summary>
+<details><summary><code>client.ifta.<a href="/src/api/resources/ifta/client/Client.ts">getIftaDetailJob</a>({ ...params }) -> Samsara.IftaGetIftaDetailJobResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -10913,7 +10828,9 @@ To use this endpoint, select **Read IFTA (US)** under the Compliance category wh
 <dd>
 
 ```typescript
-await client.ifta.getIftaDetailJob("id");
+await client.ifta.getIftaDetailJob({
+    id: "id"
+});
 
 ```
 </dd>
@@ -10929,7 +10846,7 @@ await client.ifta.getIftaDetailJob("id");
 <dl>
 <dd>
 
-**id:** `string` — ID of the requested job.
+**request:** `Samsara.GetIftaDetailJobRequest` 
     
 </dd>
 </dl>
@@ -11168,7 +11085,7 @@ await client.routes.getRoutesFeed();
 </dl>
 </details>
 
-<details><summary><code>client.routes.<a href="/src/api/resources/routes/client/Client.ts">fetchRoute</a>(id, { ...params }) -> Samsara.RoutesFetchRouteResponseBody</code></summary>
+<details><summary><code>client.routes.<a href="/src/api/resources/routes/client/Client.ts">fetchRoute</a>({ ...params }) -> Samsara.RoutesFetchRouteResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -11202,7 +11119,9 @@ To use this endpoint, select **Read Routes** under the Driver Workflow category 
 <dd>
 
 ```typescript
-await client.routes.fetchRoute("id");
+await client.routes.fetchRoute({
+    id: "id"
+});
 
 ```
 </dd>
@@ -11214,14 +11133,6 @@ await client.routes.fetchRoute("id");
 
 <dl>
 <dd>
-
-<dl>
-<dd>
-
-**id:** `string` — ID of the route. This can either be the Samsara-specified ID, or an external ID. External IDs are customer specified key-value pairs created in the POST or PATCH requests of this resource. To specify an external ID as part of a path parameter, use the following format: `key:value`. For example, `payrollId:ABFS18600`
-    
-</dd>
-</dl>
 
 <dl>
 <dd>
@@ -11246,7 +11157,7 @@ await client.routes.fetchRoute("id");
 </dl>
 </details>
 
-<details><summary><code>client.routes.<a href="/src/api/resources/routes/client/Client.ts">deleteRoute</a>(id) -> void</code></summary>
+<details><summary><code>client.routes.<a href="/src/api/resources/routes/client/Client.ts">deleteRoute</a>({ ...params }) -> void</code></summary>
 <dl>
 <dd>
 
@@ -11280,7 +11191,9 @@ To use this endpoint, select **Write Routes** under the Driver Workflow category
 <dd>
 
 ```typescript
-await client.routes.deleteRoute("id");
+await client.routes.deleteRoute({
+    id: "id"
+});
 
 ```
 </dd>
@@ -11296,7 +11209,7 @@ await client.routes.deleteRoute("id");
 <dl>
 <dd>
 
-**id:** `string` — ID of the route. This can either be the Samsara-specified ID, or an external ID. External IDs are customer specified key-value pairs created in the POST or PATCH requests of this resource. To specify an external ID as part of a path parameter, use the following format: `key:value`. For example, `payrollId:ABFS18600`
+**request:** `Samsara.DeleteRouteRequest` 
     
 </dd>
 </dl>
@@ -11316,7 +11229,7 @@ await client.routes.deleteRoute("id");
 </dl>
 </details>
 
-<details><summary><code>client.routes.<a href="/src/api/resources/routes/client/Client.ts">patchRoute</a>(id, { ...params }) -> Samsara.RoutesPatchRouteResponseBody</code></summary>
+<details><summary><code>client.routes.<a href="/src/api/resources/routes/client/Client.ts">patchRoute</a>({ ...params }) -> Samsara.RoutesPatchRouteResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -11354,7 +11267,9 @@ To use this endpoint, select **Write Routes** under the Driver Workflow category
 <dd>
 
 ```typescript
-await client.routes.patchRoute("id");
+await client.routes.patchRoute({
+    id: "id"
+});
 
 ```
 </dd>
@@ -11366,14 +11281,6 @@ await client.routes.patchRoute("id");
 
 <dl>
 <dd>
-
-<dl>
-<dd>
-
-**id:** `string` — ID of the route. This can either be the Samsara-specified ID, or an external ID. External IDs are customer specified key-value pairs created in the POST or PATCH requests of this resource. To specify an external ID as part of a path parameter, use the following format: `key:value`. For example, `payrollId:ABFS18600`
-    
-</dd>
-</dl>
 
 <dl>
 <dd>
@@ -11470,7 +11377,7 @@ await client.routes.listHubPlanRoutes({
 </dl>
 </details>
 
-<details><summary><code>client.routes.<a href="/src/api/resources/routes/client/Client.ts">v1DeleteDispatchRouteById</a>(route_id_or_external_id, { ...params }) -> void</code></summary>
+<details><summary><code>client.routes.<a href="/src/api/resources/routes/client/Client.ts">v1DeleteDispatchRouteById</a>({ ...params }) -> void</code></summary>
 <dl>
 <dd>
 
@@ -11508,7 +11415,9 @@ To use this endpoint, select **Write Routes** under the Driver Workflow category
 <dd>
 
 ```typescript
-await client.routes.v1DeleteDispatchRouteById("route_id_or_external_id");
+await client.routes.v1DeleteDispatchRouteById({
+    route_id_or_external_id: "route_id_or_external_id"
+});
 
 ```
 </dd>
@@ -11520,14 +11429,6 @@ await client.routes.v1DeleteDispatchRouteById("route_id_or_external_id");
 
 <dl>
 <dd>
-
-<dl>
-<dd>
-
-**route_id_or_external_id:** `string` — ID of the route. This can either be the Samsara-specified ID, or an external ID. External IDs are customer specified key-value pairs created in the POST or PATCH requests of this resource. To specify an external ID as part of a path parameter, use the following format: `key:value`. For example, `payrollId:ABFS18600`
-    
-</dd>
-</dl>
 
 <dl>
 <dd>
@@ -12022,7 +11923,7 @@ await client.trailers.createTrailer({
 </dl>
 </details>
 
-<details><summary><code>client.trailers.<a href="/src/api/resources/trailers/client/Client.ts">getTrailer</a>(id) -> Samsara.TrailersGetTrailerResponseBody</code></summary>
+<details><summary><code>client.trailers.<a href="/src/api/resources/trailers/client/Client.ts">getTrailer</a>({ ...params }) -> Samsara.TrailersGetTrailerResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -12056,7 +11957,9 @@ To use this endpoint, select **Read Trailers** under the Trailers category when 
 <dd>
 
 ```typescript
-await client.trailers.getTrailer("id");
+await client.trailers.getTrailer({
+    id: "id"
+});
 
 ```
 </dd>
@@ -12072,7 +11975,7 @@ await client.trailers.getTrailer("id");
 <dl>
 <dd>
 
-**id:** `string` — ID of the trailer. This can either be the Samsara-specified ID, or an external ID. External IDs are customer specified key-value pairs created in the POST or PATCH requests of this resource. To specify an external ID as part of a path parameter, use the following format: "key:value". For example, "maintenanceId:250020".
+**request:** `Samsara.GetTrailerRequest` 
     
 </dd>
 </dl>
@@ -12092,7 +11995,7 @@ await client.trailers.getTrailer("id");
 </dl>
 </details>
 
-<details><summary><code>client.trailers.<a href="/src/api/resources/trailers/client/Client.ts">deleteTrailer</a>(id) -> void</code></summary>
+<details><summary><code>client.trailers.<a href="/src/api/resources/trailers/client/Client.ts">deleteTrailer</a>({ ...params }) -> void</code></summary>
 <dl>
 <dd>
 
@@ -12126,7 +12029,9 @@ To use this endpoint, select **Write Trailers** under the Trailers category when
 <dd>
 
 ```typescript
-await client.trailers.deleteTrailer("id");
+await client.trailers.deleteTrailer({
+    id: "id"
+});
 
 ```
 </dd>
@@ -12142,7 +12047,7 @@ await client.trailers.deleteTrailer("id");
 <dl>
 <dd>
 
-**id:** `string` — Unique identifier for the trailer to delete.
+**request:** `Samsara.DeleteTrailerRequest` 
     
 </dd>
 </dl>
@@ -12162,7 +12067,7 @@ await client.trailers.deleteTrailer("id");
 </dl>
 </details>
 
-<details><summary><code>client.trailers.<a href="/src/api/resources/trailers/client/Client.ts">updateTrailer</a>(id, { ...params }) -> Samsara.TrailersUpdateTrailerResponseBody</code></summary>
+<details><summary><code>client.trailers.<a href="/src/api/resources/trailers/client/Client.ts">updateTrailer</a>({ ...params }) -> Samsara.TrailersUpdateTrailerResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -12198,7 +12103,9 @@ To use this endpoint, select **Write Trailers** under the Trailers category when
 <dd>
 
 ```typescript
-await client.trailers.updateTrailer("id");
+await client.trailers.updateTrailer({
+    id: "id"
+});
 
 ```
 </dd>
@@ -12210,14 +12117,6 @@ await client.trailers.updateTrailer("id");
 
 <dl>
 <dd>
-
-<dl>
-<dd>
-
-**id:** `string` — ID of the trailer. Can be either unique Samsara ID or an [external ID](https://developers.samsara.com/docs/external-ids) for the trailer.
-    
-</dd>
-</dl>
 
 <dl>
 <dd>
@@ -12325,7 +12224,7 @@ const response = page.response;
 </dl>
 </details>
 
-<details><summary><code>client.vehicles.<a href="/src/api/resources/vehicles/client/Client.ts">get</a>(id) -> Samsara.VehicleResponse</code></summary>
+<details><summary><code>client.vehicles.<a href="/src/api/resources/vehicles/client/Client.ts">get</a>({ ...params }) -> Samsara.VehicleResponse</code></summary>
 <dl>
 <dd>
 
@@ -12356,7 +12255,9 @@ To use this endpoint, select **Read Vehicles** under the Vehicles category when 
 <dd>
 
 ```typescript
-await client.vehicles.get("id");
+await client.vehicles.get({
+    id: "id"
+});
 
 ```
 </dd>
@@ -12372,7 +12273,7 @@ await client.vehicles.get("id");
 <dl>
 <dd>
 
-**id:** `string` — ID of the vehicle. This can either be the Samsara-specified ID, or an external ID. External IDs are customer specified key-value pairs created in the POST or PATCH requests of this resource, or automatically populated by fields on the vehicle. To specify an external ID as part of a path parameter, use the following format: `key:value`. For example, `maintenanceId:250020`. Automatically populated external IDs are prefixed with `samsara.`. For example, `samsara.vin:1HGBH41JXMN109186`.
+**request:** `Samsara.GetVehiclesRequest` 
     
 </dd>
 </dl>
@@ -12392,7 +12293,7 @@ await client.vehicles.get("id");
 </dl>
 </details>
 
-<details><summary><code>client.vehicles.<a href="/src/api/resources/vehicles/client/Client.ts">update</a>(id, { ...params }) -> Samsara.VehicleResponse</code></summary>
+<details><summary><code>client.vehicles.<a href="/src/api/resources/vehicles/client/Client.ts">update</a>({ ...params }) -> Samsara.VehicleResponse</code></summary>
 <dl>
 <dd>
 
@@ -12429,7 +12330,9 @@ To use this endpoint, select **Write Vehicles** under the Vehicles category when
 <dd>
 
 ```typescript
-await client.vehicles.update("id");
+await client.vehicles.update({
+    id: "id"
+});
 
 ```
 </dd>
@@ -12441,14 +12344,6 @@ await client.vehicles.update("id");
 
 <dl>
 <dd>
-
-<dl>
-<dd>
-
-**id:** `string` — ID of the vehicle. This can either be the Samsara-specified ID, or an external ID. External IDs are customer specified key-value pairs created in the POST or PATCH requests of this resource, or automatically populated by fields on the vehicle. To specify an external ID as part of a path parameter, use the following format: `key:value`. For example, `maintenanceId:250020`. Automatically populated external IDs are prefixed with `samsara.`. For example, `samsara.vin:1HGBH41JXMN109186`.
-    
-</dd>
-</dl>
 
 <dl>
 <dd>
@@ -13022,7 +12917,8 @@ await client.forms.postFormSubmission({
     formTemplate: {
         id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
         revisionId: "1214a1fa-f0c6-408b-bf85-51dc3bc71ac7"
-    }
+    },
+    status: "notStarted"
 });
 
 ```
@@ -13561,7 +13457,7 @@ await client.gateways.postGateway({
 </dl>
 </details>
 
-<details><summary><code>client.gateways.<a href="/src/api/resources/gateways/client/Client.ts">deleteGateway</a>(id) -> void</code></summary>
+<details><summary><code>client.gateways.<a href="/src/api/resources/gateways/client/Client.ts">deleteGateway</a>({ ...params }) -> void</code></summary>
 <dl>
 <dd>
 
@@ -13595,7 +13491,9 @@ To use this endpoint, select **Write Gateways** under the Setup & Administration
 <dd>
 
 ```typescript
-await client.gateways.deleteGateway("id");
+await client.gateways.deleteGateway({
+    id: "id"
+});
 
 ```
 </dd>
@@ -13611,7 +13509,7 @@ await client.gateways.deleteGateway("id");
 <dl>
 <dd>
 
-**id:** `string` — Gateway serial number
+**request:** `Samsara.DeleteGatewayRequest` 
     
 </dd>
 </dl>
@@ -13704,7 +13602,7 @@ await client.hubs.listHubCapacities({
 </dl>
 </details>
 
-<details><summary><code>client.hubs.<a href="/src/api/resources/hubs/client/Client.ts">updateHubLocation</a>(id, { ...params }) -> Samsara.HubLocationsUpdateHubLocationResponseBody</code></summary>
+<details><summary><code>client.hubs.<a href="/src/api/resources/hubs/client/Client.ts">updateHubLocation</a>({ ...params }) -> Samsara.HubLocationsUpdateHubLocationResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -13738,7 +13636,8 @@ To use this endpoint, select **Write Routes** under the Driver Workflow category
 <dd>
 
 ```typescript
-await client.hubs.updateHubLocation("id", {
+await client.hubs.updateHubLocation({
+    id: "id",
     data: {
         address: "123 Industrial Blvd, Los Angeles, CA 90210, US",
         customerLocationId: "LOC-123",
@@ -13768,14 +13667,6 @@ await client.hubs.updateHubLocation("id", {
 
 <dl>
 <dd>
-
-<dl>
-<dd>
-
-**id:** `string` — The unique Samsara ID of the hub location to update
-    
-</dd>
-</dl>
 
 <dl>
 <dd>
@@ -14462,7 +14353,7 @@ await client.industrial.createIndustrialAsset({
 </dl>
 </details>
 
-<details><summary><code>client.industrial.<a href="/src/api/resources/industrial/client/Client.ts">patchIndustrialAsset</a>(id, { ...params }) -> Samsara.InlineResponse200</code></summary>
+<details><summary><code>client.industrial.<a href="/src/api/resources/industrial/client/Client.ts">patchIndustrialAsset</a>({ ...params }) -> Samsara.InlineResponse200</code></summary>
 <dl>
 <dd>
 
@@ -14493,7 +14384,9 @@ To use this endpoint, select **Write Equipment** under the Equipment category wh
 <dd>
 
 ```typescript
-await client.industrial.patchIndustrialAsset("id");
+await client.industrial.patchIndustrialAsset({
+    id: "id"
+});
 
 ```
 </dd>
@@ -14505,14 +14398,6 @@ await client.industrial.patchIndustrialAsset("id");
 
 <dl>
 <dd>
-
-<dl>
-<dd>
-
-**id:** `string` — Id of the asset to be updated
-    
-</dd>
-</dl>
 
 <dl>
 <dd>
@@ -14537,7 +14422,7 @@ await client.industrial.patchIndustrialAsset("id");
 </dl>
 </details>
 
-<details><summary><code>client.industrial.<a href="/src/api/resources/industrial/client/Client.ts">patchAssetDataOutputs</a>(id, { ...params }) -> Samsara.AssetDataOutputsPatchAssetDataOutputsResponseBody</code></summary>
+<details><summary><code>client.industrial.<a href="/src/api/resources/industrial/client/Client.ts">patchAssetDataOutputs</a>({ ...params }) -> Samsara.AssetDataOutputsPatchAssetDataOutputsResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -14571,7 +14456,8 @@ To use this endpoint, select **Write Equipment Statistics** under the Equipment 
 <dd>
 
 ```typescript
-await client.industrial.patchAssetDataOutputs("id", {
+await client.industrial.patchAssetDataOutputs({
+    id: "id",
     values: {
         "key": "value"
     }
@@ -14587,14 +14473,6 @@ await client.industrial.patchAssetDataOutputs("id", {
 
 <dl>
 <dd>
-
-<dl>
-<dd>
-
-**id:** `string` — Asset ID
-    
-</dd>
-</dl>
 
 <dl>
 <dd>
@@ -14962,7 +14840,7 @@ await client.industrial.v1GetCameras();
 </dl>
 </details>
 
-<details><summary><code>client.industrial.<a href="/src/api/resources/industrial/client/Client.ts">v1GetVisionProgramsByCamera</a>(camera_id) -> Samsara.V1ProgramsForTheCameraResponse</code></summary>
+<details><summary><code>client.industrial.<a href="/src/api/resources/industrial/client/Client.ts">v1GetVisionProgramsByCamera</a>({ ...params }) -> Samsara.V1ProgramsForTheCameraResponse</code></summary>
 <dl>
 <dd>
 
@@ -15000,7 +14878,9 @@ To use this endpoint, select **Read Industrial** under the Industrial category w
 <dd>
 
 ```typescript
-await client.industrial.v1GetVisionProgramsByCamera(1000000);
+await client.industrial.v1GetVisionProgramsByCamera({
+    camera_id: 1000000
+});
 
 ```
 </dd>
@@ -15016,7 +14896,7 @@ await client.industrial.v1GetVisionProgramsByCamera(1000000);
 <dl>
 <dd>
 
-**camera_id:** `number` — The camera_id should be valid for the given accessToken.
+**request:** `Samsara.V1GetVisionProgramsByCameraRequest` 
     
 </dd>
 </dl>
@@ -15036,7 +14916,7 @@ await client.industrial.v1GetVisionProgramsByCamera(1000000);
 </dl>
 </details>
 
-<details><summary><code>client.industrial.<a href="/src/api/resources/industrial/client/Client.ts">v1GetVisionLatestRunCamera</a>(camera_id, { ...params }) -> Samsara.V1VisionRunByCameraResponse</code></summary>
+<details><summary><code>client.industrial.<a href="/src/api/resources/industrial/client/Client.ts">v1GetVisionLatestRunCamera</a>({ ...params }) -> Samsara.V1VisionRunByCameraResponse</code></summary>
 <dl>
 <dd>
 
@@ -15067,7 +14947,9 @@ To use this endpoint, select **Read Industrial** under the Industrial category w
 <dd>
 
 ```typescript
-await client.industrial.v1GetVisionLatestRunCamera(1000000);
+await client.industrial.v1GetVisionLatestRunCamera({
+    camera_id: 1000000
+});
 
 ```
 </dd>
@@ -15079,14 +14961,6 @@ await client.industrial.v1GetVisionLatestRunCamera(1000000);
 
 <dl>
 <dd>
-
-<dl>
-<dd>
-
-**camera_id:** `number` — The camera_id should be valid for the given accessToken.
-    
-</dd>
-</dl>
 
 <dl>
 <dd>
@@ -15187,7 +15061,7 @@ await client.industrial.v1GetVisionRuns({
 </dl>
 </details>
 
-<details><summary><code>client.industrial.<a href="/src/api/resources/industrial/client/Client.ts">getVisionRunsByCamera</a>(camera_id, { ...params }) -> Samsara.V1VisionRunsByCameraResponse</code></summary>
+<details><summary><code>client.industrial.<a href="/src/api/resources/industrial/client/Client.ts">getVisionRunsByCamera</a>({ ...params }) -> Samsara.V1VisionRunsByCameraResponse</code></summary>
 <dl>
 <dd>
 
@@ -15225,7 +15099,8 @@ To use this endpoint, select **Read Industrial** under the Industrial category w
 <dd>
 
 ```typescript
-await client.industrial.getVisionRunsByCamera(1000000, {
+await client.industrial.getVisionRunsByCamera({
+    camera_id: 1000000,
     durationMs: 1000000
 });
 
@@ -15239,14 +15114,6 @@ await client.industrial.getVisionRunsByCamera(1000000, {
 
 <dl>
 <dd>
-
-<dl>
-<dd>
-
-**camera_id:** `number` — The camera_id should be valid for the given accessToken.
-    
-</dd>
-</dl>
 
 <dl>
 <dd>
@@ -15271,7 +15138,7 @@ await client.industrial.getVisionRunsByCamera(1000000, {
 </dl>
 </details>
 
-<details><summary><code>client.industrial.<a href="/src/api/resources/industrial/client/Client.ts">v1GetVisionRunsByCameraAndProgram</a>(camera_id, program_id, started_at_ms, { ...params }) -> Samsara.V1VisionRunsByCameraAndProgramResponse</code></summary>
+<details><summary><code>client.industrial.<a href="/src/api/resources/industrial/client/Client.ts">v1GetVisionRunsByCameraAndProgram</a>({ ...params }) -> Samsara.V1VisionRunsByCameraAndProgramResponse</code></summary>
 <dl>
 <dd>
 
@@ -15309,7 +15176,11 @@ To use this endpoint, select **Read Industrial** under the Industrial category w
 <dd>
 
 ```typescript
-await client.industrial.v1GetVisionRunsByCameraAndProgram(1000000, 1000000, 1000000);
+await client.industrial.v1GetVisionRunsByCameraAndProgram({
+    camera_id: 1000000,
+    program_id: 1000000,
+    started_at_ms: 1000000
+});
 
 ```
 </dd>
@@ -15321,30 +15192,6 @@ await client.industrial.v1GetVisionRunsByCameraAndProgram(1000000, 1000000, 1000
 
 <dl>
 <dd>
-
-<dl>
-<dd>
-
-**camera_id:** `number` — The camera_id should be valid for the given accessToken.
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**program_id:** `number` — The configured program's ID on the camera.
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**started_at_ms:** `number` — Started_at_ms is a required param. Indicates the start time of the run to be fetched.
-    
-</dd>
-</dl>
 
 <dl>
 <dd>
@@ -16659,7 +16506,7 @@ await client.previewApIs.createDriverAuthToken({
 </dl>
 </details>
 
-<details><summary><code>client.previewApIs.<a href="/src/api/resources/previewApIs/client/Client.ts">lockVehicle</a>(id) -> void</code></summary>
+<details><summary><code>client.previewApIs.<a href="/src/api/resources/previewApIs/client/Client.ts">lockVehicle</a>({ ...params }) -> void</code></summary>
 <dl>
 <dd>
 
@@ -16699,7 +16546,9 @@ Endpoints in this section are in Preview. These APIs are not functional and are 
 <dd>
 
 ```typescript
-await client.previewApIs.lockVehicle("id");
+await client.previewApIs.lockVehicle({
+    id: "id"
+});
 
 ```
 </dd>
@@ -16715,7 +16564,7 @@ await client.previewApIs.lockVehicle("id");
 <dl>
 <dd>
 
-**id:** `string` — The ID of the vehicle to lock or unlock. This can be a Samsara internal ID or an external ID in the format `samsara.vin:{VIN}`.
+**request:** `Samsara.LockVehicleRequest` 
     
 </dd>
 </dl>
@@ -16735,7 +16584,7 @@ await client.previewApIs.lockVehicle("id");
 </dl>
 </details>
 
-<details><summary><code>client.previewApIs.<a href="/src/api/resources/previewApIs/client/Client.ts">unlockVehicle</a>(id) -> void</code></summary>
+<details><summary><code>client.previewApIs.<a href="/src/api/resources/previewApIs/client/Client.ts">unlockVehicle</a>({ ...params }) -> void</code></summary>
 <dl>
 <dd>
 
@@ -16775,7 +16624,9 @@ Endpoints in this section are in Preview. These APIs are not functional and are 
 <dd>
 
 ```typescript
-await client.previewApIs.unlockVehicle("id");
+await client.previewApIs.unlockVehicle({
+    id: "id"
+});
 
 ```
 </dd>
@@ -16791,7 +16642,7 @@ await client.previewApIs.unlockVehicle("id");
 <dl>
 <dd>
 
-**id:** `string` — The ID of the vehicle to lock or unlock. This can be a Samsara internal ID or an external ID in the format `samsara.vin:{VIN}`.
+**request:** `Samsara.UnlockVehicleRequest` 
     
 </dd>
 </dl>
@@ -17025,7 +16876,7 @@ await client.safety.getSafetyEventsV2Stream({
 </dl>
 </details>
 
-<details><summary><code>client.safety.<a href="/src/api/resources/safety/client/Client.ts">v1GetDriverSafetyScore</a>(driverId, { ...params }) -> Samsara.V1DriverSafetyScoreResponse</code></summary>
+<details><summary><code>client.safety.<a href="/src/api/resources/safety/client/Client.ts">v1GetDriverSafetyScore</a>({ ...params }) -> Samsara.V1DriverSafetyScoreResponse</code></summary>
 <dl>
 <dd>
 
@@ -17065,7 +16916,8 @@ To use this endpoint, select **Read Safety Events & Scores** under the Safety & 
 <dd>
 
 ```typescript
-await client.safety.v1GetDriverSafetyScore(1000000, {
+await client.safety.v1GetDriverSafetyScore({
+    driverId: 1000000,
     startMs: 1000000,
     endMs: 1000000
 });
@@ -17080,14 +16932,6 @@ await client.safety.v1GetDriverSafetyScore(1000000, {
 
 <dl>
 <dd>
-
-<dl>
-<dd>
-
-**driverId:** `number` — ID of the driver. Must contain only digits 0-9.
-    
-</dd>
-</dl>
 
 <dl>
 <dd>
@@ -17112,7 +16956,7 @@ await client.safety.v1GetDriverSafetyScore(1000000, {
 </dl>
 </details>
 
-<details><summary><code>client.safety.<a href="/src/api/resources/safety/client/Client.ts">v1GetVehicleSafetyScore</a>(vehicleId, { ...params }) -> Samsara.V1VehicleSafetyScoreResponse</code></summary>
+<details><summary><code>client.safety.<a href="/src/api/resources/safety/client/Client.ts">v1GetVehicleSafetyScore</a>({ ...params }) -> Samsara.V1VehicleSafetyScoreResponse</code></summary>
 <dl>
 <dd>
 
@@ -17152,7 +16996,8 @@ To use this endpoint, select **Read Safety Events & Scores** under the Safety & 
 <dd>
 
 ```typescript
-await client.safety.v1GetVehicleSafetyScore(1000000, {
+await client.safety.v1GetVehicleSafetyScore({
+    vehicleId: 1000000,
     startMs: 1000000,
     endMs: 1000000
 });
@@ -17167,14 +17012,6 @@ await client.safety.v1GetVehicleSafetyScore(1000000, {
 
 <dl>
 <dd>
-
-<dl>
-<dd>
-
-**vehicleId:** `number` — ID of the vehicle. Must contain only digits 0-9.
-    
-</dd>
-</dl>
 
 <dl>
 <dd>
@@ -17409,7 +17246,7 @@ await client.tags.createTag({
 </dl>
 </details>
 
-<details><summary><code>client.tags.<a href="/src/api/resources/tags/client/Client.ts">getTag</a>(id) -> Samsara.TagResponse</code></summary>
+<details><summary><code>client.tags.<a href="/src/api/resources/tags/client/Client.ts">getTag</a>({ ...params }) -> Samsara.TagResponse</code></summary>
 <dl>
 <dd>
 
@@ -17440,7 +17277,9 @@ To use this endpoint, select **Read Tags** under the Setup & Administration cate
 <dd>
 
 ```typescript
-await client.tags.getTag("id");
+await client.tags.getTag({
+    id: "id"
+});
 
 ```
 </dd>
@@ -17456,7 +17295,7 @@ await client.tags.getTag("id");
 <dl>
 <dd>
 
-**id:** `string` — ID of the Tag. This can either be the Samsara-provided ID or an external ID. External IDs are customer-specified key-value pairs created in the POST or PATCH requests of this resource. To specify an external ID as part of a path parameter, use the following format: `key:value`. For example, `crmId:abc123`. Automatically populated external IDs are prefixed with `samsara.`. For example, `samsara.name:ELD-exempt`.
+**request:** `Samsara.GetTagRequest` 
     
 </dd>
 </dl>
@@ -17476,7 +17315,7 @@ await client.tags.getTag("id");
 </dl>
 </details>
 
-<details><summary><code>client.tags.<a href="/src/api/resources/tags/client/Client.ts">replaceTag</a>(id, { ...params }) -> Samsara.TagResponse</code></summary>
+<details><summary><code>client.tags.<a href="/src/api/resources/tags/client/Client.ts">replaceTag</a>({ ...params }) -> Samsara.TagResponse</code></summary>
 <dl>
 <dd>
 
@@ -17507,7 +17346,9 @@ To use this endpoint, select **Write Tags** under the Setup & Administration cat
 <dd>
 
 ```typescript
-await client.tags.replaceTag("id");
+await client.tags.replaceTag({
+    id: "id"
+});
 
 ```
 </dd>
@@ -17519,14 +17360,6 @@ await client.tags.replaceTag("id");
 
 <dl>
 <dd>
-
-<dl>
-<dd>
-
-**id:** `string` — ID of the Tag. This can either be the Samsara-provided ID or an external ID. External IDs are customer-specified key-value pairs created in the POST or PATCH requests of this resource. To specify an external ID as part of a path parameter, use the following format: `key:value`. For example, `crmId:abc123`. Automatically populated external IDs are prefixed with `samsara.`. For example, `samsara.name:ELD-exempt`.
-    
-</dd>
-</dl>
 
 <dl>
 <dd>
@@ -17551,7 +17384,7 @@ await client.tags.replaceTag("id");
 </dl>
 </details>
 
-<details><summary><code>client.tags.<a href="/src/api/resources/tags/client/Client.ts">delete</a>(id) -> Samsara.StandardDeleteResponse</code></summary>
+<details><summary><code>client.tags.<a href="/src/api/resources/tags/client/Client.ts">delete</a>({ ...params }) -> Samsara.StandardDeleteResponse</code></summary>
 <dl>
 <dd>
 
@@ -17582,7 +17415,9 @@ To use this endpoint, select **Write Tags** under the Setup & Administration cat
 <dd>
 
 ```typescript
-await client.tags.delete("id");
+await client.tags.delete({
+    id: "id"
+});
 
 ```
 </dd>
@@ -17598,7 +17433,7 @@ await client.tags.delete("id");
 <dl>
 <dd>
 
-**id:** `string` — ID of the Tag. This can either be the Samsara-provided ID or an external ID. External IDs are customer-specified key-value pairs created in the POST or PATCH requests of this resource. To specify an external ID as part of a path parameter, use the following format: `key:value`. For example, `crmId:abc123`. Automatically populated external IDs are prefixed with `samsara.`. For example, `samsara.name:ELD-exempt`.
+**request:** `Samsara.DeleteTagsRequest` 
     
 </dd>
 </dl>
@@ -17618,7 +17453,7 @@ await client.tags.delete("id");
 </dl>
 </details>
 
-<details><summary><code>client.tags.<a href="/src/api/resources/tags/client/Client.ts">patchTag</a>(id, { ...params }) -> Samsara.TagResponse</code></summary>
+<details><summary><code>client.tags.<a href="/src/api/resources/tags/client/Client.ts">patchTag</a>({ ...params }) -> Samsara.TagResponse</code></summary>
 <dl>
 <dd>
 
@@ -17653,7 +17488,9 @@ To use this endpoint, select **Write Tags** under the Setup & Administration cat
 <dd>
 
 ```typescript
-await client.tags.patchTag("id");
+await client.tags.patchTag({
+    id: "id"
+});
 
 ```
 </dd>
@@ -17665,14 +17502,6 @@ await client.tags.patchTag("id");
 
 <dl>
 <dd>
-
-<dl>
-<dd>
-
-**id:** `string` — ID of the Tag. This can either be the Samsara-provided ID or an external ID. External IDs are customer-specified key-value pairs created in the POST or PATCH requests of this resource. To specify an external ID as part of a path parameter, use the following format: `key:value`. For example, `crmId:abc123`. Automatically populated external IDs are prefixed with `samsara.`. For example, `samsara.name:ELD-exempt`.
-    
-</dd>
-</dl>
 
 <dl>
 <dd>
@@ -18417,7 +18246,7 @@ await client.users.createUser({
 </dl>
 </details>
 
-<details><summary><code>client.users.<a href="/src/api/resources/users/client/Client.ts">getUser</a>(id) -> Samsara.UserResponse</code></summary>
+<details><summary><code>client.users.<a href="/src/api/resources/users/client/Client.ts">getUser</a>({ ...params }) -> Samsara.UserResponse</code></summary>
 <dl>
 <dd>
 
@@ -18448,7 +18277,9 @@ To use this endpoint, select **Read Users** under the Setup & Administration cat
 <dd>
 
 ```typescript
-await client.users.getUser("id");
+await client.users.getUser({
+    id: "id"
+});
 
 ```
 </dd>
@@ -18464,7 +18295,7 @@ await client.users.getUser("id");
 <dl>
 <dd>
 
-**id:** `string` — Unique identifier for the user.
+**request:** `Samsara.GetUserRequest` 
     
 </dd>
 </dl>
@@ -18484,7 +18315,7 @@ await client.users.getUser("id");
 </dl>
 </details>
 
-<details><summary><code>client.users.<a href="/src/api/resources/users/client/Client.ts">delete</a>(id) -> Samsara.StandardDeleteResponse</code></summary>
+<details><summary><code>client.users.<a href="/src/api/resources/users/client/Client.ts">delete</a>({ ...params }) -> Samsara.StandardDeleteResponse</code></summary>
 <dl>
 <dd>
 
@@ -18515,7 +18346,9 @@ To use this endpoint, select **Write Users** under the Setup & Administration ca
 <dd>
 
 ```typescript
-await client.users.delete("id");
+await client.users.delete({
+    id: "id"
+});
 
 ```
 </dd>
@@ -18531,7 +18364,7 @@ await client.users.delete("id");
 <dl>
 <dd>
 
-**id:** `string` — Unique identifier for the user.
+**request:** `Samsara.DeleteUsersRequest` 
     
 </dd>
 </dl>
@@ -18551,7 +18384,7 @@ await client.users.delete("id");
 </dl>
 </details>
 
-<details><summary><code>client.users.<a href="/src/api/resources/users/client/Client.ts">updateUser</a>(id, { ...params }) -> Samsara.UserResponse</code></summary>
+<details><summary><code>client.users.<a href="/src/api/resources/users/client/Client.ts">updateUser</a>({ ...params }) -> Samsara.UserResponse</code></summary>
 <dl>
 <dd>
 
@@ -18582,7 +18415,9 @@ To use this endpoint, select **Write Users** under the Setup & Administration ca
 <dd>
 
 ```typescript
-await client.users.updateUser("id");
+await client.users.updateUser({
+    id: "id"
+});
 
 ```
 </dd>
@@ -18594,14 +18429,6 @@ await client.users.updateUser("id");
 
 <dl>
 <dd>
-
-<dl>
-<dd>
-
-**id:** `string` — Unique identifier for the user.
-    
-</dd>
-</dl>
 
 <dl>
 <dd>
@@ -18919,7 +18746,7 @@ await client.trailerAssignments.v1GetAllTrailerAssignments();
 </dl>
 </details>
 
-<details><summary><code>client.trailerAssignments.<a href="/src/api/resources/trailerAssignments/client/Client.ts">v1GetFleetTrailerAssignments</a>(trailerId, { ...params }) -> Samsara.V1TrailerAssignmentsResponse</code></summary>
+<details><summary><code>client.trailerAssignments.<a href="/src/api/resources/trailerAssignments/client/Client.ts">v1GetFleetTrailerAssignments</a>({ ...params }) -> Samsara.V1TrailerAssignmentsResponse</code></summary>
 <dl>
 <dd>
 
@@ -18959,7 +18786,9 @@ To use this endpoint, select **Read Assignments** under the Assignments category
 <dd>
 
 ```typescript
-await client.trailerAssignments.v1GetFleetTrailerAssignments(1000000);
+await client.trailerAssignments.v1GetFleetTrailerAssignments({
+    trailerId: 1000000
+});
 
 ```
 </dd>
@@ -18971,14 +18800,6 @@ await client.trailerAssignments.v1GetFleetTrailerAssignments(1000000);
 
 <dl>
 <dd>
-
-<dl>
-<dd>
-
-**trailerId:** `number` — ID of trailer. Must contain only digits 0-9.
-    
-</dd>
-</dl>
 
 <dl>
 <dd>
@@ -19602,7 +19423,7 @@ await client.webhooks.postWebhooks({
 </dl>
 </details>
 
-<details><summary><code>client.webhooks.<a href="/src/api/resources/webhooks/client/Client.ts">getWebhook</a>(id) -> Samsara.WebhooksGetWebhookResponseBody</code></summary>
+<details><summary><code>client.webhooks.<a href="/src/api/resources/webhooks/client/Client.ts">getWebhook</a>({ ...params }) -> Samsara.WebhooksGetWebhookResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -19636,7 +19457,9 @@ To use this endpoint, select **Read Webhooks** under the Setup & Administration 
 <dd>
 
 ```typescript
-await client.webhooks.getWebhook("id");
+await client.webhooks.getWebhook({
+    id: "id"
+});
 
 ```
 </dd>
@@ -19652,7 +19475,7 @@ await client.webhooks.getWebhook("id");
 <dl>
 <dd>
 
-**id:** `string` — ID of the webhook. This is the Samsara-specified ID.
+**request:** `Samsara.GetWebhookRequest` 
     
 </dd>
 </dl>
@@ -19672,7 +19495,7 @@ await client.webhooks.getWebhook("id");
 </dl>
 </details>
 
-<details><summary><code>client.webhooks.<a href="/src/api/resources/webhooks/client/Client.ts">deleteWebhook</a>(id) -> void</code></summary>
+<details><summary><code>client.webhooks.<a href="/src/api/resources/webhooks/client/Client.ts">deleteWebhook</a>({ ...params }) -> void</code></summary>
 <dl>
 <dd>
 
@@ -19706,7 +19529,9 @@ To use this endpoint, select **Write Webhooks** under the Setup & Administration
 <dd>
 
 ```typescript
-await client.webhooks.deleteWebhook("id");
+await client.webhooks.deleteWebhook({
+    id: "id"
+});
 
 ```
 </dd>
@@ -19722,7 +19547,7 @@ await client.webhooks.deleteWebhook("id");
 <dl>
 <dd>
 
-**id:** `string` — Unique identifier for the webhook to delete.
+**request:** `Samsara.DeleteWebhookRequest` 
     
 </dd>
 </dl>
@@ -19742,7 +19567,7 @@ await client.webhooks.deleteWebhook("id");
 </dl>
 </details>
 
-<details><summary><code>client.webhooks.<a href="/src/api/resources/webhooks/client/Client.ts">patchWebhook</a>(id, { ...params }) -> Samsara.WebhooksPatchWebhookResponseBody</code></summary>
+<details><summary><code>client.webhooks.<a href="/src/api/resources/webhooks/client/Client.ts">patchWebhook</a>({ ...params }) -> Samsara.WebhooksPatchWebhookResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -19778,7 +19603,9 @@ To use this endpoint, select **Write Webhooks** under the Setup & Administration
 <dd>
 
 ```typescript
-await client.webhooks.patchWebhook("id");
+await client.webhooks.patchWebhook({
+    id: "id"
+});
 
 ```
 </dd>
@@ -19790,14 +19617,6 @@ await client.webhooks.patchWebhook("id");
 
 <dl>
 <dd>
-
-<dl>
-<dd>
-
-**id:** `string` — Unique identifier for the webhook to update.
-    
-</dd>
-</dl>
 
 <dl>
 <dd>
@@ -19823,7 +19642,7 @@ await client.webhooks.patchWebhook("id");
 </details>
 
 ## Fleet CarrierProposedAssignments
-<details><summary><code>client.fleet.carrierProposedAssignments.<a href="/src/api/resources/fleet/resources/carrierProposedAssignments/client/Client.ts">delete</a>(id) -> Samsara.StandardDeleteResponse</code></summary>
+<details><summary><code>client.fleet.carrierProposedAssignments.<a href="/src/api/resources/fleet/resources/carrierProposedAssignments/client/Client.ts">delete</a>({ ...params }) -> Samsara.StandardDeleteResponse</code></summary>
 <dl>
 <dd>
 
@@ -19854,7 +19673,9 @@ To use this endpoint, select **Write Carrier-Proposed Assignments** under the As
 <dd>
 
 ```typescript
-await client.fleet.carrierProposedAssignments.delete("id");
+await client.fleet.carrierProposedAssignments.delete({
+    id: "id"
+});
 
 ```
 </dd>
@@ -19870,7 +19691,7 @@ await client.fleet.carrierProposedAssignments.delete("id");
 <dl>
 <dd>
 
-**id:** `string` — ID of the assignment.
+**request:** `Samsara.fleet.DeleteCarrierProposedAssignmentsRequest` 
     
 </dd>
 </dl>
@@ -19891,7 +19712,7 @@ await client.fleet.carrierProposedAssignments.delete("id");
 </details>
 
 ## Fleet Attributes
-<details><summary><code>client.fleet.attributes.<a href="/src/api/resources/fleet/resources/attributes/client/Client.ts">update</a>(id) -> void</code></summary>
+<details><summary><code>client.fleet.attributes.<a href="/src/api/resources/fleet/resources/attributes/client/Client.ts">update</a>({ ...params }) -> void</code></summary>
 <dl>
 <dd>
 
@@ -19904,7 +19725,9 @@ await client.fleet.carrierProposedAssignments.delete("id");
 <dd>
 
 ```typescript
-await client.fleet.attributes.update("id");
+await client.fleet.attributes.update({
+    id: "id"
+});
 
 ```
 </dd>
@@ -19920,7 +19743,7 @@ await client.fleet.attributes.update("id");
 <dl>
 <dd>
 
-**id:** `string` 
+**request:** `Samsara.fleet.UpdateAttributesRequest` 
     
 </dd>
 </dl>
@@ -19941,7 +19764,7 @@ await client.fleet.attributes.update("id");
 </details>
 
 ## Industrial Assets
-<details><summary><code>client.industrial.assets.<a href="/src/api/resources/industrial/resources/assets/client/Client.ts">delete</a>(id) -> Samsara.StandardDeleteResponse</code></summary>
+<details><summary><code>client.industrial.assets.<a href="/src/api/resources/industrial/resources/assets/client/Client.ts">delete</a>({ ...params }) -> Samsara.StandardDeleteResponse</code></summary>
 <dl>
 <dd>
 
@@ -19972,7 +19795,9 @@ To use this endpoint, select **Write Equipment** under the Equipment category wh
 <dd>
 
 ```typescript
-await client.industrial.assets.delete("id");
+await client.industrial.assets.delete({
+    id: "id"
+});
 
 ```
 </dd>
@@ -19988,7 +19813,7 @@ await client.industrial.assets.delete("id");
 <dl>
 <dd>
 
-**id:** `string` — Id of the asset to be deleted.
+**request:** `Samsara.industrial.DeleteAssetsRequest` 
     
 </dd>
 </dl>

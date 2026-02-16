@@ -22,7 +22,9 @@ describe("AssetsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.industrial.assets.delete("id");
+        const response = await client.industrial.assets.delete({
+            id: "id",
+        });
         expect(response).toEqual("");
     });
 });

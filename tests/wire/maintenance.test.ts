@@ -476,7 +476,9 @@ describe("MaintenanceClient", () => {
         };
         server.mockEndpoint().get("/defects/id").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
-        const response = await client.maintenance.getDefect("id");
+        const response = await client.maintenance.getDefect({
+            id: "id",
+        });
         expect(response).toEqual({
             comment: "Engine failure.",
             createdAtTime: "2020-01-27T07:06:25Z",
@@ -526,7 +528,9 @@ describe("MaintenanceClient", () => {
         server.mockEndpoint().get("/defects/id").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.maintenance.getDefect("id");
+            return await client.maintenance.getDefect({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.UnauthorizedError);
     });
 
@@ -543,7 +547,9 @@ describe("MaintenanceClient", () => {
         server.mockEndpoint().get("/defects/id").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.maintenance.getDefect("id");
+            return await client.maintenance.getDefect({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.NotFoundError);
     });
 
@@ -560,7 +566,9 @@ describe("MaintenanceClient", () => {
         server.mockEndpoint().get("/defects/id").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.maintenance.getDefect("id");
+            return await client.maintenance.getDefect({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.MethodNotAllowedError);
     });
 
@@ -577,7 +585,9 @@ describe("MaintenanceClient", () => {
         server.mockEndpoint().get("/defects/id").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.maintenance.getDefect("id");
+            return await client.maintenance.getDefect({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
@@ -594,7 +604,9 @@ describe("MaintenanceClient", () => {
         server.mockEndpoint().get("/defects/id").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.maintenance.getDefect("id");
+            return await client.maintenance.getDefect({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
@@ -611,7 +623,9 @@ describe("MaintenanceClient", () => {
         server.mockEndpoint().get("/defects/id").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.maintenance.getDefect("id");
+            return await client.maintenance.getDefect({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
@@ -628,7 +642,9 @@ describe("MaintenanceClient", () => {
         server.mockEndpoint().get("/defects/id").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.maintenance.getDefect("id");
+            return await client.maintenance.getDefect({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
@@ -645,7 +661,9 @@ describe("MaintenanceClient", () => {
         server.mockEndpoint().get("/defects/id").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.maintenance.getDefect("id");
+            return await client.maintenance.getDefect({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
@@ -662,7 +680,9 @@ describe("MaintenanceClient", () => {
         server.mockEndpoint().get("/defects/id").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.maintenance.getDefect("id");
+            return await client.maintenance.getDefect({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 
@@ -983,7 +1003,9 @@ describe("MaintenanceClient", () => {
         };
         server.mockEndpoint().get("/dvirs/id").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
-        const response = await client.maintenance.getDvir("id");
+        const response = await client.maintenance.getDvir({
+            id: "id",
+        });
         expect(response).toEqual({
             authorSignature: {
                 signatoryUser: {
@@ -1051,7 +1073,9 @@ describe("MaintenanceClient", () => {
         server.mockEndpoint().get("/dvirs/id").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.maintenance.getDvir("id");
+            return await client.maintenance.getDvir({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.UnauthorizedError);
     });
 
@@ -1068,7 +1092,9 @@ describe("MaintenanceClient", () => {
         server.mockEndpoint().get("/dvirs/id").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.maintenance.getDvir("id");
+            return await client.maintenance.getDvir({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.NotFoundError);
     });
 
@@ -1085,7 +1111,9 @@ describe("MaintenanceClient", () => {
         server.mockEndpoint().get("/dvirs/id").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.maintenance.getDvir("id");
+            return await client.maintenance.getDvir({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.MethodNotAllowedError);
     });
 
@@ -1102,7 +1130,9 @@ describe("MaintenanceClient", () => {
         server.mockEndpoint().get("/dvirs/id").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.maintenance.getDvir("id");
+            return await client.maintenance.getDvir({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
@@ -1119,7 +1149,9 @@ describe("MaintenanceClient", () => {
         server.mockEndpoint().get("/dvirs/id").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.maintenance.getDvir("id");
+            return await client.maintenance.getDvir({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
@@ -1136,7 +1168,9 @@ describe("MaintenanceClient", () => {
         server.mockEndpoint().get("/dvirs/id").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.maintenance.getDvir("id");
+            return await client.maintenance.getDvir({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
@@ -1153,7 +1187,9 @@ describe("MaintenanceClient", () => {
         server.mockEndpoint().get("/dvirs/id").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.maintenance.getDvir("id");
+            return await client.maintenance.getDvir({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
@@ -1170,7 +1206,9 @@ describe("MaintenanceClient", () => {
         server.mockEndpoint().get("/dvirs/id").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.maintenance.getDvir("id");
+            return await client.maintenance.getDvir({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
@@ -1187,7 +1225,9 @@ describe("MaintenanceClient", () => {
         server.mockEndpoint().get("/dvirs/id").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.maintenance.getDvir("id");
+            return await client.maintenance.getDvir({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 
@@ -1228,7 +1268,9 @@ describe("MaintenanceClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.maintenance.updateDvirDefect("id");
+        const response = await client.maintenance.updateDvirDefect({
+            id: "id",
+        });
         expect(response).toEqual({
             data: {
                 comment: "Air Compressor not working",
@@ -1340,6 +1382,7 @@ describe("MaintenanceClient", () => {
         const response = await client.maintenance.createDvir({
             authorId: "11",
             safetyStatus: "safe",
+            type: "mechanic",
         });
         expect(response).toEqual({
             data: {
@@ -1494,7 +1537,8 @@ describe("MaintenanceClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.maintenance.updateDvir("id", {
+        const response = await client.maintenance.updateDvir({
+            id: "id",
             authorId: "11",
             isResolved: true,
         });

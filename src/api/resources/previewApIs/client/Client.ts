@@ -153,7 +153,7 @@ export class PreviewApIsClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * @param {string} id - The ID of the vehicle to lock or unlock. This can be a Samsara internal ID or an external ID in the format `samsara.vin:{VIN}`.
+     * @param {Samsara.LockVehicleRequest} request
      * @param {PreviewApIsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
@@ -167,16 +167,22 @@ export class PreviewApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.previewApIs.lockVehicle("id")
+     *     await client.previewApIs.lockVehicle({
+     *         id: "id"
+     *     })
      */
-    public lockVehicle(id: string, requestOptions?: PreviewApIsClient.RequestOptions): core.HttpResponsePromise<void> {
-        return core.HttpResponsePromise.fromPromise(this.__lockVehicle(id, requestOptions));
+    public lockVehicle(
+        request: Samsara.LockVehicleRequest,
+        requestOptions?: PreviewApIsClient.RequestOptions,
+    ): core.HttpResponsePromise<void> {
+        return core.HttpResponsePromise.fromPromise(this.__lockVehicle(request, requestOptions));
     }
 
     private async __lockVehicle(
-        id: string,
+        request: Samsara.LockVehicleRequest,
         requestOptions?: PreviewApIsClient.RequestOptions,
     ): Promise<core.WithRawResponse<void>> {
+        const { id } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -257,7 +263,7 @@ export class PreviewApIsClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * @param {string} id - The ID of the vehicle to lock or unlock. This can be a Samsara internal ID or an external ID in the format `samsara.vin:{VIN}`.
+     * @param {Samsara.UnlockVehicleRequest} request
      * @param {PreviewApIsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
@@ -271,19 +277,22 @@ export class PreviewApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.previewApIs.unlockVehicle("id")
+     *     await client.previewApIs.unlockVehicle({
+     *         id: "id"
+     *     })
      */
     public unlockVehicle(
-        id: string,
+        request: Samsara.UnlockVehicleRequest,
         requestOptions?: PreviewApIsClient.RequestOptions,
     ): core.HttpResponsePromise<void> {
-        return core.HttpResponsePromise.fromPromise(this.__unlockVehicle(id, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__unlockVehicle(request, requestOptions));
     }
 
     private async __unlockVehicle(
-        id: string,
+        request: Samsara.UnlockVehicleRequest,
         requestOptions?: PreviewApIsClient.RequestOptions,
     ): Promise<core.WithRawResponse<void>> {
+        const { id } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,

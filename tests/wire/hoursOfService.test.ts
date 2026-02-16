@@ -734,7 +734,8 @@ describe("HoursOfServiceClient", () => {
             .statusCode(200)
             .build();
 
-        const response = await client.hoursOfService.setCurrentDutyStatus(1000000, {
+        const response = await client.hoursOfService.setCurrentDutyStatus({
+            driver_id: 1000000,
             duty_status: "ON_DUTY",
         });
         expect(response).toEqual(undefined);

@@ -12,7 +12,7 @@ export interface TrainingAssignmentPostResponseObjectResponseBody {
     /** ID of the user who created the training assignment. */
     createdById: string;
     /** Time training assignment is due. UTC timestamp in RFC 3339 format. Returned when an assignment has a due date set by an admin. */
-    dueAtTime?: string;
+    dueAtTime?: string | undefined;
     /** ID of the training assignment. */
     id: string;
     /** Indicates whether the training assignment was already created. */

@@ -731,29 +731,27 @@ export class LegacyApIsClient {
      *
      * To use this endpoint, select **Read Safety Events & Scores** under the Safety & Cameras category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
-     * @param {number} vehicleId - ID of the vehicle. Must contain only digits 0-9.
      * @param {Samsara.V1GetVehicleHarshEventRequest} request
      * @param {LegacyApIsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.legacyApIs.v1GetVehicleHarshEvent(1000000, {
+     *     await client.legacyApIs.v1GetVehicleHarshEvent({
+     *         vehicleId: 1000000,
      *         timestamp: 1000000
      *     })
      */
     public v1GetVehicleHarshEvent(
-        vehicleId: number,
         request: Samsara.V1GetVehicleHarshEventRequest,
         requestOptions?: LegacyApIsClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.V1VehicleHarshEventResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__v1GetVehicleHarshEvent(vehicleId, request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__v1GetVehicleHarshEvent(request, requestOptions));
     }
 
     private async __v1GetVehicleHarshEvent(
-        vehicleId: number,
         request: Samsara.V1GetVehicleHarshEventRequest,
         requestOptions?: LegacyApIsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.V1VehicleHarshEventResponse>> {
-        const { timestamp } = request;
+        const { vehicleId, timestamp } = request;
         const _queryParams: Record<string, unknown> = {
             timestamp,
         };

@@ -7,16 +7,16 @@ import type * as Samsara from "../index.js";
  */
 export interface VehicleStatsFaultCodesValueObdiiDiagnosticTroubleCodes {
     /** Confirmed DTC codes. */
-    confirmedDtcs?: Samsara.VehicleStatsFaultCodesValueObdiiConfirmedDtcs[];
+    confirmedDtcs?: Samsara.VehicleStatsFaultCodesValueObdiiConfirmedDtcs[] | undefined;
     /** The ignition type of this passenger vehicle. Valid values: `spark`, `compression`. */
-    ignitionType?: VehicleStatsFaultCodesValueObdiiDiagnosticTroubleCodes.IgnitionType;
+    ignitionType?: VehicleStatsFaultCodesValueObdiiDiagnosticTroubleCodes.IgnitionType | undefined;
     /** The MIL status, indicating a check engine light. */
-    milStatus?: boolean;
-    monitorStatus?: Samsara.VehicleStatsFaultCodesValueObdiiMonitorStatus;
+    milStatus?: boolean | undefined;
+    monitorStatus?: Samsara.VehicleStatsFaultCodesValueObdiiMonitorStatus | undefined;
     /** Pending DTC codes. */
-    pendingDtcs?: Samsara.VehicleStatsFaultCodesValueObdiiConfirmedDtcs[];
+    pendingDtcs?: Samsara.VehicleStatsFaultCodesValueObdiiConfirmedDtcs[] | undefined;
     /** Permanent DTC codes. */
-    permanentDtcs?: Samsara.VehicleStatsFaultCodesValueObdiiConfirmedDtcs[];
+    permanentDtcs?: Samsara.VehicleStatsFaultCodesValueObdiiConfirmedDtcs[] | undefined;
     /** The TX identifier. */
     txId: number;
 }

@@ -6,7 +6,7 @@ import type * as Samsara from "../index.js";
  * Contains additional information specific to the event type.
  */
 export interface RouteEventDetailsResponseBody {
-    stopEtaUpdated?: Samsara.StopEtaUpdatedEventDetailsResponseBody;
-    stopTaskCompleted?: Samsara.StopTaskCompletedEventDetailsResponseBody;
-    stopTaskSkipped?: Samsara.StopTaskSkippedEventDetailsResponseBody;
+    stopEtaUpdated?: Samsara.StopEtaUpdatedEventDetailsResponseBody | undefined;
+    stopTaskCompleted?: Samsara.StopTaskCompletedEventDetailsResponseBody | undefined;
+    stopTaskSkipped?: Samsara.StopTaskSkippedEventDetailsResponseBody | undefined;
 }

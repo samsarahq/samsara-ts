@@ -10,79 +10,79 @@ export interface VehicleStatsFaultCodesValueObdiiMonitorStatus {
      * -N: Not Complete
      * -R: Complete
      */
-    catalyst?: VehicleStatsFaultCodesValueObdiiMonitorStatus.Catalyst;
+    catalyst?: VehicleStatsFaultCodesValueObdiiMonitorStatus.Catalyst | undefined;
     /**
      * Enum of monitor status:
      * -U: Unsupported
      * -N: Not Complete
      * -R: Complete
      */
-    comprehensive?: VehicleStatsFaultCodesValueObdiiMonitorStatus.Comprehensive;
+    comprehensive?: VehicleStatsFaultCodesValueObdiiMonitorStatus.Comprehensive | undefined;
     /**
      * Enum of monitor status:
      * -U: Unsupported
      * -N: Not Complete
      * -R: Complete
      */
-    egr?: VehicleStatsFaultCodesValueObdiiMonitorStatus.Egr;
+    egr?: VehicleStatsFaultCodesValueObdiiMonitorStatus.Egr | undefined;
     /**
      * Enum of monitor status:
      * -U: Unsupported
      * -N: Not Complete
      * -R: Complete
      */
-    evapSystem?: VehicleStatsFaultCodesValueObdiiMonitorStatus.EvapSystem;
+    evapSystem?: VehicleStatsFaultCodesValueObdiiMonitorStatus.EvapSystem | undefined;
     /**
      * Enum of monitor status:
      * -U: Unsupported
      * -N: Not Complete
      * -R: Complete
      */
-    fuel?: VehicleStatsFaultCodesValueObdiiMonitorStatus.Fuel;
+    fuel?: VehicleStatsFaultCodesValueObdiiMonitorStatus.Fuel | undefined;
     /**
      * Enum of monitor status:
      * -U: Unsupported
      * -N: Not Complete
      * -R: Complete
      */
-    heatedCatalyst?: VehicleStatsFaultCodesValueObdiiMonitorStatus.HeatedCatalyst;
+    heatedCatalyst?: VehicleStatsFaultCodesValueObdiiMonitorStatus.HeatedCatalyst | undefined;
     /**
      * Enum of monitor status:
      * -U: Unsupported
      * -N: Not Complete
      * -R: Complete
      */
-    heatedO2Sensor?: VehicleStatsFaultCodesValueObdiiMonitorStatus.HeatedO2Sensor;
+    heatedO2Sensor?: VehicleStatsFaultCodesValueObdiiMonitorStatus.HeatedO2Sensor | undefined;
     /**
      * Enum of monitor status:
      * -U: Unsupported
      * -N: Not Complete
      * -R: Complete
      */
-    isoSaeReserved?: VehicleStatsFaultCodesValueObdiiMonitorStatus.IsoSaeReserved;
+    isoSaeReserved?: VehicleStatsFaultCodesValueObdiiMonitorStatus.IsoSaeReserved | undefined;
     /**
      * Enum of monitor status:
      * -U: Unsupported
      * -N: Not Complete
      * -R: Complete
      */
-    misfire?: VehicleStatsFaultCodesValueObdiiMonitorStatus.Misfire;
+    misfire?: VehicleStatsFaultCodesValueObdiiMonitorStatus.Misfire | undefined;
     /** Count of the number of sensors reporting N: Not Complete */
-    notReadyCount?: number;
+    notReadyCount?: number | undefined;
     /**
      * Enum of monitor status:
      * -U: Unsupported
      * -N: Not Complete
      * -R: Complete
      */
-    o2Sensor?: VehicleStatsFaultCodesValueObdiiMonitorStatus.O2Sensor;
+    o2Sensor?: VehicleStatsFaultCodesValueObdiiMonitorStatus.O2Sensor | undefined;
     /**
      * Enum of monitor status:
      * -U: Unsupported
      * -N: Not Complete
      * -R: Complete
      */
-    secondaryAir?: VehicleStatsFaultCodesValueObdiiMonitorStatus.SecondaryAir;
+    secondaryAir?: VehicleStatsFaultCodesValueObdiiMonitorStatus.SecondaryAir | undefined;
 }
 
 export namespace VehicleStatsFaultCodesValueObdiiMonitorStatus {

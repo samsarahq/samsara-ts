@@ -7,16 +7,16 @@ import type * as Samsara from "../index.js";
  */
 export interface AlertObjectVehicleResponseBody {
     /** List of attributes associated with the entity */
-    attributes?: Samsara.GoaAttributeTinyResponseBody[];
+    attributes?: Samsara.GoaAttributeTinyResponseBody[] | undefined;
     /** A map of external ids */
-    externalIds?: Record<string, string>;
+    externalIds?: Record<string, string> | undefined;
     /** The ID of the vehicle. */
     id: string;
     /** The name of the vehicle. */
-    name?: string;
+    name?: string | undefined;
     /** The serial number of the gateway installed on the asset. */
     serial: string;
-    staticAssignedDriver?: Samsara.DriverObjectResponseBody;
+    staticAssignedDriver?: Samsara.DriverObjectResponseBody | undefined;
     /** The list of [tags](https://kb.samsara.com/hc/en-us/articles/360026674631-Using-Tags-and-Tag-Nesting) associated with the vehicle. */
-    tags?: Samsara.GoaTagTinyResponseResponseBody[];
+    tags?: Samsara.GoaTagTinyResponseResponseBody[] | undefined;
 }

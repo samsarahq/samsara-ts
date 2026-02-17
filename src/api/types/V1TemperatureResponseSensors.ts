@@ -2,19 +2,19 @@
 
 export interface V1TemperatureResponseSensors {
     /** Currently reported ambient temperature in millidegrees celsius. */
-    ambientTemperature?: number;
+    ambientTemperature?: number | undefined;
     /** The timestamp of reported ambient temperature, specified in RFC 3339 time. */
-    ambientTemperatureTime?: string;
+    ambientTemperatureTime?: string | undefined;
     /** ID of the sensor. */
-    id?: number;
+    id?: number | undefined;
     /** Name of the sensor. */
-    name?: string;
+    name?: string | undefined;
     /** Currently reported probe temperature in millidegrees celsius. If no probe is connected, this parameter will not be reported. */
-    probeTemperature?: number;
+    probeTemperature?: number | undefined;
     /** The timestamp of reported probe temperature, specified in RFC 3339 time. */
-    probeTemperatureTime?: string;
+    probeTemperatureTime?: string | undefined;
     /** ID of the trailer associated with the sensor for the data point. If no trailer is connected, this parameter will not be reported. */
-    trailerId?: number;
+    trailerId?: number | undefined;
     /** ID of the vehicle associated with the sensor for the data point. If no vehicle is connected, this parameter will not be reported. */
-    vehicleId?: number;
+    vehicleId?: number | undefined;
 }

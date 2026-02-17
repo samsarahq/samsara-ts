@@ -5,9 +5,9 @@
  */
 export interface DvirSubmittedDeviceTriggerDetailsObjectRequestBody {
     /** The trigger will only fire if the selected DVIR types are submitted within the duration. */
-    dvirMinDurationMilliseconds?: number;
+    dvirMinDurationMilliseconds?: number | undefined;
     /** Filter to these types of DVIR submissions. */
-    dvirSubmissionTypes?: DvirSubmittedDeviceTriggerDetailsObjectRequestBody.DvirSubmissionTypes.Item[];
+    dvirSubmissionTypes?: DvirSubmittedDeviceTriggerDetailsObjectRequestBody.DvirSubmissionTypes.Item[] | undefined;
 }
 
 export namespace DvirSubmittedDeviceTriggerDetailsObjectRequestBody {

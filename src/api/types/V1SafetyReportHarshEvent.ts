@@ -5,9 +5,9 @@
  */
 export interface V1SafetyReportHarshEvent {
     /** Sensor generated harsh event type. */
-    harshEventType?: string;
+    harshEventType?: string | undefined;
     /** Timestamp that the harsh event occurred in Unix milliseconds since epoch */
-    timestampMs?: number;
+    timestampMs?: number | undefined;
     /** Vehicle associated with the harsh event */
-    vehicleId?: number;
+    vehicleId?: number | undefined;
 }

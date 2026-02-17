@@ -5,7 +5,7 @@
  */
 export interface Dvir2AssignedToPolymorphicUserObjectResponseBody {
     /** The name of the user or driver assigned to the DVIR. */
-    name?: string;
+    name?: string | undefined;
     /** The polymorphic user ID that identifies the user or driver. */
     polymorphicUserId: string;
 }

@@ -2110,7 +2110,6 @@ export * from "./SpeedingSeverityLevelResponseBody.js";
 export * from "./SpeedResponseResponseBody.js";
 export * from "./SpeedTriggerDetailsObjectRequestBody.js";
 export * from "./SpeedTriggerDetailsObjectResponseBody.js";
-export * from "./StandardDeleteResponse.js";
 export * from "./StartFunctionRunResponseBodyResponseBody.js";
 export * from "./StopEtaUpdatedEventDetailsResponseBody.js";
 export * from "./StopTaskCompletedEventDetailsResponseBody.js";

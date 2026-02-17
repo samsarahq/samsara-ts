@@ -6,7 +6,7 @@ import type * as Samsara from "../index.js";
  * The geofence that defines this address and its bounds. This can either be a circle or a polygon, but not both.
  */
 export interface WorkflowGeofenceResponseBody {
-    circle?: Samsara.WorkflowCircleResponseBody;
-    polygon?: Samsara.WorkflowPolygonResponseBody;
-    settings?: Samsara.SettingsResponseBody;
+    circle?: Samsara.WorkflowCircleResponseBody | undefined;
+    polygon?: Samsara.WorkflowPolygonResponseBody | undefined;
+    settings?: Samsara.SettingsResponseBody | undefined;
 }

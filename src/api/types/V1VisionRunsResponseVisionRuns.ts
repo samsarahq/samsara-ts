@@ -3,9 +3,9 @@
 import type * as Samsara from "../index.js";
 
 export interface V1VisionRunsResponseVisionRuns {
-    deviceId?: number;
-    endedAtMs?: number;
-    programId?: number;
-    reportMetadata?: Samsara.V1VisionRunsResponseReportMetadata;
-    startedAtMs?: number;
+    deviceId?: number | undefined;
+    endedAtMs?: number | undefined;
+    programId?: number | undefined;
+    reportMetadata?: Samsara.V1VisionRunsResponseReportMetadata | undefined;
+    startedAtMs?: number | undefined;
 }

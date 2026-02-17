@@ -3,6 +3,6 @@
 import type * as Samsara from "../index.js";
 
 export interface ListIndustrialAssetsResponse {
-    data?: Samsara.AssetResponse[];
-    pagination?: Samsara.PaginationResponse;
+    data?: Samsara.AssetResponse[] | undefined;
+    pagination?: Samsara.PaginationResponse | undefined;
 }

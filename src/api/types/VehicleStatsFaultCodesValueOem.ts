@@ -7,5 +7,5 @@ import type * as Samsara from "../index.js";
  */
 export interface VehicleStatsFaultCodesValueOem {
     /** Proprietary diagnostic trouble codes for OEM vehicles. */
-    diagnosticTroubleCodes?: Samsara.VehicleStatsFaultCodesValueOemDiagnosticTroubleCodes[];
+    diagnosticTroubleCodes?: Samsara.VehicleStatsFaultCodesValueOemDiagnosticTroubleCodes[] | undefined;
 }

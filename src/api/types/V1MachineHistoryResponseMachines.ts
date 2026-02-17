@@ -4,9 +4,9 @@ import type * as Samsara from "../index.js";
 
 export interface V1MachineHistoryResponseMachines {
     /** Machine ID */
-    id?: number;
+    id?: number | undefined;
     /** Machine name */
-    name?: string;
+    name?: string | undefined;
     /** List of vibration datapoints, with timestamp and vibration measurement for x/y/z axis in mm/s */
-    vibrations?: Samsara.V1MachineHistoryResponseVibrations[];
+    vibrations?: Samsara.V1MachineHistoryResponseVibrations[] | undefined;
 }

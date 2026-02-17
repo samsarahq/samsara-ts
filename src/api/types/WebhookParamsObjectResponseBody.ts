@@ -5,7 +5,7 @@
  */
 export interface WebhookParamsObjectResponseBody {
     /** This determines the alert webhook payload type to use. Learn more: https://developers.samsara.com/docs/webhook-reference.  Valid values: `legacy`, `enriched` */
-    payloadType?: WebhookParamsObjectResponseBody.PayloadType;
+    payloadType?: WebhookParamsObjectResponseBody.PayloadType | undefined;
     /** The webhook IDs. */
     webhookIds: string[];
 }

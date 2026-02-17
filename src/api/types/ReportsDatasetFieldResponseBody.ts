@@ -11,7 +11,7 @@ export interface ReportsDatasetFieldResponseBody {
     /** Name of the field. */
     name: string;
     /** Unit of the field.  Valid values: `amperes`, `bars`, `cad`, `chf`, `days`, `decimalDegrees`, `degreesCelsius`, `degreesFahrenheit`, `eur`, `feet`, `gForces`, `gallons`, `gallonsPerHour`, `gallonsPerKilogram`, `gallonsPerMile`, `gbp`, `gramsPerLiter`, `gramsPerMeter`, `hertz`, `hours`, `imperialGallons`, `imperialGallonsPerHour`, `imperialGallonsPerKilogram`, `imperialGallonsPerMile`, `inches`, `kelvins`, `kilograms`, `kilogramsGaseousFuel`, `kilogramsPer100KilometerGaseousFuel`, `kilogramsPerGallon`, `kilogramsPerKilometer`, `kilogramsPerLiter`, `kilogramsPerMile`, `kilometers`, `kilometersPerHour`, `kilometersPerLiter`, `kilometersPerLiterGaseousFuel`, `kilopascals`, `kilowattHours`, `liters`, `litersGaseousFuel`, `litersPer100Kilometers`, `litersPer100KilometersGaseousFuel`, `litersPerHour`, `litersPerKilogram`, `litersPerKilometer`, `litersPerMeter`, `litersPerTonne`, `meters`, `metersPerSecond`, `miles`, `milesPerGallon`, `milesPerHour`, `milesPerImperialGallon`, `milesPerKilogramGaseousFuel`, `milesPerUSGallonGaseousFuel`, `milliknots`, `milliseconds`, `millivolts`, `minutes`, `months`, `mxn`, `percents`, `pounds`, `poundsPerGallon`, `poundsPerLiter`, `poundsPerMile`, `poundsPerSquareInch`, `revolutionsPerMinute`, `seconds`, `unknown`, `usGallonsGaseousFuel`, `usd`, `voltAmperes`, `voltAmperesReactive`, `volts`, `wattHours`, `watts`, `weeks` */
-    unit?: ReportsDatasetFieldResponseBody.Unit;
+    unit?: ReportsDatasetFieldResponseBody.Unit | undefined;
 }
 
 export namespace ReportsDatasetFieldResponseBody {

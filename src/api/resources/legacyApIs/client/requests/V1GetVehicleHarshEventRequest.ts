@@ -3,10 +3,13 @@
 /**
  * @example
  *     {
+ *         vehicleId: 1000000,
  *         timestamp: 1000000
  *     }
  */
 export interface V1GetVehicleHarshEventRequest {
+    /** ID of the vehicle. Must contain only digits 0-9. */
+    vehicleId: number;
     /** Timestamp in milliseconds representing the timestamp of a harsh event. */
     timestamp: number;
 }

@@ -6,5 +6,5 @@ import type * as Samsara from "../index.js";
  * A single user.
  */
 export interface UserResponse {
-    data?: Samsara.User;
+    data?: Samsara.User | undefined;
 }

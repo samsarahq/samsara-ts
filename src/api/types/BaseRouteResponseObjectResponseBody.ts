@@ -4,30 +4,30 @@ import type * as Samsara from "../index.js";
 
 export interface BaseRouteResponseObjectResponseBody {
     /** Actual end time, if it exists, for the route in RFC 3339 format. */
-    actualRouteEndTime?: string;
+    actualRouteEndTime?: string | undefined;
     /** Actual start time, if it exists, for the route in RFC 3339 format. */
-    actualRouteStartTime?: string;
-    driver?: Samsara.GoaDriverTinyResponseResponseBody;
+    actualRouteStartTime?: string | undefined;
+    driver?: Samsara.GoaDriverTinyResponseResponseBody | undefined;
     /** A map of external ids */
-    externalIds?: Record<string, string>;
+    externalIds?: Record<string, string> | undefined;
     /** ID of the route */
     id: string;
     /** Route name */
-    name?: string;
+    name?: string | undefined;
     /** Notes for the route */
-    notes?: string;
+    notes?: string | undefined;
     /** The local timezone, as defined in Settings for your organization. Timezones use [IANA timezone database](https://www.iana.org/time-zones) keys (e.g. `America/Los_Angeles`, `America/New_York`, `Europe/London`, etc.). You can find a mapping of common timezone formats to IANA timezone keys [here](https://unicode.org/cldr/charts/latest/supplemental/zone_tzid.html). */
-    orgLocalTimezone?: string;
+    orgLocalTimezone?: string | undefined;
     /** List of shareable, non-expired 'By recurring Route' Live Sharing Links. */
-    recurringRouteLiveSharingLinks?: Samsara.LiveSharingLinkResponseObjectResponseBody[];
+    recurringRouteLiveSharingLinks?: Samsara.LiveSharingLinkResponseObjectResponseBody[] | undefined;
     /** Scheduled end time, if it exists, for the route in RFC 3339 format. */
-    scheduledRouteEndTime?: string;
+    scheduledRouteEndTime?: string | undefined;
     /** Scheduled start time, if it exists, for the route in RFC 3339 format. */
-    scheduledRouteStartTime?: string;
-    settings?: Samsara.RouteSettingsResponseBody;
+    scheduledRouteStartTime?: string | undefined;
+    settings?: Samsara.RouteSettingsResponseBody | undefined;
     /** List of stops along the route */
-    stops?: Samsara.RoutesStopResponseObjectResponseBody[];
+    stops?: Samsara.RoutesStopResponseObjectResponseBody[] | undefined;
     /** An array of IDs of tags to associate with this route. */
-    tagIds?: string[];
-    vehicle?: Samsara.GoaVehicleTinyResponseResponseBody;
+    tagIds?: string[] | undefined;
+    vehicle?: Samsara.GoaVehicleTinyResponseResponseBody | undefined;
 }

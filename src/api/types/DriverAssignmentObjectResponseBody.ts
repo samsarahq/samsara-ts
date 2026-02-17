@@ -4,12 +4,20 @@ import type * as Samsara from "../index.js";
 
 export interface DriverAssignmentObjectResponseBody {
     /** Assignment type of the driver-vehicle assignment, indicating the provenance of the assignment. The only type of assignment supported right now is `driverApp` assignments. This list could change, so it is recommended that clients gracefully handle any types not enumerated in this list.  Valid values: `driverApp` */
-    assignmentType?: "driverApp";
-    driver?: Samsara.GoaDriverTinyResponseResponseBody;
+    assignmentType?: DriverAssignmentObjectResponseBody.AssignmentType | undefined;
+    driver?: Samsara.GoaDriverTinyResponseResponseBody | undefined;
     /**  An end time in RFC 3339 format. Omitted if not applicable. Millisecond precision and timezones are supported. (Examples: 2019-06-13T19:08:25Z, 2019-06-13T19:08:25.455Z, OR 2015-09-15T14:00:12-04:00). */
-    endTime?: string;
+    endTime?: string | undefined;
     /** Boolean indicating whether the driver is a passenger. */
-    isPassenger?: boolean;
+    isPassenger?: boolean | undefined;
     /**  A start time in RFC 3339 format. Defaults to now if not provided. Millisecond precision and timezones are supported. (Examples: 2019-06-13T19:08:25Z, 2019-06-13T19:08:25.455Z, OR 2015-09-15T14:00:12-04:00). */
-    startTime?: string;
+    startTime?: string | undefined;
+}
+
+export namespace DriverAssignmentObjectResponseBody {
+    /** Assignment type of the driver-vehicle assignment, indicating the provenance of the assignment. The only type of assignment supported right now is `driverApp` assignments. This list could change, so it is recommended that clients gracefully handle any types not enumerated in this list.  Valid values: `driverApp` */
+    export const AssignmentType = {
+        DriverApp: "driverApp",
+    } as const;
+    export type AssignmentType = (typeof AssignmentType)[keyof typeof AssignmentType];
 }

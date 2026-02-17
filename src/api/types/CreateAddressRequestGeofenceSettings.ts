@@ -5,5 +5,5 @@
  */
 export interface CreateAddressRequestGeofenceSettings {
     /** If this property is set to true, then underlying geofence addresses will be shown in reports instead of a geofence's name. */
-    showAddresses?: boolean;
+    showAddresses?: boolean | undefined;
 }

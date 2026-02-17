@@ -3,5 +3,5 @@
 import type * as Samsara from "../index.js";
 
 export interface RoutesPatchRouteResponseBody {
-    data?: Samsara.BaseRouteResponseObjectResponseBody;
+    data?: Samsara.BaseRouteResponseObjectResponseBody | undefined;
 }

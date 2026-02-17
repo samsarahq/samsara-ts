@@ -3,9 +3,9 @@
 import type * as Samsara from "../index.js";
 
 export interface DataInputSnapshotAllOf {
-    fftSpectraPoint?: Samsara.FftSpectraDataPoint;
-    j1939D1StatusPoint?: Samsara.J1939D1StatusDataPoint;
-    locationPoint?: Samsara.LocationDataPoint;
-    numberPoint?: Samsara.NumberDataPoint;
-    stringPoint?: Samsara.StringDataPoint;
+    fftSpectraPoint?: Samsara.FftSpectraDataPoint | undefined;
+    j1939D1StatusPoint?: Samsara.J1939D1StatusDataPoint | undefined;
+    locationPoint?: Samsara.LocationDataPoint | undefined;
+    numberPoint?: Samsara.NumberDataPoint | undefined;
+    stringPoint?: Samsara.StringDataPoint | undefined;
 }

@@ -7,14 +7,14 @@ import type * as Samsara from "../index.js";
  */
 export interface SuddenFuelLevelDropResponseBody {
     /** The end time of the fuel level change in RFC 3339 format. */
-    changeEndTime?: string;
+    changeEndTime?: string | undefined;
     /** The start time of the fuel level change in RFC 3339 format. */
-    changeStartTime?: string;
-    driver?: Samsara.AlertObjectDriverResponseBody;
+    changeStartTime?: string | undefined;
+    driver?: Samsara.AlertObjectDriverResponseBody | undefined;
     /** The fuel level after the sudden fuel level drop in millipercents. */
-    fuelLevelAfterMillipercent?: number;
+    fuelLevelAfterMillipercent?: number | undefined;
     /** The fuel level before the sudden fuel level drop in millipercents. */
-    fuelLevelBeforeMillipercent?: number;
-    location?: Samsara.EventLocationResponseBody;
-    vehicle?: Samsara.AlertObjectVehicleResponseBody;
+    fuelLevelBeforeMillipercent?: number | undefined;
+    location?: Samsara.EventLocationResponseBody | undefined;
+    vehicle?: Samsara.AlertObjectVehicleResponseBody | undefined;
 }

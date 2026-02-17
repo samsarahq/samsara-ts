@@ -9,5 +9,6 @@ export type { GetIndustrialAssetsRequest } from "./GetIndustrialAssetsRequest.js
 export type { GetVisionRunsByCameraRequest } from "./GetVisionRunsByCameraRequest.js";
 export type { InlineObject3 } from "./InlineObject3.js";
 export type { V1GetVisionLatestRunCameraRequest } from "./V1GetVisionLatestRunCameraRequest.js";
+export type { V1GetVisionProgramsByCameraRequest } from "./V1GetVisionProgramsByCameraRequest.js";
 export type { V1GetVisionRunsByCameraAndProgramRequest } from "./V1GetVisionRunsByCameraAndProgramRequest.js";
 export type { V1GetVisionRunsRequest } from "./V1GetVisionRunsRequest.js";

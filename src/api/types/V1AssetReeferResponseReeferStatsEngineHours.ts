@@ -2,7 +2,7 @@
 
 export interface V1AssetReeferResponseReeferStatsEngineHours {
     /** Timestamp in Unix milliseconds since epoch. */
-    changedAtMs?: number;
+    changedAtMs?: number | undefined;
     /** Engine hours of the reefer. */
-    engineHours?: number;
+    engineHours?: number | undefined;
 }

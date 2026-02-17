@@ -5,7 +5,7 @@
  */
 export interface TrailerTinyResponse {
     /** ID of the trailer. */
-    id?: string;
+    id?: string | undefined;
     /** Name of the trailer. */
-    name?: string;
+    name?: string | undefined;
 }

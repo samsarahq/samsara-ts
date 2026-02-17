@@ -3,5 +3,5 @@
 import type * as Samsara from "../index.js";
 
 export interface InlineResponse2009 {
-    sensors?: Samsara.V1Sensor[];
+    sensors?: Samsara.V1Sensor[] | undefined;
 }

@@ -5,7 +5,7 @@
  */
 export interface DriverTinyResponse {
     /** ID of the driver. */
-    id?: string;
+    id?: string | undefined;
     /** Name of the driver. */
-    name?: string;
+    name?: string | undefined;
 }

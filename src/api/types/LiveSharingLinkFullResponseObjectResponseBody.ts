@@ -6,13 +6,13 @@ import type * as Samsara from "../index.js";
  * Live Sharing Link object
  */
 export interface LiveSharingLinkFullResponseObjectResponseBody {
-    assetsLocationLinkConfig?: Samsara.AssetsLocationLinkResponseConfigObjectResponseBody;
-    assetsNearLocationLinkConfig?: Samsara.AssetsNearLocationLinkConfigObjectResponseBody;
-    assetsOnRouteLinkConfig?: Samsara.AssetsOnRouteLinkConfigObjectResponseBody;
+    assetsLocationLinkConfig?: Samsara.AssetsLocationLinkResponseConfigObjectResponseBody | undefined;
+    assetsNearLocationLinkConfig?: Samsara.AssetsNearLocationLinkConfigObjectResponseBody | undefined;
+    assetsOnRouteLinkConfig?: Samsara.AssetsOnRouteLinkConfigObjectResponseBody | undefined;
     /** Description for the Live Sharing Link (not applicable for 'assetsOnRoute' type). */
-    description?: string;
+    description?: string | undefined;
     /** Date that this link expires, in RFC 3339 format. */
-    expiresAtTime?: string;
+    expiresAtTime?: string | undefined;
     /** Unique identifier for the Live Sharing Link. */
     id: string;
     /** The shareable URL of the vehicle's location. */

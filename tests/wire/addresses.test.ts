@@ -253,7 +253,9 @@ describe("AddressesClient", () => {
         };
         server.mockEndpoint().get("/addresses/id").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
-        const response = await client.addresses.get("id");
+        const response = await client.addresses.get({
+            id: "id",
+        });
         expect(response).toEqual({
             data: {
                 addressTypes: ["yard"],
@@ -317,11 +319,12 @@ describe("AddressesClient", () => {
             environment: server.baseUrl,
         });
 
-        const rawResponseBody = "";
-        server.mockEndpoint().delete("/addresses/id").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
+        server.mockEndpoint().delete("/addresses/id").respondWith().statusCode(200).build();
 
-        const response = await client.addresses.delete("id");
-        expect(response).toEqual("");
+        const response = await client.addresses.delete({
+            id: "id",
+        });
+        expect(response).toEqual(undefined);
     });
 
     test("update", async () => {
@@ -367,7 +370,9 @@ describe("AddressesClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.addresses.update("id");
+        const response = await client.addresses.update({
+            id: "id",
+        });
         expect(response).toEqual({
             data: {
                 addressTypes: ["yard"],

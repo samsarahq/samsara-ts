@@ -4,21 +4,21 @@ import type * as Samsara from "../index.js";
 
 export interface Attribute {
     /** Denotes the data type of the attribute's values. Valid values: `single-select`, `multi-select`, `text`, `freeform-multi-select`, `number`, `date`. */
-    attributeType?: Attribute.AttributeType;
+    attributeType?: Attribute.AttributeType | undefined;
     /** Denotes the type of entity, driver or asset. Valid values: `driver`, `asset`. */
-    entityType?: Attribute.EntityType;
+    entityType?: Attribute.EntityType | undefined;
     /** The samsara id of the attribute object. */
-    id?: string;
+    id?: string | undefined;
     /** Name of attribute. */
-    name?: string;
+    name?: string | undefined;
     /** Number values that can be associated with this attribute. Note: this field is `null` for `text` and `freeform-multi-select` attribute types.` */
-    numberValues?: number[];
+    numberValues?: number[] | undefined;
     /** String values that can be associated with this attribute. Note: this field is `null` for `text` and `freeform-multi-select` attribute types.` */
-    stringValues?: string[];
+    stringValues?: string[] | undefined;
     /** Unit of the attribute (only for Number attributes). */
-    unit?: Attribute.Unit;
+    unit?: Attribute.Unit | undefined;
     /** Representation of values that includes ids. Note: this field is `null` for `text` and `freeform-multi-select` attribute types.` */
-    values?: Samsara.AttributeValueTiny[];
+    values?: Samsara.AttributeValueTiny[] | undefined;
 }
 
 export namespace Attribute {

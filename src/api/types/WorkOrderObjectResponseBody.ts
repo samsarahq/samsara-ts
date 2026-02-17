@@ -7,51 +7,51 @@ import type * as Samsara from "../index.js";
  */
 export interface WorkOrderObjectResponseBody {
     /** The time the work order was archived in RFC 3339 format. */
-    archivedAtTime?: string;
+    archivedAtTime?: string | undefined;
     /** The ID of the asset. */
     assetId: string;
     /** The ID of the assigned mechanic. */
-    assignedUserId?: string;
+    assignedUserId?: string | undefined;
     /** Files attached to the work order. */
-    attachments?: Samsara.WorkOrderAttachmentObjectResponseBody[];
+    attachments?: Samsara.WorkOrderAttachmentObjectResponseBody[] | undefined;
     /** The category of the work order */
-    category?: string;
+    category?: string | undefined;
     /** Notes on the work order. */
-    closingNotes?: string;
+    closingNotes?: string | undefined;
     /** The time the work order was completed in RFC 3339 format. */
-    completedAtTime?: string;
+    completedAtTime?: string | undefined;
     /** The time the work order was created in RFC 3339 format. */
     createdAtTime: string;
     /** The ID of the creator of the work order. */
-    createdByUserId?: string;
+    createdByUserId?: string | undefined;
     /** A description of what needs to be fixed. */
-    description?: string;
-    discount?: Samsara.WorkOrderDiscountObjectResponseBody;
+    description?: string | undefined;
+    discount?: Samsara.WorkOrderDiscountObjectResponseBody | undefined;
     /** The due date of the work order in RFC 3339 format. */
-    dueAtTime?: string;
+    dueAtTime?: string | undefined;
     /** The engine hours at the time of the work order. */
-    engineHours?: number;
+    engineHours?: number | undefined;
     /** The unique id of the work order. */
     id: string;
     /** The invoice number for the work order. */
-    invoiceNumber?: string;
+    invoiceNumber?: string | undefined;
     /** Items related to the work order. */
-    items?: Samsara.WorkOrderItemObjectResponseBody[];
+    items?: Samsara.WorkOrderItemObjectResponseBody[] | undefined;
     /** The odometer reading at the time of the work order. */
-    odometerMeters?: number;
+    odometerMeters?: number | undefined;
     /** The purchase order number for the work order. */
-    poNumber?: string;
+    poNumber?: string | undefined;
     /** The priority of the work order  Valid values: `High`, `Low`, `Medium`, `Urgent` */
-    priority?: WorkOrderObjectResponseBody.Priority;
+    priority?: WorkOrderObjectResponseBody.Priority | undefined;
     /** Service Tasks for the work order. */
-    serviceTaskInstances?: Samsara.ServiceTaskInstanceObjectResponseBody[];
+    serviceTaskInstances?: Samsara.ServiceTaskInstanceObjectResponseBody[] | undefined;
     /** The status of the work order  Valid values: `Assigned`, `Cancelled`, `Closed`, `Completed`, `In Progress`, `On Hold`, `Open`, `Pending Approval`, `Pending Parts` */
     status: WorkOrderObjectResponseBody.Status;
-    tax?: Samsara.WorkOrderTaxObjectResponseBody;
+    tax?: Samsara.WorkOrderTaxObjectResponseBody | undefined;
     /** The time the work order was last updated in RFC 3339 format. */
     updatedAtTime: string;
     /** The vendor UUID for the work order. */
-    vendorUuid?: string;
+    vendorUuid?: string | undefined;
 }
 
 export namespace WorkOrderObjectResponseBody {

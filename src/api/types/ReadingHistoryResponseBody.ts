@@ -7,9 +7,9 @@ export interface ReadingHistoryResponseBody {
     /** The ID of the entity this readings is for. */
     entityId: string;
     /** A map of external ids */
-    externalIds?: Record<string, string>;
+    externalIds?: Record<string, string> | undefined;
     /** The time in RFC 3339 format when the reading was measured. */
-    happenedAtTime?: string;
+    happenedAtTime?: string | undefined;
     /** The value of the reading. */
-    value?: Record<string, unknown>;
+    value?: Record<string, unknown> | undefined;
 }

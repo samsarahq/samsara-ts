@@ -7,5 +7,5 @@ export interface CreateUserRequestRoles {
     /** The unique ID for the role. */
     roleId: string;
     /** ID of the tag this role applies to. */
-    tagId?: string;
+    tagId?: string | undefined;
 }

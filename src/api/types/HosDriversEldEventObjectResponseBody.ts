@@ -8,7 +8,7 @@ export interface HosDriversEldEventObjectResponseBody {
     /** List of ELD event objects. */
     eldEvents: Samsara.HosEldEventObjectResponseBody[];
     /** A map of external ids */
-    externalIds?: Record<string, string>;
+    externalIds?: Record<string, string> | undefined;
     /** ID of the driver. */
     id: string;
     /** Name of the driver. */

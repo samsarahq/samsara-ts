@@ -6,13 +6,13 @@ import type * as Samsara from "../index.js";
  * A carrier proposed assignment object
  */
 export interface CarrierProposedAssignment {
-    acceptedTime?: Samsara.CarrierProposedAssignmentAcceptedTime;
+    acceptedTime?: Samsara.CarrierProposedAssignmentAcceptedTime | undefined;
     activeTime: Samsara.CarrierProposedAssignmentActiveTime;
-    driver?: Samsara.CarrierProposedAssignmentDriver;
-    firstSeenTime?: Samsara.CarrierProposedAssignmentFirstSeenTime;
+    driver?: Samsara.CarrierProposedAssignmentDriver | undefined;
+    firstSeenTime?: Samsara.CarrierProposedAssignmentFirstSeenTime | undefined;
     id: Samsara.CarrierProposedAssignmentId;
-    rejectedTime?: Samsara.CarrierProposedAssignmentRejectedTime;
-    shippingDocs?: Samsara.CarrierProposedAssignmentShippingDocs;
-    trailers?: Samsara.CarrierProposedAssignmentTrailers;
-    vehicle?: Samsara.CarrierProposedAssignmentVehicle;
+    rejectedTime?: Samsara.CarrierProposedAssignmentRejectedTime | undefined;
+    shippingDocs?: Samsara.CarrierProposedAssignmentShippingDocs | undefined;
+    trailers?: Samsara.CarrierProposedAssignmentTrailers | undefined;
+    vehicle?: Samsara.CarrierProposedAssignmentVehicle | undefined;
 }

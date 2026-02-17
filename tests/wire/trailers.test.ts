@@ -563,7 +563,9 @@ describe("TrailersClient", () => {
         };
         server.mockEndpoint().get("/fleet/trailers/id").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
-        const response = await client.trailers.getTrailer("id");
+        const response = await client.trailers.getTrailer({
+            id: "id",
+        });
         expect(response).toEqual({
             data: {
                 attributes: [
@@ -612,7 +614,9 @@ describe("TrailersClient", () => {
         server.mockEndpoint().get("/fleet/trailers/id").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.trailers.getTrailer("id");
+            return await client.trailers.getTrailer({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.UnauthorizedError);
     });
 
@@ -629,7 +633,9 @@ describe("TrailersClient", () => {
         server.mockEndpoint().get("/fleet/trailers/id").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.trailers.getTrailer("id");
+            return await client.trailers.getTrailer({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.NotFoundError);
     });
 
@@ -646,7 +652,9 @@ describe("TrailersClient", () => {
         server.mockEndpoint().get("/fleet/trailers/id").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.trailers.getTrailer("id");
+            return await client.trailers.getTrailer({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.MethodNotAllowedError);
     });
 
@@ -663,7 +671,9 @@ describe("TrailersClient", () => {
         server.mockEndpoint().get("/fleet/trailers/id").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.trailers.getTrailer("id");
+            return await client.trailers.getTrailer({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
@@ -680,7 +690,9 @@ describe("TrailersClient", () => {
         server.mockEndpoint().get("/fleet/trailers/id").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.trailers.getTrailer("id");
+            return await client.trailers.getTrailer({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
@@ -697,7 +709,9 @@ describe("TrailersClient", () => {
         server.mockEndpoint().get("/fleet/trailers/id").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.trailers.getTrailer("id");
+            return await client.trailers.getTrailer({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
@@ -714,7 +728,9 @@ describe("TrailersClient", () => {
         server.mockEndpoint().get("/fleet/trailers/id").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.trailers.getTrailer("id");
+            return await client.trailers.getTrailer({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
@@ -731,7 +747,9 @@ describe("TrailersClient", () => {
         server.mockEndpoint().get("/fleet/trailers/id").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.trailers.getTrailer("id");
+            return await client.trailers.getTrailer({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
@@ -748,7 +766,9 @@ describe("TrailersClient", () => {
         server.mockEndpoint().get("/fleet/trailers/id").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
-            return await client.trailers.getTrailer("id");
+            return await client.trailers.getTrailer({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 
@@ -763,7 +783,9 @@ describe("TrailersClient", () => {
 
         server.mockEndpoint().delete("/fleet/trailers/id").respondWith().statusCode(200).build();
 
-        const response = await client.trailers.deleteTrailer("id");
+        const response = await client.trailers.deleteTrailer({
+            id: "id",
+        });
         expect(response).toEqual(undefined);
     });
 
@@ -786,7 +808,9 @@ describe("TrailersClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.trailers.deleteTrailer("id");
+            return await client.trailers.deleteTrailer({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.UnauthorizedError);
     });
 
@@ -809,7 +833,9 @@ describe("TrailersClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.trailers.deleteTrailer("id");
+            return await client.trailers.deleteTrailer({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.NotFoundError);
     });
 
@@ -832,7 +858,9 @@ describe("TrailersClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.trailers.deleteTrailer("id");
+            return await client.trailers.deleteTrailer({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.MethodNotAllowedError);
     });
 
@@ -855,7 +883,9 @@ describe("TrailersClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.trailers.deleteTrailer("id");
+            return await client.trailers.deleteTrailer({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
@@ -878,7 +908,9 @@ describe("TrailersClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.trailers.deleteTrailer("id");
+            return await client.trailers.deleteTrailer({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
@@ -901,7 +933,9 @@ describe("TrailersClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.trailers.deleteTrailer("id");
+            return await client.trailers.deleteTrailer({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
@@ -924,7 +958,9 @@ describe("TrailersClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.trailers.deleteTrailer("id");
+            return await client.trailers.deleteTrailer({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
@@ -947,7 +983,9 @@ describe("TrailersClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.trailers.deleteTrailer("id");
+            return await client.trailers.deleteTrailer({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
@@ -970,7 +1008,9 @@ describe("TrailersClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.trailers.deleteTrailer("id");
+            return await client.trailers.deleteTrailer({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 
@@ -1014,7 +1054,9 @@ describe("TrailersClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.trailers.updateTrailer("id");
+        const response = await client.trailers.updateTrailer({
+            id: "id",
+        });
         expect(response).toEqual({
             data: {
                 attributes: [
@@ -1070,7 +1112,9 @@ describe("TrailersClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.trailers.updateTrailer("id");
+            return await client.trailers.updateTrailer({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.UnauthorizedError);
     });
 
@@ -1094,7 +1138,9 @@ describe("TrailersClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.trailers.updateTrailer("id");
+            return await client.trailers.updateTrailer({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.NotFoundError);
     });
 
@@ -1118,7 +1164,9 @@ describe("TrailersClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.trailers.updateTrailer("id");
+            return await client.trailers.updateTrailer({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.MethodNotAllowedError);
     });
 
@@ -1142,7 +1190,9 @@ describe("TrailersClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.trailers.updateTrailer("id");
+            return await client.trailers.updateTrailer({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
@@ -1166,7 +1216,9 @@ describe("TrailersClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.trailers.updateTrailer("id");
+            return await client.trailers.updateTrailer({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
@@ -1190,7 +1242,9 @@ describe("TrailersClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.trailers.updateTrailer("id");
+            return await client.trailers.updateTrailer({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
@@ -1214,7 +1268,9 @@ describe("TrailersClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.trailers.updateTrailer("id");
+            return await client.trailers.updateTrailer({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
@@ -1238,7 +1294,9 @@ describe("TrailersClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.trailers.updateTrailer("id");
+            return await client.trailers.updateTrailer({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
@@ -1262,7 +1320,9 @@ describe("TrailersClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.trailers.updateTrailer("id");
+            return await client.trailers.updateTrailer({
+                id: "id",
+            });
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 });

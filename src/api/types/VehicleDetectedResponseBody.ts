@@ -6,5 +6,5 @@ import type * as Samsara from "../index.js";
  * Details specific to Vehicle Detected.
  */
 export interface VehicleDetectedResponseBody {
-    cameraStream?: Samsara.AlertObjectOnvifCameraStreamResponseBody;
+    cameraStream?: Samsara.AlertObjectOnvifCameraStreamResponseBody | undefined;
 }

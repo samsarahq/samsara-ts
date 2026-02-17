@@ -6,17 +6,17 @@ import type * as Samsara from "../index.js";
  * Readings from engine sensors
  */
 export interface VehicleStatsFaultCodesPassengerMonitorStatus {
-    catalyst?: Samsara.VehicleStatsFaultCodesPassengerMonitorStatusValue;
-    comprehensive?: Samsara.VehicleStatsFaultCodesPassengerMonitorStatusValue;
-    egr?: Samsara.VehicleStatsFaultCodesPassengerMonitorStatusValue;
-    evapSystem?: Samsara.VehicleStatsFaultCodesPassengerMonitorStatusValue;
-    fuel?: Samsara.VehicleStatsFaultCodesPassengerMonitorStatusValue;
-    heatedCatalyst?: Samsara.VehicleStatsFaultCodesPassengerMonitorStatusValue;
-    heatedO2Sensor?: Samsara.VehicleStatsFaultCodesPassengerMonitorStatusValue;
-    isoSaeReserved?: Samsara.VehicleStatsFaultCodesPassengerMonitorStatusValue;
-    misfire?: Samsara.VehicleStatsFaultCodesPassengerMonitorStatusValue;
+    catalyst?: Samsara.VehicleStatsFaultCodesPassengerMonitorStatusValue | undefined;
+    comprehensive?: Samsara.VehicleStatsFaultCodesPassengerMonitorStatusValue | undefined;
+    egr?: Samsara.VehicleStatsFaultCodesPassengerMonitorStatusValue | undefined;
+    evapSystem?: Samsara.VehicleStatsFaultCodesPassengerMonitorStatusValue | undefined;
+    fuel?: Samsara.VehicleStatsFaultCodesPassengerMonitorStatusValue | undefined;
+    heatedCatalyst?: Samsara.VehicleStatsFaultCodesPassengerMonitorStatusValue | undefined;
+    heatedO2Sensor?: Samsara.VehicleStatsFaultCodesPassengerMonitorStatusValue | undefined;
+    isoSaeReserved?: Samsara.VehicleStatsFaultCodesPassengerMonitorStatusValue | undefined;
+    misfire?: Samsara.VehicleStatsFaultCodesPassengerMonitorStatusValue | undefined;
     /** Count of the number of sensors reporting N: Not Complete */
-    notReadyCount?: number;
-    o2Sensor?: Samsara.VehicleStatsFaultCodesPassengerMonitorStatusValue;
-    secondaryAir?: Samsara.VehicleStatsFaultCodesPassengerMonitorStatusValue;
+    notReadyCount?: number | undefined;
+    o2Sensor?: Samsara.VehicleStatsFaultCodesPassengerMonitorStatusValue | undefined;
+    secondaryAir?: Samsara.VehicleStatsFaultCodesPassengerMonitorStatusValue | undefined;
 }

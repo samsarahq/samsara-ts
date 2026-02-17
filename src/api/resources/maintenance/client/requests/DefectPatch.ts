@@ -4,9 +4,13 @@ import type * as Samsara from "../../../../index.js";
 
 /**
  * @example
- *     {}
+ *     {
+ *         id: "id"
+ *     }
  */
 export interface DefectPatch {
+    /** ID of the defect. */
+    id: string;
     /** Resolves the defect. Must be `true`. */
     isResolved?: boolean;
     /** The mechanics notes on the defect. */

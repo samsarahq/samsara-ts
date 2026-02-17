@@ -6,23 +6,23 @@ import type * as Samsara from "../index.js";
  * Issue response object.
  */
 export interface IssueResponseObjectResponseBody {
-    asset?: Samsara.FormsAssetObjectResponseBody;
-    assignedTo?: Samsara.FormsPolymorphicUserObjectResponseBody;
+    asset?: Samsara.FormsAssetObjectResponseBody | undefined;
+    assignedTo?: Samsara.FormsPolymorphicUserObjectResponseBody | undefined;
     /** Creation time of the issue. UTC timestamp in RFC 3339 format. */
     createdAtTime: string;
     /** Description of the issue. Included if the issue was given a description. */
-    description?: string;
+    description?: string | undefined;
     /** Due date of the issue. UTC timestamp in RFC 3339 format. Included if the issue was assigned a due date. */
-    dueDate?: string;
+    dueDate?: string | undefined;
     /** A map of external ids */
-    externalIds?: Record<string, string>;
+    externalIds?: Record<string, string> | undefined;
     /** ID of the issue. */
     id: string;
     issueSource: Samsara.IssueSourceObjectResponseBody;
     /** List of media objects for the issue. Included if the issue has media. */
-    mediaList?: Samsara.FormsMediaRecordObjectResponseBody[];
+    mediaList?: Samsara.FormsMediaRecordObjectResponseBody[] | undefined;
     /** Priority of the issue. Included if the issue was assigned a priority.  Valid values: `low`, `medium`, `high` */
-    priority?: IssueResponseObjectResponseBody.Priority;
+    priority?: IssueResponseObjectResponseBody.Priority | undefined;
     /** Status of the issue.  Valid values: `open`, `inProgress`, `resolved`, `dismissed` */
     status: IssueResponseObjectResponseBody.Status;
     /** Submission time of the issue. UTC timestamp in RFC 3339 format. */

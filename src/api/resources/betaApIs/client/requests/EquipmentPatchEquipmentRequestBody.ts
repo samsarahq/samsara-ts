@@ -4,9 +4,13 @@ import type * as Samsara from "../../../../index.js";
 
 /**
  * @example
- *     {}
+ *     {
+ *         id: "id"
+ *     }
  */
 export interface EquipmentPatchEquipmentRequestBody {
+    /** The unique Samsara ID of the Equipment. This is automatically generated when the Equipment object is created. It cannot be changed. */
+    id: string;
     /** List of attributes associated with the entity */
     attributes?: Samsara.GoaAttributeTiny[];
     /** When you provide a manual engine hours override, Samsara will begin updating a equipment's engine hours used since this override was set. */

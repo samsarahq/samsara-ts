@@ -242,7 +242,7 @@ export class WebhooksClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * @param {string} id - ID of the webhook. This is the Samsara-specified ID.
+     * @param {Samsara.GetWebhookRequest} request
      * @param {WebhooksClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
@@ -256,19 +256,22 @@ export class WebhooksClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.webhooks.getWebhook("id")
+     *     await client.webhooks.getWebhook({
+     *         id: "id"
+     *     })
      */
     public getWebhook(
-        id: string,
+        request: Samsara.GetWebhookRequest,
         requestOptions?: WebhooksClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.WebhooksGetWebhookResponseBody> {
-        return core.HttpResponsePromise.fromPromise(this.__getWebhook(id, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__getWebhook(request, requestOptions));
     }
 
     private async __getWebhook(
-        id: string,
+        request: Samsara.GetWebhookRequest,
         requestOptions?: WebhooksClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.WebhooksGetWebhookResponseBody>> {
+        const { id } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -341,7 +344,7 @@ export class WebhooksClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * @param {string} id - Unique identifier for the webhook to delete.
+     * @param {Samsara.DeleteWebhookRequest} request
      * @param {WebhooksClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
@@ -355,16 +358,22 @@ export class WebhooksClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.webhooks.deleteWebhook("id")
+     *     await client.webhooks.deleteWebhook({
+     *         id: "id"
+     *     })
      */
-    public deleteWebhook(id: string, requestOptions?: WebhooksClient.RequestOptions): core.HttpResponsePromise<void> {
-        return core.HttpResponsePromise.fromPromise(this.__deleteWebhook(id, requestOptions));
+    public deleteWebhook(
+        request: Samsara.DeleteWebhookRequest,
+        requestOptions?: WebhooksClient.RequestOptions,
+    ): core.HttpResponsePromise<void> {
+        return core.HttpResponsePromise.fromPromise(this.__deleteWebhook(request, requestOptions));
     }
 
     private async __deleteWebhook(
-        id: string,
+        request: Samsara.DeleteWebhookRequest,
         requestOptions?: WebhooksClient.RequestOptions,
     ): Promise<core.WithRawResponse<void>> {
+        const { id } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -436,7 +445,6 @@ export class WebhooksClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * @param {string} id - Unique identifier for the webhook to update.
      * @param {Samsara.WebhooksPatchWebhookRequestBody} request
      * @param {WebhooksClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -451,21 +459,22 @@ export class WebhooksClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.webhooks.patchWebhook("id")
+     *     await client.webhooks.patchWebhook({
+     *         id: "id"
+     *     })
      */
     public patchWebhook(
-        id: string,
-        request: Samsara.WebhooksPatchWebhookRequestBody = {},
+        request: Samsara.WebhooksPatchWebhookRequestBody,
         requestOptions?: WebhooksClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.WebhooksPatchWebhookResponseBody> {
-        return core.HttpResponsePromise.fromPromise(this.__patchWebhook(id, request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__patchWebhook(request, requestOptions));
     }
 
     private async __patchWebhook(
-        id: string,
-        request: Samsara.WebhooksPatchWebhookRequestBody = {},
+        request: Samsara.WebhooksPatchWebhookRequestBody,
         requestOptions?: WebhooksClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.WebhooksPatchWebhookResponseBody>> {
+        const { id, ..._body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -485,7 +494,7 @@ export class WebhooksClient {
             contentType: "application/json",
             queryParameters: requestOptions?.queryParams,
             requestType: "json",
-            body: request,
+            body: _body,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,

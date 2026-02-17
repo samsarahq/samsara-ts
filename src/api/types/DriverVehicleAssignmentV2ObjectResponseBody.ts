@@ -7,15 +7,15 @@ import type * as Samsara from "../index.js";
  */
 export interface DriverVehicleAssignmentV2ObjectResponseBody {
     /**  An assigned at time in RFC 3339 format. Millisecond precision and timezones are supported. (Examples: 2019-06-13T19:08:25Z, 2019-06-13T19:08:25.455Z, OR 2015-09-15T14:00:12-04:00). */
-    assignedAtTime?: string;
+    assignedAtTime?: string | undefined;
     /** Name of the assigning source for the driver assignment record.  Valid values: `invalid`, `unknown`, `HOS`, `idCard`, `static`, `faceId`, `tachograph`, `safetyManual`, `RFID`, `trailer`, `external`, `qrCode` */
-    assignmentType?: DriverVehicleAssignmentV2ObjectResponseBody.AssignmentType;
+    assignmentType?: DriverVehicleAssignmentV2ObjectResponseBody.AssignmentType | undefined;
     driver: Samsara.GoaDriverTinyResponseResponseBody;
     /**  An end time in RFC 3339 format. Omitted if not applicable. Millisecond precision and timezones are supported. (Examples: 2019-06-13T19:08:25Z, 2019-06-13T19:08:25.455Z, OR 2015-09-15T14:00:12-04:00). */
-    endTime?: string;
+    endTime?: string | undefined;
     /** Boolean indicating whether the driver is a passenger. */
     isPassenger: boolean;
-    metadata?: Samsara.DriverAssignmentMetadataTinyObjectResponseBody;
+    metadata?: Samsara.DriverAssignmentMetadataTinyObjectResponseBody | undefined;
     /**  A start time in RFC 3339 format. Millisecond precision and timezones are supported. (Examples: 2019-06-13T19:08:25Z, 2019-06-13T19:08:25.455Z, OR 2015-09-15T14:00:12-04:00). */
     startTime: string;
     vehicle: Samsara.GoaVehicleTinyResponseResponseBody;

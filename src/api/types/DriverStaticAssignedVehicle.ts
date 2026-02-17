@@ -5,7 +5,7 @@
  */
 export interface DriverStaticAssignedVehicle {
     /** ID of the vehicle. */
-    id?: string;
+    id?: string | undefined;
     /** Name of the vehicle. */
-    name?: string;
+    name?: string | undefined;
 }

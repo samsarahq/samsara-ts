@@ -5,9 +5,9 @@
  */
 export interface HarshAccelSensitivityGForceSettingsObjectResponseBody {
     /** Harsh acceleration sensitivity settings for heavy duty vehicle. */
-    heavyDuty?: string;
+    heavyDuty?: string | undefined;
     /** Harsh acceleration sensitivity settings for light duty vehicle. */
-    lightDuty?: string;
+    lightDuty?: string | undefined;
     /** Harsh acceleration sensitivity settings for passenger car. */
-    passenger?: string;
+    passenger?: string | undefined;
 }

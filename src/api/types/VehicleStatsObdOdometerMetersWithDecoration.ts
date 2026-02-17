@@ -6,7 +6,7 @@ import type * as Samsara from "../index.js";
  * Vehicle OBD odometer reading.
  */
 export interface VehicleStatsObdOdometerMetersWithDecoration {
-    decorations?: Samsara.VehicleStatsDecorations;
+    decorations?: Samsara.VehicleStatsDecorations | undefined;
     time: Samsara.Time;
     /** Number of meters the vehicle has traveled according to the on-board diagnostics. */
     value: number;

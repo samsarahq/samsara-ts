@@ -4,20 +4,20 @@ import type * as Samsara from "../index.js";
 
 export interface TagAllOf {
     /** The addresses that belong to this tag. */
-    addresses?: Samsara.TaggedObject[];
+    addresses?: Samsara.TaggedObject[] | undefined;
     /** The trailers, unpowered, and powered assets that belong to this tag. */
-    assets?: Samsara.TaggedObject[];
+    assets?: Samsara.TaggedObject[] | undefined;
     /** The drivers that belong to this tag. */
-    drivers?: Samsara.TaggedObject[];
+    drivers?: Samsara.TaggedObject[] | undefined;
     /** The [external IDs](https://developers.samsara.com/docs/external-ids) for the given object. */
-    externalIds?: TagAllOf.ExternalIds;
+    externalIds?: TagAllOf.ExternalIds | undefined;
     /** The machines that belong to thistag. */
-    machines?: Samsara.TaggedObject[];
-    parentTag?: Samsara.ParentTag;
+    machines?: Samsara.TaggedObject[] | undefined;
+    parentTag?: Samsara.ParentTag | undefined;
     /** The sensors that belong to this tag. */
-    sensors?: Samsara.TaggedObject[];
+    sensors?: Samsara.TaggedObject[] | undefined;
     /** The vehicles that belong to this tag. */
-    vehicles?: Samsara.TaggedObject[];
+    vehicles?: Samsara.TaggedObject[] | undefined;
 }
 
 export namespace TagAllOf {

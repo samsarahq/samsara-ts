@@ -8,11 +8,11 @@ export interface FieldTypesObjectResponseBody {
     /** The name of the field type. */
     label: string;
     /** A list of the multiple choice field option labels. */
-    multipleChoiceFieldTypeMetaData?: Samsara.MultipleChoiceFieldTypeMetaDataObjectResponseBody[];
-    numberFieldTypeMetaData?: Samsara.NumberFieldTypeMetaDataObjectResponseBody;
+    multipleChoiceFieldTypeMetaData?: Samsara.MultipleChoiceFieldTypeMetaDataObjectResponseBody[] | undefined;
+    numberFieldTypeMetaData?: Samsara.NumberFieldTypeMetaDataObjectResponseBody | undefined;
     /** The indicator that states if the field is required. */
     requiredField: boolean;
-    signatureFieldTypeMetaData?: Samsara.SignatureFieldTypeMetaDataObjectResponseBody;
+    signatureFieldTypeMetaData?: Samsara.SignatureFieldTypeMetaDataObjectResponseBody | undefined;
 }
 
 export namespace FieldTypesObjectResponseBody {

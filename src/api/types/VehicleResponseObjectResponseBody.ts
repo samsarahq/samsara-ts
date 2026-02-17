@@ -7,79 +7,79 @@ import type * as Samsara from "../index.js";
  */
 export interface VehicleResponseObjectResponseBody {
     /** List of attributes associated with the entity */
-    attributes?: Samsara.GoaAttributeTinyResponseBody[];
+    attributes?: Samsara.GoaAttributeTinyResponseBody[] | undefined;
     /** The type of auxiliary input configured for this Vehicle. */
-    auxInputType1?: string;
+    auxInputType1?: string | undefined;
     /** The type of auxiliary input configured for this Vehicle. */
-    auxInputType10?: string;
+    auxInputType10?: string | undefined;
     /** The type of auxiliary input configured for this Vehicle. */
-    auxInputType11?: string;
+    auxInputType11?: string | undefined;
     /** The type of auxiliary input configured for this Vehicle. */
-    auxInputType12?: string;
+    auxInputType12?: string | undefined;
     /** The type of auxiliary input configured for this Vehicle. */
-    auxInputType13?: string;
+    auxInputType13?: string | undefined;
     /** The type of auxiliary input configured for this Vehicle. */
-    auxInputType2?: string;
+    auxInputType2?: string | undefined;
     /** The type of auxiliary input configured for this Vehicle. */
-    auxInputType3?: string;
+    auxInputType3?: string | undefined;
     /** The type of auxiliary input configured for this Vehicle. */
-    auxInputType4?: string;
+    auxInputType4?: string | undefined;
     /** The type of auxiliary input configured for this Vehicle. */
-    auxInputType5?: string;
+    auxInputType5?: string | undefined;
     /** The type of auxiliary input configured for this Vehicle. */
-    auxInputType6?: string;
+    auxInputType6?: string | undefined;
     /** The type of auxiliary input configured for this Vehicle. */
-    auxInputType7?: string;
+    auxInputType7?: string | undefined;
     /** The type of auxiliary input configured for this Vehicle. */
-    auxInputType8?: string;
+    auxInputType8?: string | undefined;
     /** The type of auxiliary input configured for this Vehicle. */
-    auxInputType9?: string;
+    auxInputType9?: string | undefined;
     /** The serial number of the camera installed in the vehicle */
-    cameraSerial?: string;
+    cameraSerial?: string | undefined;
     /** Time the vehicle was created in RFC 3339 format. */
     createdAtTime: string;
     /** Engine serial number. */
-    esn?: string;
+    esn?: string | undefined;
     /** A map of external ids */
-    externalIds?: Record<string, string>;
-    gateway?: Samsara.GoaGatewayTinyResponseResponseBody;
+    externalIds?: Record<string, string> | undefined;
+    gateway?: Samsara.GoaGatewayTinyResponseResponseBody | undefined;
     /** The harsh acceleration setting type. */
-    harshAccelerationSettingType?: string;
+    harshAccelerationSettingType?: string | undefined;
     /** ID of the vehicle */
     id: string;
     /** Whether the remote privacy button is enabled for the vehicle. If omitted, the organization does not have the remote privacy button feature enabled. */
-    isRemotePrivacyButtonEnabled?: boolean;
+    isRemotePrivacyButtonEnabled?: boolean | undefined;
     /** The license plate of the vehicle. */
-    licensePlate?: string;
+    licensePlate?: string | undefined;
     /** The Vehicle’s manufacturing make. */
-    make?: string;
+    make?: string | undefined;
     /** The Vehicle’s manufacturing model. */
-    model?: string;
+    model?: string | undefined;
     /** Name of the vehicle */
-    name?: string;
+    name?: string | undefined;
     /** These are generic notes about the Vehicle. */
-    notes?: string;
-    sensorConfiguration?: Samsara.VehicleSensorConfigurationResponseBody;
+    notes?: string | undefined;
+    sensorConfiguration?: Samsara.VehicleSensorConfigurationResponseBody | undefined;
     /** The serial number of the gateway installed in the vehicle. */
-    serial?: string;
-    staticAssignedDriver?: Samsara.DriverObjectResponseBody;
+    serial?: string | undefined;
+    staticAssignedDriver?: Samsara.DriverObjectResponseBody | undefined;
     /** The list of tags associated with the Vehicle. */
-    tags?: Samsara.GoaTagTinyResponseResponseBody[];
+    tags?: Samsara.GoaTagTinyResponseResponseBody[] | undefined;
     /** Time the vehicle was updated in RFC 3339 format. */
-    updatedAtTime?: string;
+    updatedAtTime?: string | undefined;
     /** Whether the vehicle is regulated or unregulated (non-CMV).  Valid values: `regulated`, `unregulated` */
-    vehicleRegulationMode?: VehicleResponseObjectResponseBody.VehicleRegulationMode;
+    vehicleRegulationMode?: VehicleResponseObjectResponseBody.VehicleRegulationMode | undefined;
     /** The type of the vehicle. Only returned for customers with commercial speed limits (CSL) enabled.  Valid values: `unset`, `passenger`, `truck`, `bus` */
-    vehicleType?: VehicleResponseObjectResponseBody.VehicleType;
+    vehicleType?: VehicleResponseObjectResponseBody.VehicleType | undefined;
     /** The weight of the vehicle in either pounds (lb) or kilograms (kg). Unit of weight is unknown. Only returned for customers with commercial speed limits (CSL) enabled. */
-    vehicleWeight?: number;
+    vehicleWeight?: number | undefined;
     /** The weight of the vehicle in kilograms (kg). Only returned for customers with commercial speed limits (CSL) enabled. */
-    vehicleWeightInKilograms?: number;
+    vehicleWeightInKilograms?: number | undefined;
     /** The weight of the vehicle in pounds (lb). Only returned for customers with commercial speed limits (CSL) enabled. */
-    vehicleWeightInPounds?: number;
+    vehicleWeightInPounds?: number | undefined;
     /** The VIN of the vehicle. */
-    vin?: string;
-    year?: string;
+    vin?: string | undefined;
+    year?: string | undefined;
 }
 
 export namespace VehicleResponseObjectResponseBody {

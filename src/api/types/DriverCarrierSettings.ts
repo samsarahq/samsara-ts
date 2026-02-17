@@ -7,11 +7,11 @@ import type * as Samsara from "../index.js";
  */
 export interface DriverCarrierSettings {
     /** Carrier for a given driver. */
-    carrierName?: string;
+    carrierName?: string | undefined;
     /** Carrier US DOT Number. If this differs from the general organization's settings, the override value is used. Updating this value only updates the override setting for this driver. */
-    dotNumber?: number;
-    homeTerminalAddress?: Samsara.DriverHomeTerminalAddress;
-    homeTerminalName?: Samsara.DriverHomeTerminalName;
+    dotNumber?: number | undefined;
+    homeTerminalAddress?: Samsara.DriverHomeTerminalAddress | undefined;
+    homeTerminalName?: Samsara.DriverHomeTerminalName | undefined;
     /** Main office address for a given driver. If this differs from the general organization's settings, the override value is used. */
-    mainOfficeAddress?: string;
+    mainOfficeAddress?: string | undefined;
 }

@@ -5,11 +5,11 @@
  */
 export interface HarshBrakeSensitivityV2SettingsObjectResponseBody {
     /** Harsh brake sensitivity settings for heavy duty vehicle.  Valid values: `unknown`, `invalid`, `off`, `veryLow`, `low`, `normal`, `high` */
-    heavyDuty?: HarshBrakeSensitivityV2SettingsObjectResponseBody.HeavyDuty;
+    heavyDuty?: HarshBrakeSensitivityV2SettingsObjectResponseBody.HeavyDuty | undefined;
     /** Harsh brake sensitivity settings for light duty vehicle.  Valid values: `unknown`, `invalid`, `off`, `veryLow`, `low`, `normal`, `high` */
-    lightDuty?: HarshBrakeSensitivityV2SettingsObjectResponseBody.LightDuty;
+    lightDuty?: HarshBrakeSensitivityV2SettingsObjectResponseBody.LightDuty | undefined;
     /** Harsh brake sensitivity settings for passenger car.  Valid values: `unknown`, `invalid`, `off`, `veryLow`, `low`, `normal`, `high` */
-    passenger?: HarshBrakeSensitivityV2SettingsObjectResponseBody.Passenger;
+    passenger?: HarshBrakeSensitivityV2SettingsObjectResponseBody.Passenger | undefined;
 }
 
 export namespace HarshBrakeSensitivityV2SettingsObjectResponseBody {

@@ -7,8 +7,8 @@ import type * as Samsara from "../index.js";
  */
 export interface VehicleStatsFaultCodesValue {
     /** The CAN bus type of the vehicle. */
-    canBusType?: string;
-    j1939?: Samsara.VehicleStatsFaultCodesValueJ1939;
-    obdii?: Samsara.VehicleStatsFaultCodesValueObdii;
-    oem?: Samsara.VehicleStatsFaultCodesValueOem;
+    canBusType?: string | undefined;
+    j1939?: Samsara.VehicleStatsFaultCodesValueJ1939 | undefined;
+    obdii?: Samsara.VehicleStatsFaultCodesValueObdii | undefined;
+    oem?: Samsara.VehicleStatsFaultCodesValueOem | undefined;
 }

@@ -5,9 +5,9 @@
  */
 export interface SafetyEventV2BehaviorLabelsResponseBody {
     /** The label associated with the safety event. Labels can be updated by Safety Admins, if a label is removed from a safety event it will be removed from this list.  Valid values: `Acceleration`, `AggressiveDriving`, `BluetoothHeadset`, `Braking`, `ContextConstructionOrWorkZone`, `ContextSnowyOrIcy`, `ContextVulnerableRoadUser`, `ContextWet`, `Crash`, `DefensiveDriving`, `DidNotYield`, `Drinking`, `Drowsy`, `Eating`, `EatingDrinking`, `EdgeDistractedDriving`, `EdgeRailroadCrossingViolation`, `FollowingDistance`, `FollowingDistanceModerate`, `FollowingDistanceSevere`, `ForwardCollisionWarning`, `GenericDistraction`, `GenericTailgating`, `HarshTurn`, `HeavySpeeding`, `HighSpeedSuddenDisconnect`, `HosViolation`, `Idling`, `Invalid`, `LaneDeparture`, `LateResponse`, `LeftTurn`, `LightSpeeding`, `MaxSpeed`, `MobileUsage`, `ModerateSpeeding`, `NearCollison`, `NearPedestrianCollision`, `NoSeatbelt`, `ObstructedCamera`, `OperationalEvent`, `OtherViolation`, `Passenger`, `PolicyViolationMask`, `ProtectiveEquipment`, `RanRedLight`, `RearCollisionWarning`, `Reversing`, `RollingStop`, `RolloverProtection`, `SevereSpeeding`, `Smoking`, `Speeding`, `UTurn`, `UnsafeManeuver`, `UnsafeParking`, `VehicleInBlindSpotWarning`, `VulnerableRoadUserCollisionWarning`, `YawControl` */
-    label?: SafetyEventV2BehaviorLabelsResponseBody.Label;
+    label?: SafetyEventV2BehaviorLabelsResponseBody.Label | undefined;
     /** The source of the label associated with the safety event.  Valid values: `automated`, `userGenerated` */
-    source?: SafetyEventV2BehaviorLabelsResponseBody.Source;
+    source?: SafetyEventV2BehaviorLabelsResponseBody.Source | undefined;
 }
 
 export namespace SafetyEventV2BehaviorLabelsResponseBody {

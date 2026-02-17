@@ -5,11 +5,11 @@
  */
 export interface FollowingDistanceDetectionAlertSettingsObjectResponseBody {
     /** Duration of following distance at which to alert, measured in milliseconds. */
-    durationMs?: number;
+    durationMs?: number | undefined;
     /** Indicates whether in-cab audio alerts for following distance are turned on. */
-    hasInCabAudioAlertsEnabled?: boolean;
+    hasInCabAudioAlertsEnabled?: boolean | undefined;
     /** Indicates whether AI event detection for following distance is turned on. */
-    isEnabled?: boolean;
+    isEnabled?: boolean | undefined;
     /** Alert when speed is over this many miles per hour. */
-    speedingThresholdMph?: number;
+    speedingThresholdMph?: number | undefined;
 }

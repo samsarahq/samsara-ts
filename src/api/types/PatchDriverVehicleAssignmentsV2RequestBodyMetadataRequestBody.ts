@@ -5,5 +5,5 @@
  */
 export interface PatchDriverVehicleAssignmentsV2RequestBodyMetadataRequestBody {
     /** Describes where the external assignment is coming from */
-    sourceName?: string;
+    sourceName?: string | undefined;
 }

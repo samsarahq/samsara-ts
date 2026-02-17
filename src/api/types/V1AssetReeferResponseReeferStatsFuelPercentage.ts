@@ -2,7 +2,7 @@
 
 export interface V1AssetReeferResponseReeferStatsFuelPercentage {
     /** Timestamp in Unix milliseconds since epoch. */
-    changedAtMs?: number;
+    changedAtMs?: number | undefined;
     /** Fuel percentage of the reefer. */
-    fuelPercentage?: number;
+    fuelPercentage?: number | undefined;
 }

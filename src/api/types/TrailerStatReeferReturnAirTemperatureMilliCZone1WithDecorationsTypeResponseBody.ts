@@ -6,7 +6,7 @@ import type * as Samsara from "../index.js";
  * Return air temperature of zone 1 of the reefer. This is the temperature of the air as it enters the cooling unit.
  */
 export interface TrailerStatReeferReturnAirTemperatureMilliCZone1WithDecorationsTypeResponseBody {
-    decorations?: Samsara.TrailerStatDecorationResponseBody;
+    decorations?: Samsara.TrailerStatDecorationResponseBody | undefined;
     /** UTC timestamp in RFC 3339 format. */
     time: string;
     /** The return air temperature reading in millidegree Celsius. */

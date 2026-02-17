@@ -83,6 +83,7 @@ export * from "./routeEvents/client/requests/index.js";
 export * as routeEvents from "./routeEvents/index.js";
 export * from "./routes/client/requests/index.js";
 export * as routes from "./routes/index.js";
+export * from "./routes/types/index.js";
 export * from "./safety/client/requests/index.js";
 export * as safety from "./safety/index.js";
 export * from "./safety/types/index.js";

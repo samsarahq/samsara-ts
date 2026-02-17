@@ -3,13 +3,13 @@
 import type * as Samsara from "../index.js";
 
 export interface HosDailyLogsObjectResponseBody {
-    distanceTraveled?: Samsara.DistanceTraveledObjectResponseBody;
+    distanceTraveled?: Samsara.DistanceTraveledObjectResponseBody | undefined;
     driver: Samsara.DriverWithTimezoneEldSettingsObjectResponseBody;
-    dutyStatusDurations?: Samsara.DutyStatusDurationObjectResponseBody;
+    dutyStatusDurations?: Samsara.DutyStatusDurationObjectResponseBody | undefined;
     /** The end time of the daily log in RFC 3339 format. This will be calculated using timezone of the driver. */
     endTime: string;
-    logMetaData?: Samsara.LogMetaDataObjectResponseBody;
-    pendingDutyStatusDurations?: Samsara.PendingDutyStatusDurationsObjectResponseBody;
+    logMetaData?: Samsara.LogMetaDataObjectResponseBody | undefined;
+    pendingDutyStatusDurations?: Samsara.PendingDutyStatusDurationsObjectResponseBody | undefined;
     /** The start time of the daily log in RFC 3339 format. This will be calculated using timezone of the driver. */
     startTime: string;
 }

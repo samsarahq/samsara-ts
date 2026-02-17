@@ -276,30 +276,28 @@ export class SafetyClient {
      *
      * To use this endpoint, select **Read Safety Events & Scores** under the Safety & Cameras category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
-     * @param {number} driverId - ID of the driver. Must contain only digits 0-9.
      * @param {Samsara.V1GetDriverSafetyScoreRequest} request
      * @param {SafetyClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.safety.v1GetDriverSafetyScore(1000000, {
+     *     await client.safety.v1GetDriverSafetyScore({
+     *         driverId: 1000000,
      *         startMs: 1000000,
      *         endMs: 1000000
      *     })
      */
     public v1GetDriverSafetyScore(
-        driverId: number,
         request: Samsara.V1GetDriverSafetyScoreRequest,
         requestOptions?: SafetyClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.V1DriverSafetyScoreResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__v1GetDriverSafetyScore(driverId, request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__v1GetDriverSafetyScore(request, requestOptions));
     }
 
     private async __v1GetDriverSafetyScore(
-        driverId: number,
         request: Samsara.V1GetDriverSafetyScoreRequest,
         requestOptions?: SafetyClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.V1DriverSafetyScoreResponse>> {
-        const { startMs, endMs } = request;
+        const { driverId, startMs, endMs } = request;
         const _queryParams: Record<string, unknown> = {
             startMs,
             endMs,
@@ -363,30 +361,28 @@ export class SafetyClient {
      *
      * To use this endpoint, select **Read Safety Events & Scores** under the Safety & Cameras category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
-     * @param {number} vehicleId - ID of the vehicle. Must contain only digits 0-9.
      * @param {Samsara.V1GetVehicleSafetyScoreRequest} request
      * @param {SafetyClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.safety.v1GetVehicleSafetyScore(1000000, {
+     *     await client.safety.v1GetVehicleSafetyScore({
+     *         vehicleId: 1000000,
      *         startMs: 1000000,
      *         endMs: 1000000
      *     })
      */
     public v1GetVehicleSafetyScore(
-        vehicleId: number,
         request: Samsara.V1GetVehicleSafetyScoreRequest,
         requestOptions?: SafetyClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.V1VehicleSafetyScoreResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__v1GetVehicleSafetyScore(vehicleId, request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__v1GetVehicleSafetyScore(request, requestOptions));
     }
 
     private async __v1GetVehicleSafetyScore(
-        vehicleId: number,
         request: Samsara.V1GetVehicleSafetyScoreRequest,
         requestOptions?: SafetyClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.V1VehicleSafetyScoreResponse>> {
-        const { startMs, endMs } = request;
+        const { vehicleId, startMs, endMs } = request;
         const _queryParams: Record<string, unknown> = {
             startMs,
             endMs,

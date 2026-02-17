@@ -1451,7 +1451,8 @@ describe("LegacyApIsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.legacyApIs.v1GetVehicleHarshEvent(1000000, {
+        const response = await client.legacyApIs.v1GetVehicleHarshEvent({
+            vehicleId: 1000000,
             timestamp: 1000000,
         });
         expect(response).toEqual({

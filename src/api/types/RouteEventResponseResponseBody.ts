@@ -6,7 +6,7 @@ import type * as Samsara from "../index.js";
  * A single route event.
  */
 export interface RouteEventResponseResponseBody {
-    eventDetails?: Samsara.RouteEventDetailsResponseBody;
+    eventDetails?: Samsara.RouteEventDetailsResponseBody | undefined;
     /** Time the event was processed in RFC 3339 format */
     eventTime: string;
     /** Type of the event that occurred.  Valid values: `stopArrived`, `stopCompleted`, `stopEnRoute`, `stopSkipped`, `stopTaskCompleted`, `stopTaskSkipped`, `stopEtaUpdated`, `unspecified` */
@@ -16,7 +16,7 @@ export interface RouteEventResponseResponseBody {
     /** Unique ID of the route event. */
     id: string;
     route: Samsara.RouteEventRouteResponseResponseBody;
-    stop?: Samsara.RouteEventStopResponseResponseBody;
+    stop?: Samsara.RouteEventStopResponseResponseBody | undefined;
 }
 
 export namespace RouteEventResponseResponseBody {

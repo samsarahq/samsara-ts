@@ -7,53 +7,73 @@ import type * as Samsara from "../index.js";
  */
 export interface TrailerStatsObjectResponseBody {
     /** A list of engine state points. */
-    carrierReeferState?: Samsara.TrailerStatReeferStateWithDecorationsTypeResponseBody[];
+    carrierReeferState?: Samsara.TrailerStatReeferStateWithDecorationsTypeResponseBody[] | undefined;
     /** A list of GPS points. */
-    gps?: Samsara.TrailerStatGpsWithDecorationsTypeResponseBody[];
+    gps?: Samsara.TrailerStatGpsWithDecorationsTypeResponseBody[] | undefined;
     /** A list of odometer points. */
-    gpsOdometerMeters?: Samsara.TrailerStatGpsOdometerMetersWithDecorationsTypeResponseBody[];
+    gpsOdometerMeters?: Samsara.TrailerStatGpsOdometerMetersWithDecorationsTypeResponseBody[] | undefined;
     /** ID of the trailer. */
     id: string;
     /** Name of the vehicle. */
     name: string;
     /** A list of reefer alarm points. */
-    reeferAlarms?: Samsara.TrailerStatReeferAlarmWithDecorationsTypeResponseBody[];
+    reeferAlarms?: Samsara.TrailerStatReeferAlarmWithDecorationsTypeResponseBody[] | undefined;
     /** A list of ambient air temperature points. */
-    reeferAmbientAirTemperatureMilliC?: Samsara.TrailerStatReeferAmbientAirTemperatureWithDecorationsTypeResponseBody[];
+    reeferAmbientAirTemperatureMilliC?:
+        | Samsara.TrailerStatReeferAmbientAirTemperatureWithDecorationsTypeResponseBody[]
+        | undefined;
     /** A list of door state points. */
-    reeferDoorStateZone1?: Samsara.TrailerStatReeferDoorStateZone1WithDecorationsTypeResponseBody[];
+    reeferDoorStateZone1?: Samsara.TrailerStatReeferDoorStateZone1WithDecorationsTypeResponseBody[] | undefined;
     /** A list of door state points. */
-    reeferDoorStateZone2?: Samsara.TrailerStatReeferDoorStateZone2WithDecorationsTypeResponseBody[];
+    reeferDoorStateZone2?: Samsara.TrailerStatReeferDoorStateZone2WithDecorationsTypeResponseBody[] | undefined;
     /** A list of door state points. */
-    reeferDoorStateZone3?: Samsara.TrailerStatReeferDoorStateZone3WithDecorationsTypeResponseBody[];
+    reeferDoorStateZone3?: Samsara.TrailerStatReeferDoorStateZone3WithDecorationsTypeResponseBody[] | undefined;
     /** A list of fuel percent points. */
-    reeferFuelPercent?: Samsara.TrailerStatReeferFuelPercentWithDecorationsTypeResponseBody[];
+    reeferFuelPercent?: Samsara.TrailerStatReeferFuelPercentWithDecorationsTypeResponseBody[] | undefined;
     /** A list of engine second points */
-    reeferObdEngineSeconds?: Samsara.TrailerStatReeferObdEngineSecondsWithDecorationsTypeResponseBody[];
+    reeferObdEngineSeconds?: Samsara.TrailerStatReeferObdEngineSecondsWithDecorationsTypeResponseBody[] | undefined;
     /** A list of return air temperature points. */
-    reeferReturnAirTemperatureMilliCZone1?: Samsara.TrailerStatReeferReturnAirTemperatureMilliCZone1WithDecorationsTypeResponseBody[];
+    reeferReturnAirTemperatureMilliCZone1?:
+        | Samsara.TrailerStatReeferReturnAirTemperatureMilliCZone1WithDecorationsTypeResponseBody[]
+        | undefined;
     /** A list of return air temperature points. */
-    reeferReturnAirTemperatureMilliCZone2?: Samsara.TrailerStatReeferReturnAirTemperatureMilliCZone2WithDecorationsTypeResponseBody[];
+    reeferReturnAirTemperatureMilliCZone2?:
+        | Samsara.TrailerStatReeferReturnAirTemperatureMilliCZone2WithDecorationsTypeResponseBody[]
+        | undefined;
     /** A list of return air temperature points. */
-    reeferReturnAirTemperatureMilliCZone3?: Samsara.TrailerStatReeferReturnAirTemperatureMilliCZone3WithDecorationsTypeResponseBody[];
+    reeferReturnAirTemperatureMilliCZone3?:
+        | Samsara.TrailerStatReeferReturnAirTemperatureMilliCZone3WithDecorationsTypeResponseBody[]
+        | undefined;
     /** A list of run mode points */
-    reeferRunMode?: Samsara.TrailerStatReeferRunModeWithDecorationsTypeResponseBody[];
+    reeferRunMode?: Samsara.TrailerStatReeferRunModeWithDecorationsTypeResponseBody[] | undefined;
     /** A list of set point temperature points. */
-    reeferSetPointTemperatureMilliCZone1?: Samsara.TrailerStatReeferSetPointTemperatureMilliCZone1WithDecorationsTypeResponseBody[];
+    reeferSetPointTemperatureMilliCZone1?:
+        | Samsara.TrailerStatReeferSetPointTemperatureMilliCZone1WithDecorationsTypeResponseBody[]
+        | undefined;
     /** A list of set point temperature points. */
-    reeferSetPointTemperatureMilliCZone2?: Samsara.TrailerStatReeferSetPointTemperatureMilliCZone2WithDecorationsTypeResponseBody[];
+    reeferSetPointTemperatureMilliCZone2?:
+        | Samsara.TrailerStatReeferSetPointTemperatureMilliCZone2WithDecorationsTypeResponseBody[]
+        | undefined;
     /** A list of set point temperature points. */
-    reeferSetPointTemperatureMilliCZone3?: Samsara.TrailerStatReeferSetPointTemperatureMilliCZone3WithDecorationsTypeResponseBody[];
+    reeferSetPointTemperatureMilliCZone3?:
+        | Samsara.TrailerStatReeferSetPointTemperatureMilliCZone3WithDecorationsTypeResponseBody[]
+        | undefined;
     /** A list of engine state points. */
-    reeferStateZone1?: Samsara.TrailerStatReeferStateZone1WithDecorationsTypeResponseBody[];
+    reeferStateZone1?: Samsara.TrailerStatReeferStateZone1WithDecorationsTypeResponseBody[] | undefined;
     /** A list of engine state points. */
-    reeferStateZone2?: Samsara.TrailerStatReeferStateZone2WithDecorationsTypeResponseBody[];
+    reeferStateZone2?: Samsara.TrailerStatReeferStateZone2WithDecorationsTypeResponseBody[] | undefined;
     /** A list of engine state points. */
-    reeferStateZone3?: Samsara.TrailerStatReeferStateZone3WithDecorationsTypeResponseBody[];
+    reeferStateZone3?: Samsara.TrailerStatReeferStateZone3WithDecorationsTypeResponseBody[] | undefined;
     /** A list of supply air temperature points. */
-    reeferSupplyAirTemperatureMilliCZone1?: Samsara.TrailerStatReeferSupplyAirTemperatureMilliCZone1WithDecorationsTypeResponseBody[];
+    reeferSupplyAirTemperatureMilliCZone1?:
+        | Samsara.TrailerStatReeferSupplyAirTemperatureMilliCZone1WithDecorationsTypeResponseBody[]
+        | undefined;
     /** A list of supply air temperature points. */
-    reeferSupplyAirTemperatureMilliCZone2?: Samsara.TrailerStatReeferSupplyAirTemperatureMilliCZone2WithDecorationsTypeResponseBody[];
+    reeferSupplyAirTemperatureMilliCZone2?:
+        | Samsara.TrailerStatReeferSupplyAirTemperatureMilliCZone2WithDecorationsTypeResponseBody[]
+        | undefined;
     /** A list of supply air temperature points. */
-    reeferSupplyAirTemperatureMilliCZone3?: Samsara.TrailerStatReeferSupplyAirTemperatureMilliCZone3WithDecorationsTypeResponseBody[];
+    reeferSupplyAirTemperatureMilliCZone3?:
+        | Samsara.TrailerStatReeferSupplyAirTemperatureMilliCZone3WithDecorationsTypeResponseBody[]
+        | undefined;
 }

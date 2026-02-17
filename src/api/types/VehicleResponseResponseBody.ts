@@ -5,17 +5,17 @@
  */
 export interface VehicleResponseResponseBody {
     /** The type of the asset.  Valid values: `uncategorized`, `trailer`, `equipment`, `unpowered`, `vehicle` */
-    assetType?: VehicleResponseResponseBody.AssetType;
+    assetType?: VehicleResponseResponseBody.AssetType | undefined;
     /** A map of external ids */
-    externalIds?: Record<string, string>;
+    externalIds?: Record<string, string> | undefined;
     /** ID of the vehicle */
-    id?: string;
+    id?: string | undefined;
     /** The license plate of the vehicle. */
-    licensePlate?: string;
+    licensePlate?: string | undefined;
     /** Name of the vehicle */
-    name?: string;
+    name?: string | undefined;
     /** The VIN of the vehicle. */
-    vehicleVin?: string;
+    vehicleVin?: string | undefined;
 }
 
 export namespace VehicleResponseResponseBody {

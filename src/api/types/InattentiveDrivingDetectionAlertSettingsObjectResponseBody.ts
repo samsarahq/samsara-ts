@@ -5,13 +5,13 @@
  */
 export interface InattentiveDrivingDetectionAlertSettingsObjectResponseBody {
     /** Indicates whether in-cab audio alerts for inattentive driving are turned on. */
-    hasInCabAudioAlertsEnabled?: boolean;
+    hasInCabAudioAlertsEnabled?: boolean | undefined;
     /** Indicates whether AI event detection for inattentive driving is turned on. */
-    isEnabled?: boolean;
+    isEnabled?: boolean | undefined;
     /** Severity of inattentive driving events. Options include low (alerts for all events), medium (alerts for medium and high severity events), and high (alerts for high severity events only).  Valid values: `low`, `medium`, `high` */
-    severity?: InattentiveDrivingDetectionAlertSettingsObjectResponseBody.Severity;
+    severity?: InattentiveDrivingDetectionAlertSettingsObjectResponseBody.Severity | undefined;
     /** Alert when speed is over this many miles per hour. */
-    speedingThresholdMph?: number;
+    speedingThresholdMph?: number | undefined;
 }
 
 export namespace InattentiveDrivingDetectionAlertSettingsObjectResponseBody {

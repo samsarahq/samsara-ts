@@ -6,5 +6,5 @@ import type * as Samsara from "../index.js";
  * A single contact.
  */
 export interface ContactResponse {
-    data?: Samsara.Contact;
+    data?: Samsara.Contact | undefined;
 }

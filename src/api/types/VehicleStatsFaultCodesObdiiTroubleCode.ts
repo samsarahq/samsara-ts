@@ -7,14 +7,14 @@ import type * as Samsara from "../index.js";
  */
 export interface VehicleStatsFaultCodesObdiiTroubleCode {
     /** Confirmed DTC codes. */
-    confirmedDtcs?: Samsara.VehicleStatsFaultCodesPassengerDtc[];
-    ignitionType?: Samsara.VehicleStatsFaultCodesIgnitionType;
+    confirmedDtcs?: Samsara.VehicleStatsFaultCodesPassengerDtc[] | undefined;
+    ignitionType?: Samsara.VehicleStatsFaultCodesIgnitionType | undefined;
     /** The MIL status, indicating a check engine light. */
-    milStatus?: boolean;
-    monitorStatus?: Samsara.VehicleStatsFaultCodesPassengerMonitorStatus;
+    milStatus?: boolean | undefined;
+    monitorStatus?: Samsara.VehicleStatsFaultCodesPassengerMonitorStatus | undefined;
     /** Pending DTC codes. */
-    pendingDtcs?: Samsara.VehicleStatsFaultCodesPassengerDtc[];
+    pendingDtcs?: Samsara.VehicleStatsFaultCodesPassengerDtc[] | undefined;
     /** Permanent DTC codes. */
-    permanentDtcs?: Samsara.VehicleStatsFaultCodesPassengerDtc[];
+    permanentDtcs?: Samsara.VehicleStatsFaultCodesPassengerDtc[] | undefined;
     txId: Samsara.VehicleStatsFaultCodesTxId;
 }

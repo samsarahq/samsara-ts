@@ -11,23 +11,23 @@ export interface HubLocationInputObjectRequestBody {
     /** The customer-provided identifier for the location */
     customerLocationId: string;
     /** Instructions for the driver */
-    driverInstructions?: string;
+    driverInstructions?: string | undefined;
     /** The ID of the hub this location belongs to */
     hubId: string;
     /** Indicates if the location is a depot */
     isDepot: boolean;
     /** Latitude coordinate of the location. If not provided and address is provided, the address will be geocoded to obtain coordinates. */
-    latitude?: number;
+    latitude?: number | undefined;
     /** Longitude coordinate of the location. If not provided and address is provided, the address will be geocoded to obtain coordinates. */
-    longitude?: number;
+    longitude?: number | undefined;
     /** The name of the location */
     name: string;
     /** Notes for the planner */
-    plannerNotes?: string;
+    plannerNotes?: string | undefined;
     /** Estimated service time at this location in seconds */
-    serviceTimeSeconds?: number;
+    serviceTimeSeconds?: number | undefined;
     /** An array of time windows during which service can be performed at this location */
-    serviceWindows?: Samsara.HubLocationServiceWindowInputRequestBody[];
+    serviceWindows?: Samsara.HubLocationServiceWindowInputRequestBody[] | undefined;
     /** An array of skill IDs required for service at this location */
-    skillsRequired?: string[];
+    skillsRequired?: string[] | undefined;
 }

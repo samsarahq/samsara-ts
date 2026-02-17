@@ -6,6 +6,6 @@ import type * as Samsara from "../index.js";
  * Vehicle fault codes for J1939 vehicles.
  */
 export interface VehicleStatsFaultCodesJ1939 {
-    checkEngineLights?: Samsara.VehicleStatsFaultCodesJ1939Lights;
-    diagnosticTroubleCodes?: Samsara.VehicleStatsFaultCodesJ1939TroubleCodes;
+    checkEngineLights?: Samsara.VehicleStatsFaultCodesJ1939Lights | undefined;
+    diagnosticTroubleCodes?: Samsara.VehicleStatsFaultCodesJ1939TroubleCodes | undefined;
 }

@@ -5,15 +5,15 @@
  */
 export interface EquipmentHeaderWithAdditionalFieldsResponseBody {
     /** The unique Samsara ID of the equipment. This is automatically generated when the Equipment object is created. It cannot be changed. */
-    EquipmentID?: string;
+    EquipmentID?: string | undefined;
     /** The model of the equipment. */
-    Model?: string;
+    Model?: string | undefined;
     /** The make of the equipment. */
-    OEMName?: string;
+    OEMName?: string | undefined;
     /** The PIN number of the equipment. */
-    PIN?: string;
+    PIN?: string | undefined;
     /** The serial number of the equipment. */
-    SerialNumber?: string;
+    SerialNumber?: string | undefined;
     /** Telematics unit install date in RFC 3339 format. Millisecond precision and timezones are supported. (Examples: 2019-06-13T19:08:25Z, 2019-06-13T19:08:25.455Z, OR 2015-09-15T14:00:12-04:00). */
-    UnitInstallDateTime?: string;
+    UnitInstallDateTime?: string | undefined;
 }

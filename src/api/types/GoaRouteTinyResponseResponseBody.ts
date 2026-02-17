@@ -5,9 +5,9 @@
  */
 export interface GoaRouteTinyResponseResponseBody {
     /** A map of external ids */
-    externalIds?: Record<string, string>;
+    externalIds?: Record<string, string> | undefined;
     /** Unique identifier for the route. */
     id: string;
     /** Name of the route. */
-    name?: string;
+    name?: string | undefined;
 }

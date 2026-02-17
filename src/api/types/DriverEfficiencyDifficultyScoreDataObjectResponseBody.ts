@@ -5,9 +5,9 @@
  */
 export interface DriverEfficiencyDifficultyScoreDataObjectResponseBody {
     /** Represents the overall difficulty score. It has scores from 1 to 5. */
-    overallScore?: string;
+    overallScore?: string | undefined;
     /** Represents the topography difficulty score. It has scores from 1 to 5. */
-    topographyScore?: string;
+    topographyScore?: string | undefined;
     /**  Represents the average vehicle weight score. It has scores from 1 to 5. */
-    vehicleWeightScore?: string;
+    vehicleWeightScore?: string | undefined;
 }

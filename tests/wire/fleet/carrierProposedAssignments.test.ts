@@ -13,16 +13,11 @@ describe("CarrierProposedAssignmentsClient", () => {
             environment: server.baseUrl,
         });
 
-        const rawResponseBody = "";
-        server
-            .mockEndpoint()
-            .delete("/fleet/carrier-proposed-assignments/id")
-            .respondWith()
-            .statusCode(200)
-            .jsonBody(rawResponseBody)
-            .build();
+        server.mockEndpoint().delete("/fleet/carrier-proposed-assignments/id").respondWith().statusCode(200).build();
 
-        const response = await client.fleet.carrierProposedAssignments.delete("id");
-        expect(response).toEqual("");
+        const response = await client.fleet.carrierProposedAssignments.delete({
+            id: "id",
+        });
+        expect(response).toEqual(undefined);
     });
 });

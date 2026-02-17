@@ -7,7 +7,7 @@ import type * as Samsara from "../index.js";
  */
 export interface DvirDefectsObjectV20220913ResponseBody {
     /** Comment on the defect. */
-    comment?: string;
+    comment?: string | undefined;
     /** Time when the defect was created. UTC timestamp in RFC 3339 format. */
     createdAtTime: string;
     /** The type of DVIR defect. */
@@ -17,12 +17,12 @@ export interface DvirDefectsObjectV20220913ResponseBody {
     /** Signifies if this defect is resolved. */
     isResolved: boolean;
     /** The mechanic notes on this defect. */
-    mechanicNotes?: string;
+    mechanicNotes?: string | undefined;
     /** Time when mechanic notes were last updated. UTC timestamp in RFC 3339 format. */
-    mechanicNotesUpdatedAtTime?: string;
+    mechanicNotesUpdatedAtTime?: string | undefined;
     /** Time when this defect was resolved. Will not be returned if the defect is unresolved. UTC timestamp in RFC 3339 format. */
-    resolvedAtTime?: string;
-    resolvedBy?: Samsara.DvirResolvedByObjectResponseBody;
-    trailer?: Samsara.GoaTrailerTinyResponseResponseBody;
-    vehicle?: Samsara.VehicleWithGatewayTinyResponseResponseBody;
+    resolvedAtTime?: string | undefined;
+    resolvedBy?: Samsara.DvirResolvedByObjectResponseBody | undefined;
+    trailer?: Samsara.GoaTrailerTinyResponseResponseBody | undefined;
+    vehicle?: Samsara.VehicleWithGatewayTinyResponseResponseBody | undefined;
 }

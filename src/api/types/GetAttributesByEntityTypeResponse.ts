@@ -3,6 +3,6 @@
 import type * as Samsara from "../index.js";
 
 export interface GetAttributesByEntityTypeResponse {
-    data?: Samsara.Attribute[];
-    pagination?: Samsara.PaginationResponse;
+    data?: Samsara.Attribute[] | undefined;
+    pagination?: Samsara.PaginationResponse | undefined;
 }

@@ -6,5 +6,5 @@ import type * as Samsara from "../index.js";
  * A single driver.
  */
 export interface DriverResponse {
-    data?: Samsara.Driver;
+    data?: Samsara.Driver | undefined;
 }

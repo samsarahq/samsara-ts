@@ -1,4 +1,5 @@
 export type { DeleteJobRequest } from "./DeleteJobRequest.js";
+export type { DeleteRidershipAccountRequest } from "./DeleteRidershipAccountRequest.js";
 export type { EngineImmobilizerUpdateEngineImmobilizerStateRequestBody } from "./EngineImmobilizerUpdateEngineImmobilizerStateRequestBody.js";
 export type { EquipmentPatchEquipmentRequestBody } from "./EquipmentPatchEquipmentRequestBody.js";
 export type { FunctionsStartFunctionRunRequestBody } from "./FunctionsStartFunctionRunRequestBody.js";
@@ -22,6 +23,7 @@ export type { GetReadingsSnapshotRequest } from "./GetReadingsSnapshotRequest.js
 export type { GetReportConfigsRequest } from "./GetReportConfigsRequest.js";
 export type { GetReportRunDataRequest } from "./GetReportRunDataRequest.js";
 export type { GetReportRunsRequest } from "./GetReportRunsRequest.js";
+export type { GetRidershipAccountRequest } from "./GetRidershipAccountRequest.js";
 export type { GetTagGroupSafetyScoresRequest } from "./GetTagGroupSafetyScoresRequest.js";
 export type { GetTagSafetyScoresRequest } from "./GetTagSafetyScoresRequest.js";
 export type { GetTrailerStatsFeedRequest } from "./GetTrailerStatsFeedRequest.js";
@@ -34,6 +36,7 @@ export type { JobsCreateJobRequestBody } from "./JobsCreateJobRequestBody.js";
 export type { JobsPatchJobRequestBody } from "./JobsPatchJobRequestBody.js";
 export type { ListHubCustomPropertiesRequest } from "./ListHubCustomPropertiesRequest.js";
 export type { ListReadingsDefinitionsRequest } from "./ListReadingsDefinitionsRequest.js";
+export type { ListRidershipAccountsRequest } from "./ListRidershipAccountsRequest.js";
 export type { PlanOrdersCreatePlanOrdersRequestBody } from "./PlanOrdersCreatePlanOrdersRequestBody.js";
 export type { QualificationsArchiveQualificationRecordRequestBody } from "./QualificationsArchiveQualificationRecordRequestBody.js";
 export type { QualificationsDeleteQualificationRecordRequestBody } from "./QualificationsDeleteQualificationRecordRequestBody.js";
@@ -42,3 +45,5 @@ export type { QualificationsPostQualificationRecordRequestBody } from "./Qualifi
 export type { QualificationsUnarchiveQualificationRecordRequestBody } from "./QualificationsUnarchiveQualificationRecordRequestBody.js";
 export type { ReadingsPostReadingsRequestBody } from "./ReadingsPostReadingsRequestBody.js";
 export type { ReportsCreateReportRunRequestBody } from "./ReportsCreateReportRunRequestBody.js";
+export type { RidershipAccountsCreateRidershipAccountRequestBody } from "./RidershipAccountsCreateRidershipAccountRequestBody.js";
+export type { RidershipAccountsUpdateRidershipAccountRequestBody } from "./RidershipAccountsUpdateRidershipAccountRequestBody.js";

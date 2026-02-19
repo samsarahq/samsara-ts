@@ -48,6 +48,7 @@ export interface WorkOrderObjectResponseBody {
     /** The status of the work order  Valid values: `Assigned`, `Cancelled`, `Closed`, `Completed`, `In Progress`, `On Hold`, `Open`, `Pending Approval`, `Pending Parts` */
     status: WorkOrderObjectResponseBody.Status;
     tax?: Samsara.WorkOrderTaxObjectResponseBody | undefined;
+    unallocatedLabor?: Samsara.WorkOrderUnallocatedLaborObjectResponseBody | undefined;
     /** The time the work order was last updated in RFC 3339 format. */
     updatedAtTime: string;
     /** The vendor UUID for the work order. */

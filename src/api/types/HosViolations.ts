@@ -5,7 +5,7 @@
  */
 export interface HosViolations {
     /** Time since the driver has surpassed the driving cycle duration limit in milliseconds. For property-carrying drivers, this is the amount of time the driver has been on duty or driving past the 60/70-hour limit in 7/8 days. */
-    cycleViolationDurationMs?: number | undefined;
+    cycleViolationDurationMs?: number;
     /** Time since the driver has surpassed the driving shift duration limit in milliseconds. For property-carrying drivers, this is the amount of time the driver has been driving past the 11-hour limit. */
-    shiftDrivingViolationDurationMs?: number | undefined;
+    shiftDrivingViolationDurationMs?: number;
 }

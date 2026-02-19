@@ -5,7 +5,7 @@
  */
 export interface RollingStopDetectionAlertSettingsObjectResponseBody {
     /** Indicates whether AI event detection for rolling stops is turned on. */
-    isEnabled?: boolean | undefined;
+    isEnabled?: boolean;
     /** Alert when speed is over this many miles per hour. */
-    speedingThresholdMph?: number | undefined;
+    speedingThresholdMph?: number;
 }

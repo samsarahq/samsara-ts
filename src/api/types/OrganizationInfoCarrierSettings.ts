@@ -5,9 +5,9 @@
  */
 export interface OrganizationInfoCarrierSettings {
     /** Carrier for a given organization. */
-    carrierName?: string | undefined;
+    carrierName?: string;
     /** Carrier US DOT Number for the organization. */
-    dotNumber?: number | undefined;
+    dotNumber?: number;
     /** Main office address for a given organization. */
-    mainOfficeAddress?: string | undefined;
+    mainOfficeAddress?: string;
 }

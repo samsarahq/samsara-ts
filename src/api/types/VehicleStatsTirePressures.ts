@@ -5,11 +5,11 @@
  */
 export interface VehicleStatsTirePressures {
     /** The tire pressure of the rear left tire as seen when standing behind the vehicle in kilopascals. */
-    backLeftTirePressureKPa?: number | undefined;
+    backLeftTirePressureKPa?: number;
     /** The tire pressure of the rear right tire as seen when standing behind the vehicle in kilopascals. */
-    backRightTirePressureKPa?: number | undefined;
+    backRightTirePressureKPa?: number;
     /** The tire pressure of the front left tire as seen when standing behind the vehicle in kilopascals. */
-    frontLeftTirePressureKPa?: number | undefined;
+    frontLeftTirePressureKPa?: number;
     /** The tire pressure of the front right tire as seen when standing behind the vehicle in kilopascals. */
-    frontRightTirePressureKPa?: number | undefined;
+    frontRightTirePressureKPa?: number;
 }

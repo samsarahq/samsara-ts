@@ -4,5 +4,5 @@ import type * as Samsara from "../index.js";
 
 export interface TaggedObject {
     id: Samsara.TaggedObjectId;
-    name?: Samsara.TaggedObjectName | undefined;
+    name?: Samsara.TaggedObjectName;
 }

@@ -7,7 +7,7 @@ export interface FieldObjectPostRequestBody {
     label: string;
     /** The type of field.  Valid values: `photo`, `string`, `number`, `multipleChoice`, `signature`, `dateTime`, `scannedDocument`, `barcode` */
     type: FieldObjectPostRequestBody.Type;
-    value?: Samsara.FieldObjectValueRequestBody | undefined;
+    value?: Samsara.FieldObjectValueRequestBody;
 }
 
 export namespace FieldObjectPostRequestBody {

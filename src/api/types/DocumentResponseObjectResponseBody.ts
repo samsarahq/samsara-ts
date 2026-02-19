@@ -7,7 +7,7 @@ import type * as Samsara from "../index.js";
  */
 export interface DocumentResponseObjectResponseBody {
     /** List of the document conditional field sections. */
-    conditionalFieldSections?: Samsara.ConditionalFieldSectionObjectResponseBody[] | undefined;
+    conditionalFieldSections?: Samsara.ConditionalFieldSectionObjectResponseBody[];
     /** Time the document was created in RFC 3339 format. */
     createdAtTime: string;
     documentType: Samsara.GoaDocumentTypeTinyResponseResponseBody;
@@ -17,16 +17,16 @@ export interface DocumentResponseObjectResponseBody {
     /** Universally unique identifier for the document. */
     id: string;
     /** Name of the document. */
-    name?: string | undefined;
+    name?: string;
     /** Notes on the document. */
-    notes?: string | undefined;
-    route?: Samsara.GoaRouteTinyResponseResponseBody | undefined;
-    routeStop?: Samsara.GoaRouteStopTinyResponseResponseBody | undefined;
+    notes?: string;
+    route?: Samsara.GoaRouteTinyResponseResponseBody;
+    routeStop?: Samsara.GoaRouteStopTinyResponseResponseBody;
     /** The condition of the document created for the driver. Can be either Required or Submitted. Required documents are pre-populated documents for the Driver to fill out in the Driver App and have not yet been submitted. Submitted documents have been submitted by the driver in the Driver App. Archived documents have been archived by the admin in the cloud dashboard.  Valid values: `submitted`, `required`, `archived` */
     state: DocumentResponseObjectResponseBody.State;
     /** Time the document was updated in RFC 3339 format. */
-    updatedAtTime?: string | undefined;
-    vehicle?: Samsara.GoaVehicleTinyResponseResponseBody | undefined;
+    updatedAtTime?: string;
+    vehicle?: Samsara.GoaVehicleTinyResponseResponseBody;
 }
 
 export namespace DocumentResponseObjectResponseBody {

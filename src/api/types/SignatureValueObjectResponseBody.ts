@@ -5,11 +5,11 @@
  */
 export interface SignatureValueObjectResponseBody {
     /** Id of the signature field. */
-    id?: string | undefined;
+    id?: string;
     /** Name of the signee for a signature field. */
-    name?: string | undefined;
+    name?: string;
     /** Time the signature was captured in RFC 3339 format. */
-    signedAtTime?: string | undefined;
+    signedAtTime?: string;
     /** Url of a signature field's PNG signature image. */
-    url?: string | undefined;
+    url?: string;
 }

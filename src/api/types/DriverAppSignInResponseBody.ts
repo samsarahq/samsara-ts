@@ -6,6 +6,6 @@ import type * as Samsara from "../index.js";
  * Details specific to Driver App Sign In.
  */
 export interface DriverAppSignInResponseBody {
-    driver?: Samsara.AlertObjectDriverResponseBody | undefined;
-    pinnedVehicle?: Samsara.AlertObjectVehicleResponseBody | undefined;
+    driver?: Samsara.AlertObjectDriverResponseBody;
+    pinnedVehicle?: Samsara.AlertObjectVehicleResponseBody;
 }

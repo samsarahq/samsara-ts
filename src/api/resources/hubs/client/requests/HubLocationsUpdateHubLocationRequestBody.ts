@@ -5,7 +5,6 @@ import type * as Samsara from "../../../../index.js";
 /**
  * @example
  *     {
- *         id: "id",
  *         data: {
  *             address: "123 Industrial Blvd, Los Angeles, CA 90210, US",
  *             customerLocationId: "LOC-123",
@@ -26,7 +25,5 @@ import type * as Samsara from "../../../../index.js";
  *     }
  */
 export interface HubLocationsUpdateHubLocationRequestBody {
-    /** The unique Samsara ID of the hub location to update */
-    id: string;
     data: Samsara.UpdateHubLocationRequestBodyRequestBody;
 }

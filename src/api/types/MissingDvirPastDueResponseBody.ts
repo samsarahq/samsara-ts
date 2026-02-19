@@ -6,5 +6,5 @@ import type * as Samsara from "../index.js";
  * Details specific to Missing DVIR Past Due.
  */
 export interface MissingDvirPastDueResponseBody {
-    dvir?: Samsara.Dvir2SubmissionResponseObjectResponseBody | undefined;
+    dvir?: Samsara.Dvir2SubmissionResponseObjectResponseBody;
 }

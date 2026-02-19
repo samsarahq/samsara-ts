@@ -6,5 +6,5 @@ import type * as Samsara from "../index.js";
  * A list of created messages.
  */
 export interface InlineResponse2006 {
-    data?: Samsara.V1Messages | undefined;
+    data?: Samsara.V1Messages;
 }

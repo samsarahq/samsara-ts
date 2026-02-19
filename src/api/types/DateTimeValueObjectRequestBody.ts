@@ -5,5 +5,5 @@
  */
 export interface DateTimeValueObjectRequestBody {
     /** Date time value inin RFC 3339 format. */
-    dateTime?: string | undefined;
+    dateTime?: string;
 }

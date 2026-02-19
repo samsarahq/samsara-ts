@@ -7,11 +7,11 @@ import type * as Samsara from "../index.js";
  */
 export interface DetectionLogAssetObjectResponseBody {
     /** List of attributes associated with the entity */
-    attributes?: Samsara.GoaAttributeTinyResponseBody[] | undefined;
+    attributes?: Samsara.GoaAttributeTinyResponseBody[];
     /** Unique ID for the asset object that is reporting the detection. Always returned. */
     id: string;
     /** Name for the asset object that is reporting the safety event. Only returned when includeAsset is set to true */
-    name?: string | undefined;
+    name?: string;
     /** Tags for the asset associated with the safety event. Only returned when includeAsset is set to true */
-    tags?: Samsara.GoaTagTinyResponseResponseBody[] | undefined;
+    tags?: Samsara.GoaTagTinyResponseResponseBody[];
 }

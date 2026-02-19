@@ -5,11 +5,11 @@
  */
 export interface Dvir2DeviceObjectResponseBody {
     /** A map of external ids */
-    externalIds?: Record<string, string> | undefined;
+    externalIds?: Record<string, string>;
     /** The license plate of the vehicle. */
-    licensePlate?: string | undefined;
+    licensePlate?: string;
     /** The name of the device. */
-    name?: string | undefined;
+    name?: string;
     /** The VIN of the vehicle. */
-    vehicleVin?: string | undefined;
+    vehicleVin?: string;
 }

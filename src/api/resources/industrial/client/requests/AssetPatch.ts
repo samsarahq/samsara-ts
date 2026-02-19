@@ -4,13 +4,9 @@ import type * as Samsara from "../../../../index.js";
 
 /**
  * @example
- *     {
- *         id: "id"
- *     }
+ *     {}
  */
 export interface AssetPatch {
-    /** Id of the asset to be updated */
-    id: string;
     customMetadata?: Samsara.CustomMetadata;
     location?: Samsara.AssetLocation;
     /** Required if locationType is "dataInput". Specifies the id of a location data input which will determine the asset's location. The data input must be in the asset. */

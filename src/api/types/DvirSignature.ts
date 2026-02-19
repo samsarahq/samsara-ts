@@ -6,11 +6,11 @@ import type * as Samsara from "../index.js";
  * DVIR Signure.
  */
 export interface DvirSignature {
-    signatoryUser?: DvirSignature.SignatoryUser | undefined;
+    signatoryUser?: DvirSignature.SignatoryUser;
     /** The time when the DVIR was signed. UTC timestamp in RFC 3339 format. Example: `2020-01-27T07:06:25Z`. */
-    signedAtTime?: string | undefined;
+    signedAtTime?: string;
     /** Whether the DVIR was submitted by a `driver` or `mechanic`. Valid values: `driver`, `mechanic`. */
-    type?: DvirSignature.Type | undefined;
+    type?: DvirSignature.Type;
 }
 
 export namespace DvirSignature {

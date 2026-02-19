@@ -9,8 +9,8 @@ export interface RouteStopEstimatedArrivalDetailsObjectResponseBody {
     /** Time threshold for when to send an alert. Sends an alert when the ETA is less than the threshold. */
     alertBeforeArrivalMilliseconds: number;
     /** If true, will include a live sharing link in the alert. Defaults to false. */
-    hasLiveShareLink?: boolean | undefined;
+    hasLiveShareLink?: boolean;
     /** If true, will only alert if the vehicle is en-route to the stop. Defaults to false. */
-    isAlertOnRouteStopOnly?: boolean | undefined;
+    isAlertOnRouteStopOnly?: boolean;
     location: Samsara.LocationObjectResponseBody;
 }

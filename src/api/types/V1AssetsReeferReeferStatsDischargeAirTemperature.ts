@@ -2,7 +2,7 @@
 
 export interface V1AssetsReeferReeferStatsDischargeAirTemperature {
     /** Timestamp in Unix milliseconds since epoch. */
-    changedAtMs?: number | undefined;
+    changedAtMs?: number;
     /** Discharge temperature in millidegree Celsius. */
-    tempInMilliC?: number | undefined;
+    tempInMilliC?: number;
 }

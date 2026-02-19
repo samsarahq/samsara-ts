@@ -7,18 +7,18 @@ import type * as Samsara from "../index.js";
  */
 export interface RouteStopObjectResponseBody {
     /** The hub location identifier from dispatch */
-    hubLocationId?: string | undefined;
+    hubLocationId?: string;
     /** The Samsara-generated unique identifier (UUID) for the stop */
     id: string;
     /** The name of the stop */
     name: string;
     /** Additional notes for the stop */
-    notes?: string | undefined;
+    notes?: string;
     /** List of order tasks associated with this stop */
-    orders?: Samsara.OrderTaskObjectResponseBody[] | undefined;
+    orders?: Samsara.OrderTaskObjectResponseBody[];
     /** The scheduled arrival time at the stop */
     scheduledArrivalTime: string;
     /** The scheduled departure time from the stop */
     scheduledDepartureTime: string;
-    singleUseLocation?: Samsara.SingleUseLocationObjectResponseBody | undefined;
+    singleUseLocation?: Samsara.SingleUseLocationObjectResponseBody;
 }

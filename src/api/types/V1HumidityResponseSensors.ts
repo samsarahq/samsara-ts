@@ -2,15 +2,15 @@
 
 export interface V1HumidityResponseSensors {
     /** Currently reported relative humidity in percent, from 0-100. */
-    humidity?: number | undefined;
+    humidity?: number;
     /** The timestamp of reported relative humidity, specified in RFC 3339 time. */
-    humidityTime?: string | undefined;
+    humidityTime?: string;
     /** ID of the sensor. */
-    id?: number | undefined;
+    id?: number;
     /** Name of the sensor. */
-    name?: string | undefined;
+    name?: string;
     /** ID of the trailer associated with the sensor for the data point. If no trailer is connected, this parameter will not be reported. */
-    trailerId?: number | undefined;
+    trailerId?: number;
     /** ID of the vehicle associated with the sensor for the data point. If no vehicle is connected, this parameter will not be reported. */
-    vehicleId?: number | undefined;
+    vehicleId?: number;
 }

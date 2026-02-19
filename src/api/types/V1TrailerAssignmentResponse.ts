@@ -2,9 +2,9 @@
 
 export interface V1TrailerAssignmentResponse {
     /** The ID of the driver associated with this trailer. */
-    driverId?: number | undefined;
+    driverId?: number;
     /** The time at which the driver ended the assignment. If the assignment is current, this value will be omitted. */
-    endMs?: number | undefined;
+    endMs?: number;
     /** The time at which the driver started the assignment */
-    startMs?: number | undefined;
+    startMs?: number;
 }

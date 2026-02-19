@@ -7,15 +7,15 @@ import type * as Samsara from "../index.js";
  */
 export interface GetDriverTrailerAssignmentsResponseBodyResponseBody {
     /** Time when the driver trailer assignment was created, in RFC 3339 format. */
-    createdAtTime?: string | undefined;
+    createdAtTime?: string;
     driver: Samsara.DriverWithExternalIdObjectResponseBody;
     /** Time when the driver trailer assignment will end, in RFC 3339 format. */
-    endTime?: string | undefined;
+    endTime?: string;
     /** Samsara ID of the driver trailer assignment. */
     id: string;
     /** Time when the driver trailer assignment starts, in RFC 3339 format. */
     startTime: string;
     trailer: Samsara.TrailerObjectResponseBody;
     /** Time when the driver trailer assignment was last updated, in RFC 3339 format. */
-    updatedAtTime?: string | undefined;
+    updatedAtTime?: string;
 }

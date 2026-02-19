@@ -5,31 +5,31 @@
  */
 export interface DriverEfficiencyRawDataObjectResponseBody {
     /** Total number of quick braking events (less than one second after accelerating). */
-    anticipationBrakeEventCount?: number | undefined;
+    anticipationBrakeEventCount?: number;
     /** Average vehicle weight in kilograms. */
-    averageVehicleWeightKg?: number | undefined;
+    averageVehicleWeightKg?: number;
     /** Time spent without engaging the accelerator or brake in milliseconds. */
-    coastingDurationMs?: number | undefined;
+    coastingDurationMs?: number;
     /** Time spent in cruise control in milliseconds. */
-    cruiseControlDurationMs?: number | undefined;
+    cruiseControlDurationMs?: number;
     /** Total driving time in milliseconds. */
     driveTimeDurationMs: number;
     /** Total engine-on time in milliseconds. */
     engineOnDurationMs: number;
     /** Time spent driving within the configurable green band in milliseconds. */
-    greenBandDurationMs?: number | undefined;
+    greenBandDurationMs?: number;
     /** Time spent driving on high-grade roads in milliseconds. */
-    highGradeRoadDrivingDurationMs?: number | undefined;
+    highGradeRoadDrivingDurationMs?: number;
     /** Time the vehicle engine torque is greater than 90% in milliseconds. */
-    highTorqueDurationMs?: number | undefined;
+    highTorqueDurationMs?: number;
     /** Time spent idling in milliseconds. */
     idlingDurationMs: number;
     /** Time spent over-speeding in milliseconds. */
-    overSpeedDurationMs?: number | undefined;
+    overSpeedDurationMs?: number;
     /** Total breaking time in milliseconds. */
     totalBrakeDurationMs: number;
     /** Total number of brake events. */
-    totalBrakeEventCount?: number | undefined;
+    totalBrakeEventCount?: number;
     /** Time spent ware-free breaking in milliseconds. */
-    wearFreeBrakeDurationMs?: number | undefined;
+    wearFreeBrakeDurationMs?: number;
 }

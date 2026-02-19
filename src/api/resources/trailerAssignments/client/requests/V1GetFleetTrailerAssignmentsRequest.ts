@@ -2,13 +2,9 @@
 
 /**
  * @example
- *     {
- *         trailerId: 1000000
- *     }
+ *     {}
  */
 export interface V1GetFleetTrailerAssignmentsRequest {
-    /** ID of trailer. Must contain only digits 0-9. */
-    trailerId: number;
     /** Timestamp in Unix epoch milliseconds representing the start of the period to fetch. Omitting both startMs and endMs only returns current assignments. */
     startMs?: number;
     /** Timestamp in Unix epoch milliseconds representing the end of the period to fetch. Omitting endMs sets endMs as the current time */

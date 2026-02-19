@@ -11,7 +11,7 @@ export interface RouteObjectResponseBody {
     /** The timestamp (in UTC) when the route was created */
     createdAt: string;
     /** The dispatch route identifier */
-    dispatchRouteId?: string | undefined;
+    dispatchRouteId?: string;
     /** The total distance of the route in meters */
     distanceMeters: number;
     /** The total duration of the route in seconds */
@@ -31,7 +31,7 @@ export interface RouteObjectResponseBody {
     /** The ID of the plan this route belongs to */
     planId: string;
     /** List of quantity information for the route */
-    quantities?: Samsara.QuantityObjectResponseBody[] | undefined;
+    quantities?: Samsara.QuantityObjectResponseBody[];
     /** The scheduled end time of the route calculated from last stop */
     scheduledRouteEndTime: string;
     /** The scheduled start time of the route calculated from first stop */

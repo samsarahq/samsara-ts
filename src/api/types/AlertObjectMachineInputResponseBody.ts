@@ -7,5 +7,5 @@ export interface AlertObjectMachineInputResponseBody {
     /** The ID of the machine input associated with the alert. */
     id: string;
     /** The name of the machine input. */
-    name?: string | undefined;
+    name?: string;
 }

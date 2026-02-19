@@ -7,13 +7,13 @@ import type * as Samsara from "../index.js";
  */
 export interface ServiceTaskInstanceInputObjectRequestBody {
     /** ID of the service task instance. Only set if updating an existing service task instance. */
-    id?: string | undefined;
-    laborHourlyCost?: Samsara.WorkOrderMoneyObjectRequestBody | undefined;
+    id?: string;
+    laborHourlyCost?: Samsara.WorkOrderMoneyObjectRequestBody;
     /** The time of labor needed */
-    laborTimeMinutes?: number | undefined;
+    laborTimeMinutes?: number;
     /** Parts for the service task. */
-    parts?: Samsara.PartInstanceInputObjectRequestBody[] | undefined;
-    partsCost?: Samsara.WorkOrderMoneyObjectRequestBody | undefined;
+    parts?: Samsara.PartInstanceInputObjectRequestBody[];
+    partsCost?: Samsara.WorkOrderMoneyObjectRequestBody;
     /** ID of the service task. */
     serviceTaskId: string;
     /** The status of the service task.  Valid values: `Unknown`, `Open`, `In Progress`, `On Hold`, `Completed` */

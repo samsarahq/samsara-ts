@@ -8,12 +8,12 @@ import type * as Samsara from "../index.js";
 export interface ServiceTaskInstanceObjectResponseBody {
     /** ID of the service task instance. */
     id: string;
-    laborHourlyCost?: Samsara.WorkOrderMoneyObjectResponseBody | undefined;
+    laborHourlyCost?: Samsara.WorkOrderMoneyObjectResponseBody;
     /** The time of labor needed */
-    laborTimeMinutes?: number | undefined;
+    laborTimeMinutes?: number;
     /** Parts for the service task. */
-    parts?: Samsara.PartInstanceObjectResponseBody[] | undefined;
-    partsCost?: Samsara.WorkOrderMoneyObjectResponseBody | undefined;
+    parts?: Samsara.PartInstanceObjectResponseBody[];
+    partsCost?: Samsara.WorkOrderMoneyObjectResponseBody;
     /** ID of the service task. */
     serviceTaskId: string;
     /** The status of the service task.  Valid values: `Unknown`, `Open`, `In Progress`, `On Hold`, `Completed` */

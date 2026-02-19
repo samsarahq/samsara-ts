@@ -15,5 +15,5 @@ export interface ReportsDatasetResponseBody {
     /** Unique ID of the dataset. */
     id: string;
     /** Time range limit for the dataset measured in days. */
-    timeRangeLimitDays?: number | undefined;
+    timeRangeLimitDays?: number;
 }

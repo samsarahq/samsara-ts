@@ -6,29 +6,29 @@ import type * as Samsara from "../index.js";
  * Information about a DVIR.
  */
 export interface Dvir {
-    authorSignature?: Samsara.DvirAuthorSignature | undefined;
+    authorSignature?: Samsara.DvirAuthorSignature;
     /** Time when driver signed and completed this DVIR. UTC timestamp in RFC 3339 format. Example: `2020-01-27T07:06:25Z`. */
-    endTime?: string | undefined;
+    endTime?: string;
     /** Unique Samsara ID for the DVIR. */
     id: string;
-    licensePlate?: Samsara.DvirLicensePlate | undefined;
-    location?: Samsara.DvirLocation | undefined;
-    mechanicNotes?: Samsara.DvirMechanicNotes | undefined;
-    odometerMeters?: Samsara.DvirOdometerMeters | undefined;
+    licensePlate?: Samsara.DvirLicensePlate;
+    location?: Samsara.DvirLocation;
+    mechanicNotes?: Samsara.DvirMechanicNotes;
+    odometerMeters?: Samsara.DvirOdometerMeters;
     /** The condition of vehicle on which DVIR was done. Valid values: `safe`, `unsafe`, `resolved`. */
-    safetyStatus?: Dvir.SafetyStatus | undefined;
-    secondSignature?: Samsara.DvirSecondSignature | undefined;
+    safetyStatus?: Dvir.SafetyStatus;
+    secondSignature?: Samsara.DvirSecondSignature;
     /** Time when driver began filling out this DVIR. UTC timestamp in RFC 3339 format. Example: `2020-01-27T07:06:25Z`. */
-    startTime?: string | undefined;
-    thirdSignature?: Samsara.DvirThirdSignature | undefined;
-    trailer?: Samsara.DvirTrailer | undefined;
-    trailerDefects?: Samsara.DvirTrailerDefects | undefined;
+    startTime?: string;
+    thirdSignature?: Samsara.DvirThirdSignature;
+    trailer?: Samsara.DvirTrailer;
+    trailerDefects?: Samsara.DvirTrailerDefects;
     /** The name of the trailer the DVIR was submitted for.  Only included for tractor+trailer DVIRs. */
-    trailerName?: string | undefined;
+    trailerName?: string;
     /** Inspection type of the DVIR. Valid values: `preTrip`, `postTrip`, `mechanic`, `unspecified`. */
-    type?: Dvir.Type | undefined;
-    vehicle?: Samsara.DvirVehicle | undefined;
-    vehicleDefects?: Samsara.DvirVehicleDefects | undefined;
+    type?: Dvir.Type;
+    vehicle?: Samsara.DvirVehicle;
+    vehicleDefects?: Samsara.DvirVehicleDefects;
 }
 
 export namespace Dvir {

@@ -2,11 +2,11 @@
 
 export interface ConditionalFieldSectionObjectResponseBody {
     /** The index of the first conditional field associated with the triggeringFieldValue in the fieldTypes list. */
-    conditionalFieldFirstIndex?: number | undefined;
+    conditionalFieldFirstIndex?: number;
     /** The index of the last conditional field associated with the triggeringFieldValue in the fieldTypes list. */
-    conditionalFieldLastIndex?: number | undefined;
+    conditionalFieldLastIndex?: number;
     /** The index of the multiple choice field in the fieldTypes list that triggers one or more conditional fields. */
-    triggeringFieldIndex?: number | undefined;
+    triggeringFieldIndex?: number;
     /** The multiple choice option value that triggers the conditional fields. */
-    triggeringFieldValue?: string | undefined;
+    triggeringFieldValue?: string;
 }

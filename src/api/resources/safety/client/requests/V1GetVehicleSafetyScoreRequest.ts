@@ -3,14 +3,11 @@
 /**
  * @example
  *     {
- *         vehicleId: 1000000,
  *         startMs: 1000000,
  *         endMs: 1000000
  *     }
  */
 export interface V1GetVehicleSafetyScoreRequest {
-    /** ID of the vehicle. Must contain only digits 0-9. */
-    vehicleId: number;
     /** Timestamp in milliseconds representing the start of the period to fetch, inclusive. Used in combination with endMs. Total duration (endMs - startMs) must be greater than or equal to 1 hour. */
     startMs: number;
     /** Timestamp in milliseconds representing the end of the period to fetch, inclusive. Used in combination with startMs. Total duration (endMs - startMs) must be greater than or equal to 1 hour. */

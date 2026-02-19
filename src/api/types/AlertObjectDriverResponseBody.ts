@@ -7,13 +7,13 @@ import type * as Samsara from "../index.js";
  */
 export interface AlertObjectDriverResponseBody {
     /** List of attributes associated with the entity */
-    attributes?: Samsara.GoaAttributeTinyResponseBody[] | undefined;
+    attributes?: Samsara.GoaAttributeTinyResponseBody[];
     /** A map of external ids */
-    externalIds?: Record<string, string> | undefined;
+    externalIds?: Record<string, string>;
     /** The ID of the driver */
     id: string;
     /** The name of the driver. */
-    name?: string | undefined;
+    name?: string;
     /** The list of [tags](https://kb.samsara.com/hc/en-us/articles/360026674631-Using-Tags-and-Tag-Nesting) associated with the driver. */
-    tags?: Samsara.GoaTagTinyResponseResponseBody[] | undefined;
+    tags?: Samsara.GoaTagTinyResponseResponseBody[];
 }

@@ -5,7 +5,7 @@
  */
 export interface CurrentDutyStatus {
     /** The Hours of Service status type.  If the driver app is disconnected, an empty string will be returned. To reconnect the app and return updated values, drivers should have the app open with good cell service. Valid values: `offDuty`, `sleeperBed`, `driving`, `onDuty`, `yardMove`, `personalConveyance`. */
-    hosStatusType?: CurrentDutyStatus.HosStatusType | undefined;
+    hosStatusType?: CurrentDutyStatus.HosStatusType;
 }
 
 export namespace CurrentDutyStatus {

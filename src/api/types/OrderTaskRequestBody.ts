@@ -7,20 +7,20 @@ import type * as Samsara from "../index.js";
  */
 export interface OrderTaskRequestBody {
     /** The full address string for the order */
-    address?: string | undefined;
-    appointmentWindow?: Samsara.AppointmentWindowRequestBody | undefined;
+    address?: string;
+    appointmentWindow?: Samsara.AppointmentWindowRequestBody;
     /** The customer-provided identifier of the location associated with the order */
-    customerLocationId?: string | undefined;
+    customerLocationId?: string;
     /** Latitude of the order. Optional if address is provided; the address will be geocoded to obtain coordinates. */
-    latitude?: number | undefined;
+    latitude?: number;
     /** Longitude of the order. Optional if address is provided; the address will be geocoded to obtain coordinates. */
-    longitude?: number | undefined;
+    longitude?: number;
     /** Any additional notes for the order */
-    notes?: string | undefined;
+    notes?: string;
     /** Position constraint for the order task  Valid values: `first`, `last`, `any` */
-    position?: OrderTaskRequestBody.Position | undefined;
+    position?: OrderTaskRequestBody.Position;
     /** Estimated service time for the order in seconds */
-    serviceTimeSeconds?: number | undefined;
+    serviceTimeSeconds?: number;
 }
 
 export namespace OrderTaskRequestBody {

@@ -82,9 +82,7 @@ describe("TrailerAssignmentsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.trailerAssignments.v1GetFleetTrailerAssignments({
-            trailerId: 1000000,
-        });
+        const response = await client.trailerAssignments.v1GetFleetTrailerAssignments(1000000);
         expect(response).toEqual({
             trailerAssignments: [
                 {

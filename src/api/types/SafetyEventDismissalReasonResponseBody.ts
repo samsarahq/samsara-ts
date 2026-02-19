@@ -5,9 +5,9 @@
  */
 export interface SafetyEventDismissalReasonResponseBody {
     /** The dismissal reason code associated with the event.  Valid values: `incorrect`, `minorEvent`, `other` */
-    code?: SafetyEventDismissalReasonResponseBody.Code | undefined;
+    code?: SafetyEventDismissalReasonResponseBody.Code;
     /** The dismissal reason comment associated with the event. */
-    comment?: string | undefined;
+    comment?: string;
 }
 
 export namespace SafetyEventDismissalReasonResponseBody {

@@ -1183,8 +1183,7 @@ describe("SafetyClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.safety.v1GetDriverSafetyScore({
-            driverId: 1000000,
+        const response = await client.safety.v1GetDriverSafetyScore(1000000, {
             startMs: 1000000,
             endMs: 1000000,
         });
@@ -1241,8 +1240,7 @@ describe("SafetyClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.safety.v1GetVehicleSafetyScore({
-            vehicleId: 1000000,
+        const response = await client.safety.v1GetVehicleSafetyScore(1000000, {
             startMs: 1000000,
             endMs: 1000000,
         });

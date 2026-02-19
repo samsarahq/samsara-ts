@@ -7,16 +7,16 @@ import type * as Samsara from "../index.js";
  */
 export interface V1VehicleHarshEventResponse {
     /** URL for downloading the forward facing video */
-    downloadForwardVideoUrl?: string | undefined;
+    downloadForwardVideoUrl?: string;
     /** URL for downloading the inward facing video */
-    downloadInwardVideoUrl?: string | undefined;
+    downloadInwardVideoUrl?: string;
     /** URL for downloading the tracked inward facing video */
-    downloadTrackedInwardVideoUrl?: string | undefined;
+    downloadTrackedInwardVideoUrl?: string;
     /** Type of the harsh event. One of: [Crash, Harsh Acceleration, Harsh Braking, Harsh Turn, ROP Engine, ROP Brake, YC Engine, YC Brake, Harsh Event] */
     harshEventType: string;
     /** URL of the associated incident report page */
     incidentReportUrl: string;
     /** Whether the driver was deemed distracted during this harsh event */
-    isDistracted?: boolean | undefined;
-    location?: Samsara.V1VehicleHarshEventResponseLocation | undefined;
+    isDistracted?: boolean;
+    location?: Samsara.V1VehicleHarshEventResponseLocation;
 }

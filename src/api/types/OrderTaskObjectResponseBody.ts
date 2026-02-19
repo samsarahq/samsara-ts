@@ -7,15 +7,15 @@ import type * as Samsara from "../index.js";
  */
 export interface OrderTaskObjectResponseBody {
     /** List of custom properties for the order */
-    customProperties?: Samsara.OrderTaskCustomPropertyObjectResponseBody[] | undefined;
+    customProperties?: Samsara.OrderTaskCustomPropertyObjectResponseBody[];
     /** The order identifier */
     id: string;
     /** List of quantity information for the order */
-    quantities?: Samsara.QuantityObjectResponseBody[] | undefined;
+    quantities?: Samsara.QuantityObjectResponseBody[];
     /** List of required skills for the order */
-    requiredSkills?: Samsara.OrderTaskSkillObjectResponseBody[] | undefined;
+    requiredSkills?: Samsara.OrderTaskSkillObjectResponseBody[];
     /** The service window time range */
-    serviceWindow?: string | undefined;
+    serviceWindow?: string;
     /** The task type (pickup or delivery) */
     type: string;
 }

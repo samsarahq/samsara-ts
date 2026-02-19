@@ -5,7 +5,7 @@
  */
 export interface DriverObjectResponseBody {
     /** ID of the driver. */
-    id?: string | undefined;
+    id?: string;
     /** Name of the driver. */
-    name?: string | undefined;
+    name?: string;
 }

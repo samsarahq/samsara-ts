@@ -5,9 +5,9 @@
  */
 export interface CameraDetailsResponseResponseBody {
     /** The timestamp when the gateway was last connected to the vehicle, in RFC 3339 format. */
-    gatewayLastConnectedTime?: string | undefined;
+    gatewayLastConnectedTime?: string;
     /** The percentage of successful recording time during the time when the vehicle is on an active trip over the past 50 hours, in percentage points. */
-    lastFiftyHoursUptimePercentage?: number | undefined;
+    lastFiftyHoursUptimePercentage?: number;
     /** The serial number of the vehicle gateway that the camera is connected to. */
-    vehicleGatewaySerial?: string | undefined;
+    vehicleGatewaySerial?: string;
 }

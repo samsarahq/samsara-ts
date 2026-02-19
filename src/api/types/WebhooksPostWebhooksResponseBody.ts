@@ -4,9 +4,9 @@ import type * as Samsara from "../index.js";
 
 export interface WebhooksPostWebhooksResponseBody {
     /** The list of custom headers that users can include with their request */
-    customHeaders?: Samsara.CustomHeadersObjectResponseBody[] | undefined;
+    customHeaders?: Samsara.CustomHeadersObjectResponseBody[];
     /** The list of event types associated with a particular webhook. */
-    eventTypes?: WebhooksPostWebhooksResponseBody.EventTypes.Item[] | undefined;
+    eventTypes?: WebhooksPostWebhooksResponseBody.EventTypes.Item[];
     /** The ID of the webhook. This will appear in both Samsara’s cloud dashboard and the API. This is the id of the webhook. This is system generated. */
     id: string;
     /** The name of the webhook. This will appear in both Samsara’s cloud dashboard and the API. It can be set or updated through the Samsara Dashboard or through the API at any time. */

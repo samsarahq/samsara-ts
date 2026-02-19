@@ -3,5 +3,5 @@
 import type * as Samsara from "../index.js";
 
 export interface InlineResponse200 {
-    data?: Samsara.AssetResponse | undefined;
+    data?: Samsara.AssetResponse;
 }

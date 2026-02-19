@@ -7,14 +7,14 @@ import type * as Samsara from "../index.js";
  */
 export interface V1AssetCurrentLocationsResponse {
     /** Asset serial number */
-    assetSerialNumber?: string | undefined;
-    cable?: Samsara.V1AssetCable | undefined;
+    assetSerialNumber?: string;
+    cable?: Samsara.V1AssetCable;
     /** Engine hours */
-    engineHours?: number | undefined;
+    engineHours?: number;
     /** Asset ID */
     id: number;
     /** Current location of an asset */
-    location?: Samsara.V1AssetCurrentLocation[] | undefined;
+    location?: Samsara.V1AssetCurrentLocation[];
     /** Asset name */
-    name?: string | undefined;
+    name?: string;
 }

@@ -2,19 +2,9 @@
 
 /**
  * @example
- *     {
- *         camera_id: 1000000,
- *         program_id: 1000000,
- *         started_at_ms: 1000000
- *     }
+ *     {}
  */
 export interface V1GetVisionRunsByCameraAndProgramRequest {
-    /** The camera_id should be valid for the given accessToken. */
-    camera_id: number;
-    /** The configured program's ID on the camera. */
-    program_id: number;
-    /** Started_at_ms is a required param. Indicates the start time of the run to be fetched. */
-    started_at_ms: number;
     /** Include is a filter parameter. Accepts 'pass', 'reject' or 'no_read'. */
     include?: string;
 }

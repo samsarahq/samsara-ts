@@ -5,13 +5,10 @@ import type * as Samsara from "../../../../index.js";
 /**
  * @example
  *     {
- *         id: "id",
  *         entityType: "driver"
  *     }
  */
 export interface GetAttributeRequest {
-    /** Samsara-provided UUID of the attribute. */
-    id: string;
     /** Denotes the type of entity, driver or asset. */
     entityType: Samsara.GetAttributeRequestEntityType;
 }

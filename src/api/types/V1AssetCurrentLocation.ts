@@ -5,13 +5,13 @@
  */
 export interface V1AssetCurrentLocation {
     /** The latitude of the location in degrees. */
-    latitude?: number | undefined;
+    latitude?: number;
     /** The best effort (street,city,state) for the latitude and longitude. */
-    location?: string | undefined;
+    location?: string;
     /** The longitude of the location in degrees. */
-    longitude?: number | undefined;
+    longitude?: number;
     /** The speed calculated from GPS that the asset was traveling at in miles per hour. */
-    speedMilesPerHour?: number | undefined;
+    speedMilesPerHour?: number;
     /** Time in Unix milliseconds since epoch when the asset was at the location. */
-    timeMs?: number | undefined;
+    timeMs?: number;
 }

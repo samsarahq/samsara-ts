@@ -27,7 +27,7 @@ export class TagsClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * To use this endpoint, select **Read Tags** under the Setup & Administration category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Tags** under the Setup & Administration category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      * @param {Samsara.ListTagsRequest} request
      * @param {TagsClient.RequestOptions} requestOptions - Request-specific configuration.
@@ -94,7 +94,7 @@ export class TagsClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * To use this endpoint, select **Write Tags** under the Setup & Administration category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Write Tags** under the Setup & Administration category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      * @param {Samsara.CreateTagRequest} request
      * @param {TagsClient.RequestOptions} requestOptions - Request-specific configuration.
@@ -161,28 +161,25 @@ export class TagsClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * To use this endpoint, select **Read Tags** under the Setup & Administration category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Tags** under the Setup & Administration category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
-     * @param {Samsara.GetTagRequest} request
+     * @param {string} id - ID of the Tag. This can either be the Samsara-provided ID or an external ID. External IDs are customer-specified key-value pairs created in the POST or PATCH requests of this resource. To specify an external ID as part of a path parameter, use the following format: `key:value`. For example, `crmId:abc123`. Automatically populated external IDs are prefixed with `samsara.`. For example, `samsara.name:ELD-exempt`.
      * @param {TagsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.tags.getTag({
-     *         id: "id"
-     *     })
+     *     await client.tags.getTag("id")
      */
     public getTag(
-        request: Samsara.GetTagRequest,
+        id: string,
         requestOptions?: TagsClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.TagResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__getTag(request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__getTag(id, requestOptions));
     }
 
     private async __getTag(
-        request: Samsara.GetTagRequest,
+        id: string,
         requestOptions?: TagsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.TagResponse>> {
-        const { id } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -226,28 +223,28 @@ export class TagsClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * To use this endpoint, select **Write Tags** under the Setup & Administration category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Write Tags** under the Setup & Administration category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
+     * @param {string} id - ID of the Tag. This can either be the Samsara-provided ID or an external ID. External IDs are customer-specified key-value pairs created in the POST or PATCH requests of this resource. To specify an external ID as part of a path parameter, use the following format: `key:value`. For example, `crmId:abc123`. Automatically populated external IDs are prefixed with `samsara.`. For example, `samsara.name:ELD-exempt`.
      * @param {Samsara.ReplaceTagRequest} request
      * @param {TagsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.tags.replaceTag({
-     *         id: "id"
-     *     })
+     *     await client.tags.replaceTag("id")
      */
     public replaceTag(
-        request: Samsara.ReplaceTagRequest,
+        id: string,
+        request: Samsara.ReplaceTagRequest = {},
         requestOptions?: TagsClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.TagResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__replaceTag(request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__replaceTag(id, request, requestOptions));
     }
 
     private async __replaceTag(
-        request: Samsara.ReplaceTagRequest,
+        id: string,
+        request: Samsara.ReplaceTagRequest = {},
         requestOptions?: TagsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.TagResponse>> {
-        const { id, ..._body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -267,7 +264,7 @@ export class TagsClient {
             contentType: "application/json",
             queryParameters: requestOptions?.queryParams,
             requestType: "json",
-            body: _body,
+            body: request,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -294,28 +291,25 @@ export class TagsClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * To use this endpoint, select **Write Tags** under the Setup & Administration category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Write Tags** under the Setup & Administration category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
-     * @param {Samsara.DeleteTagsRequest} request
+     * @param {string} id - ID of the Tag. This can either be the Samsara-provided ID or an external ID. External IDs are customer-specified key-value pairs created in the POST or PATCH requests of this resource. To specify an external ID as part of a path parameter, use the following format: `key:value`. For example, `crmId:abc123`. Automatically populated external IDs are prefixed with `samsara.`. For example, `samsara.name:ELD-exempt`.
      * @param {TagsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.tags.delete({
-     *         id: "id"
-     *     })
+     *     await client.tags.delete("id")
      */
     public delete(
-        request: Samsara.DeleteTagsRequest,
+        id: string,
         requestOptions?: TagsClient.RequestOptions,
-    ): core.HttpResponsePromise<void> {
-        return core.HttpResponsePromise.fromPromise(this.__delete(request, requestOptions));
+    ): core.HttpResponsePromise<Samsara.StandardDeleteResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__delete(id, requestOptions));
     }
 
     private async __delete(
-        request: Samsara.DeleteTagsRequest,
+        id: string,
         requestOptions?: TagsClient.RequestOptions,
-    ): Promise<core.WithRawResponse<void>> {
-        const { id } = request;
+    ): Promise<core.WithRawResponse<Samsara.StandardDeleteResponse>> {
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -340,7 +334,7 @@ export class TagsClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: undefined, rawResponse: _response.rawResponse };
+            return { data: _response.body as Samsara.StandardDeleteResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
@@ -363,28 +357,28 @@ export class TagsClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * To use this endpoint, select **Write Tags** under the Setup & Administration category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Write Tags** under the Setup & Administration category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
+     * @param {string} id - ID of the Tag. This can either be the Samsara-provided ID or an external ID. External IDs are customer-specified key-value pairs created in the POST or PATCH requests of this resource. To specify an external ID as part of a path parameter, use the following format: `key:value`. For example, `crmId:abc123`. Automatically populated external IDs are prefixed with `samsara.`. For example, `samsara.name:ELD-exempt`.
      * @param {Samsara.PatchTagRequest} request
      * @param {TagsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.tags.patchTag({
-     *         id: "id"
-     *     })
+     *     await client.tags.patchTag("id")
      */
     public patchTag(
-        request: Samsara.PatchTagRequest,
+        id: string,
+        request: Samsara.PatchTagRequest = {},
         requestOptions?: TagsClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.TagResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__patchTag(request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__patchTag(id, request, requestOptions));
     }
 
     private async __patchTag(
-        request: Samsara.PatchTagRequest,
+        id: string,
+        request: Samsara.PatchTagRequest = {},
         requestOptions?: TagsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.TagResponse>> {
-        const { id, ..._body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -404,7 +398,7 @@ export class TagsClient {
             contentType: "application/json",
             queryParameters: requestOptions?.queryParams,
             requestType: "json",
-            body: _body,
+            body: request,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,

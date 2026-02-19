@@ -4,49 +4,49 @@ import type * as Samsara from "../index.js";
 
 export interface RoutesStopResponseObjectResponseBody {
     /** Actual arrival time, if it exists, for the route stop in RFC 3339 format. */
-    actualArrivalTime?: string | undefined;
+    actualArrivalTime?: string;
     /** Actual departure time, if it exists, for the route stop in RFC 3339 format. */
-    actualDepartureTime?: string | undefined;
+    actualDepartureTime?: string;
     /** Actual GPS-measured distance traveled from the previous stop's departure to this stop's arrival, in meters. Null for the first stop, skipped stops, or if GPS data is unavailable. */
-    actualDistanceMeters?: number | undefined;
-    address?: Samsara.GoaAddressTinyResponseResponseBody | undefined;
+    actualDistanceMeters?: number;
+    address?: Samsara.GoaAddressTinyResponseResponseBody;
     /** List of documents associated with the stop. */
-    documents?: Samsara.GoaDocumentTinyResponseResponseBody[] | undefined;
+    documents?: Samsara.GoaDocumentTinyResponseResponseBody[];
     /** The time the stop became en-route, in RFC 3339 format. */
-    enRouteTime?: string | undefined;
+    enRouteTime?: string;
     /** Estimated time of arrival, if this stop is currently en-route, in RFC 3339 format. */
-    eta?: string | undefined;
+    eta?: string;
     /** A map of external ids */
-    externalIds?: Record<string, string> | undefined;
+    externalIds?: Record<string, string>;
     /** List of forms associated with the stop. */
-    forms?: Samsara.GoaFormTinyResponseResponseBody[] | undefined;
+    forms?: Samsara.GoaFormTinyResponseResponseBody[];
     /** Id of the stop */
     id: string;
     /** List of issues associated with the stop. */
-    issues?: Samsara.GoaIssueTinyResponseResponseBody[] | undefined;
+    issues?: Samsara.GoaIssueTinyResponseResponseBody[];
     /** The shareable url of the stop's current status. */
-    liveSharingUrl?: string | undefined;
+    liveSharingUrl?: string;
     /** List of shareable, non-expired 'By Location' Live Sharing Links. */
-    locationLiveSharingLinks?: Samsara.LiveSharingLinkResponseObjectResponseBody[] | undefined;
+    locationLiveSharingLinks?: Samsara.LiveSharingLinkResponseObjectResponseBody[];
     /** Name of the stop */
     name: string;
     /** Notes for the stop */
-    notes?: string | undefined;
+    notes?: string;
     /** Specifies the time window (in milliseconds) after a stop's scheduled arrival time during which the stop is considered 'on-time'. */
-    ontimeWindowAfterArrivalMs?: number | undefined;
+    ontimeWindowAfterArrivalMs?: number;
     /** Specifies the time window (in milliseconds) before a stop's scheduled arrival time during which the stop is considered 'on-time'. */
-    ontimeWindowBeforeArrivalMs?: number | undefined;
+    ontimeWindowBeforeArrivalMs?: number;
     /** Planned driving distance from the previous stop in meters. Based on routing calculations at route creation time. Null for the first stop or if routing data is unavailable. */
-    plannedDistanceMeters?: number | undefined;
+    plannedDistanceMeters?: number;
     /** Scheduled arrival time, if it exists, for the stop in RFC 3339 format. */
-    scheduledArrivalTime?: string | undefined;
+    scheduledArrivalTime?: string;
     /** Scheduled departure time, if it exists, for the stop in RFC 3339 format. */
-    scheduledDepartureTime?: string | undefined;
+    scheduledDepartureTime?: string;
     /** Manual sequence position of this stop. Only used when route.settings.sequencingMethod=manual. */
-    sequenceNumber?: number | undefined;
-    singleUseLocation?: Samsara.RoutesSingleUseAddressObjectResponseBody | undefined;
+    sequenceNumber?: number;
+    singleUseLocation?: Samsara.RoutesSingleUseAddressObjectResponseBody;
     /** Skipped time, if it exists, for the route stop in RFC 3339 format. */
-    skippedTime?: string | undefined;
+    skippedTime?: string;
     /** The current state of the route stop.  Valid values: `unassigned`, `scheduled`, `en route`, `skipped`, `arrived`, `departed` */
     state: RoutesStopResponseObjectResponseBody.State;
 }

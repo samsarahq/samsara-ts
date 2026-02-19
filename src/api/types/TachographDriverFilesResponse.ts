@@ -6,6 +6,6 @@ import type * as Samsara from "../index.js";
  * List of all driver tachograph files in a specified time range.
  */
 export interface TachographDriverFilesResponse {
-    data?: Samsara.TachographDriverFileData | undefined;
-    pagination?: Samsara.PaginationResponse | undefined;
+    data?: Samsara.TachographDriverFileData;
+    pagination?: Samsara.PaginationResponse;
 }

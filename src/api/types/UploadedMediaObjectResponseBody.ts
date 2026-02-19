@@ -6,7 +6,7 @@ export interface UploadedMediaObjectResponseBody {
     /** Timestamp, in RFC 3339 format, at which the media item was made available. Examples: 2019-06-13T19:08:25Z, 2019-06-13T19:08:25.455Z, OR 2015-09-15T14:00:12-04:00 */
     availableAtTime: string;
     /** Camera role for this media.  Valid values: `leftMirrorMount`, `leftSide`, `rightMirrorMount`, `rightSide`, `rearHigh`, `rearBumper`, `inCab`, `front`, `hopper`, `other1`, `other2`, `other3`, `other4`, `leftBev`, `rightBev`, `rearBev`, `frontBev`, `otherBev`, `bevNotUsed` */
-    cameraRole?: UploadedMediaObjectResponseBody.CameraRole | undefined;
+    cameraRole?: UploadedMediaObjectResponseBody.CameraRole;
     /**  An end time in RFC 3339 format. Millisecond precision and timezones are supported. (Examples: 2019-06-13T19:08:25Z, 2019-06-13T19:08:25.455Z, OR 2015-09-15T14:00:12-04:00). */
     endTime: string;
     /** Input type for this media.  Valid values: `dashcamForwardFacing`, `dashcamInwardFacing`, `analog1`, `analog2`, `analog3`, `analog4` */
@@ -17,7 +17,7 @@ export interface UploadedMediaObjectResponseBody {
     startTime: string;
     /** Trigger reason for this media capture.  Valid values: `api`, `panicButton`, `periodicStill`, `rfidEvent`, `safetyEvent`, `tripEndStill`, `tripStartStill`, `videoRetrieval` */
     triggerReason: UploadedMediaObjectResponseBody.TriggerReason;
-    urlInfo?: Samsara.UrlInfoObjectResponseBody | undefined;
+    urlInfo?: Samsara.UrlInfoObjectResponseBody;
     /** Vehicle ID for which this media was captured. Examples: 1234 */
     vehicleId: string;
 }

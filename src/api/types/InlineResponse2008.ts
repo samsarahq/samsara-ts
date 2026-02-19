@@ -3,5 +3,5 @@
 import type * as Samsara from "../index.js";
 
 export interface InlineResponse2008 {
-    machines?: Samsara.V1Machine[] | undefined;
+    machines?: Samsara.V1Machine[];
 }

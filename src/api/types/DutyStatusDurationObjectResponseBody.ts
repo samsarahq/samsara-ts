@@ -5,19 +5,19 @@
  */
 export interface DutyStatusDurationObjectResponseBody {
     /** Duration the driver was active for in the log period in milliseconds. */
-    activeDurationMs?: number | undefined;
+    activeDurationMs?: number;
     /** Duration the driver was driving for in the log period in milliseconds. */
-    driveDurationMs?: number | undefined;
+    driveDurationMs?: number;
     /** Duration the driver was off duty for in the log period in milliseconds. */
-    offDutyDurationMs?: number | undefined;
+    offDutyDurationMs?: number;
     /** Duration the driver was on duty for in the log period in milliseconds. */
-    onDutyDurationMs?: number | undefined;
+    onDutyDurationMs?: number;
     /** Duration the driver was driving for personal conveyance for in the log period in milliseconds. */
-    personalConveyanceDurationMs?: number | undefined;
+    personalConveyanceDurationMs?: number;
     /** Duration the driver was in their sleeper berth for in the log period in milliseconds. */
-    sleeperBerthDurationMs?: number | undefined;
+    sleeperBerthDurationMs?: number;
     /** Duration the driver was waiting for in the log period in milliseconds. */
-    waitingTimeDurationMs?: number | undefined;
+    waitingTimeDurationMs?: number;
     /** Duration the driver was driving for yard moves for in the log period in milliseconds. */
-    yardMoveDurationMs?: number | undefined;
+    yardMoveDurationMs?: number;
 }

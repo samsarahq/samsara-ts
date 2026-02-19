@@ -6,7 +6,7 @@ import type * as Samsara from "../index.js";
  * Vehicle engine oil pressure reading.
  */
 export interface VehicleStatsEngineOilPressureKPaWithDecoration {
-    decorations?: Samsara.VehicleStatsDecorations | undefined;
+    decorations?: Samsara.VehicleStatsDecorations;
     time: Samsara.Time;
     /** The engine oil pressure reading in kilopascals. */
     value: number;

@@ -6,9 +6,9 @@ import type * as Samsara from "../index.js";
  * Information about your organization.
  */
 export interface OrganizationInfoObject {
-    carrierSettings?: Samsara.OrganizationInfoCarrierSettings | undefined;
+    carrierSettings?: Samsara.OrganizationInfoCarrierSettings;
     /** ID of the organization. */
-    id?: string | undefined;
+    id?: string;
     /** Name of organization. */
-    name?: string | undefined;
+    name?: string;
 }

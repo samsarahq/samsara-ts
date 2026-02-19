@@ -3,7 +3,7 @@
 import type * as Samsara from "../index.js";
 
 export interface TinyTag {
-    id?: Samsara.TagId | undefined;
-    name?: Samsara.TagName | undefined;
-    parentTagId?: Samsara.ParentTagId | undefined;
+    id?: Samsara.TagId;
+    name?: Samsara.TagName;
+    parentTagId?: Samsara.ParentTagId;
 }

@@ -27,7 +27,7 @@ export class AttributesClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * To use this endpoint, select **Read Attributes** under the Setup & Administration category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Attributes** under the Setup & Administration category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      * @param {Samsara.GetAttributesByEntityTypeRequest} request
      * @param {AttributesClient.RequestOptions} requestOptions - Request-specific configuration.
@@ -100,7 +100,7 @@ export class AttributesClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * To use this endpoint, select **Write Attributes** under the Setup & Administration category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Write Attributes** under the Setup & Administration category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      * @param {Samsara.CreateAttributeRequest} request
      * @param {AttributesClient.RequestOptions} requestOptions - Request-specific configuration.
@@ -169,29 +169,31 @@ export class AttributesClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * To use this endpoint, select **Read Attributes** under the Setup & Administration category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Attributes** under the Setup & Administration category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
+     * @param {string} id - Samsara-provided UUID of the attribute.
      * @param {Samsara.GetAttributeRequest} request
      * @param {AttributesClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.attributes.getAttribute({
-     *         id: "id",
+     *     await client.attributes.getAttribute("id", {
      *         entityType: "driver"
      *     })
      */
     public getAttribute(
+        id: string,
         request: Samsara.GetAttributeRequest,
         requestOptions?: AttributesClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.AttributeExpandedResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__getAttribute(request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__getAttribute(id, request, requestOptions));
     }
 
     private async __getAttribute(
+        id: string,
         request: Samsara.GetAttributeRequest,
         requestOptions?: AttributesClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.AttributeExpandedResponse>> {
-        const { id, entityType } = request;
+        const { entityType } = request;
         const _queryParams: Record<string, unknown> = {
             entityType,
         };
@@ -238,29 +240,31 @@ export class AttributesClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * To use this endpoint, select **Write Attributes** under the Setup & Administration category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Write Attributes** under the Setup & Administration category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
+     * @param {string} id - Samsara-provided UUID of the attribute.
      * @param {Samsara.DeleteAttributesRequest} request
      * @param {AttributesClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.attributes.delete({
-     *         id: "id",
+     *     await client.attributes.delete("id", {
      *         entityType: "driver"
      *     })
      */
     public delete(
+        id: string,
         request: Samsara.DeleteAttributesRequest,
         requestOptions?: AttributesClient.RequestOptions,
-    ): core.HttpResponsePromise<void> {
-        return core.HttpResponsePromise.fromPromise(this.__delete(request, requestOptions));
+    ): core.HttpResponsePromise<Samsara.StandardDeleteResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__delete(id, request, requestOptions));
     }
 
     private async __delete(
+        id: string,
         request: Samsara.DeleteAttributesRequest,
         requestOptions?: AttributesClient.RequestOptions,
-    ): Promise<core.WithRawResponse<void>> {
-        const { id, entityType } = request;
+    ): Promise<core.WithRawResponse<Samsara.StandardDeleteResponse>> {
+        const { entityType } = request;
         const _queryParams: Record<string, unknown> = {
             entityType,
         };
@@ -288,7 +292,7 @@ export class AttributesClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: undefined, rawResponse: _response.rawResponse };
+            return { data: _response.body as Samsara.StandardDeleteResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
@@ -307,29 +311,30 @@ export class AttributesClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * To use this endpoint, select **Write Attributes** under the Setup & Administration category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Write Attributes** under the Setup & Administration category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
+     * @param {string} id - Samsara-provided UUID of the attribute.
      * @param {Samsara.UpdateAttributeRequest} request
      * @param {AttributesClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.attributes.updateAttribute({
-     *         id: "id",
+     *     await client.attributes.updateAttribute("id", {
      *         entityType: "driver"
      *     })
      */
     public updateAttribute(
+        id: string,
         request: Samsara.UpdateAttributeRequest,
         requestOptions?: AttributesClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.AttributeExpandedResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__updateAttribute(request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__updateAttribute(id, request, requestOptions));
     }
 
     private async __updateAttribute(
+        id: string,
         request: Samsara.UpdateAttributeRequest,
         requestOptions?: AttributesClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.AttributeExpandedResponse>> {
-        const { id, ..._body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -349,7 +354,7 @@ export class AttributesClient {
             contentType: "application/json",
             queryParameters: requestOptions?.queryParams,
             requestType: "json",
-            body: _body,
+            body: request,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,

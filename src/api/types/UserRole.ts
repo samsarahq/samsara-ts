@@ -5,7 +5,7 @@
  */
 export interface UserRole {
     /** The unique ID for the role. */
-    id?: string | undefined;
+    id?: string;
     /** The name of the role. */
-    name?: string | undefined;
+    name?: string;
 }

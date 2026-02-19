@@ -5,7 +5,7 @@
  */
 export interface EventLocationResponseBody {
     /** Latitude of the event. */
-    latitude?: number | undefined;
+    latitude?: number;
     /** Longitude of the event. */
-    longitude?: number | undefined;
+    longitude?: number;
 }

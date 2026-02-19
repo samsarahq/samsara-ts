@@ -6,16 +6,16 @@ import type * as Samsara from "../index.js";
  * Qualification input field request body object.
  */
 export interface QualificationRecordRequestFieldInputObjectRequestBody {
-    checkBoxesValue?: Samsara.FormSubmissionRequestCheckBoxesValueObjectRequestBody | undefined;
-    dateTimeValue?: Samsara.FormSubmissionRequestDateTimeValueObjectRequestBody | undefined;
+    checkBoxesValue?: Samsara.FormSubmissionRequestCheckBoxesValueObjectRequestBody;
+    dateTimeValue?: Samsara.FormSubmissionRequestDateTimeValueObjectRequestBody;
     /** ID of the qualification input field object. */
     id: string;
-    mediaValue?: Samsara.FormSubmissionRequestMediaValueObjectRequestBody | undefined;
-    multipleChoiceValue?: Samsara.FormSubmissionRequestMultipleChoiceValueObjectRequestBody | undefined;
-    numberValue?: Samsara.FormSubmissionRequestNumberValueObjectRequestBody | undefined;
-    signatureValue?: Samsara.FormSubmissionRequestSignatureValueObjectRequestBody | undefined;
-    tableValue?: Samsara.FormSubmissionRequestTableValueObjectRequestBody | undefined;
-    textValue?: Samsara.FormSubmissionRequestTextValueObjectRequestBody | undefined;
+    mediaValue?: Samsara.FormSubmissionRequestMediaValueObjectRequestBody;
+    multipleChoiceValue?: Samsara.FormSubmissionRequestMultipleChoiceValueObjectRequestBody;
+    numberValue?: Samsara.FormSubmissionRequestNumberValueObjectRequestBody;
+    signatureValue?: Samsara.FormSubmissionRequestSignatureValueObjectRequestBody;
+    tableValue?: Samsara.FormSubmissionRequestTableValueObjectRequestBody;
+    textValue?: Samsara.FormSubmissionRequestTextValueObjectRequestBody;
     /** Type of the qualification field.  Valid values: `number`, `text`, `multiple_choice`, `check_boxes`, `datetime`, `table`, `media`, `signature` */
     type: QualificationRecordRequestFieldInputObjectRequestBody.Type;
 }

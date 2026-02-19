@@ -7,7 +7,7 @@ export interface QualificationTypeReferenceObjectResponseBody {
     /** ID of the qualification type (template UUID) */
     id: string;
     /** Name of the qualification type */
-    name?: string | undefined;
+    name?: string;
     /** ID of the qualification type revision (template revision UUID) */
-    revisionId?: string | undefined;
+    revisionId?: string;
 }

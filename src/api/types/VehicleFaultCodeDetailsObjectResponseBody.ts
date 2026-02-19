@@ -7,19 +7,19 @@ import type * as Samsara from "../index.js";
  */
 export interface VehicleFaultCodeDetailsObjectResponseBody {
     /** If true then alert on codes for less serious errors that do not warrant stopping. Defaults to false. */
-    hasAnyAmberWarningLampCodes?: boolean | undefined;
+    hasAnyAmberWarningLampCodes?: boolean;
     /** If true this means that any code is alertable. Defaults to false. */
-    hasAnyFaultCodes?: boolean | undefined;
+    hasAnyFaultCodes?: boolean;
     /** If true then alert on emission-related codes. Defaults to false. */
-    hasAnyMalfunctionIndicatorLampCodes?: boolean | undefined;
+    hasAnyMalfunctionIndicatorLampCodes?: boolean;
     /** If true then alert on codes for non-electric vehicle parts. Defaults to false. */
-    hasAnyProtectionLampCodes?: boolean | undefined;
+    hasAnyProtectionLampCodes?: boolean;
     /** If true then alert when the vehicle warrants stopping. Defaults to false. */
-    hasAnyRedStopLampCodes?: boolean | undefined;
+    hasAnyRedStopLampCodes?: boolean;
     /** If true then alert when the ABS light is on. Defaults to false. */
-    hasAnyTrailerAbsLampCodes?: boolean | undefined;
+    hasAnyTrailerAbsLampCodes?: boolean;
     /** The number of milliseconds the trigger needs to stay active before alerting. */
-    minDurationMilliseconds?: number | undefined;
+    minDurationMilliseconds?: number;
     /** The list of specific fault codes to be alerted on. */
-    specificFaultCodes?: Samsara.SpecificVehicleFaultCodeObjectResponseBody[] | undefined;
+    specificFaultCodes?: Samsara.SpecificVehicleFaultCodeObjectResponseBody[];
 }

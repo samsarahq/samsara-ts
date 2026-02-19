@@ -5,7 +5,7 @@
  */
 export interface DefectTrailerResponseResponseBody {
     /** A map of external ids */
-    externalIds?: Record<string, string> | undefined;
+    externalIds?: Record<string, string>;
     /** ID of the trailer */
-    id?: string | undefined;
+    id?: string;
 }

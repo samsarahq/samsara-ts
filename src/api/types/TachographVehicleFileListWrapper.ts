@@ -3,6 +3,6 @@
 import type * as Samsara from "../index.js";
 
 export interface TachographVehicleFileListWrapper {
-    files?: Samsara.TachographVehicleFileList | undefined;
-    vehicle?: Samsara.VehicleTinyResponse | undefined;
+    files?: Samsara.TachographVehicleFileList;
+    vehicle?: Samsara.VehicleTinyResponse;
 }

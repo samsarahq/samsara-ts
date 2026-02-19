@@ -7,11 +7,11 @@ export interface TripAssetResponseBody {
     /** Unique ID for the asset object that is reporting the location. */
     id: string;
     /** Name for the asset object that is reporting the location. Only returns when `includeAsset` is set to `true`. */
-    name?: string | undefined;
+    name?: string;
     /** Type for the asset object that is reporting the location. Only returns when `includeAsset` is set to `true`.  Valid values: `uncategorized`, `trailer`, `equipment`, `unpowered`, `vehicle` */
-    type?: TripAssetResponseBody.Type | undefined;
+    type?: TripAssetResponseBody.Type;
     /** VIN for the asset object that is reporting the location. Only returns when `includeAsset` is set to `true`. */
-    vin?: string | undefined;
+    vin?: string;
 }
 
 export namespace TripAssetResponseBody {

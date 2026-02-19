@@ -5,5 +5,5 @@
  */
 export interface NumberFieldTypeMetaDataObjectResponseBody {
     /** The number of decimal places allowed for the field. */
-    numberOfDecimalPlaces?: number | undefined;
+    numberOfDecimalPlaces?: number;
 }

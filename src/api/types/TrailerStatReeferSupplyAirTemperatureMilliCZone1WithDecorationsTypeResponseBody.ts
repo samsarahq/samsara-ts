@@ -6,7 +6,7 @@ import type * as Samsara from "../index.js";
  * Supply or discharge air temperature of zone 2 of the reefer. This is the temperature of the air as it leaves the cooling unit.
  */
 export interface TrailerStatReeferSupplyAirTemperatureMilliCZone1WithDecorationsTypeResponseBody {
-    decorations?: Samsara.TrailerStatDecorationResponseBody | undefined;
+    decorations?: Samsara.TrailerStatDecorationResponseBody;
     /** UTC timestamp in RFC 3339 format. */
     time: string;
     /** The supply or discharge air temperature reading in millidegree Celsius. */

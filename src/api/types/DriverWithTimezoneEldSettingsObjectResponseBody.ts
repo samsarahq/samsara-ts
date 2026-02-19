@@ -6,13 +6,13 @@ import type * as Samsara from "../index.js";
  * The driver the log applies to.
  */
 export interface DriverWithTimezoneEldSettingsObjectResponseBody {
-    eldSettings?: Samsara.EldSettingsObjectResponseBody | undefined;
+    eldSettings?: Samsara.EldSettingsObjectResponseBody;
     /** A map of external ids */
-    externalIds?: Record<string, string> | undefined;
+    externalIds?: Record<string, string>;
     /** ID of the driver */
     id: string;
     /** Name of the driver */
     name: string;
     /** Home terminal timezone, in order to indicate what time zone should be used to calculate the ELD logs. Driver timezones use [IANA timezone database](https://www.iana.org/time-zones) keys (e.g. `America/Los_Angeles`, `America/New_York`, `Europe/London`, etc.). You can find a mapping of common timezone formats to IANA timezone keys [here](https://unicode.org/cldr/charts/latest/supplemental/zone_tzid.html). */
-    timezone?: string | undefined;
+    timezone?: string;
 }

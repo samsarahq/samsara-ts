@@ -10,9 +10,9 @@ export interface QualificationRecordResponseObjectResponseBody {
     createdAtTime: string;
     createdBy: Samsara.FormsPolymorphicUserObjectResponseBody;
     /** Expiration date. UTC timestamp in RFC 3339 format. */
-    expirationDate?: string | undefined;
+    expirationDate?: string;
     /** A map of external ids */
-    externalIds?: Record<string, string> | undefined;
+    externalIds?: Record<string, string>;
     /** List of field inputs in a qualification record. */
     fields: Samsara.QualificationFieldInputObjectResponseBody[];
     /** ID of the qualification record. */

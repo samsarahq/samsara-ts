@@ -8,7 +8,7 @@ import type * as Samsara from "../index.js";
 export interface Dvir2RelatedDeviceObjectResponseBody {
     /** The type of asset.  Valid values: `Vehicle`, `Trailer` */
     assetType: Dvir2RelatedDeviceObjectResponseBody.AssetType;
-    device?: Samsara.Dvir2DeviceObjectResponseBody | undefined;
+    device?: Samsara.Dvir2DeviceObjectResponseBody;
     /** The ID of the device. */
     deviceId: number;
 }

@@ -5,9 +5,9 @@
  */
 export interface GoaTrailerTinyResponseResponseBody {
     /** A map of external ids */
-    externalIds?: Record<string, string> | undefined;
+    externalIds?: Record<string, string>;
     /** ID of the trailer */
-    id?: string | undefined;
+    id?: string;
     /** Name of the trailer */
-    name?: string | undefined;
+    name?: string;
 }

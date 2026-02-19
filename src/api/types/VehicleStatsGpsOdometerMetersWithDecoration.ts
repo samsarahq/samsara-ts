@@ -6,7 +6,7 @@ import type * as Samsara from "../index.js";
  * Vehicle GPS odometer event.
  */
 export interface VehicleStatsGpsOdometerMetersWithDecoration {
-    decorations?: Samsara.VehicleStatsDecorations | undefined;
+    decorations?: Samsara.VehicleStatsDecorations;
     time: Samsara.Time;
     /** Number of meters the vehicle has traveled according to the GPS calculations and the manually-specified odometer reading. */
     value: number;

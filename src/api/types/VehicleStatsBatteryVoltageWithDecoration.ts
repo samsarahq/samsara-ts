@@ -6,7 +6,7 @@ import type * as Samsara from "../index.js";
  * Vehicle battery voltage reading.
  */
 export interface VehicleStatsBatteryVoltageWithDecoration {
-    decorations?: Samsara.VehicleStatsDecorations | undefined;
+    decorations?: Samsara.VehicleStatsDecorations;
     time: Samsara.Time;
     /** The battery voltage in millivolts. */
     value: number;

@@ -25,9 +25,9 @@ export class MaintenanceClient {
     /**
      * Get DVIR defect types.
      *
-     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Read Defect Types** under the Maintenance category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Defect Types** under the Maintenance category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
@@ -130,9 +130,9 @@ export class MaintenanceClient {
     /**
      * Stream DVIR defects.
      *
-     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Read Defects** under the Maintenance category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Defects** under the Maintenance category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
@@ -240,13 +240,14 @@ export class MaintenanceClient {
     /**
      * Get a single DVIR defect by ID.
      *
-     *  <b>Rate limit:</b> 10 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 10 requests/sec (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Read Defects** under the Maintenance category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Defects** under the Maintenance category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
+     * @param {string} id - The unique ID of the DVIR defect.
      * @param {Samsara.GetDefectRequest} request
      * @param {MaintenanceClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -261,22 +262,22 @@ export class MaintenanceClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.maintenance.getDefect({
-     *         id: "id"
-     *     })
+     *     await client.maintenance.getDefect("id")
      */
     public getDefect(
-        request: Samsara.GetDefectRequest,
+        id: string,
+        request: Samsara.GetDefectRequest = {},
         requestOptions?: MaintenanceClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.DvirDefectGetDefectResponseBody> {
-        return core.HttpResponsePromise.fromPromise(this.__getDefect(request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__getDefect(id, request, requestOptions));
     }
 
     private async __getDefect(
-        request: Samsara.GetDefectRequest,
+        id: string,
+        request: Samsara.GetDefectRequest = {},
         requestOptions?: MaintenanceClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.DvirDefectGetDefectResponseBody>> {
-        const { id, includeExternalIds } = request;
+        const { includeExternalIds } = request;
         const _queryParams: Record<string, unknown> = {
             includeExternalIds,
         };
@@ -345,9 +346,9 @@ export class MaintenanceClient {
     /**
      * Returns a history/feed of changed DVIRs by updatedAtTime between startTime and endTime parameters. In case of missing `endTime` parameter it will return a never ending stream of data.
      *
-     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Read DVIRs** under the Maintenance category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read DVIRs** under the Maintenance category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
@@ -452,13 +453,14 @@ export class MaintenanceClient {
     /**
      * Get a single DVIR by ID.
      *
-     *  <b>Rate limit:</b> 10 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 10 requests/sec (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Read DVIRs** under the Maintenance category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read DVIRs** under the Maintenance category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
+     * @param {string} id - Id of the DVIR.
      * @param {Samsara.GetDvirRequest} request
      * @param {MaintenanceClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -473,22 +475,22 @@ export class MaintenanceClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.maintenance.getDvir({
-     *         id: "id"
-     *     })
+     *     await client.maintenance.getDvir("id")
      */
     public getDvir(
-        request: Samsara.GetDvirRequest,
+        id: string,
+        request: Samsara.GetDvirRequest = {},
         requestOptions?: MaintenanceClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.DvirGetDvirResponseBody> {
-        return core.HttpResponsePromise.fromPromise(this.__getDvir(request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__getDvir(id, request, requestOptions));
     }
 
     private async __getDvir(
-        request: Samsara.GetDvirRequest,
+        id: string,
+        request: Samsara.GetDvirRequest = {},
         requestOptions?: MaintenanceClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.DvirGetDvirResponseBody>> {
-        const { id, includeExternalIds } = request;
+        const { includeExternalIds } = request;
         const _queryParams: Record<string, unknown> = {
             includeExternalIds,
         };
@@ -556,28 +558,28 @@ export class MaintenanceClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * To use this endpoint, select **Write Defects** under the Maintenance category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Write Defects** under the Maintenance category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
+     * @param {string} id - ID of the defect.
      * @param {Samsara.DefectPatch} request
      * @param {MaintenanceClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.maintenance.updateDvirDefect({
-     *         id: "id"
-     *     })
+     *     await client.maintenance.updateDvirDefect("id")
      */
     public updateDvirDefect(
-        request: Samsara.DefectPatch,
+        id: string,
+        request: Samsara.DefectPatch = {},
         requestOptions?: MaintenanceClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.DefectResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__updateDvirDefect(request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__updateDvirDefect(id, request, requestOptions));
     }
 
     private async __updateDvirDefect(
-        request: Samsara.DefectPatch,
+        id: string,
+        request: Samsara.DefectPatch = {},
         requestOptions?: MaintenanceClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.DefectResponse>> {
-        const { id, ..._body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -597,7 +599,7 @@ export class MaintenanceClient {
             contentType: "application/json",
             queryParameters: requestOptions?.queryParams,
             requestType: "json",
-            body: _body,
+            body: request,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -624,7 +626,7 @@ export class MaintenanceClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * To use this endpoint, select **Write DVIRs** under the Maintenance category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Write DVIRs** under the Maintenance category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      * @param {Samsara.CreateDvirRequest} request
      * @param {MaintenanceClient.RequestOptions} requestOptions - Request-specific configuration.
@@ -632,8 +634,7 @@ export class MaintenanceClient {
      * @example
      *     await client.maintenance.createDvir({
      *         authorId: "11",
-     *         safetyStatus: "safe",
-     *         type: "mechanic"
+     *         safetyStatus: "safe"
      *     })
      */
     public createDvir(
@@ -666,7 +667,7 @@ export class MaintenanceClient {
             contentType: "application/json",
             queryParameters: requestOptions?.queryParams,
             requestType: "json",
-            body: request,
+            body: { ...request, type: "mechanic" },
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -693,30 +694,31 @@ export class MaintenanceClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * To use this endpoint, select **Write DVIRs** under the Maintenance category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Write DVIRs** under the Maintenance category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
+     * @param {string} id - ID of the DVIR.
      * @param {Samsara.UpdateDvirRequest} request
      * @param {MaintenanceClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.maintenance.updateDvir({
-     *         id: "id",
+     *     await client.maintenance.updateDvir("id", {
      *         authorId: "11",
      *         isResolved: true
      *     })
      */
     public updateDvir(
+        id: string,
         request: Samsara.UpdateDvirRequest,
         requestOptions?: MaintenanceClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.DvirResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__updateDvir(request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__updateDvir(id, request, requestOptions));
     }
 
     private async __updateDvir(
+        id: string,
         request: Samsara.UpdateDvirRequest,
         requestOptions?: MaintenanceClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.DvirResponse>> {
-        const { id, ..._body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -736,7 +738,7 @@ export class MaintenanceClient {
             contentType: "application/json",
             queryParameters: requestOptions?.queryParams,
             requestType: "json",
-            body: _body,
+            body: request,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -770,7 +772,7 @@ export class MaintenanceClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * To use this endpoint, select **Read DVIRs** under the Maintenance category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read DVIRs** under the Maintenance category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      * @param {MaintenanceClient.RequestOptions} requestOptions - Request-specific configuration.
      *

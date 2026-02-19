@@ -5,5 +5,5 @@
  */
 export interface PatchDriverVehicleAssignmentsV2ResponseBodyResponseBody {
     /** A description of the outcome from updating Driver Assignment information */
-    message?: string | undefined;
+    message?: string;
 }

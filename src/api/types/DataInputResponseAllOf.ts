@@ -4,13 +4,13 @@ import type * as Samsara from "../index.js";
 
 export interface DataInputResponseAllOf {
     /** List of FFT spectra data points from the data input. */
-    fftSpectraPoints?: Samsara.FftSpectraDataPoint[] | undefined;
+    fftSpectraPoints?: Samsara.FftSpectraDataPoint[];
     /** List of active J1939D1 statuses. */
-    j1939D1StatusPoints?: Samsara.J1939D1StatusDataPoint[] | undefined;
+    j1939D1StatusPoints?: Samsara.J1939D1StatusDataPoint[];
     /** List of location data points from the data input. */
-    locationPoints?: Samsara.LocationDataPoint[] | undefined;
+    locationPoints?: Samsara.LocationDataPoint[];
     /** List of numeric data points from the data input. */
-    numberPoints?: Samsara.NumberDataPoint[] | undefined;
+    numberPoints?: Samsara.NumberDataPoint[];
     /** List of string data points from the data input. */
-    stringPoints?: Samsara.StringDataPoint[] | undefined;
+    stringPoints?: Samsara.StringDataPoint[];
 }

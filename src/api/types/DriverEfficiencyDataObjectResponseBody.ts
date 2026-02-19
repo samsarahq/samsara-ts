@@ -5,21 +5,21 @@
  */
 export interface DriverEfficiencyDataObjectResponseBody {
     /** Represents the anticipation score for the driver. The score will be in either number or letter format depending on the organisation config. */
-    anticipationScore?: string | undefined;
+    anticipationScore?: string;
     /** Represents the coasting score for the driver. The score will be in either number or letter format depending on the organisation config. */
-    coastingScore?: string | undefined;
+    coastingScore?: string;
     /** Represents the cruise control score for the driver. The score will be in either number or letter format depending on the organisation config. */
-    cruiseControlScore?: string | undefined;
+    cruiseControlScore?: string;
     /** Represents the green band score for the driver. The score will be in either number or letter format depending on the organisation config. */
-    greenBandScore?: string | undefined;
+    greenBandScore?: string;
     /** Represents the high torque score for the driver. The score will be in either number or letter format depending on the organisation config. */
-    highTorqueScore?: string | undefined;
+    highTorqueScore?: string;
     /** Represents the idling score for the driver.The score will be in either number or letter format depending on the organisation config. */
-    idlingScore?: string | undefined;
+    idlingScore?: string;
     /** Represents the over speed score for the driver. The score will be in either number or letter format depending on the organisation config. */
-    overSpeedScore?: string | undefined;
+    overSpeedScore?: string;
     /** Represents the overall score for the driver. The score will be in either number (0-100) as a string or letter format (A-G) depending on the organisation config. */
     overallScore: string;
     /** Represents the ware-free breaking score for the driver. The score will be in either number or letter format depending on the organisation config. */
-    wearFreeBrakeScore?: string | undefined;
+    wearFreeBrakeScore?: string;
 }

@@ -5,7 +5,7 @@
  */
 export interface IdlingEventOperatorObjectResponseBody {
     /** A map of external ids for the operator. */
-    externalIds?: Record<string, string> | undefined;
+    externalIds?: Record<string, string>;
     /** Samsara ID of the operator assigned to the event. Returns driver ID at this time. */
     id: number;
 }

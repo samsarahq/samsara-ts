@@ -3,11 +3,11 @@
 import type * as Samsara from "../index.js";
 
 export interface V1VisionRunByCameraResponse {
-    cameraId?: number | undefined;
-    endedAtMs?: number | undefined;
-    inspectionResults?: Samsara.V1VisionRunByCameraResponseInspectionResults[] | undefined;
-    isOngoing?: boolean | undefined;
-    program?: Samsara.V1VisionRunByCameraResponseProgram | undefined;
-    runSummary?: Samsara.V1VisionRunByCameraResponseRunSummary | undefined;
-    startedAtMs?: number | undefined;
+    cameraId?: number;
+    endedAtMs?: number;
+    inspectionResults?: Samsara.V1VisionRunByCameraResponseInspectionResults[];
+    isOngoing?: boolean;
+    program?: Samsara.V1VisionRunByCameraResponseProgram;
+    runSummary?: Samsara.V1VisionRunByCameraResponseRunSummary;
+    startedAtMs?: number;
 }

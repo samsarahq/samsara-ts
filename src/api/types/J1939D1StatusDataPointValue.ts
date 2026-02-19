@@ -4,12 +4,12 @@
  * A single J1939D1 status
  */
 export interface J1939D1StatusDataPointValue {
-    amberLampStatus?: number | undefined;
-    fmi?: number | undefined;
-    milStatus?: number | undefined;
-    occuranceCount?: number | undefined;
-    protectLampStatus?: number | undefined;
-    redLampStatus?: number | undefined;
-    spn?: number | undefined;
-    txId?: number | undefined;
+    amberLampStatus?: number;
+    fmi?: number;
+    milStatus?: number;
+    occuranceCount?: number;
+    protectLampStatus?: number;
+    redLampStatus?: number;
+    spn?: number;
+    txId?: number;
 }

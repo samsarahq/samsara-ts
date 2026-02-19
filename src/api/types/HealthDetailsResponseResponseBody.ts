@@ -6,6 +6,6 @@ import type * as Samsara from "../index.js";
  * Detailed health related metadata for the device.
  */
 export interface HealthDetailsResponseResponseBody {
-    cameraDetails?: Samsara.CameraDetailsResponseResponseBody | undefined;
-    gatewayDetails?: Samsara.GatewayDetailsResponseResponseBody | undefined;
+    cameraDetails?: Samsara.CameraDetailsResponseResponseBody;
+    gatewayDetails?: Samsara.GatewayDetailsResponseResponseBody;
 }

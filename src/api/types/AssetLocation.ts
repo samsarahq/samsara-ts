@@ -7,7 +7,7 @@ import type * as Samsara from "../index.js";
  */
 export interface AssetLocation {
     /** Formatted address of the location */
-    formattedAddress?: string | undefined;
-    latitude?: Samsara.Latitude | undefined;
-    longitude?: Samsara.Longitude | undefined;
+    formattedAddress?: string;
+    latitude?: Samsara.Latitude;
+    longitude?: Samsara.Longitude;
 }

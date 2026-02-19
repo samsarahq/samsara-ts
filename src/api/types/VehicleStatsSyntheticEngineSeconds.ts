@@ -6,7 +6,7 @@ import type * as Samsara from "../index.js";
  * The cumulative number of seconds the engine has run estimated based on when the engine is running. Please note that this method <a href="https://kb.samsara.com/hc/en-us/articles/360043552511-Synthetic-Engine-Hours" target="_blank">requires the addition of a baseline</a> to trigger accumulation.
  */
 export interface VehicleStatsSyntheticEngineSeconds {
-    decorations?: Samsara.VehicleStatsDecorations | undefined;
+    decorations?: Samsara.VehicleStatsDecorations;
     time: Samsara.VehicleStatsAuxInputTime;
     value: Samsara.VehicleStatsSyntheticEngineSecondsValue;
 }

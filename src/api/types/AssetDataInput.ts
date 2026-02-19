@@ -4,12 +4,12 @@ import type * as Samsara from "../index.js";
 
 export interface AssetDataInput {
     /** Name of the data group that the data input is associated with */
-    dataGroup?: string | undefined;
+    dataGroup?: string;
     /** ID of the data input */
-    id?: string | undefined;
-    lastPoint?: Samsara.AssetDataInputLastPoint | undefined;
+    id?: string;
+    lastPoint?: Samsara.AssetDataInputLastPoint;
     /** Name of the data input */
-    name?: string | undefined;
+    name?: string;
     /** Units of data for this data input */
-    units?: string | undefined;
+    units?: string;
 }

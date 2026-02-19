@@ -5,9 +5,9 @@
  */
 export interface VehicleStatsFaultCodesPassengerDtc {
     /** The DTC description, if available. */
-    dtcDescription?: string | undefined;
+    dtcDescription?: string;
     /** The DTC identifier. */
     dtcId: number;
     /** The DTC short code, if available. */
-    dtcShortCode?: string | undefined;
+    dtcShortCode?: string;
 }

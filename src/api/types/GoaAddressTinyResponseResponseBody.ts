@@ -5,7 +5,7 @@
  */
 export interface GoaAddressTinyResponseResponseBody {
     /** A map of external ids */
-    externalIds?: Record<string, string> | undefined;
+    externalIds?: Record<string, string>;
     /** Id of the address */
     id: string;
     /** Name of the address */

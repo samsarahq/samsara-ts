@@ -4,13 +4,9 @@ import type * as Samsara from "../../../../index.js";
 
 /**
  * @example
- *     {
- *         id: "id"
- *     }
+ *     {}
  */
 export interface UpdateDriverRequest {
-    /** ID of the driver. This can either be the Samsara-specified ID, or an external ID. External IDs are customer specified key-value pairs created in the POST or PATCH requests of this resource. To specify an external ID as part of a path parameter, use the following format: `key:value`. For example, `payrollId:ABFS18600` */
-    id: string;
     attributes?: Samsara.UpdateDriverRequestAttributes[];
     carrierSettings?: Samsara.DriverCarrierSettings;
     /** The ID Card Code on the back of the physical card assigned to the driver.  Contact Samsara if you would like to enable this feature. */
@@ -33,7 +29,7 @@ export interface UpdateDriverRequest {
     eldPcEnabled?: boolean;
     /** Flag indicating this driver may select the Yard Move duty status in ELD logs. */
     eldYmEnabled?: boolean;
-    /** The [external IDs](https://developers.samsara.com/docs/external-ids) for the given object. */
+    /** The [external IDs](/docs/external-ids) for the given object. */
     externalIds?: Record<string, string>;
     hasDrivingFeaturesHidden?: Samsara.DriverHasDrivingFeaturesHidden;
     hasVehicleUnpinningEnabled?: Samsara.DriverHasVehicleUnpinningEnabled;

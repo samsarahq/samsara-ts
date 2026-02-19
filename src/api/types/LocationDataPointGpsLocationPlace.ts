@@ -5,17 +5,17 @@
  */
 export interface LocationDataPointGpsLocationPlace {
     /** City */
-    city?: string | undefined;
+    city?: string;
     /** House number */
-    houseNumber?: string | undefined;
+    houseNumber?: string;
     /** Neighborhood */
-    neighborhood?: string | undefined;
+    neighborhood?: string;
     /** POI */
-    poi?: string | undefined;
+    poi?: string;
     /** Postcode */
-    postcode?: string | undefined;
+    postcode?: string;
     /** State */
-    state?: string | undefined;
+    state?: string;
     /** Street */
-    street?: string | undefined;
+    street?: string;
 }

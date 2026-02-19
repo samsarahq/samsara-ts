@@ -4,9 +4,9 @@ import type * as Samsara from "../index.js";
 
 export interface DriverEfficienciesResponseData {
     /** A list of driver and associated vehicle efficiency data. */
-    driverSummaries?: Samsara.DriverEfficiency[] | undefined;
+    driverSummaries?: Samsara.DriverEfficiency[];
     /** End time of the window for which this efficiency report was computed. Will be a UTC timestamp in RFC 3339 format. For example: `2020-03-16T16:00:00Z` */
-    summaryEndTime?: string | undefined;
+    summaryEndTime?: string;
     /** Start time of the window for which this efficiency report was computed. Will be a UTC timestamp in RFC 3339 format. For example: `2020-03-15T16:00:00Z` */
-    summaryStartTime?: string | undefined;
+    summaryStartTime?: string;
 }

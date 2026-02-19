@@ -6,6 +6,6 @@ import type * as Samsara from "../index.js";
  * A single location data point of a data input.
  */
 export interface LocationDataPoint {
-    gpsLocation?: Samsara.LocationDataPointGpsLocation | undefined;
-    time?: Samsara.Time | undefined;
+    gpsLocation?: Samsara.LocationDataPointGpsLocation;
+    time?: Samsara.Time;
 }

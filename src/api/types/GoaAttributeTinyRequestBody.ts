@@ -5,13 +5,13 @@
  */
 export interface GoaAttributeTinyRequestBody {
     /** List of date values associated with the attribute (RFC 3339 full-date format: YYYY-MM-DD). */
-    dateValues?: string[] | undefined;
+    dateValues?: string[];
     /** Id of the attribute */
-    id?: string | undefined;
+    id?: string;
     /** Name of the attribute */
-    name?: string | undefined;
+    name?: string;
     /** List of number values associated with the attribute */
-    numberValues?: number[] | undefined;
+    numberValues?: number[];
     /** List of string values associated with the attribute. */
-    stringValues?: string[] | undefined;
+    stringValues?: string[];
 }

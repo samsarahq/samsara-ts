@@ -1,10 +1,10 @@
 {
-    "cliVersion": "3.76.0",
+    "cliVersion": "3.75.0",
     "generatorName": "fernapi/fern-typescript-sdk",
-    "generatorVersion": "3.48.1",
+    "generatorVersion": "3.46.3",
     "generatorConfig": {
         "namespaceExport": "Samsara",
         "generateWireTests": true
     },
-    "sdkVersion": "5.7.1"
+    "sdkVersion": "5.7.2"
 }

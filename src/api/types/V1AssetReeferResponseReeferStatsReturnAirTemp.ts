@@ -2,7 +2,7 @@
 
 export interface V1AssetReeferResponseReeferStatsReturnAirTemp {
     /** Timestamp in Unix milliseconds since epoch. */
-    changedAtMs?: number | undefined;
+    changedAtMs?: number;
     /** Return air temperature in millidegree Celsius. */
-    tempInMilliC?: number | undefined;
+    tempInMilliC?: number;
 }

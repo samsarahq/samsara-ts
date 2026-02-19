@@ -5,17 +5,15 @@
  */
 export interface PolicyViolationsDetectionAlertSettingsObjectResponseBody {
     /** List of selectable beta policy violation events to be tested. */
-    eventsAvailableForTesting?:
-        | PolicyViolationsDetectionAlertSettingsObjectResponseBody.EventsAvailableForTesting.Item[]
-        | undefined;
+    eventsAvailableForTesting?: PolicyViolationsDetectionAlertSettingsObjectResponseBody.EventsAvailableForTesting.Item[];
     /** List of selectable policy violation events to enable coaching for. */
-    eventsToCoach?: PolicyViolationsDetectionAlertSettingsObjectResponseBody.EventsToCoach.Item[] | undefined;
+    eventsToCoach?: PolicyViolationsDetectionAlertSettingsObjectResponseBody.EventsToCoach.Item[];
     /** Indicates whether in-cab audio alerts for rolling stops are turned on. */
-    hasInCabAudioAlertsEnabled?: boolean | undefined;
+    hasInCabAudioAlertsEnabled?: boolean;
     /** Indicates whether AI event detection for rolling stops is turned on. */
-    isEnabled?: boolean | undefined;
+    isEnabled?: boolean;
     /** Alert when speed is over this many miles per hour. */
-    speedingThresholdMph?: number | undefined;
+    speedingThresholdMph?: number;
 }
 
 export namespace PolicyViolationsDetectionAlertSettingsObjectResponseBody {

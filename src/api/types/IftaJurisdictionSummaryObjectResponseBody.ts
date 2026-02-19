@@ -7,7 +7,7 @@ export interface IftaJurisdictionSummaryObjectResponseBody {
     /** Jurisdiction code. */
     jurisdiction: string;
     /** Liters purchased for all qualified vehicles. */
-    taxPaidLiters?: number | undefined;
+    taxPaidLiters?: number;
     /** Distance in meters traveled on public roads in an IFTA jurisdiction. */
     taxableMeters: number;
     /** Total meters driven in this jurisdiction, taxable and non-taxable. */

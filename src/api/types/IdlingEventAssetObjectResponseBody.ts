@@ -5,7 +5,7 @@
  */
 export interface IdlingEventAssetObjectResponseBody {
     /** A map of external ids for the asset. */
-    externalIds?: Record<string, string> | undefined;
+    externalIds?: Record<string, string>;
     /** Samsara ID of the asset assigned to the event. Returns vehicle ID at this time. */
     id: number;
 }

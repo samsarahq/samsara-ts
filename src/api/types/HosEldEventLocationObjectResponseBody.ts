@@ -2,13 +2,13 @@
 
 export interface HosEldEventLocationObjectResponseBody {
     /** The best effort city for the latitude and longitude. */
-    city?: string | undefined;
+    city?: string;
     /** Relative location to the city, village, or town with population of 5,000 or greater. */
-    eldLocation?: string | undefined;
+    eldLocation?: string;
     /** The latitude of the location. */
-    latitude?: number | undefined;
+    latitude?: number;
     /** The longitude of the location. */
-    longitude?: number | undefined;
+    longitude?: number;
     /** The best effort state for the latitude and longitude. */
-    state?: string | undefined;
+    state?: string;
 }

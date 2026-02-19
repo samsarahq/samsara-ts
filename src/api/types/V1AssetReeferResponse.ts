@@ -7,10 +7,10 @@ import type * as Samsara from "../index.js";
  */
 export interface V1AssetReeferResponse {
     /** Asset type */
-    assetType?: string | undefined;
+    assetType?: string;
     /** Asset ID */
-    id?: number | undefined;
+    id?: number;
     /** Asset name */
-    name?: string | undefined;
-    reeferStats?: Samsara.V1AssetReeferResponseReeferStats | undefined;
+    name?: string;
+    reeferStats?: Samsara.V1AssetReeferResponseReeferStats;
 }

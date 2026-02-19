@@ -4,25 +4,25 @@ import type * as Samsara from "../index.js";
 
 export interface TagAllOf {
     /** The addresses that belong to this tag. */
-    addresses?: Samsara.TaggedObject[] | undefined;
+    addresses?: Samsara.TaggedObject[];
     /** The trailers, unpowered, and powered assets that belong to this tag. */
-    assets?: Samsara.TaggedObject[] | undefined;
+    assets?: Samsara.TaggedObject[];
     /** The drivers that belong to this tag. */
-    drivers?: Samsara.TaggedObject[] | undefined;
-    /** The [external IDs](https://developers.samsara.com/docs/external-ids) for the given object. */
-    externalIds?: TagAllOf.ExternalIds | undefined;
+    drivers?: Samsara.TaggedObject[];
+    /** The [external IDs](/docs/external-ids) for the given object. */
+    externalIds?: TagAllOf.ExternalIds;
     /** The machines that belong to thistag. */
-    machines?: Samsara.TaggedObject[] | undefined;
-    parentTag?: Samsara.ParentTag | undefined;
+    machines?: Samsara.TaggedObject[];
+    parentTag?: Samsara.ParentTag;
     /** The sensors that belong to this tag. */
-    sensors?: Samsara.TaggedObject[] | undefined;
+    sensors?: Samsara.TaggedObject[];
     /** The vehicles that belong to this tag. */
-    vehicles?: Samsara.TaggedObject[] | undefined;
+    vehicles?: Samsara.TaggedObject[];
 }
 
 export namespace TagAllOf {
     /**
-     * The [external IDs](https://developers.samsara.com/docs/external-ids) for the given object.
+     * The [external IDs](/docs/external-ids) for the given object.
      */
     export type ExternalIds = {};
 }

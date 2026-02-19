@@ -7,13 +7,13 @@ import type * as Samsara from "../index.js";
  */
 export interface EquipmentObject {
     /** An equipment identification number. */
-    assetSerial?: string | undefined;
-    externalIds?: Samsara.CarrierProposedAssignmentDriverAllOf2ExternalIds | undefined;
+    assetSerial?: string;
+    externalIds?: Samsara.CarrierProposedAssignmentDriverAllOf2ExternalIds;
     id: Samsara.EquipmentId;
-    installedGateway?: Samsara.EquipmentInstalledGateway | undefined;
-    name?: Samsara.EquipmentName | undefined;
+    installedGateway?: Samsara.EquipmentInstalledGateway;
+    name?: Samsara.EquipmentName;
     /** Notes about a piece of equipment. Samsara supports a maximum of 255 chars. */
-    notes?: string | undefined;
+    notes?: string;
     /** An array of all tag mini-objects that are associated with the given equipment. */
-    tags?: Samsara.TagTinyResponse[] | undefined;
+    tags?: Samsara.TagTinyResponse[];
 }

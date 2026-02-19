@@ -5,7 +5,7 @@
  */
 export interface AssetResponseResponseBody {
     /** A map of external ids */
-    externalIds?: Record<string, string> | undefined;
+    externalIds?: Record<string, string>;
     /** ID of the asset */
     id: string;
 }

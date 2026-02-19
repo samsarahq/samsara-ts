@@ -6,7 +6,7 @@ import type * as Samsara from "../index.js";
  * Details specific to DVIR Submitted.
  */
 export interface WorkflowDvirSubmittedResponseObjectResponseBody {
-    driver?: Samsara.GoaDriverTinyResponseResponseBody | undefined;
-    dvir?: Samsara.WorkflowDvirObjectResponseBody | undefined;
-    vehicle?: Samsara.VehicleWithGatewayTinyResponseResponseBody | undefined;
+    driver?: Samsara.GoaDriverTinyResponseResponseBody;
+    dvir?: Samsara.WorkflowDvirObjectResponseBody;
+    vehicle?: Samsara.VehicleWithGatewayTinyResponseResponseBody;
 }

@@ -3,5 +3,5 @@
 import type * as Samsara from "../index.js";
 
 export interface V1TrailerAssignmentsResponseAllOf {
-    trailerAssignments?: Samsara.V1TrailerAssignmentResponse[] | undefined;
+    trailerAssignments?: Samsara.V1TrailerAssignmentResponse[];
 }

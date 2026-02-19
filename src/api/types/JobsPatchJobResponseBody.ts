@@ -5,7 +5,7 @@ import type * as Samsara from "../index.js";
 export interface JobsPatchJobResponseBody {
     data: Samsara.JobResponseObjectResponseBody;
     /** The job id of the failed request */
-    id?: string | undefined;
+    id?: string;
     /** The uuid of the failed request */
-    uuid?: string | undefined;
+    uuid?: string;
 }

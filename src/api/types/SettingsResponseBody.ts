@@ -7,5 +7,5 @@ import type * as Samsara from "../index.js";
  */
 export interface SettingsResponseBody {
     /** The geofence setting. If this setting set to true, then underlying geofence addresses will be shown in reports instead of a geofence's name. */
-    showAddresses?: Samsara.VertexResponseBody[] | undefined;
+    showAddresses?: Samsara.VertexResponseBody[];
 }

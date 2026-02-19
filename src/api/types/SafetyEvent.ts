@@ -6,15 +6,15 @@ import type * as Samsara from "../index.js";
  * A safety event.
  */
 export interface SafetyEvent {
-    behaviorLabels?: Samsara.SafetyEventBehaviorLabels | undefined;
-    coachingState?: Samsara.SafetyEventCoachingState | undefined;
-    downloadForwardVideoUrl?: Samsara.SafetyEventDownloadForwardVideoUrl | undefined;
-    downloadInwardVideoUrl?: Samsara.SafetyEventDownloadInwardVideoUrl | undefined;
-    downloadTrackedInwardVideoUrl?: Samsara.SafetyEventDownloadTrackedInwardVideoUrl | undefined;
-    driver?: Samsara.DriverTinyResponse | undefined;
-    id?: Samsara.SafetyEventId | undefined;
-    location?: Samsara.Location | undefined;
-    maxAccelerationGForce?: Samsara.SafetyEventMaxAccelerationGForce | undefined;
-    time?: Samsara.SafetyEventTime | undefined;
-    vehicle?: Samsara.VehicleTinyResponse | undefined;
+    behaviorLabels?: Samsara.SafetyEventBehaviorLabels;
+    coachingState?: Samsara.SafetyEventCoachingState;
+    downloadForwardVideoUrl?: Samsara.SafetyEventDownloadForwardVideoUrl;
+    downloadInwardVideoUrl?: Samsara.SafetyEventDownloadInwardVideoUrl;
+    downloadTrackedInwardVideoUrl?: Samsara.SafetyEventDownloadTrackedInwardVideoUrl;
+    driver?: Samsara.DriverTinyResponse;
+    id?: Samsara.SafetyEventId;
+    location?: Samsara.Location;
+    maxAccelerationGForce?: Samsara.SafetyEventMaxAccelerationGForce;
+    time?: Samsara.SafetyEventTime;
+    vehicle?: Samsara.VehicleTinyResponse;
 }

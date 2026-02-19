@@ -5,5 +5,5 @@
  */
 export interface ReverseGeoObjectResponseBody {
     /** Formatted address of the reverse geocoding data. */
-    formattedLocation?: string | undefined;
+    formattedLocation?: string;
 }

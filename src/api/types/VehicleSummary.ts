@@ -3,17 +3,17 @@
 import type * as Samsara from "../index.js";
 
 export interface VehicleSummary {
-    anticipationBrakeEventCount?: Samsara.AnticipationBrakeEventCount | undefined;
-    coastingDurationMs?: Samsara.CoastingDurationMs | undefined;
-    cruiseControlDurationMs?: Samsara.CruiseControlDurationMs | undefined;
-    distanceDrivenMeters?: Samsara.DistanceDrivenMeters | undefined;
-    driveTimeDurationMs?: Samsara.DriveTimeDurationMs | undefined;
-    fuelConsumedMl?: Samsara.FuelConsumedMl | undefined;
-    greenBandDrivingDurationMs?: Samsara.GreenBandDrivingDurationMs | undefined;
-    highTorqueMs?: Samsara.HighTorqueMs | undefined;
-    idleTimeDurationMs?: Samsara.IdleTimeDurationMs | undefined;
-    overSpeedMs?: Samsara.OverSpeedMs | undefined;
-    powerTakeOffDurationMs?: Samsara.PowerTakeOffDurationMs | undefined;
-    totalBrakeEventCount?: Samsara.TotalBrakeEventCount | undefined;
-    vehicle?: Samsara.VehicleTinyResponse | undefined;
+    anticipationBrakeEventCount?: Samsara.AnticipationBrakeEventCount;
+    coastingDurationMs?: Samsara.CoastingDurationMs;
+    cruiseControlDurationMs?: Samsara.CruiseControlDurationMs;
+    distanceDrivenMeters?: Samsara.DistanceDrivenMeters;
+    driveTimeDurationMs?: Samsara.DriveTimeDurationMs;
+    fuelConsumedMl?: Samsara.FuelConsumedMl;
+    greenBandDrivingDurationMs?: Samsara.GreenBandDrivingDurationMs;
+    highTorqueMs?: Samsara.HighTorqueMs;
+    idleTimeDurationMs?: Samsara.IdleTimeDurationMs;
+    overSpeedMs?: Samsara.OverSpeedMs;
+    powerTakeOffDurationMs?: Samsara.PowerTakeOffDurationMs;
+    totalBrakeEventCount?: Samsara.TotalBrakeEventCount;
+    vehicle?: Samsara.VehicleTinyResponse;
 }

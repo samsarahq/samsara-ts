@@ -6,5 +6,5 @@ import type * as Samsara from "../index.js";
  * Contains the results for a machine history request
  */
 export interface V1MachineHistoryResponse {
-    machines?: Samsara.V1MachineHistoryResponseMachines[] | undefined;
+    machines?: Samsara.V1MachineHistoryResponseMachines[];
 }

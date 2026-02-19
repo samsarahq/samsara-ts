@@ -2,7 +2,7 @@
 
 export interface JobsDeleteJobResponseBody {
     /** The job id of the failed request */
-    id?: string | undefined;
+    id?: string;
     /** The uuid of the failed request */
-    uuid?: string | undefined;
+    uuid?: string;
 }

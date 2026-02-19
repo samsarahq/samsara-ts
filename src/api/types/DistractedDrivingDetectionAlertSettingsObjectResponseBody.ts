@@ -6,8 +6,8 @@ import type * as Samsara from "../index.js";
  * Enables AI detection of distracted driving, surfaces events in Safety Inbox, and enables configurable alerts. By default, Distracted Driving will impact the drivers' safety score.
  */
 export interface DistractedDrivingDetectionAlertSettingsObjectResponseBody {
-    inattentiveDrivingDetectionAlerts?: Samsara.InattentiveDrivingDetectionAlertSettingsObjectResponseBody | undefined;
+    inattentiveDrivingDetectionAlerts?: Samsara.InattentiveDrivingDetectionAlertSettingsObjectResponseBody;
     /** Indicates whether AI event detection for distracted driving behaviors is turned on. */
-    isEnabled?: boolean | undefined;
-    mobileUsageDetectionAlerts?: Samsara.MobileUsageDetectionAlertSettingsObjectResponseBody | undefined;
+    isEnabled?: boolean;
+    mobileUsageDetectionAlerts?: Samsara.MobileUsageDetectionAlertSettingsObjectResponseBody;
 }

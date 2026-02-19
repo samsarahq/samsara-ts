@@ -6,19 +6,19 @@ import type * as Samsara from "../index.js";
  * Asset
  */
 export interface AssetResponse {
-    customMetadata?: Samsara.CustomMetadata | undefined;
+    customMetadata?: Samsara.CustomMetadata;
     /** The list of data outputs configured on the asset. */
-    dataOutputs?: Samsara.AssetDataOutput[] | undefined;
+    dataOutputs?: Samsara.AssetDataOutput[];
     /** The id of the asset */
     id: string;
     /** The running status of the asset. Returns True for On, and False for Off. */
     isRunning: boolean;
-    location?: Samsara.AssetLocation | undefined;
-    locationDataInput?: Samsara.AssetResponseLocationDataInput | undefined;
-    locationType?: Samsara.LocationType | undefined;
+    location?: Samsara.AssetLocation;
+    locationDataInput?: Samsara.AssetResponseLocationDataInput;
+    locationType?: Samsara.LocationType;
     name: Samsara.AssetName;
-    parentAsset?: Samsara.AssetResponseParentAsset | undefined;
-    runningStatusDataInput?: Samsara.AssetResponseRunningStatusDataInput | undefined;
+    parentAsset?: Samsara.AssetResponseParentAsset;
+    runningStatusDataInput?: Samsara.AssetResponseRunningStatusDataInput;
     /** The list of [tags](https://kb.samsara.com/hc/en-us/articles/360026674631-Using-Tags-and-Tag-Nesting) associated with the Industrial Asset. **By default**: empty. Can be set or updated through the Samsara Dashboard or the API at any time. */
-    tags?: Samsara.TagTinyResponse[] | undefined;
+    tags?: Samsara.TagTinyResponse[];
 }

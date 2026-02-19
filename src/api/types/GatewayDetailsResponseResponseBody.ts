@@ -6,17 +6,17 @@ import type * as Samsara from "../index.js";
  * Gateway-specific health metadata.
  */
 export interface GatewayDetailsResponseResponseBody {
-    cellConnectivity?: Samsara.CellConnectivityResponseResponseBody | undefined;
+    cellConnectivity?: Samsara.CellConnectivityResponseResponseBody;
     /** The gateway's battery state.  Valid values: `critical`, `low`, `ok`, `unknown` */
-    gatewayBatteryState?: GatewayDetailsResponseResponseBody.GatewayBatteryState | undefined;
+    gatewayBatteryState?: GatewayDetailsResponseResponseBody.GatewayBatteryState;
     /** The battery temperature of the gateway, in degrees Celsius. */
-    gatewayBatteryTemp?: number | undefined;
+    gatewayBatteryTemp?: number;
     /** The battery voltage of the gateway, in volts. */
-    gatewayBatteryVolts?: number | undefined;
+    gatewayBatteryVolts?: number;
     /** The timestamp of the gateway's last check-in, in RFC 3339 format. */
-    lastCheckInTime?: string | undefined;
+    lastCheckInTime?: string;
     /** The battery voltage of the vehicle that gateway is connected to, in volts. */
-    vehicleBatteryVolts?: number | undefined;
+    vehicleBatteryVolts?: number;
 }
 
 export namespace GatewayDetailsResponseResponseBody {

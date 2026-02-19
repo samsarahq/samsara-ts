@@ -7,28 +7,28 @@ import type * as Samsara from "../index.js";
  */
 export interface Address {
     /** Reporting location type associated with the address (used for ELD reporting purposes). Valid values: `yard`, `shortHaul`, `workforceSite`, `riskZone`, `industrialSite`, `alertsOnly`, `agricultureSource`, `avoidanceZone`, `knownGPSJammingZone`, `authorizedZone`, `unauthorizedZone`. */
-    addressTypes?: Address.AddressTypes.Item[] | undefined;
+    addressTypes?: Address.AddressTypes.Item[];
     /** An array Contact mini-objects that are associated the Address. */
-    contacts?: Samsara.ContactTinyResponse[] | undefined;
+    contacts?: Samsara.ContactTinyResponse[];
     /** The date and time this address was created in RFC 3339 format. */
-    createdAtTime?: string | undefined;
-    /** The [external IDs](https://developers.samsara.com/docs/external-ids) for the given object. */
-    externalIds?: Address.ExternalIds | undefined;
+    createdAtTime?: string;
+    /** The [external IDs](/docs/external-ids) for the given object. */
+    externalIds?: Address.ExternalIds;
     /** The full street address for this address/geofence, as it might be recognized by Google Maps. */
     formattedAddress: string;
     geofence: Samsara.AddressGeofence;
     /** ID of the Address. */
     id: string;
     /** Latitude of the address. Will be geocoded from `formattedAddress` if not provided. */
-    latitude?: number | undefined;
+    latitude?: number;
     /** Longitude of the address. Will be geocoded from `formattedAddress` if not provided. */
-    longitude?: number | undefined;
+    longitude?: number;
     /** Name of the address. */
     name: string;
     /** Notes about the address. */
-    notes?: string | undefined;
+    notes?: string;
     /** An array of all tag mini-objects that are associated with the given address entry. */
-    tags?: Samsara.TagTinyResponse[] | undefined;
+    tags?: Samsara.TagTinyResponse[];
 }
 
 export namespace Address {
@@ -52,7 +52,7 @@ export namespace Address {
     }
 
     /**
-     * The [external IDs](https://developers.samsara.com/docs/external-ids) for the given object.
+     * The [external IDs](/docs/external-ids) for the given object.
      */
     export type ExternalIds = {};
 }

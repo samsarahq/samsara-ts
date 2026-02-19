@@ -6,5 +6,5 @@ import type * as Samsara from "../index.js";
  * Details specific to Ambient Temperature.
  */
 export interface AmbientTemperatureResponseBody {
-    sensor?: Samsara.AlertObjectSensorResponseBody | undefined;
+    sensor?: Samsara.AlertObjectSensorResponseBody;
 }

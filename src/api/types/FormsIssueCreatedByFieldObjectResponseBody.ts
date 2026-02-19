@@ -5,7 +5,7 @@
  */
 export interface FormsIssueCreatedByFieldObjectResponseBody {
     /** A map of external ids */
-    externalIds?: Record<string, string> | undefined;
+    externalIds?: Record<string, string>;
     /** ID of the issue created from this form input field input object. */
     id: string;
 }

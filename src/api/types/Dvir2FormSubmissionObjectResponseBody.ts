@@ -6,9 +6,9 @@ import type * as Samsara from "../index.js";
  * Base form submission metadata.
  */
 export interface Dvir2FormSubmissionObjectResponseBody {
-    assignedToPolymorphicUser?: Samsara.Dvir2AssignedToPolymorphicUserObjectResponseBody | undefined;
+    assignedToPolymorphicUser?: Samsara.Dvir2AssignedToPolymorphicUserObjectResponseBody;
     /** Time of when the form submission is due. UTC timestamp in RFC 3339 format. */
-    dueDate?: string | undefined;
+    dueDate?: string;
     /** Time when the form submission was last updated on the server. UTC timestamp in RFC 3339 format. */
     serverUpdatedAt: string;
     /** The unique UUID of the form submission */

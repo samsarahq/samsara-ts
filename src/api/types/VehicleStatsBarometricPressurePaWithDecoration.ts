@@ -6,7 +6,7 @@ import type * as Samsara from "../index.js";
  * Vehicle barometric pressure reading.
  */
 export interface VehicleStatsBarometricPressurePaWithDecoration {
-    decorations?: Samsara.VehicleStatsDecorations | undefined;
+    decorations?: Samsara.VehicleStatsDecorations;
     time: Samsara.Time;
     /** The barometric pressure reading in pascals. */
     value: number;

@@ -2,15 +2,15 @@
 
 export interface V1DoorResponseSensors {
     /** Flag indicating whether the current door is closed or open. */
-    doorClosed?: boolean | undefined;
+    doorClosed?: boolean;
     /** The timestamp of reported door status, specified in RFC 3339 time. */
-    doorStatusTime?: string | undefined;
+    doorStatusTime?: string;
     /** ID of the sensor. */
-    id?: number | undefined;
+    id?: number;
     /** Name of the sensor. */
-    name?: string | undefined;
+    name?: string;
     /** ID of the trailer associated with the sensor for the data point. If no trailer is connected, this parameter will not be reported. */
-    trailerId?: number | undefined;
+    trailerId?: number;
     /** ID of the vehicle associated with the sensor for the data point. If no vehicle is connected, this parameter will not be reported. */
-    vehicleId?: number | undefined;
+    vehicleId?: number;
 }

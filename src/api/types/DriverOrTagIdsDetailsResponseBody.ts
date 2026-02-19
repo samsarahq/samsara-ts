@@ -5,7 +5,7 @@
  */
 export interface DriverOrTagIdsDetailsResponseBody {
     /** On which driver IDs to trigger on. */
-    driverIds?: string[] | undefined;
+    driverIds?: string[];
     /** On which tag IDs to trigger on. */
-    tagIds?: string[] | undefined;
+    tagIds?: string[];
 }

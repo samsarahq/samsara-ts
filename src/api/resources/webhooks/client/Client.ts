@@ -25,9 +25,9 @@ export class WebhooksClient {
     /**
      * List all webhooks belonging to a specific org.
      *
-     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Read Webhooks** under the Setup & Administration category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Webhooks** under the Setup & Administration category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
@@ -130,9 +130,9 @@ export class WebhooksClient {
     /**
      * Create a webhook
      *
-     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Write Webhooks** under the Setup & Administration category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Write Webhooks** under the Setup & Administration category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
@@ -235,14 +235,14 @@ export class WebhooksClient {
     /**
      * Retrieve a webhook with given ID.
      *
-     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Read Webhooks** under the Setup & Administration category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Webhooks** under the Setup & Administration category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * @param {Samsara.GetWebhookRequest} request
+     * @param {string} id - ID of the webhook. This is the Samsara-specified ID.
      * @param {WebhooksClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
@@ -256,22 +256,19 @@ export class WebhooksClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.webhooks.getWebhook({
-     *         id: "id"
-     *     })
+     *     await client.webhooks.getWebhook("id")
      */
     public getWebhook(
-        request: Samsara.GetWebhookRequest,
+        id: string,
         requestOptions?: WebhooksClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.WebhooksGetWebhookResponseBody> {
-        return core.HttpResponsePromise.fromPromise(this.__getWebhook(request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__getWebhook(id, requestOptions));
     }
 
     private async __getWebhook(
-        request: Samsara.GetWebhookRequest,
+        id: string,
         requestOptions?: WebhooksClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.WebhooksGetWebhookResponseBody>> {
-        const { id } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -337,14 +334,14 @@ export class WebhooksClient {
     /**
      * Delete a webhook with the given ID.
      *
-     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Write Webhooks** under the Setup & Administration category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Write Webhooks** under the Setup & Administration category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * @param {Samsara.DeleteWebhookRequest} request
+     * @param {string} id - Unique identifier for the webhook to delete.
      * @param {WebhooksClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
@@ -358,22 +355,16 @@ export class WebhooksClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.webhooks.deleteWebhook({
-     *         id: "id"
-     *     })
+     *     await client.webhooks.deleteWebhook("id")
      */
-    public deleteWebhook(
-        request: Samsara.DeleteWebhookRequest,
-        requestOptions?: WebhooksClient.RequestOptions,
-    ): core.HttpResponsePromise<void> {
-        return core.HttpResponsePromise.fromPromise(this.__deleteWebhook(request, requestOptions));
+    public deleteWebhook(id: string, requestOptions?: WebhooksClient.RequestOptions): core.HttpResponsePromise<void> {
+        return core.HttpResponsePromise.fromPromise(this.__deleteWebhook(id, requestOptions));
     }
 
     private async __deleteWebhook(
-        request: Samsara.DeleteWebhookRequest,
+        id: string,
         requestOptions?: WebhooksClient.RequestOptions,
     ): Promise<core.WithRawResponse<void>> {
-        const { id } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -438,13 +429,14 @@ export class WebhooksClient {
      *  This means that any fields included in the patch request will _overwrite_ fields which exist on the target resource.
      *  For arrays, this means any array included in the request will _replace_ the array that exists at the specified path, it will not _add_ to the existing array
      *
-     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits [here](/docs/rate-limits)).
      *
-     * To use this endpoint, select **Write Webhooks** under the Setup & Administration category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Write Webhooks** under the Setup & Administration category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
+     * @param {string} id - Unique identifier for the webhook to update.
      * @param {Samsara.WebhooksPatchWebhookRequestBody} request
      * @param {WebhooksClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -459,22 +451,21 @@ export class WebhooksClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.webhooks.patchWebhook({
-     *         id: "id"
-     *     })
+     *     await client.webhooks.patchWebhook("id")
      */
     public patchWebhook(
-        request: Samsara.WebhooksPatchWebhookRequestBody,
+        id: string,
+        request: Samsara.WebhooksPatchWebhookRequestBody = {},
         requestOptions?: WebhooksClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.WebhooksPatchWebhookResponseBody> {
-        return core.HttpResponsePromise.fromPromise(this.__patchWebhook(request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__patchWebhook(id, request, requestOptions));
     }
 
     private async __patchWebhook(
-        request: Samsara.WebhooksPatchWebhookRequestBody,
+        id: string,
+        request: Samsara.WebhooksPatchWebhookRequestBody = {},
         requestOptions?: WebhooksClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.WebhooksPatchWebhookResponseBody>> {
-        const { id, ..._body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -494,7 +485,7 @@ export class WebhooksClient {
             contentType: "application/json",
             queryParameters: requestOptions?.queryParams,
             requestType: "json",
-            body: _body,
+            body: request,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,

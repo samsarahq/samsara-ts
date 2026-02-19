@@ -5,11 +5,11 @@
  */
 export interface ForwardCollisionDetectionAlertSettingsObjectResponseBody {
     /** Indicates whether in-cab audio alerts for forward collision are turned on. */
-    hasInCabAudioAlertsEnabled?: boolean | undefined;
+    hasInCabAudioAlertsEnabled?: boolean;
     /** Indicates whether AI event detection for forward collision is turned on. */
-    isEnabled?: boolean | undefined;
+    isEnabled?: boolean;
     /** Ranges from near forward collision (results in fewer events) to far forward collision (results in more events).  Valid values: `near`, `medium`, `far` */
-    sensitivity?: ForwardCollisionDetectionAlertSettingsObjectResponseBody.Sensitivity | undefined;
+    sensitivity?: ForwardCollisionDetectionAlertSettingsObjectResponseBody.Sensitivity;
 }
 
 export namespace ForwardCollisionDetectionAlertSettingsObjectResponseBody {

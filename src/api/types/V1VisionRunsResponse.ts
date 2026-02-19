@@ -3,5 +3,5 @@
 import type * as Samsara from "../index.js";
 
 export interface V1VisionRunsResponse {
-    visionRuns?: Samsara.V1VisionRunsResponseVisionRuns[] | undefined;
+    visionRuns?: Samsara.V1VisionRunsResponseVisionRuns[];
 }

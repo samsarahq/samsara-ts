@@ -6,47 +6,27 @@ import type * as Samsara from "../index.js";
  * Decorated values for the primary trailer stat datapoints.
  */
 export interface TrailerStatDecorationResponseBody {
-    carrierReeferState?: Samsara.TrailerStatReeferStateTypeResponseBody | undefined;
-    gps?: Samsara.TrailerStatGpsTypeResponseBody | undefined;
-    gpsOdometerMeters?: Samsara.TrailerStatGpsOdometerMetersTypeResponseBody | undefined;
-    reeferAlarms?: Samsara.TrailerStatReeferAlarmTypeResponseBody | undefined;
-    reeferAmbientAirTemperatureMilliC?:
-        | Samsara.TrailerStatReeferAmbientAirTemperatureMilliCTypeResponseBody
-        | undefined;
-    reeferDoorStateZone1?: Samsara.TrailerStatReeferDoorStateZone1TypeResponseBody | undefined;
-    reeferDoorStateZone2?: Samsara.TrailerStatReeferDoorStateZone2TypeResponseBody | undefined;
-    reeferDoorStateZone3?: Samsara.TrailerStatReeferDoorStateZone3TypeResponseBody | undefined;
-    reeferFuelPercent?: Samsara.TrailerStatReeferFuelPercentTypeResponseBody | undefined;
-    reeferObdEngineSeconds?: Samsara.TrailerStatReeferObdEngineSecondsTypeResponseBody | undefined;
-    reeferReturnAirTemperatureMilliCZone1?:
-        | Samsara.TrailerStatReeferReturnAirTemperatureMilliCZone1TypeResponseBody
-        | undefined;
-    reeferReturnAirTemperatureMilliCZone2?:
-        | Samsara.TrailerStatReeferReturnAirTemperatureMilliCZone2TypeResponseBody
-        | undefined;
-    reeferReturnAirTemperatureMilliCZone3?:
-        | Samsara.TrailerStatReeferReturnAirTemperatureMilliCZone3TypeResponseBody
-        | undefined;
-    reeferRunMode?: Samsara.TrailerStatReeferRunModeTypeResponseBody | undefined;
-    reeferSetPointTemperatureMilliCZone1?:
-        | Samsara.TrailerStatReeferSetPointTemperatureMilliCZone1TypeResponseBody
-        | undefined;
-    reeferSetPointTemperatureMilliCZone2?:
-        | Samsara.TrailerStatReeferSetPointTemperatureMilliCZone2TypeResponseBody
-        | undefined;
-    reeferSetPointTemperatureMilliCZone3?:
-        | Samsara.TrailerStatReeferSetPointTemperatureMilliCZone3TypeResponseBody
-        | undefined;
-    reeferStateZone1?: Samsara.TrailerStatReeferStateZone1TypeResponseBody | undefined;
-    reeferStateZone2?: Samsara.TrailerStatReeferStateZone2TypeResponseBody | undefined;
-    reeferStateZone3?: Samsara.TrailerStatReeferStateZone3TypeResponseBody | undefined;
-    reeferSupplyAirTemperatureMilliCZone1?:
-        | Samsara.TrailerStatReeferSupplyAirTemperatureMilliCZone1TypeResponseBody
-        | undefined;
-    reeferSupplyAirTemperatureMilliCZone2?:
-        | Samsara.TrailerStatReeferSupplyAirTemperatureMilliCZone2TypeResponseBody
-        | undefined;
-    reeferSupplyAirTemperatureMilliCZone3?:
-        | Samsara.TrailerStatReeferSupplyAirTemperatureMilliCZone3TypeResponseBody
-        | undefined;
+    carrierReeferState?: Samsara.TrailerStatReeferStateTypeResponseBody;
+    gps?: Samsara.TrailerStatGpsTypeResponseBody;
+    gpsOdometerMeters?: Samsara.TrailerStatGpsOdometerMetersTypeResponseBody;
+    reeferAlarms?: Samsara.TrailerStatReeferAlarmTypeResponseBody;
+    reeferAmbientAirTemperatureMilliC?: Samsara.TrailerStatReeferAmbientAirTemperatureMilliCTypeResponseBody;
+    reeferDoorStateZone1?: Samsara.TrailerStatReeferDoorStateZone1TypeResponseBody;
+    reeferDoorStateZone2?: Samsara.TrailerStatReeferDoorStateZone2TypeResponseBody;
+    reeferDoorStateZone3?: Samsara.TrailerStatReeferDoorStateZone3TypeResponseBody;
+    reeferFuelPercent?: Samsara.TrailerStatReeferFuelPercentTypeResponseBody;
+    reeferObdEngineSeconds?: Samsara.TrailerStatReeferObdEngineSecondsTypeResponseBody;
+    reeferReturnAirTemperatureMilliCZone1?: Samsara.TrailerStatReeferReturnAirTemperatureMilliCZone1TypeResponseBody;
+    reeferReturnAirTemperatureMilliCZone2?: Samsara.TrailerStatReeferReturnAirTemperatureMilliCZone2TypeResponseBody;
+    reeferReturnAirTemperatureMilliCZone3?: Samsara.TrailerStatReeferReturnAirTemperatureMilliCZone3TypeResponseBody;
+    reeferRunMode?: Samsara.TrailerStatReeferRunModeTypeResponseBody;
+    reeferSetPointTemperatureMilliCZone1?: Samsara.TrailerStatReeferSetPointTemperatureMilliCZone1TypeResponseBody;
+    reeferSetPointTemperatureMilliCZone2?: Samsara.TrailerStatReeferSetPointTemperatureMilliCZone2TypeResponseBody;
+    reeferSetPointTemperatureMilliCZone3?: Samsara.TrailerStatReeferSetPointTemperatureMilliCZone3TypeResponseBody;
+    reeferStateZone1?: Samsara.TrailerStatReeferStateZone1TypeResponseBody;
+    reeferStateZone2?: Samsara.TrailerStatReeferStateZone2TypeResponseBody;
+    reeferStateZone3?: Samsara.TrailerStatReeferStateZone3TypeResponseBody;
+    reeferSupplyAirTemperatureMilliCZone1?: Samsara.TrailerStatReeferSupplyAirTemperatureMilliCZone1TypeResponseBody;
+    reeferSupplyAirTemperatureMilliCZone2?: Samsara.TrailerStatReeferSupplyAirTemperatureMilliCZone2TypeResponseBody;
+    reeferSupplyAirTemperatureMilliCZone3?: Samsara.TrailerStatReeferSupplyAirTemperatureMilliCZone3TypeResponseBody;
 }

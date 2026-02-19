@@ -2,17 +2,17 @@
 
 export interface DocumentPdfQueryResponseData {
     /** Time that PDF generation was completed, in RFC 3339 format. */
-    completedAtTime?: string | undefined;
+    completedAtTime?: string;
     /** ID of the document. */
-    documentId?: string | undefined;
+    documentId?: string;
     /** S3 pre-signed URL to download PDF file. */
-    downloadDocumentPdfUrl?: string | undefined;
+    downloadDocumentPdfUrl?: string;
     /** ID of the PDF file generated or being generated for the document */
-    id?: string | undefined;
+    id?: string;
     /** Describes status of the PDF generation job. Valid values: `requested`, `processing`, `completed`. */
-    jobStatus?: DocumentPdfQueryResponseData.JobStatus | undefined;
+    jobStatus?: DocumentPdfQueryResponseData.JobStatus;
     /** Time that PDF generation was requested, in RFC 3339 format. */
-    requestedAtTime?: string | undefined;
+    requestedAtTime?: string;
 }
 
 export namespace DocumentPdfQueryResponseData {

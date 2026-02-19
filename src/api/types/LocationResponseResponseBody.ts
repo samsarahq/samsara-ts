@@ -7,9 +7,9 @@ import type * as Samsara from "../index.js";
  */
 export interface LocationResponseResponseBody {
     /** Radial accuracy of gps location in meters. This will only return if strong GPS is not available. */
-    accuracyMeters?: number | undefined;
-    address?: Samsara.AddressResponseResponseBody | undefined;
-    geofence?: Samsara.GeofenceResponseResponseBody | undefined;
+    accuracyMeters?: number;
+    address?: Samsara.AddressResponseResponseBody;
+    geofence?: Samsara.GeofenceResponseResponseBody;
     /** Heading of the asset in degrees. May be 0 if the asset is not moving. */
     headingDegrees: number;
     /** Latitude of the location of the asset. */

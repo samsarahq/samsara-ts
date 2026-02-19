@@ -9,9 +9,9 @@ export interface ContinuousReadingAlertThresholdResponseBody {
     /** The lower threshold of criticality. */
     threshold: number;
     /** The unit of the threshold defined by reading type.  Valid values: `ampere`, `bar`, `cad`, `celsius`, `chf`, `day`, `decimaldegrees`, `eur`, `fahrenheit`, `foot`, `gallon`, `gallonperkilogram`, `gallonsperhour`, `galpermi`, `gbp`, `gforce`, `gperliter`, `gperm`, `hertz`, `hour`, `imperialgallonperkilogram`, `impgallon`, `impgallonsperhour`, `impgalpermi`, `inch`, `kelvin`, `kgper100kmgaseousfuel`, `kgpergallon`, `kgperkm`, `kgperliter`, `kgpermi`, `kilogram`, `kilogramgaseousfuel`, `kilometer`, `kilopascal`, `kilowatthour`, `kmperhr`, `kmperl`, `kmperlgaseousfuel`, `lbpermi`, `liter`, `litergaseousfuel`, `literperkilogram`, `literpertonne`, `litersperhour`, `lper100km`, `lper100kmgaseousfuel`, `lperkm`, `lperm`, `meter`, `meterspersec`, `mile`, `milliknot`, `millisecond`, `millivolt`, `minute`, `mipergal`, `miperhr`, `miperimpgal`, `month`, `mpgusgalgaseousfuel`, `mpkggaseousfuel`, `mxn`, `percent`, `pound`, `poundsPerSquareInch`, `poundspergallon`, `poundsperliter`, `rpm`, `second`, `usd`, `usgallongaseousfuel`, `volt`, `voltAmpere`, `voltAmpereReactive`, `watt`, `watthour`, `week` */
-    unit?: ContinuousReadingAlertThresholdResponseBody.Unit | undefined;
+    unit?: ContinuousReadingAlertThresholdResponseBody.Unit;
     /** The upper threshold of criticality. Required for RANGE operations. */
-    upperThreshold?: number | undefined;
+    upperThreshold?: number;
 }
 
 export namespace ContinuousReadingAlertThresholdResponseBody {

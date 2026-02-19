@@ -5,7 +5,7 @@
  */
 export interface ReadingTriggerEnumValueObjectRequestBody {
     /** The numeric representation of the enum value. */
-    number?: number | undefined;
+    number?: number;
     /** The symbol representation of the enum value. */
-    symbol?: string | undefined;
+    symbol?: string;
 }

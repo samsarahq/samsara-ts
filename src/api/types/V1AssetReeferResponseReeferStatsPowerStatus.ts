@@ -2,7 +2,7 @@
 
 export interface V1AssetReeferResponseReeferStatsPowerStatus {
     /** Timestamp in Unix milliseconds since epoch. */
-    changedAtMs?: number | undefined;
+    changedAtMs?: number;
     /** Power status of the reefer. Valid values: `Off`, `Active`, `Active (Start/Stop)`, `Active (Continuous)`. */
-    status?: string | undefined;
+    status?: string;
 }

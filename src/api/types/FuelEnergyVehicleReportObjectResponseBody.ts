@@ -11,15 +11,15 @@ export interface FuelEnergyVehicleReportObjectResponseBody {
     /** Efficiency in MPG or MPGE over the given time range. For fuel vehicles this will be provided in MPG, for hybrid and electric vehicles this will be provided in MPGE. MPG/MPGE values are provided based on US gallons. */
     efficiencyMpge: number;
     /** Kilowatt-hours of energy used over the given time range. Only provided for hybrid and electric vehicles. */
-    energyUsedKwh?: number | undefined;
+    energyUsedKwh?: number;
     /** Milliseconds of engine idle time over the given time range. Only provided for fuel and hybrid vehicles. */
-    engineIdleTimeDurationMs?: number | undefined;
+    engineIdleTimeDurationMs?: number;
     /** Milliseconds of engine run time over the given time range. Only provided for fuel and hybrid vehicles. */
-    engineRunTimeDurationMs?: number | undefined;
+    engineRunTimeDurationMs?: number;
     /** Estimated kilograms of carbon emissions over the given time range. Only provided for fuel and hybrid vehicles. */
-    estCarbonEmissionsKg?: number | undefined;
+    estCarbonEmissionsKg?: number;
     estFuelEnergyCost: Samsara.FuelEnergyCostResponseResponseBody;
     /** Milliliters of fuel consumed over the given time range. Only provided for fuel and hybrid vehicles. */
-    fuelConsumedMl?: number | undefined;
+    fuelConsumedMl?: number;
     vehicle: Samsara.FuelEnergyVehicleObjectResponseBody;
 }

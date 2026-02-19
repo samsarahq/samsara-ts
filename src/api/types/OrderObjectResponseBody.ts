@@ -12,12 +12,12 @@ export interface OrderObjectResponseBody {
     customProperties: Samsara.OrderCustomPropertyResponseBody[];
     /** The customer-provided identifier for the order */
     customerOrderId: string;
-    delivery?: Samsara.OrderTaskResponseBody | undefined;
+    delivery?: Samsara.OrderTaskResponseBody;
     /** The ID of the hub the order belongs to */
     hubId: string;
     /** The Samsara-generated unique identifier (UUID) for the order */
     id: string;
-    pickup?: Samsara.OrderTaskResponseBody | undefined;
+    pickup?: Samsara.OrderTaskResponseBody;
     /** The ID of the plan the order belongs to */
     planId: string;
     /** Priority of the order (e.g., 1 for high, 5 for low) */

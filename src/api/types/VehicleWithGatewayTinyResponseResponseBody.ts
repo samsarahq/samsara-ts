@@ -7,18 +7,18 @@ import type * as Samsara from "../index.js";
  */
 export interface VehicleWithGatewayTinyResponseResponseBody {
     /** The type of the asset.  Valid values: `uncategorized`, `trailer`, `equipment`, `unpowered`, `vehicle` */
-    assetType?: VehicleWithGatewayTinyResponseResponseBody.AssetType | undefined;
+    assetType?: VehicleWithGatewayTinyResponseResponseBody.AssetType;
     /** A map of external ids */
-    externalIds?: Record<string, string> | undefined;
-    gateway?: Samsara.GoaGatewayTinyResponseResponseBody | undefined;
+    externalIds?: Record<string, string>;
+    gateway?: Samsara.GoaGatewayTinyResponseResponseBody;
     /** ID of the vehicle */
-    id?: string | undefined;
+    id?: string;
     /** The license plate of the vehicle. */
-    licensePlate?: string | undefined;
+    licensePlate?: string;
     /** Name of the vehicle */
-    name?: string | undefined;
+    name?: string;
     /** The VIN of the vehicle. */
-    vin?: string | undefined;
+    vin?: string;
 }
 
 export namespace VehicleWithGatewayTinyResponseResponseBody {

@@ -6,7 +6,7 @@ import type * as Samsara from "../index.js";
  * Vehicle engine state event.
  */
 export interface VehicleStatsEngineStateWithDecoration {
-    decorations?: Samsara.VehicleStatsDecorations | undefined;
+    decorations?: Samsara.VehicleStatsDecorations;
     time: Samsara.Time;
     value: Samsara.VehicleStatsEngineStateSetting;
 }

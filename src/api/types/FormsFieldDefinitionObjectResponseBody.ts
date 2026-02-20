@@ -7,37 +7,37 @@ import type * as Samsara from "../index.js";
  */
 export interface FormsFieldDefinitionObjectResponseBody {
     /** Indicates whether the field allows manual entry of a person. Only present for person fields. */
-    allowManualEntry?: boolean | undefined;
+    allowManualEntry?: boolean;
     /** List of allowed asset types that can be selected for this field. Only present for asset fields. */
-    allowedAssetTypes?: FormsFieldDefinitionObjectResponseBody.AllowedAssetTypes.Item[] | undefined;
+    allowedAssetTypes?: FormsFieldDefinitionObjectResponseBody.AllowedAssetTypes.Item[];
     /** Type of date/time entry allowed for this question. Only present for datetime fields.  Valid values: `datetime`, `date`, `time` */
-    allowedDateTimeValueType?: FormsFieldDefinitionObjectResponseBody.AllowedDateTimeValueType | undefined;
+    allowedDateTimeValueType?: FormsFieldDefinitionObjectResponseBody.AllowedDateTimeValueType;
     /** Identifier of the field that will optionally autofill the current field. Only present for fields that have been configured to be autofilled by a source media field. */
-    autofillFromId?: string | undefined;
+    autofillFromId?: string;
     /** List of columns in the table field. */
-    columns?: Samsara.FormsTableFieldDefinitionObjectResponseBody[] | undefined;
+    columns?: Samsara.FormsTableFieldDefinitionObjectResponseBody[];
     /** List of conditional actions. */
-    conditionalActions?: Samsara.FormsConditionalActionObjectResponseBody[] | undefined;
+    conditionalActions?: Samsara.FormsConditionalActionObjectResponseBody[];
     /** List of role IDs to filter org users by, representing which roles are selectable people for this field. Only present for person fields. */
-    filterByRoleIds?: string[] | undefined;
+    filterByRoleIds?: string[];
     /** Identifier of the field. */
     id: string;
     /** Indicates whether the field includes drivers as selectable people. Only present for person fields. */
-    includeDrivers?: boolean | undefined;
+    includeDrivers?: boolean;
     /** Indicates whether the field includes users as selectable people. Only present for person fields. */
-    includeUsers?: boolean | undefined;
+    includeUsers?: boolean;
     /** Indicates whether the current field is enabled to autofill other fields. Only present for media fields that have autofill enabled. */
-    isAutofillSource?: boolean | undefined;
+    isAutofillSource?: boolean;
     /** Indicates whether the form field is required to be filled out by the user. */
     isRequired: boolean;
     /** Label of the field. */
     label: string;
     /** Number of decimal places allowed. Only present for number fields. */
-    numDecimalPlaces?: number | undefined;
+    numDecimalPlaces?: number;
     /** List of select options for check boxes or multiple choice fields. */
-    options?: Samsara.FormsSelectOptionObjectResponseBody[] | undefined;
+    options?: Samsara.FormsSelectOptionObjectResponseBody[];
     /** The maximum possible score weight for this field. For multiple choice fields, this number is the highest option score weight of the given options. For check boxes fields, this number is the sum of the score weights for all scored options. Only present for multiple choice or check boxes fields that have scoring. */
-    questionWeight?: number | undefined;
+    questionWeight?: number;
     /** Type of the field.  Valid values: `number`, `text`, `multiple_choice`, `check_boxes`, `media`, `datetime`, `signature`, `asset`, `person`, `geofence`, `instruction`, `media_instruction`, `table` */
     type: FormsFieldDefinitionObjectResponseBody.Type;
 }

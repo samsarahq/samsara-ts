@@ -6,5 +6,5 @@ import type * as Samsara from "../index.js";
  * Hos settings for a driver.
  */
 export interface DriverHosSetting {
-    heavyHaulExemptionToggleEnabled?: Samsara.DriverHeavyHaulExemptionToggleEnabled | undefined;
+    heavyHaulExemptionToggleEnabled?: Samsara.DriverHeavyHaulExemptionToggleEnabled;
 }

@@ -5,13 +5,13 @@
  */
 export interface DataInputTinyResponse {
     /** Unique identifier for the data input's asset. */
-    assetId?: string | undefined;
+    assetId?: string;
     /** Data group for this data input. */
-    dataGroup?: string | undefined;
+    dataGroup?: string;
     /** Unique identifier for the data input. */
-    id?: string | undefined;
+    id?: string;
     /** Name of this data input. */
-    name?: string | undefined;
+    name?: string;
     /** Units of data for this data input. */
-    units?: string | undefined;
+    units?: string;
 }

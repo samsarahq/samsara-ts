@@ -6,7 +6,7 @@ import type * as Samsara from "../index.js";
  * Vehicle GPS distance event.
  */
 export interface VehicleStatsGpsDistanceMetersWithDecoration {
-    decorations?: Samsara.VehicleStatsDecorations | undefined;
+    decorations?: Samsara.VehicleStatsDecorations;
     time: Samsara.Time;
     /** Number of meters the vehicle has traveled since the gateway was installed, based on GPS calculations. */
     value: number;

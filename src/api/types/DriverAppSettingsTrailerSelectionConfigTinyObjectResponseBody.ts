@@ -5,9 +5,9 @@
  */
 export interface DriverAppSettingsTrailerSelectionConfigTinyObjectResponseBody {
     /** Allow drivers to create new trailers in the Samsara Driver app. */
-    driverTrailerCreationEnabled?: boolean | undefined;
+    driverTrailerCreationEnabled?: boolean;
     /** Trailer selection limit. */
-    maxNumOfTrailersSelected?: number | undefined;
+    maxNumOfTrailersSelected?: number;
     /** Allow drivers to search for trailers outside of their selection tag when connected to the internet */
-    orgTrailerSearch?: boolean | undefined;
+    orgTrailerSearch?: boolean;
 }

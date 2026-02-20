@@ -2,7 +2,7 @@
 
 export interface V1AssetReeferResponseReeferStatsSetPoint {
     /** Timestamp in Unix milliseconds since epoch. */
-    changedAtMs?: number | undefined;
+    changedAtMs?: number;
     /** Set point temperature in millidegree Celsius. */
-    tempInMilliC?: number | undefined;
+    tempInMilliC?: number;
 }

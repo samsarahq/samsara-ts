@@ -6,9 +6,9 @@ import type * as Samsara from "../index.js";
  * Details specific to Reading Triggers.
  */
 export interface ReadingTriggerDetailsResponseBody {
-    asset?: Samsara.AlertObjectAssetResponseBody | undefined;
-    continuousThreshold?: Samsara.ContinuousReadingAlertThresholdResponseBody | undefined;
-    enumThreshold?: Samsara.EnumReadingAlertThresholdResponseBody | undefined;
+    asset?: Samsara.AlertObjectAssetResponseBody;
+    continuousThreshold?: Samsara.ContinuousReadingAlertThresholdResponseBody;
+    enumThreshold?: Samsara.EnumReadingAlertThresholdResponseBody;
     /** The ID of the reading. */
     id: string;
 }

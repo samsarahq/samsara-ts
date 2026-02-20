@@ -5,15 +5,15 @@
  */
 export interface FormsGeofenceObjectResponseBody {
     /** Address of the geofence. Included if 'entryType' is `tracked`. */
-    address?: string | undefined;
+    address?: string;
     /** The type of entry for the geofence.  Valid values: `tracked`, `untracked` */
     entryType: FormsGeofenceObjectResponseBody.EntryType;
     /** A map of external ids */
-    externalIds?: Record<string, string> | undefined;
+    externalIds?: Record<string, string>;
     /** ID of the tracked geofence. Included if 'entryType' is `tracked`. */
-    id?: string | undefined;
+    id?: string;
     /** Name of an untracked (i.e. manually entered) geofence. */
-    name?: string | undefined;
+    name?: string;
 }
 
 export namespace FormsGeofenceObjectResponseBody {

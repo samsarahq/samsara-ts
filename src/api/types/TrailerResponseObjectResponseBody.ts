@@ -4,20 +4,20 @@ import type * as Samsara from "../index.js";
 
 export interface TrailerResponseObjectResponseBody {
     /** Indicates if the trailer is visible on the Samsara mobile apps. */
-    enabledForMobile?: boolean | undefined;
+    enabledForMobile?: boolean;
     /** A map of external ids */
-    externalIds?: Record<string, string> | undefined;
+    externalIds?: Record<string, string>;
     /** The unique Samsara ID of the Trailer. This is automatically generated when the Trailer object is created. It cannot be changed. */
     id: string;
-    installedGateway?: Samsara.TrailerGoaGatewayTinyResponseResponseBody | undefined;
+    installedGateway?: Samsara.TrailerGoaGatewayTinyResponseResponseBody;
     /** The license plate of the Trailer. **By default**: empty. Can be set or updated through the Samsara Dashboard or the API at any time. */
-    licensePlate?: string | undefined;
+    licensePlate?: string;
     /** The human-readable name of the Trailer. This is set by a fleet administrator and will appear in both Samsara’s cloud dashboard as well as the Samsara Driver mobile app. By default, this name is the serial number of the Samsara Asset Gateway. It can be set or updated through the Samsara Dashboard or through the API at any time. */
-    name?: string | undefined;
+    name?: string;
     /** These are generic notes about the Trailer. Empty by default. Can be set or updated through the Samsara Dashboard or the API at any time. */
-    notes?: string | undefined;
+    notes?: string;
     /** The list of [tags](https://kb.samsara.com/hc/en-us/articles/360026674631-Using-Tags-and-Tag-Nesting) associated with the Trailer. */
-    tags?: Samsara.GoaTagTinyResponseResponseBody[] | undefined;
+    tags?: Samsara.GoaTagTinyResponseResponseBody[];
     /** The serial number of the trailer. */
-    trailerSerialNumber?: string | undefined;
+    trailerSerialNumber?: string;
 }

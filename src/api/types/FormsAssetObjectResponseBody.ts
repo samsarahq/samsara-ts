@@ -7,11 +7,11 @@ export interface FormsAssetObjectResponseBody {
     /** The type of entry for the asset.  Valid values: `tracked`, `untracked` */
     entryType: FormsAssetObjectResponseBody.EntryType;
     /** A map of external ids */
-    externalIds?: Record<string, string> | undefined;
+    externalIds?: Record<string, string>;
     /** ID of a tracked asset. Included if 'entryType' is `tracked`. */
-    id?: string | undefined;
+    id?: string;
     /** Name of an untracked (i.e. manually entered) asset. */
-    name?: string | undefined;
+    name?: string;
 }
 
 export namespace FormsAssetObjectResponseBody {

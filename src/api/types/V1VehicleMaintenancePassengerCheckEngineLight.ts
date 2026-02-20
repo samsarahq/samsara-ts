@@ -4,5 +4,5 @@
  * Passenger vehicle check engine light.
  */
 export interface V1VehicleMaintenancePassengerCheckEngineLight {
-    isOn?: boolean | undefined;
+    isOn?: boolean;
 }

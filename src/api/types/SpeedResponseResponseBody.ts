@@ -5,7 +5,7 @@
  */
 export interface SpeedResponseResponseBody {
     /** Speed of asset based on ECU data. */
-    ecuSpeedMetersPerSecond?: number | undefined;
+    ecuSpeedMetersPerSecond?: number;
     /** Speed of asset based on GPS data. */
-    gpsSpeedMetersPerSecond?: number | undefined;
+    gpsSpeedMetersPerSecond?: number;
 }

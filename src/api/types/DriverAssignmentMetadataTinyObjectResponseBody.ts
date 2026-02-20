@@ -5,5 +5,5 @@
  */
 export interface DriverAssignmentMetadataTinyObjectResponseBody {
     /** Assigned source name from an external source. */
-    sourceName?: string | undefined;
+    sourceName?: string;
 }

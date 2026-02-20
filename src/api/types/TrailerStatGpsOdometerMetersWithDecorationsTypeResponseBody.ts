@@ -6,7 +6,7 @@ import type * as Samsara from "../index.js";
  * Trailer GPS odometer event.
  */
 export interface TrailerStatGpsOdometerMetersWithDecorationsTypeResponseBody {
-    decorations?: Samsara.TrailerStatDecorationResponseBody | undefined;
+    decorations?: Samsara.TrailerStatDecorationResponseBody;
     /** UTC timestamp in RFC 3339 format. */
     time: string;
     /** Number of meters the trailer has traveled according to the GPS calculations and the manually specified odometer reading. */

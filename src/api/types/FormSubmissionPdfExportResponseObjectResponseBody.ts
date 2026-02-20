@@ -5,9 +5,9 @@
  */
 export interface FormSubmissionPdfExportResponseObjectResponseBody {
     /** Time when the PDF export job was completed. Included if 'jobStatus' is 'done'. UTC timestamp in RFC 3339 format. */
-    completedAtTime?: string | undefined;
+    completedAtTime?: string;
     /** An error message for failed PDF export jobs. Included if 'jobStatus' is 'failed'. */
-    errorMessage?: string | undefined;
+    errorMessage?: string;
     /** Time when the PDF export job expires. After expiration, GET requests for this job will fail and clients must create a new one with another POST request. UTC timestamp in RFC 3339 format. */
     expiresAtTime: string;
     /** ID of the form submission being exported. */
@@ -17,9 +17,9 @@ export interface FormSubmissionPdfExportResponseObjectResponseBody {
     /** Unique ID for the PDF export that is created. */
     pdfId: string;
     /** URL to download the PDF file. Expires at time specified in 'pdfUrlExpiresAtTime'. Included if 'jobStatus' is 'done'. */
-    pdfUrl?: string | undefined;
+    pdfUrl?: string;
     /** Time when the PDF export's 'pdfUrl' expires. After expiration, clients can retrieve a fresh url with another GET request. UTC timestamp in RFC 3339 format. */
-    pdfUrlExpiresAtTime?: string | undefined;
+    pdfUrlExpiresAtTime?: string;
     /** Time when the PDF export POST request was made. UTC timestamp in RFC 3339 format. */
     requestedAtTime: string;
 }

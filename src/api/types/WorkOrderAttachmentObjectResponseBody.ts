@@ -9,9 +9,9 @@ export interface WorkOrderAttachmentObjectResponseBody {
     /** Status of the media record.  Valid values: `unknown`, `processing`, `finished` */
     processingStatus: WorkOrderAttachmentObjectResponseBody.ProcessingStatus;
     /** URL containing a link to associated media content. Included if 'processingStatus' is 'finished'. */
-    url?: string | undefined;
+    url?: string;
     /** Expiration time of the media record 'url'. UTC timestamp in RFC 3339 format. */
-    urlExpiresAt?: string | undefined;
+    urlExpiresAt?: string;
 }
 
 export namespace WorkOrderAttachmentObjectResponseBody {

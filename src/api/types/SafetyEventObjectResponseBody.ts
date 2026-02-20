@@ -7,11 +7,11 @@ import type * as Samsara from "../index.js";
  */
 export interface SafetyEventObjectResponseBody {
     /** Behavior labels for a safety event. */
-    behaviorLabels?: Samsara.SafetyEventBehaviorLabelsResponseBody[] | undefined;
-    driver?: Samsara.SafetyEventDriverObjectResponseBody | undefined;
+    behaviorLabels?: Samsara.SafetyEventBehaviorLabelsResponseBody[];
+    driver?: Samsara.SafetyEventDriverObjectResponseBody;
     /** The unique Samsara ID of the safety event. */
-    id?: string | undefined;
+    id?: string;
     /** The time the safety event occurred in RFC 3339 milliseconds format. */
-    time?: string | undefined;
-    vehicle?: Samsara.SafetyEventVehicleObjectResponseBody | undefined;
+    time?: string;
+    vehicle?: Samsara.SafetyEventVehicleObjectResponseBody;
 }

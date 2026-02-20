@@ -6,7 +6,7 @@ import type * as Samsara from "../index.js";
  * The speed of the vehicle in miles per hour, as reported by the ECU.
  */
 export interface VehicleStatsEcuSpeedMphWithDecoration {
-    decorations?: Samsara.VehicleStatsDecorations | undefined;
+    decorations?: Samsara.VehicleStatsDecorations;
     time: Samsara.Time;
     /** The speed of the vehicle in miles per hour. */
     value: number;

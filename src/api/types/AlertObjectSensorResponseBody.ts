@@ -9,10 +9,10 @@ export interface AlertObjectSensorResponseBody {
     /** Thye ID of the sensor associated with the alert */
     id: string;
     /** The name of the sensor. */
-    name?: string | undefined;
+    name?: string;
     /** The Pinned Device ID associated with the alert */
-    pinnedDeviceId?: string | undefined;
-    product?: Samsara.AlertObjectProductResponseBody | undefined;
+    pinnedDeviceId?: string;
+    product?: Samsara.AlertObjectProductResponseBody;
     /** The list of [tags](https://kb.samsara.com/hc/en-us/articles/360026674631-Using-Tags-and-Tag-Nesting) associated with the sensor. */
-    tags?: Samsara.GoaTagTinyResponseResponseBody[] | undefined;
+    tags?: Samsara.GoaTagTinyResponseResponseBody[];
 }

@@ -6,7 +6,7 @@ import type * as Samsara from "../index.js";
  * J1939 based data. Null if no data is available.
  */
 export interface V1VehicleMaintenanceJ1939 {
-    checkEngineLight?: Samsara.V1VehicleMaintenanceJ1939CheckEngineLight | undefined;
+    checkEngineLight?: Samsara.V1VehicleMaintenanceJ1939CheckEngineLight;
     /** J1939 DTCs. */
-    diagnosticTroubleCodes?: Samsara.V1VehicleMaintenanceJ1939DiagnosticTroubleCodes[] | undefined;
+    diagnosticTroubleCodes?: Samsara.V1VehicleMaintenanceJ1939DiagnosticTroubleCodes[];
 }

@@ -5,11 +5,11 @@
  */
 export interface DefectResolvedBy {
     /** ID of the entity that resolved this defect. If the defect was resolved by a driver, this will be a Samsara Driver ID. If the defect was resolved by a mechanic, this will be the Samsara Dashboard User ID of the mechanic. */
-    id?: string | undefined;
+    id?: string;
     /** Name of the person who resolved this defect. */
-    name?: string | undefined;
+    name?: string;
     /** Indicates whether this defect was resolved by a `driver` or a `mechanic`. */
-    type?: DefectResolvedBy.Type | undefined;
+    type?: DefectResolvedBy.Type;
 }
 
 export namespace DefectResolvedBy {

@@ -5,11 +5,11 @@
  */
 export interface HarshTurnSensitivityV2SettingsObjectResponseBody {
     /** Harsh turn sensitivity settings for heavy duty vehicle.  Valid values: `unknown`, `invalid`, `off`, `veryLow`, `low`, `normal`, `high` */
-    heavyDuty?: HarshTurnSensitivityV2SettingsObjectResponseBody.HeavyDuty | undefined;
+    heavyDuty?: HarshTurnSensitivityV2SettingsObjectResponseBody.HeavyDuty;
     /** Harsh turn sensitivity settings for light duty vehicle.  Valid values: `unknown`, `invalid`, `off`, `veryLow`, `low`, `normal`, `high` */
-    lightDuty?: HarshTurnSensitivityV2SettingsObjectResponseBody.LightDuty | undefined;
+    lightDuty?: HarshTurnSensitivityV2SettingsObjectResponseBody.LightDuty;
     /** Harsh turn sensitivity settings for passenger car.  Valid values: `unknown`, `invalid`, `off`, `veryLow`, `low`, `normal`, `high` */
-    passenger?: HarshTurnSensitivityV2SettingsObjectResponseBody.Passenger | undefined;
+    passenger?: HarshTurnSensitivityV2SettingsObjectResponseBody.Passenger;
 }
 
 export namespace HarshTurnSensitivityV2SettingsObjectResponseBody {

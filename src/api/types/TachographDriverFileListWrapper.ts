@@ -3,6 +3,6 @@
 import type * as Samsara from "../index.js";
 
 export interface TachographDriverFileListWrapper {
-    driver?: Samsara.DriverTinyResponse | undefined;
-    files?: Samsara.TachographDriverFileList | undefined;
+    driver?: Samsara.DriverTinyResponse;
+    files?: Samsara.TachographDriverFileList;
 }

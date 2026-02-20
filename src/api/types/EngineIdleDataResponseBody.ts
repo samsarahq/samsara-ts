@@ -6,6 +6,6 @@ import type * as Samsara from "../index.js";
  * Details specific to Engine Idle.
  */
 export interface EngineIdleDataResponseBody {
-    driver?: Samsara.AlertObjectDriverResponseBody | undefined;
-    vehicle?: Samsara.AlertObjectVehicleResponseBody | undefined;
+    driver?: Samsara.AlertObjectDriverResponseBody;
+    vehicle?: Samsara.AlertObjectVehicleResponseBody;
 }

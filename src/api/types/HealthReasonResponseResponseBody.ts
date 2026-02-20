@@ -5,9 +5,9 @@
  */
 export interface HealthReasonResponseResponseBody {
     /** The type of health reason detected.  Valid values: `assetUnplugged`, `cameraMisaligned`, `dataPending`, `healthy`, `inwardCameraObstruction`, `irregularRecording`, `lowDeviceBattery`, `missingEldDiagnostics`, `missingVin`, `needsReplacement`, `newlyInstalledDevice`, `noGpsSignal`, `notDetected`, `outwardCameraObstruction`, `recordingTimeRequired`, `unknown`, `vgUnplugged` */
-    healthReasonCode?: HealthReasonResponseResponseBody.HealthReasonCode | undefined;
+    healthReasonCode?: HealthReasonResponseResponseBody.HealthReasonCode;
     /** The timestamp when this health reason began, in RFC3339 format. */
-    startTime?: string | undefined;
+    startTime?: string;
 }
 
 export namespace HealthReasonResponseResponseBody {

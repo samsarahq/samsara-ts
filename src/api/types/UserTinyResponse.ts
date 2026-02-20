@@ -5,7 +5,7 @@
  */
 export interface UserTinyResponse {
     /** ID of the user. */
-    id?: string | undefined;
+    id?: string;
     /** Name of the user. */
-    name?: string | undefined;
+    name?: string;
 }

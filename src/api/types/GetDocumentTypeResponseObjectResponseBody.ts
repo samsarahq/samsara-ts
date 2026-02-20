@@ -4,13 +4,13 @@ import type * as Samsara from "../index.js";
 
 export interface GetDocumentTypeResponseObjectResponseBody {
     /** List of the document type conditional field sections. */
-    conditionalFieldSections?: Samsara.ConditionalFieldSectionObjectResponseBody[] | undefined;
+    conditionalFieldSections?: Samsara.ConditionalFieldSectionObjectResponseBody[];
     /** The fields associated with this document type. */
-    fieldTypes?: Samsara.FieldTypesObjectResponseBody[] | undefined;
+    fieldTypes?: Samsara.FieldTypesObjectResponseBody[];
     /** Universally unique identifier for the document type. This value can be passed in as the documentTypeId when creating a document. */
-    id?: string | undefined;
+    id?: string;
     /** Name of the document type. */
-    name?: string | undefined;
+    name?: string;
     /** ID for the organization this document type belongs to. */
-    orgId?: number | undefined;
+    orgId?: number;
 }

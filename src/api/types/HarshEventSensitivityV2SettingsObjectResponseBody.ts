@@ -6,7 +6,7 @@ import type * as Samsara from "../index.js";
  * The configurable sensitivity for Harsh Event Detection. Does not apply to CM11/12/22 devices.
  */
 export interface HarshEventSensitivityV2SettingsObjectResponseBody {
-    harshAccelSensitivity?: Samsara.HarshAccelSensitivityV2SettingsObjectResponseBody | undefined;
-    harshBrakeSensitivity?: Samsara.HarshBrakeSensitivityV2SettingsObjectResponseBody | undefined;
-    harshTurnSensitivity?: Samsara.HarshTurnSensitivityV2SettingsObjectResponseBody | undefined;
+    harshAccelSensitivity?: Samsara.HarshAccelSensitivityV2SettingsObjectResponseBody;
+    harshBrakeSensitivity?: Samsara.HarshBrakeSensitivityV2SettingsObjectResponseBody;
+    harshTurnSensitivity?: Samsara.HarshTurnSensitivityV2SettingsObjectResponseBody;
 }

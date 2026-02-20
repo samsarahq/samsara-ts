@@ -4,8 +4,7 @@
  * @example
  *     {
  *         authorId: "11",
- *         safetyStatus: "safe",
- *         type: "mechanic"
+ *         safetyStatus: "safe"
  *     }
  */
 export interface CreateDvirRequest {
@@ -25,8 +24,6 @@ export interface CreateDvirRequest {
     safetyStatus: CreateDvirRequest.SafetyStatus;
     /** Id of trailer being inspected. Either vehicleId or trailerId must be provided. */
     trailerId?: string;
-    /** Only type 'mechanic' is currently accepted. */
-    type: CreateDvirRequest.Type;
     /** Id of vehicle being inspected. Either vehicleId or trailerId must be provided. */
     vehicleId?: string;
 }
@@ -38,9 +35,4 @@ export namespace CreateDvirRequest {
         Unsafe: "unsafe",
     } as const;
     export type SafetyStatus = (typeof SafetyStatus)[keyof typeof SafetyStatus];
-    /** Only type 'mechanic' is currently accepted. */
-    export const Type = {
-        Mechanic: "mechanic",
-    } as const;
-    export type Type = (typeof Type)[keyof typeof Type];
 }

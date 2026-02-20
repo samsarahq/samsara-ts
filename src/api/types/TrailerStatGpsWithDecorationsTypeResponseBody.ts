@@ -6,16 +6,16 @@ import type * as Samsara from "../index.js";
  * GPS location data for the trailer.
  */
 export interface TrailerStatGpsWithDecorationsTypeResponseBody {
-    decorations?: Samsara.TrailerStatDecorationResponseBody | undefined;
+    decorations?: Samsara.TrailerStatDecorationResponseBody;
     /** Heading of the trailer in degrees. */
-    headingDegrees?: number | undefined;
+    headingDegrees?: number;
     /** GPS latitude represented in degrees. */
     latitude: number;
     /** GPS longitude represented in degrees. */
     longitude: number;
-    reverseGeo?: Samsara.ReverseGeoObjectResponseBody | undefined;
+    reverseGeo?: Samsara.ReverseGeoObjectResponseBody;
     /** GPS speed of the trailer in miles per hour. */
-    speedMilesPerHour?: number | undefined;
+    speedMilesPerHour?: number;
     /** UTC timestamp in RFC 3339 format. */
     time: string;
 }

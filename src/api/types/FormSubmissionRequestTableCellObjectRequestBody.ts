@@ -6,14 +6,14 @@ import type * as Samsara from "../index.js";
  * The value of a cell in a table row.
  */
 export interface FormSubmissionRequestTableCellObjectRequestBody {
-    checkBoxesValue?: Samsara.FormSubmissionRequestCheckBoxesValueObjectRequestBody | undefined;
-    dateTimeValue?: Samsara.FormSubmissionRequestDateTimeValueObjectRequestBody | undefined;
+    checkBoxesValue?: Samsara.FormSubmissionRequestCheckBoxesValueObjectRequestBody;
+    dateTimeValue?: Samsara.FormSubmissionRequestDateTimeValueObjectRequestBody;
     /** Unique identifier for the cell. */
     id: string;
-    multipleChoiceValue?: Samsara.FormSubmissionRequestMultipleChoiceValueObjectRequestBody | undefined;
-    numberValue?: Samsara.FormSubmissionRequestNumberValueObjectRequestBody | undefined;
-    personValue?: Samsara.FormSubmissionRequestPersonValueObjectRequestBody | undefined;
-    textValue?: Samsara.FormSubmissionRequestTextValueObjectRequestBody | undefined;
+    multipleChoiceValue?: Samsara.FormSubmissionRequestMultipleChoiceValueObjectRequestBody;
+    numberValue?: Samsara.FormSubmissionRequestNumberValueObjectRequestBody;
+    personValue?: Samsara.FormSubmissionRequestPersonValueObjectRequestBody;
+    textValue?: Samsara.FormSubmissionRequestTextValueObjectRequestBody;
     /** Type of the cell field.  Valid values: `number`, `text`, `multiple_choice`, `check_boxes`, `datetime`, `person` */
     type: FormSubmissionRequestTableCellObjectRequestBody.Type;
 }

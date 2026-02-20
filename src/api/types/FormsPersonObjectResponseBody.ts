@@ -9,8 +9,8 @@ export interface FormsPersonObjectResponseBody {
     /** The type of entry for the person.  Valid values: `tracked`, `untracked` */
     entryType: FormsPersonObjectResponseBody.EntryType;
     /** Name of an untracked (i.e. manually entered) person. */
-    name?: string | undefined;
-    polymorphicUserId?: Samsara.FormsPolymorphicUserObjectResponseBody | undefined;
+    name?: string;
+    polymorphicUserId?: Samsara.FormsPolymorphicUserObjectResponseBody;
 }
 
 export namespace FormsPersonObjectResponseBody {

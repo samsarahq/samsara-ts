@@ -5,9 +5,9 @@
  */
 export interface WorkflowCircleResponseBody {
     /** Latitude of the address. Will be geocoded from formattedAddress if not provided. */
-    latitude?: number | undefined;
+    latitude?: number;
     /** Longitude of the address. Will be geocoded from formattedAddress if not provided. */
-    longitude?: number | undefined;
+    longitude?: number;
     /** The radius of the circular geofence in meters. */
     radiusMeters: number;
 }

@@ -4,18 +4,14 @@ import type * as Samsara from "../../../../index.js";
 
 /**
  * @example
- *     {
- *         id: "id"
- *     }
+ *     {}
  */
 export interface UpdateAddressRequest {
-    /** ID of the Address. This can either be the Samsara-provided ID or an external ID. External IDs are customer-specified key-value pairs created in the POST or PATCH requests of this resource. To specify an external ID as part of a path parameter, use the following format: `key:value`. For example, `crmId:abc123` */
-    id: string;
     /** Reporting location type associated with the address (used for ELD reporting purposes). Valid values: `yard`, `shortHaul`, `workforceSite`, `riskZone`, `industrialSite`, `alertsOnly`, `agricultureSource`, `avoidanceZone`, `knownGPSJammingZone`, `authorizedZone`, `unauthorizedZone`. */
     addressTypes?: UpdateAddressRequest.AddressTypes.Item[];
     /** An array of Contact IDs associated with this Address. */
     contactIds?: string[];
-    /** The [external IDs](https://developers.samsara.com/docs/external-ids) for the given object. */
+    /** The [external IDs](/docs/external-ids) for the given object. */
     externalIds?: Record<string, string>;
     /** The full street address for this address/geofence, as it might be recognized by Google Maps. */
     formattedAddress?: string;

@@ -6,6 +6,6 @@ import type * as Samsara from "../index.js";
  * Details specific to Driver Recorded.
  */
 export interface DriverRecordedResponseBody {
-    driver?: Samsara.AlertObjectDriverResponseBody | undefined;
-    vehicle?: Samsara.AlertObjectVehicleResponseBody | undefined;
+    driver?: Samsara.AlertObjectDriverResponseBody;
+    vehicle?: Samsara.AlertObjectVehicleResponseBody;
 }

@@ -3,5 +3,5 @@
 import type * as Samsara from "../index.js";
 
 export interface RoutesFetchRouteResponseBody {
-    data?: Samsara.BaseRouteResponseObjectResponseBody | undefined;
+    data?: Samsara.BaseRouteResponseObjectResponseBody;
 }

@@ -3,7 +3,7 @@
 import type * as Samsara from "../index.js";
 
 export interface V1AssetReeferResponseReeferStatsAlarms1 {
-    alarms?: Samsara.V1AssetReeferResponseReeferStatsAlarms[] | undefined;
+    alarms?: Samsara.V1AssetReeferResponseReeferStatsAlarms[];
     /** Timestamp when the alarms were reported, in Unix milliseconds since epoch */
-    changedAtMs?: number | undefined;
+    changedAtMs?: number;
 }

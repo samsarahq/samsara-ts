@@ -4,6 +4,6 @@ import type * as Samsara from "../index.js";
 
 export interface DataInputSnapshotResponse {
     /** An array of data inputs' latest data points. Each object in the array represents a data input and its most recent data point. */
-    data?: Samsara.DataInputSnapshot[] | undefined;
-    pagination?: Samsara.PaginationResponse | undefined;
+    data?: Samsara.DataInputSnapshot[];
+    pagination?: Samsara.PaginationResponse;
 }

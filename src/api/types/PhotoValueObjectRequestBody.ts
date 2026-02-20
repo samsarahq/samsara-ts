@@ -2,7 +2,7 @@
 
 export interface PhotoValueObjectRequestBody {
     /** Id of the photo. */
-    id?: string | undefined;
+    id?: string;
     /** Url of the photo. */
-    url?: string | undefined;
+    url?: string;
 }

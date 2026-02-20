@@ -5,11 +5,11 @@
  */
 export interface DetectionLogSafetyEventObjectResponseBody {
     /** Unique Samsara ID (uuid) of the safety event. Only returned when safetyEvent.inboxEvent is true. */
-    id?: string | undefined;
+    id?: string;
     /** Whether a corresponding safety event was published to the Safety Inbox. Always returned. */
     inboxEvent: boolean;
     /** The reason the detection was filtered out of the inbox. Only returned when safetyEvent.inboxEvent is false  Valid values: `overDailyLimit`, `overHourlyLimit`, `overTripLimit`, `belowConfidenceThreshold`, `belowSeverityThreshold`, `overEventRateLimit`, `geofenceFilter`, `belowNudgeThreshold`, `belowSpeedThreshold`, `nighttimeFilter`, `speedingFilter`, `inCabAlertOnly`, `unknown` */
-    inboxFilterReason?: DetectionLogSafetyEventObjectResponseBody.InboxFilterReason | undefined;
+    inboxFilterReason?: DetectionLogSafetyEventObjectResponseBody.InboxFilterReason;
 }
 
 export namespace DetectionLogSafetyEventObjectResponseBody {

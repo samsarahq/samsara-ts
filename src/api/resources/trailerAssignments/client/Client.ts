@@ -32,11 +32,11 @@ export class TrailerAssignmentsClient {
      *
      * Fetch trailer assignment data for all trailers in your organization.
      *
-     *  <b>Rate limit:</b> 25 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 25 requests/sec (learn more about rate limits [here](/docs/rate-limits)).
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * To use this endpoint, select **Read Assignments** under the Assignments category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Assignments** under the Assignments category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
      * @param {Samsara.V1GetAllTrailerAssignmentsRequest} request
      * @param {TrailerAssignmentsClient.RequestOptions} requestOptions - Request-specific configuration.
@@ -116,32 +116,35 @@ export class TrailerAssignmentsClient {
      *
      * Fetch trailer assignment data for a single trailer.
      *
-     *  <b>Rate limit:</b> 25 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 25 requests/sec (learn more about rate limits [here](/docs/rate-limits)).
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * To use this endpoint, select **Read Assignments** under the Assignments category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Assignments** under the Assignments category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
+     * @param {number} trailerId - ID of trailer. Must contain only digits 0-9.
      * @param {Samsara.V1GetFleetTrailerAssignmentsRequest} request
      * @param {TrailerAssignmentsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.trailerAssignments.v1GetFleetTrailerAssignments({
-     *         trailerId: 1000000
-     *     })
+     *     await client.trailerAssignments.v1GetFleetTrailerAssignments(1000000)
      */
     public v1GetFleetTrailerAssignments(
-        request: Samsara.V1GetFleetTrailerAssignmentsRequest,
+        trailerId: number,
+        request: Samsara.V1GetFleetTrailerAssignmentsRequest = {},
         requestOptions?: TrailerAssignmentsClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.V1TrailerAssignmentsResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__v1GetFleetTrailerAssignments(request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(
+            this.__v1GetFleetTrailerAssignments(trailerId, request, requestOptions),
+        );
     }
 
     private async __v1GetFleetTrailerAssignments(
-        request: Samsara.V1GetFleetTrailerAssignmentsRequest,
+        trailerId: number,
+        request: Samsara.V1GetFleetTrailerAssignmentsRequest = {},
         requestOptions?: TrailerAssignmentsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.V1TrailerAssignmentsResponse>> {
-        const { trailerId, startMs, endMs } = request;
+        const { startMs, endMs } = request;
         const _queryParams: Record<string, unknown> = {
             startMs,
             endMs,

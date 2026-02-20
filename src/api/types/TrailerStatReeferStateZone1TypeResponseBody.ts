@@ -5,7 +5,7 @@
  */
 export interface TrailerStatReeferStateZone1TypeResponseBody {
     /** The substate zone 1 of the reefer, if available. */
-    substateValue?: string | undefined;
+    substateValue?: string;
     /** UTC timestamp in RFC 3339 format. */
     time: string;
     /** The state zone 1 of the reefer. */

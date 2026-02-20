@@ -13,11 +13,16 @@ describe("AssetsClient", () => {
             environment: server.baseUrl,
         });
 
-        server.mockEndpoint().delete("/industrial/assets/id").respondWith().statusCode(200).build();
+        const rawResponseBody = "";
+        server
+            .mockEndpoint()
+            .delete("/industrial/assets/id")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
 
-        const response = await client.industrial.assets.delete({
-            id: "id",
-        });
-        expect(response).toEqual(undefined);
+        const response = await client.industrial.assets.delete("id");
+        expect(response).toEqual("");
     });
 });

@@ -5,9 +5,9 @@
  */
 export interface MobileUsageDetectionAlertSettingsObjectResponseBody {
     /** Indicates whether in-cab audio alerts for mobile usage are turned on. */
-    hasInCabAudioAlertsEnabled?: boolean | undefined;
+    hasInCabAudioAlertsEnabled?: boolean;
     /** Indicates whether AI event detection for mobile usage is turned on. */
-    isEnabled?: boolean | undefined;
+    isEnabled?: boolean;
     /** Alert when speed is over this many miles per hour. */
-    speedingThresholdMph?: number | undefined;
+    speedingThresholdMph?: number;
 }

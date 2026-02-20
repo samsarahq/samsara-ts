@@ -7,10 +7,10 @@ import type * as Samsara from "../index.js";
  */
 export interface CreateReportConfigObjectRequestBody {
     /** Columns to include in the report. Only one of ID or datasetId and columns must be provided. */
-    columns?: Samsara.CreateReportConfigColumnRequestBody[] | undefined;
+    columns?: Samsara.CreateReportConfigColumnRequestBody[];
     /** ID of the dataset that is going to be used for the report. Only one of ID or datasetId and columns must be provided. */
-    datasetId?: string | undefined;
-    filters?: Samsara.FiltersRequestBody | undefined;
+    datasetId?: string;
+    filters?: Samsara.FiltersRequestBody;
     /** ID of the custom report config. Only one of ID or datasetId and columns must be provided. */
-    id?: string | undefined;
+    id?: string;
 }

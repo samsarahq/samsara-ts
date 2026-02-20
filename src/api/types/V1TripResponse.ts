@@ -6,5 +6,5 @@ import type * as Samsara from "../index.js";
  * Contains the trips for the vehicle in the requested timeframe. A trip is represented as an object that contains startMs, startLocation, startAddress, startCoordinates, endMs, endLocation, endAddress and endCoordinates. Ongoing trips will be returned with 9223372036854775807 as their endMs.
  */
 export interface V1TripResponse {
-    trips?: Samsara.V1TripResponseTrips[] | undefined;
+    trips?: Samsara.V1TripResponseTrips[];
 }

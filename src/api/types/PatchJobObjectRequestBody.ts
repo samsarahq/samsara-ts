@@ -6,25 +6,25 @@ import type * as Samsara from "../index.js";
  * Job object with fields to update. If a field is not provided, it will not be updated
  */
 export interface PatchJobObjectRequestBody {
-    address?: Samsara.PatchJobObjectjobLocationRequestObjectRequestBody | undefined;
+    address?: Samsara.PatchJobObjectjobLocationRequestObjectRequestBody;
     /** Customer name for job */
-    customerName?: string | undefined;
+    customerName?: string;
     /** End date of job in RFC 3339 format. Must be greater than or equal to the start date */
-    endDate?: string | undefined;
+    endDate?: string;
     /** Fleet devices to be added to this job (cannot have both industrial assets and fleet devices in the same job) */
-    fleetDeviceIds?: number[] | undefined;
+    fleetDeviceIds?: number[];
     /** Job Id */
-    id?: string | undefined;
+    id?: string;
     /** IndustrialAssets to be added to this job (cannot have both industrial assets and fleet devices in the same job) */
-    industrialAssetIds?: string[] | undefined;
+    industrialAssetIds?: string[];
     /** Job name */
-    name?: string | undefined;
+    name?: string;
     /** Notes for the upcoming job */
-    notes?: string | undefined;
+    notes?: string;
     /** Specifies the time window (in milliseconds) after a stop's scheduled arrival time during which the stop is considered 'on-time'. */
-    ontimeWindowAfterArrivalMs?: number | undefined;
+    ontimeWindowAfterArrivalMs?: number;
     /** Specifies the time window (in milliseconds) before a stop's scheduled arrival time during which the stop is considered 'on-time'. */
-    ontimeWindowBeforeArrivalMs?: number | undefined;
+    ontimeWindowBeforeArrivalMs?: number;
     /** Start date of job in RFC 3339 format. */
-    startDate?: string | undefined;
+    startDate?: string;
 }

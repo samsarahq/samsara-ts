@@ -6,16 +6,16 @@ import type * as Samsara from "../index.js";
  * Defines a cell in a table row.
  */
 export interface FormsTableCellObjectResponseBody {
-    checkBoxesValue?: Samsara.FormsCheckBoxesValueObjectResponseBody | undefined;
-    dateTimeValue?: Samsara.FormsDateTimeValueObjectResponseBody | undefined;
+    checkBoxesValue?: Samsara.FormsCheckBoxesValueObjectResponseBody;
+    dateTimeValue?: Samsara.FormsDateTimeValueObjectResponseBody;
     /** Unique identifier for the cell. */
     id: string;
-    mediaValue?: Samsara.FormsMediaValueObjectResponseBody | undefined;
-    multipleChoiceValue?: Samsara.FormsMultipleChoiceValueObjectResponseBody | undefined;
-    numberValue?: Samsara.FormsNumberValueObjectResponseBody | undefined;
-    personValue?: Samsara.FormsPersonValueObjectResponseBody | undefined;
-    signatureValue?: Samsara.FormsSignatureValueObjectResponseBody | undefined;
-    textValue?: Samsara.FormsTextValueObjectResponseBody | undefined;
+    mediaValue?: Samsara.FormsMediaValueObjectResponseBody;
+    multipleChoiceValue?: Samsara.FormsMultipleChoiceValueObjectResponseBody;
+    numberValue?: Samsara.FormsNumberValueObjectResponseBody;
+    personValue?: Samsara.FormsPersonValueObjectResponseBody;
+    signatureValue?: Samsara.FormsSignatureValueObjectResponseBody;
+    textValue?: Samsara.FormsTextValueObjectResponseBody;
     /** Type of the cell field.  Valid values: `number`, `text`, `multiple_choice`, `check_boxes`, `datetime`, `signature`, `media`, `person` */
     type: FormsTableCellObjectResponseBody.Type;
 }

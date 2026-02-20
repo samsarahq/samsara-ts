@@ -7,14 +7,14 @@ import type * as Samsara from "../index.js";
  */
 export interface V1Asset {
     /** Serial number of the host asset */
-    assetSerialNumber?: string | undefined;
-    cable?: Samsara.V1AssetCable | undefined;
+    assetSerialNumber?: string;
+    cable?: Samsara.V1AssetCable;
     /** Engine hours */
-    engineHours?: number | undefined;
+    engineHours?: number;
     /** Asset ID */
     id: number;
     /** Asset name */
-    name?: string | undefined;
+    name?: string;
     /** The ID of the Vehicle associated to the Asset (if present) */
-    vehicleId?: number | undefined;
+    vehicleId?: number;
 }

@@ -6,9 +6,9 @@ import type * as Samsara from "../index.js";
  * Data for auxiliary digio equipment.
  */
 export interface VehicleStatsAuxInputWithDecoration {
-    decorations?: Samsara.VehicleStatsDecorations | undefined;
-    name?: Samsara.VehicleAuxInputName | undefined;
-    time?: Samsara.VehicleStatsAuxInputTime | undefined;
+    decorations?: Samsara.VehicleStatsDecorations;
+    name?: Samsara.VehicleAuxInputName;
+    time?: Samsara.VehicleStatsAuxInputTime;
     /** Boolean indicating the state of the auxiliary equipment. */
-    value?: boolean | undefined;
+    value?: boolean;
 }

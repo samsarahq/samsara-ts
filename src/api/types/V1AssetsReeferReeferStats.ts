@@ -7,19 +7,19 @@ import type * as Samsara from "../index.js";
  */
 export interface V1AssetsReeferReeferStats {
     /** Ambient temperature of the reefer. This is the temperature of the air around the Samsara Asset Gateway. */
-    ambientAirTemperature?: Samsara.V1AssetsReeferReeferStatsAmbientAirTemperature[] | undefined;
+    ambientAirTemperature?: Samsara.V1AssetsReeferReeferStatsAmbientAirTemperature[];
     /** Discharge air temperature of the reefer. This is the temperature of the air as it leaves the cooling unit. */
-    dischargeAirTemperature?: Samsara.V1AssetsReeferReeferStatsDischargeAirTemperature[] | undefined;
+    dischargeAirTemperature?: Samsara.V1AssetsReeferReeferStatsDischargeAirTemperature[];
     /** Engine hours of the reefer */
-    engineHours?: Samsara.V1AssetReeferResponseReeferStatsEngineHours[] | undefined;
+    engineHours?: Samsara.V1AssetReeferResponseReeferStatsEngineHours[];
     /** Fuel percentage of the reefer */
-    fuelPercentage?: Samsara.V1AssetReeferResponseReeferStatsFuelPercentage[] | undefined;
+    fuelPercentage?: Samsara.V1AssetReeferResponseReeferStatsFuelPercentage[];
     /** Power status of the reefer */
-    powerStatus?: Samsara.V1AssetsReeferReeferStatsPowerStatus[] | undefined;
+    powerStatus?: Samsara.V1AssetsReeferReeferStatsPowerStatus[];
     /** Reefer alarms */
-    reeferAlarms?: Samsara.V1AssetReeferResponseReeferStatsAlarms1[] | undefined;
+    reeferAlarms?: Samsara.V1AssetReeferResponseReeferStatsAlarms1[];
     /** Return air temperature of the reefer. This is the temperature read by the reefer module (Carrier, Thermo King) that shows the temperature of the air as it enters the system. */
-    returnAirTemperature?: Samsara.V1AssetReeferResponseReeferStatsReturnAirTemp[] | undefined;
+    returnAirTemperature?: Samsara.V1AssetReeferResponseReeferStatsReturnAirTemp[];
     /** Set point temperature of the reefer */
-    setPoint?: Samsara.V1AssetReeferResponseReeferStatsSetPoint[] | undefined;
+    setPoint?: Samsara.V1AssetReeferResponseReeferStatsSetPoint[];
 }

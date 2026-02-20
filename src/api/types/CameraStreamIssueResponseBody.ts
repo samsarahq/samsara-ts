@@ -6,5 +6,5 @@ import type * as Samsara from "../index.js";
  * Details specific to Camera Stream Issue.
  */
 export interface CameraStreamIssueResponseBody {
-    cameraDevice?: Samsara.AlertObjectWorkforceCameraDeviceResponseBody | undefined;
+    cameraDevice?: Samsara.AlertObjectWorkforceCameraDeviceResponseBody;
 }

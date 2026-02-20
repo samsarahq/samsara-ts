@@ -5,21 +5,21 @@
  */
 export interface MinimalRouteStopResponseBody {
     /** Actual arrival time, if it exists, for the route stop in RFC 3339 format. */
-    actualArrivalTime?: string | undefined;
+    actualArrivalTime?: string;
     /** Actual departure time, if it exists, for the route stop in RFC 3339 format. */
-    actualDepartureTime?: string | undefined;
+    actualDepartureTime?: string;
     /** The time the stop became en-route, in RFC 3339 format. */
-    enRouteTime?: string | undefined;
+    enRouteTime?: string;
     /** Estimated time of arrival, if this stop is currently en-route, in RFC 3339 format. */
-    eta?: string | undefined;
+    eta?: string;
     /** A map of external ids */
-    externalIds?: Record<string, string> | undefined;
+    externalIds?: Record<string, string>;
     /** Unique identifier for the route stop. */
     id: string;
     /** The shareable url of the stop's current status. */
-    liveSharingUrl?: string | undefined;
+    liveSharingUrl?: string;
     /** Skipped time, if it exists, for the route stop in RFC 3339 format. */
-    skippedTime?: string | undefined;
+    skippedTime?: string;
     /** The current state of the route stop.  Valid values: `unassigned`, `scheduled`, `en route`, `skipped`, `arrived`, `departed` */
     state: MinimalRouteStopResponseBody.State;
 }

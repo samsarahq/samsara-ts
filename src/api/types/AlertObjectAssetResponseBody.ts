@@ -7,17 +7,17 @@ import type * as Samsara from "../index.js";
  */
 export interface AlertObjectAssetResponseBody {
     /** List of attributes associated with the entity */
-    attributes?: Samsara.GoaAttributeTinyResponseBody[] | undefined;
+    attributes?: Samsara.GoaAttributeTinyResponseBody[];
     /** A map of external ids */
-    externalIds?: Record<string, string> | undefined;
+    externalIds?: Record<string, string>;
     /** The ID of the asset. */
     id: string;
     /** The name of the asset. */
-    name?: string | undefined;
+    name?: string;
     /** The serial number of the gateway installed on the asset. */
     serial: string;
     /** The list of [tags](https://kb.samsara.com/hc/en-us/articles/360026674631-Using-Tags-and-Tag-Nesting) associated with the asset. */
-    tags?: Samsara.GoaTagTinyResponseResponseBody[] | undefined;
+    tags?: Samsara.GoaTagTinyResponseResponseBody[];
     /** The operational context in which the asset interacts with the Samsara system. Examples: Vehicle (eg: truck, bus...), Trailer (eg: dry van, reefer, flatbed...), Powered Equipment (eg: dozer, crane...), Unpowered Equipment (eg: container, dumpster...), or Uncategorized.  Valid values: `uncategorized`, `trailer`, `equipment`, `unpowered`, `vehicle` */
     type: AlertObjectAssetResponseBody.Type;
 }

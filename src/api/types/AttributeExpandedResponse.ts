@@ -3,5 +3,5 @@
 import type * as Samsara from "../index.js";
 
 export interface AttributeExpandedResponse {
-    data?: Samsara.AttributeExpanded | undefined;
+    data?: Samsara.AttributeExpanded;
 }

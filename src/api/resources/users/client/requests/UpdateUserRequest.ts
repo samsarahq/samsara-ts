@@ -4,13 +4,9 @@ import type * as Samsara from "../../../../index.js";
 
 /**
  * @example
- *     {
- *         id: "id"
- *     }
+ *     {}
  */
 export interface UpdateUserRequest {
-    /** Unique identifier for the user. */
-    id: string;
     /** The authentication type the user uses to authenticate. To use SAML this organization must have a configured SAML integration. Valid values: `default`, `saml`. */
     authType?: UpdateUserRequest.AuthType;
     /** For users with temporary access, this is the expiration datetime in RFC3339 format */

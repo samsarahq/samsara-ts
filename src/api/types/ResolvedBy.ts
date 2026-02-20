@@ -7,13 +7,5 @@ export interface ResolvedBy {
     /** The Id of user who is resolving the defect. */
     id: string;
     /** The type of user who is resolving the defect. Must be "mechanic". */
-    type: ResolvedBy.Type;
-}
-
-export namespace ResolvedBy {
-    /** The type of user who is resolving the defect. Must be "mechanic". */
-    export const Type = {
-        Mechanic: "mechanic",
-    } as const;
-    export type Type = (typeof Type)[keyof typeof Type];
+    type: "mechanic";
 }

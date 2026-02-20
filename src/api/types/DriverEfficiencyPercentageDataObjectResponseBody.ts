@@ -5,21 +5,21 @@
  */
 export interface DriverEfficiencyPercentageDataObjectResponseBody {
     /** Percentage of time a driver is in quickly breaking events vs total breaking events. */
-    anticipationPercentage?: number | undefined;
+    anticipationPercentage?: number;
     /** Percentage of time a driver is in coasting. */
-    coastingPercentage?: number | undefined;
+    coastingPercentage?: number;
     /** Percentage of time a vehicle is in cruise control. */
-    cruiseControlPercentage?: number | undefined;
+    cruiseControlPercentage?: number;
     /** Percentage of time a driver is driving within the green band. */
-    greenBandPercentage?: number | undefined;
+    greenBandPercentage?: number;
     /** Percentage of time a driver is driving on high-grade road. */
-    highGradeRoadDrivingPercentage?: number | undefined;
+    highGradeRoadDrivingPercentage?: number;
     /** Percentage of time a driver is driving in high torque. */
-    highTorquePercentage?: number | undefined;
+    highTorquePercentage?: number;
     /** Percentage of time a driver is idling. */
     idlingPercentage: number;
     /** Percentage of time a driver is in over-speeding. */
-    overSpeedPercentage?: number | undefined;
+    overSpeedPercentage?: number;
     /** Percentage of time a driver is in wear-free breaking. */
-    wearFreeBrakePercentage?: number | undefined;
+    wearFreeBrakePercentage?: number;
 }

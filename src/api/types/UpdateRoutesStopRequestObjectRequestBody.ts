@@ -3,25 +3,25 @@
 import type * as Samsara from "../index.js";
 
 export interface UpdateRoutesStopRequestObjectRequestBody {
-    /** ID of the address. An address [externalId](https://developers.samsara.com/docs/external-ids#using-external-ids) can also be used interchangeably here. */
-    addressId?: string | undefined;
+    /** ID of the address. An address [externalId](/docs/external-ids#using-external-ids) can also be used interchangeably here. */
+    addressId?: string;
     /** A map of external ids */
-    externalIds?: Record<string, string> | undefined;
+    externalIds?: Record<string, string>;
     /** ID of the stop */
-    id?: string | undefined;
+    id?: string;
     /** Name of the stop */
-    name?: string | undefined;
+    name?: string;
     /** Notes for the stop */
-    notes?: string | undefined;
+    notes?: string;
     /** Specifies the time window (in milliseconds) after a stop's scheduled arrival time during which the stop is considered 'on-time'. */
-    ontimeWindowAfterArrivalMs?: number | undefined;
+    ontimeWindowAfterArrivalMs?: number;
     /** Specifies the time window (in milliseconds) before a stop's scheduled arrival time during which the stop is considered 'on-time'. */
-    ontimeWindowBeforeArrivalMs?: number | undefined;
+    ontimeWindowBeforeArrivalMs?: number;
     /** This is a required field for all stops EXCEPT the start and end, based on route start and stop settings selected. */
-    scheduledArrivalTime?: string | undefined;
+    scheduledArrivalTime?: string;
     /** This is a required field for all stops EXCEPT the start and end, based on route start and stop settings selected. */
-    scheduledDepartureTime?: string | undefined;
+    scheduledDepartureTime?: string;
     /** Manual sequence position for this stop. Only meaningful when route.settings.sequencingMethod=manual. Must be unique and positive when specified. */
-    sequenceNumber?: number | undefined;
-    singleUseLocation?: Samsara.RoutesSingleUseAddressObjectRequestBody | undefined;
+    sequenceNumber?: number;
+    singleUseLocation?: Samsara.RoutesSingleUseAddressObjectRequestBody;
 }

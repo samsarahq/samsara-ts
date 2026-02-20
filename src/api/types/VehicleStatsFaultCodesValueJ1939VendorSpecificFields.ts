@@ -5,7 +5,7 @@
  */
 export interface VehicleStatsFaultCodesValueJ1939VendorSpecificFields {
     /** The DTC description, if available. */
-    dtcDescription?: string | undefined;
+    dtcDescription?: string;
     /** A link to vendor repair instructions, if available. */
-    repairInstructionsUrl?: string | undefined;
+    repairInstructionsUrl?: string;
 }

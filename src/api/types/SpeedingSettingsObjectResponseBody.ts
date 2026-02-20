@@ -7,9 +7,9 @@ import type * as Samsara from "../index.js";
  */
 export interface SpeedingSettingsObjectResponseBody {
     /** The speeding severity levels for an organization. */
-    severityLevels?: Samsara.SpeedingSeverityLevelResponseBody[] | undefined;
+    severityLevels?: Samsara.SpeedingSeverityLevelResponseBody[];
     /** The unit of measurement for speeding  Valid values: `milesPerHour`, `kilometersPerHour`, `percentage` */
-    unit?: SpeedingSettingsObjectResponseBody.Unit | undefined;
+    unit?: SpeedingSettingsObjectResponseBody.Unit;
 }
 
 export namespace SpeedingSettingsObjectResponseBody {

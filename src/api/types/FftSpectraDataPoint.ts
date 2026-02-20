@@ -6,6 +6,6 @@ import type * as Samsara from "../index.js";
  * FFT spectrum data point of a data input.
  */
 export interface FftSpectraDataPoint {
-    fftSpectra?: Samsara.FftSpectraDataPointFftSpectra | undefined;
-    time?: Samsara.Time | undefined;
+    fftSpectra?: Samsara.FftSpectraDataPointFftSpectra;
+    time?: Samsara.Time;
 }

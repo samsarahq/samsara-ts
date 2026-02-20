@@ -7,16 +7,16 @@ import type * as Samsara from "../index.js";
  */
 export interface ServiceTaskDefinitionObjectResponseBody {
     /** The category of the service task. */
-    category?: string | undefined;
+    category?: string;
     /** A description of the service task. */
-    description?: string | undefined;
+    description?: string;
     /** Estimated time in minutes to complete the task. */
-    estimatedLaborTimeMinutes?: number | undefined;
-    estimatedPartsCost?: Samsara.WorkOrderMoneyObjectResponseBody | undefined;
+    estimatedLaborTimeMinutes?: number;
+    estimatedPartsCost?: Samsara.WorkOrderMoneyObjectResponseBody;
     /** The unique id of the service task definition. */
     id: string;
     /** The name of the service task. */
     name: string;
     /** The subcategory of the service task. */
-    subcategory?: string | undefined;
+    subcategory?: string;
 }

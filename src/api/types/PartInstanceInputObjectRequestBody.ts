@@ -5,9 +5,9 @@
  */
 export interface PartInstanceInputObjectRequestBody {
     /** The cost of one unit of the part in cents. If not provided, the part defined cost will be used. */
-    costCentsOverride?: number | undefined;
+    costCentsOverride?: number;
     /** ID of the part instance. Only set if updating an existing part instance. */
-    id?: string | undefined;
+    id?: string;
     /** ID of the part definition. */
     partId: string;
     /** The quantity of the part in the parts pre defined unit of measure. */

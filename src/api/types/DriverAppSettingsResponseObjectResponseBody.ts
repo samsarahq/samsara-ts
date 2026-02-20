@@ -7,13 +7,13 @@ import type * as Samsara from "../index.js";
  */
 export interface DriverAppSettingsResponseObjectResponseBody {
     /** Login user name for the fleet driver app */
-    driverFleetId?: string | undefined;
+    driverFleetId?: string;
     /** Driver gamification feature. Enabling this will turn on the feature for all drivers using the mobile app. Drivers can be configured into peer groups within the Drivers Page. Unconfigured drivers will be grouped on an organization level. */
-    gamification?: boolean | undefined;
-    gamificationConfig?: Samsara.DriverAppSettingsGamificationConfigTinyObjectResponseBody | undefined;
+    gamification?: boolean;
+    gamificationConfig?: Samsara.DriverAppSettingsGamificationConfigTinyObjectResponseBody;
     /** Allow drivers to search for vehicles outside of their selection tag when connected to the internet. */
-    orgVehicleSearch?: boolean | undefined;
+    orgVehicleSearch?: boolean;
     /** Allow drivers to see and select trailers in the Samsara Driver app. */
-    trailerSelection?: boolean | undefined;
-    trailerSelectionConfig?: Samsara.DriverAppSettingsTrailerSelectionConfigTinyObjectResponseBody | undefined;
+    trailerSelection?: boolean;
+    trailerSelectionConfig?: Samsara.DriverAppSettingsTrailerSelectionConfigTinyObjectResponseBody;
 }

@@ -6,5 +6,5 @@ import type * as Samsara from "../index.js";
  * Identifies a PDF generation job.
  */
 export interface DocumentPdfGenerationResponse {
-    data?: Samsara.DocumentPdfGenerationResponseData | undefined;
+    data?: Samsara.DocumentPdfGenerationResponseData;
 }

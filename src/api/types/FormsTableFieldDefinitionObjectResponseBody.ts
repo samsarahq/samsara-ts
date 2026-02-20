@@ -7,23 +7,23 @@ import type * as Samsara from "../index.js";
  */
 export interface FormsTableFieldDefinitionObjectResponseBody {
     /** Indicates whether the field allows manual entry of a person. Only present for person fields. */
-    allowManualEntry?: boolean | undefined;
+    allowManualEntry?: boolean;
     /** Type of date/time entry allowed for this question. Only present for datetime fields.  Valid values: `datetime`, `date`, `time` */
-    allowedDateTimeValueType?: FormsTableFieldDefinitionObjectResponseBody.AllowedDateTimeValueType | undefined;
+    allowedDateTimeValueType?: FormsTableFieldDefinitionObjectResponseBody.AllowedDateTimeValueType;
     /** List of role IDs to filter org users by, representing which roles are selectable people for this field. Only present for person fields. */
-    filterByRoleIds?: string[] | undefined;
+    filterByRoleIds?: string[];
     /** Identifier of the field. */
     id: string;
     /** Indicates whether the field includes drivers as selectable people. Only present for person fields. */
-    includeDrivers?: boolean | undefined;
+    includeDrivers?: boolean;
     /** Indicates whether the field includes users as selectable people. Only present for person fields. */
-    includeUsers?: boolean | undefined;
+    includeUsers?: boolean;
     /** Label of the field. */
     label: string;
     /** Number of decimal places allowed. Only present for number fields. */
-    numDecimalPlaces?: number | undefined;
+    numDecimalPlaces?: number;
     /** List of select options for check boxes or multiple choice fields. */
-    options?: Samsara.FormsSelectOptionObjectResponseBody[] | undefined;
+    options?: Samsara.FormsSelectOptionObjectResponseBody[];
     /** Type of the field.  Valid values: `number`, `text`, `multiple_choice`, `check_boxes`, `media`, `datetime`, `signature`, `person` */
     type: FormsTableFieldDefinitionObjectResponseBody.Type;
 }

@@ -2,13 +2,9 @@
 
 /**
  * @example
- *     {
- *         id: "id"
- *     }
+ *     {}
  */
 export interface UpdateContactRequest {
-    /** Unique identifier for the contact. */
-    id: string;
     /** Email address of the contact. */
     email?: string;
     /** First name of the contact. */

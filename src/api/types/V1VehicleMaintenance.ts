@@ -8,6 +8,6 @@ import type * as Samsara from "../index.js";
 export interface V1VehicleMaintenance {
     /** ID of the vehicle. */
     id: number;
-    j1939?: Samsara.V1VehicleMaintenanceJ1939 | undefined;
-    passenger?: Samsara.V1VehicleMaintenancePassenger | undefined;
+    j1939?: Samsara.V1VehicleMaintenanceJ1939;
+    passenger?: Samsara.V1VehicleMaintenancePassenger;
 }

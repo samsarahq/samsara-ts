@@ -2,15 +2,15 @@
 
 export interface V1HosAuthenticationLogsResponseAuthenticationLogs {
     /** The log type - one of 'signin' or 'signout' */
-    actionType?: string | undefined;
+    actionType?: string;
     /** DEPRECATED: THIS FIELD MAY NOT BE POPULATED */
-    address?: string | undefined;
+    address?: string;
     /** DEPRECATED: THIS FIELD MAY NOT BE POPULATED */
-    addressName?: string | undefined;
+    addressName?: string;
     /** DEPRECATED: THIS FIELD MAY NOT BE POPULATED */
-    city?: string | undefined;
+    city?: string;
     /** The time at which the event was recorded in UNIX milliseconds. */
-    happenedAtMs?: number | undefined;
+    happenedAtMs?: number;
     /** DEPRECATED: THIS FIELD MAY NOT BE POPULATED */
-    state?: string | undefined;
+    state?: string;
 }

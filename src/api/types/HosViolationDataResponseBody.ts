@@ -6,5 +6,5 @@ import type * as Samsara from "../index.js";
  * Details specific to Hos Violation.
  */
 export interface HosViolationDataResponseBody {
-    driver?: Samsara.AlertObjectDriverResponseBody | undefined;
+    driver?: Samsara.AlertObjectDriverResponseBody;
 }

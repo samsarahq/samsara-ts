@@ -6,8 +6,8 @@ import type * as Samsara from "../index.js";
  * Remaining durations and start times (where applicable) for various HOS rules. See [this page](https://www.samsara.com/fleet/eld-compliance/hours-of-service) for more information on HOS rules.
  */
 export interface HosClocks {
-    break?: Samsara.HosBreak | undefined;
-    cycle?: Samsara.HosCycle | undefined;
-    drive?: Samsara.HosDrive | undefined;
-    shift?: Samsara.HosShift | undefined;
+    break?: Samsara.HosBreak;
+    cycle?: Samsara.HosCycle;
+    drive?: Samsara.HosDrive;
+    shift?: Samsara.HosShift;
 }

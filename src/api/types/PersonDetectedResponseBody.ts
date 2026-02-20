@@ -6,5 +6,5 @@ import type * as Samsara from "../index.js";
  * Details specific to Person Detected.
  */
 export interface PersonDetectedResponseBody {
-    cameraStream?: Samsara.AlertObjectOnvifCameraStreamResponseBody | undefined;
+    cameraStream?: Samsara.AlertObjectOnvifCameraStreamResponseBody;
 }

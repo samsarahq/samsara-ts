@@ -7,7 +7,7 @@ export interface GatewayWithVehicleTinyResponseResponseBody {
     model: GatewayWithVehicleTinyResponseResponseBody.Model;
     /** The serial number of the gateway installed on the asset. */
     serial: string;
-    vehicle?: Samsara.GoaVehicleTinyResponseResponseBody | undefined;
+    vehicle?: Samsara.GoaVehicleTinyResponseResponseBody;
 }
 
 export namespace GatewayWithVehicleTinyResponseResponseBody {

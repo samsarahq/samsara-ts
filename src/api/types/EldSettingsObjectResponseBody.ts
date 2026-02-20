@@ -7,5 +7,5 @@ import type * as Samsara from "../index.js";
  */
 export interface EldSettingsObjectResponseBody {
     /** The driver's ELD rulesets and overrides. */
-    rulesets?: Samsara.DriverRulesetObjectResponseBody[] | undefined;
+    rulesets?: Samsara.DriverRulesetObjectResponseBody[];
 }

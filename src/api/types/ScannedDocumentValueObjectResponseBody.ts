@@ -2,7 +2,7 @@
 
 export interface ScannedDocumentValueObjectResponseBody {
     /** Id of the scanned document. */
-    id?: string | undefined;
+    id?: string;
     /** Url of the scanned document. */
-    url?: string | undefined;
+    url?: string;
 }

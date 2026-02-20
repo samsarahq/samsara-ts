@@ -2,5 +2,5 @@
 
 export interface MultipleChoiceFieldTypeMetaDataObjectResponseBody {
     /** The option choice label. */
-    label?: string | undefined;
+    label?: string;
 }

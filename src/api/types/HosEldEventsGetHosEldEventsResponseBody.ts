@@ -5,5 +5,5 @@ import type * as Samsara from "../index.js";
 export interface HosEldEventsGetHosEldEventsResponseBody {
     /** List of drivers and their ELD event objects data. */
     data: Samsara.HosDriversEldEventObjectResponseBody[];
-    pagination?: Samsara.GoaPaginationResponseResponseBody | undefined;
+    pagination?: Samsara.GoaPaginationResponseResponseBody;
 }

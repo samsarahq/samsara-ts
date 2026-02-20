@@ -5,63 +5,63 @@
  */
 export interface SafetyScoreConfigurationSettingsObjectResponseBody {
     /** Score weight for AI-detected inattentive driving behavior. */
-    aiInattentiveDrivingDetectionWeight?: number | undefined;
+    aiInattentiveDrivingDetectionWeight?: number;
     /** Score weight for crash behavior. */
-    crashWeight?: number | undefined;
+    crashWeight?: number;
     /** Score weight for defensive driving behavior. This behavior has a positive impact on the safety score. */
-    defensiveDrivingWeight?: number | undefined;
+    defensiveDrivingWeight?: number;
     /** Score weight for driver not yielding. */
-    didNotYieldWeight?: number | undefined;
+    didNotYieldWeight?: number;
     /** Score weight for drowsy behavior. */
-    drowsyWeight?: number | undefined;
+    drowsyWeight?: number;
     /** Score weight for eating/drinking behavior. */
-    eatingDrinkingWeight?: number | undefined;
+    eatingDrinkingWeight?: number;
     /** Score weight for moderate (2-4s) following distance behavior. */
-    followingDistanceModerateWeight?: number | undefined;
+    followingDistanceModerateWeight?: number;
     /** Score weight for severe (0-2s) following distance behavior. */
-    followingDistanceSevereWeight?: number | undefined;
+    followingDistanceSevereWeight?: number;
     /** Score weight for following distance behavior. */
-    followingDistanceWeight?: number | undefined;
+    followingDistanceWeight?: number;
     /** Score weight for forward collision warning behavior. */
-    forwardCollisionWarningWeight?: number | undefined;
+    forwardCollisionWarningWeight?: number;
     /** Score weight for harsh acceleration behavior. */
-    harshAccelWeight?: number | undefined;
+    harshAccelWeight?: number;
     /** Score weight for harsh braking behavior. */
-    harshBrakeWeight?: number | undefined;
+    harshBrakeWeight?: number;
     /** Score weight for harsh turn behavior. */
-    harshTurnWeight?: number | undefined;
+    harshTurnWeight?: number;
     /** Score weight for heavy speeding (20-30% over limit). */
-    heavySpeedingWeight?: number | undefined;
+    heavySpeedingWeight?: number;
     /** Score weight for inattentive driving behavior. */
-    inattentiveDrivingWeight?: number | undefined;
+    inattentiveDrivingWeight?: number;
     /** Score weight for lane departure behavior. */
-    laneDepartureWeight?: number | undefined;
+    laneDepartureWeight?: number;
     /** Score weight for late response behavior. */
-    lateResponseWeight?: number | undefined;
+    lateResponseWeight?: number;
     /** Score weight for light speeding (0-10% over limit). */
-    lightSpeedingWeight?: number | undefined;
+    lightSpeedingWeight?: number;
     /** Score weight for max speed events. */
-    maxSpeedWeight?: number | undefined;
+    maxSpeedWeight?: number;
     /** Score weight for mobile usage behavior. */
-    mobileUsageWeight?: number | undefined;
+    mobileUsageWeight?: number;
     /** Score weight for moderate speeding (10-20% over limit). */
-    moderateSpeedingWeight?: number | undefined;
+    moderateSpeedingWeight?: number;
     /** Score weight for near collision behavior. */
-    nearCollisionWeight?: number | undefined;
+    nearCollisionWeight?: number;
     /** Score weight for no seatbelt behavior. */
-    noSeatbeltWeight?: number | undefined;
+    noSeatbeltWeight?: number;
     /** Score weight for obstructed camera behavior. */
-    obstructedCameraWeight?: number | undefined;
+    obstructedCameraWeight?: number;
     /** Score weight for driver running red light. */
-    ranRedLightWeight?: number | undefined;
+    ranRedLightWeight?: number;
     /** Score weight for rolling stop behavior. */
-    rollingStopWeight?: number | undefined;
+    rollingStopWeight?: number;
     /** Score weight for severe speeding (over 30% over limit). */
-    severeSpeedingWeight?: number | undefined;
+    severeSpeedingWeight?: number;
     /** Score weight for smoking behavior. */
-    smokingWeight?: number | undefined;
+    smokingWeight?: number;
     /** Score weight for manual speeding event. */
-    speedingWeight?: number | undefined;
+    speedingWeight?: number;
     /** Score weight for vulnerable road user behavior. */
-    vulnerableRoadUserWeight?: number | undefined;
+    vulnerableRoadUserWeight?: number;
 }

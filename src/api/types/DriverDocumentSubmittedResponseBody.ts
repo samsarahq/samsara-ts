@@ -6,5 +6,5 @@ import type * as Samsara from "../index.js";
  * Details specific to Driver Document Submitted.
  */
 export interface DriverDocumentSubmittedResponseBody {
-    document?: Samsara.DocumentResponseObjectResponseBody | undefined;
+    document?: Samsara.DocumentResponseObjectResponseBody;
 }

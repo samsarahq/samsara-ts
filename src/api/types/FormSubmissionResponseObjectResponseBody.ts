@@ -6,38 +6,38 @@ import type * as Samsara from "../index.js";
  * Form Submission response object.
  */
 export interface FormSubmissionResponseObjectResponseBody {
-    approvalDetails?: Samsara.FormsProductSubmissionApprovalDetailsObjectResponseBody | undefined;
-    asset?: Samsara.FormsAssetObjectResponseBody | undefined;
+    approvalDetails?: Samsara.FormsProductSubmissionApprovalDetailsObjectResponseBody;
+    asset?: Samsara.FormsAssetObjectResponseBody;
     /** Assignment time of the form submission. Sometimes returned if the submission was assigned to a user or driver. UTC timestamp in RFC 3339 format. */
-    assignedAtTime?: string | undefined;
-    assignedTo?: Samsara.FormsPolymorphicUserObjectResponseBody | undefined;
+    assignedAtTime?: string;
+    assignedTo?: Samsara.FormsPolymorphicUserObjectResponseBody;
     /** Creation time of the form submission. UTC timestamp in RFC 3339 format. */
     createdAtTime: string;
     /** Time of when the submission is due. Sometimes returned, if the submission has a due date. UTC timestamp in RFC 3339 format. */
-    dueAtTime?: string | undefined;
+    dueAtTime?: string;
     /** A map of external ids */
-    externalIds?: Record<string, string> | undefined;
+    externalIds?: Record<string, string>;
     /** List of field inputs in a form submission. */
     fields: Samsara.FormsFieldInputObjectResponseBody[];
     formTemplate: Samsara.FormTemplateReferenceObjectResponseBody;
-    geofence?: Samsara.FormsGeofenceObjectResponseBody | undefined;
+    geofence?: Samsara.FormsGeofenceObjectResponseBody;
     /** ID of the form submission. */
     id: string;
     /** Indicates whether the worker is required to complete this form or not. Always returned. */
     isRequired: boolean;
-    location?: Samsara.FormsLocationObjectResponseBody | undefined;
+    location?: Samsara.FormsLocationObjectResponseBody;
     /** ID of the route. Sometimes returned if the submission was assigned to a route stop. */
-    routeId?: string | undefined;
+    routeId?: string;
     /** ID of the route stop. Sometimes returned if the submission was assigned to a route stop. */
-    routeStopId?: string | undefined;
-    score?: Samsara.FormsScoreObjectResponseBody | undefined;
+    routeStopId?: string;
+    score?: Samsara.FormsScoreObjectResponseBody;
     /** State for the Form Submission. Always returned.  Valid values: `notStarted`, `completed`, `archived`, `inProgress`, `needsReview`, `changesRequested`, `approved` */
     status: FormSubmissionResponseObjectResponseBody.Status;
     /** Submission time of the form submission. UTC timestamp in RFC 3339 format. */
     submittedAtTime: string;
     submittedBy: Samsara.FormsPolymorphicUserObjectResponseBody;
     /** Title of the form submission. Sometimes returned if the submission has a title. */
-    title?: string | undefined;
+    title?: string;
     /** Update time of the form submission. UTC timestamp in RFC 3339 format. */
     updatedAtTime: string;
 }

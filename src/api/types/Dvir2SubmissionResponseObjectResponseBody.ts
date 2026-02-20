@@ -6,7 +6,7 @@ import type * as Samsara from "../index.js";
  * A DVIR description.
  */
 export interface Dvir2SubmissionResponseObjectResponseBody {
-    baseFormSubmission?: Samsara.Dvir2FormSubmissionObjectResponseBody | undefined;
+    baseFormSubmission?: Samsara.Dvir2FormSubmissionObjectResponseBody;
     /** Inspection type of the DVIR.  Valid values: `preTrip`, `postTrip`, `mechanic`, `unset` */
     inspectionType: Dvir2SubmissionResponseObjectResponseBody.InspectionType;
     /** List of devices (vehicles/trailers) associated with the DVIR. */

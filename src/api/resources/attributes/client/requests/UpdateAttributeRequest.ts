@@ -5,13 +5,10 @@ import type * as Samsara from "../../../../index.js";
 /**
  * @example
  *     {
- *         id: "id",
  *         entityType: "driver"
  *     }
  */
 export interface UpdateAttributeRequest {
-    /** Samsara-provided UUID of the attribute. */
-    id: string;
     /** Denotes the data type of the attribute's values. Valid values: `single-select`, `multi-select`, `text`, `freeform-multi-select`, `number`, `date`. */
     attributeType?: UpdateAttributeRequest.AttributeType;
     /** Entities that will be applied to this attribute */

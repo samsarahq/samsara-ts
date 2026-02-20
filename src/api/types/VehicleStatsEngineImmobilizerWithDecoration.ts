@@ -8,14 +8,14 @@ import type * as Samsara from "../index.js";
 export interface VehicleStatsEngineImmobilizerWithDecoration {
     /** Whether the engine immobilizer is connected or not */
     connected: boolean;
-    decorations?: Samsara.VehicleStatsDecorations | undefined;
-    /** The state of the engine immobilizer. Valid values: `ignition_disabled`, `ignition_enabled`. This stat type will only return states of our first Engine Immobilizer Hardware (ACC-EI). Please use <a href="https://developers.samsara.com/reference/getengineimmobilizerstates" target="_blank">Get engine immobilizer states</a> to get states for both Engine Immobilizer Hardware versions (incl. HW-EI21). */
+    decorations?: Samsara.VehicleStatsDecorations;
+    /** The state of the engine immobilizer. Valid values: `ignition_disabled`, `ignition_enabled`. This stat type will only return states of our first Engine Immobilizer Hardware (ACC-EI). Please use <a href="/api-reference/future/beta-apis/get-engine-immobilizer-states" target="_blank">Get engine immobilizer states</a> to get states for both Engine Immobilizer Hardware versions (incl. HW-EI21). */
     state: VehicleStatsEngineImmobilizerWithDecoration.State;
     time: Samsara.VehicleStatsAuxInputTime;
 }
 
 export namespace VehicleStatsEngineImmobilizerWithDecoration {
-    /** The state of the engine immobilizer. Valid values: `ignition_disabled`, `ignition_enabled`. This stat type will only return states of our first Engine Immobilizer Hardware (ACC-EI). Please use <a href="https://developers.samsara.com/reference/getengineimmobilizerstates" target="_blank">Get engine immobilizer states</a> to get states for both Engine Immobilizer Hardware versions (incl. HW-EI21). */
+    /** The state of the engine immobilizer. Valid values: `ignition_disabled`, `ignition_enabled`. This stat type will only return states of our first Engine Immobilizer Hardware (ACC-EI). Please use <a href="/api-reference/future/beta-apis/get-engine-immobilizer-states" target="_blank">Get engine immobilizer states</a> to get states for both Engine Immobilizer Hardware versions (incl. HW-EI21). */
     export const State = {
         IgnitionDisabled: "ignition_disabled",
         IgnitionEnabled: "ignition_enabled",

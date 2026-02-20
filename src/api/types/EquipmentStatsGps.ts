@@ -6,13 +6,13 @@ import type * as Samsara from "../index.js";
  * GPS location of equipment.
  */
 export interface EquipmentStatsGps {
-    address?: Samsara.AddressTinyResponse | undefined;
-    headingDegrees?: Samsara.AssetLocationHeading | undefined;
+    address?: Samsara.AddressTinyResponse;
+    headingDegrees?: Samsara.AssetLocationHeading;
     /** GPS latitude represented in degrees */
     latitude: number;
     /** GPS longitude represented in degrees */
     longitude: number;
-    reverseGeo?: Samsara.ReverseGeo | undefined;
-    speedMilesPerHour?: Samsara.AssetLocationSpeed | undefined;
+    reverseGeo?: Samsara.ReverseGeo;
+    speedMilesPerHour?: Samsara.AssetLocationSpeed;
     time: Samsara.Time;
 }

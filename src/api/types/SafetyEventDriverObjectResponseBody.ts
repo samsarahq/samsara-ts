@@ -5,5 +5,5 @@
  */
 export interface SafetyEventDriverObjectResponseBody {
     /** ID of the driver. */
-    id?: string | undefined;
+    id?: string;
 }

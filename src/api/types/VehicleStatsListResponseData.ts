@@ -7,130 +7,130 @@ import type * as Samsara from "../index.js";
  */
 export interface VehicleStatsListResponseData {
     /** A list of ambient air temperature readings in millidegree Celsius for the given vehicle. */
-    ambientAirTemperatureMilliC?: Samsara.VehicleStatsAmbientAirTempMilliCWithDecoration[] | undefined;
+    ambientAirTemperatureMilliC?: Samsara.VehicleStatsAmbientAirTempMilliCWithDecoration[];
     /** A list of auxiliary equipment states. */
-    auxInput1?: Samsara.VehicleStatsAuxInputWithDecoration[] | undefined;
+    auxInput1?: Samsara.VehicleStatsAuxInputWithDecoration[];
     /** A list of auxiliary equipment states. */
-    auxInput10?: Samsara.VehicleStatsAuxInputWithDecoration[] | undefined;
+    auxInput10?: Samsara.VehicleStatsAuxInputWithDecoration[];
     /** A list of auxiliary equipment states. */
-    auxInput11?: Samsara.VehicleStatsAuxInputWithDecoration[] | undefined;
+    auxInput11?: Samsara.VehicleStatsAuxInputWithDecoration[];
     /** A list of auxiliary equipment states. */
-    auxInput12?: Samsara.VehicleStatsAuxInputWithDecoration[] | undefined;
+    auxInput12?: Samsara.VehicleStatsAuxInputWithDecoration[];
     /** A list of auxiliary equipment states. */
-    auxInput13?: Samsara.VehicleStatsAuxInputWithDecoration[] | undefined;
+    auxInput13?: Samsara.VehicleStatsAuxInputWithDecoration[];
     /** A list of auxiliary equipment states. */
-    auxInput2?: Samsara.VehicleStatsAuxInputWithDecoration[] | undefined;
+    auxInput2?: Samsara.VehicleStatsAuxInputWithDecoration[];
     /** A list of auxiliary equipment states. */
-    auxInput3?: Samsara.VehicleStatsAuxInputWithDecoration[] | undefined;
+    auxInput3?: Samsara.VehicleStatsAuxInputWithDecoration[];
     /** A list of auxiliary equipment states. */
-    auxInput4?: Samsara.VehicleStatsAuxInputWithDecoration[] | undefined;
+    auxInput4?: Samsara.VehicleStatsAuxInputWithDecoration[];
     /** A list of auxiliary equipment states. */
-    auxInput5?: Samsara.VehicleStatsAuxInputWithDecoration[] | undefined;
+    auxInput5?: Samsara.VehicleStatsAuxInputWithDecoration[];
     /** A list of auxiliary equipment states. */
-    auxInput6?: Samsara.VehicleStatsAuxInputWithDecoration[] | undefined;
+    auxInput6?: Samsara.VehicleStatsAuxInputWithDecoration[];
     /** A list of auxiliary equipment states. */
-    auxInput7?: Samsara.VehicleStatsAuxInputWithDecoration[] | undefined;
+    auxInput7?: Samsara.VehicleStatsAuxInputWithDecoration[];
     /** A list of auxiliary equipment states. */
-    auxInput8?: Samsara.VehicleStatsAuxInputWithDecoration[] | undefined;
+    auxInput8?: Samsara.VehicleStatsAuxInputWithDecoration[];
     /** A list of auxiliary equipment states. */
-    auxInput9?: Samsara.VehicleStatsAuxInputWithDecoration[] | undefined;
+    auxInput9?: Samsara.VehicleStatsAuxInputWithDecoration[];
     /** A list of barometric pressure readings in pascals for the given vehicle. */
-    barometricPressurePa?: Samsara.VehicleStatsBarometricPressurePaWithDecoration[] | undefined;
+    barometricPressurePa?: Samsara.VehicleStatsBarometricPressurePaWithDecoration[];
     /** A list of battery levels in milliVolts for the given vehicle. */
-    batteryMilliVolts?: Samsara.VehicleStatsBatteryVoltageWithDecoration[] | undefined;
+    batteryMilliVolts?: Samsara.VehicleStatsBatteryVoltageWithDecoration[];
     /** A list of DEF level milli percentage readings for the given vehicle. */
-    defLevelMilliPercent?: Samsara.VehicleStatsDefLevelMilliPercentWithDecoration[] | undefined;
+    defLevelMilliPercent?: Samsara.VehicleStatsDefLevelMilliPercentWithDecoration[];
     /** Door status as read from the vehicle (either from ECU or AUX as a fallback). */
-    ecuDoorStatus?: Samsara.VehicleStatsEcuDoorStatus[] | undefined;
+    ecuDoorStatus?: Samsara.VehicleStatsEcuDoorStatus[];
     /** A list of the speeds of the vehicle in miles per hour, as reported by the ECU. */
-    ecuSpeedMph?: Samsara.VehicleStatsEcuSpeedMphWithDecoration[] | undefined;
+    ecuSpeedMph?: Samsara.VehicleStatsEcuSpeedMphWithDecoration[];
     /** A list of engine coolant temperature readings in millidegree Celsius for the given vehicle. */
-    engineCoolantTemperatureMilliC?: Samsara.VehicleStatsEngineCoolantTempMilliCWithDecoration[] | undefined;
+    engineCoolantTemperatureMilliC?: Samsara.VehicleStatsEngineCoolantTempMilliCWithDecoration[];
     /** A list of engine immobilizer data for the given vehicle. */
-    engineImmobilizer?: Samsara.VehicleStatsEngineImmobilizerWithDecoration[] | undefined;
+    engineImmobilizer?: Samsara.VehicleStatsEngineImmobilizerWithDecoration[];
     /** A list of engine load percentage readings for the given vehicle. */
-    engineLoadPercent?: Samsara.VehicleStatsEngineLoadPercentWithDecoration[] | undefined;
+    engineLoadPercent?: Samsara.VehicleStatsEngineLoadPercentWithDecoration[];
     /** A list of engine oil pressure readings in kilopascals for the given vehicle. */
-    engineOilPressureKPa?: Samsara.VehicleStatsEngineOilPressureKPaWithDecoration[] | undefined;
+    engineOilPressureKPa?: Samsara.VehicleStatsEngineOilPressureKPaWithDecoration[];
     /** A list engine RPM values for the given vehicle. */
-    engineRpm?: Samsara.VehicleStatsEngineRpmWithDecoration[] | undefined;
+    engineRpm?: Samsara.VehicleStatsEngineRpmWithDecoration[];
     /** A list of engine state events for the given vehicle. */
-    engineStates?: Samsara.VehicleStatsEngineStateWithDecoration[] | undefined;
+    engineStates?: Samsara.VehicleStatsEngineStateWithDecoration[];
     /** Battery temperature for electric and hybrid vehicles in milli celsius. Not all EV and HEVs may report this field. */
-    evAverageBatteryTemperatureMilliCelsius?: Samsara.VehicleStatsEvAverageBatteryTemperatureMilliCelsius[] | undefined;
+    evAverageBatteryTemperatureMilliCelsius?: Samsara.VehicleStatsEvAverageBatteryTemperatureMilliCelsius[];
     /** Battery current for electric and hybrid vehicles in milli amps. Not all EV and HEVs may report this field. */
-    evBatteryCurrentMilliAmp?: Samsara.VehicleStatsEvBatteryCurrentMilliAmp[] | undefined;
+    evBatteryCurrentMilliAmp?: Samsara.VehicleStatsEvBatteryCurrentMilliAmp[];
     /** Milli percent battery state of health for electric and hybrid vehicles. Not all EV and HEVs may report this field. */
-    evBatteryStateOfHealthMilliPercent?: Samsara.VehicleStatsEvBatteryStateOfHealthMilliPercent[] | undefined;
+    evBatteryStateOfHealthMilliPercent?: Samsara.VehicleStatsEvBatteryStateOfHealthMilliPercent[];
     /** Battery voltage for electric and hybrid vehicles in milli volts. Not all EV and HEVs may report this field. */
-    evBatteryVoltageMilliVolt?: Samsara.VehicleStatsEvBatteryVoltageMilliVolt[] | undefined;
+    evBatteryVoltageMilliVolt?: Samsara.VehicleStatsEvBatteryVoltageMilliVolt[];
     /** Charging current for electric and hybrid vehicles in milli amps. Not all EV and HEVs may report this field. */
-    evChargingCurrentMilliAmp?: Samsara.VehicleStatsEvChargingCurrentMilliAmp[] | undefined;
+    evChargingCurrentMilliAmp?: Samsara.VehicleStatsEvChargingCurrentMilliAmp[];
     /** Charging energy for electric and hybrid vehicles in microwatt hours. Not all EV and HEVs may report this field. */
-    evChargingEnergyMicroWh?: Samsara.VehicleStatsEvChargingEnergyMicroWh[] | undefined;
+    evChargingEnergyMicroWh?: Samsara.VehicleStatsEvChargingEnergyMicroWh[];
     /** Charging status for electric and hybrid vehicles. Not all EV and HEVs may report this field. */
-    evChargingStatus?: Samsara.VehicleStatsEvChargingStatus[] | undefined;
+    evChargingStatus?: Samsara.VehicleStatsEvChargingStatus[];
     /** Charging voltage for electric and hybrid vehicles in milli  volts. Not all EV and HEVs may report this field. */
-    evChargingVoltageMilliVolt?: Samsara.VehicleStatsEvChargingVoltageMilliVolt[] | undefined;
+    evChargingVoltageMilliVolt?: Samsara.VehicleStatsEvChargingVoltageMilliVolt[];
     /** Consumed energy (including regenerated) for electric and hybrid vehicles in microwatt hours. Not all EV and HEVs may report this field. */
-    evConsumedEnergyMicroWh?: Samsara.VehicleStatsEvConsumedEnergyMicroWh[] | undefined;
+    evConsumedEnergyMicroWh?: Samsara.VehicleStatsEvConsumedEnergyMicroWh[];
     /** Electric distance driven for electric and hybrid vehicles in meters. Not all EV and HEVs may report this field. */
-    evDistanceDrivenMeters?: Samsara.VehicleStatsEvDistanceDrivenMeters[] | undefined;
+    evDistanceDrivenMeters?: Samsara.VehicleStatsEvDistanceDrivenMeters[];
     /** Regenerated energy for electric and hybrid vehicles in microwatt hours. Not all EV and HEVs may report this field. */
-    evRegeneratedEnergyMicroWh?: Samsara.VehicleStatsEvRegeneratedEnergyMicroWh[] | undefined;
+    evRegeneratedEnergyMicroWh?: Samsara.VehicleStatsEvRegeneratedEnergyMicroWh[];
     /** State of Charge for electric and hybrid vehicles. Not all EV and HEVs may report this field. */
-    evStateOfChargeMilliPercent?: Samsara.VehicleStatsEvStateOfChargeMilliPercent[] | undefined;
-    externalIds?: Samsara.VehicleExternalIds | undefined;
+    evStateOfChargeMilliPercent?: Samsara.VehicleStatsEvStateOfChargeMilliPercent[];
+    externalIds?: Samsara.VehicleExternalIds;
     /** A list of engine fault codes. */
-    faultCodes?: Samsara.VehicleStatsFaultCodesWithDecoration[] | undefined;
-    /** A list of cumulative fuel consumption readings in milliliters for the given vehicle. Cumulative values always increase. This includes all fuel consumption reported by vehicles without filtering of invalid data points. For filtered fuel consumption that matches the Fuel & Energy Report, please use <a href="https://developers.samsara.com/reference/getfuelenergyvehiclereports" target="_blank">the Fuel and Energy API</a>. */
-    fuelConsumedMilliliters?: Samsara.VehicleStatsFuelConsumedMillilitersWithDecoration[] | undefined;
+    faultCodes?: Samsara.VehicleStatsFaultCodesWithDecoration[];
+    /** A list of cumulative fuel consumption readings in milliliters for the given vehicle. Cumulative values always increase. This includes all fuel consumption reported by vehicles without filtering of invalid data points. For filtered fuel consumption that matches the Fuel & Energy Report, please use <a href="/api-reference/fuel-and-efficiency/fuel-and-energy/get-fuel-and-energy-vehicle-reports" target="_blank">the Fuel and Energy API</a>. */
+    fuelConsumedMilliliters?: Samsara.VehicleStatsFuelConsumedMillilitersWithDecoration[];
     /** A list of fuel percentage readings for the given vehicle. */
-    fuelPercents?: Samsara.VehicleStatsFuelPercentWithDecoration[] | undefined;
+    fuelPercents?: Samsara.VehicleStatsFuelPercentWithDecoration[];
     /** A list of GPS location events for the given vehicles. */
-    gps?: Samsara.VehicleStatsListGps[] | undefined;
+    gps?: Samsara.VehicleStatsListGps[];
     /** A list of GPS distance events for the given vehicle. */
-    gpsDistanceMeters?: Samsara.VehicleStatsGpsDistanceMetersWithDecoration[] | undefined;
+    gpsDistanceMeters?: Samsara.VehicleStatsGpsDistanceMetersWithDecoration[];
     /** A list of GPS odometer events for the given vehicle. */
-    gpsOdometerMeters?: Samsara.VehicleStatsGpsOdometerMetersWithDecoration[] | undefined;
-    id?: Samsara.VehicleId | undefined;
-    /** A list of cumulative idling duration readings in milliseconds for the given vehicle. Cumulative values always increase. For filtering of idling duration please use <a href="https://developers.samsara.com/reference/getvehicleidlingreports" target="_blank">the Idling Events API</a>. */
-    idlingDurationMilliseconds?: Samsara.VehicleStatsIdlingDurationMillisecondsWithDecoration[] | undefined;
+    gpsOdometerMeters?: Samsara.VehicleStatsGpsOdometerMetersWithDecoration[];
+    id?: Samsara.VehicleId;
+    /** A list of cumulative idling duration readings in milliseconds for the given vehicle. Cumulative values always increase. For filtering of idling duration please use <a href="/api-reference/fuel-and-efficiency/idling/get-idling-events" target="_blank">the Idling Events API</a>. */
+    idlingDurationMilliseconds?: Samsara.VehicleStatsIdlingDurationMillisecondsWithDecoration[];
     /** A list of intake manifold temperature readings in millidegree Celsius for the given vehicle. */
-    intakeManifoldTemperatureMilliC?: Samsara.VehicleStatsIntakeManifoldTempMilliCWithDecoration[] | undefined;
-    name?: Samsara.VehicleName | undefined;
+    intakeManifoldTemperatureMilliC?: Samsara.VehicleStatsIntakeManifoldTempMilliCWithDecoration[];
+    name?: Samsara.VehicleName;
     /** A list of NFC cards that were scanned for the given vehicles. */
-    nfcCardScans?: Samsara.VehicleStatsNfcCardScanWithDecoration[] | undefined;
+    nfcCardScans?: Samsara.VehicleStatsNfcCardScanWithDecoration[];
     /** A list of OBD engine seconds readings for the given vehicle. */
-    obdEngineSeconds?: Samsara.VehicleStatsObdEngineSecondsWithDecoration[] | undefined;
+    obdEngineSeconds?: Samsara.VehicleStatsObdEngineSecondsWithDecoration[];
     /** A list of OBD odometer readings for the given vehicle. */
-    obdOdometerMeters?: Samsara.VehicleStatsObdOdometerMetersWithDecoration[] | undefined;
+    obdOdometerMeters?: Samsara.VehicleStatsObdOdometerMetersWithDecoration[];
     /** Seatbelt Driver Status as read from the vehicle. `Buckled` or `Unbuckled`. */
-    seatbeltDriver?: Samsara.VehicleStatsSeatbeltDriver[] | undefined;
+    seatbeltDriver?: Samsara.VehicleStatsSeatbeltDriver[];
     /** Whether vehicle is actively spreading any material. */
-    spreaderActive?: Samsara.VehicleStatsSpreaderActive[] | undefined;
+    spreaderActive?: Samsara.VehicleStatsSpreaderActive[];
     /** Air (ambient) temperature in milli celsius reading from material spreader. */
-    spreaderAirTemp?: Samsara.VehicleStatsSpreaderAirTemp[] | undefined;
+    spreaderAirTemp?: Samsara.VehicleStatsSpreaderAirTemp[];
     /** Whether vehicle is actively spreading material in ‘blast mode’. */
-    spreaderBlastState?: Samsara.VehicleStatsSpreaderBlastState[] | undefined;
+    spreaderBlastState?: Samsara.VehicleStatsSpreaderBlastState[];
     /** Name of most recent type of granular material spread, read from the material spreader. */
-    spreaderGranularName?: Samsara.VehicleStatsSpreaderGranularName[] | undefined;
+    spreaderGranularName?: Samsara.VehicleStatsSpreaderGranularName[];
     /** Granular spread rate reading in milliliters per meter, read from the material spreader. Unfiltered live stats are supplied as-read from the Material Spreader unit. Readings do not consider total spread rate(s) over time or distance. */
-    spreaderGranularRate?: Samsara.VehicleStatsSpreaderGranularRate[] | undefined;
+    spreaderGranularRate?: Samsara.VehicleStatsSpreaderGranularRate[];
     /** Name of most recent type of liquid material spread, read from the material spreader. */
-    spreaderLiquidName?: Samsara.VehicleStatsSpreaderLiquidName[] | undefined;
+    spreaderLiquidName?: Samsara.VehicleStatsSpreaderLiquidName[];
     /** Liquid spread rate reading in milliliters per meter, read from the material spreader. Unfiltered live stats are supplied as-read from the Material Spreader unit. Readings do not consider total spread rate(s) over time or distance. */
-    spreaderLiquidRate?: Samsara.VehicleStatsSpreaderLiquidRate[] | undefined;
+    spreaderLiquidRate?: Samsara.VehicleStatsSpreaderLiquidRate[];
     /** Whether vehicle spreader is enabled. */
-    spreaderOnState?: Samsara.VehicleStatsSpreaderOnState[] | undefined;
+    spreaderOnState?: Samsara.VehicleStatsSpreaderOnState[];
     /** Snow plow status (`Up` or `Down`), as read from the material spreader. Note: this is separate from plow status defined via auxInput. */
-    spreaderPlowStatus?: Samsara.VehicleStatsSpreaderPlowStatus[] | undefined;
+    spreaderPlowStatus?: Samsara.VehicleStatsSpreaderPlowStatus[];
     /** Name of most recent type of prewet material spread, read from the material spreader. */
-    spreaderPrewetName?: Samsara.VehicleStatsSpreaderPrewetName[] | undefined;
+    spreaderPrewetName?: Samsara.VehicleStatsSpreaderPrewetName[];
     /** Prewet spread rate reading in milliliters per meter, read from the material spreader. Unfiltered live stats are supplied as-read from the Material Spreader unit. Readings do not consider total spread rate(s) over time or distance. */
-    spreaderPrewetRate?: Samsara.VehicleStatsSpreaderPrewetRate[] | undefined;
+    spreaderPrewetRate?: Samsara.VehicleStatsSpreaderPrewetRate[];
     /** Road temperature reading in milli celsius from material spreader. */
-    spreaderRoadTemp?: Samsara.VehicleStatsSpreaderRoadTemp[] | undefined;
+    spreaderRoadTemp?: Samsara.VehicleStatsSpreaderRoadTemp[];
     /** A list of synthetic engine seconds values. */
-    syntheticEngineSeconds?: Samsara.VehicleStatsListSyntheticEngineSeconds[] | undefined;
+    syntheticEngineSeconds?: Samsara.VehicleStatsListSyntheticEngineSeconds[];
 }

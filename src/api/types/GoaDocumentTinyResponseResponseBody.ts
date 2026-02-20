@@ -7,5 +7,5 @@ export interface GoaDocumentTinyResponseResponseBody {
     /** Id of the document */
     id: string;
     /** Name of the document */
-    name?: string | undefined;
+    name?: string;
 }

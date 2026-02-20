@@ -6,7 +6,7 @@ import type * as Samsara from "../index.js";
  * A single numeric data point of a data input.
  */
 export interface NumberDataPoint {
-    time?: Samsara.Time | undefined;
+    time?: Samsara.Time;
     /** Numeric value of the data point. */
-    value?: number | undefined;
+    value?: number;
 }

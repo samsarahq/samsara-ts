@@ -6,10 +6,10 @@ import type * as Samsara from "../index.js";
  * singleDriverEfficiencyByDriverDataObject
  */
 export interface SingleDriverEfficiencyByDriverDataObjectResponseBody {
-    difficultyScore?: Samsara.DriverEfficiencyDifficultyScoreDataObjectResponseBody | undefined;
+    difficultyScore?: Samsara.DriverEfficiencyDifficultyScoreDataObjectResponseBody;
     /** ID of the driver. */
     driverId: string;
-    percentageData?: Samsara.DriverEfficiencyPercentageDataObjectResponseBody | undefined;
-    rawData?: Samsara.DriverEfficiencyRawDataObjectResponseBody | undefined;
-    scoreData?: Samsara.DriverEfficiencyDataObjectResponseBody | undefined;
+    percentageData?: Samsara.DriverEfficiencyPercentageDataObjectResponseBody;
+    rawData?: Samsara.DriverEfficiencyRawDataObjectResponseBody;
+    scoreData?: Samsara.DriverEfficiencyDataObjectResponseBody;
 }

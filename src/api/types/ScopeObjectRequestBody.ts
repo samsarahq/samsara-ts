@@ -9,11 +9,11 @@ export interface ScopeObjectRequestBody {
     /** Whether it applies to all applicable objects. */
     all: boolean;
     /** The assets these triggers are scoped to. */
-    assets?: Samsara.TinyAssetObjectRequestBody[] | undefined;
+    assets?: Samsara.TinyAssetObjectRequestBody[];
     /** The drivers these triggers are scoped to. */
-    drivers?: Samsara.TinyDriverObjectRequestBody[] | undefined;
+    drivers?: Samsara.TinyDriverObjectRequestBody[];
     /** The tags these triggers are scoped to. */
-    tags?: Samsara.GoaTagTinyResponseRequestBody[] | undefined;
+    tags?: Samsara.GoaTagTinyResponseRequestBody[];
     /** The widgets these triggers are scoped to. */
-    widgets?: Samsara.TinyWidgetObjectRequestBody[] | undefined;
+    widgets?: Samsara.TinyWidgetObjectRequestBody[];
 }

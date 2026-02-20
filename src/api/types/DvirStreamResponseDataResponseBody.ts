@@ -5,30 +5,30 @@ import type * as Samsara from "../index.js";
 export interface DvirStreamResponseDataResponseBody {
     authorSignature: Samsara.AuthorSignatureObjectResponseBody;
     /** IDs of defects registered for the DVIR. */
-    defectIds?: string[] | undefined;
+    defectIds?: string[];
     /** Time when driver created DVIR. UTC timestamp in RFC 3339 format. */
     dvirSubmissionBeginTime: string;
     /** Time when driver submitted the DVIR. UTC timestamp in RFC 3339 format. */
     dvirSubmissionTime: string;
-    formattedAddress?: string | undefined;
+    formattedAddress?: string;
     /** The unique id of the DVIR */
     id: string;
     /** The mechanics notes on the DVIR. */
-    mechanicNotes?: string | undefined;
+    mechanicNotes?: string;
     /** The odometer reading in meters. */
-    odometerMeters?: number | undefined;
+    odometerMeters?: number;
     /** The condition of vehicle on which DVIR was done.  Valid values: `unknown`, `safe`, `unsafe`, `resolved` */
-    safetyStatus?: DvirStreamResponseDataResponseBody.SafetyStatus | undefined;
-    secondSignature?: Samsara.AuthorSignatureObjectResponseBody | undefined;
-    thirdSignature?: Samsara.AuthorSignatureObjectResponseBody | undefined;
-    trailer?: Samsara.TrailerDvirObjectResponseBody | undefined;
+    safetyStatus?: DvirStreamResponseDataResponseBody.SafetyStatus;
+    secondSignature?: Samsara.AuthorSignatureObjectResponseBody;
+    thirdSignature?: Samsara.AuthorSignatureObjectResponseBody;
+    trailer?: Samsara.TrailerDvirObjectResponseBody;
     /** Inspection type of the DVIR.  Valid values: `preTrip`, `postTrip`, `mechanic`, `unspecified` */
     type: DvirStreamResponseDataResponseBody.Type;
     /** Time of any DVIR updates. UTC timestamp in RFC 3339 format. */
     updatedAtTime: string;
-    vehicle?: Samsara.VehicleDvirObjectResponseBody | undefined;
+    vehicle?: Samsara.VehicleDvirObjectResponseBody;
     /** List of walkaround photos */
-    walkaroundPhotos?: Samsara.WalkaroundPhotoObjectResponseBody[] | undefined;
+    walkaroundPhotos?: Samsara.WalkaroundPhotoObjectResponseBody[];
 }
 
 export namespace DvirStreamResponseDataResponseBody {

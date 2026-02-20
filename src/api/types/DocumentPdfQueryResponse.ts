@@ -6,5 +6,5 @@ import type * as Samsara from "../index.js";
  * A PDF of a document
  */
 export interface DocumentPdfQueryResponse {
-    data?: Samsara.DocumentPdfQueryResponseData | undefined;
+    data?: Samsara.DocumentPdfQueryResponseData;
 }

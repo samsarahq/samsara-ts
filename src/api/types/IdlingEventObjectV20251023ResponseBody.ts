@@ -6,9 +6,9 @@ import type * as Samsara from "../index.js";
  * An idling event object.
  */
 export interface IdlingEventObjectV20251023ResponseBody {
-    address?: Samsara.IdlingEventAddressObjectResponseBody | undefined;
+    address?: Samsara.IdlingEventAddressObjectResponseBody;
     /** The air temperature in millicelsius during the idling event. Value is returned only when it is known. */
-    airTemperatureMillicelsius?: number | undefined;
+    airTemperatureMillicelsius?: number;
     asset: Samsara.IdlingEventAssetObjectResponseBody;
     /** The duration of the idling event in milliseconds. */
     durationMilliseconds: number;
@@ -21,20 +21,12 @@ export interface IdlingEventObjectV20251023ResponseBody {
     gaseousFuelConsumedGrams: number;
     gaseousFuelCost: Samsara.GaseousFuelCostObjectResponseBody;
     /** The latitude of the location where the idling event occurred. */
-    latitude?: number | undefined;
+    latitude?: number;
     /** The longitude of the location where the idling event occurred. */
-    longitude?: number | undefined;
-    operator?: Samsara.IdlingEventOperatorObjectResponseBody | undefined;
+    longitude?: number;
+    operator?: Samsara.IdlingEventOperatorObjectResponseBody;
     /** The PTO (Power Take-Off) state during the idling event.  Valid values: `active, inactive` */
-    ptoState: IdlingEventObjectV20251023ResponseBody.PtoState;
+    ptoState: "active, inactive";
     /** The start time of the idling event in RFC 3339 format. */
     startTime: string;
-}
-
-export namespace IdlingEventObjectV20251023ResponseBody {
-    /** The PTO (Power Take-Off) state during the idling event.  Valid values: `active, inactive` */
-    export const PtoState = {
-        ActiveInactive: "active, inactive",
-    } as const;
-    export type PtoState = (typeof PtoState)[keyof typeof PtoState];
 }

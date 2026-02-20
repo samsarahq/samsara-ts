@@ -6,5 +6,5 @@ import type * as Samsara from "../index.js";
  * A single tag.
  */
 export interface TagResponse {
-    data?: Samsara.Tag | undefined;
+    data?: Samsara.Tag;
 }

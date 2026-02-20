@@ -6,7 +6,7 @@ import type * as Samsara from "../index.js";
  * Vehicle OBD engine seconds reading.
  */
 export interface VehicleStatsObdEngineSecondsWithDecoration {
-    decorations?: Samsara.VehicleStatsDecorations | undefined;
+    decorations?: Samsara.VehicleStatsDecorations;
     time: Samsara.Time;
     /** Number of seconds the vehicle's engine has been on according to the on-board diagnostics. */
     value: number;

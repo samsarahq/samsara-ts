@@ -5,7 +5,7 @@
  */
 export interface RouteEventStopResponseResponseBody {
     /** A map of external ids */
-    externalIds?: Record<string, string> | undefined;
+    externalIds?: Record<string, string>;
     /** ID of the stop this event belongs to. */
     id: string;
 }

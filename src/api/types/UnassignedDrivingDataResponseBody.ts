@@ -6,6 +6,6 @@ import type * as Samsara from "../index.js";
  * Details specific to Unassigned Driving.
  */
 export interface UnassignedDrivingDataResponseBody {
-    driver?: Samsara.AlertObjectDriverResponseBody | undefined;
-    vehicle?: Samsara.AlertObjectVehicleResponseBody | undefined;
+    driver?: Samsara.AlertObjectDriverResponseBody;
+    vehicle?: Samsara.AlertObjectVehicleResponseBody;
 }

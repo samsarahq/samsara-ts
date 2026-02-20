@@ -13,7 +13,7 @@ export interface ReadingDefinitionResponseBody {
     /** Entity type of this reading. */
     entityType: string;
     /** Array of enumeration values */
-    enumValues?: Samsara.EnumValueResponseBody[] | undefined;
+    enumValues?: Samsara.EnumValueResponseBody[];
     /** Indicates whether this reading can be ingested using the API. */
     ingestionEnabled: boolean;
     /** The label for this reading that is suitable to show to a user. Translated to English. */

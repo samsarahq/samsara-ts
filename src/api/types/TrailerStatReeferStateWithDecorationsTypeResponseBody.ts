@@ -6,9 +6,9 @@ import type * as Samsara from "../index.js";
  * Reefer state event.
  */
 export interface TrailerStatReeferStateWithDecorationsTypeResponseBody {
-    decorations?: Samsara.TrailerStatDecorationResponseBody | undefined;
+    decorations?: Samsara.TrailerStatDecorationResponseBody;
     /** The substate of the multizone carrier reefer, if available. */
-    substateValue?: string | undefined;
+    substateValue?: string;
     /** UTC timestamp in RFC 3339 format. */
     time: string;
     /** The overall state of the multizone carrier reefer. */

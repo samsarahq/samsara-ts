@@ -7,13 +7,13 @@ import type * as Samsara from "../index.js";
  */
 export interface VehicleSensorConfigurationArea {
     /** Cargo sensors configured in this position of the vehicle */
-    cargoSensors?: Samsara.Sensor[] | undefined;
+    cargoSensors?: Samsara.Sensor[];
     /** Humidity sensors configured in this position of the vehicle */
-    humiditySensors?: Samsara.Sensor[] | undefined;
+    humiditySensors?: Samsara.Sensor[];
     /** Position of the area on vehicle */
-    position?: VehicleSensorConfigurationArea.Position | undefined;
+    position?: VehicleSensorConfigurationArea.Position;
     /** Temperature sensors configured in this position of the vehicle */
-    temperatureSensors?: Samsara.Sensor[] | undefined;
+    temperatureSensors?: Samsara.Sensor[];
 }
 
 export namespace VehicleSensorConfigurationArea {

@@ -6,16 +6,16 @@ import type * as Samsara from "../index.js";
  * Form Template response object.
  */
 export interface FormTemplateResponseObjectResponseBody {
-    approvalConfig?: Samsara.FormsApprovalConfigObjectResponseBody | undefined;
+    approvalConfig?: Samsara.FormsApprovalConfigObjectResponseBody;
     /** Creation time of the form template. UTC timestamp in RFC 3339 format. */
     createdAtTime: string;
     createdBy: Samsara.FormsPolymorphicUserObjectResponseBody;
     /** Description of the form template. Sometimes returned if the template has a description. */
-    description?: string | undefined;
+    description?: string;
     /** List of fields in the form template. */
     fields: Samsara.FormsFieldDefinitionObjectResponseBody[];
     /** Category of the form template.  Valid values: `general`, `routing`, `fuel` */
-    formCategory?: FormTemplateResponseObjectResponseBody.FormCategory | undefined;
+    formCategory?: FormTemplateResponseObjectResponseBody.FormCategory;
     /** Unique identifier of the form template. */
     id: string;
     /** Unique identifier of the form template revision. */

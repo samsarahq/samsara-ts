@@ -5,13 +5,13 @@
  */
 export interface VoiceCoachingSettingsObjectResponseBody {
     /** Selected driving events will be enabled for voice coaching. Harsh driving events include harsh acceleration and harsh brake. */
-    eventsToCoach?: VoiceCoachingSettingsObjectResponseBody.EventsToCoach.Item[] | undefined;
+    eventsToCoach?: VoiceCoachingSettingsObjectResponseBody.EventsToCoach.Item[];
     /** Indicates whether voice coaching is turned on. */
-    isEnabled?: boolean | undefined;
+    isEnabled?: boolean;
     /** The coaching language. The default language is English.  Valid values: `english`, `spanish`, `dutch`, `englishUk`, `italian`, `french`, `german` */
-    language?: VoiceCoachingSettingsObjectResponseBody.Language | undefined;
+    language?: VoiceCoachingSettingsObjectResponseBody.Language;
     /** Alert when speed is over this many miles per hour. */
-    speedingThresholdMph?: number | undefined;
+    speedingThresholdMph?: number;
 }
 
 export namespace VoiceCoachingSettingsObjectResponseBody {

@@ -26,5 +26,5 @@ export interface GetHosDailyLogsRequest {
      *
      * Valid value: `vehicle`  Valid values: `vehicle`
      */
-    expand?: Samsara.GetHosDailyLogsRequestExpand;
+    expand?: "vehicle";
 }

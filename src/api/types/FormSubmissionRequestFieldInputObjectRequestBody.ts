@@ -6,17 +6,17 @@ import type * as Samsara from "../index.js";
  * Forms input field request body object.
  */
 export interface FormSubmissionRequestFieldInputObjectRequestBody {
-    assetValue?: Samsara.FormSubmissionRequestAssetValueObjectRequestBody | undefined;
-    checkBoxesValue?: Samsara.FormSubmissionRequestCheckBoxesValueObjectRequestBody | undefined;
-    dateTimeValue?: Samsara.FormSubmissionRequestDateTimeValueObjectRequestBody | undefined;
-    geofenceValue?: Samsara.FormSubmissionRequestGeofenceValueObjectRequestBody | undefined;
+    assetValue?: Samsara.FormSubmissionRequestAssetValueObjectRequestBody;
+    checkBoxesValue?: Samsara.FormSubmissionRequestCheckBoxesValueObjectRequestBody;
+    dateTimeValue?: Samsara.FormSubmissionRequestDateTimeValueObjectRequestBody;
+    geofenceValue?: Samsara.FormSubmissionRequestGeofenceValueObjectRequestBody;
     /** ID of the forms input field object. */
     id: string;
-    multipleChoiceValue?: Samsara.FormSubmissionRequestMultipleChoiceValueObjectRequestBody | undefined;
-    numberValue?: Samsara.FormSubmissionRequestNumberValueObjectRequestBody | undefined;
-    personValue?: Samsara.FormSubmissionRequestPersonValueObjectRequestBody | undefined;
-    tableValue?: Samsara.FormSubmissionRequestTableValueObjectRequestBody | undefined;
-    textValue?: Samsara.FormSubmissionRequestTextValueObjectRequestBody | undefined;
+    multipleChoiceValue?: Samsara.FormSubmissionRequestMultipleChoiceValueObjectRequestBody;
+    numberValue?: Samsara.FormSubmissionRequestNumberValueObjectRequestBody;
+    personValue?: Samsara.FormSubmissionRequestPersonValueObjectRequestBody;
+    tableValue?: Samsara.FormSubmissionRequestTableValueObjectRequestBody;
+    textValue?: Samsara.FormSubmissionRequestTextValueObjectRequestBody;
     /** Type of the field.  Valid values: `number`, `text`, `multiple_choice`, `check_boxes`, `datetime`, `asset`, `person`, `table`, `geofence` */
     type: FormSubmissionRequestFieldInputObjectRequestBody.Type;
 }

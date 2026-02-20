@@ -6,5 +6,5 @@ import type * as Samsara from "../index.js";
  * The DVIR response.
  */
 export interface DvirResponse {
-    data?: Samsara.Dvir | undefined;
+    data?: Samsara.Dvir;
 }

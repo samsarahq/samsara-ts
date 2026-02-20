@@ -14,11 +14,11 @@ export interface JobResponseObjectResponseBody {
     /** End date of job in RFC 3339 format */
     endDate: string;
     /** fleet devices in this job (cannot have both industrial assets and fleet devices in the same job) */
-    fleetDevices?: Samsara.FleetDeviceObjectResponseBody[] | undefined;
+    fleetDevices?: Samsara.FleetDeviceObjectResponseBody[];
     /** Job id */
     id: string;
     /** Industrial Assets in this job (cannot have both industrial assets and fleet devices in the same job) */
-    industrialAssets?: Samsara.IndustrialAssetObjectResponseBody[] | undefined;
+    industrialAssets?: Samsara.IndustrialAssetObjectResponseBody[];
     /** When the job was last modified */
     modifiedAt: string;
     /** Job name */
@@ -26,9 +26,9 @@ export interface JobResponseObjectResponseBody {
     /** Notes for the upcoming job */
     notes: string;
     /** Specifies the time window (in milliseconds) after a stop's scheduled arrival time during which the stop is considered 'on-time'. */
-    ontimeWindowAfterArrivalMs?: number | undefined;
+    ontimeWindowAfterArrivalMs?: number;
     /** Specifies the time window (in milliseconds) before a stop's scheduled arrival time during which the stop is considered 'on-time'. */
-    ontimeWindowBeforeArrivalMs?: number | undefined;
+    ontimeWindowBeforeArrivalMs?: number;
     /** Start date of job in RFC 3339 format */
     startDate: string;
     /** The current job status  Valid values: `active`, `scheduled`, `completed` */

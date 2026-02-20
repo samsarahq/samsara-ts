@@ -6,7 +6,7 @@ import type * as Samsara from "../index.js";
  * Details specific to Vehicle DEF Level Percentage.
  */
 export interface VehicleDefLevelPercentageResponseBody {
-    driver?: Samsara.AlertObjectDriverResponseBody | undefined;
-    trailer?: Samsara.AlertObjectTrailerResponseBody | undefined;
-    vehicle?: Samsara.AlertObjectVehicleResponseBody | undefined;
+    driver?: Samsara.AlertObjectDriverResponseBody;
+    trailer?: Samsara.AlertObjectTrailerResponseBody;
+    vehicle?: Samsara.AlertObjectVehicleResponseBody;
 }

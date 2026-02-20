@@ -5,5 +5,5 @@
  */
 export interface SignatureFieldTypeMetaDataObjectResponseBody {
     /** The signature field legal text. */
-    legalText?: string | undefined;
+    legalText?: string;
 }

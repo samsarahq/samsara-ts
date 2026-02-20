@@ -6,7 +6,7 @@ import type * as Samsara from "../index.js";
  * The configurable sensitivity for Harsh Event Detection on CM11/CM12/CM22 devices. Sensitivity can be measured as a numeric g-force value or the following values: `Normal`, `Less Sensitive`, `More Sensitive`.
  */
 export interface HarshEventSensitivitySettingsObjectResponseBody {
-    harshAccelSensitivityGForce?: Samsara.HarshAccelSensitivityGForceSettingsObjectResponseBody | undefined;
-    harshBrakeSensitivityGForce?: Samsara.HarshBrakeSensitivityGForceSettingsObjectResponseBody | undefined;
-    harshTurnSensitivityGForce?: Samsara.HarshTurnSensitivityGForceSettingsObjectResponseBody | undefined;
+    harshAccelSensitivityGForce?: Samsara.HarshAccelSensitivityGForceSettingsObjectResponseBody;
+    harshBrakeSensitivityGForce?: Samsara.HarshBrakeSensitivityGForceSettingsObjectResponseBody;
+    harshTurnSensitivityGForce?: Samsara.HarshTurnSensitivityGForceSettingsObjectResponseBody;
 }

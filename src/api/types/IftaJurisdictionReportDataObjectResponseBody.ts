@@ -9,10 +9,10 @@ export interface IftaJurisdictionReportDataObjectResponseBody {
     /** List of summarized jurisdiction reports. */
     jurisdictionReports: Samsara.IftaJurisdictionSummaryObjectResponseBody[];
     /** The specified month duration for this IFTA report. */
-    month?: string | undefined;
+    month?: string;
     /** The specified quarter duration for this IFTA report. */
-    quarter?: string | undefined;
-    troubleshooting?: Samsara.IftaReportTroubleshootingObjectResponseBody | undefined;
+    quarter?: string;
+    troubleshooting?: Samsara.IftaReportTroubleshootingObjectResponseBody;
     /** The specified year for this IFTA report. */
     year: number;
 }

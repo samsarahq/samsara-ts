@@ -7,5 +7,5 @@ export interface FormTemplateRequestObjectRequestBody {
     /** ID of the form template. */
     id: string;
     /** ID of the form template revision. Defaults to the latest template revision if not provided */
-    revisionId?: string | undefined;
+    revisionId?: string;
 }

@@ -5,5 +5,5 @@
  */
 export interface HosShift {
     /** Remaining on duty or driving time the driver in the current shift in milliseconds. For property-carrying drivers, this is the amount of time the driver can be on duty or driving before hitting the 14-hour limit. */
-    shiftRemainingDurationMs?: number | undefined;
+    shiftRemainingDurationMs?: number;
 }

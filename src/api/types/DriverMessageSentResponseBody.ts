@@ -6,5 +6,5 @@ import type * as Samsara from "../index.js";
  * Details specific to Driver Message Sent.
  */
 export interface DriverMessageSentResponseBody {
-    driver?: Samsara.AlertObjectDriverResponseBody | undefined;
+    driver?: Samsara.AlertObjectDriverResponseBody;
 }

@@ -5,11 +5,11 @@
  */
 export interface HarshAccelSensitivityV2SettingsObjectResponseBody {
     /** Harsh acceleration sensitivity settings for heavy duty vehicle.  Valid values: `unknown`, `invalid`, `off`, `low`, `normal`, `high` */
-    heavyDuty?: HarshAccelSensitivityV2SettingsObjectResponseBody.HeavyDuty | undefined;
+    heavyDuty?: HarshAccelSensitivityV2SettingsObjectResponseBody.HeavyDuty;
     /** Harsh acceleration sensitivity settings for light duty vehicle.  Valid values: `unknown`, `invalid`, `off`, `low`, `normal`, `high` */
-    lightDuty?: HarshAccelSensitivityV2SettingsObjectResponseBody.LightDuty | undefined;
+    lightDuty?: HarshAccelSensitivityV2SettingsObjectResponseBody.LightDuty;
     /** Harsh acceleration sensitivity settings for passenger car.  Valid values: `unknown`, `invalid`, `off`, `low`, `normal`, `high` */
-    passenger?: HarshAccelSensitivityV2SettingsObjectResponseBody.Passenger | undefined;
+    passenger?: HarshAccelSensitivityV2SettingsObjectResponseBody.Passenger;
 }
 
 export namespace HarshAccelSensitivityV2SettingsObjectResponseBody {

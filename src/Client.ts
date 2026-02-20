@@ -5,7 +5,7 @@ import { AlertsClient } from "./api/resources/alerts/client/Client.js";
 import { AssetsClient } from "./api/resources/assets/client/Client.js";
 import { AttributesClient } from "./api/resources/attributes/client/Client.js";
 import { AuthTokenForDriverClient } from "./api/resources/authTokenForDriver/client/Client.js";
-import { BetaApIsClient } from "./api/resources/betaApIs/client/Client.js";
+import { BetaApisClient } from "./api/resources/betaApis/client/Client.js";
 import { CarrierProposedAssignmentsClient } from "./api/resources/carrierProposedAssignments/client/Client.js";
 import { CoachingClient } from "./api/resources/coaching/client/Client.js";
 import { ContactsClient } from "./api/resources/contacts/client/Client.js";
@@ -25,8 +25,7 @@ import { IdlingClient } from "./api/resources/idling/client/Client.js";
 import { IftaClient } from "./api/resources/ifta/client/Client.js";
 import { IndustrialClient } from "./api/resources/industrial/client/Client.js";
 import { IssuesClient } from "./api/resources/issues/client/Client.js";
-import { LegacyClient } from "./api/resources/legacy/client/Client.js";
-import { LegacyApIsClient } from "./api/resources/legacyApIs/client/Client.js";
+import { LegacyApisClient } from "./api/resources/legacyApis/client/Client.js";
 import { LiveSharingLinksClient } from "./api/resources/liveSharingLinks/client/Client.js";
 import { LocationAndSpeedClient } from "./api/resources/locationAndSpeed/client/Client.js";
 import { MaintenanceClient } from "./api/resources/maintenance/client/Client.js";
@@ -34,7 +33,7 @@ import { MediaClient } from "./api/resources/media/client/Client.js";
 import { MessagesClient } from "./api/resources/messages/client/Client.js";
 import { OrganizationInfoClient } from "./api/resources/organizationInfo/client/Client.js";
 import { PlansClient } from "./api/resources/plans/client/Client.js";
-import { PreviewApIsClient } from "./api/resources/previewApIs/client/Client.js";
+import { PreviewApisClient } from "./api/resources/previewApis/client/Client.js";
 import { RouteEventsClient } from "./api/resources/routeEvents/client/Client.js";
 import { RoutesClient } from "./api/resources/routes/client/Client.js";
 import { SafetyClient } from "./api/resources/safety/client/Client.js";
@@ -68,7 +67,7 @@ export class SamsaraClient {
     protected _addresses: AddressesClient | undefined;
     protected _alerts: AlertsClient | undefined;
     protected _assets: AssetsClient | undefined;
-    protected _betaApIs: BetaApIsClient | undefined;
+    protected _betaApis: BetaApisClient | undefined;
     protected _locationAndSpeed: LocationAndSpeedClient | undefined;
     protected _attributes: AttributesClient | undefined;
     protected _media: MediaClient | undefined;
@@ -79,7 +78,7 @@ export class SamsaraClient {
     protected _driverTrailerAssignments: DriverTrailerAssignmentsClient | undefined;
     protected _driverQrCodes: DriverQrCodesClient | undefined;
     protected _carrierProposedAssignments: CarrierProposedAssignmentsClient | undefined;
-    protected _legacyApIs: LegacyApIsClient | undefined;
+    protected _legacyApis: LegacyApisClient | undefined;
     protected _documents: DocumentsClient | undefined;
     protected _driverVehicleAssignments: DriverVehicleAssignmentsClient | undefined;
     protected _drivers: DriversClient | undefined;
@@ -104,7 +103,7 @@ export class SamsaraClient {
     protected _liveSharingLinks: LiveSharingLinksClient | undefined;
     protected _workOrders: WorkOrdersClient | undefined;
     protected _organizationInfo: OrganizationInfoClient | undefined;
-    protected _previewApIs: PreviewApIsClient | undefined;
+    protected _previewApis: PreviewApisClient | undefined;
     protected _routeEvents: RouteEventsClient | undefined;
     protected _safety: SafetyClient | undefined;
     protected _speedingIntervals: SpeedingIntervalsClient | undefined;
@@ -113,7 +112,6 @@ export class SamsaraClient {
     protected _trainingCourses: TrainingCoursesClient | undefined;
     protected _trips: TripsClient | undefined;
     protected _users: UsersClient | undefined;
-    protected _legacy: LegacyClient | undefined;
     protected _messages: MessagesClient | undefined;
     protected _trailerAssignments: TrailerAssignmentsClient | undefined;
     protected _sensors: SensorsClient | undefined;
@@ -136,8 +134,8 @@ export class SamsaraClient {
         return (this._assets ??= new AssetsClient(this._options));
     }
 
-    public get betaApIs(): BetaApIsClient {
-        return (this._betaApIs ??= new BetaApIsClient(this._options));
+    public get betaApis(): BetaApisClient {
+        return (this._betaApis ??= new BetaApisClient(this._options));
     }
 
     public get locationAndSpeed(): LocationAndSpeedClient {
@@ -180,8 +178,8 @@ export class SamsaraClient {
         return (this._carrierProposedAssignments ??= new CarrierProposedAssignmentsClient(this._options));
     }
 
-    public get legacyApIs(): LegacyApIsClient {
-        return (this._legacyApIs ??= new LegacyApIsClient(this._options));
+    public get legacyApis(): LegacyApisClient {
+        return (this._legacyApis ??= new LegacyApisClient(this._options));
     }
 
     public get documents(): DocumentsClient {
@@ -280,8 +278,8 @@ export class SamsaraClient {
         return (this._organizationInfo ??= new OrganizationInfoClient(this._options));
     }
 
-    public get previewApIs(): PreviewApIsClient {
-        return (this._previewApIs ??= new PreviewApIsClient(this._options));
+    public get previewApis(): PreviewApisClient {
+        return (this._previewApis ??= new PreviewApisClient(this._options));
     }
 
     public get routeEvents(): RouteEventsClient {
@@ -314,10 +312,6 @@ export class SamsaraClient {
 
     public get users(): UsersClient {
         return (this._users ??= new UsersClient(this._options));
-    }
-
-    public get legacy(): LegacyClient {
-        return (this._legacy ??= new LegacyClient(this._options));
     }
 
     public get messages(): MessagesClient {

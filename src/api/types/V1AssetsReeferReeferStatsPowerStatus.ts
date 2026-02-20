@@ -2,9 +2,9 @@
 
 export interface V1AssetsReeferReeferStatsPowerStatus {
     /** Timestamp in Unix milliseconds since epoch. */
-    changedAtMs?: number | undefined;
+    changedAtMs?: number;
     /** Power status of the reefer. Valid values: `Off`, `Active`, `Active (Start/Stop)`, `Active (Continuous)`. */
-    status?: V1AssetsReeferReeferStatsPowerStatus.Status | undefined;
+    status?: V1AssetsReeferReeferStatsPowerStatus.Status;
 }
 
 export namespace V1AssetsReeferReeferStatsPowerStatus {

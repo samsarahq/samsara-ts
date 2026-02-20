@@ -5,9 +5,9 @@
  */
 export interface LastKnownLocationResponseResponseBody {
     /** The unique ID of the address. */
-    id?: number | undefined;
+    id?: number;
     /** Latitude of a location. */
-    latitude?: number | undefined;
+    latitude?: number;
     /** Longitude of a location. */
-    longitude?: number | undefined;
+    longitude?: number;
 }

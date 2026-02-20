@@ -5,9 +5,9 @@
  */
 export interface ContactTinyResponse {
     /** First name of the contact. */
-    firstName?: string | undefined;
+    firstName?: string;
     /** ID of the contact. */
-    id?: string | undefined;
+    id?: string;
     /** Last name of the contact. */
-    lastName?: string | undefined;
+    lastName?: string;
 }

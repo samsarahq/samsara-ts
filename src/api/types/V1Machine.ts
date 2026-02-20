@@ -7,7 +7,7 @@ export interface V1Machine {
     /** ID of the machine. */
     id: number;
     /** Name of the machine. */
-    name?: string | undefined;
+    name?: string;
     /** Notes about the machine */
-    notes?: string | undefined;
+    notes?: string;
 }

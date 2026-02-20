@@ -284,8 +284,7 @@ describe("HubsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.hubs.updateHubLocation({
-            id: "id",
+        const response = await client.hubs.updateHubLocation("id", {
             data: {
                 address: "123 Industrial Blvd, Los Angeles, CA 90210, US",
                 customerLocationId: "LOC-123",
@@ -358,8 +357,7 @@ describe("HubsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.hubs.updateHubLocation({
-                id: "id",
+            return await client.hubs.updateHubLocation("id", {
                 data: {},
             });
         }).rejects.toThrow(Samsara.UnauthorizedError);
@@ -385,8 +383,7 @@ describe("HubsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.hubs.updateHubLocation({
-                id: "id",
+            return await client.hubs.updateHubLocation("id", {
                 data: {},
             });
         }).rejects.toThrow(Samsara.NotFoundError);
@@ -412,8 +409,7 @@ describe("HubsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.hubs.updateHubLocation({
-                id: "id",
+            return await client.hubs.updateHubLocation("id", {
                 data: {},
             });
         }).rejects.toThrow(Samsara.MethodNotAllowedError);
@@ -439,8 +435,7 @@ describe("HubsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.hubs.updateHubLocation({
-                id: "id",
+            return await client.hubs.updateHubLocation("id", {
                 data: {},
             });
         }).rejects.toThrow(Samsara.TooManyRequestsError);
@@ -466,8 +461,7 @@ describe("HubsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.hubs.updateHubLocation({
-                id: "id",
+            return await client.hubs.updateHubLocation("id", {
                 data: {},
             });
         }).rejects.toThrow(Samsara.InternalServerError);
@@ -493,8 +487,7 @@ describe("HubsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.hubs.updateHubLocation({
-                id: "id",
+            return await client.hubs.updateHubLocation("id", {
                 data: {},
             });
         }).rejects.toThrow(Samsara.NotImplementedError);
@@ -520,8 +513,7 @@ describe("HubsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.hubs.updateHubLocation({
-                id: "id",
+            return await client.hubs.updateHubLocation("id", {
                 data: {},
             });
         }).rejects.toThrow(Samsara.BadGatewayError);
@@ -547,8 +539,7 @@ describe("HubsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.hubs.updateHubLocation({
-                id: "id",
+            return await client.hubs.updateHubLocation("id", {
                 data: {},
             });
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
@@ -574,8 +565,7 @@ describe("HubsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.hubs.updateHubLocation({
-                id: "id",
+            return await client.hubs.updateHubLocation("id", {
                 data: {},
             });
         }).rejects.toThrow(Samsara.GatewayTimeoutError);

@@ -3,7 +3,7 @@
 import type * as Samsara from "../index.js";
 
 export interface V1VisionRunByCameraResponseInspectionResults {
-    captureAtMs?: number | undefined;
-    result?: string | undefined;
-    stepResults?: Samsara.V1VisionStepResults | undefined;
+    captureAtMs?: number;
+    result?: string;
+    stepResults?: Samsara.V1VisionStepResults;
 }

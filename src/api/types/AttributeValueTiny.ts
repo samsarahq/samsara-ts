@@ -5,7 +5,7 @@
  */
 export interface AttributeValueTiny {
     /** The samsara id of this value object. */
-    id?: string | undefined;
+    id?: string;
     /** The human-readable string for this value. */
-    stringValue?: string | undefined;
+    stringValue?: string;
 }

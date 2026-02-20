@@ -7,13 +7,13 @@ import type * as Samsara from "../index.js";
  */
 export interface SafetyEventV2DriverObjectResponseBody {
     /** Attributes for the driver associated with the safety event. Only returns when `includeDriver` is set to `true`. */
-    attributes?: Samsara.GoaAttributeTinyResponseBody[] | undefined;
+    attributes?: Samsara.GoaAttributeTinyResponseBody[];
     /** A map of external ids */
-    externalIds?: Record<string, string> | undefined;
+    externalIds?: Record<string, string>;
     /** Unique ID for the driver object that is assigned to the safety event. */
     id: string;
     /** Name of the driver. Only returns when `includeDriver` is set to `true`. */
-    name?: string | undefined;
+    name?: string;
     /** Tags for the driver associated with the safety event. Only returns when `includeDriver` is set to `true`. */
-    tags?: Samsara.GoaTagTinyResponseResponseBody[] | undefined;
+    tags?: Samsara.GoaTagTinyResponseResponseBody[];
 }

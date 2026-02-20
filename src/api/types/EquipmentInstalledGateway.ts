@@ -2,7 +2,7 @@
 
 export interface EquipmentInstalledGateway {
     /** The model of the installed Samsara gateway. */
-    model?: string | undefined;
+    model?: string;
     /** The serial of the installed Samsara gateway. */
-    serial?: string | undefined;
+    serial?: string;
 }

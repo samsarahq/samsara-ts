@@ -5,9 +5,9 @@
  */
 export interface HarshTurnSensitivityGForceSettingsObjectResponseBody {
     /** Harsh turn sensitivity settings for heavy duty vehicle. */
-    heavyDuty?: string | undefined;
+    heavyDuty?: string;
     /** Harsh turn sensitivity settings for light duty vehicle. */
-    lightDuty?: string | undefined;
+    lightDuty?: string;
     /** Harsh turn sensitivity settings for passenger car. */
-    passenger?: string | undefined;
+    passenger?: string;
 }

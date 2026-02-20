@@ -27,28 +27,25 @@ export class AssetsClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * To use this endpoint, select **Write Equipment** under the Equipment category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Write Equipment** under the Equipment category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
      *
-     * @param {Samsara.industrial.DeleteAssetsRequest} request
+     * @param {string} id - Id of the asset to be deleted.
      * @param {AssetsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.industrial.assets.delete({
-     *         id: "id"
-     *     })
+     *     await client.industrial.assets.delete("id")
      */
     public delete(
-        request: Samsara.industrial.DeleteAssetsRequest,
+        id: string,
         requestOptions?: AssetsClient.RequestOptions,
-    ): core.HttpResponsePromise<void> {
-        return core.HttpResponsePromise.fromPromise(this.__delete(request, requestOptions));
+    ): core.HttpResponsePromise<Samsara.StandardDeleteResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__delete(id, requestOptions));
     }
 
     private async __delete(
-        request: Samsara.industrial.DeleteAssetsRequest,
+        id: string,
         requestOptions?: AssetsClient.RequestOptions,
-    ): Promise<core.WithRawResponse<void>> {
-        const { id } = request;
+    ): Promise<core.WithRawResponse<Samsara.StandardDeleteResponse>> {
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -73,7 +70,7 @@ export class AssetsClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: undefined, rawResponse: _response.rawResponse };
+            return { data: _response.body as Samsara.StandardDeleteResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {

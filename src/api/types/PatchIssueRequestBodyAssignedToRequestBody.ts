@@ -7,13 +7,5 @@ export interface PatchIssueRequestBodyAssignedToRequestBody {
     /** ID of the issue assignee. */
     id: string;
     /** Type of the issue assignee.  Valid values: `user` */
-    type: PatchIssueRequestBodyAssignedToRequestBody.Type;
-}
-
-export namespace PatchIssueRequestBodyAssignedToRequestBody {
-    /** Type of the issue assignee.  Valid values: `user` */
-    export const Type = {
-        User: "user",
-    } as const;
-    export type Type = (typeof Type)[keyof typeof Type];
+    type: "user";
 }

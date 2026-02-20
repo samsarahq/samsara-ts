@@ -2,7 +2,7 @@
 
 export interface V1SensorHistoryResponseResults {
     /** List of datapoints, one for each requested (sensor, field) pair. */
-    series?: number[] | undefined;
+    series?: number[];
     /** Timestamp in UNIX milliseconds. */
-    timeMs?: number | undefined;
+    timeMs?: number;
 }

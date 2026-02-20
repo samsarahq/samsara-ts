@@ -4,22 +4,22 @@ import type * as Samsara from "../index.js";
 
 export interface WebhookRouteResponseObjectResponseBody {
     /** Actual end time, if it exists, for the route in RFC 3339 format. */
-    actualRouteEndTime?: string | undefined;
+    actualRouteEndTime?: string;
     /** Actual start time, if it exists, for the route in RFC 3339 format. */
-    actualRouteStartTime?: string | undefined;
+    actualRouteStartTime?: string;
     /** A map of external ids */
-    externalIds?: Record<string, string> | undefined;
+    externalIds?: Record<string, string>;
     /** ID of the route */
     id: string;
     /** Route name */
-    name?: string | undefined;
+    name?: string;
     /** Notes for the route */
-    notes?: string | undefined;
+    notes?: string;
     /** Scheduled end time, if it exists, for the route in RFC 3339 format. */
-    scheduledRouteEndTime?: string | undefined;
+    scheduledRouteEndTime?: string;
     /** Scheduled start time, if it exists, for the route in RFC 3339 format. */
-    scheduledRouteStartTime?: string | undefined;
-    settings?: Samsara.RouteSettingsResponseBody | undefined;
+    scheduledRouteStartTime?: string;
+    settings?: Samsara.RouteSettingsResponseBody;
     /** List of stops along the route */
-    stops?: Samsara.RoutesStopResponseObjectResponseBody[] | undefined;
+    stops?: Samsara.RoutesStopResponseObjectResponseBody[];
 }

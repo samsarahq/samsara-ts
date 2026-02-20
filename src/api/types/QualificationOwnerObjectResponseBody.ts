@@ -7,7 +7,7 @@ export interface QualificationOwnerObjectResponseBody {
     /** Owner entity type  Valid values: `worker`, `asset` */
     entityType: QualificationOwnerObjectResponseBody.EntityType;
     /** A map of external ids */
-    externalIds?: Record<string, string> | undefined;
+    externalIds?: Record<string, string>;
     /** ID of the owner (worker/asset) */
     id: string;
 }

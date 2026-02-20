@@ -6,7 +6,7 @@ import type * as Samsara from "../index.js";
  * The engine load percentage reading.
  */
 export interface VehicleStatsEngineLoadPercentWithDecoration {
-    decorations?: Samsara.VehicleStatsDecorations | undefined;
+    decorations?: Samsara.VehicleStatsDecorations;
     time: Samsara.Time;
     /** The engine load in percentage points (e.g. `99`, `50`, etc). */
     value: number;

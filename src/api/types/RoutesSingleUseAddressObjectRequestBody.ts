@@ -5,11 +5,11 @@
  */
 export interface RoutesSingleUseAddressObjectRequestBody {
     /** Address of the stop. */
-    address?: string | undefined;
+    address?: string;
     /** The latitude of the location */
     latitude: number;
     /** The longitude of the location */
     longitude: number;
     /** The radius in meters for the geofence around this location. Must be a positive value. */
-    radiusMeters?: number | undefined;
+    radiusMeters?: number;
 }

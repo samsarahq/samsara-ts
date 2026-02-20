@@ -6,6 +6,6 @@ import type * as Samsara from "../index.js";
  * Details specific to Harsh Event.
  */
 export interface HarshEventDataResponseBody {
-    driver?: Samsara.AlertObjectDriverResponseBody | undefined;
-    vehicle?: Samsara.AlertObjectVehicleResponseBody | undefined;
+    driver?: Samsara.AlertObjectDriverResponseBody;
+    vehicle?: Samsara.AlertObjectVehicleResponseBody;
 }

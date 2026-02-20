@@ -7,11 +7,11 @@ export interface FuelEnergyVehicleObjectResponseBody {
     /** Type of energy used by the vehicle  Valid values: `fuel`, `hybrid`, `electric` */
     energyType: FuelEnergyVehicleObjectResponseBody.EnergyType;
     /** A map of external ids */
-    externalIds?: Record<string, string> | undefined;
+    externalIds?: Record<string, string>;
     /** ID of the vehicle */
-    id?: string | undefined;
+    id?: string;
     /** Name of the vehicle */
-    name?: string | undefined;
+    name?: string;
 }
 
 export namespace FuelEnergyVehicleObjectResponseBody {

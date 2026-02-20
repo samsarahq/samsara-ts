@@ -4,24 +4,24 @@ import type * as Samsara from "../index.js";
 
 export interface Defect {
     /** Comment on the defect. */
-    comment?: string | undefined;
+    comment?: string;
     /** Time when the defect was created. UTC timestamp in RFC 3339 format. Example: `2020-01-27T07:06:25Z`. */
-    createdAtTime?: string | undefined;
+    createdAtTime?: string;
     /** The type of DVIR defect. */
-    defectType?: string | undefined;
+    defectType?: string;
     /** ID of the defect. */
     id: string;
     /** Signifies if this defect is resolved. */
     isResolved: boolean;
     /** The mechanics notes on the defect. */
-    mechanicNotes?: string | undefined;
+    mechanicNotes?: string;
     /** Time when mechanic notes were last updated. UTC timestamp in RFC 3339 format. Example: `2020-01-27T07:06:25Z`. */
-    mechanicNotesUpdatedAtTime?: string | undefined;
+    mechanicNotesUpdatedAtTime?: string;
     /** Time when this defect was resolved. Will not be returned if the defect is unresolved. UTC timestamp in RFC 3339 format. Example: `2020-01-27T07:06:25Z`. */
-    resolvedAtTime?: string | undefined;
-    resolvedBy?: Samsara.DefectResolvedBy | undefined;
-    trailer?: Defect.Trailer | undefined;
-    vehicle?: Defect.Vehicle | undefined;
+    resolvedAtTime?: string;
+    resolvedBy?: Samsara.DefectResolvedBy;
+    trailer?: Defect.Trailer;
+    vehicle?: Defect.Vehicle;
 }
 
 export namespace Defect {

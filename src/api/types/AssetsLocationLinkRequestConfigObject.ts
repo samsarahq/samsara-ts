@@ -7,8 +7,8 @@ import type * as Samsara from "../index.js";
  */
 export interface AssetsLocationLinkRequestConfigObject {
     /** Unique assets ID that Live Sharing Link will show. */
-    assetId?: string | undefined;
-    location?: Samsara.AssetsLocationLinkConfigAddressDetailsObject | undefined;
+    assetId?: string;
+    location?: Samsara.AssetsLocationLinkConfigAddressDetailsObject;
     /** Array of tag IDs to filter data by. */
-    tagIds?: string[] | undefined;
+    tagIds?: string[];
 }

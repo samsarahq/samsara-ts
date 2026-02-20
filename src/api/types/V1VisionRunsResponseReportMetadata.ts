@@ -5,11 +5,11 @@
  */
 export interface V1VisionRunsResponseReportMetadata {
     /** Returns average scanned items per minute. Should be used instead of scanRate. */
-    itemsPerMinute?: number | undefined;
+    itemsPerMinute?: number;
     /** Returns no read count for the run. Should be used instead of noReadScansCount */
-    noReadCount?: number | undefined;
+    noReadCount?: number;
     /** Returns reject count for the run. Should be used instead of failedScansCount */
-    rejectCount?: number | undefined;
+    rejectCount?: number;
     /** Returns success count for the run. Should be used instead of successfulScansCount */
-    successCount?: number | undefined;
+    successCount?: number;
 }

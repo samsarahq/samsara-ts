@@ -6,7 +6,7 @@ import type * as Samsara from "../index.js";
  * A list of synthetic engine seconds for the vehicle.
  */
 export interface VehicleStatsListSyntheticEngineSeconds {
-    decorations?: Samsara.VehicleStatsDecorations | undefined;
+    decorations?: Samsara.VehicleStatsDecorations;
     time: Samsara.VehicleStatsAuxInputTime;
     value: Samsara.VehicleStatsSyntheticEngineSecondsValue;
 }

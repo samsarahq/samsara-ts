@@ -9,6 +9,6 @@ export interface SevereSpeedingStartedObjectResponseBody {
     /** The speeding start time in RFC 3339 format (Examples: 2019-06-13T19:08:25Z, 2019-06-13T19:08:25.455Z, OR 2015-09-15T14:00:12-04:00). */
     startTime: string;
     /** The trip start time in RFC 3339 format (Examples: 2019-06-13T19:08:25Z, 2019-06-13T19:08:25.455Z, OR 2015-09-15T14:00:12-04:00). */
-    tripStartTime?: string | undefined;
+    tripStartTime?: string;
     vehicle: Samsara.VehicleResponseResponseBody;
 }

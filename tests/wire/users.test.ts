@@ -156,9 +156,7 @@ describe("UsersClient", () => {
         };
         server.mockEndpoint().get("/users/id").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
-        const response = await client.users.getUser({
-            id: "id",
-        });
+        const response = await client.users.getUser("id");
         expect(response).toEqual({
             data: {
                 authType: "default",
@@ -183,12 +181,11 @@ describe("UsersClient", () => {
             environment: server.baseUrl,
         });
 
-        server.mockEndpoint().delete("/users/id").respondWith().statusCode(200).build();
+        const rawResponseBody = "";
+        server.mockEndpoint().delete("/users/id").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
-        const response = await client.users.delete({
-            id: "id",
-        });
-        expect(response).toEqual(undefined);
+        const response = await client.users.delete("id");
+        expect(response).toEqual("");
     });
 
     test("updateUser", async () => {
@@ -218,9 +215,7 @@ describe("UsersClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.users.updateUser({
-            id: "id",
-        });
+        const response = await client.users.updateUser("id");
         expect(response).toEqual({
             data: {
                 authType: "default",

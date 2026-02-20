@@ -6,15 +6,15 @@ import type * as Samsara from "../index.js";
  * Health information for the device.
  */
 export interface HealthResponseResponseBody {
-    healthDetails?: Samsara.HealthDetailsResponseResponseBody | undefined;
+    healthDetails?: Samsara.HealthDetailsResponseResponseBody;
     /** The list of active health reasons affecting this device. */
-    healthReasons?: Samsara.HealthReasonResponseResponseBody[] | undefined;
+    healthReasons?: Samsara.HealthReasonResponseResponseBody[];
     /** Current overall health status of the device.  Valid values: `dataPending`, `healthy`, `needsAttention`, `needsReplacement` */
-    healthStatus?: HealthResponseResponseBody.HealthStatus | undefined;
+    healthStatus?: HealthResponseResponseBody.HealthStatus;
     /** Primary health reason affecting the device's current health status.  Valid values: `assetUnplugged`, `cameraMisaligned`, `dataPending`, `healthy`, `inwardCameraObstruction`, `irregularRecording`, `lowDeviceBattery`, `missingEldDiagnostics`, `missingVin`, `needsReplacement`, `newlyInstalledDevice`, `noGpsSignal`, `notDetected`, `outwardCameraObstruction`, `recordingTimeRequired`, `unknown`, `vgUnplugged` */
-    primaryHealthReason?: HealthResponseResponseBody.PrimaryHealthReason | undefined;
+    primaryHealthReason?: HealthResponseResponseBody.PrimaryHealthReason;
     /** The timestamp when the primary health reason began, in RFC3339 format. */
-    primaryHealthReasonStartTime?: string | undefined;
+    primaryHealthReasonStartTime?: string;
     /**
      * Recommended steps to resolve the current health reason.
      *
@@ -64,7 +64,7 @@ export interface HealthResponseResponseBody {
      *
      *   Valid values: `recommendedActionAgHealthy`, `recommendedActionAgLowDeviceBatteryAG45`, `recommendedActionAgLowDeviceBatteryAG46`, `recommendedActionAgLowDeviceBatteryAG51`, `recommendedActionAgLowDeviceBatteryPoweredAG`, `recommendedActionAgNoGpsSignal`, `recommendedActionAgNotDetected`, `recommendedActionAgUnplugged`, `recommendedActionBLEDataPending`, `recommendedActionBLEHealthy`, `recommendedActionBLELowBattery`, `recommendedActionBLENotDetected`, `recommendedActionCcHealthy`, `recommendedActionCcLowUptime`, `recommendedActionCcMediaInputUptime`, `recommendedActionCcNotDetected`, `recommendedActionCmCameraMisaligned`, `recommendedActionCmHealthy`, `recommendedActionCmInactive`, `recommendedActionCmInwardCameraObstruction`, `recommendedActionCmIrregularRecording`, `recommendedActionCmLowUptime`, `recommendedActionCmNewlyInstalledDevice`, `recommendedActionCmNotDetected`, `recommendedActionCmOutwardCameraObstruction`, `recommendedActionCmRecordingTimeRequired`, `recommendedActionCmVgUnplugged`, `recommendedActionGatewayNewlyInstalledDevice`, `recommendedActionHealthy`, `recommendedActionLowBatteryVoltage`, `recommendedActionOemNotReporting`, `recommendedActionVehicleOff`, `recommendedActionVgHealthy`, `recommendedActionVgMissingEldDiagnostics`, `recommendedActionVgMissingEldDiagnosticsExchangeSubmitted`, `recommendedActionVgMissingEldDiagnosticsHardwareExchanged`, `recommendedActionVgMissingEldDiagnosticsNoExchangeSubmitted`, `recommendedActionVgMissingVin`, `recommendedActionVgNeedsReplacement`, `recommendedActionVgNotDetected`, `recommendedActionVgVgUnplugged`, `unknown`
      */
-    recommendedAction?: HealthResponseResponseBody.RecommendedAction | undefined;
+    recommendedAction?: HealthResponseResponseBody.RecommendedAction;
 }
 
 export namespace HealthResponseResponseBody {

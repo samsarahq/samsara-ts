@@ -4,6 +4,6 @@
  * Start (latitude, longitude) in decimal degrees.
  */
 export interface V1TripResponseStartCoordinates {
-    latitude?: number | undefined;
-    longitude?: number | undefined;
+    latitude?: number;
+    longitude?: number;
 }

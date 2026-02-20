@@ -2,13 +2,13 @@
 
 export interface CreateAttributeRequestEntities {
     /** Date values that can be associated with this attribute in RFC 3339 full-date format (YYYY-MM-DD) */
-    dateValues?: string[] | undefined;
+    dateValues?: string[];
     /** Entity id, based on the entity type. */
-    entityId?: string | undefined;
-    /** The [external IDs](https://developers.samsara.com/docs/external-ids) for the given object. */
-    externalIds?: Record<string, string> | undefined;
+    entityId?: string;
+    /** The [external IDs](/docs/external-ids) for the given object. */
+    externalIds?: Record<string, string>;
     /** Number values that can be associated with this attribute */
-    numberValues?: number[] | undefined;
+    numberValues?: number[];
     /** String values that can be associated with this attribute */
-    stringValues?: string[] | undefined;
+    stringValues?: string[];
 }

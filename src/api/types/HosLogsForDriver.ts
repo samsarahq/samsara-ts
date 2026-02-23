@@ -6,6 +6,6 @@ import type * as Samsara from "../index.js";
  * List of HOS logs for a driver.
  */
 export interface HosLogsForDriver {
-    driver?: Samsara.DriverTinyResponse;
-    hosLogs?: Samsara.HosLogsList;
+    driver?: Samsara.DriverTinyResponse | undefined;
+    hosLogs?: Samsara.HosLogsList | undefined;
 }

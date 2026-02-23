@@ -5,30 +5,30 @@ import type * as Samsara from "../index.js";
 export interface DvirGetDvirResponseBody {
     authorSignature: Samsara.AuthorSignatureObjectResponseBody;
     /** IDs of defects registered for the DVIR. */
-    defectIds?: string[];
+    defectIds?: string[] | undefined;
     /** Time when driver created DVIR. UTC timestamp in RFC 3339 format. */
     dvirSubmissionBeginTime: string;
     /** Time when driver submitted the DVIR. UTC timestamp in RFC 3339 format. */
     dvirSubmissionTime: string;
-    formattedAddress?: string;
+    formattedAddress?: string | undefined;
     /** The unique id of the DVIR */
     id: string;
     /** The mechanics notes on the DVIR. */
-    mechanicNotes?: string;
+    mechanicNotes?: string | undefined;
     /** The odometer reading in meters. */
-    odometerMeters?: number;
+    odometerMeters?: number | undefined;
     /** The condition of vehicle on which DVIR was done.  Valid values: `unknown`, `safe`, `unsafe`, `resolved` */
-    safetyStatus?: DvirGetDvirResponseBody.SafetyStatus;
-    secondSignature?: Samsara.AuthorSignatureObjectResponseBody;
-    thirdSignature?: Samsara.AuthorSignatureObjectResponseBody;
-    trailer?: Samsara.TrailerDvirObjectResponseBody;
+    safetyStatus?: DvirGetDvirResponseBody.SafetyStatus | undefined;
+    secondSignature?: Samsara.AuthorSignatureObjectResponseBody | undefined;
+    thirdSignature?: Samsara.AuthorSignatureObjectResponseBody | undefined;
+    trailer?: Samsara.TrailerDvirObjectResponseBody | undefined;
     /** Inspection type of the DVIR.  Valid values: `preTrip`, `postTrip`, `mechanic`, `unspecified` */
     type: DvirGetDvirResponseBody.Type;
     /** Time of any DVIR updates. UTC timestamp in RFC 3339 format. */
     updatedAtTime: string;
-    vehicle?: Samsara.VehicleDvirObjectResponseBody;
+    vehicle?: Samsara.VehicleDvirObjectResponseBody | undefined;
     /** List of walkaround photos */
-    walkaroundPhotos?: Samsara.WalkaroundPhotoObjectResponseBody[];
+    walkaroundPhotos?: Samsara.WalkaroundPhotoObjectResponseBody[] | undefined;
 }
 
 export namespace DvirGetDvirResponseBody {

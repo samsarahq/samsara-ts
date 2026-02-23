@@ -5,9 +5,9 @@
  */
 export interface IdlingEventAddressObjectResponseBody {
     /** The types of the geofence address of the idling location. An address can have multiple types. */
-    addressTypes?: IdlingEventAddressObjectResponseBody.AddressTypes.Item[];
+    addressTypes?: IdlingEventAddressObjectResponseBody.AddressTypes.Item[] | undefined;
     /** A map of external ids for the address. */
-    externalIds?: Record<string, string>;
+    externalIds?: Record<string, string> | undefined;
     /** The ID of the geofence address of the idling location. It will be the address at the time of idling. */
     id: string;
 }

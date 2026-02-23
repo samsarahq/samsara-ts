@@ -6,7 +6,7 @@ import type * as Samsara from "../index.js";
  * The Diesel Exhaust Fluid (DEF) milli percentage reading.
  */
 export interface VehicleStatsDefLevelMilliPercentWithDecoration {
-    decorations?: Samsara.VehicleStatsDecorations;
+    decorations?: Samsara.VehicleStatsDecorations | undefined;
     time: Samsara.Time;
     /** The Diesel Exhaust Fluid (DEF) level in milli percentage points (e.g. `99001`, `49999`, etc). */
     value: number;

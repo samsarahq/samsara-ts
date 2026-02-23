@@ -9,7 +9,7 @@ export interface DetectionLogDetectionObjectResponseBody {
     asset: Samsara.DetectionLogAssetObjectResponseBody;
     /** Time the detection was detected or in-cab alert played in UTC. RFC 3339 format. Always returned. */
     createdAtTime: string;
-    driver?: Samsara.DetectionLogDriverObjectResponseBody;
+    driver?: Samsara.DetectionLogDriverObjectResponseBody | undefined;
     /** Unique Samsara ID (uuid) of the detection. */
     id: string;
     /** Whether an in cab alert played aloud in the cab. Always returned. */

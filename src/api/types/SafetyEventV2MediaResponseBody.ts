@@ -5,9 +5,9 @@
  */
 export interface SafetyEventV2MediaResponseBody {
     /** The serial number of the auxiliary camera device. */
-    auxcamSerial?: string;
+    auxcamSerial?: string | undefined;
     /** The currently assigned role name of the camera. May change if camera role settings are updated.  Valid values: `leftMirrorMount`, `leftSide`, `rightMirrorMount`, `rightSide`, `rearHigh`, `rearBumper`, `inCab`, `front`, `hopper`, `other1`, `other2`, `other3`, `other4`, `leftBev`, `rightBev`, `rearBev`, `frontBev`, `otherBev`, `bevNotUsed` */
-    cameraRole?: SafetyEventV2MediaResponseBody.CameraRole;
+    cameraRole?: SafetyEventV2MediaResponseBody.CameraRole | undefined;
     /** The media input type of the camera.  Valid values: `dashcamRoadFacing`, `dashcamDriverFacing`, `analog1`, `analog2`, `analog3`, `analog4` */
     input: SafetyEventV2MediaResponseBody.Input;
     /** URL to download the media asset. */

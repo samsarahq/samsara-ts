@@ -7,6 +7,6 @@ import type * as Samsara from "../index.js";
  */
 export interface V1CargoResponse {
     /** Deprecated. */
-    groupId?: number;
-    sensors?: Samsara.V1CargoResponseSensors[];
+    groupId?: number | undefined;
+    sensors?: Samsara.V1CargoResponseSensors[] | undefined;
 }

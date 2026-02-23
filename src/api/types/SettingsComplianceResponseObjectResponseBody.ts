@@ -5,23 +5,23 @@
  */
 export interface SettingsComplianceResponseObjectResponseBody {
     /** [deprecated] Allow Unregulated Vehicles. This setting is deprecated as all organizations can now mark vehicles as unregulated. */
-    allowUnregulatedVehiclesEnabled?: boolean;
+    allowUnregulatedVehiclesEnabled?: boolean | undefined;
     /** Enable Canada HOS */
-    canadaHosEnabled?: boolean;
+    canadaHosEnabled?: boolean | undefined;
     /** Carrier name of the organization */
-    carrierName?: string;
+    carrierName?: string | undefined;
     /** DOT Number */
-    dotNumber?: number;
+    dotNumber?: number | undefined;
     /** Enable Driver Auto-Duty */
-    driverAutoDutyEnabled?: boolean;
+    driverAutoDutyEnabled?: boolean | undefined;
     /** Drivers Can Edit Certified Log */
-    editCertifiedLogsEnabled?: boolean;
+    editCertifiedLogsEnabled?: boolean | undefined;
     /** Force Manual Location For Duty Status Changes */
-    forceManualLocationForDutyStatusChangesEnabled?: boolean;
+    forceManualLocationForDutyStatusChangesEnabled?: boolean | undefined;
     /** Force Review of Unassigned HOS */
-    forceReviewUnassignedHosEnabled?: boolean;
+    forceReviewUnassignedHosEnabled?: boolean | undefined;
     /** Office Address */
-    mainOfficeFormattedAddress?: string;
+    mainOfficeFormattedAddress?: string | undefined;
     /** Persistent Duty Status */
-    persistentDutyStatusEnabled?: boolean;
+    persistentDutyStatusEnabled?: boolean | undefined;
 }

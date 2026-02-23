@@ -10,5 +10,5 @@ export interface LocationAndSpeedResponseResponseBody {
     /** UTC timestamp in RFC 3339 format of the event. */
     happenedAtTime: string;
     location: Samsara.LocationResponseResponseBody;
-    speed?: Samsara.SpeedResponseResponseBody;
+    speed?: Samsara.SpeedResponseResponseBody | undefined;
 }

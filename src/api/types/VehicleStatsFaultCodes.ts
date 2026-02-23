@@ -6,9 +6,9 @@ import type * as Samsara from "../index.js";
  * Engine fault codes read from J1939, OBDII, and OEM vehicles.
  */
 export interface VehicleStatsFaultCodes {
-    canBusType?: Samsara.VehicleStatsFaultCodesCanBusType;
-    j1939?: Samsara.VehicleStatsFaultCodesJ1939;
-    obdii?: Samsara.VehicleStatsFaultCodesObdii;
-    oem?: Samsara.VehicleStatsFaultCodesOem;
+    canBusType?: Samsara.VehicleStatsFaultCodesCanBusType | undefined;
+    j1939?: Samsara.VehicleStatsFaultCodesJ1939 | undefined;
+    obdii?: Samsara.VehicleStatsFaultCodesObdii | undefined;
+    oem?: Samsara.VehicleStatsFaultCodesOem | undefined;
     time: Samsara.VehicleStatsAuxInputTime;
 }

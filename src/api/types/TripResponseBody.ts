@@ -11,10 +11,10 @@ export interface TripResponseBody {
     completionStatus: TripResponseBody.CompletionStatus;
     /** [RFC 3339] Time the trip was created in Samsara in UTC. */
     createdAtTime: string;
-    endLocation?: Samsara.LocationResponseResponseBody;
+    endLocation?: Samsara.LocationResponseResponseBody | undefined;
     startLocation: Samsara.LocationResponseResponseBody;
     /** [RFC 3339] Time the trip ended in UTC. */
-    tripEndTime?: string;
+    tripEndTime?: string | undefined;
     /** [RFC 3339] Time the trip started in UTC. */
     tripStartTime: string;
     /** [RFC 3339] Time the trip was updated in Samsara in UTC. Valid updates are when `endTime` populates or `completionStatus` changes values. */

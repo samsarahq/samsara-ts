@@ -4,8 +4,8 @@
  * J1939 check engine lights.
  */
 export interface V1VehicleMaintenanceJ1939CheckEngineLight {
-    emissionsIsOn?: boolean;
-    protectIsOn?: boolean;
-    stopIsOn?: boolean;
-    warningIsOn?: boolean;
+    emissionsIsOn?: boolean | undefined;
+    protectIsOn?: boolean | undefined;
+    stopIsOn?: boolean | undefined;
+    warningIsOn?: boolean | undefined;
 }

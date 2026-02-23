@@ -1,3 +1,4 @@
+export type { DeleteRouteRequest } from "./DeleteRouteRequest.js";
 export type { FetchRouteRequest } from "./FetchRouteRequest.js";
 export type { FetchRoutesRequest } from "./FetchRoutesRequest.js";
 export type { GetRoutesFeedRequest } from "./GetRoutesFeedRequest.js";

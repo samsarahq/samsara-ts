@@ -1376,7 +1376,9 @@ describe("EquipmentClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.equipment.getEquipment("id");
+        const response = await client.equipment.getEquipment({
+            id: "id",
+        });
         expect(response).toEqual({
             data: {
                 assetSerial: "1FUJA6BD31LJ09646",

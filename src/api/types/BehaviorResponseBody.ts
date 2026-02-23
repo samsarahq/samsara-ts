@@ -9,13 +9,13 @@ export interface BehaviorResponseBody {
     /** Coachable behavior type for the behavior in the coaching session.  Valid values: `acceleration`, `braking`, `cameraObstruction`, `crash`, `defensiveDriving`, `didNotYield`, `drinkPolicy`, `drowsy`, `eatingDrinking`, `event`, `falsePositive`, `foodPolicy`, `forwardCollisionWarning`, `genericDistraction`, `harshTurn`, `hosViolation`, `idling`, `laneDeparture`, `lateResponse`, `maskPolicy`, `maxSpeed`, `mobileUsage`, `nearCollison`, `noSeatbelt`, `obstructedCamera`, `outwardObstruction`, `passengerPolicy`, `ranRedLight`, `rollingRailroadCrossing`, `rollingStop`, `rollingStop`, `rollover`, `rolloverProtection`, `rolloverProtectionBrakeControlActivated`, `rolloverProtectionEngineControlActivated`, `severeSpeeding`, `smoking`, `speeding`, `tailgating`, `unknown`, `yawControl`, `yawControlBrakeControlActivated`, `yawControlEngineControlActivated` */
     coachableBehaviorType: BehaviorResponseBody.CoachableBehaviorType;
     /** Object references for the coachableEvents within the behavior. Returned when includeCoachableEvents is 'true'. Capped at 100 coachable events per Coaching session. For sessions where coachable events exceed 100, please visit the Samsara dashboard to address this coaching session. Corresponds to the following unique identifiers: Non-Speeding Safety events - unique Samsara ID of the safety event as 'vehicleId - eventMS'. Speeding events - unique UUID of the event. Day of HOS Violations - unique Samsara ID of the day of violations as '{driverId},{date}'. Idling events - unique UUID of the event. */
-    coachableEvents?: Samsara.CoachableEventResponseBody[];
+    coachableEvents?: Samsara.CoachableEventResponseBody[] | undefined;
     /** Unique ID for the coaching behavior. */
     id: string;
     /** Time of last coached date for the same behavior label. */
     lastCoachedTime: string;
     /** Associated note for the coaching behavior. Returned when present. */
-    note?: string;
+    note?: string | undefined;
     /** Time of coaching behavior update in UTC. */
     updatedAtTime: string;
 }

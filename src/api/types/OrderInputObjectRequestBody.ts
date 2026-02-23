@@ -7,19 +7,19 @@ import type * as Samsara from "../index.js";
  */
 export interface OrderInputObjectRequestBody {
     /** An array of custom property values for the order */
-    customProperties?: Samsara.OrderCustomPropertyInputRequestBody[];
+    customProperties?: Samsara.OrderCustomPropertyInputRequestBody[] | undefined;
     /** The customer-provided identifier for the order */
     customerOrderId: string;
-    delivery?: Samsara.OrderTaskRequestBody;
+    delivery?: Samsara.OrderTaskRequestBody | undefined;
     /** The ID of the hub the order belongs to */
     hubId: string;
-    pickup?: Samsara.OrderTaskRequestBody;
+    pickup?: Samsara.OrderTaskRequestBody | undefined;
     /** The ID of the plan the order belongs to */
     planId: string;
     /** Priority of the order (e.g., 1 for high, 5 for low) */
-    priority?: number;
+    priority?: number | undefined;
     /** An array of quantities for the order */
-    quantities?: Samsara.OrderQuantityInputRequestBody[];
+    quantities?: Samsara.OrderQuantityInputRequestBody[] | undefined;
     /** An array of skill IDs required to fulfill the order */
-    skillsRequired?: string[];
+    skillsRequired?: string[] | undefined;
 }

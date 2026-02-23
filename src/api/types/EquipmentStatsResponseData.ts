@@ -6,17 +6,17 @@ import type * as Samsara from "../index.js";
  * A unit of equipment and its most recent stat.
  */
 export interface EquipmentStatsResponseData {
-    engineRpm?: Samsara.EquipmentEngineRpm;
-    engineSeconds?: Samsara.EquipmentEngineSeconds;
-    engineState?: Samsara.EquipmentEngineState;
-    engineTotalIdleTimeMinutes?: Samsara.EquipmentEngineTotalIdleTimeMinutes;
-    fuelPercent?: Samsara.EquipmentFuelPercent;
-    gatewayEngineSeconds?: Samsara.EquipmentGatewayEngineSeconds;
-    gatewayEngineState?: Samsara.EquipmentGatewayEngineState;
-    gps?: Samsara.EquipmentStatsGps;
-    gpsOdometerMeters?: Samsara.EquipmentGpsOdometerMeters;
+    engineRpm?: Samsara.EquipmentEngineRpm | undefined;
+    engineSeconds?: Samsara.EquipmentEngineSeconds | undefined;
+    engineState?: Samsara.EquipmentEngineState | undefined;
+    engineTotalIdleTimeMinutes?: Samsara.EquipmentEngineTotalIdleTimeMinutes | undefined;
+    fuelPercent?: Samsara.EquipmentFuelPercent | undefined;
+    gatewayEngineSeconds?: Samsara.EquipmentGatewayEngineSeconds | undefined;
+    gatewayEngineState?: Samsara.EquipmentGatewayEngineState | undefined;
+    gps?: Samsara.EquipmentStatsGps | undefined;
+    gpsOdometerMeters?: Samsara.EquipmentGpsOdometerMeters | undefined;
     id: Samsara.EquipmentId;
     name: Samsara.EquipmentName;
-    obdEngineSeconds?: Samsara.EquipmentObdEngineSeconds;
-    obdEngineState?: Samsara.EquipmentObdEngineState;
+    obdEngineSeconds?: Samsara.EquipmentObdEngineSeconds | undefined;
+    obdEngineState?: Samsara.EquipmentObdEngineState | undefined;
 }

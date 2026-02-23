@@ -5,7 +5,7 @@
  */
 export interface IssueSourceObjectResponseBody {
     /** ID of the issue's source object. The format depends on the 'type'. Included if 'type' is not 'ad-hoc'. */
-    id?: string;
+    id?: string | undefined;
     /** The type of issue source.  Valid values: `form`, `ad-hoc` */
     type: IssueSourceObjectResponseBody.Type;
 }

@@ -6,7 +6,7 @@ import type * as Samsara from "../index.js";
  * Vehicle fuel percentage reading.
  */
 export interface VehicleStatsFuelPercentWithDecoration {
-    decorations?: Samsara.VehicleStatsDecorations;
+    decorations?: Samsara.VehicleStatsDecorations | undefined;
     time: Samsara.Time;
     /** The engine fuel level in percentage points (e.g. `99`, `50`, etc). */
     value: number;

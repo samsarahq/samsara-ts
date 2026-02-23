@@ -6,11 +6,11 @@ import type * as Samsara from "../index.js";
  * Contains equipment fields.
  */
 export interface AempEquipmentWithAdditionalFieldsResponseBody {
-    CumulativeOperatingHours?: Samsara.CumulativeOperatingHoursResponseBody;
-    DEFRemaining?: Samsara.DefRemainingResponseBody;
-    Distance?: Samsara.DistanceResponseBody;
-    EngineStatus?: Samsara.EngineStatusResponseBody;
+    CumulativeOperatingHours?: Samsara.CumulativeOperatingHoursResponseBody | undefined;
+    DEFRemaining?: Samsara.DefRemainingResponseBody | undefined;
+    Distance?: Samsara.DistanceResponseBody | undefined;
+    EngineStatus?: Samsara.EngineStatusResponseBody | undefined;
     EquipmentHeader: Samsara.EquipmentHeaderWithAdditionalFieldsResponseBody;
-    FuelRemaining?: Samsara.FuelRemainingResponseBody;
+    FuelRemaining?: Samsara.FuelRemainingResponseBody | undefined;
     Location: Samsara.LocationResponseBody;
 }

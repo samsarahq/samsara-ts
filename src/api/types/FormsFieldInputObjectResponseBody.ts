@@ -6,26 +6,26 @@ import type * as Samsara from "../index.js";
  * Forms input field object.
  */
 export interface FormsFieldInputObjectResponseBody {
-    assetValue?: Samsara.FormsAssetValueObjectResponseBody;
-    checkBoxesValue?: Samsara.FormsCheckBoxesValueObjectResponseBody;
-    dateTimeValue?: Samsara.FormsDateTimeValueObjectResponseBody;
-    geofenceValue?: Samsara.FormsGeofenceValueObjectResponseBody;
+    assetValue?: Samsara.FormsAssetValueObjectResponseBody | undefined;
+    checkBoxesValue?: Samsara.FormsCheckBoxesValueObjectResponseBody | undefined;
+    dateTimeValue?: Samsara.FormsDateTimeValueObjectResponseBody | undefined;
+    geofenceValue?: Samsara.FormsGeofenceValueObjectResponseBody | undefined;
     /** ID of the forms input field object. */
     id: string;
-    issue?: Samsara.FormsIssueCreatedByFieldObjectResponseBody;
+    issue?: Samsara.FormsIssueCreatedByFieldObjectResponseBody | undefined;
     /** Forms input field label. */
-    label?: string;
+    label?: string | undefined;
     /** List of forms media record objects. */
-    mediaList?: Samsara.FormsMediaRecordObjectResponseBody[];
-    mediaValue?: Samsara.FormsMediaValueObjectResponseBody;
-    multipleChoiceValue?: Samsara.FormsMultipleChoiceValueObjectResponseBody;
+    mediaList?: Samsara.FormsMediaRecordObjectResponseBody[] | undefined;
+    mediaValue?: Samsara.FormsMediaValueObjectResponseBody | undefined;
+    multipleChoiceValue?: Samsara.FormsMultipleChoiceValueObjectResponseBody | undefined;
     /** A note attached to the field input. */
-    note?: string;
-    numberValue?: Samsara.FormsNumberValueObjectResponseBody;
-    personValue?: Samsara.FormsPersonValueObjectResponseBody;
-    signatureValue?: Samsara.FormsSignatureValueObjectResponseBody;
-    tableValue?: Samsara.FormsTableValueObjectResponseBody;
-    textValue?: Samsara.FormsTextValueObjectResponseBody;
+    note?: string | undefined;
+    numberValue?: Samsara.FormsNumberValueObjectResponseBody | undefined;
+    personValue?: Samsara.FormsPersonValueObjectResponseBody | undefined;
+    signatureValue?: Samsara.FormsSignatureValueObjectResponseBody | undefined;
+    tableValue?: Samsara.FormsTableValueObjectResponseBody | undefined;
+    textValue?: Samsara.FormsTextValueObjectResponseBody | undefined;
     /** Type of the field.  Valid values: `number`, `text`, `multiple_choice`, `check_boxes`, `datetime`, `signature`, `media`, `asset`, `table`, `person`, `geofence` */
     type: FormsFieldInputObjectResponseBody.Type;
 }

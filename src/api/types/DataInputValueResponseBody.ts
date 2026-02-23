@@ -6,5 +6,5 @@ import type * as Samsara from "../index.js";
  * Details specific to Data Input Value.
  */
 export interface DataInputValueResponseBody {
-    machineInput?: Samsara.AlertObjectMachineInputResponseBody;
+    machineInput?: Samsara.AlertObjectMachineInputResponseBody | undefined;
 }

@@ -6,7 +6,7 @@ import type * as Samsara from "../index.js";
  * Active J1939D1 statuses of a device.
  */
 export interface J1939D1StatusDataPoint {
-    time?: Samsara.Time;
+    time?: Samsara.Time | undefined;
     /** List of active statuses. */
-    value?: Samsara.J1939D1StatusDataPointValue[];
+    value?: Samsara.J1939D1StatusDataPointValue[] | undefined;
 }

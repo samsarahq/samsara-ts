@@ -7,17 +7,17 @@ import type * as Samsara from "../index.js";
  */
 export interface FieldObjectValueResponseBody {
     /** The value of a barcode scanning field. Only present for barcode scanning fields. */
-    barcodeValue?: Samsara.BarcodeValueObjectResponseBody[];
-    dateTimeValue?: Samsara.DateTimeValueObjectResponseBody;
+    barcodeValue?: Samsara.BarcodeValueObjectResponseBody[] | undefined;
+    dateTimeValue?: Samsara.DateTimeValueObjectResponseBody | undefined;
     /** The value of a multiple choice field. Only present for multiple choice fields. */
-    multipleChoiceValue?: Samsara.MultipleChoiceValueObjectResponseBody[];
+    multipleChoiceValue?: Samsara.MultipleChoiceValueObjectResponseBody[] | undefined;
     /** The value of a number field. Only present for number fields. */
-    numberValue?: number;
+    numberValue?: number | undefined;
     /** The value of a photo field. Only present for photo fields. */
-    photoValue?: Samsara.PhotoValueObjectResponseBody[];
+    photoValue?: Samsara.PhotoValueObjectResponseBody[] | undefined;
     /** The value of a scanned document field. Only present for scanned document fields. */
-    scannedDocumentValue?: Samsara.ScannedDocumentValueObjectResponseBody[];
-    signatureValue?: Samsara.SignatureValueObjectResponseBody;
+    scannedDocumentValue?: Samsara.ScannedDocumentValueObjectResponseBody[] | undefined;
+    signatureValue?: Samsara.SignatureValueObjectResponseBody | undefined;
     /** The value of a string field. Only present for string fields. */
-    stringValue?: string;
+    stringValue?: string | undefined;
 }

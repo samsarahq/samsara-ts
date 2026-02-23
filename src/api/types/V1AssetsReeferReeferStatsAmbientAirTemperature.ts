@@ -2,7 +2,7 @@
 
 export interface V1AssetsReeferReeferStatsAmbientAirTemperature {
     /** Timestamp in Unix milliseconds since epoch. */
-    changedAtMs?: number;
+    changedAtMs?: number | undefined;
     /** Ambient temperature in millidegree Celsius. */
-    tempInMilliC?: number;
+    tempInMilliC?: number | undefined;
 }

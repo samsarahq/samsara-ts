@@ -11,6 +11,7 @@ export const GetDriverVehicleAssignmentsRequestAssignmentType = {
     Trailer: "trailer",
     External: "external",
     QrCode: "qrCode",
+    DriverApp: "driverApp",
 } as const;
 export type GetDriverVehicleAssignmentsRequestAssignmentType =
     (typeof GetDriverVehicleAssignmentsRequestAssignmentType)[keyof typeof GetDriverVehicleAssignmentsRequestAssignmentType];

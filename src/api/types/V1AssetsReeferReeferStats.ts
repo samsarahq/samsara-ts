@@ -7,19 +7,19 @@ import type * as Samsara from "../index.js";
  */
 export interface V1AssetsReeferReeferStats {
     /** Ambient temperature of the reefer. This is the temperature of the air around the Samsara Asset Gateway. */
-    ambientAirTemperature?: Samsara.V1AssetsReeferReeferStatsAmbientAirTemperature[];
+    ambientAirTemperature?: Samsara.V1AssetsReeferReeferStatsAmbientAirTemperature[] | undefined;
     /** Discharge air temperature of the reefer. This is the temperature of the air as it leaves the cooling unit. */
-    dischargeAirTemperature?: Samsara.V1AssetsReeferReeferStatsDischargeAirTemperature[];
+    dischargeAirTemperature?: Samsara.V1AssetsReeferReeferStatsDischargeAirTemperature[] | undefined;
     /** Engine hours of the reefer */
-    engineHours?: Samsara.V1AssetReeferResponseReeferStatsEngineHours[];
+    engineHours?: Samsara.V1AssetReeferResponseReeferStatsEngineHours[] | undefined;
     /** Fuel percentage of the reefer */
-    fuelPercentage?: Samsara.V1AssetReeferResponseReeferStatsFuelPercentage[];
+    fuelPercentage?: Samsara.V1AssetReeferResponseReeferStatsFuelPercentage[] | undefined;
     /** Power status of the reefer */
-    powerStatus?: Samsara.V1AssetsReeferReeferStatsPowerStatus[];
+    powerStatus?: Samsara.V1AssetsReeferReeferStatsPowerStatus[] | undefined;
     /** Reefer alarms */
-    reeferAlarms?: Samsara.V1AssetReeferResponseReeferStatsAlarms1[];
+    reeferAlarms?: Samsara.V1AssetReeferResponseReeferStatsAlarms1[] | undefined;
     /** Return air temperature of the reefer. This is the temperature read by the reefer module (Carrier, Thermo King) that shows the temperature of the air as it enters the system. */
-    returnAirTemperature?: Samsara.V1AssetReeferResponseReeferStatsReturnAirTemp[];
+    returnAirTemperature?: Samsara.V1AssetReeferResponseReeferStatsReturnAirTemp[] | undefined;
     /** Set point temperature of the reefer */
-    setPoint?: Samsara.V1AssetReeferResponseReeferStatsSetPoint[];
+    setPoint?: Samsara.V1AssetReeferResponseReeferStatsSetPoint[] | undefined;
 }

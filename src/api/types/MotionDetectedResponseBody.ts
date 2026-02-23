@@ -6,5 +6,5 @@ import type * as Samsara from "../index.js";
  * Details specific to Motion Detected.
  */
 export interface MotionDetectedResponseBody {
-    cameraStream?: Samsara.AlertObjectOnvifCameraStreamResponseBody;
+    cameraStream?: Samsara.AlertObjectOnvifCameraStreamResponseBody | undefined;
 }

@@ -5,9 +5,9 @@
  */
 export interface SafetyEventBehaviorLabelsResponseBody {
     /** Name of the behavior label. */
-    name?: string;
+    name?: string | undefined;
     /** Type of the BehaviorLabel.  Valid values: `Acceleration`, `Braking`, `Crash`, `DefensiveDriving`, `DidNotYield`, `Drinking`, `Drowsy`, `Eating`, `EatingDrinking`, `EdgeDistractedDriving`, `EdgeRailroadCrossingViolation`, `FollowingDistance`, `FollowingDistanceModerate`, `FollowingDistanceSevere`, `ForwardCollisionWarning`, `GenericDistraction`, `GenericTailgating`, `HarshTurn`, `HighSpeedSuddenDisconnect`, `Invalid`, `LaneDeparture`, `LateResponse`, `MobileUsage`, `NearCollison`, `NoSeatbelt`, `ObstructedCamera`, `OperationalEvent`, `Passenger`, `PolicyViolationMask`, `ProtectiveEquipment`, `RanRedLight`, `RearCollisionWarning`, `RollingStop`, `RolloverProtection`, `Smoking`, `Speeding`, `VehicleInBlindSpotWarning`, `VulnerableRoadUserCollisionWarning`, `YawControl` */
-    type?: SafetyEventBehaviorLabelsResponseBody.Type;
+    type?: SafetyEventBehaviorLabelsResponseBody.Type | undefined;
 }
 
 export namespace SafetyEventBehaviorLabelsResponseBody {

@@ -7,13 +7,13 @@ import type * as Samsara from "../index.js";
  */
 export interface LocationObjectResponseBody {
     /** All locations with selected address IDs will trigger. */
-    addressIds?: string[];
+    addressIds?: string[] | undefined;
     /** All locations with the selected address types will trigger. */
-    addressTypes?: LocationObjectResponseBody.AddressTypes.Item[];
-    circle?: Samsara.CircleResponseBody;
-    polygon?: Samsara.PolygonResponseBody;
+    addressTypes?: LocationObjectResponseBody.AddressTypes.Item[] | undefined;
+    circle?: Samsara.CircleResponseBody | undefined;
+    polygon?: Samsara.PolygonResponseBody | undefined;
     /** All locations with selected tag will trigger. */
-    tagIds?: string[];
+    tagIds?: string[] | undefined;
 }
 
 export namespace LocationObjectResponseBody {

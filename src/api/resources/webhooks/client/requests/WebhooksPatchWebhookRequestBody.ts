@@ -4,9 +4,13 @@ import type * as Samsara from "../../../../index.js";
 
 /**
  * @example
- *     {}
+ *     {
+ *         id: "id"
+ *     }
  */
 export interface WebhooksPatchWebhookRequestBody {
+    /** Unique identifier for the webhook to update. */
+    id: string;
     /** The list of custom headers that users can include with their request */
     customHeaders?: Samsara.CustomHeadersObjectRequestBody[];
     /** The  name of the webhook. This will appear in both Samsara’s cloud dashboard and the API. It can be set or updated through the Samsara Dashboard or through the API at any time. */

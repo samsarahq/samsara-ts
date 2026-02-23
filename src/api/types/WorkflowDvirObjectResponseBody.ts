@@ -8,26 +8,26 @@ import type * as Samsara from "../index.js";
 export interface WorkflowDvirObjectResponseBody {
     authorSignature: Samsara.WorkflowAuthorSignatureObjectResponseBody;
     /** Defects registered for the DVIR. */
-    defects?: Samsara.DvirDefectsObjectV20220913ResponseBody[];
+    defects?: Samsara.DvirDefectsObjectV20220913ResponseBody[] | undefined;
     /** Time when the driver signed and completed this DVIR. UTC timestamp in RFC 3339 format. */
     endTime: string;
     /** Optional string if your jurisdiction requires a location of the DVIR. */
-    formattedLocation?: string;
+    formattedLocation?: string | undefined;
     /** The unique id of the DVIR */
     id: string;
     /** The mechanics notes on the DVIR. */
-    mechanicNotes?: string;
+    mechanicNotes?: string | undefined;
     /** Indicates if a defect needs correction. */
     needsCorrection: boolean;
     /** The odometer reading in meters. */
-    odometerMeters?: number;
+    odometerMeters?: number | undefined;
     /** The condition of vehicle on which DVIR was done.  Valid values: `safe`, `unsafe`, `resolved` */
     safetyStatus: WorkflowDvirObjectResponseBody.SafetyStatus;
-    secondSignature?: Samsara.WorkflowAuthorSignatureObjectResponseBody;
+    secondSignature?: Samsara.WorkflowAuthorSignatureObjectResponseBody | undefined;
     /** Time when driver began filling out this DVIR in RFC 3339 format. */
     startTime: string;
-    thirdSignature?: Samsara.WorkflowAuthorSignatureObjectResponseBody;
-    trailer?: Samsara.GoaTrailerTinyResponseResponseBody;
+    thirdSignature?: Samsara.WorkflowAuthorSignatureObjectResponseBody | undefined;
+    trailer?: Samsara.GoaTrailerTinyResponseResponseBody | undefined;
     /** Inspection type of the DVIR.  Valid values: `preTrip`, `postTrip`, `mechanic`, `unspecified` */
     type: WorkflowDvirObjectResponseBody.Type;
 }

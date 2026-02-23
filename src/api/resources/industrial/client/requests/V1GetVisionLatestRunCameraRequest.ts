@@ -2,9 +2,13 @@
 
 /**
  * @example
- *     {}
+ *     {
+ *         camera_id: 1000000
+ *     }
  */
 export interface V1GetVisionLatestRunCameraRequest {
+    /** The camera_id should be valid for the given accessToken. */
+    camera_id: number;
     /** The configured program's ID on the camera. */
     program_id?: number;
     /** EndMs is an optional param. It will default to the current time. */

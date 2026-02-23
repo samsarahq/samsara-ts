@@ -6,5 +6,5 @@ import type * as Samsara from "../index.js";
  * Contains the results for a sensor history request. Each result contains a timestamp and datapoint for each requested (sensor, field) pair.
  */
 export interface V1SensorHistoryResponse {
-    results?: Samsara.V1SensorHistoryResponseResults[];
+    results?: Samsara.V1SensorHistoryResponseResults[] | undefined;
 }

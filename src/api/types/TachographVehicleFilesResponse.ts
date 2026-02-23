@@ -6,6 +6,6 @@ import type * as Samsara from "../index.js";
  * List of all vehicle tachograph files in a specified time range.
  */
 export interface TachographVehicleFilesResponse {
-    data?: Samsara.TachographVehicleFileData;
-    pagination?: Samsara.PaginationResponse;
+    data?: Samsara.TachographVehicleFileData | undefined;
+    pagination?: Samsara.PaginationResponse | undefined;
 }

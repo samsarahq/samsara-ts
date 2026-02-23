@@ -7,7 +7,7 @@ import type * as Samsara from "../index.js";
  */
 export interface TrainingAssignmentNearDueDateTriggerDetailsObjectResponseBody {
     /** The assignment groups the trigger is configured for. */
-    assignmentGroups?: Samsara.TrainingAssignmentNearDueDateTriggerAssignmentGroupObjectResponseBody[];
+    assignmentGroups?: Samsara.TrainingAssignmentNearDueDateTriggerAssignmentGroupObjectResponseBody[] | undefined;
     /** Whether the trigger is configured in days or weeks.  Valid values: `DAYS`, `WEEKS` */
     conditionUnits: TrainingAssignmentNearDueDateTriggerDetailsObjectResponseBody.ConditionUnits;
     /** The number of days or weeks near the due date to trigger on. */

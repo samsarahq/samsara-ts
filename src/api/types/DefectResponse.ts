@@ -6,5 +6,5 @@ import type * as Samsara from "../index.js";
  * A single defect.
  */
 export interface DefectResponse {
-    data?: Samsara.Defect;
+    data?: Samsara.Defect | undefined;
 }

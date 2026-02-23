@@ -5,15 +5,15 @@
  */
 export interface RecipientObjectResponseBody {
     /** The ID of the contact. */
-    contactId?: string;
+    contactId?: string | undefined;
     /** How the user/contact/role should be notified. */
-    notificationTypes?: RecipientObjectResponseBody.NotificationTypes.Item[];
+    notificationTypes?: RecipientObjectResponseBody.NotificationTypes.Item[] | undefined;
     /** The ID of the role. */
-    roleId?: string;
+    roleId?: string | undefined;
     /** The type of recipients  Valid values: `user`, `contact`, `role` */
     type: RecipientObjectResponseBody.Type;
     /** The ID of the user. */
-    userId?: string;
+    userId?: string | undefined;
 }
 
 export namespace RecipientObjectResponseBody {

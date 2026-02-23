@@ -5,7 +5,7 @@
  */
 export interface TrailerStatReeferStateTypeResponseBody {
     /** The substate of the multizone carrier reefer, if available. */
-    substateValue?: string;
+    substateValue?: string | undefined;
     /** UTC timestamp in RFC 3339 format. */
     time: string;
     /** The overall state of the multizone carrier reefer. */

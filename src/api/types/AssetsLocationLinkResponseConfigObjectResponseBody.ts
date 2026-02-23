@@ -7,8 +7,8 @@ import type * as Samsara from "../index.js";
  */
 export interface AssetsLocationLinkResponseConfigObjectResponseBody {
     /** Unique assets ID that Live Sharing Link will show. */
-    assetId?: string;
-    location?: Samsara.AssetsLocationLinkConfigAddressDetailsObjectResponseBody;
+    assetId?: string | undefined;
+    location?: Samsara.AssetsLocationLinkConfigAddressDetailsObjectResponseBody | undefined;
     /** The list of [tags](https://kb.samsara.com/hc/en-us/articles/360026674631-Using-Tags-and-Tag-Nesting) associated with assets for Live Sharing Link. Only populated if the link is configured for by tags instead of by asset ID. */
-    tags?: Samsara.GoaTagTinyResponseResponseBody[];
+    tags?: Samsara.GoaTagTinyResponseResponseBody[] | undefined;
 }

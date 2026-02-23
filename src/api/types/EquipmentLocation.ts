@@ -7,12 +7,12 @@ import type * as Samsara from "../index.js";
  */
 export interface EquipmentLocation {
     /** Heading of the unit of equipment in degrees. */
-    heading?: number;
+    heading?: number | undefined;
     /** GPS latitude represented in degrees */
     latitude: number;
     /** GPS longitude represented in degrees */
     longitude: number;
     /** GPS speed of the unit of equipment in miles per hour. */
-    speed?: number;
+    speed?: number | undefined;
     time: Samsara.Time;
 }

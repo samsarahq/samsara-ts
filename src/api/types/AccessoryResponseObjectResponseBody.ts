@@ -5,7 +5,7 @@
  */
 export interface AccessoryResponseObjectResponseBody {
     /** Product model name of the device */
-    model?: string;
+    model?: string | undefined;
     /** The serial number of the accessory device. */
-    serial?: string;
+    serial?: string | undefined;
 }

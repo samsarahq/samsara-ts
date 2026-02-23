@@ -7,19 +7,19 @@ import type * as Samsara from "../index.js";
  */
 export interface SafetyEventV2AssetObjectResponseBody {
     /** Attributes for the asset associated with the safety event. Only returns when `includeAsset` is set to `true`. */
-    attributes?: Samsara.GoaAttributeTinyResponseBody[];
+    attributes?: Samsara.GoaAttributeTinyResponseBody[] | undefined;
     /** A map of external ids */
-    externalIds?: Record<string, string>;
+    externalIds?: Record<string, string> | undefined;
     /** Unique ID for the asset object that is reporting the safety event. */
     id: string;
     /** Name for the asset object that is reporting the safety event. Only returns when `includeAsset` is set to `true`. */
-    name?: string;
+    name?: string | undefined;
     /** Tags for the asset associated with the safety event. Only returns when `includeAsset` is set to `true`. */
-    tags?: Samsara.GoaTagTinyResponseResponseBody[];
+    tags?: Samsara.GoaTagTinyResponseResponseBody[] | undefined;
     /** Type for the asset object that is reporting the location. Only returns when `includeAsset` is set to `true`.  Valid values: `uncategorized`, `trailer`, `equipment`, `unpowered`, `vehicle` */
-    type?: SafetyEventV2AssetObjectResponseBody.Type;
+    type?: SafetyEventV2AssetObjectResponseBody.Type | undefined;
     /** VIN for the asset object. Only returns when `includeAsset` is set to `true`. */
-    vin?: string;
+    vin?: string | undefined;
 }
 
 export namespace SafetyEventV2AssetObjectResponseBody {

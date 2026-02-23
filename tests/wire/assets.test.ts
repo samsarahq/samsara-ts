@@ -1165,7 +1165,8 @@ describe("AssetsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.assets.v1GetAssetLocation(1000000, {
+        const response = await client.assets.v1GetAssetLocation({
+            asset_id: 1000000,
             startMs: 1000000,
             endMs: 1000000,
         });
@@ -1210,7 +1211,8 @@ describe("AssetsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.assets.v1GetAssetReefer(1000000, {
+        const response = await client.assets.v1GetAssetReefer({
+            asset_id: 1000000,
             startMs: 1000000,
             endMs: 1000000,
         });
@@ -1269,7 +1271,9 @@ describe("AssetsClient", () => {
 
         server.mockEndpoint().get("/assets/id").respondWith().statusCode(200).build();
 
-        const response = await client.assets.get("id");
+        const response = await client.assets.get({
+            id: "id",
+        });
         expect(response).toEqual(undefined);
     });
 
@@ -1284,7 +1288,9 @@ describe("AssetsClient", () => {
 
         server.mockEndpoint().patch("/assets/id").respondWith().statusCode(200).build();
 
-        const response = await client.assets.update("id");
+        const response = await client.assets.update({
+            id: "id",
+        });
         expect(response).toEqual(undefined);
     });
 });

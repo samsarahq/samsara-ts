@@ -2,9 +2,13 @@
 
 /**
  * @example
- *     {}
+ *     {
+ *         id: "id"
+ *     }
  */
 export interface GetDvirRequest {
+    /** Id of the DVIR. */
+    id: string;
     /** Optional boolean indicating whether to return external IDs on supported entities */
     includeExternalIds?: boolean;
 }

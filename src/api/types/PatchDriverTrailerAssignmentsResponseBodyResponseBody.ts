@@ -5,7 +5,7 @@
  */
 export interface PatchDriverTrailerAssignmentsResponseBodyResponseBody {
     /** Time when the driver trailer assignment was created, in RFC 3339 format */
-    createdAtTime?: string;
+    createdAtTime?: string | undefined;
     /** Samsara ID for the driver that this assignment is for. */
     driverId: string;
     /** Time when the driver trailer assignment ends, in RFC 3339 format */
@@ -17,5 +17,5 @@ export interface PatchDriverTrailerAssignmentsResponseBodyResponseBody {
     /** Samsara ID of the trailer */
     trailerId: string;
     /** Time when the driver trailer assignment was last updated, in RFC 3339 format */
-    updatedAtTime?: string;
+    updatedAtTime?: string | undefined;
 }

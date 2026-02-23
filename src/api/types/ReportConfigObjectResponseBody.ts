@@ -7,7 +7,7 @@ export interface ReportConfigObjectResponseBody {
     columns: Samsara.ColumnResponseBody[];
     /** ID of dataset for report configuration. */
     datasetId: string;
-    filters?: Samsara.FiltersResponseBody;
+    filters?: Samsara.FiltersResponseBody | undefined;
     /** ID of report configuration. */
     id: string;
     /** Name of report configuration. */

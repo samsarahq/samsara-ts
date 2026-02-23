@@ -5,9 +5,9 @@
  */
 export interface AmbientTemperatureDetailsObjectResponseBody {
     /** Whether the cargo is full. */
-    cargoIsFull?: boolean;
+    cargoIsFull?: boolean | undefined;
     /** Whether the doors are closed. */
-    doorsAreClosed?: boolean;
+    doorsAreClosed?: boolean | undefined;
     /** The number of milliseconds the trigger needs to stay active before alerting. */
     minDurationMilliseconds: number;
     /** How to evaluate the threshold.  Valid values: `GREATER`, `INSIDE_RANGE`, `LESS`, `OUTSIDE_RANGE` */

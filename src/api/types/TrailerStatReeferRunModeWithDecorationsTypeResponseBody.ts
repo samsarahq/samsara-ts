@@ -6,7 +6,7 @@ import type * as Samsara from "../index.js";
  * The run mode of the reefer.
  */
 export interface TrailerStatReeferRunModeWithDecorationsTypeResponseBody {
-    decorations?: Samsara.TrailerStatDecorationResponseBody;
+    decorations?: Samsara.TrailerStatDecorationResponseBody | undefined;
     /** UTC timestamp in RFC 3339 format. */
     time: string;
     /** The operational mode of the reefer. */

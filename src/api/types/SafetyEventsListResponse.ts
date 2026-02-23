@@ -6,6 +6,6 @@ import type * as Samsara from "../index.js";
  * List of safety events.
  */
 export interface SafetyEventsListResponse {
-    data?: Samsara.SafetyEvent[];
-    pagination?: Samsara.PaginationResponse;
+    data?: Samsara.SafetyEvent[] | undefined;
+    pagination?: Samsara.PaginationResponse | undefined;
 }

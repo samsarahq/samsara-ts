@@ -2,7 +2,7 @@
 
 export interface DocumentPdfGenerationResponseData {
     /** ID of the document. */
-    documentId?: string;
+    documentId?: string | undefined;
     /** ID of the PDF file generated or being generated for the document. */
-    id?: string;
+    id?: string | undefined;
 }

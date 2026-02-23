@@ -4,22 +4,22 @@ import type * as Samsara from "../index.js";
 
 export interface AttributeEntity {
     /** Date values that are associated with this attribute (RFC 3339 date format: YYYY-MM-DD). */
-    dateValues?: string[];
-    entityId?: number;
-    /** The [external IDs](/docs/external-ids) for the given object. */
-    externalIds?: AttributeEntity.ExternalIds;
-    name?: string;
+    dateValues?: string[] | undefined;
+    entityId?: number | undefined;
+    /** The [external IDs](https://developers.samsara.com/docs/external-ids) for the given object. */
+    externalIds?: AttributeEntity.ExternalIds | undefined;
+    name?: string | undefined;
     /** Number values that are associated with this attribute. Note: this field is `null` for `text` and `freeform-multi-select` attribute types.` */
-    numberValues?: number[];
+    numberValues?: number[] | undefined;
     /** String values that are associated with this attribute. Note: this field is `null` for `text` and `freeform-multi-select` attribute types.` */
-    stringValues?: string[];
+    stringValues?: string[] | undefined;
     /** Representation of values that includes ids. Note: this field is `null` for `text` and `freeform-multi-select` attribute types.` */
-    values?: Samsara.AttributeValueTiny[];
+    values?: Samsara.AttributeValueTiny[] | undefined;
 }
 
 export namespace AttributeEntity {
     /**
-     * The [external IDs](/docs/external-ids) for the given object.
+     * The [external IDs](https://developers.samsara.com/docs/external-ids) for the given object.
      */
     export type ExternalIds = {};
 }

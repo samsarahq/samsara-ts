@@ -5,7 +5,7 @@
  */
 export interface FormsConditionObjectResponseBody {
     /** List of option IDs that will satisfy the condition if selected. For check boxes fields, the condition will be met if any of these option IDs are selected. Only returned for multiple choice or check boxes fields when the condition type is `multipleChoiceValueCondition` or `checkBoxesValueCondition`. */
-    selectedOptionIds?: string[];
+    selectedOptionIds?: string[] | undefined;
     /** Type of condition that must be met for actions to be taken.  Valid values: `multipleChoiceValueCondition`, `checkBoxesValueCondition` */
     type: FormsConditionObjectResponseBody.Type;
 }

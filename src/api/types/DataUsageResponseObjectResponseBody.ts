@@ -5,7 +5,7 @@
  */
 export interface DataUsageResponseObjectResponseBody {
     /** Celluar data usage in bytes. */
-    cellularDataUsageBytes?: number;
+    cellularDataUsageBytes?: number | undefined;
     /** Wifi hotspot data usage in bytes. */
-    hotspotUsageBytes?: number;
+    hotspotUsageBytes?: number | undefined;
 }

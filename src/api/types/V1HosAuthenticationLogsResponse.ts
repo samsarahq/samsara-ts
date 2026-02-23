@@ -3,5 +3,5 @@
 import type * as Samsara from "../index.js";
 
 export interface V1HosAuthenticationLogsResponse {
-    authenticationLogs?: Samsara.V1HosAuthenticationLogsResponseAuthenticationLogs[];
+    authenticationLogs?: Samsara.V1HosAuthenticationLogsResponseAuthenticationLogs[] | undefined;
 }

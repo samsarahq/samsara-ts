@@ -25,9 +25,9 @@ export class TrailersClient {
     /**
      * List all trailers.
      *
-     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits [here](/docs/rate-limits)).
+     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
      *
-     * To use this endpoint, select **Read Trailers** under the Trailers category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
+     * To use this endpoint, select **Read Trailers** under the Trailers category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
@@ -131,9 +131,9 @@ export class TrailersClient {
     /**
      * Creates a new trailer asset.
      *
-     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits [here](/docs/rate-limits)).
+     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
      *
-     * To use this endpoint, select **Write Trailers** under the Trailers category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
+     * To use this endpoint, select **Write Trailers** under the Trailers category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
@@ -235,14 +235,14 @@ export class TrailersClient {
     /**
      * Retrieve a trailer with given ID.
      *
-     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits [here](/docs/rate-limits)).
+     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
      *
-     * To use this endpoint, select **Read Trailers** under the Trailers category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
+     * To use this endpoint, select **Read Trailers** under the Trailers category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * @param {string} id - ID of the trailer. This can either be the Samsara-specified ID, or an external ID. External IDs are customer specified key-value pairs created in the POST or PATCH requests of this resource. To specify an external ID as part of a path parameter, use the following format: "key:value". For example, "maintenanceId:250020".
+     * @param {Samsara.GetTrailerRequest} request
      * @param {TrailersClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
@@ -256,19 +256,22 @@ export class TrailersClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.trailers.getTrailer("id")
+     *     await client.trailers.getTrailer({
+     *         id: "id"
+     *     })
      */
     public getTrailer(
-        id: string,
+        request: Samsara.GetTrailerRequest,
         requestOptions?: TrailersClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.TrailersGetTrailerResponseBody> {
-        return core.HttpResponsePromise.fromPromise(this.__getTrailer(id, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__getTrailer(request, requestOptions));
     }
 
     private async __getTrailer(
-        id: string,
+        request: Samsara.GetTrailerRequest,
         requestOptions?: TrailersClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.TrailersGetTrailerResponseBody>> {
+        const { id } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -334,14 +337,14 @@ export class TrailersClient {
     /**
      * Delete a trailer with the given ID.
      *
-     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits [here](/docs/rate-limits)).
+     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
      *
-     * To use this endpoint, select **Write Trailers** under the Trailers category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
+     * To use this endpoint, select **Write Trailers** under the Trailers category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * @param {string} id - Unique identifier for the trailer to delete.
+     * @param {Samsara.DeleteTrailerRequest} request
      * @param {TrailersClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
@@ -355,16 +358,22 @@ export class TrailersClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.trailers.deleteTrailer("id")
+     *     await client.trailers.deleteTrailer({
+     *         id: "id"
+     *     })
      */
-    public deleteTrailer(id: string, requestOptions?: TrailersClient.RequestOptions): core.HttpResponsePromise<void> {
-        return core.HttpResponsePromise.fromPromise(this.__deleteTrailer(id, requestOptions));
+    public deleteTrailer(
+        request: Samsara.DeleteTrailerRequest,
+        requestOptions?: TrailersClient.RequestOptions,
+    ): core.HttpResponsePromise<void> {
+        return core.HttpResponsePromise.fromPromise(this.__deleteTrailer(request, requestOptions));
     }
 
     private async __deleteTrailer(
-        id: string,
+        request: Samsara.DeleteTrailerRequest,
         requestOptions?: TrailersClient.RequestOptions,
     ): Promise<core.WithRawResponse<void>> {
+        const { id } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -429,14 +438,13 @@ export class TrailersClient {
      *  This means that any fields included in the patch request will _overwrite_ fields which exist on the target resource.
      *  For arrays, this means any array included in the request will _replace_ the array that exists at the specified path, it will not _add_ to the existing array
      *
-     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits [here](/docs/rate-limits)).
+     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
      *
-     * To use this endpoint, select **Write Trailers** under the Trailers category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
+     * To use this endpoint, select **Write Trailers** under the Trailers category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * @param {string} id - ID of the trailer. Can be either unique Samsara ID or an [external ID](/docs/external-ids) for the trailer.
      * @param {Samsara.TrailersUpdateTrailerRequestBody} request
      * @param {TrailersClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -451,21 +459,22 @@ export class TrailersClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.trailers.updateTrailer("id")
+     *     await client.trailers.updateTrailer({
+     *         id: "id"
+     *     })
      */
     public updateTrailer(
-        id: string,
-        request: Samsara.TrailersUpdateTrailerRequestBody = {},
+        request: Samsara.TrailersUpdateTrailerRequestBody,
         requestOptions?: TrailersClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.TrailersUpdateTrailerResponseBody> {
-        return core.HttpResponsePromise.fromPromise(this.__updateTrailer(id, request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__updateTrailer(request, requestOptions));
     }
 
     private async __updateTrailer(
-        id: string,
-        request: Samsara.TrailersUpdateTrailerRequestBody = {},
+        request: Samsara.TrailersUpdateTrailerRequestBody,
         requestOptions?: TrailersClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.TrailersUpdateTrailerResponseBody>> {
+        const { id, ..._body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -485,7 +494,7 @@ export class TrailersClient {
             contentType: "application/json",
             queryParameters: requestOptions?.queryParams,
             requestType: "json",
-            body: request,
+            body: _body,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,

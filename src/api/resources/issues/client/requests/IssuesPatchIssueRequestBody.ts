@@ -14,7 +14,7 @@ export interface IssuesPatchIssueRequestBody {
     dueDate?: string;
     /** A map of external ids */
     externalIds?: Record<string, string>;
-    /** ID of the issue. Can be either a unique Samsara ID or an [external ID](/docs/external-ids) for the issue. */
+    /** ID of the issue. Can be either a unique Samsara ID or an [external ID](https://developers.samsara.com/docs/external-ids) for the issue. */
     id: string;
     /** Status of the issue.  Valid values: `open`, `inProgress`, `resolved`, `dismissed` */
     status?: IssuesPatchIssueRequestBody.Status;

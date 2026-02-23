@@ -5,7 +5,7 @@
  */
 export interface DriverOrTagIdsDetailsRequestBody {
     /** On which driver IDs to trigger on. */
-    driverIds?: string[];
+    driverIds?: string[] | undefined;
     /** On which tag IDs to trigger on. */
-    tagIds?: string[];
+    tagIds?: string[] | undefined;
 }

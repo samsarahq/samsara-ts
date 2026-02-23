@@ -10,7 +10,7 @@ import type * as Samsara from "../../../../index.js";
  *     }
  */
 export interface RoutesCreateRouteRequestBody {
-    /** ID of the driver. Can be either a unique Samsara ID or an [external ID](/docs/external-ids) for the driver. */
+    /** ID of the driver. Can be either a unique Samsara ID or an [external ID](https://developers.samsara.com/docs/external-ids) for the driver. */
     driverId?: string;
     /** A map of external ids */
     externalIds?: Record<string, string>;
@@ -25,6 +25,6 @@ export interface RoutesCreateRouteRequestBody {
     stops: Samsara.CreateRoutesStopRequestObjectRequestBody[];
     /** An array of IDs of tags to associate with this route. */
     tagIds?: string[];
-    /** ID of the vehicle. Can be either a unique Samsara ID or an [external ID](/docs/external-ids) for the vehicle. */
+    /** ID of the vehicle. Can be either a unique Samsara ID or an [external ID](https://developers.samsara.com/docs/external-ids) for the vehicle. */
     vehicleId?: string;
 }

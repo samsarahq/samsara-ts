@@ -5,7 +5,7 @@
  */
 export interface VehicleLocationAddress {
     /** Id of the address. */
-    id?: string;
+    id?: string | undefined;
     /** Name of address. */
-    name?: string;
+    name?: string | undefined;
 }

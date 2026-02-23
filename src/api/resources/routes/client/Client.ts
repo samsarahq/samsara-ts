@@ -25,9 +25,9 @@ export class RoutesClient {
     /**
      * Returns multiple routes. The legacy version of this endpoint can be found at [samsara.com/api-legacy](https://www.samsara.com/api-legacy#operation/fetchAllDispatchRoutes).
      *
-     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits [here](/docs/rate-limits)).
+     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
      *
-     * To use this endpoint, select **Read Routes** under the Driver Workflow category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
+     * To use this endpoint, select **Read Routes** under the Driver Workflow category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
@@ -135,9 +135,9 @@ export class RoutesClient {
     /**
      * Create a route. The legacy version of this endpoint can be found at [samsara.com/api-legacy](https://www.samsara.com/api-legacy#operation/createDispatchRoute).
      *
-     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits [here](/docs/rate-limits)).
+     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
      *
-     * To use this endpoint, select **Write Routes** under the Driver Workflow category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
+     * To use this endpoint, select **Write Routes** under the Driver Workflow category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
@@ -242,9 +242,9 @@ export class RoutesClient {
      *
      * The legacy version of this endpoint can be found at [samsara.com/api-legacy](https://www.samsara.com/api-legacy#operation/fetchAllRouteJobUpdates).
      *
-     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits [here](/docs/rate-limits)).
+     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
      *
-     * To use this endpoint, select **Read Routes** under the Driver Workflow category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
+     * To use this endpoint, select **Read Routes** under the Driver Workflow category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
@@ -346,14 +346,13 @@ export class RoutesClient {
     /**
      * Returns a single route. The legacy version of this endpoint can be found at [samsara.com/api-legacy](https://www.samsara.com/api-legacy#operation/getDispatchRouteById).
      *
-     *  <b>Rate limit:</b> 25 requests/sec (learn more about rate limits [here](/docs/rate-limits)).
+     *  <b>Rate limit:</b> 25 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
      *
-     * To use this endpoint, select **Read Routes** under the Driver Workflow category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
+     * To use this endpoint, select **Read Routes** under the Driver Workflow category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * @param {string} id - ID of the route. This can either be the Samsara-specified ID, or an external ID. External IDs are customer specified key-value pairs created in the POST or PATCH requests of this resource. To specify an external ID as part of a path parameter, use the following format: `key:value`. For example, `payrollId:ABFS18600`
      * @param {Samsara.FetchRouteRequest} request
      * @param {RoutesClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -368,22 +367,22 @@ export class RoutesClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.routes.fetchRoute("id")
+     *     await client.routes.fetchRoute({
+     *         id: "id"
+     *     })
      */
     public fetchRoute(
-        id: string,
-        request: Samsara.FetchRouteRequest = {},
+        request: Samsara.FetchRouteRequest,
         requestOptions?: RoutesClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.RoutesFetchRouteResponseBody> {
-        return core.HttpResponsePromise.fromPromise(this.__fetchRoute(id, request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__fetchRoute(request, requestOptions));
     }
 
     private async __fetchRoute(
-        id: string,
-        request: Samsara.FetchRouteRequest = {},
+        request: Samsara.FetchRouteRequest,
         requestOptions?: RoutesClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.RoutesFetchRouteResponseBody>> {
-        const { include } = request;
+        const { id, include } = request;
         const _queryParams: Record<string, unknown> = {
             include,
         };
@@ -449,14 +448,14 @@ export class RoutesClient {
     /**
      * Delete a dispatch route and its associated stops.
      *
-     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits [here](/docs/rate-limits)).
+     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
      *
-     * To use this endpoint, select **Write Routes** under the Driver Workflow category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
+     * To use this endpoint, select **Write Routes** under the Driver Workflow category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * @param {string} id - ID of the route. This can either be the Samsara-specified ID, or an external ID. External IDs are customer specified key-value pairs created in the POST or PATCH requests of this resource. To specify an external ID as part of a path parameter, use the following format: `key:value`. For example, `payrollId:ABFS18600`
+     * @param {Samsara.DeleteRouteRequest} request
      * @param {RoutesClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
@@ -470,16 +469,22 @@ export class RoutesClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.routes.deleteRoute("id")
+     *     await client.routes.deleteRoute({
+     *         id: "id"
+     *     })
      */
-    public deleteRoute(id: string, requestOptions?: RoutesClient.RequestOptions): core.HttpResponsePromise<void> {
-        return core.HttpResponsePromise.fromPromise(this.__deleteRoute(id, requestOptions));
+    public deleteRoute(
+        request: Samsara.DeleteRouteRequest,
+        requestOptions?: RoutesClient.RequestOptions,
+    ): core.HttpResponsePromise<void> {
+        return core.HttpResponsePromise.fromPromise(this.__deleteRoute(request, requestOptions));
     }
 
     private async __deleteRoute(
-        id: string,
+        request: Samsara.DeleteRouteRequest,
         requestOptions?: RoutesClient.RequestOptions,
     ): Promise<core.WithRawResponse<void>> {
+        const { id } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -546,14 +551,13 @@ export class RoutesClient {
      *
      * The legacy version of this endpoint (which uses PUT instead of PATCH) can be found at [samsara.com/api-legacy](https://www.samsara.com/api-legacy#operation/updateDispatchRouteById).
      *
-     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits [here](/docs/rate-limits)).
+     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
      *
-     * To use this endpoint, select **Write Routes** under the Driver Workflow category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
+     * To use this endpoint, select **Write Routes** under the Driver Workflow category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * @param {string} id - ID of the route. This can either be the Samsara-specified ID, or an external ID. External IDs are customer specified key-value pairs created in the POST or PATCH requests of this resource. To specify an external ID as part of a path parameter, use the following format: `key:value`. For example, `payrollId:ABFS18600`
      * @param {Samsara.RoutesPatchRouteRequestBody} request
      * @param {RoutesClient.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -568,21 +572,22 @@ export class RoutesClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.routes.patchRoute("id")
+     *     await client.routes.patchRoute({
+     *         id: "id"
+     *     })
      */
     public patchRoute(
-        id: string,
-        request: Samsara.RoutesPatchRouteRequestBody = {},
+        request: Samsara.RoutesPatchRouteRequestBody,
         requestOptions?: RoutesClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.RoutesPatchRouteResponseBody> {
-        return core.HttpResponsePromise.fromPromise(this.__patchRoute(id, request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__patchRoute(request, requestOptions));
     }
 
     private async __patchRoute(
-        id: string,
-        request: Samsara.RoutesPatchRouteRequestBody = {},
+        request: Samsara.RoutesPatchRouteRequestBody,
         requestOptions?: RoutesClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.RoutesPatchRouteResponseBody>> {
+        const { id, ..._body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -602,7 +607,7 @@ export class RoutesClient {
             contentType: "application/json",
             queryParameters: requestOptions?.queryParams,
             requestType: "json",
-            body: request,
+            body: _body,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -648,9 +653,9 @@ export class RoutesClient {
     /**
      * Retrieve routes for a specific plan.
      *
-     *  <b>Rate limit:</b> 10 requests/sec (learn more about rate limits [here](/docs/rate-limits)).
+     *  <b>Rate limit:</b> 10 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
      *
-     * To use this endpoint, select **Read Routes** under the Driver Workflow category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
+     * To use this endpoint, select **Read Routes** under the Driver Workflow category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
@@ -767,30 +772,28 @@ export class RoutesClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * To use this endpoint, select **Write Routes** under the Driver Workflow category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
+     * To use this endpoint, select **Write Routes** under the Driver Workflow category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
-     * @param {string} route_id_or_external_id - ID of the route. This can either be the Samsara-specified ID, or an external ID. External IDs are customer specified key-value pairs created in the POST or PATCH requests of this resource. To specify an external ID as part of a path parameter, use the following format: `key:value`. For example, `payrollId:ABFS18600`
      * @param {Samsara.InlineObject} request
      * @param {RoutesClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.routes.v1DeleteDispatchRouteById("route_id_or_external_id")
+     *     await client.routes.v1DeleteDispatchRouteById({
+     *         route_id_or_external_id: "route_id_or_external_id"
+     *     })
      */
     public v1DeleteDispatchRouteById(
-        route_id_or_external_id: string,
-        request: Samsara.InlineObject = {},
+        request: Samsara.InlineObject,
         requestOptions?: RoutesClient.RequestOptions,
     ): core.HttpResponsePromise<void> {
-        return core.HttpResponsePromise.fromPromise(
-            this.__v1DeleteDispatchRouteById(route_id_or_external_id, request, requestOptions),
-        );
+        return core.HttpResponsePromise.fromPromise(this.__v1DeleteDispatchRouteById(request, requestOptions));
     }
 
     private async __v1DeleteDispatchRouteById(
-        route_id_or_external_id: string,
-        request: Samsara.InlineObject = {},
+        request: Samsara.InlineObject,
         requestOptions?: RoutesClient.RequestOptions,
     ): Promise<core.WithRawResponse<void>> {
+        const { route_id_or_external_id: routeIdOrExternalId, ..._body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -803,14 +806,14 @@ export class RoutesClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.SamsaraEnvironment.ProductionApi,
-                `v1/fleet/dispatch/routes/${core.url.encodePathParam(route_id_or_external_id)}`,
+                `v1/fleet/dispatch/routes/${core.url.encodePathParam(routeIdOrExternalId)}`,
             ),
             method: "DELETE",
             headers: _headers,
             contentType: "application/json",
             queryParameters: requestOptions?.queryParams,
             requestType: "json",
-            body: request,
+            body: _body,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,

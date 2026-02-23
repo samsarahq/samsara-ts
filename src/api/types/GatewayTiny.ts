@@ -5,7 +5,7 @@
  */
 export interface GatewayTiny {
     /** The gateway model */
-    model?: string;
+    model?: string | undefined;
     /** The serial number of the gateway. */
-    serial?: string;
+    serial?: string | undefined;
 }

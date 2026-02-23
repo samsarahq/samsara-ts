@@ -7,5 +7,5 @@ export interface QrCodeResponseObjectResponseBody {
     /** ID for the driver the QR code belongs to. */
     driverId: number;
     /** URL link to the driver assignment QR code. Included if a QR code has been created for the driver. */
-    qrCodeLink?: string;
+    qrCodeLink?: string | undefined;
 }

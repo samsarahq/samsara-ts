@@ -13,7 +13,7 @@ import type * as Samsara from "../../../../index.js";
 export interface DriverVehicleAssignmentsV2UpdateDriverVehicleAssignmentRequestBody {
     /** The time at which the assignment was made in RFC 3339 format. Millisecond precision and timezones are supported. (Examples: 2019-06-13T19:08:25Z, 2019-06-13T19:08:25.455Z, OR 2015-09-15T14:00:12-04:00). */
     assignedAtTime?: string;
-    /** ID of the driver. This can be either a unique Samsara ID or an [external ID](/docs/external-ids) for the driver. */
+    /** ID of the driver. This can be either a unique Samsara ID or an [external ID](https://developers.samsara.com/docs/external-ids) for the driver. */
     driverId: string;
     /** The end time in RFC 3339 format. To make this an ongoing assignment (ie. an assignment with no end time), provide an endTime value of 'null'. Millisecond precision and timezones are supported. (Examples: 2019-06-13T19:08:25Z, 2019-06-13T19:08:25.455Z, OR 2015-09-15T14:00:12-04:00). */
     endTime?: string;
@@ -22,6 +22,6 @@ export interface DriverVehicleAssignmentsV2UpdateDriverVehicleAssignmentRequestB
     metadata?: Samsara.PatchDriverVehicleAssignmentsV2RequestBodyMetadataRequestBody;
     /** The start time in RFC 3339 format. Millisecond precision and timezones are supported. (Examples: 2019-06-13T19:08:25Z, 2019-06-13T19:08:25.455Z, OR 2015-09-15T14:00:12-04:00). */
     startTime: string;
-    /** ID of the vehicle. This can be either a unique Samsara ID or an [external ID](/docs/external-ids) for the vehicle. */
+    /** ID of the vehicle. This can be either a unique Samsara ID or an [external ID](https://developers.samsara.com/docs/external-ids) for the vehicle. */
     vehicleId: string;
 }

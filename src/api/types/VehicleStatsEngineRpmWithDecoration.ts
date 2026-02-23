@@ -6,7 +6,7 @@ import type * as Samsara from "../index.js";
  * Vehicle engine RPM reading.
  */
 export interface VehicleStatsEngineRpmWithDecoration {
-    decorations?: Samsara.VehicleStatsDecorations;
+    decorations?: Samsara.VehicleStatsDecorations | undefined;
     time: Samsara.Time;
     /** The revolutions per minute of the engine. */
     value: number;

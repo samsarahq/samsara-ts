@@ -6,5 +6,5 @@ import type * as Samsara from "../index.js";
  * Information about an organization.
  */
 export interface OrganizationInfoResponse {
-    data?: Samsara.OrganizationInfoObject;
+    data?: Samsara.OrganizationInfoObject | undefined;
 }

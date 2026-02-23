@@ -5,11 +5,11 @@
  */
 export interface FftSpectraDataPointFftSpectra {
     /** Frequencies */
-    frequencies?: number[];
+    frequencies?: number[] | undefined;
     /** X-axis data */
-    x?: number[];
+    x?: number[] | undefined;
     /** Y-axis data */
-    y?: number[];
+    y?: number[] | undefined;
     /** Z-axis data */
-    z?: number[];
+    z?: number[] | undefined;
 }

@@ -4,14 +4,14 @@
  * The webhook configuration for an Action.
  */
 export interface WebhookParamsObjectResponseBody {
-    /** This determines the alert webhook payload type to use. Learn more: /docs/webhook-reference.  Valid values: `legacy`, `enriched` */
-    payloadType?: WebhookParamsObjectResponseBody.PayloadType;
+    /** This determines the alert webhook payload type to use. Learn more: https://developers.samsara.com/docs/webhook-reference.  Valid values: `legacy`, `enriched` */
+    payloadType?: WebhookParamsObjectResponseBody.PayloadType | undefined;
     /** The webhook IDs. */
     webhookIds: string[];
 }
 
 export namespace WebhookParamsObjectResponseBody {
-    /** This determines the alert webhook payload type to use. Learn more: /docs/webhook-reference.  Valid values: `legacy`, `enriched` */
+    /** This determines the alert webhook payload type to use. Learn more: https://developers.samsara.com/docs/webhook-reference.  Valid values: `legacy`, `enriched` */
     export const PayloadType = {
         Legacy: "legacy",
         Enriched: "enriched",

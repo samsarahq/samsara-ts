@@ -6,7 +6,7 @@ import type * as Samsara from "../index.js";
  * Reefer ambient air temperature reading.
  */
 export interface TrailerStatReeferAmbientAirTemperatureWithDecorationsTypeResponseBody {
-    decorations?: Samsara.TrailerStatDecorationResponseBody;
+    decorations?: Samsara.TrailerStatDecorationResponseBody | undefined;
     /** UTC timestamp in RFC 3339 format. */
     time: string;
     /** The ambient air temperature reading of the reefer in millidegree Celsius. */

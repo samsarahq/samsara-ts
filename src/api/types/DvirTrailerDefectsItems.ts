@@ -4,40 +4,40 @@ import type * as Samsara from "../index.js";
 
 export interface DvirTrailerDefectsItems {
     /** Comment on the defect. */
-    comment?: string;
+    comment?: string | undefined;
     /** Time when the defect was created. UTC timestamp in RFC 3339 format. Example: `2020-01-27T07:06:25Z`. */
-    createdAtTime?: string;
+    createdAtTime?: string | undefined;
     /** The type of DVIR defect. */
-    defectType?: string;
+    defectType?: string | undefined;
     /** ID of the defect. */
     id: string;
     /** Signifies if this defect is resolved. */
     isResolved: boolean;
     /** The mechanics notes on the defect. */
-    mechanicNotes?: string;
+    mechanicNotes?: string | undefined;
     /** Time when mechanic notes were last updated. UTC timestamp in RFC 3339 format. Example: `2020-01-27T07:06:25Z`. */
-    mechanicNotesUpdatedAtTime?: string;
+    mechanicNotesUpdatedAtTime?: string | undefined;
     /** Time when this defect was resolved. Will not be returned if the defect is unresolved. UTC timestamp in RFC 3339 format. Example: `2020-01-27T07:06:25Z`. */
-    resolvedAtTime?: string;
-    resolvedBy?: Samsara.DefectResolvedBy;
-    trailer?: DvirTrailerDefectsItems.Trailer;
-    vehicle?: DvirTrailerDefectsItems.Vehicle;
+    resolvedAtTime?: string | undefined;
+    resolvedBy?: Samsara.DefectResolvedBy | undefined;
+    trailer?: DvirTrailerDefectsItems.Trailer | undefined;
+    vehicle?: DvirTrailerDefectsItems.Vehicle | undefined;
 }
 
 export namespace DvirTrailerDefectsItems {
     export interface Trailer {
         /** ID of the trailer. */
-        id?: string;
+        id?: string | undefined;
         /** Name of the trailer. */
-        name?: string;
+        name?: string | undefined;
     }
 
     export interface Vehicle {
-        /** The [external IDs](/docs/external-ids) for the given object. */
-        ExternalIds?: Record<string, string>;
+        /** The [external IDs](https://developers.samsara.com/docs/external-ids) for the given object. */
+        ExternalIds?: Record<string, string> | undefined;
         /** ID of the vehicle. */
-        id?: string;
+        id?: string | undefined;
         /** Name of the vehicle. */
-        name?: string;
+        name?: string | undefined;
     }
 }

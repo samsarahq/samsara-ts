@@ -7,18 +7,18 @@ import type * as Samsara from "../index.js";
  */
 export interface EquipmentWithAttributesResponseObjectResponseBody {
     /** List of attributes associated with the entity */
-    attributes?: Samsara.GoaAttributeTinyResponseBody[];
+    attributes?: Samsara.GoaAttributeTinyResponseBody[] | undefined;
     /** The serial number of the equipment. */
-    equipmentSerialNumber?: string;
+    equipmentSerialNumber?: string | undefined;
     /** A map of external ids */
-    externalIds?: Record<string, string>;
+    externalIds?: Record<string, string> | undefined;
     /** The unique Samsara ID of the Equipment. This is automatically generated when the Equipment object is created. It cannot be changed. */
-    id?: string;
-    installedGateway?: Samsara.GoaGatewayTinyResponseResponseBody;
+    id?: string | undefined;
+    installedGateway?: Samsara.GoaGatewayTinyResponseResponseBody | undefined;
     /** The human-readable name of the Equipment. This is set by a fleet administrator and will appear in both Samsara’s cloud dashboard as well as the Samsara Driver mobile app. By default, this name is the serial number of the Samsara Asset Gateway. It can be set or updated through the Samsara Dashboard or through the API at any time. */
-    name?: string;
+    name?: string | undefined;
     /** These are generic notes about the Equipment. Empty by default. Can be set or updated through the Samsara Dashboard or the API at any time. */
-    notes?: string;
+    notes?: string | undefined;
     /** The list of [tags](https://kb.samsara.com/hc/en-us/articles/360026674631-Using-Tags-and-Tag-Nesting) associated with the Equipment. */
-    tags?: Samsara.GoaTagTinyResponseResponseBody[];
+    tags?: Samsara.GoaTagTinyResponseResponseBody[] | undefined;
 }

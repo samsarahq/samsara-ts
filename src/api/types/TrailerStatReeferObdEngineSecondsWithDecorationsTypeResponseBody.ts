@@ -6,7 +6,7 @@ import type * as Samsara from "../index.js";
  * Reefer onboard engine seconds reading.
  */
 export interface TrailerStatReeferObdEngineSecondsWithDecorationsTypeResponseBody {
-    decorations?: Samsara.TrailerStatDecorationResponseBody;
+    decorations?: Samsara.TrailerStatDecorationResponseBody | undefined;
     /** UTC timestamp in RFC 3339 format. */
     time: string;
     /** The number of seconds the reefer has been on according to the onboard diagnostics. */

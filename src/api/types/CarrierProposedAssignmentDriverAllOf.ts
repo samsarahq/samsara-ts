@@ -3,5 +3,5 @@
 import type * as Samsara from "../index.js";
 
 export interface CarrierProposedAssignmentDriverAllOf {
-    externalIds?: Samsara.CarrierProposedAssignmentDriverAllOf2ExternalIds;
+    externalIds?: Samsara.CarrierProposedAssignmentDriverAllOf2ExternalIds | undefined;
 }

@@ -7,7 +7,7 @@ import type * as Samsara from "../index.js";
  */
 export interface VehicleStatsFaultCodesObdii {
     /** True if the check engine light is illuminated (MIL status field is nonzero for any faults). */
-    checkEngineLightIsOn?: boolean;
+    checkEngineLightIsOn?: boolean | undefined;
     /** Diagnostic trouble codes for passenger vehicles. */
-    diagnosticTroubleCodes?: Samsara.VehicleStatsFaultCodesObdiiTroubleCode[];
+    diagnosticTroubleCodes?: Samsara.VehicleStatsFaultCodesObdiiTroubleCode[] | undefined;
 }

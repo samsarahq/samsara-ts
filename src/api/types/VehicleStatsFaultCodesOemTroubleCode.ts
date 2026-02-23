@@ -5,11 +5,11 @@
  */
 export interface VehicleStatsFaultCodesOemTroubleCode {
     /** The OEM code description. */
-    codeDescription?: string;
+    codeDescription?: string | undefined;
     /** The OEM code identifier. */
-    codeIdentifier?: string;
+    codeIdentifier?: string | undefined;
     /** The OEM code severity. */
-    codeSeverity?: string;
+    codeSeverity?: string | undefined;
     /** The OEM code source. */
-    codeSource?: string;
+    codeSource?: string | undefined;
 }

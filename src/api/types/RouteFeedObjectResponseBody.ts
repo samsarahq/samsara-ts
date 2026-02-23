@@ -8,14 +8,14 @@ import type * as Samsara from "../index.js";
 export interface RouteFeedObjectResponseBody {
     changes: Samsara.RouteChangesResponseBody;
     /** The operation that was performed as part of this route update.  Valid values: `stop scheduled`, `stop en route`, `stop skipped`, `stop arrived`, `stop departed`, `stop ETA updated`, `stop arrival time updated`, `stop completion time updated`, `stop order changed`, `stop arrival prevented` */
-    operation?: RouteFeedObjectResponseBody.Operation;
+    operation?: RouteFeedObjectResponseBody.Operation | undefined;
     route: Samsara.BaseRouteResponseObjectResponseBody;
     /** The source of this route update. Updates that are triggered by time or by the route being completed are 'automatic'.  Valid values: `automatic`, `driver`, `admin` */
     source: RouteFeedObjectResponseBody.Source;
     /** The timestamp of the route in RFC 3339 format. */
     time: string;
     /** The type of route update. The route tracking updates occur as a route is completed and stops transition from one state to another. Currently only Route Tracking updates are supported, but this will change in the future when additional types are added.  Valid values: `route tracking` */
-    type: "route tracking";
+    type: RouteFeedObjectResponseBody.Type;
 }
 
 export namespace RouteFeedObjectResponseBody {
@@ -40,4 +40,9 @@ export namespace RouteFeedObjectResponseBody {
         Admin: "admin",
     } as const;
     export type Source = (typeof Source)[keyof typeof Source];
+    /** The type of route update. The route tracking updates occur as a route is completed and stops transition from one state to another. Currently only Route Tracking updates are supported, but this will change in the future when additional types are added.  Valid values: `route tracking` */
+    export const Type = {
+        RouteTracking: "route tracking",
+    } as const;
+    export type Type = (typeof Type)[keyof typeof Type];
 }

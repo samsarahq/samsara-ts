@@ -5,7 +5,7 @@
  */
 export interface VehicleDvirObjectResponseBody {
     /** A map of external ids */
-    externalIds?: Record<string, string>;
+    externalIds?: Record<string, string> | undefined;
     /** ID of the vehicle */
-    id?: string;
+    id?: string | undefined;
 }

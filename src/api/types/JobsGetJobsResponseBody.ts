@@ -6,8 +6,8 @@ export interface JobsGetJobsResponseBody {
     /** List of Job Objects */
     data: Samsara.JobResponseObjectResponseBody[];
     /** The job id of the failed request */
-    id?: string;
+    id?: string | undefined;
     pagination: Samsara.GoaPaginationResponseResponseBody;
     /** The uuid of the failed request */
-    uuid?: string;
+    uuid?: string | undefined;
 }

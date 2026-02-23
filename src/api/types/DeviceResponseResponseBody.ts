@@ -7,16 +7,16 @@ import type * as Samsara from "../index.js";
  */
 export interface DeviceResponseResponseBody {
     asset: Samsara.DeviceAssetResponseResponseBody;
-    health?: Samsara.HealthResponseResponseBody;
+    health?: Samsara.HealthResponseResponseBody | undefined;
     /** The last time the device was connected, in RFC 3339 format. */
-    lastConnectedTime?: string;
-    lastKnownLocation?: Samsara.LastKnownLocationResponseResponseBody;
+    lastConnectedTime?: string | undefined;
+    lastKnownLocation?: Samsara.LastKnownLocationResponseResponseBody | undefined;
     /** The product model name of the device.  Valid values: `AG24`, `AG24EU`, `AG26`, `AG26EU`, `AG45`, `AG45EU`, `AG46`, `AG46EU`, `AG46P`, `AG46PEU`, `AG51`, `AG51EU`, `AG52`, `AG52EU`, `AG53`, `AG53EU`, `AT11`, `AT11X`, `CM31`, `CM32`, `CM33`, `CM34`, `OEM`, `OEMP`, `OEMR`, `OEMV`, `VG34`, `VG34EU`, `VG34FN`, `VG34M`, `VG54EU`, `VG54NA`, `VG55EU`, `VG55NA` */
     model: DeviceResponseResponseBody.Model;
     /** The serial number of the device. */
     serial: string;
     /** The list of [tags](https://kb.samsara.com/hc/en-us/articles/360026674631-Using-Tags-and-Tag-Nesting) associated with the Device. */
-    tags?: Samsara.GoaTagTinyResponseResponseBody[];
+    tags?: Samsara.GoaTagTinyResponseResponseBody[] | undefined;
 }
 
 export namespace DeviceResponseResponseBody {

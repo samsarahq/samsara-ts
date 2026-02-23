@@ -7,8 +7,8 @@ import type * as Samsara from "../index.js";
  */
 export interface VehicleSensorConfigurationDoor {
     /** Position of the door monitor on the vehicle */
-    position?: VehicleSensorConfigurationDoor.Position;
-    sensor?: Samsara.Sensor;
+    position?: VehicleSensorConfigurationDoor.Position | undefined;
+    sensor?: Samsara.Sensor | undefined;
 }
 
 export namespace VehicleSensorConfigurationDoor {

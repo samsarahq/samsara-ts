@@ -6,9 +6,9 @@ export interface VehiclesDriverAssignmentsObjectResponseBody {
     /** List of driver assignment objects. */
     driverAssignments: Samsara.DriverAssignmentObjectResponseBody[];
     /** A map of external ids */
-    externalIds?: Record<string, string>;
+    externalIds?: Record<string, string> | undefined;
     /** ID of the vehicle. */
     id: string;
     /** Name of the vehicle. */
-    name?: string;
+    name?: string | undefined;
 }

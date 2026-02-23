@@ -6,5 +6,5 @@ import type * as Samsara from "../index.js";
  * Contains filters that are going to be applied to this report run.
  */
 export interface FiltersRequestBody {
-    primaryTimeRange?: Samsara.PrimaryTimeRangeRequestBody;
+    primaryTimeRange?: Samsara.PrimaryTimeRangeRequestBody | undefined;
 }

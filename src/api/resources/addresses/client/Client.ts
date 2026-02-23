@@ -27,7 +27,7 @@ export class AddressesClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * To use this endpoint, select **Read Addresses** under the Addresses category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
+     * To use this endpoint, select **Read Addresses** under the Addresses category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
      * @param {Samsara.ListAddressesRequest} request
      * @param {AddressesClient.RequestOptions} requestOptions - Request-specific configuration.
@@ -109,7 +109,7 @@ export class AddressesClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * To use this endpoint, select **Write Addresses** under the Addresses category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
+     * To use this endpoint, select **Write Addresses** under the Addresses category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
      * @param {Samsara.CreateAddressRequest} request
      * @param {AddressesClient.RequestOptions} requestOptions - Request-specific configuration.
@@ -178,25 +178,28 @@ export class AddressesClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * To use this endpoint, select **Read Addresses** under the Addresses category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
+     * To use this endpoint, select **Read Addresses** under the Addresses category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
-     * @param {string} id - ID of the Address. This can either be the Samsara-provided ID or an external ID. External IDs are customer-specified key-value pairs created in the POST or PATCH requests of this resource. To specify an external ID as part of a path parameter, use the following format: `key:value`. For example, `crmId:abc123`
+     * @param {Samsara.GetAddressesRequest} request
      * @param {AddressesClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.addresses.get("id")
+     *     await client.addresses.get({
+     *         id: "id"
+     *     })
      */
     public get(
-        id: string,
+        request: Samsara.GetAddressesRequest,
         requestOptions?: AddressesClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.AddressResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__get(id, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__get(request, requestOptions));
     }
 
     private async __get(
-        id: string,
+        request: Samsara.GetAddressesRequest,
         requestOptions?: AddressesClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.AddressResponse>> {
+        const { id } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -240,25 +243,28 @@ export class AddressesClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * To use this endpoint, select **Write Addresses** under the Addresses category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
+     * To use this endpoint, select **Write Addresses** under the Addresses category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
-     * @param {string} id - ID of the Address. This can either be the Samsara-provided ID or an external ID. External IDs are customer-specified key-value pairs created in the POST or PATCH requests of this resource. To specify an external ID as part of a path parameter, use the following format: `key:value`. For example, `crmId:abc123`
+     * @param {Samsara.DeleteAddressesRequest} request
      * @param {AddressesClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.addresses.delete("id")
+     *     await client.addresses.delete({
+     *         id: "id"
+     *     })
      */
     public delete(
-        id: string,
+        request: Samsara.DeleteAddressesRequest,
         requestOptions?: AddressesClient.RequestOptions,
-    ): core.HttpResponsePromise<Samsara.StandardDeleteResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__delete(id, requestOptions));
+    ): core.HttpResponsePromise<void> {
+        return core.HttpResponsePromise.fromPromise(this.__delete(request, requestOptions));
     }
 
     private async __delete(
-        id: string,
+        request: Samsara.DeleteAddressesRequest,
         requestOptions?: AddressesClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Samsara.StandardDeleteResponse>> {
+    ): Promise<core.WithRawResponse<void>> {
+        const { id } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -283,7 +289,7 @@ export class AddressesClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Samsara.StandardDeleteResponse, rawResponse: _response.rawResponse };
+            return { data: undefined, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
@@ -302,28 +308,28 @@ export class AddressesClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * To use this endpoint, select **Write Addresses** under the Addresses category when creating or editing an API token. [Learn More.](/docs/authentication#scopes-for-api-tokens)
+     * To use this endpoint, select **Write Addresses** under the Addresses category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
-     * @param {string} id - ID of the Address. This can either be the Samsara-provided ID or an external ID. External IDs are customer-specified key-value pairs created in the POST or PATCH requests of this resource. To specify an external ID as part of a path parameter, use the following format: `key:value`. For example, `crmId:abc123`
      * @param {Samsara.UpdateAddressRequest} request
      * @param {AddressesClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.addresses.update("id")
+     *     await client.addresses.update({
+     *         id: "id"
+     *     })
      */
     public update(
-        id: string,
-        request: Samsara.UpdateAddressRequest = {},
+        request: Samsara.UpdateAddressRequest,
         requestOptions?: AddressesClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.AddressResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__update(id, request, requestOptions));
+        return core.HttpResponsePromise.fromPromise(this.__update(request, requestOptions));
     }
 
     private async __update(
-        id: string,
-        request: Samsara.UpdateAddressRequest = {},
+        request: Samsara.UpdateAddressRequest,
         requestOptions?: AddressesClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.AddressResponse>> {
+        const { id, ..._body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -343,7 +349,7 @@ export class AddressesClient {
             contentType: "application/json",
             queryParameters: requestOptions?.queryParams,
             requestType: "json",
-            body: request,
+            body: _body,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,

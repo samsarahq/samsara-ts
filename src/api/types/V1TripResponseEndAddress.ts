@@ -5,9 +5,9 @@
  */
 export interface V1TripResponseEndAddress {
     /** The formatted address */
-    address?: string;
+    address?: string | undefined;
     /** The ID of the address */
-    id?: number;
+    id?: number | undefined;
     /** The name of the address */
-    name?: string;
+    name?: string | undefined;
 }

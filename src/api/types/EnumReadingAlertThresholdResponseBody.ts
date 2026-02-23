@@ -5,7 +5,7 @@
  */
 export interface EnumReadingAlertThresholdResponseBody {
     /** The numeric representation of the enum value. */
-    number?: number;
+    number?: number | undefined;
     /** The symbol representation of the enum value. */
-    symbol?: string;
+    symbol?: string | undefined;
 }

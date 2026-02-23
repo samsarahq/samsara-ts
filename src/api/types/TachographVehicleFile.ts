@@ -5,11 +5,11 @@
  */
 export interface TachographVehicleFile {
     /** Creation time of files in RFC 3339 format. This is either the download time from the tachograph itself (for files downloaded via Samsara VG) or upload time (for files manually uploaded via Samsara UI). */
-    createdAtTime?: string;
+    createdAtTime?: string | undefined;
     /** ID of the file. */
-    id?: string;
+    id?: string | undefined;
     /** A temporary URL which can be used to download the file. The link can be used multiple times and expires after an hour. */
-    url?: string;
+    url?: string | undefined;
     /** VIN associated with the vehicle file. */
-    vehicleIdentificationNumber?: string;
+    vehicleIdentificationNumber?: string | undefined;
 }

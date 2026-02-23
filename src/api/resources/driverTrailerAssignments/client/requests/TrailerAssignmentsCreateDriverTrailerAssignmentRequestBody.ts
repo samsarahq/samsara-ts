@@ -8,10 +8,10 @@
  *     }
  */
 export interface TrailerAssignmentsCreateDriverTrailerAssignmentRequestBody {
-    /** ID of the driver. This can be either a unique Samsara ID or an [external ID](/docs/external-ids) for the driver. */
+    /** ID of the driver. This can be either a unique Samsara ID or an [external ID](https://developers.samsara.com/docs/external-ids) for the driver. */
     driverId: string;
     /** The start time in RFC 3339 format. The time needs to be current or within the past 7 days. Defaults to now if not provided */
     startTime?: string;
-    /** ID of the trailer. This can be either a unique Samsara ID or an [external ID](/docs/external-ids) for the trailer. */
+    /** ID of the trailer. This can be either a unique Samsara ID or an [external ID](https://developers.samsara.com/docs/external-ids) for the trailer. */
     trailerId: string;
 }

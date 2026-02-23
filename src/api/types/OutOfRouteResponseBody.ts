@@ -6,7 +6,7 @@ import type * as Samsara from "../index.js";
  * Details specific to Out Of Route.
  */
 export interface OutOfRouteResponseBody {
-    driver?: Samsara.AlertObjectDriverResponseBody;
-    trailer?: Samsara.AlertObjectTrailerResponseBody;
-    vehicle?: Samsara.AlertObjectVehicleResponseBody;
+    driver?: Samsara.AlertObjectDriverResponseBody | undefined;
+    trailer?: Samsara.AlertObjectTrailerResponseBody | undefined;
+    vehicle?: Samsara.AlertObjectVehicleResponseBody | undefined;
 }

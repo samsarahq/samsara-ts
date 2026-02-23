@@ -3,6 +3,6 @@
 import type * as Samsara from "../index.js";
 
 export interface InlineResponse2007 {
-    pagination?: Samsara.V1Pagination;
-    trailers?: Samsara.V1TrailerAssignmentsResponse[];
+    pagination?: Samsara.V1Pagination | undefined;
+    trailers?: Samsara.V1TrailerAssignmentsResponse[] | undefined;
 }

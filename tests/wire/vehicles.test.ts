@@ -375,7 +375,9 @@ describe("VehiclesClient", () => {
         };
         server.mockEndpoint().get("/fleet/vehicles/id").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
-        const response = await client.vehicles.get("id");
+        const response = await client.vehicles.get({
+            id: "id",
+        });
         expect(response).toEqual({
             data: {
                 attributes: [
@@ -498,7 +500,9 @@ describe("VehiclesClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.vehicles.update("id");
+        const response = await client.vehicles.update({
+            id: "id",
+        });
         expect(response).toEqual({
             data: {
                 attributes: [

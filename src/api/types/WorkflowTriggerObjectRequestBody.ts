@@ -6,7 +6,7 @@ import type * as Samsara from "../index.js";
  * The trigger of an alert.
  */
 export interface WorkflowTriggerObjectRequestBody {
-    triggerParams?: Samsara.TriggerParamsObjectRequestBody;
+    triggerParams?: Samsara.TriggerParamsObjectRequestBody | undefined;
     /**
      * The id of the trigger type. Reference the following list for the ids:
      *

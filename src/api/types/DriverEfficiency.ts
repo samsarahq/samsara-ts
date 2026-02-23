@@ -6,19 +6,19 @@ import type * as Samsara from "../index.js";
  * Summary of a driver's efficiency.
  */
 export interface DriverEfficiency {
-    anticipationBrakeEventCount?: Samsara.AnticipationBrakeEventCount;
-    coastingDurationMs?: Samsara.CoastingDurationMs;
-    cruiseControlDurationMs?: Samsara.CruiseControlDurationMs;
-    driver?: Samsara.ExtendedDriverTinyResponse;
-    greenBandDrivingDurationMs?: Samsara.GreenBandDrivingDurationMs;
-    highTorqueMs?: Samsara.HighTorqueMs;
-    overSpeedMs?: Samsara.OverSpeedMs;
-    totalBrakeEventCount?: Samsara.TotalBrakeEventCount;
-    totalDistanceDrivenMeters?: Samsara.DistanceDrivenMeters;
-    totalDriveTimeDurationMs?: Samsara.DriveTimeDurationMs;
-    totalFuelConsumedMl?: Samsara.FuelConsumedMl;
-    totalIdleTimeDurationMs?: Samsara.IdleTimeDurationMs;
-    totalPowerTakeOffDurationMs?: Samsara.PowerTakeOffDurationMs;
+    anticipationBrakeEventCount?: Samsara.AnticipationBrakeEventCount | undefined;
+    coastingDurationMs?: Samsara.CoastingDurationMs | undefined;
+    cruiseControlDurationMs?: Samsara.CruiseControlDurationMs | undefined;
+    driver?: Samsara.ExtendedDriverTinyResponse | undefined;
+    greenBandDrivingDurationMs?: Samsara.GreenBandDrivingDurationMs | undefined;
+    highTorqueMs?: Samsara.HighTorqueMs | undefined;
+    overSpeedMs?: Samsara.OverSpeedMs | undefined;
+    totalBrakeEventCount?: Samsara.TotalBrakeEventCount | undefined;
+    totalDistanceDrivenMeters?: Samsara.DistanceDrivenMeters | undefined;
+    totalDriveTimeDurationMs?: Samsara.DriveTimeDurationMs | undefined;
+    totalFuelConsumedMl?: Samsara.FuelConsumedMl | undefined;
+    totalIdleTimeDurationMs?: Samsara.IdleTimeDurationMs | undefined;
+    totalPowerTakeOffDurationMs?: Samsara.PowerTakeOffDurationMs | undefined;
     /** Summaries of vehicle efficiency for each vehicle the driver was driving during the given time period. */
-    vehicleSummaries?: Samsara.VehicleSummary[];
+    vehicleSummaries?: Samsara.VehicleSummary[] | undefined;
 }

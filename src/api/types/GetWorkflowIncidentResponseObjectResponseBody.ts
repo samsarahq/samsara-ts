@@ -14,7 +14,7 @@ export interface GetWorkflowIncidentResponseObjectResponseBody {
     /** Indicates whether the incident is resolved or not. */
     isResolved: boolean;
     /** Time and date that the alert incident was resolved in RFC 3339 format. */
-    resolvedAtTime?: string;
+    resolvedAtTime?: string | undefined;
     /** Time and date that the alert incident updated in RFC 3339 format. */
     updatedAtTime: string;
 }

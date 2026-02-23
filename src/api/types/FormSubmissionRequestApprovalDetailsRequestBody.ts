@@ -5,5 +5,5 @@
  */
 export interface FormSubmissionRequestApprovalDetailsRequestBody {
     /** Comment for the approval decision. Sometimes required when updating status to 'changesRequested'. Only valid when requesting changes or approving a form submission. */
-    comment?: string;
+    comment?: string | undefined;
 }

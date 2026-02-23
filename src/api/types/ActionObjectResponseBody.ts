@@ -6,7 +6,7 @@ import type * as Samsara from "../index.js";
  * Action to take.
  */
 export interface ActionObjectResponseBody {
-    actionParams?: Samsara.ActionParamsObjectResponseBody;
+    actionParams?: Samsara.ActionParamsObjectResponseBody | undefined;
     /**
      * The id of the of the action type. Reference the following list for the ids:
      * The following action types are in Beta:

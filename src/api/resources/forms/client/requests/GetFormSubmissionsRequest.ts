@@ -5,7 +5,7 @@
  *     {}
  */
 export interface GetFormSubmissionsRequest {
-    /** A comma-separated list containing up to 100 form submission IDs to filter on. Can be either a unique Samsara ID or an [external ID](/docs/external-ids) for the form submission. */
+    /** A comma-separated list containing up to 100 form submission IDs to filter on. Can be either a unique Samsara ID or an [external ID](https://developers.samsara.com/docs/external-ids) for the form submission. */
     ids?: string | string[];
     /** A comma-separated list of strings indicating whether to return additional information. Valid values: `externalIds` */
     include?: string | string[];

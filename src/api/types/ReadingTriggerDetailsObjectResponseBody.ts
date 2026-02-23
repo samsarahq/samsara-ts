@@ -6,10 +6,10 @@ import type * as Samsara from "../index.js";
  * Details specific to reading based Trigger, readings can be discovered through the Readings API.
  */
 export interface ReadingTriggerDetailsObjectResponseBody {
-    continuousThreshold?: Samsara.ReadingTriggerContinuousValueObjectResponseBody;
+    continuousThreshold?: Samsara.ReadingTriggerContinuousValueObjectResponseBody | undefined;
     /** The type of the entity associated with the reading. */
     entityType: string;
-    enumThreshold?: Samsara.ReadingTriggerEnumValueObjectResponseBody;
+    enumThreshold?: Samsara.ReadingTriggerEnumValueObjectResponseBody | undefined;
     /** The ID of the reading. */
     id: string;
     /** The number of milliseconds the trigger needs to stay active before alerting. */

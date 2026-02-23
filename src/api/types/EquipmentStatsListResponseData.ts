@@ -7,29 +7,29 @@ import type * as Samsara from "../index.js";
  */
 export interface EquipmentStatsListResponseData {
     /** A time-series of engine RPM readings for the given unit of equipment. */
-    engineRpm?: Samsara.EquipmentEngineRpm[];
+    engineRpm?: Samsara.EquipmentEngineRpm[] | undefined;
     /** [DEPRECATED] Please use either `gatewayEngineSeconds`, `obdEngineSeconds`, or `gatewayJ1939EngineSeconds`. */
-    engineSeconds?: Samsara.EquipmentEngineSeconds[];
+    engineSeconds?: Samsara.EquipmentEngineSeconds[] | undefined;
     /** [DEPRECATED] Please use either `gatewayEngineStates` or `obdEngineStates`. */
-    engineStates?: Samsara.EquipmentEngineState[];
+    engineStates?: Samsara.EquipmentEngineState[] | undefined;
     /** A time-series of engine total idle time minutes. (Beta) */
-    engineTotalIdleTimeMinutes?: Samsara.EquipmentEngineTotalIdleTimeMinutes[];
+    engineTotalIdleTimeMinutes?: Samsara.EquipmentEngineTotalIdleTimeMinutes[] | undefined;
     /** A time-series of fuel percent level changes for the given unit of equipment. */
-    fuelPercents?: Samsara.EquipmentFuelPercent[];
+    fuelPercents?: Samsara.EquipmentFuelPercent[] | undefined;
     /** A time-series of engine seconds readings for the given unit of equipment as an approximate based on readings from the AG26's aux/digio cable. */
-    gatewayEngineSeconds?: Samsara.EquipmentGatewayEngineSeconds[];
+    gatewayEngineSeconds?: Samsara.EquipmentGatewayEngineSeconds[] | undefined;
     /** A time-series of engine state changes (as read from the AG26's aux/digio cable) for the given unit of equipment. */
-    gatewayEngineStates?: Samsara.EquipmentGatewayEngineState[];
+    gatewayEngineStates?: Samsara.EquipmentGatewayEngineState[] | undefined;
     /** A time-series of engine seconds readings for the given unit of equipment as an approximate based on readings from the AG26's CAT/J1939 cable. */
-    gatewayJ1939EngineSeconds?: Samsara.EquipmentGatewayJ1939EngineSeconds[];
+    gatewayJ1939EngineSeconds?: Samsara.EquipmentGatewayJ1939EngineSeconds[] | undefined;
     /** A time-series of GPS locations. */
-    gps?: Samsara.EquipmentStatsGps[];
+    gps?: Samsara.EquipmentStatsGps[] | undefined;
     /** A time-series of GPS odometer readings for the given unit of equipment. */
-    gpsOdometerMeters?: Samsara.EquipmentGpsOdometerMeters[];
+    gpsOdometerMeters?: Samsara.EquipmentGpsOdometerMeters[] | undefined;
     id: Samsara.EquipmentId;
     name: Samsara.EquipmentName;
     /** A time-series of engine seconds readings for the given unit of equipment directly from on-board diagnostics. */
-    obdEngineSeconds?: Samsara.EquipmentObdEngineSeconds[];
+    obdEngineSeconds?: Samsara.EquipmentObdEngineSeconds[] | undefined;
     /** A time-series of engine state changes (as read from on-board diagnostics) for the given unit of equipment. */
-    obdEngineStates?: Samsara.EquipmentObdEngineState[];
+    obdEngineStates?: Samsara.EquipmentObdEngineState[] | undefined;
 }

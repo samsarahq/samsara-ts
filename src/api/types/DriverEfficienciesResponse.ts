@@ -6,6 +6,6 @@ import type * as Samsara from "../index.js";
  * Summary of drivers' efficiencies over a time range.
  */
 export interface DriverEfficienciesResponse {
-    data?: Samsara.DriverEfficienciesResponseData;
-    pagination?: Samsara.PaginationResponse;
+    data?: Samsara.DriverEfficienciesResponseData | undefined;
+    pagination?: Samsara.PaginationResponse | undefined;
 }

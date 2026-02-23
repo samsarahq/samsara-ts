@@ -4,10 +4,10 @@
  * A minified vehicle object.
  */
 export interface VehicleTinyResponse {
-    /** The [external IDs](/docs/external-ids) for the given object. */
-    ExternalIds?: Record<string, string>;
+    /** The [external IDs](https://developers.samsara.com/docs/external-ids) for the given object. */
+    ExternalIds?: Record<string, string> | undefined;
     /** ID of the vehicle. */
-    id?: string;
+    id?: string | undefined;
     /** Name of the vehicle. */
-    name?: string;
+    name?: string | undefined;
 }

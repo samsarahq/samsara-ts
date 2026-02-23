@@ -5,5 +5,5 @@
  */
 export interface HosDrive {
     /** Remaining driving time the driver has in the current shift in milliseconds. For property-carrying drivers, this is the amount of time the driver can drive before hitting the 11-hour limit. */
-    driveRemainingDurationMs?: number;
+    driveRemainingDurationMs?: number | undefined;
 }

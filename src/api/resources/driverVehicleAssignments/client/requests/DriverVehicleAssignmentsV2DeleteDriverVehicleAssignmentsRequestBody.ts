@@ -15,6 +15,6 @@ export interface DriverVehicleAssignmentsV2DeleteDriverVehicleAssignmentsRequest
     isPassenger?: boolean;
     /**  A start time in RFC 3339 format. Millisecond precision and timezones are supported. (Examples: 2019-06-13T19:08:25Z, 2019-06-13T19:08:25.455Z, OR 2015-09-15T14:00:12-04:00). */
     startTime?: string;
-    /** ID of the vehicle. This can be either a unique Samsara ID or an [external ID](/docs/external-ids) for the vehicle. */
+    /** ID of the vehicle. This can be either a unique Samsara ID or an [external ID](https://developers.samsara.com/docs/external-ids) for the vehicle. */
     vehicleId: string;
 }

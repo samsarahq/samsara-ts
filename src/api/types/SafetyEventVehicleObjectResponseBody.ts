@@ -5,5 +5,5 @@
  */
 export interface SafetyEventVehicleObjectResponseBody {
     /** ID of the vehicle. */
-    id?: string;
+    id?: string | undefined;
 }

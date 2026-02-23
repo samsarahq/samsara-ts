@@ -3,11 +3,11 @@
 import type * as Samsara from "../index.js";
 
 export interface VehicleStatsDecorationsGps {
-    address?: Samsara.VehicleLocationAddress;
-    headingDegrees?: Samsara.VehicleLocationHeading;
-    isEcuSpeed?: Samsara.VehicleLocationIsEcuSpeed;
+    address?: Samsara.VehicleLocationAddress | undefined;
+    headingDegrees?: Samsara.VehicleLocationHeading | undefined;
+    isEcuSpeed?: Samsara.VehicleLocationIsEcuSpeed | undefined;
     latitude: Samsara.VehicleLocationLatitude;
     longitude: Samsara.VehicleLocationLongitude;
-    reverseGeo?: Samsara.ReverseGeo;
-    speedMilesPerHour?: Samsara.VehicleLocationSpeed;
+    reverseGeo?: Samsara.ReverseGeo | undefined;
+    speedMilesPerHour?: Samsara.VehicleLocationSpeed | undefined;
 }

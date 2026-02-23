@@ -3,5 +3,5 @@
 import type * as Samsara from "../index.js";
 
 export interface DocumentsGetDocumentResponseBody {
-    data?: Samsara.DocumentResponseObjectResponseBody;
+    data?: Samsara.DocumentResponseObjectResponseBody | undefined;
 }

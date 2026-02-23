@@ -7,7 +7,7 @@ import type * as Samsara from "../index.js";
  */
 export interface VehicleStatsFaultCodesJ1939TroubleCode {
     /** A short description of the FMI identifier, if available. */
-    fmiDescription?: string;
+    fmiDescription?: string | undefined;
     /** The FMI identifier. */
     fmiId: number;
     /** The MIL status, indicating a check engine light. */
@@ -15,11 +15,11 @@ export interface VehicleStatsFaultCodesJ1939TroubleCode {
     /** The number of times this fault has triggered. */
     occurrenceCount: number;
     /** The source address name corresponding to the txId */
-    sourceAddressName?: string;
+    sourceAddressName?: string | undefined;
     /** A short description of the SPN identifier, if available. */
-    spnDescription?: string;
+    spnDescription?: string | undefined;
     /** The SPN identifier. */
     spnId: number;
     txId: Samsara.VehicleStatsFaultCodesTxId;
-    vendorSpecificFields?: Samsara.VehicleStatsFaultCodesVendorSpecificFields;
+    vendorSpecificFields?: Samsara.VehicleStatsFaultCodesVendorSpecificFields | undefined;
 }

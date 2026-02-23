@@ -6,13 +6,13 @@ import type * as Samsara from "../index.js";
  * GPS location data for the vehicle.
  */
 export interface VehicleStatsListGps {
-    address?: Samsara.VehicleLocationAddress;
-    decorations?: Samsara.VehicleStatsDecorations;
-    headingDegrees?: Samsara.VehicleLocationHeading;
-    isEcuSpeed?: Samsara.VehicleLocationIsEcuSpeed;
+    address?: Samsara.VehicleLocationAddress | undefined;
+    decorations?: Samsara.VehicleStatsDecorations | undefined;
+    headingDegrees?: Samsara.VehicleLocationHeading | undefined;
+    isEcuSpeed?: Samsara.VehicleLocationIsEcuSpeed | undefined;
     latitude: Samsara.VehicleLocationLatitude;
     longitude: Samsara.VehicleLocationLongitude;
-    reverseGeo?: Samsara.ReverseGeo;
-    speedMilesPerHour?: Samsara.VehicleLocationSpeed;
+    reverseGeo?: Samsara.ReverseGeo | undefined;
+    speedMilesPerHour?: Samsara.VehicleLocationSpeed | undefined;
     time: Samsara.Time;
 }

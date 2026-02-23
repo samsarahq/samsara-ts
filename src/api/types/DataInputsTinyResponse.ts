@@ -4,6 +4,6 @@ import type * as Samsara from "../index.js";
 
 export interface DataInputsTinyResponse {
     /** An array of data input objects. Each object contains the data input's name, ID, and other metadata. */
-    data?: Samsara.DataInputTinyResponse[];
-    pagination?: Samsara.PaginationResponse;
+    data?: Samsara.DataInputTinyResponse[] | undefined;
+    pagination?: Samsara.PaginationResponse | undefined;
 }

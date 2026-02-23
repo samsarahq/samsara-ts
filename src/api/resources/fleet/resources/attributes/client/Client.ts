@@ -7,6 +7,7 @@ import * as core from "../../../../../../core/index.js";
 import * as environments from "../../../../../../environments.js";
 import { handleNonStatusCodeError } from "../../../../../../errors/handleNonStatusCodeError.js";
 import * as errors from "../../../../../../errors/index.js";
+import type * as Samsara from "../../../../../index.js";
 
 export declare namespace AttributesClient {
     export type Options = BaseClientOptions;
@@ -22,20 +23,26 @@ export class AttributesClient {
     }
 
     /**
-     * @param {string} id
+     * @param {Samsara.fleet.UpdateAttributesRequest} request
      * @param {AttributesClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.fleet.attributes.update("id")
+     *     await client.fleet.attributes.update({
+     *         id: "id"
+     *     })
      */
-    public update(id: string, requestOptions?: AttributesClient.RequestOptions): core.HttpResponsePromise<void> {
-        return core.HttpResponsePromise.fromPromise(this.__update(id, requestOptions));
+    public update(
+        request: Samsara.fleet.UpdateAttributesRequest,
+        requestOptions?: AttributesClient.RequestOptions,
+    ): core.HttpResponsePromise<void> {
+        return core.HttpResponsePromise.fromPromise(this.__update(request, requestOptions));
     }
 
     private async __update(
-        id: string,
+        request: Samsara.fleet.UpdateAttributesRequest,
         requestOptions?: AttributesClient.RequestOptions,
     ): Promise<core.WithRawResponse<void>> {
+        const { id } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,

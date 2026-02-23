@@ -7,5 +7,5 @@ export interface DriverWithExternalIdObjectResponseBody {
     /** Samsara ID of the driver. */
     driverId: string;
     /** A map of external ids */
-    externalIds?: Record<string, string>;
+    externalIds?: Record<string, string> | undefined;
 }

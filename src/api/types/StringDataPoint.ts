@@ -6,7 +6,7 @@ import type * as Samsara from "../index.js";
  * A single string data point of a data input.
  */
 export interface StringDataPoint {
-    time?: Samsara.Time;
+    time?: Samsara.Time | undefined;
     /** String value of the data point. */
-    value?: string;
+    value?: string | undefined;
 }

@@ -6,7 +6,7 @@ import type * as Samsara from "../index.js";
  * The geofence that defines this address and its bounds. This can either be a circle or a polygon, but not both.
  */
 export interface AddressGeofence {
-    circle?: Samsara.AddressGeofenceCircle;
-    polygon?: Samsara.AddressGeofencePolygon;
-    settings?: Samsara.AddressGeofenceSettings;
+    circle?: Samsara.AddressGeofenceCircle | undefined;
+    polygon?: Samsara.AddressGeofencePolygon | undefined;
+    settings?: Samsara.AddressGeofenceSettings | undefined;
 }

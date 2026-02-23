@@ -5,21 +5,21 @@
  */
 export interface DriverEfficiencyDataObjectResponseBody {
     /** Represents the anticipation score for the driver. The score will be in either number or letter format depending on the organisation config. */
-    anticipationScore?: string;
+    anticipationScore?: string | undefined;
     /** Represents the coasting score for the driver. The score will be in either number or letter format depending on the organisation config. */
-    coastingScore?: string;
+    coastingScore?: string | undefined;
     /** Represents the cruise control score for the driver. The score will be in either number or letter format depending on the organisation config. */
-    cruiseControlScore?: string;
+    cruiseControlScore?: string | undefined;
     /** Represents the green band score for the driver. The score will be in either number or letter format depending on the organisation config. */
-    greenBandScore?: string;
+    greenBandScore?: string | undefined;
     /** Represents the high torque score for the driver. The score will be in either number or letter format depending on the organisation config. */
-    highTorqueScore?: string;
+    highTorqueScore?: string | undefined;
     /** Represents the idling score for the driver.The score will be in either number or letter format depending on the organisation config. */
-    idlingScore?: string;
+    idlingScore?: string | undefined;
     /** Represents the over speed score for the driver. The score will be in either number or letter format depending on the organisation config. */
-    overSpeedScore?: string;
+    overSpeedScore?: string | undefined;
     /** Represents the overall score for the driver. The score will be in either number (0-100) as a string or letter format (A-G) depending on the organisation config. */
     overallScore: string;
     /** Represents the ware-free breaking score for the driver. The score will be in either number or letter format depending on the organisation config. */
-    wearFreeBrakeScore?: string;
+    wearFreeBrakeScore?: string | undefined;
 }

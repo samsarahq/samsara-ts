@@ -5,9 +5,9 @@
  */
 export interface LocationResponseBody {
     /** Location latitude. */
-    Latitude?: number;
+    Latitude?: number | undefined;
     /** Location longitude. */
-    Longitude?: number;
+    Longitude?: number | undefined;
     /** Date time in RFC 3339 format. Millisecond precision and timezones are supported. (Examples: 2019-06-13T19:08:25Z, 2019-06-13T19:08:25.455Z, OR 2015-09-15T14:00:12-04:00). */
-    datetime?: string;
+    datetime?: string | undefined;
 }

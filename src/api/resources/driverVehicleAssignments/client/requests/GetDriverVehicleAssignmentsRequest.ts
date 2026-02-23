@@ -25,6 +25,6 @@ export interface GetDriverVehicleAssignmentsRequest {
     vehicleTagIds?: string;
     /**  If specified, this should be the endCursor value from the previous page of results. When present, this request will return the next page of results that occur immediately after the previous page of results. */
     after?: string;
-    /** Specifies which assignment type to filter by.  Valid values: `HOS`, `idCard`, `static`, `faceId`, `tachograph`, `safetyManual`, `RFID`, `trailer`, `external`, `qrCode` */
+    /** Specifies which assignment type to filter by.  Valid values: `HOS`, `idCard`, `static`, `faceId`, `tachograph`, `safetyManual`, `RFID`, `trailer`, `external`, `qrCode`, `driverApp` */
     assignmentType?: Samsara.GetDriverVehicleAssignmentsRequestAssignmentType;
 }

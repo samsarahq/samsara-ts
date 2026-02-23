@@ -5,7 +5,7 @@
  */
 export interface GoaPaginationWithTokensResponseResponseBody {
     /** Cursor identifier representing the last element in the response. This value should be used in conjunction with a subsequent request's 'after' query parameter. This may be an empty string if there are no more pages left to view. */
-    endCursor?: string;
+    endCursor?: string | undefined;
     /** True if there are more pages of results immediately available after this endCursor. */
     hasNextPage: boolean;
 }

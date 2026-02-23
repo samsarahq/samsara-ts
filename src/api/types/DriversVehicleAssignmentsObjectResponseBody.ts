@@ -6,7 +6,7 @@ export interface DriversVehicleAssignmentsObjectResponseBody {
     /** A value indicating whether the driver is active or deactivated.  Valid values: `active`, `deactivated` */
     driverActivationStatus: DriversVehicleAssignmentsObjectResponseBody.DriverActivationStatus;
     /** A map of external ids */
-    externalIds?: Record<string, string>;
+    externalIds?: Record<string, string> | undefined;
     /** ID of the driver. */
     id: string;
     /** Name of the driver. */

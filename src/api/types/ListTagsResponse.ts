@@ -6,6 +6,6 @@ import type * as Samsara from "../index.js";
  * A list of tags.
  */
 export interface ListTagsResponse {
-    data?: Samsara.Tag[];
-    pagination?: Samsara.PaginationResponse;
+    data?: Samsara.Tag[] | undefined;
+    pagination?: Samsara.PaginationResponse | undefined;
 }

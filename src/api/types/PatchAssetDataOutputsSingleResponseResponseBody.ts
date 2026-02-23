@@ -5,7 +5,7 @@
  */
 export interface PatchAssetDataOutputsSingleResponseResponseBody {
     /** If the request failed, this displays the error message. */
-    errorMessage?: string;
+    errorMessage?: string | undefined;
     /** The data output ID. */
     id: string;
     /** The status code of the request. 200 indicates the request succeeded for this data output. 500 indicates an internal server error. */

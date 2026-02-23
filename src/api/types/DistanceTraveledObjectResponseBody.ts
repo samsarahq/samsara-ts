@@ -5,9 +5,9 @@
  */
 export interface DistanceTraveledObjectResponseBody {
     /** Distance driven in meters, rounded to two decimal places. */
-    driveDistanceMeters?: number;
+    driveDistanceMeters?: number | undefined;
     /** Distance driven for personal conveyance, rounded to two decimal places. */
-    personalConveyanceDistanceMeters?: number;
+    personalConveyanceDistanceMeters?: number | undefined;
     /** Distance driven for yard moves, rounded to two decimal places. */
-    yardMoveDistanceMeters?: number;
+    yardMoveDistanceMeters?: number | undefined;
 }

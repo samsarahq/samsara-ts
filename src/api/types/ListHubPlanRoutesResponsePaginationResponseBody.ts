@@ -5,7 +5,7 @@
  */
 export interface ListHubPlanRoutesResponsePaginationResponseBody {
     /** Cursor for the last item in the page */
-    endCursor?: string;
+    endCursor?: string | undefined;
     /** Whether there are more pages available */
     hasNextPage: boolean;
 }

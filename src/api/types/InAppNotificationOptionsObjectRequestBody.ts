@@ -5,11 +5,11 @@
  */
 export interface InAppNotificationOptionsObjectRequestBody {
     /** Whether the alert will dictate the title of the alert. Both canDictateAlertTitle and canPlayAlertSound should be enabled or disabled together. */
-    canDictateAlertTitle?: boolean;
+    canDictateAlertTitle?: boolean | undefined;
     /** Whether the alert will play a sound. Both canDictateAlertTitle and canPlayAlertSound should be enabled or disabled together. */
-    canPlayAlertSound?: boolean;
+    canPlayAlertSound?: boolean | undefined;
     /** Custom text to display in the notification (320 character max). */
-    customText?: string;
+    customText?: string | undefined;
     /** Whether in-app notifications are enabled. */
     isEnabled: boolean;
 }

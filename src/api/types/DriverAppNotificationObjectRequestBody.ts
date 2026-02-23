@@ -6,6 +6,6 @@ import type * as Samsara from "../index.js";
  * Driver app notification settings
  */
 export interface DriverAppNotificationObjectRequestBody {
-    inAppNotificationOptions?: Samsara.InAppNotificationOptionsObjectRequestBody;
-    pushNotificationOptions?: Samsara.PushNotificationOptionsObjectRequestBody;
+    inAppNotificationOptions?: Samsara.InAppNotificationOptionsObjectRequestBody | undefined;
+    pushNotificationOptions?: Samsara.PushNotificationOptionsObjectRequestBody | undefined;
 }

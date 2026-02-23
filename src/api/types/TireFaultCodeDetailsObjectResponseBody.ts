@@ -5,13 +5,13 @@
  */
 export interface TireFaultCodeDetailsObjectResponseBody {
     /** If true then alert over pressure, under pressure, across axle fault, or leak detected fault codes. Defaults to false. */
-    hasCautionaryTireFaultCodes?: boolean;
+    hasCautionaryTireFaultCodes?: boolean | undefined;
     /** If true then alert over temperature or extreme pressure over or under fault codes. Defaults to false. */
-    hasCriticalTireFaultCodes?: boolean;
+    hasCriticalTireFaultCodes?: boolean | undefined;
     /** The tire manufacturer.  Valid values: `MANUFACTURER_BENDIX`, `MANUFACTURER_CONTINENTAL`, `MANUFACTURER_DORAN`, `MANUFACTURER_HENDRICKSON`, `MANUFACTURER_INVALID`, `MANUFACTURER_PRESSURE_PRO`, `MANUFACTURER_UNIVERSAL_J1939`, `MANUFACTURER_UNIVERSAL_R141` */
     manufacturer: TireFaultCodeDetailsObjectResponseBody.Manufacturer;
     /** The list of specific tire fault codes to be alerted on. */
-    specificTireFaultCodes?: TireFaultCodeDetailsObjectResponseBody.SpecificTireFaultCodes.Item[];
+    specificTireFaultCodes?: TireFaultCodeDetailsObjectResponseBody.SpecificTireFaultCodes.Item[] | undefined;
 }
 
 export namespace TireFaultCodeDetailsObjectResponseBody {

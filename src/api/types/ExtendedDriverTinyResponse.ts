@@ -4,19 +4,19 @@
  * A minified driver object.
  */
 export interface ExtendedDriverTinyResponse {
-    /** The [external IDs](/docs/external-ids) for the given object. */
-    externalIds?: ExtendedDriverTinyResponse.ExternalIds;
+    /** The [external IDs](https://developers.samsara.com/docs/external-ids) for the given object. */
+    externalIds?: ExtendedDriverTinyResponse.ExternalIds | undefined;
     /** ID of the driver. */
-    id?: string;
+    id?: string | undefined;
     /** Name of the driver. */
-    name?: string;
+    name?: string | undefined;
     /** Username of the driver. */
-    username?: string;
+    username?: string | undefined;
 }
 
 export namespace ExtendedDriverTinyResponse {
     /**
-     * The [external IDs](/docs/external-ids) for the given object.
+     * The [external IDs](https://developers.samsara.com/docs/external-ids) for the given object.
      */
     export type ExternalIds = {};
 }

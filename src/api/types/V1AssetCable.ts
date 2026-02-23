@@ -5,5 +5,5 @@
  */
 export interface V1AssetCable {
     /** Asset type */
-    assetType?: string;
+    assetType?: string | undefined;
 }

@@ -7,6 +7,6 @@ import type * as Samsara from "../index.js";
  */
 export interface VehicleStatsNfcCardScanWithDecoration {
     card: Samsara.VehicleStatsNfcCardScanCard;
-    decorations?: Samsara.VehicleStatsDecorations;
+    decorations?: Samsara.VehicleStatsDecorations | undefined;
     time: Samsara.VehicleStatsAuxInputTime;
 }

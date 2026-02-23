@@ -5,7 +5,7 @@
  */
 export interface RouteEventRouteResponseResponseBody {
     /** A map of external ids */
-    externalIds?: Record<string, string>;
+    externalIds?: Record<string, string> | undefined;
     /** ID of the route this event belongs to. */
     id: string;
 }

@@ -7,5 +7,13 @@ export interface WorkOrderMoneyObjectRequestBody {
     /** Amount of the currency. */
     amount: string;
     /** Type of the currency. We currently only support usd.  Valid values: `usd` */
-    currency: "usd";
+    currency: WorkOrderMoneyObjectRequestBody.Currency;
+}
+
+export namespace WorkOrderMoneyObjectRequestBody {
+    /** Type of the currency. We currently only support usd.  Valid values: `usd` */
+    export const Currency = {
+        Usd: "usd",
+    } as const;
+    export type Currency = (typeof Currency)[keyof typeof Currency];
 }

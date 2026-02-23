@@ -4,6 +4,6 @@
  * End (latitude, longitude) in decimal degrees.
  */
 export interface V1TripResponseEndCoordinates {
-    latitude?: number;
-    longitude?: number;
+    latitude?: number | undefined;
+    longitude?: number | undefined;
 }

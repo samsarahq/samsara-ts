@@ -6,8 +6,8 @@ import type * as Samsara from "../index.js";
  * Vehicle cumulative fuel consumption reading in milliliters.
  */
 export interface VehicleStatsFuelConsumedMillilitersWithDecoration {
-    decorations?: Samsara.VehicleStatsDecorations;
+    decorations?: Samsara.VehicleStatsDecorations | undefined;
     time: Samsara.Time;
-    /** The cumulative fuel consumption in milliliters for vehicles. Cumulative values always increase. This includes all fuel consumption reported by vehicles without filtering of invalid data points. For filtered fuel consumption that matches the Fuel & Energy Report, please use <a href="/api-reference/fuel-and-efficiency/fuel-and-energy/get-fuel-and-energy-vehicle-reports" target="_blank">the Fuel and Energy API</a>. */
+    /** The cumulative fuel consumption in milliliters for vehicles. Cumulative values always increase. This includes all fuel consumption reported by vehicles without filtering of invalid data points. For filtered fuel consumption that matches the Fuel & Energy Report, please use <a href="https://developers.samsara.com/reference/getfuelenergyvehiclereports" target="_blank">the Fuel and Energy API</a>. */
     value: number;
 }

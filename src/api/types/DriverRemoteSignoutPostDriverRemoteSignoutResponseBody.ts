@@ -2,5 +2,5 @@
 
 export interface DriverRemoteSignoutPostDriverRemoteSignoutResponseBody {
     /** The name of the driver */
-    driverName?: string;
+    driverName?: string | undefined;
 }

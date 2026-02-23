@@ -9,7 +9,7 @@ export interface AlertObjectSitesResponseBody {
     /** The ID of the site associated with the alert */
     id: string;
     /** The name of the site */
-    name?: string;
+    name?: string | undefined;
     /** The list of [tags](https://kb.samsara.com/hc/en-us/articles/360026674631-Using-Tags-and-Tag-Nesting) associated with the Site. */
-    tags?: Samsara.GoaTagTinyResponseResponseBody[];
+    tags?: Samsara.GoaTagTinyResponseResponseBody[] | undefined;
 }

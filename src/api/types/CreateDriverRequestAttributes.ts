@@ -5,11 +5,11 @@
  */
 export interface CreateDriverRequestAttributes {
     /** The samsara id of the attribute object. */
-    id?: string;
+    id?: string | undefined;
     /** Name of attribute. */
-    name?: string;
+    name?: string | undefined;
     /** Number values that are associated with this attribute. */
-    numberValues?: number[];
+    numberValues?: number[] | undefined;
     /** String values that are associated with this attribute. */
-    stringValues?: string[];
+    stringValues?: string[] | undefined;
 }

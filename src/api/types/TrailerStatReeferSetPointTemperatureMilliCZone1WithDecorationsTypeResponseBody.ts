@@ -6,7 +6,7 @@ import type * as Samsara from "../index.js";
  * Set point temperature of zone 1 of the reefer.
  */
 export interface TrailerStatReeferSetPointTemperatureMilliCZone1WithDecorationsTypeResponseBody {
-    decorations?: Samsara.TrailerStatDecorationResponseBody;
+    decorations?: Samsara.TrailerStatDecorationResponseBody | undefined;
     /** UTC timestamp in RFC 3339 format. */
     time: string;
     /** The set point temperature reading in millidegree Celsius. */

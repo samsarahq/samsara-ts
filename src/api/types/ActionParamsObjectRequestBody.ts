@@ -6,8 +6,8 @@ import type * as Samsara from "../index.js";
  * The action type specific details. Set webhookIds for Slack or Webhook actions. Set recipients for Notifications. Set driverAppNotification for Driver App Push. Other action types don't need to set a param.
  */
 export interface ActionParamsObjectRequestBody {
-    driverAppNotification?: Samsara.DriverAppNotificationObjectRequestBody;
+    driverAppNotification?: Samsara.DriverAppNotificationObjectRequestBody | undefined;
     /** Recipient of the action. */
-    recipients?: Samsara.RecipientObjectRequestBody[];
-    webhooks?: Samsara.WebhookParamsObjectRequestBody;
+    recipients?: Samsara.RecipientObjectRequestBody[] | undefined;
+    webhooks?: Samsara.WebhookParamsObjectRequestBody | undefined;
 }

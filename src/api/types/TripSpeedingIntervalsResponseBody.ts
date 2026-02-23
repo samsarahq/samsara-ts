@@ -10,7 +10,7 @@ export interface TripSpeedingIntervalsResponseBody {
     /** UTC time the trip was created in Samsara in RFC 3339 format. */
     createdAtTime: string;
     /** The driver ID assigned to the trip. Only returned if includeDriverId is set to true. 'null' if no driver id. */
-    driverId?: string;
+    driverId?: string | undefined;
     /** List of speeding intervals that belong to the trip. The full list of intervals associated with the trip is always returned, empty if no intervals exist. */
     intervals: Samsara.SpeedingIntervalResponseBody[];
     /** UTC time the trip started in RFC 3339 format. */

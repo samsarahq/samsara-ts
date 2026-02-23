@@ -8,7 +8,7 @@ import type * as Samsara from "../index.js";
 export interface SafetyEventV2ObjectResponseBody {
     asset: Samsara.SafetyEventV2AssetObjectResponseBody;
     /** Unique user ID for the assigned coach. */
-    assignedCoach?: string;
+    assignedCoach?: string | undefined;
     /** The most up-to-date behavior labels associated with the safety event. These labels can be updated by Safety Admins. */
     behaviorLabels: Samsara.SafetyEventV2BehaviorLabelsResponseBody[];
     /** The most up-to-date context labels associated with the safety event. AI generated labels can be updated by Safety Admins. */
@@ -16,8 +16,8 @@ export interface SafetyEventV2ObjectResponseBody {
     /** UTC time the Safety Event was created in Samsara in RFC 3339 format. */
     createdAtTime: string;
     /** Camera streams that detected the safety event. */
-    detectedStreams?: Samsara.SafetyEventV2MediaResponseBody[];
-    dismissalReason?: Samsara.SafetyEventDismissalReasonResponseBody;
+    detectedStreams?: Samsara.SafetyEventV2MediaResponseBody[] | undefined;
+    dismissalReason?: Samsara.SafetyEventDismissalReasonResponseBody | undefined;
     driver: Samsara.SafetyEventV2DriverObjectResponseBody;
     /** UTC time the Safety Event ended in RFC 3339 format. */
     endMs: string;
@@ -33,18 +33,18 @@ export interface SafetyEventV2ObjectResponseBody {
     /** The maximum acceleration value as a multiplier on the force of gravity (g). */
     maxAccelerationGForce: number;
     /** Media assets available for the safety event. */
-    media?: Samsara.SafetyEventV2MediaResponseBody[];
-    speedingMetadata?: Samsara.SafetyEventSpeedingMetadataResponseBody;
+    media?: Samsara.SafetyEventV2MediaResponseBody[] | undefined;
+    speedingMetadata?: Samsara.SafetyEventSpeedingMetadataResponseBody | undefined;
     /** UTC time the Safety Event started in RFC 3339 format. */
     startMs: string;
     /** UTC time the trip ended in RFC 3339 format. Null when Safety Event occurs off-trip or the trip is ongoing. */
-    tripEndTime?: string;
+    tripEndTime?: string | undefined;
     /** UTC time the trip started in RFC 3339 format. Null when Safety Event occurs off-trip. */
-    tripStartTime?: string;
+    tripStartTime?: string | undefined;
     /** UTC time the Safety Event was updated in Samsara in RFC 3339 format. */
     updatedAtTime: string;
     /** The user ID associated with the user who made the event state change. Only returned if the event state changes. */
-    updatedByUserId?: string;
+    updatedByUserId?: string | undefined;
 }
 
 export namespace SafetyEventV2ObjectResponseBody {

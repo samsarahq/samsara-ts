@@ -6,7 +6,7 @@ import type * as Samsara from "../index.js";
  * Details specific to Scheduled Maintenance By Odometer.
  */
 export interface ScheduledMaintenanceOdometerDataResponseBody {
-    driver?: Samsara.AlertObjectDriverResponseBody;
-    trailer?: Samsara.AlertObjectTrailerResponseBody;
-    vehicle?: Samsara.AlertObjectVehicleResponseBody;
+    driver?: Samsara.AlertObjectDriverResponseBody | undefined;
+    trailer?: Samsara.AlertObjectTrailerResponseBody | undefined;
+    vehicle?: Samsara.AlertObjectVehicleResponseBody | undefined;
 }

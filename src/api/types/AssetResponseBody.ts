@@ -9,35 +9,35 @@ export interface AssetResponseBody {
     /** The time the asset was created in RFC 3339 format. */
     createdAtTime: string;
     /** A map of external ids */
-    externalIds?: Record<string, string>;
+    externalIds?: Record<string, string> | undefined;
     /** The unique ID of the asset. */
     id: string;
     /** The license plate of the asset. */
-    licensePlate?: string;
+    licensePlate?: string | undefined;
     /** The OEM/manufacturer of the asset. Updates to this field are restricted. */
-    make?: string;
+    make?: string | undefined;
     /** The model of the asset. Updates to this field are restricted. */
-    model?: string;
+    model?: string | undefined;
     /** The human-readable name of the asset. This is set by a fleet administrator and will appear in both Samsara’s cloud dashboard as well as the Samsara Driver mobile app. By default, this name is the serial number of the Samsara Asset Gateway. It can be set or updated through the Samsara Dashboard or through the API at any time. */
-    name?: string;
+    name?: string | undefined;
     /** These are generic notes about the asset. Can be set or updated through the Samsara Dashboard or the API at any time. */
-    notes?: string;
+    notes?: string | undefined;
     /** Indicates whether the asset is expected to have data ingested using the Readings API. */
-    readingsIngestionEnabled?: boolean;
+    readingsIngestionEnabled?: boolean | undefined;
     /** Whether or not the asset is regulated, unregulated (non-CMV), or a mixed use unregulated asset. Primarily used with vehicles.  Valid values: `mixed`, `regulated`, `unregulated` */
-    regulationMode?: AssetResponseBody.RegulationMode;
+    regulationMode?: AssetResponseBody.RegulationMode | undefined;
     /** The serial number of the asset. This can be an internal serial number or used to hold legacy VIN/PIN numbers such as ones of shorter lengths. */
-    serialNumber?: string;
+    serialNumber?: string | undefined;
     /** The list of [tags](https://kb.samsara.com/hc/en-us/articles/360026674631-Using-Tags-and-Tag-Nesting) associated with the Asset. */
-    tags?: Samsara.GoaTagTinyResponseResponseBody[];
+    tags?: Samsara.GoaTagTinyResponseResponseBody[] | undefined;
     /** The operational context in which the asset interacts with the Samsara system. Examples: Vehicle (eg: truck, bus...), Trailer (eg: dry van, reefer, flatbed...), Powered Equipment (eg: dozer, crane...), Unpowered Equipment (eg: container, dumpster...), or Uncategorized.  Valid values: `uncategorized`, `trailer`, `equipment`, `unpowered`, `vehicle` */
-    type?: AssetResponseBody.Type;
+    type?: AssetResponseBody.Type | undefined;
     /** The time the asset was last updated in RFC 3339 format. */
     updatedAtTime: string;
     /** The unique 17-digit VIN (Vehicle Identification Number) or PIN (Product Identification Number) of the asset. */
-    vin?: string;
+    vin?: string | undefined;
     /** The model year of the asset. Updates to this field are restricted. */
-    year?: number;
+    year?: number | undefined;
 }
 
 export namespace AssetResponseBody {

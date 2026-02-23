@@ -6,7 +6,7 @@ import type * as Samsara from "../index.js";
  * Vehicle ambient air temperature reading.
  */
 export interface VehicleStatsAmbientAirTempMilliCWithDecoration {
-    decorations?: Samsara.VehicleStatsDecorations;
+    decorations?: Samsara.VehicleStatsDecorations | undefined;
     time: Samsara.Time;
     /** The ambient air temperature reading in millidegree Celsius. */
     value: number;

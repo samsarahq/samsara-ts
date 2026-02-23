@@ -6,7 +6,7 @@ import type * as Samsara from "../index.js";
  * A role that applies to a user. If the role has a `tag`, then the role applies for that tag. If there is no `tag`, then the role applies at the organizational level. A user may have many tag-specific roles, but may only have one organizational level role. If the organizational level role has higher privileges than a tag-specific role, then the organizational role privileges will take precedence.
  */
 export interface UserRoleAssignment {
-    expireAt?: Samsara.UserExpireAt;
-    role?: Samsara.UserRole;
-    tag?: Samsara.TagTinyResponse;
+    expireAt?: Samsara.UserExpireAt | undefined;
+    role?: Samsara.UserRole | undefined;
+    tag?: Samsara.TagTinyResponse | undefined;
 }

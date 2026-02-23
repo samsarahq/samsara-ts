@@ -4,12 +4,12 @@ import type * as Samsara from "../index.js";
 
 export interface AssetDataOutput {
     /** Name of the data group that the data output is associated with */
-    dataGroup?: string;
-    dataInput?: Samsara.AssetDataInput;
+    dataGroup?: string | undefined;
+    dataInput?: Samsara.AssetDataInput | undefined;
     /** ID of the device that the data output is configured on */
-    deviceId?: string;
+    deviceId?: string | undefined;
     /** ID of the data output */
-    id?: string;
+    id?: string | undefined;
     /** Name of the data output */
-    name?: string;
+    name?: string | undefined;
 }

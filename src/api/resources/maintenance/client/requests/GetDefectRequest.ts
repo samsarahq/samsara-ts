@@ -2,9 +2,13 @@
 
 /**
  * @example
- *     {}
+ *     {
+ *         id: "id"
+ *     }
  */
 export interface GetDefectRequest {
+    /** The unique ID of the DVIR defect. */
+    id: string;
     /** Optional boolean indicating whether to return external IDs on supported entities */
     includeExternalIds?: boolean;
 }

@@ -6,7 +6,7 @@ import type * as Samsara from "../index.js";
  * Door stats that have been emitted by the reefer.
  */
 export interface TrailerStatReeferDoorStateZone3WithDecorationsTypeResponseBody {
-    decorations?: Samsara.TrailerStatDecorationResponseBody;
+    decorations?: Samsara.TrailerStatDecorationResponseBody | undefined;
     /** UTC timestamp in RFC 3339 format. */
     time: string;
     /** The door state of zone 2 of the reefer.  Valid values: `open`, `closed` */

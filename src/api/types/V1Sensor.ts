@@ -7,7 +7,7 @@ export interface V1Sensor {
     /** ID of the sensor. */
     id: number;
     /** MAC address of the sensor. */
-    macAddress?: string;
+    macAddress?: string | undefined;
     /** Name of the sensor. */
-    name?: string;
+    name?: string | undefined;
 }

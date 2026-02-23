@@ -7,14 +7,14 @@ import type * as Samsara from "../index.js";
  */
 export interface TrailerStatGpsTypeResponseBody {
     /** Heading of the trailer in degrees. */
-    headingDegrees?: number;
+    headingDegrees?: number | undefined;
     /** GPS latitude represented in degrees. */
     latitude: number;
     /** GPS longitude represented in degrees. */
     longitude: number;
-    reverseGeo?: Samsara.ReverseGeoObjectResponseBody;
+    reverseGeo?: Samsara.ReverseGeoObjectResponseBody | undefined;
     /** GPS speed of the trailer in miles per hour. */
-    speedMilesPerHour?: number;
+    speedMilesPerHour?: number | undefined;
     /** UTC timestamp in RFC 3339 format. */
     time: string;
 }

@@ -5,5 +5,5 @@
  */
 export interface DriverAppSettingsGamificationConfigTinyObjectRequestBody {
     /** Hide the names of other drivers when viewing the driver leaderboard in the mobile app. */
-    anonymizeDriverNames?: boolean;
+    anonymizeDriverNames?: boolean | undefined;
 }

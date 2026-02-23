@@ -14146,6 +14146,2817 @@ describe("BetaApIsClient", () => {
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 
+    test("listRidershipPassengers (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = {
+            data: [
+                {
+                    accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
+                    classification: "grade5",
+                    createdAtTime: "2024-11-15T10:00:00Z",
+                    externalIds: { key: "value" },
+                    firstName: "John",
+                    id: "a1b2c3d4-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+                    identifiers: [
+                        {
+                            id: "b2c3d4e5-6f7a-8b9c-0d1e-2f3a4b5c6d7e",
+                            status: "active",
+                            type: "rfid",
+                            value: "0418A2BC93",
+                        },
+                    ],
+                    isActive: true,
+                    lastName: "Doe",
+                    specialInstructions: { isGuardianRequired: false, isSpecialEducation: true },
+                    updatedAtTime: "2024-11-15T10:30:00Z",
+                },
+            ],
+            pagination: { endCursor: "MjkY", hasNextPage: true },
+        };
+        server
+            .mockEndpoint()
+            .get("/ridership/passengers")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.betaApIs.listRidershipPassengers({
+            accountId: "accountId",
+        });
+        expect(response).toEqual({
+            data: [
+                {
+                    accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
+                    classification: "grade5",
+                    createdAtTime: "2024-11-15T10:00:00Z",
+                    externalIds: {
+                        key: "value",
+                    },
+                    firstName: "John",
+                    id: "a1b2c3d4-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+                    identifiers: [
+                        {
+                            id: "b2c3d4e5-6f7a-8b9c-0d1e-2f3a4b5c6d7e",
+                            status: "active",
+                            type: "rfid",
+                            value: "0418A2BC93",
+                        },
+                    ],
+                    isActive: true,
+                    lastName: "Doe",
+                    specialInstructions: {
+                        isGuardianRequired: false,
+                        isSpecialEducation: true,
+                    },
+                    updatedAtTime: "2024-11-15T10:30:00Z",
+                },
+            ],
+            pagination: {
+                endCursor: "MjkY",
+                hasNextPage: true,
+            },
+        });
+    });
+
+    test("listRidershipPassengers (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/ridership/passengers")
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listRidershipPassengers({
+                accountId: "accountId",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("listRidershipPassengers (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/ridership/passengers")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listRidershipPassengers({
+                accountId: "accountId",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("listRidershipPassengers (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/ridership/passengers")
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listRidershipPassengers({
+                accountId: "accountId",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("listRidershipPassengers (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/ridership/passengers")
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listRidershipPassengers({
+                accountId: "accountId",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("listRidershipPassengers (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/ridership/passengers")
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listRidershipPassengers({
+                accountId: "accountId",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("listRidershipPassengers (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/ridership/passengers")
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listRidershipPassengers({
+                accountId: "accountId",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("listRidershipPassengers (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/ridership/passengers")
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listRidershipPassengers({
+                accountId: "accountId",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("listRidershipPassengers (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/ridership/passengers")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listRidershipPassengers({
+                accountId: "accountId",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("listRidershipPassengers (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/ridership/passengers")
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listRidershipPassengers({
+                accountId: "accountId",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("createRidershipPassenger (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
+            firstName: "John",
+            lastName: "Doe",
+        };
+        const rawResponseBody = {
+            data: {
+                accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
+                classification: "grade5",
+                createdAtTime: "2024-11-15T10:00:00Z",
+                externalIds: { key: "value" },
+                firstName: "John",
+                id: "a1b2c3d4-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+                identifiers: [
+                    { id: "b2c3d4e5-6f7a-8b9c-0d1e-2f3a4b5c6d7e", status: "active", type: "rfid", value: "0418A2BC93" },
+                ],
+                isActive: true,
+                lastName: "Doe",
+                specialInstructions: { isGuardianRequired: false, isSpecialEducation: true },
+                updatedAtTime: "2024-11-15T10:30:00Z",
+            },
+        };
+        server
+            .mockEndpoint()
+            .post("/ridership/passengers")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.betaApIs.createRidershipPassenger({
+            accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
+            firstName: "John",
+            lastName: "Doe",
+        });
+        expect(response).toEqual({
+            data: {
+                accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
+                classification: "grade5",
+                createdAtTime: "2024-11-15T10:00:00Z",
+                externalIds: {
+                    key: "value",
+                },
+                firstName: "John",
+                id: "a1b2c3d4-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+                identifiers: [
+                    {
+                        id: "b2c3d4e5-6f7a-8b9c-0d1e-2f3a4b5c6d7e",
+                        status: "active",
+                        type: "rfid",
+                        value: "0418A2BC93",
+                    },
+                ],
+                isActive: true,
+                lastName: "Doe",
+                specialInstructions: {
+                    isGuardianRequired: false,
+                    isSpecialEducation: true,
+                },
+                updatedAtTime: "2024-11-15T10:30:00Z",
+            },
+        });
+    });
+
+    test("createRidershipPassenger (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { accountId: "accountId", firstName: "firstName", lastName: "lastName" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/ridership/passengers")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createRidershipPassenger({
+                accountId: "accountId",
+                firstName: "firstName",
+                lastName: "lastName",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("createRidershipPassenger (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { accountId: "accountId", firstName: "firstName", lastName: "lastName" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/ridership/passengers")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createRidershipPassenger({
+                accountId: "accountId",
+                firstName: "firstName",
+                lastName: "lastName",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("createRidershipPassenger (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { accountId: "accountId", firstName: "firstName", lastName: "lastName" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/ridership/passengers")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createRidershipPassenger({
+                accountId: "accountId",
+                firstName: "firstName",
+                lastName: "lastName",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("createRidershipPassenger (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { accountId: "accountId", firstName: "firstName", lastName: "lastName" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/ridership/passengers")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createRidershipPassenger({
+                accountId: "accountId",
+                firstName: "firstName",
+                lastName: "lastName",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("createRidershipPassenger (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { accountId: "accountId", firstName: "firstName", lastName: "lastName" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/ridership/passengers")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createRidershipPassenger({
+                accountId: "accountId",
+                firstName: "firstName",
+                lastName: "lastName",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("createRidershipPassenger (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { accountId: "accountId", firstName: "firstName", lastName: "lastName" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/ridership/passengers")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createRidershipPassenger({
+                accountId: "accountId",
+                firstName: "firstName",
+                lastName: "lastName",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("createRidershipPassenger (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { accountId: "accountId", firstName: "firstName", lastName: "lastName" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/ridership/passengers")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createRidershipPassenger({
+                accountId: "accountId",
+                firstName: "firstName",
+                lastName: "lastName",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("createRidershipPassenger (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { accountId: "accountId", firstName: "firstName", lastName: "lastName" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/ridership/passengers")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createRidershipPassenger({
+                accountId: "accountId",
+                firstName: "firstName",
+                lastName: "lastName",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("createRidershipPassenger (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { accountId: "accountId", firstName: "firstName", lastName: "lastName" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/ridership/passengers")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createRidershipPassenger({
+                accountId: "accountId",
+                firstName: "firstName",
+                lastName: "lastName",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("updateRidershipPassenger (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
+            firstName: "John",
+            lastName: "Doe",
+        };
+        const rawResponseBody = {
+            data: {
+                accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
+                classification: "grade5",
+                createdAtTime: "2024-11-15T10:00:00Z",
+                externalIds: { key: "value" },
+                firstName: "John",
+                id: "a1b2c3d4-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+                identifiers: [
+                    { id: "b2c3d4e5-6f7a-8b9c-0d1e-2f3a4b5c6d7e", status: "active", type: "rfid", value: "0418A2BC93" },
+                ],
+                isActive: true,
+                lastName: "Doe",
+                specialInstructions: { isGuardianRequired: false, isSpecialEducation: true },
+                updatedAtTime: "2024-11-15T10:30:00Z",
+            },
+        };
+        server
+            .mockEndpoint()
+            .put("/ridership/passengers")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.betaApIs.updateRidershipPassenger({
+            id: "id",
+            accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
+            firstName: "John",
+            lastName: "Doe",
+        });
+        expect(response).toEqual({
+            data: {
+                accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
+                classification: "grade5",
+                createdAtTime: "2024-11-15T10:00:00Z",
+                externalIds: {
+                    key: "value",
+                },
+                firstName: "John",
+                id: "a1b2c3d4-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+                identifiers: [
+                    {
+                        id: "b2c3d4e5-6f7a-8b9c-0d1e-2f3a4b5c6d7e",
+                        status: "active",
+                        type: "rfid",
+                        value: "0418A2BC93",
+                    },
+                ],
+                isActive: true,
+                lastName: "Doe",
+                specialInstructions: {
+                    isGuardianRequired: false,
+                    isSpecialEducation: true,
+                },
+                updatedAtTime: "2024-11-15T10:30:00Z",
+            },
+        });
+    });
+
+    test("updateRidershipPassenger (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { accountId: "accountId", firstName: "firstName", lastName: "lastName" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .put("/ridership/passengers")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.updateRidershipPassenger({
+                id: "id",
+                accountId: "accountId",
+                firstName: "firstName",
+                lastName: "lastName",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("updateRidershipPassenger (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { accountId: "accountId", firstName: "firstName", lastName: "lastName" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .put("/ridership/passengers")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.updateRidershipPassenger({
+                id: "id",
+                accountId: "accountId",
+                firstName: "firstName",
+                lastName: "lastName",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("updateRidershipPassenger (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { accountId: "accountId", firstName: "firstName", lastName: "lastName" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .put("/ridership/passengers")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.updateRidershipPassenger({
+                id: "id",
+                accountId: "accountId",
+                firstName: "firstName",
+                lastName: "lastName",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("updateRidershipPassenger (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { accountId: "accountId", firstName: "firstName", lastName: "lastName" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .put("/ridership/passengers")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.updateRidershipPassenger({
+                id: "id",
+                accountId: "accountId",
+                firstName: "firstName",
+                lastName: "lastName",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("updateRidershipPassenger (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { accountId: "accountId", firstName: "firstName", lastName: "lastName" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .put("/ridership/passengers")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.updateRidershipPassenger({
+                id: "id",
+                accountId: "accountId",
+                firstName: "firstName",
+                lastName: "lastName",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("updateRidershipPassenger (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { accountId: "accountId", firstName: "firstName", lastName: "lastName" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .put("/ridership/passengers")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.updateRidershipPassenger({
+                id: "id",
+                accountId: "accountId",
+                firstName: "firstName",
+                lastName: "lastName",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("updateRidershipPassenger (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { accountId: "accountId", firstName: "firstName", lastName: "lastName" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .put("/ridership/passengers")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.updateRidershipPassenger({
+                id: "id",
+                accountId: "accountId",
+                firstName: "firstName",
+                lastName: "lastName",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("updateRidershipPassenger (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { accountId: "accountId", firstName: "firstName", lastName: "lastName" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .put("/ridership/passengers")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.updateRidershipPassenger({
+                id: "id",
+                accountId: "accountId",
+                firstName: "firstName",
+                lastName: "lastName",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("updateRidershipPassenger (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { accountId: "accountId", firstName: "firstName", lastName: "lastName" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .put("/ridership/passengers")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.updateRidershipPassenger({
+                id: "id",
+                accountId: "accountId",
+                firstName: "firstName",
+                lastName: "lastName",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("deleteRidershipPassenger (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        server.mockEndpoint().delete("/ridership/passengers").respondWith().statusCode(200).build();
+
+        const response = await client.betaApIs.deleteRidershipPassenger({
+            id: "id",
+        });
+        expect(response).toEqual(undefined);
+    });
+
+    test("deleteRidershipPassenger (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .delete("/ridership/passengers")
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.deleteRidershipPassenger({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("deleteRidershipPassenger (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .delete("/ridership/passengers")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.deleteRidershipPassenger({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("deleteRidershipPassenger (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .delete("/ridership/passengers")
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.deleteRidershipPassenger({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("deleteRidershipPassenger (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .delete("/ridership/passengers")
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.deleteRidershipPassenger({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("deleteRidershipPassenger (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .delete("/ridership/passengers")
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.deleteRidershipPassenger({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("deleteRidershipPassenger (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .delete("/ridership/passengers")
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.deleteRidershipPassenger({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("deleteRidershipPassenger (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .delete("/ridership/passengers")
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.deleteRidershipPassenger({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("deleteRidershipPassenger (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .delete("/ridership/passengers")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.deleteRidershipPassenger({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("deleteRidershipPassenger (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .delete("/ridership/passengers")
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.deleteRidershipPassenger({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("getRidershipPassenger (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = {
+            data: {
+                accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
+                classification: "grade5",
+                createdAtTime: "2024-11-15T10:00:00Z",
+                externalIds: { key: "value" },
+                firstName: "John",
+                id: "a1b2c3d4-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+                identifiers: [
+                    { id: "b2c3d4e5-6f7a-8b9c-0d1e-2f3a4b5c6d7e", status: "active", type: "rfid", value: "0418A2BC93" },
+                ],
+                isActive: true,
+                lastName: "Doe",
+                specialInstructions: { isGuardianRequired: false, isSpecialEducation: true },
+                updatedAtTime: "2024-11-15T10:30:00Z",
+            },
+        };
+        server
+            .mockEndpoint()
+            .get("/ridership/passengers/id")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.betaApIs.getRidershipPassenger({
+            id: "id",
+        });
+        expect(response).toEqual({
+            data: {
+                accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
+                classification: "grade5",
+                createdAtTime: "2024-11-15T10:00:00Z",
+                externalIds: {
+                    key: "value",
+                },
+                firstName: "John",
+                id: "a1b2c3d4-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+                identifiers: [
+                    {
+                        id: "b2c3d4e5-6f7a-8b9c-0d1e-2f3a4b5c6d7e",
+                        status: "active",
+                        type: "rfid",
+                        value: "0418A2BC93",
+                    },
+                ],
+                isActive: true,
+                lastName: "Doe",
+                specialInstructions: {
+                    isGuardianRequired: false,
+                    isSpecialEducation: true,
+                },
+                updatedAtTime: "2024-11-15T10:30:00Z",
+            },
+        });
+    });
+
+    test("getRidershipPassenger (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/ridership/passengers/id")
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.getRidershipPassenger({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("getRidershipPassenger (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/ridership/passengers/id")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.getRidershipPassenger({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("getRidershipPassenger (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/ridership/passengers/id")
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.getRidershipPassenger({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("getRidershipPassenger (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/ridership/passengers/id")
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.getRidershipPassenger({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("getRidershipPassenger (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/ridership/passengers/id")
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.getRidershipPassenger({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("getRidershipPassenger (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/ridership/passengers/id")
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.getRidershipPassenger({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("getRidershipPassenger (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/ridership/passengers/id")
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.getRidershipPassenger({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("getRidershipPassenger (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/ridership/passengers/id")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.getRidershipPassenger({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("getRidershipPassenger (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/ridership/passengers/id")
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.getRidershipPassenger({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("createRidershipRouteSetup (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
+            passengers: [{ passengerId: "a1b2c3d4-5e6f-7a8b-9c0d-1e2f3a4b5c6d" }],
+            routeId: "123456",
+        };
+        const rawResponseBody = {
+            data: {
+                accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
+                passengers: [
+                    { dropOffStopId: "790", passengerId: "a1b2c3d4-5e6f-7a8b-9c0d-1e2f3a4b5c6d", pickUpStopId: "789" },
+                ],
+                routeId: "123456",
+            },
+        };
+        server
+            .mockEndpoint()
+            .post("/ridership/route-setups")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.betaApIs.createRidershipRouteSetup({
+            accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
+            passengers: [
+                {
+                    passengerId: "a1b2c3d4-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+                },
+            ],
+            routeId: "123456",
+        });
+        expect(response).toEqual({
+            data: {
+                accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
+                passengers: [
+                    {
+                        dropOffStopId: "790",
+                        passengerId: "a1b2c3d4-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+                        pickUpStopId: "789",
+                    },
+                ],
+                routeId: "123456",
+            },
+        });
+    });
+
+    test("createRidershipRouteSetup (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            accountId: "accountId",
+            passengers: [{ passengerId: "passengerId" }, { passengerId: "passengerId" }],
+            routeId: "routeId",
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/ridership/route-setups")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createRidershipRouteSetup({
+                accountId: "accountId",
+                passengers: [
+                    {
+                        passengerId: "passengerId",
+                    },
+                    {
+                        passengerId: "passengerId",
+                    },
+                ],
+                routeId: "routeId",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("createRidershipRouteSetup (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            accountId: "accountId",
+            passengers: [{ passengerId: "passengerId" }, { passengerId: "passengerId" }],
+            routeId: "routeId",
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/ridership/route-setups")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createRidershipRouteSetup({
+                accountId: "accountId",
+                passengers: [
+                    {
+                        passengerId: "passengerId",
+                    },
+                    {
+                        passengerId: "passengerId",
+                    },
+                ],
+                routeId: "routeId",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("createRidershipRouteSetup (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            accountId: "accountId",
+            passengers: [{ passengerId: "passengerId" }, { passengerId: "passengerId" }],
+            routeId: "routeId",
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/ridership/route-setups")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createRidershipRouteSetup({
+                accountId: "accountId",
+                passengers: [
+                    {
+                        passengerId: "passengerId",
+                    },
+                    {
+                        passengerId: "passengerId",
+                    },
+                ],
+                routeId: "routeId",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("createRidershipRouteSetup (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            accountId: "accountId",
+            passengers: [{ passengerId: "passengerId" }, { passengerId: "passengerId" }],
+            routeId: "routeId",
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/ridership/route-setups")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createRidershipRouteSetup({
+                accountId: "accountId",
+                passengers: [
+                    {
+                        passengerId: "passengerId",
+                    },
+                    {
+                        passengerId: "passengerId",
+                    },
+                ],
+                routeId: "routeId",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("createRidershipRouteSetup (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            accountId: "accountId",
+            passengers: [{ passengerId: "passengerId" }, { passengerId: "passengerId" }],
+            routeId: "routeId",
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/ridership/route-setups")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createRidershipRouteSetup({
+                accountId: "accountId",
+                passengers: [
+                    {
+                        passengerId: "passengerId",
+                    },
+                    {
+                        passengerId: "passengerId",
+                    },
+                ],
+                routeId: "routeId",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("createRidershipRouteSetup (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            accountId: "accountId",
+            passengers: [{ passengerId: "passengerId" }, { passengerId: "passengerId" }],
+            routeId: "routeId",
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/ridership/route-setups")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createRidershipRouteSetup({
+                accountId: "accountId",
+                passengers: [
+                    {
+                        passengerId: "passengerId",
+                    },
+                    {
+                        passengerId: "passengerId",
+                    },
+                ],
+                routeId: "routeId",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("createRidershipRouteSetup (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            accountId: "accountId",
+            passengers: [{ passengerId: "passengerId" }, { passengerId: "passengerId" }],
+            routeId: "routeId",
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/ridership/route-setups")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createRidershipRouteSetup({
+                accountId: "accountId",
+                passengers: [
+                    {
+                        passengerId: "passengerId",
+                    },
+                    {
+                        passengerId: "passengerId",
+                    },
+                ],
+                routeId: "routeId",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("createRidershipRouteSetup (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            accountId: "accountId",
+            passengers: [{ passengerId: "passengerId" }, { passengerId: "passengerId" }],
+            routeId: "routeId",
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/ridership/route-setups")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createRidershipRouteSetup({
+                accountId: "accountId",
+                passengers: [
+                    {
+                        passengerId: "passengerId",
+                    },
+                    {
+                        passengerId: "passengerId",
+                    },
+                ],
+                routeId: "routeId",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("createRidershipRouteSetup (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            accountId: "accountId",
+            passengers: [{ passengerId: "passengerId" }, { passengerId: "passengerId" }],
+            routeId: "routeId",
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/ridership/route-setups")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createRidershipRouteSetup({
+                accountId: "accountId",
+                passengers: [
+                    {
+                        passengerId: "passengerId",
+                    },
+                    {
+                        passengerId: "passengerId",
+                    },
+                ],
+                routeId: "routeId",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("updateRidershipRouteSetup (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
+            passengers: [{ passengerId: "a1b2c3d4-5e6f-7a8b-9c0d-1e2f3a4b5c6d" }],
+        };
+        const rawResponseBody = {
+            data: {
+                accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
+                passengers: [
+                    { dropOffStopId: "790", passengerId: "a1b2c3d4-5e6f-7a8b-9c0d-1e2f3a4b5c6d", pickUpStopId: "789" },
+                ],
+                routeId: "123456",
+            },
+        };
+        server
+            .mockEndpoint()
+            .put("/ridership/route-setups")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.betaApIs.updateRidershipRouteSetup({
+            routeId: "routeId",
+            accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
+            passengers: [
+                {
+                    passengerId: "a1b2c3d4-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+                },
+            ],
+        });
+        expect(response).toEqual({
+            data: {
+                accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
+                passengers: [
+                    {
+                        dropOffStopId: "790",
+                        passengerId: "a1b2c3d4-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+                        pickUpStopId: "789",
+                    },
+                ],
+                routeId: "123456",
+            },
+        });
+    });
+
+    test("updateRidershipRouteSetup (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            accountId: "accountId",
+            passengers: [{ passengerId: "passengerId" }, { passengerId: "passengerId" }],
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .put("/ridership/route-setups")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.updateRidershipRouteSetup({
+                routeId: "routeId",
+                accountId: "accountId",
+                passengers: [
+                    {
+                        passengerId: "passengerId",
+                    },
+                    {
+                        passengerId: "passengerId",
+                    },
+                ],
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("updateRidershipRouteSetup (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            accountId: "accountId",
+            passengers: [{ passengerId: "passengerId" }, { passengerId: "passengerId" }],
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .put("/ridership/route-setups")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.updateRidershipRouteSetup({
+                routeId: "routeId",
+                accountId: "accountId",
+                passengers: [
+                    {
+                        passengerId: "passengerId",
+                    },
+                    {
+                        passengerId: "passengerId",
+                    },
+                ],
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("updateRidershipRouteSetup (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            accountId: "accountId",
+            passengers: [{ passengerId: "passengerId" }, { passengerId: "passengerId" }],
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .put("/ridership/route-setups")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.updateRidershipRouteSetup({
+                routeId: "routeId",
+                accountId: "accountId",
+                passengers: [
+                    {
+                        passengerId: "passengerId",
+                    },
+                    {
+                        passengerId: "passengerId",
+                    },
+                ],
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("updateRidershipRouteSetup (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            accountId: "accountId",
+            passengers: [{ passengerId: "passengerId" }, { passengerId: "passengerId" }],
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .put("/ridership/route-setups")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.updateRidershipRouteSetup({
+                routeId: "routeId",
+                accountId: "accountId",
+                passengers: [
+                    {
+                        passengerId: "passengerId",
+                    },
+                    {
+                        passengerId: "passengerId",
+                    },
+                ],
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("updateRidershipRouteSetup (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            accountId: "accountId",
+            passengers: [{ passengerId: "passengerId" }, { passengerId: "passengerId" }],
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .put("/ridership/route-setups")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.updateRidershipRouteSetup({
+                routeId: "routeId",
+                accountId: "accountId",
+                passengers: [
+                    {
+                        passengerId: "passengerId",
+                    },
+                    {
+                        passengerId: "passengerId",
+                    },
+                ],
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("updateRidershipRouteSetup (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            accountId: "accountId",
+            passengers: [{ passengerId: "passengerId" }, { passengerId: "passengerId" }],
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .put("/ridership/route-setups")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.updateRidershipRouteSetup({
+                routeId: "routeId",
+                accountId: "accountId",
+                passengers: [
+                    {
+                        passengerId: "passengerId",
+                    },
+                    {
+                        passengerId: "passengerId",
+                    },
+                ],
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("updateRidershipRouteSetup (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            accountId: "accountId",
+            passengers: [{ passengerId: "passengerId" }, { passengerId: "passengerId" }],
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .put("/ridership/route-setups")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.updateRidershipRouteSetup({
+                routeId: "routeId",
+                accountId: "accountId",
+                passengers: [
+                    {
+                        passengerId: "passengerId",
+                    },
+                    {
+                        passengerId: "passengerId",
+                    },
+                ],
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("updateRidershipRouteSetup (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            accountId: "accountId",
+            passengers: [{ passengerId: "passengerId" }, { passengerId: "passengerId" }],
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .put("/ridership/route-setups")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.updateRidershipRouteSetup({
+                routeId: "routeId",
+                accountId: "accountId",
+                passengers: [
+                    {
+                        passengerId: "passengerId",
+                    },
+                    {
+                        passengerId: "passengerId",
+                    },
+                ],
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("updateRidershipRouteSetup (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            accountId: "accountId",
+            passengers: [{ passengerId: "passengerId" }, { passengerId: "passengerId" }],
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .put("/ridership/route-setups")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.updateRidershipRouteSetup({
+                routeId: "routeId",
+                accountId: "accountId",
+                passengers: [
+                    {
+                        passengerId: "passengerId",
+                    },
+                    {
+                        passengerId: "passengerId",
+                    },
+                ],
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("deleteRidershipRouteSetup (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        server.mockEndpoint().delete("/ridership/route-setups").respondWith().statusCode(200).build();
+
+        const response = await client.betaApIs.deleteRidershipRouteSetup({
+            routeId: "routeId",
+        });
+        expect(response).toEqual(undefined);
+    });
+
+    test("deleteRidershipRouteSetup (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .delete("/ridership/route-setups")
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.deleteRidershipRouteSetup({
+                routeId: "routeId",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("deleteRidershipRouteSetup (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .delete("/ridership/route-setups")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.deleteRidershipRouteSetup({
+                routeId: "routeId",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("deleteRidershipRouteSetup (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .delete("/ridership/route-setups")
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.deleteRidershipRouteSetup({
+                routeId: "routeId",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("deleteRidershipRouteSetup (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .delete("/ridership/route-setups")
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.deleteRidershipRouteSetup({
+                routeId: "routeId",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("deleteRidershipRouteSetup (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .delete("/ridership/route-setups")
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.deleteRidershipRouteSetup({
+                routeId: "routeId",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("deleteRidershipRouteSetup (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .delete("/ridership/route-setups")
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.deleteRidershipRouteSetup({
+                routeId: "routeId",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("deleteRidershipRouteSetup (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .delete("/ridership/route-setups")
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.deleteRidershipRouteSetup({
+                routeId: "routeId",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("deleteRidershipRouteSetup (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .delete("/ridership/route-setups")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.deleteRidershipRouteSetup({
+                routeId: "routeId",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("deleteRidershipRouteSetup (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .delete("/ridership/route-setups")
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.deleteRidershipRouteSetup({
+                routeId: "routeId",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("getRidershipRouteSetup (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = {
+            data: {
+                accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
+                passengers: [
+                    { dropOffStopId: "790", passengerId: "a1b2c3d4-5e6f-7a8b-9c0d-1e2f3a4b5c6d", pickUpStopId: "789" },
+                ],
+                routeId: "123456",
+            },
+        };
+        server
+            .mockEndpoint()
+            .get("/ridership/route-setups/routeId")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.betaApIs.getRidershipRouteSetup({
+            routeId: "routeId",
+        });
+        expect(response).toEqual({
+            data: {
+                accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
+                passengers: [
+                    {
+                        dropOffStopId: "790",
+                        passengerId: "a1b2c3d4-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+                        pickUpStopId: "789",
+                    },
+                ],
+                routeId: "123456",
+            },
+        });
+    });
+
+    test("getRidershipRouteSetup (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/ridership/route-setups/routeId")
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.getRidershipRouteSetup({
+                routeId: "routeId",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("getRidershipRouteSetup (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/ridership/route-setups/routeId")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.getRidershipRouteSetup({
+                routeId: "routeId",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("getRidershipRouteSetup (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/ridership/route-setups/routeId")
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.getRidershipRouteSetup({
+                routeId: "routeId",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("getRidershipRouteSetup (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/ridership/route-setups/routeId")
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.getRidershipRouteSetup({
+                routeId: "routeId",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("getRidershipRouteSetup (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/ridership/route-setups/routeId")
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.getRidershipRouteSetup({
+                routeId: "routeId",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("getRidershipRouteSetup (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/ridership/route-setups/routeId")
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.getRidershipRouteSetup({
+                routeId: "routeId",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("getRidershipRouteSetup (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/ridership/route-setups/routeId")
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.getRidershipRouteSetup({
+                routeId: "routeId",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("getRidershipRouteSetup (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/ridership/route-setups/routeId")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.getRidershipRouteSetup({
+                routeId: "routeId",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("getRidershipRouteSetup (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/ridership/route-setups/routeId")
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.getRidershipRouteSetup({
+                routeId: "routeId",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
     test("getDriverSafetyScores (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({

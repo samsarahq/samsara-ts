@@ -16,7 +16,8 @@ export interface GetReadingsHistoryRequest {
      * Available reading IDs (by category):
      *
      *
-     * **diagnostic**
+     * <details>
+     * <summary><strong>diagnostic</strong></summary>
      *
      * * `airInletPressure` (Air Inlet Pressure): Air inlet pressure. (kilopascal)
      * * `airTemp` (Air Inlet (Ambient Air) Temp): Air inlet (ambient air) temperature. (celsius)
@@ -89,6 +90,7 @@ export interface GetReadingsHistoryRequest {
      * * `phaseCLLVolts` (Phase C Line-to-Line Voltage): Line-to-line voltage for Phase C in volts. (volt)
      * * `phaseCLNVolts` (Phase C Line-to-Neutral Voltage): Line-to-neutral voltage for Phase C in volts. (volt)
      * * `powerFactorRatio` (Power Factor Ratio): Represents the power factor ratio. (percent)
+     * * `rfidCardIdScan` (RFID Card Scan): The card number from RFID Card scans used for identification. When a user taps their RFID card on the reader, this captures the unique card code.
      * * `samsaraEngineHours` (Samsara Engine Hours): Samsara's intelligent engine hours calculation that combines ECU data, synthetic calculations, and manual overrides with automatic fallbacks for optimal accuracy across all asset types. (millisecond)
      * * `samsaraEngineHoursWithSource` (Samsara Engine Hours with Source): Samsara's intelligent engine hours calculation including detailed source metadata to indicate the origin of the data (ECU, synthetic, or manual override). Useful for debugging and understanding data provenance.
      * * `samsaraOdometer` (Samsara Odometer): Samsara automatically pulls odometer readings from a vehicle's engine control unit (ECU). If the reading isn't available and the vehicle is unregulated, you can manually enter the odometer value for maintenance tracking—this value will then update based on GPS trip data. (kilometer)
@@ -107,7 +109,10 @@ export interface GetReadingsHistoryRequest {
      * * `totalReactivePower` (Total Reactive Power): Total reactive power in volt-amperes reactive. (voltAmpereReactive)
      * * `totalRealPower` (Total Real Power): Total real power in watts. (watt)
      *
-     * **levelMonitoring**
+     * </details>
+     *
+     * <details>
+     * <summary><strong>levelMonitoring</strong></summary>
      *
      * * `fillCriticality` (Fill Level Criticality): Indicates if the state of the fill level is critical. (values: normal | criticallyHigh | criticallyLow)
      * * `fillMass` (Fill Mass): Mass of material in the vessel. (kilogram)
@@ -117,7 +122,10 @@ export interface GetReadingsHistoryRequest {
      * * `fillVolumeAvailableCapacity` (Fill Volume Available Capacity): Available volume to be filled in the vessel. (liter)
      * * `fluidLevelStatus` (Battery Water Level): The status of the battery's water level. Will be OK or LOW. (values: noData | ok | low)
      *
-     * **obd**
+     * </details>
+     *
+     * <details>
+     * <summary><strong>obd</strong></summary>
      *
      * * `accDistanceAlertSignal` (ACC Distance Alert): Distance Alert Signal from the Adaptive Cruise Control system. (values: notActive | active)
      * * `adaptiveCruiseControlMode` (ACC Mode): Current mode of the Adaptive Cruise Control System. (values: off | speedControlActive | distanceControlActive | overtakeMode | holdMode | finishMode | disabledOrError)
@@ -154,13 +162,19 @@ export interface GetReadingsHistoryRequest {
      * * `ycBrakeControlActive` (YC Brake Control Active): Indicates whether Yaw Control (YC) has activated brake control. (values: passive | active)
      * * `ycEngineControlActive` (YC Engine Control Active): Indicates whether Yaw Control (YC) has commanded engine control to be active. (values: passive | active)
      *
-     * **pressureVesselHealth**
+     * </details>
+     *
+     * <details>
+     * <summary><strong>pressureVesselHealth</strong></summary>
      *
      * * `pressureVesselBatteryLevelPercentage` (Pressure Vessel Battery Level Percentage): Battery level percentage of the pressure vessel. (percent)
      * * `pressureVesselPressure` (Pressure Vessel Pressure): Pressure of the pressure vessel. (kilopascal)
      * * `pressureVesselTemperature` (Pressure Vessel Temperature): Temperature of the pressure vessel. (celsius)
      *
-     * **reefer**
+     * </details>
+     *
+     * <details>
+     * <summary><strong>reefer</strong></summary>
      *
      * * `reeferAlarm` (Reefer Alarms): Array of active alarm codes for the refrigeration unit with metadata
      * * `reeferAlarmSeverity` (Reefer Alarm Severity): Highest severity level across active reefer alarms (green, yellow, red, orange) (values: none | green | yellow | red | orange)
@@ -193,7 +207,10 @@ export interface GetReadingsHistoryRequest {
      * * `reeferTemperatureRecorder5` (Reefer Temperature Recorder (Zone 5)): Temperature recorder reading for reefer zone 5 (celsius)
      * * `reeferTemperatureRecorder6` (Reefer Temperature Recorder (Zone 6)): Temperature recorder reading for reefer zone 6 (celsius)
      *
-     * **smartTrailer**
+     * </details>
+     *
+     * <details>
+     * <summary><strong>smartTrailer</strong></summary>
      *
      * * `addressEntry` (Address Entry): Address data from the address entry event
      * * `addressExit` (Address Exit): Address data from the address exit event
@@ -211,6 +228,8 @@ export interface GetReadingsHistoryRequest {
      * * `widgetBatteryVoltage` (Widget Battery Voltage): Battery voltage level of the widget sensor in millivolts (volt)
      * * `widgetBatteryVoltageLow` (Widget Battery Voltage Low): Indicates if widget battery voltage is below 1500mV threshold (values: normal | low)
      * * `widgetDisconnect` (Widget Disconnection Status): Connection status between widget and device (values: connected | disconnected)
+     *
+     * </details>
      *
      * **Note:** This is not an exhaustive list. Your organization may have access to additional readings based on enabled features or custom configurations. Use the `/readings/definitions` endpoint to retrieve all available reading IDs for your organization.
      */

@@ -16,18 +16,20 @@ export namespace IdlingEventAddressObjectResponseBody {
     export type AddressTypes = AddressTypes.Item[];
 
     export namespace AddressTypes {
-        /** Address types  Valid values: `agricultureSource`, `alertsOnly`, `authorizedZone`, `avoidanceZone`, `industrialSite`, `knownGPSJammingZone`, `riskZone`, `shortHaul`, `unauthorizedZone`, `undefined`, `workforceSite`, `yard` */
+        /** Address types  Valid values: `agricultureSource`, `alertsOnly`, `authorizedZone`, `avoidanceZone`, `industrialSite`, `inventory`, `knownGPSJammingZone`, `riskZone`, `shortHaul`, `unauthorizedZone`, `undefined`, `vendor`, `workforceSite`, `yard` */
         export const Item = {
             AgricultureSource: "agricultureSource",
             AlertsOnly: "alertsOnly",
             AuthorizedZone: "authorizedZone",
             AvoidanceZone: "avoidanceZone",
             IndustrialSite: "industrialSite",
+            Inventory: "inventory",
             KnownGpsJammingZone: "knownGPSJammingZone",
             RiskZone: "riskZone",
             ShortHaul: "shortHaul",
             UnauthorizedZone: "unauthorizedZone",
             Undefined: "undefined",
+            Vendor: "vendor",
             WorkforceSite: "workforceSite",
             Yard: "yard",
         } as const;

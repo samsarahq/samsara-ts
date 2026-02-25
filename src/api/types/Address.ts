@@ -6,7 +6,7 @@ import type * as Samsara from "../index.js";
  * An Address object.
  */
 export interface Address {
-    /** Reporting location type associated with the address (used for ELD reporting purposes). Valid values: `yard`, `shortHaul`, `workforceSite`, `riskZone`, `industrialSite`, `alertsOnly`, `agricultureSource`, `avoidanceZone`, `knownGPSJammingZone`, `authorizedZone`, `unauthorizedZone`. */
+    /** Reporting location type associated with the address (used for ELD reporting purposes). Valid values: `yard`, `shortHaul`, `workforceSite`, `riskZone`, `industrialSite`, `alertsOnly`, `agricultureSource`, `avoidanceZone`, `knownGPSJammingZone`, `authorizedZone`, `unauthorizedZone`, `vendor`, `inventory`. */
     addressTypes?: Address.AddressTypes.Item[] | undefined;
     /** An array Contact mini-objects that are associated the Address. */
     contacts?: Samsara.ContactTinyResponse[] | undefined;
@@ -47,6 +47,8 @@ export namespace Address {
             KnownGpsJammingZone: "knownGPSJammingZone",
             AuthorizedZone: "authorizedZone",
             UnauthorizedZone: "unauthorizedZone",
+            Vendor: "vendor",
+            Inventory: "inventory",
         } as const;
         export type Item = (typeof Item)[keyof typeof Item];
     }

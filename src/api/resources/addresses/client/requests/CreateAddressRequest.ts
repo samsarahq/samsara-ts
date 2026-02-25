@@ -11,7 +11,7 @@ import type * as Samsara from "../../../../index.js";
  *     }
  */
 export interface CreateAddressRequest {
-    /** Reporting location type associated with the address (used for ELD reporting purposes). Valid values: `yard`, `shortHaul`, `workforceSite`, `riskZone`, `industrialSite`, `alertsOnly`, `agricultureSource`, `avoidanceZone`, `knownGPSJammingZone`, `authorizedZone`, `unauthorizedZone`. */
+    /** Reporting location type associated with the address (used for ELD reporting purposes). Valid values: `yard`, `shortHaul`, `workforceSite`, `riskZone`, `industrialSite`, `alertsOnly`, `agricultureSource`, `avoidanceZone`, `knownGPSJammingZone`, `authorizedZone`, `unauthorizedZone`, `vendor`, `inventory`. */
     addressTypes?: CreateAddressRequest.AddressTypes.Item[];
     /** An array of Contact IDs associated with this Address. */
     contactIds?: string[];
@@ -48,6 +48,8 @@ export namespace CreateAddressRequest {
             KnownGpsJammingZone: "knownGPSJammingZone",
             AuthorizedZone: "authorizedZone",
             UnauthorizedZone: "unauthorizedZone",
+            Vendor: "vendor",
+            Inventory: "inventory",
         } as const;
         export type Item = (typeof Item)[keyof typeof Item];
     }

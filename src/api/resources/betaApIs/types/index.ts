@@ -6,3 +6,4 @@ export * from "./GetQualificationRecordsStreamRequestEntityType.js";
 export * from "./GetQualificationTypesRequestEntityType.js";
 export * from "./GetTagGroupSafetyScoresRequestScoreType.js";
 export * from "./GetTagSafetyScoresRequestScoreType.js";
+export * from "./ListCarbCtcVehiclesRequestTestStatusItem.js";

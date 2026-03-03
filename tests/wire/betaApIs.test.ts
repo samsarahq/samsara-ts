@@ -5158,6 +5158,540 @@ describe("BetaApIsClient", () => {
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 
+    test("listCarbCtcVehicles (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = {
+            data: [
+                {
+                    enrollmentId: "550e8400-e29b-41d4-a716-446655440000",
+                    enrollmentVin: "1HGCM82633A123456",
+                    id: "12345",
+                    lastCollectionAtTime: "2024-06-15T08:00:00Z",
+                    nextCollectionAtTime: "2024-12-15T00:00:00Z",
+                    testStatus: "notScheduled",
+                    testStatusDetails: "Response from CARB CTC: Vehicle PASSED emissions scan.",
+                },
+            ],
+            pagination: { endCursor: "MjkY", hasNextPage: true },
+        };
+        server
+            .mockEndpoint()
+            .get("/fleet/carb-ctc/vehicles")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.betaApIs.listCarbCtcVehicles();
+        expect(response).toEqual({
+            data: [
+                {
+                    enrollmentId: "550e8400-e29b-41d4-a716-446655440000",
+                    enrollmentVin: "1HGCM82633A123456",
+                    id: "12345",
+                    lastCollectionAtTime: "2024-06-15T08:00:00Z",
+                    nextCollectionAtTime: "2024-12-15T00:00:00Z",
+                    testStatus: "notScheduled",
+                    testStatusDetails: "Response from CARB CTC: Vehicle PASSED emissions scan.",
+                },
+            ],
+            pagination: {
+                endCursor: "MjkY",
+                hasNextPage: true,
+            },
+        });
+    });
+
+    test("listCarbCtcVehicles (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/carb-ctc/vehicles")
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listCarbCtcVehicles();
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("listCarbCtcVehicles (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/carb-ctc/vehicles")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listCarbCtcVehicles();
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("listCarbCtcVehicles (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/carb-ctc/vehicles")
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listCarbCtcVehicles();
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("listCarbCtcVehicles (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/carb-ctc/vehicles")
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listCarbCtcVehicles();
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("listCarbCtcVehicles (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/carb-ctc/vehicles")
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listCarbCtcVehicles();
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("listCarbCtcVehicles (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/carb-ctc/vehicles")
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listCarbCtcVehicles();
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("listCarbCtcVehicles (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/carb-ctc/vehicles")
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listCarbCtcVehicles();
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("listCarbCtcVehicles (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/carb-ctc/vehicles")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listCarbCtcVehicles();
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("listCarbCtcVehicles (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/carb-ctc/vehicles")
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listCarbCtcVehicles();
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("listCarbCtcVehicleHistory (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = {
+            data: [
+                {
+                    enrollmentId: "550e8400-e29b-41d4-a716-446655440000",
+                    enrollmentVin: "1HGCM82633A123456",
+                    happenedAtTime: "2024-06-15T08:00:00Z",
+                    id: "12345",
+                    testResult: "pass",
+                    testResultDetails: "Response from CARB CTC: Vehicle PASSED emissions scan.",
+                },
+            ],
+            pagination: { endCursor: "MjkY", hasNextPage: true },
+        };
+        server
+            .mockEndpoint()
+            .get("/fleet/carb-ctc/vehicles/history")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.betaApIs.listCarbCtcVehicleHistory({
+            vehicleIds: "vehicleIds",
+        });
+        expect(response).toEqual({
+            data: [
+                {
+                    enrollmentId: "550e8400-e29b-41d4-a716-446655440000",
+                    enrollmentVin: "1HGCM82633A123456",
+                    happenedAtTime: "2024-06-15T08:00:00Z",
+                    id: "12345",
+                    testResult: "pass",
+                    testResultDetails: "Response from CARB CTC: Vehicle PASSED emissions scan.",
+                },
+            ],
+            pagination: {
+                endCursor: "MjkY",
+                hasNextPage: true,
+            },
+        });
+    });
+
+    test("listCarbCtcVehicleHistory (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/carb-ctc/vehicles/history")
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listCarbCtcVehicleHistory({
+                vehicleIds: "vehicleIds",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("listCarbCtcVehicleHistory (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/carb-ctc/vehicles/history")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listCarbCtcVehicleHistory({
+                vehicleIds: "vehicleIds",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("listCarbCtcVehicleHistory (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/carb-ctc/vehicles/history")
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listCarbCtcVehicleHistory({
+                vehicleIds: "vehicleIds",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("listCarbCtcVehicleHistory (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/carb-ctc/vehicles/history")
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listCarbCtcVehicleHistory({
+                vehicleIds: "vehicleIds",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("listCarbCtcVehicleHistory (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/carb-ctc/vehicles/history")
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listCarbCtcVehicleHistory({
+                vehicleIds: "vehicleIds",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("listCarbCtcVehicleHistory (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/carb-ctc/vehicles/history")
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listCarbCtcVehicleHistory({
+                vehicleIds: "vehicleIds",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("listCarbCtcVehicleHistory (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/carb-ctc/vehicles/history")
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listCarbCtcVehicleHistory({
+                vehicleIds: "vehicleIds",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("listCarbCtcVehicleHistory (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/carb-ctc/vehicles/history")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listCarbCtcVehicleHistory({
+                vehicleIds: "vehicleIds",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("listCarbCtcVehicleHistory (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/carb-ctc/vehicles/history")
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listCarbCtcVehicleHistory({
+                vehicleIds: "vehicleIds",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
     test("getEngineImmobilizerStates (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
@@ -6351,7 +6885,11 @@ describe("BetaApIsClient", () => {
                     planId: "650e8400-e29b-41d4-a716-446655440023",
                     priority: 1,
                     quantities: [{ capacityId: "850e8400-e29b-41d4-a716-446655440003", quantity: 25.5 }],
-                    skillsRequired: ["650e8400-e29b-41d4-a716-446655440001", "650e8400-e29b-41d4-a716-446655440001"],
+                    skillsRequired: [
+                        "650e8400-e29b-41d4-a716-446655440001",
+                        "650e8400-e29b-41d4-a716-446655440001",
+                        "650e8400-e29b-41d4-a716-446655440001",
+                    ],
                     updatedAt: "2024-04-10T11:30:00Z",
                 },
             ],
@@ -6420,7 +6958,11 @@ describe("BetaApIsClient", () => {
                             quantity: 25.5,
                         },
                     ],
-                    skillsRequired: ["650e8400-e29b-41d4-a716-446655440001", "650e8400-e29b-41d4-a716-446655440001"],
+                    skillsRequired: [
+                        "650e8400-e29b-41d4-a716-446655440001",
+                        "650e8400-e29b-41d4-a716-446655440001",
+                        "650e8400-e29b-41d4-a716-446655440001",
+                    ],
                     updatedAt: "2024-04-10T11:30:00Z",
                 },
             ],
@@ -12564,7 +13106,6 @@ describe("BetaApIsClient", () => {
                 columns: [{ dataType: "string", name: "Device Name" }],
                 rows: [
                     [{ key: "value" }, { key: "value" }, { key: "value" }, { key: "value" }],
-                    [{ key: "value" }, { key: "value" }, { key: "value" }, { key: "value" }],
                     [{ key: "value" }, { key: "value" }, { key: "value" }],
                     [{ key: "value" }, { key: "value" }, { key: "value" }],
                 ],
@@ -12586,20 +13127,6 @@ describe("BetaApIsClient", () => {
                     },
                 ],
                 rows: [
-                    [
-                        {
-                            key: "value",
-                        },
-                        {
-                            key: "value",
-                        },
-                        {
-                            key: "value",
-                        },
-                        {
-                            key: "value",
-                        },
-                    ],
                     [
                         {
                             key: "value",

@@ -38,6 +38,8 @@ export type { GetVehicleSafetyScoreTripsRequest } from "./GetVehicleSafetyScoreT
 export type { HosDailyLogsUpdateShippingDocsRequestBody } from "./HosDailyLogsUpdateShippingDocsRequestBody.js";
 export type { JobsCreateJobRequestBody } from "./JobsCreateJobRequestBody.js";
 export type { JobsPatchJobRequestBody } from "./JobsPatchJobRequestBody.js";
+export type { ListCarbCtcVehicleHistoryRequest } from "./ListCarbCtcVehicleHistoryRequest.js";
+export type { ListCarbCtcVehiclesRequest } from "./ListCarbCtcVehiclesRequest.js";
 export type { ListHubCustomPropertiesRequest } from "./ListHubCustomPropertiesRequest.js";
 export type { ListReadingsDefinitionsRequest } from "./ListReadingsDefinitionsRequest.js";
 export type { ListRidershipAccountsRequest } from "./ListRidershipAccountsRequest.js";

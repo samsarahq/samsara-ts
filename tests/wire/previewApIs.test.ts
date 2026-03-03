@@ -5,6 +5,1237 @@ import { SamsaraClient } from "../../src/Client";
 import { mockServerPool } from "../mock-server/MockServerPool";
 
 describe("PreviewApIsClient", () => {
+    test("listDeviceRecoveryAssets (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = {
+            data: [
+                {
+                    additional_details: "Found in warehouse B",
+                    id: "12345",
+                    missing_reason: "MISPLACED",
+                    name: "Trailer-A1234",
+                    note: "Asset was last seen at warehouse A",
+                    notification_recipients: [{ notification_types: ["email"], user_id: 1234 }],
+                    recovery_photos: [
+                        {
+                            start_ms: 1609459200000,
+                            status: "EXISTS",
+                            url: "https://s3.amazonaws.com/samsara-recovery-photos/example.jpg",
+                            url_expires_at_ms: 1609462800000,
+                        },
+                    ],
+                    recovery_status: "YES",
+                    status: "UNKNOWN",
+                    updated_at_ms: 1609459200000,
+                    updated_by_user_id: 1234,
+                    uuid: "550e8400-e29b-41d4-a716-446655440000",
+                },
+            ],
+            pagination: { endCursor: "MjkY", hasNextPage: true },
+        };
+        server
+            .mockEndpoint()
+            .get("/preview/fleet/assets/device-recovery")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.previewApIs.listDeviceRecoveryAssets();
+        expect(response).toEqual({
+            data: [
+                {
+                    additional_details: "Found in warehouse B",
+                    id: "12345",
+                    missing_reason: "MISPLACED",
+                    name: "Trailer-A1234",
+                    note: "Asset was last seen at warehouse A",
+                    notification_recipients: [
+                        {
+                            notification_types: ["email"],
+                            user_id: 1234,
+                        },
+                    ],
+                    recovery_photos: [
+                        {
+                            start_ms: 1609459200000,
+                            status: "EXISTS",
+                            url: "https://s3.amazonaws.com/samsara-recovery-photos/example.jpg",
+                            url_expires_at_ms: 1609462800000,
+                        },
+                    ],
+                    recovery_status: "YES",
+                    status: "UNKNOWN",
+                    updated_at_ms: 1609459200000,
+                    updated_by_user_id: 1234,
+                    uuid: "550e8400-e29b-41d4-a716-446655440000",
+                },
+            ],
+            pagination: {
+                endCursor: "MjkY",
+                hasNextPage: true,
+            },
+        });
+    });
+
+    test("listDeviceRecoveryAssets (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preview/fleet/assets/device-recovery")
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.listDeviceRecoveryAssets();
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("listDeviceRecoveryAssets (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preview/fleet/assets/device-recovery")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.listDeviceRecoveryAssets();
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("listDeviceRecoveryAssets (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preview/fleet/assets/device-recovery")
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.listDeviceRecoveryAssets();
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("listDeviceRecoveryAssets (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preview/fleet/assets/device-recovery")
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.listDeviceRecoveryAssets();
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("listDeviceRecoveryAssets (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preview/fleet/assets/device-recovery")
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.listDeviceRecoveryAssets();
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("listDeviceRecoveryAssets (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preview/fleet/assets/device-recovery")
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.listDeviceRecoveryAssets();
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("listDeviceRecoveryAssets (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preview/fleet/assets/device-recovery")
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.listDeviceRecoveryAssets();
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("listDeviceRecoveryAssets (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preview/fleet/assets/device-recovery")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.listDeviceRecoveryAssets();
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("listDeviceRecoveryAssets (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preview/fleet/assets/device-recovery")
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.listDeviceRecoveryAssets();
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("markAssetMissing (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = {
+            data: {
+                additional_details: "Found in warehouse B",
+                id: "12345",
+                missing_reason: "MISPLACED",
+                name: "Trailer-A1234",
+                note: "Asset was last seen at warehouse A",
+                notification_recipients: [{ notification_types: ["email"], user_id: 1234 }],
+                recovery_photos: [
+                    {
+                        start_ms: 1609459200000,
+                        status: "EXISTS",
+                        url: "https://s3.amazonaws.com/samsara-recovery-photos/example.jpg",
+                        url_expires_at_ms: 1609462800000,
+                    },
+                ],
+                recovery_status: "YES",
+                status: "UNKNOWN",
+                updated_at_ms: 1609459200000,
+                updated_by_user_id: 1234,
+                uuid: "550e8400-e29b-41d4-a716-446655440000",
+            },
+        };
+        server
+            .mockEndpoint()
+            .post("/preview/fleet/assets/device-recovery/id/missing")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.previewApIs.markAssetMissing({
+            id: "id",
+        });
+        expect(response).toEqual({
+            data: {
+                additional_details: "Found in warehouse B",
+                id: "12345",
+                missing_reason: "MISPLACED",
+                name: "Trailer-A1234",
+                note: "Asset was last seen at warehouse A",
+                notification_recipients: [
+                    {
+                        notification_types: ["email"],
+                        user_id: 1234,
+                    },
+                ],
+                recovery_photos: [
+                    {
+                        start_ms: 1609459200000,
+                        status: "EXISTS",
+                        url: "https://s3.amazonaws.com/samsara-recovery-photos/example.jpg",
+                        url_expires_at_ms: 1609462800000,
+                    },
+                ],
+                recovery_status: "YES",
+                status: "UNKNOWN",
+                updated_at_ms: 1609459200000,
+                updated_by_user_id: 1234,
+                uuid: "550e8400-e29b-41d4-a716-446655440000",
+            },
+        });
+    });
+
+    test("markAssetMissing (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/preview/fleet/assets/device-recovery/id/missing")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.markAssetMissing({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("markAssetMissing (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/preview/fleet/assets/device-recovery/id/missing")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.markAssetMissing({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("markAssetMissing (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/preview/fleet/assets/device-recovery/id/missing")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.markAssetMissing({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("markAssetMissing (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/preview/fleet/assets/device-recovery/id/missing")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.markAssetMissing({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("markAssetMissing (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/preview/fleet/assets/device-recovery/id/missing")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.markAssetMissing({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("markAssetMissing (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/preview/fleet/assets/device-recovery/id/missing")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.markAssetMissing({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("markAssetMissing (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/preview/fleet/assets/device-recovery/id/missing")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.markAssetMissing({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("markAssetMissing (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/preview/fleet/assets/device-recovery/id/missing")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.markAssetMissing({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("markAssetMissing (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/preview/fleet/assets/device-recovery/id/missing")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.markAssetMissing({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("recoverAsset (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { missing_reason: "MISPLACED", recovery_status: "YES", status: "RECOVERED" };
+        const rawResponseBody = {
+            data: {
+                additional_details: "Found in warehouse B",
+                id: "12345",
+                missing_reason: "MISPLACED",
+                name: "Trailer-A1234",
+                note: "Asset was last seen at warehouse A",
+                notification_recipients: [{ notification_types: ["email"], user_id: 1234 }],
+                recovery_photos: [
+                    {
+                        start_ms: 1609459200000,
+                        status: "EXISTS",
+                        url: "https://s3.amazonaws.com/samsara-recovery-photos/example.jpg",
+                        url_expires_at_ms: 1609462800000,
+                    },
+                ],
+                recovery_status: "YES",
+                status: "UNKNOWN",
+                updated_at_ms: 1609459200000,
+                updated_by_user_id: 1234,
+                uuid: "550e8400-e29b-41d4-a716-446655440000",
+            },
+        };
+        server
+            .mockEndpoint()
+            .post("/preview/fleet/assets/device-recovery/id/recovered")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.previewApIs.recoverAsset({
+            id: "id",
+            missing_reason: "MISPLACED",
+            recovery_status: "YES",
+            status: "RECOVERED",
+        });
+        expect(response).toEqual({
+            data: {
+                additional_details: "Found in warehouse B",
+                id: "12345",
+                missing_reason: "MISPLACED",
+                name: "Trailer-A1234",
+                note: "Asset was last seen at warehouse A",
+                notification_recipients: [
+                    {
+                        notification_types: ["email"],
+                        user_id: 1234,
+                    },
+                ],
+                recovery_photos: [
+                    {
+                        start_ms: 1609459200000,
+                        status: "EXISTS",
+                        url: "https://s3.amazonaws.com/samsara-recovery-photos/example.jpg",
+                        url_expires_at_ms: 1609462800000,
+                    },
+                ],
+                recovery_status: "YES",
+                status: "UNKNOWN",
+                updated_at_ms: 1609459200000,
+                updated_by_user_id: 1234,
+                uuid: "550e8400-e29b-41d4-a716-446655440000",
+            },
+        });
+    });
+
+    test("recoverAsset (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { missing_reason: "MISPLACED", recovery_status: "YES", status: "RECOVERED" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/preview/fleet/assets/device-recovery/id/recovered")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.recoverAsset({
+                id: "id",
+                missing_reason: "MISPLACED",
+                recovery_status: "YES",
+                status: "RECOVERED",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("recoverAsset (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { missing_reason: "MISPLACED", recovery_status: "YES", status: "RECOVERED" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/preview/fleet/assets/device-recovery/id/recovered")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.recoverAsset({
+                id: "id",
+                missing_reason: "MISPLACED",
+                recovery_status: "YES",
+                status: "RECOVERED",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("recoverAsset (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { missing_reason: "MISPLACED", recovery_status: "YES", status: "RECOVERED" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/preview/fleet/assets/device-recovery/id/recovered")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.recoverAsset({
+                id: "id",
+                missing_reason: "MISPLACED",
+                recovery_status: "YES",
+                status: "RECOVERED",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("recoverAsset (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { missing_reason: "MISPLACED", recovery_status: "YES", status: "RECOVERED" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/preview/fleet/assets/device-recovery/id/recovered")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.recoverAsset({
+                id: "id",
+                missing_reason: "MISPLACED",
+                recovery_status: "YES",
+                status: "RECOVERED",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("recoverAsset (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { missing_reason: "MISPLACED", recovery_status: "YES", status: "RECOVERED" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/preview/fleet/assets/device-recovery/id/recovered")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.recoverAsset({
+                id: "id",
+                missing_reason: "MISPLACED",
+                recovery_status: "YES",
+                status: "RECOVERED",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("recoverAsset (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { missing_reason: "MISPLACED", recovery_status: "YES", status: "RECOVERED" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/preview/fleet/assets/device-recovery/id/recovered")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.recoverAsset({
+                id: "id",
+                missing_reason: "MISPLACED",
+                recovery_status: "YES",
+                status: "RECOVERED",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("recoverAsset (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { missing_reason: "MISPLACED", recovery_status: "YES", status: "RECOVERED" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/preview/fleet/assets/device-recovery/id/recovered")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.recoverAsset({
+                id: "id",
+                missing_reason: "MISPLACED",
+                recovery_status: "YES",
+                status: "RECOVERED",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("recoverAsset (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { missing_reason: "MISPLACED", recovery_status: "YES", status: "RECOVERED" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/preview/fleet/assets/device-recovery/id/recovered")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.recoverAsset({
+                id: "id",
+                missing_reason: "MISPLACED",
+                recovery_status: "YES",
+                status: "RECOVERED",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("recoverAsset (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { missing_reason: "MISPLACED", recovery_status: "YES", status: "RECOVERED" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/preview/fleet/assets/device-recovery/id/recovered")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.recoverAsset({
+                id: "id",
+                missing_reason: "MISPLACED",
+                recovery_status: "YES",
+                status: "RECOVERED",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("getAssetRecoveryState (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = {
+            data: {
+                additional_details: "Found in warehouse B",
+                id: "12345",
+                missing_reason: "MISPLACED",
+                name: "Trailer-A1234",
+                note: "Asset was last seen at warehouse A",
+                notification_recipients: [{ notification_types: ["email"], user_id: 1234 }],
+                recovery_photos: [
+                    {
+                        start_ms: 1609459200000,
+                        status: "EXISTS",
+                        url: "https://s3.amazonaws.com/samsara-recovery-photos/example.jpg",
+                        url_expires_at_ms: 1609462800000,
+                    },
+                ],
+                recovery_status: "YES",
+                status: "UNKNOWN",
+                updated_at_ms: 1609459200000,
+                updated_by_user_id: 1234,
+                uuid: "550e8400-e29b-41d4-a716-446655440000",
+            },
+        };
+        server
+            .mockEndpoint()
+            .get("/preview/fleet/assets/device-recovery/id/recovery-state")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.previewApIs.getAssetRecoveryState({
+            id: "id",
+        });
+        expect(response).toEqual({
+            data: {
+                additional_details: "Found in warehouse B",
+                id: "12345",
+                missing_reason: "MISPLACED",
+                name: "Trailer-A1234",
+                note: "Asset was last seen at warehouse A",
+                notification_recipients: [
+                    {
+                        notification_types: ["email"],
+                        user_id: 1234,
+                    },
+                ],
+                recovery_photos: [
+                    {
+                        start_ms: 1609459200000,
+                        status: "EXISTS",
+                        url: "https://s3.amazonaws.com/samsara-recovery-photos/example.jpg",
+                        url_expires_at_ms: 1609462800000,
+                    },
+                ],
+                recovery_status: "YES",
+                status: "UNKNOWN",
+                updated_at_ms: 1609459200000,
+                updated_by_user_id: 1234,
+                uuid: "550e8400-e29b-41d4-a716-446655440000",
+            },
+        });
+    });
+
+    test("getAssetRecoveryState (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preview/fleet/assets/device-recovery/id/recovery-state")
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.getAssetRecoveryState({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("getAssetRecoveryState (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preview/fleet/assets/device-recovery/id/recovery-state")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.getAssetRecoveryState({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("getAssetRecoveryState (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preview/fleet/assets/device-recovery/id/recovery-state")
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.getAssetRecoveryState({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("getAssetRecoveryState (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preview/fleet/assets/device-recovery/id/recovery-state")
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.getAssetRecoveryState({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("getAssetRecoveryState (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preview/fleet/assets/device-recovery/id/recovery-state")
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.getAssetRecoveryState({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("getAssetRecoveryState (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preview/fleet/assets/device-recovery/id/recovery-state")
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.getAssetRecoveryState({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("getAssetRecoveryState (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preview/fleet/assets/device-recovery/id/recovery-state")
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.getAssetRecoveryState({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("getAssetRecoveryState (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preview/fleet/assets/device-recovery/id/recovery-state")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.getAssetRecoveryState({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("getAssetRecoveryState (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preview/fleet/assets/device-recovery/id/recovery-state")
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.getAssetRecoveryState({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
     test("createDriverAuthToken (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({

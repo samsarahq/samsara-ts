@@ -265,7 +265,11 @@ describe("HubsClient", () => {
                 plannerNotes: "sample note",
                 serviceTimeSeconds: 1800,
                 serviceWindows: [
-                    { daysOfWeek: ["monday", "monday", "monday"], endTime: "17:00:00", startTime: "08:00:00" },
+                    {
+                        daysOfWeek: ["monday", "monday", "monday", "monday"],
+                        endTime: "17:00:00",
+                        startTime: "08:00:00",
+                    },
                 ],
                 skillsRequired: [{ id: "650e8400-e29b-41d4-a716-446655440001", name: "Heavy Lifting" }],
                 updatedAt: "2024-01-15T10:30:00Z",
@@ -318,7 +322,7 @@ describe("HubsClient", () => {
                 serviceTimeSeconds: 1800,
                 serviceWindows: [
                     {
-                        daysOfWeek: ["monday", "monday", "monday"],
+                        daysOfWeek: ["monday", "monday", "monday", "monday"],
                         endTime: "17:00:00",
                         startTime: "08:00:00",
                     },
@@ -602,7 +606,11 @@ describe("HubsClient", () => {
                     plannerNotes: "sample note",
                     serviceTimeSeconds: 1800,
                     serviceWindows: [
-                        { daysOfWeek: ["monday", "monday", "monday"], endTime: "17:00:00", startTime: "08:00:00" },
+                        {
+                            daysOfWeek: ["monday", "monday", "monday", "monday"],
+                            endTime: "17:00:00",
+                            startTime: "08:00:00",
+                        },
                     ],
                     skillsRequired: [{ id: "650e8400-e29b-41d4-a716-446655440001", name: "Heavy Lifting" }],
                     updatedAt: "2024-01-15T10:30:00Z",
@@ -632,7 +640,7 @@ describe("HubsClient", () => {
                     serviceTimeSeconds: 1800,
                     serviceWindows: [
                         {
-                            daysOfWeek: ["monday", "monday", "monday"],
+                            daysOfWeek: ["monday", "monday", "monday", "monday"],
                             endTime: "17:00:00",
                             startTime: "08:00:00",
                         },
@@ -872,7 +880,11 @@ describe("HubsClient", () => {
                     plannerNotes: "sample note",
                     serviceTimeSeconds: 1800,
                     serviceWindows: [
-                        { daysOfWeek: ["monday", "monday", "monday"], endTime: "17:00:00", startTime: "08:00:00" },
+                        {
+                            daysOfWeek: ["monday", "monday", "monday", "monday"],
+                            endTime: "17:00:00",
+                            startTime: "08:00:00",
+                        },
                     ],
                     skillsRequired: [{ id: "650e8400-e29b-41d4-a716-446655440001", name: "Heavy Lifting" }],
                     updatedAt: "2024-01-15T10:30:00Z",
@@ -929,7 +941,7 @@ describe("HubsClient", () => {
                     serviceTimeSeconds: 1800,
                     serviceWindows: [
                         {
-                            daysOfWeek: ["monday", "monday", "monday"],
+                            daysOfWeek: ["monday", "monday", "monday", "monday"],
                             endTime: "17:00:00",
                             startTime: "08:00:00",
                         },

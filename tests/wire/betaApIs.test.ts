@@ -6885,11 +6885,7 @@ describe("BetaApIsClient", () => {
                     planId: "650e8400-e29b-41d4-a716-446655440023",
                     priority: 1,
                     quantities: [{ capacityId: "850e8400-e29b-41d4-a716-446655440003", quantity: 25.5 }],
-                    skillsRequired: [
-                        "650e8400-e29b-41d4-a716-446655440001",
-                        "650e8400-e29b-41d4-a716-446655440001",
-                        "650e8400-e29b-41d4-a716-446655440001",
-                    ],
+                    skillsRequired: ["650e8400-e29b-41d4-a716-446655440001", "650e8400-e29b-41d4-a716-446655440001"],
                     updatedAt: "2024-04-10T11:30:00Z",
                 },
             ],
@@ -6958,11 +6954,7 @@ describe("BetaApIsClient", () => {
                             quantity: 25.5,
                         },
                     ],
-                    skillsRequired: [
-                        "650e8400-e29b-41d4-a716-446655440001",
-                        "650e8400-e29b-41d4-a716-446655440001",
-                        "650e8400-e29b-41d4-a716-446655440001",
-                    ],
+                    skillsRequired: ["650e8400-e29b-41d4-a716-446655440001", "650e8400-e29b-41d4-a716-446655440001"],
                     updatedAt: "2024-04-10T11:30:00Z",
                 },
             ],
@@ -16171,6 +16163,292 @@ describe("BetaApIsClient", () => {
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 
+    test("listRidershipRouteSetups (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = {
+            data: [
+                {
+                    accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
+                    createdAtTime: "2024-11-15T10:00:00Z",
+                    passengers: [
+                        {
+                            dropOffStopId: "790",
+                            passengerId: "a1b2c3d4-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+                            pickUpStopId: "789",
+                        },
+                    ],
+                    routeId: "123456",
+                    updatedAtTime: "2024-11-15T10:30:00Z",
+                },
+            ],
+            pagination: { endCursor: "MjkY", hasNextPage: true },
+        };
+        server
+            .mockEndpoint()
+            .get("/ridership/route-setups")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.betaApIs.listRidershipRouteSetups({
+            accountId: "accountId",
+        });
+        expect(response).toEqual({
+            data: [
+                {
+                    accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
+                    createdAtTime: "2024-11-15T10:00:00Z",
+                    passengers: [
+                        {
+                            dropOffStopId: "790",
+                            passengerId: "a1b2c3d4-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
+                            pickUpStopId: "789",
+                        },
+                    ],
+                    routeId: "123456",
+                    updatedAtTime: "2024-11-15T10:30:00Z",
+                },
+            ],
+            pagination: {
+                endCursor: "MjkY",
+                hasNextPage: true,
+            },
+        });
+    });
+
+    test("listRidershipRouteSetups (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/ridership/route-setups")
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listRidershipRouteSetups({
+                accountId: "accountId",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("listRidershipRouteSetups (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/ridership/route-setups")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listRidershipRouteSetups({
+                accountId: "accountId",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("listRidershipRouteSetups (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/ridership/route-setups")
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listRidershipRouteSetups({
+                accountId: "accountId",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("listRidershipRouteSetups (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/ridership/route-setups")
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listRidershipRouteSetups({
+                accountId: "accountId",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("listRidershipRouteSetups (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/ridership/route-setups")
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listRidershipRouteSetups({
+                accountId: "accountId",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("listRidershipRouteSetups (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/ridership/route-setups")
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listRidershipRouteSetups({
+                accountId: "accountId",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("listRidershipRouteSetups (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/ridership/route-setups")
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listRidershipRouteSetups({
+                accountId: "accountId",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("listRidershipRouteSetups (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/ridership/route-setups")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listRidershipRouteSetups({
+                accountId: "accountId",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("listRidershipRouteSetups (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/ridership/route-setups")
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listRidershipRouteSetups({
+                accountId: "accountId",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
     test("createRidershipRouteSetup (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
@@ -16187,10 +16465,12 @@ describe("BetaApIsClient", () => {
         const rawResponseBody = {
             data: {
                 accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
+                createdAtTime: "2024-11-15T10:00:00Z",
                 passengers: [
                     { dropOffStopId: "790", passengerId: "a1b2c3d4-5e6f-7a8b-9c0d-1e2f3a4b5c6d", pickUpStopId: "789" },
                 ],
                 routeId: "123456",
+                updatedAtTime: "2024-11-15T10:30:00Z",
             },
         };
         server
@@ -16214,6 +16494,7 @@ describe("BetaApIsClient", () => {
         expect(response).toEqual({
             data: {
                 accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
+                createdAtTime: "2024-11-15T10:00:00Z",
                 passengers: [
                     {
                         dropOffStopId: "790",
@@ -16222,6 +16503,7 @@ describe("BetaApIsClient", () => {
                     },
                 ],
                 routeId: "123456",
+                updatedAtTime: "2024-11-15T10:30:00Z",
             },
         });
     });
@@ -16592,10 +16874,12 @@ describe("BetaApIsClient", () => {
         const rawResponseBody = {
             data: {
                 accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
+                createdAtTime: "2024-11-15T10:00:00Z",
                 passengers: [
                     { dropOffStopId: "790", passengerId: "a1b2c3d4-5e6f-7a8b-9c0d-1e2f3a4b5c6d", pickUpStopId: "789" },
                 ],
                 routeId: "123456",
+                updatedAtTime: "2024-11-15T10:30:00Z",
             },
         };
         server
@@ -16619,6 +16903,7 @@ describe("BetaApIsClient", () => {
         expect(response).toEqual({
             data: {
                 accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
+                createdAtTime: "2024-11-15T10:00:00Z",
                 passengers: [
                     {
                         dropOffStopId: "790",
@@ -16627,6 +16912,7 @@ describe("BetaApIsClient", () => {
                     },
                 ],
                 routeId: "123456",
+                updatedAtTime: "2024-11-15T10:30:00Z",
             },
         });
     });
@@ -17227,10 +17513,12 @@ describe("BetaApIsClient", () => {
         const rawResponseBody = {
             data: {
                 accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
+                createdAtTime: "2024-11-15T10:00:00Z",
                 passengers: [
                     { dropOffStopId: "790", passengerId: "a1b2c3d4-5e6f-7a8b-9c0d-1e2f3a4b5c6d", pickUpStopId: "789" },
                 ],
                 routeId: "123456",
+                updatedAtTime: "2024-11-15T10:30:00Z",
             },
         };
         server
@@ -17247,6 +17535,7 @@ describe("BetaApIsClient", () => {
         expect(response).toEqual({
             data: {
                 accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
+                createdAtTime: "2024-11-15T10:00:00Z",
                 passengers: [
                     {
                         dropOffStopId: "790",
@@ -17255,6 +17544,7 @@ describe("BetaApIsClient", () => {
                     },
                 ],
                 routeId: "123456",
+                updatedAtTime: "2024-11-15T10:30:00Z",
             },
         });
     });

@@ -3,5 +3,5 @@
 import type * as Samsara from "../index.js";
 
 export interface DeviceRecoveryRecoverAssetResponseBody {
-    data: Samsara.DeviceRecoveryStateResponseBody;
+    data: Samsara.RecoveryStateResponseBody;
 }

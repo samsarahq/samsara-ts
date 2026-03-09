@@ -79,7 +79,6 @@ export * from "./plans/client/requests/index.js";
 export * as plans from "./plans/index.js";
 export * from "./previewApIs/client/requests/index.js";
 export * as previewApIs from "./previewApIs/index.js";
-export * from "./previewApIs/types/index.js";
 export * from "./routeEvents/client/requests/index.js";
 export * as routeEvents from "./routeEvents/index.js";
 export * from "./routes/client/requests/index.js";

@@ -44,6 +44,7 @@ export type { ListHubCustomPropertiesRequest } from "./ListHubCustomPropertiesRe
 export type { ListReadingsDefinitionsRequest } from "./ListReadingsDefinitionsRequest.js";
 export type { ListRidershipAccountsRequest } from "./ListRidershipAccountsRequest.js";
 export type { ListRidershipPassengersRequest } from "./ListRidershipPassengersRequest.js";
+export type { ListRidershipRouteSetupsRequest } from "./ListRidershipRouteSetupsRequest.js";
 export type { PlanOrdersCreatePlanOrdersRequestBody } from "./PlanOrdersCreatePlanOrdersRequestBody.js";
 export type { QualificationsArchiveQualificationRecordRequestBody } from "./QualificationsArchiveQualificationRecordRequestBody.js";
 export type { QualificationsDeleteQualificationRecordRequestBody } from "./QualificationsDeleteQualificationRecordRequestBody.js";

@@ -3,7 +3,7 @@
 /**
  * Too many requests
  */
-export interface DeviceRecoveryGetAssetRecoveryStateTooManyRequestsErrorResponseBody {
+export interface DeviceRecoveryListDeviceRecoveryMissingAssetsTooManyRequestsErrorResponseBody {
     /** Message of error */
     message: string;
     /** The request ID; used when reaching out to support for issues with requests. */

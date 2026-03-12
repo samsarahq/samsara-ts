@@ -13,6 +13,7 @@ export const GetDriverVehicleAssignmentsRequestAssignmentType = {
     QrCode: "qrCode",
     DriverApp: "driverApp",
     VoiceSignIn: "voiceSignIn",
+    SmartAssign: "smartAssign",
 } as const;
 export type GetDriverVehicleAssignmentsRequestAssignmentType =
     (typeof GetDriverVehicleAssignmentsRequestAssignmentType)[keyof typeof GetDriverVehicleAssignmentsRequestAssignmentType];

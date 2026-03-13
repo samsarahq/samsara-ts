@@ -13,7 +13,7 @@ export interface RecoveryStateResponseBody {
     /** A note associated with the recovery. */
     note?: string | undefined;
     /** Users subscribed to location update notifications for this asset. */
-    notification_recipients?: Samsara.NotificationRecipientResponseBody[] | undefined;
+    notification_recipients?: Samsara.NotificationRecipientResponseResponseBody[] | undefined;
     /** Photos associated with the recovery event. URLs are temporary and expire at url_expires_at_ms. */
     recovery_photos?: Samsara.RecoveryPhotoResponseBody[] | undefined;
     /** Timestamp when the recovery state was last updated, in milliseconds since epoch. */

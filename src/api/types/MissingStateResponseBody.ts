@@ -13,7 +13,7 @@ export interface MissingStateResponseBody {
     /** A note associated with the missing asset. */
     note?: string | undefined;
     /** Users subscribed to location update notifications for this asset. */
-    notification_recipients?: Samsara.NotificationRecipientResponseBody[] | undefined;
+    notification_recipients?: Samsara.NotificationRecipientResponseResponseBody[] | undefined;
     /** Timestamp when the asset was marked as missing, in milliseconds since epoch. */
     updated_at_ms: number;
     /** The ID of the user who marked the asset as missing. */

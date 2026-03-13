@@ -5,7 +5,7 @@
  *     {}
  */
 export interface ListMaintenanceVendorsRequest {
-    /** A comma-separated list of up to 100 vendor IDs to filter on. Accepts Samsara UUIDs or external IDs in key:value format. The default external ID key is samsara.vendorId (e.g. samsara.vendorId:V-12345). See [external IDs](https://developers.samsara.com/docs/external-ids). */
+    /** A comma-separated list of up to 100 vendor IDs to filter on. Accepts Samsara UUIDs or external IDs in key:value format. See [external IDs](https://developers.samsara.com/docs/external-ids). */
     ids?: string | string[];
     /** When true, include externalIds on each vendor in the response. Default false. */
     includeExternalIds?: boolean;

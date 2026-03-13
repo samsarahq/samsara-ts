@@ -1592,7 +1592,7 @@ export * from "./MultipleChoiceFieldTypeMetaDataObjectResponseBody.js";
 export * from "./MultipleChoiceValueObjectRequestBody.js";
 export * from "./MultipleChoiceValueObjectResponseBody.js";
 export * from "./NotificationRecipientRequestBody.js";
-export * from "./NotificationRecipientResponseBody.js";
+export * from "./NotificationRecipientResponseResponseBody.js";
 export * from "./NumberDataPoint.js";
 export * from "./NumberFieldTypeMetaDataObjectResponseBody.js";
 export * from "./OperationalSettingsObjectRequestBody.js";

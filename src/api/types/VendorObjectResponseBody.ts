@@ -14,4 +14,6 @@ export interface VendorObjectResponseBody {
     id: string;
     /** Description of services provided by the vendor. */
     servicesProvided?: string | undefined;
+    /** The vendor's legacy vendor ID from the source system. Multiple vendor locations may share the same vendorId if they belong to the same parent company. */
+    vendorId?: string | undefined;
 }

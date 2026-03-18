@@ -12,6 +12,8 @@ export interface DefectTypesResponseDataResponseBody {
     label: string;
     /** Section for DVIR defect type.  Valid values: `exteriorFront`, `exteriorRear`, `exteriorSideUnderneath`, `interiorDriverCab`, `interiorPassengerArea`, `other`, `unknown` */
     sectionType: DefectTypesResponseDataResponseBody.SectionType;
+    /** The severity of the defect type. Only present for DVIR 2.0 defect types.  Valid values: `major`, `minor`, `notApplicable` */
+    severity?: DefectTypesResponseDataResponseBody.Severity | undefined;
 }
 
 export namespace DefectTypesResponseDataResponseBody {
@@ -26,4 +28,11 @@ export namespace DefectTypesResponseDataResponseBody {
         Unknown: "unknown",
     } as const;
     export type SectionType = (typeof SectionType)[keyof typeof SectionType];
+    /** The severity of the defect type. Only present for DVIR 2.0 defect types.  Valid values: `major`, `minor`, `notApplicable` */
+    export const Severity = {
+        Major: "major",
+        Minor: "minor",
+        NotApplicable: "notApplicable",
+    } as const;
+    export type Severity = (typeof Severity)[keyof typeof Severity];
 }

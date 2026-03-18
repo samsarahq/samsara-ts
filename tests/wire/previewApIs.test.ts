@@ -5,6 +5,304 @@ import { SamsaraClient } from "../../src/Client";
 import { mockServerPool } from "../mock-server/MockServerPool";
 
 describe("PreviewApIsClient", () => {
+    test("listAssociations (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = {
+            data: [
+                {
+                    associationEndTime: "associationEndTime",
+                    associationStartTime: "associationStartTime",
+                    peripheralId: "peripheralId",
+                    peripheralName: "peripheralName",
+                    vehicleId: "vehicleId",
+                },
+                {
+                    associationEndTime: "associationEndTime",
+                    associationStartTime: "associationStartTime",
+                    peripheralId: "peripheralId",
+                    peripheralName: "peripheralName",
+                    vehicleId: "vehicleId",
+                },
+            ],
+            pagination: { endCursor: "endCursor", hasNextPage: true },
+        };
+        server
+            .mockEndpoint()
+            .get("/preview/fleet/assets/associations")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.previewApIs.listAssociations({
+            startTime: "startTime",
+            endTime: "endTime",
+        });
+        expect(response).toEqual({
+            data: [
+                {
+                    associationEndTime: "associationEndTime",
+                    associationStartTime: "associationStartTime",
+                    peripheralId: "peripheralId",
+                    peripheralName: "peripheralName",
+                    vehicleId: "vehicleId",
+                },
+                {
+                    associationEndTime: "associationEndTime",
+                    associationStartTime: "associationStartTime",
+                    peripheralId: "peripheralId",
+                    peripheralName: "peripheralName",
+                    vehicleId: "vehicleId",
+                },
+            ],
+            pagination: {
+                endCursor: "endCursor",
+                hasNextPage: true,
+            },
+        });
+    });
+
+    test("listAssociations (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preview/fleet/assets/associations")
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.listAssociations({
+                startTime: "startTime",
+                endTime: "endTime",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("listAssociations (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preview/fleet/assets/associations")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.listAssociations({
+                startTime: "startTime",
+                endTime: "endTime",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("listAssociations (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preview/fleet/assets/associations")
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.listAssociations({
+                startTime: "startTime",
+                endTime: "endTime",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("listAssociations (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preview/fleet/assets/associations")
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.listAssociations({
+                startTime: "startTime",
+                endTime: "endTime",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("listAssociations (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preview/fleet/assets/associations")
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.listAssociations({
+                startTime: "startTime",
+                endTime: "endTime",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("listAssociations (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preview/fleet/assets/associations")
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.listAssociations({
+                startTime: "startTime",
+                endTime: "endTime",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("listAssociations (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preview/fleet/assets/associations")
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.listAssociations({
+                startTime: "startTime",
+                endTime: "endTime",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("listAssociations (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preview/fleet/assets/associations")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.listAssociations({
+                startTime: "startTime",
+                endTime: "endTime",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("listAssociations (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preview/fleet/assets/associations")
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.listAssociations({
+                startTime: "startTime",
+                endTime: "endTime",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
     test("createDriverAuthToken (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
@@ -751,6 +1049,280 @@ describe("PreviewApIsClient", () => {
         await expect(async () => {
             return await client.previewApIs.unlockVehicle({
                 id: "id",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("patchSafetyEventsV2Batch (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            safetyEventIds: ["bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590"],
+        };
+        const rawResponseBody = {
+            requestId: "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+            responses: [{ data: { safetyEventId: "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590" }, status: 202 }],
+        };
+        server
+            .mockEndpoint()
+            .patch("/preview/safety-events/batch")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.previewApIs.patchSafetyEventsV2Batch({
+            safetyEventIds: ["bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590"],
+        });
+        expect(response).toEqual({
+            requestId: "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+            responses: [
+                {
+                    data: {
+                        safetyEventId: "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
+                    },
+                    status: 202,
+                },
+            ],
+        });
+    });
+
+    test("patchSafetyEventsV2Batch (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { safetyEventIds: ["safetyEventIds", "safetyEventIds"] };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/preview/safety-events/batch")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.patchSafetyEventsV2Batch({
+                safetyEventIds: ["safetyEventIds", "safetyEventIds"],
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("patchSafetyEventsV2Batch (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { safetyEventIds: ["safetyEventIds", "safetyEventIds"] };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/preview/safety-events/batch")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.patchSafetyEventsV2Batch({
+                safetyEventIds: ["safetyEventIds", "safetyEventIds"],
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("patchSafetyEventsV2Batch (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { safetyEventIds: ["safetyEventIds", "safetyEventIds"] };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/preview/safety-events/batch")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.patchSafetyEventsV2Batch({
+                safetyEventIds: ["safetyEventIds", "safetyEventIds"],
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("patchSafetyEventsV2Batch (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { safetyEventIds: ["safetyEventIds", "safetyEventIds"] };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/preview/safety-events/batch")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.patchSafetyEventsV2Batch({
+                safetyEventIds: ["safetyEventIds", "safetyEventIds"],
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("patchSafetyEventsV2Batch (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { safetyEventIds: ["safetyEventIds", "safetyEventIds"] };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/preview/safety-events/batch")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.patchSafetyEventsV2Batch({
+                safetyEventIds: ["safetyEventIds", "safetyEventIds"],
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("patchSafetyEventsV2Batch (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { safetyEventIds: ["safetyEventIds", "safetyEventIds"] };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/preview/safety-events/batch")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.patchSafetyEventsV2Batch({
+                safetyEventIds: ["safetyEventIds", "safetyEventIds"],
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("patchSafetyEventsV2Batch (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { safetyEventIds: ["safetyEventIds", "safetyEventIds"] };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/preview/safety-events/batch")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.patchSafetyEventsV2Batch({
+                safetyEventIds: ["safetyEventIds", "safetyEventIds"],
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("patchSafetyEventsV2Batch (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { safetyEventIds: ["safetyEventIds", "safetyEventIds"] };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/preview/safety-events/batch")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.patchSafetyEventsV2Batch({
+                safetyEventIds: ["safetyEventIds", "safetyEventIds"],
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("patchSafetyEventsV2Batch (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { safetyEventIds: ["safetyEventIds", "safetyEventIds"] };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/preview/safety-events/batch")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.patchSafetyEventsV2Batch({
+                safetyEventIds: ["safetyEventIds", "safetyEventIds"],
             });
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });

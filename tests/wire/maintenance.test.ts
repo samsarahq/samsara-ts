@@ -21,6 +21,7 @@ describe("MaintenanceClient", () => {
                     id: "25d6151e-29b5-453e-875a-7c5425332e09",
                     label: "Air Compressor",
                     sectionType: "exteriorFront",
+                    severity: "major",
                 },
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
@@ -35,6 +36,7 @@ describe("MaintenanceClient", () => {
                     id: "25d6151e-29b5-453e-875a-7c5425332e09",
                     label: "Air Compressor",
                     sectionType: "exteriorFront",
+                    severity: "major",
                 },
             ],
             pagination: {

@@ -14502,7 +14502,8 @@ describe("BetaApIsClient", () => {
                 rows: [
                     [{ key: "value" }, { key: "value" }, { key: "value" }, { key: "value" }],
                     [{ key: "value" }, { key: "value" }, { key: "value" }],
-                    [{ key: "value" }, { key: "value" }, { key: "value" }],
+                    [{ key: "value" }, { key: "value" }, { key: "value" }, { key: "value" }],
+                    [{ key: "value" }, { key: "value" }],
                 ],
                 status: "complete",
             },
@@ -14551,6 +14552,17 @@ describe("BetaApIsClient", () => {
                         {
                             key: "value",
                         },
+                        {
+                            key: "value",
+                        },
+                        {
+                            key: "value",
+                        },
+                        {
+                            key: "value",
+                        },
+                    ],
+                    [
                         {
                             key: "value",
                         },
@@ -16096,7 +16108,7 @@ describe("BetaApIsClient", () => {
                     ],
                     isActive: true,
                     lastName: "Doe",
-                    specialInstructions: { isGuardianRequired: false, isSpecialEducation: true },
+                    specialInstructions: { isGuardianRequired: true, isSpecialEducation: true },
                     updatedAtTime: "2024-11-15T10:30:00Z",
                 },
             ],
@@ -16135,7 +16147,7 @@ describe("BetaApIsClient", () => {
                     isActive: true,
                     lastName: "Doe",
                     specialInstructions: {
-                        isGuardianRequired: false,
+                        isGuardianRequired: true,
                         isSpecialEducation: true,
                     },
                     updatedAtTime: "2024-11-15T10:30:00Z",
@@ -16399,7 +16411,7 @@ describe("BetaApIsClient", () => {
                 ],
                 isActive: true,
                 lastName: "Doe",
-                specialInstructions: { isGuardianRequired: false, isSpecialEducation: true },
+                specialInstructions: { isGuardianRequired: true, isSpecialEducation: true },
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
         };
@@ -16438,7 +16450,7 @@ describe("BetaApIsClient", () => {
                 isActive: true,
                 lastName: "Doe",
                 specialInstructions: {
-                    isGuardianRequired: false,
+                    isGuardianRequired: true,
                     isSpecialEducation: true,
                 },
                 updatedAtTime: "2024-11-15T10:30:00Z",
@@ -16724,7 +16736,7 @@ describe("BetaApIsClient", () => {
                 ],
                 isActive: true,
                 lastName: "Doe",
-                specialInstructions: { isGuardianRequired: false, isSpecialEducation: true },
+                specialInstructions: { isGuardianRequired: true, isSpecialEducation: true },
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
         };
@@ -16764,7 +16776,7 @@ describe("BetaApIsClient", () => {
                 isActive: true,
                 lastName: "Doe",
                 specialInstructions: {
-                    isGuardianRequired: false,
+                    isGuardianRequired: true,
                     isSpecialEducation: true,
                 },
                 updatedAtTime: "2024-11-15T10:30:00Z",
@@ -17297,7 +17309,7 @@ describe("BetaApIsClient", () => {
                 ],
                 isActive: true,
                 lastName: "Doe",
-                specialInstructions: { isGuardianRequired: false, isSpecialEducation: true },
+                specialInstructions: { isGuardianRequired: true, isSpecialEducation: true },
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
         };
@@ -17333,7 +17345,7 @@ describe("BetaApIsClient", () => {
                 isActive: true,
                 lastName: "Doe",
                 specialInstructions: {
-                    isGuardianRequired: false,
+                    isGuardianRequired: true,
                     isSpecialEducation: true,
                 },
                 updatedAtTime: "2024-11-15T10:30:00Z",

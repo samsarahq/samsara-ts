@@ -14,10 +14,19 @@ export interface MissingStateResponseBody {
     note?: string | undefined;
     /** Users subscribed to location update notifications for this asset. */
     notification_recipients?: Samsara.NotificationRecipientResponseResponseBody[] | undefined;
+    /** The source of the last update to this recovery state. Defaults to `dashboard` if not explicitly set.  Valid values: `dashboard`, `api` */
+    update_source?: MissingStateResponseBody.UpdateSource | undefined;
     /** Timestamp when the asset was marked as missing, in milliseconds since epoch. */
     updated_at_ms: number;
     /** The ID of the user who marked the asset as missing. */
     updated_by_user_id?: number | undefined;
-    /** The unique UUID of this recovery state record. */
-    uuid: string;
+}
+
+export namespace MissingStateResponseBody {
+    /** The source of the last update to this recovery state. Defaults to `dashboard` if not explicitly set.  Valid values: `dashboard`, `api` */
+    export const UpdateSource = {
+        Dashboard: "dashboard",
+        Api: "api",
+    } as const;
+    export type UpdateSource = (typeof UpdateSource)[keyof typeof UpdateSource];
 }

@@ -5181,9 +5181,9 @@ describe("BetaApIsClient", () => {
                             user_id: 1234,
                         },
                     ],
+                    update_source: "dashboard",
                     updated_at_ms: 1609459200000,
                     updated_by_user_id: 1234,
-                    uuid: "550e8400-e29b-41d4-a716-446655440000",
                 },
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
@@ -5211,9 +5211,9 @@ describe("BetaApIsClient", () => {
                             user_id: 1234,
                         },
                     ],
+                    update_source: "dashboard",
                     updated_at_ms: 1609459200000,
                     updated_by_user_id: 1234,
-                    uuid: "550e8400-e29b-41d4-a716-446655440000",
                 },
             ],
             pagination: {
@@ -5447,9 +5447,9 @@ describe("BetaApIsClient", () => {
                 notification_recipients: [
                     { email: "jane.doe@example.com", name: "Jane Doe", notification_types: ["email"], user_id: 1234 },
                 ],
+                update_source: "dashboard",
                 updated_at_ms: 1609459200000,
                 updated_by_user_id: 1234,
-                uuid: "550e8400-e29b-41d4-a716-446655440000",
             },
         };
         server
@@ -5477,9 +5477,9 @@ describe("BetaApIsClient", () => {
                         user_id: 1234,
                     },
                 ],
+                update_source: "dashboard",
                 updated_at_ms: 1609459200000,
                 updated_by_user_id: 1234,
-                uuid: "550e8400-e29b-41d4-a716-446655440000",
             },
         });
     });
@@ -5743,9 +5743,9 @@ describe("BetaApIsClient", () => {
                         url_expires_at_ms: 1609462800000,
                     },
                 ],
+                update_source: "dashboard",
                 updated_at_ms: 1609459200000,
                 updated_by_user_id: 1234,
-                uuid: "550e8400-e29b-41d4-a716-446655440000",
             },
         };
         server
@@ -5784,9 +5784,9 @@ describe("BetaApIsClient", () => {
                         url_expires_at_ms: 1609462800000,
                     },
                 ],
+                update_source: "dashboard",
                 updated_at_ms: 1609459200000,
                 updated_by_user_id: 1234,
-                uuid: "550e8400-e29b-41d4-a716-446655440000",
             },
         });
     });
@@ -6582,6 +6582,280 @@ describe("BetaApIsClient", () => {
         await expect(async () => {
             return await client.betaApIs.listCarbCtcVehicleHistory({
                 vehicleIds: "vehicleIds",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("resolveAssignmentByDetails (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { driverName: "Jane Doe", vehicleId: "281474978683353" };
+        const rawResponseBody = { data: { driverId: "1234567", driverName: "Jane Doe" } };
+        server
+            .mockEndpoint()
+            .post("/fleet/drivers/voice-sign-in/resolve-assignment")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.betaApIs.resolveAssignmentByDetails({
+            driverName: "Jane Doe",
+            vehicleId: "281474978683353",
+        });
+        expect(response).toEqual({
+            data: {
+                driverId: "1234567",
+                driverName: "Jane Doe",
+            },
+        });
+    });
+
+    test("resolveAssignmentByDetails (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { driverName: "driverName", vehicleId: "vehicleId" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/drivers/voice-sign-in/resolve-assignment")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.resolveAssignmentByDetails({
+                driverName: "driverName",
+                vehicleId: "vehicleId",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("resolveAssignmentByDetails (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { driverName: "driverName", vehicleId: "vehicleId" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/drivers/voice-sign-in/resolve-assignment")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.resolveAssignmentByDetails({
+                driverName: "driverName",
+                vehicleId: "vehicleId",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("resolveAssignmentByDetails (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { driverName: "driverName", vehicleId: "vehicleId" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/drivers/voice-sign-in/resolve-assignment")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.resolveAssignmentByDetails({
+                driverName: "driverName",
+                vehicleId: "vehicleId",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("resolveAssignmentByDetails (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { driverName: "driverName", vehicleId: "vehicleId" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/drivers/voice-sign-in/resolve-assignment")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.resolveAssignmentByDetails({
+                driverName: "driverName",
+                vehicleId: "vehicleId",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("resolveAssignmentByDetails (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { driverName: "driverName", vehicleId: "vehicleId" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/drivers/voice-sign-in/resolve-assignment")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.resolveAssignmentByDetails({
+                driverName: "driverName",
+                vehicleId: "vehicleId",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("resolveAssignmentByDetails (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { driverName: "driverName", vehicleId: "vehicleId" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/drivers/voice-sign-in/resolve-assignment")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.resolveAssignmentByDetails({
+                driverName: "driverName",
+                vehicleId: "vehicleId",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("resolveAssignmentByDetails (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { driverName: "driverName", vehicleId: "vehicleId" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/drivers/voice-sign-in/resolve-assignment")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.resolveAssignmentByDetails({
+                driverName: "driverName",
+                vehicleId: "vehicleId",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("resolveAssignmentByDetails (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { driverName: "driverName", vehicleId: "vehicleId" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/drivers/voice-sign-in/resolve-assignment")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.resolveAssignmentByDetails({
+                driverName: "driverName",
+                vehicleId: "vehicleId",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("resolveAssignmentByDetails (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { driverName: "driverName", vehicleId: "vehicleId" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/drivers/voice-sign-in/resolve-assignment")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.resolveAssignmentByDetails({
+                driverName: "driverName",
+                vehicleId: "vehicleId",
             });
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });

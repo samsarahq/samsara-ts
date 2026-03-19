@@ -16,10 +16,19 @@ export interface RecoveryStateResponseBody {
     notification_recipients?: Samsara.NotificationRecipientResponseResponseBody[] | undefined;
     /** Photos associated with the recovery event. URLs are temporary and expire at url_expires_at_ms. */
     recovery_photos?: Samsara.RecoveryPhotoResponseBody[] | undefined;
+    /** The source of the last update to this recovery state. Defaults to `dashboard` if not explicitly set.  Valid values: `dashboard`, `api` */
+    update_source?: RecoveryStateResponseBody.UpdateSource | undefined;
     /** Timestamp when the recovery state was last updated, in milliseconds since epoch. */
     updated_at_ms: number;
     /** The ID of the user who last updated the recovery state. */
     updated_by_user_id?: number | undefined;
-    /** The unique UUID of this recovery state record. */
-    uuid: string;
+}
+
+export namespace RecoveryStateResponseBody {
+    /** The source of the last update to this recovery state. Defaults to `dashboard` if not explicitly set.  Valid values: `dashboard`, `api` */
+    export const UpdateSource = {
+        Dashboard: "dashboard",
+        Api: "api",
+    } as const;
+    export type UpdateSource = (typeof UpdateSource)[keyof typeof UpdateSource];
 }

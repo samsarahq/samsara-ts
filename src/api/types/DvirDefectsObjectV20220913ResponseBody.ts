@@ -10,8 +10,12 @@ export interface DvirDefectsObjectV20220913ResponseBody {
     comment?: string | undefined;
     /** Time when the defect was created. UTC timestamp in RFC 3339 format. */
     createdAtTime: string;
+    /** The severity of the DVIR defect.  Valid values: `minor`, `major`, `unspecified` */
+    defectSeverity?: DvirDefectsObjectV20220913ResponseBody.DefectSeverity | undefined;
     /** The type of DVIR defect. */
     defectType: string;
+    /** The ID of the DVIR defect type. */
+    defectTypeId?: string | undefined;
     /** The ID of the defect. */
     id: string;
     /** Signifies if this defect is resolved. */
@@ -25,4 +29,14 @@ export interface DvirDefectsObjectV20220913ResponseBody {
     resolvedBy?: Samsara.DvirResolvedByObjectResponseBody | undefined;
     trailer?: Samsara.GoaTrailerTinyResponseResponseBody | undefined;
     vehicle?: Samsara.VehicleWithGatewayTinyResponseResponseBody | undefined;
+}
+
+export namespace DvirDefectsObjectV20220913ResponseBody {
+    /** The severity of the DVIR defect.  Valid values: `minor`, `major`, `unspecified` */
+    export const DefectSeverity = {
+        Minor: "minor",
+        Major: "major",
+        Unspecified: "unspecified",
+    } as const;
+    export type DefectSeverity = (typeof DefectSeverity)[keyof typeof DefectSeverity];
 }

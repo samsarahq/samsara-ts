@@ -58,6 +58,7 @@ export type { QualificationsPostQualificationRecordRequestBody } from "./Qualifi
 export type { QualificationsUnarchiveQualificationRecordRequestBody } from "./QualificationsUnarchiveQualificationRecordRequestBody.js";
 export type { ReadingsPostReadingsRequestBody } from "./ReadingsPostReadingsRequestBody.js";
 export type { ReportsCreateReportRunRequestBody } from "./ReportsCreateReportRunRequestBody.js";
+export type { ResolveAssignmentByDetailsResolveAssignmentByDetailsRequestBody } from "./ResolveAssignmentByDetailsResolveAssignmentByDetailsRequestBody.js";
 export type { RidershipAccountsCreateRidershipAccountRequestBody } from "./RidershipAccountsCreateRidershipAccountRequestBody.js";
 export type { RidershipAccountsUpdateRidershipAccountRequestBody } from "./RidershipAccountsUpdateRidershipAccountRequestBody.js";
 export { RidershipPassengersCreateRidershipPassengerRequestBody } from "./RidershipPassengersCreateRidershipPassengerRequestBody.js";

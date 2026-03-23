@@ -3,8 +3,7 @@
 /**
  * @example
  *     {
- *         startTime: "startTime",
- *         endTime: "endTime"
+ *         startTime: "startTime"
  *     }
  */
 export interface ListAssociationsRequest {
@@ -12,8 +11,8 @@ export interface ListAssociationsRequest {
     peripheralIds?: string | string[];
     /** A start time in RFC 3339 format. Millisecond precision and timezones are supported. (Examples: 2019-06-13T19:08:25Z, 2019-06-13T19:08:25.455Z, OR 2015-09-15T14:00:12-04:00). */
     startTime: string;
-    /** An end time in RFC 3339 format. Millisecond precision and timezones are supported. (Examples: 2019-06-13T19:08:25Z, 2019-06-13T19:08:25.455Z, OR 2015-09-15T14:00:12-04:00). */
-    endTime: string;
+    /** An end time in RFC 3339 format. Millisecond precision and timezones are supported. (Examples: 2019-06-13T19:08:25Z, 2019-06-13T19:08:25.455Z, OR 2015-09-15T14:00:12-04:00). If not provided, all associations from startTime onward are returned, including currently active (open) associations. */
+    endTime?: string;
     /**  If specified, this should be the endCursor value from the previous page of results. When present, this request will return the next page of results that occur immediately after the previous page of results. */
     after?: string;
 }

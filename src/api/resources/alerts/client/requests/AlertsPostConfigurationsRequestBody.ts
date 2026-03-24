@@ -11,7 +11,7 @@ import type * as Samsara from "../../../../index.js";
  *         isEnabled: true,
  *         name: "My Harsh Event Alert",
  *         scope: {
- *             all: true
+ *             all: false
  *         },
  *         triggers: [{
  *                 triggerTypeId: 1000

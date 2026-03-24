@@ -5,14 +5,14 @@ import type * as Samsara from "../../../../index.js";
 /**
  * @example
  *     {
- *         safetyEventIds: ["bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590"]
+ *         safetyEventIds: ["bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590"]
  *     }
  */
 export interface SafetyEventsV2PatchSafetyEventsV2BatchRequestBody {
-    /** Context label IDs to add to the Safety Events. */
-    contextLabelIdsToAdd?: string[];
-    /** Context label IDs to remove from the Safety Events. */
-    contextLabelIdsToRemove?: string[];
+    /** Context labels to add to the Safety Events. */
+    contextLabelsToAdd?: SafetyEventsV2PatchSafetyEventsV2BatchRequestBody.ContextLabelsToAdd.Item[];
+    /** Context labels to remove from the Safety Events. */
+    contextLabelsToRemove?: SafetyEventsV2PatchSafetyEventsV2BatchRequestBody.ContextLabelsToRemove.Item[];
     dismissalReason?: Samsara.PatchSafetyEventsDismissalReasonBodyRequestBody;
     /** The new state to apply to all specified Safety Events.  Valid values: `needsReview`, `reviewed`, `needsCoaching`, `coached`, `dismissed`, `needsRecognition`, `recognized` */
     eventState?: SafetyEventsV2PatchSafetyEventsV2BatchRequestBody.EventState;
@@ -21,6 +21,74 @@ export interface SafetyEventsV2PatchSafetyEventsV2BatchRequestBody {
 }
 
 export namespace SafetyEventsV2PatchSafetyEventsV2BatchRequestBody {
+    export type ContextLabelsToAdd = ContextLabelsToAdd.Item[];
+
+    export namespace ContextLabelsToAdd {
+        /** A context label to add.  Valid values: `Congested`, `Construction`, `Coupling/Uncoupling`, `Cyclist/Motorcyclist`, `Defensive`, `Fog`, `Improper Seat Belt`, `Light Traffic`, `Moderate Traffic`, `Moderately Drowsy`, `Mounted Phone`, `Night`, `Parking Lot`, `Passenger Mobile Usage`, `Passenger Sleeping`, `Passengers`, `Pedestrians`, `Raining`, `Sensitive Media`, `Slightly Drowsy`, `Snowing`, `Snowy Road`, `Speed Sign Verified`, `Very Drowsy`, `Wet Road` */
+        export const Item = {
+            Congested: "Congested",
+            Construction: "Construction",
+            CouplingUncoupling: "Coupling/Uncoupling",
+            CyclistMotorcyclist: "Cyclist/Motorcyclist",
+            Defensive: "Defensive",
+            Fog: "Fog",
+            ImproperSeatBelt: "Improper Seat Belt",
+            LightTraffic: "Light Traffic",
+            ModerateTraffic: "Moderate Traffic",
+            ModeratelyDrowsy: "Moderately Drowsy",
+            MountedPhone: "Mounted Phone",
+            Night: "Night",
+            ParkingLot: "Parking Lot",
+            PassengerMobileUsage: "Passenger Mobile Usage",
+            PassengerSleeping: "Passenger Sleeping",
+            Passengers: "Passengers",
+            Pedestrians: "Pedestrians",
+            Raining: "Raining",
+            SensitiveMedia: "Sensitive Media",
+            SlightlyDrowsy: "Slightly Drowsy",
+            Snowing: "Snowing",
+            SnowyRoad: "Snowy Road",
+            SpeedSignVerified: "Speed Sign Verified",
+            VeryDrowsy: "Very Drowsy",
+            WetRoad: "Wet Road",
+        } as const;
+        export type Item = (typeof Item)[keyof typeof Item];
+    }
+
+    export type ContextLabelsToRemove = ContextLabelsToRemove.Item[];
+
+    export namespace ContextLabelsToRemove {
+        /** A context label to remove.  Valid values: `Congested`, `Construction`, `Coupling/Uncoupling`, `Cyclist/Motorcyclist`, `Defensive`, `Fog`, `Improper Seat Belt`, `Light Traffic`, `Moderate Traffic`, `Moderately Drowsy`, `Mounted Phone`, `Night`, `Parking Lot`, `Passenger Mobile Usage`, `Passenger Sleeping`, `Passengers`, `Pedestrians`, `Raining`, `Sensitive Media`, `Slightly Drowsy`, `Snowing`, `Snowy Road`, `Speed Sign Verified`, `Very Drowsy`, `Wet Road` */
+        export const Item = {
+            Congested: "Congested",
+            Construction: "Construction",
+            CouplingUncoupling: "Coupling/Uncoupling",
+            CyclistMotorcyclist: "Cyclist/Motorcyclist",
+            Defensive: "Defensive",
+            Fog: "Fog",
+            ImproperSeatBelt: "Improper Seat Belt",
+            LightTraffic: "Light Traffic",
+            ModerateTraffic: "Moderate Traffic",
+            ModeratelyDrowsy: "Moderately Drowsy",
+            MountedPhone: "Mounted Phone",
+            Night: "Night",
+            ParkingLot: "Parking Lot",
+            PassengerMobileUsage: "Passenger Mobile Usage",
+            PassengerSleeping: "Passenger Sleeping",
+            Passengers: "Passengers",
+            Pedestrians: "Pedestrians",
+            Raining: "Raining",
+            SensitiveMedia: "Sensitive Media",
+            SlightlyDrowsy: "Slightly Drowsy",
+            Snowing: "Snowing",
+            SnowyRoad: "Snowy Road",
+            SpeedSignVerified: "Speed Sign Verified",
+            VeryDrowsy: "Very Drowsy",
+            WetRoad: "Wet Road",
+        } as const;
+        export type Item = (typeof Item)[keyof typeof Item];
+    }
+
     /** The new state to apply to all specified Safety Events.  Valid values: `needsReview`, `reviewed`, `needsCoaching`, `coached`, `dismissed`, `needsRecognition`, `recognized` */
     export const EventState = {
         NeedsReview: "needsReview",

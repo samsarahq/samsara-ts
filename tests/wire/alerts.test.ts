@@ -28,7 +28,7 @@ describe("AlertsClient", () => {
                         timeRangeType: "activeBetween",
                         timeRanges: [
                             {
-                                daysOfWeek: ["TUESDAY", "SUNDAY", "TUESDAY"],
+                                daysOfWeek: ["THURSDAY", "TUESDAY"],
                                 endTime: "20:00",
                                 startTime: "11:00",
                                 timezone: "America/Los_Angeles",
@@ -76,7 +76,7 @@ describe("AlertsClient", () => {
                         timeRangeType: "activeBetween",
                         timeRanges: [
                             {
-                                daysOfWeek: ["TUESDAY", "SUNDAY", "TUESDAY"],
+                                daysOfWeek: ["THURSDAY", "TUESDAY"],
                                 endTime: "20:00",
                                 startTime: "11:00",
                                 timezone: "America/Los_Angeles",
@@ -342,7 +342,7 @@ describe("AlertsClient", () => {
             actions: [{ actionTypeId: 1 }],
             isEnabled: true,
             name: "My Harsh Event Alert",
-            scope: { all: true },
+            scope: { all: false },
             triggers: [{ triggerTypeId: 1000 }],
         };
         const rawResponseBody = {
@@ -358,7 +358,7 @@ describe("AlertsClient", () => {
                     timeRangeType: "activeBetween",
                     timeRanges: [
                         {
-                            daysOfWeek: ["TUESDAY", "SUNDAY", "TUESDAY"],
+                            daysOfWeek: ["THURSDAY", "TUESDAY"],
                             endTime: "20:00",
                             startTime: "11:00",
                             timezone: "America/Los_Angeles",
@@ -393,7 +393,7 @@ describe("AlertsClient", () => {
             isEnabled: true,
             name: "My Harsh Event Alert",
             scope: {
-                all: true,
+                all: false,
             },
             triggers: [
                 {
@@ -420,7 +420,7 @@ describe("AlertsClient", () => {
                     timeRangeType: "activeBetween",
                     timeRanges: [
                         {
-                            daysOfWeek: ["TUESDAY", "SUNDAY", "TUESDAY"],
+                            daysOfWeek: ["THURSDAY", "TUESDAY"],
                             endTime: "20:00",
                             startTime: "11:00",
                             timezone: "America/Los_Angeles",
@@ -1194,7 +1194,7 @@ describe("AlertsClient", () => {
                     timeRangeType: "activeBetween",
                     timeRanges: [
                         {
-                            daysOfWeek: ["TUESDAY", "SUNDAY", "TUESDAY"],
+                            daysOfWeek: ["THURSDAY", "TUESDAY"],
                             endTime: "20:00",
                             startTime: "11:00",
                             timezone: "America/Los_Angeles",
@@ -1242,7 +1242,7 @@ describe("AlertsClient", () => {
                     timeRangeType: "activeBetween",
                     timeRanges: [
                         {
-                            daysOfWeek: ["TUESDAY", "SUNDAY", "TUESDAY"],
+                            daysOfWeek: ["THURSDAY", "TUESDAY"],
                             endTime: "20:00",
                             startTime: "11:00",
                             timezone: "America/Los_Angeles",

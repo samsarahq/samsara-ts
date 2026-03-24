@@ -42,6 +42,7 @@ export class AlertsClient {
      * Vehicle Engine Idle
      * Asset Engine On
      * Asset Engine Off
+     * Harsh Event
      * Scheduled Maintenance
      * Scheduled Maintenance by Odometer
      * Scheduled Maintenance by Engine Hours
@@ -205,7 +206,7 @@ export class AlertsClient {
      *         isEnabled: true,
      *         name: "My Harsh Event Alert",
      *         scope: {
-     *             all: true
+     *             all: false
      *         },
      *         triggers: [{
      *                 triggerTypeId: 1000

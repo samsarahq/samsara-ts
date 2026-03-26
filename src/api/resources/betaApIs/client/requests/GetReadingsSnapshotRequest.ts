@@ -11,7 +11,7 @@ export interface GetReadingsSnapshotRequest {
     /**  If specified, this should be the endCursor value from the previous page of results. When present, this request will return the next page of results that occur immediately after the previous page of results. */
     after?: string;
     /**
-     * A collection of comma separated reading IDs. Include up to 3 readings IDs. Use /readings/definitions endpoint to get a list of valid reading IDs. (Examples: engineRpm,fuelLevel)
+     * A collection of comma separated reading IDs. Include up to 5 readings IDs. Use /readings/definitions endpoint to get a list of valid reading IDs. (Examples: engineRpm,fuelLevel)
      *
      * Available reading IDs (by category):
      *
@@ -236,13 +236,13 @@ export interface GetReadingsSnapshotRequest {
      * **Note:** This is not an exhaustive list. Your organization may have access to additional readings based on enabled features or custom configurations. Use the `/readings/definitions` endpoint to retrieve all available reading IDs for your organization.
      */
     readingIds: string;
-    /** A filter on the data based on this comma-separated list of entity IDs or external IDs. If not set, all entities are returned. */
+    /** A filter on the data based on this comma-separated list of entity IDs. If not set, all entities are returned. */
     entityIds?: string;
     /** A filter on the data based on this comma-separated list of external IDs. (Examples: samsara.serial:ZPXKLMN7VJ, samsara.serial:ABXKIMN4NM) */
     externalIds?: string;
     /** A filter on the data that returns the last known data points with timestamps less than or equal to this value. Defaults to now if not provided. Must be a string in RFC 3339 format. Millisecond precision and timezones are supported. (Examples: 2020-01-27T07:06:25Z) */
     asOfTime?: string;
-    /** A entity type of the entityIds or externalIds to fetch readings for. Use /readings/definitions endpoint to get a list of valid entity types. (Examples: asset, sensor) */
+    /** The entity type of the entityIds or externalIds to fetch readings for. Use /readings/definitions endpoint to get a list of valid entity types. (Examples: asset, sensor) */
     entityType: string;
     /** Optional boolean indicating whether to return external IDs on supported entities */
     includeExternalIds?: boolean;

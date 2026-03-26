@@ -4,7 +4,7 @@
  * A history of reading values for an entity.
  */
 export interface ReadingHistoryResponseBody {
-    /** The ID of the entity this readings is for. */
+    /** The ID of the entity this reading is for. */
     entityId: string;
     /** A map of external ids */
     externalIds?: Record<string, string> | undefined;

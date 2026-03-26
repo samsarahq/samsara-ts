@@ -9,6 +9,6 @@ export interface ListReadingsDefinitionsRequest {
     after?: string;
     /** A String of comma separated reading IDs. Include up to 50 readings IDs. If not set, all readings are returned. */
     ids?: string;
-    /** A list of entity type to return readings for. (Examples: asset, sensor) */
+    /** A list of entity types to return readings for. (Examples: asset, sensor) */
     entityTypes?: string;
 }

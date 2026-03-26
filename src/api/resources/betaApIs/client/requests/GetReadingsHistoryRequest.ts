@@ -236,13 +236,13 @@ export interface GetReadingsHistoryRequest {
      * **Note:** This is not an exhaustive list. Your organization may have access to additional readings based on enabled features or custom configurations. Use the `/readings/definitions` endpoint to retrieve all available reading IDs for your organization.
      */
     readingId: string;
-    /** A filter on the data based on this comma-separated list of entity IDs or external IDs. If not set, all entities are returned. */
+    /** A filter on the data based on this comma-separated list of entity IDs. If not set, all entities are returned. */
     entityIds?: string;
-    /** A entity type of the entityIds or externalIds to fetch readings for. Use /readings/definitions endpoint to get a list of valid entity types. (Examples: asset, sensor) */
+    /** The entity type of the entityIds or externalIds to fetch readings for. Use /readings/definitions endpoint to get a list of valid entity types. (Examples: asset, sensor) */
     entityType: string;
     /** A filter on the data based on this comma-separated list of external IDs. (Examples: samsara.serial:ZPXKLMN7VJ, samsara.serial:ABXKIMN4NM) */
     externalIds?: string;
-    /** A filter on the data that returns the last known data points with timestamps greater than or equal to this value. Must be a string in RFC 3339 format. Millisecond precision and timezones are supported. (Examples: 2020-01-27T07:06:25Z) */
+    /** A filter on the data that returns data points with timestamps greater than or equal to this value. Required when feed mode is not enabled. Must be a string in RFC 3339 format. Millisecond precision and timezones are supported. (Examples: 2020-01-27T07:06:25Z) */
     startTime?: string;
     /** A filter on the data that returns the last known data points with timestamps less than or equal to this value. If not set, the time of the request is considered the endTime. Must be a string in RFC 3339 format. Millisecond precision and timezones are supported. (Examples: 2020-01-27T07:06:25Z) */
     endTime?: string;

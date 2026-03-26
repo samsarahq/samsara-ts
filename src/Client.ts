@@ -6,6 +6,7 @@ import { AssetsClient } from "./api/resources/assets/client/Client.js";
 import { AttributesClient } from "./api/resources/attributes/client/Client.js";
 import { AuthTokenForDriverClient } from "./api/resources/authTokenForDriver/client/Client.js";
 import { BetaApIsClient } from "./api/resources/betaApIs/client/Client.js";
+import { CarbCtcClient } from "./api/resources/carbCtc/client/Client.js";
 import { CarrierProposedAssignmentsClient } from "./api/resources/carrierProposedAssignments/client/Client.js";
 import { CoachingClient } from "./api/resources/coaching/client/Client.js";
 import { ContactsClient } from "./api/resources/contacts/client/Client.js";
@@ -78,6 +79,7 @@ export class SamsaraClient {
     protected _fuelAndEnergy: FuelAndEnergyClient | undefined;
     protected _driverTrailerAssignments: DriverTrailerAssignmentsClient | undefined;
     protected _driverQrCodes: DriverQrCodesClient | undefined;
+    protected _carbCtc: CarbCtcClient | undefined;
     protected _carrierProposedAssignments: CarrierProposedAssignmentsClient | undefined;
     protected _legacyApIs: LegacyApIsClient | undefined;
     protected _documents: DocumentsClient | undefined;
@@ -174,6 +176,10 @@ export class SamsaraClient {
 
     public get driverQrCodes(): DriverQrCodesClient {
         return (this._driverQrCodes ??= new DriverQrCodesClient(this._options));
+    }
+
+    public get carbCtc(): CarbCtcClient {
+        return (this._carbCtc ??= new CarbCtcClient(this._options));
     }
 
     public get carrierProposedAssignments(): CarrierProposedAssignmentsClient {

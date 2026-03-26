@@ -45,8 +45,6 @@ export type { HosDailyLogsUpdateShippingDocsRequestBody } from "./HosDailyLogsUp
 export type { JobsCreateJobRequestBody } from "./JobsCreateJobRequestBody.js";
 export type { JobsPatchJobRequestBody } from "./JobsPatchJobRequestBody.js";
 export type { ListAssociationsRequest } from "./ListAssociationsRequest.js";
-export type { ListCarbCtcVehicleHistoryRequest } from "./ListCarbCtcVehicleHistoryRequest.js";
-export type { ListCarbCtcVehiclesRequest } from "./ListCarbCtcVehiclesRequest.js";
 export type { ListDeviceRecoveryMissingAssetsRequest } from "./ListDeviceRecoveryMissingAssetsRequest.js";
 export type { ListHubCustomPropertiesRequest } from "./ListHubCustomPropertiesRequest.js";
 export type { ListMaintenanceVendorsRequest } from "./ListMaintenanceVendorsRequest.js";

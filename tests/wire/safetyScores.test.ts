@@ -4,8 +4,8 @@ import * as Samsara from "../../src/api/index";
 import { SamsaraClient } from "../../src/Client";
 import { mockServerPool } from "../mock-server/MockServerPool";
 
-describe("PreviewApIsClient", () => {
-    test("createDriverAuthToken (1)", async () => {
+describe("SafetyScoresClient", () => {
+    test("getDriverSafetyScores (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -13,31 +13,65 @@ describe("PreviewApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { code: "dp[gZc1wAigz4uGa0Hh" };
+
         const rawResponseBody = {
-            data: { expirationTime: 1710000000000, token: "ZmFrZVRva2VuXzMyQnl0ZXNMb25nRm9yVGVzdA" },
+            data: [
+                {
+                    behaviors: [{ behaviorType: "acceleration", count: 5, scoreImpact: -18.91020325321117 }],
+                    driveDistanceMeters: 2207296,
+                    driveTimeMilliseconds: 136997730,
+                    driverId: "1234",
+                    driverScore: 92,
+                    speeding: [
+                        { durationMilliseconds: 178773, scoreImpact: -0.13049340306587562, speedingType: "light" },
+                    ],
+                },
+            ],
+            pagination: { endCursor: "MjkY", hasNextPage: true },
         };
         server
             .mockEndpoint()
-            .post("/preview/fleet/drivers/create-auth-token")
-            .jsonBody(rawRequestBody)
+            .get("/safety-scores/drivers")
             .respondWith()
             .statusCode(200)
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.previewApIs.createDriverAuthToken({
-            code: "dp[gZc1wAigz4uGa0Hh",
+        const response = await client.safetyScores.getDriverSafetyScores({
+            endTime: "endTime",
+            startTime: "startTime",
         });
         expect(response).toEqual({
-            data: {
-                expirationTime: 1710000000000,
-                token: "ZmFrZVRva2VuXzMyQnl0ZXNMb25nRm9yVGVzdA",
+            data: [
+                {
+                    behaviors: [
+                        {
+                            behaviorType: "acceleration",
+                            count: 5,
+                            scoreImpact: -18.91020325321117,
+                        },
+                    ],
+                    driveDistanceMeters: 2207296,
+                    driveTimeMilliseconds: 136997730,
+                    driverId: "1234",
+                    driverScore: 92,
+                    speeding: [
+                        {
+                            durationMilliseconds: 178773,
+                            scoreImpact: -0.13049340306587562,
+                            speedingType: "light",
+                        },
+                    ],
+                },
+            ],
+            pagination: {
+                endCursor: "MjkY",
+                hasNextPage: true,
             },
         });
     });
 
-    test("createDriverAuthToken (2)", async () => {
+    test("getDriverSafetyScores (2)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -45,25 +79,25 @@ describe("PreviewApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { code: "blackcurrant" };
+
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
-            .post("/preview/fleet/drivers/create-auth-token")
-            .jsonBody(rawRequestBody)
+            .get("/safety-scores/drivers")
             .respondWith()
             .statusCode(401)
             .jsonBody(rawResponseBody)
             .build();
 
         await expect(async () => {
-            return await client.previewApIs.createDriverAuthToken({
-                code: "blackcurrant",
+            return await client.safetyScores.getDriverSafetyScores({
+                endTime: "endTime",
+                startTime: "startTime",
             });
         }).rejects.toThrow(Samsara.UnauthorizedError);
     });
 
-    test("createDriverAuthToken (3)", async () => {
+    test("getDriverSafetyScores (3)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -71,25 +105,25 @@ describe("PreviewApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { code: "blackcurrant" };
+
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
-            .post("/preview/fleet/drivers/create-auth-token")
-            .jsonBody(rawRequestBody)
+            .get("/safety-scores/drivers")
             .respondWith()
             .statusCode(404)
             .jsonBody(rawResponseBody)
             .build();
 
         await expect(async () => {
-            return await client.previewApIs.createDriverAuthToken({
-                code: "blackcurrant",
+            return await client.safetyScores.getDriverSafetyScores({
+                endTime: "endTime",
+                startTime: "startTime",
             });
         }).rejects.toThrow(Samsara.NotFoundError);
     });
 
-    test("createDriverAuthToken (4)", async () => {
+    test("getDriverSafetyScores (4)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -97,25 +131,25 @@ describe("PreviewApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { code: "blackcurrant" };
+
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
-            .post("/preview/fleet/drivers/create-auth-token")
-            .jsonBody(rawRequestBody)
+            .get("/safety-scores/drivers")
             .respondWith()
             .statusCode(405)
             .jsonBody(rawResponseBody)
             .build();
 
         await expect(async () => {
-            return await client.previewApIs.createDriverAuthToken({
-                code: "blackcurrant",
+            return await client.safetyScores.getDriverSafetyScores({
+                endTime: "endTime",
+                startTime: "startTime",
             });
         }).rejects.toThrow(Samsara.MethodNotAllowedError);
     });
 
-    test("createDriverAuthToken (5)", async () => {
+    test("getDriverSafetyScores (5)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -123,25 +157,25 @@ describe("PreviewApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { code: "blackcurrant" };
+
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
-            .post("/preview/fleet/drivers/create-auth-token")
-            .jsonBody(rawRequestBody)
+            .get("/safety-scores/drivers")
             .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
 
         await expect(async () => {
-            return await client.previewApIs.createDriverAuthToken({
-                code: "blackcurrant",
+            return await client.safetyScores.getDriverSafetyScores({
+                endTime: "endTime",
+                startTime: "startTime",
             });
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("createDriverAuthToken (6)", async () => {
+    test("getDriverSafetyScores (6)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -149,25 +183,25 @@ describe("PreviewApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { code: "blackcurrant" };
+
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
-            .post("/preview/fleet/drivers/create-auth-token")
-            .jsonBody(rawRequestBody)
+            .get("/safety-scores/drivers")
             .respondWith()
             .statusCode(500)
             .jsonBody(rawResponseBody)
             .build();
 
         await expect(async () => {
-            return await client.previewApIs.createDriverAuthToken({
-                code: "blackcurrant",
+            return await client.safetyScores.getDriverSafetyScores({
+                endTime: "endTime",
+                startTime: "startTime",
             });
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("createDriverAuthToken (7)", async () => {
+    test("getDriverSafetyScores (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -175,25 +209,25 @@ describe("PreviewApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { code: "blackcurrant" };
+
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
-            .post("/preview/fleet/drivers/create-auth-token")
-            .jsonBody(rawRequestBody)
+            .get("/safety-scores/drivers")
             .respondWith()
             .statusCode(501)
             .jsonBody(rawResponseBody)
             .build();
 
         await expect(async () => {
-            return await client.previewApIs.createDriverAuthToken({
-                code: "blackcurrant",
+            return await client.safetyScores.getDriverSafetyScores({
+                endTime: "endTime",
+                startTime: "startTime",
             });
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("createDriverAuthToken (8)", async () => {
+    test("getDriverSafetyScores (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -201,25 +235,25 @@ describe("PreviewApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { code: "blackcurrant" };
+
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
-            .post("/preview/fleet/drivers/create-auth-token")
-            .jsonBody(rawRequestBody)
+            .get("/safety-scores/drivers")
             .respondWith()
             .statusCode(502)
             .jsonBody(rawResponseBody)
             .build();
 
         await expect(async () => {
-            return await client.previewApIs.createDriverAuthToken({
-                code: "blackcurrant",
+            return await client.safetyScores.getDriverSafetyScores({
+                endTime: "endTime",
+                startTime: "startTime",
             });
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("createDriverAuthToken (9)", async () => {
+    test("getDriverSafetyScores (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -227,25 +261,25 @@ describe("PreviewApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { code: "blackcurrant" };
+
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
-            .post("/preview/fleet/drivers/create-auth-token")
-            .jsonBody(rawRequestBody)
+            .get("/safety-scores/drivers")
             .respondWith()
             .statusCode(503)
             .jsonBody(rawResponseBody)
             .build();
 
         await expect(async () => {
-            return await client.previewApIs.createDriverAuthToken({
-                code: "blackcurrant",
+            return await client.safetyScores.getDriverSafetyScores({
+                endTime: "endTime",
+                startTime: "startTime",
             });
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("createDriverAuthToken (10)", async () => {
+    test("getDriverSafetyScores (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -253,25 +287,25 @@ describe("PreviewApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { code: "blackcurrant" };
+
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
-            .post("/preview/fleet/drivers/create-auth-token")
-            .jsonBody(rawRequestBody)
+            .get("/safety-scores/drivers")
             .respondWith()
             .statusCode(504)
             .jsonBody(rawResponseBody)
             .build();
 
         await expect(async () => {
-            return await client.previewApIs.createDriverAuthToken({
-                code: "blackcurrant",
+            return await client.safetyScores.getDriverSafetyScores({
+                endTime: "endTime",
+                startTime: "startTime",
             });
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 
-    test("lockVehicle (1)", async () => {
+    test("getTagGroupSafetyScores (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -280,522 +314,52 @@ describe("PreviewApIsClient", () => {
             environment: server.baseUrl,
         });
 
-        server.mockEndpoint().put("/preview/fleet/vehicles/id/lock").respondWith().statusCode(200).build();
-
-        const response = await client.previewApIs.lockVehicle({
-            id: "id",
-        });
-        expect(response).toEqual(undefined);
-    });
-
-    test("lockVehicle (2)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .put("/preview/fleet/vehicles/id/lock")
-            .respondWith()
-            .statusCode(401)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.previewApIs.lockVehicle({
-                id: "id",
-            });
-        }).rejects.toThrow(Samsara.UnauthorizedError);
-    });
-
-    test("lockVehicle (3)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .put("/preview/fleet/vehicles/id/lock")
-            .respondWith()
-            .statusCode(404)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.previewApIs.lockVehicle({
-                id: "id",
-            });
-        }).rejects.toThrow(Samsara.NotFoundError);
-    });
-
-    test("lockVehicle (4)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .put("/preview/fleet/vehicles/id/lock")
-            .respondWith()
-            .statusCode(405)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.previewApIs.lockVehicle({
-                id: "id",
-            });
-        }).rejects.toThrow(Samsara.MethodNotAllowedError);
-    });
-
-    test("lockVehicle (5)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .put("/preview/fleet/vehicles/id/lock")
-            .respondWith()
-            .statusCode(429)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.previewApIs.lockVehicle({
-                id: "id",
-            });
-        }).rejects.toThrow(Samsara.TooManyRequestsError);
-    });
-
-    test("lockVehicle (6)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .put("/preview/fleet/vehicles/id/lock")
-            .respondWith()
-            .statusCode(500)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.previewApIs.lockVehicle({
-                id: "id",
-            });
-        }).rejects.toThrow(Samsara.InternalServerError);
-    });
-
-    test("lockVehicle (7)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .put("/preview/fleet/vehicles/id/lock")
-            .respondWith()
-            .statusCode(501)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.previewApIs.lockVehicle({
-                id: "id",
-            });
-        }).rejects.toThrow(Samsara.NotImplementedError);
-    });
-
-    test("lockVehicle (8)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .put("/preview/fleet/vehicles/id/lock")
-            .respondWith()
-            .statusCode(502)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.previewApIs.lockVehicle({
-                id: "id",
-            });
-        }).rejects.toThrow(Samsara.BadGatewayError);
-    });
-
-    test("lockVehicle (9)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .put("/preview/fleet/vehicles/id/lock")
-            .respondWith()
-            .statusCode(503)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.previewApIs.lockVehicle({
-                id: "id",
-            });
-        }).rejects.toThrow(Samsara.ServiceUnavailableError);
-    });
-
-    test("lockVehicle (10)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .put("/preview/fleet/vehicles/id/lock")
-            .respondWith()
-            .statusCode(504)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.previewApIs.lockVehicle({
-                id: "id",
-            });
-        }).rejects.toThrow(Samsara.GatewayTimeoutError);
-    });
-
-    test("unlockVehicle (1)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        server.mockEndpoint().delete("/preview/fleet/vehicles/id/lock").respondWith().statusCode(200).build();
-
-        const response = await client.previewApIs.unlockVehicle({
-            id: "id",
-        });
-        expect(response).toEqual(undefined);
-    });
-
-    test("unlockVehicle (2)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .delete("/preview/fleet/vehicles/id/lock")
-            .respondWith()
-            .statusCode(401)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.previewApIs.unlockVehicle({
-                id: "id",
-            });
-        }).rejects.toThrow(Samsara.UnauthorizedError);
-    });
-
-    test("unlockVehicle (3)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .delete("/preview/fleet/vehicles/id/lock")
-            .respondWith()
-            .statusCode(404)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.previewApIs.unlockVehicle({
-                id: "id",
-            });
-        }).rejects.toThrow(Samsara.NotFoundError);
-    });
-
-    test("unlockVehicle (4)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .delete("/preview/fleet/vehicles/id/lock")
-            .respondWith()
-            .statusCode(405)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.previewApIs.unlockVehicle({
-                id: "id",
-            });
-        }).rejects.toThrow(Samsara.MethodNotAllowedError);
-    });
-
-    test("unlockVehicle (5)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .delete("/preview/fleet/vehicles/id/lock")
-            .respondWith()
-            .statusCode(429)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.previewApIs.unlockVehicle({
-                id: "id",
-            });
-        }).rejects.toThrow(Samsara.TooManyRequestsError);
-    });
-
-    test("unlockVehicle (6)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .delete("/preview/fleet/vehicles/id/lock")
-            .respondWith()
-            .statusCode(500)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.previewApIs.unlockVehicle({
-                id: "id",
-            });
-        }).rejects.toThrow(Samsara.InternalServerError);
-    });
-
-    test("unlockVehicle (7)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .delete("/preview/fleet/vehicles/id/lock")
-            .respondWith()
-            .statusCode(501)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.previewApIs.unlockVehicle({
-                id: "id",
-            });
-        }).rejects.toThrow(Samsara.NotImplementedError);
-    });
-
-    test("unlockVehicle (8)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .delete("/preview/fleet/vehicles/id/lock")
-            .respondWith()
-            .statusCode(502)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.previewApIs.unlockVehicle({
-                id: "id",
-            });
-        }).rejects.toThrow(Samsara.BadGatewayError);
-    });
-
-    test("unlockVehicle (9)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .delete("/preview/fleet/vehicles/id/lock")
-            .respondWith()
-            .statusCode(503)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.previewApIs.unlockVehicle({
-                id: "id",
-            });
-        }).rejects.toThrow(Samsara.ServiceUnavailableError);
-    });
-
-    test("unlockVehicle (10)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .delete("/preview/fleet/vehicles/id/lock")
-            .respondWith()
-            .statusCode(504)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.previewApIs.unlockVehicle({
-                id: "id",
-            });
-        }).rejects.toThrow(Samsara.GatewayTimeoutError);
-    });
-
-    test("patchSafetyEventsV2Batch (1)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-        const rawRequestBody = {
-            safetyEventIds: ["bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590"],
-        };
         const rawResponseBody = {
-            requestId: "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
-            responses: [{ data: { safetyEventId: "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590" }, status: 202 }],
+            data: {
+                behaviors: [{ behaviorType: "acceleration", count: 5, scoreImpact: -18.91020325321117 }],
+                combinedScore: 92,
+                driveDistanceMeters: 2207296,
+                driveTimeMilliseconds: 136997730,
+                speeding: [{ durationMilliseconds: 178773, scoreImpact: -0.13049340306587562, speedingType: "light" }],
+            },
         };
         server
             .mockEndpoint()
-            .patch("/preview/safety-events/batch")
-            .jsonBody(rawRequestBody)
+            .get("/safety-scores/tag-group")
             .respondWith()
             .statusCode(200)
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.previewApIs.patchSafetyEventsV2Batch({
-            safetyEventIds: ["bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590"],
+        const response = await client.safetyScores.getTagGroupSafetyScores({
+            endTime: "endTime",
+            startTime: "startTime",
+            scoreType: "driver",
         });
         expect(response).toEqual({
-            requestId: "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
-            responses: [
-                {
-                    data: {
-                        safetyEventId: "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
+            data: {
+                behaviors: [
+                    {
+                        behaviorType: "acceleration",
+                        count: 5,
+                        scoreImpact: -18.91020325321117,
                     },
-                    status: 202,
-                },
-            ],
+                ],
+                combinedScore: 92,
+                driveDistanceMeters: 2207296,
+                driveTimeMilliseconds: 136997730,
+                speeding: [
+                    {
+                        durationMilliseconds: 178773,
+                        scoreImpact: -0.13049340306587562,
+                        speedingType: "light",
+                    },
+                ],
+            },
         });
     });
 
-    test("patchSafetyEventsV2Batch (2)", async () => {
+    test("getTagGroupSafetyScores (2)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -803,25 +367,26 @@ describe("PreviewApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { safetyEventIds: ["safetyEventIds", "safetyEventIds"] };
+
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
-            .patch("/preview/safety-events/batch")
-            .jsonBody(rawRequestBody)
+            .get("/safety-scores/tag-group")
             .respondWith()
             .statusCode(401)
             .jsonBody(rawResponseBody)
             .build();
 
         await expect(async () => {
-            return await client.previewApIs.patchSafetyEventsV2Batch({
-                safetyEventIds: ["safetyEventIds", "safetyEventIds"],
+            return await client.safetyScores.getTagGroupSafetyScores({
+                endTime: "endTime",
+                startTime: "startTime",
+                scoreType: "driver",
             });
         }).rejects.toThrow(Samsara.UnauthorizedError);
     });
 
-    test("patchSafetyEventsV2Batch (3)", async () => {
+    test("getTagGroupSafetyScores (3)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -829,25 +394,26 @@ describe("PreviewApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { safetyEventIds: ["safetyEventIds", "safetyEventIds"] };
+
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
-            .patch("/preview/safety-events/batch")
-            .jsonBody(rawRequestBody)
+            .get("/safety-scores/tag-group")
             .respondWith()
             .statusCode(404)
             .jsonBody(rawResponseBody)
             .build();
 
         await expect(async () => {
-            return await client.previewApIs.patchSafetyEventsV2Batch({
-                safetyEventIds: ["safetyEventIds", "safetyEventIds"],
+            return await client.safetyScores.getTagGroupSafetyScores({
+                endTime: "endTime",
+                startTime: "startTime",
+                scoreType: "driver",
             });
         }).rejects.toThrow(Samsara.NotFoundError);
     });
 
-    test("patchSafetyEventsV2Batch (4)", async () => {
+    test("getTagGroupSafetyScores (4)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -855,25 +421,26 @@ describe("PreviewApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { safetyEventIds: ["safetyEventIds", "safetyEventIds"] };
+
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
-            .patch("/preview/safety-events/batch")
-            .jsonBody(rawRequestBody)
+            .get("/safety-scores/tag-group")
             .respondWith()
             .statusCode(405)
             .jsonBody(rawResponseBody)
             .build();
 
         await expect(async () => {
-            return await client.previewApIs.patchSafetyEventsV2Batch({
-                safetyEventIds: ["safetyEventIds", "safetyEventIds"],
+            return await client.safetyScores.getTagGroupSafetyScores({
+                endTime: "endTime",
+                startTime: "startTime",
+                scoreType: "driver",
             });
         }).rejects.toThrow(Samsara.MethodNotAllowedError);
     });
 
-    test("patchSafetyEventsV2Batch (5)", async () => {
+    test("getTagGroupSafetyScores (5)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -881,25 +448,26 @@ describe("PreviewApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { safetyEventIds: ["safetyEventIds", "safetyEventIds"] };
+
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
-            .patch("/preview/safety-events/batch")
-            .jsonBody(rawRequestBody)
+            .get("/safety-scores/tag-group")
             .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
 
         await expect(async () => {
-            return await client.previewApIs.patchSafetyEventsV2Batch({
-                safetyEventIds: ["safetyEventIds", "safetyEventIds"],
+            return await client.safetyScores.getTagGroupSafetyScores({
+                endTime: "endTime",
+                startTime: "startTime",
+                scoreType: "driver",
             });
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("patchSafetyEventsV2Batch (6)", async () => {
+    test("getTagGroupSafetyScores (6)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -907,25 +475,26 @@ describe("PreviewApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { safetyEventIds: ["safetyEventIds", "safetyEventIds"] };
+
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
-            .patch("/preview/safety-events/batch")
-            .jsonBody(rawRequestBody)
+            .get("/safety-scores/tag-group")
             .respondWith()
             .statusCode(500)
             .jsonBody(rawResponseBody)
             .build();
 
         await expect(async () => {
-            return await client.previewApIs.patchSafetyEventsV2Batch({
-                safetyEventIds: ["safetyEventIds", "safetyEventIds"],
+            return await client.safetyScores.getTagGroupSafetyScores({
+                endTime: "endTime",
+                startTime: "startTime",
+                scoreType: "driver",
             });
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("patchSafetyEventsV2Batch (7)", async () => {
+    test("getTagGroupSafetyScores (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -933,25 +502,26 @@ describe("PreviewApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { safetyEventIds: ["safetyEventIds", "safetyEventIds"] };
+
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
-            .patch("/preview/safety-events/batch")
-            .jsonBody(rawRequestBody)
+            .get("/safety-scores/tag-group")
             .respondWith()
             .statusCode(501)
             .jsonBody(rawResponseBody)
             .build();
 
         await expect(async () => {
-            return await client.previewApIs.patchSafetyEventsV2Batch({
-                safetyEventIds: ["safetyEventIds", "safetyEventIds"],
+            return await client.safetyScores.getTagGroupSafetyScores({
+                endTime: "endTime",
+                startTime: "startTime",
+                scoreType: "driver",
             });
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("patchSafetyEventsV2Batch (8)", async () => {
+    test("getTagGroupSafetyScores (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -959,25 +529,26 @@ describe("PreviewApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { safetyEventIds: ["safetyEventIds", "safetyEventIds"] };
+
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
-            .patch("/preview/safety-events/batch")
-            .jsonBody(rawRequestBody)
+            .get("/safety-scores/tag-group")
             .respondWith()
             .statusCode(502)
             .jsonBody(rawResponseBody)
             .build();
 
         await expect(async () => {
-            return await client.previewApIs.patchSafetyEventsV2Batch({
-                safetyEventIds: ["safetyEventIds", "safetyEventIds"],
+            return await client.safetyScores.getTagGroupSafetyScores({
+                endTime: "endTime",
+                startTime: "startTime",
+                scoreType: "driver",
             });
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("patchSafetyEventsV2Batch (9)", async () => {
+    test("getTagGroupSafetyScores (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -985,25 +556,26 @@ describe("PreviewApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { safetyEventIds: ["safetyEventIds", "safetyEventIds"] };
+
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
-            .patch("/preview/safety-events/batch")
-            .jsonBody(rawRequestBody)
+            .get("/safety-scores/tag-group")
             .respondWith()
             .statusCode(503)
             .jsonBody(rawResponseBody)
             .build();
 
         await expect(async () => {
-            return await client.previewApIs.patchSafetyEventsV2Batch({
-                safetyEventIds: ["safetyEventIds", "safetyEventIds"],
+            return await client.safetyScores.getTagGroupSafetyScores({
+                endTime: "endTime",
+                startTime: "startTime",
+                scoreType: "driver",
             });
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("patchSafetyEventsV2Batch (10)", async () => {
+    test("getTagGroupSafetyScores (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1011,20 +583,631 @@ describe("PreviewApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { safetyEventIds: ["safetyEventIds", "safetyEventIds"] };
+
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
-            .patch("/preview/safety-events/batch")
-            .jsonBody(rawRequestBody)
+            .get("/safety-scores/tag-group")
             .respondWith()
             .statusCode(504)
             .jsonBody(rawResponseBody)
             .build();
 
         await expect(async () => {
-            return await client.previewApIs.patchSafetyEventsV2Batch({
-                safetyEventIds: ["safetyEventIds", "safetyEventIds"],
+            return await client.safetyScores.getTagGroupSafetyScores({
+                endTime: "endTime",
+                startTime: "startTime",
+                scoreType: "driver",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("getTagSafetyScores (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = {
+            data: [
+                {
+                    behaviors: [{ behaviorType: "acceleration", count: 5, scoreImpact: -18.91020325321117 }],
+                    driveDistanceMeters: 2207296,
+                    driveTimeMilliseconds: 136997730,
+                    speeding: [
+                        { durationMilliseconds: 178773, scoreImpact: -0.13049340306587562, speedingType: "light" },
+                    ],
+                    tagId: "5678",
+                    tagScore: 92,
+                },
+            ],
+            pagination: { endCursor: "MjkY", hasNextPage: true },
+        };
+        server
+            .mockEndpoint()
+            .get("/safety-scores/tags")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.safetyScores.getTagSafetyScores({
+            endTime: "endTime",
+            startTime: "startTime",
+            scoreType: "driver",
+        });
+        expect(response).toEqual({
+            data: [
+                {
+                    behaviors: [
+                        {
+                            behaviorType: "acceleration",
+                            count: 5,
+                            scoreImpact: -18.91020325321117,
+                        },
+                    ],
+                    driveDistanceMeters: 2207296,
+                    driveTimeMilliseconds: 136997730,
+                    speeding: [
+                        {
+                            durationMilliseconds: 178773,
+                            scoreImpact: -0.13049340306587562,
+                            speedingType: "light",
+                        },
+                    ],
+                    tagId: "5678",
+                    tagScore: 92,
+                },
+            ],
+            pagination: {
+                endCursor: "MjkY",
+                hasNextPage: true,
+            },
+        });
+    });
+
+    test("getTagSafetyScores (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/safety-scores/tags")
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.safetyScores.getTagSafetyScores({
+                endTime: "endTime",
+                startTime: "startTime",
+                scoreType: "driver",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("getTagSafetyScores (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/safety-scores/tags")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.safetyScores.getTagSafetyScores({
+                endTime: "endTime",
+                startTime: "startTime",
+                scoreType: "driver",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("getTagSafetyScores (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/safety-scores/tags")
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.safetyScores.getTagSafetyScores({
+                endTime: "endTime",
+                startTime: "startTime",
+                scoreType: "driver",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("getTagSafetyScores (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/safety-scores/tags")
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.safetyScores.getTagSafetyScores({
+                endTime: "endTime",
+                startTime: "startTime",
+                scoreType: "driver",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("getTagSafetyScores (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/safety-scores/tags")
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.safetyScores.getTagSafetyScores({
+                endTime: "endTime",
+                startTime: "startTime",
+                scoreType: "driver",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("getTagSafetyScores (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/safety-scores/tags")
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.safetyScores.getTagSafetyScores({
+                endTime: "endTime",
+                startTime: "startTime",
+                scoreType: "driver",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("getTagSafetyScores (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/safety-scores/tags")
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.safetyScores.getTagSafetyScores({
+                endTime: "endTime",
+                startTime: "startTime",
+                scoreType: "driver",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("getTagSafetyScores (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/safety-scores/tags")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.safetyScores.getTagSafetyScores({
+                endTime: "endTime",
+                startTime: "startTime",
+                scoreType: "driver",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("getTagSafetyScores (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/safety-scores/tags")
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.safetyScores.getTagSafetyScores({
+                endTime: "endTime",
+                startTime: "startTime",
+                scoreType: "driver",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("getVehicleSafetyScores (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = {
+            data: [
+                {
+                    behaviors: [{ behaviorType: "acceleration", count: 5, scoreImpact: -18.91020325321117 }],
+                    driveDistanceMeters: 2207296,
+                    driveTimeMilliseconds: 136997730,
+                    speeding: [
+                        { durationMilliseconds: 178773, scoreImpact: -0.13049340306587562, speedingType: "light" },
+                    ],
+                    vehicleId: "5678",
+                    vehicleScore: 92,
+                },
+            ],
+            pagination: { endCursor: "MjkY", hasNextPage: true },
+        };
+        server
+            .mockEndpoint()
+            .get("/safety-scores/vehicles")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.safetyScores.getVehicleSafetyScores({
+            endTime: "endTime",
+            startTime: "startTime",
+        });
+        expect(response).toEqual({
+            data: [
+                {
+                    behaviors: [
+                        {
+                            behaviorType: "acceleration",
+                            count: 5,
+                            scoreImpact: -18.91020325321117,
+                        },
+                    ],
+                    driveDistanceMeters: 2207296,
+                    driveTimeMilliseconds: 136997730,
+                    speeding: [
+                        {
+                            durationMilliseconds: 178773,
+                            scoreImpact: -0.13049340306587562,
+                            speedingType: "light",
+                        },
+                    ],
+                    vehicleId: "5678",
+                    vehicleScore: 92,
+                },
+            ],
+            pagination: {
+                endCursor: "MjkY",
+                hasNextPage: true,
+            },
+        });
+    });
+
+    test("getVehicleSafetyScores (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/safety-scores/vehicles")
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.safetyScores.getVehicleSafetyScores({
+                endTime: "endTime",
+                startTime: "startTime",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("getVehicleSafetyScores (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/safety-scores/vehicles")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.safetyScores.getVehicleSafetyScores({
+                endTime: "endTime",
+                startTime: "startTime",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("getVehicleSafetyScores (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/safety-scores/vehicles")
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.safetyScores.getVehicleSafetyScores({
+                endTime: "endTime",
+                startTime: "startTime",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("getVehicleSafetyScores (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/safety-scores/vehicles")
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.safetyScores.getVehicleSafetyScores({
+                endTime: "endTime",
+                startTime: "startTime",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("getVehicleSafetyScores (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/safety-scores/vehicles")
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.safetyScores.getVehicleSafetyScores({
+                endTime: "endTime",
+                startTime: "startTime",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("getVehicleSafetyScores (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/safety-scores/vehicles")
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.safetyScores.getVehicleSafetyScores({
+                endTime: "endTime",
+                startTime: "startTime",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("getVehicleSafetyScores (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/safety-scores/vehicles")
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.safetyScores.getVehicleSafetyScores({
+                endTime: "endTime",
+                startTime: "startTime",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("getVehicleSafetyScores (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/safety-scores/vehicles")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.safetyScores.getVehicleSafetyScores({
+                endTime: "endTime",
+                startTime: "startTime",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("getVehicleSafetyScores (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/safety-scores/vehicles")
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.safetyScores.getVehicleSafetyScores({
+                endTime: "endTime",
+                startTime: "startTime",
             });
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });

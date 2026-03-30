@@ -9,31 +9,31 @@ import { handleNonStatusCodeError } from "../../../../errors/handleNonStatusCode
 import * as errors from "../../../../errors/index.js";
 import * as Samsara from "../../../index.js";
 
-export declare namespace MediaClient {
+export declare namespace SafetyScoresClient {
     export type Options = BaseClientOptions;
 
     export interface RequestOptions extends BaseRequestOptions {}
 }
 
-export class MediaClient {
-    protected readonly _options: NormalizedClientOptionsWithAuth<MediaClient.Options>;
+export class SafetyScoresClient {
+    protected readonly _options: NormalizedClientOptionsWithAuth<SafetyScoresClient.Options>;
 
-    constructor(options: MediaClient.Options = {}) {
+    constructor(options: SafetyScoresClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
     }
 
     /**
-     * This endpoint returns a list of all uploaded media (video and still images) matching query parameters, with a maximum query range of one day. Additional media can be retrieved with the [Create a media retrieval request](https://developers.samsara.com/reference/postmediaretrieval) endpoint, and they will be included in the list after they are uploaded. Urls provided by this endpoint expire in 8 hours.
+     * Get safety scores and overall risk factors for drivers.
      *
-     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
      *
-     * To use this endpoint, select **Read Media Retrieval** under the Safety & Cameras category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Safety Events & Scores** under the Safety & Cameras category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * @param {Samsara.ListUploadedMediaRequest} request
-     * @param {MediaClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {Samsara.GetDriverSafetyScoresRequest} request
+     * @param {SafetyScoresClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
@@ -46,41 +46,27 @@ export class MediaClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.media.listUploadedMedia({
-     *         vehicleIds: "vehicleIds",
-     *         startTime: "startTime",
-     *         endTime: "endTime"
+     *     await client.safetyScores.getDriverSafetyScores({
+     *         endTime: "endTime",
+     *         startTime: "startTime"
      *     })
      */
-    public listUploadedMedia(
-        request: Samsara.ListUploadedMediaRequest,
-        requestOptions?: MediaClient.RequestOptions,
-    ): core.HttpResponsePromise<Samsara.MediaRetrievalListUploadedMediaResponseBody> {
-        return core.HttpResponsePromise.fromPromise(this.__listUploadedMedia(request, requestOptions));
+    public getDriverSafetyScores(
+        request: Samsara.GetDriverSafetyScoresRequest,
+        requestOptions?: SafetyScoresClient.RequestOptions,
+    ): core.HttpResponsePromise<Samsara.SafetyScoresGetDriverSafetyScoresResponseBody> {
+        return core.HttpResponsePromise.fromPromise(this.__getDriverSafetyScores(request, requestOptions));
     }
 
-    private async __listUploadedMedia(
-        request: Samsara.ListUploadedMediaRequest,
-        requestOptions?: MediaClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Samsara.MediaRetrievalListUploadedMediaResponseBody>> {
-        const { vehicleIds, inputs, mediaTypes, triggerReasons, startTime, endTime, availableAfterTime, after } =
-            request;
+    private async __getDriverSafetyScores(
+        request: Samsara.GetDriverSafetyScoresRequest,
+        requestOptions?: SafetyScoresClient.RequestOptions,
+    ): Promise<core.WithRawResponse<Samsara.SafetyScoresGetDriverSafetyScoresResponseBody>> {
+        const { endTime, startTime, driverIds, after } = request;
         const _queryParams: Record<string, unknown> = {
-            vehicleIds,
-            inputs: Array.isArray(inputs) ? inputs.map((item) => item) : inputs != null ? inputs : undefined,
-            mediaTypes: Array.isArray(mediaTypes)
-                ? mediaTypes.map((item) => item)
-                : mediaTypes != null
-                  ? mediaTypes
-                  : undefined,
-            triggerReasons: Array.isArray(triggerReasons)
-                ? triggerReasons.map((item) => item)
-                : triggerReasons != null
-                  ? triggerReasons
-                  : undefined,
-            startTime,
             endTime,
-            availableAfterTime,
+            startTime,
+            driverIds,
             after,
         };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
@@ -95,7 +81,7 @@ export class MediaClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.SamsaraEnvironment.ProductionApi,
-                "cameras/media",
+                "safety-scores/drivers",
             ),
             method: "GET",
             headers: _headers,
@@ -108,7 +94,7 @@ export class MediaClient {
         });
         if (_response.ok) {
             return {
-                data: _response.body as Samsara.MediaRetrievalListUploadedMediaResponseBody,
+                data: _response.body as Samsara.SafetyScoresGetDriverSafetyScoresResponseBody,
                 rawResponse: _response.rawResponse,
             };
         }
@@ -142,21 +128,21 @@ export class MediaClient {
             }
         }
 
-        return handleNonStatusCodeError(_response.error, _response.rawResponse, "GET", "/cameras/media");
+        return handleNonStatusCodeError(_response.error, _response.rawResponse, "GET", "/safety-scores/drivers");
     }
 
     /**
-     * This endpoint returns media information corresponding to a retrieval ID. Retrieval IDs are associated to prior [media retrieval requests](https://developers.samsara.com/reference/postmediaretrieval). Urls provided by this endpoint expire in 8 hours.
+     * Get a combined safety score and risk factors for a set of tags.
      *
-     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
      *
-     * To use this endpoint, select **Read Media Retrieval** under the Safety & Cameras category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Safety Events & Scores** under the Safety & Cameras category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * @param {Samsara.GetMediaRetrievalRequest} request
-     * @param {MediaClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {Samsara.GetTagGroupSafetyScoresRequest} request
+     * @param {SafetyScoresClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
@@ -169,24 +155,29 @@ export class MediaClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.media.getMediaRetrieval({
-     *         retrievalId: "retrievalId"
+     *     await client.safetyScores.getTagGroupSafetyScores({
+     *         endTime: "endTime",
+     *         startTime: "startTime",
+     *         scoreType: "driver"
      *     })
      */
-    public getMediaRetrieval(
-        request: Samsara.GetMediaRetrievalRequest,
-        requestOptions?: MediaClient.RequestOptions,
-    ): core.HttpResponsePromise<Samsara.MediaRetrievalGetMediaRetrievalResponseBody> {
-        return core.HttpResponsePromise.fromPromise(this.__getMediaRetrieval(request, requestOptions));
+    public getTagGroupSafetyScores(
+        request: Samsara.GetTagGroupSafetyScoresRequest,
+        requestOptions?: SafetyScoresClient.RequestOptions,
+    ): core.HttpResponsePromise<Samsara.SafetyScoresGetTagGroupSafetyScoresResponseBody> {
+        return core.HttpResponsePromise.fromPromise(this.__getTagGroupSafetyScores(request, requestOptions));
     }
 
-    private async __getMediaRetrieval(
-        request: Samsara.GetMediaRetrievalRequest,
-        requestOptions?: MediaClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Samsara.MediaRetrievalGetMediaRetrievalResponseBody>> {
-        const { retrievalId } = request;
+    private async __getTagGroupSafetyScores(
+        request: Samsara.GetTagGroupSafetyScoresRequest,
+        requestOptions?: SafetyScoresClient.RequestOptions,
+    ): Promise<core.WithRawResponse<Samsara.SafetyScoresGetTagGroupSafetyScoresResponseBody>> {
+        const { endTime, startTime, scoreType, tagIds } = request;
         const _queryParams: Record<string, unknown> = {
-            retrievalId,
+            endTime,
+            startTime,
+            scoreType,
+            tagIds,
         };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -200,7 +191,7 @@ export class MediaClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.SamsaraEnvironment.ProductionApi,
-                "cameras/media/retrieval",
+                "safety-scores/tag-group",
             ),
             method: "GET",
             headers: _headers,
@@ -213,7 +204,7 @@ export class MediaClient {
         });
         if (_response.ok) {
             return {
-                data: _response.body as Samsara.MediaRetrievalGetMediaRetrievalResponseBody,
+                data: _response.body as Samsara.SafetyScoresGetTagGroupSafetyScoresResponseBody,
                 rawResponse: _response.rawResponse,
             };
         }
@@ -247,21 +238,21 @@ export class MediaClient {
             }
         }
 
-        return handleNonStatusCodeError(_response.error, _response.rawResponse, "GET", "/cameras/media/retrieval");
+        return handleNonStatusCodeError(_response.error, _response.rawResponse, "GET", "/safety-scores/tag-group");
     }
 
     /**
-     * This endpoint creates an asynchronous request to upload certain media from a device. The closest available media to the requested timestamp is returned. Images, videos(both high resolution and low resolution) and hyperlapses are supported.Currently, only unblurred media is supported. If a device is offline, the requested media will be uploaded once it comes back online. Quota limits are enforced for media retrievals made through the API. The Create a media retrieval request response includes information about the media retrieval quota remaining for the organization. The media retrieval quota for the organization is reset at the beginning of each month.The quota is expressed using seconds of High Resolution video. 10 still images are equivalent to a 1 second of High Resolution footage.
+     * Get safety scores and overall risk factors for tags.
      *
      *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
      *
-     * To use this endpoint, select **Write Media Retrieval** under the Safety & Cameras category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Read Safety Events & Scores** under the Safety & Cameras category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * @param {Samsara.MediaRetrievalPostMediaRetrievalRequestBody} request
-     * @param {MediaClient.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {Samsara.GetTagSafetyScoresRequest} request
+     * @param {SafetyScoresClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
@@ -274,25 +265,31 @@ export class MediaClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.media.postMediaRetrieval({
-     *         endTime: "2019-06-13T19:08:55Z",
-     *         inputs: ["dashcamRoadFacing", "dashcamRoadFacing", "dashcamRoadFacing"],
-     *         mediaType: "image",
-     *         startTime: "2019-06-13T19:08:25Z",
-     *         vehicleId: "1234"
+     *     await client.safetyScores.getTagSafetyScores({
+     *         endTime: "endTime",
+     *         startTime: "startTime",
+     *         scoreType: "driver"
      *     })
      */
-    public postMediaRetrieval(
-        request: Samsara.MediaRetrievalPostMediaRetrievalRequestBody,
-        requestOptions?: MediaClient.RequestOptions,
-    ): core.HttpResponsePromise<Samsara.MediaRetrievalPostMediaRetrievalResponseBody> {
-        return core.HttpResponsePromise.fromPromise(this.__postMediaRetrieval(request, requestOptions));
+    public getTagSafetyScores(
+        request: Samsara.GetTagSafetyScoresRequest,
+        requestOptions?: SafetyScoresClient.RequestOptions,
+    ): core.HttpResponsePromise<Samsara.SafetyScoresGetTagSafetyScoresResponseBody> {
+        return core.HttpResponsePromise.fromPromise(this.__getTagSafetyScores(request, requestOptions));
     }
 
-    private async __postMediaRetrieval(
-        request: Samsara.MediaRetrievalPostMediaRetrievalRequestBody,
-        requestOptions?: MediaClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Samsara.MediaRetrievalPostMediaRetrievalResponseBody>> {
+    private async __getTagSafetyScores(
+        request: Samsara.GetTagSafetyScoresRequest,
+        requestOptions?: SafetyScoresClient.RequestOptions,
+    ): Promise<core.WithRawResponse<Samsara.SafetyScoresGetTagSafetyScoresResponseBody>> {
+        const { endTime, startTime, scoreType, tagIds, after } = request;
+        const _queryParams: Record<string, unknown> = {
+            endTime,
+            startTime,
+            scoreType,
+            tagIds,
+            after,
+        };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -305,14 +302,11 @@ export class MediaClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.SamsaraEnvironment.ProductionApi,
-                "cameras/media/retrieval",
+                "safety-scores/tags",
             ),
-            method: "POST",
+            method: "GET",
             headers: _headers,
-            contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
-            requestType: "json",
-            body: request,
+            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -321,7 +315,7 @@ export class MediaClient {
         });
         if (_response.ok) {
             return {
-                data: _response.body as Samsara.MediaRetrievalPostMediaRetrievalResponseBody,
+                data: _response.body as Samsara.SafetyScoresGetTagSafetyScoresResponseBody,
                 rawResponse: _response.rawResponse,
             };
         }
@@ -355,6 +349,115 @@ export class MediaClient {
             }
         }
 
-        return handleNonStatusCodeError(_response.error, _response.rawResponse, "POST", "/cameras/media/retrieval");
+        return handleNonStatusCodeError(_response.error, _response.rawResponse, "GET", "/safety-scores/tags");
+    }
+
+    /**
+     * Get safety scores and overall risk factors for vehicles.
+     *
+     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *
+     * To use this endpoint, select **Read Safety Events & Scores** under the Safety & Cameras category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     *
+     *
+     *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
+     *
+     * @param {Samsara.GetVehicleSafetyScoresRequest} request
+     * @param {SafetyScoresClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Samsara.UnauthorizedError}
+     * @throws {@link Samsara.NotFoundError}
+     * @throws {@link Samsara.MethodNotAllowedError}
+     * @throws {@link Samsara.TooManyRequestsError}
+     * @throws {@link Samsara.InternalServerError}
+     * @throws {@link Samsara.NotImplementedError}
+     * @throws {@link Samsara.BadGatewayError}
+     * @throws {@link Samsara.ServiceUnavailableError}
+     * @throws {@link Samsara.GatewayTimeoutError}
+     *
+     * @example
+     *     await client.safetyScores.getVehicleSafetyScores({
+     *         endTime: "endTime",
+     *         startTime: "startTime"
+     *     })
+     */
+    public getVehicleSafetyScores(
+        request: Samsara.GetVehicleSafetyScoresRequest,
+        requestOptions?: SafetyScoresClient.RequestOptions,
+    ): core.HttpResponsePromise<Samsara.SafetyScoresGetVehicleSafetyScoresResponseBody> {
+        return core.HttpResponsePromise.fromPromise(this.__getVehicleSafetyScores(request, requestOptions));
+    }
+
+    private async __getVehicleSafetyScores(
+        request: Samsara.GetVehicleSafetyScoresRequest,
+        requestOptions?: SafetyScoresClient.RequestOptions,
+    ): Promise<core.WithRawResponse<Samsara.SafetyScoresGetVehicleSafetyScoresResponseBody>> {
+        const { endTime, startTime, vehicleIds, after } = request;
+        const _queryParams: Record<string, unknown> = {
+            endTime,
+            startTime,
+            vehicleIds,
+            after,
+        };
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ "X-Samsara-Version": requestOptions?.version }),
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.SamsaraEnvironment.ProductionApi,
+                "safety-scores/vehicles",
+            ),
+            method: "GET",
+            headers: _headers,
+            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return {
+                data: _response.body as Samsara.SafetyScoresGetVehicleSafetyScoresResponseBody,
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 401:
+                    throw new Samsara.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
+                case 404:
+                    throw new Samsara.NotFoundError(_response.error.body as unknown, _response.rawResponse);
+                case 405:
+                    throw new Samsara.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
+                case 429:
+                    throw new Samsara.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
+                case 500:
+                    throw new Samsara.InternalServerError(_response.error.body as unknown, _response.rawResponse);
+                case 501:
+                    throw new Samsara.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
+                case 502:
+                    throw new Samsara.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                case 503:
+                    throw new Samsara.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
+                case 504:
+                    throw new Samsara.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
+                default:
+                    throw new errors.SamsaraError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
+                    });
+            }
+        }
+
+        return handleNonStatusCodeError(_response.error, _response.rawResponse, "GET", "/safety-scores/vehicles");
     }
 }

@@ -39,6 +39,7 @@ import { PreviewApIsClient } from "./api/resources/previewApIs/client/Client.js"
 import { RouteEventsClient } from "./api/resources/routeEvents/client/Client.js";
 import { RoutesClient } from "./api/resources/routes/client/Client.js";
 import { SafetyClient } from "./api/resources/safety/client/Client.js";
+import { SafetyScoresClient } from "./api/resources/safetyScores/client/Client.js";
 import { SensorsClient } from "./api/resources/sensors/client/Client.js";
 import { SettingsClient } from "./api/resources/settings/client/Client.js";
 import { SpeedingIntervalsClient } from "./api/resources/speedingIntervals/client/Client.js";
@@ -109,6 +110,7 @@ export class SamsaraClient {
     protected _previewApIs: PreviewApIsClient | undefined;
     protected _routeEvents: RouteEventsClient | undefined;
     protected _safety: SafetyClient | undefined;
+    protected _safetyScores: SafetyScoresClient | undefined;
     protected _speedingIntervals: SpeedingIntervalsClient | undefined;
     protected _tags: TagsClient | undefined;
     protected _trainingAssignments: TrainingAssignmentsClient | undefined;
@@ -296,6 +298,10 @@ export class SamsaraClient {
 
     public get safety(): SafetyClient {
         return (this._safety ??= new SafetyClient(this._options));
+    }
+
+    public get safetyScores(): SafetyScoresClient {
+        return (this._safetyScores ??= new SafetyScoresClient(this._options));
     }
 
     public get speedingIntervals(): SpeedingIntervalsClient {

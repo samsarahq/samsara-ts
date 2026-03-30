@@ -20,12 +20,12 @@ describe("SettingsClient", () => {
                 canadaHosEnabled: false,
                 carrierName: "ABC Trucking",
                 dotNumber: 12345678,
-                driverAutoDutyEnabled: true,
+                driverAutoDutyEnabled: false,
                 editCertifiedLogsEnabled: false,
-                forceManualLocationForDutyStatusChangesEnabled: true,
-                forceReviewUnassignedHosEnabled: true,
+                forceManualLocationForDutyStatusChangesEnabled: false,
+                forceReviewUnassignedHosEnabled: false,
                 mainOfficeFormattedAddress: "123 Main Street",
-                persistentDutyStatusEnabled: false,
+                persistentDutyStatusEnabled: true,
             },
         };
         server
@@ -43,12 +43,12 @@ describe("SettingsClient", () => {
                 canadaHosEnabled: false,
                 carrierName: "ABC Trucking",
                 dotNumber: 12345678,
-                driverAutoDutyEnabled: true,
+                driverAutoDutyEnabled: false,
                 editCertifiedLogsEnabled: false,
-                forceManualLocationForDutyStatusChangesEnabled: true,
-                forceReviewUnassignedHosEnabled: true,
+                forceManualLocationForDutyStatusChangesEnabled: false,
+                forceReviewUnassignedHosEnabled: false,
                 mainOfficeFormattedAddress: "123 Main Street",
-                persistentDutyStatusEnabled: false,
+                persistentDutyStatusEnabled: true,
             },
         });
     });
@@ -275,12 +275,12 @@ describe("SettingsClient", () => {
                 canadaHosEnabled: false,
                 carrierName: "ABC Trucking",
                 dotNumber: 12345678,
-                driverAutoDutyEnabled: true,
+                driverAutoDutyEnabled: false,
                 editCertifiedLogsEnabled: false,
-                forceManualLocationForDutyStatusChangesEnabled: true,
-                forceReviewUnassignedHosEnabled: true,
+                forceManualLocationForDutyStatusChangesEnabled: false,
+                forceReviewUnassignedHosEnabled: false,
                 mainOfficeFormattedAddress: "123 Main Street",
-                persistentDutyStatusEnabled: false,
+                persistentDutyStatusEnabled: true,
             },
         };
         server
@@ -299,12 +299,12 @@ describe("SettingsClient", () => {
                 canadaHosEnabled: false,
                 carrierName: "ABC Trucking",
                 dotNumber: 12345678,
-                driverAutoDutyEnabled: true,
+                driverAutoDutyEnabled: false,
                 editCertifiedLogsEnabled: false,
-                forceManualLocationForDutyStatusChangesEnabled: true,
-                forceReviewUnassignedHosEnabled: true,
+                forceManualLocationForDutyStatusChangesEnabled: false,
+                forceReviewUnassignedHosEnabled: false,
                 mainOfficeFormattedAddress: "123 Main Street",
-                persistentDutyStatusEnabled: false,
+                persistentDutyStatusEnabled: true,
             },
         });
     });
@@ -538,13 +538,13 @@ describe("SettingsClient", () => {
             data: {
                 driverFleetId: "abc_trucking_co",
                 gamification: false,
-                gamificationConfig: { anonymizeDriverNames: false },
+                gamificationConfig: { anonymizeDriverNames: true },
                 orgVehicleSearch: false,
                 trailerSelection: true,
                 trailerSelectionConfig: {
                     driverTrailerCreationEnabled: true,
                     maxNumOfTrailersSelected: 1000000,
-                    orgTrailerSearch: false,
+                    orgTrailerSearch: true,
                 },
             },
         };
@@ -562,14 +562,14 @@ describe("SettingsClient", () => {
                 driverFleetId: "abc_trucking_co",
                 gamification: false,
                 gamificationConfig: {
-                    anonymizeDriverNames: false,
+                    anonymizeDriverNames: true,
                 },
                 orgVehicleSearch: false,
                 trailerSelection: true,
                 trailerSelectionConfig: {
                     driverTrailerCreationEnabled: true,
                     maxNumOfTrailersSelected: 1000000,
-                    orgTrailerSearch: false,
+                    orgTrailerSearch: true,
                 },
             },
         });
@@ -795,13 +795,13 @@ describe("SettingsClient", () => {
             data: {
                 driverFleetId: "abc_trucking_co",
                 gamification: false,
-                gamificationConfig: { anonymizeDriverNames: false },
+                gamificationConfig: { anonymizeDriverNames: true },
                 orgVehicleSearch: false,
                 trailerSelection: true,
                 trailerSelectionConfig: {
                     driverTrailerCreationEnabled: true,
                     maxNumOfTrailersSelected: 1000000,
-                    orgTrailerSearch: false,
+                    orgTrailerSearch: true,
                 },
             },
         };
@@ -820,14 +820,14 @@ describe("SettingsClient", () => {
                 driverFleetId: "abc_trucking_co",
                 gamification: false,
                 gamificationConfig: {
-                    anonymizeDriverNames: false,
+                    anonymizeDriverNames: true,
                 },
                 orgVehicleSearch: false,
                 trailerSelection: true,
                 trailerSelectionConfig: {
                     driverTrailerCreationEnabled: true,
                     maxNumOfTrailersSelected: 1000000,
-                    orgTrailerSearch: false,
+                    orgTrailerSearch: true,
                 },
             },
         });

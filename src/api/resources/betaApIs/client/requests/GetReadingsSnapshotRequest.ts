@@ -56,6 +56,7 @@ export interface GetReadingsSnapshotRequest {
      * * `engineIntakeAirTemp` (Engine Intake Air Temperature): Represents the engine intake air temperature. (celsius)
      * * `engineLoadPercent` (Engine Load): Engine load percentage. (percent)
      * * `engineOilTemperature` (Engine Oil Temperature): Temperature of the engine oil (celsius)
+     * * `engineRpm` (Engine Speed): Engine speed in revolutions per minute (RPM). (rpm)
      * * `engineState` (Engine State): Indicates the current state of the engine, such as running, stopped. (values: off | running | idling)
      * * `engineTotalIdleTime` (Engine Total Idle Time): Total idle time for the vehicle. (minute)
      * * `evAverageCellTemperature` (EV Average Cell Temperature): Average temperature of EV battery cells in degrees Celsius. (celsius)

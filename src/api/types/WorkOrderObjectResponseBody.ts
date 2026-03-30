@@ -45,7 +45,7 @@ export interface WorkOrderObjectResponseBody {
     priority?: WorkOrderObjectResponseBody.Priority | undefined;
     /** Service Tasks for the work order. */
     serviceTaskInstances?: Samsara.ServiceTaskInstanceObjectResponseBody[] | undefined;
-    /** The status of the work order  Valid values: `Assigned`, `Cancelled`, `Closed`, `Completed`, `In Progress`, `On Hold`, `Open`, `Pending Approval`, `Pending Parts` */
+    /** The status of the work order  Valid values: `Assigned`, `Cancelled`, `Closed`, `Completed`, `Estimate`, `In Progress`, `On Hold`, `Open`, `Pending Approval`, `Pending Parts` */
     status: WorkOrderObjectResponseBody.Status;
     tax?: Samsara.WorkOrderTaxObjectResponseBody | undefined;
     unallocatedLabor?: Samsara.WorkOrderUnallocatedLaborObjectResponseBody | undefined;
@@ -64,12 +64,13 @@ export namespace WorkOrderObjectResponseBody {
         Urgent: "Urgent",
     } as const;
     export type Priority = (typeof Priority)[keyof typeof Priority];
-    /** The status of the work order  Valid values: `Assigned`, `Cancelled`, `Closed`, `Completed`, `In Progress`, `On Hold`, `Open`, `Pending Approval`, `Pending Parts` */
+    /** The status of the work order  Valid values: `Assigned`, `Cancelled`, `Closed`, `Completed`, `Estimate`, `In Progress`, `On Hold`, `Open`, `Pending Approval`, `Pending Parts` */
     export const Status = {
         Assigned: "Assigned",
         Cancelled: "Cancelled",
         Closed: "Closed",
         Completed: "Completed",
+        Estimate: "Estimate",
         InProgress: "In Progress",
         OnHold: "On Hold",
         Open: "Open",

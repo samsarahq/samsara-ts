@@ -5,6 +5,7 @@ export const StreamWorkOrdersRequestWorkOrderStatusesItem = {
     Cancelled: "Cancelled",
     Closed: "Closed",
     Completed: "Completed",
+    Estimate: "Estimate",
     InProgress: "In Progress",
     OnHold: "On Hold",
     Open: "Open",

@@ -7115,6 +7115,312 @@ describe("BetaApIsClient", () => {
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 
+    test("listTachographLiveData (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = {
+            data: [
+                {
+                    cumulatedDrivingTimePreviousAndCurrentWeekMinute: 12345,
+                    cumulativeBreakTimeMinute: 12345,
+                    currentDailyDrivingTimeMinute: 12345,
+                    currentDurationOfSelectedActivityMinute: 12345,
+                    currentWeeklyDrivingTimeMinute: 12345,
+                    driverId: "12345",
+                    durationOfNextBreakRestMinute: 12345,
+                    durationOfNextDrivingPeriodMinute: 12345,
+                    endOfLastDailyRestPeriod: "2019-06-13T19:08:25Z",
+                    endOfLastWeeklyRestPeriod: "2019-06-13T19:08:25Z",
+                    happenedAtTime: "2019-06-13T19:08:25Z",
+                    maximumDailyDrivingTimeMinute: 12345,
+                    minimumDailyRestMinute: 12345,
+                    minimumWeeklyRestMinute: 12345,
+                    numberOfTimes9hDailyDrivingTimesExceeded: 12345,
+                    numberOfUsedReducedDailyRestPeriods: 12345,
+                    openCompensationInSecondWeekBeforeLastMinute: 12345,
+                    openCompensationInTheLastWeekMinute: 12345,
+                    openCompensationInWeekBeforeLastMinute: 12345,
+                    remaining2WeeksDrivingTimeMinute: 12345,
+                    remainingCurrentDrivingTimeMinute: 12345,
+                    remainingDrivingTimeOfCurrentWeekMinute: 12345,
+                    remainingDrivingTimeOnCurrentShiftMinute: 12345,
+                    remainingTimeOfCurrentBreakRestMinute: 12345,
+                    remainingTimeUntilNextBreakOrRestMinute: 12345,
+                    tachographCardNumber: "12345",
+                    timeLeftUntilNewDailyRestPeriodMinute: 12345,
+                    timeLeftUntilNewWeeklyRestPeriodMinute: 12345,
+                    timeLeftUntilNextDrivingPeriodMinute: 12345,
+                    vehicleId: "12345",
+                    workingState: "12345",
+                },
+            ],
+            pagination: { endCursor: "MjkY", hasNextPage: true },
+        };
+        server
+            .mockEndpoint()
+            .get("/fleet/tachograph-live-data/latest")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.betaApIs.listTachographLiveData();
+        expect(response).toEqual({
+            data: [
+                {
+                    cumulatedDrivingTimePreviousAndCurrentWeekMinute: 12345,
+                    cumulativeBreakTimeMinute: 12345,
+                    currentDailyDrivingTimeMinute: 12345,
+                    currentDurationOfSelectedActivityMinute: 12345,
+                    currentWeeklyDrivingTimeMinute: 12345,
+                    driverId: "12345",
+                    durationOfNextBreakRestMinute: 12345,
+                    durationOfNextDrivingPeriodMinute: 12345,
+                    endOfLastDailyRestPeriod: "2019-06-13T19:08:25Z",
+                    endOfLastWeeklyRestPeriod: "2019-06-13T19:08:25Z",
+                    happenedAtTime: "2019-06-13T19:08:25Z",
+                    maximumDailyDrivingTimeMinute: 12345,
+                    minimumDailyRestMinute: 12345,
+                    minimumWeeklyRestMinute: 12345,
+                    numberOfTimes9hDailyDrivingTimesExceeded: 12345,
+                    numberOfUsedReducedDailyRestPeriods: 12345,
+                    openCompensationInSecondWeekBeforeLastMinute: 12345,
+                    openCompensationInTheLastWeekMinute: 12345,
+                    openCompensationInWeekBeforeLastMinute: 12345,
+                    remaining2WeeksDrivingTimeMinute: 12345,
+                    remainingCurrentDrivingTimeMinute: 12345,
+                    remainingDrivingTimeOfCurrentWeekMinute: 12345,
+                    remainingDrivingTimeOnCurrentShiftMinute: 12345,
+                    remainingTimeOfCurrentBreakRestMinute: 12345,
+                    remainingTimeUntilNextBreakOrRestMinute: 12345,
+                    tachographCardNumber: "12345",
+                    timeLeftUntilNewDailyRestPeriodMinute: 12345,
+                    timeLeftUntilNewWeeklyRestPeriodMinute: 12345,
+                    timeLeftUntilNextDrivingPeriodMinute: 12345,
+                    vehicleId: "12345",
+                    workingState: "12345",
+                },
+            ],
+            pagination: {
+                endCursor: "MjkY",
+                hasNextPage: true,
+            },
+        });
+    });
+
+    test("listTachographLiveData (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/tachograph-live-data/latest")
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listTachographLiveData();
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("listTachographLiveData (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/tachograph-live-data/latest")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listTachographLiveData();
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("listTachographLiveData (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/tachograph-live-data/latest")
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listTachographLiveData();
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("listTachographLiveData (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/tachograph-live-data/latest")
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listTachographLiveData();
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("listTachographLiveData (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/tachograph-live-data/latest")
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listTachographLiveData();
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("listTachographLiveData (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/tachograph-live-data/latest")
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listTachographLiveData();
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("listTachographLiveData (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/tachograph-live-data/latest")
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listTachographLiveData();
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("listTachographLiveData (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/tachograph-live-data/latest")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listTachographLiveData();
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("listTachographLiveData (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/tachograph-live-data/latest")
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listTachographLiveData();
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
     test("getEngineImmobilizerStates (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({

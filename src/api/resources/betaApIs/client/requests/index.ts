@@ -46,6 +46,7 @@ export type { ListReadingsDefinitionsRequest } from "./ListReadingsDefinitionsRe
 export type { ListRidershipAccountsRequest } from "./ListRidershipAccountsRequest.js";
 export type { ListRidershipPassengersRequest } from "./ListRidershipPassengersRequest.js";
 export type { ListRidershipRouteSetupsRequest } from "./ListRidershipRouteSetupsRequest.js";
+export type { ListTachographLiveDataRequest } from "./ListTachographLiveDataRequest.js";
 export type { ListVendorCategoriesRequest } from "./ListVendorCategoriesRequest.js";
 export type { PlanOrdersCreatePlanOrdersRequestBody } from "./PlanOrdersCreatePlanOrdersRequestBody.js";
 export type { QualificationsArchiveQualificationRecordRequestBody } from "./QualificationsArchiveQualificationRecordRequestBody.js";

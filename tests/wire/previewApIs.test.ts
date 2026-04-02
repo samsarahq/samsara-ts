@@ -764,7 +764,11 @@ describe("PreviewApIsClient", () => {
             environment: server.baseUrl,
         });
         const rawRequestBody = {
-            safetyEventIds: ["bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590"],
+            safetyEventIds: [
+                "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
+                "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
+                "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
+            ],
         };
         const rawResponseBody = {
             requestId: "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
@@ -780,7 +784,11 @@ describe("PreviewApIsClient", () => {
             .build();
 
         const response = await client.previewApIs.patchSafetyEventsV2Batch({
-            safetyEventIds: ["bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590"],
+            safetyEventIds: [
+                "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
+                "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
+                "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
+            ],
         });
         expect(response).toEqual({
             requestId: "a1b2c3d4-e5f6-7890-abcd-ef1234567890",

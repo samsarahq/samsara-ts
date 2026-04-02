@@ -18,7 +18,7 @@ describe("WebhooksClient", () => {
             data: [
                 {
                     customHeaders: [{ key: "format", value: "xcmol-532" }],
-                    eventTypes: ["AddressCreated", "AddressCreated", "AddressCreated", "AddressCreated"],
+                    eventTypes: ["AddressCreated", "AddressCreated"],
                     id: "23918",
                     name: "Webhook-123",
                     secretKey: "11121-31231-1231212",
@@ -40,7 +40,7 @@ describe("WebhooksClient", () => {
                             value: "xcmol-532",
                         },
                     ],
-                    eventTypes: ["AddressCreated", "AddressCreated", "AddressCreated", "AddressCreated"],
+                    eventTypes: ["AddressCreated", "AddressCreated"],
                     id: "23918",
                     name: "Webhook-123",
                     secretKey: "11121-31231-1231212",
@@ -219,7 +219,7 @@ describe("WebhooksClient", () => {
         const rawRequestBody = { name: "Webhook-123", url: "https://www.Webhook-123.com/webhook/listener" };
         const rawResponseBody = {
             customHeaders: [{ key: "format", value: "xcmol-532" }],
-            eventTypes: ["AddressCreated", "AddressCreated", "AddressCreated", "AddressCreated"],
+            eventTypes: ["AddressCreated", "AddressCreated", "AddressCreated"],
             id: "23918",
             name: "Webhook-123",
             secretKey: "11121-31231-1231212",
@@ -246,7 +246,7 @@ describe("WebhooksClient", () => {
                     value: "xcmol-532",
                 },
             ],
-            eventTypes: ["AddressCreated", "AddressCreated", "AddressCreated", "AddressCreated"],
+            eventTypes: ["AddressCreated", "AddressCreated", "AddressCreated"],
             id: "23918",
             name: "Webhook-123",
             secretKey: "11121-31231-1231212",
@@ -509,7 +509,7 @@ describe("WebhooksClient", () => {
 
         const rawResponseBody = {
             customHeaders: [{ key: "format", value: "xcmol-532" }],
-            eventTypes: ["AddressCreated", "AddressCreated", "AddressCreated"],
+            eventTypes: ["AddressCreated", "AddressCreated", "AddressCreated", "AddressCreated"],
             id: "23918",
             name: "Webhook-123",
             secretKey: "11121-31231-1231212",
@@ -528,7 +528,7 @@ describe("WebhooksClient", () => {
                     value: "xcmol-532",
                 },
             ],
-            eventTypes: ["AddressCreated", "AddressCreated", "AddressCreated"],
+            eventTypes: ["AddressCreated", "AddressCreated", "AddressCreated", "AddressCreated"],
             id: "23918",
             name: "Webhook-123",
             secretKey: "11121-31231-1231212",
@@ -907,7 +907,7 @@ describe("WebhooksClient", () => {
         const rawRequestBody = {};
         const rawResponseBody = {
             customHeaders: [{ key: "format", value: "xcmol-532" }],
-            eventTypes: ["AddressCreated", "AddressCreated"],
+            eventTypes: ["AddressCreated", "AddressCreated", "AddressCreated", "AddressCreated"],
             id: "23918",
             name: "Webhook-123",
             secretKey: "11121-31231-1231212",
@@ -933,7 +933,7 @@ describe("WebhooksClient", () => {
                     value: "xcmol-532",
                 },
             ],
-            eventTypes: ["AddressCreated", "AddressCreated"],
+            eventTypes: ["AddressCreated", "AddressCreated", "AddressCreated", "AddressCreated"],
             id: "23918",
             name: "Webhook-123",
             secretKey: "11121-31231-1231212",

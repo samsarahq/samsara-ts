@@ -19,6 +19,7 @@ export type { GetDevicesRequest } from "./GetDevicesRequest.js";
 export type { GetDriverEfficiencyRequest } from "./GetDriverEfficiencyRequest.js";
 export type { GetEngineImmobilizerStatesRequest } from "./GetEngineImmobilizerStatesRequest.js";
 export type { GetFunctionRequest } from "./GetFunctionRequest.js";
+export type { GetFunctionRunRequest } from "./GetFunctionRunRequest.js";
 export type { GetHosEldEventsRequest } from "./GetHosEldEventsRequest.js";
 export type { GetJobsRequest } from "./GetJobsRequest.js";
 export type { GetQualificationRecordsRequest } from "./GetQualificationRecordsRequest.js";

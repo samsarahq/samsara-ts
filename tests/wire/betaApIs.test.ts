@@ -10506,7 +10506,7 @@ describe("BetaApIsClient", () => {
                     fields: [
                         {
                             checkBoxesValue: { value: ["value", "value"], valueIds: ["valueIds", "valueIds"] },
-                            dateTimeValue: { type: "datetime", value: "2024-01-15T09:30:00Z" },
+                            dateTimeValue: { dateValue: "2023-01-15", type: "datetime", value: "2024-01-15T09:30:00Z" },
                             id: "id",
                             label: "label",
                             mediaList: [
@@ -10548,7 +10548,7 @@ describe("BetaApIsClient", () => {
                         },
                         {
                             checkBoxesValue: { value: ["value", "value"], valueIds: ["valueIds", "valueIds"] },
-                            dateTimeValue: { type: "datetime", value: "2024-01-15T09:30:00Z" },
+                            dateTimeValue: { dateValue: "2023-01-15", type: "datetime", value: "2024-01-15T09:30:00Z" },
                             id: "id",
                             label: "label",
                             mediaList: [
@@ -10605,7 +10605,7 @@ describe("BetaApIsClient", () => {
                     fields: [
                         {
                             checkBoxesValue: { value: ["value", "value"], valueIds: ["valueIds", "valueIds"] },
-                            dateTimeValue: { type: "datetime", value: "2024-01-15T09:30:00Z" },
+                            dateTimeValue: { dateValue: "2023-01-15", type: "datetime", value: "2024-01-15T09:30:00Z" },
                             id: "id",
                             label: "label",
                             mediaList: [
@@ -10647,7 +10647,7 @@ describe("BetaApIsClient", () => {
                         },
                         {
                             checkBoxesValue: { value: ["value", "value"], valueIds: ["valueIds", "valueIds"] },
-                            dateTimeValue: { type: "datetime", value: "2024-01-15T09:30:00Z" },
+                            dateTimeValue: { dateValue: "2023-01-15", type: "datetime", value: "2024-01-15T09:30:00Z" },
                             id: "id",
                             label: "label",
                             mediaList: [
@@ -10726,6 +10726,7 @@ describe("BetaApIsClient", () => {
                                 valueIds: ["valueIds", "valueIds"],
                             },
                             dateTimeValue: {
+                                dateValue: "2023-01-15",
                                 type: "datetime",
                                 value: "2024-01-15T09:30:00Z",
                             },
@@ -10795,6 +10796,7 @@ describe("BetaApIsClient", () => {
                                 valueIds: ["valueIds", "valueIds"],
                             },
                             dateTimeValue: {
+                                dateValue: "2023-01-15",
                                 type: "datetime",
                                 value: "2024-01-15T09:30:00Z",
                             },
@@ -10897,6 +10899,7 @@ describe("BetaApIsClient", () => {
                                 valueIds: ["valueIds", "valueIds"],
                             },
                             dateTimeValue: {
+                                dateValue: "2023-01-15",
                                 type: "datetime",
                                 value: "2024-01-15T09:30:00Z",
                             },
@@ -10966,6 +10969,7 @@ describe("BetaApIsClient", () => {
                                 valueIds: ["valueIds", "valueIds"],
                             },
                             dateTimeValue: {
+                                dateValue: "2023-01-15",
                                 type: "datetime",
                                 value: "2024-01-15T09:30:00Z",
                             },
@@ -11288,7 +11292,7 @@ describe("BetaApIsClient", () => {
                             value: ["Option A", "Option B"],
                             valueIds: ["0cbbddb3-2541-4889-b4eb-92171cbfc142", "d33198cb-369f-4278-8120-d92d3ebf74bf"],
                         },
-                        dateTimeValue: { type: "datetime", value: "2024-08-08T18:53:23Z" },
+                        dateTimeValue: { dateValue: "2024-08-08", type: "datetime", value: "2024-08-08T18:53:23Z" },
                         id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
                         label: "License Number",
                         mediaList: [
@@ -11322,7 +11326,11 @@ describe("BetaApIsClient", () => {
                                                     "d33198cb-369f-4278-8120-d92d3ebf74bf",
                                                 ],
                                             },
-                                            dateTimeValue: { type: "datetime", value: "2024-08-08T18:53:23Z" },
+                                            dateTimeValue: {
+                                                dateValue: "2024-08-08",
+                                                type: "datetime",
+                                                value: "2024-08-08T18:53:23Z",
+                                            },
                                             id: "id",
                                             mediaValue: {
                                                 mediaList: [
@@ -11415,6 +11423,7 @@ describe("BetaApIsClient", () => {
                             valueIds: ["0cbbddb3-2541-4889-b4eb-92171cbfc142", "d33198cb-369f-4278-8120-d92d3ebf74bf"],
                         },
                         dateTimeValue: {
+                            dateValue: "2024-08-08",
                             type: "datetime",
                             value: "2024-08-08T18:53:23Z",
                         },
@@ -11463,6 +11472,7 @@ describe("BetaApIsClient", () => {
                                                 ],
                                             },
                                             dateTimeValue: {
+                                                dateValue: "2024-08-08",
                                                 type: "datetime",
                                                 value: "2024-08-08T18:53:23Z",
                                             },
@@ -12148,7 +12158,7 @@ describe("BetaApIsClient", () => {
                             value: ["Option A", "Option B"],
                             valueIds: ["0cbbddb3-2541-4889-b4eb-92171cbfc142", "d33198cb-369f-4278-8120-d92d3ebf74bf"],
                         },
-                        dateTimeValue: { type: "datetime", value: "2024-08-08T18:53:23Z" },
+                        dateTimeValue: { dateValue: "2024-08-08", type: "datetime", value: "2024-08-08T18:53:23Z" },
                         id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
                         label: "License Number",
                         mediaList: [
@@ -12182,7 +12192,11 @@ describe("BetaApIsClient", () => {
                                                     "d33198cb-369f-4278-8120-d92d3ebf74bf",
                                                 ],
                                             },
-                                            dateTimeValue: { type: "datetime", value: "2024-08-08T18:53:23Z" },
+                                            dateTimeValue: {
+                                                dateValue: "2024-08-08",
+                                                type: "datetime",
+                                                value: "2024-08-08T18:53:23Z",
+                                            },
                                             id: "id",
                                             mediaValue: {
                                                 mediaList: [
@@ -12267,6 +12281,7 @@ describe("BetaApIsClient", () => {
                             valueIds: ["0cbbddb3-2541-4889-b4eb-92171cbfc142", "d33198cb-369f-4278-8120-d92d3ebf74bf"],
                         },
                         dateTimeValue: {
+                            dateValue: "2024-08-08",
                             type: "datetime",
                             value: "2024-08-08T18:53:23Z",
                         },
@@ -12315,6 +12330,7 @@ describe("BetaApIsClient", () => {
                                                 ],
                                             },
                                             dateTimeValue: {
+                                                dateValue: "2024-08-08",
                                                 type: "datetime",
                                                 value: "2024-08-08T18:53:23Z",
                                             },
@@ -12901,7 +12917,7 @@ describe("BetaApIsClient", () => {
                                     "d33198cb-369f-4278-8120-d92d3ebf74bf",
                                 ],
                             },
-                            dateTimeValue: { type: "datetime", value: "2024-08-08T18:53:23Z" },
+                            dateTimeValue: { dateValue: "2024-08-08", type: "datetime", value: "2024-08-08T18:53:23Z" },
                             id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
                             label: "License Number",
                             mediaList: [
@@ -12935,7 +12951,11 @@ describe("BetaApIsClient", () => {
                                                         "d33198cb-369f-4278-8120-d92d3ebf74bf",
                                                     ],
                                                 },
-                                                dateTimeValue: { type: "datetime", value: "2024-08-08T18:53:23Z" },
+                                                dateTimeValue: {
+                                                    dateValue: "2024-08-08",
+                                                    type: "datetime",
+                                                    value: "2024-08-08T18:53:23Z",
+                                                },
                                                 id: "id",
                                                 mediaValue: {
                                                     mediaList: [
@@ -13021,6 +13041,7 @@ describe("BetaApIsClient", () => {
                                 ],
                             },
                             dateTimeValue: {
+                                dateValue: "2024-08-08",
                                 type: "datetime",
                                 value: "2024-08-08T18:53:23Z",
                             },
@@ -13069,6 +13090,7 @@ describe("BetaApIsClient", () => {
                                                     ],
                                                 },
                                                 dateTimeValue: {
+                                                    dateValue: "2024-08-08",
                                                     type: "datetime",
                                                     value: "2024-08-08T18:53:23Z",
                                                 },

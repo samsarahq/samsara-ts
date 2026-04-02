@@ -4,6 +4,8 @@
  * The value of a datetime form input field.
  */
 export interface FormsDateTimeValueObjectResponseBody {
+    /** Calendar date in YYYY-MM-DD format in the stored field timezone. Present when type is `date` (date-only fields). */
+    dateValue?: string | undefined;
     /** The type of datetime format.  Valid values: `datetime`, `date`, `time` */
     type: FormsDateTimeValueObjectResponseBody.Type;
     /** UTC timestamp in RFC 3339 format. */

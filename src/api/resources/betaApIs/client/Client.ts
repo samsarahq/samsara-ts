@@ -660,356 +660,6 @@ export class BetaApIsClient {
     }
 
     /**
-     * Returns the last known stats of all trailers at the given `time`. If no `time` is specified, the current time is used.
-     *
-     *  <b>Rate limit:</b> 25 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
-     *
-     * To use this endpoint, select **Read Trailer Statistics** under the Trailers category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
-     *
-     *
-     *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
-     *
-     * @param {Samsara.GetTrailerStatsSnapshotRequest} request
-     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @throws {@link Samsara.UnauthorizedError}
-     * @throws {@link Samsara.NotFoundError}
-     * @throws {@link Samsara.MethodNotAllowedError}
-     * @throws {@link Samsara.TooManyRequestsError}
-     * @throws {@link Samsara.InternalServerError}
-     * @throws {@link Samsara.NotImplementedError}
-     * @throws {@link Samsara.BadGatewayError}
-     * @throws {@link Samsara.ServiceUnavailableError}
-     * @throws {@link Samsara.GatewayTimeoutError}
-     *
-     * @example
-     *     await client.betaApIs.getTrailerStatsSnapshot({
-     *         types: "types"
-     *     })
-     */
-    public getTrailerStatsSnapshot(
-        request: Samsara.GetTrailerStatsSnapshotRequest,
-        requestOptions?: BetaApIsClient.RequestOptions,
-    ): core.HttpResponsePromise<Samsara.TrailerStatsGetTrailerStatsSnapshotResponseBody> {
-        return core.HttpResponsePromise.fromPromise(this.__getTrailerStatsSnapshot(request, requestOptions));
-    }
-
-    private async __getTrailerStatsSnapshot(
-        request: Samsara.GetTrailerStatsSnapshotRequest,
-        requestOptions?: BetaApIsClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Samsara.TrailerStatsGetTrailerStatsSnapshotResponseBody>> {
-        const { types, tagIds, parentTagIds, after, trailerIds, time } = request;
-        const _queryParams: Record<string, unknown> = {
-            types,
-            tagIds,
-            parentTagIds,
-            after,
-            trailerIds,
-            time,
-        };
-        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
-        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
-            _authRequest.headers,
-            this._options?.headers,
-            mergeOnlyDefinedHeaders({ "X-Samsara-Version": requestOptions?.version }),
-            requestOptions?.headers,
-        );
-        const _response = await core.fetcher({
-            url: core.url.join(
-                (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.SamsaraEnvironment.ProductionApi,
-                "beta/fleet/trailers/stats",
-            ),
-            method: "GET",
-            headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
-            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
-            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
-            fetchFn: this._options?.fetch,
-            logging: this._options.logging,
-        });
-        if (_response.ok) {
-            return {
-                data: _response.body as Samsara.TrailerStatsGetTrailerStatsSnapshotResponseBody,
-                rawResponse: _response.rawResponse,
-            };
-        }
-
-        if (_response.error.reason === "status-code") {
-            switch (_response.error.statusCode) {
-                case 401:
-                    throw new Samsara.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
-                case 404:
-                    throw new Samsara.NotFoundError(_response.error.body as unknown, _response.rawResponse);
-                case 405:
-                    throw new Samsara.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
-                case 429:
-                    throw new Samsara.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
-                case 500:
-                    throw new Samsara.InternalServerError(_response.error.body as unknown, _response.rawResponse);
-                case 501:
-                    throw new Samsara.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
-                case 502:
-                    throw new Samsara.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
-                case 503:
-                    throw new Samsara.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
-                case 504:
-                    throw new Samsara.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
-                default:
-                    throw new errors.SamsaraError({
-                        statusCode: _response.error.statusCode,
-                        body: _response.error.body,
-                        rawResponse: _response.rawResponse,
-                    });
-            }
-        }
-
-        return handleNonStatusCodeError(_response.error, _response.rawResponse, "GET", "/beta/fleet/trailers/stats");
-    }
-
-    /**
-     * Follow a feed of trailer stats.
-     *
-     * The first call to this endpoint will provide the most recent stats for each trailer and an `endCursor`.
-     *
-     * Providing the `endCursor` value to the `after` query parameter will fetch all updates since the previous API call.
-     *
-     * If `hasNextPage` is false, no new data is immediately available. Please wait a minimum of 5 seconds before making a subsequent request.
-     *
-     *  <b>Rate limit:</b> 25 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
-     *
-     * To use this endpoint, select **Read Trailer Statistics** under the Trailers category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
-     *
-     *
-     *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
-     *
-     * @param {Samsara.GetTrailerStatsFeedRequest} request
-     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @throws {@link Samsara.UnauthorizedError}
-     * @throws {@link Samsara.NotFoundError}
-     * @throws {@link Samsara.MethodNotAllowedError}
-     * @throws {@link Samsara.TooManyRequestsError}
-     * @throws {@link Samsara.InternalServerError}
-     * @throws {@link Samsara.NotImplementedError}
-     * @throws {@link Samsara.BadGatewayError}
-     * @throws {@link Samsara.ServiceUnavailableError}
-     * @throws {@link Samsara.GatewayTimeoutError}
-     *
-     * @example
-     *     await client.betaApIs.getTrailerStatsFeed({
-     *         types: "types"
-     *     })
-     */
-    public getTrailerStatsFeed(
-        request: Samsara.GetTrailerStatsFeedRequest,
-        requestOptions?: BetaApIsClient.RequestOptions,
-    ): core.HttpResponsePromise<Samsara.TrailerStatsGetTrailerStatsFeedResponseBody> {
-        return core.HttpResponsePromise.fromPromise(this.__getTrailerStatsFeed(request, requestOptions));
-    }
-
-    private async __getTrailerStatsFeed(
-        request: Samsara.GetTrailerStatsFeedRequest,
-        requestOptions?: BetaApIsClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Samsara.TrailerStatsGetTrailerStatsFeedResponseBody>> {
-        const { types, tagIds, parentTagIds, after, trailerIds, decorations } = request;
-        const _queryParams: Record<string, unknown> = {
-            types,
-            tagIds,
-            parentTagIds,
-            after,
-            trailerIds,
-            decorations,
-        };
-        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
-        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
-            _authRequest.headers,
-            this._options?.headers,
-            mergeOnlyDefinedHeaders({ "X-Samsara-Version": requestOptions?.version }),
-            requestOptions?.headers,
-        );
-        const _response = await core.fetcher({
-            url: core.url.join(
-                (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.SamsaraEnvironment.ProductionApi,
-                "beta/fleet/trailers/stats/feed",
-            ),
-            method: "GET",
-            headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
-            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
-            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
-            fetchFn: this._options?.fetch,
-            logging: this._options.logging,
-        });
-        if (_response.ok) {
-            return {
-                data: _response.body as Samsara.TrailerStatsGetTrailerStatsFeedResponseBody,
-                rawResponse: _response.rawResponse,
-            };
-        }
-
-        if (_response.error.reason === "status-code") {
-            switch (_response.error.statusCode) {
-                case 401:
-                    throw new Samsara.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
-                case 404:
-                    throw new Samsara.NotFoundError(_response.error.body as unknown, _response.rawResponse);
-                case 405:
-                    throw new Samsara.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
-                case 429:
-                    throw new Samsara.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
-                case 500:
-                    throw new Samsara.InternalServerError(_response.error.body as unknown, _response.rawResponse);
-                case 501:
-                    throw new Samsara.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
-                case 502:
-                    throw new Samsara.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
-                case 503:
-                    throw new Samsara.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
-                case 504:
-                    throw new Samsara.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
-                default:
-                    throw new errors.SamsaraError({
-                        statusCode: _response.error.statusCode,
-                        body: _response.error.body,
-                        rawResponse: _response.rawResponse,
-                    });
-            }
-        }
-
-        return handleNonStatusCodeError(
-            _response.error,
-            _response.rawResponse,
-            "GET",
-            "/beta/fleet/trailers/stats/feed",
-        );
-    }
-
-    /**
-     * Returns trailer stats during the given time range for all trailers. This can be optionally filtered by tags or specific trailer IDs.
-     *
-     *  <b>Rate limit:</b> 10 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
-     *
-     * To use this endpoint, select **Read Trailer Statistics** under the Trailers category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
-     *
-     *
-     *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
-     *
-     * @param {Samsara.GetTrailerStatsHistoryRequest} request
-     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @throws {@link Samsara.UnauthorizedError}
-     * @throws {@link Samsara.NotFoundError}
-     * @throws {@link Samsara.MethodNotAllowedError}
-     * @throws {@link Samsara.TooManyRequestsError}
-     * @throws {@link Samsara.InternalServerError}
-     * @throws {@link Samsara.NotImplementedError}
-     * @throws {@link Samsara.BadGatewayError}
-     * @throws {@link Samsara.ServiceUnavailableError}
-     * @throws {@link Samsara.GatewayTimeoutError}
-     *
-     * @example
-     *     await client.betaApIs.getTrailerStatsHistory({
-     *         startTime: "startTime",
-     *         endTime: "endTime",
-     *         types: "types"
-     *     })
-     */
-    public getTrailerStatsHistory(
-        request: Samsara.GetTrailerStatsHistoryRequest,
-        requestOptions?: BetaApIsClient.RequestOptions,
-    ): core.HttpResponsePromise<Samsara.TrailerStatsGetTrailerStatsHistoryResponseBody> {
-        return core.HttpResponsePromise.fromPromise(this.__getTrailerStatsHistory(request, requestOptions));
-    }
-
-    private async __getTrailerStatsHistory(
-        request: Samsara.GetTrailerStatsHistoryRequest,
-        requestOptions?: BetaApIsClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Samsara.TrailerStatsGetTrailerStatsHistoryResponseBody>> {
-        const { startTime, endTime, types, tagIds, parentTagIds, after, trailerIds, decorations } = request;
-        const _queryParams: Record<string, unknown> = {
-            startTime,
-            endTime,
-            types,
-            tagIds,
-            parentTagIds,
-            after,
-            trailerIds,
-            decorations,
-        };
-        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
-        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
-            _authRequest.headers,
-            this._options?.headers,
-            mergeOnlyDefinedHeaders({ "X-Samsara-Version": requestOptions?.version }),
-            requestOptions?.headers,
-        );
-        const _response = await core.fetcher({
-            url: core.url.join(
-                (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.SamsaraEnvironment.ProductionApi,
-                "beta/fleet/trailers/stats/history",
-            ),
-            method: "GET",
-            headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
-            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
-            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
-            fetchFn: this._options?.fetch,
-            logging: this._options.logging,
-        });
-        if (_response.ok) {
-            return {
-                data: _response.body as Samsara.TrailerStatsGetTrailerStatsHistoryResponseBody,
-                rawResponse: _response.rawResponse,
-            };
-        }
-
-        if (_response.error.reason === "status-code") {
-            switch (_response.error.statusCode) {
-                case 401:
-                    throw new Samsara.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
-                case 404:
-                    throw new Samsara.NotFoundError(_response.error.body as unknown, _response.rawResponse);
-                case 405:
-                    throw new Samsara.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
-                case 429:
-                    throw new Samsara.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
-                case 500:
-                    throw new Samsara.InternalServerError(_response.error.body as unknown, _response.rawResponse);
-                case 501:
-                    throw new Samsara.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
-                case 502:
-                    throw new Samsara.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
-                case 503:
-                    throw new Samsara.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
-                case 504:
-                    throw new Samsara.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
-                default:
-                    throw new errors.SamsaraError({
-                        statusCode: _response.error.statusCode,
-                        body: _response.error.body,
-                        rawResponse: _response.rawResponse,
-                    });
-            }
-        }
-
-        return handleNonStatusCodeError(
-            _response.error,
-            _response.rawResponse,
-            "GET",
-            "/beta/fleet/trailers/stats/history",
-        );
-    }
-
-    /**
      * Update the engine immobilizer state of a vehicle. This requires an engine immobilizer to be installed on the vehicle gateway.
      *
      *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
@@ -2326,6 +1976,115 @@ export class BetaApIsClient {
     }
 
     /**
+     * Publish or unpublish a driver app workflow to one or more drivers by their IDs. If a workflow is published to a driver who already has it, or unpublished from a driver who does not have it, the operation is a no-op for that driver.
+     *
+     *  <b>Rate limit:</b> 10 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *
+     * To use this endpoint, select **Write Driver App Settings** under the Drivers category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     *
+     *
+     *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
+     *
+     * @param {Samsara.DriverWorkflowAssignmentsPostDriverWorkflowAssignmentRequestBody} request
+     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Samsara.UnauthorizedError}
+     * @throws {@link Samsara.NotFoundError}
+     * @throws {@link Samsara.MethodNotAllowedError}
+     * @throws {@link Samsara.TooManyRequestsError}
+     * @throws {@link Samsara.InternalServerError}
+     * @throws {@link Samsara.NotImplementedError}
+     * @throws {@link Samsara.BadGatewayError}
+     * @throws {@link Samsara.ServiceUnavailableError}
+     * @throws {@link Samsara.GatewayTimeoutError}
+     *
+     * @example
+     *     await client.betaApIs.postDriverWorkflowAssignment({
+     *         workflowId: "a4db8702-79d5-4396-a717-e301d52ecc11"
+     *     })
+     */
+    public postDriverWorkflowAssignment(
+        request: Samsara.DriverWorkflowAssignmentsPostDriverWorkflowAssignmentRequestBody,
+        requestOptions?: BetaApIsClient.RequestOptions,
+    ): core.HttpResponsePromise<Samsara.DriverWorkflowAssignmentsPostDriverWorkflowAssignmentResponseBody> {
+        return core.HttpResponsePromise.fromPromise(this.__postDriverWorkflowAssignment(request, requestOptions));
+    }
+
+    private async __postDriverWorkflowAssignment(
+        request: Samsara.DriverWorkflowAssignmentsPostDriverWorkflowAssignmentRequestBody,
+        requestOptions?: BetaApIsClient.RequestOptions,
+    ): Promise<core.WithRawResponse<Samsara.DriverWorkflowAssignmentsPostDriverWorkflowAssignmentResponseBody>> {
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ "X-Samsara-Version": requestOptions?.version }),
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.SamsaraEnvironment.ProductionApi,
+                "fleet/drivers/workflow-assignments",
+            ),
+            method: "POST",
+            headers: _headers,
+            contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
+            requestType: "json",
+            body: request,
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return {
+                data: _response.body as Samsara.DriverWorkflowAssignmentsPostDriverWorkflowAssignmentResponseBody,
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 401:
+                    throw new Samsara.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
+                case 404:
+                    throw new Samsara.NotFoundError(_response.error.body as unknown, _response.rawResponse);
+                case 405:
+                    throw new Samsara.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
+                case 429:
+                    throw new Samsara.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
+                case 500:
+                    throw new Samsara.InternalServerError(_response.error.body as unknown, _response.rawResponse);
+                case 501:
+                    throw new Samsara.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
+                case 502:
+                    throw new Samsara.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                case 503:
+                    throw new Samsara.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
+                case 504:
+                    throw new Samsara.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
+                default:
+                    throw new errors.SamsaraError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
+                    });
+            }
+        }
+
+        return handleNonStatusCodeError(
+            _response.error,
+            _response.rawResponse,
+            "POST",
+            "/fleet/drivers/workflow-assignments",
+        );
+    }
+
+    /**
      * Returns the list of vendor categories available for maintenance vendors.
      *
      *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
@@ -2971,6 +2730,105 @@ export class BetaApIsClient {
         }
 
         return handleNonStatusCodeError(_response.error, _response.rawResponse, "GET", "/functions/{name}");
+    }
+
+    /**
+     * Delete a Function by name. A Function that is currently configured as an action in a workflow config cannot be deleted.
+     *
+     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *
+     * To use this endpoint, select **Write Functions** under the Closed Beta category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     *
+     *
+     *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
+     *
+     * @param {Samsara.DeleteFunctionRequest} request
+     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Samsara.UnauthorizedError}
+     * @throws {@link Samsara.NotFoundError}
+     * @throws {@link Samsara.MethodNotAllowedError}
+     * @throws {@link Samsara.TooManyRequestsError}
+     * @throws {@link Samsara.InternalServerError}
+     * @throws {@link Samsara.NotImplementedError}
+     * @throws {@link Samsara.BadGatewayError}
+     * @throws {@link Samsara.ServiceUnavailableError}
+     * @throws {@link Samsara.GatewayTimeoutError}
+     *
+     * @example
+     *     await client.betaApIs.deleteFunction({
+     *         name: "name"
+     *     })
+     */
+    public deleteFunction(
+        request: Samsara.DeleteFunctionRequest,
+        requestOptions?: BetaApIsClient.RequestOptions,
+    ): core.HttpResponsePromise<void> {
+        return core.HttpResponsePromise.fromPromise(this.__deleteFunction(request, requestOptions));
+    }
+
+    private async __deleteFunction(
+        request: Samsara.DeleteFunctionRequest,
+        requestOptions?: BetaApIsClient.RequestOptions,
+    ): Promise<core.WithRawResponse<void>> {
+        const { name } = request;
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ "X-Samsara-Version": requestOptions?.version }),
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.SamsaraEnvironment.ProductionApi,
+                `functions/${core.url.encodePathParam(name)}`,
+            ),
+            method: "DELETE",
+            headers: _headers,
+            queryParameters: requestOptions?.queryParams,
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return { data: undefined, rawResponse: _response.rawResponse };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 401:
+                    throw new Samsara.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
+                case 404:
+                    throw new Samsara.NotFoundError(_response.error.body as unknown, _response.rawResponse);
+                case 405:
+                    throw new Samsara.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
+                case 429:
+                    throw new Samsara.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
+                case 500:
+                    throw new Samsara.InternalServerError(_response.error.body as unknown, _response.rawResponse);
+                case 501:
+                    throw new Samsara.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
+                case 502:
+                    throw new Samsara.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                case 503:
+                    throw new Samsara.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
+                case 504:
+                    throw new Samsara.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
+                default:
+                    throw new errors.SamsaraError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
+                    });
+            }
+        }
+
+        return handleNonStatusCodeError(_response.error, _response.rawResponse, "DELETE", "/functions/{name}");
     }
 
     /**

@@ -1,3 +1,4 @@
+export type { DeleteFunctionRequest } from "./DeleteFunctionRequest.js";
 export type { DeleteJobRequest } from "./DeleteJobRequest.js";
 export type { DeleteRidershipAccountRequest } from "./DeleteRidershipAccountRequest.js";
 export type { DeleteRidershipPassengerRequest } from "./DeleteRidershipPassengerRequest.js";
@@ -5,6 +6,7 @@ export type { DeleteRidershipRouteSetupRequest } from "./DeleteRidershipRouteSet
 export type { DeployFunctionRequest } from "./DeployFunctionRequest.js";
 export type { DeviceRecoveryMarkAssetMissingRequestBody } from "./DeviceRecoveryMarkAssetMissingRequestBody.js";
 export { DeviceRecoveryRecoverAssetRequestBody } from "./DeviceRecoveryRecoverAssetRequestBody.js";
+export type { DriverWorkflowAssignmentsPostDriverWorkflowAssignmentRequestBody } from "./DriverWorkflowAssignmentsPostDriverWorkflowAssignmentRequestBody.js";
 export type { EngineImmobilizerUpdateEngineImmobilizerStateRequestBody } from "./EngineImmobilizerUpdateEngineImmobilizerStateRequestBody.js";
 export type { EquipmentPatchEquipmentRequestBody } from "./EquipmentPatchEquipmentRequestBody.js";
 export type { FunctionsCreateFunctionRequestBody } from "./FunctionsCreateFunctionRequestBody.js";
@@ -33,9 +35,6 @@ export type { GetReportRunsRequest } from "./GetReportRunsRequest.js";
 export type { GetRidershipAccountRequest } from "./GetRidershipAccountRequest.js";
 export type { GetRidershipPassengerRequest } from "./GetRidershipPassengerRequest.js";
 export type { GetRidershipRouteSetupRequest } from "./GetRidershipRouteSetupRequest.js";
-export type { GetTrailerStatsFeedRequest } from "./GetTrailerStatsFeedRequest.js";
-export type { GetTrailerStatsHistoryRequest } from "./GetTrailerStatsHistoryRequest.js";
-export type { GetTrailerStatsSnapshotRequest } from "./GetTrailerStatsSnapshotRequest.js";
 export type { HosDailyLogsUpdateShippingDocsRequestBody } from "./HosDailyLogsUpdateShippingDocsRequestBody.js";
 export type { JobsCreateJobRequestBody } from "./JobsCreateJobRequestBody.js";
 export type { JobsPatchJobRequestBody } from "./JobsPatchJobRequestBody.js";

@@ -530,6 +530,1397 @@ describe("TrailersClient", () => {
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 
+    test("getTrailerStatsSnapshot (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = {
+            data: [
+                {
+                    carrierReeferState: {
+                        substateValue: "`Pretrip`, `Defrost`",
+                        time: "2020-01-27T07:06:25Z",
+                        value: "`Off`, `On`",
+                    },
+                    gps: {
+                        headingDegrees: 5631003136208764000,
+                        latitude: 0.11331136118623318,
+                        longitude: 0.2965517819045647,
+                        speedMilesPerHour: 6500481596243475000,
+                        time: "2020-01-27T07:06:25Z",
+                    },
+                    gpsOdometerMeters: { time: "2020-01-27T07:06:25Z", value: 50 },
+                    id: "1234",
+                    name: "Trailer-123",
+                    reeferAlarms: {
+                        alarms: [
+                            {
+                                alarmCode: "3",
+                                description: "Test alarm",
+                                operatorAction: "Manually disable alarm",
+                                severity: 5406015254738261000,
+                            },
+                        ],
+                        time: "2020-01-27T07:06:25Z",
+                    },
+                    reeferAmbientAirTemperatureMilliC: { time: "2020-01-27T07:06:25Z", value: 50 },
+                    reeferDoorStateZone1: { time: "2020-01-27T07:06:25Z", value: "open" },
+                    reeferDoorStateZone2: { time: "2020-01-27T07:06:25Z", value: "open" },
+                    reeferDoorStateZone3: { time: "2020-01-27T07:06:25Z", value: "open" },
+                    reeferFuelPercent: { time: "2020-01-27T07:06:25Z", value: 50 },
+                    reeferObdEngineSeconds: { time: "2020-01-27T07:06:25Z", value: 50 },
+                    reeferReturnAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                    reeferReturnAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                    reeferReturnAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                    reeferRunMode: { time: "2020-01-27T07:06:25Z", value: "`Start/Stop`,`Continuous`" },
+                    reeferSetPointTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                    reeferSetPointTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                    reeferSetPointTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                    reeferStateZone1: {
+                        substateValue: "`Pretrip`, `Defrost`",
+                        time: "2020-01-27T07:06:25Z",
+                        value: "`Off`, `On`",
+                    },
+                    reeferStateZone2: {
+                        substateValue: "`Pretrip`, `Defrost`",
+                        time: "2020-01-27T07:06:25Z",
+                        value: "`Off`, `On`",
+                    },
+                    reeferStateZone3: {
+                        substateValue: "`Pretrip`, `Defrost`",
+                        time: "2020-01-27T07:06:25Z",
+                        value: "`Off`, `On`",
+                    },
+                    reeferSupplyAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                    reeferSupplyAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                    reeferSupplyAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                },
+            ],
+            pagination: { endCursor: "MjkY", hasNextPage: true },
+        };
+        server
+            .mockEndpoint()
+            .get("/fleet/trailers/stats")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.trailers.getTrailerStatsSnapshot({
+            types: "types",
+        });
+        expect(response).toEqual({
+            data: [
+                {
+                    carrierReeferState: {
+                        substateValue: "`Pretrip`, `Defrost`",
+                        time: "2020-01-27T07:06:25Z",
+                        value: "`Off`, `On`",
+                    },
+                    gps: {
+                        headingDegrees: 5631003136208764000,
+                        latitude: 0.11331136118623318,
+                        longitude: 0.2965517819045647,
+                        speedMilesPerHour: 6500481596243475000,
+                        time: "2020-01-27T07:06:25Z",
+                    },
+                    gpsOdometerMeters: {
+                        time: "2020-01-27T07:06:25Z",
+                        value: 50,
+                    },
+                    id: "1234",
+                    name: "Trailer-123",
+                    reeferAlarms: {
+                        alarms: [
+                            {
+                                alarmCode: "3",
+                                description: "Test alarm",
+                                operatorAction: "Manually disable alarm",
+                                severity: 5406015254738261000,
+                            },
+                        ],
+                        time: "2020-01-27T07:06:25Z",
+                    },
+                    reeferAmbientAirTemperatureMilliC: {
+                        time: "2020-01-27T07:06:25Z",
+                        value: 50,
+                    },
+                    reeferDoorStateZone1: {
+                        time: "2020-01-27T07:06:25Z",
+                        value: "open",
+                    },
+                    reeferDoorStateZone2: {
+                        time: "2020-01-27T07:06:25Z",
+                        value: "open",
+                    },
+                    reeferDoorStateZone3: {
+                        time: "2020-01-27T07:06:25Z",
+                        value: "open",
+                    },
+                    reeferFuelPercent: {
+                        time: "2020-01-27T07:06:25Z",
+                        value: 50,
+                    },
+                    reeferObdEngineSeconds: {
+                        time: "2020-01-27T07:06:25Z",
+                        value: 50,
+                    },
+                    reeferReturnAirTemperatureMilliCZone1: {
+                        time: "2020-01-27T07:06:25Z",
+                        value: 50,
+                    },
+                    reeferReturnAirTemperatureMilliCZone2: {
+                        time: "2020-01-27T07:06:25Z",
+                        value: 50,
+                    },
+                    reeferReturnAirTemperatureMilliCZone3: {
+                        time: "2020-01-27T07:06:25Z",
+                        value: 50,
+                    },
+                    reeferRunMode: {
+                        time: "2020-01-27T07:06:25Z",
+                        value: "`Start/Stop`,`Continuous`",
+                    },
+                    reeferSetPointTemperatureMilliCZone1: {
+                        time: "2020-01-27T07:06:25Z",
+                        value: 50,
+                    },
+                    reeferSetPointTemperatureMilliCZone2: {
+                        time: "2020-01-27T07:06:25Z",
+                        value: 50,
+                    },
+                    reeferSetPointTemperatureMilliCZone3: {
+                        time: "2020-01-27T07:06:25Z",
+                        value: 50,
+                    },
+                    reeferStateZone1: {
+                        substateValue: "`Pretrip`, `Defrost`",
+                        time: "2020-01-27T07:06:25Z",
+                        value: "`Off`, `On`",
+                    },
+                    reeferStateZone2: {
+                        substateValue: "`Pretrip`, `Defrost`",
+                        time: "2020-01-27T07:06:25Z",
+                        value: "`Off`, `On`",
+                    },
+                    reeferStateZone3: {
+                        substateValue: "`Pretrip`, `Defrost`",
+                        time: "2020-01-27T07:06:25Z",
+                        value: "`Off`, `On`",
+                    },
+                    reeferSupplyAirTemperatureMilliCZone1: {
+                        time: "2020-01-27T07:06:25Z",
+                        value: 50,
+                    },
+                    reeferSupplyAirTemperatureMilliCZone2: {
+                        time: "2020-01-27T07:06:25Z",
+                        value: 50,
+                    },
+                    reeferSupplyAirTemperatureMilliCZone3: {
+                        time: "2020-01-27T07:06:25Z",
+                        value: 50,
+                    },
+                },
+            ],
+            pagination: {
+                endCursor: "MjkY",
+                hasNextPage: true,
+            },
+        });
+    });
+
+    test("getTrailerStatsSnapshot (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/trailers/stats")
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.trailers.getTrailerStatsSnapshot({
+                types: "types",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("getTrailerStatsSnapshot (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/trailers/stats")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.trailers.getTrailerStatsSnapshot({
+                types: "types",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("getTrailerStatsSnapshot (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/trailers/stats")
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.trailers.getTrailerStatsSnapshot({
+                types: "types",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("getTrailerStatsSnapshot (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/trailers/stats")
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.trailers.getTrailerStatsSnapshot({
+                types: "types",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("getTrailerStatsSnapshot (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/trailers/stats")
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.trailers.getTrailerStatsSnapshot({
+                types: "types",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("getTrailerStatsSnapshot (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/trailers/stats")
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.trailers.getTrailerStatsSnapshot({
+                types: "types",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("getTrailerStatsSnapshot (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/trailers/stats")
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.trailers.getTrailerStatsSnapshot({
+                types: "types",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("getTrailerStatsSnapshot (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/trailers/stats")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.trailers.getTrailerStatsSnapshot({
+                types: "types",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("getTrailerStatsSnapshot (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/trailers/stats")
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.trailers.getTrailerStatsSnapshot({
+                types: "types",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("getTrailerStatsFeed (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = {
+            data: [
+                {
+                    carrierReeferState: [
+                        { substateValue: "`Pretrip`, `Defrost`", time: "2020-01-27T07:06:25Z", value: "`Off`, `On`" },
+                    ],
+                    gps: [
+                        {
+                            headingDegrees: 392081610554693300,
+                            latitude: 0.571370134841778,
+                            longitude: 0.08246576794243361,
+                            speedMilesPerHour: 3138978820343500300,
+                            time: "2020-01-27T07:06:25Z",
+                        },
+                    ],
+                    gpsOdometerMeters: [{ time: "2020-01-27T07:06:25Z", value: 50 }],
+                    id: "1234",
+                    name: "Trailer-123",
+                    reeferAlarms: [
+                        {
+                            alarms: [
+                                {
+                                    alarmCode: "3",
+                                    description: "Test alarm",
+                                    operatorAction: "Manually disable alarm",
+                                    severity: 5406015254738261000,
+                                },
+                            ],
+                            time: "2020-01-27T07:06:25Z",
+                        },
+                    ],
+                    reeferAmbientAirTemperatureMilliC: [{ time: "2020-01-27T07:06:25Z", value: 50 }],
+                    reeferDoorStateZone1: [{ time: "2020-01-27T07:06:25Z", value: "open" }],
+                    reeferDoorStateZone2: [{ time: "2020-01-27T07:06:25Z", value: "open" }],
+                    reeferDoorStateZone3: [{ time: "2020-01-27T07:06:25Z", value: "open" }],
+                    reeferFuelPercent: [{ time: "2020-01-27T07:06:25Z", value: 50 }],
+                    reeferObdEngineSeconds: [{ time: "2020-01-27T07:06:25Z", value: 50 }],
+                    reeferReturnAirTemperatureMilliCZone1: [{ time: "2020-01-27T07:06:25Z", value: 50 }],
+                    reeferReturnAirTemperatureMilliCZone2: [{ time: "2020-01-27T07:06:25Z", value: 50 }],
+                    reeferReturnAirTemperatureMilliCZone3: [{ time: "2020-01-27T07:06:25Z", value: 50 }],
+                    reeferRunMode: [{ time: "2020-01-27T07:06:25Z", value: "`Start/Stop`,`Continuous`" }],
+                    reeferSetPointTemperatureMilliCZone1: [{ time: "2020-01-27T07:06:25Z", value: 50 }],
+                    reeferSetPointTemperatureMilliCZone2: [{ time: "2020-01-27T07:06:25Z", value: 50 }],
+                    reeferSetPointTemperatureMilliCZone3: [{ time: "2020-01-27T07:06:25Z", value: 50 }],
+                    reeferStateZone1: [
+                        { substateValue: "`Pretrip`, `Defrost`", time: "2020-01-27T07:06:25Z", value: "`Off`, `On`" },
+                    ],
+                    reeferStateZone2: [
+                        { substateValue: "`Pretrip`, `Defrost`", time: "2020-01-27T07:06:25Z", value: "`Off`, `On`" },
+                    ],
+                    reeferStateZone3: [
+                        { substateValue: "`Pretrip`, `Defrost`", time: "2020-01-27T07:06:25Z", value: "`Off`, `On`" },
+                    ],
+                    reeferSupplyAirTemperatureMilliCZone1: [{ time: "2020-01-27T07:06:25Z", value: 50 }],
+                    reeferSupplyAirTemperatureMilliCZone2: [{ time: "2020-01-27T07:06:25Z", value: 50 }],
+                    reeferSupplyAirTemperatureMilliCZone3: [{ time: "2020-01-27T07:06:25Z", value: 50 }],
+                },
+            ],
+            pagination: { endCursor: "MjkY", hasNextPage: true },
+        };
+        server
+            .mockEndpoint()
+            .get("/fleet/trailers/stats/feed")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.trailers.getTrailerStatsFeed({
+            types: "types",
+        });
+        expect(response).toEqual({
+            data: [
+                {
+                    carrierReeferState: [
+                        {
+                            substateValue: "`Pretrip`, `Defrost`",
+                            time: "2020-01-27T07:06:25Z",
+                            value: "`Off`, `On`",
+                        },
+                    ],
+                    gps: [
+                        {
+                            headingDegrees: 392081610554693300,
+                            latitude: 0.571370134841778,
+                            longitude: 0.08246576794243361,
+                            speedMilesPerHour: 3138978820343500300,
+                            time: "2020-01-27T07:06:25Z",
+                        },
+                    ],
+                    gpsOdometerMeters: [
+                        {
+                            time: "2020-01-27T07:06:25Z",
+                            value: 50,
+                        },
+                    ],
+                    id: "1234",
+                    name: "Trailer-123",
+                    reeferAlarms: [
+                        {
+                            alarms: [
+                                {
+                                    alarmCode: "3",
+                                    description: "Test alarm",
+                                    operatorAction: "Manually disable alarm",
+                                    severity: 5406015254738261000,
+                                },
+                            ],
+                            time: "2020-01-27T07:06:25Z",
+                        },
+                    ],
+                    reeferAmbientAirTemperatureMilliC: [
+                        {
+                            time: "2020-01-27T07:06:25Z",
+                            value: 50,
+                        },
+                    ],
+                    reeferDoorStateZone1: [
+                        {
+                            time: "2020-01-27T07:06:25Z",
+                            value: "open",
+                        },
+                    ],
+                    reeferDoorStateZone2: [
+                        {
+                            time: "2020-01-27T07:06:25Z",
+                            value: "open",
+                        },
+                    ],
+                    reeferDoorStateZone3: [
+                        {
+                            time: "2020-01-27T07:06:25Z",
+                            value: "open",
+                        },
+                    ],
+                    reeferFuelPercent: [
+                        {
+                            time: "2020-01-27T07:06:25Z",
+                            value: 50,
+                        },
+                    ],
+                    reeferObdEngineSeconds: [
+                        {
+                            time: "2020-01-27T07:06:25Z",
+                            value: 50,
+                        },
+                    ],
+                    reeferReturnAirTemperatureMilliCZone1: [
+                        {
+                            time: "2020-01-27T07:06:25Z",
+                            value: 50,
+                        },
+                    ],
+                    reeferReturnAirTemperatureMilliCZone2: [
+                        {
+                            time: "2020-01-27T07:06:25Z",
+                            value: 50,
+                        },
+                    ],
+                    reeferReturnAirTemperatureMilliCZone3: [
+                        {
+                            time: "2020-01-27T07:06:25Z",
+                            value: 50,
+                        },
+                    ],
+                    reeferRunMode: [
+                        {
+                            time: "2020-01-27T07:06:25Z",
+                            value: "`Start/Stop`,`Continuous`",
+                        },
+                    ],
+                    reeferSetPointTemperatureMilliCZone1: [
+                        {
+                            time: "2020-01-27T07:06:25Z",
+                            value: 50,
+                        },
+                    ],
+                    reeferSetPointTemperatureMilliCZone2: [
+                        {
+                            time: "2020-01-27T07:06:25Z",
+                            value: 50,
+                        },
+                    ],
+                    reeferSetPointTemperatureMilliCZone3: [
+                        {
+                            time: "2020-01-27T07:06:25Z",
+                            value: 50,
+                        },
+                    ],
+                    reeferStateZone1: [
+                        {
+                            substateValue: "`Pretrip`, `Defrost`",
+                            time: "2020-01-27T07:06:25Z",
+                            value: "`Off`, `On`",
+                        },
+                    ],
+                    reeferStateZone2: [
+                        {
+                            substateValue: "`Pretrip`, `Defrost`",
+                            time: "2020-01-27T07:06:25Z",
+                            value: "`Off`, `On`",
+                        },
+                    ],
+                    reeferStateZone3: [
+                        {
+                            substateValue: "`Pretrip`, `Defrost`",
+                            time: "2020-01-27T07:06:25Z",
+                            value: "`Off`, `On`",
+                        },
+                    ],
+                    reeferSupplyAirTemperatureMilliCZone1: [
+                        {
+                            time: "2020-01-27T07:06:25Z",
+                            value: 50,
+                        },
+                    ],
+                    reeferSupplyAirTemperatureMilliCZone2: [
+                        {
+                            time: "2020-01-27T07:06:25Z",
+                            value: 50,
+                        },
+                    ],
+                    reeferSupplyAirTemperatureMilliCZone3: [
+                        {
+                            time: "2020-01-27T07:06:25Z",
+                            value: 50,
+                        },
+                    ],
+                },
+            ],
+            pagination: {
+                endCursor: "MjkY",
+                hasNextPage: true,
+            },
+        });
+    });
+
+    test("getTrailerStatsFeed (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/trailers/stats/feed")
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.trailers.getTrailerStatsFeed({
+                types: "types",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("getTrailerStatsFeed (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/trailers/stats/feed")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.trailers.getTrailerStatsFeed({
+                types: "types",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("getTrailerStatsFeed (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/trailers/stats/feed")
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.trailers.getTrailerStatsFeed({
+                types: "types",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("getTrailerStatsFeed (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/trailers/stats/feed")
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.trailers.getTrailerStatsFeed({
+                types: "types",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("getTrailerStatsFeed (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/trailers/stats/feed")
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.trailers.getTrailerStatsFeed({
+                types: "types",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("getTrailerStatsFeed (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/trailers/stats/feed")
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.trailers.getTrailerStatsFeed({
+                types: "types",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("getTrailerStatsFeed (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/trailers/stats/feed")
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.trailers.getTrailerStatsFeed({
+                types: "types",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("getTrailerStatsFeed (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/trailers/stats/feed")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.trailers.getTrailerStatsFeed({
+                types: "types",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("getTrailerStatsFeed (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/trailers/stats/feed")
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.trailers.getTrailerStatsFeed({
+                types: "types",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("getTrailerStatsHistory (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = {
+            data: [
+                {
+                    carrierReeferState: [
+                        { substateValue: "`Pretrip`, `Defrost`", time: "2020-01-27T07:06:25Z", value: "`Off`, `On`" },
+                    ],
+                    gps: [
+                        {
+                            headingDegrees: 392081610554693300,
+                            latitude: 0.571370134841778,
+                            longitude: 0.08246576794243361,
+                            speedMilesPerHour: 3138978820343500300,
+                            time: "2020-01-27T07:06:25Z",
+                        },
+                    ],
+                    gpsOdometerMeters: [{ time: "2020-01-27T07:06:25Z", value: 50 }],
+                    id: "1234",
+                    name: "Trailer-123",
+                    reeferAlarms: [
+                        {
+                            alarms: [
+                                {
+                                    alarmCode: "3",
+                                    description: "Test alarm",
+                                    operatorAction: "Manually disable alarm",
+                                    severity: 5406015254738261000,
+                                },
+                            ],
+                            time: "2020-01-27T07:06:25Z",
+                        },
+                    ],
+                    reeferAmbientAirTemperatureMilliC: [{ time: "2020-01-27T07:06:25Z", value: 50 }],
+                    reeferDoorStateZone1: [{ time: "2020-01-27T07:06:25Z", value: "open" }],
+                    reeferDoorStateZone2: [{ time: "2020-01-27T07:06:25Z", value: "open" }],
+                    reeferDoorStateZone3: [{ time: "2020-01-27T07:06:25Z", value: "open" }],
+                    reeferFuelPercent: [{ time: "2020-01-27T07:06:25Z", value: 50 }],
+                    reeferObdEngineSeconds: [{ time: "2020-01-27T07:06:25Z", value: 50 }],
+                    reeferReturnAirTemperatureMilliCZone1: [{ time: "2020-01-27T07:06:25Z", value: 50 }],
+                    reeferReturnAirTemperatureMilliCZone2: [{ time: "2020-01-27T07:06:25Z", value: 50 }],
+                    reeferReturnAirTemperatureMilliCZone3: [{ time: "2020-01-27T07:06:25Z", value: 50 }],
+                    reeferRunMode: [{ time: "2020-01-27T07:06:25Z", value: "`Start/Stop`,`Continuous`" }],
+                    reeferSetPointTemperatureMilliCZone1: [{ time: "2020-01-27T07:06:25Z", value: 50 }],
+                    reeferSetPointTemperatureMilliCZone2: [{ time: "2020-01-27T07:06:25Z", value: 50 }],
+                    reeferSetPointTemperatureMilliCZone3: [{ time: "2020-01-27T07:06:25Z", value: 50 }],
+                    reeferStateZone1: [
+                        { substateValue: "`Pretrip`, `Defrost`", time: "2020-01-27T07:06:25Z", value: "`Off`, `On`" },
+                    ],
+                    reeferStateZone2: [
+                        { substateValue: "`Pretrip`, `Defrost`", time: "2020-01-27T07:06:25Z", value: "`Off`, `On`" },
+                    ],
+                    reeferStateZone3: [
+                        { substateValue: "`Pretrip`, `Defrost`", time: "2020-01-27T07:06:25Z", value: "`Off`, `On`" },
+                    ],
+                    reeferSupplyAirTemperatureMilliCZone1: [{ time: "2020-01-27T07:06:25Z", value: 50 }],
+                    reeferSupplyAirTemperatureMilliCZone2: [{ time: "2020-01-27T07:06:25Z", value: 50 }],
+                    reeferSupplyAirTemperatureMilliCZone3: [{ time: "2020-01-27T07:06:25Z", value: 50 }],
+                },
+            ],
+            pagination: { endCursor: "MjkY", hasNextPage: true },
+        };
+        server
+            .mockEndpoint()
+            .get("/fleet/trailers/stats/history")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.trailers.getTrailerStatsHistory({
+            startTime: "startTime",
+            endTime: "endTime",
+            types: "types",
+        });
+        expect(response).toEqual({
+            data: [
+                {
+                    carrierReeferState: [
+                        {
+                            substateValue: "`Pretrip`, `Defrost`",
+                            time: "2020-01-27T07:06:25Z",
+                            value: "`Off`, `On`",
+                        },
+                    ],
+                    gps: [
+                        {
+                            headingDegrees: 392081610554693300,
+                            latitude: 0.571370134841778,
+                            longitude: 0.08246576794243361,
+                            speedMilesPerHour: 3138978820343500300,
+                            time: "2020-01-27T07:06:25Z",
+                        },
+                    ],
+                    gpsOdometerMeters: [
+                        {
+                            time: "2020-01-27T07:06:25Z",
+                            value: 50,
+                        },
+                    ],
+                    id: "1234",
+                    name: "Trailer-123",
+                    reeferAlarms: [
+                        {
+                            alarms: [
+                                {
+                                    alarmCode: "3",
+                                    description: "Test alarm",
+                                    operatorAction: "Manually disable alarm",
+                                    severity: 5406015254738261000,
+                                },
+                            ],
+                            time: "2020-01-27T07:06:25Z",
+                        },
+                    ],
+                    reeferAmbientAirTemperatureMilliC: [
+                        {
+                            time: "2020-01-27T07:06:25Z",
+                            value: 50,
+                        },
+                    ],
+                    reeferDoorStateZone1: [
+                        {
+                            time: "2020-01-27T07:06:25Z",
+                            value: "open",
+                        },
+                    ],
+                    reeferDoorStateZone2: [
+                        {
+                            time: "2020-01-27T07:06:25Z",
+                            value: "open",
+                        },
+                    ],
+                    reeferDoorStateZone3: [
+                        {
+                            time: "2020-01-27T07:06:25Z",
+                            value: "open",
+                        },
+                    ],
+                    reeferFuelPercent: [
+                        {
+                            time: "2020-01-27T07:06:25Z",
+                            value: 50,
+                        },
+                    ],
+                    reeferObdEngineSeconds: [
+                        {
+                            time: "2020-01-27T07:06:25Z",
+                            value: 50,
+                        },
+                    ],
+                    reeferReturnAirTemperatureMilliCZone1: [
+                        {
+                            time: "2020-01-27T07:06:25Z",
+                            value: 50,
+                        },
+                    ],
+                    reeferReturnAirTemperatureMilliCZone2: [
+                        {
+                            time: "2020-01-27T07:06:25Z",
+                            value: 50,
+                        },
+                    ],
+                    reeferReturnAirTemperatureMilliCZone3: [
+                        {
+                            time: "2020-01-27T07:06:25Z",
+                            value: 50,
+                        },
+                    ],
+                    reeferRunMode: [
+                        {
+                            time: "2020-01-27T07:06:25Z",
+                            value: "`Start/Stop`,`Continuous`",
+                        },
+                    ],
+                    reeferSetPointTemperatureMilliCZone1: [
+                        {
+                            time: "2020-01-27T07:06:25Z",
+                            value: 50,
+                        },
+                    ],
+                    reeferSetPointTemperatureMilliCZone2: [
+                        {
+                            time: "2020-01-27T07:06:25Z",
+                            value: 50,
+                        },
+                    ],
+                    reeferSetPointTemperatureMilliCZone3: [
+                        {
+                            time: "2020-01-27T07:06:25Z",
+                            value: 50,
+                        },
+                    ],
+                    reeferStateZone1: [
+                        {
+                            substateValue: "`Pretrip`, `Defrost`",
+                            time: "2020-01-27T07:06:25Z",
+                            value: "`Off`, `On`",
+                        },
+                    ],
+                    reeferStateZone2: [
+                        {
+                            substateValue: "`Pretrip`, `Defrost`",
+                            time: "2020-01-27T07:06:25Z",
+                            value: "`Off`, `On`",
+                        },
+                    ],
+                    reeferStateZone3: [
+                        {
+                            substateValue: "`Pretrip`, `Defrost`",
+                            time: "2020-01-27T07:06:25Z",
+                            value: "`Off`, `On`",
+                        },
+                    ],
+                    reeferSupplyAirTemperatureMilliCZone1: [
+                        {
+                            time: "2020-01-27T07:06:25Z",
+                            value: 50,
+                        },
+                    ],
+                    reeferSupplyAirTemperatureMilliCZone2: [
+                        {
+                            time: "2020-01-27T07:06:25Z",
+                            value: 50,
+                        },
+                    ],
+                    reeferSupplyAirTemperatureMilliCZone3: [
+                        {
+                            time: "2020-01-27T07:06:25Z",
+                            value: 50,
+                        },
+                    ],
+                },
+            ],
+            pagination: {
+                endCursor: "MjkY",
+                hasNextPage: true,
+            },
+        });
+    });
+
+    test("getTrailerStatsHistory (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/trailers/stats/history")
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.trailers.getTrailerStatsHistory({
+                startTime: "startTime",
+                endTime: "endTime",
+                types: "types",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("getTrailerStatsHistory (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/trailers/stats/history")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.trailers.getTrailerStatsHistory({
+                startTime: "startTime",
+                endTime: "endTime",
+                types: "types",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("getTrailerStatsHistory (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/trailers/stats/history")
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.trailers.getTrailerStatsHistory({
+                startTime: "startTime",
+                endTime: "endTime",
+                types: "types",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("getTrailerStatsHistory (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/trailers/stats/history")
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.trailers.getTrailerStatsHistory({
+                startTime: "startTime",
+                endTime: "endTime",
+                types: "types",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("getTrailerStatsHistory (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/trailers/stats/history")
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.trailers.getTrailerStatsHistory({
+                startTime: "startTime",
+                endTime: "endTime",
+                types: "types",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("getTrailerStatsHistory (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/trailers/stats/history")
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.trailers.getTrailerStatsHistory({
+                startTime: "startTime",
+                endTime: "endTime",
+                types: "types",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("getTrailerStatsHistory (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/trailers/stats/history")
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.trailers.getTrailerStatsHistory({
+                startTime: "startTime",
+                endTime: "endTime",
+                types: "types",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("getTrailerStatsHistory (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/trailers/stats/history")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.trailers.getTrailerStatsHistory({
+                startTime: "startTime",
+                endTime: "endTime",
+                types: "types",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("getTrailerStatsHistory (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/trailers/stats/history")
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.trailers.getTrailerStatsHistory({
+                startTime: "startTime",
+                endTime: "endTime",
+                types: "types",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
     test("getTrailer (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({

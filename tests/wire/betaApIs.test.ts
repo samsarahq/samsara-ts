@@ -1655,7 +1655,7 @@ describe("BetaApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { relayStates: [{ id: "relay1", isOpen: true }] };
+        const rawRequestBody = { relayStates: [{ id: "relay1", isOpen: false }] };
 
         server
             .mockEndpoint()
@@ -1670,7 +1670,7 @@ describe("BetaApIsClient", () => {
             relayStates: [
                 {
                     id: "relay1",
-                    isOpen: true,
+                    isOpen: false,
                 },
             ],
         });
@@ -6306,7 +6306,7 @@ describe("BetaApIsClient", () => {
             data: [
                 {
                     happenedAtTime: "2019-06-13T19:08:25Z",
-                    isConnectedToVehicle: true,
+                    isConnectedToVehicle: false,
                     relayStates: [{ id: "relay1", isOpen: true }],
                     vehicleId: "1234",
                 },
@@ -6329,7 +6329,7 @@ describe("BetaApIsClient", () => {
             data: [
                 {
                     happenedAtTime: "2019-06-13T19:08:25Z",
-                    isConnectedToVehicle: true,
+                    isConnectedToVehicle: false,
                     relayStates: [
                         {
                             id: "relay1",
@@ -9087,7 +9087,6 @@ describe("BetaApIsClient", () => {
                         "650e8400-e29b-41d4-a716-446655440001",
                         "650e8400-e29b-41d4-a716-446655440001",
                         "650e8400-e29b-41d4-a716-446655440001",
-                        "650e8400-e29b-41d4-a716-446655440001",
                     ],
                     updatedAt: "2024-04-10T11:30:00Z",
                 },
@@ -9158,7 +9157,6 @@ describe("BetaApIsClient", () => {
                         },
                     ],
                     skillsRequired: [
-                        "650e8400-e29b-41d4-a716-446655440001",
                         "650e8400-e29b-41d4-a716-446655440001",
                         "650e8400-e29b-41d4-a716-446655440001",
                         "650e8400-e29b-41d4-a716-446655440001",
@@ -15327,9 +15325,9 @@ describe("BetaApIsClient", () => {
             data: {
                 columns: [{ dataType: "string", name: "Device Name" }],
                 rows: [
-                    [{ key: "value" }, { key: "value" }, { key: "value" }],
-                    [{ key: "value" }, { key: "value" }, { key: "value" }, { key: "value" }],
                     [{ key: "value" }, { key: "value" }],
+                    [{ key: "value" }, { key: "value" }, { key: "value" }],
+                    [{ key: "value" }, { key: "value" }, { key: "value" }],
                 ],
                 status: "complete",
             },
@@ -15356,9 +15354,6 @@ describe("BetaApIsClient", () => {
                         {
                             key: "value",
                         },
-                        {
-                            key: "value",
-                        },
                     ],
                     [
                         {
@@ -15370,11 +15365,11 @@ describe("BetaApIsClient", () => {
                         {
                             key: "value",
                         },
+                    ],
+                    [
                         {
                             key: "value",
                         },
-                    ],
-                    [
                         {
                             key: "value",
                         },
@@ -16920,7 +16915,7 @@ describe("BetaApIsClient", () => {
                     ],
                     isActive: true,
                     lastName: "Doe",
-                    specialInstructions: { isGuardianRequired: true, isSpecialEducation: false },
+                    specialInstructions: { isGuardianRequired: false, isSpecialEducation: false },
                     updatedAtTime: "2024-11-15T10:30:00Z",
                 },
             ],
@@ -16959,7 +16954,7 @@ describe("BetaApIsClient", () => {
                     isActive: true,
                     lastName: "Doe",
                     specialInstructions: {
-                        isGuardianRequired: true,
+                        isGuardianRequired: false,
                         isSpecialEducation: false,
                     },
                     updatedAtTime: "2024-11-15T10:30:00Z",
@@ -17223,7 +17218,7 @@ describe("BetaApIsClient", () => {
                 ],
                 isActive: true,
                 lastName: "Doe",
-                specialInstructions: { isGuardianRequired: true, isSpecialEducation: false },
+                specialInstructions: { isGuardianRequired: false, isSpecialEducation: false },
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
         };
@@ -17262,7 +17257,7 @@ describe("BetaApIsClient", () => {
                 isActive: true,
                 lastName: "Doe",
                 specialInstructions: {
-                    isGuardianRequired: true,
+                    isGuardianRequired: false,
                     isSpecialEducation: false,
                 },
                 updatedAtTime: "2024-11-15T10:30:00Z",
@@ -17548,7 +17543,7 @@ describe("BetaApIsClient", () => {
                 ],
                 isActive: true,
                 lastName: "Doe",
-                specialInstructions: { isGuardianRequired: true, isSpecialEducation: false },
+                specialInstructions: { isGuardianRequired: false, isSpecialEducation: false },
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
         };
@@ -17588,7 +17583,7 @@ describe("BetaApIsClient", () => {
                 isActive: true,
                 lastName: "Doe",
                 specialInstructions: {
-                    isGuardianRequired: true,
+                    isGuardianRequired: false,
                     isSpecialEducation: false,
                 },
                 updatedAtTime: "2024-11-15T10:30:00Z",
@@ -18121,7 +18116,7 @@ describe("BetaApIsClient", () => {
                 ],
                 isActive: true,
                 lastName: "Doe",
-                specialInstructions: { isGuardianRequired: true, isSpecialEducation: false },
+                specialInstructions: { isGuardianRequired: false, isSpecialEducation: false },
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
         };
@@ -18157,7 +18152,7 @@ describe("BetaApIsClient", () => {
                 isActive: true,
                 lastName: "Doe",
                 specialInstructions: {
-                    isGuardianRequired: true,
+                    isGuardianRequired: false,
                     isSpecialEducation: false,
                 },
                 updatedAtTime: "2024-11-15T10:30:00Z",

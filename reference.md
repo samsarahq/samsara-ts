@@ -1951,7 +1951,7 @@ await client.betaApIs.updateEngineImmobilizerState({
     id: 1000000,
     relayStates: [{
             id: "relay1",
-            isOpen: true
+            isOpen: false
         }]
 });
 
@@ -6812,7 +6812,7 @@ To use this endpoint, select **Write Media Retrieval** under the Safety & Camera
 ```typescript
 await client.media.postMediaRetrieval({
     endTime: "2019-06-13T19:08:55Z",
-    inputs: ["dashcamRoadFacing", "dashcamRoadFacing"],
+    inputs: ["dashcamRoadFacing", "dashcamRoadFacing", "dashcamRoadFacing"],
     mediaType: "image",
     startTime: "2019-06-13T19:08:25Z",
     vehicleId: "1234"

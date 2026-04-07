@@ -687,7 +687,7 @@ export class BetaApIsClient {
      *         id: 1000000,
      *         relayStates: [{
      *                 id: "relay1",
-     *                 isOpen: true
+     *                 isOpen: false
      *             }]
      *     })
      */

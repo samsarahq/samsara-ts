@@ -61,10 +61,12 @@ export interface WorkflowIncidentDetailsObjectResponseBody {
     suddenFuelLevelRise?: Samsara.SuddenFuelLevelRiseResponseBody | undefined;
     tamperingDetected?: Samsara.TamperingDetectedResponseBody | undefined;
     tireFaults?: Samsara.TireFaultsResponseBody | undefined;
+    trailerMovingWithoutPower?: Samsara.TrailerMovingWithoutPowerDataResponseBody | undefined;
     unassignedDriving?: Samsara.UnassignedDrivingDataResponseBody | undefined;
     vehicleBatteryVoltage?: Samsara.VehicleBatteryVoltageResponseBody | undefined;
     vehicleDefLevelPercentage?: Samsara.VehicleDefLevelPercentageResponseBody | undefined;
     vehicleDetected?: Samsara.VehicleDetectedResponseBody | undefined;
     vehicleFaults?: Samsara.VehicleFaultsResponseBody | undefined;
+    vehicleTrailerMismatch?: Samsara.VehicleTrailerMismatchDataResponseBody | undefined;
     workerSafetySos?: Samsara.WorkerSafetySosDataResponseBody | undefined;
 }

@@ -1843,6 +1843,11 @@ describe("AlertsClient", () => {
                                     trailer: { id: "id" },
                                     vehicle: { id: "id", serial: "serial" },
                                 },
+                                trailerMovingWithoutPower: {
+                                    currentVoltage: 1,
+                                    driver: { id: "id" },
+                                    trailer: { id: "id" },
+                                },
                                 unassignedDriving: { driver: { id: "id" }, vehicle: { id: "id", serial: "serial" } },
                                 vehicleBatteryVoltage: {
                                     driver: { id: "id" },
@@ -1858,6 +1863,12 @@ describe("AlertsClient", () => {
                                 vehicleFaults: {
                                     driver: { id: "id" },
                                     trailer: { id: "id" },
+                                    vehicle: { id: "id", serial: "serial" },
+                                },
+                                vehicleTrailerMismatch: {
+                                    currentlyPullingTrailers: [],
+                                    driver: { id: "id" },
+                                    driverSelectedTrailers: [],
                                     vehicle: { id: "id", serial: "serial" },
                                 },
                                 workerSafetySos: {
@@ -2182,6 +2193,11 @@ describe("AlertsClient", () => {
                                     trailer: { id: "id" },
                                     vehicle: { id: "id", serial: "serial" },
                                 },
+                                trailerMovingWithoutPower: {
+                                    currentVoltage: 1,
+                                    driver: { id: "id" },
+                                    trailer: { id: "id" },
+                                },
                                 unassignedDriving: { driver: { id: "id" }, vehicle: { id: "id", serial: "serial" } },
                                 vehicleBatteryVoltage: {
                                     driver: { id: "id" },
@@ -2197,6 +2213,12 @@ describe("AlertsClient", () => {
                                 vehicleFaults: {
                                     driver: { id: "id" },
                                     trailer: { id: "id" },
+                                    vehicle: { id: "id", serial: "serial" },
+                                },
+                                vehicleTrailerMismatch: {
+                                    currentlyPullingTrailers: [],
+                                    driver: { id: "id" },
+                                    driverSelectedTrailers: [],
                                     vehicle: { id: "id", serial: "serial" },
                                 },
                                 workerSafetySos: {
@@ -2531,6 +2553,11 @@ describe("AlertsClient", () => {
                                     trailer: { id: "id" },
                                     vehicle: { id: "id", serial: "serial" },
                                 },
+                                trailerMovingWithoutPower: {
+                                    currentVoltage: 1,
+                                    driver: { id: "id" },
+                                    trailer: { id: "id" },
+                                },
                                 unassignedDriving: { driver: { id: "id" }, vehicle: { id: "id", serial: "serial" } },
                                 vehicleBatteryVoltage: {
                                     driver: { id: "id" },
@@ -2546,6 +2573,12 @@ describe("AlertsClient", () => {
                                 vehicleFaults: {
                                     driver: { id: "id" },
                                     trailer: { id: "id" },
+                                    vehicle: { id: "id", serial: "serial" },
+                                },
+                                vehicleTrailerMismatch: {
+                                    currentlyPullingTrailers: [],
+                                    driver: { id: "id" },
+                                    driverSelectedTrailers: [],
                                     vehicle: { id: "id", serial: "serial" },
                                 },
                                 workerSafetySos: {
@@ -2870,6 +2903,11 @@ describe("AlertsClient", () => {
                                     trailer: { id: "id" },
                                     vehicle: { id: "id", serial: "serial" },
                                 },
+                                trailerMovingWithoutPower: {
+                                    currentVoltage: 1,
+                                    driver: { id: "id" },
+                                    trailer: { id: "id" },
+                                },
                                 unassignedDriving: { driver: { id: "id" }, vehicle: { id: "id", serial: "serial" } },
                                 vehicleBatteryVoltage: {
                                     driver: { id: "id" },
@@ -2885,6 +2923,12 @@ describe("AlertsClient", () => {
                                 vehicleFaults: {
                                     driver: { id: "id" },
                                     trailer: { id: "id" },
+                                    vehicle: { id: "id", serial: "serial" },
+                                },
+                                vehicleTrailerMismatch: {
+                                    currentlyPullingTrailers: [],
+                                    driver: { id: "id" },
+                                    driverSelectedTrailers: [],
                                     vehicle: { id: "id", serial: "serial" },
                                 },
                                 workerSafetySos: {
@@ -3555,6 +3599,15 @@ describe("AlertsClient", () => {
                                         serial: "serial",
                                     },
                                 },
+                                trailerMovingWithoutPower: {
+                                    currentVoltage: 1,
+                                    driver: {
+                                        id: "id",
+                                    },
+                                    trailer: {
+                                        id: "id",
+                                    },
+                                },
                                 unassignedDriving: {
                                     driver: {
                                         id: "id",
@@ -3600,6 +3653,17 @@ describe("AlertsClient", () => {
                                     trailer: {
                                         id: "id",
                                     },
+                                    vehicle: {
+                                        id: "id",
+                                        serial: "serial",
+                                    },
+                                },
+                                vehicleTrailerMismatch: {
+                                    currentlyPullingTrailers: [],
+                                    driver: {
+                                        id: "id",
+                                    },
+                                    driverSelectedTrailers: [],
                                     vehicle: {
                                         id: "id",
                                         serial: "serial",
@@ -4252,6 +4316,15 @@ describe("AlertsClient", () => {
                                         serial: "serial",
                                     },
                                 },
+                                trailerMovingWithoutPower: {
+                                    currentVoltage: 1,
+                                    driver: {
+                                        id: "id",
+                                    },
+                                    trailer: {
+                                        id: "id",
+                                    },
+                                },
                                 unassignedDriving: {
                                     driver: {
                                         id: "id",
@@ -4297,6 +4370,17 @@ describe("AlertsClient", () => {
                                     trailer: {
                                         id: "id",
                                     },
+                                    vehicle: {
+                                        id: "id",
+                                        serial: "serial",
+                                    },
+                                },
+                                vehicleTrailerMismatch: {
+                                    currentlyPullingTrailers: [],
+                                    driver: {
+                                        id: "id",
+                                    },
+                                    driverSelectedTrailers: [],
                                     vehicle: {
                                         id: "id",
                                         serial: "serial",
@@ -4959,6 +5043,15 @@ describe("AlertsClient", () => {
                                         serial: "serial",
                                     },
                                 },
+                                trailerMovingWithoutPower: {
+                                    currentVoltage: 1,
+                                    driver: {
+                                        id: "id",
+                                    },
+                                    trailer: {
+                                        id: "id",
+                                    },
+                                },
                                 unassignedDriving: {
                                     driver: {
                                         id: "id",
@@ -5004,6 +5097,17 @@ describe("AlertsClient", () => {
                                     trailer: {
                                         id: "id",
                                     },
+                                    vehicle: {
+                                        id: "id",
+                                        serial: "serial",
+                                    },
+                                },
+                                vehicleTrailerMismatch: {
+                                    currentlyPullingTrailers: [],
+                                    driver: {
+                                        id: "id",
+                                    },
+                                    driverSelectedTrailers: [],
                                     vehicle: {
                                         id: "id",
                                         serial: "serial",
@@ -5656,6 +5760,15 @@ describe("AlertsClient", () => {
                                         serial: "serial",
                                     },
                                 },
+                                trailerMovingWithoutPower: {
+                                    currentVoltage: 1,
+                                    driver: {
+                                        id: "id",
+                                    },
+                                    trailer: {
+                                        id: "id",
+                                    },
+                                },
                                 unassignedDriving: {
                                     driver: {
                                         id: "id",
@@ -5701,6 +5814,17 @@ describe("AlertsClient", () => {
                                     trailer: {
                                         id: "id",
                                     },
+                                    vehicle: {
+                                        id: "id",
+                                        serial: "serial",
+                                    },
+                                },
+                                vehicleTrailerMismatch: {
+                                    currentlyPullingTrailers: [],
+                                    driver: {
+                                        id: "id",
+                                    },
+                                    driverSelectedTrailers: [],
                                     vehicle: {
                                         id: "id",
                                         serial: "serial",

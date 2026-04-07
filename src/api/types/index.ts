@@ -2537,6 +2537,7 @@ export * from "./TrailerAssignmentsUpdateDriverTrailerAssignmentTooManyRequestsE
 export * from "./TrailerAssignmentsUpdateDriverTrailerAssignmentUnauthorizedErrorResponseBody.js";
 export * from "./TrailerDvirObjectResponseBody.js";
 export * from "./TrailerGoaGatewayTinyResponseResponseBody.js";
+export * from "./TrailerMovingWithoutPowerDataResponseBody.js";
 export * from "./TrailerObjectResponseBody.js";
 export * from "./TrailerResponseObjectResponseBody.js";
 export * from "./TrailerStatDecorationResponseBody.js";
@@ -3112,6 +3113,7 @@ export * from "./VehiclesLockUnlockVehicleTooManyRequestsErrorResponseBody.js";
 export * from "./VehiclesLockUnlockVehicleUnauthorizedErrorResponseBody.js";
 export * from "./VehicleTags.js";
 export * from "./VehicleTinyResponse.js";
+export * from "./VehicleTrailerMismatchDataResponseBody.js";
 export * from "./VehicleType.js";
 export * from "./VehicleVin.js";
 export * from "./VehicleWithGatewayTinyResponseResponseBody.js";

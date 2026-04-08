@@ -104,11 +104,11 @@ export class DriversClient {
             response: dataWithRawResponse.data,
             rawResponse: dataWithRawResponse.rawResponse,
             hasNextPage: (response) =>
-                response?.pagination?.endCursor != null &&
-                !(typeof response?.pagination?.endCursor === "string" && response?.pagination?.endCursor === ""),
+                response?.pagination.endCursor != null &&
+                !(typeof response?.pagination.endCursor === "string" && response?.pagination.endCursor === ""),
             getItems: (response) => response?.data ?? [],
             loadPage: (response) => {
-                return list(core.setObjectProperty(request, "after", response?.pagination?.endCursor));
+                return list(core.setObjectProperty(request, "after", response?.pagination.endCursor));
             },
         });
     }

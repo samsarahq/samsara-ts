@@ -8,6 +8,10 @@ import type * as Samsara from "../index.js";
 export interface MissingStateResponseBody {
     /** The unique Samsara ID of the asset. */
     id: string;
+    /** Timestamp when the asset was first marked as missing, in milliseconds since epoch. Unlike updated_at_ms, this value is preserved when the missing state is edited. */
+    initiated_at_ms?: number | undefined;
+    /** The ID of the user who first marked this asset as missing. Unlike updated_by_user_id, this value is preserved when the missing state is edited. */
+    initiated_by_user_id?: number | undefined;
     /** The human-readable name of the asset. */
     name: string;
     /** A note associated with the missing asset. */

@@ -4068,6 +4068,8 @@ describe("BetaApIsClient", () => {
             data: [
                 {
                     id: "12345",
+                    initiated_at_ms: 1609459200000,
+                    initiated_by_user_id: 1234,
                     name: "Trailer-A1234",
                     note: "Asset was last seen at warehouse A",
                     notification_recipients: [
@@ -4098,6 +4100,8 @@ describe("BetaApIsClient", () => {
             data: [
                 {
                     id: "12345",
+                    initiated_at_ms: 1609459200000,
+                    initiated_by_user_id: 1234,
                     name: "Trailer-A1234",
                     note: "Asset was last seen at warehouse A",
                     notification_recipients: [
@@ -4339,6 +4343,8 @@ describe("BetaApIsClient", () => {
         const rawResponseBody = {
             data: {
                 id: "12345",
+                initiated_at_ms: 1609459200000,
+                initiated_by_user_id: 1234,
                 name: "Trailer-A1234",
                 note: "Asset was last seen at warehouse A",
                 notification_recipients: [
@@ -4364,6 +4370,8 @@ describe("BetaApIsClient", () => {
         expect(response).toEqual({
             data: {
                 id: "12345",
+                initiated_at_ms: 1609459200000,
+                initiated_by_user_id: 1234,
                 name: "Trailer-A1234",
                 note: "Asset was last seen at warehouse A",
                 notification_recipients: [

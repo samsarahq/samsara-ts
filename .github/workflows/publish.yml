@@ -31,7 +31,9 @@ jobs:
               run: pnpm install && pnpm build
 
             - name: Publish to npm
-              run: npm publish --access public
+              run: npm publish --access public --provenance
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
             - name: Upload npm logs on failure
               if: failure()

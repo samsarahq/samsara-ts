@@ -4,6 +4,10 @@ on:
   pull_request:
     types: [closed]
 
+permissions:
+    id-token: write
+    contents: write
+
 jobs:
   tag-and-release:
     runs-on: ubuntu-latest

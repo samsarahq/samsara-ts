@@ -20,6 +20,7 @@ export type { GetDetectionsRequest } from "./GetDetectionsRequest.js";
 export type { GetDevicesRequest } from "./GetDevicesRequest.js";
 export type { GetDriverEfficiencyRequest } from "./GetDriverEfficiencyRequest.js";
 export type { GetEngineImmobilizerStatesRequest } from "./GetEngineImmobilizerStatesRequest.js";
+export type { GetFunctionLogsRequest } from "./GetFunctionLogsRequest.js";
 export type { GetFunctionRequest } from "./GetFunctionRequest.js";
 export type { GetFunctionRunRequest } from "./GetFunctionRunRequest.js";
 export type { GetHosEldEventsRequest } from "./GetHosEldEventsRequest.js";

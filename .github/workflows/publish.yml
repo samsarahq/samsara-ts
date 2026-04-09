@@ -22,16 +22,12 @@ jobs:
               uses: actions/setup-node@v4
               with:
                   node-version: '22'
-                  registry-url: 'https://registry.npmjs.org'
-
-            - name: Upgrade npm for OIDC support
-              run: npm install -g npm@10.9.2
 
             - name: Install dependencies and build
               run: pnpm install && pnpm build
 
-            - name: Publish to npm
-              run: npm publish --access public --provenance
+            - name: Publish to npm via npm 11 (OIDC trusted publishing)
+              run: pnpm dlx npm@11 publish --access public --provenance --registry https://registry.npmjs.org
 
             - name: Upload npm logs on failure
               if: failure()

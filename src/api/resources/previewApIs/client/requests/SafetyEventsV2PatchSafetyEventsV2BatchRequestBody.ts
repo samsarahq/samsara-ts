@@ -24,8 +24,9 @@ export namespace SafetyEventsV2PatchSafetyEventsV2BatchRequestBody {
     export type ContextLabelsToAdd = ContextLabelsToAdd.Item[];
 
     export namespace ContextLabelsToAdd {
-        /** A context label to add.  Valid values: `Congested`, `Construction`, `Coupling/Uncoupling`, `Cyclist/Motorcyclist`, `Defensive`, `Fog`, `Improper Seat Belt`, `Light Traffic`, `Moderate Traffic`, `Moderately Drowsy`, `Mounted Phone`, `Night`, `Parking Lot`, `Passenger Mobile Usage`, `Passenger Sleeping`, `Passengers`, `Pedestrians`, `Raining`, `Sensitive Media`, `Slightly Drowsy`, `Snowing`, `Snowy Road`, `Speed Sign Verified`, `Very Drowsy`, `Wet Road` */
+        /** A context label to add.  Valid values: `Animal Collision`, `Congested`, `Construction`, `Coupling/Uncoupling`, `Cyclist/Motorcyclist`, `Defensive`, `Fog`, `Improper Seat Belt`, `Light Traffic`, `Moderate Traffic`, `Moderately Drowsy`, `Mounted Phone`, `Night`, `Parking Lot`, `Passenger Mobile Usage`, `Passenger Sleeping`, `Passengers`, `Pedestrians`, `Raining`, `Sensitive Media`, `Slightly Drowsy`, `Snowing`, `Snowy Road`, `Speed Sign Verified`, `Very Drowsy`, `Wet Road` */
         export const Item = {
+            AnimalCollision: "Animal Collision",
             Congested: "Congested",
             Construction: "Construction",
             CouplingUncoupling: "Coupling/Uncoupling",
@@ -58,8 +59,9 @@ export namespace SafetyEventsV2PatchSafetyEventsV2BatchRequestBody {
     export type ContextLabelsToRemove = ContextLabelsToRemove.Item[];
 
     export namespace ContextLabelsToRemove {
-        /** A context label to remove.  Valid values: `Congested`, `Construction`, `Coupling/Uncoupling`, `Cyclist/Motorcyclist`, `Defensive`, `Fog`, `Improper Seat Belt`, `Light Traffic`, `Moderate Traffic`, `Moderately Drowsy`, `Mounted Phone`, `Night`, `Parking Lot`, `Passenger Mobile Usage`, `Passenger Sleeping`, `Passengers`, `Pedestrians`, `Raining`, `Sensitive Media`, `Slightly Drowsy`, `Snowing`, `Snowy Road`, `Speed Sign Verified`, `Very Drowsy`, `Wet Road` */
+        /** A context label to remove.  Valid values: `Animal Collision`, `Congested`, `Construction`, `Coupling/Uncoupling`, `Cyclist/Motorcyclist`, `Defensive`, `Fog`, `Improper Seat Belt`, `Light Traffic`, `Moderate Traffic`, `Moderately Drowsy`, `Mounted Phone`, `Night`, `Parking Lot`, `Passenger Mobile Usage`, `Passenger Sleeping`, `Passengers`, `Pedestrians`, `Raining`, `Sensitive Media`, `Slightly Drowsy`, `Snowing`, `Snowy Road`, `Speed Sign Verified`, `Very Drowsy`, `Wet Road` */
         export const Item = {
+            AnimalCollision: "Animal Collision",
             Congested: "Congested",
             Construction: "Construction",
             CouplingUncoupling: "Coupling/Uncoupling",

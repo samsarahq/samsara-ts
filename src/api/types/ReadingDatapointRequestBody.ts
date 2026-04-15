@@ -4,10 +4,12 @@
  * A single reading data point to be created.
  */
 export interface ReadingDatapointRequestBody {
-    /** Samsara entity ID. In case of an asset, it’s the assetId. If the asset is not yet present in the system, it is required to create a new one via the /assets endpoint. */
-    entityId: string;
+    /** Samsara entity ID. Required if externalId is not provided. In case of an asset, it’s the assetId. If the asset is not yet present in the system, it is required to create a new one via the /assets endpoint. */
+    entityId?: string | undefined;
     /** The type of the entity (e.g., asset).  Valid values: `asset` */
     entityType: ReadingDatapointRequestBody.EntityType;
+    /** An external ID in key:value format. Required if entityId is not provided. Use this to reference an asset by its external ID instead of the Samsara entity ID. */
+    externalId?: string | undefined;
     /** The timestamp of when the reading happened in RFC 3339 format. happenedAtTime must not be older than the last known reading for the same series. */
     happenedAtTime: string;
     /** The ID of the reading, you can get it from the /readings/definitions endpoint. */

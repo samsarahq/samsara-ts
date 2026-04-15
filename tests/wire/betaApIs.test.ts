@@ -13390,7 +13390,6 @@ describe("BetaApIsClient", () => {
         const rawRequestBody = {
             data: [
                 {
-                    entityId: "123451234512345",
                     entityType: "asset",
                     happenedAtTime: "2023-10-27T10:00:00Z",
                     readingId: "airInletPressure",
@@ -13404,7 +13403,6 @@ describe("BetaApIsClient", () => {
         const response = await client.betaApIs.postReadings({
             data: [
                 {
-                    entityId: "123451234512345",
                     entityType: "asset",
                     happenedAtTime: "2023-10-27T10:00:00Z",
                     readingId: "airInletPressure",
@@ -13428,14 +13426,12 @@ describe("BetaApIsClient", () => {
         const rawRequestBody = {
             data: [
                 {
-                    entityId: "entityId",
                     entityType: "asset",
                     happenedAtTime: "happenedAtTime",
                     readingId: "readingId",
                     value: { value: { key: "value" } },
                 },
                 {
-                    entityId: "entityId",
                     entityType: "asset",
                     happenedAtTime: "happenedAtTime",
                     readingId: "readingId",
@@ -13457,7 +13453,6 @@ describe("BetaApIsClient", () => {
             return await client.betaApIs.postReadings({
                 data: [
                     {
-                        entityId: "entityId",
                         entityType: "asset",
                         happenedAtTime: "happenedAtTime",
                         readingId: "readingId",
@@ -13468,7 +13463,6 @@ describe("BetaApIsClient", () => {
                         },
                     },
                     {
-                        entityId: "entityId",
                         entityType: "asset",
                         happenedAtTime: "happenedAtTime",
                         readingId: "readingId",
@@ -13494,14 +13488,12 @@ describe("BetaApIsClient", () => {
         const rawRequestBody = {
             data: [
                 {
-                    entityId: "entityId",
                     entityType: "asset",
                     happenedAtTime: "happenedAtTime",
                     readingId: "readingId",
                     value: { value: { key: "value" } },
                 },
                 {
-                    entityId: "entityId",
                     entityType: "asset",
                     happenedAtTime: "happenedAtTime",
                     readingId: "readingId",
@@ -13523,7 +13515,6 @@ describe("BetaApIsClient", () => {
             return await client.betaApIs.postReadings({
                 data: [
                     {
-                        entityId: "entityId",
                         entityType: "asset",
                         happenedAtTime: "happenedAtTime",
                         readingId: "readingId",
@@ -13534,7 +13525,6 @@ describe("BetaApIsClient", () => {
                         },
                     },
                     {
-                        entityId: "entityId",
                         entityType: "asset",
                         happenedAtTime: "happenedAtTime",
                         readingId: "readingId",
@@ -13560,14 +13550,12 @@ describe("BetaApIsClient", () => {
         const rawRequestBody = {
             data: [
                 {
-                    entityId: "entityId",
                     entityType: "asset",
                     happenedAtTime: "happenedAtTime",
                     readingId: "readingId",
                     value: { value: { key: "value" } },
                 },
                 {
-                    entityId: "entityId",
                     entityType: "asset",
                     happenedAtTime: "happenedAtTime",
                     readingId: "readingId",
@@ -13589,7 +13577,6 @@ describe("BetaApIsClient", () => {
             return await client.betaApIs.postReadings({
                 data: [
                     {
-                        entityId: "entityId",
                         entityType: "asset",
                         happenedAtTime: "happenedAtTime",
                         readingId: "readingId",
@@ -13600,7 +13587,6 @@ describe("BetaApIsClient", () => {
                         },
                     },
                     {
-                        entityId: "entityId",
                         entityType: "asset",
                         happenedAtTime: "happenedAtTime",
                         readingId: "readingId",
@@ -13626,14 +13612,12 @@ describe("BetaApIsClient", () => {
         const rawRequestBody = {
             data: [
                 {
-                    entityId: "entityId",
                     entityType: "asset",
                     happenedAtTime: "happenedAtTime",
                     readingId: "readingId",
                     value: { value: { key: "value" } },
                 },
                 {
-                    entityId: "entityId",
                     entityType: "asset",
                     happenedAtTime: "happenedAtTime",
                     readingId: "readingId",
@@ -13655,7 +13639,6 @@ describe("BetaApIsClient", () => {
             return await client.betaApIs.postReadings({
                 data: [
                     {
-                        entityId: "entityId",
                         entityType: "asset",
                         happenedAtTime: "happenedAtTime",
                         readingId: "readingId",
@@ -13666,7 +13649,6 @@ describe("BetaApIsClient", () => {
                         },
                     },
                     {
-                        entityId: "entityId",
                         entityType: "asset",
                         happenedAtTime: "happenedAtTime",
                         readingId: "readingId",
@@ -13692,14 +13674,12 @@ describe("BetaApIsClient", () => {
         const rawRequestBody = {
             data: [
                 {
-                    entityId: "entityId",
                     entityType: "asset",
                     happenedAtTime: "happenedAtTime",
                     readingId: "readingId",
                     value: { value: { key: "value" } },
                 },
                 {
-                    entityId: "entityId",
                     entityType: "asset",
                     happenedAtTime: "happenedAtTime",
                     readingId: "readingId",
@@ -13721,7 +13701,6 @@ describe("BetaApIsClient", () => {
             return await client.betaApIs.postReadings({
                 data: [
                     {
-                        entityId: "entityId",
                         entityType: "asset",
                         happenedAtTime: "happenedAtTime",
                         readingId: "readingId",
@@ -13732,7 +13711,6 @@ describe("BetaApIsClient", () => {
                         },
                     },
                     {
-                        entityId: "entityId",
                         entityType: "asset",
                         happenedAtTime: "happenedAtTime",
                         readingId: "readingId",
@@ -13758,14 +13736,12 @@ describe("BetaApIsClient", () => {
         const rawRequestBody = {
             data: [
                 {
-                    entityId: "entityId",
                     entityType: "asset",
                     happenedAtTime: "happenedAtTime",
                     readingId: "readingId",
                     value: { value: { key: "value" } },
                 },
                 {
-                    entityId: "entityId",
                     entityType: "asset",
                     happenedAtTime: "happenedAtTime",
                     readingId: "readingId",
@@ -13787,7 +13763,6 @@ describe("BetaApIsClient", () => {
             return await client.betaApIs.postReadings({
                 data: [
                     {
-                        entityId: "entityId",
                         entityType: "asset",
                         happenedAtTime: "happenedAtTime",
                         readingId: "readingId",
@@ -13798,7 +13773,6 @@ describe("BetaApIsClient", () => {
                         },
                     },
                     {
-                        entityId: "entityId",
                         entityType: "asset",
                         happenedAtTime: "happenedAtTime",
                         readingId: "readingId",
@@ -13824,14 +13798,12 @@ describe("BetaApIsClient", () => {
         const rawRequestBody = {
             data: [
                 {
-                    entityId: "entityId",
                     entityType: "asset",
                     happenedAtTime: "happenedAtTime",
                     readingId: "readingId",
                     value: { value: { key: "value" } },
                 },
                 {
-                    entityId: "entityId",
                     entityType: "asset",
                     happenedAtTime: "happenedAtTime",
                     readingId: "readingId",
@@ -13853,7 +13825,6 @@ describe("BetaApIsClient", () => {
             return await client.betaApIs.postReadings({
                 data: [
                     {
-                        entityId: "entityId",
                         entityType: "asset",
                         happenedAtTime: "happenedAtTime",
                         readingId: "readingId",
@@ -13864,7 +13835,6 @@ describe("BetaApIsClient", () => {
                         },
                     },
                     {
-                        entityId: "entityId",
                         entityType: "asset",
                         happenedAtTime: "happenedAtTime",
                         readingId: "readingId",
@@ -13890,14 +13860,12 @@ describe("BetaApIsClient", () => {
         const rawRequestBody = {
             data: [
                 {
-                    entityId: "entityId",
                     entityType: "asset",
                     happenedAtTime: "happenedAtTime",
                     readingId: "readingId",
                     value: { value: { key: "value" } },
                 },
                 {
-                    entityId: "entityId",
                     entityType: "asset",
                     happenedAtTime: "happenedAtTime",
                     readingId: "readingId",
@@ -13919,7 +13887,6 @@ describe("BetaApIsClient", () => {
             return await client.betaApIs.postReadings({
                 data: [
                     {
-                        entityId: "entityId",
                         entityType: "asset",
                         happenedAtTime: "happenedAtTime",
                         readingId: "readingId",
@@ -13930,7 +13897,6 @@ describe("BetaApIsClient", () => {
                         },
                     },
                     {
-                        entityId: "entityId",
                         entityType: "asset",
                         happenedAtTime: "happenedAtTime",
                         readingId: "readingId",
@@ -13956,14 +13922,12 @@ describe("BetaApIsClient", () => {
         const rawRequestBody = {
             data: [
                 {
-                    entityId: "entityId",
                     entityType: "asset",
                     happenedAtTime: "happenedAtTime",
                     readingId: "readingId",
                     value: { value: { key: "value" } },
                 },
                 {
-                    entityId: "entityId",
                     entityType: "asset",
                     happenedAtTime: "happenedAtTime",
                     readingId: "readingId",
@@ -13985,7 +13949,6 @@ describe("BetaApIsClient", () => {
             return await client.betaApIs.postReadings({
                 data: [
                     {
-                        entityId: "entityId",
                         entityType: "asset",
                         happenedAtTime: "happenedAtTime",
                         readingId: "readingId",
@@ -13996,7 +13959,6 @@ describe("BetaApIsClient", () => {
                         },
                     },
                     {
-                        entityId: "entityId",
                         entityType: "asset",
                         happenedAtTime: "happenedAtTime",
                         readingId: "readingId",

@@ -23,6 +23,8 @@ export interface ListAssetsRequest {
     parentTagIds?: string;
     /** A filter on the data based on this comma-separated list of asset IDs and External IDs. */
     ids?: string | string[];
+    /** A filter on the data based on this comma-separated list of external IDs. Example: `externalIds=maintenanceId:250020,vin:1HGBH41JXMN109186` */
+    externalIds?: string | string[];
     /** A filter on the data based on this comma-separated list of attribute value IDs. Only entities associated with ALL of the referenced values will be returned (i.e. the intersection of the sets of entities with each value). Example: `attributeValueIds=076efac2-83b5-47aa-ba36-18428436dcac,6707b3f0-23b9-4fe3-b7be-11be34aea544` */
     attributeValueIds?: string;
     /** A filter on the data to return entities within given range query (only for numeric and date attributes) separated by a comma. Only entities meeting all the conditions will be returned. At least one bound must be provided. Example: `attributes=Length:range(8,)&attributes=Length:range(10,20)&attributes=Date:range(2025-01-01,2025-01-31)` */

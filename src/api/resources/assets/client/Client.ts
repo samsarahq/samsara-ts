@@ -65,6 +65,7 @@ export class AssetsClient {
                     tagIds,
                     parentTagIds,
                     ids,
+                    externalIds,
                     attributeValueIds,
                     attributes,
                 } = request;
@@ -77,6 +78,7 @@ export class AssetsClient {
                     tagIds,
                     parentTagIds,
                     ids,
+                    externalIds,
                     attributeValueIds,
                     attributes,
                 };

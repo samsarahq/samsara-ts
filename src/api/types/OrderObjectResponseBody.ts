@@ -7,7 +7,7 @@ import type * as Samsara from "../index.js";
  */
 export interface OrderObjectResponseBody {
     /** The timestamp (in UTC) when the order was created */
-    createdAt: string;
+    createdAtTime: string;
     /** An array of custom property values for the order */
     customProperties: Samsara.OrderCustomPropertyResponseBody[];
     /** The customer-provided identifier for the order */
@@ -24,8 +24,10 @@ export interface OrderObjectResponseBody {
     priority: number;
     /** An array of quantities for the order */
     quantities: Samsara.OrderQuantityResponseBody[];
+    /** The ID of the route this order is assigned to. Null if the order is unassigned. Only populated on list responses. */
+    routeId?: string | undefined;
     /** An array of skill IDs required to fulfill the order */
     skillsRequired: string[];
     /** The timestamp (in UTC) when the order was last updated */
-    updatedAt: string;
+    updatedAtTime: string;
 }

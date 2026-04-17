@@ -1,5 +1,6 @@
 export type { DeleteFunctionRequest } from "./DeleteFunctionRequest.js";
 export type { DeleteJobRequest } from "./DeleteJobRequest.js";
+export type { DeletePlanOrdersRequest } from "./DeletePlanOrdersRequest.js";
 export type { DeleteRidershipAccountRequest } from "./DeleteRidershipAccountRequest.js";
 export type { DeleteRidershipPassengerRequest } from "./DeleteRidershipPassengerRequest.js";
 export type { DeleteRidershipRouteSetupRequest } from "./DeleteRidershipRouteSetupRequest.js";
@@ -43,6 +44,7 @@ export type { ListAssociationsRequest } from "./ListAssociationsRequest.js";
 export type { ListDeviceRecoveryMissingAssetsRequest } from "./ListDeviceRecoveryMissingAssetsRequest.js";
 export type { ListHubCustomPropertiesRequest } from "./ListHubCustomPropertiesRequest.js";
 export type { ListMaintenanceVendorsRequest } from "./ListMaintenanceVendorsRequest.js";
+export type { ListPlanOrdersRequest } from "./ListPlanOrdersRequest.js";
 export type { ListReadingsDefinitionsRequest } from "./ListReadingsDefinitionsRequest.js";
 export type { ListRidershipAccountsRequest } from "./ListRidershipAccountsRequest.js";
 export type { ListRidershipPassengersRequest } from "./ListRidershipPassengersRequest.js";

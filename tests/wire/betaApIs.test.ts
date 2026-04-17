@@ -5750,7 +5750,11 @@ describe("BetaApIsClient", () => {
             data: [
                 {
                     addressId: "281474993384538",
-                    categoryIds: ["a1b2c3d4-e5f6-7890-abcd-ef1234567890", "a1b2c3d4-e5f6-7890-abcd-ef1234567890"],
+                    categoryIds: [
+                        "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                        "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                        "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                    ],
                     externalIds: { key: "value" },
                     id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
                     servicesProvided: "Oil changes, tire rotations, brake services",
@@ -5772,7 +5776,11 @@ describe("BetaApIsClient", () => {
             data: [
                 {
                     addressId: "281474993384538",
-                    categoryIds: ["a1b2c3d4-e5f6-7890-abcd-ef1234567890", "a1b2c3d4-e5f6-7890-abcd-ef1234567890"],
+                    categoryIds: [
+                        "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                        "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                        "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                    ],
                     externalIds: {
                         key: "value",
                     },
@@ -9378,6 +9386,7 @@ describe("BetaApIsClient", () => {
                         "650e8400-e29b-41d4-a716-446655440001",
                         "650e8400-e29b-41d4-a716-446655440001",
                         "650e8400-e29b-41d4-a716-446655440001",
+                        "650e8400-e29b-41d4-a716-446655440001",
                     ],
                     updatedAt: "2024-04-10T11:30:00Z",
                 },
@@ -9448,6 +9457,7 @@ describe("BetaApIsClient", () => {
                         },
                     ],
                     skillsRequired: [
+                        "650e8400-e29b-41d4-a716-446655440001",
                         "650e8400-e29b-41d4-a716-446655440001",
                         "650e8400-e29b-41d4-a716-446655440001",
                         "650e8400-e29b-41d4-a716-446655440001",
@@ -15579,8 +15589,8 @@ describe("BetaApIsClient", () => {
                 columns: [{ dataType: "string", name: "Device Name" }],
                 rows: [
                     [{ key: "value" }, { key: "value" }],
-                    [{ key: "value" }, { key: "value" }, { key: "value" }],
-                    [{ key: "value" }, { key: "value" }, { key: "value" }],
+                    [{ key: "value" }, { key: "value" }, { key: "value" }, { key: "value" }],
+                    [{ key: "value" }, { key: "value" }],
                 ],
                 status: "complete",
             },
@@ -15618,11 +15628,11 @@ describe("BetaApIsClient", () => {
                         {
                             key: "value",
                         },
-                    ],
-                    [
                         {
                             key: "value",
                         },
+                    ],
+                    [
                         {
                             key: "value",
                         },
@@ -17168,7 +17178,7 @@ describe("BetaApIsClient", () => {
                     ],
                     isActive: true,
                     lastName: "Doe",
-                    specialInstructions: { isGuardianRequired: false, isSpecialEducation: false },
+                    specialInstructions: { isGuardianRequired: true, isSpecialEducation: false },
                     updatedAtTime: "2024-11-15T10:30:00Z",
                 },
             ],
@@ -17207,7 +17217,7 @@ describe("BetaApIsClient", () => {
                     isActive: true,
                     lastName: "Doe",
                     specialInstructions: {
-                        isGuardianRequired: false,
+                        isGuardianRequired: true,
                         isSpecialEducation: false,
                     },
                     updatedAtTime: "2024-11-15T10:30:00Z",
@@ -17471,7 +17481,7 @@ describe("BetaApIsClient", () => {
                 ],
                 isActive: true,
                 lastName: "Doe",
-                specialInstructions: { isGuardianRequired: false, isSpecialEducation: false },
+                specialInstructions: { isGuardianRequired: true, isSpecialEducation: false },
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
         };
@@ -17510,7 +17520,7 @@ describe("BetaApIsClient", () => {
                 isActive: true,
                 lastName: "Doe",
                 specialInstructions: {
-                    isGuardianRequired: false,
+                    isGuardianRequired: true,
                     isSpecialEducation: false,
                 },
                 updatedAtTime: "2024-11-15T10:30:00Z",
@@ -17796,7 +17806,7 @@ describe("BetaApIsClient", () => {
                 ],
                 isActive: true,
                 lastName: "Doe",
-                specialInstructions: { isGuardianRequired: false, isSpecialEducation: false },
+                specialInstructions: { isGuardianRequired: true, isSpecialEducation: false },
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
         };
@@ -17836,7 +17846,7 @@ describe("BetaApIsClient", () => {
                 isActive: true,
                 lastName: "Doe",
                 specialInstructions: {
-                    isGuardianRequired: false,
+                    isGuardianRequired: true,
                     isSpecialEducation: false,
                 },
                 updatedAtTime: "2024-11-15T10:30:00Z",
@@ -18369,7 +18379,7 @@ describe("BetaApIsClient", () => {
                 ],
                 isActive: true,
                 lastName: "Doe",
-                specialInstructions: { isGuardianRequired: false, isSpecialEducation: false },
+                specialInstructions: { isGuardianRequired: true, isSpecialEducation: false },
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
         };
@@ -18405,7 +18415,7 @@ describe("BetaApIsClient", () => {
                 isActive: true,
                 lastName: "Doe",
                 specialInstructions: {
-                    isGuardianRequired: false,
+                    isGuardianRequired: true,
                     isSpecialEducation: false,
                 },
                 updatedAtTime: "2024-11-15T10:30:00Z",

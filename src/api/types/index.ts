@@ -641,6 +641,7 @@ export * from "./DriverTachographCardNumber.js";
 export * from "./DriverTags.js";
 export * from "./DriverTimezone.js";
 export * from "./DriverTinyResponse.js";
+export * from "./DriverTrailerGroupTag.js";
 export * from "./DriverUpdatedAtTime.js";
 export * from "./DriverUsername.js";
 export * from "./DriverVehicleAssignmentsV2CreateDriverVehicleAssignmentBadGatewayErrorResponseBody.js";

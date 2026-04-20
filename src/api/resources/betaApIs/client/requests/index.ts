@@ -29,8 +29,6 @@ export type { GetJobsRequest } from "./GetJobsRequest.js";
 export type { GetQualificationRecordsRequest } from "./GetQualificationRecordsRequest.js";
 export type { GetQualificationRecordsStreamRequest } from "./GetQualificationRecordsStreamRequest.js";
 export type { GetQualificationTypesRequest } from "./GetQualificationTypesRequest.js";
-export type { GetReadingsHistoryRequest } from "./GetReadingsHistoryRequest.js";
-export type { GetReadingsSnapshotRequest } from "./GetReadingsSnapshotRequest.js";
 export type { GetReportConfigsRequest } from "./GetReportConfigsRequest.js";
 export type { GetReportRunDataRequest } from "./GetReportRunDataRequest.js";
 export type { GetReportRunsRequest } from "./GetReportRunsRequest.js";
@@ -45,7 +43,6 @@ export type { ListDeviceRecoveryMissingAssetsRequest } from "./ListDeviceRecover
 export type { ListHubCustomPropertiesRequest } from "./ListHubCustomPropertiesRequest.js";
 export type { ListMaintenanceVendorsRequest } from "./ListMaintenanceVendorsRequest.js";
 export type { ListPlanOrdersRequest } from "./ListPlanOrdersRequest.js";
-export type { ListReadingsDefinitionsRequest } from "./ListReadingsDefinitionsRequest.js";
 export type { ListRidershipAccountsRequest } from "./ListRidershipAccountsRequest.js";
 export type { ListRidershipPassengersRequest } from "./ListRidershipPassengersRequest.js";
 export type { ListRidershipRouteSetupsRequest } from "./ListRidershipRouteSetupsRequest.js";

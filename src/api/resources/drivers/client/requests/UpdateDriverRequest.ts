@@ -64,6 +64,8 @@ export interface UpdateDriverRequest {
     tagIds?: string[];
     /** Home terminal timezone, in order to indicate what time zone should be used to calculate the ELD logs. Driver timezones use [IANA timezone database](https://www.iana.org/time-zones) keys (e.g. `America/Los_Angeles`, `America/New_York`, `Europe/London`, etc.). You can find a mapping of common timezone formats to IANA timezone keys [here](https://unicode.org/cldr/charts/latest/supplemental/zone_tzid.html). */
     timezone?: string;
+    /** Tag ID which determines which trailers a driver will see when selecting trailers. */
+    trailerGroupTagId?: string;
     usDriverRulesetOverride?: Samsara.UsDriverRulesetOverride;
     /** Driver's login username into the driver app. The username may not contain spaces or the '@' symbol. The username must be unique. */
     username?: string;

@@ -36,6 +36,7 @@ import { MessagesClient } from "./api/resources/messages/client/Client.js";
 import { OrganizationInfoClient } from "./api/resources/organizationInfo/client/Client.js";
 import { PlansClient } from "./api/resources/plans/client/Client.js";
 import { PreviewApIsClient } from "./api/resources/previewApIs/client/Client.js";
+import { ReadingsClient } from "./api/resources/readings/client/Client.js";
 import { RouteEventsClient } from "./api/resources/routeEvents/client/Client.js";
 import { RoutesClient } from "./api/resources/routes/client/Client.js";
 import { SafetyClient } from "./api/resources/safety/client/Client.js";
@@ -108,6 +109,7 @@ export class SamsaraClient {
     protected _workOrders: WorkOrdersClient | undefined;
     protected _organizationInfo: OrganizationInfoClient | undefined;
     protected _previewApIs: PreviewApIsClient | undefined;
+    protected _readings: ReadingsClient | undefined;
     protected _routeEvents: RouteEventsClient | undefined;
     protected _safety: SafetyClient | undefined;
     protected _safetyScores: SafetyScoresClient | undefined;
@@ -290,6 +292,10 @@ export class SamsaraClient {
 
     public get previewApIs(): PreviewApIsClient {
         return (this._previewApIs ??= new PreviewApIsClient(this._options));
+    }
+
+    public get readings(): ReadingsClient {
+        return (this._readings ??= new ReadingsClient(this._options));
     }
 
     public get routeEvents(): RouteEventsClient {

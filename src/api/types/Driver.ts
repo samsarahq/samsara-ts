@@ -37,6 +37,7 @@ export interface Driver {
     tachographCardNumber?: Samsara.DriverTachographCardNumber | undefined;
     tags?: Samsara.DriverTags | undefined;
     timezone?: Samsara.DriverTimezone | undefined;
+    trailerGroupTag?: Samsara.DriverTrailerGroupTag | undefined;
     updatedAtTime?: Samsara.DriverUpdatedAtTime | undefined;
     usDriverRulesetOverride?: Samsara.UsDriverRulesetOverride | undefined;
     username?: Samsara.DriverUsername | undefined;

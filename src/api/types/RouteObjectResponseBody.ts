@@ -14,6 +14,7 @@ export interface RouteObjectResponseBody {
     dispatchRouteId?: string | undefined;
     /** The total distance of the route in meters */
     distanceMeters: number;
+    driver?: Samsara.RouteDriverObjectResponseBody | undefined;
     /** The total duration of the route in seconds */
     durationSeconds: number;
     /** The ID of the hub this route belongs to */
@@ -42,4 +43,5 @@ export interface RouteObjectResponseBody {
     type: string;
     /** The timestamp (in UTC) when the route was last updated */
     updatedAt: string;
+    vehicle?: Samsara.RouteVehicleObjectResponseBody | undefined;
 }

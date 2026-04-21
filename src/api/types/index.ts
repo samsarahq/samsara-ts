@@ -2182,6 +2182,7 @@ export * from "./RidershipRouteSetupsUpdateRidershipRouteSetupTooManyRequestsErr
 export * from "./RidershipRouteSetupsUpdateRidershipRouteSetupUnauthorizedErrorResponseBody.js";
 export * from "./RollingStopDetectionAlertSettingsObjectResponseBody.js";
 export * from "./RouteChangesResponseBody.js";
+export * from "./RouteDriverObjectResponseBody.js";
 export * from "./RouteEventDetailsResponseBody.js";
 export * from "./RouteEventResponseResponseBody.js";
 export * from "./RouteEventRouteResponseResponseBody.js";
@@ -2267,6 +2268,7 @@ export * from "./RoutesPatchRouteUnauthorizedErrorResponseBody.js";
 export * from "./RoutesSingleUseAddressObjectRequestBody.js";
 export * from "./RoutesSingleUseAddressObjectResponseBody.js";
 export * from "./RoutesStopResponseObjectResponseBody.js";
+export * from "./RouteVehicleObjectResponseBody.js";
 export * from "./SafetyBehaviorTriggerDetailsObjectRequestBody.js";
 export * from "./SafetyBehaviorTriggerDetailsObjectResponseBody.js";
 export * from "./SafetyEvent.js";

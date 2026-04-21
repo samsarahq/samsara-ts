@@ -2275,6 +2275,7 @@ describe("RoutesClient", () => {
                     createdAt: "2024-04-10T10:30:00Z",
                     dispatchRouteId: "123456",
                     distanceMeters: 15420,
+                    driver: { id: "12345", name: "Driver Bob" },
                     durationSeconds: 3600,
                     hubId: "550e8400-e29b-41d4-a716-446655440000",
                     id: "950e8400-e29b-41d4-a716-446655440005",
@@ -2301,6 +2302,7 @@ describe("RoutesClient", () => {
                                             value: "Premium",
                                         },
                                     ],
+                                    customerLocationId: "LOC-12345",
                                     id: "e5f6a7b8-c9d0-1234-efab-567890123456",
                                     quantities: [{ capacityId: "f1e2d3c4-b5a6-9870-fedc-ba0987654321", quantity: 750 }],
                                     requiredSkills: [
@@ -2321,6 +2323,7 @@ describe("RoutesClient", () => {
                     ],
                     type: "dynamic",
                     updatedAt: "2024-04-10T10:30:00Z",
+                    vehicle: { id: "67890", name: "Fleet Truck #1" },
                 },
             ],
             pagination: { endCursor: "YXJyYXljb25uZWN0aW9uOjEwMA==", hasNextPage: false },
@@ -2337,6 +2340,10 @@ describe("RoutesClient", () => {
                     createdAt: "2024-04-10T10:30:00Z",
                     dispatchRouteId: "123456",
                     distanceMeters: 15420,
+                    driver: {
+                        id: "12345",
+                        name: "Driver Bob",
+                    },
                     durationSeconds: 3600,
                     hubId: "550e8400-e29b-41d4-a716-446655440000",
                     id: "950e8400-e29b-41d4-a716-446655440005",
@@ -2368,6 +2375,7 @@ describe("RoutesClient", () => {
                                             value: "Premium",
                                         },
                                     ],
+                                    customerLocationId: "LOC-12345",
                                     id: "e5f6a7b8-c9d0-1234-efab-567890123456",
                                     quantities: [
                                         {
@@ -2396,6 +2404,10 @@ describe("RoutesClient", () => {
                     ],
                     type: "dynamic",
                     updatedAt: "2024-04-10T10:30:00Z",
+                    vehicle: {
+                        id: "67890",
+                        name: "Fleet Truck #1",
+                    },
                 },
             ],
             pagination: {

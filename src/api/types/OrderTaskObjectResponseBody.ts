@@ -8,6 +8,8 @@ import type * as Samsara from "../index.js";
 export interface OrderTaskObjectResponseBody {
     /** List of custom properties for the order */
     customProperties?: Samsara.OrderTaskCustomPropertyObjectResponseBody[] | undefined;
+    /** The external ID of the location associated with this order */
+    customerLocationId?: string | undefined;
     /** The order identifier */
     id: string;
     /** List of quantity information for the order */

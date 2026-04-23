@@ -1,3 +1,5 @@
+export { AssetAssignmentsCreateAssetAssignmentRequestBody } from "./AssetAssignmentsCreateAssetAssignmentRequestBody.js";
+export type { AssetAssignmentsUnassignAssetAssignmentRequestBody } from "./AssetAssignmentsUnassignAssetAssignmentRequestBody.js";
 export type { DeleteFunctionRequest } from "./DeleteFunctionRequest.js";
 export type { DeleteJobRequest } from "./DeleteJobRequest.js";
 export type { DeletePlanOrdersRequest } from "./DeletePlanOrdersRequest.js";
@@ -38,6 +40,7 @@ export type { GetRidershipRouteSetupRequest } from "./GetRidershipRouteSetupRequ
 export type { HosDailyLogsUpdateShippingDocsRequestBody } from "./HosDailyLogsUpdateShippingDocsRequestBody.js";
 export type { JobsCreateJobRequestBody } from "./JobsCreateJobRequestBody.js";
 export type { JobsPatchJobRequestBody } from "./JobsPatchJobRequestBody.js";
+export type { ListAssetAssignmentsRequest } from "./ListAssetAssignmentsRequest.js";
 export type { ListAssociationsRequest } from "./ListAssociationsRequest.js";
 export type { ListDeviceRecoveryMissingAssetsRequest } from "./ListDeviceRecoveryMissingAssetsRequest.js";
 export type { ListHubCustomPropertiesRequest } from "./ListHubCustomPropertiesRequest.js";

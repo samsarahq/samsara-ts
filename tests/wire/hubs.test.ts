@@ -221,6 +221,282 @@ describe("HubsClient", () => {
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 
+    test("listHubCustomProperties (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = {
+            data: [
+                {
+                    createdAt: "2024-01-15T10:30:00Z",
+                    csvColumns: "customer_type,customerType",
+                    hubId: "650e8400-e29b-41d4-a716-446655440001",
+                    id: "750e8400-e29b-41d4-a716-446655440004",
+                    name: "CustomerType",
+                    updatedAt: "2024-01-15T10:30:00Z",
+                },
+            ],
+            pagination: { endCursor: "YXJyYXljb25uZWN0aW9uOjEwMA==", hasNextPage: false },
+        };
+        server
+            .mockEndpoint()
+            .get("/hub/customProperties")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.hubs.listHubCustomProperties({
+            hubId: "hubId",
+        });
+        expect(response).toEqual({
+            data: [
+                {
+                    createdAt: "2024-01-15T10:30:00Z",
+                    csvColumns: "customer_type,customerType",
+                    hubId: "650e8400-e29b-41d4-a716-446655440001",
+                    id: "750e8400-e29b-41d4-a716-446655440004",
+                    name: "CustomerType",
+                    updatedAt: "2024-01-15T10:30:00Z",
+                },
+            ],
+            pagination: {
+                endCursor: "YXJyYXljb25uZWN0aW9uOjEwMA==",
+                hasNextPage: false,
+            },
+        });
+    });
+
+    test("listHubCustomProperties (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/hub/customProperties")
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.hubs.listHubCustomProperties({
+                hubId: "hubId",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("listHubCustomProperties (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/hub/customProperties")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.hubs.listHubCustomProperties({
+                hubId: "hubId",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("listHubCustomProperties (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/hub/customProperties")
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.hubs.listHubCustomProperties({
+                hubId: "hubId",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("listHubCustomProperties (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/hub/customProperties")
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.hubs.listHubCustomProperties({
+                hubId: "hubId",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("listHubCustomProperties (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/hub/customProperties")
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.hubs.listHubCustomProperties({
+                hubId: "hubId",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("listHubCustomProperties (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/hub/customProperties")
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.hubs.listHubCustomProperties({
+                hubId: "hubId",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("listHubCustomProperties (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/hub/customProperties")
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.hubs.listHubCustomProperties({
+                hubId: "hubId",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("listHubCustomProperties (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/hub/customProperties")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.hubs.listHubCustomProperties({
+                hubId: "hubId",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("listHubCustomProperties (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/hub/customProperties")
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.hubs.listHubCustomProperties({
+                hubId: "hubId",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
     test("updateHubLocation (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({

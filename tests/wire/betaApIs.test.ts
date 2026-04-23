@@ -10198,7 +10198,6 @@ describe("BetaApIsClient", () => {
                         "650e8400-e29b-41d4-a716-446655440001",
                         "650e8400-e29b-41d4-a716-446655440001",
                         "650e8400-e29b-41d4-a716-446655440001",
-                        "650e8400-e29b-41d4-a716-446655440001",
                     ],
                     updatedAtTime: "2024-04-10T11:30:00Z",
                 },
@@ -10258,7 +10257,6 @@ describe("BetaApIsClient", () => {
                     ],
                     routeId: "950e8400-e29b-41d4-a716-446655440005",
                     skillsRequired: [
-                        "650e8400-e29b-41d4-a716-446655440001",
                         "650e8400-e29b-41d4-a716-446655440001",
                         "650e8400-e29b-41d4-a716-446655440001",
                         "650e8400-e29b-41d4-a716-446655440001",
@@ -10501,7 +10499,6 @@ describe("BetaApIsClient", () => {
                         "650e8400-e29b-41d4-a716-446655440001",
                         "650e8400-e29b-41d4-a716-446655440001",
                         "650e8400-e29b-41d4-a716-446655440001",
-                        "650e8400-e29b-41d4-a716-446655440001",
                     ],
                     updatedAtTime: "2024-04-10T11:30:00Z",
                 },
@@ -10573,7 +10570,6 @@ describe("BetaApIsClient", () => {
                     ],
                     routeId: "950e8400-e29b-41d4-a716-446655440005",
                     skillsRequired: [
-                        "650e8400-e29b-41d4-a716-446655440001",
                         "650e8400-e29b-41d4-a716-446655440001",
                         "650e8400-e29b-41d4-a716-446655440001",
                         "650e8400-e29b-41d4-a716-446655440001",
@@ -11200,6 +11196,342 @@ describe("BetaApIsClient", () => {
         await expect(async () => {
             return await client.betaApIs.deletePlanOrders({
                 planId: "planId",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("listHubRouteTemplates (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = {
+            data: [
+                {
+                    createdAtTime: "2024-01-15T10:30:00Z",
+                    defaultDepotEnd: {
+                        externalId: "DEPOT-001",
+                        formattedAddress: "123 Industrial Blvd, Los Angeles, CA 90210, US",
+                        id: "750e8400-e29b-41d4-a716-446655440002",
+                        latitude: 34.0522,
+                        longitude: -118.2437,
+                        name: "Main Warehouse",
+                    },
+                    defaultDepotStart: {
+                        externalId: "DEPOT-001",
+                        formattedAddress: "123 Industrial Blvd, Los Angeles, CA 90210, US",
+                        id: "750e8400-e29b-41d4-a716-446655440002",
+                        latitude: 34.0522,
+                        longitude: -118.2437,
+                        name: "Main Warehouse",
+                    },
+                    distanceMeters: 15000,
+                    durationSeconds: 3600,
+                    earliestStartTime: "08:00",
+                    hubId: "550e8400-e29b-41d4-a716-446655440000",
+                    hubTimezone: "America/Los_Angeles",
+                    id: "660e8400-e29b-41d4-a716-446655440001",
+                    locations: [
+                        {
+                            externalId: "LOC-123",
+                            formattedAddress: "456 Main St, Los Angeles, CA 90210, US",
+                            id: "850e8400-e29b-41d4-a716-446655440003",
+                            latitude: 34.0522,
+                            longitude: -118.2437,
+                            name: "Customer ABC Warehouse",
+                            position: 1,
+                        },
+                    ],
+                    name: "Downtown Delivery Route",
+                    updatedAtTime: "2024-01-15T12:00:00Z",
+                },
+            ],
+            pagination: { endCursor: "MjkY", hasNextPage: true },
+        };
+        server
+            .mockEndpoint()
+            .get("/hub/route-templates")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.betaApIs.listHubRouteTemplates({
+            hubId: "hubId",
+        });
+        expect(response).toEqual({
+            data: [
+                {
+                    createdAtTime: "2024-01-15T10:30:00Z",
+                    defaultDepotEnd: {
+                        externalId: "DEPOT-001",
+                        formattedAddress: "123 Industrial Blvd, Los Angeles, CA 90210, US",
+                        id: "750e8400-e29b-41d4-a716-446655440002",
+                        latitude: 34.0522,
+                        longitude: -118.2437,
+                        name: "Main Warehouse",
+                    },
+                    defaultDepotStart: {
+                        externalId: "DEPOT-001",
+                        formattedAddress: "123 Industrial Blvd, Los Angeles, CA 90210, US",
+                        id: "750e8400-e29b-41d4-a716-446655440002",
+                        latitude: 34.0522,
+                        longitude: -118.2437,
+                        name: "Main Warehouse",
+                    },
+                    distanceMeters: 15000,
+                    durationSeconds: 3600,
+                    earliestStartTime: "08:00",
+                    hubId: "550e8400-e29b-41d4-a716-446655440000",
+                    hubTimezone: "America/Los_Angeles",
+                    id: "660e8400-e29b-41d4-a716-446655440001",
+                    locations: [
+                        {
+                            externalId: "LOC-123",
+                            formattedAddress: "456 Main St, Los Angeles, CA 90210, US",
+                            id: "850e8400-e29b-41d4-a716-446655440003",
+                            latitude: 34.0522,
+                            longitude: -118.2437,
+                            name: "Customer ABC Warehouse",
+                            position: 1,
+                        },
+                    ],
+                    name: "Downtown Delivery Route",
+                    updatedAtTime: "2024-01-15T12:00:00Z",
+                },
+            ],
+            pagination: {
+                endCursor: "MjkY",
+                hasNextPage: true,
+            },
+        });
+    });
+
+    test("listHubRouteTemplates (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/hub/route-templates")
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listHubRouteTemplates({
+                hubId: "hubId",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("listHubRouteTemplates (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/hub/route-templates")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listHubRouteTemplates({
+                hubId: "hubId",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("listHubRouteTemplates (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/hub/route-templates")
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listHubRouteTemplates({
+                hubId: "hubId",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("listHubRouteTemplates (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/hub/route-templates")
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listHubRouteTemplates({
+                hubId: "hubId",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("listHubRouteTemplates (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/hub/route-templates")
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listHubRouteTemplates({
+                hubId: "hubId",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("listHubRouteTemplates (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/hub/route-templates")
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listHubRouteTemplates({
+                hubId: "hubId",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("listHubRouteTemplates (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/hub/route-templates")
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listHubRouteTemplates({
+                hubId: "hubId",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("listHubRouteTemplates (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/hub/route-templates")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listHubRouteTemplates({
+                hubId: "hubId",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("listHubRouteTemplates (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/hub/route-templates")
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listHubRouteTemplates({
+                hubId: "hubId",
             });
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });

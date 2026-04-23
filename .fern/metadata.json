@@ -6,5 +6,5 @@
         "namespaceExport": "Samsara",
         "generateWireTests": true
     },
-    "sdkVersion": "11.9.0"
+    "sdkVersion": "11.10.0"
 }

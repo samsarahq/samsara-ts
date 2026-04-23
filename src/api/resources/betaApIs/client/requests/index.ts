@@ -43,7 +43,6 @@ export type { JobsPatchJobRequestBody } from "./JobsPatchJobRequestBody.js";
 export type { ListAssetAssignmentsRequest } from "./ListAssetAssignmentsRequest.js";
 export type { ListAssociationsRequest } from "./ListAssociationsRequest.js";
 export type { ListDeviceRecoveryMissingAssetsRequest } from "./ListDeviceRecoveryMissingAssetsRequest.js";
-export type { ListHubCustomPropertiesRequest } from "./ListHubCustomPropertiesRequest.js";
 export type { ListHubRouteTemplatesRequest } from "./ListHubRouteTemplatesRequest.js";
 export type { ListMaintenanceVendorsRequest } from "./ListMaintenanceVendorsRequest.js";
 export type { ListPlanOrdersRequest } from "./ListPlanOrdersRequest.js";
@@ -52,7 +51,6 @@ export type { ListRidershipPassengersRequest } from "./ListRidershipPassengersRe
 export type { ListRidershipRouteSetupsRequest } from "./ListRidershipRouteSetupsRequest.js";
 export type { ListTachographLiveDataRequest } from "./ListTachographLiveDataRequest.js";
 export type { ListVendorCategoriesRequest } from "./ListVendorCategoriesRequest.js";
-export type { PlanOrdersCreatePlanOrdersRequestBody } from "./PlanOrdersCreatePlanOrdersRequestBody.js";
 export type { QualificationsArchiveQualificationRecordRequestBody } from "./QualificationsArchiveQualificationRecordRequestBody.js";
 export type { QualificationsDeleteQualificationRecordRequestBody } from "./QualificationsDeleteQualificationRecordRequestBody.js";
 export type { QualificationsPatchQualificationRecordRequestBody } from "./QualificationsPatchQualificationRecordRequestBody.js";

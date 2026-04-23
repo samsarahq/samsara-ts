@@ -292,6 +292,522 @@ describe("PlansClient", () => {
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 
+    test("createPlanOrders (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            data: [
+                {
+                    customerOrderId: "ORDER-2024-001",
+                    hubId: "550e8400-e29b-41d4-a716-446655440000",
+                    planId: "650e8400-e29b-41d4-a716-446655440023",
+                },
+            ],
+        };
+        const rawResponseBody = {
+            data: [
+                {
+                    createdAtTime: "2024-04-10T11:30:00Z",
+                    customProperties: [
+                        {
+                            customPropertyId: "750e8400-e29b-41d4-a716-446655440004",
+                            name: "CustomerType",
+                            value: "Premium",
+                        },
+                    ],
+                    customerOrderId: "ORDER-2024-001",
+                    delivery: {
+                        address: "123 Business Way, San Francisco",
+                        appointmentWindow: { endTime: "2024-04-10T17:00:00Z", startTime: "2024-04-10T09:00:00Z" },
+                        customerLocationId: "LOC-123",
+                        latitude: 37.7749,
+                        longitude: -122.4194,
+                        notes: "Use main entrance",
+                        serviceTimeSeconds: 600,
+                    },
+                    hubId: "550e8400-e29b-41d4-a716-446655440000",
+                    id: "a50e8400-e29b-41d4-a716-446655440006",
+                    pickup: {
+                        address: "123 Business Way, San Francisco",
+                        appointmentWindow: { endTime: "2024-04-10T17:00:00Z", startTime: "2024-04-10T09:00:00Z" },
+                        customerLocationId: "LOC-123",
+                        latitude: 37.7749,
+                        longitude: -122.4194,
+                        notes: "Use main entrance",
+                        serviceTimeSeconds: 600,
+                    },
+                    planId: "650e8400-e29b-41d4-a716-446655440023",
+                    priority: 1,
+                    quantities: [{ capacityId: "850e8400-e29b-41d4-a716-446655440003", quantity: 25.5 }],
+                    routeId: "950e8400-e29b-41d4-a716-446655440005",
+                    skillsRequired: [
+                        "650e8400-e29b-41d4-a716-446655440001",
+                        "650e8400-e29b-41d4-a716-446655440001",
+                        "650e8400-e29b-41d4-a716-446655440001",
+                    ],
+                    updatedAtTime: "2024-04-10T11:30:00Z",
+                },
+            ],
+        };
+        server
+            .mockEndpoint()
+            .post("/hub/plan/orders")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.plans.createPlanOrders({
+            data: [
+                {
+                    customerOrderId: "ORDER-2024-001",
+                    hubId: "550e8400-e29b-41d4-a716-446655440000",
+                    planId: "650e8400-e29b-41d4-a716-446655440023",
+                },
+            ],
+        });
+        expect(response).toEqual({
+            data: [
+                {
+                    createdAtTime: "2024-04-10T11:30:00Z",
+                    customProperties: [
+                        {
+                            customPropertyId: "750e8400-e29b-41d4-a716-446655440004",
+                            name: "CustomerType",
+                            value: "Premium",
+                        },
+                    ],
+                    customerOrderId: "ORDER-2024-001",
+                    delivery: {
+                        address: "123 Business Way, San Francisco",
+                        appointmentWindow: {
+                            endTime: "2024-04-10T17:00:00Z",
+                            startTime: "2024-04-10T09:00:00Z",
+                        },
+                        customerLocationId: "LOC-123",
+                        latitude: 37.7749,
+                        longitude: -122.4194,
+                        notes: "Use main entrance",
+                        serviceTimeSeconds: 600,
+                    },
+                    hubId: "550e8400-e29b-41d4-a716-446655440000",
+                    id: "a50e8400-e29b-41d4-a716-446655440006",
+                    pickup: {
+                        address: "123 Business Way, San Francisco",
+                        appointmentWindow: {
+                            endTime: "2024-04-10T17:00:00Z",
+                            startTime: "2024-04-10T09:00:00Z",
+                        },
+                        customerLocationId: "LOC-123",
+                        latitude: 37.7749,
+                        longitude: -122.4194,
+                        notes: "Use main entrance",
+                        serviceTimeSeconds: 600,
+                    },
+                    planId: "650e8400-e29b-41d4-a716-446655440023",
+                    priority: 1,
+                    quantities: [
+                        {
+                            capacityId: "850e8400-e29b-41d4-a716-446655440003",
+                            quantity: 25.5,
+                        },
+                    ],
+                    routeId: "950e8400-e29b-41d4-a716-446655440005",
+                    skillsRequired: [
+                        "650e8400-e29b-41d4-a716-446655440001",
+                        "650e8400-e29b-41d4-a716-446655440001",
+                        "650e8400-e29b-41d4-a716-446655440001",
+                    ],
+                    updatedAtTime: "2024-04-10T11:30:00Z",
+                },
+            ],
+        });
+    });
+
+    test("createPlanOrders (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            data: [
+                { customerOrderId: "customerOrderId", hubId: "hubId", planId: "planId" },
+                { customerOrderId: "customerOrderId", hubId: "hubId", planId: "planId" },
+            ],
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/hub/plan/orders")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.plans.createPlanOrders({
+                data: [
+                    {
+                        customerOrderId: "customerOrderId",
+                        hubId: "hubId",
+                        planId: "planId",
+                    },
+                    {
+                        customerOrderId: "customerOrderId",
+                        hubId: "hubId",
+                        planId: "planId",
+                    },
+                ],
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("createPlanOrders (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            data: [
+                { customerOrderId: "customerOrderId", hubId: "hubId", planId: "planId" },
+                { customerOrderId: "customerOrderId", hubId: "hubId", planId: "planId" },
+            ],
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/hub/plan/orders")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.plans.createPlanOrders({
+                data: [
+                    {
+                        customerOrderId: "customerOrderId",
+                        hubId: "hubId",
+                        planId: "planId",
+                    },
+                    {
+                        customerOrderId: "customerOrderId",
+                        hubId: "hubId",
+                        planId: "planId",
+                    },
+                ],
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("createPlanOrders (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            data: [
+                { customerOrderId: "customerOrderId", hubId: "hubId", planId: "planId" },
+                { customerOrderId: "customerOrderId", hubId: "hubId", planId: "planId" },
+            ],
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/hub/plan/orders")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.plans.createPlanOrders({
+                data: [
+                    {
+                        customerOrderId: "customerOrderId",
+                        hubId: "hubId",
+                        planId: "planId",
+                    },
+                    {
+                        customerOrderId: "customerOrderId",
+                        hubId: "hubId",
+                        planId: "planId",
+                    },
+                ],
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("createPlanOrders (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            data: [
+                { customerOrderId: "customerOrderId", hubId: "hubId", planId: "planId" },
+                { customerOrderId: "customerOrderId", hubId: "hubId", planId: "planId" },
+            ],
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/hub/plan/orders")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.plans.createPlanOrders({
+                data: [
+                    {
+                        customerOrderId: "customerOrderId",
+                        hubId: "hubId",
+                        planId: "planId",
+                    },
+                    {
+                        customerOrderId: "customerOrderId",
+                        hubId: "hubId",
+                        planId: "planId",
+                    },
+                ],
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("createPlanOrders (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            data: [
+                { customerOrderId: "customerOrderId", hubId: "hubId", planId: "planId" },
+                { customerOrderId: "customerOrderId", hubId: "hubId", planId: "planId" },
+            ],
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/hub/plan/orders")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.plans.createPlanOrders({
+                data: [
+                    {
+                        customerOrderId: "customerOrderId",
+                        hubId: "hubId",
+                        planId: "planId",
+                    },
+                    {
+                        customerOrderId: "customerOrderId",
+                        hubId: "hubId",
+                        planId: "planId",
+                    },
+                ],
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("createPlanOrders (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            data: [
+                { customerOrderId: "customerOrderId", hubId: "hubId", planId: "planId" },
+                { customerOrderId: "customerOrderId", hubId: "hubId", planId: "planId" },
+            ],
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/hub/plan/orders")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.plans.createPlanOrders({
+                data: [
+                    {
+                        customerOrderId: "customerOrderId",
+                        hubId: "hubId",
+                        planId: "planId",
+                    },
+                    {
+                        customerOrderId: "customerOrderId",
+                        hubId: "hubId",
+                        planId: "planId",
+                    },
+                ],
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("createPlanOrders (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            data: [
+                { customerOrderId: "customerOrderId", hubId: "hubId", planId: "planId" },
+                { customerOrderId: "customerOrderId", hubId: "hubId", planId: "planId" },
+            ],
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/hub/plan/orders")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.plans.createPlanOrders({
+                data: [
+                    {
+                        customerOrderId: "customerOrderId",
+                        hubId: "hubId",
+                        planId: "planId",
+                    },
+                    {
+                        customerOrderId: "customerOrderId",
+                        hubId: "hubId",
+                        planId: "planId",
+                    },
+                ],
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("createPlanOrders (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            data: [
+                { customerOrderId: "customerOrderId", hubId: "hubId", planId: "planId" },
+                { customerOrderId: "customerOrderId", hubId: "hubId", planId: "planId" },
+            ],
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/hub/plan/orders")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.plans.createPlanOrders({
+                data: [
+                    {
+                        customerOrderId: "customerOrderId",
+                        hubId: "hubId",
+                        planId: "planId",
+                    },
+                    {
+                        customerOrderId: "customerOrderId",
+                        hubId: "hubId",
+                        planId: "planId",
+                    },
+                ],
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("createPlanOrders (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            data: [
+                { customerOrderId: "customerOrderId", hubId: "hubId", planId: "planId" },
+                { customerOrderId: "customerOrderId", hubId: "hubId", planId: "planId" },
+            ],
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/hub/plan/orders")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.plans.createPlanOrders({
+                data: [
+                    {
+                        customerOrderId: "customerOrderId",
+                        hubId: "hubId",
+                        planId: "planId",
+                    },
+                    {
+                        customerOrderId: "customerOrderId",
+                        hubId: "hubId",
+                        planId: "planId",
+                    },
+                ],
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
     test("listHubPlans (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({

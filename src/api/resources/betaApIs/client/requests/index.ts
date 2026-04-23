@@ -44,6 +44,7 @@ export type { ListAssetAssignmentsRequest } from "./ListAssetAssignmentsRequest.
 export type { ListAssociationsRequest } from "./ListAssociationsRequest.js";
 export type { ListDeviceRecoveryMissingAssetsRequest } from "./ListDeviceRecoveryMissingAssetsRequest.js";
 export type { ListHubCustomPropertiesRequest } from "./ListHubCustomPropertiesRequest.js";
+export type { ListHubRouteTemplatesRequest } from "./ListHubRouteTemplatesRequest.js";
 export type { ListMaintenanceVendorsRequest } from "./ListMaintenanceVendorsRequest.js";
 export type { ListPlanOrdersRequest } from "./ListPlanOrdersRequest.js";
 export type { ListRidershipAccountsRequest } from "./ListRidershipAccountsRequest.js";

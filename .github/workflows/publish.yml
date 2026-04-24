@@ -36,3 +36,31 @@ jobs:
                   name: npm-debug-logs
                   path: /home/runner/.npm/_logs/
                   retention-days: 5
+
+            - name: Notify Slack - TypeScript SDK published
+              if: success()
+              env:
+                  SLACK_WEBHOOK_URL: ${{ secrets.SLACK_SDK_BUILD_WEBHOOK_URL }}
+              run: |
+                  VERSION=$(jq -r '.version' package.json)
+                  curl -s -X POST "$SLACK_WEBHOOK_URL" \
+                    -H 'Content-Type: application/json' \
+                    -d "{
+                      \"text\": \":white_check_mark: TypeScript SDK v${VERSION} published to npm\",
+                      \"blocks\": [{
+                        \"type\": \"section\",
+                        \"text\": {
+                          \"type\": \"mrkdwn\",
+                          \"text\": \":white_check_mark: *TypeScript SDK Published to npm*\n*Version:* \`${VERSION}\`\n*Package:* <https://www.npmjs.com/package/samsara-js-sdk/v/${VERSION}|samsara-js-sdk>\n*Run:* <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View workflow>\"
+                        }
+                      }]
+                    }"
+
+            - name: Notify Slack on failure
+              if: failure()
+              env:
+                  SLACK_WEBHOOK_URL: ${{ secrets.SLACK_SDK_BUILD_WEBHOOK_URL }}
+              run: |
+                  curl -s -X POST "$SLACK_WEBHOOK_URL" \
+                    -H 'Content-Type: application/json' \
+                    -d "{\"text\": \":x: TypeScript SDK publish to npm failed — <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View workflow>\"}"

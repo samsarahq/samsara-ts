@@ -43,6 +43,7 @@ export type { JobsPatchJobRequestBody } from "./JobsPatchJobRequestBody.js";
 export type { ListAssetAssignmentsRequest } from "./ListAssetAssignmentsRequest.js";
 export type { ListAssociationsRequest } from "./ListAssociationsRequest.js";
 export type { ListDeviceRecoveryMissingAssetsRequest } from "./ListDeviceRecoveryMissingAssetsRequest.js";
+export type { ListDriverWorkflowsRequest } from "./ListDriverWorkflowsRequest.js";
 export type { ListHubRouteTemplatesRequest } from "./ListHubRouteTemplatesRequest.js";
 export type { ListMaintenanceVendorsRequest } from "./ListMaintenanceVendorsRequest.js";
 export type { ListPlanOrdersRequest } from "./ListPlanOrdersRequest.js";

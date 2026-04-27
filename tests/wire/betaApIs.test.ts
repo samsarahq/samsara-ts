@@ -6313,6 +6313,252 @@ describe("BetaApIsClient", () => {
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 
+    test("listDriverWorkflows (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = {
+            data: [
+                { id: "a4db8702-79d5-4396-a717-e301d52ecc11", name: "Pre-trip inspection", workflowType: "startOfDay" },
+            ],
+            pagination: { endCursor: "MjkY", hasNextPage: true },
+        };
+        server
+            .mockEndpoint()
+            .get("/fleet/drivers/workflows")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.betaApIs.listDriverWorkflows();
+        expect(response).toEqual({
+            data: [
+                {
+                    id: "a4db8702-79d5-4396-a717-e301d52ecc11",
+                    name: "Pre-trip inspection",
+                    workflowType: "startOfDay",
+                },
+            ],
+            pagination: {
+                endCursor: "MjkY",
+                hasNextPage: true,
+            },
+        });
+    });
+
+    test("listDriverWorkflows (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/drivers/workflows")
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listDriverWorkflows();
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("listDriverWorkflows (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/drivers/workflows")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listDriverWorkflows();
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("listDriverWorkflows (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/drivers/workflows")
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listDriverWorkflows();
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("listDriverWorkflows (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/drivers/workflows")
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listDriverWorkflows();
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("listDriverWorkflows (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/drivers/workflows")
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listDriverWorkflows();
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("listDriverWorkflows (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/drivers/workflows")
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listDriverWorkflows();
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("listDriverWorkflows (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/drivers/workflows")
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listDriverWorkflows();
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("listDriverWorkflows (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/drivers/workflows")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listDriverWorkflows();
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("listDriverWorkflows (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/drivers/workflows")
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listDriverWorkflows();
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
     test("listVendorCategories (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
@@ -7429,7 +7675,7 @@ describe("BetaApIsClient", () => {
                 codePackage: { downloadGetUrl: "https://example.com/download?token=...", status: "unknown" },
                 config: {
                     handler: "index.handler",
-                    isScheduleEnabled: true,
+                    isScheduleEnabled: false,
                     params: {},
                     schedule: {
                         entries: [
@@ -7471,7 +7717,7 @@ describe("BetaApIsClient", () => {
                 },
                 config: {
                     handler: "index.handler",
-                    isScheduleEnabled: true,
+                    isScheduleEnabled: false,
                     params: {},
                     schedule: {
                         entries: [
@@ -7772,7 +8018,7 @@ describe("BetaApIsClient", () => {
                 codePackage: { downloadGetUrl: "https://example.com/download?token=...", status: "unknown" },
                 config: {
                     handler: "index.handler",
-                    isScheduleEnabled: true,
+                    isScheduleEnabled: false,
                     params: {},
                     schedule: {
                         entries: [
@@ -7803,7 +8049,7 @@ describe("BetaApIsClient", () => {
                 },
                 config: {
                     handler: "index.handler",
-                    isScheduleEnabled: true,
+                    isScheduleEnabled: false,
                     params: {},
                     schedule: {
                         entries: [
@@ -9579,7 +9825,7 @@ describe("BetaApIsClient", () => {
         const rawRequestBody = { shippingDocs: "ShippingID1, ShippingID2" };
         const rawResponseBody = {
             data: {
-                adverseDrivingClaimed: true,
+                adverseDrivingClaimed: false,
                 bigDayClaimed: true,
                 carrierFormattedAddress: "1990 Alameda Street, San Francisco, CA 94103",
                 carrierName: "Carrier Name",
@@ -9587,7 +9833,7 @@ describe("BetaApIsClient", () => {
                 homeTerminalFormattedAddress: "1990 Alameda Street, San Francisco, CA 94103",
                 homeTerminalName: "Home Terminal Name",
                 isCertified: true,
-                isUsShortHaulActive: false,
+                isUsShortHaulActive: true,
                 trailerNames: ["10293", "Trailer ID 1"],
             },
         };
@@ -9607,7 +9853,7 @@ describe("BetaApIsClient", () => {
         });
         expect(response).toEqual({
             data: {
-                adverseDrivingClaimed: true,
+                adverseDrivingClaimed: false,
                 bigDayClaimed: true,
                 carrierFormattedAddress: "1990 Alameda Street, San Francisco, CA 94103",
                 carrierName: "Carrier Name",
@@ -9615,7 +9861,7 @@ describe("BetaApIsClient", () => {
                 homeTerminalFormattedAddress: "1990 Alameda Street, San Francisco, CA 94103",
                 homeTerminalName: "Home Terminal Name",
                 isCertified: true,
-                isUsShortHaulActive: false,
+                isUsShortHaulActive: true,
                 trailerNames: ["10293", "Trailer ID 1"],
             },
         });

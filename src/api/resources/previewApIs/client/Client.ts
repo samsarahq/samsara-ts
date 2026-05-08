@@ -358,11 +358,11 @@ export class PreviewApIsClient {
     }
 
     /**
-     * Asynchronously update eventState and/or context labels for one or more Safety Events. Returns 202 Accepted immediately. State changes propagate asynchronously; use GET /safety-events to confirm updated state. If any safetyEventIds are not found, the entire request fails with 404 before any mutations are executed. If both eventState and label fields are provided, the two mutations execute serially and are not transactional — a label mutation failure will not roll back a successful state change.
+     * Reassign one or more gateways to different devices in a single call. Mirrors the dashboard's "Pair Gateway" flow and accepts up to 50 gateway-device pairs per request. Works for any device type: vehicles, assets, equipment, trailers, industrial machines, and asset tags. By default, devices that the reassigned gateways were previously linked to remain in their current group. Pass `removeOrphanDevices: true` to move those orphaned devices to the unassigned group and clear their tags. The endpoint is currently in Preview and gated behind a feature configuration; contact your Samsara representative to enable access.
      *
-     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
      *
-     * To use this endpoint, select **Write Safety Events & Scores** under the Safety & Cameras category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     * To use this endpoint, select **Write Gateways** under the Setup & Administration category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
      *
      * Endpoints in this section are in Preview. These APIs are not functional and are instead for soliciting feedback from our API users on the intended design of this API. Additionally, it is not guaranteed that we will be releasing an endpoint included in this section to production. This means that developers should **NOT** rely on these APIs to build business critical applications
      *
@@ -373,7 +373,7 @@ export class PreviewApIsClient {
      *
      *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
      *
-     * @param {Samsara.SafetyEventsV2PatchSafetyEventsV2BatchRequestBody} request
+     * @param {Samsara.GatewaysPairGatewaysRequestBody} request
      * @param {PreviewApIsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Samsara.UnauthorizedError}
@@ -387,21 +387,24 @@ export class PreviewApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.previewApIs.patchSafetyEventsV2Batch({
-     *         safetyEventIds: ["bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590"]
+     *     await client.previewApIs.pairGateways({
+     *         pairs: [{
+     *                 deviceSerial: "GFRV-43N-VGX",
+     *                 gatewaySerial: "GFRV-43N-VGX"
+     *             }]
      *     })
      */
-    public patchSafetyEventsV2Batch(
-        request: Samsara.SafetyEventsV2PatchSafetyEventsV2BatchRequestBody,
+    public pairGateways(
+        request: Samsara.GatewaysPairGatewaysRequestBody,
         requestOptions?: PreviewApIsClient.RequestOptions,
-    ): core.HttpResponsePromise<Samsara.SafetyEventsV2PatchSafetyEventsV2BatchResponseBody> {
-        return core.HttpResponsePromise.fromPromise(this.__patchSafetyEventsV2Batch(request, requestOptions));
+    ): core.HttpResponsePromise<Samsara.GatewaysPairGatewaysResponseBody> {
+        return core.HttpResponsePromise.fromPromise(this.__pairGateways(request, requestOptions));
     }
 
-    private async __patchSafetyEventsV2Batch(
-        request: Samsara.SafetyEventsV2PatchSafetyEventsV2BatchRequestBody,
+    private async __pairGateways(
+        request: Samsara.GatewaysPairGatewaysRequestBody,
         requestOptions?: PreviewApIsClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Samsara.SafetyEventsV2PatchSafetyEventsV2BatchResponseBody>> {
+    ): Promise<core.WithRawResponse<Samsara.GatewaysPairGatewaysResponseBody>> {
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -414,9 +417,9 @@ export class PreviewApIsClient {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.SamsaraEnvironment.ProductionApi,
-                "preview/safety-events/batch",
+                "preview/gateways/pair",
             ),
-            method: "PATCH",
+            method: "POST",
             headers: _headers,
             contentType: "application/json",
             queryParameters: requestOptions?.queryParams,
@@ -430,7 +433,7 @@ export class PreviewApIsClient {
         });
         if (_response.ok) {
             return {
-                data: _response.body as Samsara.SafetyEventsV2PatchSafetyEventsV2BatchResponseBody,
+                data: _response.body as Samsara.GatewaysPairGatewaysResponseBody,
                 rawResponse: _response.rawResponse,
             };
         }
@@ -464,11 +467,6 @@ export class PreviewApIsClient {
             }
         }
 
-        return handleNonStatusCodeError(
-            _response.error,
-            _response.rawResponse,
-            "PATCH",
-            "/preview/safety-events/batch",
-        );
+        return handleNonStatusCodeError(_response.error, _response.rawResponse, "POST", "/preview/gateways/pair");
     }
 }

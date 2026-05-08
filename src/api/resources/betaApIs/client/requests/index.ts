@@ -1,6 +1,6 @@
-export { AssetAssignmentsCreateAssetAssignmentRequestBody } from "./AssetAssignmentsCreateAssetAssignmentRequestBody.js";
-export type { AssetAssignmentsUnassignAssetAssignmentRequestBody } from "./AssetAssignmentsUnassignAssetAssignmentRequestBody.js";
 export type { DeleteFunctionRequest } from "./DeleteFunctionRequest.js";
+export type { DeleteFunctionStorageFileRequest } from "./DeleteFunctionStorageFileRequest.js";
+export type { DeleteHubRouteTemplateRequest } from "./DeleteHubRouteTemplateRequest.js";
 export type { DeleteJobRequest } from "./DeleteJobRequest.js";
 export type { DeletePlanOrdersRequest } from "./DeletePlanOrdersRequest.js";
 export type { DeleteRidershipAccountRequest } from "./DeleteRidershipAccountRequest.js";
@@ -40,10 +40,9 @@ export type { GetRidershipRouteSetupRequest } from "./GetRidershipRouteSetupRequ
 export type { HosDailyLogsUpdateShippingDocsRequestBody } from "./HosDailyLogsUpdateShippingDocsRequestBody.js";
 export type { JobsCreateJobRequestBody } from "./JobsCreateJobRequestBody.js";
 export type { JobsPatchJobRequestBody } from "./JobsPatchJobRequestBody.js";
-export type { ListAssetAssignmentsRequest } from "./ListAssetAssignmentsRequest.js";
-export type { ListAssociationsRequest } from "./ListAssociationsRequest.js";
 export type { ListDeviceRecoveryMissingAssetsRequest } from "./ListDeviceRecoveryMissingAssetsRequest.js";
 export type { ListDriverWorkflowsRequest } from "./ListDriverWorkflowsRequest.js";
+export type { ListFunctionsStorageFilesRequest } from "./ListFunctionsStorageFilesRequest.js";
 export type { ListHubRouteTemplatesRequest } from "./ListHubRouteTemplatesRequest.js";
 export type { ListMaintenanceVendorsRequest } from "./ListMaintenanceVendorsRequest.js";
 export type { ListPlanOrdersRequest } from "./ListPlanOrdersRequest.js";
@@ -66,3 +65,4 @@ export { RidershipPassengersCreateRidershipPassengerRequestBody } from "./Riders
 export { RidershipPassengersUpdateRidershipPassengerRequestBody } from "./RidershipPassengersUpdateRidershipPassengerRequestBody.js";
 export type { RidershipRouteSetupsCreateRidershipRouteSetupRequestBody } from "./RidershipRouteSetupsCreateRidershipRouteSetupRequestBody.js";
 export type { RidershipRouteSetupsUpdateRidershipRouteSetupRequestBody } from "./RidershipRouteSetupsUpdateRidershipRouteSetupRequestBody.js";
+export { SafetyEventsV2PatchSafetyEventsV2BatchRequestBody } from "./SafetyEventsV2PatchSafetyEventsV2BatchRequestBody.js";

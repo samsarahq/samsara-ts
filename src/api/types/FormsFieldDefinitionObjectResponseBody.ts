@@ -38,7 +38,7 @@ export interface FormsFieldDefinitionObjectResponseBody {
     options?: Samsara.FormsSelectOptionObjectResponseBody[] | undefined;
     /** The maximum possible score weight for this field. For multiple choice fields, this number is the highest option score weight of the given options. For check boxes fields, this number is the sum of the score weights for all scored options. Only present for multiple choice or check boxes fields that have scoring. */
     questionWeight?: number | undefined;
-    /** Type of the field.  Valid values: `number`, `text`, `multiple_choice`, `check_boxes`, `media`, `datetime`, `signature`, `asset`, `person`, `geofence`, `instruction`, `media_instruction`, `table` */
+    /** Type of the field.  Valid values: `number`, `text`, `multiple_choice`, `check_boxes`, `media`, `datetime`, `signature`, `asset`, `person`, `geofence`, `instruction`, `media_instruction`, `table`, `barcode` */
     type: FormsFieldDefinitionObjectResponseBody.Type;
 }
 
@@ -63,7 +63,7 @@ export namespace FormsFieldDefinitionObjectResponseBody {
         Time: "time",
     } as const;
     export type AllowedDateTimeValueType = (typeof AllowedDateTimeValueType)[keyof typeof AllowedDateTimeValueType];
-    /** Type of the field.  Valid values: `number`, `text`, `multiple_choice`, `check_boxes`, `media`, `datetime`, `signature`, `asset`, `person`, `geofence`, `instruction`, `media_instruction`, `table` */
+    /** Type of the field.  Valid values: `number`, `text`, `multiple_choice`, `check_boxes`, `media`, `datetime`, `signature`, `asset`, `person`, `geofence`, `instruction`, `media_instruction`, `table`, `barcode` */
     export const Type = {
         Number: "number",
         Text: "text",
@@ -78,6 +78,7 @@ export namespace FormsFieldDefinitionObjectResponseBody {
         Instruction: "instruction",
         MediaInstruction: "media_instruction",
         Table: "table",
+        Barcode: "barcode",
     } as const;
     export type Type = (typeof Type)[keyof typeof Type];
 }

@@ -7,6 +7,7 @@ import type * as Samsara from "../index.js";
  */
 export interface FormSubmissionRequestFieldInputObjectRequestBody {
     assetValue?: Samsara.FormSubmissionRequestAssetValueObjectRequestBody | undefined;
+    barcodeValue?: Samsara.FormSubmissionRequestBarcodeValueObjectRequestBody | undefined;
     checkBoxesValue?: Samsara.FormSubmissionRequestCheckBoxesValueObjectRequestBody | undefined;
     dateTimeValue?: Samsara.FormSubmissionRequestDateTimeValueObjectRequestBody | undefined;
     geofenceValue?: Samsara.FormSubmissionRequestGeofenceValueObjectRequestBody | undefined;
@@ -17,12 +18,12 @@ export interface FormSubmissionRequestFieldInputObjectRequestBody {
     personValue?: Samsara.FormSubmissionRequestPersonValueObjectRequestBody | undefined;
     tableValue?: Samsara.FormSubmissionRequestTableValueObjectRequestBody | undefined;
     textValue?: Samsara.FormSubmissionRequestTextValueObjectRequestBody | undefined;
-    /** Type of the field.  Valid values: `number`, `text`, `multiple_choice`, `check_boxes`, `datetime`, `asset`, `person`, `table`, `geofence` */
+    /** Type of the field.  Valid values: `number`, `text`, `multiple_choice`, `check_boxes`, `datetime`, `asset`, `person`, `table`, `geofence`, `barcode` */
     type: FormSubmissionRequestFieldInputObjectRequestBody.Type;
 }
 
 export namespace FormSubmissionRequestFieldInputObjectRequestBody {
-    /** Type of the field.  Valid values: `number`, `text`, `multiple_choice`, `check_boxes`, `datetime`, `asset`, `person`, `table`, `geofence` */
+    /** Type of the field.  Valid values: `number`, `text`, `multiple_choice`, `check_boxes`, `datetime`, `asset`, `person`, `table`, `geofence`, `barcode` */
     export const Type = {
         Number: "number",
         Text: "text",
@@ -33,6 +34,7 @@ export namespace FormSubmissionRequestFieldInputObjectRequestBody {
         Person: "person",
         Table: "table",
         Geofence: "geofence",
+        Barcode: "barcode",
     } as const;
     export type Type = (typeof Type)[keyof typeof Type];
 }

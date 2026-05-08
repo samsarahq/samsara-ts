@@ -6,6 +6,7 @@ import type * as Samsara from "../index.js";
  * The value of a cell in a table row.
  */
 export interface FormSubmissionRequestTableCellObjectRequestBody {
+    barcodeValue?: Samsara.FormSubmissionRequestBarcodeValueObjectRequestBody | undefined;
     checkBoxesValue?: Samsara.FormSubmissionRequestCheckBoxesValueObjectRequestBody | undefined;
     dateTimeValue?: Samsara.FormSubmissionRequestDateTimeValueObjectRequestBody | undefined;
     /** Unique identifier for the cell. */
@@ -14,12 +15,12 @@ export interface FormSubmissionRequestTableCellObjectRequestBody {
     numberValue?: Samsara.FormSubmissionRequestNumberValueObjectRequestBody | undefined;
     personValue?: Samsara.FormSubmissionRequestPersonValueObjectRequestBody | undefined;
     textValue?: Samsara.FormSubmissionRequestTextValueObjectRequestBody | undefined;
-    /** Type of the cell field.  Valid values: `number`, `text`, `multiple_choice`, `check_boxes`, `datetime`, `person` */
+    /** Type of the cell field.  Valid values: `number`, `text`, `multiple_choice`, `check_boxes`, `datetime`, `person`, `barcode` */
     type: FormSubmissionRequestTableCellObjectRequestBody.Type;
 }
 
 export namespace FormSubmissionRequestTableCellObjectRequestBody {
-    /** Type of the cell field.  Valid values: `number`, `text`, `multiple_choice`, `check_boxes`, `datetime`, `person` */
+    /** Type of the cell field.  Valid values: `number`, `text`, `multiple_choice`, `check_boxes`, `datetime`, `person`, `barcode` */
     export const Type = {
         Number: "number",
         Text: "text",
@@ -27,6 +28,7 @@ export namespace FormSubmissionRequestTableCellObjectRequestBody {
         CheckBoxes: "check_boxes",
         Datetime: "datetime",
         Person: "person",
+        Barcode: "barcode",
     } as const;
     export type Type = (typeof Type)[keyof typeof Type];
 }

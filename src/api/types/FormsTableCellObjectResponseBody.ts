@@ -6,6 +6,7 @@ import type * as Samsara from "../index.js";
  * Defines a cell in a table row.
  */
 export interface FormsTableCellObjectResponseBody {
+    barcodeValue?: Samsara.FormsBarcodeValueObjectResponseBody | undefined;
     checkBoxesValue?: Samsara.FormsCheckBoxesValueObjectResponseBody | undefined;
     dateTimeValue?: Samsara.FormsDateTimeValueObjectResponseBody | undefined;
     /** Unique identifier for the cell. */
@@ -16,12 +17,12 @@ export interface FormsTableCellObjectResponseBody {
     personValue?: Samsara.FormsPersonValueObjectResponseBody | undefined;
     signatureValue?: Samsara.FormsSignatureValueObjectResponseBody | undefined;
     textValue?: Samsara.FormsTextValueObjectResponseBody | undefined;
-    /** Type of the cell field.  Valid values: `number`, `text`, `multiple_choice`, `check_boxes`, `datetime`, `signature`, `media`, `person` */
+    /** Type of the cell field.  Valid values: `number`, `text`, `multiple_choice`, `check_boxes`, `datetime`, `signature`, `media`, `person`, `barcode` */
     type: FormsTableCellObjectResponseBody.Type;
 }
 
 export namespace FormsTableCellObjectResponseBody {
-    /** Type of the cell field.  Valid values: `number`, `text`, `multiple_choice`, `check_boxes`, `datetime`, `signature`, `media`, `person` */
+    /** Type of the cell field.  Valid values: `number`, `text`, `multiple_choice`, `check_boxes`, `datetime`, `signature`, `media`, `person`, `barcode` */
     export const Type = {
         Number: "number",
         Text: "text",
@@ -31,6 +32,7 @@ export namespace FormsTableCellObjectResponseBody {
         Signature: "signature",
         Media: "media",
         Person: "person",
+        Barcode: "barcode",
     } as const;
     export type Type = (typeof Type)[keyof typeof Type];
 }

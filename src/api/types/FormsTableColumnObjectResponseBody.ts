@@ -8,12 +8,12 @@ export interface FormsTableColumnObjectResponseBody {
     id: string;
     /** Label of the column. */
     label: string;
-    /** Type of the column field.  Valid values: `text`, `number`, `datetime`, `check_boxes`, `multiple_choice`, `signature`, `media`, `person` */
+    /** Type of the column field.  Valid values: `text`, `number`, `datetime`, `check_boxes`, `multiple_choice`, `signature`, `media`, `person`, `barcode` */
     type: FormsTableColumnObjectResponseBody.Type;
 }
 
 export namespace FormsTableColumnObjectResponseBody {
-    /** Type of the column field.  Valid values: `text`, `number`, `datetime`, `check_boxes`, `multiple_choice`, `signature`, `media`, `person` */
+    /** Type of the column field.  Valid values: `text`, `number`, `datetime`, `check_boxes`, `multiple_choice`, `signature`, `media`, `person`, `barcode` */
     export const Type = {
         Text: "text",
         Number: "number",
@@ -23,6 +23,7 @@ export namespace FormsTableColumnObjectResponseBody {
         Signature: "signature",
         Media: "media",
         Person: "person",
+        Barcode: "barcode",
     } as const;
     export type Type = (typeof Type)[keyof typeof Type];
 }

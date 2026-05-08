@@ -7,6 +7,7 @@ import type * as Samsara from "../index.js";
  */
 export interface FormsFieldInputObjectResponseBody {
     assetValue?: Samsara.FormsAssetValueObjectResponseBody | undefined;
+    barcodeValue?: Samsara.FormsBarcodeValueObjectResponseBody | undefined;
     checkBoxesValue?: Samsara.FormsCheckBoxesValueObjectResponseBody | undefined;
     dateTimeValue?: Samsara.FormsDateTimeValueObjectResponseBody | undefined;
     geofenceValue?: Samsara.FormsGeofenceValueObjectResponseBody | undefined;
@@ -26,12 +27,12 @@ export interface FormsFieldInputObjectResponseBody {
     signatureValue?: Samsara.FormsSignatureValueObjectResponseBody | undefined;
     tableValue?: Samsara.FormsTableValueObjectResponseBody | undefined;
     textValue?: Samsara.FormsTextValueObjectResponseBody | undefined;
-    /** Type of the field.  Valid values: `number`, `text`, `multiple_choice`, `check_boxes`, `datetime`, `signature`, `media`, `asset`, `table`, `person`, `geofence` */
+    /** Type of the field.  Valid values: `number`, `text`, `multiple_choice`, `check_boxes`, `datetime`, `signature`, `media`, `asset`, `table`, `person`, `geofence`, `barcode` */
     type: FormsFieldInputObjectResponseBody.Type;
 }
 
 export namespace FormsFieldInputObjectResponseBody {
-    /** Type of the field.  Valid values: `number`, `text`, `multiple_choice`, `check_boxes`, `datetime`, `signature`, `media`, `asset`, `table`, `person`, `geofence` */
+    /** Type of the field.  Valid values: `number`, `text`, `multiple_choice`, `check_boxes`, `datetime`, `signature`, `media`, `asset`, `table`, `person`, `geofence`, `barcode` */
     export const Type = {
         Number: "number",
         Text: "text",
@@ -44,6 +45,7 @@ export namespace FormsFieldInputObjectResponseBody {
         Table: "table",
         Person: "person",
         Geofence: "geofence",
+        Barcode: "barcode",
     } as const;
     export type Type = (typeof Type)[keyof typeof Type];
 }

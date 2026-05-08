@@ -39,6 +39,7 @@ describe("FormsClient", () => {
                                     name: "name",
                                 },
                             },
+                            barcodeValue: { barcodes: [{ value: "value" }, { value: "value" }] },
                             checkBoxesValue: { value: ["value", "value"], valueIds: ["valueIds", "valueIds"] },
                             dateTimeValue: { dateValue: "2023-01-15", type: "datetime", value: "2024-01-15T09:30:00Z" },
                             geofenceValue: {
@@ -123,6 +124,7 @@ describe("FormsClient", () => {
                                     name: "name",
                                 },
                             },
+                            barcodeValue: { barcodes: [{ value: "value" }, { value: "value" }] },
                             checkBoxesValue: { value: ["value", "value"], valueIds: ["valueIds", "valueIds"] },
                             dateTimeValue: { dateValue: "2023-01-15", type: "datetime", value: "2024-01-15T09:30:00Z" },
                             geofenceValue: {
@@ -242,6 +244,7 @@ describe("FormsClient", () => {
                                     name: "name",
                                 },
                             },
+                            barcodeValue: { barcodes: [{ value: "value" }, { value: "value" }] },
                             checkBoxesValue: { value: ["value", "value"], valueIds: ["valueIds", "valueIds"] },
                             dateTimeValue: { dateValue: "2023-01-15", type: "datetime", value: "2024-01-15T09:30:00Z" },
                             geofenceValue: {
@@ -326,6 +329,7 @@ describe("FormsClient", () => {
                                     name: "name",
                                 },
                             },
+                            barcodeValue: { barcodes: [{ value: "value" }, { value: "value" }] },
                             checkBoxesValue: { value: ["value", "value"], valueIds: ["valueIds", "valueIds"] },
                             dateTimeValue: { dateValue: "2023-01-15", type: "datetime", value: "2024-01-15T09:30:00Z" },
                             geofenceValue: {
@@ -463,6 +467,16 @@ describe("FormsClient", () => {
                                     name: "name",
                                 },
                             },
+                            barcodeValue: {
+                                barcodes: [
+                                    {
+                                        value: "value",
+                                    },
+                                    {
+                                        value: "value",
+                                    },
+                                ],
+                            },
                             checkBoxesValue: {
                                 value: ["value", "value"],
                                 valueIds: ["valueIds", "valueIds"],
@@ -586,6 +600,16 @@ describe("FormsClient", () => {
                                     id: "id",
                                     name: "name",
                                 },
+                            },
+                            barcodeValue: {
+                                barcodes: [
+                                    {
+                                        value: "value",
+                                    },
+                                    {
+                                        value: "value",
+                                    },
+                                ],
                             },
                             checkBoxesValue: {
                                 value: ["value", "value"],
@@ -770,6 +794,16 @@ describe("FormsClient", () => {
                                     name: "name",
                                 },
                             },
+                            barcodeValue: {
+                                barcodes: [
+                                    {
+                                        value: "value",
+                                    },
+                                    {
+                                        value: "value",
+                                    },
+                                ],
+                            },
                             checkBoxesValue: {
                                 value: ["value", "value"],
                                 valueIds: ["valueIds", "valueIds"],
@@ -893,6 +927,16 @@ describe("FormsClient", () => {
                                     id: "id",
                                     name: "name",
                                 },
+                            },
+                            barcodeValue: {
+                                barcodes: [
+                                    {
+                                        value: "value",
+                                    },
+                                    {
+                                        value: "value",
+                                    },
+                                ],
                             },
                             checkBoxesValue: {
                                 value: ["value", "value"],
@@ -1231,6 +1275,7 @@ describe("FormsClient", () => {
                 externalIds: { key: "value" },
                 fields: [
                     {
+                        barcodeValue: { barcodes: [{ value: "1A2B3C4D5E" }] },
                         checkBoxesValue: {
                             value: ["Option A", "Option B"],
                             valueIds: ["0cbbddb3-2541-4889-b4eb-92171cbfc142", "d33198cb-369f-4278-8120-d92d3ebf74bf"],
@@ -1274,6 +1319,7 @@ describe("FormsClient", () => {
                                 {
                                     cells: [
                                         {
+                                            barcodeValue: { barcodes: [{ value: "1A2B3C4D5E" }] },
                                             checkBoxesValue: {
                                                 value: ["Option A", "Option B"],
                                                 valueIds: [
@@ -1387,6 +1433,13 @@ describe("FormsClient", () => {
                 },
                 fields: [
                     {
+                        barcodeValue: {
+                            barcodes: [
+                                {
+                                    value: "1A2B3C4D5E",
+                                },
+                            ],
+                        },
                         checkBoxesValue: {
                             value: ["Option A", "Option B"],
                             valueIds: ["0cbbddb3-2541-4889-b4eb-92171cbfc142", "d33198cb-369f-4278-8120-d92d3ebf74bf"],
@@ -1447,6 +1500,13 @@ describe("FormsClient", () => {
                                 {
                                     cells: [
                                         {
+                                            barcodeValue: {
+                                                barcodes: [
+                                                    {
+                                                        value: "1A2B3C4D5E",
+                                                    },
+                                                ],
+                                            },
                                             checkBoxesValue: {
                                                 value: ["Option A", "Option B"],
                                                 valueIds: [
@@ -1825,6 +1885,7 @@ describe("FormsClient", () => {
                 externalIds: { key: "value" },
                 fields: [
                     {
+                        barcodeValue: { barcodes: [{ value: "1A2B3C4D5E" }] },
                         checkBoxesValue: {
                             value: ["Option A", "Option B"],
                             valueIds: ["0cbbddb3-2541-4889-b4eb-92171cbfc142", "d33198cb-369f-4278-8120-d92d3ebf74bf"],
@@ -1868,6 +1929,7 @@ describe("FormsClient", () => {
                                 {
                                     cells: [
                                         {
+                                            barcodeValue: { barcodes: [{ value: "1A2B3C4D5E" }] },
                                             checkBoxesValue: {
                                                 value: ["Option A", "Option B"],
                                                 valueIds: [
@@ -1978,6 +2040,13 @@ describe("FormsClient", () => {
                 },
                 fields: [
                     {
+                        barcodeValue: {
+                            barcodes: [
+                                {
+                                    value: "1A2B3C4D5E",
+                                },
+                            ],
+                        },
                         checkBoxesValue: {
                             value: ["Option A", "Option B"],
                             valueIds: ["0cbbddb3-2541-4889-b4eb-92171cbfc142", "d33198cb-369f-4278-8120-d92d3ebf74bf"],
@@ -2038,6 +2107,13 @@ describe("FormsClient", () => {
                                 {
                                     cells: [
                                         {
+                                            barcodeValue: {
+                                                barcodes: [
+                                                    {
+                                                        value: "1A2B3C4D5E",
+                                                    },
+                                                ],
+                                            },
                                             checkBoxesValue: {
                                                 value: ["Option A", "Option B"],
                                                 valueIds: [
@@ -2931,6 +3007,7 @@ describe("FormsClient", () => {
                     externalIds: { key: "value" },
                     fields: [
                         {
+                            barcodeValue: { barcodes: [{ value: "1A2B3C4D5E" }] },
                             checkBoxesValue: {
                                 value: ["Option A", "Option B"],
                                 valueIds: [
@@ -2977,6 +3054,7 @@ describe("FormsClient", () => {
                                     {
                                         cells: [
                                             {
+                                                barcodeValue: { barcodes: [{ value: "1A2B3C4D5E" }] },
                                                 checkBoxesValue: {
                                                     value: ["Option A", "Option B"],
                                                     valueIds: [
@@ -3084,6 +3162,13 @@ describe("FormsClient", () => {
                     },
                     fields: [
                         {
+                            barcodeValue: {
+                                barcodes: [
+                                    {
+                                        value: "1A2B3C4D5E",
+                                    },
+                                ],
+                            },
                             checkBoxesValue: {
                                 value: ["Option A", "Option B"],
                                 valueIds: [
@@ -3147,6 +3232,13 @@ describe("FormsClient", () => {
                                     {
                                         cells: [
                                             {
+                                                barcodeValue: {
+                                                    barcodes: [
+                                                        {
+                                                            value: "1A2B3C4D5E",
+                                                        },
+                                                    ],
+                                                },
                                                 checkBoxesValue: {
                                                     value: ["Option A", "Option B"],
                                                     valueIds: [

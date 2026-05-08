@@ -755,7 +755,73 @@ describe("PreviewApIsClient", () => {
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 
-    test("patchSafetyEventsV2Batch (1)", async () => {
+    test("pairGateways (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { pairs: [{ deviceSerial: "GFRV-43N-VGX", gatewaySerial: "GFRV-43N-VGX" }] };
+        const rawResponseBody = {
+            data: [
+                {
+                    device: { id: "8393848111", name: "Truck 17", serial: "ABCD-123-EFG", type: "vehicle" },
+                    displacedGateway: { id: "8393848111", model: "AG15", serial: "GFRV-43N-VGX" },
+                    gateway: { id: "8393848111", model: "AG15", serial: "GFRV-43N-VGX" },
+                    previousDevice: { id: "8393848111", name: "Truck 17", serial: "ABCD-123-EFG", type: "vehicle" },
+                },
+            ],
+        };
+        server
+            .mockEndpoint()
+            .post("/preview/gateways/pair")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.previewApIs.pairGateways({
+            pairs: [
+                {
+                    deviceSerial: "GFRV-43N-VGX",
+                    gatewaySerial: "GFRV-43N-VGX",
+                },
+            ],
+        });
+        expect(response).toEqual({
+            data: [
+                {
+                    device: {
+                        id: "8393848111",
+                        name: "Truck 17",
+                        serial: "ABCD-123-EFG",
+                        type: "vehicle",
+                    },
+                    displacedGateway: {
+                        id: "8393848111",
+                        model: "AG15",
+                        serial: "GFRV-43N-VGX",
+                    },
+                    gateway: {
+                        id: "8393848111",
+                        model: "AG15",
+                        serial: "GFRV-43N-VGX",
+                    },
+                    previousDevice: {
+                        id: "8393848111",
+                        name: "Truck 17",
+                        serial: "ABCD-123-EFG",
+                        type: "vehicle",
+                    },
+                },
+            ],
+        });
+    });
+
+    test("pairGateways (2)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -764,58 +830,15 @@ describe("PreviewApIsClient", () => {
             environment: server.baseUrl,
         });
         const rawRequestBody = {
-            safetyEventIds: [
-                "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
-                "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
-                "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
+            pairs: [
+                { deviceSerial: "deviceSerial", gatewaySerial: "gatewaySerial" },
+                { deviceSerial: "deviceSerial", gatewaySerial: "gatewaySerial" },
             ],
         };
-        const rawResponseBody = {
-            requestId: "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
-            responses: [{ data: { safetyEventId: "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590" }, status: 202 }],
-        };
-        server
-            .mockEndpoint()
-            .patch("/preview/safety-events/batch")
-            .jsonBody(rawRequestBody)
-            .respondWith()
-            .statusCode(200)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        const response = await client.previewApIs.patchSafetyEventsV2Batch({
-            safetyEventIds: [
-                "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
-                "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
-                "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
-            ],
-        });
-        expect(response).toEqual({
-            requestId: "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
-            responses: [
-                {
-                    data: {
-                        safetyEventId: "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
-                    },
-                    status: 202,
-                },
-            ],
-        });
-    });
-
-    test("patchSafetyEventsV2Batch (2)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-        const rawRequestBody = { safetyEventIds: ["safetyEventIds", "safetyEventIds"] };
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
-            .patch("/preview/safety-events/batch")
+            .post("/preview/gateways/pair")
             .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(401)
@@ -823,13 +846,22 @@ describe("PreviewApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.previewApIs.patchSafetyEventsV2Batch({
-                safetyEventIds: ["safetyEventIds", "safetyEventIds"],
+            return await client.previewApIs.pairGateways({
+                pairs: [
+                    {
+                        deviceSerial: "deviceSerial",
+                        gatewaySerial: "gatewaySerial",
+                    },
+                    {
+                        deviceSerial: "deviceSerial",
+                        gatewaySerial: "gatewaySerial",
+                    },
+                ],
             });
         }).rejects.toThrow(Samsara.UnauthorizedError);
     });
 
-    test("patchSafetyEventsV2Batch (3)", async () => {
+    test("pairGateways (3)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -837,11 +869,16 @@ describe("PreviewApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { safetyEventIds: ["safetyEventIds", "safetyEventIds"] };
+        const rawRequestBody = {
+            pairs: [
+                { deviceSerial: "deviceSerial", gatewaySerial: "gatewaySerial" },
+                { deviceSerial: "deviceSerial", gatewaySerial: "gatewaySerial" },
+            ],
+        };
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
-            .patch("/preview/safety-events/batch")
+            .post("/preview/gateways/pair")
             .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(404)
@@ -849,13 +886,22 @@ describe("PreviewApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.previewApIs.patchSafetyEventsV2Batch({
-                safetyEventIds: ["safetyEventIds", "safetyEventIds"],
+            return await client.previewApIs.pairGateways({
+                pairs: [
+                    {
+                        deviceSerial: "deviceSerial",
+                        gatewaySerial: "gatewaySerial",
+                    },
+                    {
+                        deviceSerial: "deviceSerial",
+                        gatewaySerial: "gatewaySerial",
+                    },
+                ],
             });
         }).rejects.toThrow(Samsara.NotFoundError);
     });
 
-    test("patchSafetyEventsV2Batch (4)", async () => {
+    test("pairGateways (4)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -863,11 +909,16 @@ describe("PreviewApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { safetyEventIds: ["safetyEventIds", "safetyEventIds"] };
+        const rawRequestBody = {
+            pairs: [
+                { deviceSerial: "deviceSerial", gatewaySerial: "gatewaySerial" },
+                { deviceSerial: "deviceSerial", gatewaySerial: "gatewaySerial" },
+            ],
+        };
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
-            .patch("/preview/safety-events/batch")
+            .post("/preview/gateways/pair")
             .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(405)
@@ -875,13 +926,22 @@ describe("PreviewApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.previewApIs.patchSafetyEventsV2Batch({
-                safetyEventIds: ["safetyEventIds", "safetyEventIds"],
+            return await client.previewApIs.pairGateways({
+                pairs: [
+                    {
+                        deviceSerial: "deviceSerial",
+                        gatewaySerial: "gatewaySerial",
+                    },
+                    {
+                        deviceSerial: "deviceSerial",
+                        gatewaySerial: "gatewaySerial",
+                    },
+                ],
             });
         }).rejects.toThrow(Samsara.MethodNotAllowedError);
     });
 
-    test("patchSafetyEventsV2Batch (5)", async () => {
+    test("pairGateways (5)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -889,11 +949,16 @@ describe("PreviewApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { safetyEventIds: ["safetyEventIds", "safetyEventIds"] };
+        const rawRequestBody = {
+            pairs: [
+                { deviceSerial: "deviceSerial", gatewaySerial: "gatewaySerial" },
+                { deviceSerial: "deviceSerial", gatewaySerial: "gatewaySerial" },
+            ],
+        };
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
-            .patch("/preview/safety-events/batch")
+            .post("/preview/gateways/pair")
             .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(429)
@@ -901,13 +966,22 @@ describe("PreviewApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.previewApIs.patchSafetyEventsV2Batch({
-                safetyEventIds: ["safetyEventIds", "safetyEventIds"],
+            return await client.previewApIs.pairGateways({
+                pairs: [
+                    {
+                        deviceSerial: "deviceSerial",
+                        gatewaySerial: "gatewaySerial",
+                    },
+                    {
+                        deviceSerial: "deviceSerial",
+                        gatewaySerial: "gatewaySerial",
+                    },
+                ],
             });
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("patchSafetyEventsV2Batch (6)", async () => {
+    test("pairGateways (6)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -915,11 +989,16 @@ describe("PreviewApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { safetyEventIds: ["safetyEventIds", "safetyEventIds"] };
+        const rawRequestBody = {
+            pairs: [
+                { deviceSerial: "deviceSerial", gatewaySerial: "gatewaySerial" },
+                { deviceSerial: "deviceSerial", gatewaySerial: "gatewaySerial" },
+            ],
+        };
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
-            .patch("/preview/safety-events/batch")
+            .post("/preview/gateways/pair")
             .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(500)
@@ -927,13 +1006,22 @@ describe("PreviewApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.previewApIs.patchSafetyEventsV2Batch({
-                safetyEventIds: ["safetyEventIds", "safetyEventIds"],
+            return await client.previewApIs.pairGateways({
+                pairs: [
+                    {
+                        deviceSerial: "deviceSerial",
+                        gatewaySerial: "gatewaySerial",
+                    },
+                    {
+                        deviceSerial: "deviceSerial",
+                        gatewaySerial: "gatewaySerial",
+                    },
+                ],
             });
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("patchSafetyEventsV2Batch (7)", async () => {
+    test("pairGateways (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -941,11 +1029,16 @@ describe("PreviewApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { safetyEventIds: ["safetyEventIds", "safetyEventIds"] };
+        const rawRequestBody = {
+            pairs: [
+                { deviceSerial: "deviceSerial", gatewaySerial: "gatewaySerial" },
+                { deviceSerial: "deviceSerial", gatewaySerial: "gatewaySerial" },
+            ],
+        };
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
-            .patch("/preview/safety-events/batch")
+            .post("/preview/gateways/pair")
             .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(501)
@@ -953,13 +1046,22 @@ describe("PreviewApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.previewApIs.patchSafetyEventsV2Batch({
-                safetyEventIds: ["safetyEventIds", "safetyEventIds"],
+            return await client.previewApIs.pairGateways({
+                pairs: [
+                    {
+                        deviceSerial: "deviceSerial",
+                        gatewaySerial: "gatewaySerial",
+                    },
+                    {
+                        deviceSerial: "deviceSerial",
+                        gatewaySerial: "gatewaySerial",
+                    },
+                ],
             });
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("patchSafetyEventsV2Batch (8)", async () => {
+    test("pairGateways (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -967,11 +1069,16 @@ describe("PreviewApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { safetyEventIds: ["safetyEventIds", "safetyEventIds"] };
+        const rawRequestBody = {
+            pairs: [
+                { deviceSerial: "deviceSerial", gatewaySerial: "gatewaySerial" },
+                { deviceSerial: "deviceSerial", gatewaySerial: "gatewaySerial" },
+            ],
+        };
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
-            .patch("/preview/safety-events/batch")
+            .post("/preview/gateways/pair")
             .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(502)
@@ -979,13 +1086,22 @@ describe("PreviewApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.previewApIs.patchSafetyEventsV2Batch({
-                safetyEventIds: ["safetyEventIds", "safetyEventIds"],
+            return await client.previewApIs.pairGateways({
+                pairs: [
+                    {
+                        deviceSerial: "deviceSerial",
+                        gatewaySerial: "gatewaySerial",
+                    },
+                    {
+                        deviceSerial: "deviceSerial",
+                        gatewaySerial: "gatewaySerial",
+                    },
+                ],
             });
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("patchSafetyEventsV2Batch (9)", async () => {
+    test("pairGateways (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -993,11 +1109,16 @@ describe("PreviewApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { safetyEventIds: ["safetyEventIds", "safetyEventIds"] };
+        const rawRequestBody = {
+            pairs: [
+                { deviceSerial: "deviceSerial", gatewaySerial: "gatewaySerial" },
+                { deviceSerial: "deviceSerial", gatewaySerial: "gatewaySerial" },
+            ],
+        };
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
-            .patch("/preview/safety-events/batch")
+            .post("/preview/gateways/pair")
             .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(503)
@@ -1005,13 +1126,22 @@ describe("PreviewApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.previewApIs.patchSafetyEventsV2Batch({
-                safetyEventIds: ["safetyEventIds", "safetyEventIds"],
+            return await client.previewApIs.pairGateways({
+                pairs: [
+                    {
+                        deviceSerial: "deviceSerial",
+                        gatewaySerial: "gatewaySerial",
+                    },
+                    {
+                        deviceSerial: "deviceSerial",
+                        gatewaySerial: "gatewaySerial",
+                    },
+                ],
             });
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("patchSafetyEventsV2Batch (10)", async () => {
+    test("pairGateways (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1019,11 +1149,16 @@ describe("PreviewApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { safetyEventIds: ["safetyEventIds", "safetyEventIds"] };
+        const rawRequestBody = {
+            pairs: [
+                { deviceSerial: "deviceSerial", gatewaySerial: "gatewaySerial" },
+                { deviceSerial: "deviceSerial", gatewaySerial: "gatewaySerial" },
+            ],
+        };
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
-            .patch("/preview/safety-events/batch")
+            .post("/preview/gateways/pair")
             .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(504)
@@ -1031,8 +1166,17 @@ describe("PreviewApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.previewApIs.patchSafetyEventsV2Batch({
-                safetyEventIds: ["safetyEventIds", "safetyEventIds"],
+            return await client.previewApIs.pairGateways({
+                pairs: [
+                    {
+                        deviceSerial: "deviceSerial",
+                        gatewaySerial: "gatewaySerial",
+                    },
+                    {
+                        deviceSerial: "deviceSerial",
+                        gatewaySerial: "gatewaySerial",
+                    },
+                ],
             });
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });

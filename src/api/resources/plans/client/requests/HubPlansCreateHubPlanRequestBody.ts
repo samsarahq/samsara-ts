@@ -12,6 +12,8 @@ export interface HubPlansCreateHubPlanRequestBody {
     hubId: string;
     /** The name of the plan */
     name: string;
+    /** The ID of a saved session configuration (preset) to apply when creating the plan. When provided, the preset's optimization settings and route constructions are applied to the new plan, replacing any defaults. */
+    sessionConfigurationId?: string;
     /** The shift start time for the plan in RFC 3339 format. If not provided, defaults to 9:00 AM on the next business day in the hub's timezone. */
     shiftStartTime?: string;
 }

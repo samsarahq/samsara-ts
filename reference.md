@@ -2419,294 +2419,6 @@ await client.betaApIs.getDevices();
 </dl>
 </details>
 
-<details><summary><code>client.betaApIs.<a href="/src/api/resources/betaApIs/client/Client.ts">listAssetAssignments</a>({ ...params }) -> Samsara.AssetAssignmentsListAssetAssignmentsResponseBody</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-List active asset assignments for the authorized organization. This endpoint only returns currently active assignments. During Beta, response ordering is implementation-defined and will stabilize before GA when database-backed pagination lands.
-
- <b>Rate limit:</b> 5 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
-
-To use this endpoint, select **Read Assignments** under the Assignments category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
- 
-
- **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.betaApIs.listAssetAssignments();
-
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `Samsara.ListAssetAssignmentsRequest` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `BetaApIsClient.RequestOptions` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.betaApIs.<a href="/src/api/resources/betaApIs/client/Client.ts">createAssetAssignment</a>({ ...params }) -> Samsara.AssetAssignmentsCreateAssetAssignmentResponseBody</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Create an asset assignment.
-
- <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
-
-To use this endpoint, select **Write Assignments** under the Assignments category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
- 
-
- **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.betaApIs.createAssetAssignment({
-    assetId: "281474978683353",
-    assigneeId: "494123",
-    assigneeType: "driver"
-});
-
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `Samsara.AssetAssignmentsCreateAssetAssignmentRequestBody` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `BetaApIsClient.RequestOptions` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.betaApIs.<a href="/src/api/resources/betaApIs/client/Client.ts">unassignAssetAssignment</a>({ ...params }) -> void</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Unassign an active asset assignment.
-
- <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
-
-To use this endpoint, select **Write Assignments** under the Assignments category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
- 
-
- **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.betaApIs.unassignAssetAssignment({
-    assetId: "281474978683353"
-});
-
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `Samsara.AssetAssignmentsUnassignAssetAssignmentRequestBody` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `BetaApIsClient.RequestOptions` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.betaApIs.<a href="/src/api/resources/betaApIs/client/Client.ts">listAssociations</a>({ ...params }) -> Samsara.AssociationsListAssociationsResponseBody</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-List associations between vehicles and peripheral devices within a given time range. Associations represent the relationship between a central device (vehicle) and a peripheral device (e.g. asset tag). An association with a null endTime is still active. If no endTime query parameter is provided, all associations from startTime onward are returned, including currently active (open) associations.
-
- <b>Rate limit:</b> 5 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
-
-To use this endpoint, select **Read Assets** under the Assets category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
- 
-
- **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.betaApIs.listAssociations({
-    startTime: "startTime"
-});
-
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `Samsara.ListAssociationsRequest` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `BetaApIsClient.RequestOptions` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
 <details><summary><code>client.betaApIs.<a href="/src/api/resources/betaApIs/client/Client.ts">listDeviceRecoveryMissingAssets</a>({ ...params }) -> Samsara.DeviceRecoveryListDeviceRecoveryMissingAssetsResponseBody</code></summary>
 <dl>
 <dd>
@@ -3478,6 +3190,148 @@ await client.betaApIs.createFunction({
 <dd>
 
 **request:** `Samsara.FunctionsCreateFunctionRequestBody` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `BetaApIsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.betaApIs.<a href="/src/api/resources/betaApIs/client/Client.ts">listFunctionsStorageFiles</a>({ ...params }) -> Samsara.FunctionsStorageListFunctionsStorageFilesResponseBody</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+List files in Functions storage for the organization. Returns file metadata and optionally includes presigned download or upload URLs.
+
+ <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+
+To use this endpoint, select **Read Functions Storage** under the Functions category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+ 
+
+ **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.betaApIs.listFunctionsStorageFiles();
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Samsara.ListFunctionsStorageFilesRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `BetaApIsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.betaApIs.<a href="/src/api/resources/betaApIs/client/Client.ts">deleteFunctionStorageFile</a>({ ...params }) -> void</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Delete a file from Functions storage by name.
+
+ <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+
+To use this endpoint, select **Write Functions Storage** under the Functions category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+ 
+
+ **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.betaApIs.deleteFunctionStorageFile({
+    name: "name"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Samsara.DeleteFunctionStorageFileRequest` 
     
 </dd>
 </dl>
@@ -4281,6 +4135,78 @@ await client.betaApIs.listHubRouteTemplates({
 <dd>
 
 **request:** `Samsara.ListHubRouteTemplatesRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `BetaApIsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.betaApIs.<a href="/src/api/resources/betaApIs/client/Client.ts">deleteHubRouteTemplate</a>({ ...params }) -> void</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Delete a route template by its unique identifier.
+
+ <b>Rate limit:</b> 5 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+
+To use this endpoint, select **Write Routes** under the Driver Workflow category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+ 
+
+ **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.betaApIs.deleteHubRouteTemplate({
+    id: "id"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Samsara.DeleteHubRouteTemplateRequest` 
     
 </dd>
 </dl>
@@ -6401,6 +6327,78 @@ await client.betaApIs.getRidershipRouteSetup({
 <dd>
 
 **request:** `Samsara.GetRidershipRouteSetupRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `BetaApIsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.betaApIs.<a href="/src/api/resources/betaApIs/client/Client.ts">patchSafetyEventsV2Batch</a>({ ...params }) -> Samsara.SafetyEventsV2PatchSafetyEventsV2BatchResponseBody</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Asynchronously update eventState, context labels, and/or behavior labels for one or more Safety Events. Returns 202 Accepted immediately. State changes propagate asynchronously; use GET /safety-events to confirm updated state. If any safetyEventIds are not found, the entire request fails with 404 before any mutations are executed.If both eventState and label fields are provided, the two mutations execute serially and are not transactional — a label mutation failure will not roll back a successful state change.
+
+ <b>Rate limit:</b> 5 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+
+To use this endpoint, select **Write Safety Events & Scores** under the Safety & Cameras category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+ 
+
+ **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.betaApIs.patchSafetyEventsV2Batch({
+    safetyEventIds: ["bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590"]
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Samsara.SafetyEventsV2PatchSafetyEventsV2BatchRequestBody` 
     
 </dd>
 </dl>
@@ -18900,7 +18898,7 @@ await client.previewApIs.unlockVehicle({
 </dl>
 </details>
 
-<details><summary><code>client.previewApIs.<a href="/src/api/resources/previewApIs/client/Client.ts">patchSafetyEventsV2Batch</a>({ ...params }) -> Samsara.SafetyEventsV2PatchSafetyEventsV2BatchResponseBody</code></summary>
+<details><summary><code>client.previewApIs.<a href="/src/api/resources/previewApIs/client/Client.ts">pairGateways</a>({ ...params }) -> Samsara.GatewaysPairGatewaysResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -18912,11 +18910,11 @@ await client.previewApIs.unlockVehicle({
 <dl>
 <dd>
 
-Asynchronously update eventState and/or context labels for one or more Safety Events. Returns 202 Accepted immediately. State changes propagate asynchronously; use GET /safety-events to confirm updated state. If any safetyEventIds are not found, the entire request fails with 404 before any mutations are executed. If both eventState and label fields are provided, the two mutations execute serially and are not transactional — a label mutation failure will not roll back a successful state change.
+Reassign one or more gateways to different devices in a single call. Mirrors the dashboard's "Pair Gateway" flow and accepts up to 50 gateway-device pairs per request. Works for any device type: vehicles, assets, equipment, trailers, industrial machines, and asset tags. By default, devices that the reassigned gateways were previously linked to remain in their current group. Pass `removeOrphanDevices: true` to move those orphaned devices to the unassigned group and clear their tags. The endpoint is currently in Preview and gated behind a feature configuration; contact your Samsara representative to enable access.
 
- <b>Rate limit:</b> 5 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+ <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
 
-To use this endpoint, select **Write Safety Events & Scores** under the Safety & Cameras category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+To use this endpoint, select **Write Gateways** under the Setup & Administration category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
 
 Endpoints in this section are in Preview. These APIs are not functional and are instead for soliciting feedback from our API users on the intended design of this API. Additionally, it is not guaranteed that we will be releasing an endpoint included in this section to production. This means that developers should **NOT** rely on these APIs to build business critical applications
 
@@ -18940,8 +18938,11 @@ Endpoints in this section are in Preview. These APIs are not functional and are 
 <dd>
 
 ```typescript
-await client.previewApIs.patchSafetyEventsV2Batch({
-    safetyEventIds: ["bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590"]
+await client.previewApIs.pairGateways({
+    pairs: [{
+            deviceSerial: "GFRV-43N-VGX",
+            gatewaySerial: "GFRV-43N-VGX"
+        }]
 });
 
 ```
@@ -18958,7 +18959,7 @@ await client.previewApIs.patchSafetyEventsV2Batch({
 <dl>
 <dd>
 
-**request:** `Samsara.SafetyEventsV2PatchSafetyEventsV2BatchRequestBody` 
+**request:** `Samsara.GatewaysPairGatewaysRequestBody` 
     
 </dd>
 </dl>

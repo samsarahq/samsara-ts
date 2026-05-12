@@ -1718,6 +1718,7 @@ describe("AlertsClient", () => {
                                     trailer: { id: "id" },
                                     vehicle: { id: "id", serial: "serial" },
                                 },
+                                routeStartDelayed: { driver: { id: "id" }, vehicle: { id: "id", serial: "serial" } },
                                 routeStopArrival: {
                                     driver: { id: "id" },
                                     operation: "stop arrived",
@@ -1781,6 +1782,12 @@ describe("AlertsClient", () => {
                                 routeStopETA: {
                                     driver: { id: "id" },
                                     trailer: { id: "id" },
+                                    vehicle: { id: "id", serial: "serial" },
+                                },
+                                routeStopEarlyLateArrival: {
+                                    arrivalStatus: "early",
+                                    deviationMinutes: 1000000,
+                                    driver: { id: "id" },
                                     vehicle: { id: "id", serial: "serial" },
                                 },
                                 scheduledMaintenance: {
@@ -2068,6 +2075,7 @@ describe("AlertsClient", () => {
                                     trailer: { id: "id" },
                                     vehicle: { id: "id", serial: "serial" },
                                 },
+                                routeStartDelayed: { driver: { id: "id" }, vehicle: { id: "id", serial: "serial" } },
                                 routeStopArrival: {
                                     driver: { id: "id" },
                                     operation: "stop arrived",
@@ -2131,6 +2139,12 @@ describe("AlertsClient", () => {
                                 routeStopETA: {
                                     driver: { id: "id" },
                                     trailer: { id: "id" },
+                                    vehicle: { id: "id", serial: "serial" },
+                                },
+                                routeStopEarlyLateArrival: {
+                                    arrivalStatus: "early",
+                                    deviationMinutes: 1000000,
+                                    driver: { id: "id" },
                                     vehicle: { id: "id", serial: "serial" },
                                 },
                                 scheduledMaintenance: {
@@ -2428,6 +2442,7 @@ describe("AlertsClient", () => {
                                     trailer: { id: "id" },
                                     vehicle: { id: "id", serial: "serial" },
                                 },
+                                routeStartDelayed: { driver: { id: "id" }, vehicle: { id: "id", serial: "serial" } },
                                 routeStopArrival: {
                                     driver: { id: "id" },
                                     operation: "stop arrived",
@@ -2491,6 +2506,12 @@ describe("AlertsClient", () => {
                                 routeStopETA: {
                                     driver: { id: "id" },
                                     trailer: { id: "id" },
+                                    vehicle: { id: "id", serial: "serial" },
+                                },
+                                routeStopEarlyLateArrival: {
+                                    arrivalStatus: "early",
+                                    deviationMinutes: 1000000,
+                                    driver: { id: "id" },
                                     vehicle: { id: "id", serial: "serial" },
                                 },
                                 scheduledMaintenance: {
@@ -2778,6 +2799,7 @@ describe("AlertsClient", () => {
                                     trailer: { id: "id" },
                                     vehicle: { id: "id", serial: "serial" },
                                 },
+                                routeStartDelayed: { driver: { id: "id" }, vehicle: { id: "id", serial: "serial" } },
                                 routeStopArrival: {
                                     driver: { id: "id" },
                                     operation: "stop arrived",
@@ -2841,6 +2863,12 @@ describe("AlertsClient", () => {
                                 routeStopETA: {
                                     driver: { id: "id" },
                                     trailer: { id: "id" },
+                                    vehicle: { id: "id", serial: "serial" },
+                                },
+                                routeStopEarlyLateArrival: {
+                                    arrivalStatus: "early",
+                                    deviationMinutes: 1000000,
+                                    driver: { id: "id" },
                                     vehicle: { id: "id", serial: "serial" },
                                 },
                                 scheduledMaintenance: {
@@ -3400,6 +3428,15 @@ describe("AlertsClient", () => {
                                         serial: "serial",
                                     },
                                 },
+                                routeStartDelayed: {
+                                    driver: {
+                                        id: "id",
+                                    },
+                                    vehicle: {
+                                        id: "id",
+                                        serial: "serial",
+                                    },
+                                },
                                 routeStopArrival: {
                                     driver: {
                                         id: "id",
@@ -3469,6 +3506,17 @@ describe("AlertsClient", () => {
                                         id: "id",
                                     },
                                     trailer: {
+                                        id: "id",
+                                    },
+                                    vehicle: {
+                                        id: "id",
+                                        serial: "serial",
+                                    },
+                                },
+                                routeStopEarlyLateArrival: {
+                                    arrivalStatus: "early",
+                                    deviationMinutes: 1000000,
+                                    driver: {
                                         id: "id",
                                     },
                                     vehicle: {
@@ -4117,6 +4165,15 @@ describe("AlertsClient", () => {
                                         serial: "serial",
                                     },
                                 },
+                                routeStartDelayed: {
+                                    driver: {
+                                        id: "id",
+                                    },
+                                    vehicle: {
+                                        id: "id",
+                                        serial: "serial",
+                                    },
+                                },
                                 routeStopArrival: {
                                     driver: {
                                         id: "id",
@@ -4186,6 +4243,17 @@ describe("AlertsClient", () => {
                                         id: "id",
                                     },
                                     trailer: {
+                                        id: "id",
+                                    },
+                                    vehicle: {
+                                        id: "id",
+                                        serial: "serial",
+                                    },
+                                },
+                                routeStopEarlyLateArrival: {
+                                    arrivalStatus: "early",
+                                    deviationMinutes: 1000000,
+                                    driver: {
                                         id: "id",
                                     },
                                     vehicle: {
@@ -4844,6 +4912,15 @@ describe("AlertsClient", () => {
                                         serial: "serial",
                                     },
                                 },
+                                routeStartDelayed: {
+                                    driver: {
+                                        id: "id",
+                                    },
+                                    vehicle: {
+                                        id: "id",
+                                        serial: "serial",
+                                    },
+                                },
                                 routeStopArrival: {
                                     driver: {
                                         id: "id",
@@ -4913,6 +4990,17 @@ describe("AlertsClient", () => {
                                         id: "id",
                                     },
                                     trailer: {
+                                        id: "id",
+                                    },
+                                    vehicle: {
+                                        id: "id",
+                                        serial: "serial",
+                                    },
+                                },
+                                routeStopEarlyLateArrival: {
+                                    arrivalStatus: "early",
+                                    deviationMinutes: 1000000,
+                                    driver: {
                                         id: "id",
                                     },
                                     vehicle: {
@@ -5561,6 +5649,15 @@ describe("AlertsClient", () => {
                                         serial: "serial",
                                     },
                                 },
+                                routeStartDelayed: {
+                                    driver: {
+                                        id: "id",
+                                    },
+                                    vehicle: {
+                                        id: "id",
+                                        serial: "serial",
+                                    },
+                                },
                                 routeStopArrival: {
                                     driver: {
                                         id: "id",
@@ -5630,6 +5727,17 @@ describe("AlertsClient", () => {
                                         id: "id",
                                     },
                                     trailer: {
+                                        id: "id",
+                                    },
+                                    vehicle: {
+                                        id: "id",
+                                        serial: "serial",
+                                    },
+                                },
+                                routeStopEarlyLateArrival: {
+                                    arrivalStatus: "early",
+                                    deviationMinutes: 1000000,
+                                    driver: {
                                         id: "id",
                                     },
                                     vehicle: {

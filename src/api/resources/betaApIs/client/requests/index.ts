@@ -3,7 +3,6 @@ export type { DeleteFunctionStorageFileRequest } from "./DeleteFunctionStorageFi
 export type { DeleteHubRouteTemplateRequest } from "./DeleteHubRouteTemplateRequest.js";
 export type { DeleteJobRequest } from "./DeleteJobRequest.js";
 export type { DeletePlanOrdersRequest } from "./DeletePlanOrdersRequest.js";
-export type { DeleteRidershipAccountRequest } from "./DeleteRidershipAccountRequest.js";
 export type { DeleteRidershipPassengerRequest } from "./DeleteRidershipPassengerRequest.js";
 export type { DeleteRidershipRouteSetupRequest } from "./DeleteRidershipRouteSetupRequest.js";
 export type { DeployFunctionRequest } from "./DeployFunctionRequest.js";
@@ -34,7 +33,6 @@ export type { GetQualificationTypesRequest } from "./GetQualificationTypesReques
 export type { GetReportConfigsRequest } from "./GetReportConfigsRequest.js";
 export type { GetReportRunDataRequest } from "./GetReportRunDataRequest.js";
 export type { GetReportRunsRequest } from "./GetReportRunsRequest.js";
-export type { GetRidershipAccountRequest } from "./GetRidershipAccountRequest.js";
 export type { GetRidershipPassengerRequest } from "./GetRidershipPassengerRequest.js";
 export type { GetRidershipRouteSetupRequest } from "./GetRidershipRouteSetupRequest.js";
 export type { HosDailyLogsUpdateShippingDocsRequestBody } from "./HosDailyLogsUpdateShippingDocsRequestBody.js";
@@ -46,7 +44,6 @@ export type { ListFunctionsStorageFilesRequest } from "./ListFunctionsStorageFil
 export type { ListHubRouteTemplatesRequest } from "./ListHubRouteTemplatesRequest.js";
 export type { ListMaintenanceVendorsRequest } from "./ListMaintenanceVendorsRequest.js";
 export type { ListPlanOrdersRequest } from "./ListPlanOrdersRequest.js";
-export type { ListRidershipAccountsRequest } from "./ListRidershipAccountsRequest.js";
 export type { ListRidershipPassengersRequest } from "./ListRidershipPassengersRequest.js";
 export type { ListRidershipRouteSetupsRequest } from "./ListRidershipRouteSetupsRequest.js";
 export type { ListTachographLiveDataRequest } from "./ListTachographLiveDataRequest.js";
@@ -59,8 +56,6 @@ export type { QualificationsUnarchiveQualificationRecordRequestBody } from "./Qu
 export type { ReadingsPostReadingsRequestBody } from "./ReadingsPostReadingsRequestBody.js";
 export type { ReportsCreateReportRunRequestBody } from "./ReportsCreateReportRunRequestBody.js";
 export type { ResolveAssignmentByDetailsResolveAssignmentByDetailsRequestBody } from "./ResolveAssignmentByDetailsResolveAssignmentByDetailsRequestBody.js";
-export type { RidershipAccountsCreateRidershipAccountRequestBody } from "./RidershipAccountsCreateRidershipAccountRequestBody.js";
-export type { RidershipAccountsUpdateRidershipAccountRequestBody } from "./RidershipAccountsUpdateRidershipAccountRequestBody.js";
 export { RidershipPassengersCreateRidershipPassengerRequestBody } from "./RidershipPassengersCreateRidershipPassengerRequestBody.js";
 export { RidershipPassengersUpdateRidershipPassengerRequestBody } from "./RidershipPassengersUpdateRidershipPassengerRequestBody.js";
 export type { RidershipRouteSetupsCreateRidershipRouteSetupRequestBody } from "./RidershipRouteSetupsCreateRidershipRouteSetupRequestBody.js";

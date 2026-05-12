@@ -5,14 +5,11 @@ import type * as Samsara from "../../../../index.js";
 /**
  * @example
  *     {
- *         accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
  *         firstName: "John",
  *         lastName: "Doe"
  *     }
  */
 export interface RidershipPassengersCreateRidershipPassengerRequestBody {
-    /** The Samsara UUID of the ridership account this passenger belongs to. */
-    accountId: string;
     /** Classification or grade level of the passenger.  Valid values: `unknown`, `pk1`, `pk2`, `pk3`, `pk4`, `k`, `grade1`, `grade2`, `grade3`, `grade4`, `grade5`, `grade6`, `grade7`, `grade8`, `grade9`, `grade10`, `grade11`, `grade12` */
     classification?: RidershipPassengersCreateRidershipPassengerRequestBody.Classification;
     /** A map of external ids */
@@ -24,6 +21,8 @@ export interface RidershipPassengersCreateRidershipPassengerRequestBody {
     /** Last name of the passenger. */
     lastName: string;
     specialInstructions?: Samsara.RidershipPassengerSpecialInstructionsInputRequestBody;
+    /** IDs of tags to associate with the passenger. */
+    tagIds?: string[];
 }
 
 export namespace RidershipPassengersCreateRidershipPassengerRequestBody {

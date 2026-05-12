@@ -6,7 +6,6 @@ import type * as Samsara from "../../../../index.js";
  * @example
  *     {
  *         routeId: "routeId",
- *         accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
  *         passengers: [{
  *                 passengerId: "a1b2c3d4-5e6f-7a8b-9c0d-1e2f3a4b5c6d"
  *             }]
@@ -15,8 +14,6 @@ import type * as Samsara from "../../../../index.js";
 export interface RidershipRouteSetupsUpdateRidershipRouteSetupRequestBody {
     /** The route ID. This is the Samsara route ID returned by the Routing API. */
     routeId: string;
-    /** The Samsara UUID of the ridership account. */
-    accountId: string;
     /** List of passenger assignments for the route. */
     passengers: Samsara.RidershipRouteSetupPassengerInputRequestBody[];
 }

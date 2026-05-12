@@ -3,12 +3,12 @@
 /**
  * @example
  *     {
- *         accountId: "accountId"
+ *         tagId: "tagId"
  *     }
  */
 export interface ListRidershipPassengersRequest {
-    /** The Samsara UUID of the ridership account to filter passengers by. */
-    accountId: string;
+    /** ID of a tag to filter passengers by. */
+    tagId: string;
     /**  If specified, this should be the endCursor value from the previous page of results. When present, this request will return the next page of results that occur immediately after the previous page of results. */
     after?: string;
     /** The limit for how many objects will be in the response. Default and max for this value is 512 objects. */

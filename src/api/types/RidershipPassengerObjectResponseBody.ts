@@ -6,8 +6,6 @@ import type * as Samsara from "../index.js";
  * A ridership passenger entity.
  */
 export interface RidershipPassengerObjectResponseBody {
-    /** The Samsara UUID of the account this passenger belongs to. */
-    accountId: string;
     /** Classification or grade level of the passenger. */
     classification?: string | undefined;
     /** The time the passenger was created in RFC 3339 format. */
@@ -25,6 +23,8 @@ export interface RidershipPassengerObjectResponseBody {
     /** Last name of the passenger. */
     lastName: string;
     specialInstructions?: Samsara.RidershipPassengerSpecialInstructionsObjectResponseBody | undefined;
+    /** IDs of tags associated with this passenger. */
+    tagIds?: string[] | undefined;
     /** The time the passenger was last updated in RFC 3339 format. */
     updatedAtTime: string;
 }

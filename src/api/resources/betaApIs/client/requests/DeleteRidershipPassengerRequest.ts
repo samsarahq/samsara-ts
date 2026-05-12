@@ -7,6 +7,6 @@
  *     }
  */
 export interface DeleteRidershipPassengerRequest {
-    /** The Samsara UUID of the ridership passenger. */
+    /** ID of the ridership passenger. This can either be the Samsara-specified UUID, or an external ID. External IDs are customer-specified key-value pairs. To specify an external ID, use the following format: `key:value`. For example, `student:STU-001`. */
     id: string;
 }

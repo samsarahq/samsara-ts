@@ -6,8 +6,6 @@ import type * as Samsara from "../index.js";
  * A ridership route setup representing planned passenger assignments.
  */
 export interface RidershipRouteSetupObjectResponseBody {
-    /** The Samsara UUID of the ridership account. */
-    accountId: string;
     /** The time the route setup was created in RFC 3339 format. */
     createdAtTime: string;
     /** List of passenger assignments. */

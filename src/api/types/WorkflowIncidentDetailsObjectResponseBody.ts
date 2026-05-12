@@ -48,9 +48,11 @@ export interface WorkflowIncidentDetailsObjectResponseBody {
     personDetected?: Samsara.PersonDetectedResponseBody | undefined;
     reading?: Samsara.ReadingTriggerDetailsResponseBody | undefined;
     reeferTemperature?: Samsara.ReeferTemperatureResponseBody | undefined;
+    routeStartDelayed?: Samsara.RouteStartDelayedDataResponseBody | undefined;
     routeStopArrival?: Samsara.RouteStopDetailsObjectResponseBody | undefined;
     routeStopDeparture?: Samsara.RouteStopDetailsObjectResponseBody | undefined;
     routeStopETA?: Samsara.RouteStopEtaResponseBody | undefined;
+    routeStopEarlyLateArrival?: Samsara.RouteStopEarlyLateArrivalDataResponseBody | undefined;
     scheduledMaintenance?: Samsara.ScheduledMaintenanceDataResponseBody | undefined;
     scheduledMaintenanceByEngineHours?: Samsara.ScheduledMaintenanceByEngineHoursResponseBody | undefined;
     scheduledMaintenanceOdometer?: Samsara.ScheduledMaintenanceOdometerDataResponseBody | undefined;

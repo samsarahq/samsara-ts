@@ -15895,1335 +15895,6 @@ describe("BetaApIsClient", () => {
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 
-    test("listRidershipAccounts (1)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = {
-            data: [
-                {
-                    createdAtTime: "2024-11-15T10:00:00Z",
-                    externalIds: { key: "value" },
-                    id: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
-                    name: "Springfield Public Schools",
-                    updatedAtTime: "2024-11-15T10:30:00Z",
-                },
-            ],
-            pagination: { endCursor: "MjkY", hasNextPage: true },
-        };
-        server
-            .mockEndpoint()
-            .get("/ridership/accounts")
-            .respondWith()
-            .statusCode(200)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        const response = await client.betaApIs.listRidershipAccounts();
-        expect(response).toEqual({
-            data: [
-                {
-                    createdAtTime: "2024-11-15T10:00:00Z",
-                    externalIds: {
-                        key: "value",
-                    },
-                    id: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
-                    name: "Springfield Public Schools",
-                    updatedAtTime: "2024-11-15T10:30:00Z",
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
-    });
-
-    test("listRidershipAccounts (2)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .get("/ridership/accounts")
-            .respondWith()
-            .statusCode(401)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.betaApIs.listRidershipAccounts();
-        }).rejects.toThrow(Samsara.UnauthorizedError);
-    });
-
-    test("listRidershipAccounts (3)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .get("/ridership/accounts")
-            .respondWith()
-            .statusCode(404)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.betaApIs.listRidershipAccounts();
-        }).rejects.toThrow(Samsara.NotFoundError);
-    });
-
-    test("listRidershipAccounts (4)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .get("/ridership/accounts")
-            .respondWith()
-            .statusCode(405)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.betaApIs.listRidershipAccounts();
-        }).rejects.toThrow(Samsara.MethodNotAllowedError);
-    });
-
-    test("listRidershipAccounts (5)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .get("/ridership/accounts")
-            .respondWith()
-            .statusCode(429)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.betaApIs.listRidershipAccounts();
-        }).rejects.toThrow(Samsara.TooManyRequestsError);
-    });
-
-    test("listRidershipAccounts (6)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .get("/ridership/accounts")
-            .respondWith()
-            .statusCode(500)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.betaApIs.listRidershipAccounts();
-        }).rejects.toThrow(Samsara.InternalServerError);
-    });
-
-    test("listRidershipAccounts (7)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .get("/ridership/accounts")
-            .respondWith()
-            .statusCode(501)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.betaApIs.listRidershipAccounts();
-        }).rejects.toThrow(Samsara.NotImplementedError);
-    });
-
-    test("listRidershipAccounts (8)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .get("/ridership/accounts")
-            .respondWith()
-            .statusCode(502)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.betaApIs.listRidershipAccounts();
-        }).rejects.toThrow(Samsara.BadGatewayError);
-    });
-
-    test("listRidershipAccounts (9)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .get("/ridership/accounts")
-            .respondWith()
-            .statusCode(503)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.betaApIs.listRidershipAccounts();
-        }).rejects.toThrow(Samsara.ServiceUnavailableError);
-    });
-
-    test("listRidershipAccounts (10)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .get("/ridership/accounts")
-            .respondWith()
-            .statusCode(504)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.betaApIs.listRidershipAccounts();
-        }).rejects.toThrow(Samsara.GatewayTimeoutError);
-    });
-
-    test("createRidershipAccount (1)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-        const rawRequestBody = { name: "Springfield Public Schools" };
-        const rawResponseBody = {
-            data: {
-                createdAtTime: "2024-11-15T10:00:00Z",
-                externalIds: { key: "value" },
-                id: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
-                name: "Springfield Public Schools",
-                updatedAtTime: "2024-11-15T10:30:00Z",
-            },
-        };
-        server
-            .mockEndpoint()
-            .post("/ridership/accounts")
-            .jsonBody(rawRequestBody)
-            .respondWith()
-            .statusCode(200)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        const response = await client.betaApIs.createRidershipAccount({
-            name: "Springfield Public Schools",
-        });
-        expect(response).toEqual({
-            data: {
-                createdAtTime: "2024-11-15T10:00:00Z",
-                externalIds: {
-                    key: "value",
-                },
-                id: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
-                name: "Springfield Public Schools",
-                updatedAtTime: "2024-11-15T10:30:00Z",
-            },
-        });
-    });
-
-    test("createRidershipAccount (2)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-        const rawRequestBody = { name: "name" };
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .post("/ridership/accounts")
-            .jsonBody(rawRequestBody)
-            .respondWith()
-            .statusCode(401)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.betaApIs.createRidershipAccount({
-                name: "name",
-            });
-        }).rejects.toThrow(Samsara.UnauthorizedError);
-    });
-
-    test("createRidershipAccount (3)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-        const rawRequestBody = { name: "name" };
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .post("/ridership/accounts")
-            .jsonBody(rawRequestBody)
-            .respondWith()
-            .statusCode(404)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.betaApIs.createRidershipAccount({
-                name: "name",
-            });
-        }).rejects.toThrow(Samsara.NotFoundError);
-    });
-
-    test("createRidershipAccount (4)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-        const rawRequestBody = { name: "name" };
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .post("/ridership/accounts")
-            .jsonBody(rawRequestBody)
-            .respondWith()
-            .statusCode(405)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.betaApIs.createRidershipAccount({
-                name: "name",
-            });
-        }).rejects.toThrow(Samsara.MethodNotAllowedError);
-    });
-
-    test("createRidershipAccount (5)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-        const rawRequestBody = { name: "name" };
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .post("/ridership/accounts")
-            .jsonBody(rawRequestBody)
-            .respondWith()
-            .statusCode(429)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.betaApIs.createRidershipAccount({
-                name: "name",
-            });
-        }).rejects.toThrow(Samsara.TooManyRequestsError);
-    });
-
-    test("createRidershipAccount (6)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-        const rawRequestBody = { name: "name" };
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .post("/ridership/accounts")
-            .jsonBody(rawRequestBody)
-            .respondWith()
-            .statusCode(500)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.betaApIs.createRidershipAccount({
-                name: "name",
-            });
-        }).rejects.toThrow(Samsara.InternalServerError);
-    });
-
-    test("createRidershipAccount (7)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-        const rawRequestBody = { name: "name" };
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .post("/ridership/accounts")
-            .jsonBody(rawRequestBody)
-            .respondWith()
-            .statusCode(501)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.betaApIs.createRidershipAccount({
-                name: "name",
-            });
-        }).rejects.toThrow(Samsara.NotImplementedError);
-    });
-
-    test("createRidershipAccount (8)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-        const rawRequestBody = { name: "name" };
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .post("/ridership/accounts")
-            .jsonBody(rawRequestBody)
-            .respondWith()
-            .statusCode(502)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.betaApIs.createRidershipAccount({
-                name: "name",
-            });
-        }).rejects.toThrow(Samsara.BadGatewayError);
-    });
-
-    test("createRidershipAccount (9)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-        const rawRequestBody = { name: "name" };
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .post("/ridership/accounts")
-            .jsonBody(rawRequestBody)
-            .respondWith()
-            .statusCode(503)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.betaApIs.createRidershipAccount({
-                name: "name",
-            });
-        }).rejects.toThrow(Samsara.ServiceUnavailableError);
-    });
-
-    test("createRidershipAccount (10)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-        const rawRequestBody = { name: "name" };
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .post("/ridership/accounts")
-            .jsonBody(rawRequestBody)
-            .respondWith()
-            .statusCode(504)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.betaApIs.createRidershipAccount({
-                name: "name",
-            });
-        }).rejects.toThrow(Samsara.GatewayTimeoutError);
-    });
-
-    test("updateRidershipAccount (1)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-        const rawRequestBody = { name: "Springfield Public Schools" };
-        const rawResponseBody = {
-            data: {
-                createdAtTime: "2024-11-15T10:00:00Z",
-                externalIds: { key: "value" },
-                id: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
-                name: "Springfield Public Schools",
-                updatedAtTime: "2024-11-15T10:30:00Z",
-            },
-        };
-        server
-            .mockEndpoint()
-            .put("/ridership/accounts")
-            .jsonBody(rawRequestBody)
-            .respondWith()
-            .statusCode(200)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        const response = await client.betaApIs.updateRidershipAccount({
-            id: "id",
-            name: "Springfield Public Schools",
-        });
-        expect(response).toEqual({
-            data: {
-                createdAtTime: "2024-11-15T10:00:00Z",
-                externalIds: {
-                    key: "value",
-                },
-                id: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
-                name: "Springfield Public Schools",
-                updatedAtTime: "2024-11-15T10:30:00Z",
-            },
-        });
-    });
-
-    test("updateRidershipAccount (2)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-        const rawRequestBody = { name: "name" };
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .put("/ridership/accounts")
-            .jsonBody(rawRequestBody)
-            .respondWith()
-            .statusCode(401)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.betaApIs.updateRidershipAccount({
-                id: "id",
-                name: "name",
-            });
-        }).rejects.toThrow(Samsara.UnauthorizedError);
-    });
-
-    test("updateRidershipAccount (3)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-        const rawRequestBody = { name: "name" };
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .put("/ridership/accounts")
-            .jsonBody(rawRequestBody)
-            .respondWith()
-            .statusCode(404)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.betaApIs.updateRidershipAccount({
-                id: "id",
-                name: "name",
-            });
-        }).rejects.toThrow(Samsara.NotFoundError);
-    });
-
-    test("updateRidershipAccount (4)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-        const rawRequestBody = { name: "name" };
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .put("/ridership/accounts")
-            .jsonBody(rawRequestBody)
-            .respondWith()
-            .statusCode(405)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.betaApIs.updateRidershipAccount({
-                id: "id",
-                name: "name",
-            });
-        }).rejects.toThrow(Samsara.MethodNotAllowedError);
-    });
-
-    test("updateRidershipAccount (5)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-        const rawRequestBody = { name: "name" };
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .put("/ridership/accounts")
-            .jsonBody(rawRequestBody)
-            .respondWith()
-            .statusCode(429)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.betaApIs.updateRidershipAccount({
-                id: "id",
-                name: "name",
-            });
-        }).rejects.toThrow(Samsara.TooManyRequestsError);
-    });
-
-    test("updateRidershipAccount (6)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-        const rawRequestBody = { name: "name" };
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .put("/ridership/accounts")
-            .jsonBody(rawRequestBody)
-            .respondWith()
-            .statusCode(500)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.betaApIs.updateRidershipAccount({
-                id: "id",
-                name: "name",
-            });
-        }).rejects.toThrow(Samsara.InternalServerError);
-    });
-
-    test("updateRidershipAccount (7)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-        const rawRequestBody = { name: "name" };
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .put("/ridership/accounts")
-            .jsonBody(rawRequestBody)
-            .respondWith()
-            .statusCode(501)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.betaApIs.updateRidershipAccount({
-                id: "id",
-                name: "name",
-            });
-        }).rejects.toThrow(Samsara.NotImplementedError);
-    });
-
-    test("updateRidershipAccount (8)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-        const rawRequestBody = { name: "name" };
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .put("/ridership/accounts")
-            .jsonBody(rawRequestBody)
-            .respondWith()
-            .statusCode(502)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.betaApIs.updateRidershipAccount({
-                id: "id",
-                name: "name",
-            });
-        }).rejects.toThrow(Samsara.BadGatewayError);
-    });
-
-    test("updateRidershipAccount (9)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-        const rawRequestBody = { name: "name" };
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .put("/ridership/accounts")
-            .jsonBody(rawRequestBody)
-            .respondWith()
-            .statusCode(503)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.betaApIs.updateRidershipAccount({
-                id: "id",
-                name: "name",
-            });
-        }).rejects.toThrow(Samsara.ServiceUnavailableError);
-    });
-
-    test("updateRidershipAccount (10)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-        const rawRequestBody = { name: "name" };
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .put("/ridership/accounts")
-            .jsonBody(rawRequestBody)
-            .respondWith()
-            .statusCode(504)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.betaApIs.updateRidershipAccount({
-                id: "id",
-                name: "name",
-            });
-        }).rejects.toThrow(Samsara.GatewayTimeoutError);
-    });
-
-    test("deleteRidershipAccount (1)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        server.mockEndpoint().delete("/ridership/accounts").respondWith().statusCode(200).build();
-
-        const response = await client.betaApIs.deleteRidershipAccount({
-            id: "id",
-        });
-        expect(response).toEqual(undefined);
-    });
-
-    test("deleteRidershipAccount (2)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .delete("/ridership/accounts")
-            .respondWith()
-            .statusCode(401)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.betaApIs.deleteRidershipAccount({
-                id: "id",
-            });
-        }).rejects.toThrow(Samsara.UnauthorizedError);
-    });
-
-    test("deleteRidershipAccount (3)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .delete("/ridership/accounts")
-            .respondWith()
-            .statusCode(404)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.betaApIs.deleteRidershipAccount({
-                id: "id",
-            });
-        }).rejects.toThrow(Samsara.NotFoundError);
-    });
-
-    test("deleteRidershipAccount (4)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .delete("/ridership/accounts")
-            .respondWith()
-            .statusCode(405)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.betaApIs.deleteRidershipAccount({
-                id: "id",
-            });
-        }).rejects.toThrow(Samsara.MethodNotAllowedError);
-    });
-
-    test("deleteRidershipAccount (5)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .delete("/ridership/accounts")
-            .respondWith()
-            .statusCode(429)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.betaApIs.deleteRidershipAccount({
-                id: "id",
-            });
-        }).rejects.toThrow(Samsara.TooManyRequestsError);
-    });
-
-    test("deleteRidershipAccount (6)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .delete("/ridership/accounts")
-            .respondWith()
-            .statusCode(500)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.betaApIs.deleteRidershipAccount({
-                id: "id",
-            });
-        }).rejects.toThrow(Samsara.InternalServerError);
-    });
-
-    test("deleteRidershipAccount (7)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .delete("/ridership/accounts")
-            .respondWith()
-            .statusCode(501)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.betaApIs.deleteRidershipAccount({
-                id: "id",
-            });
-        }).rejects.toThrow(Samsara.NotImplementedError);
-    });
-
-    test("deleteRidershipAccount (8)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .delete("/ridership/accounts")
-            .respondWith()
-            .statusCode(502)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.betaApIs.deleteRidershipAccount({
-                id: "id",
-            });
-        }).rejects.toThrow(Samsara.BadGatewayError);
-    });
-
-    test("deleteRidershipAccount (9)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .delete("/ridership/accounts")
-            .respondWith()
-            .statusCode(503)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.betaApIs.deleteRidershipAccount({
-                id: "id",
-            });
-        }).rejects.toThrow(Samsara.ServiceUnavailableError);
-    });
-
-    test("deleteRidershipAccount (10)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .delete("/ridership/accounts")
-            .respondWith()
-            .statusCode(504)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.betaApIs.deleteRidershipAccount({
-                id: "id",
-            });
-        }).rejects.toThrow(Samsara.GatewayTimeoutError);
-    });
-
-    test("getRidershipAccount (1)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = {
-            data: {
-                createdAtTime: "2024-11-15T10:00:00Z",
-                externalIds: { key: "value" },
-                id: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
-                name: "Springfield Public Schools",
-                updatedAtTime: "2024-11-15T10:30:00Z",
-            },
-        };
-        server
-            .mockEndpoint()
-            .get("/ridership/accounts/id")
-            .respondWith()
-            .statusCode(200)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        const response = await client.betaApIs.getRidershipAccount({
-            id: "id",
-        });
-        expect(response).toEqual({
-            data: {
-                createdAtTime: "2024-11-15T10:00:00Z",
-                externalIds: {
-                    key: "value",
-                },
-                id: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
-                name: "Springfield Public Schools",
-                updatedAtTime: "2024-11-15T10:30:00Z",
-            },
-        });
-    });
-
-    test("getRidershipAccount (2)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .get("/ridership/accounts/id")
-            .respondWith()
-            .statusCode(401)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.betaApIs.getRidershipAccount({
-                id: "id",
-            });
-        }).rejects.toThrow(Samsara.UnauthorizedError);
-    });
-
-    test("getRidershipAccount (3)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .get("/ridership/accounts/id")
-            .respondWith()
-            .statusCode(404)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.betaApIs.getRidershipAccount({
-                id: "id",
-            });
-        }).rejects.toThrow(Samsara.NotFoundError);
-    });
-
-    test("getRidershipAccount (4)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .get("/ridership/accounts/id")
-            .respondWith()
-            .statusCode(405)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.betaApIs.getRidershipAccount({
-                id: "id",
-            });
-        }).rejects.toThrow(Samsara.MethodNotAllowedError);
-    });
-
-    test("getRidershipAccount (5)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .get("/ridership/accounts/id")
-            .respondWith()
-            .statusCode(429)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.betaApIs.getRidershipAccount({
-                id: "id",
-            });
-        }).rejects.toThrow(Samsara.TooManyRequestsError);
-    });
-
-    test("getRidershipAccount (6)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .get("/ridership/accounts/id")
-            .respondWith()
-            .statusCode(500)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.betaApIs.getRidershipAccount({
-                id: "id",
-            });
-        }).rejects.toThrow(Samsara.InternalServerError);
-    });
-
-    test("getRidershipAccount (7)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .get("/ridership/accounts/id")
-            .respondWith()
-            .statusCode(501)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.betaApIs.getRidershipAccount({
-                id: "id",
-            });
-        }).rejects.toThrow(Samsara.NotImplementedError);
-    });
-
-    test("getRidershipAccount (8)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .get("/ridership/accounts/id")
-            .respondWith()
-            .statusCode(502)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.betaApIs.getRidershipAccount({
-                id: "id",
-            });
-        }).rejects.toThrow(Samsara.BadGatewayError);
-    });
-
-    test("getRidershipAccount (9)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .get("/ridership/accounts/id")
-            .respondWith()
-            .statusCode(503)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.betaApIs.getRidershipAccount({
-                id: "id",
-            });
-        }).rejects.toThrow(Samsara.ServiceUnavailableError);
-    });
-
-    test("getRidershipAccount (10)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .get("/ridership/accounts/id")
-            .respondWith()
-            .statusCode(504)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.betaApIs.getRidershipAccount({
-                id: "id",
-            });
-        }).rejects.toThrow(Samsara.GatewayTimeoutError);
-    });
-
     test("listRidershipPassengers (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
@@ -17236,7 +15907,6 @@ describe("BetaApIsClient", () => {
         const rawResponseBody = {
             data: [
                 {
-                    accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
                     classification: "grade5",
                     createdAtTime: "2024-11-15T10:00:00Z",
                     externalIds: { key: "value" },
@@ -17252,7 +15922,13 @@ describe("BetaApIsClient", () => {
                     ],
                     isActive: true,
                     lastName: "Doe",
-                    specialInstructions: { isGuardianRequired: false, isSpecialEducation: false },
+                    specialInstructions: { isGuardianRequired: true, isSpecialEducation: true },
+                    tagIds: [
+                        "Beatae minus.",
+                        "Voluptatum voluptatem qui.",
+                        "Tempora voluptatem voluptatem veritatis molestiae.",
+                        "Quis est eaque voluptas quia id voluptates.",
+                    ],
                     updatedAtTime: "2024-11-15T10:30:00Z",
                 },
             ],
@@ -17267,12 +15943,11 @@ describe("BetaApIsClient", () => {
             .build();
 
         const response = await client.betaApIs.listRidershipPassengers({
-            accountId: "accountId",
+            tagId: "tagId",
         });
         expect(response).toEqual({
             data: [
                 {
-                    accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
                     classification: "grade5",
                     createdAtTime: "2024-11-15T10:00:00Z",
                     externalIds: {
@@ -17291,9 +15966,15 @@ describe("BetaApIsClient", () => {
                     isActive: true,
                     lastName: "Doe",
                     specialInstructions: {
-                        isGuardianRequired: false,
-                        isSpecialEducation: false,
+                        isGuardianRequired: true,
+                        isSpecialEducation: true,
                     },
+                    tagIds: [
+                        "Beatae minus.",
+                        "Voluptatum voluptatem qui.",
+                        "Tempora voluptatem voluptatem veritatis molestiae.",
+                        "Quis est eaque voluptas quia id voluptates.",
+                    ],
                     updatedAtTime: "2024-11-15T10:30:00Z",
                 },
             ],
@@ -17324,7 +16005,7 @@ describe("BetaApIsClient", () => {
 
         await expect(async () => {
             return await client.betaApIs.listRidershipPassengers({
-                accountId: "accountId",
+                tagId: "tagId",
             });
         }).rejects.toThrow(Samsara.UnauthorizedError);
     });
@@ -17349,7 +16030,7 @@ describe("BetaApIsClient", () => {
 
         await expect(async () => {
             return await client.betaApIs.listRidershipPassengers({
-                accountId: "accountId",
+                tagId: "tagId",
             });
         }).rejects.toThrow(Samsara.NotFoundError);
     });
@@ -17374,7 +16055,7 @@ describe("BetaApIsClient", () => {
 
         await expect(async () => {
             return await client.betaApIs.listRidershipPassengers({
-                accountId: "accountId",
+                tagId: "tagId",
             });
         }).rejects.toThrow(Samsara.MethodNotAllowedError);
     });
@@ -17399,7 +16080,7 @@ describe("BetaApIsClient", () => {
 
         await expect(async () => {
             return await client.betaApIs.listRidershipPassengers({
-                accountId: "accountId",
+                tagId: "tagId",
             });
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
@@ -17424,7 +16105,7 @@ describe("BetaApIsClient", () => {
 
         await expect(async () => {
             return await client.betaApIs.listRidershipPassengers({
-                accountId: "accountId",
+                tagId: "tagId",
             });
         }).rejects.toThrow(Samsara.InternalServerError);
     });
@@ -17449,7 +16130,7 @@ describe("BetaApIsClient", () => {
 
         await expect(async () => {
             return await client.betaApIs.listRidershipPassengers({
-                accountId: "accountId",
+                tagId: "tagId",
             });
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
@@ -17474,7 +16155,7 @@ describe("BetaApIsClient", () => {
 
         await expect(async () => {
             return await client.betaApIs.listRidershipPassengers({
-                accountId: "accountId",
+                tagId: "tagId",
             });
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
@@ -17499,7 +16180,7 @@ describe("BetaApIsClient", () => {
 
         await expect(async () => {
             return await client.betaApIs.listRidershipPassengers({
-                accountId: "accountId",
+                tagId: "tagId",
             });
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
@@ -17524,7 +16205,7 @@ describe("BetaApIsClient", () => {
 
         await expect(async () => {
             return await client.betaApIs.listRidershipPassengers({
-                accountId: "accountId",
+                tagId: "tagId",
             });
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
@@ -17537,14 +16218,9 @@ describe("BetaApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = {
-            accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
-            firstName: "John",
-            lastName: "Doe",
-        };
+        const rawRequestBody = { firstName: "John", lastName: "Doe" };
         const rawResponseBody = {
             data: {
-                accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
                 classification: "grade5",
                 createdAtTime: "2024-11-15T10:00:00Z",
                 externalIds: { key: "value" },
@@ -17555,7 +16231,13 @@ describe("BetaApIsClient", () => {
                 ],
                 isActive: true,
                 lastName: "Doe",
-                specialInstructions: { isGuardianRequired: false, isSpecialEducation: false },
+                specialInstructions: { isGuardianRequired: true, isSpecialEducation: true },
+                tagIds: [
+                    "Beatae minus.",
+                    "Voluptatum voluptatem qui.",
+                    "Tempora voluptatem voluptatem veritatis molestiae.",
+                    "Quis est eaque voluptas quia id voluptates.",
+                ],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
         };
@@ -17569,13 +16251,11 @@ describe("BetaApIsClient", () => {
             .build();
 
         const response = await client.betaApIs.createRidershipPassenger({
-            accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
             firstName: "John",
             lastName: "Doe",
         });
         expect(response).toEqual({
             data: {
-                accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
                 classification: "grade5",
                 createdAtTime: "2024-11-15T10:00:00Z",
                 externalIds: {
@@ -17594,9 +16274,15 @@ describe("BetaApIsClient", () => {
                 isActive: true,
                 lastName: "Doe",
                 specialInstructions: {
-                    isGuardianRequired: false,
-                    isSpecialEducation: false,
+                    isGuardianRequired: true,
+                    isSpecialEducation: true,
                 },
+                tagIds: [
+                    "Beatae minus.",
+                    "Voluptatum voluptatem qui.",
+                    "Tempora voluptatem voluptatem veritatis molestiae.",
+                    "Quis est eaque voluptas quia id voluptates.",
+                ],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
         });
@@ -17610,7 +16296,7 @@ describe("BetaApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { accountId: "accountId", firstName: "firstName", lastName: "lastName" };
+        const rawRequestBody = { firstName: "firstName", lastName: "lastName" };
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
@@ -17623,7 +16309,6 @@ describe("BetaApIsClient", () => {
 
         await expect(async () => {
             return await client.betaApIs.createRidershipPassenger({
-                accountId: "accountId",
                 firstName: "firstName",
                 lastName: "lastName",
             });
@@ -17638,7 +16323,7 @@ describe("BetaApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { accountId: "accountId", firstName: "firstName", lastName: "lastName" };
+        const rawRequestBody = { firstName: "firstName", lastName: "lastName" };
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
@@ -17651,7 +16336,6 @@ describe("BetaApIsClient", () => {
 
         await expect(async () => {
             return await client.betaApIs.createRidershipPassenger({
-                accountId: "accountId",
                 firstName: "firstName",
                 lastName: "lastName",
             });
@@ -17666,7 +16350,7 @@ describe("BetaApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { accountId: "accountId", firstName: "firstName", lastName: "lastName" };
+        const rawRequestBody = { firstName: "firstName", lastName: "lastName" };
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
@@ -17679,7 +16363,6 @@ describe("BetaApIsClient", () => {
 
         await expect(async () => {
             return await client.betaApIs.createRidershipPassenger({
-                accountId: "accountId",
                 firstName: "firstName",
                 lastName: "lastName",
             });
@@ -17694,7 +16377,7 @@ describe("BetaApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { accountId: "accountId", firstName: "firstName", lastName: "lastName" };
+        const rawRequestBody = { firstName: "firstName", lastName: "lastName" };
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
@@ -17707,7 +16390,6 @@ describe("BetaApIsClient", () => {
 
         await expect(async () => {
             return await client.betaApIs.createRidershipPassenger({
-                accountId: "accountId",
                 firstName: "firstName",
                 lastName: "lastName",
             });
@@ -17722,7 +16404,7 @@ describe("BetaApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { accountId: "accountId", firstName: "firstName", lastName: "lastName" };
+        const rawRequestBody = { firstName: "firstName", lastName: "lastName" };
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
@@ -17735,7 +16417,6 @@ describe("BetaApIsClient", () => {
 
         await expect(async () => {
             return await client.betaApIs.createRidershipPassenger({
-                accountId: "accountId",
                 firstName: "firstName",
                 lastName: "lastName",
             });
@@ -17750,7 +16431,7 @@ describe("BetaApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { accountId: "accountId", firstName: "firstName", lastName: "lastName" };
+        const rawRequestBody = { firstName: "firstName", lastName: "lastName" };
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
@@ -17763,7 +16444,6 @@ describe("BetaApIsClient", () => {
 
         await expect(async () => {
             return await client.betaApIs.createRidershipPassenger({
-                accountId: "accountId",
                 firstName: "firstName",
                 lastName: "lastName",
             });
@@ -17778,7 +16458,7 @@ describe("BetaApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { accountId: "accountId", firstName: "firstName", lastName: "lastName" };
+        const rawRequestBody = { firstName: "firstName", lastName: "lastName" };
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
@@ -17791,7 +16471,6 @@ describe("BetaApIsClient", () => {
 
         await expect(async () => {
             return await client.betaApIs.createRidershipPassenger({
-                accountId: "accountId",
                 firstName: "firstName",
                 lastName: "lastName",
             });
@@ -17806,7 +16485,7 @@ describe("BetaApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { accountId: "accountId", firstName: "firstName", lastName: "lastName" };
+        const rawRequestBody = { firstName: "firstName", lastName: "lastName" };
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
@@ -17819,7 +16498,6 @@ describe("BetaApIsClient", () => {
 
         await expect(async () => {
             return await client.betaApIs.createRidershipPassenger({
-                accountId: "accountId",
                 firstName: "firstName",
                 lastName: "lastName",
             });
@@ -17834,7 +16512,7 @@ describe("BetaApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { accountId: "accountId", firstName: "firstName", lastName: "lastName" };
+        const rawRequestBody = { firstName: "firstName", lastName: "lastName" };
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
@@ -17847,7 +16525,6 @@ describe("BetaApIsClient", () => {
 
         await expect(async () => {
             return await client.betaApIs.createRidershipPassenger({
-                accountId: "accountId",
                 firstName: "firstName",
                 lastName: "lastName",
             });
@@ -17862,14 +16539,9 @@ describe("BetaApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = {
-            accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
-            firstName: "John",
-            lastName: "Doe",
-        };
+        const rawRequestBody = { firstName: "John", lastName: "Doe" };
         const rawResponseBody = {
             data: {
-                accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
                 classification: "grade5",
                 createdAtTime: "2024-11-15T10:00:00Z",
                 externalIds: { key: "value" },
@@ -17880,7 +16552,13 @@ describe("BetaApIsClient", () => {
                 ],
                 isActive: true,
                 lastName: "Doe",
-                specialInstructions: { isGuardianRequired: false, isSpecialEducation: false },
+                specialInstructions: { isGuardianRequired: true, isSpecialEducation: true },
+                tagIds: [
+                    "Beatae minus.",
+                    "Voluptatum voluptatem qui.",
+                    "Tempora voluptatem voluptatem veritatis molestiae.",
+                    "Quis est eaque voluptas quia id voluptates.",
+                ],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
         };
@@ -17895,13 +16573,11 @@ describe("BetaApIsClient", () => {
 
         const response = await client.betaApIs.updateRidershipPassenger({
             id: "id",
-            accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
             firstName: "John",
             lastName: "Doe",
         });
         expect(response).toEqual({
             data: {
-                accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
                 classification: "grade5",
                 createdAtTime: "2024-11-15T10:00:00Z",
                 externalIds: {
@@ -17920,9 +16596,15 @@ describe("BetaApIsClient", () => {
                 isActive: true,
                 lastName: "Doe",
                 specialInstructions: {
-                    isGuardianRequired: false,
-                    isSpecialEducation: false,
+                    isGuardianRequired: true,
+                    isSpecialEducation: true,
                 },
+                tagIds: [
+                    "Beatae minus.",
+                    "Voluptatum voluptatem qui.",
+                    "Tempora voluptatem voluptatem veritatis molestiae.",
+                    "Quis est eaque voluptas quia id voluptates.",
+                ],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
         });
@@ -17936,7 +16618,7 @@ describe("BetaApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { accountId: "accountId", firstName: "firstName", lastName: "lastName" };
+        const rawRequestBody = { firstName: "firstName", lastName: "lastName" };
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
@@ -17950,7 +16632,6 @@ describe("BetaApIsClient", () => {
         await expect(async () => {
             return await client.betaApIs.updateRidershipPassenger({
                 id: "id",
-                accountId: "accountId",
                 firstName: "firstName",
                 lastName: "lastName",
             });
@@ -17965,7 +16646,7 @@ describe("BetaApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { accountId: "accountId", firstName: "firstName", lastName: "lastName" };
+        const rawRequestBody = { firstName: "firstName", lastName: "lastName" };
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
@@ -17979,7 +16660,6 @@ describe("BetaApIsClient", () => {
         await expect(async () => {
             return await client.betaApIs.updateRidershipPassenger({
                 id: "id",
-                accountId: "accountId",
                 firstName: "firstName",
                 lastName: "lastName",
             });
@@ -17994,7 +16674,7 @@ describe("BetaApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { accountId: "accountId", firstName: "firstName", lastName: "lastName" };
+        const rawRequestBody = { firstName: "firstName", lastName: "lastName" };
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
@@ -18008,7 +16688,6 @@ describe("BetaApIsClient", () => {
         await expect(async () => {
             return await client.betaApIs.updateRidershipPassenger({
                 id: "id",
-                accountId: "accountId",
                 firstName: "firstName",
                 lastName: "lastName",
             });
@@ -18023,7 +16702,7 @@ describe("BetaApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { accountId: "accountId", firstName: "firstName", lastName: "lastName" };
+        const rawRequestBody = { firstName: "firstName", lastName: "lastName" };
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
@@ -18037,7 +16716,6 @@ describe("BetaApIsClient", () => {
         await expect(async () => {
             return await client.betaApIs.updateRidershipPassenger({
                 id: "id",
-                accountId: "accountId",
                 firstName: "firstName",
                 lastName: "lastName",
             });
@@ -18052,7 +16730,7 @@ describe("BetaApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { accountId: "accountId", firstName: "firstName", lastName: "lastName" };
+        const rawRequestBody = { firstName: "firstName", lastName: "lastName" };
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
@@ -18066,7 +16744,6 @@ describe("BetaApIsClient", () => {
         await expect(async () => {
             return await client.betaApIs.updateRidershipPassenger({
                 id: "id",
-                accountId: "accountId",
                 firstName: "firstName",
                 lastName: "lastName",
             });
@@ -18081,7 +16758,7 @@ describe("BetaApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { accountId: "accountId", firstName: "firstName", lastName: "lastName" };
+        const rawRequestBody = { firstName: "firstName", lastName: "lastName" };
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
@@ -18095,7 +16772,6 @@ describe("BetaApIsClient", () => {
         await expect(async () => {
             return await client.betaApIs.updateRidershipPassenger({
                 id: "id",
-                accountId: "accountId",
                 firstName: "firstName",
                 lastName: "lastName",
             });
@@ -18110,7 +16786,7 @@ describe("BetaApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { accountId: "accountId", firstName: "firstName", lastName: "lastName" };
+        const rawRequestBody = { firstName: "firstName", lastName: "lastName" };
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
@@ -18124,7 +16800,6 @@ describe("BetaApIsClient", () => {
         await expect(async () => {
             return await client.betaApIs.updateRidershipPassenger({
                 id: "id",
-                accountId: "accountId",
                 firstName: "firstName",
                 lastName: "lastName",
             });
@@ -18139,7 +16814,7 @@ describe("BetaApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { accountId: "accountId", firstName: "firstName", lastName: "lastName" };
+        const rawRequestBody = { firstName: "firstName", lastName: "lastName" };
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
@@ -18153,7 +16828,6 @@ describe("BetaApIsClient", () => {
         await expect(async () => {
             return await client.betaApIs.updateRidershipPassenger({
                 id: "id",
-                accountId: "accountId",
                 firstName: "firstName",
                 lastName: "lastName",
             });
@@ -18168,7 +16842,7 @@ describe("BetaApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { accountId: "accountId", firstName: "firstName", lastName: "lastName" };
+        const rawRequestBody = { firstName: "firstName", lastName: "lastName" };
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
@@ -18182,7 +16856,6 @@ describe("BetaApIsClient", () => {
         await expect(async () => {
             return await client.betaApIs.updateRidershipPassenger({
                 id: "id",
-                accountId: "accountId",
                 firstName: "firstName",
                 lastName: "lastName",
             });
@@ -18442,7 +17115,6 @@ describe("BetaApIsClient", () => {
 
         const rawResponseBody = {
             data: {
-                accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
                 classification: "grade5",
                 createdAtTime: "2024-11-15T10:00:00Z",
                 externalIds: { key: "value" },
@@ -18453,7 +17125,13 @@ describe("BetaApIsClient", () => {
                 ],
                 isActive: true,
                 lastName: "Doe",
-                specialInstructions: { isGuardianRequired: false, isSpecialEducation: false },
+                specialInstructions: { isGuardianRequired: true, isSpecialEducation: true },
+                tagIds: [
+                    "Beatae minus.",
+                    "Voluptatum voluptatem qui.",
+                    "Tempora voluptatem voluptatem veritatis molestiae.",
+                    "Quis est eaque voluptas quia id voluptates.",
+                ],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
         };
@@ -18470,7 +17148,6 @@ describe("BetaApIsClient", () => {
         });
         expect(response).toEqual({
             data: {
-                accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
                 classification: "grade5",
                 createdAtTime: "2024-11-15T10:00:00Z",
                 externalIds: {
@@ -18489,9 +17166,15 @@ describe("BetaApIsClient", () => {
                 isActive: true,
                 lastName: "Doe",
                 specialInstructions: {
-                    isGuardianRequired: false,
-                    isSpecialEducation: false,
+                    isGuardianRequired: true,
+                    isSpecialEducation: true,
                 },
+                tagIds: [
+                    "Beatae minus.",
+                    "Voluptatum voluptatem qui.",
+                    "Tempora voluptatem voluptatem veritatis molestiae.",
+                    "Quis est eaque voluptas quia id voluptates.",
+                ],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
         });
@@ -18734,7 +17417,6 @@ describe("BetaApIsClient", () => {
         const rawResponseBody = {
             data: [
                 {
-                    accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
                     createdAtTime: "2024-11-15T10:00:00Z",
                     passengers: [
                         {
@@ -18763,7 +17445,6 @@ describe("BetaApIsClient", () => {
         expect(response).toEqual({
             data: [
                 {
-                    accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
                     createdAtTime: "2024-11-15T10:00:00Z",
                     passengers: [
                         {
@@ -19017,13 +17698,11 @@ describe("BetaApIsClient", () => {
             environment: server.baseUrl,
         });
         const rawRequestBody = {
-            accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
             passengers: [{ passengerId: "a1b2c3d4-5e6f-7a8b-9c0d-1e2f3a4b5c6d" }],
             routeId: "123456",
         };
         const rawResponseBody = {
             data: {
-                accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
                 createdAtTime: "2024-11-15T10:00:00Z",
                 passengers: [
                     { dropOffStopId: "790", passengerId: "a1b2c3d4-5e6f-7a8b-9c0d-1e2f3a4b5c6d", pickUpStopId: "789" },
@@ -19042,7 +17721,6 @@ describe("BetaApIsClient", () => {
             .build();
 
         const response = await client.betaApIs.createRidershipRouteSetup({
-            accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
             passengers: [
                 {
                     passengerId: "a1b2c3d4-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
@@ -19052,7 +17730,6 @@ describe("BetaApIsClient", () => {
         });
         expect(response).toEqual({
             data: {
-                accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
                 createdAtTime: "2024-11-15T10:00:00Z",
                 passengers: [
                     {
@@ -19076,7 +17753,6 @@ describe("BetaApIsClient", () => {
             environment: server.baseUrl,
         });
         const rawRequestBody = {
-            accountId: "accountId",
             passengers: [{ passengerId: "passengerId" }, { passengerId: "passengerId" }],
             routeId: "routeId",
         };
@@ -19092,7 +17768,6 @@ describe("BetaApIsClient", () => {
 
         await expect(async () => {
             return await client.betaApIs.createRidershipRouteSetup({
-                accountId: "accountId",
                 passengers: [
                     {
                         passengerId: "passengerId",
@@ -19115,7 +17790,6 @@ describe("BetaApIsClient", () => {
             environment: server.baseUrl,
         });
         const rawRequestBody = {
-            accountId: "accountId",
             passengers: [{ passengerId: "passengerId" }, { passengerId: "passengerId" }],
             routeId: "routeId",
         };
@@ -19131,7 +17805,6 @@ describe("BetaApIsClient", () => {
 
         await expect(async () => {
             return await client.betaApIs.createRidershipRouteSetup({
-                accountId: "accountId",
                 passengers: [
                     {
                         passengerId: "passengerId",
@@ -19154,7 +17827,6 @@ describe("BetaApIsClient", () => {
             environment: server.baseUrl,
         });
         const rawRequestBody = {
-            accountId: "accountId",
             passengers: [{ passengerId: "passengerId" }, { passengerId: "passengerId" }],
             routeId: "routeId",
         };
@@ -19170,7 +17842,6 @@ describe("BetaApIsClient", () => {
 
         await expect(async () => {
             return await client.betaApIs.createRidershipRouteSetup({
-                accountId: "accountId",
                 passengers: [
                     {
                         passengerId: "passengerId",
@@ -19193,7 +17864,6 @@ describe("BetaApIsClient", () => {
             environment: server.baseUrl,
         });
         const rawRequestBody = {
-            accountId: "accountId",
             passengers: [{ passengerId: "passengerId" }, { passengerId: "passengerId" }],
             routeId: "routeId",
         };
@@ -19209,7 +17879,6 @@ describe("BetaApIsClient", () => {
 
         await expect(async () => {
             return await client.betaApIs.createRidershipRouteSetup({
-                accountId: "accountId",
                 passengers: [
                     {
                         passengerId: "passengerId",
@@ -19232,7 +17901,6 @@ describe("BetaApIsClient", () => {
             environment: server.baseUrl,
         });
         const rawRequestBody = {
-            accountId: "accountId",
             passengers: [{ passengerId: "passengerId" }, { passengerId: "passengerId" }],
             routeId: "routeId",
         };
@@ -19248,7 +17916,6 @@ describe("BetaApIsClient", () => {
 
         await expect(async () => {
             return await client.betaApIs.createRidershipRouteSetup({
-                accountId: "accountId",
                 passengers: [
                     {
                         passengerId: "passengerId",
@@ -19271,7 +17938,6 @@ describe("BetaApIsClient", () => {
             environment: server.baseUrl,
         });
         const rawRequestBody = {
-            accountId: "accountId",
             passengers: [{ passengerId: "passengerId" }, { passengerId: "passengerId" }],
             routeId: "routeId",
         };
@@ -19287,7 +17953,6 @@ describe("BetaApIsClient", () => {
 
         await expect(async () => {
             return await client.betaApIs.createRidershipRouteSetup({
-                accountId: "accountId",
                 passengers: [
                     {
                         passengerId: "passengerId",
@@ -19310,7 +17975,6 @@ describe("BetaApIsClient", () => {
             environment: server.baseUrl,
         });
         const rawRequestBody = {
-            accountId: "accountId",
             passengers: [{ passengerId: "passengerId" }, { passengerId: "passengerId" }],
             routeId: "routeId",
         };
@@ -19326,7 +17990,6 @@ describe("BetaApIsClient", () => {
 
         await expect(async () => {
             return await client.betaApIs.createRidershipRouteSetup({
-                accountId: "accountId",
                 passengers: [
                     {
                         passengerId: "passengerId",
@@ -19349,7 +18012,6 @@ describe("BetaApIsClient", () => {
             environment: server.baseUrl,
         });
         const rawRequestBody = {
-            accountId: "accountId",
             passengers: [{ passengerId: "passengerId" }, { passengerId: "passengerId" }],
             routeId: "routeId",
         };
@@ -19365,7 +18027,6 @@ describe("BetaApIsClient", () => {
 
         await expect(async () => {
             return await client.betaApIs.createRidershipRouteSetup({
-                accountId: "accountId",
                 passengers: [
                     {
                         passengerId: "passengerId",
@@ -19388,7 +18049,6 @@ describe("BetaApIsClient", () => {
             environment: server.baseUrl,
         });
         const rawRequestBody = {
-            accountId: "accountId",
             passengers: [{ passengerId: "passengerId" }, { passengerId: "passengerId" }],
             routeId: "routeId",
         };
@@ -19404,7 +18064,6 @@ describe("BetaApIsClient", () => {
 
         await expect(async () => {
             return await client.betaApIs.createRidershipRouteSetup({
-                accountId: "accountId",
                 passengers: [
                     {
                         passengerId: "passengerId",
@@ -19426,13 +18085,9 @@ describe("BetaApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = {
-            accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
-            passengers: [{ passengerId: "a1b2c3d4-5e6f-7a8b-9c0d-1e2f3a4b5c6d" }],
-        };
+        const rawRequestBody = { passengers: [{ passengerId: "a1b2c3d4-5e6f-7a8b-9c0d-1e2f3a4b5c6d" }] };
         const rawResponseBody = {
             data: {
-                accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
                 createdAtTime: "2024-11-15T10:00:00Z",
                 passengers: [
                     { dropOffStopId: "790", passengerId: "a1b2c3d4-5e6f-7a8b-9c0d-1e2f3a4b5c6d", pickUpStopId: "789" },
@@ -19452,7 +18107,6 @@ describe("BetaApIsClient", () => {
 
         const response = await client.betaApIs.updateRidershipRouteSetup({
             routeId: "routeId",
-            accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
             passengers: [
                 {
                     passengerId: "a1b2c3d4-5e6f-7a8b-9c0d-1e2f3a4b5c6d",
@@ -19461,7 +18115,6 @@ describe("BetaApIsClient", () => {
         });
         expect(response).toEqual({
             data: {
-                accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
                 createdAtTime: "2024-11-15T10:00:00Z",
                 passengers: [
                     {
@@ -19484,10 +18137,7 @@ describe("BetaApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = {
-            accountId: "accountId",
-            passengers: [{ passengerId: "passengerId" }, { passengerId: "passengerId" }],
-        };
+        const rawRequestBody = { passengers: [{ passengerId: "passengerId" }, { passengerId: "passengerId" }] };
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
@@ -19501,7 +18151,6 @@ describe("BetaApIsClient", () => {
         await expect(async () => {
             return await client.betaApIs.updateRidershipRouteSetup({
                 routeId: "routeId",
-                accountId: "accountId",
                 passengers: [
                     {
                         passengerId: "passengerId",
@@ -19522,10 +18171,7 @@ describe("BetaApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = {
-            accountId: "accountId",
-            passengers: [{ passengerId: "passengerId" }, { passengerId: "passengerId" }],
-        };
+        const rawRequestBody = { passengers: [{ passengerId: "passengerId" }, { passengerId: "passengerId" }] };
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
@@ -19539,7 +18185,6 @@ describe("BetaApIsClient", () => {
         await expect(async () => {
             return await client.betaApIs.updateRidershipRouteSetup({
                 routeId: "routeId",
-                accountId: "accountId",
                 passengers: [
                     {
                         passengerId: "passengerId",
@@ -19560,10 +18205,7 @@ describe("BetaApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = {
-            accountId: "accountId",
-            passengers: [{ passengerId: "passengerId" }, { passengerId: "passengerId" }],
-        };
+        const rawRequestBody = { passengers: [{ passengerId: "passengerId" }, { passengerId: "passengerId" }] };
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
@@ -19577,7 +18219,6 @@ describe("BetaApIsClient", () => {
         await expect(async () => {
             return await client.betaApIs.updateRidershipRouteSetup({
                 routeId: "routeId",
-                accountId: "accountId",
                 passengers: [
                     {
                         passengerId: "passengerId",
@@ -19598,10 +18239,7 @@ describe("BetaApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = {
-            accountId: "accountId",
-            passengers: [{ passengerId: "passengerId" }, { passengerId: "passengerId" }],
-        };
+        const rawRequestBody = { passengers: [{ passengerId: "passengerId" }, { passengerId: "passengerId" }] };
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
@@ -19615,7 +18253,6 @@ describe("BetaApIsClient", () => {
         await expect(async () => {
             return await client.betaApIs.updateRidershipRouteSetup({
                 routeId: "routeId",
-                accountId: "accountId",
                 passengers: [
                     {
                         passengerId: "passengerId",
@@ -19636,10 +18273,7 @@ describe("BetaApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = {
-            accountId: "accountId",
-            passengers: [{ passengerId: "passengerId" }, { passengerId: "passengerId" }],
-        };
+        const rawRequestBody = { passengers: [{ passengerId: "passengerId" }, { passengerId: "passengerId" }] };
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
@@ -19653,7 +18287,6 @@ describe("BetaApIsClient", () => {
         await expect(async () => {
             return await client.betaApIs.updateRidershipRouteSetup({
                 routeId: "routeId",
-                accountId: "accountId",
                 passengers: [
                     {
                         passengerId: "passengerId",
@@ -19674,10 +18307,7 @@ describe("BetaApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = {
-            accountId: "accountId",
-            passengers: [{ passengerId: "passengerId" }, { passengerId: "passengerId" }],
-        };
+        const rawRequestBody = { passengers: [{ passengerId: "passengerId" }, { passengerId: "passengerId" }] };
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
@@ -19691,7 +18321,6 @@ describe("BetaApIsClient", () => {
         await expect(async () => {
             return await client.betaApIs.updateRidershipRouteSetup({
                 routeId: "routeId",
-                accountId: "accountId",
                 passengers: [
                     {
                         passengerId: "passengerId",
@@ -19712,10 +18341,7 @@ describe("BetaApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = {
-            accountId: "accountId",
-            passengers: [{ passengerId: "passengerId" }, { passengerId: "passengerId" }],
-        };
+        const rawRequestBody = { passengers: [{ passengerId: "passengerId" }, { passengerId: "passengerId" }] };
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
@@ -19729,7 +18355,6 @@ describe("BetaApIsClient", () => {
         await expect(async () => {
             return await client.betaApIs.updateRidershipRouteSetup({
                 routeId: "routeId",
-                accountId: "accountId",
                 passengers: [
                     {
                         passengerId: "passengerId",
@@ -19750,10 +18375,7 @@ describe("BetaApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = {
-            accountId: "accountId",
-            passengers: [{ passengerId: "passengerId" }, { passengerId: "passengerId" }],
-        };
+        const rawRequestBody = { passengers: [{ passengerId: "passengerId" }, { passengerId: "passengerId" }] };
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
@@ -19767,7 +18389,6 @@ describe("BetaApIsClient", () => {
         await expect(async () => {
             return await client.betaApIs.updateRidershipRouteSetup({
                 routeId: "routeId",
-                accountId: "accountId",
                 passengers: [
                     {
                         passengerId: "passengerId",
@@ -19788,10 +18409,7 @@ describe("BetaApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = {
-            accountId: "accountId",
-            passengers: [{ passengerId: "passengerId" }, { passengerId: "passengerId" }],
-        };
+        const rawRequestBody = { passengers: [{ passengerId: "passengerId" }, { passengerId: "passengerId" }] };
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
@@ -19805,7 +18423,6 @@ describe("BetaApIsClient", () => {
         await expect(async () => {
             return await client.betaApIs.updateRidershipRouteSetup({
                 routeId: "routeId",
-                accountId: "accountId",
                 passengers: [
                     {
                         passengerId: "passengerId",
@@ -20071,7 +18688,6 @@ describe("BetaApIsClient", () => {
 
         const rawResponseBody = {
             data: {
-                accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
                 createdAtTime: "2024-11-15T10:00:00Z",
                 passengers: [
                     { dropOffStopId: "790", passengerId: "a1b2c3d4-5e6f-7a8b-9c0d-1e2f3a4b5c6d", pickUpStopId: "789" },
@@ -20093,7 +18709,6 @@ describe("BetaApIsClient", () => {
         });
         expect(response).toEqual({
             data: {
-                accountId: "e4b2c3a5-7d6f-4e8b-9a0c-1b2d3e4f5a6b",
                 createdAtTime: "2024-11-15T10:00:00Z",
                 passengers: [
                     {

@@ -6,6 +6,8 @@ import type * as Samsara from "../index.js";
  * Representation of a vehicle trailer or other equipment to be tracked.
  */
 export interface AssetResponseBody {
+    /** List of attributes associated with the entity */
+    attributes?: Samsara.GoaAttributeTinyResponseBody[] | undefined;
     /** The time the asset was created in RFC 3339 format. */
     createdAtTime: string;
     /** A map of external ids */

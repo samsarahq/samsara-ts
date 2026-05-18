@@ -14,7 +14,7 @@ export interface FormTemplateResponseObjectResponseBody {
     description?: string | undefined;
     /** List of fields in the form template. */
     fields: Samsara.FormsFieldDefinitionObjectResponseBody[];
-    /** Category of the form template.  Valid values: `general`, `routing`, `fuel`, `safety` */
+    /** Category of the form template.  Valid values: `general`, `routing`, `fuel`, `safety`, `assetInspection` */
     formCategory?: FormTemplateResponseObjectResponseBody.FormCategory | undefined;
     /** Unique identifier of the form template. */
     id: string;
@@ -30,12 +30,13 @@ export interface FormTemplateResponseObjectResponseBody {
 }
 
 export namespace FormTemplateResponseObjectResponseBody {
-    /** Category of the form template.  Valid values: `general`, `routing`, `fuel`, `safety` */
+    /** Category of the form template.  Valid values: `general`, `routing`, `fuel`, `safety`, `assetInspection` */
     export const FormCategory = {
         General: "general",
         Routing: "routing",
         Fuel: "fuel",
         Safety: "safety",
+        AssetInspection: "assetInspection",
     } as const;
     export type FormCategory = (typeof FormCategory)[keyof typeof FormCategory];
 }

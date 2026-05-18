@@ -43,6 +43,7 @@ export interface WorkflowIncidentDetailsObjectResponseBody {
     missingDvirPastDue?: Samsara.MissingDvirPastDueResponseBody | undefined;
     motionDetected?: Samsara.MotionDetectedResponseBody | undefined;
     outOfRoute?: Samsara.OutOfRouteResponseBody | undefined;
+    outOfSequenceStopArrival?: Samsara.OutOfSequenceStopArrivalDataResponseBody | undefined;
     outsideGeofence?: Samsara.OutsideGeofenceDataResponseBody | undefined;
     panicButton?: Samsara.PanicButtonResponseBody | undefined;
     personDetected?: Samsara.PersonDetectedResponseBody | undefined;

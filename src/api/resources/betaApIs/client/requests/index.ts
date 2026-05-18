@@ -14,6 +14,7 @@ export type { EquipmentPatchEquipmentRequestBody } from "./EquipmentPatchEquipme
 export type { FunctionsCreateFunctionRequestBody } from "./FunctionsCreateFunctionRequestBody.js";
 export type { FunctionsPatchFunctionRequestBody } from "./FunctionsPatchFunctionRequestBody.js";
 export type { FunctionsStartFunctionRunRequestBody } from "./FunctionsStartFunctionRunRequestBody.js";
+export type { FunctionsStorageCreateFunctionStorageFileRequestBody } from "./FunctionsStorageCreateFunctionStorageFileRequestBody.js";
 export type { GetAempEquipmentListRequest } from "./GetAempEquipmentListRequest.js";
 export type { GetAssetsInputsRequest } from "./GetAssetsInputsRequest.js";
 export type { GetDatasetsRequest } from "./GetDatasetsRequest.js";
@@ -25,6 +26,7 @@ export type { GetEngineImmobilizerStatesRequest } from "./GetEngineImmobilizerSt
 export type { GetFunctionLogsRequest } from "./GetFunctionLogsRequest.js";
 export type { GetFunctionRequest } from "./GetFunctionRequest.js";
 export type { GetFunctionRunRequest } from "./GetFunctionRunRequest.js";
+export type { GetFunctionStorageFileRequest } from "./GetFunctionStorageFileRequest.js";
 export type { GetHosEldEventsRequest } from "./GetHosEldEventsRequest.js";
 export type { GetJobsRequest } from "./GetJobsRequest.js";
 export type { GetQualificationRecordsRequest } from "./GetQualificationRecordsRequest.js";
@@ -61,3 +63,4 @@ export { RidershipPassengersUpdateRidershipPassengerRequestBody } from "./Riders
 export type { RidershipRouteSetupsCreateRidershipRouteSetupRequestBody } from "./RidershipRouteSetupsCreateRidershipRouteSetupRequestBody.js";
 export type { RidershipRouteSetupsUpdateRidershipRouteSetupRequestBody } from "./RidershipRouteSetupsUpdateRidershipRouteSetupRequestBody.js";
 export { SafetyEventsV2PatchSafetyEventsV2BatchRequestBody } from "./SafetyEventsV2PatchSafetyEventsV2BatchRequestBody.js";
+export type { UpdateFunctionStorageFileRequest } from "./UpdateFunctionStorageFileRequest.js";

@@ -18,4 +18,8 @@ export interface FetchRoutesRequest {
     after?: string;
     /** A comma-separated list of additional fields to include in the response. Valid values: `stops.actualDistanceMeters` */
     include?: string | string[];
+    /**  A filter on the data based on this comma-separated list of tag IDs. Example: `tagIds=1234,5678` */
+    tagIds?: string;
+    /**  A filter on the data based on this comma-separated list of parent tag IDs, for use by orgs with tag hierarchies. Specifying a parent tag will implicitly include all descendent tags of the parent tag. Example: `parentTagIds=345,678` */
+    parentTagIds?: string;
 }

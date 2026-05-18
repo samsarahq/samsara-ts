@@ -4,6 +4,8 @@
  * The user who signed the DVIR.
  */
 export interface SignatoryUserObjectResponseBody {
+    /** A map of external ids */
+    externalIds?: Record<string, string> | undefined;
     /** ID of the user. */
     id: string;
 }

@@ -20,12 +20,13 @@ export namespace LocationObjectResponseBody {
     export type AddressTypes = AddressTypes.Item[];
 
     export namespace AddressTypes {
-        /** Type of the address.  Valid values: `agricultureSource`, `alertsOnly`, `authorizedZone`, `avoidanceZone`, `industrialSite`, `inventory`, `knownGPSJammingZone`, `riskZone`, `shortHaul`, `unauthorizedZone`, `undefined`, `vendor`, `workforceSite`, `yard` */
+        /** Type of the address.  Valid values: `agricultureSource`, `alertsOnly`, `authorizedZone`, `avoidanceZone`, `customerSite`, `industrialSite`, `inventory`, `knownGPSJammingZone`, `riskZone`, `shortHaul`, `unauthorizedZone`, `undefined`, `vendor`, `workforceSite`, `yard` */
         export const Item = {
             AgricultureSource: "agricultureSource",
             AlertsOnly: "alertsOnly",
             AuthorizedZone: "authorizedZone",
             AvoidanceZone: "avoidanceZone",
+            CustomerSite: "customerSite",
             IndustrialSite: "industrialSite",
             Inventory: "inventory",
             KnownGpsJammingZone: "knownGPSJammingZone",

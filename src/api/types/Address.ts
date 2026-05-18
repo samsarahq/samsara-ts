@@ -49,6 +49,7 @@ export namespace Address {
             UnauthorizedZone: "unauthorizedZone",
             Vendor: "vendor",
             Inventory: "inventory",
+            CustomerSite: "customerSite",
         } as const;
         export type Item = (typeof Item)[keyof typeof Item];
     }

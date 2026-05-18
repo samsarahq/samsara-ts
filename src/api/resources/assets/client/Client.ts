@@ -68,6 +68,7 @@ export class AssetsClient {
                     externalIds,
                     attributeValueIds,
                     attributes,
+                    includeAttributes,
                 } = request;
                 const _queryParams: Record<string, unknown> = {
                     type: type_ != null ? type_ : undefined,
@@ -81,6 +82,7 @@ export class AssetsClient {
                     externalIds,
                     attributeValueIds,
                     attributes,
+                    includeAttributes,
                 };
                 const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
                 const _headers: core.Fetcher.Args["headers"] = mergeHeaders(

@@ -1696,6 +1696,12 @@ describe("AlertsClient", () => {
                                     trailer: { id: "id" },
                                     vehicle: { id: "id", serial: "serial" },
                                 },
+                                outOfSequenceStopArrival: {
+                                    actualStopName: "actualStopName",
+                                    driver: { id: "id" },
+                                    expectedStopName: "expectedStopName",
+                                    vehicle: { id: "id", serial: "serial" },
+                                },
                                 outsideGeofence: {
                                     driver: { id: "id" },
                                     trailer: { id: "id" },
@@ -2051,6 +2057,12 @@ describe("AlertsClient", () => {
                                 outOfRoute: {
                                     driver: { id: "id" },
                                     trailer: { id: "id" },
+                                    vehicle: { id: "id", serial: "serial" },
+                                },
+                                outOfSequenceStopArrival: {
+                                    actualStopName: "actualStopName",
+                                    driver: { id: "id" },
+                                    expectedStopName: "expectedStopName",
                                     vehicle: { id: "id", serial: "serial" },
                                 },
                                 outsideGeofence: {
@@ -2420,6 +2432,12 @@ describe("AlertsClient", () => {
                                     trailer: { id: "id" },
                                     vehicle: { id: "id", serial: "serial" },
                                 },
+                                outOfSequenceStopArrival: {
+                                    actualStopName: "actualStopName",
+                                    driver: { id: "id" },
+                                    expectedStopName: "expectedStopName",
+                                    vehicle: { id: "id", serial: "serial" },
+                                },
                                 outsideGeofence: {
                                     driver: { id: "id" },
                                     trailer: { id: "id" },
@@ -2775,6 +2793,12 @@ describe("AlertsClient", () => {
                                 outOfRoute: {
                                     driver: { id: "id" },
                                     trailer: { id: "id" },
+                                    vehicle: { id: "id", serial: "serial" },
+                                },
+                                outOfSequenceStopArrival: {
+                                    actualStopName: "actualStopName",
+                                    driver: { id: "id" },
+                                    expectedStopName: "expectedStopName",
                                     vehicle: { id: "id", serial: "serial" },
                                 },
                                 outsideGeofence: {
@@ -3374,6 +3398,17 @@ describe("AlertsClient", () => {
                                         serial: "serial",
                                     },
                                 },
+                                outOfSequenceStopArrival: {
+                                    actualStopName: "actualStopName",
+                                    driver: {
+                                        id: "id",
+                                    },
+                                    expectedStopName: "expectedStopName",
+                                    vehicle: {
+                                        id: "id",
+                                        serial: "serial",
+                                    },
+                                },
                                 outsideGeofence: {
                                     driver: {
                                         id: "id",
@@ -4106,6 +4141,17 @@ describe("AlertsClient", () => {
                                     trailer: {
                                         id: "id",
                                     },
+                                    vehicle: {
+                                        id: "id",
+                                        serial: "serial",
+                                    },
+                                },
+                                outOfSequenceStopArrival: {
+                                    actualStopName: "actualStopName",
+                                    driver: {
+                                        id: "id",
+                                    },
+                                    expectedStopName: "expectedStopName",
                                     vehicle: {
                                         id: "id",
                                         serial: "serial",
@@ -4858,6 +4904,17 @@ describe("AlertsClient", () => {
                                         serial: "serial",
                                     },
                                 },
+                                outOfSequenceStopArrival: {
+                                    actualStopName: "actualStopName",
+                                    driver: {
+                                        id: "id",
+                                    },
+                                    expectedStopName: "expectedStopName",
+                                    vehicle: {
+                                        id: "id",
+                                        serial: "serial",
+                                    },
+                                },
                                 outsideGeofence: {
                                     driver: {
                                         id: "id",
@@ -5590,6 +5647,17 @@ describe("AlertsClient", () => {
                                     trailer: {
                                         id: "id",
                                     },
+                                    vehicle: {
+                                        id: "id",
+                                        serial: "serial",
+                                    },
+                                },
+                                outOfSequenceStopArrival: {
+                                    actualStopName: "actualStopName",
+                                    driver: {
+                                        id: "id",
+                                    },
+                                    expectedStopName: "expectedStopName",
                                     vehicle: {
                                         id: "id",
                                         serial: "serial",

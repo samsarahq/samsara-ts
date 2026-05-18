@@ -17,6 +17,15 @@ describe("AssetsClient", () => {
         const rawResponseBody = {
             data: [
                 {
+                    attributes: [
+                        {
+                            dateValues: ["2024-01-15", "2024-12-31"],
+                            id: "494123",
+                            name: "Compliance/ELD",
+                            numberValues: [867, 5309],
+                            stringValues: ["HQ", "Leased"],
+                        },
+                    ],
                     createdAtTime: "2020-01-27T07:06:25Z",
                     externalIds: { key: "value" },
                     id: "12345",
@@ -48,6 +57,15 @@ describe("AssetsClient", () => {
         const expected = {
             data: [
                 {
+                    attributes: [
+                        {
+                            dateValues: ["2024-01-15", "2024-12-31"],
+                            id: "494123",
+                            name: "Compliance/ELD",
+                            numberValues: [867, 5309],
+                            stringValues: ["HQ", "Leased"],
+                        },
+                    ],
                     createdAtTime: "2020-01-27T07:06:25Z",
                     externalIds: {
                         key: "value",
@@ -251,6 +269,15 @@ describe("AssetsClient", () => {
         const rawRequestBody = {};
         const rawResponseBody = {
             data: {
+                attributes: [
+                    {
+                        dateValues: ["2024-01-15", "2024-12-31"],
+                        id: "494123",
+                        name: "Compliance/ELD",
+                        numberValues: [867, 5309],
+                        stringValues: ["HQ", "Leased"],
+                    },
+                ],
                 createdAtTime: "2020-01-27T07:06:25Z",
                 externalIds: { key: "value" },
                 id: "12345",
@@ -281,6 +308,15 @@ describe("AssetsClient", () => {
         const response = await client.assets.createAsset();
         expect(response).toEqual({
             data: {
+                attributes: [
+                    {
+                        dateValues: ["2024-01-15", "2024-12-31"],
+                        id: "494123",
+                        name: "Compliance/ELD",
+                        numberValues: [867, 5309],
+                        stringValues: ["HQ", "Leased"],
+                    },
+                ],
                 createdAtTime: "2020-01-27T07:06:25Z",
                 externalIds: {
                     key: "value",
@@ -724,6 +760,15 @@ describe("AssetsClient", () => {
         const rawRequestBody = {};
         const rawResponseBody = {
             data: {
+                attributes: [
+                    {
+                        dateValues: ["2024-01-15", "2024-12-31"],
+                        id: "494123",
+                        name: "Compliance/ELD",
+                        numberValues: [867, 5309],
+                        stringValues: ["HQ", "Leased"],
+                    },
+                ],
                 createdAtTime: "2020-01-27T07:06:25Z",
                 externalIds: { key: "value" },
                 id: "12345",
@@ -756,6 +801,15 @@ describe("AssetsClient", () => {
         });
         expect(response).toEqual({
             data: {
+                attributes: [
+                    {
+                        dateValues: ["2024-01-15", "2024-12-31"],
+                        id: "494123",
+                        name: "Compliance/ELD",
+                        numberValues: [867, 5309],
+                        stringValues: ["HQ", "Leased"],
+                    },
+                ],
                 createdAtTime: "2020-01-27T07:06:25Z",
                 externalIds: {
                     key: "value",

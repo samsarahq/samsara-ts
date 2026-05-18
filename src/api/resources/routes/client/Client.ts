@@ -62,13 +62,15 @@ export class RoutesClient {
         request: Samsara.FetchRoutesRequest,
         requestOptions?: RoutesClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.RoutesFetchRoutesResponseBody>> {
-        const { startTime, endTime, limit, after, include } = request;
+        const { startTime, endTime, limit, after, include, tagIds, parentTagIds } = request;
         const _queryParams: Record<string, unknown> = {
             startTime,
             endTime,
             limit,
             after,
             include,
+            tagIds,
+            parentTagIds,
         };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(

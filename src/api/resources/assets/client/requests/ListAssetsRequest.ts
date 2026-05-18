@@ -29,4 +29,6 @@ export interface ListAssetsRequest {
     attributeValueIds?: string;
     /** A filter on the data to return entities within given range query (only for numeric and date attributes) separated by a comma. Only entities meeting all the conditions will be returned. At least one bound must be provided. Example: `attributes=Length:range(8,)&attributes=Length:range(10,20)&attributes=Date:range(2025-01-01,2025-01-31)` */
     attributes?: string | string[];
+    /** Optional boolean indicating whether to return attributes on supported entities */
+    includeAttributes?: boolean;
 }

@@ -10,17 +10,32 @@ import type * as Samsara from "../../../../index.js";
  */
 export interface IssuesPatchIssueRequestBody {
     assignedTo?: Samsara.PatchIssueRequestBodyAssignedToRequestBody;
+    /** Description of the issue. Requires the `issue-api-media-attachment-endpoints` feature. */
+    description?: string;
     /** Due date of the issue. UTC timestamp in RFC 3339 format. */
     dueDate?: string;
     /** A map of external ids */
     externalIds?: Record<string, string>;
     /** ID of the issue. Can be either a unique Samsara ID or an [external ID](https://developers.samsara.com/docs/external-ids) for the issue. */
     id: string;
+    /** Media items to append to the issue. Requires the `issue-api-media-attachment-endpoints` feature. */
+    media?: Samsara.FormSubmissionRequestMediaItemObjectRequestBody[];
+    /** Priority of the issue. Requires the `issue-api-media-attachment-endpoints` feature.  Valid values: `low`, `medium`, `high` */
+    priority?: IssuesPatchIssueRequestBody.Priority;
     /** Status of the issue.  Valid values: `open`, `inProgress`, `resolved`, `dismissed` */
     status?: IssuesPatchIssueRequestBody.Status;
+    /** Title of the issue. Requires the `issue-api-media-attachment-endpoints` feature. */
+    title?: string;
 }
 
 export namespace IssuesPatchIssueRequestBody {
+    /** Priority of the issue. Requires the `issue-api-media-attachment-endpoints` feature.  Valid values: `low`, `medium`, `high` */
+    export const Priority = {
+        Low: "low",
+        Medium: "medium",
+        High: "high",
+    } as const;
+    export type Priority = (typeof Priority)[keyof typeof Priority];
     /** Status of the issue.  Valid values: `open`, `inProgress`, `resolved`, `dismissed` */
     export const Status = {
         Open: "open",

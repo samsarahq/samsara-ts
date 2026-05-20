@@ -263,13 +263,15 @@ export class IssuesClient {
         request: Samsara.GetIssuesStreamRequest,
         requestOptions?: IssuesClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.IssuesGetIssuesStreamResponseBody>> {
-        const { startTime, endTime, after, status, assetIds, include, assignedToRouteStopIds } = request;
+        const { startTime, endTime, after, status, assetIds, assetExternalIds, include, assignedToRouteStopIds } =
+            request;
         const _queryParams: Record<string, unknown> = {
             startTime,
             endTime,
             after,
             status,
             assetIds,
+            assetExternalIds,
             include,
             assignedToRouteStopIds,
         };

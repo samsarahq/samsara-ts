@@ -10370,7 +10370,11 @@ describe("BetaApIsClient", () => {
                     priority: 1,
                     quantities: [{ capacityId: "850e8400-e29b-41d4-a716-446655440003", quantity: 25.5 }],
                     routeId: "950e8400-e29b-41d4-a716-446655440005",
-                    skillsRequired: ["650e8400-e29b-41d4-a716-446655440001", "650e8400-e29b-41d4-a716-446655440001"],
+                    skillsRequired: [
+                        "650e8400-e29b-41d4-a716-446655440001",
+                        "650e8400-e29b-41d4-a716-446655440001",
+                        "650e8400-e29b-41d4-a716-446655440001",
+                    ],
                     updatedAtTime: "2024-04-10T11:30:00Z",
                 },
             ],
@@ -10428,7 +10432,11 @@ describe("BetaApIsClient", () => {
                         },
                     ],
                     routeId: "950e8400-e29b-41d4-a716-446655440005",
-                    skillsRequired: ["650e8400-e29b-41d4-a716-446655440001", "650e8400-e29b-41d4-a716-446655440001"],
+                    skillsRequired: [
+                        "650e8400-e29b-41d4-a716-446655440001",
+                        "650e8400-e29b-41d4-a716-446655440001",
+                        "650e8400-e29b-41d4-a716-446655440001",
+                    ],
                     updatedAtTime: "2024-04-10T11:30:00Z",
                 },
             ],
@@ -16475,7 +16483,7 @@ describe("BetaApIsClient", () => {
             data: {
                 columns: [{ dataType: "string", name: "Device Name" }],
                 rows: [
-                    [{ key: "value" }, { key: "value" }, { key: "value" }],
+                    [{ key: "value" }, { key: "value" }, { key: "value" }, { key: "value" }],
                     [{ key: "value" }, { key: "value" }, { key: "value" }],
                 ],
                 status: "complete",
@@ -16497,6 +16505,9 @@ describe("BetaApIsClient", () => {
                 ],
                 rows: [
                     [
+                        {
+                            key: "value",
+                        },
                         {
                             key: "value",
                         },
@@ -16726,11 +16737,12 @@ describe("BetaApIsClient", () => {
                     ],
                     isActive: true,
                     lastName: "Doe",
-                    specialInstructions: { isGuardianRequired: false, isSpecialEducation: false },
+                    specialInstructions: { isGuardianRequired: true, isSpecialEducation: true },
                     tagIds: [
-                        "Possimus excepturi ducimus.",
-                        "Quam earum perspiciatis eligendi id possimus non.",
-                        "Magni consequatur vel ducimus nesciunt ipsam.",
+                        "Beatae minus.",
+                        "Voluptatum voluptatem qui.",
+                        "Tempora voluptatem voluptatem veritatis molestiae.",
+                        "Quis est eaque voluptas quia id voluptates.",
                     ],
                     updatedAtTime: "2024-11-15T10:30:00Z",
                 },
@@ -16769,13 +16781,14 @@ describe("BetaApIsClient", () => {
                     isActive: true,
                     lastName: "Doe",
                     specialInstructions: {
-                        isGuardianRequired: false,
-                        isSpecialEducation: false,
+                        isGuardianRequired: true,
+                        isSpecialEducation: true,
                     },
                     tagIds: [
-                        "Possimus excepturi ducimus.",
-                        "Quam earum perspiciatis eligendi id possimus non.",
-                        "Magni consequatur vel ducimus nesciunt ipsam.",
+                        "Beatae minus.",
+                        "Voluptatum voluptatem qui.",
+                        "Tempora voluptatem voluptatem veritatis molestiae.",
+                        "Quis est eaque voluptas quia id voluptates.",
                     ],
                     updatedAtTime: "2024-11-15T10:30:00Z",
                 },
@@ -17033,11 +17046,12 @@ describe("BetaApIsClient", () => {
                 ],
                 isActive: true,
                 lastName: "Doe",
-                specialInstructions: { isGuardianRequired: false, isSpecialEducation: false },
+                specialInstructions: { isGuardianRequired: true, isSpecialEducation: true },
                 tagIds: [
-                    "Possimus excepturi ducimus.",
-                    "Quam earum perspiciatis eligendi id possimus non.",
-                    "Magni consequatur vel ducimus nesciunt ipsam.",
+                    "Beatae minus.",
+                    "Voluptatum voluptatem qui.",
+                    "Tempora voluptatem voluptatem veritatis molestiae.",
+                    "Quis est eaque voluptas quia id voluptates.",
                 ],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
@@ -17075,13 +17089,14 @@ describe("BetaApIsClient", () => {
                 isActive: true,
                 lastName: "Doe",
                 specialInstructions: {
-                    isGuardianRequired: false,
-                    isSpecialEducation: false,
+                    isGuardianRequired: true,
+                    isSpecialEducation: true,
                 },
                 tagIds: [
-                    "Possimus excepturi ducimus.",
-                    "Quam earum perspiciatis eligendi id possimus non.",
-                    "Magni consequatur vel ducimus nesciunt ipsam.",
+                    "Beatae minus.",
+                    "Voluptatum voluptatem qui.",
+                    "Tempora voluptatem voluptatem veritatis molestiae.",
+                    "Quis est eaque voluptas quia id voluptates.",
                 ],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
@@ -17352,11 +17367,12 @@ describe("BetaApIsClient", () => {
                 ],
                 isActive: true,
                 lastName: "Doe",
-                specialInstructions: { isGuardianRequired: false, isSpecialEducation: false },
+                specialInstructions: { isGuardianRequired: true, isSpecialEducation: true },
                 tagIds: [
-                    "Possimus excepturi ducimus.",
-                    "Quam earum perspiciatis eligendi id possimus non.",
-                    "Magni consequatur vel ducimus nesciunt ipsam.",
+                    "Beatae minus.",
+                    "Voluptatum voluptatem qui.",
+                    "Tempora voluptatem voluptatem veritatis molestiae.",
+                    "Quis est eaque voluptas quia id voluptates.",
                 ],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
@@ -17395,13 +17411,14 @@ describe("BetaApIsClient", () => {
                 isActive: true,
                 lastName: "Doe",
                 specialInstructions: {
-                    isGuardianRequired: false,
-                    isSpecialEducation: false,
+                    isGuardianRequired: true,
+                    isSpecialEducation: true,
                 },
                 tagIds: [
-                    "Possimus excepturi ducimus.",
-                    "Quam earum perspiciatis eligendi id possimus non.",
-                    "Magni consequatur vel ducimus nesciunt ipsam.",
+                    "Beatae minus.",
+                    "Voluptatum voluptatem qui.",
+                    "Tempora voluptatem voluptatem veritatis molestiae.",
+                    "Quis est eaque voluptas quia id voluptates.",
                 ],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
@@ -17923,11 +17940,12 @@ describe("BetaApIsClient", () => {
                 ],
                 isActive: true,
                 lastName: "Doe",
-                specialInstructions: { isGuardianRequired: false, isSpecialEducation: false },
+                specialInstructions: { isGuardianRequired: true, isSpecialEducation: true },
                 tagIds: [
-                    "Possimus excepturi ducimus.",
-                    "Quam earum perspiciatis eligendi id possimus non.",
-                    "Magni consequatur vel ducimus nesciunt ipsam.",
+                    "Beatae minus.",
+                    "Voluptatum voluptatem qui.",
+                    "Tempora voluptatem voluptatem veritatis molestiae.",
+                    "Quis est eaque voluptas quia id voluptates.",
                 ],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
@@ -17963,13 +17981,14 @@ describe("BetaApIsClient", () => {
                 isActive: true,
                 lastName: "Doe",
                 specialInstructions: {
-                    isGuardianRequired: false,
-                    isSpecialEducation: false,
+                    isGuardianRequired: true,
+                    isSpecialEducation: true,
                 },
                 tagIds: [
-                    "Possimus excepturi ducimus.",
-                    "Quam earum perspiciatis eligendi id possimus non.",
-                    "Magni consequatur vel ducimus nesciunt ipsam.",
+                    "Beatae minus.",
+                    "Voluptatum voluptatem qui.",
+                    "Tempora voluptatem voluptatem veritatis molestiae.",
+                    "Quis est eaque voluptas quia id voluptates.",
                 ],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
@@ -19753,11 +19772,7 @@ describe("BetaApIsClient", () => {
             environment: server.baseUrl,
         });
         const rawRequestBody = {
-            safetyEventIds: [
-                "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
-                "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
-                "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
-            ],
+            safetyEventIds: ["bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590"],
         };
         const rawResponseBody = {
             requestId: "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
@@ -19773,11 +19788,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         const response = await client.betaApIs.patchSafetyEventsV2Batch({
-            safetyEventIds: [
-                "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
-                "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
-                "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
-            ],
+            safetyEventIds: ["bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590"],
         });
         expect(response).toEqual({
             requestId: "a1b2c3d4-e5f6-7890-abcd-ef1234567890",

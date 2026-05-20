@@ -15,8 +15,10 @@ export interface GetIssuesStreamRequest {
     after?: string;
     /** A comma-separated list containing status values to filter issues on. Valid values: `open`, `inProgress`, `resolved`, `dismissed` */
     status?: string | string[];
-    /** A comma-separated list containing up to 50 asset IDs to filter issues on. Issues with untracked assets can also be included by passing the value: 'untracked'. */
+    /** A comma-separated list containing up to 50 asset IDs to filter issues on. Each value can be a Samsara asset ID, an [external ID](https://developers.samsara.com/docs/external-ids) (`key:value` format), or the literal `untracked` to include issues with untracked assets. */
     assetIds?: string | string[];
+    /** A comma-separated list containing up to 50 asset [external IDs](https://developers.samsara.com/docs/external-ids) (`key:value` format) to filter issues on. */
+    assetExternalIds?: string | string[];
     /** A comma separated list of additional fields to include on requested objects. Valid values: `externalIds` */
     include?: string | string[];
     /** A comma-separated list containing up to 50 route stop IDs to filter data on. */

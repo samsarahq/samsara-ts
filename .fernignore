@@ -5,3 +5,6 @@
 .github/workflows/release.yml
 .gitignore
 changelog.md
+.fern/replay.lock
+.fern/replay.yml
+.gitattributes

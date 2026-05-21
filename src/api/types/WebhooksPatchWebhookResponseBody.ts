@@ -23,7 +23,7 @@ export namespace WebhooksPatchWebhookResponseBody {
     export type EventTypes = EventTypes.Item[];
 
     export namespace EventTypes {
-        /** This is the name of the event type.  Valid values: `AddressCreated`, `AddressDeleted`, `AddressUpdated`, `AlertIncident`, `AlertObjectEvent`, `DocumentSubmitted`, `DriverCreated`, `DriverUpdated`, `DvirSubmitted`, `EngineFaultOff`, `EngineFaultOn`, `FormSubmitted`, `FormUpdated`, `GatewayUnplugged`, `GeofenceEntry`, `GeofenceExit`, `IssueCreated`, `MissingDvirPastDue`, `PredictiveMaintenanceAlert`, `RouteStopArrival`, `RouteStopDeparture`, `RouteStopEarlyLateArrival`, `RouteStopEtaUpdated`, `RouteStopResequence`, `SevereSpeedingEnded`, `SevereSpeedingStarted`, `SpeedingEventEnded`, `SpeedingEventStarted`, `SuddenFuelLevelDrop`, `SuddenFuelLevelRise`, `VehicleCreated`, `VehicleUpdated` */
+        /** This is the name of the event type.  Valid values: `AddressCreated`, `AddressDeleted`, `AddressUpdated`, `AlertIncident`, `AlertObjectEvent`, `DocumentSubmitted`, `DriverCreated`, `DriverUpdated`, `DvirSubmitted`, `EngineFaultOff`, `EngineFaultOn`, `FormSubmitted`, `FormUpdated`, `GatewayUnplugged`, `GeofenceEntry`, `GeofenceExit`, `IssueCreated`, `MissingDvirPastDue`, `PredictiveMaintenanceAlert`, `RouteStopArrival`, `RouteStopDeparture`, `RouteStopEarlyLateArrival`, `RouteStopEtaUpdated`, `RouteStopResequence`, `SevereSpeedingEnded`, `SevereSpeedingStarted`, `SpeedingEventEnded`, `SpeedingEventStarted`, `SuddenFuelLevelDrop`, `SuddenFuelLevelRise`, `VehicleCreated`, `VehicleUpdated`, `WorkOrderCreatedOrChanged` */
         export const Item = {
             AddressCreated: "AddressCreated",
             AddressDeleted: "AddressDeleted",
@@ -57,6 +57,7 @@ export namespace WebhooksPatchWebhookResponseBody {
             SuddenFuelLevelRise: "SuddenFuelLevelRise",
             VehicleCreated: "VehicleCreated",
             VehicleUpdated: "VehicleUpdated",
+            WorkOrderCreatedOrChanged: "WorkOrderCreatedOrChanged",
         } as const;
         export type Item = (typeof Item)[keyof typeof Item];
     }

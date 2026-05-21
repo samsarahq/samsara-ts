@@ -615,6 +615,14 @@ describe("WorkOrdersClient", () => {
                             partsCost: { amount: "94.01", currency: "usd" },
                             serviceTaskId: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
                             status: "Unknown",
+                            timeEntries: [
+                                {
+                                    clockInAtTime: "2026-05-11T14:00:00Z",
+                                    clockOutAtTime: "2026-05-11T15:30:00Z",
+                                    driverId: "12345",
+                                    userId: "67890",
+                                },
+                            ],
                         },
                     ],
                     status: "Assigned",
@@ -697,6 +705,14 @@ describe("WorkOrdersClient", () => {
                             },
                             serviceTaskId: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
                             status: "Unknown",
+                            timeEntries: [
+                                {
+                                    clockInAtTime: "2026-05-11T14:00:00Z",
+                                    clockOutAtTime: "2026-05-11T15:30:00Z",
+                                    driverId: "12345",
+                                    userId: "67890",
+                                },
+                            ],
                         },
                     ],
                     status: "Assigned",
@@ -2012,6 +2028,14 @@ describe("WorkOrdersClient", () => {
                             partsCost: { amount: "94.01", currency: "usd" },
                             serviceTaskId: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
                             status: "Unknown",
+                            timeEntries: [
+                                {
+                                    clockInAtTime: "2026-05-11T14:00:00Z",
+                                    clockOutAtTime: "2026-05-11T15:30:00Z",
+                                    driverId: "12345",
+                                    userId: "67890",
+                                },
+                            ],
                         },
                     ],
                     status: "Assigned",
@@ -2096,6 +2120,14 @@ describe("WorkOrdersClient", () => {
                             },
                             serviceTaskId: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
                             status: "Unknown",
+                            timeEntries: [
+                                {
+                                    clockInAtTime: "2026-05-11T14:00:00Z",
+                                    clockOutAtTime: "2026-05-11T15:30:00Z",
+                                    driverId: "12345",
+                                    userId: "67890",
+                                },
+                            ],
                         },
                     ],
                     status: "Assigned",

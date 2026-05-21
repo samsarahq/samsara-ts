@@ -4442,6 +4442,293 @@ await client.betaApIs.deleteHubRouteTemplate({
 </dl>
 </details>
 
+<details><summary><code>client.betaApIs.<a href="/src/api/resources/betaApIs/client/Client.ts">getPlaces</a>({ ...params }) -> Samsara.PlacesGetPlacesResponseBody</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns places for the authorized organization. Supports cursor pagination or batch fetch by Samsara place ids via `placeIds`.
+
+ <b>Rate limit:</b> 5 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+
+To use this endpoint, select **Read Places** under the Places category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+ 
+
+ **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.betaApIs.getPlaces();
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Samsara.GetPlacesRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `BetaApIsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.betaApIs.<a href="/src/api/resources/betaApIs/client/Client.ts">postPlace</a>({ ...params }) -> Samsara.PlacesPostPlaceResponseBody</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Creates a place. Supply either a polygon `geofence` (at least three vertices) or `radiusMeters` with `latitude` and `longitude`.
+
+ <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+
+To use this endpoint, select **Write Places** under the Places category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+ 
+
+ **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.betaApIs.postPlace({
+    address: "123 Main St, Oakland, CA",
+    name: "Oakland Yard"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Samsara.PlacesPostPlaceRequestBody` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `BetaApIsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.betaApIs.<a href="/src/api/resources/betaApIs/client/Client.ts">deletePlace</a>({ ...params }) -> void</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Deletes a place. Pass `placeId` (Samsara id) as a query parameter.
+
+ <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+
+To use this endpoint, select **Write Places** under the Places category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+ 
+
+ **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.betaApIs.deletePlace({
+    placeId: 1000000
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Samsara.DeletePlaceRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `BetaApIsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.betaApIs.<a href="/src/api/resources/betaApIs/client/Client.ts">patchPlace</a>({ ...params }) -> Samsara.PlacesPatchPlaceResponseBody</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Updates a place. Query parameter `placeId` (Samsara id) is required. Optional `externalId` (key:value) is reserved for a future release and must not be combined with `placeId`. Only fields present in the JSON body are changed; omit a field to leave it unchanged.
+
+ <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+
+To use this endpoint, select **Write Places** under the Places category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+ 
+
+ **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.betaApIs.patchPlace({
+    placeId: 1000000
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Samsara.PlacesPatchPlaceRequestBody` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `BetaApIsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.betaApIs.<a href="/src/api/resources/betaApIs/client/Client.ts">getQualificationRecords</a>({ ...params }) -> Samsara.QualificationsGetQualificationRecordsResponseBody</code></summary>
 <dl>
 <dd>
@@ -6234,7 +6521,7 @@ To use this endpoint, select **Write Safety Events & Scores** under the Safety &
 
 ```typescript
 await client.betaApIs.patchSafetyEventsV2Batch({
-    safetyEventIds: ["bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590"]
+    safetyEventIds: ["bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590"]
 });
 
 ```
@@ -6876,7 +7163,7 @@ To use this endpoint, select **Write Media Retrieval** under the Safety & Camera
 ```typescript
 await client.media.postMediaRetrieval({
     endTime: "2019-06-13T19:08:55Z",
-    inputs: ["dashcamRoadFacing", "dashcamRoadFacing"],
+    inputs: ["dashcamRoadFacing", "dashcamRoadFacing", "dashcamRoadFacing", "dashcamRoadFacing"],
     mediaType: "image",
     startTime: "2019-06-13T19:08:25Z",
     vehicleId: "1234"

@@ -10370,11 +10370,7 @@ describe("BetaApIsClient", () => {
                     priority: 1,
                     quantities: [{ capacityId: "850e8400-e29b-41d4-a716-446655440003", quantity: 25.5 }],
                     routeId: "950e8400-e29b-41d4-a716-446655440005",
-                    skillsRequired: [
-                        "650e8400-e29b-41d4-a716-446655440001",
-                        "650e8400-e29b-41d4-a716-446655440001",
-                        "650e8400-e29b-41d4-a716-446655440001",
-                    ],
+                    skillsRequired: ["650e8400-e29b-41d4-a716-446655440001", "650e8400-e29b-41d4-a716-446655440001"],
                     updatedAtTime: "2024-04-10T11:30:00Z",
                 },
             ],
@@ -10432,11 +10428,7 @@ describe("BetaApIsClient", () => {
                         },
                     ],
                     routeId: "950e8400-e29b-41d4-a716-446655440005",
-                    skillsRequired: [
-                        "650e8400-e29b-41d4-a716-446655440001",
-                        "650e8400-e29b-41d4-a716-446655440001",
-                        "650e8400-e29b-41d4-a716-446655440001",
-                    ],
+                    skillsRequired: ["650e8400-e29b-41d4-a716-446655440001", "650e8400-e29b-41d4-a716-446655440001"],
                     updatedAtTime: "2024-04-10T11:30:00Z",
                 },
             ],
@@ -11434,6 +11426,1500 @@ describe("BetaApIsClient", () => {
         await expect(async () => {
             return await client.betaApIs.deleteHubRouteTemplate({
                 id: "id",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("getPlaces (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = {
+            data: [
+                {
+                    address: "123 Main St",
+                    cameraRecordingModeType: "inherit",
+                    createdAtTime: "2019-06-13T19:08:25Z",
+                    geofence: [{ latitude: 37.7749, longitude: -122.4194 }],
+                    hubLocations: [
+                        {
+                            displayName: "North entrance",
+                            externalId: "store-A",
+                            hubId: "550e8400-e29b-41d4-a716-446655440003",
+                            hubLocationId: "550e8400-e29b-41d4-a716-446655440002",
+                            isDepot: false,
+                            isIgnoreOrderServiceTimeEnabled: false,
+                            locationPositionType: "first",
+                            locationPriority: 3,
+                            orderServiceTime: {
+                                capacityServiceTimes: [
+                                    {
+                                        capacityId: "550e8400-e29b-41d4-a716-446655440001",
+                                        serviceTimeSeconds: 60,
+                                        serviceTimeSecondsPerQuantityUnit: 0.5,
+                                    },
+                                ],
+                                fixedTimeSeconds: 120,
+                                modeType: "variable",
+                            },
+                            plannerNotes: "Zone A preferred",
+                            requiredSkills: [{ id: "550e8400-e29b-41d4-a716-446655440000" }],
+                            serviceTime: { additionalTimeMinutes: 5, isEnabled: true },
+                            serviceWindows: [
+                                {
+                                    days: [
+                                        "Cumque ullam quasi accusamus aliquid error.",
+                                        "Quia optio rerum.",
+                                        "Occaecati accusantium quia ea consequatur voluptas assumenda.",
+                                    ],
+                                    endTime: 57961,
+                                    startTime: 57600,
+                                },
+                            ],
+                            standardDriverInstructions: "Use lane 2",
+                        },
+                    ],
+                    id: "12345",
+                    iftaExemptionTypes: [
+                        "Voluptates saepe autem neque perspiciatis.",
+                        "Deleniti in nihil ad odio aut.",
+                        "Et quasi mollitia.",
+                    ],
+                    isAutoDismissRolledStopsEnabled: false,
+                    isShowAddressesEnabled: true,
+                    latitude: 37.7749,
+                    longitude: -122.4194,
+                    name: "Oakland Yard",
+                    navigation: {
+                        locations: [
+                            {
+                                driverInstructions: "Check in at booth.",
+                                latitude: 37.7749,
+                                locationType: "entrance",
+                                longitude: -122.4194,
+                                name: "Main gate",
+                            },
+                        ],
+                    },
+                    notes: "Receiving 6-2",
+                    placeTypes: [
+                        "Non rerum magni consequatur vel ducimus nesciunt.",
+                        "Temporibus eum.",
+                        "Eos quia.",
+                        "Voluptas laudantium.",
+                    ],
+                    radiusMeters: 150,
+                    safetyEventExclusions: [
+                        "Doloribus eos sunt blanditiis.",
+                        "Neque adipisci.",
+                        "Sint numquam voluptate sint id dolorum.",
+                        "Laboriosam error et enim.",
+                    ],
+                    streetView: {
+                        heading: 90,
+                        isEnabled: true,
+                        latitude: 37.7749,
+                        longitude: -122.4194,
+                        pitch: 0,
+                        zoom: 1,
+                    },
+                    tags: [{ id: "1001", name: "Yard", parentTagId: "500" }],
+                    updatedAtTime: "2019-06-13T19:08:25Z",
+                },
+            ],
+            pagination: { endCursor: "MjkY", hasNextPage: true },
+        };
+        server.mockEndpoint().get("/places").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
+
+        const response = await client.betaApIs.getPlaces();
+        expect(response).toEqual({
+            data: [
+                {
+                    address: "123 Main St",
+                    cameraRecordingModeType: "inherit",
+                    createdAtTime: "2019-06-13T19:08:25Z",
+                    geofence: [
+                        {
+                            latitude: 37.7749,
+                            longitude: -122.4194,
+                        },
+                    ],
+                    hubLocations: [
+                        {
+                            displayName: "North entrance",
+                            externalId: "store-A",
+                            hubId: "550e8400-e29b-41d4-a716-446655440003",
+                            hubLocationId: "550e8400-e29b-41d4-a716-446655440002",
+                            isDepot: false,
+                            isIgnoreOrderServiceTimeEnabled: false,
+                            locationPositionType: "first",
+                            locationPriority: 3,
+                            orderServiceTime: {
+                                capacityServiceTimes: [
+                                    {
+                                        capacityId: "550e8400-e29b-41d4-a716-446655440001",
+                                        serviceTimeSeconds: 60,
+                                        serviceTimeSecondsPerQuantityUnit: 0.5,
+                                    },
+                                ],
+                                fixedTimeSeconds: 120,
+                                modeType: "variable",
+                            },
+                            plannerNotes: "Zone A preferred",
+                            requiredSkills: [
+                                {
+                                    id: "550e8400-e29b-41d4-a716-446655440000",
+                                },
+                            ],
+                            serviceTime: {
+                                additionalTimeMinutes: 5,
+                                isEnabled: true,
+                            },
+                            serviceWindows: [
+                                {
+                                    days: [
+                                        "Cumque ullam quasi accusamus aliquid error.",
+                                        "Quia optio rerum.",
+                                        "Occaecati accusantium quia ea consequatur voluptas assumenda.",
+                                    ],
+                                    endTime: 57961,
+                                    startTime: 57600,
+                                },
+                            ],
+                            standardDriverInstructions: "Use lane 2",
+                        },
+                    ],
+                    id: "12345",
+                    iftaExemptionTypes: [
+                        "Voluptates saepe autem neque perspiciatis.",
+                        "Deleniti in nihil ad odio aut.",
+                        "Et quasi mollitia.",
+                    ],
+                    isAutoDismissRolledStopsEnabled: false,
+                    isShowAddressesEnabled: true,
+                    latitude: 37.7749,
+                    longitude: -122.4194,
+                    name: "Oakland Yard",
+                    navigation: {
+                        locations: [
+                            {
+                                driverInstructions: "Check in at booth.",
+                                latitude: 37.7749,
+                                locationType: "entrance",
+                                longitude: -122.4194,
+                                name: "Main gate",
+                            },
+                        ],
+                    },
+                    notes: "Receiving 6-2",
+                    placeTypes: [
+                        "Non rerum magni consequatur vel ducimus nesciunt.",
+                        "Temporibus eum.",
+                        "Eos quia.",
+                        "Voluptas laudantium.",
+                    ],
+                    radiusMeters: 150,
+                    safetyEventExclusions: [
+                        "Doloribus eos sunt blanditiis.",
+                        "Neque adipisci.",
+                        "Sint numquam voluptate sint id dolorum.",
+                        "Laboriosam error et enim.",
+                    ],
+                    streetView: {
+                        heading: 90,
+                        isEnabled: true,
+                        latitude: 37.7749,
+                        longitude: -122.4194,
+                        pitch: 0,
+                        zoom: 1,
+                    },
+                    tags: [
+                        {
+                            id: "1001",
+                            name: "Yard",
+                            parentTagId: "500",
+                        },
+                    ],
+                    updatedAtTime: "2019-06-13T19:08:25Z",
+                },
+            ],
+            pagination: {
+                endCursor: "MjkY",
+                hasNextPage: true,
+            },
+        });
+    });
+
+    test("getPlaces (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server.mockEndpoint().get("/places").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.betaApIs.getPlaces();
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("getPlaces (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server.mockEndpoint().get("/places").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.betaApIs.getPlaces();
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("getPlaces (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server.mockEndpoint().get("/places").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.betaApIs.getPlaces();
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("getPlaces (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server.mockEndpoint().get("/places").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.betaApIs.getPlaces();
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("getPlaces (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server.mockEndpoint().get("/places").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.betaApIs.getPlaces();
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("getPlaces (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server.mockEndpoint().get("/places").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.betaApIs.getPlaces();
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("getPlaces (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server.mockEndpoint().get("/places").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.betaApIs.getPlaces();
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("getPlaces (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server.mockEndpoint().get("/places").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.betaApIs.getPlaces();
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("getPlaces (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server.mockEndpoint().get("/places").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.betaApIs.getPlaces();
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("postPlace (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { address: "123 Main St, Oakland, CA", name: "Oakland Yard" };
+        const rawResponseBody = {
+            data: {
+                address: "123 Main St",
+                cameraRecordingModeType: "inherit",
+                createdAtTime: "2019-06-13T19:08:25Z",
+                geofence: [{ latitude: 37.7749, longitude: -122.4194 }],
+                hubLocations: [
+                    {
+                        displayName: "North entrance",
+                        externalId: "store-A",
+                        hubId: "550e8400-e29b-41d4-a716-446655440003",
+                        hubLocationId: "550e8400-e29b-41d4-a716-446655440002",
+                        isDepot: false,
+                        isIgnoreOrderServiceTimeEnabled: false,
+                        locationPositionType: "first",
+                        locationPriority: 3,
+                        orderServiceTime: {
+                            capacityServiceTimes: [
+                                {
+                                    capacityId: "550e8400-e29b-41d4-a716-446655440001",
+                                    serviceTimeSeconds: 60,
+                                    serviceTimeSecondsPerQuantityUnit: 0.5,
+                                },
+                            ],
+                            fixedTimeSeconds: 120,
+                            modeType: "variable",
+                        },
+                        plannerNotes: "Zone A preferred",
+                        requiredSkills: [{ id: "550e8400-e29b-41d4-a716-446655440000" }],
+                        serviceTime: { additionalTimeMinutes: 5, isEnabled: true },
+                        serviceWindows: [
+                            {
+                                days: [
+                                    "Cumque ullam quasi accusamus aliquid error.",
+                                    "Quia optio rerum.",
+                                    "Occaecati accusantium quia ea consequatur voluptas assumenda.",
+                                ],
+                                endTime: 57961,
+                                startTime: 57600,
+                            },
+                        ],
+                        standardDriverInstructions: "Use lane 2",
+                    },
+                ],
+                id: "12345",
+                iftaExemptionTypes: [
+                    "Voluptates saepe autem neque perspiciatis.",
+                    "Deleniti in nihil ad odio aut.",
+                    "Et quasi mollitia.",
+                ],
+                isAutoDismissRolledStopsEnabled: false,
+                isShowAddressesEnabled: true,
+                latitude: 37.7749,
+                longitude: -122.4194,
+                name: "Oakland Yard",
+                navigation: {
+                    locations: [
+                        {
+                            driverInstructions: "Check in at booth.",
+                            latitude: 37.7749,
+                            locationType: "entrance",
+                            longitude: -122.4194,
+                            name: "Main gate",
+                        },
+                    ],
+                },
+                notes: "Receiving 6-2",
+                placeTypes: [
+                    "Non rerum magni consequatur vel ducimus nesciunt.",
+                    "Temporibus eum.",
+                    "Eos quia.",
+                    "Voluptas laudantium.",
+                ],
+                radiusMeters: 150,
+                safetyEventExclusions: [
+                    "Doloribus eos sunt blanditiis.",
+                    "Neque adipisci.",
+                    "Sint numquam voluptate sint id dolorum.",
+                    "Laboriosam error et enim.",
+                ],
+                streetView: {
+                    heading: 90,
+                    isEnabled: true,
+                    latitude: 37.7749,
+                    longitude: -122.4194,
+                    pitch: 0,
+                    zoom: 1,
+                },
+                tags: [{ id: "1001", name: "Yard", parentTagId: "500" }],
+                updatedAtTime: "2019-06-13T19:08:25Z",
+            },
+        };
+        server
+            .mockEndpoint()
+            .post("/places")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.betaApIs.postPlace({
+            address: "123 Main St, Oakland, CA",
+            name: "Oakland Yard",
+        });
+        expect(response).toEqual({
+            data: {
+                address: "123 Main St",
+                cameraRecordingModeType: "inherit",
+                createdAtTime: "2019-06-13T19:08:25Z",
+                geofence: [
+                    {
+                        latitude: 37.7749,
+                        longitude: -122.4194,
+                    },
+                ],
+                hubLocations: [
+                    {
+                        displayName: "North entrance",
+                        externalId: "store-A",
+                        hubId: "550e8400-e29b-41d4-a716-446655440003",
+                        hubLocationId: "550e8400-e29b-41d4-a716-446655440002",
+                        isDepot: false,
+                        isIgnoreOrderServiceTimeEnabled: false,
+                        locationPositionType: "first",
+                        locationPriority: 3,
+                        orderServiceTime: {
+                            capacityServiceTimes: [
+                                {
+                                    capacityId: "550e8400-e29b-41d4-a716-446655440001",
+                                    serviceTimeSeconds: 60,
+                                    serviceTimeSecondsPerQuantityUnit: 0.5,
+                                },
+                            ],
+                            fixedTimeSeconds: 120,
+                            modeType: "variable",
+                        },
+                        plannerNotes: "Zone A preferred",
+                        requiredSkills: [
+                            {
+                                id: "550e8400-e29b-41d4-a716-446655440000",
+                            },
+                        ],
+                        serviceTime: {
+                            additionalTimeMinutes: 5,
+                            isEnabled: true,
+                        },
+                        serviceWindows: [
+                            {
+                                days: [
+                                    "Cumque ullam quasi accusamus aliquid error.",
+                                    "Quia optio rerum.",
+                                    "Occaecati accusantium quia ea consequatur voluptas assumenda.",
+                                ],
+                                endTime: 57961,
+                                startTime: 57600,
+                            },
+                        ],
+                        standardDriverInstructions: "Use lane 2",
+                    },
+                ],
+                id: "12345",
+                iftaExemptionTypes: [
+                    "Voluptates saepe autem neque perspiciatis.",
+                    "Deleniti in nihil ad odio aut.",
+                    "Et quasi mollitia.",
+                ],
+                isAutoDismissRolledStopsEnabled: false,
+                isShowAddressesEnabled: true,
+                latitude: 37.7749,
+                longitude: -122.4194,
+                name: "Oakland Yard",
+                navigation: {
+                    locations: [
+                        {
+                            driverInstructions: "Check in at booth.",
+                            latitude: 37.7749,
+                            locationType: "entrance",
+                            longitude: -122.4194,
+                            name: "Main gate",
+                        },
+                    ],
+                },
+                notes: "Receiving 6-2",
+                placeTypes: [
+                    "Non rerum magni consequatur vel ducimus nesciunt.",
+                    "Temporibus eum.",
+                    "Eos quia.",
+                    "Voluptas laudantium.",
+                ],
+                radiusMeters: 150,
+                safetyEventExclusions: [
+                    "Doloribus eos sunt blanditiis.",
+                    "Neque adipisci.",
+                    "Sint numquam voluptate sint id dolorum.",
+                    "Laboriosam error et enim.",
+                ],
+                streetView: {
+                    heading: 90,
+                    isEnabled: true,
+                    latitude: 37.7749,
+                    longitude: -122.4194,
+                    pitch: 0,
+                    zoom: 1,
+                },
+                tags: [
+                    {
+                        id: "1001",
+                        name: "Yard",
+                        parentTagId: "500",
+                    },
+                ],
+                updatedAtTime: "2019-06-13T19:08:25Z",
+            },
+        });
+    });
+
+    test("postPlace (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { address: "address", name: "name" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/places")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.postPlace({
+                address: "address",
+                name: "name",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("postPlace (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { address: "address", name: "name" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/places")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.postPlace({
+                address: "address",
+                name: "name",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("postPlace (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { address: "address", name: "name" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/places")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.postPlace({
+                address: "address",
+                name: "name",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("postPlace (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { address: "address", name: "name" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/places")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.postPlace({
+                address: "address",
+                name: "name",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("postPlace (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { address: "address", name: "name" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/places")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.postPlace({
+                address: "address",
+                name: "name",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("postPlace (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { address: "address", name: "name" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/places")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.postPlace({
+                address: "address",
+                name: "name",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("postPlace (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { address: "address", name: "name" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/places")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.postPlace({
+                address: "address",
+                name: "name",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("postPlace (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { address: "address", name: "name" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/places")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.postPlace({
+                address: "address",
+                name: "name",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("postPlace (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { address: "address", name: "name" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/places")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.postPlace({
+                address: "address",
+                name: "name",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("deletePlace (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        server.mockEndpoint().delete("/places").respondWith().statusCode(200).build();
+
+        const response = await client.betaApIs.deletePlace({
+            placeId: 1000000,
+        });
+        expect(response).toEqual(undefined);
+    });
+
+    test("deletePlace (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server.mockEndpoint().delete("/places").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.betaApIs.deletePlace({
+                placeId: 1000000,
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("deletePlace (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server.mockEndpoint().delete("/places").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.betaApIs.deletePlace({
+                placeId: 1000000,
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("deletePlace (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server.mockEndpoint().delete("/places").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.betaApIs.deletePlace({
+                placeId: 1000000,
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("deletePlace (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server.mockEndpoint().delete("/places").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.betaApIs.deletePlace({
+                placeId: 1000000,
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("deletePlace (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server.mockEndpoint().delete("/places").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.betaApIs.deletePlace({
+                placeId: 1000000,
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("deletePlace (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server.mockEndpoint().delete("/places").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.betaApIs.deletePlace({
+                placeId: 1000000,
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("deletePlace (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server.mockEndpoint().delete("/places").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.betaApIs.deletePlace({
+                placeId: 1000000,
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("deletePlace (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server.mockEndpoint().delete("/places").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.betaApIs.deletePlace({
+                placeId: 1000000,
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("deletePlace (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server.mockEndpoint().delete("/places").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.betaApIs.deletePlace({
+                placeId: 1000000,
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("patchPlace (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = {
+            data: {
+                address: "123 Main St",
+                cameraRecordingModeType: "inherit",
+                createdAtTime: "2019-06-13T19:08:25Z",
+                geofence: [{ latitude: 37.7749, longitude: -122.4194 }],
+                hubLocations: [
+                    {
+                        displayName: "North entrance",
+                        externalId: "store-A",
+                        hubId: "550e8400-e29b-41d4-a716-446655440003",
+                        hubLocationId: "550e8400-e29b-41d4-a716-446655440002",
+                        isDepot: false,
+                        isIgnoreOrderServiceTimeEnabled: false,
+                        locationPositionType: "first",
+                        locationPriority: 3,
+                        orderServiceTime: {
+                            capacityServiceTimes: [
+                                {
+                                    capacityId: "550e8400-e29b-41d4-a716-446655440001",
+                                    serviceTimeSeconds: 60,
+                                    serviceTimeSecondsPerQuantityUnit: 0.5,
+                                },
+                            ],
+                            fixedTimeSeconds: 120,
+                            modeType: "variable",
+                        },
+                        plannerNotes: "Zone A preferred",
+                        requiredSkills: [{ id: "550e8400-e29b-41d4-a716-446655440000" }],
+                        serviceTime: { additionalTimeMinutes: 5, isEnabled: true },
+                        serviceWindows: [
+                            {
+                                days: [
+                                    "Cumque ullam quasi accusamus aliquid error.",
+                                    "Quia optio rerum.",
+                                    "Occaecati accusantium quia ea consequatur voluptas assumenda.",
+                                ],
+                                endTime: 57961,
+                                startTime: 57600,
+                            },
+                        ],
+                        standardDriverInstructions: "Use lane 2",
+                    },
+                ],
+                id: "12345",
+                iftaExemptionTypes: [
+                    "Voluptates saepe autem neque perspiciatis.",
+                    "Deleniti in nihil ad odio aut.",
+                    "Et quasi mollitia.",
+                ],
+                isAutoDismissRolledStopsEnabled: false,
+                isShowAddressesEnabled: true,
+                latitude: 37.7749,
+                longitude: -122.4194,
+                name: "Oakland Yard",
+                navigation: {
+                    locations: [
+                        {
+                            driverInstructions: "Check in at booth.",
+                            latitude: 37.7749,
+                            locationType: "entrance",
+                            longitude: -122.4194,
+                            name: "Main gate",
+                        },
+                    ],
+                },
+                notes: "Receiving 6-2",
+                placeTypes: [
+                    "Non rerum magni consequatur vel ducimus nesciunt.",
+                    "Temporibus eum.",
+                    "Eos quia.",
+                    "Voluptas laudantium.",
+                ],
+                radiusMeters: 150,
+                safetyEventExclusions: [
+                    "Doloribus eos sunt blanditiis.",
+                    "Neque adipisci.",
+                    "Sint numquam voluptate sint id dolorum.",
+                    "Laboriosam error et enim.",
+                ],
+                streetView: {
+                    heading: 90,
+                    isEnabled: true,
+                    latitude: 37.7749,
+                    longitude: -122.4194,
+                    pitch: 0,
+                    zoom: 1,
+                },
+                tags: [{ id: "1001", name: "Yard", parentTagId: "500" }],
+                updatedAtTime: "2019-06-13T19:08:25Z",
+            },
+        };
+        server
+            .mockEndpoint()
+            .patch("/places")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.betaApIs.patchPlace({
+            placeId: 1000000,
+        });
+        expect(response).toEqual({
+            data: {
+                address: "123 Main St",
+                cameraRecordingModeType: "inherit",
+                createdAtTime: "2019-06-13T19:08:25Z",
+                geofence: [
+                    {
+                        latitude: 37.7749,
+                        longitude: -122.4194,
+                    },
+                ],
+                hubLocations: [
+                    {
+                        displayName: "North entrance",
+                        externalId: "store-A",
+                        hubId: "550e8400-e29b-41d4-a716-446655440003",
+                        hubLocationId: "550e8400-e29b-41d4-a716-446655440002",
+                        isDepot: false,
+                        isIgnoreOrderServiceTimeEnabled: false,
+                        locationPositionType: "first",
+                        locationPriority: 3,
+                        orderServiceTime: {
+                            capacityServiceTimes: [
+                                {
+                                    capacityId: "550e8400-e29b-41d4-a716-446655440001",
+                                    serviceTimeSeconds: 60,
+                                    serviceTimeSecondsPerQuantityUnit: 0.5,
+                                },
+                            ],
+                            fixedTimeSeconds: 120,
+                            modeType: "variable",
+                        },
+                        plannerNotes: "Zone A preferred",
+                        requiredSkills: [
+                            {
+                                id: "550e8400-e29b-41d4-a716-446655440000",
+                            },
+                        ],
+                        serviceTime: {
+                            additionalTimeMinutes: 5,
+                            isEnabled: true,
+                        },
+                        serviceWindows: [
+                            {
+                                days: [
+                                    "Cumque ullam quasi accusamus aliquid error.",
+                                    "Quia optio rerum.",
+                                    "Occaecati accusantium quia ea consequatur voluptas assumenda.",
+                                ],
+                                endTime: 57961,
+                                startTime: 57600,
+                            },
+                        ],
+                        standardDriverInstructions: "Use lane 2",
+                    },
+                ],
+                id: "12345",
+                iftaExemptionTypes: [
+                    "Voluptates saepe autem neque perspiciatis.",
+                    "Deleniti in nihil ad odio aut.",
+                    "Et quasi mollitia.",
+                ],
+                isAutoDismissRolledStopsEnabled: false,
+                isShowAddressesEnabled: true,
+                latitude: 37.7749,
+                longitude: -122.4194,
+                name: "Oakland Yard",
+                navigation: {
+                    locations: [
+                        {
+                            driverInstructions: "Check in at booth.",
+                            latitude: 37.7749,
+                            locationType: "entrance",
+                            longitude: -122.4194,
+                            name: "Main gate",
+                        },
+                    ],
+                },
+                notes: "Receiving 6-2",
+                placeTypes: [
+                    "Non rerum magni consequatur vel ducimus nesciunt.",
+                    "Temporibus eum.",
+                    "Eos quia.",
+                    "Voluptas laudantium.",
+                ],
+                radiusMeters: 150,
+                safetyEventExclusions: [
+                    "Doloribus eos sunt blanditiis.",
+                    "Neque adipisci.",
+                    "Sint numquam voluptate sint id dolorum.",
+                    "Laboriosam error et enim.",
+                ],
+                streetView: {
+                    heading: 90,
+                    isEnabled: true,
+                    latitude: 37.7749,
+                    longitude: -122.4194,
+                    pitch: 0,
+                    zoom: 1,
+                },
+                tags: [
+                    {
+                        id: "1001",
+                        name: "Yard",
+                        parentTagId: "500",
+                    },
+                ],
+                updatedAtTime: "2019-06-13T19:08:25Z",
+            },
+        });
+    });
+
+    test("patchPlace (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/places")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.patchPlace({
+                placeId: 1000000,
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("patchPlace (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/places")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.patchPlace({
+                placeId: 1000000,
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("patchPlace (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/places")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.patchPlace({
+                placeId: 1000000,
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("patchPlace (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/places")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.patchPlace({
+                placeId: 1000000,
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("patchPlace (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/places")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.patchPlace({
+                placeId: 1000000,
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("patchPlace (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/places")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.patchPlace({
+                placeId: 1000000,
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("patchPlace (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/places")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.patchPlace({
+                placeId: 1000000,
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("patchPlace (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/places")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.patchPlace({
+                placeId: 1000000,
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("patchPlace (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/places")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.patchPlace({
+                placeId: 1000000,
             });
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
@@ -16483,8 +17969,9 @@ describe("BetaApIsClient", () => {
             data: {
                 columns: [{ dataType: "string", name: "Device Name" }],
                 rows: [
-                    [{ key: "value" }, { key: "value" }, { key: "value" }, { key: "value" }],
+                    [{ key: "value" }, { key: "value" }],
                     [{ key: "value" }, { key: "value" }, { key: "value" }],
+                    [{ key: "value" }, { key: "value" }],
                 ],
                 status: "complete",
             },
@@ -16511,6 +17998,11 @@ describe("BetaApIsClient", () => {
                         {
                             key: "value",
                         },
+                    ],
+                    [
+                        {
+                            key: "value",
+                        },
                         {
                             key: "value",
                         },
@@ -16519,9 +18011,6 @@ describe("BetaApIsClient", () => {
                         },
                     ],
                     [
-                        {
-                            key: "value",
-                        },
                         {
                             key: "value",
                         },
@@ -16737,13 +18226,8 @@ describe("BetaApIsClient", () => {
                     ],
                     isActive: true,
                     lastName: "Doe",
-                    specialInstructions: { isGuardianRequired: true, isSpecialEducation: true },
-                    tagIds: [
-                        "Beatae minus.",
-                        "Voluptatum voluptatem qui.",
-                        "Tempora voluptatem voluptatem veritatis molestiae.",
-                        "Quis est eaque voluptas quia id voluptates.",
-                    ],
+                    specialInstructions: { isGuardianRequired: false, isSpecialEducation: false },
+                    tagIds: ["Adipisci rerum.", "Sit pariatur voluptatem.", "Aliquam quia qui et alias."],
                     updatedAtTime: "2024-11-15T10:30:00Z",
                 },
             ],
@@ -16781,15 +18265,10 @@ describe("BetaApIsClient", () => {
                     isActive: true,
                     lastName: "Doe",
                     specialInstructions: {
-                        isGuardianRequired: true,
-                        isSpecialEducation: true,
+                        isGuardianRequired: false,
+                        isSpecialEducation: false,
                     },
-                    tagIds: [
-                        "Beatae minus.",
-                        "Voluptatum voluptatem qui.",
-                        "Tempora voluptatem voluptatem veritatis molestiae.",
-                        "Quis est eaque voluptas quia id voluptates.",
-                    ],
+                    tagIds: ["Adipisci rerum.", "Sit pariatur voluptatem.", "Aliquam quia qui et alias."],
                     updatedAtTime: "2024-11-15T10:30:00Z",
                 },
             ],
@@ -17046,13 +18525,8 @@ describe("BetaApIsClient", () => {
                 ],
                 isActive: true,
                 lastName: "Doe",
-                specialInstructions: { isGuardianRequired: true, isSpecialEducation: true },
-                tagIds: [
-                    "Beatae minus.",
-                    "Voluptatum voluptatem qui.",
-                    "Tempora voluptatem voluptatem veritatis molestiae.",
-                    "Quis est eaque voluptas quia id voluptates.",
-                ],
+                specialInstructions: { isGuardianRequired: false, isSpecialEducation: false },
+                tagIds: ["Adipisci rerum.", "Sit pariatur voluptatem.", "Aliquam quia qui et alias."],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
         };
@@ -17089,15 +18563,10 @@ describe("BetaApIsClient", () => {
                 isActive: true,
                 lastName: "Doe",
                 specialInstructions: {
-                    isGuardianRequired: true,
-                    isSpecialEducation: true,
+                    isGuardianRequired: false,
+                    isSpecialEducation: false,
                 },
-                tagIds: [
-                    "Beatae minus.",
-                    "Voluptatum voluptatem qui.",
-                    "Tempora voluptatem voluptatem veritatis molestiae.",
-                    "Quis est eaque voluptas quia id voluptates.",
-                ],
+                tagIds: ["Adipisci rerum.", "Sit pariatur voluptatem.", "Aliquam quia qui et alias."],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
         });
@@ -17367,13 +18836,8 @@ describe("BetaApIsClient", () => {
                 ],
                 isActive: true,
                 lastName: "Doe",
-                specialInstructions: { isGuardianRequired: true, isSpecialEducation: true },
-                tagIds: [
-                    "Beatae minus.",
-                    "Voluptatum voluptatem qui.",
-                    "Tempora voluptatem voluptatem veritatis molestiae.",
-                    "Quis est eaque voluptas quia id voluptates.",
-                ],
+                specialInstructions: { isGuardianRequired: false, isSpecialEducation: false },
+                tagIds: ["Adipisci rerum.", "Sit pariatur voluptatem.", "Aliquam quia qui et alias."],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
         };
@@ -17411,15 +18875,10 @@ describe("BetaApIsClient", () => {
                 isActive: true,
                 lastName: "Doe",
                 specialInstructions: {
-                    isGuardianRequired: true,
-                    isSpecialEducation: true,
+                    isGuardianRequired: false,
+                    isSpecialEducation: false,
                 },
-                tagIds: [
-                    "Beatae minus.",
-                    "Voluptatum voluptatem qui.",
-                    "Tempora voluptatem voluptatem veritatis molestiae.",
-                    "Quis est eaque voluptas quia id voluptates.",
-                ],
+                tagIds: ["Adipisci rerum.", "Sit pariatur voluptatem.", "Aliquam quia qui et alias."],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
         });
@@ -17940,13 +19399,8 @@ describe("BetaApIsClient", () => {
                 ],
                 isActive: true,
                 lastName: "Doe",
-                specialInstructions: { isGuardianRequired: true, isSpecialEducation: true },
-                tagIds: [
-                    "Beatae minus.",
-                    "Voluptatum voluptatem qui.",
-                    "Tempora voluptatem voluptatem veritatis molestiae.",
-                    "Quis est eaque voluptas quia id voluptates.",
-                ],
+                specialInstructions: { isGuardianRequired: false, isSpecialEducation: false },
+                tagIds: ["Adipisci rerum.", "Sit pariatur voluptatem.", "Aliquam quia qui et alias."],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
         };
@@ -17981,15 +19435,10 @@ describe("BetaApIsClient", () => {
                 isActive: true,
                 lastName: "Doe",
                 specialInstructions: {
-                    isGuardianRequired: true,
-                    isSpecialEducation: true,
+                    isGuardianRequired: false,
+                    isSpecialEducation: false,
                 },
-                tagIds: [
-                    "Beatae minus.",
-                    "Voluptatum voluptatem qui.",
-                    "Tempora voluptatem voluptatem veritatis molestiae.",
-                    "Quis est eaque voluptas quia id voluptates.",
-                ],
+                tagIds: ["Adipisci rerum.", "Sit pariatur voluptatem.", "Aliquam quia qui et alias."],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
         });
@@ -19772,7 +21221,11 @@ describe("BetaApIsClient", () => {
             environment: server.baseUrl,
         });
         const rawRequestBody = {
-            safetyEventIds: ["bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590"],
+            safetyEventIds: [
+                "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
+                "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
+                "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
+            ],
         };
         const rawResponseBody = {
             requestId: "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
@@ -19788,7 +21241,11 @@ describe("BetaApIsClient", () => {
             .build();
 
         const response = await client.betaApIs.patchSafetyEventsV2Batch({
-            safetyEventIds: ["bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590"],
+            safetyEventIds: [
+                "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
+                "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
+                "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
+            ],
         });
         expect(response).toEqual({
             requestId: "a1b2c3d4-e5f6-7890-abcd-ef1234567890",

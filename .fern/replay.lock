@@ -6,5 +6,104 @@ generations:
     timestamp: 2026-05-20T09:17:16.042Z
     cli_version: unknown
     generator_versions: {}
-current_generation: 537da9cd9df22d8d5cdaf2a06732f447e3c87299
-patches: []
+  - commit_sha: 9070097e2aaf49b1df1bb890c8222056be5f5142
+    tree_hash: 5da7795db1db8cd1553686c07f4cd99d3c0e0ec3
+    timestamp: 2026-05-21T10:08:39.156Z
+    cli_version: unknown
+    generator_versions:
+      fernapi/fern-typescript-sdk: 3.48.1
+current_generation: 9070097e2aaf49b1df1bb890c8222056be5f5142
+patches:
+  - id: patch-ed895c87
+    content_hash: sha256:aab0c30c623e28c2b59c6e7133d3e3a73afe785a887ccdbe2326bbb6b568a487
+    original_commit: ed895c87d968cf2e8836d68623fbdb746b8c62e8
+    original_message: Added publish log for debugging
+    original_author: Dariusz Wojciechowski <dariusz.wojciechowski@samsara.com>
+    base_generation: 3c3ca49a91f94fcd2ef7731d4b6ccd00508dc4cc
+    files:
+      - package.json
+    patch_content: |
+      diff --git a/package.json b/package.json
+      index ef56dcf..867a98b 100644
+      --- a/package.json
+      +++ b/package.json
+      @@ -1,5 +1,5 @@
+       {
+      -    "name": "",
+      +    "name": "@samsarahq/samsara",
+           "version": "5.4.0",
+           "private": false,
+           "repository": {
+    theirs_snapshot:
+      package.json: |
+        {
+            "name": "@samsarahq/samsara",
+            "version": "5.4.0",
+            "private": false,
+            "repository": {
+                "type": "git",
+                "url": "git+https://github.com/samsarahq/samsara-ts.git"
+            },
+            "license": "MIT",
+            "type": "commonjs",
+            "main": "./dist/cjs/index.js",
+            "module": "./dist/esm/index.mjs",
+            "types": "./dist/cjs/index.d.ts",
+            "exports": {
+                ".": {
+                    "types": "./dist/cjs/index.d.ts",
+                    "import": {
+                        "types": "./dist/esm/index.d.mts",
+                        "default": "./dist/esm/index.mjs"
+                    },
+                    "require": {
+                        "types": "./dist/cjs/index.d.ts",
+                        "default": "./dist/cjs/index.js"
+                    },
+                    "default": "./dist/cjs/index.js"
+                },
+                "./package.json": "./package.json"
+            },
+            "files": [
+                "dist",
+                "reference.md",
+                "README.md",
+                "LICENSE"
+            ],
+            "scripts": {
+                "format": "biome format --write --skip-parse-errors --no-errors-on-unmatched --max-diagnostics=none",
+                "format:check": "biome format --skip-parse-errors --no-errors-on-unmatched --max-diagnostics=none",
+                "lint": "biome lint --skip-parse-errors --no-errors-on-unmatched --max-diagnostics=none",
+                "lint:fix": "biome lint --fix --unsafe --skip-parse-errors --no-errors-on-unmatched --max-diagnostics=none",
+                "check": "biome check --skip-parse-errors --no-errors-on-unmatched --max-diagnostics=none",
+                "check:fix": "biome check --fix --unsafe --skip-parse-errors --no-errors-on-unmatched --max-diagnostics=none",
+                "build": "pnpm build:cjs && pnpm build:esm",
+                "build:cjs": "tsc --project ./tsconfig.cjs.json",
+                "build:esm": "tsc --project ./tsconfig.esm.json && node scripts/rename-to-esm-files.js dist/esm",
+                "test": "vitest",
+                "test:unit": "vitest --project unit",
+                "test:wire": "vitest --project wire"
+            },
+            "dependencies": {},
+            "devDependencies": {
+                "webpack": "^5.97.1",
+                "ts-loader": "^9.5.1",
+                "vitest": "^3.2.4",
+                "msw": "2.11.2",
+                "@types/node": "^18.19.70",
+                "typescript": "~5.7.2",
+                "@biomejs/biome": "2.3.11"
+            },
+            "browser": {
+                "fs": false,
+                "os": false,
+                "path": false,
+                "stream": false
+            },
+            "packageManager": "pnpm@10.20.0",
+            "engines": {
+                "node": ">=18.0.0"
+            },
+            "sideEffects": false
+        }
+    status: unresolved

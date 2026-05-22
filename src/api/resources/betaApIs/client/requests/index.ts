@@ -4,6 +4,7 @@ export type { DeleteHubRouteTemplateRequest } from "./DeleteHubRouteTemplateRequ
 export type { DeleteJobRequest } from "./DeleteJobRequest.js";
 export type { DeletePlaceRequest } from "./DeletePlaceRequest.js";
 export type { DeletePlanOrdersRequest } from "./DeletePlanOrdersRequest.js";
+export type { DeletePreferredStationRequest } from "./DeletePreferredStationRequest.js";
 export type { DeleteRidershipPassengerRequest } from "./DeleteRidershipPassengerRequest.js";
 export type { DeleteRidershipRouteSetupRequest } from "./DeleteRidershipRouteSetupRequest.js";
 export type { DeployFunctionRequest } from "./DeployFunctionRequest.js";
@@ -31,6 +32,7 @@ export type { GetFunctionStorageFileRequest } from "./GetFunctionStorageFileRequ
 export type { GetHosEldEventsRequest } from "./GetHosEldEventsRequest.js";
 export type { GetJobsRequest } from "./GetJobsRequest.js";
 export type { GetPlacesRequest } from "./GetPlacesRequest.js";
+export type { GetPreferredStationRequest } from "./GetPreferredStationRequest.js";
 export type { GetQualificationRecordsRequest } from "./GetQualificationRecordsRequest.js";
 export type { GetQualificationRecordsStreamRequest } from "./GetQualificationRecordsStreamRequest.js";
 export type { GetQualificationTypesRequest } from "./GetQualificationTypesRequest.js";
@@ -48,12 +50,15 @@ export type { ListFunctionsStorageFilesRequest } from "./ListFunctionsStorageFil
 export type { ListHubRouteTemplatesRequest } from "./ListHubRouteTemplatesRequest.js";
 export type { ListMaintenanceVendorsRequest } from "./ListMaintenanceVendorsRequest.js";
 export type { ListPlanOrdersRequest } from "./ListPlanOrdersRequest.js";
+export type { ListPreferredStationsRequest } from "./ListPreferredStationsRequest.js";
 export type { ListRidershipPassengersRequest } from "./ListRidershipPassengersRequest.js";
 export type { ListRidershipRouteSetupsRequest } from "./ListRidershipRouteSetupsRequest.js";
 export type { ListTachographLiveDataRequest } from "./ListTachographLiveDataRequest.js";
 export type { ListVendorCategoriesRequest } from "./ListVendorCategoriesRequest.js";
 export type { PlacesPatchPlaceRequestBody } from "./PlacesPatchPlaceRequestBody.js";
 export type { PlacesPostPlaceRequestBody } from "./PlacesPostPlaceRequestBody.js";
+export type { PreferredStationsPatchPreferredStationRequestBody } from "./PreferredStationsPatchPreferredStationRequestBody.js";
+export type { PreferredStationsPostPreferredStationRequestBody } from "./PreferredStationsPostPreferredStationRequestBody.js";
 export type { QualificationsArchiveQualificationRecordRequestBody } from "./QualificationsArchiveQualificationRecordRequestBody.js";
 export type { QualificationsDeleteQualificationRecordRequestBody } from "./QualificationsDeleteQualificationRecordRequestBody.js";
 export type { QualificationsPatchQualificationRecordRequestBody } from "./QualificationsPatchQualificationRecordRequestBody.js";

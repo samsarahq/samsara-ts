@@ -326,6 +326,368 @@ describe("IssuesClient", () => {
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 
+    test("postIssue (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { asset: { id: "hertzAssetId:HZ-100423" }, title: "Front bumper scratch" };
+        const rawResponseBody = {
+            data: {
+                asset: {
+                    entryType: "tracked",
+                    externalIds: { key: "value" },
+                    id: "281474982859091",
+                    name: "trailer 123",
+                },
+                assignedTo: { id: "938172", type: "driver" },
+                createdAtTime: "2019-06-13T19:08:25Z",
+                description: "Oil spill in left corner of SF1",
+                dueDate: "2019-06-13T19:08:25Z",
+                externalIds: { key: "value" },
+                id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
+                issueSource: { id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7", type: "form" },
+                mediaList: [
+                    {
+                        id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
+                        processingStatus: "unknown",
+                        url: "https://samsara-forms-submission-media-uploads.s3.us-west-2.amazonaws.com/123456",
+                        urlExpiresAt: "2019-06-13T19:08:25Z",
+                    },
+                ],
+                priority: "low",
+                status: "open",
+                submittedAtTime: "2019-06-13T19:08:25Z",
+                submittedBy: { id: "938172", type: "driver" },
+                title: "Oil spill",
+                updatedAtTime: "2019-06-13T19:08:25Z",
+            },
+        };
+        server
+            .mockEndpoint()
+            .post("/issues")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.issues.postIssue({
+            asset: {
+                id: "hertzAssetId:HZ-100423",
+            },
+            title: "Front bumper scratch",
+        });
+        expect(response).toEqual({
+            data: {
+                asset: {
+                    entryType: "tracked",
+                    externalIds: {
+                        key: "value",
+                    },
+                    id: "281474982859091",
+                    name: "trailer 123",
+                },
+                assignedTo: {
+                    id: "938172",
+                    type: "driver",
+                },
+                createdAtTime: "2019-06-13T19:08:25Z",
+                description: "Oil spill in left corner of SF1",
+                dueDate: "2019-06-13T19:08:25Z",
+                externalIds: {
+                    key: "value",
+                },
+                id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
+                issueSource: {
+                    id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
+                    type: "form",
+                },
+                mediaList: [
+                    {
+                        id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
+                        processingStatus: "unknown",
+                        url: "https://samsara-forms-submission-media-uploads.s3.us-west-2.amazonaws.com/123456",
+                        urlExpiresAt: "2019-06-13T19:08:25Z",
+                    },
+                ],
+                priority: "low",
+                status: "open",
+                submittedAtTime: "2019-06-13T19:08:25Z",
+                submittedBy: {
+                    id: "938172",
+                    type: "driver",
+                },
+                title: "Oil spill",
+                updatedAtTime: "2019-06-13T19:08:25Z",
+            },
+        });
+    });
+
+    test("postIssue (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { asset: { id: "id" }, title: "title" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/issues")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.issues.postIssue({
+                asset: {
+                    id: "id",
+                },
+                title: "title",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("postIssue (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { asset: { id: "id" }, title: "title" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/issues")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.issues.postIssue({
+                asset: {
+                    id: "id",
+                },
+                title: "title",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("postIssue (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { asset: { id: "id" }, title: "title" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/issues")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.issues.postIssue({
+                asset: {
+                    id: "id",
+                },
+                title: "title",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("postIssue (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { asset: { id: "id" }, title: "title" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/issues")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.issues.postIssue({
+                asset: {
+                    id: "id",
+                },
+                title: "title",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("postIssue (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { asset: { id: "id" }, title: "title" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/issues")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.issues.postIssue({
+                asset: {
+                    id: "id",
+                },
+                title: "title",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("postIssue (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { asset: { id: "id" }, title: "title" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/issues")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.issues.postIssue({
+                asset: {
+                    id: "id",
+                },
+                title: "title",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("postIssue (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { asset: { id: "id" }, title: "title" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/issues")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.issues.postIssue({
+                asset: {
+                    id: "id",
+                },
+                title: "title",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("postIssue (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { asset: { id: "id" }, title: "title" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/issues")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.issues.postIssue({
+                asset: {
+                    id: "id",
+                },
+                title: "title",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("postIssue (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { asset: { id: "id" }, title: "title" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/issues")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.issues.postIssue({
+                asset: {
+                    id: "id",
+                },
+                title: "title",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
     test("patchIssue (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({

@@ -5,30 +5,32 @@ import type * as Samsara from "../../../../index.js";
 /**
  * @example
  *     {
- *         id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7"
+ *         asset: {
+ *             id: "hertzAssetId:HZ-100423"
+ *         },
+ *         title: "Front bumper scratch"
  *     }
  */
-export interface IssuesPatchIssueRequestBody {
-    assignedTo?: Samsara.PatchIssueRequestBodyAssignedToRequestBody;
+export interface IssuesPostIssueRequestBody {
+    asset: Samsara.PostIssueRequestBodyAssetRequestBody;
+    assignedTo?: Samsara.PostIssueRequestBodyAssignedToRequestBody;
     /** Description of the issue. */
     description?: string;
     /** Due date of the issue. UTC timestamp in RFC 3339 format. */
     dueDate?: string;
     /** A map of external ids */
     externalIds?: Record<string, string>;
-    /** ID of the issue. Can be either a unique Samsara ID or an [external ID](https://developers.samsara.com/docs/external-ids) for the issue. */
-    id: string;
-    /** Media items to append to the issue. */
+    /** Media items to attach to the issue. */
     media?: Samsara.FormSubmissionRequestMediaItemObjectRequestBody[];
     /** Priority of the issue.  Valid values: `low`, `medium`, `high` */
-    priority?: IssuesPatchIssueRequestBody.Priority;
-    /** Status of the issue.  Valid values: `open`, `inProgress`, `resolved`, `dismissed` */
-    status?: IssuesPatchIssueRequestBody.Status;
+    priority?: IssuesPostIssueRequestBody.Priority;
+    /** Status of the issue. Defaults to `open` when omitted.  Valid values: `open`, `inProgress`, `resolved`, `dismissed` */
+    status?: IssuesPostIssueRequestBody.Status;
     /** Title of the issue. */
-    title?: string;
+    title: string;
 }
 
-export namespace IssuesPatchIssueRequestBody {
+export namespace IssuesPostIssueRequestBody {
     /** Priority of the issue.  Valid values: `low`, `medium`, `high` */
     export const Priority = {
         Low: "low",
@@ -36,7 +38,7 @@ export namespace IssuesPatchIssueRequestBody {
         High: "high",
     } as const;
     export type Priority = (typeof Priority)[keyof typeof Priority];
-    /** Status of the issue.  Valid values: `open`, `inProgress`, `resolved`, `dismissed` */
+    /** Status of the issue. Defaults to `open` when omitted.  Valid values: `open`, `inProgress`, `resolved`, `dismissed` */
     export const Status = {
         Open: "open",
         InProgress: "inProgress",

@@ -19814,12 +19814,8 @@ describe("BetaApIsClient", () => {
                     ],
                     isActive: true,
                     lastName: "Doe",
-                    specialInstructions: { isGuardianRequired: false, isSpecialEducation: false },
-                    tagIds: [
-                        "Doloribus quia eos soluta in.",
-                        "Sunt eum explicabo amet eum.",
-                        "Dignissimos quaerat debitis.",
-                    ],
+                    specialInstructions: { isGuardianRequired: false, isSpecialEducation: true },
+                    tagIds: ["Dolorem quis autem nostrum voluptas et quasi.", "Tenetur eveniet aliquid."],
                     updatedAtTime: "2024-11-15T10:30:00Z",
                 },
             ],
@@ -19858,13 +19854,9 @@ describe("BetaApIsClient", () => {
                     lastName: "Doe",
                     specialInstructions: {
                         isGuardianRequired: false,
-                        isSpecialEducation: false,
+                        isSpecialEducation: true,
                     },
-                    tagIds: [
-                        "Doloribus quia eos soluta in.",
-                        "Sunt eum explicabo amet eum.",
-                        "Dignissimos quaerat debitis.",
-                    ],
+                    tagIds: ["Dolorem quis autem nostrum voluptas et quasi.", "Tenetur eveniet aliquid."],
                     updatedAtTime: "2024-11-15T10:30:00Z",
                 },
             ],
@@ -20121,12 +20113,8 @@ describe("BetaApIsClient", () => {
                 ],
                 isActive: true,
                 lastName: "Doe",
-                specialInstructions: { isGuardianRequired: false, isSpecialEducation: false },
-                tagIds: [
-                    "Doloribus quia eos soluta in.",
-                    "Sunt eum explicabo amet eum.",
-                    "Dignissimos quaerat debitis.",
-                ],
+                specialInstructions: { isGuardianRequired: false, isSpecialEducation: true },
+                tagIds: ["Dolorem quis autem nostrum voluptas et quasi.", "Tenetur eveniet aliquid."],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
         };
@@ -20164,13 +20152,9 @@ describe("BetaApIsClient", () => {
                 lastName: "Doe",
                 specialInstructions: {
                     isGuardianRequired: false,
-                    isSpecialEducation: false,
+                    isSpecialEducation: true,
                 },
-                tagIds: [
-                    "Doloribus quia eos soluta in.",
-                    "Sunt eum explicabo amet eum.",
-                    "Dignissimos quaerat debitis.",
-                ],
+                tagIds: ["Dolorem quis autem nostrum voluptas et quasi.", "Tenetur eveniet aliquid."],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
         });
@@ -20440,12 +20424,8 @@ describe("BetaApIsClient", () => {
                 ],
                 isActive: true,
                 lastName: "Doe",
-                specialInstructions: { isGuardianRequired: false, isSpecialEducation: false },
-                tagIds: [
-                    "Doloribus quia eos soluta in.",
-                    "Sunt eum explicabo amet eum.",
-                    "Dignissimos quaerat debitis.",
-                ],
+                specialInstructions: { isGuardianRequired: false, isSpecialEducation: true },
+                tagIds: ["Dolorem quis autem nostrum voluptas et quasi.", "Tenetur eveniet aliquid."],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
         };
@@ -20484,13 +20464,9 @@ describe("BetaApIsClient", () => {
                 lastName: "Doe",
                 specialInstructions: {
                     isGuardianRequired: false,
-                    isSpecialEducation: false,
+                    isSpecialEducation: true,
                 },
-                tagIds: [
-                    "Doloribus quia eos soluta in.",
-                    "Sunt eum explicabo amet eum.",
-                    "Dignissimos quaerat debitis.",
-                ],
+                tagIds: ["Dolorem quis autem nostrum voluptas et quasi.", "Tenetur eveniet aliquid."],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
         });
@@ -21011,12 +20987,8 @@ describe("BetaApIsClient", () => {
                 ],
                 isActive: true,
                 lastName: "Doe",
-                specialInstructions: { isGuardianRequired: false, isSpecialEducation: false },
-                tagIds: [
-                    "Doloribus quia eos soluta in.",
-                    "Sunt eum explicabo amet eum.",
-                    "Dignissimos quaerat debitis.",
-                ],
+                specialInstructions: { isGuardianRequired: false, isSpecialEducation: true },
+                tagIds: ["Dolorem quis autem nostrum voluptas et quasi.", "Tenetur eveniet aliquid."],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
         };
@@ -21052,13 +21024,9 @@ describe("BetaApIsClient", () => {
                 lastName: "Doe",
                 specialInstructions: {
                     isGuardianRequired: false,
-                    isSpecialEducation: false,
+                    isSpecialEducation: true,
                 },
-                tagIds: [
-                    "Doloribus quia eos soluta in.",
-                    "Sunt eum explicabo amet eum.",
-                    "Dignissimos quaerat debitis.",
-                ],
+                tagIds: ["Dolorem quis autem nostrum voluptas et quasi.", "Tenetur eveniet aliquid."],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
         });

@@ -11,6 +11,8 @@ export interface ServiceTaskInstanceInputObjectRequestBody {
     laborHourlyCost?: Samsara.WorkOrderMoneyObjectRequestBody | undefined;
     /** The time of labor needed */
     laborTimeMinutes?: number | undefined;
+    /** Free-form technician notes for the service task. */
+    notes?: string | undefined;
     /** Parts for the service task. */
     parts?: Samsara.PartInstanceInputObjectRequestBody[] | undefined;
     partsCost?: Samsara.WorkOrderMoneyObjectRequestBody | undefined;

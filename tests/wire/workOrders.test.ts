@@ -604,6 +604,7 @@ describe("WorkOrdersClient", () => {
                             id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
                             laborHourlyCost: { amount: "94.01", currency: "usd" },
                             laborTimeMinutes: 60,
+                            notes: "Replaced gasket; will revisit next service.",
                             parts: [
                                 {
                                     costCentsOverride: 1000,
@@ -691,6 +692,7 @@ describe("WorkOrdersClient", () => {
                                 currency: "usd",
                             },
                             laborTimeMinutes: 60,
+                            notes: "Replaced gasket; will revisit next service.",
                             parts: [
                                 {
                                     costCentsOverride: 1000,
@@ -990,6 +992,7 @@ describe("WorkOrdersClient", () => {
                         id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
                         laborHourlyCost: { amount: "94.01", currency: "usd" },
                         laborTimeMinutes: 60,
+                        notes: "Replaced gasket; will revisit next service.",
                         parts: [
                             {
                                 costCentsOverride: 1000,
@@ -1069,6 +1072,7 @@ describe("WorkOrdersClient", () => {
                             currency: "usd",
                         },
                         laborTimeMinutes: 60,
+                        notes: "Replaced gasket; will revisit next service.",
                         parts: [
                             {
                                 costCentsOverride: 1000,
@@ -1624,6 +1628,7 @@ describe("WorkOrdersClient", () => {
                         id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
                         laborHourlyCost: { amount: "94.01", currency: "usd" },
                         laborTimeMinutes: 60,
+                        notes: "Replaced gasket; will revisit next service.",
                         parts: [
                             {
                                 costCentsOverride: 1000,
@@ -1703,6 +1708,7 @@ describe("WorkOrdersClient", () => {
                             currency: "usd",
                         },
                         laborTimeMinutes: 60,
+                        notes: "Replaced gasket; will revisit next service.",
                         parts: [
                             {
                                 costCentsOverride: 1000,
@@ -2017,6 +2023,7 @@ describe("WorkOrdersClient", () => {
                             id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
                             laborHourlyCost: { amount: "94.01", currency: "usd" },
                             laborTimeMinutes: 60,
+                            notes: "Replaced gasket; will revisit next service.",
                             parts: [
                                 {
                                     costCentsOverride: 1000,
@@ -2106,6 +2113,7 @@ describe("WorkOrdersClient", () => {
                                 currency: "usd",
                             },
                             laborTimeMinutes: 60,
+                            notes: "Replaced gasket; will revisit next service.",
                             parts: [
                                 {
                                     costCentsOverride: 1000,

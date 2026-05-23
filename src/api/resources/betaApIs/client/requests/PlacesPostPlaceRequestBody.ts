@@ -12,12 +12,16 @@ import type * as Samsara from "../../../../index.js";
 export interface PlacesPostPlaceRequestBody {
     /** Single-line address string. */
     address: string;
+    /** Camera recording mode: fullRecording, driverPrivacy, completePrivacy, or inherit.  Valid values: `fullRecording`, `driverPrivacy`, `completePrivacy`, `inherit`, `unknown`, `unspecified` */
+    cameraRecordingModeType?: PlacesPostPlaceRequestBody.CameraRecordingModeType;
     /** External identifiers. */
     externalIds?: PlacesPostPlaceRequestBody.ExternalIds;
     /** Polygon vertices; at least three when using polygon mode (omit entirely when using latitude, longitude, and radiusMeters for a circle). */
     geofence?: Samsara.GeofenceVertexInputRequestBody[];
     /** Initial route-planning hub rows for the new place. Each entry requires hubId. Omit hubLocationId to let the server assign a row UUID, or set hubLocationId to pin the UUID for idempotent creates. */
     hubLocations?: Samsara.PatchPlaceHubLocationUpsertBodyRequestBody[];
+    /** IFTA exemption types for this place. */
+    iftaExemptionTypes?: string[];
     /** Center latitude when using a circle geofence with radiusMeters. */
     latitude?: number;
     /** Center longitude when using a circle geofence with radiusMeters. */
@@ -31,11 +35,25 @@ export interface PlacesPostPlaceRequestBody {
     placeTypes?: string[];
     /** Circle radius in meters; requires latitude and longitude. Must be at least 1 when set. */
     radiusMeters?: number;
+    /** Safety event types excluded at this place. */
+    safetyEventExclusions?: string[];
+    streetView?: Samsara.PlaceStreetViewResponseRequestBody;
     /** Tags to associate. */
     tags?: Samsara.PostPlaceTagRefRequestBody[];
 }
 
 export namespace PlacesPostPlaceRequestBody {
+    /** Camera recording mode: fullRecording, driverPrivacy, completePrivacy, or inherit.  Valid values: `fullRecording`, `driverPrivacy`, `completePrivacy`, `inherit`, `unknown`, `unspecified` */
+    export const CameraRecordingModeType = {
+        FullRecording: "fullRecording",
+        DriverPrivacy: "driverPrivacy",
+        CompletePrivacy: "completePrivacy",
+        Inherit: "inherit",
+        Unknown: "unknown",
+        Unspecified: "unspecified",
+    } as const;
+    export type CameraRecordingModeType = (typeof CameraRecordingModeType)[keyof typeof CameraRecordingModeType];
+
     /**
      * External identifiers.
      */

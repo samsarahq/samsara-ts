@@ -15,11 +15,15 @@ export interface PlacesPatchPlaceRequestBody {
     externalId?: string;
     /** Single-line address string. */
     address?: string;
+    /** Camera recording mode: fullRecording, driverPrivacy, completePrivacy, or inherit.  Valid values: `fullRecording`, `driverPrivacy`, `completePrivacy`, `inherit`, `unknown`, `unspecified` */
+    cameraRecordingModeType?: PlacesPatchPlaceRequestBody.CameraRecordingModeType;
     /** When present, replaces external ids for the place. */
     externalIds?: PlacesPatchPlaceRequestBody.ExternalIds;
     /** Polygon vertices; at least three when switching to polygon mode. */
     geofence?: Samsara.GeofenceVertexInputRequestBody[];
     hubLocations?: Samsara.PatchPlaceHubLocationsBodyRequestBody;
+    /** When present, replaces IFTA exemption types for the place. */
+    iftaExemptionTypes?: string[];
     /** Center latitude when switching to or editing a circle geofence. */
     latitude?: number;
     /** Center longitude when switching to or editing a circle geofence. */
@@ -33,11 +37,25 @@ export interface PlacesPatchPlaceRequestBody {
     placeTypes?: string[];
     /** Circle radius in meters; use with latitude and longitude. */
     radiusMeters?: number;
+    /** When present, replaces safety event exclusions for the place. */
+    safetyEventExclusions?: string[];
+    streetView?: Samsara.PlaceStreetViewResponseRequestBody;
     /** When present, replaces all tag associations for the place. */
     tags?: Samsara.PostPlaceTagRefRequestBody[];
 }
 
 export namespace PlacesPatchPlaceRequestBody {
+    /** Camera recording mode: fullRecording, driverPrivacy, completePrivacy, or inherit.  Valid values: `fullRecording`, `driverPrivacy`, `completePrivacy`, `inherit`, `unknown`, `unspecified` */
+    export const CameraRecordingModeType = {
+        FullRecording: "fullRecording",
+        DriverPrivacy: "driverPrivacy",
+        CompletePrivacy: "completePrivacy",
+        Inherit: "inherit",
+        Unknown: "unknown",
+        Unspecified: "unspecified",
+    } as const;
+    export type CameraRecordingModeType = (typeof CameraRecordingModeType)[keyof typeof CameraRecordingModeType];
+
     /**
      * When present, replaces external ids for the place.
      */

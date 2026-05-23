@@ -11,6 +11,8 @@ export interface ServiceTaskInstanceObjectResponseBody {
     laborHourlyCost?: Samsara.WorkOrderMoneyObjectResponseBody | undefined;
     /** The time of labor needed */
     laborTimeMinutes?: number | undefined;
+    /** Free-form technician notes for the service task. */
+    notes?: string | undefined;
     /** Parts for the service task. */
     parts?: Samsara.PartInstanceObjectResponseBody[] | undefined;
     partsCost?: Samsara.WorkOrderMoneyObjectResponseBody | undefined;

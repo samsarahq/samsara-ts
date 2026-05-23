@@ -1881,6 +1881,7 @@ export * from "./PlaceGeofenceVertexResponseResponseBody.js";
 export * from "./PlaceNavigationLocationResponseResponseBody.js";
 export * from "./PlaceNavigationResponseResponseBody.js";
 export * from "./PlaceResponseObjectResponseBody.js";
+export * from "./PlaceStreetViewResponseRequestBody.js";
 export * from "./PlaceStreetViewResponseResponseBody.js";
 export * from "./PlacesDeletePlaceBadGatewayErrorResponseBody.js";
 export * from "./PlacesDeletePlaceGatewayTimeoutErrorResponseBody.js";

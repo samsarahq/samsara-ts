@@ -55,8 +55,8 @@ export type { ListRidershipPassengersRequest } from "./ListRidershipPassengersRe
 export type { ListRidershipRouteSetupsRequest } from "./ListRidershipRouteSetupsRequest.js";
 export type { ListTachographLiveDataRequest } from "./ListTachographLiveDataRequest.js";
 export type { ListVendorCategoriesRequest } from "./ListVendorCategoriesRequest.js";
-export type { PlacesPatchPlaceRequestBody } from "./PlacesPatchPlaceRequestBody.js";
-export type { PlacesPostPlaceRequestBody } from "./PlacesPostPlaceRequestBody.js";
+export { PlacesPatchPlaceRequestBody } from "./PlacesPatchPlaceRequestBody.js";
+export { PlacesPostPlaceRequestBody } from "./PlacesPostPlaceRequestBody.js";
 export type { PreferredStationsPatchPreferredStationRequestBody } from "./PreferredStationsPatchPreferredStationRequestBody.js";
 export type { PreferredStationsPostPreferredStationRequestBody } from "./PreferredStationsPostPreferredStationRequestBody.js";
 export type { QualificationsArchiveQualificationRecordRequestBody } from "./QualificationsArchiveQualificationRecordRequestBody.js";

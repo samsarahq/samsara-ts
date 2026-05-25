@@ -1878,6 +1878,8 @@ export * from "./PersonDetectedResponseBody.js";
 export * from "./PhotoValueObjectRequestBody.js";
 export * from "./PhotoValueObjectResponseBody.js";
 export * from "./PlaceGeofenceVertexResponseResponseBody.js";
+export * from "./PlaceHubLocationRequiredSkillInputRequestBody.js";
+export * from "./PlaceHubLocationServiceWindowInputRequestBody.js";
 export * from "./PlaceNavigationLocationResponseResponseBody.js";
 export * from "./PlaceNavigationResponseResponseBody.js";
 export * from "./PlaceResponseObjectResponseBody.js";

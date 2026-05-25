@@ -4427,7 +4427,7 @@ export class BetaApIsClient {
     }
 
     /**
-     * Returns places for the authorized organization. Supports cursor pagination or batch fetch by Samsara place ids via `placeIds`.
+     * Returns places for the authorized organization. Supports cursor pagination or batch fetch by Samsara place ids via `placeIds` or by external ids via `externalIds` (mutually exclusive).
      *
      *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
      *
@@ -4751,7 +4751,7 @@ export class BetaApIsClient {
     }
 
     /**
-     * Updates a place. Query parameter `placeId` (Samsara id) is required. Optional `externalId` (key:value) is reserved for a future release and must not be combined with `placeId`. Only fields present in the JSON body are changed; omit a field to leave it unchanged.
+     * Updates a place. Provide exactly one of query parameter `placeId` (Samsara id) or `externalId` (key:value). Only fields present in the JSON body are changed; omit a field to leave it unchanged.
      *
      *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
      *
@@ -4774,19 +4774,17 @@ export class BetaApIsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.betaApIs.patchPlace({
-     *         placeId: 1000000
-     *     })
+     *     await client.betaApIs.patchPlace()
      */
     public patchPlace(
-        request: Samsara.PlacesPatchPlaceRequestBody,
+        request: Samsara.PlacesPatchPlaceRequestBody = {},
         requestOptions?: BetaApIsClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.PlacesPatchPlaceResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__patchPlace(request, requestOptions));
     }
 
     private async __patchPlace(
-        request: Samsara.PlacesPatchPlaceRequestBody,
+        request: Samsara.PlacesPatchPlaceRequestBody = {},
         requestOptions?: BetaApIsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.PlacesPatchPlaceResponseBody>> {
         const { placeId, externalId, ..._body } = request;

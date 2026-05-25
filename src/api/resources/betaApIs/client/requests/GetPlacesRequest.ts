@@ -9,9 +9,9 @@ export interface GetPlacesRequest {
     after?: string;
     /** The limit for how many objects will be in the response. Default and max for this value is 512 objects. */
     limit?: number;
-    /** Comma-separated Samsara place IDs for batch lookup (max 100). When set, list filters and cursor pagination are ignored. External id tokens (key:value) are not supported in this version. */
+    /** Comma-separated Samsara place IDs for batch lookup (max 100). When set, list filters and cursor pagination are ignored. Mutually exclusive with `externalIds`. */
     placeIds?: string;
-    /** Reserved. Batch lookup by external IDs is not implemented in this API version. */
+    /** Comma-separated external ID tokens (`key:value`) for batch lookup (max 100). When set, list filters and cursor pagination are ignored. Mutually exclusive with `placeIds`. */
     externalIds?: string;
     /** When true, expands tag objects on each place. Defaults to false. */
     includeTags?: boolean;

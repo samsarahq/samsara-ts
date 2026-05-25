@@ -4,14 +4,12 @@ import type * as Samsara from "../../../../index.js";
 
 /**
  * @example
- *     {
- *         placeId: 1000000
- *     }
+ *     {}
  */
 export interface PlacesPatchPlaceRequestBody {
-    /** Samsara place id to update (required). Do not send `externalId` in the same request. */
-    placeId: number;
-    /** External id token in `key:value` form (e.g. crmId:warehouse-east). Mutually exclusive with `placeId`. Batch lookup by external id is not implemented for this endpoint yet; callers should use `placeId` until supported. */
+    /** Samsara place id to update. Mutually exclusive with `externalId`; provide exactly one. */
+    placeId?: number;
+    /** External id token in `key:value` form (e.g. crmId:warehouse-east). Mutually exclusive with `placeId`; provide exactly one. */
     externalId?: string;
     /** Single-line address string. */
     address?: string;
@@ -33,7 +31,7 @@ export interface PlacesPatchPlaceRequestBody {
     navigation?: Samsara.PostPlaceNavigationInputRequestBody;
     /** Notes. */
     notes?: string;
-    /** Unsupported on patch; when provided this API returns InvalidArgument. */
+    /** When present, replaces address-type categories via address metadata. Metadata-derived types (hubLocation, navigation, iftaExemption) must match hubLocations, navigation, and IFTA metadata after this request; conflicting combinations return InvalidArgument. */
     placeTypes?: string[];
     /** Circle radius in meters; use with latitude and longitude. */
     radiusMeters?: number;

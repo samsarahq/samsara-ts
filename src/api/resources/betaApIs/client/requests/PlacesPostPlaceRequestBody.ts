@@ -31,7 +31,7 @@ export interface PlacesPostPlaceRequestBody {
     navigation?: Samsara.PostPlaceNavigationInputRequestBody;
     /** Optional notes. */
     notes?: string;
-    /** Unsupported on create; when provided this API returns InvalidArgument. */
+    /** When present, replaces address-type categories via address metadata. Metadata-derived types (hubLocation, navigation, iftaExemption) must match hubLocations, navigation, and existing IFTA metadata in the same request; conflicting combinations return InvalidArgument. */
     placeTypes?: string[];
     /** Circle radius in meters; requires latitude and longitude. Must be at least 1 when set. */
     radiusMeters?: number;

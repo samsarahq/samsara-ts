@@ -12511,9 +12511,7 @@ describe("BetaApIsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.betaApIs.patchPlace({
-            placeId: 1000000,
-        });
+        const response = await client.betaApIs.patchPlace();
         expect(response).toEqual({
             data: {
                 address: "123 Main St",
@@ -12632,9 +12630,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.patchPlace({
-                placeId: 1000000,
-            });
+            return await client.betaApIs.patchPlace();
         }).rejects.toThrow(Samsara.UnauthorizedError);
     });
 
@@ -12658,9 +12654,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.patchPlace({
-                placeId: 1000000,
-            });
+            return await client.betaApIs.patchPlace();
         }).rejects.toThrow(Samsara.NotFoundError);
     });
 
@@ -12684,9 +12678,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.patchPlace({
-                placeId: 1000000,
-            });
+            return await client.betaApIs.patchPlace();
         }).rejects.toThrow(Samsara.MethodNotAllowedError);
     });
 
@@ -12710,9 +12702,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.patchPlace({
-                placeId: 1000000,
-            });
+            return await client.betaApIs.patchPlace();
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
@@ -12736,9 +12726,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.patchPlace({
-                placeId: 1000000,
-            });
+            return await client.betaApIs.patchPlace();
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
@@ -12762,9 +12750,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.patchPlace({
-                placeId: 1000000,
-            });
+            return await client.betaApIs.patchPlace();
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
@@ -12788,9 +12774,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.patchPlace({
-                placeId: 1000000,
-            });
+            return await client.betaApIs.patchPlace();
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
@@ -12814,9 +12798,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.patchPlace({
-                placeId: 1000000,
-            });
+            return await client.betaApIs.patchPlace();
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
@@ -12840,9 +12822,7 @@ describe("BetaApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.betaApIs.patchPlace({
-                placeId: 1000000,
-            });
+            return await client.betaApIs.patchPlace();
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 
@@ -19814,8 +19794,8 @@ describe("BetaApIsClient", () => {
                     ],
                     isActive: true,
                     lastName: "Doe",
-                    specialInstructions: { isGuardianRequired: false, isSpecialEducation: true },
-                    tagIds: ["Dolorem quis autem nostrum voluptas et quasi.", "Tenetur eveniet aliquid."],
+                    specialInstructions: { isGuardianRequired: true, isSpecialEducation: false },
+                    tagIds: ["Nostrum voluptas et quasi.", "Tenetur eveniet aliquid."],
                     updatedAtTime: "2024-11-15T10:30:00Z",
                 },
             ],
@@ -19853,10 +19833,10 @@ describe("BetaApIsClient", () => {
                     isActive: true,
                     lastName: "Doe",
                     specialInstructions: {
-                        isGuardianRequired: false,
-                        isSpecialEducation: true,
+                        isGuardianRequired: true,
+                        isSpecialEducation: false,
                     },
-                    tagIds: ["Dolorem quis autem nostrum voluptas et quasi.", "Tenetur eveniet aliquid."],
+                    tagIds: ["Nostrum voluptas et quasi.", "Tenetur eveniet aliquid."],
                     updatedAtTime: "2024-11-15T10:30:00Z",
                 },
             ],
@@ -20113,8 +20093,8 @@ describe("BetaApIsClient", () => {
                 ],
                 isActive: true,
                 lastName: "Doe",
-                specialInstructions: { isGuardianRequired: false, isSpecialEducation: true },
-                tagIds: ["Dolorem quis autem nostrum voluptas et quasi.", "Tenetur eveniet aliquid."],
+                specialInstructions: { isGuardianRequired: true, isSpecialEducation: false },
+                tagIds: ["Nostrum voluptas et quasi.", "Tenetur eveniet aliquid."],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
         };
@@ -20151,10 +20131,10 @@ describe("BetaApIsClient", () => {
                 isActive: true,
                 lastName: "Doe",
                 specialInstructions: {
-                    isGuardianRequired: false,
-                    isSpecialEducation: true,
+                    isGuardianRequired: true,
+                    isSpecialEducation: false,
                 },
-                tagIds: ["Dolorem quis autem nostrum voluptas et quasi.", "Tenetur eveniet aliquid."],
+                tagIds: ["Nostrum voluptas et quasi.", "Tenetur eveniet aliquid."],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
         });
@@ -20424,8 +20404,8 @@ describe("BetaApIsClient", () => {
                 ],
                 isActive: true,
                 lastName: "Doe",
-                specialInstructions: { isGuardianRequired: false, isSpecialEducation: true },
-                tagIds: ["Dolorem quis autem nostrum voluptas et quasi.", "Tenetur eveniet aliquid."],
+                specialInstructions: { isGuardianRequired: true, isSpecialEducation: false },
+                tagIds: ["Nostrum voluptas et quasi.", "Tenetur eveniet aliquid."],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
         };
@@ -20463,10 +20443,10 @@ describe("BetaApIsClient", () => {
                 isActive: true,
                 lastName: "Doe",
                 specialInstructions: {
-                    isGuardianRequired: false,
-                    isSpecialEducation: true,
+                    isGuardianRequired: true,
+                    isSpecialEducation: false,
                 },
-                tagIds: ["Dolorem quis autem nostrum voluptas et quasi.", "Tenetur eveniet aliquid."],
+                tagIds: ["Nostrum voluptas et quasi.", "Tenetur eveniet aliquid."],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
         });
@@ -20987,8 +20967,8 @@ describe("BetaApIsClient", () => {
                 ],
                 isActive: true,
                 lastName: "Doe",
-                specialInstructions: { isGuardianRequired: false, isSpecialEducation: true },
-                tagIds: ["Dolorem quis autem nostrum voluptas et quasi.", "Tenetur eveniet aliquid."],
+                specialInstructions: { isGuardianRequired: true, isSpecialEducation: false },
+                tagIds: ["Nostrum voluptas et quasi.", "Tenetur eveniet aliquid."],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
         };
@@ -21023,10 +21003,10 @@ describe("BetaApIsClient", () => {
                 isActive: true,
                 lastName: "Doe",
                 specialInstructions: {
-                    isGuardianRequired: false,
-                    isSpecialEducation: true,
+                    isGuardianRequired: true,
+                    isSpecialEducation: false,
                 },
-                tagIds: ["Dolorem quis autem nostrum voluptas et quasi.", "Tenetur eveniet aliquid."],
+                tagIds: ["Nostrum voluptas et quasi.", "Tenetur eveniet aliquid."],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
         });

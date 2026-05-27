@@ -20,8 +20,12 @@ export interface PatchPlaceHubLocationUpsertBodyRequestBody {
     isIgnoreOrderServiceTimeEnabled?: boolean | undefined;
     /** Stop position preference: unspecified, any, first, or last. */
     locationPositionType?: string | undefined;
+    /** Route priority from 1 (lowest) to 5 (highest). */
+    locationPriority?: number | undefined;
+    orderServiceTime?: Samsara.PlaceHubLocationOrderServiceTimeInputRequestBody | undefined;
     /** Required planner skills for this hub location. */
     requiredSkills?: Samsara.PlaceHubLocationRequiredSkillInputRequestBody[] | undefined;
+    serviceTime?: Samsara.PlaceHubLocationServiceTimeInputRequestBody | undefined;
     /** Recurring local-time service windows for this hub location. */
     serviceWindows?: Samsara.PlaceHubLocationServiceWindowInputRequestBody[] | undefined;
     /** Default instructions for drivers at this hub location. */

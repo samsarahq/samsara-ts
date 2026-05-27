@@ -19794,8 +19794,12 @@ describe("BetaApIsClient", () => {
                     ],
                     isActive: true,
                     lastName: "Doe",
-                    specialInstructions: { isGuardianRequired: true, isSpecialEducation: false },
-                    tagIds: ["Nostrum voluptas et quasi.", "Tenetur eveniet aliquid."],
+                    specialInstructions: { isGuardianRequired: false, isSpecialEducation: false },
+                    tagIds: [
+                        "Tenetur eveniet aliquid.",
+                        "Nesciunt qui dolorem quibusdam est rem sit.",
+                        "Et hic similique nihil.",
+                    ],
                     updatedAtTime: "2024-11-15T10:30:00Z",
                 },
             ],
@@ -19833,10 +19837,14 @@ describe("BetaApIsClient", () => {
                     isActive: true,
                     lastName: "Doe",
                     specialInstructions: {
-                        isGuardianRequired: true,
+                        isGuardianRequired: false,
                         isSpecialEducation: false,
                     },
-                    tagIds: ["Nostrum voluptas et quasi.", "Tenetur eveniet aliquid."],
+                    tagIds: [
+                        "Tenetur eveniet aliquid.",
+                        "Nesciunt qui dolorem quibusdam est rem sit.",
+                        "Et hic similique nihil.",
+                    ],
                     updatedAtTime: "2024-11-15T10:30:00Z",
                 },
             ],
@@ -20093,8 +20101,12 @@ describe("BetaApIsClient", () => {
                 ],
                 isActive: true,
                 lastName: "Doe",
-                specialInstructions: { isGuardianRequired: true, isSpecialEducation: false },
-                tagIds: ["Nostrum voluptas et quasi.", "Tenetur eveniet aliquid."],
+                specialInstructions: { isGuardianRequired: false, isSpecialEducation: false },
+                tagIds: [
+                    "Tenetur eveniet aliquid.",
+                    "Nesciunt qui dolorem quibusdam est rem sit.",
+                    "Et hic similique nihil.",
+                ],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
         };
@@ -20131,10 +20143,14 @@ describe("BetaApIsClient", () => {
                 isActive: true,
                 lastName: "Doe",
                 specialInstructions: {
-                    isGuardianRequired: true,
+                    isGuardianRequired: false,
                     isSpecialEducation: false,
                 },
-                tagIds: ["Nostrum voluptas et quasi.", "Tenetur eveniet aliquid."],
+                tagIds: [
+                    "Tenetur eveniet aliquid.",
+                    "Nesciunt qui dolorem quibusdam est rem sit.",
+                    "Et hic similique nihil.",
+                ],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
         });
@@ -20404,8 +20420,12 @@ describe("BetaApIsClient", () => {
                 ],
                 isActive: true,
                 lastName: "Doe",
-                specialInstructions: { isGuardianRequired: true, isSpecialEducation: false },
-                tagIds: ["Nostrum voluptas et quasi.", "Tenetur eveniet aliquid."],
+                specialInstructions: { isGuardianRequired: false, isSpecialEducation: false },
+                tagIds: [
+                    "Tenetur eveniet aliquid.",
+                    "Nesciunt qui dolorem quibusdam est rem sit.",
+                    "Et hic similique nihil.",
+                ],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
         };
@@ -20443,10 +20463,14 @@ describe("BetaApIsClient", () => {
                 isActive: true,
                 lastName: "Doe",
                 specialInstructions: {
-                    isGuardianRequired: true,
+                    isGuardianRequired: false,
                     isSpecialEducation: false,
                 },
-                tagIds: ["Nostrum voluptas et quasi.", "Tenetur eveniet aliquid."],
+                tagIds: [
+                    "Tenetur eveniet aliquid.",
+                    "Nesciunt qui dolorem quibusdam est rem sit.",
+                    "Et hic similique nihil.",
+                ],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
         });
@@ -20967,8 +20991,12 @@ describe("BetaApIsClient", () => {
                 ],
                 isActive: true,
                 lastName: "Doe",
-                specialInstructions: { isGuardianRequired: true, isSpecialEducation: false },
-                tagIds: ["Nostrum voluptas et quasi.", "Tenetur eveniet aliquid."],
+                specialInstructions: { isGuardianRequired: false, isSpecialEducation: false },
+                tagIds: [
+                    "Tenetur eveniet aliquid.",
+                    "Nesciunt qui dolorem quibusdam est rem sit.",
+                    "Et hic similique nihil.",
+                ],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
         };
@@ -21003,10 +21031,14 @@ describe("BetaApIsClient", () => {
                 isActive: true,
                 lastName: "Doe",
                 specialInstructions: {
-                    isGuardianRequired: true,
+                    isGuardianRequired: false,
                     isSpecialEducation: false,
                 },
-                tagIds: ["Nostrum voluptas et quasi.", "Tenetur eveniet aliquid."],
+                tagIds: [
+                    "Tenetur eveniet aliquid.",
+                    "Nesciunt qui dolorem quibusdam est rem sit.",
+                    "Et hic similique nihil.",
+                ],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
         });

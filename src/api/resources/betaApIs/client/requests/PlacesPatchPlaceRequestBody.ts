@@ -22,6 +22,8 @@ export interface PlacesPatchPlaceRequestBody {
     hubLocations?: Samsara.PatchPlaceHubLocationsBodyRequestBody;
     /** When present, replaces IFTA exemption types for the place. */
     iftaExemptionTypes?: string[];
+    /** When true, show addresses inside the geofence on the map. */
+    isShowAddressesEnabled?: boolean;
     /** Center latitude when switching to or editing a circle geofence. */
     latitude?: number;
     /** Center longitude when switching to or editing a circle geofence. */

@@ -32,6 +32,10 @@ export interface WorkOrdersPatchWorkOrdersRequestBody {
     items?: Samsara.WorkOrderItemObjectRequestBody[];
     /** The odometer reading at the time of the work order. Will default to current asset reading if unset. */
     odometerMeters?: number;
+    /** External ID (`key:value`) of the Place where the work is performed. Resolved against the organization's external IDs for places. Send an empty string to clear the maintenance site on the work order. Mutually exclusive with `placeId`. */
+    placeExternalId?: string;
+    /** ID of the Place where the work is performed. Must reference a Place returned by the Places API that is linked to a maintenance site in the organization. Send an empty string to clear the maintenance site on the work order. Mutually exclusive with `placeExternalId`. */
+    placeId?: string;
     /** The purchase order number for the work order. */
     poNumber?: string;
     /** The priority of the work order  Valid values: `High`, `Low`, `Medium`, `Urgent` */

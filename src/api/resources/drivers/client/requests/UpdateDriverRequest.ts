@@ -15,6 +15,7 @@ export interface UpdateDriverRequest {
     carrierSettings?: Samsara.DriverCarrierSettings;
     /** The ID Card Code on the back of the physical card assigned to the driver.  Contact Samsara if you would like to enable this feature. */
     currentIdCardCode?: string;
+    dateOfBirth?: Samsara.DriverDateOfBirth;
     /** The date and time this driver is considered to be deactivated in RFC 3339 format. */
     deactivatedAtTime?: string;
     /** A value indicating whether the driver is active or deactivated. Valid values: `active`, `deactivated`. */

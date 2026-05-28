@@ -37,6 +37,7 @@ export interface WorkOrderWithTimeEntriesObjectResponseBody {
     invoiceNumber?: string | undefined;
     /** Items related to the work order. */
     items?: Samsara.WorkOrderItemObjectResponseBody[] | undefined;
+    maintenanceSite?: Samsara.WorkOrderMaintenanceSiteObjectResponseBody | undefined;
     /** The odometer reading at the time of the work order. */
     odometerMeters?: number | undefined;
     /** The purchase order number for the work order. */

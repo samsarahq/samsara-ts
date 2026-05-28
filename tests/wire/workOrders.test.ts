@@ -596,6 +596,11 @@ describe("WorkOrdersClient", () => {
                     id: "5",
                     invoiceNumber: "123456",
                     items: [{ id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7", type: "DVIR" }],
+                    maintenanceSite: {
+                        name: "LAX Service Bay 3",
+                        placeExternalIds: { "Natus et non cum.": "Consequatur cum voluptatem atque." },
+                        placeId: "123456",
+                    },
                     odometerMeters: 91823,
                     poNumber: "123456",
                     priority: "High",
@@ -681,6 +686,13 @@ describe("WorkOrdersClient", () => {
                             type: "DVIR",
                         },
                     ],
+                    maintenanceSite: {
+                        name: "LAX Service Bay 3",
+                        placeExternalIds: {
+                            "Natus et non cum.": "Consequatur cum voluptatem atque.",
+                        },
+                        placeId: "123456",
+                    },
                     odometerMeters: 91823,
                     poNumber: "123456",
                     priority: "High",
@@ -984,6 +996,11 @@ describe("WorkOrdersClient", () => {
                 id: "5",
                 invoiceNumber: "123456",
                 items: [{ id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7", type: "DVIR" }],
+                maintenanceSite: {
+                    name: "LAX Service Bay 3",
+                    placeExternalIds: { "Natus et non cum.": "Consequatur cum voluptatem atque." },
+                    placeId: "123456",
+                },
                 odometerMeters: 91823,
                 poNumber: "123456",
                 priority: "High",
@@ -1061,6 +1078,13 @@ describe("WorkOrdersClient", () => {
                         type: "DVIR",
                     },
                 ],
+                maintenanceSite: {
+                    name: "LAX Service Bay 3",
+                    placeExternalIds: {
+                        "Natus et non cum.": "Consequatur cum voluptatem atque.",
+                    },
+                    placeId: "123456",
+                },
                 odometerMeters: 91823,
                 poNumber: "123456",
                 priority: "High",
@@ -1620,6 +1644,11 @@ describe("WorkOrdersClient", () => {
                 id: "5",
                 invoiceNumber: "123456",
                 items: [{ id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7", type: "DVIR" }],
+                maintenanceSite: {
+                    name: "LAX Service Bay 3",
+                    placeExternalIds: { "Natus et non cum.": "Consequatur cum voluptatem atque." },
+                    placeId: "123456",
+                },
                 odometerMeters: 91823,
                 poNumber: "123456",
                 priority: "High",
@@ -1697,6 +1726,13 @@ describe("WorkOrdersClient", () => {
                         type: "DVIR",
                     },
                 ],
+                maintenanceSite: {
+                    name: "LAX Service Bay 3",
+                    placeExternalIds: {
+                        "Natus et non cum.": "Consequatur cum voluptatem atque.",
+                    },
+                    placeId: "123456",
+                },
                 odometerMeters: 91823,
                 poNumber: "123456",
                 priority: "High",
@@ -2015,6 +2051,11 @@ describe("WorkOrdersClient", () => {
                     id: "5",
                     invoiceNumber: "123456",
                     items: [{ id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7", type: "DVIR" }],
+                    maintenanceSite: {
+                        name: "LAX Service Bay 3",
+                        placeExternalIds: { "Natus et non cum.": "Consequatur cum voluptatem atque." },
+                        placeId: "123456",
+                    },
                     odometerMeters: 91823,
                     poNumber: "123456",
                     priority: "High",
@@ -2102,6 +2143,13 @@ describe("WorkOrdersClient", () => {
                             type: "DVIR",
                         },
                     ],
+                    maintenanceSite: {
+                        name: "LAX Service Bay 3",
+                        placeExternalIds: {
+                            "Natus et non cum.": "Consequatur cum voluptatem atque.",
+                        },
+                        placeId: "123456",
+                    },
                     odometerMeters: 91823,
                     poNumber: "123456",
                     priority: "High",

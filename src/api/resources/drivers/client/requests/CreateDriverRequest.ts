@@ -15,6 +15,7 @@ export interface CreateDriverRequest {
     carrierSettings?: Samsara.DriverCarrierSettings;
     /** The ID Card Code on the back of the physical card assigned to the driver.  Contact Samsara if you would like to enable this feature. */
     currentIdCardCode?: string;
+    dateOfBirth?: Samsara.DriverDateOfBirth;
     /** Flag indicating this driver may use Adverse Weather exemptions in ELD logs. */
     eldAdverseWeatherExemptionEnabled?: boolean;
     /** Flag indicating this driver may use Big Day exemption in ELD logs. */

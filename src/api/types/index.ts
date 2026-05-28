@@ -492,6 +492,7 @@ export * from "./DriverCoachAssignmentsPutDriverCoachAssignmentServiceUnavailabl
 export * from "./DriverCoachAssignmentsPutDriverCoachAssignmentTooManyRequestsErrorResponseBody.js";
 export * from "./DriverCoachAssignmentsPutDriverCoachAssignmentUnauthorizedErrorResponseBody.js";
 export * from "./DriverCreatedAtTime.js";
+export * from "./DriverDateOfBirth.js";
 export * from "./DriverDocumentSubmittedDetailsObjectRequestBody.js";
 export * from "./DriverDocumentSubmittedDetailsObjectResponseBody.js";
 export * from "./DriverDocumentSubmittedResponseBody.js";
@@ -3416,6 +3417,7 @@ export * from "./WorkOrderDiscountObjectRequestBody.js";
 export * from "./WorkOrderDiscountObjectResponseBody.js";
 export * from "./WorkOrderItemObjectRequestBody.js";
 export * from "./WorkOrderItemObjectResponseBody.js";
+export * from "./WorkOrderMaintenanceSiteObjectResponseBody.js";
 export * from "./WorkOrderMoneyObjectRequestBody.js";
 export * from "./WorkOrderMoneyObjectResponseBody.js";
 export * from "./WorkOrderObjectResponseBody.js";

@@ -11,6 +11,7 @@ export interface Driver {
     carrierSettings?: Samsara.DriverCarrierSettings | undefined;
     createdAtTime?: Samsara.DriverCreatedAtTime | undefined;
     currentIdCardCode?: Samsara.DriverIdCardCode | undefined;
+    dateOfBirth?: Samsara.DriverDateOfBirth | undefined;
     driverActivationStatus?: Samsara.DriverActivationStatus | undefined;
     eldAdverseWeatherExemptionEnabled?: Samsara.DriverEldAdverseWeatherExemptionEnabled | undefined;
     eldBigDayExemptionEnabled?: Samsara.DriverEldBigDayExemptionEnabled | undefined;

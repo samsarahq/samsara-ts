@@ -23,4 +23,6 @@ export interface StreamWorkOrdersRequest {
     assetIds?: string | string[];
     /** Work Order assigned user id filter. Up to 50 ids. */
     assignedUserIds?: string | string[];
+    /** When true, populates `maintenanceSite.placeExternalIds` on each work order by resolving the linked Place's external ids. Defaults to false. Adds one batch lookup per response page. */
+    includeExternalIds?: boolean;
 }

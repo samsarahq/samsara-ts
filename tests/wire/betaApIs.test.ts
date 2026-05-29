@@ -11462,7 +11462,12 @@ describe("BetaApIsClient", () => {
                             serviceTime: { additionalTimeMinutes: 5, isEnabled: true },
                             serviceWindows: [
                                 {
-                                    days: ["Consequatur distinctio.", "Sed dolorum hic."],
+                                    days: [
+                                        "Sed dolorum hic.",
+                                        "Itaque assumenda possimus placeat.",
+                                        "Excepturi ratione facilis.",
+                                        "Officia autem id natus.",
+                                    ],
                                     endTime: 57961,
                                     startTime: 57600,
                                 },
@@ -11471,11 +11476,7 @@ describe("BetaApIsClient", () => {
                         },
                     ],
                     id: "12345",
-                    iftaExemptionTypes: [
-                        "Omnis qui consequatur.",
-                        "Id et magnam est aperiam a.",
-                        "Quia minima error voluptate accusamus doloribus.",
-                    ],
+                    iftaExemptionTypes: ["Error voluptate.", "Doloribus velit.", "Repellat placeat sit."],
                     isAutoDismissRolledStopsEnabled: false,
                     isShowAddressesEnabled: true,
                     latitude: 37.7749,
@@ -11494,13 +11495,17 @@ describe("BetaApIsClient", () => {
                     },
                     notes: "Receiving 6-2",
                     placeTypes: [
-                        "Quis odit voluptatem sequi maiores.",
-                        "Sunt laborum voluptas quis quasi debitis dignissimos.",
-                        "Eum quae.",
-                        "Beatae cum sint cum corrupti.",
+                        "Voluptatem sequi maiores quidem sunt laborum voluptas.",
+                        "Quasi debitis dignissimos quibusdam.",
+                        "Quae aspernatur beatae cum sint cum corrupti.",
+                        "Iusto aut molestias alias dolores doloribus.",
                     ],
                     radiusMeters: 150,
-                    safetyEventExclusions: ["Optio rem.", "Reiciendis ex nulla cupiditate magnam rerum."],
+                    safetyEventExclusions: [
+                        "Rerum atque et corrupti.",
+                        "Distinctio aspernatur.",
+                        "Dolorum omnis qui consequatur odio.",
+                    ],
                     streetView: {
                         heading: 90,
                         isEnabled: true,
@@ -11563,7 +11568,12 @@ describe("BetaApIsClient", () => {
                             },
                             serviceWindows: [
                                 {
-                                    days: ["Consequatur distinctio.", "Sed dolorum hic."],
+                                    days: [
+                                        "Sed dolorum hic.",
+                                        "Itaque assumenda possimus placeat.",
+                                        "Excepturi ratione facilis.",
+                                        "Officia autem id natus.",
+                                    ],
                                     endTime: 57961,
                                     startTime: 57600,
                                 },
@@ -11572,11 +11582,7 @@ describe("BetaApIsClient", () => {
                         },
                     ],
                     id: "12345",
-                    iftaExemptionTypes: [
-                        "Omnis qui consequatur.",
-                        "Id et magnam est aperiam a.",
-                        "Quia minima error voluptate accusamus doloribus.",
-                    ],
+                    iftaExemptionTypes: ["Error voluptate.", "Doloribus velit.", "Repellat placeat sit."],
                     isAutoDismissRolledStopsEnabled: false,
                     isShowAddressesEnabled: true,
                     latitude: 37.7749,
@@ -11595,13 +11601,17 @@ describe("BetaApIsClient", () => {
                     },
                     notes: "Receiving 6-2",
                     placeTypes: [
-                        "Quis odit voluptatem sequi maiores.",
-                        "Sunt laborum voluptas quis quasi debitis dignissimos.",
-                        "Eum quae.",
-                        "Beatae cum sint cum corrupti.",
+                        "Voluptatem sequi maiores quidem sunt laborum voluptas.",
+                        "Quasi debitis dignissimos quibusdam.",
+                        "Quae aspernatur beatae cum sint cum corrupti.",
+                        "Iusto aut molestias alias dolores doloribus.",
                     ],
                     radiusMeters: 150,
-                    safetyEventExclusions: ["Optio rem.", "Reiciendis ex nulla cupiditate magnam rerum."],
+                    safetyEventExclusions: [
+                        "Rerum atque et corrupti.",
+                        "Distinctio aspernatur.",
+                        "Dolorum omnis qui consequatur odio.",
+                    ],
                     streetView: {
                         heading: 90,
                         isEnabled: true,
@@ -11820,17 +11830,22 @@ describe("BetaApIsClient", () => {
                         requiredSkills: [{ id: "550e8400-e29b-41d4-a716-446655440000" }],
                         serviceTime: { additionalTimeMinutes: 5, isEnabled: true },
                         serviceWindows: [
-                            { days: ["Consequatur distinctio.", "Sed dolorum hic."], endTime: 57961, startTime: 57600 },
+                            {
+                                days: [
+                                    "Sed dolorum hic.",
+                                    "Itaque assumenda possimus placeat.",
+                                    "Excepturi ratione facilis.",
+                                    "Officia autem id natus.",
+                                ],
+                                endTime: 57961,
+                                startTime: 57600,
+                            },
                         ],
                         standardDriverInstructions: "Use lane 2",
                     },
                 ],
                 id: "12345",
-                iftaExemptionTypes: [
-                    "Omnis qui consequatur.",
-                    "Id et magnam est aperiam a.",
-                    "Quia minima error voluptate accusamus doloribus.",
-                ],
+                iftaExemptionTypes: ["Error voluptate.", "Doloribus velit.", "Repellat placeat sit."],
                 isAutoDismissRolledStopsEnabled: false,
                 isShowAddressesEnabled: true,
                 latitude: 37.7749,
@@ -11849,13 +11864,17 @@ describe("BetaApIsClient", () => {
                 },
                 notes: "Receiving 6-2",
                 placeTypes: [
-                    "Quis odit voluptatem sequi maiores.",
-                    "Sunt laborum voluptas quis quasi debitis dignissimos.",
-                    "Eum quae.",
-                    "Beatae cum sint cum corrupti.",
+                    "Voluptatem sequi maiores quidem sunt laborum voluptas.",
+                    "Quasi debitis dignissimos quibusdam.",
+                    "Quae aspernatur beatae cum sint cum corrupti.",
+                    "Iusto aut molestias alias dolores doloribus.",
                 ],
                 radiusMeters: 150,
-                safetyEventExclusions: ["Optio rem.", "Reiciendis ex nulla cupiditate magnam rerum."],
+                safetyEventExclusions: [
+                    "Rerum atque et corrupti.",
+                    "Distinctio aspernatur.",
+                    "Dolorum omnis qui consequatur odio.",
+                ],
                 streetView: {
                     heading: 90,
                     isEnabled: true,
@@ -11925,7 +11944,12 @@ describe("BetaApIsClient", () => {
                         },
                         serviceWindows: [
                             {
-                                days: ["Consequatur distinctio.", "Sed dolorum hic."],
+                                days: [
+                                    "Sed dolorum hic.",
+                                    "Itaque assumenda possimus placeat.",
+                                    "Excepturi ratione facilis.",
+                                    "Officia autem id natus.",
+                                ],
                                 endTime: 57961,
                                 startTime: 57600,
                             },
@@ -11934,11 +11958,7 @@ describe("BetaApIsClient", () => {
                     },
                 ],
                 id: "12345",
-                iftaExemptionTypes: [
-                    "Omnis qui consequatur.",
-                    "Id et magnam est aperiam a.",
-                    "Quia minima error voluptate accusamus doloribus.",
-                ],
+                iftaExemptionTypes: ["Error voluptate.", "Doloribus velit.", "Repellat placeat sit."],
                 isAutoDismissRolledStopsEnabled: false,
                 isShowAddressesEnabled: true,
                 latitude: 37.7749,
@@ -11957,13 +11977,17 @@ describe("BetaApIsClient", () => {
                 },
                 notes: "Receiving 6-2",
                 placeTypes: [
-                    "Quis odit voluptatem sequi maiores.",
-                    "Sunt laborum voluptas quis quasi debitis dignissimos.",
-                    "Eum quae.",
-                    "Beatae cum sint cum corrupti.",
+                    "Voluptatem sequi maiores quidem sunt laborum voluptas.",
+                    "Quasi debitis dignissimos quibusdam.",
+                    "Quae aspernatur beatae cum sint cum corrupti.",
+                    "Iusto aut molestias alias dolores doloribus.",
                 ],
                 radiusMeters: 150,
-                safetyEventExclusions: ["Optio rem.", "Reiciendis ex nulla cupiditate magnam rerum."],
+                safetyEventExclusions: [
+                    "Rerum atque et corrupti.",
+                    "Distinctio aspernatur.",
+                    "Dolorum omnis qui consequatur odio.",
+                ],
                 streetView: {
                     heading: 90,
                     isEnabled: true,
@@ -12455,17 +12479,22 @@ describe("BetaApIsClient", () => {
                         requiredSkills: [{ id: "550e8400-e29b-41d4-a716-446655440000" }],
                         serviceTime: { additionalTimeMinutes: 5, isEnabled: true },
                         serviceWindows: [
-                            { days: ["Consequatur distinctio.", "Sed dolorum hic."], endTime: 57961, startTime: 57600 },
+                            {
+                                days: [
+                                    "Sed dolorum hic.",
+                                    "Itaque assumenda possimus placeat.",
+                                    "Excepturi ratione facilis.",
+                                    "Officia autem id natus.",
+                                ],
+                                endTime: 57961,
+                                startTime: 57600,
+                            },
                         ],
                         standardDriverInstructions: "Use lane 2",
                     },
                 ],
                 id: "12345",
-                iftaExemptionTypes: [
-                    "Omnis qui consequatur.",
-                    "Id et magnam est aperiam a.",
-                    "Quia minima error voluptate accusamus doloribus.",
-                ],
+                iftaExemptionTypes: ["Error voluptate.", "Doloribus velit.", "Repellat placeat sit."],
                 isAutoDismissRolledStopsEnabled: false,
                 isShowAddressesEnabled: true,
                 latitude: 37.7749,
@@ -12484,13 +12513,17 @@ describe("BetaApIsClient", () => {
                 },
                 notes: "Receiving 6-2",
                 placeTypes: [
-                    "Quis odit voluptatem sequi maiores.",
-                    "Sunt laborum voluptas quis quasi debitis dignissimos.",
-                    "Eum quae.",
-                    "Beatae cum sint cum corrupti.",
+                    "Voluptatem sequi maiores quidem sunt laborum voluptas.",
+                    "Quasi debitis dignissimos quibusdam.",
+                    "Quae aspernatur beatae cum sint cum corrupti.",
+                    "Iusto aut molestias alias dolores doloribus.",
                 ],
                 radiusMeters: 150,
-                safetyEventExclusions: ["Optio rem.", "Reiciendis ex nulla cupiditate magnam rerum."],
+                safetyEventExclusions: [
+                    "Rerum atque et corrupti.",
+                    "Distinctio aspernatur.",
+                    "Dolorum omnis qui consequatur odio.",
+                ],
                 streetView: {
                     heading: 90,
                     isEnabled: true,
@@ -12557,7 +12590,12 @@ describe("BetaApIsClient", () => {
                         },
                         serviceWindows: [
                             {
-                                days: ["Consequatur distinctio.", "Sed dolorum hic."],
+                                days: [
+                                    "Sed dolorum hic.",
+                                    "Itaque assumenda possimus placeat.",
+                                    "Excepturi ratione facilis.",
+                                    "Officia autem id natus.",
+                                ],
                                 endTime: 57961,
                                 startTime: 57600,
                             },
@@ -12566,11 +12604,7 @@ describe("BetaApIsClient", () => {
                     },
                 ],
                 id: "12345",
-                iftaExemptionTypes: [
-                    "Omnis qui consequatur.",
-                    "Id et magnam est aperiam a.",
-                    "Quia minima error voluptate accusamus doloribus.",
-                ],
+                iftaExemptionTypes: ["Error voluptate.", "Doloribus velit.", "Repellat placeat sit."],
                 isAutoDismissRolledStopsEnabled: false,
                 isShowAddressesEnabled: true,
                 latitude: 37.7749,
@@ -12589,13 +12623,17 @@ describe("BetaApIsClient", () => {
                 },
                 notes: "Receiving 6-2",
                 placeTypes: [
-                    "Quis odit voluptatem sequi maiores.",
-                    "Sunt laborum voluptas quis quasi debitis dignissimos.",
-                    "Eum quae.",
-                    "Beatae cum sint cum corrupti.",
+                    "Voluptatem sequi maiores quidem sunt laborum voluptas.",
+                    "Quasi debitis dignissimos quibusdam.",
+                    "Quae aspernatur beatae cum sint cum corrupti.",
+                    "Iusto aut molestias alias dolores doloribus.",
                 ],
                 radiusMeters: 150,
-                safetyEventExclusions: ["Optio rem.", "Reiciendis ex nulla cupiditate magnam rerum."],
+                safetyEventExclusions: [
+                    "Rerum atque et corrupti.",
+                    "Distinctio aspernatur.",
+                    "Dolorum omnis qui consequatur odio.",
+                ],
                 streetView: {
                     heading: 90,
                     isEnabled: true,
@@ -12829,6 +12867,189 @@ describe("BetaApIsClient", () => {
 
         await expect(async () => {
             return await client.betaApIs.patchPlace();
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("getPlaceDeletions (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = {
+            data: [{ deletedAtTime: "2026-04-07T15:42:00Z", id: "12345" }],
+            pagination: { endCursor: "MjkY", hasNextPage: true },
+        };
+        server.mockEndpoint().get("/places/deletions").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
+
+        const response = await client.betaApIs.getPlaceDeletions();
+        expect(response).toEqual({
+            data: [
+                {
+                    deletedAtTime: "2026-04-07T15:42:00Z",
+                    id: "12345",
+                },
+            ],
+            pagination: {
+                endCursor: "MjkY",
+                hasNextPage: true,
+            },
+        });
+    });
+
+    test("getPlaceDeletions (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server.mockEndpoint().get("/places/deletions").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.betaApIs.getPlaceDeletions();
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("getPlaceDeletions (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server.mockEndpoint().get("/places/deletions").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.betaApIs.getPlaceDeletions();
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("getPlaceDeletions (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server.mockEndpoint().get("/places/deletions").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.betaApIs.getPlaceDeletions();
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("getPlaceDeletions (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server.mockEndpoint().get("/places/deletions").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.betaApIs.getPlaceDeletions();
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("getPlaceDeletions (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server.mockEndpoint().get("/places/deletions").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.betaApIs.getPlaceDeletions();
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("getPlaceDeletions (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server.mockEndpoint().get("/places/deletions").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.betaApIs.getPlaceDeletions();
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("getPlaceDeletions (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server.mockEndpoint().get("/places/deletions").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.betaApIs.getPlaceDeletions();
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("getPlaceDeletions (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server.mockEndpoint().get("/places/deletions").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.betaApIs.getPlaceDeletions();
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("getPlaceDeletions (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server.mockEndpoint().get("/places/deletions").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.betaApIs.getPlaceDeletions();
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 

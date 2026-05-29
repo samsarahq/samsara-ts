@@ -31,6 +31,7 @@ export type { GetFunctionRunRequest } from "./GetFunctionRunRequest.js";
 export type { GetFunctionStorageFileRequest } from "./GetFunctionStorageFileRequest.js";
 export type { GetHosEldEventsRequest } from "./GetHosEldEventsRequest.js";
 export type { GetJobsRequest } from "./GetJobsRequest.js";
+export type { GetPlaceDeletionsRequest } from "./GetPlaceDeletionsRequest.js";
 export type { GetPlacesRequest } from "./GetPlacesRequest.js";
 export type { GetPreferredStationRequest } from "./GetPreferredStationRequest.js";
 export type { GetQualificationRecordsRequest } from "./GetQualificationRecordsRequest.js";

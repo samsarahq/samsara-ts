@@ -3,7 +3,7 @@
 import type * as Samsara from "../index.js";
 
 export interface V1MessageResponse {
-    /** ID of the driver for whom the message is sent to or sent by. */
+    /** ID of the driver associated with this message row. For organizations using Messages v2, this field uses 0 as a sentinel when the message belongs to a non–single-driver channel (for example Announcements channel, multi-member groups, or Driver-to-Admin channels): the API returns one row for the message instead of one row per recipient driver. For 1:1 conversations, this is the driver’s ID. Integrations that only need 1:1 messages should filter responses where driverId != 0. */
     driverId: number;
     /** True if the message was read by the recipient. */
     isRead: boolean;

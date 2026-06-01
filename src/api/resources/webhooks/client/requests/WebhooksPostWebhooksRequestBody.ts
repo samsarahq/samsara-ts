@@ -26,7 +26,7 @@ export namespace WebhooksPostWebhooksRequestBody {
     export type EventTypes = EventTypes.Item[];
 
     export namespace EventTypes {
-        /** event type name  Valid values: `AddressCreated`, `AddressDeleted`, `AddressUpdated`, `AlertIncident`, `AlertObjectEvent`, `DocumentSubmitted`, `DriverCreated`, `DriverUpdated`, `DvirSubmitted`, `EngineFaultOff`, `EngineFaultOn`, `FormSubmitted`, `FormUpdated`, `GatewayUnplugged`, `GeofenceEntry`, `GeofenceExit`, `IssueCreated`, `MissingDvirPastDue`, `PredictiveMaintenanceAlert`, `RouteStopArrival`, `RouteStopDeparture`, `RouteStopEarlyLateArrival`, `RouteStopEtaUpdated`, `RouteStopResequence`, `SevereSpeedingEnded`, `SevereSpeedingStarted`, `SpeedingEventEnded`, `SpeedingEventStarted`, `SuddenFuelLevelDrop`, `SuddenFuelLevelRise`, `VehicleCreated`, `VehicleUpdated`, `WorkOrderCreatedOrChanged` */
+        /** event type name  Valid values: `AddressCreated`, `AddressDeleted`, `AddressUpdated`, `AlertIncident`, `AlertObjectEvent`, `DocumentSubmitted`, `DriverCreated`, `DriverUpdated`, `DvirSubmitted`, `EngineFaultOff`, `EngineFaultOn`, `FormSubmitted`, `FormUpdated`, `GatewayUnplugged`, `GeofenceEntry`, `GeofenceExit`, `IssueCreated`, `MissingDvirPastDue`, `PredictiveMaintenanceAlert`, `RouteStopArrival`, `RouteStopDeparture`, `RouteStopEarlyLateArrival`, `RouteStopEtaUpdated`, `RouteStopResequence`, `SevereSpeedingEnded`, `SevereSpeedingStarted`, `ShipmentTrackingEvent`, `SpeedingEventEnded`, `SpeedingEventStarted`, `SuddenFuelLevelDrop`, `SuddenFuelLevelRise`, `VehicleCreated`, `VehicleUpdated`, `WorkOrderCreatedOrChanged` */
         export const Item = {
             AddressCreated: "AddressCreated",
             AddressDeleted: "AddressDeleted",
@@ -54,6 +54,7 @@ export namespace WebhooksPostWebhooksRequestBody {
             RouteStopResequence: "RouteStopResequence",
             SevereSpeedingEnded: "SevereSpeedingEnded",
             SevereSpeedingStarted: "SevereSpeedingStarted",
+            ShipmentTrackingEvent: "ShipmentTrackingEvent",
             SpeedingEventEnded: "SpeedingEventEnded",
             SpeedingEventStarted: "SpeedingEventStarted",
             SuddenFuelLevelDrop: "SuddenFuelLevelDrop",

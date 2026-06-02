@@ -5,6 +5,310 @@ import { SamsaraClient } from "../../src/Client";
 import { mockServerPool } from "../mock-server/MockServerPool";
 
 describe("BetaApIsClient", () => {
+    test("getVoiceSessionsStream (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = {
+            data: [
+                {
+                    agentId: "agentId",
+                    agentName: "agentName",
+                    durationMilliseconds: 1000000,
+                    happenedAtTime: "2024-01-15T09:30:00Z",
+                    id: "id",
+                    recipient: "recipient",
+                    sessionStatus: "completed",
+                    triggerType: "triggerType",
+                    updatedAtTime: "2024-01-15T09:30:00Z",
+                },
+                {
+                    agentId: "agentId",
+                    agentName: "agentName",
+                    durationMilliseconds: 1000000,
+                    happenedAtTime: "2024-01-15T09:30:00Z",
+                    id: "id",
+                    recipient: "recipient",
+                    sessionStatus: "completed",
+                    triggerType: "triggerType",
+                    updatedAtTime: "2024-01-15T09:30:00Z",
+                },
+            ],
+            pagination: { endCursor: "endCursor", hasNextPage: true },
+        };
+        server
+            .mockEndpoint()
+            .get("/agent-studio/voice-sessions/stream")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.betaApIs.getVoiceSessionsStream({
+            startTime: "startTime",
+        });
+        expect(response).toEqual({
+            data: [
+                {
+                    agentId: "agentId",
+                    agentName: "agentName",
+                    durationMilliseconds: 1000000,
+                    happenedAtTime: "2024-01-15T09:30:00Z",
+                    id: "id",
+                    recipient: "recipient",
+                    sessionStatus: "completed",
+                    triggerType: "triggerType",
+                    updatedAtTime: "2024-01-15T09:30:00Z",
+                },
+                {
+                    agentId: "agentId",
+                    agentName: "agentName",
+                    durationMilliseconds: 1000000,
+                    happenedAtTime: "2024-01-15T09:30:00Z",
+                    id: "id",
+                    recipient: "recipient",
+                    sessionStatus: "completed",
+                    triggerType: "triggerType",
+                    updatedAtTime: "2024-01-15T09:30:00Z",
+                },
+            ],
+            pagination: {
+                endCursor: "endCursor",
+                hasNextPage: true,
+            },
+        });
+    });
+
+    test("getVoiceSessionsStream (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/agent-studio/voice-sessions/stream")
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.getVoiceSessionsStream({
+                startTime: "startTime",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("getVoiceSessionsStream (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/agent-studio/voice-sessions/stream")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.getVoiceSessionsStream({
+                startTime: "startTime",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("getVoiceSessionsStream (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/agent-studio/voice-sessions/stream")
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.getVoiceSessionsStream({
+                startTime: "startTime",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("getVoiceSessionsStream (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/agent-studio/voice-sessions/stream")
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.getVoiceSessionsStream({
+                startTime: "startTime",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("getVoiceSessionsStream (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/agent-studio/voice-sessions/stream")
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.getVoiceSessionsStream({
+                startTime: "startTime",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("getVoiceSessionsStream (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/agent-studio/voice-sessions/stream")
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.getVoiceSessionsStream({
+                startTime: "startTime",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("getVoiceSessionsStream (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/agent-studio/voice-sessions/stream")
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.getVoiceSessionsStream({
+                startTime: "startTime",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("getVoiceSessionsStream (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/agent-studio/voice-sessions/stream")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.getVoiceSessionsStream({
+                startTime: "startTime",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("getVoiceSessionsStream (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/agent-studio/voice-sessions/stream")
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.getVoiceSessionsStream({
+                startTime: "startTime",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
     test("getDepreciationTransactions (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({

@@ -71,6 +71,7 @@ export class AlertsClient {
      * Scheduled Date And Time
      * Training Assignment Due Soon
      * Training Assignment Past Due
+     * Asset assignment past due
      *
      *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
      *

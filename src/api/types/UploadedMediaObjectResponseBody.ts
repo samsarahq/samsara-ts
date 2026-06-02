@@ -3,6 +3,8 @@
 import type * as Samsara from "../index.js";
 
 export interface UploadedMediaObjectResponseBody {
+    /** Serial number of the auxiliary camera that captured this media. Only present for analog inputs from auxiliary camera devices (e.g. Octo-1, Octo-4). Examples: ABDVJ123456789 */
+    auxCamSerial?: string | undefined;
     /** Timestamp, in RFC 3339 format, at which the media item was made available. Examples: 2019-06-13T19:08:25Z, 2019-06-13T19:08:25.455Z, OR 2015-09-15T14:00:12-04:00 */
     availableAtTime: string;
     /** Camera role for this media.  Valid values: `leftMirrorMount`, `leftSide`, `rightMirrorMount`, `rightSide`, `rearHigh`, `rearBumper`, `inCab`, `front`, `hopper`, `other1`, `other2`, `other3`, `other4`, `leftBev`, `rightBev`, `rearBev`, `frontBev`, `otherBev`, `bevNotUsed` */

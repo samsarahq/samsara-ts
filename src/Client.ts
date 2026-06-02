@@ -69,9 +69,9 @@ export declare namespace SamsaraClient {
 export class SamsaraClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<SamsaraClient.Options>;
     protected _addresses: AddressesClient | undefined;
+    protected _betaApIs: BetaApIsClient | undefined;
     protected _alerts: AlertsClient | undefined;
     protected _assets: AssetsClient | undefined;
-    protected _betaApIs: BetaApIsClient | undefined;
     protected _locationAndSpeed: LocationAndSpeedClient | undefined;
     protected _attributes: AttributesClient | undefined;
     protected _media: MediaClient | undefined;
@@ -134,16 +134,16 @@ export class SamsaraClient {
         return (this._addresses ??= new AddressesClient(this._options));
     }
 
+    public get betaApIs(): BetaApIsClient {
+        return (this._betaApIs ??= new BetaApIsClient(this._options));
+    }
+
     public get alerts(): AlertsClient {
         return (this._alerts ??= new AlertsClient(this._options));
     }
 
     public get assets(): AssetsClient {
         return (this._assets ??= new AssetsClient(this._options));
-    }
-
-    public get betaApIs(): BetaApIsClient {
-        return (this._betaApIs ??= new BetaApIsClient(this._options));
     }
 
     public get locationAndSpeed(): LocationAndSpeedClient {

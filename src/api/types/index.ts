@@ -35,6 +35,17 @@ export * from "./AempEquipmentGetAempEquipmentListUnauthorizedErrorResponseBody.
 export * from "./AempEquipmentWithAdditionalFieldsResponseBody.js";
 export * from "./AempFleetListResponseBody.js";
 export * from "./AempLinkResponseBody.js";
+export * from "./AgentStudioVoiceSessionSummaryResponseBody.js";
+export * from "./AgentStudioVoiceSessionsGetVoiceSessionsStreamBadGatewayErrorResponseBody.js";
+export * from "./AgentStudioVoiceSessionsGetVoiceSessionsStreamGatewayTimeoutErrorResponseBody.js";
+export * from "./AgentStudioVoiceSessionsGetVoiceSessionsStreamInternalServerErrorResponseBody.js";
+export * from "./AgentStudioVoiceSessionsGetVoiceSessionsStreamMethodNotAllowedErrorResponseBody.js";
+export * from "./AgentStudioVoiceSessionsGetVoiceSessionsStreamNotFoundErrorResponseBody.js";
+export * from "./AgentStudioVoiceSessionsGetVoiceSessionsStreamNotImplementedErrorResponseBody.js";
+export * from "./AgentStudioVoiceSessionsGetVoiceSessionsStreamResponseBody.js";
+export * from "./AgentStudioVoiceSessionsGetVoiceSessionsStreamServiceUnavailableErrorResponseBody.js";
+export * from "./AgentStudioVoiceSessionsGetVoiceSessionsStreamTooManyRequestsErrorResponseBody.js";
+export * from "./AgentStudioVoiceSessionsGetVoiceSessionsStreamUnauthorizedErrorResponseBody.js";
 export * from "./AlertObjectAssetResponseBody.js";
 export * from "./AlertObjectDriverResponseBody.js";
 export * from "./AlertObjectMachineInputResponseBody.js";

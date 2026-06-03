@@ -19,7 +19,7 @@ export interface GetPlacesRequest {
     includeExternalIds?: boolean;
     /** Comma-separated numeric tag IDs to filter places. */
     tagIds?: string;
-    /** Reserved. Filtering by parent tag IDs is not implemented in this API version. */
+    /** Comma-separated parent tag IDs to filter places. Includes places tagged with each parent tag and its descendant tags. */
     parentTagIds?: string;
     /** Comma-separated place type tokens (e.g. yard,normalGeofence). */
     placeTypes?: string;

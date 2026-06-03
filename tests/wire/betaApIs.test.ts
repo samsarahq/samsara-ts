@@ -5,6 +5,429 @@ import { SamsaraClient } from "../../src/Client";
 import { mockServerPool } from "../mock-server/MockServerPool";
 
 describe("BetaApIsClient", () => {
+    test("getVoiceSessions (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = {
+            data: [
+                {
+                    agentId: "agentId",
+                    agentName: "agentName",
+                    callEvents: [
+                        { happenedAtTime: "2024-01-15T09:30:00Z", type: "type" },
+                        { happenedAtTime: "2024-01-15T09:30:00Z", type: "type" },
+                    ],
+                    durationMilliseconds: 1000000,
+                    happenedAtTime: "2024-01-15T09:30:00Z",
+                    id: "id",
+                    recipient: "recipient",
+                    recordingUrl: "recordingUrl",
+                    recordingUrlExpiresAtTime: "recordingUrlExpiresAtTime",
+                    sessionStatus: "completed",
+                    toolCalls: [
+                        {
+                            arguments: "arguments",
+                            durationMilliseconds: 1000000,
+                            name: "name",
+                            output: "output",
+                            startMilliseconds: 1000000,
+                            status: "success",
+                        },
+                        {
+                            arguments: "arguments",
+                            durationMilliseconds: 1000000,
+                            name: "name",
+                            output: "output",
+                            startMilliseconds: 1000000,
+                            status: "success",
+                        },
+                    ],
+                    transcript: [
+                        { endMilliseconds: 1000000, speakerType: "agent", startMilliseconds: 1000000, text: "text" },
+                        { endMilliseconds: 1000000, speakerType: "agent", startMilliseconds: 1000000, text: "text" },
+                    ],
+                    triggerType: "triggerType",
+                    updatedAtTime: "2024-01-15T09:30:00Z",
+                },
+                {
+                    agentId: "agentId",
+                    agentName: "agentName",
+                    callEvents: [
+                        { happenedAtTime: "2024-01-15T09:30:00Z", type: "type" },
+                        { happenedAtTime: "2024-01-15T09:30:00Z", type: "type" },
+                    ],
+                    durationMilliseconds: 1000000,
+                    happenedAtTime: "2024-01-15T09:30:00Z",
+                    id: "id",
+                    recipient: "recipient",
+                    recordingUrl: "recordingUrl",
+                    recordingUrlExpiresAtTime: "recordingUrlExpiresAtTime",
+                    sessionStatus: "completed",
+                    toolCalls: [
+                        {
+                            arguments: "arguments",
+                            durationMilliseconds: 1000000,
+                            name: "name",
+                            output: "output",
+                            startMilliseconds: 1000000,
+                            status: "success",
+                        },
+                        {
+                            arguments: "arguments",
+                            durationMilliseconds: 1000000,
+                            name: "name",
+                            output: "output",
+                            startMilliseconds: 1000000,
+                            status: "success",
+                        },
+                    ],
+                    transcript: [
+                        { endMilliseconds: 1000000, speakerType: "agent", startMilliseconds: 1000000, text: "text" },
+                        { endMilliseconds: 1000000, speakerType: "agent", startMilliseconds: 1000000, text: "text" },
+                    ],
+                    triggerType: "triggerType",
+                    updatedAtTime: "2024-01-15T09:30:00Z",
+                },
+            ],
+        };
+        server
+            .mockEndpoint()
+            .get("/agent-studio/voice-sessions")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.betaApIs.getVoiceSessions();
+        expect(response).toEqual({
+            data: [
+                {
+                    agentId: "agentId",
+                    agentName: "agentName",
+                    callEvents: [
+                        {
+                            happenedAtTime: "2024-01-15T09:30:00Z",
+                            type: "type",
+                        },
+                        {
+                            happenedAtTime: "2024-01-15T09:30:00Z",
+                            type: "type",
+                        },
+                    ],
+                    durationMilliseconds: 1000000,
+                    happenedAtTime: "2024-01-15T09:30:00Z",
+                    id: "id",
+                    recipient: "recipient",
+                    recordingUrl: "recordingUrl",
+                    recordingUrlExpiresAtTime: "recordingUrlExpiresAtTime",
+                    sessionStatus: "completed",
+                    toolCalls: [
+                        {
+                            arguments: "arguments",
+                            durationMilliseconds: 1000000,
+                            name: "name",
+                            output: "output",
+                            startMilliseconds: 1000000,
+                            status: "success",
+                        },
+                        {
+                            arguments: "arguments",
+                            durationMilliseconds: 1000000,
+                            name: "name",
+                            output: "output",
+                            startMilliseconds: 1000000,
+                            status: "success",
+                        },
+                    ],
+                    transcript: [
+                        {
+                            endMilliseconds: 1000000,
+                            speakerType: "agent",
+                            startMilliseconds: 1000000,
+                            text: "text",
+                        },
+                        {
+                            endMilliseconds: 1000000,
+                            speakerType: "agent",
+                            startMilliseconds: 1000000,
+                            text: "text",
+                        },
+                    ],
+                    triggerType: "triggerType",
+                    updatedAtTime: "2024-01-15T09:30:00Z",
+                },
+                {
+                    agentId: "agentId",
+                    agentName: "agentName",
+                    callEvents: [
+                        {
+                            happenedAtTime: "2024-01-15T09:30:00Z",
+                            type: "type",
+                        },
+                        {
+                            happenedAtTime: "2024-01-15T09:30:00Z",
+                            type: "type",
+                        },
+                    ],
+                    durationMilliseconds: 1000000,
+                    happenedAtTime: "2024-01-15T09:30:00Z",
+                    id: "id",
+                    recipient: "recipient",
+                    recordingUrl: "recordingUrl",
+                    recordingUrlExpiresAtTime: "recordingUrlExpiresAtTime",
+                    sessionStatus: "completed",
+                    toolCalls: [
+                        {
+                            arguments: "arguments",
+                            durationMilliseconds: 1000000,
+                            name: "name",
+                            output: "output",
+                            startMilliseconds: 1000000,
+                            status: "success",
+                        },
+                        {
+                            arguments: "arguments",
+                            durationMilliseconds: 1000000,
+                            name: "name",
+                            output: "output",
+                            startMilliseconds: 1000000,
+                            status: "success",
+                        },
+                    ],
+                    transcript: [
+                        {
+                            endMilliseconds: 1000000,
+                            speakerType: "agent",
+                            startMilliseconds: 1000000,
+                            text: "text",
+                        },
+                        {
+                            endMilliseconds: 1000000,
+                            speakerType: "agent",
+                            startMilliseconds: 1000000,
+                            text: "text",
+                        },
+                    ],
+                    triggerType: "triggerType",
+                    updatedAtTime: "2024-01-15T09:30:00Z",
+                },
+            ],
+        });
+    });
+
+    test("getVoiceSessions (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/agent-studio/voice-sessions")
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.getVoiceSessions();
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("getVoiceSessions (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/agent-studio/voice-sessions")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.getVoiceSessions();
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("getVoiceSessions (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/agent-studio/voice-sessions")
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.getVoiceSessions();
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("getVoiceSessions (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/agent-studio/voice-sessions")
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.getVoiceSessions();
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("getVoiceSessions (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/agent-studio/voice-sessions")
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.getVoiceSessions();
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("getVoiceSessions (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/agent-studio/voice-sessions")
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.getVoiceSessions();
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("getVoiceSessions (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/agent-studio/voice-sessions")
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.getVoiceSessions();
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("getVoiceSessions (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/agent-studio/voice-sessions")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.getVoiceSessions();
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("getVoiceSessions (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/agent-studio/voice-sessions")
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.getVoiceSessions();
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
     test("getVoiceSessionsStream (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
@@ -1959,7 +2382,7 @@ describe("BetaApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { relayStates: [{ id: "relay1", isOpen: false }] };
+        const rawRequestBody = { relayStates: [{ id: "relay1", isOpen: true }] };
 
         server
             .mockEndpoint()
@@ -1974,7 +2397,7 @@ describe("BetaApIsClient", () => {
             relayStates: [
                 {
                     id: "relay1",
-                    isOpen: false,
+                    isOpen: true,
                 },
             ],
         });
@@ -6012,7 +6435,11 @@ describe("BetaApIsClient", () => {
             data: [
                 {
                     addressId: "281474993384538",
-                    categoryIds: ["a1b2c3d4-e5f6-7890-abcd-ef1234567890", "a1b2c3d4-e5f6-7890-abcd-ef1234567890"],
+                    categoryIds: [
+                        "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                        "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                        "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                    ],
                     externalIds: { key: "value" },
                     id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
                     servicesProvided: "Oil changes, tire rotations, brake services",
@@ -6034,7 +6461,11 @@ describe("BetaApIsClient", () => {
             data: [
                 {
                     addressId: "281474993384538",
-                    categoryIds: ["a1b2c3d4-e5f6-7890-abcd-ef1234567890", "a1b2c3d4-e5f6-7890-abcd-ef1234567890"],
+                    categoryIds: [
+                        "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                        "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                        "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                    ],
                     externalIds: {
                         key: "value",
                     },
@@ -10325,15 +10756,15 @@ describe("BetaApIsClient", () => {
         const rawRequestBody = { shippingDocs: "ShippingID1, ShippingID2" };
         const rawResponseBody = {
             data: {
-                adverseDrivingClaimed: false,
-                bigDayClaimed: true,
+                adverseDrivingClaimed: true,
+                bigDayClaimed: false,
                 carrierFormattedAddress: "1990 Alameda Street, San Francisco, CA 94103",
                 carrierName: "Carrier Name",
                 carrierUsDotNumber: 1234,
                 homeTerminalFormattedAddress: "1990 Alameda Street, San Francisco, CA 94103",
                 homeTerminalName: "Home Terminal Name",
-                isCertified: true,
-                isUsShortHaulActive: true,
+                isCertified: false,
+                isUsShortHaulActive: false,
                 trailerNames: ["10293", "Trailer ID 1"],
             },
         };
@@ -10353,15 +10784,15 @@ describe("BetaApIsClient", () => {
         });
         expect(response).toEqual({
             data: {
-                adverseDrivingClaimed: false,
-                bigDayClaimed: true,
+                adverseDrivingClaimed: true,
+                bigDayClaimed: false,
                 carrierFormattedAddress: "1990 Alameda Street, San Francisco, CA 94103",
                 carrierName: "Carrier Name",
                 carrierUsDotNumber: 1234,
                 homeTerminalFormattedAddress: "1990 Alameda Street, San Francisco, CA 94103",
                 homeTerminalName: "Home Terminal Name",
-                isCertified: true,
-                isUsShortHaulActive: true,
+                isCertified: false,
+                isUsShortHaulActive: false,
                 trailerNames: ["10293", "Trailer ID 1"],
             },
         });
@@ -10664,7 +11095,12 @@ describe("BetaApIsClient", () => {
                     priority: 1,
                     quantities: [{ capacityId: "850e8400-e29b-41d4-a716-446655440003", quantity: 25.5 }],
                     routeId: "950e8400-e29b-41d4-a716-446655440005",
-                    skillsRequired: ["650e8400-e29b-41d4-a716-446655440001", "650e8400-e29b-41d4-a716-446655440001"],
+                    skillsRequired: [
+                        "650e8400-e29b-41d4-a716-446655440001",
+                        "650e8400-e29b-41d4-a716-446655440001",
+                        "650e8400-e29b-41d4-a716-446655440001",
+                        "650e8400-e29b-41d4-a716-446655440001",
+                    ],
                     updatedAtTime: "2024-04-10T11:30:00Z",
                 },
             ],
@@ -10722,7 +11158,12 @@ describe("BetaApIsClient", () => {
                         },
                     ],
                     routeId: "950e8400-e29b-41d4-a716-446655440005",
-                    skillsRequired: ["650e8400-e29b-41d4-a716-446655440001", "650e8400-e29b-41d4-a716-446655440001"],
+                    skillsRequired: [
+                        "650e8400-e29b-41d4-a716-446655440001",
+                        "650e8400-e29b-41d4-a716-446655440001",
+                        "650e8400-e29b-41d4-a716-446655440001",
+                        "650e8400-e29b-41d4-a716-446655440001",
+                    ],
                     updatedAtTime: "2024-04-10T11:30:00Z",
                 },
             ],
@@ -11767,10 +12208,10 @@ describe("BetaApIsClient", () => {
                             serviceWindows: [
                                 {
                                     days: [
-                                        "Sed dolorum hic.",
-                                        "Itaque assumenda possimus placeat.",
-                                        "Excepturi ratione facilis.",
-                                        "Officia autem id natus.",
+                                        "Harum fugiat ea cupiditate dignissimos.",
+                                        "Quae pariatur.",
+                                        "Non aut porro.",
+                                        "Ipsum eum eos doloribus omnis.",
                                     ],
                                     endTime: 57961,
                                     startTime: 57600,
@@ -11780,7 +12221,12 @@ describe("BetaApIsClient", () => {
                         },
                     ],
                     id: "12345",
-                    iftaExemptionTypes: ["Error voluptate.", "Doloribus velit.", "Repellat placeat sit."],
+                    iftaExemptionTypes: [
+                        "Ut molestiae a.",
+                        "Qui possimus officiis quae.",
+                        "Ut sequi accusantium qui sequi rem quisquam.",
+                        "Omnis et.",
+                    ],
                     isAutoDismissRolledStopsEnabled: false,
                     isShowAddressesEnabled: true,
                     latitude: 37.7749,
@@ -11799,16 +12245,15 @@ describe("BetaApIsClient", () => {
                     },
                     notes: "Receiving 6-2",
                     placeTypes: [
-                        "Voluptatem sequi maiores quidem sunt laborum voluptas.",
-                        "Quasi debitis dignissimos quibusdam.",
-                        "Quae aspernatur beatae cum sint cum corrupti.",
-                        "Iusto aut molestias alias dolores doloribus.",
+                        "Magnam est aperiam.",
+                        "Dolorum quia minima error voluptate accusamus.",
+                        "Velit expedita.",
                     ],
                     radiusMeters: 150,
                     safetyEventExclusions: [
-                        "Rerum atque et corrupti.",
-                        "Distinctio aspernatur.",
-                        "Dolorum omnis qui consequatur odio.",
+                        "Ratione facilis suscipit officia autem id.",
+                        "Aut ad est vel voluptatem unde.",
+                        "Tempora necessitatibus explicabo.",
                     ],
                     streetView: {
                         heading: 90,
@@ -11873,10 +12318,10 @@ describe("BetaApIsClient", () => {
                             serviceWindows: [
                                 {
                                     days: [
-                                        "Sed dolorum hic.",
-                                        "Itaque assumenda possimus placeat.",
-                                        "Excepturi ratione facilis.",
-                                        "Officia autem id natus.",
+                                        "Harum fugiat ea cupiditate dignissimos.",
+                                        "Quae pariatur.",
+                                        "Non aut porro.",
+                                        "Ipsum eum eos doloribus omnis.",
                                     ],
                                     endTime: 57961,
                                     startTime: 57600,
@@ -11886,7 +12331,12 @@ describe("BetaApIsClient", () => {
                         },
                     ],
                     id: "12345",
-                    iftaExemptionTypes: ["Error voluptate.", "Doloribus velit.", "Repellat placeat sit."],
+                    iftaExemptionTypes: [
+                        "Ut molestiae a.",
+                        "Qui possimus officiis quae.",
+                        "Ut sequi accusantium qui sequi rem quisquam.",
+                        "Omnis et.",
+                    ],
                     isAutoDismissRolledStopsEnabled: false,
                     isShowAddressesEnabled: true,
                     latitude: 37.7749,
@@ -11905,16 +12355,15 @@ describe("BetaApIsClient", () => {
                     },
                     notes: "Receiving 6-2",
                     placeTypes: [
-                        "Voluptatem sequi maiores quidem sunt laborum voluptas.",
-                        "Quasi debitis dignissimos quibusdam.",
-                        "Quae aspernatur beatae cum sint cum corrupti.",
-                        "Iusto aut molestias alias dolores doloribus.",
+                        "Magnam est aperiam.",
+                        "Dolorum quia minima error voluptate accusamus.",
+                        "Velit expedita.",
                     ],
                     radiusMeters: 150,
                     safetyEventExclusions: [
-                        "Rerum atque et corrupti.",
-                        "Distinctio aspernatur.",
-                        "Dolorum omnis qui consequatur odio.",
+                        "Ratione facilis suscipit officia autem id.",
+                        "Aut ad est vel voluptatem unde.",
+                        "Tempora necessitatibus explicabo.",
                     ],
                     streetView: {
                         heading: 90,
@@ -12136,10 +12585,10 @@ describe("BetaApIsClient", () => {
                         serviceWindows: [
                             {
                                 days: [
-                                    "Sed dolorum hic.",
-                                    "Itaque assumenda possimus placeat.",
-                                    "Excepturi ratione facilis.",
-                                    "Officia autem id natus.",
+                                    "Harum fugiat ea cupiditate dignissimos.",
+                                    "Quae pariatur.",
+                                    "Non aut porro.",
+                                    "Ipsum eum eos doloribus omnis.",
                                 ],
                                 endTime: 57961,
                                 startTime: 57600,
@@ -12149,7 +12598,12 @@ describe("BetaApIsClient", () => {
                     },
                 ],
                 id: "12345",
-                iftaExemptionTypes: ["Error voluptate.", "Doloribus velit.", "Repellat placeat sit."],
+                iftaExemptionTypes: [
+                    "Ut molestiae a.",
+                    "Qui possimus officiis quae.",
+                    "Ut sequi accusantium qui sequi rem quisquam.",
+                    "Omnis et.",
+                ],
                 isAutoDismissRolledStopsEnabled: false,
                 isShowAddressesEnabled: true,
                 latitude: 37.7749,
@@ -12168,16 +12622,15 @@ describe("BetaApIsClient", () => {
                 },
                 notes: "Receiving 6-2",
                 placeTypes: [
-                    "Voluptatem sequi maiores quidem sunt laborum voluptas.",
-                    "Quasi debitis dignissimos quibusdam.",
-                    "Quae aspernatur beatae cum sint cum corrupti.",
-                    "Iusto aut molestias alias dolores doloribus.",
+                    "Magnam est aperiam.",
+                    "Dolorum quia minima error voluptate accusamus.",
+                    "Velit expedita.",
                 ],
                 radiusMeters: 150,
                 safetyEventExclusions: [
-                    "Rerum atque et corrupti.",
-                    "Distinctio aspernatur.",
-                    "Dolorum omnis qui consequatur odio.",
+                    "Ratione facilis suscipit officia autem id.",
+                    "Aut ad est vel voluptatem unde.",
+                    "Tempora necessitatibus explicabo.",
                 ],
                 streetView: {
                     heading: 90,
@@ -12249,10 +12702,10 @@ describe("BetaApIsClient", () => {
                         serviceWindows: [
                             {
                                 days: [
-                                    "Sed dolorum hic.",
-                                    "Itaque assumenda possimus placeat.",
-                                    "Excepturi ratione facilis.",
-                                    "Officia autem id natus.",
+                                    "Harum fugiat ea cupiditate dignissimos.",
+                                    "Quae pariatur.",
+                                    "Non aut porro.",
+                                    "Ipsum eum eos doloribus omnis.",
                                 ],
                                 endTime: 57961,
                                 startTime: 57600,
@@ -12262,7 +12715,12 @@ describe("BetaApIsClient", () => {
                     },
                 ],
                 id: "12345",
-                iftaExemptionTypes: ["Error voluptate.", "Doloribus velit.", "Repellat placeat sit."],
+                iftaExemptionTypes: [
+                    "Ut molestiae a.",
+                    "Qui possimus officiis quae.",
+                    "Ut sequi accusantium qui sequi rem quisquam.",
+                    "Omnis et.",
+                ],
                 isAutoDismissRolledStopsEnabled: false,
                 isShowAddressesEnabled: true,
                 latitude: 37.7749,
@@ -12281,16 +12739,15 @@ describe("BetaApIsClient", () => {
                 },
                 notes: "Receiving 6-2",
                 placeTypes: [
-                    "Voluptatem sequi maiores quidem sunt laborum voluptas.",
-                    "Quasi debitis dignissimos quibusdam.",
-                    "Quae aspernatur beatae cum sint cum corrupti.",
-                    "Iusto aut molestias alias dolores doloribus.",
+                    "Magnam est aperiam.",
+                    "Dolorum quia minima error voluptate accusamus.",
+                    "Velit expedita.",
                 ],
                 radiusMeters: 150,
                 safetyEventExclusions: [
-                    "Rerum atque et corrupti.",
-                    "Distinctio aspernatur.",
-                    "Dolorum omnis qui consequatur odio.",
+                    "Ratione facilis suscipit officia autem id.",
+                    "Aut ad est vel voluptatem unde.",
+                    "Tempora necessitatibus explicabo.",
                 ],
                 streetView: {
                     heading: 90,
@@ -12785,10 +13242,10 @@ describe("BetaApIsClient", () => {
                         serviceWindows: [
                             {
                                 days: [
-                                    "Sed dolorum hic.",
-                                    "Itaque assumenda possimus placeat.",
-                                    "Excepturi ratione facilis.",
-                                    "Officia autem id natus.",
+                                    "Harum fugiat ea cupiditate dignissimos.",
+                                    "Quae pariatur.",
+                                    "Non aut porro.",
+                                    "Ipsum eum eos doloribus omnis.",
                                 ],
                                 endTime: 57961,
                                 startTime: 57600,
@@ -12798,7 +13255,12 @@ describe("BetaApIsClient", () => {
                     },
                 ],
                 id: "12345",
-                iftaExemptionTypes: ["Error voluptate.", "Doloribus velit.", "Repellat placeat sit."],
+                iftaExemptionTypes: [
+                    "Ut molestiae a.",
+                    "Qui possimus officiis quae.",
+                    "Ut sequi accusantium qui sequi rem quisquam.",
+                    "Omnis et.",
+                ],
                 isAutoDismissRolledStopsEnabled: false,
                 isShowAddressesEnabled: true,
                 latitude: 37.7749,
@@ -12817,16 +13279,15 @@ describe("BetaApIsClient", () => {
                 },
                 notes: "Receiving 6-2",
                 placeTypes: [
-                    "Voluptatem sequi maiores quidem sunt laborum voluptas.",
-                    "Quasi debitis dignissimos quibusdam.",
-                    "Quae aspernatur beatae cum sint cum corrupti.",
-                    "Iusto aut molestias alias dolores doloribus.",
+                    "Magnam est aperiam.",
+                    "Dolorum quia minima error voluptate accusamus.",
+                    "Velit expedita.",
                 ],
                 radiusMeters: 150,
                 safetyEventExclusions: [
-                    "Rerum atque et corrupti.",
-                    "Distinctio aspernatur.",
-                    "Dolorum omnis qui consequatur odio.",
+                    "Ratione facilis suscipit officia autem id.",
+                    "Aut ad est vel voluptatem unde.",
+                    "Tempora necessitatibus explicabo.",
                 ],
                 streetView: {
                     heading: 90,
@@ -12895,10 +13356,10 @@ describe("BetaApIsClient", () => {
                         serviceWindows: [
                             {
                                 days: [
-                                    "Sed dolorum hic.",
-                                    "Itaque assumenda possimus placeat.",
-                                    "Excepturi ratione facilis.",
-                                    "Officia autem id natus.",
+                                    "Harum fugiat ea cupiditate dignissimos.",
+                                    "Quae pariatur.",
+                                    "Non aut porro.",
+                                    "Ipsum eum eos doloribus omnis.",
                                 ],
                                 endTime: 57961,
                                 startTime: 57600,
@@ -12908,7 +13369,12 @@ describe("BetaApIsClient", () => {
                     },
                 ],
                 id: "12345",
-                iftaExemptionTypes: ["Error voluptate.", "Doloribus velit.", "Repellat placeat sit."],
+                iftaExemptionTypes: [
+                    "Ut molestiae a.",
+                    "Qui possimus officiis quae.",
+                    "Ut sequi accusantium qui sequi rem quisquam.",
+                    "Omnis et.",
+                ],
                 isAutoDismissRolledStopsEnabled: false,
                 isShowAddressesEnabled: true,
                 latitude: 37.7749,
@@ -12927,16 +13393,15 @@ describe("BetaApIsClient", () => {
                 },
                 notes: "Receiving 6-2",
                 placeTypes: [
-                    "Voluptatem sequi maiores quidem sunt laborum voluptas.",
-                    "Quasi debitis dignissimos quibusdam.",
-                    "Quae aspernatur beatae cum sint cum corrupti.",
-                    "Iusto aut molestias alias dolores doloribus.",
+                    "Magnam est aperiam.",
+                    "Dolorum quia minima error voluptate accusamus.",
+                    "Velit expedita.",
                 ],
                 radiusMeters: 150,
                 safetyEventExclusions: [
-                    "Rerum atque et corrupti.",
-                    "Distinctio aspernatur.",
-                    "Dolorum omnis qui consequatur odio.",
+                    "Ratione facilis suscipit officia autem id.",
+                    "Aut ad est vel voluptatem unde.",
+                    "Tempora necessitatibus explicabo.",
                 ],
                 streetView: {
                     heading: 90,
@@ -20071,10 +20536,10 @@ describe("BetaApIsClient", () => {
             data: {
                 columns: [{ dataType: "string", name: "Device Name" }],
                 rows: [
-                    [{ key: "value" }, { key: "value" }, { key: "value" }],
-                    [{ key: "value" }, { key: "value" }],
-                    [{ key: "value" }, { key: "value" }, { key: "value" }],
-                    [{ key: "value" }, { key: "value" }],
+                    [{ key: "value" }, { key: "value" }, { key: "value" }, { key: "value" }],
+                    [{ key: "value" }, { key: "value" }, { key: "value" }, { key: "value" }],
+                    [{ key: "value" }, { key: "value" }, { key: "value" }, { key: "value" }],
+                    [{ key: "value" }, { key: "value" }, { key: "value" }, { key: "value" }],
                 ],
                 status: "complete",
             },
@@ -20104,11 +20569,6 @@ describe("BetaApIsClient", () => {
                         {
                             key: "value",
                         },
-                    ],
-                    [
-                        {
-                            key: "value",
-                        },
                         {
                             key: "value",
                         },
@@ -20123,8 +20583,31 @@ describe("BetaApIsClient", () => {
                         {
                             key: "value",
                         },
+                        {
+                            key: "value",
+                        },
                     ],
                     [
+                        {
+                            key: "value",
+                        },
+                        {
+                            key: "value",
+                        },
+                        {
+                            key: "value",
+                        },
+                        {
+                            key: "value",
+                        },
+                    ],
+                    [
+                        {
+                            key: "value",
+                        },
+                        {
+                            key: "value",
+                        },
                         {
                             key: "value",
                         },
@@ -20340,12 +20823,12 @@ describe("BetaApIsClient", () => {
                     ],
                     isActive: true,
                     lastName: "Doe",
-                    specialInstructions: { isGuardianRequired: false, isSpecialEducation: false },
+                    specialInstructions: { isGuardianRequired: true, isSpecialEducation: false },
                     tagIds: [
-                        "Molestiae necessitatibus maiores dicta.",
-                        "Assumenda suscipit ratione ut sed animi est.",
-                        "Quidem quae voluptatibus ut voluptas.",
-                        "Accusantium est labore doloremque magni.",
+                        "Repudiandae et laborum commodi possimus.",
+                        "Consequatur eos voluptatibus.",
+                        "Harum rerum ut doloribus voluptatum quaerat.",
+                        "Voluptatem reiciendis consectetur praesentium.",
                     ],
                     updatedAtTime: "2024-11-15T10:30:00Z",
                 },
@@ -20384,14 +20867,14 @@ describe("BetaApIsClient", () => {
                     isActive: true,
                     lastName: "Doe",
                     specialInstructions: {
-                        isGuardianRequired: false,
+                        isGuardianRequired: true,
                         isSpecialEducation: false,
                     },
                     tagIds: [
-                        "Molestiae necessitatibus maiores dicta.",
-                        "Assumenda suscipit ratione ut sed animi est.",
-                        "Quidem quae voluptatibus ut voluptas.",
-                        "Accusantium est labore doloremque magni.",
+                        "Repudiandae et laborum commodi possimus.",
+                        "Consequatur eos voluptatibus.",
+                        "Harum rerum ut doloribus voluptatum quaerat.",
+                        "Voluptatem reiciendis consectetur praesentium.",
                     ],
                     updatedAtTime: "2024-11-15T10:30:00Z",
                 },
@@ -20649,12 +21132,12 @@ describe("BetaApIsClient", () => {
                 ],
                 isActive: true,
                 lastName: "Doe",
-                specialInstructions: { isGuardianRequired: false, isSpecialEducation: false },
+                specialInstructions: { isGuardianRequired: true, isSpecialEducation: false },
                 tagIds: [
-                    "Molestiae necessitatibus maiores dicta.",
-                    "Assumenda suscipit ratione ut sed animi est.",
-                    "Quidem quae voluptatibus ut voluptas.",
-                    "Accusantium est labore doloremque magni.",
+                    "Repudiandae et laborum commodi possimus.",
+                    "Consequatur eos voluptatibus.",
+                    "Harum rerum ut doloribus voluptatum quaerat.",
+                    "Voluptatem reiciendis consectetur praesentium.",
                 ],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
@@ -20692,14 +21175,14 @@ describe("BetaApIsClient", () => {
                 isActive: true,
                 lastName: "Doe",
                 specialInstructions: {
-                    isGuardianRequired: false,
+                    isGuardianRequired: true,
                     isSpecialEducation: false,
                 },
                 tagIds: [
-                    "Molestiae necessitatibus maiores dicta.",
-                    "Assumenda suscipit ratione ut sed animi est.",
-                    "Quidem quae voluptatibus ut voluptas.",
-                    "Accusantium est labore doloremque magni.",
+                    "Repudiandae et laborum commodi possimus.",
+                    "Consequatur eos voluptatibus.",
+                    "Harum rerum ut doloribus voluptatum quaerat.",
+                    "Voluptatem reiciendis consectetur praesentium.",
                 ],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
@@ -20970,12 +21453,12 @@ describe("BetaApIsClient", () => {
                 ],
                 isActive: true,
                 lastName: "Doe",
-                specialInstructions: { isGuardianRequired: false, isSpecialEducation: false },
+                specialInstructions: { isGuardianRequired: true, isSpecialEducation: false },
                 tagIds: [
-                    "Molestiae necessitatibus maiores dicta.",
-                    "Assumenda suscipit ratione ut sed animi est.",
-                    "Quidem quae voluptatibus ut voluptas.",
-                    "Accusantium est labore doloremque magni.",
+                    "Repudiandae et laborum commodi possimus.",
+                    "Consequatur eos voluptatibus.",
+                    "Harum rerum ut doloribus voluptatum quaerat.",
+                    "Voluptatem reiciendis consectetur praesentium.",
                 ],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
@@ -21014,14 +21497,14 @@ describe("BetaApIsClient", () => {
                 isActive: true,
                 lastName: "Doe",
                 specialInstructions: {
-                    isGuardianRequired: false,
+                    isGuardianRequired: true,
                     isSpecialEducation: false,
                 },
                 tagIds: [
-                    "Molestiae necessitatibus maiores dicta.",
-                    "Assumenda suscipit ratione ut sed animi est.",
-                    "Quidem quae voluptatibus ut voluptas.",
-                    "Accusantium est labore doloremque magni.",
+                    "Repudiandae et laborum commodi possimus.",
+                    "Consequatur eos voluptatibus.",
+                    "Harum rerum ut doloribus voluptatum quaerat.",
+                    "Voluptatem reiciendis consectetur praesentium.",
                 ],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
@@ -21543,12 +22026,12 @@ describe("BetaApIsClient", () => {
                 ],
                 isActive: true,
                 lastName: "Doe",
-                specialInstructions: { isGuardianRequired: false, isSpecialEducation: false },
+                specialInstructions: { isGuardianRequired: true, isSpecialEducation: false },
                 tagIds: [
-                    "Molestiae necessitatibus maiores dicta.",
-                    "Assumenda suscipit ratione ut sed animi est.",
-                    "Quidem quae voluptatibus ut voluptas.",
-                    "Accusantium est labore doloremque magni.",
+                    "Repudiandae et laborum commodi possimus.",
+                    "Consequatur eos voluptatibus.",
+                    "Harum rerum ut doloribus voluptatum quaerat.",
+                    "Voluptatem reiciendis consectetur praesentium.",
                 ],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
@@ -21584,14 +22067,14 @@ describe("BetaApIsClient", () => {
                 isActive: true,
                 lastName: "Doe",
                 specialInstructions: {
-                    isGuardianRequired: false,
+                    isGuardianRequired: true,
                     isSpecialEducation: false,
                 },
                 tagIds: [
-                    "Molestiae necessitatibus maiores dicta.",
-                    "Assumenda suscipit ratione ut sed animi est.",
-                    "Quidem quae voluptatibus ut voluptas.",
-                    "Accusantium est labore doloremque magni.",
+                    "Repudiandae et laborum commodi possimus.",
+                    "Consequatur eos voluptatibus.",
+                    "Harum rerum ut doloribus voluptatum quaerat.",
+                    "Voluptatem reiciendis consectetur praesentium.",
                 ],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
@@ -23379,7 +23862,6 @@ describe("BetaApIsClient", () => {
                 "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
                 "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
                 "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
-                "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
             ],
         };
         const rawResponseBody = {
@@ -23397,7 +23879,6 @@ describe("BetaApIsClient", () => {
 
         const response = await client.betaApIs.patchSafetyEventsV2Batch({
             safetyEventIds: [
-                "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
                 "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
                 "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
                 "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",

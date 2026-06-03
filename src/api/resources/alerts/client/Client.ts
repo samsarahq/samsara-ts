@@ -207,7 +207,7 @@ export class AlertsClient {
      *         isEnabled: true,
      *         name: "My Harsh Event Alert",
      *         scope: {
-     *             all: false
+     *             all: true
      *         },
      *         triggers: [{
      *                 triggerTypeId: 1000

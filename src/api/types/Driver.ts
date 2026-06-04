@@ -21,6 +21,7 @@ export interface Driver {
     eldPcEnabled?: Samsara.DriverEldPcEnabled | undefined;
     eldSettings?: Samsara.DriverEldSettings | undefined;
     eldYmEnabled?: Samsara.DriverEldYmEnabled | undefined;
+    email?: Samsara.DriverEmail | undefined;
     externalIds?: Samsara.DriverExternalIds | undefined;
     hasDrivingFeaturesHidden?: Samsara.DriverHasDrivingFeaturesHidden | undefined;
     hasVehicleUnpinningEnabled?: Samsara.DriverHasVehicleUnpinningEnabled | undefined;

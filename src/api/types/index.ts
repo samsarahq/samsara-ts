@@ -563,6 +563,7 @@ export * from "./DriverEldRulesetShift.js";
 export * from "./DriverEldRulesets.js";
 export * from "./DriverEldSettings.js";
 export * from "./DriverEldYmEnabled.js";
+export * from "./DriverEmail.js";
 export * from "./DriverExternalIds.js";
 export * from "./DriverHasDrivingFeaturesHidden.js";
 export * from "./DriverHasVehicleUnpinningEnabled.js";

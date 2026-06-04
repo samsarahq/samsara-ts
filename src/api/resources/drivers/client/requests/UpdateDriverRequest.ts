@@ -34,6 +34,7 @@ export interface UpdateDriverRequest {
     eldPcEnabled?: boolean;
     /** Flag indicating this driver may select the Yard Move duty status in ELD logs. */
     eldYmEnabled?: boolean;
+    email?: Samsara.DriverEmail;
     /** The [external IDs](https://developers.samsara.com/docs/external-ids) for the given object. */
     externalIds?: Record<string, string>;
     hasDrivingFeaturesHidden?: Samsara.DriverHasDrivingFeaturesHidden;

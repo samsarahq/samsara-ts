@@ -36,6 +36,7 @@ describe("DriversClient", () => {
                     eldExemptReason: "Bad driver",
                     eldPcEnabled: true,
                     eldYmEnabled: true,
+                    email: "susan.jones@example.com",
                     externalIds: { maintenanceId: "250020", payrollId: "ABFS18600" },
                     hasDrivingFeaturesHidden: true,
                     hasVehicleUnpinningEnabled: true,
@@ -103,6 +104,7 @@ describe("DriversClient", () => {
                     eldExemptReason: "Bad driver",
                     eldPcEnabled: true,
                     eldYmEnabled: true,
+                    email: "susan.jones@example.com",
                     externalIds: {
                         maintenanceId: "250020",
                         payrollId: "ABFS18600",
@@ -201,6 +203,7 @@ describe("DriversClient", () => {
                 eldPcEnabled: true,
                 eldSettings: { rulesets: [{ jurisdiction: "AR" }] },
                 eldYmEnabled: true,
+                email: "susan.jones@example.com",
                 externalIds: { maintenanceId: "250020", payrollId: "ABFS18600" },
                 hasDrivingFeaturesHidden: true,
                 hasVehicleUnpinningEnabled: true,
@@ -278,6 +281,7 @@ describe("DriversClient", () => {
                     ],
                 },
                 eldYmEnabled: true,
+                email: "susan.jones@example.com",
                 externalIds: {
                     maintenanceId: "250020",
                     payrollId: "ABFS18600",
@@ -626,6 +630,7 @@ describe("DriversClient", () => {
                 eldPcEnabled: true,
                 eldSettings: { rulesets: [{ jurisdiction: "AR" }] },
                 eldYmEnabled: true,
+                email: "susan.jones@example.com",
                 externalIds: { maintenanceId: "250020", payrollId: "ABFS18600" },
                 hasDrivingFeaturesHidden: true,
                 hasVehicleUnpinningEnabled: true,
@@ -694,6 +699,7 @@ describe("DriversClient", () => {
                     ],
                 },
                 eldYmEnabled: true,
+                email: "susan.jones@example.com",
                 externalIds: {
                     maintenanceId: "250020",
                     payrollId: "ABFS18600",
@@ -798,6 +804,7 @@ describe("DriversClient", () => {
                 eldPcEnabled: true,
                 eldSettings: { rulesets: [{ jurisdiction: "AR" }] },
                 eldYmEnabled: true,
+                email: "susan.jones@example.com",
                 externalIds: { maintenanceId: "250020", payrollId: "ABFS18600" },
                 hasDrivingFeaturesHidden: true,
                 hasVehicleUnpinningEnabled: true,
@@ -873,6 +880,7 @@ describe("DriversClient", () => {
                     ],
                 },
                 eldYmEnabled: true,
+                email: "susan.jones@example.com",
                 externalIds: {
                     maintenanceId: "250020",
                     payrollId: "ABFS18600",

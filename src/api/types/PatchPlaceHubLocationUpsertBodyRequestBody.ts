@@ -6,7 +6,7 @@ import type * as Samsara from "../index.js";
  * Hub location upsert entry for PATCH /places.
  */
 export interface PatchPlaceHubLocationUpsertBodyRequestBody {
-    /** Optional label; stored as planner-facing notes for this hub row. */
+    /** Optional label override for this hub location row. */
     displayName?: string | undefined;
     /** External identifier for this hub row. */
     externalId?: string | undefined;
@@ -23,6 +23,8 @@ export interface PatchPlaceHubLocationUpsertBodyRequestBody {
     /** Route priority from 1 (lowest) to 5 (highest). */
     locationPriority?: number | undefined;
     orderServiceTime?: Samsara.PlaceHubLocationOrderServiceTimeInputRequestBody | undefined;
+    /** Planner-facing notes for this hub location row. */
+    plannerNotes?: string | undefined;
     /** Required planner skills for this hub location. */
     requiredSkills?: Samsara.PlaceHubLocationRequiredSkillInputRequestBody[] | undefined;
     serviceTime?: Samsara.PlaceHubLocationServiceTimeInputRequestBody | undefined;

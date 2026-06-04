@@ -28,7 +28,7 @@ export namespace SafetyEventsV2PatchSafetyEventsV2BatchRequestBody {
     export type BehaviorLabelsToAdd = BehaviorLabelsToAdd.Item[];
 
     export namespace BehaviorLabelsToAdd {
-        /** A behavior label name to add.  Valid values: `Acceleration`, `AggressiveDriving`, `BluetoothHeadset`, `Braking`, `ContextConstructionOrWorkZone`, `ContextSnowyOrIcy`, `ContextVulnerableRoadUser`, `ContextWet`, `Crash`, `DefensiveDriving`, `DidNotYield`, `Drinking`, `Drowsy`, `Eating`, `EatingDrinking`, `EdgeDistractedDriving`, `EdgeRailroadCrossingViolation`, `FollowingDistance`, `FollowingDistanceModerate`, `FollowingDistanceSevere`, `ForwardCollisionWarning`, `GenericDistraction`, `GenericTailgating`, `HarshTurn`, `HeavySpeeding`, `HighSpeedSuddenDisconnect`, `HosViolation`, `Idling`, `Invalid`, `LaneDeparture`, `LateResponse`, `LeftTurn`, `LightSpeeding`, `MaxSpeed`, `MobileUsage`, `ModerateSpeeding`, `NearCollison`, `NearPedestrianCollision`, `NoSeatbelt`, `ObstructedCamera`, `OperationalEvent`, `OtherViolation`, `Passenger`, `PolicyViolationMask`, `ProtectiveEquipment`, `RanRedLight`, `RearCollisionWarning`, `Reversing`, `RollingStop`, `RolloverProtection`, `SevereSpeeding`, `Smoking`, `Speeding`, `UTurn`, `UnsafeManeuver`, `UnsafeParking`, `VehicleInBlindSpotWarning`, `VulnerableRoadUserCollisionWarning`, `YawControl` */
+        /** A behavior label name to add.  Valid values: `Acceleration`, `AggressiveDriving`, `BluetoothHeadset`, `Braking`, `ContextConstructionOrWorkZone`, `ContextSnowyOrIcy`, `ContextVulnerableRoadUser`, `ContextWet`, `Crash`, `DefensiveDriving`, `DidNotYield`, `Drinking`, `Drowsy`, `Eating`, `EatingDrinking`, `EdgeDistractedDriving`, `EdgeRailroadCrossingViolation`, `FollowingDistance`, `FollowingDistanceModerate`, `FollowingDistanceSevere`, `ForwardCollisionWarning`, `GenericDistraction`, `GenericTailgating`, `HarshImpact`, `HarshTurn`, `HeavySpeeding`, `HighSpeedSuddenDisconnect`, `HosViolation`, `Idling`, `Invalid`, `LaneDeparture`, `LateResponse`, `LeftTurn`, `LightSpeeding`, `MaxSpeed`, `MobileUsage`, `ModerateSpeeding`, `NearCollison`, `NearPedestrianCollision`, `NoSeatbelt`, `ObstructedCamera`, `OperationalEvent`, `OtherViolation`, `Passenger`, `PolicyViolationMask`, `ProtectiveEquipment`, `RanRedLight`, `RearCollisionWarning`, `Reversing`, `RollingStop`, `RolloverProtection`, `SevereSpeeding`, `Smoking`, `Speeding`, `UTurn`, `UnsafeManeuver`, `UnsafeParking`, `VehicleInBlindSpotWarning`, `VulnerableRoadUserCollisionWarning`, `YawControl` */
         export const Item = {
             Acceleration: "Acceleration",
             AggressiveDriving: "AggressiveDriving",
@@ -53,6 +53,7 @@ export namespace SafetyEventsV2PatchSafetyEventsV2BatchRequestBody {
             ForwardCollisionWarning: "ForwardCollisionWarning",
             GenericDistraction: "GenericDistraction",
             GenericTailgating: "GenericTailgating",
+            HarshImpact: "HarshImpact",
             HarshTurn: "HarshTurn",
             HeavySpeeding: "HeavySpeeding",
             HighSpeedSuddenDisconnect: "HighSpeedSuddenDisconnect",
@@ -96,7 +97,7 @@ export namespace SafetyEventsV2PatchSafetyEventsV2BatchRequestBody {
     export type BehaviorLabelsToRemove = BehaviorLabelsToRemove.Item[];
 
     export namespace BehaviorLabelsToRemove {
-        /** A behavior label name to remove.  Valid values: `Acceleration`, `AggressiveDriving`, `BluetoothHeadset`, `Braking`, `ContextConstructionOrWorkZone`, `ContextSnowyOrIcy`, `ContextVulnerableRoadUser`, `ContextWet`, `Crash`, `DefensiveDriving`, `DidNotYield`, `Drinking`, `Drowsy`, `Eating`, `EatingDrinking`, `EdgeDistractedDriving`, `EdgeRailroadCrossingViolation`, `FollowingDistance`, `FollowingDistanceModerate`, `FollowingDistanceSevere`, `ForwardCollisionWarning`, `GenericDistraction`, `GenericTailgating`, `HarshTurn`, `HeavySpeeding`, `HighSpeedSuddenDisconnect`, `HosViolation`, `Idling`, `Invalid`, `LaneDeparture`, `LateResponse`, `LeftTurn`, `LightSpeeding`, `MaxSpeed`, `MobileUsage`, `ModerateSpeeding`, `NearCollison`, `NearPedestrianCollision`, `NoSeatbelt`, `ObstructedCamera`, `OperationalEvent`, `OtherViolation`, `Passenger`, `PolicyViolationMask`, `ProtectiveEquipment`, `RanRedLight`, `RearCollisionWarning`, `Reversing`, `RollingStop`, `RolloverProtection`, `SevereSpeeding`, `Smoking`, `Speeding`, `UTurn`, `UnsafeManeuver`, `UnsafeParking`, `VehicleInBlindSpotWarning`, `VulnerableRoadUserCollisionWarning`, `YawControl` */
+        /** A behavior label name to remove.  Valid values: `Acceleration`, `AggressiveDriving`, `BluetoothHeadset`, `Braking`, `ContextConstructionOrWorkZone`, `ContextSnowyOrIcy`, `ContextVulnerableRoadUser`, `ContextWet`, `Crash`, `DefensiveDriving`, `DidNotYield`, `Drinking`, `Drowsy`, `Eating`, `EatingDrinking`, `EdgeDistractedDriving`, `EdgeRailroadCrossingViolation`, `FollowingDistance`, `FollowingDistanceModerate`, `FollowingDistanceSevere`, `ForwardCollisionWarning`, `GenericDistraction`, `GenericTailgating`, `HarshImpact`, `HarshTurn`, `HeavySpeeding`, `HighSpeedSuddenDisconnect`, `HosViolation`, `Idling`, `Invalid`, `LaneDeparture`, `LateResponse`, `LeftTurn`, `LightSpeeding`, `MaxSpeed`, `MobileUsage`, `ModerateSpeeding`, `NearCollison`, `NearPedestrianCollision`, `NoSeatbelt`, `ObstructedCamera`, `OperationalEvent`, `OtherViolation`, `Passenger`, `PolicyViolationMask`, `ProtectiveEquipment`, `RanRedLight`, `RearCollisionWarning`, `Reversing`, `RollingStop`, `RolloverProtection`, `SevereSpeeding`, `Smoking`, `Speeding`, `UTurn`, `UnsafeManeuver`, `UnsafeParking`, `VehicleInBlindSpotWarning`, `VulnerableRoadUserCollisionWarning`, `YawControl` */
         export const Item = {
             Acceleration: "Acceleration",
             AggressiveDriving: "AggressiveDriving",
@@ -121,6 +122,7 @@ export namespace SafetyEventsV2PatchSafetyEventsV2BatchRequestBody {
             ForwardCollisionWarning: "ForwardCollisionWarning",
             GenericDistraction: "GenericDistraction",
             GenericTailgating: "GenericTailgating",
+            HarshImpact: "HarshImpact",
             HarshTurn: "HarshTurn",
             HeavySpeeding: "HeavySpeeding",
             HighSpeedSuddenDisconnect: "HighSpeedSuddenDisconnect",

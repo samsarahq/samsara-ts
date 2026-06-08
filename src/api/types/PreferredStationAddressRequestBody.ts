@@ -12,6 +12,6 @@ export interface PreferredStationAddressRequestBody {
     line1: string;
     /** Postal or ZIP code. */
     postalCode: string;
-    /** State or province code. */
+    /** State or province code. Required when country is "US". */
     state?: string | undefined;
 }

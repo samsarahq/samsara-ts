@@ -207,16 +207,32 @@ describe("SensorsClient", () => {
             environment: server.baseUrl,
         });
 
-        const rawResponseBody = { sensors: [{ id: 123, macAddress: "11:11:11:11:11:11", name: "Freezer ABC" }] };
+        const rawResponseBody = {
+            sensors: [
+                {
+                    activatedAtMs: 1635881752799,
+                    healthStatus: "RequiresInvestigation",
+                    id: 123,
+                    lastTransmissionAtMs: 1613440186723,
+                    macAddress: "11:11:11:11:11:11",
+                    name: "Freezer ABC",
+                    sensorType: "EM21",
+                },
+            ],
+        };
         server.mockEndpoint().post("/v1/sensors/list").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.sensors.v1GetSensors();
         expect(response).toEqual({
             sensors: [
                 {
+                    activatedAtMs: 1635881752799,
+                    healthStatus: "RequiresInvestigation",
                     id: 123,
+                    lastTransmissionAtMs: 1613440186723,
                     macAddress: "11:11:11:11:11:11",
                     name: "Freezer ABC",
+                    sensorType: "EM21",
                 },
             ],
         });

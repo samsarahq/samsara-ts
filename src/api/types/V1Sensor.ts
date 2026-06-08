@@ -4,10 +4,18 @@
  * Contains information about a sensor.
  */
 export interface V1Sensor {
+    /** Sensor activation time in Unix milliseconds. Null if the sensor has no monitor. */
+    activatedAtMs?: number | undefined;
+    /** Current sensor health status. */
+    healthStatus?: string | undefined;
     /** ID of the sensor. */
     id: number;
+    /** Last sensor transmission time in Unix milliseconds. Null when the sensor is connected or has never connected. */
+    lastTransmissionAtMs?: number | undefined;
     /** MAC address of the sensor. */
     macAddress?: string | undefined;
     /** Name of the sensor. */
     name?: string | undefined;
+    /** Product type of the sensor. */
+    sensorType?: string | undefined;
 }

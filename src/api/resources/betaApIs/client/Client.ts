@@ -6602,6 +6602,7 @@ export class BetaApIsClient {
      * * `faultCodesJ1939`
      * * `faultCodesOBDII`
      * * `fuelLevelPerc`
+     * * `gps`
      * * `location`
      * * `odometerEcu`
      * * `oilPressure`

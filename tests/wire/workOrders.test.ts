@@ -640,6 +640,10 @@ describe("WorkOrdersClient", () => {
                     unallocatedLabor: { cost: { amount: "94.01", currency: "usd" }, timeMinutes: 60 },
                     updatedAtTime: "2019-06-13T19:08:25Z",
                     vendorUuid: "5523a39f-42ef-4820-83d0-dfe73dbe7853",
+                    workOrderTemplateIds: [
+                        "5523a39f-42ef-4820-83d0-dfe73dbe7853",
+                        "5523a39f-42ef-4820-83d0-dfe73dbe7853",
+                    ],
                 },
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
@@ -752,6 +756,10 @@ describe("WorkOrdersClient", () => {
                     },
                     updatedAtTime: "2019-06-13T19:08:25Z",
                     vendorUuid: "5523a39f-42ef-4820-83d0-dfe73dbe7853",
+                    workOrderTemplateIds: [
+                        "5523a39f-42ef-4820-83d0-dfe73dbe7853",
+                        "5523a39f-42ef-4820-83d0-dfe73dbe7853",
+                    ],
                 },
             ],
             pagination: {
@@ -1038,6 +1046,11 @@ describe("WorkOrdersClient", () => {
                 unallocatedLabor: { cost: { amount: "94.01", currency: "usd" }, timeMinutes: 60 },
                 updatedAtTime: "2019-06-13T19:08:25Z",
                 vendorUuid: "5523a39f-42ef-4820-83d0-dfe73dbe7853",
+                workOrderTemplateIds: [
+                    "5523a39f-42ef-4820-83d0-dfe73dbe7853",
+                    "5523a39f-42ef-4820-83d0-dfe73dbe7853",
+                    "5523a39f-42ef-4820-83d0-dfe73dbe7853",
+                ],
             },
         };
         server
@@ -1142,6 +1155,11 @@ describe("WorkOrdersClient", () => {
                 },
                 updatedAtTime: "2019-06-13T19:08:25Z",
                 vendorUuid: "5523a39f-42ef-4820-83d0-dfe73dbe7853",
+                workOrderTemplateIds: [
+                    "5523a39f-42ef-4820-83d0-dfe73dbe7853",
+                    "5523a39f-42ef-4820-83d0-dfe73dbe7853",
+                    "5523a39f-42ef-4820-83d0-dfe73dbe7853",
+                ],
             },
         });
     });
@@ -1692,6 +1710,11 @@ describe("WorkOrdersClient", () => {
                 unallocatedLabor: { cost: { amount: "94.01", currency: "usd" }, timeMinutes: 60 },
                 updatedAtTime: "2019-06-13T19:08:25Z",
                 vendorUuid: "5523a39f-42ef-4820-83d0-dfe73dbe7853",
+                workOrderTemplateIds: [
+                    "5523a39f-42ef-4820-83d0-dfe73dbe7853",
+                    "5523a39f-42ef-4820-83d0-dfe73dbe7853",
+                    "5523a39f-42ef-4820-83d0-dfe73dbe7853",
+                ],
             },
         };
         server
@@ -1796,6 +1819,11 @@ describe("WorkOrdersClient", () => {
                 },
                 updatedAtTime: "2019-06-13T19:08:25Z",
                 vendorUuid: "5523a39f-42ef-4820-83d0-dfe73dbe7853",
+                workOrderTemplateIds: [
+                    "5523a39f-42ef-4820-83d0-dfe73dbe7853",
+                    "5523a39f-42ef-4820-83d0-dfe73dbe7853",
+                    "5523a39f-42ef-4820-83d0-dfe73dbe7853",
+                ],
             },
         });
     });
@@ -2113,6 +2141,10 @@ describe("WorkOrdersClient", () => {
                     unallocatedLabor: { cost: { amount: "94.01", currency: "usd" }, timeMinutes: 60 },
                     updatedAtTime: "2019-06-13T19:08:25Z",
                     vendorUuid: "5523a39f-42ef-4820-83d0-dfe73dbe7853",
+                    workOrderTemplateIds: [
+                        "5523a39f-42ef-4820-83d0-dfe73dbe7853",
+                        "5523a39f-42ef-4820-83d0-dfe73dbe7853",
+                    ],
                 },
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
@@ -2227,6 +2259,10 @@ describe("WorkOrdersClient", () => {
                     },
                     updatedAtTime: "2019-06-13T19:08:25Z",
                     vendorUuid: "5523a39f-42ef-4820-83d0-dfe73dbe7853",
+                    workOrderTemplateIds: [
+                        "5523a39f-42ef-4820-83d0-dfe73dbe7853",
+                        "5523a39f-42ef-4820-83d0-dfe73dbe7853",
+                    ],
                 },
             ],
             pagination: {

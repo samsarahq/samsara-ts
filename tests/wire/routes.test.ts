@@ -41,6 +41,9 @@ describe("RoutesClient", () => {
                             actualDepartureTime: "2006-01-02T08:04:05Z",
                             actualDistanceMeters: 5450,
                             address: { id: "494123", name: "Company Office #1" },
+                            appointmentWindows: [
+                                { endTime: "2019-06-14T12:00:00Z", startTime: "2019-06-13T12:00:00Z" },
+                            ],
                             documents: [{ id: "494123", name: "Fuel Receipt Wichita" }],
                             enRouteTime: "2006-01-02T08:04:05Z",
                             eta: "2006-01-02T08:04:05Z",
@@ -121,6 +124,12 @@ describe("RoutesClient", () => {
                                 id: "494123",
                                 name: "Company Office #1",
                             },
+                            appointmentWindows: [
+                                {
+                                    endTime: "2019-06-14T12:00:00Z",
+                                    startTime: "2019-06-13T12:00:00Z",
+                                },
+                            ],
                             documents: [
                                 {
                                     id: "494123",
@@ -400,6 +409,7 @@ describe("RoutesClient", () => {
                         actualDepartureTime: "2006-01-02T08:04:05Z",
                         actualDistanceMeters: 5450,
                         address: { id: "494123", name: "Company Office #1" },
+                        appointmentWindows: [{ endTime: "2019-06-14T12:00:00Z", startTime: "2019-06-13T12:00:00Z" }],
                         documents: [{ id: "494123", name: "Fuel Receipt Wichita" }],
                         enRouteTime: "2006-01-02T08:04:05Z",
                         eta: "2006-01-02T08:04:05Z",
@@ -491,6 +501,12 @@ describe("RoutesClient", () => {
                             id: "494123",
                             name: "Company Office #1",
                         },
+                        appointmentWindows: [
+                            {
+                                endTime: "2019-06-14T12:00:00Z",
+                                startTime: "2019-06-13T12:00:00Z",
+                            },
+                        ],
                         documents: [
                             {
                                 id: "494123",
@@ -861,6 +877,9 @@ describe("RoutesClient", () => {
                                 actualDepartureTime: "2006-01-02T08:04:05Z",
                                 actualDistanceMeters: 5450,
                                 address: { id: "494123", name: "Company Office #1" },
+                                appointmentWindows: [
+                                    { endTime: "2019-06-14T12:00:00Z", startTime: "2019-06-13T12:00:00Z" },
+                                ],
                                 documents: [{ id: "494123", name: "Fuel Receipt Wichita" }],
                                 enRouteTime: "2006-01-02T08:04:05Z",
                                 eta: "2006-01-02T08:04:05Z",
@@ -978,6 +997,12 @@ describe("RoutesClient", () => {
                                     id: "494123",
                                     name: "Company Office #1",
                                 },
+                                appointmentWindows: [
+                                    {
+                                        endTime: "2019-06-14T12:00:00Z",
+                                        startTime: "2019-06-13T12:00:00Z",
+                                    },
+                                ],
                                 documents: [
                                     {
                                         id: "494123",
@@ -1284,6 +1309,7 @@ describe("RoutesClient", () => {
                         actualDepartureTime: "2006-01-02T08:04:05Z",
                         actualDistanceMeters: 5450,
                         address: { id: "494123", name: "Company Office #1" },
+                        appointmentWindows: [{ endTime: "2019-06-14T12:00:00Z", startTime: "2019-06-13T12:00:00Z" }],
                         documents: [{ id: "494123", name: "Fuel Receipt Wichita" }],
                         enRouteTime: "2006-01-02T08:04:05Z",
                         eta: "2006-01-02T08:04:05Z",
@@ -1367,6 +1393,12 @@ describe("RoutesClient", () => {
                             id: "494123",
                             name: "Company Office #1",
                         },
+                        appointmentWindows: [
+                            {
+                                endTime: "2019-06-14T12:00:00Z",
+                                startTime: "2019-06-13T12:00:00Z",
+                            },
+                        ],
                         documents: [
                             {
                                 id: "494123",
@@ -1877,6 +1909,7 @@ describe("RoutesClient", () => {
                         actualDepartureTime: "2006-01-02T08:04:05Z",
                         actualDistanceMeters: 5450,
                         address: { id: "494123", name: "Company Office #1" },
+                        appointmentWindows: [{ endTime: "2019-06-14T12:00:00Z", startTime: "2019-06-13T12:00:00Z" }],
                         documents: [{ id: "494123", name: "Fuel Receipt Wichita" }],
                         enRouteTime: "2006-01-02T08:04:05Z",
                         eta: "2006-01-02T08:04:05Z",
@@ -1967,6 +2000,12 @@ describe("RoutesClient", () => {
                             id: "494123",
                             name: "Company Office #1",
                         },
+                        appointmentWindows: [
+                            {
+                                endTime: "2019-06-14T12:00:00Z",
+                                startTime: "2019-06-13T12:00:00Z",
+                            },
+                        ],
                         documents: [
                             {
                                 id: "494123",

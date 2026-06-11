@@ -54,6 +54,8 @@ export interface WorkOrderObjectResponseBody {
     updatedAtTime: string;
     /** The vendor UUID for the work order. */
     vendorUuid?: string | undefined;
+    /** IDs of the work order template(s) this work order was created from. May include templates that have since been deleted. */
+    workOrderTemplateIds?: string[] | undefined;
 }
 
 export namespace WorkOrderObjectResponseBody {

@@ -10,6 +10,8 @@ export interface RoutesStopResponseObjectResponseBody {
     /** Actual GPS-measured distance traveled from the previous stop's departure to this stop's arrival, in meters. Null for the first stop, skipped stops, or if GPS data is unavailable. */
     actualDistanceMeters?: number | undefined;
     address?: Samsara.GoaAddressTinyResponseResponseBody | undefined;
+    /** Appointment windows for the stop. */
+    appointmentWindows?: Samsara.HosViolationDayObjectResponseBody[] | undefined;
     /** List of documents associated with the stop. */
     documents?: Samsara.GoaDocumentTinyResponseResponseBody[] | undefined;
     /** The time the stop became en-route, in RFC 3339 format. */

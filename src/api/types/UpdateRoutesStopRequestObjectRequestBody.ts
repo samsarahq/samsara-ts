@@ -5,6 +5,8 @@ import type * as Samsara from "../index.js";
 export interface UpdateRoutesStopRequestObjectRequestBody {
     /** ID of the address. An address [externalId](https://developers.samsara.com/docs/external-ids#using-external-ids) can also be used interchangeably here. */
     addressId?: string | undefined;
+    /** Appointment windows for the stop. */
+    appointmentWindows?: Samsara.HosViolationDayObjectRequestBody[] | undefined;
     /** A map of external ids */
     externalIds?: Record<string, string> | undefined;
     /** ID of the stop */

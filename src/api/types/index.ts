@@ -1374,6 +1374,7 @@ export * from "./HosLogsList.js";
 export * from "./HosLogsResponse.js";
 export * from "./HosShift.js";
 export * from "./HosViolationDataResponseBody.js";
+export * from "./HosViolationDayObjectRequestBody.js";
 export * from "./HosViolationDayObjectResponseBody.js";
 export * from "./HosViolationObjectResponseBody.js";
 export * from "./HosViolations.js";

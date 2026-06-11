@@ -21,7 +21,7 @@ describe("DriverVehicleAssignmentsClient", () => {
                     assignmentType: "invalid",
                     driver: { id: "45646", name: "Driver Bob" },
                     endTime: "2019-06-13T19:08:25Z",
-                    isPassenger: true,
+                    isPassenger: false,
                     metadata: { sourceName: "ExternalSourceName" },
                     startTime: "2019-06-13T19:08:25Z",
                     vehicle: { id: "494123", name: "Fleet Truck #1" },
@@ -50,7 +50,7 @@ describe("DriverVehicleAssignmentsClient", () => {
                         name: "Driver Bob",
                     },
                     endTime: "2019-06-13T19:08:25Z",
-                    isPassenger: true,
+                    isPassenger: false,
                     metadata: {
                         sourceName: "ExternalSourceName",
                     },

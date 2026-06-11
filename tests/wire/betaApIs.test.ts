@@ -6435,12 +6435,7 @@ describe("BetaApIsClient", () => {
             data: [
                 {
                     addressId: "281474993384538",
-                    categoryIds: [
-                        "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
-                        "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
-                        "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
-                        "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
-                    ],
+                    categoryIds: ["a1b2c3d4-e5f6-7890-abcd-ef1234567890", "a1b2c3d4-e5f6-7890-abcd-ef1234567890"],
                     externalIds: { key: "value" },
                     id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
                     servicesProvided: "Oil changes, tire rotations, brake services",
@@ -6462,12 +6457,7 @@ describe("BetaApIsClient", () => {
             data: [
                 {
                     addressId: "281474993384538",
-                    categoryIds: [
-                        "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
-                        "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
-                        "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
-                        "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
-                    ],
+                    categoryIds: ["a1b2c3d4-e5f6-7890-abcd-ef1234567890", "a1b2c3d4-e5f6-7890-abcd-ef1234567890"],
                     externalIds: {
                         key: "value",
                     },
@@ -7297,7 +7287,7 @@ describe("BetaApIsClient", () => {
                 codePackage: { downloadGetUrl: "https://example.com/download?token=...", status: "unknown" },
                 config: {
                     handler: "index.handler",
-                    isScheduleEnabled: false,
+                    isScheduleEnabled: true,
                     params: {},
                     schedule: {
                         entries: [
@@ -7339,7 +7329,7 @@ describe("BetaApIsClient", () => {
                 },
                 config: {
                     handler: "index.handler",
-                    isScheduleEnabled: false,
+                    isScheduleEnabled: true,
                     params: {},
                     schedule: {
                         entries: [
@@ -8951,7 +8941,7 @@ describe("BetaApIsClient", () => {
                 codePackage: { downloadGetUrl: "https://example.com/download?token=...", status: "unknown" },
                 config: {
                     handler: "index.handler",
-                    isScheduleEnabled: false,
+                    isScheduleEnabled: true,
                     params: {},
                     schedule: {
                         entries: [
@@ -8982,7 +8972,7 @@ describe("BetaApIsClient", () => {
                 },
                 config: {
                     handler: "index.handler",
-                    isScheduleEnabled: false,
+                    isScheduleEnabled: true,
                     params: {},
                     schedule: {
                         entries: [
@@ -10758,14 +10748,14 @@ describe("BetaApIsClient", () => {
         const rawRequestBody = { shippingDocs: "ShippingID1, ShippingID2" };
         const rawResponseBody = {
             data: {
-                adverseDrivingClaimed: true,
+                adverseDrivingClaimed: false,
                 bigDayClaimed: false,
                 carrierFormattedAddress: "1990 Alameda Street, San Francisco, CA 94103",
                 carrierName: "Carrier Name",
                 carrierUsDotNumber: 1234,
                 homeTerminalFormattedAddress: "1990 Alameda Street, San Francisco, CA 94103",
                 homeTerminalName: "Home Terminal Name",
-                isCertified: false,
+                isCertified: true,
                 isUsShortHaulActive: false,
                 trailerNames: ["10293", "Trailer ID 1"],
             },
@@ -10786,14 +10776,14 @@ describe("BetaApIsClient", () => {
         });
         expect(response).toEqual({
             data: {
-                adverseDrivingClaimed: true,
+                adverseDrivingClaimed: false,
                 bigDayClaimed: false,
                 carrierFormattedAddress: "1990 Alameda Street, San Francisco, CA 94103",
                 carrierName: "Carrier Name",
                 carrierUsDotNumber: 1234,
                 homeTerminalFormattedAddress: "1990 Alameda Street, San Francisco, CA 94103",
                 homeTerminalName: "Home Terminal Name",
-                isCertified: false,
+                isCertified: true,
                 isUsShortHaulActive: false,
                 trailerNames: ["10293", "Trailer ID 1"],
             },
@@ -12492,14 +12482,13 @@ describe("BetaApIsClient", () => {
                     },
                     notes: "Receiving 6-2",
                     placeTypes: [
-                        "Atque et corrupti iste distinctio aspernatur.",
-                        "Dolorum omnis qui consequatur odio.",
-                        "Et magnam est aperiam a.",
+                        "Magnam est aperiam.",
+                        "Dolorum quia minima error voluptate accusamus.",
+                        "Velit expedita.",
                     ],
                     radiusMeters: 150,
                     safetyEventExclusions: [
-                        "Voluptates excepturi.",
-                        "Facilis suscipit officia autem id.",
+                        "Ratione facilis suscipit officia autem id.",
                         "Aut ad est vel voluptatem unde.",
                         "Tempora necessitatibus explicabo.",
                     ],
@@ -12603,14 +12592,13 @@ describe("BetaApIsClient", () => {
                     },
                     notes: "Receiving 6-2",
                     placeTypes: [
-                        "Atque et corrupti iste distinctio aspernatur.",
-                        "Dolorum omnis qui consequatur odio.",
-                        "Et magnam est aperiam a.",
+                        "Magnam est aperiam.",
+                        "Dolorum quia minima error voluptate accusamus.",
+                        "Velit expedita.",
                     ],
                     radiusMeters: 150,
                     safetyEventExclusions: [
-                        "Voluptates excepturi.",
-                        "Facilis suscipit officia autem id.",
+                        "Ratione facilis suscipit officia autem id.",
                         "Aut ad est vel voluptatem unde.",
                         "Tempora necessitatibus explicabo.",
                     ],
@@ -12871,14 +12859,13 @@ describe("BetaApIsClient", () => {
                 },
                 notes: "Receiving 6-2",
                 placeTypes: [
-                    "Atque et corrupti iste distinctio aspernatur.",
-                    "Dolorum omnis qui consequatur odio.",
-                    "Et magnam est aperiam a.",
+                    "Magnam est aperiam.",
+                    "Dolorum quia minima error voluptate accusamus.",
+                    "Velit expedita.",
                 ],
                 radiusMeters: 150,
                 safetyEventExclusions: [
-                    "Voluptates excepturi.",
-                    "Facilis suscipit officia autem id.",
+                    "Ratione facilis suscipit officia autem id.",
                     "Aut ad est vel voluptatem unde.",
                     "Tempora necessitatibus explicabo.",
                 ],
@@ -12989,14 +12976,13 @@ describe("BetaApIsClient", () => {
                 },
                 notes: "Receiving 6-2",
                 placeTypes: [
-                    "Atque et corrupti iste distinctio aspernatur.",
-                    "Dolorum omnis qui consequatur odio.",
-                    "Et magnam est aperiam a.",
+                    "Magnam est aperiam.",
+                    "Dolorum quia minima error voluptate accusamus.",
+                    "Velit expedita.",
                 ],
                 radiusMeters: 150,
                 safetyEventExclusions: [
-                    "Voluptates excepturi.",
-                    "Facilis suscipit officia autem id.",
+                    "Ratione facilis suscipit officia autem id.",
                     "Aut ad est vel voluptatem unde.",
                     "Tempora necessitatibus explicabo.",
                 ],
@@ -13530,14 +13516,13 @@ describe("BetaApIsClient", () => {
                 },
                 notes: "Receiving 6-2",
                 placeTypes: [
-                    "Atque et corrupti iste distinctio aspernatur.",
-                    "Dolorum omnis qui consequatur odio.",
-                    "Et magnam est aperiam a.",
+                    "Magnam est aperiam.",
+                    "Dolorum quia minima error voluptate accusamus.",
+                    "Velit expedita.",
                 ],
                 radiusMeters: 150,
                 safetyEventExclusions: [
-                    "Voluptates excepturi.",
-                    "Facilis suscipit officia autem id.",
+                    "Ratione facilis suscipit officia autem id.",
                     "Aut ad est vel voluptatem unde.",
                     "Tempora necessitatibus explicabo.",
                 ],
@@ -13645,14 +13630,13 @@ describe("BetaApIsClient", () => {
                 },
                 notes: "Receiving 6-2",
                 placeTypes: [
-                    "Atque et corrupti iste distinctio aspernatur.",
-                    "Dolorum omnis qui consequatur odio.",
-                    "Et magnam est aperiam a.",
+                    "Magnam est aperiam.",
+                    "Dolorum quia minima error voluptate accusamus.",
+                    "Velit expedita.",
                 ],
                 radiusMeters: 150,
                 safetyEventExclusions: [
-                    "Voluptates excepturi.",
-                    "Facilis suscipit officia autem id.",
+                    "Ratione facilis suscipit officia autem id.",
                     "Aut ad est vel voluptatem unde.",
                     "Tempora necessitatibus explicabo.",
                 ],
@@ -20791,7 +20775,7 @@ describe("BetaApIsClient", () => {
                 rows: [
                     [{ key: "value" }, { key: "value" }, { key: "value" }, { key: "value" }],
                     [{ key: "value" }, { key: "value" }, { key: "value" }, { key: "value" }],
-                    [{ key: "value" }, { key: "value" }, { key: "value" }],
+                    [{ key: "value" }, { key: "value" }, { key: "value" }, { key: "value" }],
                 ],
                 status: "complete",
             },
@@ -20840,6 +20824,9 @@ describe("BetaApIsClient", () => {
                         },
                     ],
                     [
+                        {
+                            key: "value",
+                        },
                         {
                             key: "value",
                         },
@@ -24097,7 +24084,6 @@ describe("BetaApIsClient", () => {
                 "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
                 "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
                 "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
-                "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
             ],
         };
         const rawResponseBody = {
@@ -24115,7 +24101,6 @@ describe("BetaApIsClient", () => {
 
         const response = await client.betaApIs.patchSafetyEventsV2Batch({
             safetyEventIds: [
-                "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
                 "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
                 "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
                 "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",

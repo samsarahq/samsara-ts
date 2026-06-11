@@ -6439,6 +6439,7 @@ describe("BetaApIsClient", () => {
                         "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
                         "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
                         "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                        "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
                     ],
                     externalIds: { key: "value" },
                     id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
@@ -6462,6 +6463,7 @@ describe("BetaApIsClient", () => {
                 {
                     addressId: "281474993384538",
                     categoryIds: [
+                        "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
                         "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
                         "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
                         "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
@@ -12165,6 +12167,251 @@ describe("BetaApIsClient", () => {
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 
+    test("getWorkOrderTemplates (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = {
+            data: [
+                { id: "id", name: "name" },
+                { id: "id", name: "name" },
+            ],
+        };
+        server
+            .mockEndpoint()
+            .get("/maintenance/work-order-templates")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.betaApIs.getWorkOrderTemplates();
+        expect(response).toEqual({
+            data: [
+                {
+                    id: "id",
+                    name: "name",
+                },
+                {
+                    id: "id",
+                    name: "name",
+                },
+            ],
+        });
+    });
+
+    test("getWorkOrderTemplates (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/work-order-templates")
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.getWorkOrderTemplates();
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("getWorkOrderTemplates (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/work-order-templates")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.getWorkOrderTemplates();
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("getWorkOrderTemplates (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/work-order-templates")
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.getWorkOrderTemplates();
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("getWorkOrderTemplates (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/work-order-templates")
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.getWorkOrderTemplates();
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("getWorkOrderTemplates (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/work-order-templates")
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.getWorkOrderTemplates();
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("getWorkOrderTemplates (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/work-order-templates")
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.getWorkOrderTemplates();
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("getWorkOrderTemplates (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/work-order-templates")
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.getWorkOrderTemplates();
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("getWorkOrderTemplates (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/work-order-templates")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.getWorkOrderTemplates();
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("getWorkOrderTemplates (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/work-order-templates")
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.getWorkOrderTemplates();
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
     test("getPlaces (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
@@ -12245,13 +12492,14 @@ describe("BetaApIsClient", () => {
                     },
                     notes: "Receiving 6-2",
                     placeTypes: [
-                        "Magnam est aperiam.",
-                        "Dolorum quia minima error voluptate accusamus.",
-                        "Velit expedita.",
+                        "Atque et corrupti iste distinctio aspernatur.",
+                        "Dolorum omnis qui consequatur odio.",
+                        "Et magnam est aperiam a.",
                     ],
                     radiusMeters: 150,
                     safetyEventExclusions: [
-                        "Ratione facilis suscipit officia autem id.",
+                        "Voluptates excepturi.",
+                        "Facilis suscipit officia autem id.",
                         "Aut ad est vel voluptatem unde.",
                         "Tempora necessitatibus explicabo.",
                     ],
@@ -12355,13 +12603,14 @@ describe("BetaApIsClient", () => {
                     },
                     notes: "Receiving 6-2",
                     placeTypes: [
-                        "Magnam est aperiam.",
-                        "Dolorum quia minima error voluptate accusamus.",
-                        "Velit expedita.",
+                        "Atque et corrupti iste distinctio aspernatur.",
+                        "Dolorum omnis qui consequatur odio.",
+                        "Et magnam est aperiam a.",
                     ],
                     radiusMeters: 150,
                     safetyEventExclusions: [
-                        "Ratione facilis suscipit officia autem id.",
+                        "Voluptates excepturi.",
+                        "Facilis suscipit officia autem id.",
                         "Aut ad est vel voluptatem unde.",
                         "Tempora necessitatibus explicabo.",
                     ],
@@ -12622,13 +12871,14 @@ describe("BetaApIsClient", () => {
                 },
                 notes: "Receiving 6-2",
                 placeTypes: [
-                    "Magnam est aperiam.",
-                    "Dolorum quia minima error voluptate accusamus.",
-                    "Velit expedita.",
+                    "Atque et corrupti iste distinctio aspernatur.",
+                    "Dolorum omnis qui consequatur odio.",
+                    "Et magnam est aperiam a.",
                 ],
                 radiusMeters: 150,
                 safetyEventExclusions: [
-                    "Ratione facilis suscipit officia autem id.",
+                    "Voluptates excepturi.",
+                    "Facilis suscipit officia autem id.",
                     "Aut ad est vel voluptatem unde.",
                     "Tempora necessitatibus explicabo.",
                 ],
@@ -12739,13 +12989,14 @@ describe("BetaApIsClient", () => {
                 },
                 notes: "Receiving 6-2",
                 placeTypes: [
-                    "Magnam est aperiam.",
-                    "Dolorum quia minima error voluptate accusamus.",
-                    "Velit expedita.",
+                    "Atque et corrupti iste distinctio aspernatur.",
+                    "Dolorum omnis qui consequatur odio.",
+                    "Et magnam est aperiam a.",
                 ],
                 radiusMeters: 150,
                 safetyEventExclusions: [
-                    "Ratione facilis suscipit officia autem id.",
+                    "Voluptates excepturi.",
+                    "Facilis suscipit officia autem id.",
                     "Aut ad est vel voluptatem unde.",
                     "Tempora necessitatibus explicabo.",
                 ],
@@ -13279,13 +13530,14 @@ describe("BetaApIsClient", () => {
                 },
                 notes: "Receiving 6-2",
                 placeTypes: [
-                    "Magnam est aperiam.",
-                    "Dolorum quia minima error voluptate accusamus.",
-                    "Velit expedita.",
+                    "Atque et corrupti iste distinctio aspernatur.",
+                    "Dolorum omnis qui consequatur odio.",
+                    "Et magnam est aperiam a.",
                 ],
                 radiusMeters: 150,
                 safetyEventExclusions: [
-                    "Ratione facilis suscipit officia autem id.",
+                    "Voluptates excepturi.",
+                    "Facilis suscipit officia autem id.",
                     "Aut ad est vel voluptatem unde.",
                     "Tempora necessitatibus explicabo.",
                 ],
@@ -13393,13 +13645,14 @@ describe("BetaApIsClient", () => {
                 },
                 notes: "Receiving 6-2",
                 placeTypes: [
-                    "Magnam est aperiam.",
-                    "Dolorum quia minima error voluptate accusamus.",
-                    "Velit expedita.",
+                    "Atque et corrupti iste distinctio aspernatur.",
+                    "Dolorum omnis qui consequatur odio.",
+                    "Et magnam est aperiam a.",
                 ],
                 radiusMeters: 150,
                 safetyEventExclusions: [
-                    "Ratione facilis suscipit officia autem id.",
+                    "Voluptates excepturi.",
+                    "Facilis suscipit officia autem id.",
                     "Aut ad est vel voluptatem unde.",
                     "Tempora necessitatibus explicabo.",
                 ],
@@ -20538,8 +20791,7 @@ describe("BetaApIsClient", () => {
                 rows: [
                     [{ key: "value" }, { key: "value" }, { key: "value" }, { key: "value" }],
                     [{ key: "value" }, { key: "value" }, { key: "value" }, { key: "value" }],
-                    [{ key: "value" }, { key: "value" }, { key: "value" }, { key: "value" }],
-                    [{ key: "value" }, { key: "value" }, { key: "value" }, { key: "value" }],
+                    [{ key: "value" }, { key: "value" }, { key: "value" }],
                 ],
                 status: "complete",
             },
@@ -20588,23 +20840,6 @@ describe("BetaApIsClient", () => {
                         },
                     ],
                     [
-                        {
-                            key: "value",
-                        },
-                        {
-                            key: "value",
-                        },
-                        {
-                            key: "value",
-                        },
-                        {
-                            key: "value",
-                        },
-                    ],
-                    [
-                        {
-                            key: "value",
-                        },
                         {
                             key: "value",
                         },
@@ -23862,6 +24097,7 @@ describe("BetaApIsClient", () => {
                 "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
                 "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
                 "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
+                "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
             ],
         };
         const rawResponseBody = {
@@ -23879,6 +24115,7 @@ describe("BetaApIsClient", () => {
 
         const response = await client.betaApIs.patchSafetyEventsV2Batch({
             safetyEventIds: [
+                "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
                 "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
                 "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
                 "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",

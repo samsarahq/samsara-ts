@@ -821,8 +821,8 @@ describe("SafetyClient", () => {
                         },
                     ],
                     speedingMetadata: {
-                        maxSpeedKilometersPerHour: 50665635277217440,
-                        postedSpeedLimitKilometersPerHour: 5962481254916001000,
+                        maxSpeedKilometersPerHour: 4627857221895321000,
+                        postedSpeedLimitKilometersPerHour: 3960151592680576000,
                     },
                     startMs: "2023-01-27T07:01:25Z",
                     tripEndTime: "2023-01-27T07:06:25Z",
@@ -910,8 +910,8 @@ describe("SafetyClient", () => {
                         },
                     ],
                     speedingMetadata: {
-                        maxSpeedKilometersPerHour: 50665635277217440,
-                        postedSpeedLimitKilometersPerHour: 5962481254916001000,
+                        maxSpeedKilometersPerHour: 4627857221895321000,
+                        postedSpeedLimitKilometersPerHour: 3960151592680576000,
                     },
                     startMs: "2023-01-27T07:01:25Z",
                     tripEndTime: "2023-01-27T07:06:25Z",

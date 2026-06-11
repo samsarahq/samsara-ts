@@ -44,6 +44,7 @@ export type { GetRidershipPassengerRequest } from "./GetRidershipPassengerReques
 export type { GetRidershipRouteSetupRequest } from "./GetRidershipRouteSetupRequest.js";
 export type { GetVoiceSessionsRequest } from "./GetVoiceSessionsRequest.js";
 export type { GetVoiceSessionsStreamRequest } from "./GetVoiceSessionsStreamRequest.js";
+export type { GetWorkOrderTemplatesRequest } from "./GetWorkOrderTemplatesRequest.js";
 export type { HosDailyLogsUpdateShippingDocsRequestBody } from "./HosDailyLogsUpdateShippingDocsRequestBody.js";
 export type { JobsCreateJobRequestBody } from "./JobsCreateJobRequestBody.js";
 export type { JobsPatchJobRequestBody } from "./JobsPatchJobRequestBody.js";

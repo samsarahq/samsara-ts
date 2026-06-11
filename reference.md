@@ -3474,7 +3474,7 @@ await client.betaApIs.deleteHubRouteTemplate({
 <dl>
 <dd>
 
-Gets work order templates by id. Ids that do not resolve to a template (e.g. deleted) are omitted from the response.
+Gets work order templates. Optionally filter to specific template ids; ids that do not resolve to a template (e.g. deleted) are omitted from the response.
 
  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
 

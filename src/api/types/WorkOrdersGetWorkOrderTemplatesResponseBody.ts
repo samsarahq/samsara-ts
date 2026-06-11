@@ -5,4 +5,5 @@ import type * as Samsara from "../index.js";
 export interface WorkOrdersGetWorkOrderTemplatesResponseBody {
     /** Work order templates. */
     data: Samsara.WorkOrderTemplateObjectResponseBody[];
+    pagination: Samsara.GoaPaginationResponseResponseBody;
 }

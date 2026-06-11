@@ -4647,7 +4647,7 @@ export class BetaApIsClient {
     }
 
     /**
-     * Gets work order templates by id. Ids that do not resolve to a template (e.g. deleted) are omitted from the response.
+     * Gets work order templates. Optionally filter to specific template ids; ids that do not resolve to a template (e.g. deleted) are omitted from the response.
      *
      *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
      *
@@ -4683,9 +4683,10 @@ export class BetaApIsClient {
         request: Samsara.GetWorkOrderTemplatesRequest = {},
         requestOptions?: BetaApIsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.WorkOrdersGetWorkOrderTemplatesResponseBody>> {
-        const { ids } = request;
+        const { ids, after } = request;
         const _queryParams: Record<string, unknown> = {
             ids,
+            after,
         };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(

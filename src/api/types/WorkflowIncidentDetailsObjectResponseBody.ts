@@ -35,6 +35,7 @@ export interface WorkflowIncidentDetailsObjectResponseBody {
     geofenceExit?: Samsara.WorkflowGeofenceEventResponseObjectResponseBody | undefined;
     gpsSignalLoss?: Samsara.GpsSignalLossResponseBody | undefined;
     harshEvent?: Samsara.HarshEventDataResponseBody | undefined;
+    hosDutyStatus?: Samsara.HosDutyStatusDataResponseBody | undefined;
     hosViolation?: Samsara.HosViolationDataResponseBody | undefined;
     inactivity?: Samsara.InactivityResponseBody | undefined;
     insideGeofence?: Samsara.InsideGeofenceDataResponseBody | undefined;

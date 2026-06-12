@@ -1658,6 +1658,7 @@ describe("AlertsClient", () => {
                                     vehicle: { id: "id", serial: "serial" },
                                 },
                                 harshEvent: { driver: { id: "id" }, vehicle: { id: "id", serial: "serial" } },
+                                hosDutyStatus: { driver: { id: "id" } },
                                 hosViolation: { driver: { id: "id" } },
                                 inactivity: { cameraStream: { id: "id" } },
                                 insideGeofence: {
@@ -2021,6 +2022,7 @@ describe("AlertsClient", () => {
                                     vehicle: { id: "id", serial: "serial" },
                                 },
                                 harshEvent: { driver: { id: "id" }, vehicle: { id: "id", serial: "serial" } },
+                                hosDutyStatus: { driver: { id: "id" } },
                                 hosViolation: { driver: { id: "id" } },
                                 inactivity: { cameraStream: { id: "id" } },
                                 insideGeofence: {
@@ -2394,6 +2396,7 @@ describe("AlertsClient", () => {
                                     vehicle: { id: "id", serial: "serial" },
                                 },
                                 harshEvent: { driver: { id: "id" }, vehicle: { id: "id", serial: "serial" } },
+                                hosDutyStatus: { driver: { id: "id" } },
                                 hosViolation: { driver: { id: "id" } },
                                 inactivity: { cameraStream: { id: "id" } },
                                 insideGeofence: {
@@ -2757,6 +2760,7 @@ describe("AlertsClient", () => {
                                     vehicle: { id: "id", serial: "serial" },
                                 },
                                 harshEvent: { driver: { id: "id" }, vehicle: { id: "id", serial: "serial" } },
+                                hosDutyStatus: { driver: { id: "id" } },
                                 hosViolation: { driver: { id: "id" } },
                                 inactivity: { cameraStream: { id: "id" } },
                                 insideGeofence: {
@@ -3318,6 +3322,11 @@ describe("AlertsClient", () => {
                                         serial: "serial",
                                     },
                                 },
+                                hosDutyStatus: {
+                                    driver: {
+                                        id: "id",
+                                    },
+                                },
                                 hosViolation: {
                                     driver: {
                                         id: "id",
@@ -4064,6 +4073,11 @@ describe("AlertsClient", () => {
                                     vehicle: {
                                         id: "id",
                                         serial: "serial",
+                                    },
+                                },
+                                hosDutyStatus: {
+                                    driver: {
+                                        id: "id",
                                     },
                                 },
                                 hosViolation: {
@@ -4824,6 +4838,11 @@ describe("AlertsClient", () => {
                                         serial: "serial",
                                     },
                                 },
+                                hosDutyStatus: {
+                                    driver: {
+                                        id: "id",
+                                    },
+                                },
                                 hosViolation: {
                                     driver: {
                                         id: "id",
@@ -5570,6 +5589,11 @@ describe("AlertsClient", () => {
                                     vehicle: {
                                         id: "id",
                                         serial: "serial",
+                                    },
+                                },
+                                hosDutyStatus: {
+                                    driver: {
+                                        id: "id",
                                     },
                                 },
                                 hosViolation: {

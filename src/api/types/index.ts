@@ -1353,6 +1353,7 @@ export * from "./HosDailyLogsUpdateShippingDocsTooManyRequestsErrorResponseBody.
 export * from "./HosDailyLogsUpdateShippingDocsUnauthorizedErrorResponseBody.js";
 export * from "./HosDrive.js";
 export * from "./HosDriversEldEventObjectResponseBody.js";
+export * from "./HosDutyStatusDataResponseBody.js";
 export * from "./HosEldEventLocationObjectResponseBody.js";
 export * from "./HosEldEventObjectResponseBody.js";
 export * from "./HosEldEventRemarkObjectResponseBody.js";

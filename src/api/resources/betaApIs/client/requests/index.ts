@@ -17,6 +17,7 @@ export type { FunctionsCreateFunctionRequestBody } from "./FunctionsCreateFuncti
 export type { FunctionsPatchFunctionRequestBody } from "./FunctionsPatchFunctionRequestBody.js";
 export type { FunctionsStartFunctionRunRequestBody } from "./FunctionsStartFunctionRunRequestBody.js";
 export type { FunctionsStorageCreateFunctionStorageFileRequestBody } from "./FunctionsStorageCreateFunctionStorageFileRequestBody.js";
+export type { GatewaysPairGatewaysRequestBody } from "./GatewaysPairGatewaysRequestBody.js";
 export type { GetAempEquipmentListRequest } from "./GetAempEquipmentListRequest.js";
 export type { GetAssetsInputsRequest } from "./GetAssetsInputsRequest.js";
 export type { GetDatasetsRequest } from "./GetDatasetsRequest.js";
@@ -55,9 +56,11 @@ export type { ListHubRouteTemplatesRequest } from "./ListHubRouteTemplatesReques
 export type { ListMaintenanceVendorsRequest } from "./ListMaintenanceVendorsRequest.js";
 export type { ListPlanOrdersRequest } from "./ListPlanOrdersRequest.js";
 export type { ListPreferredStationsRequest } from "./ListPreferredStationsRequest.js";
+export type { ListPreventiveMaintenanceSchedulesRequest } from "./ListPreventiveMaintenanceSchedulesRequest.js";
 export type { ListRidershipPassengersRequest } from "./ListRidershipPassengersRequest.js";
 export type { ListRidershipRouteSetupsRequest } from "./ListRidershipRouteSetupsRequest.js";
 export type { ListTachographLiveDataRequest } from "./ListTachographLiveDataRequest.js";
+export type { ListUpcomingPreventiveMaintenanceRequest } from "./ListUpcomingPreventiveMaintenanceRequest.js";
 export type { ListVendorCategoriesRequest } from "./ListVendorCategoriesRequest.js";
 export { PlacesPatchPlaceRequestBody } from "./PlacesPatchPlaceRequestBody.js";
 export { PlacesPostPlaceRequestBody } from "./PlacesPostPlaceRequestBody.js";

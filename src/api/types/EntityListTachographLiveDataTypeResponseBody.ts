@@ -4,21 +4,21 @@
  * TachographLiveData object
  */
 export interface EntityListTachographLiveDataTypeResponseBody {
-    /** The driver's cumulated driving time across the previous and current week, as defined by ISO 16844-7 (Tachograph - Digital data interface). */
+    /** The driver's cumulated driving time across the previous and current week, as defined by ISO 16844-7 (Tachograph - Digital data interface). Measured in minutes. */
     cumulatedDrivingTimePreviousAndCurrentWeekMinute?: number | undefined;
-    /** The driver's cumulative break time, as defined by ISO 16844-7 (Tachograph - Digital data interface). */
+    /** The driver's cumulative break time, as defined by ISO 16844-7 (Tachograph - Digital data interface). Measured in minutes. */
     cumulativeBreakTimeMinute?: number | undefined;
-    /** The driver's current daily driving time, as defined by ISO 16844-7 (Tachograph - Digital data interface). */
+    /** The driver's current daily driving time, as defined by ISO 16844-7 (Tachograph - Digital data interface). Measured in minutes. */
     currentDailyDrivingTimeMinute?: number | undefined;
-    /** The duration of the driver's currently selected activity, as defined by ISO 16844-7 (Tachograph - Digital data interface). */
+    /** The duration of the driver's currently selected activity, as defined by ISO 16844-7 (Tachograph - Digital data interface). Measured in minutes. */
     currentDurationOfSelectedActivityMinute?: number | undefined;
-    /** The driver's current weekly driving time, as defined by ISO 16844-7 (Tachograph - Digital data interface). */
+    /** The driver's current weekly driving time, as defined by ISO 16844-7 (Tachograph - Digital data interface). Measured in minutes. */
     currentWeeklyDrivingTimeMinute?: number | undefined;
     /** Samsara ID for the driver. */
     driverId?: string | undefined;
-    /** The expected duration of the driver's next break or rest period, as defined by ISO 16844-7 (Tachograph - Digital data interface). */
+    /** The expected duration of the driver's next break or rest period, as defined by ISO 16844-7 (Tachograph - Digital data interface). Measured in minutes. */
     durationOfNextBreakRestMinute?: number | undefined;
-    /** The expected duration of the driver's next driving period, as defined by ISO 16844-7 (Tachograph - Digital data interface). */
+    /** The expected duration of the driver's next driving period, as defined by ISO 16844-7 (Tachograph - Digital data interface). Measured in minutes. */
     durationOfNextDrivingPeriodMinute?: number | undefined;
     /** The timestamp marking the end of the driver's last daily rest period, as defined by ISO 16844-7 (Tachograph - Digital data interface). */
     endOfLastDailyRestPeriod?: string | undefined;
@@ -26,41 +26,41 @@ export interface EntityListTachographLiveDataTypeResponseBody {
     endOfLastWeeklyRestPeriod?: string | undefined;
     /** The timestamp when the tachograph reading was measured. */
     happenedAtTime?: string | undefined;
-    /** The maximum allowed daily driving time for the driver, as defined by ISO 16844-7 (Tachograph - Digital data interface). */
+    /** The maximum allowed daily driving time for the driver, as defined by ISO 16844-7 (Tachograph - Digital data interface). Measured in minutes. */
     maximumDailyDrivingTimeMinute?: number | undefined;
-    /** The minimum required daily rest duration for the driver, as defined by ISO 16844-7 (Tachograph - Digital data interface). */
+    /** The minimum required daily rest duration for the driver, as defined by ISO 16844-7 (Tachograph - Digital data interface). Measured in minutes. */
     minimumDailyRestMinute?: number | undefined;
-    /** The minimum required weekly rest duration for the driver, as defined by ISO 16844-7 (Tachograph - Digital data interface). */
+    /** The minimum required weekly rest duration for the driver, as defined by ISO 16844-7 (Tachograph - Digital data interface). Measured in minutes. */
     minimumWeeklyRestMinute?: number | undefined;
     /** The number of times the driver has exceeded the 9-hour daily driving time limit, as defined by ISO 16844-7 (Tachograph - Digital data interface). */
     numberOfTimes9hDailyDrivingTimesExceeded?: number | undefined;
     /** The number of reduced daily rest periods the driver has used, as defined by ISO 16844-7 (Tachograph - Digital data interface). */
     numberOfUsedReducedDailyRestPeriods?: number | undefined;
-    /** Open rest compensation owed from the second week before last, as defined by ISO 16844-7 (Tachograph - Digital data interface). */
+    /** Open rest compensation owed from the second week before last, as defined by ISO 16844-7 (Tachograph - Digital data interface). Measured in minutes. */
     openCompensationInSecondWeekBeforeLastMinute?: number | undefined;
-    /** Open rest compensation owed from the last week, as defined by ISO 16844-7 (Tachograph - Digital data interface). */
+    /** Open rest compensation owed from the last week, as defined by ISO 16844-7 (Tachograph - Digital data interface). Measured in minutes. */
     openCompensationInTheLastWeekMinute?: number | undefined;
-    /** Open rest compensation owed from the week before last, as defined by ISO 16844-7 (Tachograph - Digital data interface). */
+    /** Open rest compensation owed from the week before last, as defined by ISO 16844-7 (Tachograph - Digital data interface). Measured in minutes. */
     openCompensationInWeekBeforeLastMinute?: number | undefined;
-    /** The driver's remaining driving time across the current two-week period, as defined by ISO 16844-7 (Tachograph - Digital data interface). */
+    /** The driver's remaining driving time across the current two-week period, as defined by ISO 16844-7 (Tachograph - Digital data interface). Measured in minutes. */
     remaining2WeeksDrivingTimeMinute?: number | undefined;
-    /** The driver's remaining current continuous driving time before a break is required, as defined by ISO 16844-7 (Tachograph - Digital data interface). */
+    /** The driver's remaining current continuous driving time before a break is required, as defined by ISO 16844-7 (Tachograph - Digital data interface). Measured in minutes. */
     remainingCurrentDrivingTimeMinute?: number | undefined;
-    /** The driver's remaining driving time for the current week, as defined by ISO 16844-7 (Tachograph - Digital data interface). */
+    /** The driver's remaining driving time for the current week, as defined by ISO 16844-7 (Tachograph - Digital data interface). Measured in minutes. */
     remainingDrivingTimeOfCurrentWeekMinute?: number | undefined;
-    /** The driver's remaining driving time on the current shift, as defined by ISO 16844-7 (Tachograph - Digital data interface). */
+    /** The driver's remaining driving time on the current shift, as defined by ISO 16844-7 (Tachograph - Digital data interface). Measured in minutes. */
     remainingDrivingTimeOnCurrentShiftMinute?: number | undefined;
-    /** Time remaining in the driver's current break or rest period, as defined by ISO 16844-7 (Tachograph - Digital data interface). */
+    /** Time remaining in the driver's current break or rest period, as defined by ISO 16844-7 (Tachograph - Digital data interface). Measured in minutes. */
     remainingTimeOfCurrentBreakRestMinute?: number | undefined;
-    /** Time remaining until the driver's next required break or rest period, as defined by ISO 16844-7 (Tachograph - Digital data interface). */
+    /** Time remaining until the driver's next required break or rest period, as defined by ISO 16844-7 (Tachograph - Digital data interface). Measured in minutes. */
     remainingTimeUntilNextBreakOrRestMinute?: number | undefined;
     /** The tachograph card number for the driver. */
     tachographCardNumber?: string | undefined;
-    /** Time remaining until the driver must begin a new daily rest period, as defined by ISO 16844-7 (Tachograph - Digital data interface). */
+    /** Time remaining until the driver must begin a new daily rest period, as defined by ISO 16844-7 (Tachograph - Digital data interface). Measured in minutes. */
     timeLeftUntilNewDailyRestPeriodMinute?: number | undefined;
-    /** Time remaining until the driver must begin a new weekly rest period, as defined by ISO 16844-7 (Tachograph - Digital data interface). */
+    /** Time remaining until the driver must begin a new weekly rest period, as defined by ISO 16844-7 (Tachograph - Digital data interface). Measured in minutes. */
     timeLeftUntilNewWeeklyRestPeriodMinute?: number | undefined;
-    /** Time remaining until the driver's next driving period can begin, as defined by ISO 16844-7 (Tachograph - Digital data interface). */
+    /** Time remaining until the driver's next driving period can begin, as defined by ISO 16844-7 (Tachograph - Digital data interface). Measured in minutes. */
     timeLeftUntilNextDrivingPeriodMinute?: number | undefined;
     /** Samsara ID for the vehicle associated with the live tachograph data. */
     vehicleId?: string | undefined;

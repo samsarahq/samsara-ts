@@ -11,7 +11,7 @@ export interface RoutesStopResponseObjectResponseBody {
     actualDistanceMeters?: number | undefined;
     address?: Samsara.GoaAddressTinyResponseResponseBody | undefined;
     /** Appointment windows for the stop. */
-    appointmentWindows?: Samsara.HosViolationDayObjectResponseBody[] | undefined;
+    appointmentWindows?: Samsara.RouteStopAppointmentWindowResponseBody[] | undefined;
     /** List of documents associated with the stop. */
     documents?: Samsara.GoaDocumentTinyResponseResponseBody[] | undefined;
     /** The time the stop became en-route, in RFC 3339 format. */

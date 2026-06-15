@@ -6,7 +6,7 @@ export interface CreateRoutesStopRequestObjectRequestBody {
     /** ID of the address. An address [externalId](https://developers.samsara.com/docs/external-ids#using-external-ids) can also be used interchangeably here. */
     addressId?: string | undefined;
     /** Appointment windows for the stop. */
-    appointmentWindows?: Samsara.HosViolationDayObjectRequestBody[] | undefined;
+    appointmentWindows?: Samsara.RouteStopAppointmentWindowRequestBody[] | undefined;
     /** A map of external ids */
     externalIds?: Record<string, string> | undefined;
     /** Name of the stop */

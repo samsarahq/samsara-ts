@@ -10737,6 +10737,432 @@ describe("BetaApIsClient", () => {
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 
+    test("pairGateways (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { pairs: [{ deviceSerial: "GFRV-43N-VGX", gatewaySerial: "GFRV-43N-VGX" }] };
+        const rawResponseBody = {
+            data: [
+                {
+                    device: { id: "8393848111", name: "Truck 17", serial: "ABCD-123-EFG", type: "vehicle" },
+                    displacedGateway: { id: "8393848111", model: "AG15", serial: "GFRV-43N-VGX" },
+                    gateway: { id: "8393848111", model: "AG15", serial: "GFRV-43N-VGX" },
+                    previousDevice: { id: "8393848111", name: "Truck 17", serial: "ABCD-123-EFG", type: "vehicle" },
+                },
+            ],
+        };
+        server
+            .mockEndpoint()
+            .post("/gateways/pair")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.betaApIs.pairGateways({
+            pairs: [
+                {
+                    deviceSerial: "GFRV-43N-VGX",
+                    gatewaySerial: "GFRV-43N-VGX",
+                },
+            ],
+        });
+        expect(response).toEqual({
+            data: [
+                {
+                    device: {
+                        id: "8393848111",
+                        name: "Truck 17",
+                        serial: "ABCD-123-EFG",
+                        type: "vehicle",
+                    },
+                    displacedGateway: {
+                        id: "8393848111",
+                        model: "AG15",
+                        serial: "GFRV-43N-VGX",
+                    },
+                    gateway: {
+                        id: "8393848111",
+                        model: "AG15",
+                        serial: "GFRV-43N-VGX",
+                    },
+                    previousDevice: {
+                        id: "8393848111",
+                        name: "Truck 17",
+                        serial: "ABCD-123-EFG",
+                        type: "vehicle",
+                    },
+                },
+            ],
+        });
+    });
+
+    test("pairGateways (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            pairs: [
+                { deviceSerial: "deviceSerial", gatewaySerial: "gatewaySerial" },
+                { deviceSerial: "deviceSerial", gatewaySerial: "gatewaySerial" },
+            ],
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/gateways/pair")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.pairGateways({
+                pairs: [
+                    {
+                        deviceSerial: "deviceSerial",
+                        gatewaySerial: "gatewaySerial",
+                    },
+                    {
+                        deviceSerial: "deviceSerial",
+                        gatewaySerial: "gatewaySerial",
+                    },
+                ],
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("pairGateways (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            pairs: [
+                { deviceSerial: "deviceSerial", gatewaySerial: "gatewaySerial" },
+                { deviceSerial: "deviceSerial", gatewaySerial: "gatewaySerial" },
+            ],
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/gateways/pair")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.pairGateways({
+                pairs: [
+                    {
+                        deviceSerial: "deviceSerial",
+                        gatewaySerial: "gatewaySerial",
+                    },
+                    {
+                        deviceSerial: "deviceSerial",
+                        gatewaySerial: "gatewaySerial",
+                    },
+                ],
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("pairGateways (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            pairs: [
+                { deviceSerial: "deviceSerial", gatewaySerial: "gatewaySerial" },
+                { deviceSerial: "deviceSerial", gatewaySerial: "gatewaySerial" },
+            ],
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/gateways/pair")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.pairGateways({
+                pairs: [
+                    {
+                        deviceSerial: "deviceSerial",
+                        gatewaySerial: "gatewaySerial",
+                    },
+                    {
+                        deviceSerial: "deviceSerial",
+                        gatewaySerial: "gatewaySerial",
+                    },
+                ],
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("pairGateways (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            pairs: [
+                { deviceSerial: "deviceSerial", gatewaySerial: "gatewaySerial" },
+                { deviceSerial: "deviceSerial", gatewaySerial: "gatewaySerial" },
+            ],
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/gateways/pair")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.pairGateways({
+                pairs: [
+                    {
+                        deviceSerial: "deviceSerial",
+                        gatewaySerial: "gatewaySerial",
+                    },
+                    {
+                        deviceSerial: "deviceSerial",
+                        gatewaySerial: "gatewaySerial",
+                    },
+                ],
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("pairGateways (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            pairs: [
+                { deviceSerial: "deviceSerial", gatewaySerial: "gatewaySerial" },
+                { deviceSerial: "deviceSerial", gatewaySerial: "gatewaySerial" },
+            ],
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/gateways/pair")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.pairGateways({
+                pairs: [
+                    {
+                        deviceSerial: "deviceSerial",
+                        gatewaySerial: "gatewaySerial",
+                    },
+                    {
+                        deviceSerial: "deviceSerial",
+                        gatewaySerial: "gatewaySerial",
+                    },
+                ],
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("pairGateways (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            pairs: [
+                { deviceSerial: "deviceSerial", gatewaySerial: "gatewaySerial" },
+                { deviceSerial: "deviceSerial", gatewaySerial: "gatewaySerial" },
+            ],
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/gateways/pair")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.pairGateways({
+                pairs: [
+                    {
+                        deviceSerial: "deviceSerial",
+                        gatewaySerial: "gatewaySerial",
+                    },
+                    {
+                        deviceSerial: "deviceSerial",
+                        gatewaySerial: "gatewaySerial",
+                    },
+                ],
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("pairGateways (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            pairs: [
+                { deviceSerial: "deviceSerial", gatewaySerial: "gatewaySerial" },
+                { deviceSerial: "deviceSerial", gatewaySerial: "gatewaySerial" },
+            ],
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/gateways/pair")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.pairGateways({
+                pairs: [
+                    {
+                        deviceSerial: "deviceSerial",
+                        gatewaySerial: "gatewaySerial",
+                    },
+                    {
+                        deviceSerial: "deviceSerial",
+                        gatewaySerial: "gatewaySerial",
+                    },
+                ],
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("pairGateways (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            pairs: [
+                { deviceSerial: "deviceSerial", gatewaySerial: "gatewaySerial" },
+                { deviceSerial: "deviceSerial", gatewaySerial: "gatewaySerial" },
+            ],
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/gateways/pair")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.pairGateways({
+                pairs: [
+                    {
+                        deviceSerial: "deviceSerial",
+                        gatewaySerial: "gatewaySerial",
+                    },
+                    {
+                        deviceSerial: "deviceSerial",
+                        gatewaySerial: "gatewaySerial",
+                    },
+                ],
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("pairGateways (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            pairs: [
+                { deviceSerial: "deviceSerial", gatewaySerial: "gatewaySerial" },
+                { deviceSerial: "deviceSerial", gatewaySerial: "gatewaySerial" },
+            ],
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/gateways/pair")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.pairGateways({
+                pairs: [
+                    {
+                        deviceSerial: "deviceSerial",
+                        gatewaySerial: "gatewaySerial",
+                    },
+                    {
+                        deviceSerial: "deviceSerial",
+                        gatewaySerial: "gatewaySerial",
+                    },
+                ],
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
     test("updateShippingDocs (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
@@ -12154,6 +12580,550 @@ describe("BetaApIsClient", () => {
             return await client.betaApIs.deleteHubRouteTemplate({
                 id: "id",
             });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("listPreventiveMaintenanceSchedules (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = {
+            data: [
+                {
+                    dateIntervalMs: 12345,
+                    description: "12345",
+                    distanceInterval: 12345,
+                    engineHourInterval: 12345,
+                    id: "12345",
+                    linkedSchedules: [{ id: "281474976710656" }],
+                    title: "12345",
+                    workOrderTemplateId: "12345",
+                },
+            ],
+            pagination: { endCursor: "MjkY", hasNextPage: true },
+        };
+        server
+            .mockEndpoint()
+            .get("/maintenance/preventive/schedules")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.betaApIs.listPreventiveMaintenanceSchedules();
+        expect(response).toEqual({
+            data: [
+                {
+                    dateIntervalMs: 12345,
+                    description: "12345",
+                    distanceInterval: 12345,
+                    engineHourInterval: 12345,
+                    id: "12345",
+                    linkedSchedules: [
+                        {
+                            id: "281474976710656",
+                        },
+                    ],
+                    title: "12345",
+                    workOrderTemplateId: "12345",
+                },
+            ],
+            pagination: {
+                endCursor: "MjkY",
+                hasNextPage: true,
+            },
+        });
+    });
+
+    test("listPreventiveMaintenanceSchedules (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/preventive/schedules")
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listPreventiveMaintenanceSchedules();
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("listPreventiveMaintenanceSchedules (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/preventive/schedules")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listPreventiveMaintenanceSchedules();
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("listPreventiveMaintenanceSchedules (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/preventive/schedules")
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listPreventiveMaintenanceSchedules();
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("listPreventiveMaintenanceSchedules (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/preventive/schedules")
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listPreventiveMaintenanceSchedules();
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("listPreventiveMaintenanceSchedules (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/preventive/schedules")
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listPreventiveMaintenanceSchedules();
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("listPreventiveMaintenanceSchedules (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/preventive/schedules")
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listPreventiveMaintenanceSchedules();
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("listPreventiveMaintenanceSchedules (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/preventive/schedules")
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listPreventiveMaintenanceSchedules();
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("listPreventiveMaintenanceSchedules (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/preventive/schedules")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listPreventiveMaintenanceSchedules();
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("listPreventiveMaintenanceSchedules (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/preventive/schedules")
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listPreventiveMaintenanceSchedules();
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("listUpcomingPreventiveMaintenance (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = {
+            data: [
+                {
+                    asset: { id: "281474976710656" },
+                    currentEngineHours: 12345,
+                    currentOdometer: 12345,
+                    dueInDays: 12345,
+                    dueInEngineHours: 12345,
+                    dueInOdometer: 12345,
+                    lastResolvedAt: "2019-06-13T19:08:25Z",
+                    lastResolvedAtEngineHours: 12345,
+                    lastResolvedAtOdometer: 12345,
+                    nextEngineHours: 12345,
+                    nextOdometer: 12345,
+                    nextTime: "2019-06-13T19:08:25Z",
+                    preventativeMaintenanceSchedule: { id: "281474976710656" },
+                    status: "12345",
+                    workOrder: { id: "281474976710656" },
+                },
+            ],
+            pagination: { endCursor: "MjkY", hasNextPage: true },
+        };
+        server
+            .mockEndpoint()
+            .get("/maintenance/preventive/upcoming")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.betaApIs.listUpcomingPreventiveMaintenance();
+        expect(response).toEqual({
+            data: [
+                {
+                    asset: {
+                        id: "281474976710656",
+                    },
+                    currentEngineHours: 12345,
+                    currentOdometer: 12345,
+                    dueInDays: 12345,
+                    dueInEngineHours: 12345,
+                    dueInOdometer: 12345,
+                    lastResolvedAt: "2019-06-13T19:08:25Z",
+                    lastResolvedAtEngineHours: 12345,
+                    lastResolvedAtOdometer: 12345,
+                    nextEngineHours: 12345,
+                    nextOdometer: 12345,
+                    nextTime: "2019-06-13T19:08:25Z",
+                    preventativeMaintenanceSchedule: {
+                        id: "281474976710656",
+                    },
+                    status: "12345",
+                    workOrder: {
+                        id: "281474976710656",
+                    },
+                },
+            ],
+            pagination: {
+                endCursor: "MjkY",
+                hasNextPage: true,
+            },
+        });
+    });
+
+    test("listUpcomingPreventiveMaintenance (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/preventive/upcoming")
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listUpcomingPreventiveMaintenance();
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("listUpcomingPreventiveMaintenance (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/preventive/upcoming")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listUpcomingPreventiveMaintenance();
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("listUpcomingPreventiveMaintenance (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/preventive/upcoming")
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listUpcomingPreventiveMaintenance();
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("listUpcomingPreventiveMaintenance (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/preventive/upcoming")
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listUpcomingPreventiveMaintenance();
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("listUpcomingPreventiveMaintenance (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/preventive/upcoming")
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listUpcomingPreventiveMaintenance();
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("listUpcomingPreventiveMaintenance (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/preventive/upcoming")
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listUpcomingPreventiveMaintenance();
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("listUpcomingPreventiveMaintenance (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/preventive/upcoming")
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listUpcomingPreventiveMaintenance();
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("listUpcomingPreventiveMaintenance (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/preventive/upcoming")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listUpcomingPreventiveMaintenance();
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("listUpcomingPreventiveMaintenance (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/preventive/upcoming")
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listUpcomingPreventiveMaintenance();
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 

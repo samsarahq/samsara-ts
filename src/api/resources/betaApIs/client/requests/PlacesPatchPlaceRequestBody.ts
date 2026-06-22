@@ -17,29 +17,22 @@ export interface PlacesPatchPlaceRequestBody {
     cameraRecordingModeType?: PlacesPatchPlaceRequestBody.CameraRecordingModeType;
     /** When present, replaces external ids for the place. */
     externalIds?: PlacesPatchPlaceRequestBody.ExternalIds;
-    /** Polygon vertices; at least three when switching to polygon mode. */
-    geofence?: Samsara.GeofenceVertexInputRequestBody[];
-    hubLocations?: Samsara.PatchPlaceHubLocationsBodyRequestBody;
+    geofence?: Samsara.PlaceGeofenceInputRequestBody;
     /** When present, replaces IFTA exemption types for the place. */
     iftaExemptionTypes?: string[];
     /** When true, show addresses inside the geofence on the map. */
     isShowAddressesEnabled?: boolean;
-    /** Center latitude when switching to or editing a circle geofence. */
-    latitude?: number;
-    /** Center longitude when switching to or editing a circle geofence. */
-    longitude?: number;
     /** Place name. */
     name?: string;
     navigation?: Samsara.PostPlaceNavigationInputRequestBody;
     /** Notes. */
     notes?: string;
-    /** When present, replaces address-type categories via address metadata. Metadata-derived types (hubLocation, navigation, iftaExemption) must match hubLocations, navigation, and IFTA metadata after this request; conflicting combinations return InvalidArgument. */
+    /** When present, replaces address-type categories via address metadata. Metadata-derived types (hubLocation, navigation, iftaExemption) must match routing, navigation, and IFTA metadata after this request; conflicting combinations return InvalidArgument. */
     placeTypes?: string[];
-    /** Circle radius in meters; use with latitude and longitude. */
-    radiusMeters?: number;
+    routing?: Samsara.PlaceRoutingPatchInputRequestBody;
     /** When present, replaces safety event exclusions for the place. */
     safetyEventExclusions?: string[];
-    streetView?: Samsara.PlaceStreetViewResponseRequestBody;
+    streetView?: Samsara.PlaceStreetViewInputRequestBody;
     /** When present, replaces all tag associations for the place. */
     tags?: Samsara.PostPlaceTagRefRequestBody[];
 }

@@ -4,16 +4,16 @@
  * Street view settings for a place.
  */
 export interface PlaceStreetViewResponseResponseBody {
-    /** Camera heading. */
-    heading?: number | undefined;
+    /** Camera heading clockwise from true north; 0 ≤ headingDegrees < 360 on write, normalized mod 360 on GET. */
+    headingDegrees?: number | undefined;
     /** Whether street view is enabled. */
     isEnabled: boolean;
     /** Latitude. */
     latitude?: number | undefined;
     /** Longitude. */
     longitude?: number | undefined;
-    /** Camera pitch. */
-    pitch?: number | undefined;
+    /** Camera pitch relative to the Street View horizon; −90 ≤ pitchDegrees ≤ 90. */
+    pitchDegrees?: number | undefined;
     /** Zoom level. */
     zoom?: number | undefined;
 }

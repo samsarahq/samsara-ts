@@ -907,7 +907,7 @@ export class BetaApIsClient {
      *         id: 1000000,
      *         relayStates: [{
      *                 id: "relay1",
-     *                 isOpen: true
+     *                 isOpen: false
      *             }]
      *     })
      */
@@ -5233,6 +5233,7 @@ export class BetaApIsClient {
      * @example
      *     await client.betaApIs.postPlace({
      *         address: "123 Main St, Oakland, CA",
+     *         geofence: {},
      *         name: "Oakland Yard"
      *     })
      */
@@ -7041,19 +7042,14 @@ export class BetaApIsClient {
      * * `engineRpm`
      * * `engineState` (values: off | running | idling)
      * * `faultCodes`
-     * * `faultCodesJ1939`
-     * * `faultCodesOBDII`
      * * `fuelLevelPerc`
      * * `gps`
-     * * `location`
      * * `odometerEcu`
      * * `oilPressure`
      *
      * </details>
      *
-     * **Note:** Use the `GET /readings/definitions` endpoint and check the `ingestionEnabled` field for the authoritative, up-to-date set of ingestible readings for your organization.
-     *
-     * When ingesting location data, the readingID 'location' must be used and the value object must contain at least the following fields: 'speed', 'latitude', 'longitude'.
+     * When ingesting GPS location data, use the readingID 'gps'. The value object must contain the following fields: 'latitude' (decimal degrees), 'longitude' (decimal degrees), and 'speed' (meters per second).
      *
      * Related guide: [Readings](https://developers.samsara.com/docs/readings).
      *
@@ -8778,7 +8774,7 @@ export class BetaApIsClient {
      *
      * @example
      *     await client.betaApIs.patchSafetyEventsV2Batch({
-     *         safetyEventIds: ["bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590"]
+     *         safetyEventIds: ["bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590"]
      *     })
      */
     public patchSafetyEventsV2Batch(

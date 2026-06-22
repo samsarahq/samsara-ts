@@ -6,6 +6,7 @@ import type * as Samsara from "../../../../index.js";
  * @example
  *     {
  *         address: "123 Main St, Oakland, CA",
+ *         geofence: {},
  *         name: "Oakland Yard"
  *     }
  */
@@ -16,30 +17,23 @@ export interface PlacesPostPlaceRequestBody {
     cameraRecordingModeType?: PlacesPostPlaceRequestBody.CameraRecordingModeType;
     /** External identifiers. */
     externalIds?: PlacesPostPlaceRequestBody.ExternalIds;
-    /** Polygon vertices; at least three when using polygon mode (omit entirely when using latitude, longitude, and radiusMeters for a circle). */
-    geofence?: Samsara.GeofenceVertexInputRequestBody[];
-    /** Initial route-planning hub rows for the new place. Each entry requires hubId. Omit hubLocationId to let the server assign a row UUID, or set hubLocationId to pin the UUID for idempotent creates. */
-    hubLocations?: Samsara.PatchPlaceHubLocationUpsertBodyRequestBody[];
+    geofence: Samsara.PlaceGeofenceInputRequestBody;
     /** IFTA exemption types for this place. */
     iftaExemptionTypes?: string[];
     /** When true, show addresses inside the geofence on the map. */
     isShowAddressesEnabled?: boolean;
-    /** Center latitude when using a circle geofence with radiusMeters. */
-    latitude?: number;
-    /** Center longitude when using a circle geofence with radiusMeters. */
-    longitude?: number;
     /** Place name. */
     name: string;
     navigation?: Samsara.PostPlaceNavigationInputRequestBody;
     /** Optional notes. */
     notes?: string;
-    /** When present, replaces address-type categories via address metadata. Metadata-derived types (hubLocation, navigation, iftaExemption) must match hubLocations, navigation, and existing IFTA metadata in the same request; conflicting combinations return InvalidArgument. */
+    /** When present, replaces address-type categories via address metadata. Metadata-derived types (hubLocation, navigation, iftaExemption) must match routing, navigation, and existing IFTA metadata in the same request; conflicting combinations return InvalidArgument. */
     placeTypes?: string[];
-    /** Circle radius in meters; requires latitude and longitude. Must be at least 1 when set. */
-    radiusMeters?: number;
+    /** Initial route-planning rows for the new place. Each entry requires hubId; (placeId, hubId) must be unique. */
+    routing?: Samsara.PlaceRoutingInputRequestBody[];
     /** Safety event types excluded at this place. */
     safetyEventExclusions?: string[];
-    streetView?: Samsara.PlaceStreetViewResponseRequestBody;
+    streetView?: Samsara.PlaceStreetViewInputRequestBody;
     /** Tags to associate. */
     tags?: Samsara.PostPlaceTagRefRequestBody[];
 }

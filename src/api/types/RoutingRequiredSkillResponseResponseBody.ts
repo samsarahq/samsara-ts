@@ -3,7 +3,9 @@
 /**
  * Required planner skill reference.
  */
-export interface HubLocationRequiredSkillResponseResponseBody {
+export interface RoutingRequiredSkillResponseResponseBody {
     /** Planner skill UUID. */
     id: string;
+    /** Skill display name when resolved on GET. */
+    name?: string | undefined;
 }

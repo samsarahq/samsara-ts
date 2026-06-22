@@ -2382,7 +2382,7 @@ describe("BetaApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { relayStates: [{ id: "relay1", isOpen: true }] };
+        const rawRequestBody = { relayStates: [{ id: "relay1", isOpen: false }] };
 
         server
             .mockEndpoint()
@@ -2397,7 +2397,7 @@ describe("BetaApIsClient", () => {
             relayStates: [
                 {
                     id: "relay1",
-                    isOpen: true,
+                    isOpen: false,
                 },
             ],
         });
@@ -6435,7 +6435,11 @@ describe("BetaApIsClient", () => {
             data: [
                 {
                     addressId: "281474993384538",
-                    categoryIds: ["a1b2c3d4-e5f6-7890-abcd-ef1234567890", "a1b2c3d4-e5f6-7890-abcd-ef1234567890"],
+                    categoryIds: [
+                        "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                        "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                        "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                    ],
                     externalIds: { key: "value" },
                     id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
                     servicesProvided: "Oil changes, tire rotations, brake services",
@@ -6457,7 +6461,11 @@ describe("BetaApIsClient", () => {
             data: [
                 {
                     addressId: "281474993384538",
-                    categoryIds: ["a1b2c3d4-e5f6-7890-abcd-ef1234567890", "a1b2c3d4-e5f6-7890-abcd-ef1234567890"],
+                    categoryIds: [
+                        "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                        "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                        "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                    ],
                     externalIds: {
                         key: "value",
                     },
@@ -13385,57 +13393,15 @@ describe("BetaApIsClient", () => {
                     address: "123 Main St",
                     cameraRecordingModeType: "inherit",
                     createdAtTime: "2019-06-13T19:08:25Z",
-                    geofence: [{ latitude: 37.7749, longitude: -122.4194 }],
-                    hubLocations: [
-                        {
-                            displayName: "North entrance",
-                            externalId: "store-A",
-                            hubId: "550e8400-e29b-41d4-a716-446655440003",
-                            hubLocationId: "550e8400-e29b-41d4-a716-446655440002",
-                            isDepot: false,
-                            isIgnoreOrderServiceTimeEnabled: false,
-                            locationPositionType: "first",
-                            locationPriority: 3,
-                            orderServiceTime: {
-                                capacityServiceTimes: [
-                                    {
-                                        capacityId: "550e8400-e29b-41d4-a716-446655440001",
-                                        serviceTimeSeconds: 60,
-                                        serviceTimeSecondsPerQuantityUnit: 0.5,
-                                    },
-                                ],
-                                fixedTimeSeconds: 120,
-                                modeType: "variable",
-                            },
-                            plannerNotes: "Zone A preferred",
-                            requiredSkills: [{ id: "550e8400-e29b-41d4-a716-446655440000" }],
-                            serviceTime: { additionalTimeMinutes: 5, isEnabled: true },
-                            serviceWindows: [
-                                {
-                                    days: [
-                                        "Harum fugiat ea cupiditate dignissimos.",
-                                        "Quae pariatur.",
-                                        "Non aut porro.",
-                                        "Ipsum eum eos doloribus omnis.",
-                                    ],
-                                    endTime: 57961,
-                                    startTime: 57600,
-                                },
-                            ],
-                            standardDriverInstructions: "Use lane 2",
-                        },
-                    ],
+                    geofence: {
+                        circle: { latitude: 37.7749, longitude: -122.4194, radiusMeters: 150 },
+                        polygon: { vertices: [{ latitude: 37.7749, longitude: -122.4194 }] },
+                        type: "circle",
+                    },
                     id: "12345",
-                    iftaExemptionTypes: [
-                        "Ut molestiae a.",
-                        "Qui possimus officiis quae.",
-                        "Ut sequi accusantium qui sequi rem quisquam.",
-                        "Omnis et.",
-                    ],
+                    iftaExemptionTypes: ["Error voluptate.", "Doloribus velit.", "Repellat placeat sit."],
                     isAutoDismissRolledStopsEnabled: false,
                     isShowAddressesEnabled: true,
-                    latitude: 37.7749,
-                    longitude: -122.4194,
                     name: "Oakland Yard",
                     navigation: {
                         locations: [
@@ -13450,22 +13416,52 @@ describe("BetaApIsClient", () => {
                     },
                     notes: "Receiving 6-2",
                     placeTypes: [
-                        "Magnam est aperiam.",
-                        "Dolorum quia minima error voluptate accusamus.",
-                        "Velit expedita.",
+                        "Eligendi in.",
+                        "Odit voluptatem sequi maiores.",
+                        "Sunt laborum voluptas quis quasi debitis dignissimos.",
+                        "Eum quae.",
                     ],
-                    radiusMeters: 150,
-                    safetyEventExclusions: [
-                        "Ratione facilis suscipit officia autem id.",
-                        "Aut ad est vel voluptatem unde.",
-                        "Tempora necessitatibus explicabo.",
+                    routing: [
+                        {
+                            hubId: "550e8400-e29b-41d4-a716-446655440003",
+                            isDepot: false,
+                            orderServiceTime: {
+                                capacityServiceTime: {
+                                    capacityId: "550e8400-e29b-41d4-a716-446655440001",
+                                    quantityUnitPerServiceTime: 0.5,
+                                    serviceTimeSeconds: 60,
+                                },
+                                isEnabled: true,
+                                modeType: "variable",
+                            },
+                            plannerNotes: "Zone A preferred",
+                            position: "first",
+                            priority: 3,
+                            requiredSkills: [{ id: "550e8400-e29b-41d4-a716-446655440000", name: "Refrigerated" }],
+                            routingExternalId: "store-A",
+                            serviceTime: { isEnabled: true, serviceTimeMinutes: 5 },
+                            serviceWindows: [
+                                {
+                                    days: [
+                                        "Sed dolorum hic.",
+                                        "Itaque assumenda possimus placeat.",
+                                        "Excepturi ratione facilis.",
+                                        "Officia autem id natus.",
+                                    ],
+                                    endTime: "17:00:01",
+                                    startTime: "09:00:00",
+                                },
+                            ],
+                            standardDriverInstructions: "Use lane 2",
+                        },
                     ],
+                    safetyEventExclusions: ["Iste distinctio aspernatur.", "Dolorum omnis qui consequatur odio."],
                     streetView: {
-                        heading: 90,
+                        headingDegrees: 90,
                         isEnabled: true,
                         latitude: 37.7749,
                         longitude: -122.4194,
-                        pitch: 0,
+                        pitchDegrees: 0,
                         zoom: 1,
                     },
                     tags: [{ id: "1001", name: "Yard", parentTagId: "500" }],
@@ -13483,69 +13479,26 @@ describe("BetaApIsClient", () => {
                     address: "123 Main St",
                     cameraRecordingModeType: "inherit",
                     createdAtTime: "2019-06-13T19:08:25Z",
-                    geofence: [
-                        {
+                    geofence: {
+                        circle: {
                             latitude: 37.7749,
                             longitude: -122.4194,
+                            radiusMeters: 150,
                         },
-                    ],
-                    hubLocations: [
-                        {
-                            displayName: "North entrance",
-                            externalId: "store-A",
-                            hubId: "550e8400-e29b-41d4-a716-446655440003",
-                            hubLocationId: "550e8400-e29b-41d4-a716-446655440002",
-                            isDepot: false,
-                            isIgnoreOrderServiceTimeEnabled: false,
-                            locationPositionType: "first",
-                            locationPriority: 3,
-                            orderServiceTime: {
-                                capacityServiceTimes: [
-                                    {
-                                        capacityId: "550e8400-e29b-41d4-a716-446655440001",
-                                        serviceTimeSeconds: 60,
-                                        serviceTimeSecondsPerQuantityUnit: 0.5,
-                                    },
-                                ],
-                                fixedTimeSeconds: 120,
-                                modeType: "variable",
-                            },
-                            plannerNotes: "Zone A preferred",
-                            requiredSkills: [
+                        polygon: {
+                            vertices: [
                                 {
-                                    id: "550e8400-e29b-41d4-a716-446655440000",
+                                    latitude: 37.7749,
+                                    longitude: -122.4194,
                                 },
                             ],
-                            serviceTime: {
-                                additionalTimeMinutes: 5,
-                                isEnabled: true,
-                            },
-                            serviceWindows: [
-                                {
-                                    days: [
-                                        "Harum fugiat ea cupiditate dignissimos.",
-                                        "Quae pariatur.",
-                                        "Non aut porro.",
-                                        "Ipsum eum eos doloribus omnis.",
-                                    ],
-                                    endTime: 57961,
-                                    startTime: 57600,
-                                },
-                            ],
-                            standardDriverInstructions: "Use lane 2",
                         },
-                    ],
+                        type: "circle",
+                    },
                     id: "12345",
-                    iftaExemptionTypes: [
-                        "Ut molestiae a.",
-                        "Qui possimus officiis quae.",
-                        "Ut sequi accusantium qui sequi rem quisquam.",
-                        "Omnis et.",
-                    ],
+                    iftaExemptionTypes: ["Error voluptate.", "Doloribus velit.", "Repellat placeat sit."],
                     isAutoDismissRolledStopsEnabled: false,
                     isShowAddressesEnabled: true,
-                    latitude: 37.7749,
-                    longitude: -122.4194,
                     name: "Oakland Yard",
                     navigation: {
                         locations: [
@@ -13560,22 +13513,60 @@ describe("BetaApIsClient", () => {
                     },
                     notes: "Receiving 6-2",
                     placeTypes: [
-                        "Magnam est aperiam.",
-                        "Dolorum quia minima error voluptate accusamus.",
-                        "Velit expedita.",
+                        "Eligendi in.",
+                        "Odit voluptatem sequi maiores.",
+                        "Sunt laborum voluptas quis quasi debitis dignissimos.",
+                        "Eum quae.",
                     ],
-                    radiusMeters: 150,
-                    safetyEventExclusions: [
-                        "Ratione facilis suscipit officia autem id.",
-                        "Aut ad est vel voluptatem unde.",
-                        "Tempora necessitatibus explicabo.",
+                    routing: [
+                        {
+                            hubId: "550e8400-e29b-41d4-a716-446655440003",
+                            isDepot: false,
+                            orderServiceTime: {
+                                capacityServiceTime: {
+                                    capacityId: "550e8400-e29b-41d4-a716-446655440001",
+                                    quantityUnitPerServiceTime: 0.5,
+                                    serviceTimeSeconds: 60,
+                                },
+                                isEnabled: true,
+                                modeType: "variable",
+                            },
+                            plannerNotes: "Zone A preferred",
+                            position: "first",
+                            priority: 3,
+                            requiredSkills: [
+                                {
+                                    id: "550e8400-e29b-41d4-a716-446655440000",
+                                    name: "Refrigerated",
+                                },
+                            ],
+                            routingExternalId: "store-A",
+                            serviceTime: {
+                                isEnabled: true,
+                                serviceTimeMinutes: 5,
+                            },
+                            serviceWindows: [
+                                {
+                                    days: [
+                                        "Sed dolorum hic.",
+                                        "Itaque assumenda possimus placeat.",
+                                        "Excepturi ratione facilis.",
+                                        "Officia autem id natus.",
+                                    ],
+                                    endTime: "17:00:01",
+                                    startTime: "09:00:00",
+                                },
+                            ],
+                            standardDriverInstructions: "Use lane 2",
+                        },
                     ],
+                    safetyEventExclusions: ["Iste distinctio aspernatur.", "Dolorum omnis qui consequatur odio."],
                     streetView: {
-                        heading: 90,
+                        headingDegrees: 90,
                         isEnabled: true,
                         latitude: 37.7749,
                         longitude: -122.4194,
-                        pitch: 0,
+                        pitchDegrees: 0,
                         zoom: 1,
                     },
                     tags: [
@@ -13756,63 +13747,21 @@ describe("BetaApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { address: "123 Main St, Oakland, CA", name: "Oakland Yard" };
+        const rawRequestBody = { address: "123 Main St, Oakland, CA", geofence: {}, name: "Oakland Yard" };
         const rawResponseBody = {
             data: {
                 address: "123 Main St",
                 cameraRecordingModeType: "inherit",
                 createdAtTime: "2019-06-13T19:08:25Z",
-                geofence: [{ latitude: 37.7749, longitude: -122.4194 }],
-                hubLocations: [
-                    {
-                        displayName: "North entrance",
-                        externalId: "store-A",
-                        hubId: "550e8400-e29b-41d4-a716-446655440003",
-                        hubLocationId: "550e8400-e29b-41d4-a716-446655440002",
-                        isDepot: false,
-                        isIgnoreOrderServiceTimeEnabled: false,
-                        locationPositionType: "first",
-                        locationPriority: 3,
-                        orderServiceTime: {
-                            capacityServiceTimes: [
-                                {
-                                    capacityId: "550e8400-e29b-41d4-a716-446655440001",
-                                    serviceTimeSeconds: 60,
-                                    serviceTimeSecondsPerQuantityUnit: 0.5,
-                                },
-                            ],
-                            fixedTimeSeconds: 120,
-                            modeType: "variable",
-                        },
-                        plannerNotes: "Zone A preferred",
-                        requiredSkills: [{ id: "550e8400-e29b-41d4-a716-446655440000" }],
-                        serviceTime: { additionalTimeMinutes: 5, isEnabled: true },
-                        serviceWindows: [
-                            {
-                                days: [
-                                    "Harum fugiat ea cupiditate dignissimos.",
-                                    "Quae pariatur.",
-                                    "Non aut porro.",
-                                    "Ipsum eum eos doloribus omnis.",
-                                ],
-                                endTime: 57961,
-                                startTime: 57600,
-                            },
-                        ],
-                        standardDriverInstructions: "Use lane 2",
-                    },
-                ],
+                geofence: {
+                    circle: { latitude: 37.7749, longitude: -122.4194, radiusMeters: 150 },
+                    polygon: { vertices: [{ latitude: 37.7749, longitude: -122.4194 }] },
+                    type: "circle",
+                },
                 id: "12345",
-                iftaExemptionTypes: [
-                    "Ut molestiae a.",
-                    "Qui possimus officiis quae.",
-                    "Ut sequi accusantium qui sequi rem quisquam.",
-                    "Omnis et.",
-                ],
+                iftaExemptionTypes: ["Error voluptate.", "Doloribus velit.", "Repellat placeat sit."],
                 isAutoDismissRolledStopsEnabled: false,
                 isShowAddressesEnabled: true,
-                latitude: 37.7749,
-                longitude: -122.4194,
                 name: "Oakland Yard",
                 navigation: {
                     locations: [
@@ -13827,22 +13776,52 @@ describe("BetaApIsClient", () => {
                 },
                 notes: "Receiving 6-2",
                 placeTypes: [
-                    "Magnam est aperiam.",
-                    "Dolorum quia minima error voluptate accusamus.",
-                    "Velit expedita.",
+                    "Eligendi in.",
+                    "Odit voluptatem sequi maiores.",
+                    "Sunt laborum voluptas quis quasi debitis dignissimos.",
+                    "Eum quae.",
                 ],
-                radiusMeters: 150,
-                safetyEventExclusions: [
-                    "Ratione facilis suscipit officia autem id.",
-                    "Aut ad est vel voluptatem unde.",
-                    "Tempora necessitatibus explicabo.",
+                routing: [
+                    {
+                        hubId: "550e8400-e29b-41d4-a716-446655440003",
+                        isDepot: false,
+                        orderServiceTime: {
+                            capacityServiceTime: {
+                                capacityId: "550e8400-e29b-41d4-a716-446655440001",
+                                quantityUnitPerServiceTime: 0.5,
+                                serviceTimeSeconds: 60,
+                            },
+                            isEnabled: true,
+                            modeType: "variable",
+                        },
+                        plannerNotes: "Zone A preferred",
+                        position: "first",
+                        priority: 3,
+                        requiredSkills: [{ id: "550e8400-e29b-41d4-a716-446655440000", name: "Refrigerated" }],
+                        routingExternalId: "store-A",
+                        serviceTime: { isEnabled: true, serviceTimeMinutes: 5 },
+                        serviceWindows: [
+                            {
+                                days: [
+                                    "Sed dolorum hic.",
+                                    "Itaque assumenda possimus placeat.",
+                                    "Excepturi ratione facilis.",
+                                    "Officia autem id natus.",
+                                ],
+                                endTime: "17:00:01",
+                                startTime: "09:00:00",
+                            },
+                        ],
+                        standardDriverInstructions: "Use lane 2",
+                    },
                 ],
+                safetyEventExclusions: ["Iste distinctio aspernatur.", "Dolorum omnis qui consequatur odio."],
                 streetView: {
-                    heading: 90,
+                    headingDegrees: 90,
                     isEnabled: true,
                     latitude: 37.7749,
                     longitude: -122.4194,
-                    pitch: 0,
+                    pitchDegrees: 0,
                     zoom: 1,
                 },
                 tags: [{ id: "1001", name: "Yard", parentTagId: "500" }],
@@ -13860,6 +13839,7 @@ describe("BetaApIsClient", () => {
 
         const response = await client.betaApIs.postPlace({
             address: "123 Main St, Oakland, CA",
+            geofence: {},
             name: "Oakland Yard",
         });
         expect(response).toEqual({
@@ -13867,69 +13847,26 @@ describe("BetaApIsClient", () => {
                 address: "123 Main St",
                 cameraRecordingModeType: "inherit",
                 createdAtTime: "2019-06-13T19:08:25Z",
-                geofence: [
-                    {
+                geofence: {
+                    circle: {
                         latitude: 37.7749,
                         longitude: -122.4194,
+                        radiusMeters: 150,
                     },
-                ],
-                hubLocations: [
-                    {
-                        displayName: "North entrance",
-                        externalId: "store-A",
-                        hubId: "550e8400-e29b-41d4-a716-446655440003",
-                        hubLocationId: "550e8400-e29b-41d4-a716-446655440002",
-                        isDepot: false,
-                        isIgnoreOrderServiceTimeEnabled: false,
-                        locationPositionType: "first",
-                        locationPriority: 3,
-                        orderServiceTime: {
-                            capacityServiceTimes: [
-                                {
-                                    capacityId: "550e8400-e29b-41d4-a716-446655440001",
-                                    serviceTimeSeconds: 60,
-                                    serviceTimeSecondsPerQuantityUnit: 0.5,
-                                },
-                            ],
-                            fixedTimeSeconds: 120,
-                            modeType: "variable",
-                        },
-                        plannerNotes: "Zone A preferred",
-                        requiredSkills: [
+                    polygon: {
+                        vertices: [
                             {
-                                id: "550e8400-e29b-41d4-a716-446655440000",
+                                latitude: 37.7749,
+                                longitude: -122.4194,
                             },
                         ],
-                        serviceTime: {
-                            additionalTimeMinutes: 5,
-                            isEnabled: true,
-                        },
-                        serviceWindows: [
-                            {
-                                days: [
-                                    "Harum fugiat ea cupiditate dignissimos.",
-                                    "Quae pariatur.",
-                                    "Non aut porro.",
-                                    "Ipsum eum eos doloribus omnis.",
-                                ],
-                                endTime: 57961,
-                                startTime: 57600,
-                            },
-                        ],
-                        standardDriverInstructions: "Use lane 2",
                     },
-                ],
+                    type: "circle",
+                },
                 id: "12345",
-                iftaExemptionTypes: [
-                    "Ut molestiae a.",
-                    "Qui possimus officiis quae.",
-                    "Ut sequi accusantium qui sequi rem quisquam.",
-                    "Omnis et.",
-                ],
+                iftaExemptionTypes: ["Error voluptate.", "Doloribus velit.", "Repellat placeat sit."],
                 isAutoDismissRolledStopsEnabled: false,
                 isShowAddressesEnabled: true,
-                latitude: 37.7749,
-                longitude: -122.4194,
                 name: "Oakland Yard",
                 navigation: {
                     locations: [
@@ -13944,22 +13881,60 @@ describe("BetaApIsClient", () => {
                 },
                 notes: "Receiving 6-2",
                 placeTypes: [
-                    "Magnam est aperiam.",
-                    "Dolorum quia minima error voluptate accusamus.",
-                    "Velit expedita.",
+                    "Eligendi in.",
+                    "Odit voluptatem sequi maiores.",
+                    "Sunt laborum voluptas quis quasi debitis dignissimos.",
+                    "Eum quae.",
                 ],
-                radiusMeters: 150,
-                safetyEventExclusions: [
-                    "Ratione facilis suscipit officia autem id.",
-                    "Aut ad est vel voluptatem unde.",
-                    "Tempora necessitatibus explicabo.",
+                routing: [
+                    {
+                        hubId: "550e8400-e29b-41d4-a716-446655440003",
+                        isDepot: false,
+                        orderServiceTime: {
+                            capacityServiceTime: {
+                                capacityId: "550e8400-e29b-41d4-a716-446655440001",
+                                quantityUnitPerServiceTime: 0.5,
+                                serviceTimeSeconds: 60,
+                            },
+                            isEnabled: true,
+                            modeType: "variable",
+                        },
+                        plannerNotes: "Zone A preferred",
+                        position: "first",
+                        priority: 3,
+                        requiredSkills: [
+                            {
+                                id: "550e8400-e29b-41d4-a716-446655440000",
+                                name: "Refrigerated",
+                            },
+                        ],
+                        routingExternalId: "store-A",
+                        serviceTime: {
+                            isEnabled: true,
+                            serviceTimeMinutes: 5,
+                        },
+                        serviceWindows: [
+                            {
+                                days: [
+                                    "Sed dolorum hic.",
+                                    "Itaque assumenda possimus placeat.",
+                                    "Excepturi ratione facilis.",
+                                    "Officia autem id natus.",
+                                ],
+                                endTime: "17:00:01",
+                                startTime: "09:00:00",
+                            },
+                        ],
+                        standardDriverInstructions: "Use lane 2",
+                    },
                 ],
+                safetyEventExclusions: ["Iste distinctio aspernatur.", "Dolorum omnis qui consequatur odio."],
                 streetView: {
-                    heading: 90,
+                    headingDegrees: 90,
                     isEnabled: true,
                     latitude: 37.7749,
                     longitude: -122.4194,
-                    pitch: 0,
+                    pitchDegrees: 0,
                     zoom: 1,
                 },
                 tags: [
@@ -13982,7 +13957,7 @@ describe("BetaApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { address: "address", name: "name" };
+        const rawRequestBody = { address: "address", geofence: {}, name: "name" };
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
@@ -13996,6 +13971,7 @@ describe("BetaApIsClient", () => {
         await expect(async () => {
             return await client.betaApIs.postPlace({
                 address: "address",
+                geofence: {},
                 name: "name",
             });
         }).rejects.toThrow(Samsara.UnauthorizedError);
@@ -14009,7 +13985,7 @@ describe("BetaApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { address: "address", name: "name" };
+        const rawRequestBody = { address: "address", geofence: {}, name: "name" };
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
@@ -14023,6 +13999,7 @@ describe("BetaApIsClient", () => {
         await expect(async () => {
             return await client.betaApIs.postPlace({
                 address: "address",
+                geofence: {},
                 name: "name",
             });
         }).rejects.toThrow(Samsara.NotFoundError);
@@ -14036,7 +14013,7 @@ describe("BetaApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { address: "address", name: "name" };
+        const rawRequestBody = { address: "address", geofence: {}, name: "name" };
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
@@ -14050,6 +14027,7 @@ describe("BetaApIsClient", () => {
         await expect(async () => {
             return await client.betaApIs.postPlace({
                 address: "address",
+                geofence: {},
                 name: "name",
             });
         }).rejects.toThrow(Samsara.MethodNotAllowedError);
@@ -14063,7 +14041,7 @@ describe("BetaApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { address: "address", name: "name" };
+        const rawRequestBody = { address: "address", geofence: {}, name: "name" };
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
@@ -14077,6 +14055,7 @@ describe("BetaApIsClient", () => {
         await expect(async () => {
             return await client.betaApIs.postPlace({
                 address: "address",
+                geofence: {},
                 name: "name",
             });
         }).rejects.toThrow(Samsara.TooManyRequestsError);
@@ -14090,7 +14069,7 @@ describe("BetaApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { address: "address", name: "name" };
+        const rawRequestBody = { address: "address", geofence: {}, name: "name" };
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
@@ -14104,6 +14083,7 @@ describe("BetaApIsClient", () => {
         await expect(async () => {
             return await client.betaApIs.postPlace({
                 address: "address",
+                geofence: {},
                 name: "name",
             });
         }).rejects.toThrow(Samsara.InternalServerError);
@@ -14117,7 +14097,7 @@ describe("BetaApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { address: "address", name: "name" };
+        const rawRequestBody = { address: "address", geofence: {}, name: "name" };
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
@@ -14131,6 +14111,7 @@ describe("BetaApIsClient", () => {
         await expect(async () => {
             return await client.betaApIs.postPlace({
                 address: "address",
+                geofence: {},
                 name: "name",
             });
         }).rejects.toThrow(Samsara.NotImplementedError);
@@ -14144,7 +14125,7 @@ describe("BetaApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { address: "address", name: "name" };
+        const rawRequestBody = { address: "address", geofence: {}, name: "name" };
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
@@ -14158,6 +14139,7 @@ describe("BetaApIsClient", () => {
         await expect(async () => {
             return await client.betaApIs.postPlace({
                 address: "address",
+                geofence: {},
                 name: "name",
             });
         }).rejects.toThrow(Samsara.BadGatewayError);
@@ -14171,7 +14153,7 @@ describe("BetaApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { address: "address", name: "name" };
+        const rawRequestBody = { address: "address", geofence: {}, name: "name" };
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
@@ -14185,6 +14167,7 @@ describe("BetaApIsClient", () => {
         await expect(async () => {
             return await client.betaApIs.postPlace({
                 address: "address",
+                geofence: {},
                 name: "name",
             });
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
@@ -14198,7 +14181,7 @@ describe("BetaApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { address: "address", name: "name" };
+        const rawRequestBody = { address: "address", geofence: {}, name: "name" };
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
@@ -14212,6 +14195,7 @@ describe("BetaApIsClient", () => {
         await expect(async () => {
             return await client.betaApIs.postPlace({
                 address: "address",
+                geofence: {},
                 name: "name",
             });
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
@@ -14419,57 +14403,15 @@ describe("BetaApIsClient", () => {
                 address: "123 Main St",
                 cameraRecordingModeType: "inherit",
                 createdAtTime: "2019-06-13T19:08:25Z",
-                geofence: [{ latitude: 37.7749, longitude: -122.4194 }],
-                hubLocations: [
-                    {
-                        displayName: "North entrance",
-                        externalId: "store-A",
-                        hubId: "550e8400-e29b-41d4-a716-446655440003",
-                        hubLocationId: "550e8400-e29b-41d4-a716-446655440002",
-                        isDepot: false,
-                        isIgnoreOrderServiceTimeEnabled: false,
-                        locationPositionType: "first",
-                        locationPriority: 3,
-                        orderServiceTime: {
-                            capacityServiceTimes: [
-                                {
-                                    capacityId: "550e8400-e29b-41d4-a716-446655440001",
-                                    serviceTimeSeconds: 60,
-                                    serviceTimeSecondsPerQuantityUnit: 0.5,
-                                },
-                            ],
-                            fixedTimeSeconds: 120,
-                            modeType: "variable",
-                        },
-                        plannerNotes: "Zone A preferred",
-                        requiredSkills: [{ id: "550e8400-e29b-41d4-a716-446655440000" }],
-                        serviceTime: { additionalTimeMinutes: 5, isEnabled: true },
-                        serviceWindows: [
-                            {
-                                days: [
-                                    "Harum fugiat ea cupiditate dignissimos.",
-                                    "Quae pariatur.",
-                                    "Non aut porro.",
-                                    "Ipsum eum eos doloribus omnis.",
-                                ],
-                                endTime: 57961,
-                                startTime: 57600,
-                            },
-                        ],
-                        standardDriverInstructions: "Use lane 2",
-                    },
-                ],
+                geofence: {
+                    circle: { latitude: 37.7749, longitude: -122.4194, radiusMeters: 150 },
+                    polygon: { vertices: [{ latitude: 37.7749, longitude: -122.4194 }] },
+                    type: "circle",
+                },
                 id: "12345",
-                iftaExemptionTypes: [
-                    "Ut molestiae a.",
-                    "Qui possimus officiis quae.",
-                    "Ut sequi accusantium qui sequi rem quisquam.",
-                    "Omnis et.",
-                ],
+                iftaExemptionTypes: ["Error voluptate.", "Doloribus velit.", "Repellat placeat sit."],
                 isAutoDismissRolledStopsEnabled: false,
                 isShowAddressesEnabled: true,
-                latitude: 37.7749,
-                longitude: -122.4194,
                 name: "Oakland Yard",
                 navigation: {
                     locations: [
@@ -14484,22 +14426,52 @@ describe("BetaApIsClient", () => {
                 },
                 notes: "Receiving 6-2",
                 placeTypes: [
-                    "Magnam est aperiam.",
-                    "Dolorum quia minima error voluptate accusamus.",
-                    "Velit expedita.",
+                    "Eligendi in.",
+                    "Odit voluptatem sequi maiores.",
+                    "Sunt laborum voluptas quis quasi debitis dignissimos.",
+                    "Eum quae.",
                 ],
-                radiusMeters: 150,
-                safetyEventExclusions: [
-                    "Ratione facilis suscipit officia autem id.",
-                    "Aut ad est vel voluptatem unde.",
-                    "Tempora necessitatibus explicabo.",
+                routing: [
+                    {
+                        hubId: "550e8400-e29b-41d4-a716-446655440003",
+                        isDepot: false,
+                        orderServiceTime: {
+                            capacityServiceTime: {
+                                capacityId: "550e8400-e29b-41d4-a716-446655440001",
+                                quantityUnitPerServiceTime: 0.5,
+                                serviceTimeSeconds: 60,
+                            },
+                            isEnabled: true,
+                            modeType: "variable",
+                        },
+                        plannerNotes: "Zone A preferred",
+                        position: "first",
+                        priority: 3,
+                        requiredSkills: [{ id: "550e8400-e29b-41d4-a716-446655440000", name: "Refrigerated" }],
+                        routingExternalId: "store-A",
+                        serviceTime: { isEnabled: true, serviceTimeMinutes: 5 },
+                        serviceWindows: [
+                            {
+                                days: [
+                                    "Sed dolorum hic.",
+                                    "Itaque assumenda possimus placeat.",
+                                    "Excepturi ratione facilis.",
+                                    "Officia autem id natus.",
+                                ],
+                                endTime: "17:00:01",
+                                startTime: "09:00:00",
+                            },
+                        ],
+                        standardDriverInstructions: "Use lane 2",
+                    },
                 ],
+                safetyEventExclusions: ["Iste distinctio aspernatur.", "Dolorum omnis qui consequatur odio."],
                 streetView: {
-                    heading: 90,
+                    headingDegrees: 90,
                     isEnabled: true,
                     latitude: 37.7749,
                     longitude: -122.4194,
-                    pitch: 0,
+                    pitchDegrees: 0,
                     zoom: 1,
                 },
                 tags: [{ id: "1001", name: "Yard", parentTagId: "500" }],
@@ -14521,69 +14493,26 @@ describe("BetaApIsClient", () => {
                 address: "123 Main St",
                 cameraRecordingModeType: "inherit",
                 createdAtTime: "2019-06-13T19:08:25Z",
-                geofence: [
-                    {
+                geofence: {
+                    circle: {
                         latitude: 37.7749,
                         longitude: -122.4194,
+                        radiusMeters: 150,
                     },
-                ],
-                hubLocations: [
-                    {
-                        displayName: "North entrance",
-                        externalId: "store-A",
-                        hubId: "550e8400-e29b-41d4-a716-446655440003",
-                        hubLocationId: "550e8400-e29b-41d4-a716-446655440002",
-                        isDepot: false,
-                        isIgnoreOrderServiceTimeEnabled: false,
-                        locationPositionType: "first",
-                        locationPriority: 3,
-                        orderServiceTime: {
-                            capacityServiceTimes: [
-                                {
-                                    capacityId: "550e8400-e29b-41d4-a716-446655440001",
-                                    serviceTimeSeconds: 60,
-                                    serviceTimeSecondsPerQuantityUnit: 0.5,
-                                },
-                            ],
-                            fixedTimeSeconds: 120,
-                            modeType: "variable",
-                        },
-                        plannerNotes: "Zone A preferred",
-                        requiredSkills: [
+                    polygon: {
+                        vertices: [
                             {
-                                id: "550e8400-e29b-41d4-a716-446655440000",
+                                latitude: 37.7749,
+                                longitude: -122.4194,
                             },
                         ],
-                        serviceTime: {
-                            additionalTimeMinutes: 5,
-                            isEnabled: true,
-                        },
-                        serviceWindows: [
-                            {
-                                days: [
-                                    "Harum fugiat ea cupiditate dignissimos.",
-                                    "Quae pariatur.",
-                                    "Non aut porro.",
-                                    "Ipsum eum eos doloribus omnis.",
-                                ],
-                                endTime: 57961,
-                                startTime: 57600,
-                            },
-                        ],
-                        standardDriverInstructions: "Use lane 2",
                     },
-                ],
+                    type: "circle",
+                },
                 id: "12345",
-                iftaExemptionTypes: [
-                    "Ut molestiae a.",
-                    "Qui possimus officiis quae.",
-                    "Ut sequi accusantium qui sequi rem quisquam.",
-                    "Omnis et.",
-                ],
+                iftaExemptionTypes: ["Error voluptate.", "Doloribus velit.", "Repellat placeat sit."],
                 isAutoDismissRolledStopsEnabled: false,
                 isShowAddressesEnabled: true,
-                latitude: 37.7749,
-                longitude: -122.4194,
                 name: "Oakland Yard",
                 navigation: {
                     locations: [
@@ -14598,22 +14527,60 @@ describe("BetaApIsClient", () => {
                 },
                 notes: "Receiving 6-2",
                 placeTypes: [
-                    "Magnam est aperiam.",
-                    "Dolorum quia minima error voluptate accusamus.",
-                    "Velit expedita.",
+                    "Eligendi in.",
+                    "Odit voluptatem sequi maiores.",
+                    "Sunt laborum voluptas quis quasi debitis dignissimos.",
+                    "Eum quae.",
                 ],
-                radiusMeters: 150,
-                safetyEventExclusions: [
-                    "Ratione facilis suscipit officia autem id.",
-                    "Aut ad est vel voluptatem unde.",
-                    "Tempora necessitatibus explicabo.",
+                routing: [
+                    {
+                        hubId: "550e8400-e29b-41d4-a716-446655440003",
+                        isDepot: false,
+                        orderServiceTime: {
+                            capacityServiceTime: {
+                                capacityId: "550e8400-e29b-41d4-a716-446655440001",
+                                quantityUnitPerServiceTime: 0.5,
+                                serviceTimeSeconds: 60,
+                            },
+                            isEnabled: true,
+                            modeType: "variable",
+                        },
+                        plannerNotes: "Zone A preferred",
+                        position: "first",
+                        priority: 3,
+                        requiredSkills: [
+                            {
+                                id: "550e8400-e29b-41d4-a716-446655440000",
+                                name: "Refrigerated",
+                            },
+                        ],
+                        routingExternalId: "store-A",
+                        serviceTime: {
+                            isEnabled: true,
+                            serviceTimeMinutes: 5,
+                        },
+                        serviceWindows: [
+                            {
+                                days: [
+                                    "Sed dolorum hic.",
+                                    "Itaque assumenda possimus placeat.",
+                                    "Excepturi ratione facilis.",
+                                    "Officia autem id natus.",
+                                ],
+                                endTime: "17:00:01",
+                                startTime: "09:00:00",
+                            },
+                        ],
+                        standardDriverInstructions: "Use lane 2",
+                    },
                 ],
+                safetyEventExclusions: ["Iste distinctio aspernatur.", "Dolorum omnis qui consequatur odio."],
                 streetView: {
-                    heading: 90,
+                    headingDegrees: 90,
                     isEnabled: true,
                     latitude: 37.7749,
                     longitude: -122.4194,
-                    pitch: 0,
+                    pitchDegrees: 0,
                     zoom: 1,
                 },
                 tags: [
@@ -21741,9 +21708,9 @@ describe("BetaApIsClient", () => {
             data: {
                 columns: [{ dataType: "string", name: "Device Name" }],
                 rows: [
+                    [{ key: "value" }, { key: "value" }],
                     [{ key: "value" }, { key: "value" }, { key: "value" }, { key: "value" }],
-                    [{ key: "value" }, { key: "value" }, { key: "value" }, { key: "value" }],
-                    [{ key: "value" }, { key: "value" }, { key: "value" }, { key: "value" }],
+                    [{ key: "value" }, { key: "value" }, { key: "value" }],
                 ],
                 status: "complete",
             },
@@ -21770,12 +21737,6 @@ describe("BetaApIsClient", () => {
                         {
                             key: "value",
                         },
-                        {
-                            key: "value",
-                        },
-                        {
-                            key: "value",
-                        },
                     ],
                     [
                         {
@@ -21792,9 +21753,6 @@ describe("BetaApIsClient", () => {
                         },
                     ],
                     [
-                        {
-                            key: "value",
-                        },
                         {
                             key: "value",
                         },
@@ -22013,12 +21971,10 @@ describe("BetaApIsClient", () => {
                     ],
                     isActive: true,
                     lastName: "Doe",
-                    specialInstructions: { isGuardianRequired: true, isSpecialEducation: false },
+                    specialInstructions: { isGuardianRequired: true, isSpecialEducation: true },
                     tagIds: [
-                        "Repudiandae et laborum commodi possimus.",
-                        "Consequatur eos voluptatibus.",
-                        "Harum rerum ut doloribus voluptatum quaerat.",
-                        "Voluptatem reiciendis consectetur praesentium.",
+                        "Deserunt velit voluptatem atque deserunt voluptas sed.",
+                        "Magnam molestiae necessitatibus maiores dicta maiores.",
                     ],
                     updatedAtTime: "2024-11-15T10:30:00Z",
                 },
@@ -22058,13 +22014,11 @@ describe("BetaApIsClient", () => {
                     lastName: "Doe",
                     specialInstructions: {
                         isGuardianRequired: true,
-                        isSpecialEducation: false,
+                        isSpecialEducation: true,
                     },
                     tagIds: [
-                        "Repudiandae et laborum commodi possimus.",
-                        "Consequatur eos voluptatibus.",
-                        "Harum rerum ut doloribus voluptatum quaerat.",
-                        "Voluptatem reiciendis consectetur praesentium.",
+                        "Deserunt velit voluptatem atque deserunt voluptas sed.",
+                        "Magnam molestiae necessitatibus maiores dicta maiores.",
                     ],
                     updatedAtTime: "2024-11-15T10:30:00Z",
                 },
@@ -22322,12 +22276,10 @@ describe("BetaApIsClient", () => {
                 ],
                 isActive: true,
                 lastName: "Doe",
-                specialInstructions: { isGuardianRequired: true, isSpecialEducation: false },
+                specialInstructions: { isGuardianRequired: true, isSpecialEducation: true },
                 tagIds: [
-                    "Repudiandae et laborum commodi possimus.",
-                    "Consequatur eos voluptatibus.",
-                    "Harum rerum ut doloribus voluptatum quaerat.",
-                    "Voluptatem reiciendis consectetur praesentium.",
+                    "Deserunt velit voluptatem atque deserunt voluptas sed.",
+                    "Magnam molestiae necessitatibus maiores dicta maiores.",
                 ],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
@@ -22366,13 +22318,11 @@ describe("BetaApIsClient", () => {
                 lastName: "Doe",
                 specialInstructions: {
                     isGuardianRequired: true,
-                    isSpecialEducation: false,
+                    isSpecialEducation: true,
                 },
                 tagIds: [
-                    "Repudiandae et laborum commodi possimus.",
-                    "Consequatur eos voluptatibus.",
-                    "Harum rerum ut doloribus voluptatum quaerat.",
-                    "Voluptatem reiciendis consectetur praesentium.",
+                    "Deserunt velit voluptatem atque deserunt voluptas sed.",
+                    "Magnam molestiae necessitatibus maiores dicta maiores.",
                 ],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
@@ -22643,12 +22593,10 @@ describe("BetaApIsClient", () => {
                 ],
                 isActive: true,
                 lastName: "Doe",
-                specialInstructions: { isGuardianRequired: true, isSpecialEducation: false },
+                specialInstructions: { isGuardianRequired: true, isSpecialEducation: true },
                 tagIds: [
-                    "Repudiandae et laborum commodi possimus.",
-                    "Consequatur eos voluptatibus.",
-                    "Harum rerum ut doloribus voluptatum quaerat.",
-                    "Voluptatem reiciendis consectetur praesentium.",
+                    "Deserunt velit voluptatem atque deserunt voluptas sed.",
+                    "Magnam molestiae necessitatibus maiores dicta maiores.",
                 ],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
@@ -22688,13 +22636,11 @@ describe("BetaApIsClient", () => {
                 lastName: "Doe",
                 specialInstructions: {
                     isGuardianRequired: true,
-                    isSpecialEducation: false,
+                    isSpecialEducation: true,
                 },
                 tagIds: [
-                    "Repudiandae et laborum commodi possimus.",
-                    "Consequatur eos voluptatibus.",
-                    "Harum rerum ut doloribus voluptatum quaerat.",
-                    "Voluptatem reiciendis consectetur praesentium.",
+                    "Deserunt velit voluptatem atque deserunt voluptas sed.",
+                    "Magnam molestiae necessitatibus maiores dicta maiores.",
                 ],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
@@ -23216,12 +23162,10 @@ describe("BetaApIsClient", () => {
                 ],
                 isActive: true,
                 lastName: "Doe",
-                specialInstructions: { isGuardianRequired: true, isSpecialEducation: false },
+                specialInstructions: { isGuardianRequired: true, isSpecialEducation: true },
                 tagIds: [
-                    "Repudiandae et laborum commodi possimus.",
-                    "Consequatur eos voluptatibus.",
-                    "Harum rerum ut doloribus voluptatum quaerat.",
-                    "Voluptatem reiciendis consectetur praesentium.",
+                    "Deserunt velit voluptatem atque deserunt voluptas sed.",
+                    "Magnam molestiae necessitatibus maiores dicta maiores.",
                 ],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
@@ -23258,13 +23202,11 @@ describe("BetaApIsClient", () => {
                 lastName: "Doe",
                 specialInstructions: {
                     isGuardianRequired: true,
-                    isSpecialEducation: false,
+                    isSpecialEducation: true,
                 },
                 tagIds: [
-                    "Repudiandae et laborum commodi possimus.",
-                    "Consequatur eos voluptatibus.",
-                    "Harum rerum ut doloribus voluptatum quaerat.",
-                    "Voluptatem reiciendis consectetur praesentium.",
+                    "Deserunt velit voluptatem atque deserunt voluptas sed.",
+                    "Magnam molestiae necessitatibus maiores dicta maiores.",
                 ],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
@@ -25052,6 +24994,7 @@ describe("BetaApIsClient", () => {
                 "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
                 "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
                 "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
+                "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
             ],
         };
         const rawResponseBody = {
@@ -25069,6 +25012,7 @@ describe("BetaApIsClient", () => {
 
         const response = await client.betaApIs.patchSafetyEventsV2Batch({
             safetyEventIds: [
+                "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
                 "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
                 "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
                 "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",

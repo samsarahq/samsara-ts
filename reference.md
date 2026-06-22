@@ -971,7 +971,7 @@ await client.betaApIs.updateEngineImmobilizerState({
     id: 1000000,
     relayStates: [{
             id: "relay1",
-            isOpen: true
+            isOpen: false
         }]
 });
 
@@ -3853,6 +3853,7 @@ To use this endpoint, select **Write Places** under the Places category when cre
 ```typescript
 await client.betaApIs.postPlace({
     address: "123 Main St, Oakland, CA",
+    geofence: {},
     name: "Oakland Yard"
 });
 
@@ -5090,19 +5091,14 @@ Readings that currently support ingestion (by category):
 * `engineRpm`
 * `engineState` (values: off | running | idling)
 * `faultCodes`
-* `faultCodesJ1939`
-* `faultCodesOBDII`
 * `fuelLevelPerc`
 * `gps`
-* `location`
 * `odometerEcu`
 * `oilPressure`
 
 </details>
 
-**Note:** Use the `GET /readings/definitions` endpoint and check the `ingestionEnabled` field for the authoritative, up-to-date set of ingestible readings for your organization.
-
-When ingesting location data, the readingID 'location' must be used and the value object must contain at least the following fields: 'speed', 'latitude', 'longitude'.
+When ingesting GPS location data, use the readingID 'gps'. The value object must contain the following fields: 'latitude' (decimal degrees), 'longitude' (decimal degrees), and 'speed' (meters per second).
 
 Related guide: [Readings](https://developers.samsara.com/docs/readings).
 
@@ -6289,7 +6285,7 @@ To use this endpoint, select **Write Safety Events & Scores** under the Safety &
 
 ```typescript
 await client.betaApIs.patchSafetyEventsV2Batch({
-    safetyEventIds: ["bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590"]
+    safetyEventIds: ["bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590"]
 });
 
 ```
@@ -6486,7 +6482,7 @@ await client.alerts.postConfigurations({
     isEnabled: true,
     name: "My Harsh Event Alert",
     scope: {
-        all: true
+        all: false
     },
     triggers: [{
             triggerTypeId: 1000
@@ -8054,7 +8050,7 @@ To use this endpoint, select **Write Media Retrieval** under the Safety & Camera
 ```typescript
 await client.media.postMediaRetrieval({
     endTime: "2019-06-13T19:08:55Z",
-    inputs: ["dashcamRoadFacing", "dashcamRoadFacing"],
+    inputs: ["dashcamRoadFacing", "dashcamRoadFacing", "dashcamRoadFacing"],
     mediaType: "image",
     startTime: "2019-06-13T19:08:25Z",
     vehicleId: "1234"
@@ -19829,6 +19825,87 @@ await client.previewApIs.createDriverAuthToken({
 <dd>
 
 **request:** `Samsara.DriversAuthTokenCreateDriverAuthTokenRequestBody` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `PreviewApIsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.previewApIs.<a href="/src/api/resources/previewApIs/client/Client.ts">postTachographFileUpload</a>({ ...params }) -> Samsara.TachographFileUploadsPostTachographFileUploadResponseBody</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Reserve a tachograph file upload and return a presigned URL. Upload the file bytes directly to the URL with the returned headers. The driver or device the file belongs to is resolved from the file contents after upload.
+
+ <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+
+To use this endpoint, select **Write Tachograph (EU)** under the Compliance category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+
+Endpoints in this section are in Preview. These APIs are not functional and are instead for soliciting feedback from our API users on the intended design of this API. Additionally, it is not guaranteed that we will be releasing an endpoint included in this section to production. This means that developers should **NOT** rely on these APIs to build business critical applications
+
+- Samsara may change the structure of a preview API's interface without versioning or any notice to API users.
+
+- When an endpoint becomes generally available, it will be announced in the API [changelog](https://developers.samsara.com/changelog).
+ 
+
+ **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.previewApIs.postTachographFileUpload({
+    contentMd5: "rL0Y20zC+Fzt72VPzMSk2A==",
+    contentType: "application/octet-stream",
+    fileSizeBytes: 8192,
+    fileType: "driverCard"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Samsara.TachographFileUploadsPostTachographFileUploadRequestBody` 
     
 </dd>
 </dl>

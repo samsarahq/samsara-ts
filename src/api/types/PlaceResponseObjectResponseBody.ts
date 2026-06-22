@@ -14,10 +14,7 @@ export interface PlaceResponseObjectResponseBody {
     createdAtTime: string;
     /** External ids when includeExternalIds=true. */
     externalIds?: PlaceResponseObjectResponseBody.ExternalIds | undefined;
-    /** Polygon vertices when applicable. */
-    geofence?: Samsara.PlaceGeofenceVertexResponseResponseBody[] | undefined;
-    /** Route-planning hub location rows when present. */
-    hubLocations?: Samsara.HubLocationResponseResponseBody[] | undefined;
+    geofence: Samsara.PlaceGeofenceResponseResponseBody;
     /** Samsara place id. */
     id: string;
     /** IFTA exemption labels. */
@@ -26,10 +23,6 @@ export interface PlaceResponseObjectResponseBody {
     isAutoDismissRolledStopsEnabled?: boolean | undefined;
     /** Show addresses inside geofence. */
     isShowAddressesEnabled?: boolean | undefined;
-    /** Center latitude when applicable. */
-    latitude?: number | undefined;
-    /** Center longitude when applicable. */
-    longitude?: number | undefined;
     /** Place name. */
     name: string;
     navigation?: Samsara.PlaceNavigationResponseResponseBody | undefined;
@@ -37,8 +30,8 @@ export interface PlaceResponseObjectResponseBody {
     notes?: string | undefined;
     /** Assigned place types. */
     placeTypes?: string[] | undefined;
-    /** Circle radius in meters when geometry is a point + buffer. */
-    radiusMeters?: number | undefined;
+    /** Route-planning rows when present. */
+    routing?: Samsara.RoutingResponseResponseBody[] | undefined;
     /** Configured safety exclusions. */
     safetyEventExclusions?: string[] | undefined;
     streetView?: Samsara.PlaceStreetViewResponseResponseBody | undefined;

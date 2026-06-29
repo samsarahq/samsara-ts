@@ -3,6 +3,8 @@
 import type * as Samsara from "../index.js";
 
 export interface MediaObjectResponseBody {
+    /** Serial number of the auxiliary camera (e.g. AI multicam) that captured this media. Only present for analog inputs. Examples: CSS6-23A-HJF */
+    auxcamSerial?: string | undefined;
     /** Timestamp, in RFC 3339 format, at which the media item was made available. Examples: 2019-06-13T19:08:25Z, 2019-06-13T19:08:25.455Z, OR 2015-09-15T14:00:12-04:00 */
     availableAtTime?: string | undefined;
     /** Camera role for this media.  Valid values: `leftMirrorMount`, `leftSide`, `rightMirrorMount`, `rightSide`, `rearHigh`, `rearBumper`, `inCab`, `front`, `hopper`, `other1`, `other2`, `other3`, `other4`, `leftBev`, `rightBev`, `rearBev`, `frontBev`, `otherBev`, `bevNotUsed` */

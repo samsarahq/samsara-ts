@@ -14,7 +14,7 @@ export interface TachographFileUploadsPostTachographFileUploadRequestBody {
     contentMd5: string;
     /** The MIME content type of the file. The upload is sent to object storage as raw bytes.  Valid values: `application/octet-stream` */
     contentType: TachographFileUploadsPostTachographFileUploadRequestBody.ContentType;
-    /** The size of the file in bytes. Enforced as the Content-Length on upload and validated against the maximum allowed tachograph file size. */
+    /** The size of the file in bytes. Enforced as the Content-Length on upload. Maximum 10 MB (10485760 bytes). */
     fileSizeBytes: number;
     /** The kind of tachograph file being uploaded. The driver or device the file belongs to is resolved from the file contents, not from this field.  Valid values: `driverCard`, `vehicleUnit` */
     fileType: TachographFileUploadsPostTachographFileUploadRequestBody.FileType;

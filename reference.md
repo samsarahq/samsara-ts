@@ -2081,6 +2081,104 @@ await client.betaApIs.listTachographLiveData();
 </dl>
 </details>
 
+<details><summary><code>client.betaApIs.<a href="/src/api/resources/betaApIs/client/Client.ts">postTachographFileUpload</a>({ ...params }) -> Samsara.TachographFileUploadsPostTachographFileUploadResponseBody</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Reserve a tachograph file upload and return a presigned URL. Upload the file bytes directly to the URL with the returned headers. The driver or device the file belongs to is resolved from the file contents after upload.
+
+**Uploading the file**
+
+Once you have the `uploadUrl` and `requiredHeaders` from the response, PUT the raw file bytes directly to the URL — do not send the request through the Samsara API servers:
+
+```bash
+curl -X PUT "<uploadUrl>" \
+  -H "Content-Type: <value from requiredHeaders>" \
+  -H "Content-MD5: <value from requiredHeaders>" \
+  -H "Content-Length: <value from requiredHeaders>" \
+  --data-binary @/path/to/file.ddd
+```
+
+Every header listed in `requiredHeaders` must be sent verbatim — they are part of the URL signature, and the upload is rejected with a `403` if any header is missing or has a different value.
+
+**Retrieving uploaded files**
+
+A successful response to this request reserves the upload; it does not indicate that a file has been received or processed. Uploaded files are processed asynchronously after the PUT completes. Once a file has been processed, it can be retrieved through the standard tachograph file endpoints:
+
+- **Driver-card files** — `GET /fleet/drivers/tachograph-files/history`
+- **Vehicle-unit files** — `GET /fleet/vehicles/tachograph-files/history`
+
+Files that cannot be processed — for example files that are corrupt, are not valid tachograph files, or cannot be matched to a driver or vehicle in your organization — are not retrievable through these endpoints.
+
+ <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+
+To use this endpoint, select **Write Tachograph (EU)** under the Compliance category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+ 
+
+ **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.betaApIs.postTachographFileUpload({
+    contentMd5: "rL0Y20zC+Fzt72VPzMSk2A==",
+    contentType: "application/octet-stream",
+    fileSizeBytes: 8192,
+    fileType: "driverCard"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Samsara.TachographFileUploadsPostTachographFileUploadRequestBody` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `BetaApIsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.betaApIs.<a href="/src/api/resources/betaApIs/client/Client.ts">getEngineImmobilizerStates</a>({ ...params }) -> Samsara.EngineImmobilizerGetEngineImmobilizerStatesResponseBody</code></summary>
 <dl>
 <dd>
@@ -19844,7 +19942,7 @@ await client.previewApIs.createDriverAuthToken({
 </dl>
 </details>
 
-<details><summary><code>client.previewApIs.<a href="/src/api/resources/previewApIs/client/Client.ts">postTachographFileUpload</a>({ ...params }) -> Samsara.TachographFileUploadsPostTachographFileUploadResponseBody</code></summary>
+<details><summary><code>client.previewApIs.<a href="/src/api/resources/previewApIs/client/Client.ts">getFleetInstallerPhotoUploads</a>({ ...params }) -> Samsara.FleetInstallerPhotoUploadsGetFleetInstallerPhotoUploadsResponseBody</code></summary>
 <dl>
 <dd>
 
@@ -19856,11 +19954,11 @@ await client.previewApIs.createDriverAuthToken({
 <dl>
 <dd>
 
-Reserve a tachograph file upload and return a presigned URL. Upload the file bytes directly to the URL with the returned headers. The driver or device the file belongs to is resolved from the file contents after upload.
+Returns fleet installer photo upload sessions for the caller's org. Results are ordered by updatedAtTime ascending and paginated (up to 25 per page). Supports filtering by session IDs, startTime, and endTime. Omitting startTime returns all sessions for the org. endTime requires startTime.
 
  <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
 
-To use this endpoint, select **Write Tachograph (EU)** under the Compliance category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+To use this endpoint, select **Read Devices** under the Devices category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
 
 Endpoints in this section are in Preview. These APIs are not functional and are instead for soliciting feedback from our API users on the intended design of this API. Additionally, it is not guaranteed that we will be releasing an endpoint included in this section to production. This means that developers should **NOT** rely on these APIs to build business critical applications
 
@@ -19884,11 +19982,90 @@ Endpoints in this section are in Preview. These APIs are not functional and are 
 <dd>
 
 ```typescript
-await client.previewApIs.postTachographFileUpload({
+await client.previewApIs.getFleetInstallerPhotoUploads();
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Samsara.GetFleetInstallerPhotoUploadsRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `PreviewApIsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.previewApIs.<a href="/src/api/resources/previewApIs/client/Client.ts">postFleetInstallerPhotoUpload</a>({ ...params }) -> Samsara.FleetInstallerPhotoUploadsPostFleetInstallerPhotoUploadResponseBody</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Creates a fleet installer photo upload session and returns a presigned S3 PUT URL. Upload the file bytes directly to the presigned URL using the headers in uploadContext, then call POST /fleet/installer/photo-uploads/complete to finalize.
+
+ <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+
+To use this endpoint, select **Write Devices** under the Devices category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+
+Endpoints in this section are in Preview. These APIs are not functional and are instead for soliciting feedback from our API users on the intended design of this API. Additionally, it is not guaranteed that we will be releasing an endpoint included in this section to production. This means that developers should **NOT** rely on these APIs to build business critical applications
+
+- Samsara may change the structure of a preview API's interface without versioning or any notice to API users.
+
+- When an endpoint becomes generally available, it will be announced in the API [changelog](https://developers.samsara.com/changelog).
+ 
+
+ **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.previewApIs.postFleetInstallerPhotoUpload({
     contentMd5: "rL0Y20zC+Fzt72VPzMSk2A==",
-    contentType: "application/octet-stream",
-    fileSizeBytes: 8192,
-    fileType: "driverCard"
+    deviceId: "281474977961335",
+    fileFormatType: "imageJpeg",
+    fileName: "front_camera_install.jpg",
+    hardwareType: "vehicleGateway",
+    photoType: "installPhoto",
+    sizeBytes: 482193
 });
 
 ```
@@ -19905,7 +20082,85 @@ await client.previewApIs.postTachographFileUpload({
 <dl>
 <dd>
 
-**request:** `Samsara.TachographFileUploadsPostTachographFileUploadRequestBody` 
+**request:** `Samsara.FleetInstallerPhotoUploadsPostFleetInstallerPhotoUploadRequestBody` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `PreviewApIsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.previewApIs.<a href="/src/api/resources/previewApIs/client/Client.ts">postFleetInstallerPhotoUploadComplete</a>({ ...params }) -> Samsara.FleetInstallerPhotoUploadsPostFleetInstallerPhotoUploadCompleteResponseBody</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Marks a fleet installer photo upload session as complete after the file bytes have been uploaded to S3. Triggers async processing of the photo. Poll GET /fleet/installer/photo-uploads to observe the final state.
+
+ <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+
+To use this endpoint, select **Write Devices** under the Devices category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+
+Endpoints in this section are in Preview. These APIs are not functional and are instead for soliciting feedback from our API users on the intended design of this API. Additionally, it is not guaranteed that we will be releasing an endpoint included in this section to production. This means that developers should **NOT** rely on these APIs to build business critical applications
+
+- Samsara may change the structure of a preview API's interface without versioning or any notice to API users.
+
+- When an endpoint becomes generally available, it will be announced in the API [changelog](https://developers.samsara.com/changelog).
+ 
+
+ **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.previewApIs.postFleetInstallerPhotoUploadComplete({
+    id: "id"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Samsara.PostFleetInstallerPhotoUploadCompleteRequest` 
     
 </dd>
 </dl>

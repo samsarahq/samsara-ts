@@ -79,4 +79,5 @@ export { RidershipPassengersUpdateRidershipPassengerRequestBody } from "./Riders
 export type { RidershipRouteSetupsCreateRidershipRouteSetupRequestBody } from "./RidershipRouteSetupsCreateRidershipRouteSetupRequestBody.js";
 export type { RidershipRouteSetupsUpdateRidershipRouteSetupRequestBody } from "./RidershipRouteSetupsUpdateRidershipRouteSetupRequestBody.js";
 export { SafetyEventsV2PatchSafetyEventsV2BatchRequestBody } from "./SafetyEventsV2PatchSafetyEventsV2BatchRequestBody.js";
+export { TachographFileUploadsPostTachographFileUploadRequestBody } from "./TachographFileUploadsPostTachographFileUploadRequestBody.js";
 export type { UpdateFunctionStorageFileRequest } from "./UpdateFunctionStorageFileRequest.js";

@@ -15,6 +15,8 @@ export interface FormSubmissionResponseObjectResponseBody {
     createdAtTime: string;
     /** Time of when the submission is due. Sometimes returned, if the submission has a due date. UTC timestamp in RFC 3339 format. */
     dueAtTime?: string | undefined;
+    /** Duration between when the form submission was started on the client and submitted, in milliseconds. Omitted until the form is actually submitted or when the client start timestamp was not recorded. */
+    durationMs?: number | undefined;
     /** A map of external ids */
     externalIds?: Record<string, string> | undefined;
     /** List of field inputs in a form submission. */

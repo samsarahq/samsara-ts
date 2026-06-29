@@ -6,13 +6,15 @@ import type * as Samsara from "../index.js";
  * Route-planning metadata row for a place and hub.
  */
 export interface PlaceRoutingInputRequestBody {
+    /** Default instructions for drivers at this stop. */
+    driverInstructions?: string | undefined;
     /** Planner hub UUID for this row. */
     hubId: string;
+    /** Hub-facing notes for this routing row. */
+    hubNotes?: string | undefined;
     /** Whether this routing row is a depot. */
     isDepot?: boolean | undefined;
     orderServiceTime?: Samsara.PlaceRoutingOrderServiceTimeInputRequestBody | undefined;
-    /** Planner-facing notes for this routing row. */
-    plannerNotes?: string | undefined;
     /** Stop position preference: unknown, unspecified, any, first, or last. */
     position?: string | undefined;
     /** Route priority from 1 (lowest) to 5 (highest). */
@@ -24,6 +26,4 @@ export interface PlaceRoutingInputRequestBody {
     serviceTime?: Samsara.PlaceRoutingServiceTimeInputRequestBody | undefined;
     /** Recurring local-time service windows for this routing row. */
     serviceWindows?: Samsara.PlaceRoutingServiceWindowInputRequestBody[] | undefined;
-    /** Default instructions for drivers at this stop. */
-    standardDriverInstructions?: string | undefined;
 }

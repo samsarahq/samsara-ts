@@ -271,7 +271,273 @@ describe("PreviewApIsClient", () => {
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 
-    test("postTachographFileUpload (1)", async () => {
+    test("getFleetInstallerPhotoUploads (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = {
+            data: [
+                {
+                    contentMd5: "rL0Y20zC+Fzt72VPzMSk2A==",
+                    createdAtTime: "2026-06-01T18:15:00Z",
+                    deviceId: "281474977961335",
+                    fileFormatType: "imageJpeg",
+                    fileName: "front_camera_install.jpg",
+                    hardwareType: "vehicleGateway",
+                    id: "550e8400-e29b-41d4-a716-446655440000",
+                    photoType: "installPhoto",
+                    processingStatus: "awaitingUpload",
+                    sizeBytes: 482193,
+                    updatedAtTime: "2026-06-01T18:15:00Z",
+                },
+            ],
+            pagination: { endCursor: "MjkY", hasNextPage: true },
+        };
+        server
+            .mockEndpoint()
+            .get("/preview/fleet/installer/photo-uploads")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.previewApIs.getFleetInstallerPhotoUploads();
+        expect(response).toEqual({
+            data: [
+                {
+                    contentMd5: "rL0Y20zC+Fzt72VPzMSk2A==",
+                    createdAtTime: "2026-06-01T18:15:00Z",
+                    deviceId: "281474977961335",
+                    fileFormatType: "imageJpeg",
+                    fileName: "front_camera_install.jpg",
+                    hardwareType: "vehicleGateway",
+                    id: "550e8400-e29b-41d4-a716-446655440000",
+                    photoType: "installPhoto",
+                    processingStatus: "awaitingUpload",
+                    sizeBytes: 482193,
+                    updatedAtTime: "2026-06-01T18:15:00Z",
+                },
+            ],
+            pagination: {
+                endCursor: "MjkY",
+                hasNextPage: true,
+            },
+        });
+    });
+
+    test("getFleetInstallerPhotoUploads (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preview/fleet/installer/photo-uploads")
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.getFleetInstallerPhotoUploads();
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("getFleetInstallerPhotoUploads (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preview/fleet/installer/photo-uploads")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.getFleetInstallerPhotoUploads();
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("getFleetInstallerPhotoUploads (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preview/fleet/installer/photo-uploads")
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.getFleetInstallerPhotoUploads();
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("getFleetInstallerPhotoUploads (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preview/fleet/installer/photo-uploads")
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.getFleetInstallerPhotoUploads();
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("getFleetInstallerPhotoUploads (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preview/fleet/installer/photo-uploads")
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.getFleetInstallerPhotoUploads();
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("getFleetInstallerPhotoUploads (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preview/fleet/installer/photo-uploads")
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.getFleetInstallerPhotoUploads();
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("getFleetInstallerPhotoUploads (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preview/fleet/installer/photo-uploads")
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.getFleetInstallerPhotoUploads();
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("getFleetInstallerPhotoUploads (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preview/fleet/installer/photo-uploads")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.getFleetInstallerPhotoUploads();
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("getFleetInstallerPhotoUploads (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preview/fleet/installer/photo-uploads")
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.getFleetInstallerPhotoUploads();
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("postFleetInstallerPhotoUpload (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -281,47 +547,84 @@ describe("PreviewApIsClient", () => {
         });
         const rawRequestBody = {
             contentMd5: "rL0Y20zC+Fzt72VPzMSk2A==",
-            contentType: "application/octet-stream",
-            fileSizeBytes: 8192,
-            fileType: "driverCard",
+            deviceId: "281474977961335",
+            fileFormatType: "imageJpeg",
+            fileName: "front_camera_install.jpg",
+            hardwareType: "vehicleGateway",
+            photoType: "installPhoto",
+            sizeBytes: 482193,
         };
         const rawResponseBody = {
             data: {
-                expiresAtTime: "2024-01-01T13:00:00Z",
-                requiredHeaders: [{ name: "Content-MD5", value: "rL0Y20zC+Fzt72VPzMSk2A==" }],
-                uploadUrl: "https://example-bucket.s3.amazonaws.com/tachograph-uploads/v1/...?X-Amz-Signature=...",
+                contentMd5: "rL0Y20zC+Fzt72VPzMSk2A==",
+                createdAtTime: "2026-06-01T18:15:00Z",
+                deviceId: "281474977961335",
+                fileFormatType: "imageJpeg",
+                fileName: "front_camera_install.jpg",
+                hardwareType: "vehicleGateway",
+                id: "550e8400-e29b-41d4-a716-446655440000",
+                photoType: "installPhoto",
+                processingStatus: "awaitingUpload",
+                sizeBytes: 482193,
+                updatedAtTime: "2026-06-01T18:15:00Z",
+                uploadContext: {
+                    expiresAtTime: "2026-06-01T18:30:00Z",
+                    headers: {
+                        "Content-Length": "482193",
+                        "Content-MD5": "rL0Y20zC+Fzt72VPzMSk2A==",
+                        "Content-Type": "image/jpeg",
+                    },
+                    uploadUrl:
+                        "https://samsara-media.s3.amazonaws.com/fleet-installer/550e8400-e29b-41d4-a716-446655440000",
+                },
             },
         };
         server
             .mockEndpoint()
-            .post("/preview/fleet/tachograph/file-uploads")
+            .post("/preview/fleet/installer/photo-uploads")
             .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(200)
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.previewApIs.postTachographFileUpload({
+        const response = await client.previewApIs.postFleetInstallerPhotoUpload({
             contentMd5: "rL0Y20zC+Fzt72VPzMSk2A==",
-            contentType: "application/octet-stream",
-            fileSizeBytes: 8192,
-            fileType: "driverCard",
+            deviceId: "281474977961335",
+            fileFormatType: "imageJpeg",
+            fileName: "front_camera_install.jpg",
+            hardwareType: "vehicleGateway",
+            photoType: "installPhoto",
+            sizeBytes: 482193,
         });
         expect(response).toEqual({
             data: {
-                expiresAtTime: "2024-01-01T13:00:00Z",
-                requiredHeaders: [
-                    {
-                        name: "Content-MD5",
-                        value: "rL0Y20zC+Fzt72VPzMSk2A==",
+                contentMd5: "rL0Y20zC+Fzt72VPzMSk2A==",
+                createdAtTime: "2026-06-01T18:15:00Z",
+                deviceId: "281474977961335",
+                fileFormatType: "imageJpeg",
+                fileName: "front_camera_install.jpg",
+                hardwareType: "vehicleGateway",
+                id: "550e8400-e29b-41d4-a716-446655440000",
+                photoType: "installPhoto",
+                processingStatus: "awaitingUpload",
+                sizeBytes: 482193,
+                updatedAtTime: "2026-06-01T18:15:00Z",
+                uploadContext: {
+                    expiresAtTime: "2026-06-01T18:30:00Z",
+                    headers: {
+                        "Content-Length": "482193",
+                        "Content-MD5": "rL0Y20zC+Fzt72VPzMSk2A==",
+                        "Content-Type": "image/jpeg",
                     },
-                ],
-                uploadUrl: "https://example-bucket.s3.amazonaws.com/tachograph-uploads/v1/...?X-Amz-Signature=...",
+                    uploadUrl:
+                        "https://samsara-media.s3.amazonaws.com/fleet-installer/550e8400-e29b-41d4-a716-446655440000",
+                },
             },
         });
     });
 
-    test("postTachographFileUpload (2)", async () => {
+    test("postFleetInstallerPhotoUpload (2)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -330,15 +633,18 @@ describe("PreviewApIsClient", () => {
             environment: server.baseUrl,
         });
         const rawRequestBody = {
-            contentMd5: "contentMd5",
-            contentType: "application/octet-stream",
-            fileSizeBytes: 1000000,
-            fileType: "driverCard",
+            contentMd5: "blackcurrant............",
+            deviceId: "deviceId",
+            fileFormatType: "imageJpeg",
+            fileName: "x",
+            hardwareType: "vehicleGateway",
+            photoType: "installPhoto",
+            sizeBytes: 1000000,
         };
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
-            .post("/preview/fleet/tachograph/file-uploads")
+            .post("/preview/fleet/installer/photo-uploads")
             .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(401)
@@ -346,16 +652,19 @@ describe("PreviewApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.previewApIs.postTachographFileUpload({
-                contentMd5: "contentMd5",
-                contentType: "application/octet-stream",
-                fileSizeBytes: 1000000,
-                fileType: "driverCard",
+            return await client.previewApIs.postFleetInstallerPhotoUpload({
+                contentMd5: "blackcurrant............",
+                deviceId: "deviceId",
+                fileFormatType: "imageJpeg",
+                fileName: "x",
+                hardwareType: "vehicleGateway",
+                photoType: "installPhoto",
+                sizeBytes: 1000000,
             });
         }).rejects.toThrow(Samsara.UnauthorizedError);
     });
 
-    test("postTachographFileUpload (3)", async () => {
+    test("postFleetInstallerPhotoUpload (3)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -364,15 +673,18 @@ describe("PreviewApIsClient", () => {
             environment: server.baseUrl,
         });
         const rawRequestBody = {
-            contentMd5: "contentMd5",
-            contentType: "application/octet-stream",
-            fileSizeBytes: 1000000,
-            fileType: "driverCard",
+            contentMd5: "blackcurrant............",
+            deviceId: "deviceId",
+            fileFormatType: "imageJpeg",
+            fileName: "x",
+            hardwareType: "vehicleGateway",
+            photoType: "installPhoto",
+            sizeBytes: 1000000,
         };
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
-            .post("/preview/fleet/tachograph/file-uploads")
+            .post("/preview/fleet/installer/photo-uploads")
             .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(404)
@@ -380,16 +692,19 @@ describe("PreviewApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.previewApIs.postTachographFileUpload({
-                contentMd5: "contentMd5",
-                contentType: "application/octet-stream",
-                fileSizeBytes: 1000000,
-                fileType: "driverCard",
+            return await client.previewApIs.postFleetInstallerPhotoUpload({
+                contentMd5: "blackcurrant............",
+                deviceId: "deviceId",
+                fileFormatType: "imageJpeg",
+                fileName: "x",
+                hardwareType: "vehicleGateway",
+                photoType: "installPhoto",
+                sizeBytes: 1000000,
             });
         }).rejects.toThrow(Samsara.NotFoundError);
     });
 
-    test("postTachographFileUpload (4)", async () => {
+    test("postFleetInstallerPhotoUpload (4)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -398,15 +713,18 @@ describe("PreviewApIsClient", () => {
             environment: server.baseUrl,
         });
         const rawRequestBody = {
-            contentMd5: "contentMd5",
-            contentType: "application/octet-stream",
-            fileSizeBytes: 1000000,
-            fileType: "driverCard",
+            contentMd5: "blackcurrant............",
+            deviceId: "deviceId",
+            fileFormatType: "imageJpeg",
+            fileName: "x",
+            hardwareType: "vehicleGateway",
+            photoType: "installPhoto",
+            sizeBytes: 1000000,
         };
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
-            .post("/preview/fleet/tachograph/file-uploads")
+            .post("/preview/fleet/installer/photo-uploads")
             .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(405)
@@ -414,16 +732,19 @@ describe("PreviewApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.previewApIs.postTachographFileUpload({
-                contentMd5: "contentMd5",
-                contentType: "application/octet-stream",
-                fileSizeBytes: 1000000,
-                fileType: "driverCard",
+            return await client.previewApIs.postFleetInstallerPhotoUpload({
+                contentMd5: "blackcurrant............",
+                deviceId: "deviceId",
+                fileFormatType: "imageJpeg",
+                fileName: "x",
+                hardwareType: "vehicleGateway",
+                photoType: "installPhoto",
+                sizeBytes: 1000000,
             });
         }).rejects.toThrow(Samsara.MethodNotAllowedError);
     });
 
-    test("postTachographFileUpload (5)", async () => {
+    test("postFleetInstallerPhotoUpload (5)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -432,15 +753,18 @@ describe("PreviewApIsClient", () => {
             environment: server.baseUrl,
         });
         const rawRequestBody = {
-            contentMd5: "contentMd5",
-            contentType: "application/octet-stream",
-            fileSizeBytes: 1000000,
-            fileType: "driverCard",
+            contentMd5: "blackcurrant............",
+            deviceId: "deviceId",
+            fileFormatType: "imageJpeg",
+            fileName: "x",
+            hardwareType: "vehicleGateway",
+            photoType: "installPhoto",
+            sizeBytes: 1000000,
         };
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
-            .post("/preview/fleet/tachograph/file-uploads")
+            .post("/preview/fleet/installer/photo-uploads")
             .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(429)
@@ -448,16 +772,19 @@ describe("PreviewApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.previewApIs.postTachographFileUpload({
-                contentMd5: "contentMd5",
-                contentType: "application/octet-stream",
-                fileSizeBytes: 1000000,
-                fileType: "driverCard",
+            return await client.previewApIs.postFleetInstallerPhotoUpload({
+                contentMd5: "blackcurrant............",
+                deviceId: "deviceId",
+                fileFormatType: "imageJpeg",
+                fileName: "x",
+                hardwareType: "vehicleGateway",
+                photoType: "installPhoto",
+                sizeBytes: 1000000,
             });
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("postTachographFileUpload (6)", async () => {
+    test("postFleetInstallerPhotoUpload (6)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -466,15 +793,18 @@ describe("PreviewApIsClient", () => {
             environment: server.baseUrl,
         });
         const rawRequestBody = {
-            contentMd5: "contentMd5",
-            contentType: "application/octet-stream",
-            fileSizeBytes: 1000000,
-            fileType: "driverCard",
+            contentMd5: "blackcurrant............",
+            deviceId: "deviceId",
+            fileFormatType: "imageJpeg",
+            fileName: "x",
+            hardwareType: "vehicleGateway",
+            photoType: "installPhoto",
+            sizeBytes: 1000000,
         };
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
-            .post("/preview/fleet/tachograph/file-uploads")
+            .post("/preview/fleet/installer/photo-uploads")
             .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(500)
@@ -482,16 +812,19 @@ describe("PreviewApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.previewApIs.postTachographFileUpload({
-                contentMd5: "contentMd5",
-                contentType: "application/octet-stream",
-                fileSizeBytes: 1000000,
-                fileType: "driverCard",
+            return await client.previewApIs.postFleetInstallerPhotoUpload({
+                contentMd5: "blackcurrant............",
+                deviceId: "deviceId",
+                fileFormatType: "imageJpeg",
+                fileName: "x",
+                hardwareType: "vehicleGateway",
+                photoType: "installPhoto",
+                sizeBytes: 1000000,
             });
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("postTachographFileUpload (7)", async () => {
+    test("postFleetInstallerPhotoUpload (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -500,15 +833,18 @@ describe("PreviewApIsClient", () => {
             environment: server.baseUrl,
         });
         const rawRequestBody = {
-            contentMd5: "contentMd5",
-            contentType: "application/octet-stream",
-            fileSizeBytes: 1000000,
-            fileType: "driverCard",
+            contentMd5: "blackcurrant............",
+            deviceId: "deviceId",
+            fileFormatType: "imageJpeg",
+            fileName: "x",
+            hardwareType: "vehicleGateway",
+            photoType: "installPhoto",
+            sizeBytes: 1000000,
         };
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
-            .post("/preview/fleet/tachograph/file-uploads")
+            .post("/preview/fleet/installer/photo-uploads")
             .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(501)
@@ -516,16 +852,19 @@ describe("PreviewApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.previewApIs.postTachographFileUpload({
-                contentMd5: "contentMd5",
-                contentType: "application/octet-stream",
-                fileSizeBytes: 1000000,
-                fileType: "driverCard",
+            return await client.previewApIs.postFleetInstallerPhotoUpload({
+                contentMd5: "blackcurrant............",
+                deviceId: "deviceId",
+                fileFormatType: "imageJpeg",
+                fileName: "x",
+                hardwareType: "vehicleGateway",
+                photoType: "installPhoto",
+                sizeBytes: 1000000,
             });
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("postTachographFileUpload (8)", async () => {
+    test("postFleetInstallerPhotoUpload (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -534,15 +873,18 @@ describe("PreviewApIsClient", () => {
             environment: server.baseUrl,
         });
         const rawRequestBody = {
-            contentMd5: "contentMd5",
-            contentType: "application/octet-stream",
-            fileSizeBytes: 1000000,
-            fileType: "driverCard",
+            contentMd5: "blackcurrant............",
+            deviceId: "deviceId",
+            fileFormatType: "imageJpeg",
+            fileName: "x",
+            hardwareType: "vehicleGateway",
+            photoType: "installPhoto",
+            sizeBytes: 1000000,
         };
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
-            .post("/preview/fleet/tachograph/file-uploads")
+            .post("/preview/fleet/installer/photo-uploads")
             .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(502)
@@ -550,16 +892,19 @@ describe("PreviewApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.previewApIs.postTachographFileUpload({
-                contentMd5: "contentMd5",
-                contentType: "application/octet-stream",
-                fileSizeBytes: 1000000,
-                fileType: "driverCard",
+            return await client.previewApIs.postFleetInstallerPhotoUpload({
+                contentMd5: "blackcurrant............",
+                deviceId: "deviceId",
+                fileFormatType: "imageJpeg",
+                fileName: "x",
+                hardwareType: "vehicleGateway",
+                photoType: "installPhoto",
+                sizeBytes: 1000000,
             });
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("postTachographFileUpload (9)", async () => {
+    test("postFleetInstallerPhotoUpload (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -568,15 +913,18 @@ describe("PreviewApIsClient", () => {
             environment: server.baseUrl,
         });
         const rawRequestBody = {
-            contentMd5: "contentMd5",
-            contentType: "application/octet-stream",
-            fileSizeBytes: 1000000,
-            fileType: "driverCard",
+            contentMd5: "blackcurrant............",
+            deviceId: "deviceId",
+            fileFormatType: "imageJpeg",
+            fileName: "x",
+            hardwareType: "vehicleGateway",
+            photoType: "installPhoto",
+            sizeBytes: 1000000,
         };
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
-            .post("/preview/fleet/tachograph/file-uploads")
+            .post("/preview/fleet/installer/photo-uploads")
             .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(503)
@@ -584,16 +932,19 @@ describe("PreviewApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.previewApIs.postTachographFileUpload({
-                contentMd5: "contentMd5",
-                contentType: "application/octet-stream",
-                fileSizeBytes: 1000000,
-                fileType: "driverCard",
+            return await client.previewApIs.postFleetInstallerPhotoUpload({
+                contentMd5: "blackcurrant............",
+                deviceId: "deviceId",
+                fileFormatType: "imageJpeg",
+                fileName: "x",
+                hardwareType: "vehicleGateway",
+                photoType: "installPhoto",
+                sizeBytes: 1000000,
             });
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("postTachographFileUpload (10)", async () => {
+    test("postFleetInstallerPhotoUpload (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -602,15 +953,18 @@ describe("PreviewApIsClient", () => {
             environment: server.baseUrl,
         });
         const rawRequestBody = {
-            contentMd5: "contentMd5",
-            contentType: "application/octet-stream",
-            fileSizeBytes: 1000000,
-            fileType: "driverCard",
+            contentMd5: "blackcurrant............",
+            deviceId: "deviceId",
+            fileFormatType: "imageJpeg",
+            fileName: "x",
+            hardwareType: "vehicleGateway",
+            photoType: "installPhoto",
+            sizeBytes: 1000000,
         };
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
-            .post("/preview/fleet/tachograph/file-uploads")
+            .post("/preview/fleet/installer/photo-uploads")
             .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(504)
@@ -618,11 +972,291 @@ describe("PreviewApIsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.previewApIs.postTachographFileUpload({
-                contentMd5: "contentMd5",
-                contentType: "application/octet-stream",
-                fileSizeBytes: 1000000,
-                fileType: "driverCard",
+            return await client.previewApIs.postFleetInstallerPhotoUpload({
+                contentMd5: "blackcurrant............",
+                deviceId: "deviceId",
+                fileFormatType: "imageJpeg",
+                fileName: "x",
+                hardwareType: "vehicleGateway",
+                photoType: "installPhoto",
+                sizeBytes: 1000000,
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("postFleetInstallerPhotoUploadComplete (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = {
+            data: {
+                contentMd5: "rL0Y20zC+Fzt72VPzMSk2A==",
+                createdAtTime: "2026-06-01T18:15:00Z",
+                deviceId: "281474977961335",
+                fileFormatType: "imageJpeg",
+                fileName: "front_camera_install.jpg",
+                hardwareType: "vehicleGateway",
+                id: "550e8400-e29b-41d4-a716-446655440000",
+                photoType: "installPhoto",
+                processingStatus: "awaitingUpload",
+                sizeBytes: 482193,
+                updatedAtTime: "2026-06-01T18:15:00Z",
+            },
+        };
+        server
+            .mockEndpoint()
+            .post("/preview/fleet/installer/photo-uploads/complete")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.previewApIs.postFleetInstallerPhotoUploadComplete({
+            id: "id",
+        });
+        expect(response).toEqual({
+            data: {
+                contentMd5: "rL0Y20zC+Fzt72VPzMSk2A==",
+                createdAtTime: "2026-06-01T18:15:00Z",
+                deviceId: "281474977961335",
+                fileFormatType: "imageJpeg",
+                fileName: "front_camera_install.jpg",
+                hardwareType: "vehicleGateway",
+                id: "550e8400-e29b-41d4-a716-446655440000",
+                photoType: "installPhoto",
+                processingStatus: "awaitingUpload",
+                sizeBytes: 482193,
+                updatedAtTime: "2026-06-01T18:15:00Z",
+            },
+        });
+    });
+
+    test("postFleetInstallerPhotoUploadComplete (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/preview/fleet/installer/photo-uploads/complete")
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.postFleetInstallerPhotoUploadComplete({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("postFleetInstallerPhotoUploadComplete (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/preview/fleet/installer/photo-uploads/complete")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.postFleetInstallerPhotoUploadComplete({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("postFleetInstallerPhotoUploadComplete (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/preview/fleet/installer/photo-uploads/complete")
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.postFleetInstallerPhotoUploadComplete({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("postFleetInstallerPhotoUploadComplete (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/preview/fleet/installer/photo-uploads/complete")
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.postFleetInstallerPhotoUploadComplete({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("postFleetInstallerPhotoUploadComplete (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/preview/fleet/installer/photo-uploads/complete")
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.postFleetInstallerPhotoUploadComplete({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("postFleetInstallerPhotoUploadComplete (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/preview/fleet/installer/photo-uploads/complete")
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.postFleetInstallerPhotoUploadComplete({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("postFleetInstallerPhotoUploadComplete (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/preview/fleet/installer/photo-uploads/complete")
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.postFleetInstallerPhotoUploadComplete({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("postFleetInstallerPhotoUploadComplete (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/preview/fleet/installer/photo-uploads/complete")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.postFleetInstallerPhotoUploadComplete({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("postFleetInstallerPhotoUploadComplete (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/preview/fleet/installer/photo-uploads/complete")
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.postFleetInstallerPhotoUploadComplete({
+                id: "id",
             });
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });

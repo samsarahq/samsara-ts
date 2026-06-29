@@ -28,6 +28,7 @@ describe("FormsClient", () => {
                     assignedTo: { id: "id", type: "driver" },
                     createdAtTime: "2024-01-15T09:30:00Z",
                     dueAtTime: "2024-01-15T09:30:00Z",
+                    durationMs: 1000000,
                     externalIds: { externalIds: "externalIds" },
                     fields: [
                         {
@@ -233,6 +234,7 @@ describe("FormsClient", () => {
                     assignedTo: { id: "id", type: "driver" },
                     createdAtTime: "2024-01-15T09:30:00Z",
                     dueAtTime: "2024-01-15T09:30:00Z",
+                    durationMs: 1000000,
                     externalIds: { externalIds: "externalIds" },
                     fields: [
                         {
@@ -452,6 +454,7 @@ describe("FormsClient", () => {
                     },
                     createdAtTime: "2024-01-15T09:30:00Z",
                     dueAtTime: "2024-01-15T09:30:00Z",
+                    durationMs: 1000000,
                     externalIds: {
                         externalIds: "externalIds",
                     },
@@ -779,6 +782,7 @@ describe("FormsClient", () => {
                     },
                     createdAtTime: "2024-01-15T09:30:00Z",
                     dueAtTime: "2024-01-15T09:30:00Z",
+                    durationMs: 1000000,
                     externalIds: {
                         externalIds: "externalIds",
                     },
@@ -1272,6 +1276,7 @@ describe("FormsClient", () => {
                 assignedTo: { id: "938172", type: "driver" },
                 createdAtTime: "2019-06-13T19:08:25Z",
                 dueAtTime: "2019-06-13T19:08:25Z",
+                durationMs: 105000,
                 externalIds: { key: "value" },
                 fields: [
                     {
@@ -1428,6 +1433,7 @@ describe("FormsClient", () => {
                 },
                 createdAtTime: "2019-06-13T19:08:25Z",
                 dueAtTime: "2019-06-13T19:08:25Z",
+                durationMs: 105000,
                 externalIds: {
                     key: "value",
                 },
@@ -1882,6 +1888,7 @@ describe("FormsClient", () => {
                 assignedTo: { id: "938172", type: "driver" },
                 createdAtTime: "2019-06-13T19:08:25Z",
                 dueAtTime: "2019-06-13T19:08:25Z",
+                durationMs: 105000,
                 externalIds: { key: "value" },
                 fields: [
                     {
@@ -2035,6 +2042,7 @@ describe("FormsClient", () => {
                 },
                 createdAtTime: "2019-06-13T19:08:25Z",
                 dueAtTime: "2019-06-13T19:08:25Z",
+                durationMs: 105000,
                 externalIds: {
                     key: "value",
                 },
@@ -3004,6 +3012,7 @@ describe("FormsClient", () => {
                     assignedTo: { id: "938172", type: "driver" },
                     createdAtTime: "2019-06-13T19:08:25Z",
                     dueAtTime: "2019-06-13T19:08:25Z",
+                    durationMs: 105000,
                     externalIds: { key: "value" },
                     fields: [
                         {
@@ -3157,6 +3166,7 @@ describe("FormsClient", () => {
                     },
                     createdAtTime: "2019-06-13T19:08:25Z",
                     dueAtTime: "2019-06-13T19:08:25Z",
+                    durationMs: 105000,
                     externalIds: {
                         key: "value",
                     },

@@ -171,13 +171,24 @@ export class ReadingsClient {
         request: Samsara.GetReadingsHistoryRequest,
         requestOptions?: ReadingsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.ReadingsGetReadingsHistoryResponseBody>> {
-        const { after, readingId, entityIds, entityType, externalIds, startTime, endTime, feed, includeExternalIds } =
-            request;
+        const {
+            after,
+            readingId,
+            entityIds,
+            entityType,
+            assetTypes,
+            externalIds,
+            startTime,
+            endTime,
+            feed,
+            includeExternalIds,
+        } = request;
         const _queryParams: Record<string, unknown> = {
             after,
             readingId,
             entityIds,
             entityType,
+            assetTypes,
             externalIds,
             startTime,
             endTime,
@@ -288,7 +299,8 @@ export class ReadingsClient {
         request: Samsara.GetReadingsSnapshotRequest,
         requestOptions?: ReadingsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.ReadingsGetReadingsSnapshotResponseBody>> {
-        const { after, readingIds, entityIds, externalIds, asOfTime, entityType, includeExternalIds } = request;
+        const { after, readingIds, entityIds, externalIds, asOfTime, entityType, assetTypes, includeExternalIds } =
+            request;
         const _queryParams: Record<string, unknown> = {
             after,
             readingIds,
@@ -296,6 +308,7 @@ export class ReadingsClient {
             externalIds,
             asOfTime,
             entityType,
+            assetTypes,
             includeExternalIds,
         };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();

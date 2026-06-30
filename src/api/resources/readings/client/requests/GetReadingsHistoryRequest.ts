@@ -279,6 +279,8 @@ export interface GetReadingsHistoryRequest {
     entityIds?: string;
     /** The entity type of the entityIds or externalIds to fetch readings for. Use /readings/definitions endpoint to get a list of valid entity types. (Examples: asset, sensor) */
     entityType: string;
+    /** A filter on asset readings based on this comma-separated list of asset types. Only supported when entityType is asset. Valid values are: uncategorized, trailer, equipment, unpowered, vehicle. */
+    assetTypes?: string;
     /** A filter on the data based on this comma-separated list of external IDs. (Examples: samsara.serial:ZPXKLMN7VJ, samsara.serial:ABXKIMN4NM) */
     externalIds?: string;
     /** A filter on the data that returns data points with timestamps greater than or equal to this value. Required when feed mode is not enabled. Must be a string in RFC 3339 format. Millisecond precision and timezones are supported. (Examples: 2020-01-27T07:06:25Z) */

@@ -283,6 +283,8 @@ export interface GetReadingsSnapshotRequest {
     asOfTime?: string;
     /** The entity type of the entityIds or externalIds to fetch readings for. Use /readings/definitions endpoint to get a list of valid entity types. (Examples: asset, sensor) */
     entityType: string;
+    /** A filter on asset readings based on this comma-separated list of asset types. Only supported when entityType is asset. Valid values are: uncategorized, trailer, equipment, unpowered, vehicle. */
+    assetTypes?: string;
     /** Optional boolean indicating whether to return external IDs on supported entities */
     includeExternalIds?: boolean;
 }

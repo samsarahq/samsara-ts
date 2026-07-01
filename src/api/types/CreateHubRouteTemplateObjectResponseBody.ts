@@ -3,9 +3,9 @@
 import type * as Samsara from "../index.js";
 
 /**
- * A route template for a hub.
+ * A newly created route template.
  */
-export interface HubRouteTemplateObjectResponseBody {
+export interface CreateHubRouteTemplateObjectResponseBody {
     /** The timestamp when the route template was created, in RFC 3339 format. */
     createdAtTime: string;
     defaultDepotEnd?: Samsara.HubRouteTemplateDepotObjectResponseBody | undefined;
@@ -18,8 +18,6 @@ export interface HubRouteTemplateObjectResponseBody {
     durationSeconds: number;
     /** The hub identifier this route template belongs to. */
     hubId: string;
-    /** The IANA timezone of the hub (e.g. 'America/Los_Angeles'). */
-    hubTimezone: string;
     /** The unique identifier for the route template. */
     id: string;
     /** Ordered list of stop locations in the route template. */

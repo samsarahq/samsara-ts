@@ -8,8 +8,6 @@ export interface HubRouteTemplateLocationObjectResponseBody {
     externalId?: string | undefined;
     /** The formatted address of the location. */
     formattedAddress: string;
-    /** The unique identifier for the location. */
-    id: string;
     /** Latitude coordinate of the location. */
     latitude: number;
     /** Longitude coordinate of the location. */

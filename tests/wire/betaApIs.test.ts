@@ -11877,12 +11877,7 @@ describe("BetaApIsClient", () => {
                     priority: 1,
                     quantities: [{ capacityId: "850e8400-e29b-41d4-a716-446655440003", quantity: 25.5 }],
                     routeId: "950e8400-e29b-41d4-a716-446655440005",
-                    skillsRequired: [
-                        "650e8400-e29b-41d4-a716-446655440001",
-                        "650e8400-e29b-41d4-a716-446655440001",
-                        "650e8400-e29b-41d4-a716-446655440001",
-                        "650e8400-e29b-41d4-a716-446655440001",
-                    ],
+                    skillsRequired: ["650e8400-e29b-41d4-a716-446655440001", "650e8400-e29b-41d4-a716-446655440001"],
                     updatedAtTime: "2024-04-10T11:30:00Z",
                 },
             ],
@@ -11940,12 +11935,7 @@ describe("BetaApIsClient", () => {
                         },
                     ],
                     routeId: "950e8400-e29b-41d4-a716-446655440005",
-                    skillsRequired: [
-                        "650e8400-e29b-41d4-a716-446655440001",
-                        "650e8400-e29b-41d4-a716-446655440001",
-                        "650e8400-e29b-41d4-a716-446655440001",
-                        "650e8400-e29b-41d4-a716-446655440001",
-                    ],
+                    skillsRequired: ["650e8400-e29b-41d4-a716-446655440001", "650e8400-e29b-41d4-a716-446655440001"],
                     updatedAtTime: "2024-04-10T11:30:00Z",
                 },
             ],
@@ -12398,9 +12388,9 @@ describe("BetaApIsClient", () => {
                         longitude: -118.2437,
                         name: "Main Warehouse",
                     },
+                    defaultStartTimeOfDay: "08:00",
                     distanceMeters: 15000,
                     durationSeconds: 3600,
-                    earliestStartTime: "08:00",
                     hubId: "550e8400-e29b-41d4-a716-446655440000",
                     hubTimezone: "America/Los_Angeles",
                     id: "660e8400-e29b-41d4-a716-446655440001",
@@ -12408,7 +12398,6 @@ describe("BetaApIsClient", () => {
                         {
                             externalId: "LOC-123",
                             formattedAddress: "456 Main St, Los Angeles, CA 90210, US",
-                            id: "850e8400-e29b-41d4-a716-446655440003",
                             latitude: 34.0522,
                             longitude: -118.2437,
                             name: "Customer ABC Warehouse",
@@ -12452,9 +12441,9 @@ describe("BetaApIsClient", () => {
                         longitude: -118.2437,
                         name: "Main Warehouse",
                     },
+                    defaultStartTimeOfDay: "08:00",
                     distanceMeters: 15000,
                     durationSeconds: 3600,
-                    earliestStartTime: "08:00",
                     hubId: "550e8400-e29b-41d4-a716-446655440000",
                     hubTimezone: "America/Los_Angeles",
                     id: "660e8400-e29b-41d4-a716-446655440001",
@@ -12462,7 +12451,6 @@ describe("BetaApIsClient", () => {
                         {
                             externalId: "LOC-123",
                             formattedAddress: "456 Main St, Los Angeles, CA 90210, US",
-                            id: "850e8400-e29b-41d4-a716-446655440003",
                             latitude: 34.0522,
                             longitude: -118.2437,
                             name: "Customer ABC Warehouse",
@@ -12701,6 +12689,349 @@ describe("BetaApIsClient", () => {
         await expect(async () => {
             return await client.betaApIs.listHubRouteTemplates({
                 hubId: "hubId",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("createHubRouteTemplate (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { hubId: "550e8400-e29b-41d4-a716-446655440000", name: "Downtown Delivery Route" };
+        const rawResponseBody = {
+            data: {
+                createdAtTime: "2024-01-15T10:30:00Z",
+                defaultDepotEnd: {
+                    externalId: "DEPOT-001",
+                    formattedAddress: "123 Industrial Blvd, Los Angeles, CA 90210, US",
+                    id: "750e8400-e29b-41d4-a716-446655440002",
+                    latitude: 34.0522,
+                    longitude: -118.2437,
+                    name: "Main Warehouse",
+                },
+                defaultDepotStart: {
+                    externalId: "DEPOT-001",
+                    formattedAddress: "123 Industrial Blvd, Los Angeles, CA 90210, US",
+                    id: "750e8400-e29b-41d4-a716-446655440002",
+                    latitude: 34.0522,
+                    longitude: -118.2437,
+                    name: "Main Warehouse",
+                },
+                defaultStartTimeOfDay: "08:00",
+                distanceMeters: 15000,
+                durationSeconds: 3600,
+                hubId: "550e8400-e29b-41d4-a716-446655440000",
+                id: "660e8400-e29b-41d4-a716-446655440001",
+                locations: [
+                    {
+                        externalId: "LOC-123",
+                        formattedAddress: "456 Main St, Los Angeles, CA 90210, US",
+                        latitude: 34.0522,
+                        longitude: -118.2437,
+                        name: "Customer ABC Warehouse",
+                        position: 1,
+                    },
+                ],
+                name: "Downtown Delivery Route",
+                updatedAtTime: "2024-01-15T12:00:00Z",
+            },
+        };
+        server
+            .mockEndpoint()
+            .post("/hub/route-templates")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.betaApIs.createHubRouteTemplate({
+            hubId: "550e8400-e29b-41d4-a716-446655440000",
+            name: "Downtown Delivery Route",
+        });
+        expect(response).toEqual({
+            data: {
+                createdAtTime: "2024-01-15T10:30:00Z",
+                defaultDepotEnd: {
+                    externalId: "DEPOT-001",
+                    formattedAddress: "123 Industrial Blvd, Los Angeles, CA 90210, US",
+                    id: "750e8400-e29b-41d4-a716-446655440002",
+                    latitude: 34.0522,
+                    longitude: -118.2437,
+                    name: "Main Warehouse",
+                },
+                defaultDepotStart: {
+                    externalId: "DEPOT-001",
+                    formattedAddress: "123 Industrial Blvd, Los Angeles, CA 90210, US",
+                    id: "750e8400-e29b-41d4-a716-446655440002",
+                    latitude: 34.0522,
+                    longitude: -118.2437,
+                    name: "Main Warehouse",
+                },
+                defaultStartTimeOfDay: "08:00",
+                distanceMeters: 15000,
+                durationSeconds: 3600,
+                hubId: "550e8400-e29b-41d4-a716-446655440000",
+                id: "660e8400-e29b-41d4-a716-446655440001",
+                locations: [
+                    {
+                        externalId: "LOC-123",
+                        formattedAddress: "456 Main St, Los Angeles, CA 90210, US",
+                        latitude: 34.0522,
+                        longitude: -118.2437,
+                        name: "Customer ABC Warehouse",
+                        position: 1,
+                    },
+                ],
+                name: "Downtown Delivery Route",
+                updatedAtTime: "2024-01-15T12:00:00Z",
+            },
+        });
+    });
+
+    test("createHubRouteTemplate (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { hubId: "hubId", name: "name" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/hub/route-templates")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createHubRouteTemplate({
+                hubId: "hubId",
+                name: "name",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("createHubRouteTemplate (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { hubId: "hubId", name: "name" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/hub/route-templates")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createHubRouteTemplate({
+                hubId: "hubId",
+                name: "name",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("createHubRouteTemplate (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { hubId: "hubId", name: "name" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/hub/route-templates")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createHubRouteTemplate({
+                hubId: "hubId",
+                name: "name",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("createHubRouteTemplate (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { hubId: "hubId", name: "name" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/hub/route-templates")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createHubRouteTemplate({
+                hubId: "hubId",
+                name: "name",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("createHubRouteTemplate (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { hubId: "hubId", name: "name" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/hub/route-templates")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createHubRouteTemplate({
+                hubId: "hubId",
+                name: "name",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("createHubRouteTemplate (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { hubId: "hubId", name: "name" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/hub/route-templates")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createHubRouteTemplate({
+                hubId: "hubId",
+                name: "name",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("createHubRouteTemplate (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { hubId: "hubId", name: "name" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/hub/route-templates")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createHubRouteTemplate({
+                hubId: "hubId",
+                name: "name",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("createHubRouteTemplate (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { hubId: "hubId", name: "name" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/hub/route-templates")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createHubRouteTemplate({
+                hubId: "hubId",
+                name: "name",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("createHubRouteTemplate (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { hubId: "hubId", name: "name" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/hub/route-templates")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createHubRouteTemplate({
+                hubId: "hubId",
+                name: "name",
             });
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
@@ -13772,10 +14103,10 @@ describe("BetaApIsClient", () => {
                     },
                     notes: "Receiving 6-2",
                     placeTypes: [
-                        "Eligendi in.",
-                        "Odit voluptatem sequi maiores.",
-                        "Sunt laborum voluptas quis quasi debitis dignissimos.",
-                        "Eum quae.",
+                        "Voluptatem sequi maiores quidem sunt laborum voluptas.",
+                        "Quasi debitis dignissimos quibusdam.",
+                        "Quae aspernatur beatae cum sint cum corrupti.",
+                        "Iusto aut molestias alias dolores doloribus.",
                     ],
                     routing: [
                         {
@@ -13811,7 +14142,11 @@ describe("BetaApIsClient", () => {
                             ],
                         },
                     ],
-                    safetyEventExclusions: ["Iste distinctio aspernatur.", "Dolorum omnis qui consequatur odio."],
+                    safetyEventExclusions: [
+                        "Rerum atque et corrupti.",
+                        "Distinctio aspernatur.",
+                        "Dolorum omnis qui consequatur odio.",
+                    ],
                     streetView: {
                         headingDegrees: 90,
                         isEnabled: true,
@@ -13869,10 +14204,10 @@ describe("BetaApIsClient", () => {
                     },
                     notes: "Receiving 6-2",
                     placeTypes: [
-                        "Eligendi in.",
-                        "Odit voluptatem sequi maiores.",
-                        "Sunt laborum voluptas quis quasi debitis dignissimos.",
-                        "Eum quae.",
+                        "Voluptatem sequi maiores quidem sunt laborum voluptas.",
+                        "Quasi debitis dignissimos quibusdam.",
+                        "Quae aspernatur beatae cum sint cum corrupti.",
+                        "Iusto aut molestias alias dolores doloribus.",
                     ],
                     routing: [
                         {
@@ -13916,7 +14251,11 @@ describe("BetaApIsClient", () => {
                             ],
                         },
                     ],
-                    safetyEventExclusions: ["Iste distinctio aspernatur.", "Dolorum omnis qui consequatur odio."],
+                    safetyEventExclusions: [
+                        "Rerum atque et corrupti.",
+                        "Distinctio aspernatur.",
+                        "Dolorum omnis qui consequatur odio.",
+                    ],
                     streetView: {
                         headingDegrees: 90,
                         isEnabled: true,
@@ -14132,10 +14471,10 @@ describe("BetaApIsClient", () => {
                 },
                 notes: "Receiving 6-2",
                 placeTypes: [
-                    "Eligendi in.",
-                    "Odit voluptatem sequi maiores.",
-                    "Sunt laborum voluptas quis quasi debitis dignissimos.",
-                    "Eum quae.",
+                    "Voluptatem sequi maiores quidem sunt laborum voluptas.",
+                    "Quasi debitis dignissimos quibusdam.",
+                    "Quae aspernatur beatae cum sint cum corrupti.",
+                    "Iusto aut molestias alias dolores doloribus.",
                 ],
                 routing: [
                     {
@@ -14171,7 +14510,11 @@ describe("BetaApIsClient", () => {
                         ],
                     },
                 ],
-                safetyEventExclusions: ["Iste distinctio aspernatur.", "Dolorum omnis qui consequatur odio."],
+                safetyEventExclusions: [
+                    "Rerum atque et corrupti.",
+                    "Distinctio aspernatur.",
+                    "Dolorum omnis qui consequatur odio.",
+                ],
                 streetView: {
                     headingDegrees: 90,
                     isEnabled: true,
@@ -14237,10 +14580,10 @@ describe("BetaApIsClient", () => {
                 },
                 notes: "Receiving 6-2",
                 placeTypes: [
-                    "Eligendi in.",
-                    "Odit voluptatem sequi maiores.",
-                    "Sunt laborum voluptas quis quasi debitis dignissimos.",
-                    "Eum quae.",
+                    "Voluptatem sequi maiores quidem sunt laborum voluptas.",
+                    "Quasi debitis dignissimos quibusdam.",
+                    "Quae aspernatur beatae cum sint cum corrupti.",
+                    "Iusto aut molestias alias dolores doloribus.",
                 ],
                 routing: [
                     {
@@ -14284,7 +14627,11 @@ describe("BetaApIsClient", () => {
                         ],
                     },
                 ],
-                safetyEventExclusions: ["Iste distinctio aspernatur.", "Dolorum omnis qui consequatur odio."],
+                safetyEventExclusions: [
+                    "Rerum atque et corrupti.",
+                    "Distinctio aspernatur.",
+                    "Dolorum omnis qui consequatur odio.",
+                ],
                 streetView: {
                     headingDegrees: 90,
                     isEnabled: true,
@@ -14782,10 +15129,10 @@ describe("BetaApIsClient", () => {
                 },
                 notes: "Receiving 6-2",
                 placeTypes: [
-                    "Eligendi in.",
-                    "Odit voluptatem sequi maiores.",
-                    "Sunt laborum voluptas quis quasi debitis dignissimos.",
-                    "Eum quae.",
+                    "Voluptatem sequi maiores quidem sunt laborum voluptas.",
+                    "Quasi debitis dignissimos quibusdam.",
+                    "Quae aspernatur beatae cum sint cum corrupti.",
+                    "Iusto aut molestias alias dolores doloribus.",
                 ],
                 routing: [
                     {
@@ -14821,7 +15168,11 @@ describe("BetaApIsClient", () => {
                         ],
                     },
                 ],
-                safetyEventExclusions: ["Iste distinctio aspernatur.", "Dolorum omnis qui consequatur odio."],
+                safetyEventExclusions: [
+                    "Rerum atque et corrupti.",
+                    "Distinctio aspernatur.",
+                    "Dolorum omnis qui consequatur odio.",
+                ],
                 streetView: {
                     headingDegrees: 90,
                     isEnabled: true,
@@ -14883,10 +15234,10 @@ describe("BetaApIsClient", () => {
                 },
                 notes: "Receiving 6-2",
                 placeTypes: [
-                    "Eligendi in.",
-                    "Odit voluptatem sequi maiores.",
-                    "Sunt laborum voluptas quis quasi debitis dignissimos.",
-                    "Eum quae.",
+                    "Voluptatem sequi maiores quidem sunt laborum voluptas.",
+                    "Quasi debitis dignissimos quibusdam.",
+                    "Quae aspernatur beatae cum sint cum corrupti.",
+                    "Iusto aut molestias alias dolores doloribus.",
                 ],
                 routing: [
                     {
@@ -14930,7 +15281,11 @@ describe("BetaApIsClient", () => {
                         ],
                     },
                 ],
-                safetyEventExclusions: ["Iste distinctio aspernatur.", "Dolorum omnis qui consequatur odio."],
+                safetyEventExclusions: [
+                    "Rerum atque et corrupti.",
+                    "Distinctio aspernatur.",
+                    "Dolorum omnis qui consequatur odio.",
+                ],
                 streetView: {
                     headingDegrees: 90,
                     isEnabled: true,

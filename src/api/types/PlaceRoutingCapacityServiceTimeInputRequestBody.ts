@@ -7,7 +7,7 @@ export interface PlaceRoutingCapacityServiceTimeInputRequestBody {
     /** Capacity UUID. */
     capacityId: string;
     /** Quantity units per service time chunk. */
-    quantityUnitPerServiceTime: number;
+    quantityPerServiceTime: number;
     /** Service time in seconds. */
     serviceTimeSeconds: number;
 }

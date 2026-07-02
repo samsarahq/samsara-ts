@@ -7,6 +7,8 @@ import type * as Samsara from "../index.js";
  */
 export interface PlaceRoutingOrderServiceTimeInputRequestBody {
     capacityServiceTime?: Samsara.PlaceRoutingCapacityServiceTimeInputRequestBody | undefined;
+    /** Fixed order service time in seconds. Required when modeType is fixed. */
+    fixedServiceTimeSeconds?: number | undefined;
     /** When true, order service time settings apply at this stop; when false, hub/session defaults apply. */
     isEnabled?: boolean | undefined;
     /** Mode: fixed or variable.  Valid values: `fixed`, `variable` */

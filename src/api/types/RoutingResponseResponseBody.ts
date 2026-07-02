@@ -15,8 +15,8 @@ export interface RoutingResponseResponseBody {
     /** Whether this routing row is a depot. */
     isDepot: boolean;
     orderServiceTime?: Samsara.RoutingOrderServiceTimeResponseResponseBody | undefined;
-    /** Stop position preference: unknown, unspecified, any, first, or last. */
-    position: string;
+    /** Stop position preference: first or last. */
+    position?: string | undefined;
     /** Route priority from 1 (lowest) to 5 (highest). */
     priority?: number | undefined;
     /** Required planner skills. */

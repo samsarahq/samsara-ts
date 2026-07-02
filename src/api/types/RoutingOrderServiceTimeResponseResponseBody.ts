@@ -7,6 +7,8 @@ import type * as Samsara from "../index.js";
  */
 export interface RoutingOrderServiceTimeResponseResponseBody {
     capacityServiceTime?: Samsara.RoutingCapacityServiceTimeResponseResponseBody | undefined;
+    /** Fixed order service time in seconds. */
+    fixedServiceTimeSeconds?: number | undefined;
     /** Whether order service time settings apply at this stop. */
     isEnabled: boolean;
     /** Mode: unknown, unspecified, fixed, or variable. */

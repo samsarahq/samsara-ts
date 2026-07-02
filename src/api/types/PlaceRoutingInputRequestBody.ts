@@ -15,8 +15,8 @@ export interface PlaceRoutingInputRequestBody {
     /** Whether this routing row is a depot. */
     isDepot?: boolean | undefined;
     orderServiceTime?: Samsara.PlaceRoutingOrderServiceTimeInputRequestBody | undefined;
-    /** Stop position preference: unknown, unspecified, any, first, or last. */
-    position?: string | undefined;
+    /** Stop position preference: first or last.  Valid values: `first`, `last` */
+    position?: PlaceRoutingInputRequestBody.Position | undefined;
     /** Route priority from 1 (lowest) to 5 (highest). */
     priority?: number | undefined;
     /** Required planner skills for this routing row. */
@@ -26,4 +26,13 @@ export interface PlaceRoutingInputRequestBody {
     serviceTime?: Samsara.PlaceRoutingServiceTimeInputRequestBody | undefined;
     /** Recurring local-time service windows for this routing row. */
     serviceWindows?: Samsara.PlaceRoutingServiceWindowInputRequestBody[] | undefined;
+}
+
+export namespace PlaceRoutingInputRequestBody {
+    /** Stop position preference: first or last.  Valid values: `first`, `last` */
+    export const Position = {
+        First: "first",
+        Last: "last",
+    } as const;
+    export type Position = (typeof Position)[keyof typeof Position];
 }

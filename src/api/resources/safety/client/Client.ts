@@ -261,12 +261,7 @@ export class SafetyClient {
     }
 
     /**
-     * <n class="warning">
-     * <nh>
-     * <i class="fa fa-exclamation-circle"></i>
-     * This endpoint is still on our legacy API.
-     * </nh>
-     * </n>
+     * > 🚧 This endpoint is still on our legacy API.
      *
      * Fetch the safety score for the driver.
      *
@@ -346,12 +341,7 @@ export class SafetyClient {
     }
 
     /**
-     * <n class="warning">
-     * <nh>
-     * <i class="fa fa-exclamation-circle"></i>
-     * This endpoint is still on our legacy API.
-     * </nh>
-     * </n>
+     * > 🚧 This endpoint is still on our legacy API.
      *
      * Fetch the safety score for the vehicle.
      *

@@ -23,12 +23,7 @@ export class TrailerAssignmentsClient {
     }
 
     /**
-     * <n class="warning">
-     * <nh>
-     * <i class="fa fa-exclamation-circle"></i>
-     * This endpoint is still on our legacy API.
-     * </nh>
-     * </n>
+     * > 🚧 This endpoint is still on our legacy API.
      *
      * Fetch trailer assignment data for all trailers in your organization.
      *
@@ -107,12 +102,7 @@ export class TrailerAssignmentsClient {
     }
 
     /**
-     * <n class="warning">
-     * <nh>
-     * <i class="fa fa-exclamation-circle"></i>
-     * This endpoint is still on our legacy API.
-     * </nh>
-     * </n>
+     * > 🚧 This endpoint is still on our legacy API.
      *
      * Fetch trailer assignment data for a single trailer.
      *

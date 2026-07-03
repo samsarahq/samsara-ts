@@ -489,12 +489,7 @@ export class AssetsClient {
     }
 
     /**
-     * <n class="warning">
-     * <nh>
-     * <i class="fa fa-exclamation-circle"></i>
-     * This endpoint is still on our legacy API.
-     * </nh>
-     * </n>
+     * > 🚧 This endpoint is still on our legacy API.
      *
      * Fetch current locations of all assets.
      *
@@ -564,12 +559,7 @@ export class AssetsClient {
     }
 
     /**
-     * <n class="warning">
-     * <nh>
-     * <i class="fa fa-exclamation-circle"></i>
-     * This endpoint is still on our legacy API.
-     * </nh>
-     * </n>
+     * > 🚧 This endpoint is still on our legacy API.
      *
      * Fetches all reefers and reefer-specific stats.
      *
@@ -644,12 +634,7 @@ export class AssetsClient {
     }
 
     /**
-     * <n class="warning">
-     * <nh>
-     * <i class="fa fa-exclamation-circle"></i>
-     * This endpoint is still on our legacy API.
-     * </nh>
-     * </n>
+     * > 🚧 This endpoint is still on our legacy API.
      *
      * List historical locations for a given asset.
      *
@@ -727,12 +712,7 @@ export class AssetsClient {
     }
 
     /**
-     * <n class="warning">
-     * <nh>
-     * <i class="fa fa-exclamation-circle"></i>
-     * This endpoint is still on our legacy API.
-     * </nh>
-     * </n>
+     * > 🚧 This endpoint is still on our legacy API.
      *
      * Fetch the reefer-specific stats of an asset.
      *

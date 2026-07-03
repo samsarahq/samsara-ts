@@ -653,12 +653,7 @@ export class IndustrialClient {
     }
 
     /**
-     * <n class="warning">
-     * <nh>
-     * <i class="fa fa-exclamation-circle"></i>
-     * This endpoint is still on our legacy API.
-     * </nh>
-     * </n>
+     * > 🚧 This endpoint is still on our legacy API.
      *
      * Fetch all cameras.
      *
@@ -719,12 +714,7 @@ export class IndustrialClient {
     }
 
     /**
-     * <n class="warning">
-     * <nh>
-     * <i class="fa fa-exclamation-circle"></i>
-     * This endpoint is still on our legacy API.
-     * </nh>
-     * </n>
+     * > 🚧 This endpoint is still on our legacy API.
      *
      * Fetch configured programs on the camera.
      *
@@ -875,12 +865,7 @@ export class IndustrialClient {
     }
 
     /**
-     * <n class="warning">
-     * <nh>
-     * <i class="fa fa-exclamation-circle"></i>
-     * This endpoint is still on our legacy API.
-     * </nh>
-     * </n>
+     * > 🚧 This endpoint is still on our legacy API.
      *
      * Fetch runs.
      *
@@ -951,12 +936,7 @@ export class IndustrialClient {
     }
 
     /**
-     * <n class="warning">
-     * <nh>
-     * <i class="fa fa-exclamation-circle"></i>
-     * This endpoint is still on our legacy API.
-     * </nh>
-     * </n>
+     * > 🚧 This endpoint is still on our legacy API.
      *
      * Fetch runs by camera.
      *
@@ -1033,12 +1013,7 @@ export class IndustrialClient {
     }
 
     /**
-     * <n class="warning">
-     * <nh>
-     * <i class="fa fa-exclamation-circle"></i>
-     * This endpoint is still on our legacy API.
-     * </nh>
-     * </n>
+     * > 🚧 This endpoint is still on our legacy API.
      *
      * Fetch runs by camera and program.
      *
@@ -1118,12 +1093,7 @@ export class IndustrialClient {
     }
 
     /**
-     * <n class="warning">
-     * <nh>
-     * <i class="fa fa-exclamation-circle"></i>
-     * This endpoint is still on our legacy API.
-     * </nh>
-     * </n>
+     * > 🚧 This endpoint is still on our legacy API.
      *
      * Get historical data for machine objects. This method returns a set of historical data for all machines.
      *
@@ -1193,12 +1163,7 @@ export class IndustrialClient {
     }
 
     /**
-     * <n class="warning">
-     * <nh>
-     * <i class="fa fa-exclamation-circle"></i>
-     * This endpoint is still on our legacy API.
-     * </nh>
-     * </n>
+     * > 🚧 This endpoint is still on our legacy API.
      *
      * Get machine objects. This method returns a list of the machine objects in the Samsara Cloud and information about them.
      *

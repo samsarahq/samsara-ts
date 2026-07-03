@@ -7219,12 +7219,7 @@ await client.assets.updateAsset({
 <dl>
 <dd>
 
-<n class="warning">
-<nh>
-<i class="fa fa-exclamation-circle"></i>
-This endpoint is still on our legacy API.
-</nh>
-</n>
+> 🚧 This endpoint is still on our legacy API.
 
 Fetch current locations of all assets. 
 
@@ -7293,12 +7288,7 @@ await client.assets.v1GetAllAssetCurrentLocations();
 <dl>
 <dd>
 
-<n class="warning">
-<nh>
-<i class="fa fa-exclamation-circle"></i>
-This endpoint is still on our legacy API.
-</nh>
-</n>
+> 🚧 This endpoint is still on our legacy API.
 
 Fetches all reefers and reefer-specific stats. 
 
@@ -7370,12 +7360,7 @@ await client.assets.v1GetAssetsReefers({
 <dl>
 <dd>
 
-<n class="warning">
-<nh>
-<i class="fa fa-exclamation-circle"></i>
-This endpoint is still on our legacy API.
-</nh>
-</n>
+> 🚧 This endpoint is still on our legacy API.
 
 List historical locations for a given asset. 
 
@@ -7448,12 +7433,7 @@ await client.assets.v1GetAssetLocation({
 <dl>
 <dd>
 
-<n class="warning">
-<nh>
-<i class="fa fa-exclamation-circle"></i>
-This endpoint is still on our legacy API.
-</nh>
-</n>
+> 🚧 This endpoint is still on our legacy API.
 
 Fetch the reefer-specific stats of an asset. 
 
@@ -9400,12 +9380,7 @@ await client.maintenance.updateDvir({
 <dl>
 <dd>
 
-<n class="warning">
-<nh>
-<i class="fa fa-exclamation-circle"></i>
-This endpoint is still on our legacy API.
-</nh>
-</n>
+> 🚧 This endpoint is still on our legacy API.
 
 Get list of the vehicles with any engine faults or check light data. 
 
@@ -11063,12 +11038,7 @@ await client.legacyApIs.getVehiclesDriverAssignments();
 <dl>
 <dd>
 
-**Note: This is a legacy endpoint, consider using [this endpoint](https://developers.samsara.com/reference/getsafetyeventsv2stream) instead. The endpoint will continue to function as documented.** <n class="warning">
-<nh>
-<i class="fa fa-exclamation-circle"></i>
-This endpoint is still on our legacy API.
-</nh>
-</n>
+**Note: This is a legacy endpoint, consider using [this endpoint](https://developers.samsara.com/reference/getsafetyeventsv2stream) instead. The endpoint will continue to function as documented.** > 🚧 This endpoint is still on our legacy API.
 
 Fetch harsh event details for a vehicle. 
 
@@ -13487,12 +13457,7 @@ await client.hoursOfService.getHosViolations();
 <dl>
 <dd>
 
-<n class="warning">
-<nh>
-<i class="fa fa-exclamation-circle"></i>
-This endpoint is still on our legacy API.
-</nh>
-</n>
+> 🚧 This endpoint is still on our legacy API.
 
 Set an individual driver’s current duty status to 'On Duty' or 'Off Duty'.
 
@@ -13566,12 +13531,7 @@ await client.hoursOfService.setCurrentDutyStatus({
 <dl>
 <dd>
 
-<n class="warning">
-<nh>
-<i class="fa fa-exclamation-circle"></i>
-This endpoint is still on our legacy API.
-</nh>
-</n>
+> 🚧 This endpoint is still on our legacy API.
 
 Get the HOS (hours of service) signin and signout logs for the specified driver. The response includes 4 fields that are now deprecated.
 
@@ -14451,12 +14411,7 @@ await client.routes.listHubPlanRoutes({
 <dl>
 <dd>
 
-<n class="warning">
-<nh>
-<i class="fa fa-exclamation-circle"></i>
-This endpoint is still on our legacy API.
-</nh>
-</n>
+> 🚧 This endpoint is still on our legacy API.
 
 Delete a dispatch route and its associated jobs. 
 
@@ -15076,6 +15031,8 @@ The first call to this endpoint will provide the most recent stats for each trai
 Providing the `endCursor` value to the `after` query parameter will fetch all updates since the previous API call.
 
 If `hasNextPage` is false, no new data is immediately available. Please wait a minimum of 5 seconds before making a subsequent request.
+
+Each page includes every trailer in the current device page, even when a requested stat type has no datapoints. For example, a trailer without recent GPS data is returned with an empty `gps` array rather than being omitted from the response. An empty stat array typically indicates the gateway has not reported that stat recently due to an unhealthy or low-battery gateway, or because the trailer has been inactive.
 
  <b>Rate limit:</b> 25 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
 
@@ -18220,12 +18177,7 @@ await client.industrial.getDataInputDataHistory({
 <dl>
 <dd>
 
-<n class="warning">
-<nh>
-<i class="fa fa-exclamation-circle"></i>
-This endpoint is still on our legacy API.
-</nh>
-</n>
+> 🚧 This endpoint is still on our legacy API.
 
 Fetch all cameras. 
 
@@ -18286,12 +18238,7 @@ await client.industrial.v1GetCameras();
 <dl>
 <dd>
 
-<n class="warning">
-<nh>
-<i class="fa fa-exclamation-circle"></i>
-This endpoint is still on our legacy API.
-</nh>
-</n>
+> 🚧 This endpoint is still on our legacy API.
 
 Fetch configured programs on the camera. 
 
@@ -18431,12 +18378,7 @@ await client.industrial.v1GetVisionLatestRunCamera({
 <dl>
 <dd>
 
-<n class="warning">
-<nh>
-<i class="fa fa-exclamation-circle"></i>
-This endpoint is still on our legacy API.
-</nh>
-</n>
+> 🚧 This endpoint is still on our legacy API.
 
 Fetch runs. 
 
@@ -18507,12 +18449,7 @@ await client.industrial.v1GetVisionRuns({
 <dl>
 <dd>
 
-<n class="warning">
-<nh>
-<i class="fa fa-exclamation-circle"></i>
-This endpoint is still on our legacy API.
-</nh>
-</n>
+> 🚧 This endpoint is still on our legacy API.
 
 Fetch runs by camera. 
 
@@ -18584,12 +18521,7 @@ await client.industrial.getVisionRunsByCamera({
 <dl>
 <dd>
 
-<n class="warning">
-<nh>
-<i class="fa fa-exclamation-circle"></i>
-This endpoint is still on our legacy API.
-</nh>
-</n>
+> 🚧 This endpoint is still on our legacy API.
 
 Fetch runs by camera and program. 
 
@@ -18662,12 +18594,7 @@ await client.industrial.v1GetVisionRunsByCameraAndProgram({
 <dl>
 <dd>
 
-<n class="warning">
-<nh>
-<i class="fa fa-exclamation-circle"></i>
-This endpoint is still on our legacy API.
-</nh>
-</n>
+> 🚧 This endpoint is still on our legacy API.
 
 Get historical data for machine objects. This method returns a set of historical data for all machines. 
 
@@ -18739,12 +18666,7 @@ await client.industrial.v1GetMachinesHistory({
 <dl>
 <dd>
 
-<n class="warning">
-<nh>
-<i class="fa fa-exclamation-circle"></i>
-This endpoint is still on our legacy API.
-</nh>
-</n>
+> 🚧 This endpoint is still on our legacy API.
 
 Get machine objects. This method returns a list of the machine objects in the Samsara Cloud and information about them. 
 
@@ -20858,12 +20780,7 @@ await client.safety.getSafetyEventsV2Stream({
 <dl>
 <dd>
 
-<n class="warning">
-<nh>
-<i class="fa fa-exclamation-circle"></i>
-This endpoint is still on our legacy API.
-</nh>
-</n>
+> 🚧 This endpoint is still on our legacy API.
 
 Fetch the safety score for the driver.
 
@@ -20938,12 +20855,7 @@ await client.safety.v1GetDriverSafetyScore({
 <dl>
 <dd>
 
-<n class="warning">
-<nh>
-<i class="fa fa-exclamation-circle"></i>
-This endpoint is still on our legacy API.
-</nh>
-</n>
+> 🚧 This endpoint is still on our legacy API.
 
 Fetch the safety score for the vehicle. 
 
@@ -22236,12 +22148,7 @@ await client.trips.getTrips({
 <dl>
 <dd>
 
-<n class="warning">
-<nh>
-<i class="fa fa-exclamation-circle"></i>
-This endpoint is still on our legacy API.
-</nh>
-</n>
+> 🚧 This endpoint is still on our legacy API.
 
 Get historical trips data for specified vehicle. This method returns a set of historical trips data for the specified vehicle in the specified time range. 
 
@@ -22793,12 +22700,7 @@ await client.legacy.v1GetAllAssets();
 <dl>
 <dd>
 
-<n class="warning">
-<nh>
-<i class="fa fa-exclamation-circle"></i>
-This endpoint is still on our legacy API.
-</nh>
-</n>
+> 🚧 This endpoint is still on our legacy API.
 
 Get all messages. 
 
@@ -22869,12 +22771,7 @@ await client.messages.v1GetMessages();
 <dl>
 <dd>
 
-<n class="warning">
-<nh>
-<i class="fa fa-exclamation-circle"></i>
-This endpoint is still on our legacy API.
-</nh>
-</n>
+> 🚧 This endpoint is still on our legacy API.
 
 Send a message to a list of driver ids. 
 
@@ -22947,12 +22844,7 @@ await client.messages.v1CreateMessages({
 <dl>
 <dd>
 
-<n class="warning">
-<nh>
-<i class="fa fa-exclamation-circle"></i>
-This endpoint is still on our legacy API.
-</nh>
-</n>
+> 🚧 This endpoint is still on our legacy API.
 
 Fetch trailer assignment data for all trailers in your organization. 
 
@@ -23023,12 +22915,7 @@ await client.trailerAssignments.v1GetAllTrailerAssignments();
 <dl>
 <dd>
 
-<n class="warning">
-<nh>
-<i class="fa fa-exclamation-circle"></i>
-This endpoint is still on our legacy API.
-</nh>
-</n>
+> 🚧 This endpoint is still on our legacy API.
 
 Fetch trailer assignment data for a single trailer. 
 
@@ -23102,12 +22989,7 @@ await client.trailerAssignments.v1GetFleetTrailerAssignments({
 <dl>
 <dd>
 
-<n class="warning">
-<nh>
-<i class="fa fa-exclamation-circle"></i>
-This endpoint is still on our legacy API.
-</nh>
-</n>
+> 🚧 This endpoint is still on our legacy API.
 
 Get cargo monitor status (empty / full) for requested sensors. 
 
@@ -23178,12 +23060,7 @@ await client.sensors.v1GetSensorsCargo({
 <dl>
 <dd>
 
-<n class="warning">
-<nh>
-<i class="fa fa-exclamation-circle"></i>
-This endpoint is still on our legacy API.
-</nh>
-</n>
+> 🚧 This endpoint is still on our legacy API.
 
 Get door monitor status (closed / open) for requested sensors. 
 
@@ -23254,12 +23131,7 @@ await client.sensors.v1GetSensorsDoor({
 <dl>
 <dd>
 
-<n class="warning">
-<nh>
-<i class="fa fa-exclamation-circle"></i>
-This endpoint is still on our legacy API.
-</nh>
-</n>
+> 🚧 This endpoint is still on our legacy API.
 
 Get historical data for specified sensors. This method returns a set of historical data for the specified sensors in the specified time range and at the specified time resolution. 
 
@@ -23338,12 +23210,7 @@ await client.sensors.v1GetSensorsHistory({
 <dl>
 <dd>
 
-<n class="warning">
-<nh>
-<i class="fa fa-exclamation-circle"></i>
-This endpoint is still on our legacy API.
-</nh>
-</n>
+> 🚧 This endpoint is still on our legacy API.
 
 Get humidity for requested sensors. This method returns the current relative humidity for the requested sensors. 
 
@@ -23414,12 +23281,7 @@ await client.sensors.v1GetSensorsHumidity({
 <dl>
 <dd>
 
-<n class="warning">
-<nh>
-<i class="fa fa-exclamation-circle"></i>
-This endpoint is still on our legacy API.
-</nh>
-</n>
+> 🚧 This endpoint is still on our legacy API.
 
 Get sensor objects. This method returns a list of the sensor objects in the Samsara Cloud and information about them. 
 
@@ -23480,12 +23342,7 @@ await client.sensors.v1GetSensors();
 <dl>
 <dd>
 
-<n class="warning">
-<nh>
-<i class="fa fa-exclamation-circle"></i>
-This endpoint is still on our legacy API.
-</nh>
-</n>
+> 🚧 This endpoint is still on our legacy API.
 
 Get temperature for requested sensors. This method returns the current ambient temperature (and probe temperature if applicable) for the requested sensors. 
 

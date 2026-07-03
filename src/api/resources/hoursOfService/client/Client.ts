@@ -401,12 +401,7 @@ export class HoursOfServiceClient {
     }
 
     /**
-     * <n class="warning">
-     * <nh>
-     * <i class="fa fa-exclamation-circle"></i>
-     * This endpoint is still on our legacy API.
-     * </nh>
-     * </n>
+     * > 🚧 This endpoint is still on our legacy API.
      *
      * Set an individual driver’s current duty status to 'On Duty' or 'Off Duty'.
      *
@@ -484,12 +479,7 @@ export class HoursOfServiceClient {
     }
 
     /**
-     * <n class="warning">
-     * <nh>
-     * <i class="fa fa-exclamation-circle"></i>
-     * This endpoint is still on our legacy API.
-     * </nh>
-     * </n>
+     * > 🚧 This endpoint is still on our legacy API.
      *
      * Get the HOS (hours of service) signin and signout logs for the specified driver. The response includes 4 fields that are now deprecated.
      *

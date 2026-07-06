@@ -33,6 +33,7 @@ export type { GetFunctionStorageFileRequest } from "./GetFunctionStorageFileRequ
 export type { GetHosEldEventsRequest } from "./GetHosEldEventsRequest.js";
 export type { GetJobsRequest } from "./GetJobsRequest.js";
 export type { GetPlaceDeletionsRequest } from "./GetPlaceDeletionsRequest.js";
+export type { GetPlaceGeocodeRequest } from "./GetPlaceGeocodeRequest.js";
 export type { GetPlacesRequest } from "./GetPlacesRequest.js";
 export type { GetPreferredStationRequest } from "./GetPreferredStationRequest.js";
 export type { GetQualificationRecordsRequest } from "./GetQualificationRecordsRequest.js";

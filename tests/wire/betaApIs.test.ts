@@ -15711,6 +15711,209 @@ describe("BetaApIsClient", () => {
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 
+    test("getPlaceGeocode (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = {
+            data: [{ latitude: 37.8044, longitude: -122.2712 }],
+            pagination: { endCursor: "MjkY", hasNextPage: true },
+        };
+        server.mockEndpoint().get("/places/geocode").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
+
+        const response = await client.betaApIs.getPlaceGeocode({
+            address: "address",
+        });
+        expect(response).toEqual({
+            data: [
+                {
+                    latitude: 37.8044,
+                    longitude: -122.2712,
+                },
+            ],
+            pagination: {
+                endCursor: "MjkY",
+                hasNextPage: true,
+            },
+        });
+    });
+
+    test("getPlaceGeocode (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server.mockEndpoint().get("/places/geocode").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.betaApIs.getPlaceGeocode({
+                address: "address",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("getPlaceGeocode (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server.mockEndpoint().get("/places/geocode").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.betaApIs.getPlaceGeocode({
+                address: "address",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("getPlaceGeocode (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server.mockEndpoint().get("/places/geocode").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.betaApIs.getPlaceGeocode({
+                address: "address",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("getPlaceGeocode (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server.mockEndpoint().get("/places/geocode").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.betaApIs.getPlaceGeocode({
+                address: "address",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("getPlaceGeocode (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server.mockEndpoint().get("/places/geocode").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.betaApIs.getPlaceGeocode({
+                address: "address",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("getPlaceGeocode (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server.mockEndpoint().get("/places/geocode").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.betaApIs.getPlaceGeocode({
+                address: "address",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("getPlaceGeocode (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server.mockEndpoint().get("/places/geocode").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.betaApIs.getPlaceGeocode({
+                address: "address",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("getPlaceGeocode (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server.mockEndpoint().get("/places/geocode").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.betaApIs.getPlaceGeocode({
+                address: "address",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("getPlaceGeocode (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server.mockEndpoint().get("/places/geocode").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.betaApIs.getPlaceGeocode({
+                address: "address",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
     test("listPreferredStations (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
@@ -22688,10 +22891,11 @@ describe("BetaApIsClient", () => {
                     ],
                     isActive: true,
                     lastName: "Doe",
-                    specialInstructions: { isGuardianRequired: true, isSpecialEducation: true },
+                    specialInstructions: { isGuardianRequired: false, isSpecialEducation: false },
                     tagIds: [
-                        "Deserunt velit voluptatem atque deserunt voluptas sed.",
-                        "Magnam molestiae necessitatibus maiores dicta maiores.",
+                        "Sed animi est quo.",
+                        "Quae voluptatibus ut voluptas.",
+                        "Accusantium est labore doloremque magni.",
                     ],
                     updatedAtTime: "2024-11-15T10:30:00Z",
                 },
@@ -22730,12 +22934,13 @@ describe("BetaApIsClient", () => {
                     isActive: true,
                     lastName: "Doe",
                     specialInstructions: {
-                        isGuardianRequired: true,
-                        isSpecialEducation: true,
+                        isGuardianRequired: false,
+                        isSpecialEducation: false,
                     },
                     tagIds: [
-                        "Deserunt velit voluptatem atque deserunt voluptas sed.",
-                        "Magnam molestiae necessitatibus maiores dicta maiores.",
+                        "Sed animi est quo.",
+                        "Quae voluptatibus ut voluptas.",
+                        "Accusantium est labore doloremque magni.",
                     ],
                     updatedAtTime: "2024-11-15T10:30:00Z",
                 },
@@ -22993,10 +23198,11 @@ describe("BetaApIsClient", () => {
                 ],
                 isActive: true,
                 lastName: "Doe",
-                specialInstructions: { isGuardianRequired: true, isSpecialEducation: true },
+                specialInstructions: { isGuardianRequired: false, isSpecialEducation: false },
                 tagIds: [
-                    "Deserunt velit voluptatem atque deserunt voluptas sed.",
-                    "Magnam molestiae necessitatibus maiores dicta maiores.",
+                    "Sed animi est quo.",
+                    "Quae voluptatibus ut voluptas.",
+                    "Accusantium est labore doloremque magni.",
                 ],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
@@ -23034,12 +23240,13 @@ describe("BetaApIsClient", () => {
                 isActive: true,
                 lastName: "Doe",
                 specialInstructions: {
-                    isGuardianRequired: true,
-                    isSpecialEducation: true,
+                    isGuardianRequired: false,
+                    isSpecialEducation: false,
                 },
                 tagIds: [
-                    "Deserunt velit voluptatem atque deserunt voluptas sed.",
-                    "Magnam molestiae necessitatibus maiores dicta maiores.",
+                    "Sed animi est quo.",
+                    "Quae voluptatibus ut voluptas.",
+                    "Accusantium est labore doloremque magni.",
                 ],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
@@ -23310,10 +23517,11 @@ describe("BetaApIsClient", () => {
                 ],
                 isActive: true,
                 lastName: "Doe",
-                specialInstructions: { isGuardianRequired: true, isSpecialEducation: true },
+                specialInstructions: { isGuardianRequired: false, isSpecialEducation: false },
                 tagIds: [
-                    "Deserunt velit voluptatem atque deserunt voluptas sed.",
-                    "Magnam molestiae necessitatibus maiores dicta maiores.",
+                    "Sed animi est quo.",
+                    "Quae voluptatibus ut voluptas.",
+                    "Accusantium est labore doloremque magni.",
                 ],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
@@ -23352,12 +23560,13 @@ describe("BetaApIsClient", () => {
                 isActive: true,
                 lastName: "Doe",
                 specialInstructions: {
-                    isGuardianRequired: true,
-                    isSpecialEducation: true,
+                    isGuardianRequired: false,
+                    isSpecialEducation: false,
                 },
                 tagIds: [
-                    "Deserunt velit voluptatem atque deserunt voluptas sed.",
-                    "Magnam molestiae necessitatibus maiores dicta maiores.",
+                    "Sed animi est quo.",
+                    "Quae voluptatibus ut voluptas.",
+                    "Accusantium est labore doloremque magni.",
                 ],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
@@ -23879,10 +24088,11 @@ describe("BetaApIsClient", () => {
                 ],
                 isActive: true,
                 lastName: "Doe",
-                specialInstructions: { isGuardianRequired: true, isSpecialEducation: true },
+                specialInstructions: { isGuardianRequired: false, isSpecialEducation: false },
                 tagIds: [
-                    "Deserunt velit voluptatem atque deserunt voluptas sed.",
-                    "Magnam molestiae necessitatibus maiores dicta maiores.",
+                    "Sed animi est quo.",
+                    "Quae voluptatibus ut voluptas.",
+                    "Accusantium est labore doloremque magni.",
                 ],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
@@ -23918,12 +24128,13 @@ describe("BetaApIsClient", () => {
                 isActive: true,
                 lastName: "Doe",
                 specialInstructions: {
-                    isGuardianRequired: true,
-                    isSpecialEducation: true,
+                    isGuardianRequired: false,
+                    isSpecialEducation: false,
                 },
                 tagIds: [
-                    "Deserunt velit voluptatem atque deserunt voluptas sed.",
-                    "Magnam molestiae necessitatibus maiores dicta maiores.",
+                    "Sed animi est quo.",
+                    "Quae voluptatibus ut voluptas.",
+                    "Accusantium est labore doloremque magni.",
                 ],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },

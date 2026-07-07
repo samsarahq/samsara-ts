@@ -6528,7 +6528,7 @@ To use this endpoint, select **Write Safety Events & Scores** under the Safety &
 
 ```typescript
 await client.betaApIs.patchSafetyEventsV2Batch({
-    safetyEventIds: ["bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590"]
+    safetyEventIds: ["bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590"]
 });
 
 ```
@@ -8273,7 +8273,7 @@ To use this endpoint, select **Write Media Retrieval** under the Safety & Camera
 ```typescript
 await client.media.postMediaRetrieval({
     endTime: "2019-06-13T19:08:55Z",
-    inputs: ["dashcamRoadFacing", "dashcamRoadFacing", "dashcamRoadFacing"],
+    inputs: ["dashcamRoadFacing", "dashcamRoadFacing", "dashcamRoadFacing", "dashcamRoadFacing"],
     mediaType: "image",
     startTime: "2019-06-13T19:08:25Z",
     vehicleId: "1234"

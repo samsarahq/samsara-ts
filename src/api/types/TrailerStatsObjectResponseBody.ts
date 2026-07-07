@@ -8,6 +8,8 @@ import type * as Samsara from "../index.js";
 export interface TrailerStatsObjectResponseBody {
     /** A list of engine state points. */
     carrierReeferState?: Samsara.TrailerStatReeferStateWithDecorationsTypeResponseBody[] | undefined;
+    /** A map of external ids */
+    externalIds?: Record<string, string> | undefined;
     /** A list of GPS points. */
     gps?: Samsara.TrailerStatGpsWithDecorationsTypeResponseBody[] | undefined;
     /** A list of odometer points. */

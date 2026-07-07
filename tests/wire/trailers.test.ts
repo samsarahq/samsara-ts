@@ -547,6 +547,7 @@ describe("TrailersClient", () => {
                         time: "2020-01-27T07:06:25Z",
                         value: "`Off`, `On`",
                     },
+                    externalIds: { key: "value" },
                     gps: {
                         headingDegrees: 5631003136208764000,
                         latitude: 0.11331136118623318,
@@ -621,6 +622,9 @@ describe("TrailersClient", () => {
                         substateValue: "`Pretrip`, `Defrost`",
                         time: "2020-01-27T07:06:25Z",
                         value: "`Off`, `On`",
+                    },
+                    externalIds: {
+                        key: "value",
                     },
                     gps: {
                         headingDegrees: 5631003136208764000,
@@ -974,6 +978,7 @@ describe("TrailersClient", () => {
                     carrierReeferState: [
                         { substateValue: "`Pretrip`, `Defrost`", time: "2020-01-27T07:06:25Z", value: "`Off`, `On`" },
                     ],
+                    externalIds: { key: "value" },
                     gps: [
                         {
                             headingDegrees: 392081610554693300,
@@ -1049,6 +1054,9 @@ describe("TrailersClient", () => {
                             value: "`Off`, `On`",
                         },
                     ],
+                    externalIds: {
+                        key: "value",
+                    },
                     gps: [
                         {
                             headingDegrees: 392081610554693300,
@@ -1445,6 +1453,7 @@ describe("TrailersClient", () => {
                     carrierReeferState: [
                         { substateValue: "`Pretrip`, `Defrost`", time: "2020-01-27T07:06:25Z", value: "`Off`, `On`" },
                     ],
+                    externalIds: { key: "value" },
                     gps: [
                         {
                             headingDegrees: 392081610554693300,
@@ -1522,6 +1531,9 @@ describe("TrailersClient", () => {
                             value: "`Off`, `On`",
                         },
                     ],
+                    externalIds: {
+                        key: "value",
+                    },
                     gps: [
                         {
                             headingDegrees: 392081610554693300,

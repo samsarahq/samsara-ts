@@ -7,6 +7,8 @@ import type * as Samsara from "../index.js";
  */
 export interface TrailerStatsSnapshotObjectResponseBody {
     carrierReeferState?: Samsara.TrailerStatReeferStateTypeResponseBody | undefined;
+    /** A map of external ids */
+    externalIds?: Record<string, string> | undefined;
     gps?: Samsara.TrailerStatGpsTypeResponseBody | undefined;
     gpsOdometerMeters?: Samsara.TrailerStatGpsOdometerMetersTypeResponseBody | undefined;
     /** ID of the trailer. */

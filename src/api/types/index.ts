@@ -233,6 +233,8 @@ export * from "./BaseRouteResponseObjectResponseBody.js";
 export * from "./BehaviorCountDetailsRequestBody.js";
 export * from "./BehaviorCountDetailsResponseBody.js";
 export * from "./BehaviorResponseBody.js";
+export * from "./BleAssetTagDetailsResponseResponseBody.js";
+export * from "./CameraConnectorDetailsResponseResponseBody.js";
 export * from "./CameraConnectorDisconectedResponseBody.js";
 export * from "./CameraDetailsResponseResponseBody.js";
 export * from "./CameraSerial.js";

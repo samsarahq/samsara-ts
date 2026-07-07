@@ -276,7 +276,7 @@ export class MediaClient {
      * @example
      *     await client.media.postMediaRetrieval({
      *         endTime: "2019-06-13T19:08:55Z",
-     *         inputs: ["dashcamRoadFacing", "dashcamRoadFacing", "dashcamRoadFacing"],
+     *         inputs: ["dashcamRoadFacing", "dashcamRoadFacing", "dashcamRoadFacing", "dashcamRoadFacing"],
      *         mediaType: "image",
      *         startTime: "2019-06-13T19:08:25Z",
      *         vehicleId: "1234"

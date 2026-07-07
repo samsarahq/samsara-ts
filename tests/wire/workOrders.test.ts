@@ -598,7 +598,9 @@ describe("WorkOrdersClient", () => {
                     items: [{ id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7", type: "DVIR" }],
                     maintenanceSite: {
                         name: "LAX Service Bay 3",
-                        placeExternalIds: { "Natus et non cum.": "Consequatur cum voluptatem atque." },
+                        placeExternalIds: {
+                            "Debitis ut voluptas maxime culpa beatae aut.": "Minima quia earum illum.",
+                        },
                         placeId: "123456",
                     },
                     odometerMeters: 91823,
@@ -637,8 +639,6 @@ describe("WorkOrdersClient", () => {
                     updatedAtTime: "2019-06-13T19:08:25Z",
                     vendorUuid: "5523a39f-42ef-4820-83d0-dfe73dbe7853",
                     workOrderTemplateIds: [
-                        "5523a39f-42ef-4820-83d0-dfe73dbe7853",
-                        "5523a39f-42ef-4820-83d0-dfe73dbe7853",
                         "5523a39f-42ef-4820-83d0-dfe73dbe7853",
                         "5523a39f-42ef-4820-83d0-dfe73dbe7853",
                     ],
@@ -695,7 +695,7 @@ describe("WorkOrdersClient", () => {
                     maintenanceSite: {
                         name: "LAX Service Bay 3",
                         placeExternalIds: {
-                            "Natus et non cum.": "Consequatur cum voluptatem atque.",
+                            "Debitis ut voluptas maxime culpa beatae aut.": "Minima quia earum illum.",
                         },
                         placeId: "123456",
                     },
@@ -753,8 +753,6 @@ describe("WorkOrdersClient", () => {
                     updatedAtTime: "2019-06-13T19:08:25Z",
                     vendorUuid: "5523a39f-42ef-4820-83d0-dfe73dbe7853",
                     workOrderTemplateIds: [
-                        "5523a39f-42ef-4820-83d0-dfe73dbe7853",
-                        "5523a39f-42ef-4820-83d0-dfe73dbe7853",
                         "5523a39f-42ef-4820-83d0-dfe73dbe7853",
                         "5523a39f-42ef-4820-83d0-dfe73dbe7853",
                     ],
@@ -1010,7 +1008,7 @@ describe("WorkOrdersClient", () => {
                 items: [{ id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7", type: "DVIR" }],
                 maintenanceSite: {
                     name: "LAX Service Bay 3",
-                    placeExternalIds: { "Natus et non cum.": "Consequatur cum voluptatem atque." },
+                    placeExternalIds: { "Debitis ut voluptas maxime culpa beatae aut.": "Minima quia earum illum." },
                     placeId: "123456",
                 },
                 odometerMeters: 91823,
@@ -1040,7 +1038,12 @@ describe("WorkOrdersClient", () => {
                 unallocatedLabor: { cost: { amount: "94.01", currency: "usd" }, timeMinutes: 60 },
                 updatedAtTime: "2019-06-13T19:08:25Z",
                 vendorUuid: "5523a39f-42ef-4820-83d0-dfe73dbe7853",
-                workOrderTemplateIds: ["5523a39f-42ef-4820-83d0-dfe73dbe7853", "5523a39f-42ef-4820-83d0-dfe73dbe7853"],
+                workOrderTemplateIds: [
+                    "5523a39f-42ef-4820-83d0-dfe73dbe7853",
+                    "5523a39f-42ef-4820-83d0-dfe73dbe7853",
+                    "5523a39f-42ef-4820-83d0-dfe73dbe7853",
+                    "5523a39f-42ef-4820-83d0-dfe73dbe7853",
+                ],
             },
         };
         server
@@ -1094,7 +1097,7 @@ describe("WorkOrdersClient", () => {
                 maintenanceSite: {
                     name: "LAX Service Bay 3",
                     placeExternalIds: {
-                        "Natus et non cum.": "Consequatur cum voluptatem atque.",
+                        "Debitis ut voluptas maxime culpa beatae aut.": "Minima quia earum illum.",
                     },
                     placeId: "123456",
                 },
@@ -1143,7 +1146,12 @@ describe("WorkOrdersClient", () => {
                 },
                 updatedAtTime: "2019-06-13T19:08:25Z",
                 vendorUuid: "5523a39f-42ef-4820-83d0-dfe73dbe7853",
-                workOrderTemplateIds: ["5523a39f-42ef-4820-83d0-dfe73dbe7853", "5523a39f-42ef-4820-83d0-dfe73dbe7853"],
+                workOrderTemplateIds: [
+                    "5523a39f-42ef-4820-83d0-dfe73dbe7853",
+                    "5523a39f-42ef-4820-83d0-dfe73dbe7853",
+                    "5523a39f-42ef-4820-83d0-dfe73dbe7853",
+                    "5523a39f-42ef-4820-83d0-dfe73dbe7853",
+                ],
             },
         });
     });
@@ -1660,7 +1668,7 @@ describe("WorkOrdersClient", () => {
                 items: [{ id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7", type: "DVIR" }],
                 maintenanceSite: {
                     name: "LAX Service Bay 3",
-                    placeExternalIds: { "Natus et non cum.": "Consequatur cum voluptatem atque." },
+                    placeExternalIds: { "Debitis ut voluptas maxime culpa beatae aut.": "Minima quia earum illum." },
                     placeId: "123456",
                 },
                 odometerMeters: 91823,
@@ -1690,7 +1698,12 @@ describe("WorkOrdersClient", () => {
                 unallocatedLabor: { cost: { amount: "94.01", currency: "usd" }, timeMinutes: 60 },
                 updatedAtTime: "2019-06-13T19:08:25Z",
                 vendorUuid: "5523a39f-42ef-4820-83d0-dfe73dbe7853",
-                workOrderTemplateIds: ["5523a39f-42ef-4820-83d0-dfe73dbe7853", "5523a39f-42ef-4820-83d0-dfe73dbe7853"],
+                workOrderTemplateIds: [
+                    "5523a39f-42ef-4820-83d0-dfe73dbe7853",
+                    "5523a39f-42ef-4820-83d0-dfe73dbe7853",
+                    "5523a39f-42ef-4820-83d0-dfe73dbe7853",
+                    "5523a39f-42ef-4820-83d0-dfe73dbe7853",
+                ],
             },
         };
         server
@@ -1744,7 +1757,7 @@ describe("WorkOrdersClient", () => {
                 maintenanceSite: {
                     name: "LAX Service Bay 3",
                     placeExternalIds: {
-                        "Natus et non cum.": "Consequatur cum voluptatem atque.",
+                        "Debitis ut voluptas maxime culpa beatae aut.": "Minima quia earum illum.",
                     },
                     placeId: "123456",
                 },
@@ -1793,7 +1806,12 @@ describe("WorkOrdersClient", () => {
                 },
                 updatedAtTime: "2019-06-13T19:08:25Z",
                 vendorUuid: "5523a39f-42ef-4820-83d0-dfe73dbe7853",
-                workOrderTemplateIds: ["5523a39f-42ef-4820-83d0-dfe73dbe7853", "5523a39f-42ef-4820-83d0-dfe73dbe7853"],
+                workOrderTemplateIds: [
+                    "5523a39f-42ef-4820-83d0-dfe73dbe7853",
+                    "5523a39f-42ef-4820-83d0-dfe73dbe7853",
+                    "5523a39f-42ef-4820-83d0-dfe73dbe7853",
+                    "5523a39f-42ef-4820-83d0-dfe73dbe7853",
+                ],
             },
         });
     });
@@ -2069,7 +2087,9 @@ describe("WorkOrdersClient", () => {
                     items: [{ id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7", type: "DVIR" }],
                     maintenanceSite: {
                         name: "LAX Service Bay 3",
-                        placeExternalIds: { "Natus et non cum.": "Consequatur cum voluptatem atque." },
+                        placeExternalIds: {
+                            "Debitis ut voluptas maxime culpa beatae aut.": "Minima quia earum illum.",
+                        },
                         placeId: "123456",
                     },
                     odometerMeters: 91823,
@@ -2108,8 +2128,6 @@ describe("WorkOrdersClient", () => {
                     updatedAtTime: "2019-06-13T19:08:25Z",
                     vendorUuid: "5523a39f-42ef-4820-83d0-dfe73dbe7853",
                     workOrderTemplateIds: [
-                        "5523a39f-42ef-4820-83d0-dfe73dbe7853",
-                        "5523a39f-42ef-4820-83d0-dfe73dbe7853",
                         "5523a39f-42ef-4820-83d0-dfe73dbe7853",
                         "5523a39f-42ef-4820-83d0-dfe73dbe7853",
                     ],
@@ -2168,7 +2186,7 @@ describe("WorkOrdersClient", () => {
                     maintenanceSite: {
                         name: "LAX Service Bay 3",
                         placeExternalIds: {
-                            "Natus et non cum.": "Consequatur cum voluptatem atque.",
+                            "Debitis ut voluptas maxime culpa beatae aut.": "Minima quia earum illum.",
                         },
                         placeId: "123456",
                     },
@@ -2226,8 +2244,6 @@ describe("WorkOrdersClient", () => {
                     updatedAtTime: "2019-06-13T19:08:25Z",
                     vendorUuid: "5523a39f-42ef-4820-83d0-dfe73dbe7853",
                     workOrderTemplateIds: [
-                        "5523a39f-42ef-4820-83d0-dfe73dbe7853",
-                        "5523a39f-42ef-4820-83d0-dfe73dbe7853",
                         "5523a39f-42ef-4820-83d0-dfe73dbe7853",
                         "5523a39f-42ef-4820-83d0-dfe73dbe7853",
                     ],

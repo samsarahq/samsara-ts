@@ -7,7 +7,7 @@ import type * as Samsara from "../../../../index.js";
  *     {}
  */
 export interface AssetsCreateAssetRequestBody {
-    /** A list of attributes to assign to the asset. */
+    /** A list of attributes to assign to the asset. If provided, this replaces the asset's entire set of attribute associations with exactly this list; omit this field to leave existing attribute associations unchanged, or pass an empty array to clear them. */
     attributes?: Samsara.GoaAttributeTinyRequestBody[];
     /** A map of external ids */
     externalIds?: Record<string, string>;
@@ -27,7 +27,7 @@ export interface AssetsCreateAssetRequestBody {
     regulationMode?: AssetsCreateAssetRequestBody.RegulationMode;
     /** The serial number of the asset. This can be an internal serial number or used to hold legacy VIN/PIN numbers such as ones of shorter lengths. */
     serialNumber?: string;
-    /** An array of IDs of tags to associate with this asset. If your access to the API is scoped by one or more tags, this field is required to pass in. */
+    /** An array of IDs of tags to associate with this asset. If provided, this replaces the asset's entire set of tag associations with exactly this list; omit this field to leave existing tag associations unchanged, or pass an empty array to clear them. If your access to the API is scoped by one or more tags, this field is required to pass in. */
     tagIds?: string[];
     /** The operational context in which the asset interacts with the Samsara system. Examples: Vehicle (eg: truck, bus...), Trailer (eg: dry van, reefer, flatbed...), Powered Equipment (eg: dozer, crane...), Unpowered Equipment (eg: container, dumpster...), or Uncategorized.  Valid values: `uncategorized`, `trailer`, `equipment`, `unpowered`, `vehicle` */
     type?: AssetsCreateAssetRequestBody.Type;

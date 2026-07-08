@@ -13,6 +13,7 @@ export interface PlacesPatchPlaceRequestBody {
     externalId?: string;
     /** Single-line address string. */
     address?: string;
+    businessContacts?: Samsara.PostPlaceBusinessContactsInputRequestBody;
     /** Camera recording mode: fullRecording, driverPrivacy, completePrivacy, or inherit.  Valid values: `fullRecording`, `driverPrivacy`, `completePrivacy`, `inherit`, `unknown`, `unspecified` */
     cameraRecordingModeType?: PlacesPatchPlaceRequestBody.CameraRecordingModeType;
     /** When present, replaces external ids for the place. */

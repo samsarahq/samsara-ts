@@ -11869,7 +11869,12 @@ describe("BetaApIsClient", () => {
                     priority: 1,
                     quantities: [{ capacityId: "850e8400-e29b-41d4-a716-446655440003", quantity: 25.5 }],
                     routeId: "950e8400-e29b-41d4-a716-446655440005",
-                    skillsRequired: ["650e8400-e29b-41d4-a716-446655440001", "650e8400-e29b-41d4-a716-446655440001"],
+                    skillsRequired: [
+                        "650e8400-e29b-41d4-a716-446655440001",
+                        "650e8400-e29b-41d4-a716-446655440001",
+                        "650e8400-e29b-41d4-a716-446655440001",
+                        "650e8400-e29b-41d4-a716-446655440001",
+                    ],
                     updatedAtTime: "2024-04-10T11:30:00Z",
                 },
             ],
@@ -11927,7 +11932,12 @@ describe("BetaApIsClient", () => {
                         },
                     ],
                     routeId: "950e8400-e29b-41d4-a716-446655440005",
-                    skillsRequired: ["650e8400-e29b-41d4-a716-446655440001", "650e8400-e29b-41d4-a716-446655440001"],
+                    skillsRequired: [
+                        "650e8400-e29b-41d4-a716-446655440001",
+                        "650e8400-e29b-41d4-a716-446655440001",
+                        "650e8400-e29b-41d4-a716-446655440001",
+                        "650e8400-e29b-41d4-a716-446655440001",
+                    ],
                     updatedAtTime: "2024-04-10T11:30:00Z",
                 },
             ],
@@ -14070,6 +14080,7 @@ describe("BetaApIsClient", () => {
             data: [
                 {
                     address: "123 Main St",
+                    businessContacts: { email: ["warehouse@example.com"], phoneNumbers: ["+14155551234"] },
                     cameraRecordingModeType: "inherit",
                     createdAtTime: "2019-06-13T19:08:25Z",
                     geofence: {
@@ -14078,11 +14089,7 @@ describe("BetaApIsClient", () => {
                         type: "circle",
                     },
                     id: "12345",
-                    iftaExemptionTypes: [
-                        "Excepturi ratione facilis.",
-                        "Officia autem id natus.",
-                        "Ad est vel voluptatem unde ut tempora.",
-                    ],
+                    iftaExemptionTypes: ["Doloribus omnis dolor.", "Quas natus consequatur ad a cum."],
                     isAutoDismissRolledStopsEnabled: false,
                     isShowAddressesEnabled: true,
                     name: "Oakland Yard",
@@ -14099,10 +14106,9 @@ describe("BetaApIsClient", () => {
                     },
                     notes: "Receiving 6-2",
                     placeTypes: [
-                        "Similique aut totam numquam.",
-                        "Est corrupti cum non.",
-                        "Iste voluptas.",
-                        "Animi commodi optio rem quia reiciendis ex.",
+                        "Minima error voluptate accusamus doloribus velit expedita.",
+                        "Placeat sit distinctio hic.",
+                        "Est consequatur distinctio.",
                     ],
                     routing: [
                         {
@@ -14128,9 +14134,10 @@ describe("BetaApIsClient", () => {
                             serviceWindows: [
                                 {
                                     days: [
-                                        "Voluptates ut molestiae a laborum qui possimus.",
-                                        "Quae non ut sequi accusantium qui.",
-                                        "Rem quisquam veritatis omnis et fugiat vitae.",
+                                        "Ut nobis dolorem cupiditate eos.",
+                                        "Non voluptatibus placeat qui.",
+                                        "Et et ut harum necessitatibus vel voluptas.",
+                                        "At dignissimos magni officia.",
                                     ],
                                     endTime: "17:00:01",
                                     startTime: "09:00:00",
@@ -14138,7 +14145,11 @@ describe("BetaApIsClient", () => {
                             ],
                         },
                     ],
-                    safetyEventExclusions: ["Repellat placeat sit.", "Hic dolore est consequatur."],
+                    safetyEventExclusions: [
+                        "Voluptates ut molestiae a laborum qui possimus.",
+                        "Quae non ut sequi accusantium qui.",
+                        "Rem quisquam veritatis omnis et fugiat vitae.",
+                    ],
                     streetView: {
                         headingDegrees: 90,
                         isEnabled: true,
@@ -14160,6 +14171,10 @@ describe("BetaApIsClient", () => {
             data: [
                 {
                     address: "123 Main St",
+                    businessContacts: {
+                        email: ["warehouse@example.com"],
+                        phoneNumbers: ["+14155551234"],
+                    },
                     cameraRecordingModeType: "inherit",
                     createdAtTime: "2019-06-13T19:08:25Z",
                     geofence: {
@@ -14179,11 +14194,7 @@ describe("BetaApIsClient", () => {
                         type: "circle",
                     },
                     id: "12345",
-                    iftaExemptionTypes: [
-                        "Excepturi ratione facilis.",
-                        "Officia autem id natus.",
-                        "Ad est vel voluptatem unde ut tempora.",
-                    ],
+                    iftaExemptionTypes: ["Doloribus omnis dolor.", "Quas natus consequatur ad a cum."],
                     isAutoDismissRolledStopsEnabled: false,
                     isShowAddressesEnabled: true,
                     name: "Oakland Yard",
@@ -14200,10 +14211,9 @@ describe("BetaApIsClient", () => {
                     },
                     notes: "Receiving 6-2",
                     placeTypes: [
-                        "Similique aut totam numquam.",
-                        "Est corrupti cum non.",
-                        "Iste voluptas.",
-                        "Animi commodi optio rem quia reiciendis ex.",
+                        "Minima error voluptate accusamus doloribus velit expedita.",
+                        "Placeat sit distinctio hic.",
+                        "Est consequatur distinctio.",
                     ],
                     routing: [
                         {
@@ -14237,9 +14247,10 @@ describe("BetaApIsClient", () => {
                             serviceWindows: [
                                 {
                                     days: [
-                                        "Voluptates ut molestiae a laborum qui possimus.",
-                                        "Quae non ut sequi accusantium qui.",
-                                        "Rem quisquam veritatis omnis et fugiat vitae.",
+                                        "Ut nobis dolorem cupiditate eos.",
+                                        "Non voluptatibus placeat qui.",
+                                        "Et et ut harum necessitatibus vel voluptas.",
+                                        "At dignissimos magni officia.",
                                     ],
                                     endTime: "17:00:01",
                                     startTime: "09:00:00",
@@ -14247,7 +14258,11 @@ describe("BetaApIsClient", () => {
                             ],
                         },
                     ],
-                    safetyEventExclusions: ["Repellat placeat sit.", "Hic dolore est consequatur."],
+                    safetyEventExclusions: [
+                        "Voluptates ut molestiae a laborum qui possimus.",
+                        "Quae non ut sequi accusantium qui.",
+                        "Rem quisquam veritatis omnis et fugiat vitae.",
+                    ],
                     streetView: {
                         headingDegrees: 90,
                         isEnabled: true,
@@ -14438,6 +14453,11 @@ describe("BetaApIsClient", () => {
         const rawResponseBody = {
             data: {
                 address: "123 Main St",
+                businessContacts: {
+                    contacts: [{ email: "bob@example.com", name: "Bob Smith", phoneNumber: "+14155555678" }],
+                    email: ["warehouse@example.com"],
+                    phoneNumbers: ["+14155551234"],
+                },
                 cameraRecordingModeType: "inherit",
                 createdAtTime: "2019-06-13T19:08:25Z",
                 geofence: {
@@ -14446,11 +14466,7 @@ describe("BetaApIsClient", () => {
                     type: "circle",
                 },
                 id: "12345",
-                iftaExemptionTypes: [
-                    "Excepturi ratione facilis.",
-                    "Officia autem id natus.",
-                    "Ad est vel voluptatem unde ut tempora.",
-                ],
+                iftaExemptionTypes: ["Doloribus omnis dolor.", "Quas natus consequatur ad a cum."],
                 isAutoDismissRolledStopsEnabled: false,
                 isShowAddressesEnabled: true,
                 name: "Oakland Yard",
@@ -14467,10 +14483,9 @@ describe("BetaApIsClient", () => {
                 },
                 notes: "Receiving 6-2",
                 placeTypes: [
-                    "Similique aut totam numquam.",
-                    "Est corrupti cum non.",
-                    "Iste voluptas.",
-                    "Animi commodi optio rem quia reiciendis ex.",
+                    "Minima error voluptate accusamus doloribus velit expedita.",
+                    "Placeat sit distinctio hic.",
+                    "Est consequatur distinctio.",
                 ],
                 routing: [
                     {
@@ -14496,9 +14511,10 @@ describe("BetaApIsClient", () => {
                         serviceWindows: [
                             {
                                 days: [
-                                    "Voluptates ut molestiae a laborum qui possimus.",
-                                    "Quae non ut sequi accusantium qui.",
-                                    "Rem quisquam veritatis omnis et fugiat vitae.",
+                                    "Ut nobis dolorem cupiditate eos.",
+                                    "Non voluptatibus placeat qui.",
+                                    "Et et ut harum necessitatibus vel voluptas.",
+                                    "At dignissimos magni officia.",
                                 ],
                                 endTime: "17:00:01",
                                 startTime: "09:00:00",
@@ -14506,7 +14522,11 @@ describe("BetaApIsClient", () => {
                         ],
                     },
                 ],
-                safetyEventExclusions: ["Repellat placeat sit.", "Hic dolore est consequatur."],
+                safetyEventExclusions: [
+                    "Voluptates ut molestiae a laborum qui possimus.",
+                    "Quae non ut sequi accusantium qui.",
+                    "Rem quisquam veritatis omnis et fugiat vitae.",
+                ],
                 streetView: {
                     headingDegrees: 90,
                     isEnabled: true,
@@ -14536,6 +14556,17 @@ describe("BetaApIsClient", () => {
         expect(response).toEqual({
             data: {
                 address: "123 Main St",
+                businessContacts: {
+                    contacts: [
+                        {
+                            email: "bob@example.com",
+                            name: "Bob Smith",
+                            phoneNumber: "+14155555678",
+                        },
+                    ],
+                    email: ["warehouse@example.com"],
+                    phoneNumbers: ["+14155551234"],
+                },
                 cameraRecordingModeType: "inherit",
                 createdAtTime: "2019-06-13T19:08:25Z",
                 geofence: {
@@ -14555,11 +14586,7 @@ describe("BetaApIsClient", () => {
                     type: "circle",
                 },
                 id: "12345",
-                iftaExemptionTypes: [
-                    "Excepturi ratione facilis.",
-                    "Officia autem id natus.",
-                    "Ad est vel voluptatem unde ut tempora.",
-                ],
+                iftaExemptionTypes: ["Doloribus omnis dolor.", "Quas natus consequatur ad a cum."],
                 isAutoDismissRolledStopsEnabled: false,
                 isShowAddressesEnabled: true,
                 name: "Oakland Yard",
@@ -14576,10 +14603,9 @@ describe("BetaApIsClient", () => {
                 },
                 notes: "Receiving 6-2",
                 placeTypes: [
-                    "Similique aut totam numquam.",
-                    "Est corrupti cum non.",
-                    "Iste voluptas.",
-                    "Animi commodi optio rem quia reiciendis ex.",
+                    "Minima error voluptate accusamus doloribus velit expedita.",
+                    "Placeat sit distinctio hic.",
+                    "Est consequatur distinctio.",
                 ],
                 routing: [
                     {
@@ -14613,9 +14639,10 @@ describe("BetaApIsClient", () => {
                         serviceWindows: [
                             {
                                 days: [
-                                    "Voluptates ut molestiae a laborum qui possimus.",
-                                    "Quae non ut sequi accusantium qui.",
-                                    "Rem quisquam veritatis omnis et fugiat vitae.",
+                                    "Ut nobis dolorem cupiditate eos.",
+                                    "Non voluptatibus placeat qui.",
+                                    "Et et ut harum necessitatibus vel voluptas.",
+                                    "At dignissimos magni officia.",
                                 ],
                                 endTime: "17:00:01",
                                 startTime: "09:00:00",
@@ -14623,7 +14650,11 @@ describe("BetaApIsClient", () => {
                         ],
                     },
                 ],
-                safetyEventExclusions: ["Repellat placeat sit.", "Hic dolore est consequatur."],
+                safetyEventExclusions: [
+                    "Voluptates ut molestiae a laborum qui possimus.",
+                    "Quae non ut sequi accusantium qui.",
+                    "Rem quisquam veritatis omnis et fugiat vitae.",
+                ],
                 streetView: {
                     headingDegrees: 90,
                     isEnabled: true,
@@ -15096,6 +15127,11 @@ describe("BetaApIsClient", () => {
         const rawResponseBody = {
             data: {
                 address: "123 Main St",
+                businessContacts: {
+                    contacts: [{ email: "bob@example.com", name: "Bob Smith", phoneNumber: "+14155555678" }],
+                    email: ["warehouse@example.com"],
+                    phoneNumbers: ["+14155551234"],
+                },
                 cameraRecordingModeType: "inherit",
                 createdAtTime: "2019-06-13T19:08:25Z",
                 geofence: {
@@ -15104,11 +15140,7 @@ describe("BetaApIsClient", () => {
                     type: "circle",
                 },
                 id: "12345",
-                iftaExemptionTypes: [
-                    "Excepturi ratione facilis.",
-                    "Officia autem id natus.",
-                    "Ad est vel voluptatem unde ut tempora.",
-                ],
+                iftaExemptionTypes: ["Doloribus omnis dolor.", "Quas natus consequatur ad a cum."],
                 isAutoDismissRolledStopsEnabled: false,
                 isShowAddressesEnabled: true,
                 name: "Oakland Yard",
@@ -15125,10 +15157,9 @@ describe("BetaApIsClient", () => {
                 },
                 notes: "Receiving 6-2",
                 placeTypes: [
-                    "Similique aut totam numquam.",
-                    "Est corrupti cum non.",
-                    "Iste voluptas.",
-                    "Animi commodi optio rem quia reiciendis ex.",
+                    "Minima error voluptate accusamus doloribus velit expedita.",
+                    "Placeat sit distinctio hic.",
+                    "Est consequatur distinctio.",
                 ],
                 routing: [
                     {
@@ -15154,9 +15185,10 @@ describe("BetaApIsClient", () => {
                         serviceWindows: [
                             {
                                 days: [
-                                    "Voluptates ut molestiae a laborum qui possimus.",
-                                    "Quae non ut sequi accusantium qui.",
-                                    "Rem quisquam veritatis omnis et fugiat vitae.",
+                                    "Ut nobis dolorem cupiditate eos.",
+                                    "Non voluptatibus placeat qui.",
+                                    "Et et ut harum necessitatibus vel voluptas.",
+                                    "At dignissimos magni officia.",
                                 ],
                                 endTime: "17:00:01",
                                 startTime: "09:00:00",
@@ -15164,7 +15196,11 @@ describe("BetaApIsClient", () => {
                         ],
                     },
                 ],
-                safetyEventExclusions: ["Repellat placeat sit.", "Hic dolore est consequatur."],
+                safetyEventExclusions: [
+                    "Voluptates ut molestiae a laborum qui possimus.",
+                    "Quae non ut sequi accusantium qui.",
+                    "Rem quisquam veritatis omnis et fugiat vitae.",
+                ],
                 streetView: {
                     headingDegrees: 90,
                     isEnabled: true,
@@ -15190,6 +15226,17 @@ describe("BetaApIsClient", () => {
         expect(response).toEqual({
             data: {
                 address: "123 Main St",
+                businessContacts: {
+                    contacts: [
+                        {
+                            email: "bob@example.com",
+                            name: "Bob Smith",
+                            phoneNumber: "+14155555678",
+                        },
+                    ],
+                    email: ["warehouse@example.com"],
+                    phoneNumbers: ["+14155551234"],
+                },
                 cameraRecordingModeType: "inherit",
                 createdAtTime: "2019-06-13T19:08:25Z",
                 geofence: {
@@ -15209,11 +15256,7 @@ describe("BetaApIsClient", () => {
                     type: "circle",
                 },
                 id: "12345",
-                iftaExemptionTypes: [
-                    "Excepturi ratione facilis.",
-                    "Officia autem id natus.",
-                    "Ad est vel voluptatem unde ut tempora.",
-                ],
+                iftaExemptionTypes: ["Doloribus omnis dolor.", "Quas natus consequatur ad a cum."],
                 isAutoDismissRolledStopsEnabled: false,
                 isShowAddressesEnabled: true,
                 name: "Oakland Yard",
@@ -15230,10 +15273,9 @@ describe("BetaApIsClient", () => {
                 },
                 notes: "Receiving 6-2",
                 placeTypes: [
-                    "Similique aut totam numquam.",
-                    "Est corrupti cum non.",
-                    "Iste voluptas.",
-                    "Animi commodi optio rem quia reiciendis ex.",
+                    "Minima error voluptate accusamus doloribus velit expedita.",
+                    "Placeat sit distinctio hic.",
+                    "Est consequatur distinctio.",
                 ],
                 routing: [
                     {
@@ -15267,9 +15309,10 @@ describe("BetaApIsClient", () => {
                         serviceWindows: [
                             {
                                 days: [
-                                    "Voluptates ut molestiae a laborum qui possimus.",
-                                    "Quae non ut sequi accusantium qui.",
-                                    "Rem quisquam veritatis omnis et fugiat vitae.",
+                                    "Ut nobis dolorem cupiditate eos.",
+                                    "Non voluptatibus placeat qui.",
+                                    "Et et ut harum necessitatibus vel voluptas.",
+                                    "At dignissimos magni officia.",
                                 ],
                                 endTime: "17:00:01",
                                 startTime: "09:00:00",
@@ -15277,7 +15320,11 @@ describe("BetaApIsClient", () => {
                         ],
                     },
                 ],
-                safetyEventExclusions: ["Repellat placeat sit.", "Hic dolore est consequatur."],
+                safetyEventExclusions: [
+                    "Voluptates ut molestiae a laborum qui possimus.",
+                    "Quae non ut sequi accusantium qui.",
+                    "Rem quisquam veritatis omnis et fugiat vitae.",
+                ],
                 streetView: {
                     headingDegrees: 90,
                     isEnabled: true,
@@ -15896,6 +15943,278 @@ describe("BetaApIsClient", () => {
         await expect(async () => {
             return await client.betaApIs.getPlaceGeocode({
                 address: "address",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("getPlaceGeofence (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = {
+            data: [
+                {
+                    areaSquareMeters: 1240.5,
+                    geofence: {
+                        circle: { latitude: 37.7749, longitude: -122.4194, radiusMeters: 150 },
+                        polygon: { vertices: [{ latitude: 37.7749, longitude: -122.4194 }] },
+                        type: "circle",
+                    },
+                    name: "Oakland Warehouse",
+                    type: "building",
+                },
+            ],
+            pagination: { endCursor: "MjkY", hasNextPage: true },
+            recommended: {
+                areaSquareMeters: 1240.5,
+                geofence: {
+                    circle: { latitude: 37.7749, longitude: -122.4194, radiusMeters: 150 },
+                    polygon: { vertices: [{ latitude: 37.7749, longitude: -122.4194 }] },
+                    type: "circle",
+                },
+                name: "Oakland Warehouse",
+                type: "building",
+            },
+        };
+        server.mockEndpoint().get("/places/geofence").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
+
+        const response = await client.betaApIs.getPlaceGeofence({
+            latitude: 1.1,
+            longitude: 1.1,
+        });
+        expect(response).toEqual({
+            data: [
+                {
+                    areaSquareMeters: 1240.5,
+                    geofence: {
+                        circle: {
+                            latitude: 37.7749,
+                            longitude: -122.4194,
+                            radiusMeters: 150,
+                        },
+                        polygon: {
+                            vertices: [
+                                {
+                                    latitude: 37.7749,
+                                    longitude: -122.4194,
+                                },
+                            ],
+                        },
+                        type: "circle",
+                    },
+                    name: "Oakland Warehouse",
+                    type: "building",
+                },
+            ],
+            pagination: {
+                endCursor: "MjkY",
+                hasNextPage: true,
+            },
+            recommended: {
+                areaSquareMeters: 1240.5,
+                geofence: {
+                    circle: {
+                        latitude: 37.7749,
+                        longitude: -122.4194,
+                        radiusMeters: 150,
+                    },
+                    polygon: {
+                        vertices: [
+                            {
+                                latitude: 37.7749,
+                                longitude: -122.4194,
+                            },
+                        ],
+                    },
+                    type: "circle",
+                },
+                name: "Oakland Warehouse",
+                type: "building",
+            },
+        });
+    });
+
+    test("getPlaceGeofence (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server.mockEndpoint().get("/places/geofence").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.betaApIs.getPlaceGeofence({
+                latitude: 1.1,
+                longitude: 1.1,
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("getPlaceGeofence (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server.mockEndpoint().get("/places/geofence").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.betaApIs.getPlaceGeofence({
+                latitude: 1.1,
+                longitude: 1.1,
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("getPlaceGeofence (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server.mockEndpoint().get("/places/geofence").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.betaApIs.getPlaceGeofence({
+                latitude: 1.1,
+                longitude: 1.1,
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("getPlaceGeofence (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server.mockEndpoint().get("/places/geofence").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.betaApIs.getPlaceGeofence({
+                latitude: 1.1,
+                longitude: 1.1,
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("getPlaceGeofence (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server.mockEndpoint().get("/places/geofence").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.betaApIs.getPlaceGeofence({
+                latitude: 1.1,
+                longitude: 1.1,
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("getPlaceGeofence (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server.mockEndpoint().get("/places/geofence").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.betaApIs.getPlaceGeofence({
+                latitude: 1.1,
+                longitude: 1.1,
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("getPlaceGeofence (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server.mockEndpoint().get("/places/geofence").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.betaApIs.getPlaceGeofence({
+                latitude: 1.1,
+                longitude: 1.1,
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("getPlaceGeofence (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server.mockEndpoint().get("/places/geofence").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.betaApIs.getPlaceGeofence({
+                latitude: 1.1,
+                longitude: 1.1,
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("getPlaceGeofence (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server.mockEndpoint().get("/places/geofence").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.betaApIs.getPlaceGeofence({
+                latitude: 1.1,
+                longitude: 1.1,
             });
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
@@ -22614,8 +22933,9 @@ describe("BetaApIsClient", () => {
             data: {
                 columns: [{ dataType: "string", name: "Device Name" }],
                 rows: [
+                    [{ key: "value" }, { key: "value" }, { key: "value" }, { key: "value" }],
                     [{ key: "value" }, { key: "value" }, { key: "value" }],
-                    [{ key: "value" }, { key: "value" }, { key: "value" }],
+                    [{ key: "value" }, { key: "value" }, { key: "value" }, { key: "value" }],
                     [{ key: "value" }, { key: "value" }, { key: "value" }],
                 ],
                 status: "complete",
@@ -22646,8 +22966,25 @@ describe("BetaApIsClient", () => {
                         {
                             key: "value",
                         },
+                        {
+                            key: "value",
+                        },
                     ],
                     [
+                        {
+                            key: "value",
+                        },
+                        {
+                            key: "value",
+                        },
+                        {
+                            key: "value",
+                        },
+                    ],
+                    [
+                        {
+                            key: "value",
+                        },
                         {
                             key: "value",
                         },
@@ -22877,12 +23214,12 @@ describe("BetaApIsClient", () => {
                     ],
                     isActive: true,
                     lastName: "Doe",
-                    specialInstructions: { isGuardianRequired: false, isSpecialEducation: true },
+                    specialInstructions: { isGuardianRequired: true, isSpecialEducation: false },
                     tagIds: [
-                        "Laborum commodi.",
-                        "Exercitationem consequatur eos voluptatibus eveniet harum rerum.",
-                        "Doloribus voluptatum quaerat nobis voluptatem reiciendis.",
-                        "Praesentium cumque distinctio excepturi occaecati eos animi.",
+                        "At dolores exercitationem non consectetur.",
+                        "Est laboriosam.",
+                        "Et voluptatibus sapiente.",
+                        "Facilis aperiam omnis rerum autem maxime odit.",
                     ],
                     updatedAtTime: "2024-11-15T10:30:00Z",
                 },
@@ -22921,14 +23258,14 @@ describe("BetaApIsClient", () => {
                     isActive: true,
                     lastName: "Doe",
                     specialInstructions: {
-                        isGuardianRequired: false,
-                        isSpecialEducation: true,
+                        isGuardianRequired: true,
+                        isSpecialEducation: false,
                     },
                     tagIds: [
-                        "Laborum commodi.",
-                        "Exercitationem consequatur eos voluptatibus eveniet harum rerum.",
-                        "Doloribus voluptatum quaerat nobis voluptatem reiciendis.",
-                        "Praesentium cumque distinctio excepturi occaecati eos animi.",
+                        "At dolores exercitationem non consectetur.",
+                        "Est laboriosam.",
+                        "Et voluptatibus sapiente.",
+                        "Facilis aperiam omnis rerum autem maxime odit.",
                     ],
                     updatedAtTime: "2024-11-15T10:30:00Z",
                 },
@@ -23186,12 +23523,12 @@ describe("BetaApIsClient", () => {
                 ],
                 isActive: true,
                 lastName: "Doe",
-                specialInstructions: { isGuardianRequired: false, isSpecialEducation: true },
+                specialInstructions: { isGuardianRequired: true, isSpecialEducation: false },
                 tagIds: [
-                    "Laborum commodi.",
-                    "Exercitationem consequatur eos voluptatibus eveniet harum rerum.",
-                    "Doloribus voluptatum quaerat nobis voluptatem reiciendis.",
-                    "Praesentium cumque distinctio excepturi occaecati eos animi.",
+                    "At dolores exercitationem non consectetur.",
+                    "Est laboriosam.",
+                    "Et voluptatibus sapiente.",
+                    "Facilis aperiam omnis rerum autem maxime odit.",
                 ],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
@@ -23229,14 +23566,14 @@ describe("BetaApIsClient", () => {
                 isActive: true,
                 lastName: "Doe",
                 specialInstructions: {
-                    isGuardianRequired: false,
-                    isSpecialEducation: true,
+                    isGuardianRequired: true,
+                    isSpecialEducation: false,
                 },
                 tagIds: [
-                    "Laborum commodi.",
-                    "Exercitationem consequatur eos voluptatibus eveniet harum rerum.",
-                    "Doloribus voluptatum quaerat nobis voluptatem reiciendis.",
-                    "Praesentium cumque distinctio excepturi occaecati eos animi.",
+                    "At dolores exercitationem non consectetur.",
+                    "Est laboriosam.",
+                    "Et voluptatibus sapiente.",
+                    "Facilis aperiam omnis rerum autem maxime odit.",
                 ],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
@@ -23507,12 +23844,12 @@ describe("BetaApIsClient", () => {
                 ],
                 isActive: true,
                 lastName: "Doe",
-                specialInstructions: { isGuardianRequired: false, isSpecialEducation: true },
+                specialInstructions: { isGuardianRequired: true, isSpecialEducation: false },
                 tagIds: [
-                    "Laborum commodi.",
-                    "Exercitationem consequatur eos voluptatibus eveniet harum rerum.",
-                    "Doloribus voluptatum quaerat nobis voluptatem reiciendis.",
-                    "Praesentium cumque distinctio excepturi occaecati eos animi.",
+                    "At dolores exercitationem non consectetur.",
+                    "Est laboriosam.",
+                    "Et voluptatibus sapiente.",
+                    "Facilis aperiam omnis rerum autem maxime odit.",
                 ],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
@@ -23551,14 +23888,14 @@ describe("BetaApIsClient", () => {
                 isActive: true,
                 lastName: "Doe",
                 specialInstructions: {
-                    isGuardianRequired: false,
-                    isSpecialEducation: true,
+                    isGuardianRequired: true,
+                    isSpecialEducation: false,
                 },
                 tagIds: [
-                    "Laborum commodi.",
-                    "Exercitationem consequatur eos voluptatibus eveniet harum rerum.",
-                    "Doloribus voluptatum quaerat nobis voluptatem reiciendis.",
-                    "Praesentium cumque distinctio excepturi occaecati eos animi.",
+                    "At dolores exercitationem non consectetur.",
+                    "Est laboriosam.",
+                    "Et voluptatibus sapiente.",
+                    "Facilis aperiam omnis rerum autem maxime odit.",
                 ],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
@@ -24080,12 +24417,12 @@ describe("BetaApIsClient", () => {
                 ],
                 isActive: true,
                 lastName: "Doe",
-                specialInstructions: { isGuardianRequired: false, isSpecialEducation: true },
+                specialInstructions: { isGuardianRequired: true, isSpecialEducation: false },
                 tagIds: [
-                    "Laborum commodi.",
-                    "Exercitationem consequatur eos voluptatibus eveniet harum rerum.",
-                    "Doloribus voluptatum quaerat nobis voluptatem reiciendis.",
-                    "Praesentium cumque distinctio excepturi occaecati eos animi.",
+                    "At dolores exercitationem non consectetur.",
+                    "Est laboriosam.",
+                    "Et voluptatibus sapiente.",
+                    "Facilis aperiam omnis rerum autem maxime odit.",
                 ],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
@@ -24121,14 +24458,14 @@ describe("BetaApIsClient", () => {
                 isActive: true,
                 lastName: "Doe",
                 specialInstructions: {
-                    isGuardianRequired: false,
-                    isSpecialEducation: true,
+                    isGuardianRequired: true,
+                    isSpecialEducation: false,
                 },
                 tagIds: [
-                    "Laborum commodi.",
-                    "Exercitationem consequatur eos voluptatibus eveniet harum rerum.",
-                    "Doloribus voluptatum quaerat nobis voluptatem reiciendis.",
-                    "Praesentium cumque distinctio excepturi occaecati eos animi.",
+                    "At dolores exercitationem non consectetur.",
+                    "Est laboriosam.",
+                    "Et voluptatibus sapiente.",
+                    "Facilis aperiam omnis rerum autem maxime odit.",
                 ],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },

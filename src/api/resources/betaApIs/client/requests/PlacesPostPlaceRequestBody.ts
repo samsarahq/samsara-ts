@@ -13,6 +13,7 @@ import type * as Samsara from "../../../../index.js";
 export interface PlacesPostPlaceRequestBody {
     /** Single-line address string. */
     address: string;
+    businessContacts?: Samsara.PostPlaceBusinessContactsInputRequestBody;
     /** Camera recording mode: fullRecording, driverPrivacy, completePrivacy, or inherit.  Valid values: `fullRecording`, `driverPrivacy`, `completePrivacy`, `inherit`, `unknown`, `unspecified` */
     cameraRecordingModeType?: PlacesPostPlaceRequestBody.CameraRecordingModeType;
     /** External identifiers. */

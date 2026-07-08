@@ -8,6 +8,7 @@ import type * as Samsara from "../index.js";
 export interface PlaceResponseObjectResponseBody {
     /** Address string. */
     address: string;
+    businessContacts?: Samsara.PlaceBusinessContactsResponseResponseBody | undefined;
     /** Camera recording mode: inherit, fullRecording, driverPrivacy, completePrivacy, or unknown. */
     cameraRecordingModeType?: string | undefined;
     /** Created timestamp in RFC 3339 format. */

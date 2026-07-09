@@ -1,6 +1,7 @@
 export { AssetsCreateAssetRequestBody } from "./AssetsCreateAssetRequestBody.js";
 export { AssetsUpdateAssetRequestBody } from "./AssetsUpdateAssetRequestBody.js";
 export type { DeleteAssetRequest } from "./DeleteAssetRequest.js";
+export type { GetAssetReeferRequest } from "./GetAssetReeferRequest.js";
 export type { GetAssetsRequest } from "./GetAssetsRequest.js";
 export type { ListAssetsRequest } from "./ListAssetsRequest.js";
 export type { UpdateAssetsRequest } from "./UpdateAssetsRequest.js";

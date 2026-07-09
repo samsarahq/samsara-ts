@@ -1193,6 +1193,328 @@ describe("AssetsClient", () => {
         });
     });
 
+    test("getAssetReefer (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = {
+            assetType: "Thermo King",
+            id: 1,
+            name: "Reefer 123",
+            reeferStats: {
+                alarms: [{ changedAtMs: 1453449599999 }],
+                engineHours: [{ changedAtMs: 1453449599999, engineHours: 1200 }],
+                fuelPercentages: [{ changedAtMs: 1453449599999, fuelPercentage: 99 }],
+                powerStatus: [{ changedAtMs: 1453449599999, status: "Active (Continuous)" }],
+                returnAirTemp: [{ changedAtMs: 1453449599999, tempInMilliC: 31110 }],
+                setPoint: [{ changedAtMs: 1453449599999, tempInMilliC: 31110 }],
+            },
+        };
+        server
+            .mockEndpoint()
+            .get("/v1/fleet/assets/1000000/reefer")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.assets.getAssetReefer({
+            assetId: 1000000,
+            startMs: 1000000,
+            endMs: 1000000,
+        });
+        expect(response).toEqual({
+            assetType: "Thermo King",
+            id: 1,
+            name: "Reefer 123",
+            reeferStats: {
+                alarms: [
+                    {
+                        changedAtMs: 1453449599999,
+                    },
+                ],
+                engineHours: [
+                    {
+                        changedAtMs: 1453449599999,
+                        engineHours: 1200,
+                    },
+                ],
+                fuelPercentages: [
+                    {
+                        changedAtMs: 1453449599999,
+                        fuelPercentage: 99,
+                    },
+                ],
+                powerStatus: [
+                    {
+                        changedAtMs: 1453449599999,
+                        status: "Active (Continuous)",
+                    },
+                ],
+                returnAirTemp: [
+                    {
+                        changedAtMs: 1453449599999,
+                        tempInMilliC: 31110,
+                    },
+                ],
+                setPoint: [
+                    {
+                        changedAtMs: 1453449599999,
+                        tempInMilliC: 31110,
+                    },
+                ],
+            },
+        });
+    });
+
+    test("getAssetReefer (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/v1/fleet/assets/1000000/reefer")
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.assets.getAssetReefer({
+                assetId: 1000000,
+                startMs: 1000000,
+                endMs: 1000000,
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("getAssetReefer (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/v1/fleet/assets/1000000/reefer")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.assets.getAssetReefer({
+                assetId: 1000000,
+                startMs: 1000000,
+                endMs: 1000000,
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("getAssetReefer (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/v1/fleet/assets/1000000/reefer")
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.assets.getAssetReefer({
+                assetId: 1000000,
+                startMs: 1000000,
+                endMs: 1000000,
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("getAssetReefer (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/v1/fleet/assets/1000000/reefer")
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.assets.getAssetReefer({
+                assetId: 1000000,
+                startMs: 1000000,
+                endMs: 1000000,
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("getAssetReefer (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/v1/fleet/assets/1000000/reefer")
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.assets.getAssetReefer({
+                assetId: 1000000,
+                startMs: 1000000,
+                endMs: 1000000,
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("getAssetReefer (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/v1/fleet/assets/1000000/reefer")
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.assets.getAssetReefer({
+                assetId: 1000000,
+                startMs: 1000000,
+                endMs: 1000000,
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("getAssetReefer (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/v1/fleet/assets/1000000/reefer")
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.assets.getAssetReefer({
+                assetId: 1000000,
+                startMs: 1000000,
+                endMs: 1000000,
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("getAssetReefer (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/v1/fleet/assets/1000000/reefer")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.assets.getAssetReefer({
+                assetId: 1000000,
+                startMs: 1000000,
+                endMs: 1000000,
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("getAssetReefer (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/v1/fleet/assets/1000000/reefer")
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.assets.getAssetReefer({
+                assetId: 1000000,
+                startMs: 1000000,
+                endMs: 1000000,
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
     test("V1getAssetLocation", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({

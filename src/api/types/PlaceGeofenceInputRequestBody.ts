@@ -3,20 +3,22 @@
 import type * as Samsara from "../index.js";
 
 /**
- * Discriminated geofence on write. Exactly one of circle or polygon must be set.
+ * Discriminated geofence on write. Exactly one of circle, polygon, or auto must be set.
  */
 export interface PlaceGeofenceInputRequestBody {
+    auto?: Samsara.PlaceGeofenceAutoInputRequestBody | undefined;
     circle?: Samsara.PlaceGeofenceCircleInputRequestBody | undefined;
     polygon?: Samsara.PlaceGeofencePolygonInputRequestBody | undefined;
-    /** Geofence type: circle or polygon. When present, must match the populated branch.  Valid values: `circle`, `polygon` */
+    /** Geofence type: circle, polygon, or auto (write only). When present, must match the populated branch.  Valid values: `circle`, `polygon`, `auto` */
     type?: PlaceGeofenceInputRequestBody.Type | undefined;
 }
 
 export namespace PlaceGeofenceInputRequestBody {
-    /** Geofence type: circle or polygon. When present, must match the populated branch.  Valid values: `circle`, `polygon` */
+    /** Geofence type: circle, polygon, or auto (write only). When present, must match the populated branch.  Valid values: `circle`, `polygon`, `auto` */
     export const Type = {
         Circle: "circle",
         Polygon: "polygon",
+        Auto: "auto",
     } as const;
     export type Type = (typeof Type)[keyof typeof Type];
 }

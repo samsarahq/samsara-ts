@@ -599,7 +599,9 @@ describe("WorkOrdersClient", () => {
                     maintenanceSite: {
                         name: "LAX Service Bay 3",
                         placeExternalIds: {
-                            "Debitis ut voluptas maxime culpa beatae aut.": "Minima quia earum illum.",
+                            "Repudiandae est dolores dolorem voluptas.": "Amet cupiditate.",
+                            "Sit harum facilis veritatis impedit.": "Velit debitis corporis.",
+                            "Vel expedita sint magni tenetur necessitatibus.": "Quibusdam aut ab expedita.",
                         },
                         placeId: "123456",
                     },
@@ -695,7 +697,9 @@ describe("WorkOrdersClient", () => {
                     maintenanceSite: {
                         name: "LAX Service Bay 3",
                         placeExternalIds: {
-                            "Debitis ut voluptas maxime culpa beatae aut.": "Minima quia earum illum.",
+                            "Repudiandae est dolores dolorem voluptas.": "Amet cupiditate.",
+                            "Sit harum facilis veritatis impedit.": "Velit debitis corporis.",
+                            "Vel expedita sint magni tenetur necessitatibus.": "Quibusdam aut ab expedita.",
                         },
                         placeId: "123456",
                     },
@@ -1008,7 +1012,11 @@ describe("WorkOrdersClient", () => {
                 items: [{ id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7", type: "DVIR" }],
                 maintenanceSite: {
                     name: "LAX Service Bay 3",
-                    placeExternalIds: { "Debitis ut voluptas maxime culpa beatae aut.": "Minima quia earum illum." },
+                    placeExternalIds: {
+                        "Repudiandae est dolores dolorem voluptas.": "Amet cupiditate.",
+                        "Sit harum facilis veritatis impedit.": "Velit debitis corporis.",
+                        "Vel expedita sint magni tenetur necessitatibus.": "Quibusdam aut ab expedita.",
+                    },
                     placeId: "123456",
                 },
                 odometerMeters: 91823,
@@ -1039,7 +1047,6 @@ describe("WorkOrdersClient", () => {
                 updatedAtTime: "2019-06-13T19:08:25Z",
                 vendorUuid: "5523a39f-42ef-4820-83d0-dfe73dbe7853",
                 workOrderTemplateIds: [
-                    "5523a39f-42ef-4820-83d0-dfe73dbe7853",
                     "5523a39f-42ef-4820-83d0-dfe73dbe7853",
                     "5523a39f-42ef-4820-83d0-dfe73dbe7853",
                     "5523a39f-42ef-4820-83d0-dfe73dbe7853",
@@ -1097,7 +1104,9 @@ describe("WorkOrdersClient", () => {
                 maintenanceSite: {
                     name: "LAX Service Bay 3",
                     placeExternalIds: {
-                        "Debitis ut voluptas maxime culpa beatae aut.": "Minima quia earum illum.",
+                        "Repudiandae est dolores dolorem voluptas.": "Amet cupiditate.",
+                        "Sit harum facilis veritatis impedit.": "Velit debitis corporis.",
+                        "Vel expedita sint magni tenetur necessitatibus.": "Quibusdam aut ab expedita.",
                     },
                     placeId: "123456",
                 },
@@ -1147,7 +1156,6 @@ describe("WorkOrdersClient", () => {
                 updatedAtTime: "2019-06-13T19:08:25Z",
                 vendorUuid: "5523a39f-42ef-4820-83d0-dfe73dbe7853",
                 workOrderTemplateIds: [
-                    "5523a39f-42ef-4820-83d0-dfe73dbe7853",
                     "5523a39f-42ef-4820-83d0-dfe73dbe7853",
                     "5523a39f-42ef-4820-83d0-dfe73dbe7853",
                     "5523a39f-42ef-4820-83d0-dfe73dbe7853",
@@ -1668,7 +1676,11 @@ describe("WorkOrdersClient", () => {
                 items: [{ id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7", type: "DVIR" }],
                 maintenanceSite: {
                     name: "LAX Service Bay 3",
-                    placeExternalIds: { "Debitis ut voluptas maxime culpa beatae aut.": "Minima quia earum illum." },
+                    placeExternalIds: {
+                        "Repudiandae est dolores dolorem voluptas.": "Amet cupiditate.",
+                        "Sit harum facilis veritatis impedit.": "Velit debitis corporis.",
+                        "Vel expedita sint magni tenetur necessitatibus.": "Quibusdam aut ab expedita.",
+                    },
                     placeId: "123456",
                 },
                 odometerMeters: 91823,
@@ -1699,7 +1711,6 @@ describe("WorkOrdersClient", () => {
                 updatedAtTime: "2019-06-13T19:08:25Z",
                 vendorUuid: "5523a39f-42ef-4820-83d0-dfe73dbe7853",
                 workOrderTemplateIds: [
-                    "5523a39f-42ef-4820-83d0-dfe73dbe7853",
                     "5523a39f-42ef-4820-83d0-dfe73dbe7853",
                     "5523a39f-42ef-4820-83d0-dfe73dbe7853",
                     "5523a39f-42ef-4820-83d0-dfe73dbe7853",
@@ -1757,7 +1768,9 @@ describe("WorkOrdersClient", () => {
                 maintenanceSite: {
                     name: "LAX Service Bay 3",
                     placeExternalIds: {
-                        "Debitis ut voluptas maxime culpa beatae aut.": "Minima quia earum illum.",
+                        "Repudiandae est dolores dolorem voluptas.": "Amet cupiditate.",
+                        "Sit harum facilis veritatis impedit.": "Velit debitis corporis.",
+                        "Vel expedita sint magni tenetur necessitatibus.": "Quibusdam aut ab expedita.",
                     },
                     placeId: "123456",
                 },
@@ -1807,7 +1820,6 @@ describe("WorkOrdersClient", () => {
                 updatedAtTime: "2019-06-13T19:08:25Z",
                 vendorUuid: "5523a39f-42ef-4820-83d0-dfe73dbe7853",
                 workOrderTemplateIds: [
-                    "5523a39f-42ef-4820-83d0-dfe73dbe7853",
                     "5523a39f-42ef-4820-83d0-dfe73dbe7853",
                     "5523a39f-42ef-4820-83d0-dfe73dbe7853",
                     "5523a39f-42ef-4820-83d0-dfe73dbe7853",
@@ -2088,7 +2100,9 @@ describe("WorkOrdersClient", () => {
                     maintenanceSite: {
                         name: "LAX Service Bay 3",
                         placeExternalIds: {
-                            "Debitis ut voluptas maxime culpa beatae aut.": "Minima quia earum illum.",
+                            "Repudiandae est dolores dolorem voluptas.": "Amet cupiditate.",
+                            "Sit harum facilis veritatis impedit.": "Velit debitis corporis.",
+                            "Vel expedita sint magni tenetur necessitatibus.": "Quibusdam aut ab expedita.",
                         },
                         placeId: "123456",
                     },
@@ -2186,7 +2200,9 @@ describe("WorkOrdersClient", () => {
                     maintenanceSite: {
                         name: "LAX Service Bay 3",
                         placeExternalIds: {
-                            "Debitis ut voluptas maxime culpa beatae aut.": "Minima quia earum illum.",
+                            "Repudiandae est dolores dolorem voluptas.": "Amet cupiditate.",
+                            "Sit harum facilis veritatis impedit.": "Velit debitis corporis.",
+                            "Vel expedita sint magni tenetur necessitatibus.": "Quibusdam aut ab expedita.",
                         },
                         placeId: "123456",
                     },

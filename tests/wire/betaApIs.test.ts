@@ -14089,7 +14089,11 @@ describe("BetaApIsClient", () => {
                         type: "circle",
                     },
                     id: "12345",
-                    iftaExemptionTypes: ["Doloribus omnis dolor.", "Quas natus consequatur ad a cum."],
+                    iftaExemptionTypes: [
+                        "Ut harum.",
+                        "Vel voluptas nobis at dignissimos magni officia.",
+                        "Qui et quod dolores nobis.",
+                    ],
                     isAutoDismissRolledStopsEnabled: false,
                     isShowAddressesEnabled: true,
                     name: "Oakland Yard",
@@ -14105,11 +14109,7 @@ describe("BetaApIsClient", () => {
                         ],
                     },
                     notes: "Receiving 6-2",
-                    placeTypes: [
-                        "Minima error voluptate accusamus doloribus velit expedita.",
-                        "Placeat sit distinctio hic.",
-                        "Est consequatur distinctio.",
-                    ],
+                    placeTypes: ["Quis aut ipsa itaque.", "Ut molestiae a.", "Qui possimus officiis quae."],
                     routing: [
                         {
                             driverInstructions: "Use lane 2",
@@ -14134,10 +14134,10 @@ describe("BetaApIsClient", () => {
                             serviceWindows: [
                                 {
                                     days: [
-                                        "Ut nobis dolorem cupiditate eos.",
-                                        "Non voluptatibus placeat qui.",
-                                        "Et et ut harum necessitatibus vel voluptas.",
-                                        "At dignissimos magni officia.",
+                                        "Officiis temporibus minus dolores incidunt.",
+                                        "Maiores est saepe earum excepturi.",
+                                        "Et nulla.",
+                                        "Quos aut qui perspiciatis possimus eos omnis.",
                                     ],
                                     endTime: "17:00:01",
                                     startTime: "09:00:00",
@@ -14146,9 +14146,9 @@ describe("BetaApIsClient", () => {
                         },
                     ],
                     safetyEventExclusions: [
-                        "Voluptates ut molestiae a laborum qui possimus.",
-                        "Quae non ut sequi accusantium qui.",
-                        "Rem quisquam veritatis omnis et fugiat vitae.",
+                        "Pariatur vel non aut porro corporis ipsum.",
+                        "Eos doloribus omnis dolor.",
+                        "Quas natus consequatur ad a cum.",
                     ],
                     streetView: {
                         headingDegrees: 90,
@@ -14194,7 +14194,11 @@ describe("BetaApIsClient", () => {
                         type: "circle",
                     },
                     id: "12345",
-                    iftaExemptionTypes: ["Doloribus omnis dolor.", "Quas natus consequatur ad a cum."],
+                    iftaExemptionTypes: [
+                        "Ut harum.",
+                        "Vel voluptas nobis at dignissimos magni officia.",
+                        "Qui et quod dolores nobis.",
+                    ],
                     isAutoDismissRolledStopsEnabled: false,
                     isShowAddressesEnabled: true,
                     name: "Oakland Yard",
@@ -14210,11 +14214,7 @@ describe("BetaApIsClient", () => {
                         ],
                     },
                     notes: "Receiving 6-2",
-                    placeTypes: [
-                        "Minima error voluptate accusamus doloribus velit expedita.",
-                        "Placeat sit distinctio hic.",
-                        "Est consequatur distinctio.",
-                    ],
+                    placeTypes: ["Quis aut ipsa itaque.", "Ut molestiae a.", "Qui possimus officiis quae."],
                     routing: [
                         {
                             driverInstructions: "Use lane 2",
@@ -14247,10 +14247,10 @@ describe("BetaApIsClient", () => {
                             serviceWindows: [
                                 {
                                     days: [
-                                        "Ut nobis dolorem cupiditate eos.",
-                                        "Non voluptatibus placeat qui.",
-                                        "Et et ut harum necessitatibus vel voluptas.",
-                                        "At dignissimos magni officia.",
+                                        "Officiis temporibus minus dolores incidunt.",
+                                        "Maiores est saepe earum excepturi.",
+                                        "Et nulla.",
+                                        "Quos aut qui perspiciatis possimus eos omnis.",
                                     ],
                                     endTime: "17:00:01",
                                     startTime: "09:00:00",
@@ -14259,9 +14259,9 @@ describe("BetaApIsClient", () => {
                         },
                     ],
                     safetyEventExclusions: [
-                        "Voluptates ut molestiae a laborum qui possimus.",
-                        "Quae non ut sequi accusantium qui.",
-                        "Rem quisquam veritatis omnis et fugiat vitae.",
+                        "Pariatur vel non aut porro corporis ipsum.",
+                        "Eos doloribus omnis dolor.",
+                        "Quas natus consequatur ad a cum.",
                     ],
                     streetView: {
                         headingDegrees: 90,
@@ -14466,7 +14466,11 @@ describe("BetaApIsClient", () => {
                     type: "circle",
                 },
                 id: "12345",
-                iftaExemptionTypes: ["Doloribus omnis dolor.", "Quas natus consequatur ad a cum."],
+                iftaExemptionTypes: [
+                    "Ut harum.",
+                    "Vel voluptas nobis at dignissimos magni officia.",
+                    "Qui et quod dolores nobis.",
+                ],
                 isAutoDismissRolledStopsEnabled: false,
                 isShowAddressesEnabled: true,
                 name: "Oakland Yard",
@@ -14482,11 +14486,7 @@ describe("BetaApIsClient", () => {
                     ],
                 },
                 notes: "Receiving 6-2",
-                placeTypes: [
-                    "Minima error voluptate accusamus doloribus velit expedita.",
-                    "Placeat sit distinctio hic.",
-                    "Est consequatur distinctio.",
-                ],
+                placeTypes: ["Quis aut ipsa itaque.", "Ut molestiae a.", "Qui possimus officiis quae."],
                 routing: [
                     {
                         driverInstructions: "Use lane 2",
@@ -14511,10 +14511,10 @@ describe("BetaApIsClient", () => {
                         serviceWindows: [
                             {
                                 days: [
-                                    "Ut nobis dolorem cupiditate eos.",
-                                    "Non voluptatibus placeat qui.",
-                                    "Et et ut harum necessitatibus vel voluptas.",
-                                    "At dignissimos magni officia.",
+                                    "Officiis temporibus minus dolores incidunt.",
+                                    "Maiores est saepe earum excepturi.",
+                                    "Et nulla.",
+                                    "Quos aut qui perspiciatis possimus eos omnis.",
                                 ],
                                 endTime: "17:00:01",
                                 startTime: "09:00:00",
@@ -14523,9 +14523,9 @@ describe("BetaApIsClient", () => {
                     },
                 ],
                 safetyEventExclusions: [
-                    "Voluptates ut molestiae a laborum qui possimus.",
-                    "Quae non ut sequi accusantium qui.",
-                    "Rem quisquam veritatis omnis et fugiat vitae.",
+                    "Pariatur vel non aut porro corporis ipsum.",
+                    "Eos doloribus omnis dolor.",
+                    "Quas natus consequatur ad a cum.",
                 ],
                 streetView: {
                     headingDegrees: 90,
@@ -14586,7 +14586,11 @@ describe("BetaApIsClient", () => {
                     type: "circle",
                 },
                 id: "12345",
-                iftaExemptionTypes: ["Doloribus omnis dolor.", "Quas natus consequatur ad a cum."],
+                iftaExemptionTypes: [
+                    "Ut harum.",
+                    "Vel voluptas nobis at dignissimos magni officia.",
+                    "Qui et quod dolores nobis.",
+                ],
                 isAutoDismissRolledStopsEnabled: false,
                 isShowAddressesEnabled: true,
                 name: "Oakland Yard",
@@ -14602,11 +14606,7 @@ describe("BetaApIsClient", () => {
                     ],
                 },
                 notes: "Receiving 6-2",
-                placeTypes: [
-                    "Minima error voluptate accusamus doloribus velit expedita.",
-                    "Placeat sit distinctio hic.",
-                    "Est consequatur distinctio.",
-                ],
+                placeTypes: ["Quis aut ipsa itaque.", "Ut molestiae a.", "Qui possimus officiis quae."],
                 routing: [
                     {
                         driverInstructions: "Use lane 2",
@@ -14639,10 +14639,10 @@ describe("BetaApIsClient", () => {
                         serviceWindows: [
                             {
                                 days: [
-                                    "Ut nobis dolorem cupiditate eos.",
-                                    "Non voluptatibus placeat qui.",
-                                    "Et et ut harum necessitatibus vel voluptas.",
-                                    "At dignissimos magni officia.",
+                                    "Officiis temporibus minus dolores incidunt.",
+                                    "Maiores est saepe earum excepturi.",
+                                    "Et nulla.",
+                                    "Quos aut qui perspiciatis possimus eos omnis.",
                                 ],
                                 endTime: "17:00:01",
                                 startTime: "09:00:00",
@@ -14651,9 +14651,9 @@ describe("BetaApIsClient", () => {
                     },
                 ],
                 safetyEventExclusions: [
-                    "Voluptates ut molestiae a laborum qui possimus.",
-                    "Quae non ut sequi accusantium qui.",
-                    "Rem quisquam veritatis omnis et fugiat vitae.",
+                    "Pariatur vel non aut porro corporis ipsum.",
+                    "Eos doloribus omnis dolor.",
+                    "Quas natus consequatur ad a cum.",
                 ],
                 streetView: {
                     headingDegrees: 90,
@@ -15140,7 +15140,11 @@ describe("BetaApIsClient", () => {
                     type: "circle",
                 },
                 id: "12345",
-                iftaExemptionTypes: ["Doloribus omnis dolor.", "Quas natus consequatur ad a cum."],
+                iftaExemptionTypes: [
+                    "Ut harum.",
+                    "Vel voluptas nobis at dignissimos magni officia.",
+                    "Qui et quod dolores nobis.",
+                ],
                 isAutoDismissRolledStopsEnabled: false,
                 isShowAddressesEnabled: true,
                 name: "Oakland Yard",
@@ -15156,11 +15160,7 @@ describe("BetaApIsClient", () => {
                     ],
                 },
                 notes: "Receiving 6-2",
-                placeTypes: [
-                    "Minima error voluptate accusamus doloribus velit expedita.",
-                    "Placeat sit distinctio hic.",
-                    "Est consequatur distinctio.",
-                ],
+                placeTypes: ["Quis aut ipsa itaque.", "Ut molestiae a.", "Qui possimus officiis quae."],
                 routing: [
                     {
                         driverInstructions: "Use lane 2",
@@ -15185,10 +15185,10 @@ describe("BetaApIsClient", () => {
                         serviceWindows: [
                             {
                                 days: [
-                                    "Ut nobis dolorem cupiditate eos.",
-                                    "Non voluptatibus placeat qui.",
-                                    "Et et ut harum necessitatibus vel voluptas.",
-                                    "At dignissimos magni officia.",
+                                    "Officiis temporibus minus dolores incidunt.",
+                                    "Maiores est saepe earum excepturi.",
+                                    "Et nulla.",
+                                    "Quos aut qui perspiciatis possimus eos omnis.",
                                 ],
                                 endTime: "17:00:01",
                                 startTime: "09:00:00",
@@ -15197,9 +15197,9 @@ describe("BetaApIsClient", () => {
                     },
                 ],
                 safetyEventExclusions: [
-                    "Voluptates ut molestiae a laborum qui possimus.",
-                    "Quae non ut sequi accusantium qui.",
-                    "Rem quisquam veritatis omnis et fugiat vitae.",
+                    "Pariatur vel non aut porro corporis ipsum.",
+                    "Eos doloribus omnis dolor.",
+                    "Quas natus consequatur ad a cum.",
                 ],
                 streetView: {
                     headingDegrees: 90,
@@ -15256,7 +15256,11 @@ describe("BetaApIsClient", () => {
                     type: "circle",
                 },
                 id: "12345",
-                iftaExemptionTypes: ["Doloribus omnis dolor.", "Quas natus consequatur ad a cum."],
+                iftaExemptionTypes: [
+                    "Ut harum.",
+                    "Vel voluptas nobis at dignissimos magni officia.",
+                    "Qui et quod dolores nobis.",
+                ],
                 isAutoDismissRolledStopsEnabled: false,
                 isShowAddressesEnabled: true,
                 name: "Oakland Yard",
@@ -15272,11 +15276,7 @@ describe("BetaApIsClient", () => {
                     ],
                 },
                 notes: "Receiving 6-2",
-                placeTypes: [
-                    "Minima error voluptate accusamus doloribus velit expedita.",
-                    "Placeat sit distinctio hic.",
-                    "Est consequatur distinctio.",
-                ],
+                placeTypes: ["Quis aut ipsa itaque.", "Ut molestiae a.", "Qui possimus officiis quae."],
                 routing: [
                     {
                         driverInstructions: "Use lane 2",
@@ -15309,10 +15309,10 @@ describe("BetaApIsClient", () => {
                         serviceWindows: [
                             {
                                 days: [
-                                    "Ut nobis dolorem cupiditate eos.",
-                                    "Non voluptatibus placeat qui.",
-                                    "Et et ut harum necessitatibus vel voluptas.",
-                                    "At dignissimos magni officia.",
+                                    "Officiis temporibus minus dolores incidunt.",
+                                    "Maiores est saepe earum excepturi.",
+                                    "Et nulla.",
+                                    "Quos aut qui perspiciatis possimus eos omnis.",
                                 ],
                                 endTime: "17:00:01",
                                 startTime: "09:00:00",
@@ -15321,9 +15321,9 @@ describe("BetaApIsClient", () => {
                     },
                 ],
                 safetyEventExclusions: [
-                    "Voluptates ut molestiae a laborum qui possimus.",
-                    "Quae non ut sequi accusantium qui.",
-                    "Rem quisquam veritatis omnis et fugiat vitae.",
+                    "Pariatur vel non aut porro corporis ipsum.",
+                    "Eos doloribus omnis dolor.",
+                    "Quas natus consequatur ad a cum.",
                 ],
                 streetView: {
                     headingDegrees: 90,
@@ -22934,9 +22934,9 @@ describe("BetaApIsClient", () => {
                 columns: [{ dataType: "string", name: "Device Name" }],
                 rows: [
                     [{ key: "value" }, { key: "value" }, { key: "value" }, { key: "value" }],
-                    [{ key: "value" }, { key: "value" }, { key: "value" }],
                     [{ key: "value" }, { key: "value" }, { key: "value" }, { key: "value" }],
-                    [{ key: "value" }, { key: "value" }, { key: "value" }],
+                    [{ key: "value" }, { key: "value" }, { key: "value" }, { key: "value" }],
+                    [{ key: "value" }, { key: "value" }, { key: "value" }, { key: "value" }],
                 ],
                 status: "complete",
             },
@@ -22980,22 +22980,28 @@ describe("BetaApIsClient", () => {
                         {
                             key: "value",
                         },
-                    ],
-                    [
-                        {
-                            key: "value",
-                        },
-                        {
-                            key: "value",
-                        },
-                        {
-                            key: "value",
-                        },
                         {
                             key: "value",
                         },
                     ],
                     [
+                        {
+                            key: "value",
+                        },
+                        {
+                            key: "value",
+                        },
+                        {
+                            key: "value",
+                        },
+                        {
+                            key: "value",
+                        },
+                    ],
+                    [
+                        {
+                            key: "value",
+                        },
                         {
                             key: "value",
                         },
@@ -23214,13 +23220,8 @@ describe("BetaApIsClient", () => {
                     ],
                     isActive: true,
                     lastName: "Doe",
-                    specialInstructions: { isGuardianRequired: true, isSpecialEducation: false },
-                    tagIds: [
-                        "At dolores exercitationem non consectetur.",
-                        "Est laboriosam.",
-                        "Et voluptatibus sapiente.",
-                        "Facilis aperiam omnis rerum autem maxime odit.",
-                    ],
+                    specialInstructions: { isGuardianRequired: false, isSpecialEducation: false },
+                    tagIds: ["Quas nemo.", "Error tenetur sunt."],
                     updatedAtTime: "2024-11-15T10:30:00Z",
                 },
             ],
@@ -23258,15 +23259,10 @@ describe("BetaApIsClient", () => {
                     isActive: true,
                     lastName: "Doe",
                     specialInstructions: {
-                        isGuardianRequired: true,
+                        isGuardianRequired: false,
                         isSpecialEducation: false,
                     },
-                    tagIds: [
-                        "At dolores exercitationem non consectetur.",
-                        "Est laboriosam.",
-                        "Et voluptatibus sapiente.",
-                        "Facilis aperiam omnis rerum autem maxime odit.",
-                    ],
+                    tagIds: ["Quas nemo.", "Error tenetur sunt."],
                     updatedAtTime: "2024-11-15T10:30:00Z",
                 },
             ],
@@ -23523,13 +23519,8 @@ describe("BetaApIsClient", () => {
                 ],
                 isActive: true,
                 lastName: "Doe",
-                specialInstructions: { isGuardianRequired: true, isSpecialEducation: false },
-                tagIds: [
-                    "At dolores exercitationem non consectetur.",
-                    "Est laboriosam.",
-                    "Et voluptatibus sapiente.",
-                    "Facilis aperiam omnis rerum autem maxime odit.",
-                ],
+                specialInstructions: { isGuardianRequired: false, isSpecialEducation: false },
+                tagIds: ["Quas nemo.", "Error tenetur sunt."],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
         };
@@ -23566,15 +23557,10 @@ describe("BetaApIsClient", () => {
                 isActive: true,
                 lastName: "Doe",
                 specialInstructions: {
-                    isGuardianRequired: true,
+                    isGuardianRequired: false,
                     isSpecialEducation: false,
                 },
-                tagIds: [
-                    "At dolores exercitationem non consectetur.",
-                    "Est laboriosam.",
-                    "Et voluptatibus sapiente.",
-                    "Facilis aperiam omnis rerum autem maxime odit.",
-                ],
+                tagIds: ["Quas nemo.", "Error tenetur sunt."],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
         });
@@ -23844,13 +23830,8 @@ describe("BetaApIsClient", () => {
                 ],
                 isActive: true,
                 lastName: "Doe",
-                specialInstructions: { isGuardianRequired: true, isSpecialEducation: false },
-                tagIds: [
-                    "At dolores exercitationem non consectetur.",
-                    "Est laboriosam.",
-                    "Et voluptatibus sapiente.",
-                    "Facilis aperiam omnis rerum autem maxime odit.",
-                ],
+                specialInstructions: { isGuardianRequired: false, isSpecialEducation: false },
+                tagIds: ["Quas nemo.", "Error tenetur sunt."],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
         };
@@ -23888,15 +23869,10 @@ describe("BetaApIsClient", () => {
                 isActive: true,
                 lastName: "Doe",
                 specialInstructions: {
-                    isGuardianRequired: true,
+                    isGuardianRequired: false,
                     isSpecialEducation: false,
                 },
-                tagIds: [
-                    "At dolores exercitationem non consectetur.",
-                    "Est laboriosam.",
-                    "Et voluptatibus sapiente.",
-                    "Facilis aperiam omnis rerum autem maxime odit.",
-                ],
+                tagIds: ["Quas nemo.", "Error tenetur sunt."],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
         });
@@ -24417,13 +24393,8 @@ describe("BetaApIsClient", () => {
                 ],
                 isActive: true,
                 lastName: "Doe",
-                specialInstructions: { isGuardianRequired: true, isSpecialEducation: false },
-                tagIds: [
-                    "At dolores exercitationem non consectetur.",
-                    "Est laboriosam.",
-                    "Et voluptatibus sapiente.",
-                    "Facilis aperiam omnis rerum autem maxime odit.",
-                ],
+                specialInstructions: { isGuardianRequired: false, isSpecialEducation: false },
+                tagIds: ["Quas nemo.", "Error tenetur sunt."],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
         };
@@ -24458,15 +24429,10 @@ describe("BetaApIsClient", () => {
                 isActive: true,
                 lastName: "Doe",
                 specialInstructions: {
-                    isGuardianRequired: true,
+                    isGuardianRequired: false,
                     isSpecialEducation: false,
                 },
-                tagIds: [
-                    "At dolores exercitationem non consectetur.",
-                    "Est laboriosam.",
-                    "Et voluptatibus sapiente.",
-                    "Facilis aperiam omnis rerum autem maxime odit.",
-                ],
+                tagIds: ["Quas nemo.", "Error tenetur sunt."],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
         });
@@ -26249,7 +26215,11 @@ describe("BetaApIsClient", () => {
             environment: server.baseUrl,
         });
         const rawRequestBody = {
-            safetyEventIds: ["bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590"],
+            safetyEventIds: [
+                "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
+                "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
+                "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
+            ],
         };
         const rawResponseBody = {
             requestId: "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
@@ -26265,7 +26235,11 @@ describe("BetaApIsClient", () => {
             .build();
 
         const response = await client.betaApIs.patchSafetyEventsV2Batch({
-            safetyEventIds: ["bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590"],
+            safetyEventIds: [
+                "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
+                "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
+                "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
+            ],
         });
         expect(response).toEqual({
             requestId: "a1b2c3d4-e5f6-7890-abcd-ef1234567890",

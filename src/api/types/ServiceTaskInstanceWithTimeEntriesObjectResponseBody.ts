@@ -20,6 +20,8 @@ export interface ServiceTaskInstanceWithTimeEntriesObjectResponseBody {
     serviceTaskId: string;
     /** The status of the service task.  Valid values: `Unknown`, `Open`, `In Progress`, `On Hold`, `Completed` */
     status: ServiceTaskInstanceWithTimeEntriesObjectResponseBody.Status;
+    /** Subtasks for the service task. */
+    subtasks?: Samsara.ServiceTaskSubtaskObjectResponseBody[] | undefined;
     /** Technician time entries logged against this service task. Only returned for organizations using Technician Management. Includes both completed entries (clockOutAtTime is set) and entries that are still open (clockOutAtTime is null). */
     timeEntries?: Samsara.WorkOrderTimeEntryObjectResponseBody[] | undefined;
 }

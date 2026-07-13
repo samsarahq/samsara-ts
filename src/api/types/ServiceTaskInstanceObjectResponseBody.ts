@@ -20,6 +20,8 @@ export interface ServiceTaskInstanceObjectResponseBody {
     serviceTaskId: string;
     /** The status of the service task.  Valid values: `Unknown`, `Open`, `In Progress`, `On Hold`, `Completed` */
     status: ServiceTaskInstanceObjectResponseBody.Status;
+    /** Subtasks for the service task. */
+    subtasks?: Samsara.ServiceTaskSubtaskObjectResponseBody[] | undefined;
 }
 
 export namespace ServiceTaskInstanceObjectResponseBody {

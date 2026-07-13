@@ -12,6 +12,8 @@ export interface DefectsResponseDataResponseBody {
     createdAtTime?: string | undefined;
     /** List of DVIR defect's photos */
     defectPhotos?: Samsara.DefectPhotoResponseResponseBody[] | undefined;
+    /** Driver-designated safety classification for this defect.  Valid values: `safe`, `unsafe` */
+    defectSafetyStatus?: DefectsResponseDataResponseBody.DefectSafetyStatus | undefined;
     /** The unique ID of the defect type. */
     defectTypeId?: string | undefined;
     /** The unique ID of the defect's DVIR. */
@@ -29,4 +31,13 @@ export interface DefectsResponseDataResponseBody {
     /** Time when defect was last updated in RFC 3339 format. */
     updatedAtTime?: string | undefined;
     vehicle?: Samsara.DefectVehicleResponseResponseBody | undefined;
+}
+
+export namespace DefectsResponseDataResponseBody {
+    /** Driver-designated safety classification for this defect.  Valid values: `safe`, `unsafe` */
+    export const DefectSafetyStatus = {
+        Safe: "safe",
+        Unsafe: "unsafe",
+    } as const;
+    export type DefectSafetyStatus = (typeof DefectSafetyStatus)[keyof typeof DefectSafetyStatus];
 }

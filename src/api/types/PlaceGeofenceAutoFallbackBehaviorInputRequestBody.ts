@@ -6,13 +6,13 @@ import type * as Samsara from "../index.js";
  * Action when auto-geofencing finds no matching candidate after filtering.
  */
 export interface PlaceGeofenceAutoFallbackBehaviorInputRequestBody {
-    /** Fallback action: fail (default) or circle.  Valid values: `fail`, `circle` */
+    /** Fallback action: fail (default) or circle. Optional when fallbackBehavior.circle is set; inferred as circle.  Valid values: `fail`, `circle` */
     behaviorType?: PlaceGeofenceAutoFallbackBehaviorInputRequestBody.BehaviorType | undefined;
     circle?: Samsara.PlaceGeofenceAutoFallbackCircleInputRequestBody | undefined;
 }
 
 export namespace PlaceGeofenceAutoFallbackBehaviorInputRequestBody {
-    /** Fallback action: fail (default) or circle.  Valid values: `fail`, `circle` */
+    /** Fallback action: fail (default) or circle. Optional when fallbackBehavior.circle is set; inferred as circle.  Valid values: `fail`, `circle` */
     export const BehaviorType = {
         Fail: "fail",
         Circle: "circle",

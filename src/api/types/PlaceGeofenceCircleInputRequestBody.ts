@@ -4,10 +4,10 @@
  * Circle geofence on write.
  */
 export interface PlaceGeofenceCircleInputRequestBody {
-    /** Circle center latitude in decimal degrees. */
-    latitude: number;
-    /** Circle center longitude in decimal degrees. */
-    longitude: number;
+    /** Circle center latitude in decimal degrees. Omit on POST to geocode from top-level address. */
+    latitude?: number | undefined;
+    /** Circle center longitude in decimal degrees. Omit on POST to geocode from top-level address. */
+    longitude?: number | undefined;
     /** Radius in meters; must be positive. */
     radiusMeters: number;
 }

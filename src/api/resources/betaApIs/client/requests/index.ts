@@ -1,3 +1,5 @@
+export { AssetAssignmentsCreateAssetAssignmentRequestBody } from "./AssetAssignmentsCreateAssetAssignmentRequestBody.js";
+export type { AssetAssignmentsUnassignAssetAssignmentRequestBody } from "./AssetAssignmentsUnassignAssetAssignmentRequestBody.js";
 export type { DeleteFunctionRequest } from "./DeleteFunctionRequest.js";
 export type { DeleteFunctionStorageFileRequest } from "./DeleteFunctionStorageFileRequest.js";
 export type { DeleteHubRouteTemplateRequest } from "./DeleteHubRouteTemplateRequest.js";
@@ -26,6 +28,7 @@ export type { GetDetectionsRequest } from "./GetDetectionsRequest.js";
 export type { GetDevicesRequest } from "./GetDevicesRequest.js";
 export type { GetDriverEfficiencyRequest } from "./GetDriverEfficiencyRequest.js";
 export type { GetEngineImmobilizerStatesRequest } from "./GetEngineImmobilizerStatesRequest.js";
+export type { GetFleetInstallerPhotoUploadsRequest } from "./GetFleetInstallerPhotoUploadsRequest.js";
 export type { GetFunctionLogsRequest } from "./GetFunctionLogsRequest.js";
 export type { GetFunctionRequest } from "./GetFunctionRequest.js";
 export type { GetFunctionRunRequest } from "./GetFunctionRunRequest.js";
@@ -50,8 +53,10 @@ export type { GetVoiceSessionsStreamRequest } from "./GetVoiceSessionsStreamRequ
 export type { GetWorkOrderTemplatesRequest } from "./GetWorkOrderTemplatesRequest.js";
 export type { HosDailyLogsUpdateShippingDocsRequestBody } from "./HosDailyLogsUpdateShippingDocsRequestBody.js";
 export type { HubRouteTemplatesCreateHubRouteTemplateRequestBody } from "./HubRouteTemplatesCreateHubRouteTemplateRequestBody.js";
+export type { HubRouteTemplatesUpdateHubRouteTemplateRequestBody } from "./HubRouteTemplatesUpdateHubRouteTemplateRequestBody.js";
 export type { JobsCreateJobRequestBody } from "./JobsCreateJobRequestBody.js";
 export type { JobsPatchJobRequestBody } from "./JobsPatchJobRequestBody.js";
+export type { ListAssetAssignmentsRequest } from "./ListAssetAssignmentsRequest.js";
 export type { ListDeviceRecoveryMissingAssetsRequest } from "./ListDeviceRecoveryMissingAssetsRequest.js";
 export type { ListDriverWorkflowsRequest } from "./ListDriverWorkflowsRequest.js";
 export type { ListFunctionsStorageFilesRequest } from "./ListFunctionsStorageFilesRequest.js";

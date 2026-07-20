@@ -28,7 +28,7 @@ describe("AlertsClient", () => {
                         timeRangeType: "activeBetween",
                         timeRanges: [
                             {
-                                daysOfWeek: ["THURSDAY", "TUESDAY"],
+                                daysOfWeek: ["WEDNESDAY", "SUNDAY"],
                                 endTime: "20:00",
                                 startTime: "11:00",
                                 timezone: "America/Los_Angeles",
@@ -36,7 +36,7 @@ describe("AlertsClient", () => {
                         ],
                     },
                     scope: {
-                        all: true,
+                        all: false,
                         assets: [{ assetId: "12443", assetType: "uncategorized" }],
                         drivers: [{ driverId: "12434" }],
                         tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
@@ -76,7 +76,7 @@ describe("AlertsClient", () => {
                         timeRangeType: "activeBetween",
                         timeRanges: [
                             {
-                                daysOfWeek: ["THURSDAY", "TUESDAY"],
+                                daysOfWeek: ["WEDNESDAY", "SUNDAY"],
                                 endTime: "20:00",
                                 startTime: "11:00",
                                 timezone: "America/Los_Angeles",
@@ -84,7 +84,7 @@ describe("AlertsClient", () => {
                         ],
                     },
                     scope: {
-                        all: true,
+                        all: false,
                         assets: [
                             {
                                 assetId: "12443",
@@ -342,7 +342,7 @@ describe("AlertsClient", () => {
             actions: [{ actionTypeId: 1 }],
             isEnabled: true,
             name: "My Harsh Event Alert",
-            scope: { all: false },
+            scope: { all: true },
             triggers: [{ triggerTypeId: 1000 }],
         };
         const rawResponseBody = {
@@ -358,7 +358,7 @@ describe("AlertsClient", () => {
                     timeRangeType: "activeBetween",
                     timeRanges: [
                         {
-                            daysOfWeek: ["THURSDAY", "TUESDAY"],
+                            daysOfWeek: ["WEDNESDAY", "SUNDAY"],
                             endTime: "20:00",
                             startTime: "11:00",
                             timezone: "America/Los_Angeles",
@@ -366,7 +366,7 @@ describe("AlertsClient", () => {
                     ],
                 },
                 scope: {
-                    all: true,
+                    all: false,
                     assets: [{ assetId: "12443", assetType: "uncategorized" }],
                     drivers: [{ driverId: "12434" }],
                     tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
@@ -393,7 +393,7 @@ describe("AlertsClient", () => {
             isEnabled: true,
             name: "My Harsh Event Alert",
             scope: {
-                all: false,
+                all: true,
             },
             triggers: [
                 {
@@ -420,7 +420,7 @@ describe("AlertsClient", () => {
                     timeRangeType: "activeBetween",
                     timeRanges: [
                         {
-                            daysOfWeek: ["THURSDAY", "TUESDAY"],
+                            daysOfWeek: ["WEDNESDAY", "SUNDAY"],
                             endTime: "20:00",
                             startTime: "11:00",
                             timezone: "America/Los_Angeles",
@@ -428,7 +428,7 @@ describe("AlertsClient", () => {
                     ],
                 },
                 scope: {
-                    all: true,
+                    all: false,
                     assets: [
                         {
                             assetId: "12443",
@@ -1194,7 +1194,7 @@ describe("AlertsClient", () => {
                     timeRangeType: "activeBetween",
                     timeRanges: [
                         {
-                            daysOfWeek: ["THURSDAY", "TUESDAY"],
+                            daysOfWeek: ["WEDNESDAY", "SUNDAY"],
                             endTime: "20:00",
                             startTime: "11:00",
                             timezone: "America/Los_Angeles",
@@ -1202,7 +1202,7 @@ describe("AlertsClient", () => {
                     ],
                 },
                 scope: {
-                    all: true,
+                    all: false,
                     assets: [{ assetId: "12443", assetType: "uncategorized" }],
                     drivers: [{ driverId: "12434" }],
                     tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
@@ -1242,7 +1242,7 @@ describe("AlertsClient", () => {
                     timeRangeType: "activeBetween",
                     timeRanges: [
                         {
-                            daysOfWeek: ["THURSDAY", "TUESDAY"],
+                            daysOfWeek: ["WEDNESDAY", "SUNDAY"],
                             endTime: "20:00",
                             startTime: "11:00",
                             timezone: "America/Los_Angeles",
@@ -1250,7 +1250,7 @@ describe("AlertsClient", () => {
                     ],
                 },
                 scope: {
-                    all: true,
+                    all: false,
                     assets: [
                         {
                             assetId: "12443",

@@ -14,6 +14,8 @@ export interface FormSubmissionsPatchFormSubmissionRequestBody {
     assignedTo?: Samsara.FormSubmissionRequestAssignedToRequestBody;
     /** Due date of the form submission. UTC timestamp in RFC 3339 format. */
     dueAtTime?: string;
+    /** List of field inputs to update in a form submission. */
+    fields?: Samsara.FormSubmissionRequestFieldInputObjectRequestBody[];
     /** ID of the form submission. */
     id: string;
     /** Indicates whether the worker is required to complete this form or not at a specific route stop. Defaults to `true` if the form is assigned to a user or driver. When true, the worker cannot depart the route stop until this form submission is `submitted`. */

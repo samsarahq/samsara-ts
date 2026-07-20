@@ -8,7 +8,7 @@ import type * as Samsara from "../../../../index.js";
  *         id: 1000000,
  *         relayStates: [{
  *                 id: "relay1",
- *                 isOpen: false
+ *                 isOpen: true
  *             }]
  *     }
  */

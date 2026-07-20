@@ -2382,7 +2382,7 @@ describe("BetaApIsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { relayStates: [{ id: "relay1", isOpen: false }] };
+        const rawRequestBody = { relayStates: [{ id: "relay1", isOpen: true }] };
 
         server
             .mockEndpoint()
@@ -2397,7 +2397,7 @@ describe("BetaApIsClient", () => {
             relayStates: [
                 {
                     id: "relay1",
-                    isOpen: false,
+                    isOpen: true,
                 },
             ],
         });
@@ -4494,6 +4494,829 @@ describe("BetaApIsClient", () => {
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 
+    test("listAssetAssignments (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = {
+            data: [
+                {
+                    asset: { id: "12345" },
+                    assignee: { assigneeType: "unknown", id: "494123" },
+                    endTime: "2024-09-01T13:00:00Z",
+                    expectedEndTime: "2024-09-08T17:00:00Z",
+                    startTime: "2024-09-01T12:00:00Z",
+                },
+            ],
+            pagination: { endCursor: "MjkY", hasNextPage: true },
+        };
+        server
+            .mockEndpoint()
+            .get("/fleet/assets/assignments")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.betaApIs.listAssetAssignments();
+        expect(response).toEqual({
+            data: [
+                {
+                    asset: {
+                        id: "12345",
+                    },
+                    assignee: {
+                        assigneeType: "unknown",
+                        id: "494123",
+                    },
+                    endTime: "2024-09-01T13:00:00Z",
+                    expectedEndTime: "2024-09-08T17:00:00Z",
+                    startTime: "2024-09-01T12:00:00Z",
+                },
+            ],
+            pagination: {
+                endCursor: "MjkY",
+                hasNextPage: true,
+            },
+        });
+    });
+
+    test("listAssetAssignments (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/assets/assignments")
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listAssetAssignments();
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("listAssetAssignments (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/assets/assignments")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listAssetAssignments();
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("listAssetAssignments (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/assets/assignments")
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listAssetAssignments();
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("listAssetAssignments (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/assets/assignments")
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listAssetAssignments();
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("listAssetAssignments (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/assets/assignments")
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listAssetAssignments();
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("listAssetAssignments (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/assets/assignments")
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listAssetAssignments();
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("listAssetAssignments (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/assets/assignments")
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listAssetAssignments();
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("listAssetAssignments (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/assets/assignments")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listAssetAssignments();
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("listAssetAssignments (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/assets/assignments")
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listAssetAssignments();
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("createAssetAssignment (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { assetId: "281474978683353", assigneeId: "494123", assigneeType: "driver" };
+        const rawResponseBody = {
+            data: {
+                asset: { externalIds: { key: "value" }, id: "12345" },
+                assignee: { assigneeType: "unknown", externalIds: { key: "value" }, id: "494123" },
+                endTime: "2024-09-01T13:00:00Z",
+                expectedEndTime: "2024-09-08T17:00:00Z",
+                startTime: "2024-09-01T12:00:00Z",
+            },
+        };
+        server
+            .mockEndpoint()
+            .post("/fleet/assets/assignments")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.betaApIs.createAssetAssignment({
+            assetId: "281474978683353",
+            assigneeId: "494123",
+            assigneeType: "driver",
+        });
+        expect(response).toEqual({
+            data: {
+                asset: {
+                    externalIds: {
+                        key: "value",
+                    },
+                    id: "12345",
+                },
+                assignee: {
+                    assigneeType: "unknown",
+                    externalIds: {
+                        key: "value",
+                    },
+                    id: "494123",
+                },
+                endTime: "2024-09-01T13:00:00Z",
+                expectedEndTime: "2024-09-08T17:00:00Z",
+                startTime: "2024-09-01T12:00:00Z",
+            },
+        });
+    });
+
+    test("createAssetAssignment (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { assetId: "assetId", assigneeId: "assigneeId", assigneeType: "driver" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/assets/assignments")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createAssetAssignment({
+                assetId: "assetId",
+                assigneeId: "assigneeId",
+                assigneeType: "driver",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("createAssetAssignment (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { assetId: "assetId", assigneeId: "assigneeId", assigneeType: "driver" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/assets/assignments")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createAssetAssignment({
+                assetId: "assetId",
+                assigneeId: "assigneeId",
+                assigneeType: "driver",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("createAssetAssignment (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { assetId: "assetId", assigneeId: "assigneeId", assigneeType: "driver" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/assets/assignments")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createAssetAssignment({
+                assetId: "assetId",
+                assigneeId: "assigneeId",
+                assigneeType: "driver",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("createAssetAssignment (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { assetId: "assetId", assigneeId: "assigneeId", assigneeType: "driver" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/assets/assignments")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createAssetAssignment({
+                assetId: "assetId",
+                assigneeId: "assigneeId",
+                assigneeType: "driver",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("createAssetAssignment (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { assetId: "assetId", assigneeId: "assigneeId", assigneeType: "driver" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/assets/assignments")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createAssetAssignment({
+                assetId: "assetId",
+                assigneeId: "assigneeId",
+                assigneeType: "driver",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("createAssetAssignment (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { assetId: "assetId", assigneeId: "assigneeId", assigneeType: "driver" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/assets/assignments")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createAssetAssignment({
+                assetId: "assetId",
+                assigneeId: "assigneeId",
+                assigneeType: "driver",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("createAssetAssignment (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { assetId: "assetId", assigneeId: "assigneeId", assigneeType: "driver" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/assets/assignments")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createAssetAssignment({
+                assetId: "assetId",
+                assigneeId: "assigneeId",
+                assigneeType: "driver",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("createAssetAssignment (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { assetId: "assetId", assigneeId: "assigneeId", assigneeType: "driver" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/assets/assignments")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createAssetAssignment({
+                assetId: "assetId",
+                assigneeId: "assigneeId",
+                assigneeType: "driver",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("createAssetAssignment (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { assetId: "assetId", assigneeId: "assigneeId", assigneeType: "driver" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/assets/assignments")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createAssetAssignment({
+                assetId: "assetId",
+                assigneeId: "assigneeId",
+                assigneeType: "driver",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("unassignAssetAssignment (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { assetId: "281474978683353" };
+
+        server
+            .mockEndpoint()
+            .post("/fleet/assets/assignments/unassign")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .build();
+
+        const response = await client.betaApIs.unassignAssetAssignment({
+            assetId: "281474978683353",
+        });
+        expect(response).toEqual(undefined);
+    });
+
+    test("unassignAssetAssignment (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { assetId: "assetId" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/assets/assignments/unassign")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.unassignAssetAssignment({
+                assetId: "assetId",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("unassignAssetAssignment (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { assetId: "assetId" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/assets/assignments/unassign")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.unassignAssetAssignment({
+                assetId: "assetId",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("unassignAssetAssignment (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { assetId: "assetId" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/assets/assignments/unassign")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.unassignAssetAssignment({
+                assetId: "assetId",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("unassignAssetAssignment (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { assetId: "assetId" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/assets/assignments/unassign")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.unassignAssetAssignment({
+                assetId: "assetId",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("unassignAssetAssignment (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { assetId: "assetId" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/assets/assignments/unassign")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.unassignAssetAssignment({
+                assetId: "assetId",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("unassignAssetAssignment (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { assetId: "assetId" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/assets/assignments/unassign")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.unassignAssetAssignment({
+                assetId: "assetId",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("unassignAssetAssignment (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { assetId: "assetId" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/assets/assignments/unassign")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.unassignAssetAssignment({
+                assetId: "assetId",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("unassignAssetAssignment (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { assetId: "assetId" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/assets/assignments/unassign")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.unassignAssetAssignment({
+                assetId: "assetId",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("unassignAssetAssignment (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { assetId: "assetId" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/assets/assignments/unassign")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.unassignAssetAssignment({
+                assetId: "assetId",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
     test("listDeviceRecoveryMissingAssets (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
@@ -6176,6 +6999,272 @@ describe("BetaApIsClient", () => {
 
         await expect(async () => {
             return await client.betaApIs.listDriverWorkflows();
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("getFleetInstallerPhotoUploads (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = {
+            data: [
+                {
+                    contentMd5: "rL0Y20zC+Fzt72VPzMSk2A==",
+                    createdAtTime: "2026-06-01T18:15:00Z",
+                    deviceId: "281474977961335",
+                    fileFormatType: "imageJpeg",
+                    fileName: "front_camera_install.jpg",
+                    hardwareType: "vehicleGateway",
+                    id: "550e8400-e29b-41d4-a716-446655440000",
+                    photoType: "installPhoto",
+                    processingStatus: "awaitingUpload",
+                    sizeBytes: 482193,
+                    updatedAtTime: "2026-06-01T18:15:00Z",
+                },
+            ],
+            pagination: { endCursor: "MjkY", hasNextPage: true },
+        };
+        server
+            .mockEndpoint()
+            .get("/fleet/installer/photo-uploads")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.betaApIs.getFleetInstallerPhotoUploads();
+        expect(response).toEqual({
+            data: [
+                {
+                    contentMd5: "rL0Y20zC+Fzt72VPzMSk2A==",
+                    createdAtTime: "2026-06-01T18:15:00Z",
+                    deviceId: "281474977961335",
+                    fileFormatType: "imageJpeg",
+                    fileName: "front_camera_install.jpg",
+                    hardwareType: "vehicleGateway",
+                    id: "550e8400-e29b-41d4-a716-446655440000",
+                    photoType: "installPhoto",
+                    processingStatus: "awaitingUpload",
+                    sizeBytes: 482193,
+                    updatedAtTime: "2026-06-01T18:15:00Z",
+                },
+            ],
+            pagination: {
+                endCursor: "MjkY",
+                hasNextPage: true,
+            },
+        });
+    });
+
+    test("getFleetInstallerPhotoUploads (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/installer/photo-uploads")
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.getFleetInstallerPhotoUploads();
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("getFleetInstallerPhotoUploads (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/installer/photo-uploads")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.getFleetInstallerPhotoUploads();
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("getFleetInstallerPhotoUploads (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/installer/photo-uploads")
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.getFleetInstallerPhotoUploads();
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("getFleetInstallerPhotoUploads (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/installer/photo-uploads")
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.getFleetInstallerPhotoUploads();
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("getFleetInstallerPhotoUploads (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/installer/photo-uploads")
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.getFleetInstallerPhotoUploads();
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("getFleetInstallerPhotoUploads (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/installer/photo-uploads")
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.getFleetInstallerPhotoUploads();
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("getFleetInstallerPhotoUploads (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/installer/photo-uploads")
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.getFleetInstallerPhotoUploads();
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("getFleetInstallerPhotoUploads (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/installer/photo-uploads")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.getFleetInstallerPhotoUploads();
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("getFleetInstallerPhotoUploads (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/installer/photo-uploads")
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.getFleetInstallerPhotoUploads();
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 
@@ -11537,7 +12626,7 @@ describe("BetaApIsClient", () => {
                 carrierUsDotNumber: 1234,
                 homeTerminalFormattedAddress: "1990 Alameda Street, San Francisco, CA 94103",
                 homeTerminalName: "Home Terminal Name",
-                isCertified: false,
+                isCertified: true,
                 isUsShortHaulActive: false,
                 trailerNames: ["10293", "Trailer ID 1"],
             },
@@ -11565,7 +12654,7 @@ describe("BetaApIsClient", () => {
                 carrierUsDotNumber: 1234,
                 homeTerminalFormattedAddress: "1990 Alameda Street, San Francisco, CA 94103",
                 homeTerminalName: "Home Terminal Name",
-                isCertified: false,
+                isCertified: true,
                 isUsShortHaulActive: false,
                 trailerNames: ["10293", "Trailer ID 1"],
             },
@@ -11869,11 +12958,7 @@ describe("BetaApIsClient", () => {
                     priority: 1,
                     quantities: [{ capacityId: "850e8400-e29b-41d4-a716-446655440003", quantity: 25.5 }],
                     routeId: "950e8400-e29b-41d4-a716-446655440005",
-                    skillsRequired: [
-                        "650e8400-e29b-41d4-a716-446655440001",
-                        "650e8400-e29b-41d4-a716-446655440001",
-                        "650e8400-e29b-41d4-a716-446655440001",
-                    ],
+                    skillsRequired: ["650e8400-e29b-41d4-a716-446655440001", "650e8400-e29b-41d4-a716-446655440001"],
                     updatedAtTime: "2024-04-10T11:30:00Z",
                 },
             ],
@@ -11931,11 +13016,7 @@ describe("BetaApIsClient", () => {
                         },
                     ],
                     routeId: "950e8400-e29b-41d4-a716-446655440005",
-                    skillsRequired: [
-                        "650e8400-e29b-41d4-a716-446655440001",
-                        "650e8400-e29b-41d4-a716-446655440001",
-                        "650e8400-e29b-41d4-a716-446655440001",
-                    ],
+                    skillsRequired: ["650e8400-e29b-41d4-a716-446655440001", "650e8400-e29b-41d4-a716-446655440001"],
                     updatedAtTime: "2024-04-10T11:30:00Z",
                 },
             ],
@@ -13278,6 +14359,341 @@ describe("BetaApIsClient", () => {
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 
+    test("updateHubRouteTemplate (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = {
+            data: {
+                createdAtTime: "2024-01-15T10:30:00Z",
+                defaultDepotEnd: {
+                    externalId: "DEPOT-001",
+                    formattedAddress: "123 Industrial Blvd, Los Angeles, CA 90210, US",
+                    id: "750e8400-e29b-41d4-a716-446655440002",
+                    latitude: 34.0522,
+                    longitude: -118.2437,
+                    name: "Main Warehouse",
+                },
+                defaultDepotStart: {
+                    externalId: "DEPOT-001",
+                    formattedAddress: "123 Industrial Blvd, Los Angeles, CA 90210, US",
+                    id: "750e8400-e29b-41d4-a716-446655440002",
+                    latitude: 34.0522,
+                    longitude: -118.2437,
+                    name: "Main Warehouse",
+                },
+                defaultStartTimeOfDay: "08:00",
+                distanceMeters: 15000,
+                durationSeconds: 3600,
+                hubId: "550e8400-e29b-41d4-a716-446655440000",
+                hubTimezone: "America/Los_Angeles",
+                id: "660e8400-e29b-41d4-a716-446655440001",
+                locations: [
+                    {
+                        externalId: "LOC-123",
+                        formattedAddress: "456 Main St, Los Angeles, CA 90210, US",
+                        latitude: 34.0522,
+                        longitude: -118.2437,
+                        name: "Customer ABC Warehouse",
+                        position: 1,
+                    },
+                ],
+                name: "Downtown Delivery Route",
+                updatedAtTime: "2024-01-15T12:00:00Z",
+            },
+        };
+        server
+            .mockEndpoint()
+            .patch("/hub/route-templates")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.betaApIs.updateHubRouteTemplate({
+            id: "id",
+        });
+        expect(response).toEqual({
+            data: {
+                createdAtTime: "2024-01-15T10:30:00Z",
+                defaultDepotEnd: {
+                    externalId: "DEPOT-001",
+                    formattedAddress: "123 Industrial Blvd, Los Angeles, CA 90210, US",
+                    id: "750e8400-e29b-41d4-a716-446655440002",
+                    latitude: 34.0522,
+                    longitude: -118.2437,
+                    name: "Main Warehouse",
+                },
+                defaultDepotStart: {
+                    externalId: "DEPOT-001",
+                    formattedAddress: "123 Industrial Blvd, Los Angeles, CA 90210, US",
+                    id: "750e8400-e29b-41d4-a716-446655440002",
+                    latitude: 34.0522,
+                    longitude: -118.2437,
+                    name: "Main Warehouse",
+                },
+                defaultStartTimeOfDay: "08:00",
+                distanceMeters: 15000,
+                durationSeconds: 3600,
+                hubId: "550e8400-e29b-41d4-a716-446655440000",
+                hubTimezone: "America/Los_Angeles",
+                id: "660e8400-e29b-41d4-a716-446655440001",
+                locations: [
+                    {
+                        externalId: "LOC-123",
+                        formattedAddress: "456 Main St, Los Angeles, CA 90210, US",
+                        latitude: 34.0522,
+                        longitude: -118.2437,
+                        name: "Customer ABC Warehouse",
+                        position: 1,
+                    },
+                ],
+                name: "Downtown Delivery Route",
+                updatedAtTime: "2024-01-15T12:00:00Z",
+            },
+        });
+    });
+
+    test("updateHubRouteTemplate (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/hub/route-templates")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.updateHubRouteTemplate({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("updateHubRouteTemplate (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/hub/route-templates")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.updateHubRouteTemplate({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("updateHubRouteTemplate (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/hub/route-templates")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.updateHubRouteTemplate({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("updateHubRouteTemplate (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/hub/route-templates")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.updateHubRouteTemplate({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("updateHubRouteTemplate (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/hub/route-templates")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.updateHubRouteTemplate({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("updateHubRouteTemplate (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/hub/route-templates")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.updateHubRouteTemplate({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("updateHubRouteTemplate (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/hub/route-templates")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.updateHubRouteTemplate({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("updateHubRouteTemplate (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/hub/route-templates")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.updateHubRouteTemplate({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("updateHubRouteTemplate (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/hub/route-templates")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.updateHubRouteTemplate({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
     test("listPreventiveMaintenanceSchedules (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
@@ -14088,9 +15504,9 @@ describe("BetaApIsClient", () => {
                     },
                     id: "12345",
                     iftaExemptionTypes: [
-                        "Est vel voluptatem unde ut tempora necessitatibus.",
-                        "Repudiandae corrupti voluptatem dolor.",
-                        "Aut ipsa itaque voluptates.",
+                        "Dolores architecto velit dolorem.",
+                        "Blanditiis deserunt velit voluptatem atque deserunt.",
+                        "Sed veniam magnam molestiae.",
                     ],
                     isAutoDismissRolledStopsEnabled: false,
                     isShowAddressesEnabled: true,
@@ -14108,10 +15524,10 @@ describe("BetaApIsClient", () => {
                     },
                     notes: "Receiving 6-2",
                     placeTypes: [
-                        "Similique aut totam numquam.",
-                        "Est corrupti cum non.",
-                        "Iste voluptas.",
-                        "Animi commodi optio rem quia reiciendis ex.",
+                        "Quia eos.",
+                        "In adipisci sunt.",
+                        "Explicabo amet eum exercitationem dignissimos quaerat debitis.",
+                        "Dolorem quo enim voluptas saepe.",
                     ],
                     routing: [
                         {
@@ -14136,14 +15552,23 @@ describe("BetaApIsClient", () => {
                             serviceTime: { isEnabled: true, serviceTimeMinutes: 5 },
                             serviceWindows: [
                                 {
-                                    days: ["Ut sequi accusantium qui sequi rem quisquam.", "Omnis et."],
+                                    days: [
+                                        "Ut sed.",
+                                        "Est quo quidem quae.",
+                                        "Ut voluptas et accusantium est labore.",
+                                        "Magni sint quia.",
+                                    ],
                                     endTime: "17:00:01",
                                     startTime: "09:00:00",
                                 },
                             ],
                         },
                     ],
-                    safetyEventExclusions: ["Repellat placeat sit.", "Hic dolore est consequatur."],
+                    safetyEventExclusions: [
+                        "Beatae tenetur nobis ut voluptate et ut.",
+                        "Id rem unde earum quia libero.",
+                        "Dolor suscipit explicabo esse labore.",
+                    ],
                     streetView: {
                         headingDegrees: 90,
                         isEnabled: true,
@@ -14189,9 +15614,9 @@ describe("BetaApIsClient", () => {
                     },
                     id: "12345",
                     iftaExemptionTypes: [
-                        "Est vel voluptatem unde ut tempora necessitatibus.",
-                        "Repudiandae corrupti voluptatem dolor.",
-                        "Aut ipsa itaque voluptates.",
+                        "Dolores architecto velit dolorem.",
+                        "Blanditiis deserunt velit voluptatem atque deserunt.",
+                        "Sed veniam magnam molestiae.",
                     ],
                     isAutoDismissRolledStopsEnabled: false,
                     isShowAddressesEnabled: true,
@@ -14209,10 +15634,10 @@ describe("BetaApIsClient", () => {
                     },
                     notes: "Receiving 6-2",
                     placeTypes: [
-                        "Similique aut totam numquam.",
-                        "Est corrupti cum non.",
-                        "Iste voluptas.",
-                        "Animi commodi optio rem quia reiciendis ex.",
+                        "Quia eos.",
+                        "In adipisci sunt.",
+                        "Explicabo amet eum exercitationem dignissimos quaerat debitis.",
+                        "Dolorem quo enim voluptas saepe.",
                     ],
                     routing: [
                         {
@@ -14245,14 +15670,23 @@ describe("BetaApIsClient", () => {
                             },
                             serviceWindows: [
                                 {
-                                    days: ["Ut sequi accusantium qui sequi rem quisquam.", "Omnis et."],
+                                    days: [
+                                        "Ut sed.",
+                                        "Est quo quidem quae.",
+                                        "Ut voluptas et accusantium est labore.",
+                                        "Magni sint quia.",
+                                    ],
                                     endTime: "17:00:01",
                                     startTime: "09:00:00",
                                 },
                             ],
                         },
                     ],
-                    safetyEventExclusions: ["Repellat placeat sit.", "Hic dolore est consequatur."],
+                    safetyEventExclusions: [
+                        "Beatae tenetur nobis ut voluptate et ut.",
+                        "Id rem unde earum quia libero.",
+                        "Dolor suscipit explicabo esse labore.",
+                    ],
                     streetView: {
                         headingDegrees: 90,
                         isEnabled: true,
@@ -14457,9 +15891,9 @@ describe("BetaApIsClient", () => {
                 },
                 id: "12345",
                 iftaExemptionTypes: [
-                    "Est vel voluptatem unde ut tempora necessitatibus.",
-                    "Repudiandae corrupti voluptatem dolor.",
-                    "Aut ipsa itaque voluptates.",
+                    "Dolores architecto velit dolorem.",
+                    "Blanditiis deserunt velit voluptatem atque deserunt.",
+                    "Sed veniam magnam molestiae.",
                 ],
                 isAutoDismissRolledStopsEnabled: false,
                 isShowAddressesEnabled: true,
@@ -14477,10 +15911,10 @@ describe("BetaApIsClient", () => {
                 },
                 notes: "Receiving 6-2",
                 placeTypes: [
-                    "Similique aut totam numquam.",
-                    "Est corrupti cum non.",
-                    "Iste voluptas.",
-                    "Animi commodi optio rem quia reiciendis ex.",
+                    "Quia eos.",
+                    "In adipisci sunt.",
+                    "Explicabo amet eum exercitationem dignissimos quaerat debitis.",
+                    "Dolorem quo enim voluptas saepe.",
                 ],
                 routing: [
                     {
@@ -14505,14 +15939,23 @@ describe("BetaApIsClient", () => {
                         serviceTime: { isEnabled: true, serviceTimeMinutes: 5 },
                         serviceWindows: [
                             {
-                                days: ["Ut sequi accusantium qui sequi rem quisquam.", "Omnis et."],
+                                days: [
+                                    "Ut sed.",
+                                    "Est quo quidem quae.",
+                                    "Ut voluptas et accusantium est labore.",
+                                    "Magni sint quia.",
+                                ],
                                 endTime: "17:00:01",
                                 startTime: "09:00:00",
                             },
                         ],
                     },
                 ],
-                safetyEventExclusions: ["Repellat placeat sit.", "Hic dolore est consequatur."],
+                safetyEventExclusions: [
+                    "Beatae tenetur nobis ut voluptate et ut.",
+                    "Id rem unde earum quia libero.",
+                    "Dolor suscipit explicabo esse labore.",
+                ],
                 streetView: {
                     headingDegrees: 90,
                     isEnabled: true,
@@ -14573,9 +16016,9 @@ describe("BetaApIsClient", () => {
                 },
                 id: "12345",
                 iftaExemptionTypes: [
-                    "Est vel voluptatem unde ut tempora necessitatibus.",
-                    "Repudiandae corrupti voluptatem dolor.",
-                    "Aut ipsa itaque voluptates.",
+                    "Dolores architecto velit dolorem.",
+                    "Blanditiis deserunt velit voluptatem atque deserunt.",
+                    "Sed veniam magnam molestiae.",
                 ],
                 isAutoDismissRolledStopsEnabled: false,
                 isShowAddressesEnabled: true,
@@ -14593,10 +16036,10 @@ describe("BetaApIsClient", () => {
                 },
                 notes: "Receiving 6-2",
                 placeTypes: [
-                    "Similique aut totam numquam.",
-                    "Est corrupti cum non.",
-                    "Iste voluptas.",
-                    "Animi commodi optio rem quia reiciendis ex.",
+                    "Quia eos.",
+                    "In adipisci sunt.",
+                    "Explicabo amet eum exercitationem dignissimos quaerat debitis.",
+                    "Dolorem quo enim voluptas saepe.",
                 ],
                 routing: [
                     {
@@ -14629,14 +16072,23 @@ describe("BetaApIsClient", () => {
                         },
                         serviceWindows: [
                             {
-                                days: ["Ut sequi accusantium qui sequi rem quisquam.", "Omnis et."],
+                                days: [
+                                    "Ut sed.",
+                                    "Est quo quidem quae.",
+                                    "Ut voluptas et accusantium est labore.",
+                                    "Magni sint quia.",
+                                ],
                                 endTime: "17:00:01",
                                 startTime: "09:00:00",
                             },
                         ],
                     },
                 ],
-                safetyEventExclusions: ["Repellat placeat sit.", "Hic dolore est consequatur."],
+                safetyEventExclusions: [
+                    "Beatae tenetur nobis ut voluptate et ut.",
+                    "Id rem unde earum quia libero.",
+                    "Dolor suscipit explicabo esse labore.",
+                ],
                 streetView: {
                     headingDegrees: 90,
                     isEnabled: true,
@@ -15123,9 +16575,9 @@ describe("BetaApIsClient", () => {
                 },
                 id: "12345",
                 iftaExemptionTypes: [
-                    "Est vel voluptatem unde ut tempora necessitatibus.",
-                    "Repudiandae corrupti voluptatem dolor.",
-                    "Aut ipsa itaque voluptates.",
+                    "Dolores architecto velit dolorem.",
+                    "Blanditiis deserunt velit voluptatem atque deserunt.",
+                    "Sed veniam magnam molestiae.",
                 ],
                 isAutoDismissRolledStopsEnabled: false,
                 isShowAddressesEnabled: true,
@@ -15143,10 +16595,10 @@ describe("BetaApIsClient", () => {
                 },
                 notes: "Receiving 6-2",
                 placeTypes: [
-                    "Similique aut totam numquam.",
-                    "Est corrupti cum non.",
-                    "Iste voluptas.",
-                    "Animi commodi optio rem quia reiciendis ex.",
+                    "Quia eos.",
+                    "In adipisci sunt.",
+                    "Explicabo amet eum exercitationem dignissimos quaerat debitis.",
+                    "Dolorem quo enim voluptas saepe.",
                 ],
                 routing: [
                     {
@@ -15171,14 +16623,23 @@ describe("BetaApIsClient", () => {
                         serviceTime: { isEnabled: true, serviceTimeMinutes: 5 },
                         serviceWindows: [
                             {
-                                days: ["Ut sequi accusantium qui sequi rem quisquam.", "Omnis et."],
+                                days: [
+                                    "Ut sed.",
+                                    "Est quo quidem quae.",
+                                    "Ut voluptas et accusantium est labore.",
+                                    "Magni sint quia.",
+                                ],
                                 endTime: "17:00:01",
                                 startTime: "09:00:00",
                             },
                         ],
                     },
                 ],
-                safetyEventExclusions: ["Repellat placeat sit.", "Hic dolore est consequatur."],
+                safetyEventExclusions: [
+                    "Beatae tenetur nobis ut voluptate et ut.",
+                    "Id rem unde earum quia libero.",
+                    "Dolor suscipit explicabo esse labore.",
+                ],
                 streetView: {
                     headingDegrees: 90,
                     isEnabled: true,
@@ -15235,9 +16696,9 @@ describe("BetaApIsClient", () => {
                 },
                 id: "12345",
                 iftaExemptionTypes: [
-                    "Est vel voluptatem unde ut tempora necessitatibus.",
-                    "Repudiandae corrupti voluptatem dolor.",
-                    "Aut ipsa itaque voluptates.",
+                    "Dolores architecto velit dolorem.",
+                    "Blanditiis deserunt velit voluptatem atque deserunt.",
+                    "Sed veniam magnam molestiae.",
                 ],
                 isAutoDismissRolledStopsEnabled: false,
                 isShowAddressesEnabled: true,
@@ -15255,10 +16716,10 @@ describe("BetaApIsClient", () => {
                 },
                 notes: "Receiving 6-2",
                 placeTypes: [
-                    "Similique aut totam numquam.",
-                    "Est corrupti cum non.",
-                    "Iste voluptas.",
-                    "Animi commodi optio rem quia reiciendis ex.",
+                    "Quia eos.",
+                    "In adipisci sunt.",
+                    "Explicabo amet eum exercitationem dignissimos quaerat debitis.",
+                    "Dolorem quo enim voluptas saepe.",
                 ],
                 routing: [
                     {
@@ -15291,14 +16752,23 @@ describe("BetaApIsClient", () => {
                         },
                         serviceWindows: [
                             {
-                                days: ["Ut sequi accusantium qui sequi rem quisquam.", "Omnis et."],
+                                days: [
+                                    "Ut sed.",
+                                    "Est quo quidem quae.",
+                                    "Ut voluptas et accusantium est labore.",
+                                    "Magni sint quia.",
+                                ],
                                 endTime: "17:00:01",
                                 startTime: "09:00:00",
                             },
                         ],
                     },
                 ],
-                safetyEventExclusions: ["Repellat placeat sit.", "Hic dolore est consequatur."],
+                safetyEventExclusions: [
+                    "Beatae tenetur nobis ut voluptate et ut.",
+                    "Id rem unde earum quia libero.",
+                    "Dolor suscipit explicabo esse labore.",
+                ],
                 streetView: {
                     headingDegrees: 90,
                     isEnabled: true,
@@ -22907,8 +24377,9 @@ describe("BetaApIsClient", () => {
             data: {
                 columns: [{ dataType: "string", name: "Device Name" }],
                 rows: [
+                    [{ key: "value" }, { key: "value" }, { key: "value" }, { key: "value" }],
                     [{ key: "value" }, { key: "value" }, { key: "value" }],
-                    [{ key: "value" }, { key: "value" }, { key: "value" }],
+                    [{ key: "value" }, { key: "value" }, { key: "value" }, { key: "value" }],
                 ],
                 status: "complete",
             },
@@ -22938,8 +24409,25 @@ describe("BetaApIsClient", () => {
                         {
                             key: "value",
                         },
+                        {
+                            key: "value",
+                        },
                     ],
                     [
+                        {
+                            key: "value",
+                        },
+                        {
+                            key: "value",
+                        },
+                        {
+                            key: "value",
+                        },
+                    ],
+                    [
+                        {
+                            key: "value",
+                        },
                         {
                             key: "value",
                         },
@@ -23158,12 +24646,12 @@ describe("BetaApIsClient", () => {
                     ],
                     isActive: true,
                     lastName: "Doe",
-                    specialInstructions: { isGuardianRequired: false, isSpecialEducation: false },
+                    specialInstructions: { isGuardianRequired: false, isSpecialEducation: true },
                     tagIds: [
-                        "Quo sint dolor.",
-                        "Quam sunt sit doloribus in deserunt voluptate.",
-                        "Temporibus enim quia.",
-                        "Praesentium in accusamus neque maiores.",
+                        "Recusandae temporibus eveniet nostrum autem.",
+                        "A harum temporibus aliquid eum exercitationem.",
+                        "Amet laborum odit.",
+                        "Ullam totam esse dolorum quis numquam.",
                     ],
                     updatedAtTime: "2024-11-15T10:30:00Z",
                 },
@@ -23203,13 +24691,13 @@ describe("BetaApIsClient", () => {
                     lastName: "Doe",
                     specialInstructions: {
                         isGuardianRequired: false,
-                        isSpecialEducation: false,
+                        isSpecialEducation: true,
                     },
                     tagIds: [
-                        "Quo sint dolor.",
-                        "Quam sunt sit doloribus in deserunt voluptate.",
-                        "Temporibus enim quia.",
-                        "Praesentium in accusamus neque maiores.",
+                        "Recusandae temporibus eveniet nostrum autem.",
+                        "A harum temporibus aliquid eum exercitationem.",
+                        "Amet laborum odit.",
+                        "Ullam totam esse dolorum quis numquam.",
                     ],
                     updatedAtTime: "2024-11-15T10:30:00Z",
                 },
@@ -23467,12 +24955,12 @@ describe("BetaApIsClient", () => {
                 ],
                 isActive: true,
                 lastName: "Doe",
-                specialInstructions: { isGuardianRequired: false, isSpecialEducation: false },
+                specialInstructions: { isGuardianRequired: false, isSpecialEducation: true },
                 tagIds: [
-                    "Quo sint dolor.",
-                    "Quam sunt sit doloribus in deserunt voluptate.",
-                    "Temporibus enim quia.",
-                    "Praesentium in accusamus neque maiores.",
+                    "Recusandae temporibus eveniet nostrum autem.",
+                    "A harum temporibus aliquid eum exercitationem.",
+                    "Amet laborum odit.",
+                    "Ullam totam esse dolorum quis numquam.",
                 ],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
@@ -23511,13 +24999,13 @@ describe("BetaApIsClient", () => {
                 lastName: "Doe",
                 specialInstructions: {
                     isGuardianRequired: false,
-                    isSpecialEducation: false,
+                    isSpecialEducation: true,
                 },
                 tagIds: [
-                    "Quo sint dolor.",
-                    "Quam sunt sit doloribus in deserunt voluptate.",
-                    "Temporibus enim quia.",
-                    "Praesentium in accusamus neque maiores.",
+                    "Recusandae temporibus eveniet nostrum autem.",
+                    "A harum temporibus aliquid eum exercitationem.",
+                    "Amet laborum odit.",
+                    "Ullam totam esse dolorum quis numquam.",
                 ],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
@@ -23788,12 +25276,12 @@ describe("BetaApIsClient", () => {
                 ],
                 isActive: true,
                 lastName: "Doe",
-                specialInstructions: { isGuardianRequired: false, isSpecialEducation: false },
+                specialInstructions: { isGuardianRequired: false, isSpecialEducation: true },
                 tagIds: [
-                    "Quo sint dolor.",
-                    "Quam sunt sit doloribus in deserunt voluptate.",
-                    "Temporibus enim quia.",
-                    "Praesentium in accusamus neque maiores.",
+                    "Recusandae temporibus eveniet nostrum autem.",
+                    "A harum temporibus aliquid eum exercitationem.",
+                    "Amet laborum odit.",
+                    "Ullam totam esse dolorum quis numquam.",
                 ],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
@@ -23833,13 +25321,13 @@ describe("BetaApIsClient", () => {
                 lastName: "Doe",
                 specialInstructions: {
                     isGuardianRequired: false,
-                    isSpecialEducation: false,
+                    isSpecialEducation: true,
                 },
                 tagIds: [
-                    "Quo sint dolor.",
-                    "Quam sunt sit doloribus in deserunt voluptate.",
-                    "Temporibus enim quia.",
-                    "Praesentium in accusamus neque maiores.",
+                    "Recusandae temporibus eveniet nostrum autem.",
+                    "A harum temporibus aliquid eum exercitationem.",
+                    "Amet laborum odit.",
+                    "Ullam totam esse dolorum quis numquam.",
                 ],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
@@ -24361,12 +25849,12 @@ describe("BetaApIsClient", () => {
                 ],
                 isActive: true,
                 lastName: "Doe",
-                specialInstructions: { isGuardianRequired: false, isSpecialEducation: false },
+                specialInstructions: { isGuardianRequired: false, isSpecialEducation: true },
                 tagIds: [
-                    "Quo sint dolor.",
-                    "Quam sunt sit doloribus in deserunt voluptate.",
-                    "Temporibus enim quia.",
-                    "Praesentium in accusamus neque maiores.",
+                    "Recusandae temporibus eveniet nostrum autem.",
+                    "A harum temporibus aliquid eum exercitationem.",
+                    "Amet laborum odit.",
+                    "Ullam totam esse dolorum quis numquam.",
                 ],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
@@ -24403,13 +25891,13 @@ describe("BetaApIsClient", () => {
                 lastName: "Doe",
                 specialInstructions: {
                     isGuardianRequired: false,
-                    isSpecialEducation: false,
+                    isSpecialEducation: true,
                 },
                 tagIds: [
-                    "Quo sint dolor.",
-                    "Quam sunt sit doloribus in deserunt voluptate.",
-                    "Temporibus enim quia.",
-                    "Praesentium in accusamus neque maiores.",
+                    "Recusandae temporibus eveniet nostrum autem.",
+                    "A harum temporibus aliquid eum exercitationem.",
+                    "Amet laborum odit.",
+                    "Ullam totam esse dolorum quis numquam.",
                 ],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
@@ -26193,7 +27681,11 @@ describe("BetaApIsClient", () => {
             environment: server.baseUrl,
         });
         const rawRequestBody = {
-            safetyEventIds: ["bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590"],
+            safetyEventIds: [
+                "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
+                "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
+                "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
+            ],
         };
         const rawResponseBody = {
             requestId: "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
@@ -26209,7 +27701,11 @@ describe("BetaApIsClient", () => {
             .build();
 
         const response = await client.betaApIs.patchSafetyEventsV2Batch({
-            safetyEventIds: ["bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590"],
+            safetyEventIds: [
+                "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
+                "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
+                "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
+            ],
         });
         expect(response).toEqual({
             requestId: "a1b2c3d4-e5f6-7890-abcd-ef1234567890",

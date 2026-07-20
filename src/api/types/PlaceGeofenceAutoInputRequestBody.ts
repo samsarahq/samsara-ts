@@ -11,9 +11,9 @@ export interface PlaceGeofenceAutoInputRequestBody {
     isSuggestedNameEnabled?: boolean | undefined;
     /** When true and both top-level address and seed coordinates are present, geocode the address and reject the request when the result does not correlate with the seed. */
     isValidateAddressEnabled?: boolean | undefined;
-    /** Seed latitude in WGS84 decimal degrees. Omit to geocode from top-level address. */
+    /** Seed latitude in WGS84 decimal degrees. Supply together with longitude, or omit both to geocode from top-level address. */
     latitude?: number | undefined;
-    /** Seed longitude in WGS84 decimal degrees. Omit to geocode from top-level address. */
+    /** Seed longitude in WGS84 decimal degrees. Supply together with latitude, or omit both to geocode from top-level address. */
     longitude?: number | undefined;
     /** Drop candidates with area above this value in square meters. */
     maxAreaSquareMeters?: number | undefined;

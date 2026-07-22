@@ -1,5 +1,11 @@
+export type { AcceptAssetSharingAgreementRequest } from "./AcceptAssetSharingAgreementRequest.js";
 export { AssetAssignmentsCreateAssetAssignmentRequestBody } from "./AssetAssignmentsCreateAssetAssignmentRequestBody.js";
 export type { AssetAssignmentsUnassignAssetAssignmentRequestBody } from "./AssetAssignmentsUnassignAssetAssignmentRequestBody.js";
+export { AssetSharingAgreementsCreateAssetSharingAgreementRequestBody } from "./AssetSharingAgreementsCreateAssetSharingAgreementRequestBody.js";
+export type { AssetSharingAgreementsCreateSharedAssetsBatchRequestBody } from "./AssetSharingAgreementsCreateSharedAssetsBatchRequestBody.js";
+export type { AssetSharingAgreementsUpdateSharedAssetsBatchRequestBody } from "./AssetSharingAgreementsUpdateSharedAssetsBatchRequestBody.js";
+export type { CancelAssetSharingAgreementRequest } from "./CancelAssetSharingAgreementRequest.js";
+export type { DeleteAssetSharingAgreementRequest } from "./DeleteAssetSharingAgreementRequest.js";
 export type { DeleteFunctionRequest } from "./DeleteFunctionRequest.js";
 export type { DeleteFunctionStorageFileRequest } from "./DeleteFunctionStorageFileRequest.js";
 export type { DeleteHubRouteTemplateRequest } from "./DeleteHubRouteTemplateRequest.js";
@@ -57,6 +63,7 @@ export type { HubRouteTemplatesUpdateHubRouteTemplateRequestBody } from "./HubRo
 export type { JobsCreateJobRequestBody } from "./JobsCreateJobRequestBody.js";
 export type { JobsPatchJobRequestBody } from "./JobsPatchJobRequestBody.js";
 export type { ListAssetAssignmentsRequest } from "./ListAssetAssignmentsRequest.js";
+export type { ListAssetSharingAgreementsRequest } from "./ListAssetSharingAgreementsRequest.js";
 export type { ListDeviceRecoveryMissingAssetsRequest } from "./ListDeviceRecoveryMissingAssetsRequest.js";
 export type { ListDriverWorkflowsRequest } from "./ListDriverWorkflowsRequest.js";
 export type { ListFunctionsStorageFilesRequest } from "./ListFunctionsStorageFilesRequest.js";
@@ -67,6 +74,7 @@ export type { ListPreferredStationsRequest } from "./ListPreferredStationsReques
 export type { ListPreventiveMaintenanceSchedulesRequest } from "./ListPreventiveMaintenanceSchedulesRequest.js";
 export type { ListRidershipPassengersRequest } from "./ListRidershipPassengersRequest.js";
 export type { ListRidershipRouteSetupsRequest } from "./ListRidershipRouteSetupsRequest.js";
+export type { ListSharedAssetsRequest } from "./ListSharedAssetsRequest.js";
 export type { ListTachographLiveDataRequest } from "./ListTachographLiveDataRequest.js";
 export type { ListUpcomingPreventiveMaintenanceRequest } from "./ListUpcomingPreventiveMaintenanceRequest.js";
 export type { ListVendorCategoriesRequest } from "./ListVendorCategoriesRequest.js";
@@ -80,6 +88,7 @@ export type { QualificationsPatchQualificationRecordRequestBody } from "./Qualif
 export type { QualificationsPostQualificationRecordRequestBody } from "./QualificationsPostQualificationRecordRequestBody.js";
 export type { QualificationsUnarchiveQualificationRecordRequestBody } from "./QualificationsUnarchiveQualificationRecordRequestBody.js";
 export type { ReadingsPostReadingsRequestBody } from "./ReadingsPostReadingsRequestBody.js";
+export type { RejectAssetSharingAgreementRequest } from "./RejectAssetSharingAgreementRequest.js";
 export type { ReportsCreateReportRunRequestBody } from "./ReportsCreateReportRunRequestBody.js";
 export type { ResolveAssignmentByDetailsResolveAssignmentByDetailsRequestBody } from "./ResolveAssignmentByDetailsResolveAssignmentByDetailsRequestBody.js";
 export { RidershipPassengersCreateRidershipPassengerRequestBody } from "./RidershipPassengersCreateRidershipPassengerRequestBody.js";

@@ -9,6 +9,8 @@ export interface CreateRoutesStopRequestObjectRequestBody {
     appointmentWindows?: Samsara.RouteStopAppointmentWindowRequestBody[] | undefined;
     /** A map of external ids */
     externalIds?: Record<string, string> | undefined;
+    /** Form attachments for the stop. */
+    forms?: Samsara.RouteStopFormRequestObjectRequestBody[] | undefined;
     /** Name of the stop */
     name?: string | undefined;
     /** Notes for the stop */

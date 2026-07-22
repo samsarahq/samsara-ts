@@ -5,7 +5,7 @@ import type * as Samsara from "../../../../index.js";
 /**
  * @example
  *     {
- *         safetyEventIds: ["bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590"]
+ *         safetyEventIds: ["bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590"]
  *     }
  */
 export interface SafetyEventsV2PatchSafetyEventsV2BatchRequestBody {
@@ -28,7 +28,7 @@ export namespace SafetyEventsV2PatchSafetyEventsV2BatchRequestBody {
     export type BehaviorLabelsToAdd = BehaviorLabelsToAdd.Item[];
 
     export namespace BehaviorLabelsToAdd {
-        /** A behavior label name to add.  Valid values: `Acceleration`, `AggressiveDriving`, `BluetoothHeadset`, `Braking`, `ContextConstructionOrWorkZone`, `ContextSnowyOrIcy`, `ContextVulnerableRoadUser`, `ContextWet`, `Crash`, `DefensiveDriving`, `DidNotYield`, `Drinking`, `Drowsy`, `Eating`, `EatingDrinking`, `EdgeDistractedDriving`, `EdgeRailroadCrossingViolation`, `FollowingDistance`, `FollowingDistanceModerate`, `FollowingDistanceSevere`, `ForwardCollisionWarning`, `GenericDistraction`, `GenericTailgating`, `HarshImpact`, `HarshTurn`, `HeavySpeeding`, `HighSpeedSuddenDisconnect`, `HosViolation`, `Idling`, `Invalid`, `LaneDeparture`, `LateResponse`, `LeftTurn`, `LightSpeeding`, `MaxSpeed`, `MobileUsage`, `ModerateSpeeding`, `NearCollison`, `NearPedestrianCollision`, `NoSeatbelt`, `ObstructedCamera`, `OperationalEvent`, `OtherViolation`, `Passenger`, `PolicyViolationMask`, `ProtectiveEquipment`, `RanRedLight`, `RearCollisionWarning`, `Reversing`, `RollingStop`, `RolloverProtection`, `SevereSpeeding`, `Smoking`, `Speeding`, `UTurn`, `UnsafeManeuver`, `UnsafeParking`, `VehicleInBlindSpotWarning`, `VulnerableRoadUserCollisionWarning`, `YawControl` */
+        /** A behavior label name to add.  Valid values: `Acceleration`, `AggressiveDriving`, `BluetoothHeadset`, `Braking`, `ContextConstructionOrWorkZone`, `ContextSnowyOrIcy`, `ContextVulnerableRoadUser`, `ContextWet`, `Crash`, `DefensiveDriving`, `DidNotYield`, `Drinking`, `Drowsy`, `Eating`, `EatingDrinking`, `EdgeDistractedDriving`, `EdgeRailroadCrossingViolation`, `FollowingDistance`, `FollowingDistanceModerate`, `FollowingDistanceSevere`, `ForwardCollisionWarning`, `GenericDistraction`, `GenericTailgating`, `HarshImpact`, `HarshTurn`, `HeavySpeeding`, `HighSpeedSuddenDisconnect`, `HosViolation`, `Idling`, `Invalid`, `LaneDeparture`, `LateResponse`, `LeftTurn`, `LightSpeeding`, `MaxSpeed`, `MobileUsage`, `ModerateSpeeding`, `NearCollison`, `NearPedestrianCollision`, `NoSeatbelt`, `ObstructedCamera`, `OperationalEvent`, `OtherViolation`, `Passenger`, `PolicyViolationMask`, `ProtectiveEquipment`, `ProximityWarning`, `RanRedLight`, `RearCollisionWarning`, `Reversing`, `RollingStop`, `RolloverProtection`, `SevereSpeeding`, `Smoking`, `Speeding`, `UTurn`, `UnsafeManeuver`, `UnsafeParking`, `VehicleInBlindSpotWarning`, `VulnerableRoadUserCollisionWarning`, `YawControl` */
         export const Item = {
             Acceleration: "Acceleration",
             AggressiveDriving: "AggressiveDriving",
@@ -76,6 +76,7 @@ export namespace SafetyEventsV2PatchSafetyEventsV2BatchRequestBody {
             Passenger: "Passenger",
             PolicyViolationMask: "PolicyViolationMask",
             ProtectiveEquipment: "ProtectiveEquipment",
+            ProximityWarning: "ProximityWarning",
             RanRedLight: "RanRedLight",
             RearCollisionWarning: "RearCollisionWarning",
             Reversing: "Reversing",
@@ -97,7 +98,7 @@ export namespace SafetyEventsV2PatchSafetyEventsV2BatchRequestBody {
     export type BehaviorLabelsToRemove = BehaviorLabelsToRemove.Item[];
 
     export namespace BehaviorLabelsToRemove {
-        /** A behavior label name to remove.  Valid values: `Acceleration`, `AggressiveDriving`, `BluetoothHeadset`, `Braking`, `ContextConstructionOrWorkZone`, `ContextSnowyOrIcy`, `ContextVulnerableRoadUser`, `ContextWet`, `Crash`, `DefensiveDriving`, `DidNotYield`, `Drinking`, `Drowsy`, `Eating`, `EatingDrinking`, `EdgeDistractedDriving`, `EdgeRailroadCrossingViolation`, `FollowingDistance`, `FollowingDistanceModerate`, `FollowingDistanceSevere`, `ForwardCollisionWarning`, `GenericDistraction`, `GenericTailgating`, `HarshImpact`, `HarshTurn`, `HeavySpeeding`, `HighSpeedSuddenDisconnect`, `HosViolation`, `Idling`, `Invalid`, `LaneDeparture`, `LateResponse`, `LeftTurn`, `LightSpeeding`, `MaxSpeed`, `MobileUsage`, `ModerateSpeeding`, `NearCollison`, `NearPedestrianCollision`, `NoSeatbelt`, `ObstructedCamera`, `OperationalEvent`, `OtherViolation`, `Passenger`, `PolicyViolationMask`, `ProtectiveEquipment`, `RanRedLight`, `RearCollisionWarning`, `Reversing`, `RollingStop`, `RolloverProtection`, `SevereSpeeding`, `Smoking`, `Speeding`, `UTurn`, `UnsafeManeuver`, `UnsafeParking`, `VehicleInBlindSpotWarning`, `VulnerableRoadUserCollisionWarning`, `YawControl` */
+        /** A behavior label name to remove.  Valid values: `Acceleration`, `AggressiveDriving`, `BluetoothHeadset`, `Braking`, `ContextConstructionOrWorkZone`, `ContextSnowyOrIcy`, `ContextVulnerableRoadUser`, `ContextWet`, `Crash`, `DefensiveDriving`, `DidNotYield`, `Drinking`, `Drowsy`, `Eating`, `EatingDrinking`, `EdgeDistractedDriving`, `EdgeRailroadCrossingViolation`, `FollowingDistance`, `FollowingDistanceModerate`, `FollowingDistanceSevere`, `ForwardCollisionWarning`, `GenericDistraction`, `GenericTailgating`, `HarshImpact`, `HarshTurn`, `HeavySpeeding`, `HighSpeedSuddenDisconnect`, `HosViolation`, `Idling`, `Invalid`, `LaneDeparture`, `LateResponse`, `LeftTurn`, `LightSpeeding`, `MaxSpeed`, `MobileUsage`, `ModerateSpeeding`, `NearCollison`, `NearPedestrianCollision`, `NoSeatbelt`, `ObstructedCamera`, `OperationalEvent`, `OtherViolation`, `Passenger`, `PolicyViolationMask`, `ProtectiveEquipment`, `ProximityWarning`, `RanRedLight`, `RearCollisionWarning`, `Reversing`, `RollingStop`, `RolloverProtection`, `SevereSpeeding`, `Smoking`, `Speeding`, `UTurn`, `UnsafeManeuver`, `UnsafeParking`, `VehicleInBlindSpotWarning`, `VulnerableRoadUserCollisionWarning`, `YawControl` */
         export const Item = {
             Acceleration: "Acceleration",
             AggressiveDriving: "AggressiveDriving",
@@ -145,6 +146,7 @@ export namespace SafetyEventsV2PatchSafetyEventsV2BatchRequestBody {
             Passenger: "Passenger",
             PolicyViolationMask: "PolicyViolationMask",
             ProtectiveEquipment: "ProtectiveEquipment",
+            ProximityWarning: "ProximityWarning",
             RanRedLight: "RanRedLight",
             RearCollisionWarning: "RearCollisionWarning",
             Reversing: "Reversing",

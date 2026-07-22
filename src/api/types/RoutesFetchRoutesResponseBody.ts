@@ -4,6 +4,6 @@ import type * as Samsara from "../index.js";
 
 export interface RoutesFetchRoutesResponseBody {
     /** An array containing multiple routes. */
-    data: Samsara.BaseRouteResponseObjectResponseBody[];
+    data: Samsara.BaseRouteWithStopFormsResponseObjectResponseBody[];
     pagination: Samsara.GoaPaginationResponseResponseBody;
 }

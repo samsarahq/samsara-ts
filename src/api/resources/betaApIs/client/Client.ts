@@ -1647,6 +1647,1006 @@ export class BetaApIsClient {
     }
 
     /**
+     * Returns every Data Sharing Agreement (DSA) your organization participates in, as either the provider or the recipient. Soft-deleted agreements are omitted. Narrow the results with the ids, statusIn, and roleIn filters, and page through large result sets with cursor pagination.
+     *
+     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *
+     * To use this endpoint, select **Read Asset Sharing** under the Asset Sharing category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     *
+     *
+     *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
+     *
+     * @param {Samsara.ListAssetSharingAgreementsRequest} request
+     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Samsara.UnauthorizedError}
+     * @throws {@link Samsara.NotFoundError}
+     * @throws {@link Samsara.MethodNotAllowedError}
+     * @throws {@link Samsara.TooManyRequestsError}
+     * @throws {@link Samsara.InternalServerError}
+     * @throws {@link Samsara.NotImplementedError}
+     * @throws {@link Samsara.BadGatewayError}
+     * @throws {@link Samsara.ServiceUnavailableError}
+     * @throws {@link Samsara.GatewayTimeoutError}
+     *
+     * @example
+     *     await client.betaApIs.listAssetSharingAgreements()
+     */
+    public listAssetSharingAgreements(
+        request: Samsara.ListAssetSharingAgreementsRequest = {},
+        requestOptions?: BetaApIsClient.RequestOptions,
+    ): core.HttpResponsePromise<Samsara.AssetSharingAgreementsListAssetSharingAgreementsResponseBody> {
+        return core.HttpResponsePromise.fromPromise(this.__listAssetSharingAgreements(request, requestOptions));
+    }
+
+    private async __listAssetSharingAgreements(
+        request: Samsara.ListAssetSharingAgreementsRequest = {},
+        requestOptions?: BetaApIsClient.RequestOptions,
+    ): Promise<core.WithRawResponse<Samsara.AssetSharingAgreementsListAssetSharingAgreementsResponseBody>> {
+        const { ids, statusIn, roleIn, after } = request;
+        const _queryParams: Record<string, unknown> = {
+            ids,
+            statusIn,
+            roleIn,
+            after,
+        };
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ "X-Samsara-Version": requestOptions?.version }),
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.SamsaraEnvironment.ProductionApi,
+                "fleet/asset-sharing/agreements",
+            ),
+            method: "GET",
+            headers: _headers,
+            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return {
+                data: _response.body as Samsara.AssetSharingAgreementsListAssetSharingAgreementsResponseBody,
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 401:
+                    throw new Samsara.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
+                case 404:
+                    throw new Samsara.NotFoundError(_response.error.body as unknown, _response.rawResponse);
+                case 405:
+                    throw new Samsara.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
+                case 429:
+                    throw new Samsara.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
+                case 500:
+                    throw new Samsara.InternalServerError(_response.error.body as unknown, _response.rawResponse);
+                case 501:
+                    throw new Samsara.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
+                case 502:
+                    throw new Samsara.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                case 503:
+                    throw new Samsara.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
+                case 504:
+                    throw new Samsara.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
+                default:
+                    throw new errors.SamsaraError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
+                    });
+            }
+        }
+
+        return handleNonStatusCodeError(
+            _response.error,
+            _response.rawResponse,
+            "GET",
+            "/fleet/asset-sharing/agreements",
+        );
+    }
+
+    /**
+     * Creates a new Data Sharing Agreement (DSA) in pending status. Only the provider organization can create an agreement, and the recipient must be a different organization. Use providerDataPackages and recipientDataPackages to declare which categories of data flow to each side, and operator to indicate which organization operates the assets (where the gateways live).
+     *
+     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *
+     * To use this endpoint, select **Write Asset Sharing** under the Asset Sharing category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     *
+     *
+     *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
+     *
+     * @param {Samsara.AssetSharingAgreementsCreateAssetSharingAgreementRequestBody} request
+     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Samsara.UnauthorizedError}
+     * @throws {@link Samsara.NotFoundError}
+     * @throws {@link Samsara.MethodNotAllowedError}
+     * @throws {@link Samsara.TooManyRequestsError}
+     * @throws {@link Samsara.InternalServerError}
+     * @throws {@link Samsara.NotImplementedError}
+     * @throws {@link Samsara.BadGatewayError}
+     * @throws {@link Samsara.ServiceUnavailableError}
+     * @throws {@link Samsara.GatewayTimeoutError}
+     *
+     * @example
+     *     await client.betaApIs.createAssetSharingAgreement({
+     *         operator: "provider",
+     *         providerDataPackages: ["all", "maintenance", "maintenance", "maintenance"],
+     *         recipientDataPackages: ["all", "reefer", "all", "maintenance"],
+     *         recipientOrganizationId: "456",
+     *         recipientOrganizationName: "Acme Logistics"
+     *     })
+     */
+    public createAssetSharingAgreement(
+        request: Samsara.AssetSharingAgreementsCreateAssetSharingAgreementRequestBody,
+        requestOptions?: BetaApIsClient.RequestOptions,
+    ): core.HttpResponsePromise<Samsara.AssetSharingAgreementsCreateAssetSharingAgreementResponseBody> {
+        return core.HttpResponsePromise.fromPromise(this.__createAssetSharingAgreement(request, requestOptions));
+    }
+
+    private async __createAssetSharingAgreement(
+        request: Samsara.AssetSharingAgreementsCreateAssetSharingAgreementRequestBody,
+        requestOptions?: BetaApIsClient.RequestOptions,
+    ): Promise<core.WithRawResponse<Samsara.AssetSharingAgreementsCreateAssetSharingAgreementResponseBody>> {
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ "X-Samsara-Version": requestOptions?.version }),
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.SamsaraEnvironment.ProductionApi,
+                "fleet/asset-sharing/agreements",
+            ),
+            method: "POST",
+            headers: _headers,
+            contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
+            requestType: "json",
+            body: request,
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return {
+                data: _response.body as Samsara.AssetSharingAgreementsCreateAssetSharingAgreementResponseBody,
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 401:
+                    throw new Samsara.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
+                case 404:
+                    throw new Samsara.NotFoundError(_response.error.body as unknown, _response.rawResponse);
+                case 405:
+                    throw new Samsara.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
+                case 429:
+                    throw new Samsara.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
+                case 500:
+                    throw new Samsara.InternalServerError(_response.error.body as unknown, _response.rawResponse);
+                case 501:
+                    throw new Samsara.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
+                case 502:
+                    throw new Samsara.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                case 503:
+                    throw new Samsara.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
+                case 504:
+                    throw new Samsara.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
+                default:
+                    throw new errors.SamsaraError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
+                    });
+            }
+        }
+
+        return handleNonStatusCodeError(
+            _response.error,
+            _response.rawResponse,
+            "POST",
+            "/fleet/asset-sharing/agreements",
+        );
+    }
+
+    /**
+     * Soft-deletes a Data Sharing Agreement so it no longer appears in list results. Only the provider organization can delete, and only while the agreement is in pending, rejected, or canceled status; an accepted agreement must be canceled first. Identify the agreement with the id query parameter. Returns 204 No Content.
+     *
+     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *
+     * To use this endpoint, select **Write Asset Sharing** under the Asset Sharing category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     *
+     *
+     *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
+     *
+     * @param {Samsara.DeleteAssetSharingAgreementRequest} request
+     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Samsara.UnauthorizedError}
+     * @throws {@link Samsara.NotFoundError}
+     * @throws {@link Samsara.MethodNotAllowedError}
+     * @throws {@link Samsara.TooManyRequestsError}
+     * @throws {@link Samsara.InternalServerError}
+     * @throws {@link Samsara.NotImplementedError}
+     * @throws {@link Samsara.BadGatewayError}
+     * @throws {@link Samsara.ServiceUnavailableError}
+     * @throws {@link Samsara.GatewayTimeoutError}
+     *
+     * @example
+     *     await client.betaApIs.deleteAssetSharingAgreement({
+     *         id: "id"
+     *     })
+     */
+    public deleteAssetSharingAgreement(
+        request: Samsara.DeleteAssetSharingAgreementRequest,
+        requestOptions?: BetaApIsClient.RequestOptions,
+    ): core.HttpResponsePromise<void> {
+        return core.HttpResponsePromise.fromPromise(this.__deleteAssetSharingAgreement(request, requestOptions));
+    }
+
+    private async __deleteAssetSharingAgreement(
+        request: Samsara.DeleteAssetSharingAgreementRequest,
+        requestOptions?: BetaApIsClient.RequestOptions,
+    ): Promise<core.WithRawResponse<void>> {
+        const { id } = request;
+        const _queryParams: Record<string, unknown> = {
+            id,
+        };
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ "X-Samsara-Version": requestOptions?.version }),
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.SamsaraEnvironment.ProductionApi,
+                "fleet/asset-sharing/agreements",
+            ),
+            method: "DELETE",
+            headers: _headers,
+            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return { data: undefined, rawResponse: _response.rawResponse };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 401:
+                    throw new Samsara.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
+                case 404:
+                    throw new Samsara.NotFoundError(_response.error.body as unknown, _response.rawResponse);
+                case 405:
+                    throw new Samsara.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
+                case 429:
+                    throw new Samsara.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
+                case 500:
+                    throw new Samsara.InternalServerError(_response.error.body as unknown, _response.rawResponse);
+                case 501:
+                    throw new Samsara.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
+                case 502:
+                    throw new Samsara.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                case 503:
+                    throw new Samsara.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
+                case 504:
+                    throw new Samsara.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
+                default:
+                    throw new errors.SamsaraError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
+                    });
+            }
+        }
+
+        return handleNonStatusCodeError(
+            _response.error,
+            _response.rawResponse,
+            "DELETE",
+            "/fleet/asset-sharing/agreements",
+        );
+    }
+
+    /**
+     * Accepts a pending Data Sharing Agreement, transitioning it to accepted. Only the recipient organization can accept. Identify the agreement with the id query parameter.
+     *
+     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *
+     * To use this endpoint, select **Write Asset Sharing** under the Asset Sharing category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     *
+     *
+     *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
+     *
+     * @param {Samsara.AcceptAssetSharingAgreementRequest} request
+     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Samsara.UnauthorizedError}
+     * @throws {@link Samsara.NotFoundError}
+     * @throws {@link Samsara.MethodNotAllowedError}
+     * @throws {@link Samsara.TooManyRequestsError}
+     * @throws {@link Samsara.InternalServerError}
+     * @throws {@link Samsara.NotImplementedError}
+     * @throws {@link Samsara.BadGatewayError}
+     * @throws {@link Samsara.ServiceUnavailableError}
+     * @throws {@link Samsara.GatewayTimeoutError}
+     *
+     * @example
+     *     await client.betaApIs.acceptAssetSharingAgreement({
+     *         id: "id"
+     *     })
+     */
+    public acceptAssetSharingAgreement(
+        request: Samsara.AcceptAssetSharingAgreementRequest,
+        requestOptions?: BetaApIsClient.RequestOptions,
+    ): core.HttpResponsePromise<Samsara.AssetSharingAgreementsAcceptAssetSharingAgreementResponseBody> {
+        return core.HttpResponsePromise.fromPromise(this.__acceptAssetSharingAgreement(request, requestOptions));
+    }
+
+    private async __acceptAssetSharingAgreement(
+        request: Samsara.AcceptAssetSharingAgreementRequest,
+        requestOptions?: BetaApIsClient.RequestOptions,
+    ): Promise<core.WithRawResponse<Samsara.AssetSharingAgreementsAcceptAssetSharingAgreementResponseBody>> {
+        const { id } = request;
+        const _queryParams: Record<string, unknown> = {
+            id,
+        };
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ "X-Samsara-Version": requestOptions?.version }),
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.SamsaraEnvironment.ProductionApi,
+                "fleet/asset-sharing/agreements/accept",
+            ),
+            method: "POST",
+            headers: _headers,
+            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return {
+                data: _response.body as Samsara.AssetSharingAgreementsAcceptAssetSharingAgreementResponseBody,
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 401:
+                    throw new Samsara.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
+                case 404:
+                    throw new Samsara.NotFoundError(_response.error.body as unknown, _response.rawResponse);
+                case 405:
+                    throw new Samsara.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
+                case 429:
+                    throw new Samsara.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
+                case 500:
+                    throw new Samsara.InternalServerError(_response.error.body as unknown, _response.rawResponse);
+                case 501:
+                    throw new Samsara.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
+                case 502:
+                    throw new Samsara.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                case 503:
+                    throw new Samsara.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
+                case 504:
+                    throw new Samsara.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
+                default:
+                    throw new errors.SamsaraError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
+                    });
+            }
+        }
+
+        return handleNonStatusCodeError(
+            _response.error,
+            _response.rawResponse,
+            "POST",
+            "/fleet/asset-sharing/agreements/accept",
+        );
+    }
+
+    /**
+     * Returns shared asset records under a Data Sharing Agreement, identified by the dsaId query parameter. Results may include ended or historical sharing records; use each record's startTime and endTime to determine whether sharing is currently active. Supports cursor pagination.
+     *
+     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *
+     * To use this endpoint, select **Read Asset Sharing** under the Asset Sharing category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     *
+     *
+     *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
+     *
+     * @param {Samsara.ListSharedAssetsRequest} request
+     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Samsara.UnauthorizedError}
+     * @throws {@link Samsara.NotFoundError}
+     * @throws {@link Samsara.MethodNotAllowedError}
+     * @throws {@link Samsara.TooManyRequestsError}
+     * @throws {@link Samsara.InternalServerError}
+     * @throws {@link Samsara.NotImplementedError}
+     * @throws {@link Samsara.BadGatewayError}
+     * @throws {@link Samsara.ServiceUnavailableError}
+     * @throws {@link Samsara.GatewayTimeoutError}
+     *
+     * @example
+     *     await client.betaApIs.listSharedAssets({
+     *         dsaId: "dsaId"
+     *     })
+     */
+    public listSharedAssets(
+        request: Samsara.ListSharedAssetsRequest,
+        requestOptions?: BetaApIsClient.RequestOptions,
+    ): core.HttpResponsePromise<Samsara.AssetSharingAgreementsListSharedAssetsResponseBody> {
+        return core.HttpResponsePromise.fromPromise(this.__listSharedAssets(request, requestOptions));
+    }
+
+    private async __listSharedAssets(
+        request: Samsara.ListSharedAssetsRequest,
+        requestOptions?: BetaApIsClient.RequestOptions,
+    ): Promise<core.WithRawResponse<Samsara.AssetSharingAgreementsListSharedAssetsResponseBody>> {
+        const { dsaId, after } = request;
+        const _queryParams: Record<string, unknown> = {
+            dsaId,
+            after,
+        };
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ "X-Samsara-Version": requestOptions?.version }),
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.SamsaraEnvironment.ProductionApi,
+                "fleet/asset-sharing/agreements/assets",
+            ),
+            method: "GET",
+            headers: _headers,
+            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return {
+                data: _response.body as Samsara.AssetSharingAgreementsListSharedAssetsResponseBody,
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 401:
+                    throw new Samsara.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
+                case 404:
+                    throw new Samsara.NotFoundError(_response.error.body as unknown, _response.rawResponse);
+                case 405:
+                    throw new Samsara.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
+                case 429:
+                    throw new Samsara.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
+                case 500:
+                    throw new Samsara.InternalServerError(_response.error.body as unknown, _response.rawResponse);
+                case 501:
+                    throw new Samsara.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
+                case 502:
+                    throw new Samsara.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                case 503:
+                    throw new Samsara.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
+                case 504:
+                    throw new Samsara.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
+                default:
+                    throw new errors.SamsaraError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
+                    });
+            }
+        }
+
+        return handleNonStatusCodeError(
+            _response.error,
+            _response.rawResponse,
+            "GET",
+            "/fleet/asset-sharing/agreements/assets",
+        );
+    }
+
+    /**
+     * Shares one or more assets under an accepted Data Sharing Agreement, identified by the dsaId query parameter. Available only to the provider organization. Serials are matched in canonical form. Up to 100 assets may be shared per request; each may carry an optional startTime (defaults to now) and endTime (defaults to indefinite).
+     *
+     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *
+     * To use this endpoint, select **Write Asset Sharing** under the Asset Sharing category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     *
+     *
+     *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
+     *
+     * @param {Samsara.AssetSharingAgreementsCreateSharedAssetsBatchRequestBody} request
+     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Samsara.UnauthorizedError}
+     * @throws {@link Samsara.NotFoundError}
+     * @throws {@link Samsara.MethodNotAllowedError}
+     * @throws {@link Samsara.TooManyRequestsError}
+     * @throws {@link Samsara.InternalServerError}
+     * @throws {@link Samsara.NotImplementedError}
+     * @throws {@link Samsara.BadGatewayError}
+     * @throws {@link Samsara.ServiceUnavailableError}
+     * @throws {@link Samsara.GatewayTimeoutError}
+     *
+     * @example
+     *     await client.betaApIs.createSharedAssetsBatch({
+     *         dsaId: "dsaId",
+     *         data: [{
+     *                 serial: "GVJC3VXXXX"
+     *             }]
+     *     })
+     */
+    public createSharedAssetsBatch(
+        request: Samsara.AssetSharingAgreementsCreateSharedAssetsBatchRequestBody,
+        requestOptions?: BetaApIsClient.RequestOptions,
+    ): core.HttpResponsePromise<Samsara.AssetSharingAgreementsCreateSharedAssetsBatchResponseBody> {
+        return core.HttpResponsePromise.fromPromise(this.__createSharedAssetsBatch(request, requestOptions));
+    }
+
+    private async __createSharedAssetsBatch(
+        request: Samsara.AssetSharingAgreementsCreateSharedAssetsBatchRequestBody,
+        requestOptions?: BetaApIsClient.RequestOptions,
+    ): Promise<core.WithRawResponse<Samsara.AssetSharingAgreementsCreateSharedAssetsBatchResponseBody>> {
+        const { dsaId, ..._body } = request;
+        const _queryParams: Record<string, unknown> = {
+            dsaId,
+        };
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ "X-Samsara-Version": requestOptions?.version }),
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.SamsaraEnvironment.ProductionApi,
+                "fleet/asset-sharing/agreements/assets/batch",
+            ),
+            method: "POST",
+            headers: _headers,
+            contentType: "application/json",
+            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            requestType: "json",
+            body: _body,
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return {
+                data: _response.body as Samsara.AssetSharingAgreementsCreateSharedAssetsBatchResponseBody,
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 401:
+                    throw new Samsara.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
+                case 404:
+                    throw new Samsara.NotFoundError(_response.error.body as unknown, _response.rawResponse);
+                case 405:
+                    throw new Samsara.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
+                case 429:
+                    throw new Samsara.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
+                case 500:
+                    throw new Samsara.InternalServerError(_response.error.body as unknown, _response.rawResponse);
+                case 501:
+                    throw new Samsara.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
+                case 502:
+                    throw new Samsara.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                case 503:
+                    throw new Samsara.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
+                case 504:
+                    throw new Samsara.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
+                default:
+                    throw new errors.SamsaraError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
+                    });
+            }
+        }
+
+        return handleNonStatusCodeError(
+            _response.error,
+            _response.rawResponse,
+            "POST",
+            "/fleet/asset-sharing/agreements/assets/batch",
+        );
+    }
+
+    /**
+     * Updates the sharing period of one or more shared assets, each identified by its shared-asset id. Only the endTime can be changed (an empty value means indefinite sharing). To stop sharing an asset, set its endTime to the current time rather than deleting it, which preserves the rental history. Up to 100 assets may be updated per request.
+     *
+     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *
+     * To use this endpoint, select **Write Asset Sharing** under the Asset Sharing category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     *
+     *
+     *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
+     *
+     * @param {Samsara.AssetSharingAgreementsUpdateSharedAssetsBatchRequestBody} request
+     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Samsara.UnauthorizedError}
+     * @throws {@link Samsara.NotFoundError}
+     * @throws {@link Samsara.MethodNotAllowedError}
+     * @throws {@link Samsara.TooManyRequestsError}
+     * @throws {@link Samsara.InternalServerError}
+     * @throws {@link Samsara.NotImplementedError}
+     * @throws {@link Samsara.BadGatewayError}
+     * @throws {@link Samsara.ServiceUnavailableError}
+     * @throws {@link Samsara.GatewayTimeoutError}
+     *
+     * @example
+     *     await client.betaApIs.updateSharedAssetsBatch({
+     *         data: [{
+     *                 endTime: "2025-01-13T10:00:00Z",
+     *                 id: "11111111-1111-1111-1111-111111111111"
+     *             }]
+     *     })
+     */
+    public updateSharedAssetsBatch(
+        request: Samsara.AssetSharingAgreementsUpdateSharedAssetsBatchRequestBody,
+        requestOptions?: BetaApIsClient.RequestOptions,
+    ): core.HttpResponsePromise<Samsara.AssetSharingAgreementsUpdateSharedAssetsBatchResponseBody> {
+        return core.HttpResponsePromise.fromPromise(this.__updateSharedAssetsBatch(request, requestOptions));
+    }
+
+    private async __updateSharedAssetsBatch(
+        request: Samsara.AssetSharingAgreementsUpdateSharedAssetsBatchRequestBody,
+        requestOptions?: BetaApIsClient.RequestOptions,
+    ): Promise<core.WithRawResponse<Samsara.AssetSharingAgreementsUpdateSharedAssetsBatchResponseBody>> {
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ "X-Samsara-Version": requestOptions?.version }),
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.SamsaraEnvironment.ProductionApi,
+                "fleet/asset-sharing/agreements/assets/batch",
+            ),
+            method: "PATCH",
+            headers: _headers,
+            contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
+            requestType: "json",
+            body: request,
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return {
+                data: _response.body as Samsara.AssetSharingAgreementsUpdateSharedAssetsBatchResponseBody,
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 401:
+                    throw new Samsara.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
+                case 404:
+                    throw new Samsara.NotFoundError(_response.error.body as unknown, _response.rawResponse);
+                case 405:
+                    throw new Samsara.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
+                case 429:
+                    throw new Samsara.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
+                case 500:
+                    throw new Samsara.InternalServerError(_response.error.body as unknown, _response.rawResponse);
+                case 501:
+                    throw new Samsara.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
+                case 502:
+                    throw new Samsara.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                case 503:
+                    throw new Samsara.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
+                case 504:
+                    throw new Samsara.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
+                default:
+                    throw new errors.SamsaraError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
+                    });
+            }
+        }
+
+        return handleNonStatusCodeError(
+            _response.error,
+            _response.rawResponse,
+            "PATCH",
+            "/fleet/asset-sharing/agreements/assets/batch",
+        );
+    }
+
+    /**
+     * Cancels an accepted Data Sharing Agreement, transitioning it to the terminal canceled state and ending all asset sharing under it. Either the provider or the recipient can cancel. Identify the agreement with the id query parameter.
+     *
+     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *
+     * To use this endpoint, select **Write Asset Sharing** under the Asset Sharing category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     *
+     *
+     *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
+     *
+     * @param {Samsara.CancelAssetSharingAgreementRequest} request
+     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Samsara.UnauthorizedError}
+     * @throws {@link Samsara.NotFoundError}
+     * @throws {@link Samsara.MethodNotAllowedError}
+     * @throws {@link Samsara.TooManyRequestsError}
+     * @throws {@link Samsara.InternalServerError}
+     * @throws {@link Samsara.NotImplementedError}
+     * @throws {@link Samsara.BadGatewayError}
+     * @throws {@link Samsara.ServiceUnavailableError}
+     * @throws {@link Samsara.GatewayTimeoutError}
+     *
+     * @example
+     *     await client.betaApIs.cancelAssetSharingAgreement({
+     *         id: "id"
+     *     })
+     */
+    public cancelAssetSharingAgreement(
+        request: Samsara.CancelAssetSharingAgreementRequest,
+        requestOptions?: BetaApIsClient.RequestOptions,
+    ): core.HttpResponsePromise<Samsara.AssetSharingAgreementsCancelAssetSharingAgreementResponseBody> {
+        return core.HttpResponsePromise.fromPromise(this.__cancelAssetSharingAgreement(request, requestOptions));
+    }
+
+    private async __cancelAssetSharingAgreement(
+        request: Samsara.CancelAssetSharingAgreementRequest,
+        requestOptions?: BetaApIsClient.RequestOptions,
+    ): Promise<core.WithRawResponse<Samsara.AssetSharingAgreementsCancelAssetSharingAgreementResponseBody>> {
+        const { id } = request;
+        const _queryParams: Record<string, unknown> = {
+            id,
+        };
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ "X-Samsara-Version": requestOptions?.version }),
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.SamsaraEnvironment.ProductionApi,
+                "fleet/asset-sharing/agreements/cancel",
+            ),
+            method: "POST",
+            headers: _headers,
+            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return {
+                data: _response.body as Samsara.AssetSharingAgreementsCancelAssetSharingAgreementResponseBody,
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 401:
+                    throw new Samsara.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
+                case 404:
+                    throw new Samsara.NotFoundError(_response.error.body as unknown, _response.rawResponse);
+                case 405:
+                    throw new Samsara.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
+                case 429:
+                    throw new Samsara.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
+                case 500:
+                    throw new Samsara.InternalServerError(_response.error.body as unknown, _response.rawResponse);
+                case 501:
+                    throw new Samsara.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
+                case 502:
+                    throw new Samsara.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                case 503:
+                    throw new Samsara.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
+                case 504:
+                    throw new Samsara.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
+                default:
+                    throw new errors.SamsaraError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
+                    });
+            }
+        }
+
+        return handleNonStatusCodeError(
+            _response.error,
+            _response.rawResponse,
+            "POST",
+            "/fleet/asset-sharing/agreements/cancel",
+        );
+    }
+
+    /**
+     * Rejects a pending Data Sharing Agreement, transitioning it to the terminal rejected state. Only the recipient organization can reject. Identify the agreement with the id query parameter.
+     *
+     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *
+     * To use this endpoint, select **Write Asset Sharing** under the Asset Sharing category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     *
+     *
+     *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
+     *
+     * @param {Samsara.RejectAssetSharingAgreementRequest} request
+     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Samsara.UnauthorizedError}
+     * @throws {@link Samsara.NotFoundError}
+     * @throws {@link Samsara.MethodNotAllowedError}
+     * @throws {@link Samsara.TooManyRequestsError}
+     * @throws {@link Samsara.InternalServerError}
+     * @throws {@link Samsara.NotImplementedError}
+     * @throws {@link Samsara.BadGatewayError}
+     * @throws {@link Samsara.ServiceUnavailableError}
+     * @throws {@link Samsara.GatewayTimeoutError}
+     *
+     * @example
+     *     await client.betaApIs.rejectAssetSharingAgreement({
+     *         id: "id"
+     *     })
+     */
+    public rejectAssetSharingAgreement(
+        request: Samsara.RejectAssetSharingAgreementRequest,
+        requestOptions?: BetaApIsClient.RequestOptions,
+    ): core.HttpResponsePromise<Samsara.AssetSharingAgreementsRejectAssetSharingAgreementResponseBody> {
+        return core.HttpResponsePromise.fromPromise(this.__rejectAssetSharingAgreement(request, requestOptions));
+    }
+
+    private async __rejectAssetSharingAgreement(
+        request: Samsara.RejectAssetSharingAgreementRequest,
+        requestOptions?: BetaApIsClient.RequestOptions,
+    ): Promise<core.WithRawResponse<Samsara.AssetSharingAgreementsRejectAssetSharingAgreementResponseBody>> {
+        const { id } = request;
+        const _queryParams: Record<string, unknown> = {
+            id,
+        };
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ "X-Samsara-Version": requestOptions?.version }),
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.SamsaraEnvironment.ProductionApi,
+                "fleet/asset-sharing/agreements/reject",
+            ),
+            method: "POST",
+            headers: _headers,
+            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return {
+                data: _response.body as Samsara.AssetSharingAgreementsRejectAssetSharingAgreementResponseBody,
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 401:
+                    throw new Samsara.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
+                case 404:
+                    throw new Samsara.NotFoundError(_response.error.body as unknown, _response.rawResponse);
+                case 405:
+                    throw new Samsara.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
+                case 429:
+                    throw new Samsara.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
+                case 500:
+                    throw new Samsara.InternalServerError(_response.error.body as unknown, _response.rawResponse);
+                case 501:
+                    throw new Samsara.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
+                case 502:
+                    throw new Samsara.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                case 503:
+                    throw new Samsara.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
+                case 504:
+                    throw new Samsara.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
+                default:
+                    throw new errors.SamsaraError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
+                    });
+            }
+        }
+
+        return handleNonStatusCodeError(
+            _response.error,
+            _response.rawResponse,
+            "POST",
+            "/fleet/asset-sharing/agreements/reject",
+        );
+    }
+
+    /**
      * List active asset assignments for the authorized organization. This endpoint only returns currently active assignments. During Beta, response ordering is implementation-defined and will stabilize before GA when database-backed pagination lands.
      *
      *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
@@ -9790,7 +10790,7 @@ export class BetaApIsClient {
      *
      * @example
      *     await client.betaApIs.patchSafetyEventsV2Batch({
-     *         safetyEventIds: ["bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590"]
+     *         safetyEventIds: ["bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590"]
      *     })
      */
     public patchSafetyEventsV2Batch(

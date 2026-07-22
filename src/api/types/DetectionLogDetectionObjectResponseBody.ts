@@ -16,14 +16,14 @@ export interface DetectionLogDetectionObjectResponseBody {
     inCabAlertPlayed: boolean;
     /** Details on the associated safety event generated. Always returned. */
     safetyEvent: Samsara.DetectionLogSafetyEventObjectResponseBody[];
-    /** The label associated with the detection. Always returned.  Valid values: `acceleration`, `braking`, `crash`, `drowsy`, `eatingDrinking`, `edgeRailroadCrossingViolation`, `followingDistance`, `forwardCollisionWarning`, `genericDistraction`, `harshImpact`, `harshTurn`, `heavySpeeding`, `laneDeparture`, `lightSpeeding`, `maxSpeed`, `mobileUsage`, `moderateSpeeding`, `noSeatbelt`, `obstructedCamera`, `passenger`, `policyViolationMask`, `ranRedLight`, `rearCollisionWarning`, `reversing`, `rollingStop`, `rolloverProtection`, `severeSpeeding`, `smoking`, `speeding`, `unsafeParking`, `vehicleInBlindSpotWarning`, `vulnerableRoadUserCollisionWarning`, `yawControl` */
+    /** The label associated with the detection. Always returned.  Valid values: `acceleration`, `braking`, `crash`, `drowsy`, `eatingDrinking`, `edgeRailroadCrossingViolation`, `followingDistance`, `forwardCollisionWarning`, `genericDistraction`, `harshImpact`, `harshTurn`, `heavySpeeding`, `laneDeparture`, `lightSpeeding`, `maxSpeed`, `mobileUsage`, `moderateSpeeding`, `noSeatbelt`, `obstructedCamera`, `passenger`, `policyViolationMask`, `proximityWarning`, `ranRedLight`, `rearCollisionWarning`, `reversing`, `rollingStop`, `rolloverProtection`, `severeSpeeding`, `smoking`, `speeding`, `unsafeParking`, `vehicleInBlindSpotWarning`, `vulnerableRoadUserCollisionWarning`, `yawControl` */
     triggerDetectionLabel: DetectionLogDetectionObjectResponseBody.TriggerDetectionLabel;
     /** Time the detection was updated in Samsara in UTC. RFC 3339 format. Always returned. */
     updatedAtTime: string;
 }
 
 export namespace DetectionLogDetectionObjectResponseBody {
-    /** The label associated with the detection. Always returned.  Valid values: `acceleration`, `braking`, `crash`, `drowsy`, `eatingDrinking`, `edgeRailroadCrossingViolation`, `followingDistance`, `forwardCollisionWarning`, `genericDistraction`, `harshImpact`, `harshTurn`, `heavySpeeding`, `laneDeparture`, `lightSpeeding`, `maxSpeed`, `mobileUsage`, `moderateSpeeding`, `noSeatbelt`, `obstructedCamera`, `passenger`, `policyViolationMask`, `ranRedLight`, `rearCollisionWarning`, `reversing`, `rollingStop`, `rolloverProtection`, `severeSpeeding`, `smoking`, `speeding`, `unsafeParking`, `vehicleInBlindSpotWarning`, `vulnerableRoadUserCollisionWarning`, `yawControl` */
+    /** The label associated with the detection. Always returned.  Valid values: `acceleration`, `braking`, `crash`, `drowsy`, `eatingDrinking`, `edgeRailroadCrossingViolation`, `followingDistance`, `forwardCollisionWarning`, `genericDistraction`, `harshImpact`, `harshTurn`, `heavySpeeding`, `laneDeparture`, `lightSpeeding`, `maxSpeed`, `mobileUsage`, `moderateSpeeding`, `noSeatbelt`, `obstructedCamera`, `passenger`, `policyViolationMask`, `proximityWarning`, `ranRedLight`, `rearCollisionWarning`, `reversing`, `rollingStop`, `rolloverProtection`, `severeSpeeding`, `smoking`, `speeding`, `unsafeParking`, `vehicleInBlindSpotWarning`, `vulnerableRoadUserCollisionWarning`, `yawControl` */
     export const TriggerDetectionLabel = {
         Acceleration: "acceleration",
         Braking: "braking",
@@ -46,6 +46,7 @@ export namespace DetectionLogDetectionObjectResponseBody {
         ObstructedCamera: "obstructedCamera",
         Passenger: "passenger",
         PolicyViolationMask: "policyViolationMask",
+        ProximityWarning: "proximityWarning",
         RanRedLight: "ranRedLight",
         RearCollisionWarning: "rearCollisionWarning",
         Reversing: "reversing",

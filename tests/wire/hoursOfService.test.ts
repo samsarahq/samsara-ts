@@ -90,7 +90,7 @@ describe("HoursOfServiceClient", () => {
                     endTime: "2019-06-20T19:08:25Z",
                     logMetaData: {
                         adverseDrivingClaimed: false,
-                        bigDayClaimed: true,
+                        bigDayClaimed: false,
                         carrierFormattedAddress: "1990 Alameda Street, San Francisco, CA 94103",
                         carrierName: "Carrier Name",
                         carrierUsDotNumber: 1234,
@@ -152,7 +152,7 @@ describe("HoursOfServiceClient", () => {
                     endTime: "2019-06-20T19:08:25Z",
                     logMetaData: {
                         adverseDrivingClaimed: false,
-                        bigDayClaimed: true,
+                        bigDayClaimed: false,
                         carrierFormattedAddress: "1990 Alameda Street, San Francisco, CA 94103",
                         carrierName: "Carrier Name",
                         carrierUsDotNumber: 1234,

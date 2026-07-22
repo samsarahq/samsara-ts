@@ -4494,6 +4494,2862 @@ describe("BetaApIsClient", () => {
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 
+    test("listAssetSharingAgreements (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = {
+            data: [
+                {
+                    acceptedAtTime: "2024-01-15T11:00:00Z",
+                    acceptedByUserId: "678",
+                    canceledAtTime: "2024-01-15T11:00:00Z",
+                    canceledByParty: "provider",
+                    canceledByUserId: "678",
+                    createdAtTime: "2024-01-13T10:00:00Z",
+                    createdByUserId: "111",
+                    deletedByUserId: "111",
+                    id: "33333333-3333-3333-3333-333333333333",
+                    operator: "provider",
+                    providerDataPackages: ["safety", "maintenance"],
+                    providerOrganizationId: "123",
+                    recipientDataPackages: ["telematics", "location", "telematics", "all"],
+                    recipientOrganizationId: "456",
+                    rejectedAtTime: "2024-01-15T11:00:00Z",
+                    rejectedByUserId: "678",
+                    status: "pending",
+                    updatedAtTime: "2024-01-13T10:00:00Z",
+                },
+            ],
+            pagination: { endCursor: "MjkY", hasNextPage: true },
+        };
+        server
+            .mockEndpoint()
+            .get("/fleet/asset-sharing/agreements")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.betaApIs.listAssetSharingAgreements();
+        expect(response).toEqual({
+            data: [
+                {
+                    acceptedAtTime: "2024-01-15T11:00:00Z",
+                    acceptedByUserId: "678",
+                    canceledAtTime: "2024-01-15T11:00:00Z",
+                    canceledByParty: "provider",
+                    canceledByUserId: "678",
+                    createdAtTime: "2024-01-13T10:00:00Z",
+                    createdByUserId: "111",
+                    deletedByUserId: "111",
+                    id: "33333333-3333-3333-3333-333333333333",
+                    operator: "provider",
+                    providerDataPackages: ["safety", "maintenance"],
+                    providerOrganizationId: "123",
+                    recipientDataPackages: ["telematics", "location", "telematics", "all"],
+                    recipientOrganizationId: "456",
+                    rejectedAtTime: "2024-01-15T11:00:00Z",
+                    rejectedByUserId: "678",
+                    status: "pending",
+                    updatedAtTime: "2024-01-13T10:00:00Z",
+                },
+            ],
+            pagination: {
+                endCursor: "MjkY",
+                hasNextPage: true,
+            },
+        });
+    });
+
+    test("listAssetSharingAgreements (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/asset-sharing/agreements")
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listAssetSharingAgreements();
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("listAssetSharingAgreements (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/asset-sharing/agreements")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listAssetSharingAgreements();
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("listAssetSharingAgreements (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/asset-sharing/agreements")
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listAssetSharingAgreements();
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("listAssetSharingAgreements (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/asset-sharing/agreements")
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listAssetSharingAgreements();
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("listAssetSharingAgreements (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/asset-sharing/agreements")
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listAssetSharingAgreements();
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("listAssetSharingAgreements (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/asset-sharing/agreements")
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listAssetSharingAgreements();
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("listAssetSharingAgreements (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/asset-sharing/agreements")
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listAssetSharingAgreements();
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("listAssetSharingAgreements (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/asset-sharing/agreements")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listAssetSharingAgreements();
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("listAssetSharingAgreements (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/asset-sharing/agreements")
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listAssetSharingAgreements();
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("createAssetSharingAgreement (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            operator: "provider",
+            providerDataPackages: ["all", "maintenance", "maintenance", "maintenance"],
+            recipientDataPackages: ["all", "reefer", "all", "maintenance"],
+            recipientOrganizationId: "456",
+            recipientOrganizationName: "Acme Logistics",
+        };
+        const rawResponseBody = {
+            data: {
+                acceptedAtTime: "2024-01-15T11:00:00Z",
+                acceptedByUserId: "678",
+                canceledAtTime: "2024-01-15T11:00:00Z",
+                canceledByParty: "provider",
+                canceledByUserId: "678",
+                createdAtTime: "2024-01-13T10:00:00Z",
+                createdByUserId: "111",
+                deletedByUserId: "111",
+                id: "33333333-3333-3333-3333-333333333333",
+                operator: "provider",
+                providerDataPackages: ["safety", "maintenance"],
+                providerOrganizationId: "123",
+                recipientDataPackages: ["telematics", "location", "telematics", "all"],
+                recipientOrganizationId: "456",
+                rejectedAtTime: "2024-01-15T11:00:00Z",
+                rejectedByUserId: "678",
+                status: "pending",
+                updatedAtTime: "2024-01-13T10:00:00Z",
+            },
+        };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.betaApIs.createAssetSharingAgreement({
+            operator: "provider",
+            providerDataPackages: ["all", "maintenance", "maintenance", "maintenance"],
+            recipientDataPackages: ["all", "reefer", "all", "maintenance"],
+            recipientOrganizationId: "456",
+            recipientOrganizationName: "Acme Logistics",
+        });
+        expect(response).toEqual({
+            data: {
+                acceptedAtTime: "2024-01-15T11:00:00Z",
+                acceptedByUserId: "678",
+                canceledAtTime: "2024-01-15T11:00:00Z",
+                canceledByParty: "provider",
+                canceledByUserId: "678",
+                createdAtTime: "2024-01-13T10:00:00Z",
+                createdByUserId: "111",
+                deletedByUserId: "111",
+                id: "33333333-3333-3333-3333-333333333333",
+                operator: "provider",
+                providerDataPackages: ["safety", "maintenance"],
+                providerOrganizationId: "123",
+                recipientDataPackages: ["telematics", "location", "telematics", "all"],
+                recipientOrganizationId: "456",
+                rejectedAtTime: "2024-01-15T11:00:00Z",
+                rejectedByUserId: "678",
+                status: "pending",
+                updatedAtTime: "2024-01-13T10:00:00Z",
+            },
+        });
+    });
+
+    test("createAssetSharingAgreement (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            operator: "provider",
+            providerDataPackages: ["safety", "safety"],
+            recipientDataPackages: ["safety", "safety"],
+            recipientOrganizationId: "recipientOrganizationId",
+            recipientOrganizationName: "foo",
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createAssetSharingAgreement({
+                operator: "provider",
+                providerDataPackages: ["safety", "safety"],
+                recipientDataPackages: ["safety", "safety"],
+                recipientOrganizationId: "recipientOrganizationId",
+                recipientOrganizationName: "foo",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("createAssetSharingAgreement (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            operator: "provider",
+            providerDataPackages: ["safety", "safety"],
+            recipientDataPackages: ["safety", "safety"],
+            recipientOrganizationId: "recipientOrganizationId",
+            recipientOrganizationName: "foo",
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createAssetSharingAgreement({
+                operator: "provider",
+                providerDataPackages: ["safety", "safety"],
+                recipientDataPackages: ["safety", "safety"],
+                recipientOrganizationId: "recipientOrganizationId",
+                recipientOrganizationName: "foo",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("createAssetSharingAgreement (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            operator: "provider",
+            providerDataPackages: ["safety", "safety"],
+            recipientDataPackages: ["safety", "safety"],
+            recipientOrganizationId: "recipientOrganizationId",
+            recipientOrganizationName: "foo",
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createAssetSharingAgreement({
+                operator: "provider",
+                providerDataPackages: ["safety", "safety"],
+                recipientDataPackages: ["safety", "safety"],
+                recipientOrganizationId: "recipientOrganizationId",
+                recipientOrganizationName: "foo",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("createAssetSharingAgreement (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            operator: "provider",
+            providerDataPackages: ["safety", "safety"],
+            recipientDataPackages: ["safety", "safety"],
+            recipientOrganizationId: "recipientOrganizationId",
+            recipientOrganizationName: "foo",
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createAssetSharingAgreement({
+                operator: "provider",
+                providerDataPackages: ["safety", "safety"],
+                recipientDataPackages: ["safety", "safety"],
+                recipientOrganizationId: "recipientOrganizationId",
+                recipientOrganizationName: "foo",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("createAssetSharingAgreement (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            operator: "provider",
+            providerDataPackages: ["safety", "safety"],
+            recipientDataPackages: ["safety", "safety"],
+            recipientOrganizationId: "recipientOrganizationId",
+            recipientOrganizationName: "foo",
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createAssetSharingAgreement({
+                operator: "provider",
+                providerDataPackages: ["safety", "safety"],
+                recipientDataPackages: ["safety", "safety"],
+                recipientOrganizationId: "recipientOrganizationId",
+                recipientOrganizationName: "foo",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("createAssetSharingAgreement (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            operator: "provider",
+            providerDataPackages: ["safety", "safety"],
+            recipientDataPackages: ["safety", "safety"],
+            recipientOrganizationId: "recipientOrganizationId",
+            recipientOrganizationName: "foo",
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createAssetSharingAgreement({
+                operator: "provider",
+                providerDataPackages: ["safety", "safety"],
+                recipientDataPackages: ["safety", "safety"],
+                recipientOrganizationId: "recipientOrganizationId",
+                recipientOrganizationName: "foo",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("createAssetSharingAgreement (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            operator: "provider",
+            providerDataPackages: ["safety", "safety"],
+            recipientDataPackages: ["safety", "safety"],
+            recipientOrganizationId: "recipientOrganizationId",
+            recipientOrganizationName: "foo",
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createAssetSharingAgreement({
+                operator: "provider",
+                providerDataPackages: ["safety", "safety"],
+                recipientDataPackages: ["safety", "safety"],
+                recipientOrganizationId: "recipientOrganizationId",
+                recipientOrganizationName: "foo",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("createAssetSharingAgreement (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            operator: "provider",
+            providerDataPackages: ["safety", "safety"],
+            recipientDataPackages: ["safety", "safety"],
+            recipientOrganizationId: "recipientOrganizationId",
+            recipientOrganizationName: "foo",
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createAssetSharingAgreement({
+                operator: "provider",
+                providerDataPackages: ["safety", "safety"],
+                recipientDataPackages: ["safety", "safety"],
+                recipientOrganizationId: "recipientOrganizationId",
+                recipientOrganizationName: "foo",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("createAssetSharingAgreement (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            operator: "provider",
+            providerDataPackages: ["safety", "safety"],
+            recipientDataPackages: ["safety", "safety"],
+            recipientOrganizationId: "recipientOrganizationId",
+            recipientOrganizationName: "foo",
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createAssetSharingAgreement({
+                operator: "provider",
+                providerDataPackages: ["safety", "safety"],
+                recipientDataPackages: ["safety", "safety"],
+                recipientOrganizationId: "recipientOrganizationId",
+                recipientOrganizationName: "foo",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("deleteAssetSharingAgreement (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        server.mockEndpoint().delete("/fleet/asset-sharing/agreements").respondWith().statusCode(200).build();
+
+        const response = await client.betaApIs.deleteAssetSharingAgreement({
+            id: "id",
+        });
+        expect(response).toEqual(undefined);
+    });
+
+    test("deleteAssetSharingAgreement (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .delete("/fleet/asset-sharing/agreements")
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.deleteAssetSharingAgreement({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("deleteAssetSharingAgreement (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .delete("/fleet/asset-sharing/agreements")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.deleteAssetSharingAgreement({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("deleteAssetSharingAgreement (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .delete("/fleet/asset-sharing/agreements")
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.deleteAssetSharingAgreement({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("deleteAssetSharingAgreement (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .delete("/fleet/asset-sharing/agreements")
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.deleteAssetSharingAgreement({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("deleteAssetSharingAgreement (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .delete("/fleet/asset-sharing/agreements")
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.deleteAssetSharingAgreement({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("deleteAssetSharingAgreement (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .delete("/fleet/asset-sharing/agreements")
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.deleteAssetSharingAgreement({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("deleteAssetSharingAgreement (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .delete("/fleet/asset-sharing/agreements")
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.deleteAssetSharingAgreement({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("deleteAssetSharingAgreement (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .delete("/fleet/asset-sharing/agreements")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.deleteAssetSharingAgreement({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("deleteAssetSharingAgreement (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .delete("/fleet/asset-sharing/agreements")
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.deleteAssetSharingAgreement({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("acceptAssetSharingAgreement (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = {
+            data: {
+                acceptedAtTime: "2024-01-15T11:00:00Z",
+                acceptedByUserId: "678",
+                canceledAtTime: "2024-01-15T11:00:00Z",
+                canceledByParty: "provider",
+                canceledByUserId: "678",
+                createdAtTime: "2024-01-13T10:00:00Z",
+                createdByUserId: "111",
+                deletedByUserId: "111",
+                id: "33333333-3333-3333-3333-333333333333",
+                operator: "provider",
+                providerDataPackages: ["safety", "maintenance"],
+                providerOrganizationId: "123",
+                recipientDataPackages: ["telematics", "location", "telematics", "all"],
+                recipientOrganizationId: "456",
+                rejectedAtTime: "2024-01-15T11:00:00Z",
+                rejectedByUserId: "678",
+                status: "pending",
+                updatedAtTime: "2024-01-13T10:00:00Z",
+            },
+        };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements/accept")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.betaApIs.acceptAssetSharingAgreement({
+            id: "id",
+        });
+        expect(response).toEqual({
+            data: {
+                acceptedAtTime: "2024-01-15T11:00:00Z",
+                acceptedByUserId: "678",
+                canceledAtTime: "2024-01-15T11:00:00Z",
+                canceledByParty: "provider",
+                canceledByUserId: "678",
+                createdAtTime: "2024-01-13T10:00:00Z",
+                createdByUserId: "111",
+                deletedByUserId: "111",
+                id: "33333333-3333-3333-3333-333333333333",
+                operator: "provider",
+                providerDataPackages: ["safety", "maintenance"],
+                providerOrganizationId: "123",
+                recipientDataPackages: ["telematics", "location", "telematics", "all"],
+                recipientOrganizationId: "456",
+                rejectedAtTime: "2024-01-15T11:00:00Z",
+                rejectedByUserId: "678",
+                status: "pending",
+                updatedAtTime: "2024-01-13T10:00:00Z",
+            },
+        });
+    });
+
+    test("acceptAssetSharingAgreement (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements/accept")
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.acceptAssetSharingAgreement({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("acceptAssetSharingAgreement (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements/accept")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.acceptAssetSharingAgreement({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("acceptAssetSharingAgreement (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements/accept")
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.acceptAssetSharingAgreement({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("acceptAssetSharingAgreement (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements/accept")
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.acceptAssetSharingAgreement({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("acceptAssetSharingAgreement (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements/accept")
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.acceptAssetSharingAgreement({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("acceptAssetSharingAgreement (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements/accept")
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.acceptAssetSharingAgreement({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("acceptAssetSharingAgreement (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements/accept")
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.acceptAssetSharingAgreement({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("acceptAssetSharingAgreement (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements/accept")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.acceptAssetSharingAgreement({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("acceptAssetSharingAgreement (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements/accept")
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.acceptAssetSharingAgreement({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("listSharedAssets (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = {
+            data: [
+                {
+                    createdAtTime: "2024-01-13T10:00:00Z",
+                    createdByUserId: "111",
+                    endTime: "2025-01-13T10:00:00Z",
+                    id: "11111111-1111-1111-1111-111111111111",
+                    providerAssetId: "1234567890",
+                    recipientAssetId: "9876543210",
+                    serial: "GVJC-3VX-XXX",
+                    startTime: "2024-01-13T10:00:00Z",
+                },
+            ],
+            pagination: { endCursor: "MjkY", hasNextPage: true },
+        };
+        server
+            .mockEndpoint()
+            .get("/fleet/asset-sharing/agreements/assets")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.betaApIs.listSharedAssets({
+            dsaId: "dsaId",
+        });
+        expect(response).toEqual({
+            data: [
+                {
+                    createdAtTime: "2024-01-13T10:00:00Z",
+                    createdByUserId: "111",
+                    endTime: "2025-01-13T10:00:00Z",
+                    id: "11111111-1111-1111-1111-111111111111",
+                    providerAssetId: "1234567890",
+                    recipientAssetId: "9876543210",
+                    serial: "GVJC-3VX-XXX",
+                    startTime: "2024-01-13T10:00:00Z",
+                },
+            ],
+            pagination: {
+                endCursor: "MjkY",
+                hasNextPage: true,
+            },
+        });
+    });
+
+    test("listSharedAssets (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/asset-sharing/agreements/assets")
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listSharedAssets({
+                dsaId: "dsaId",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("listSharedAssets (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/asset-sharing/agreements/assets")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listSharedAssets({
+                dsaId: "dsaId",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("listSharedAssets (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/asset-sharing/agreements/assets")
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listSharedAssets({
+                dsaId: "dsaId",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("listSharedAssets (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/asset-sharing/agreements/assets")
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listSharedAssets({
+                dsaId: "dsaId",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("listSharedAssets (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/asset-sharing/agreements/assets")
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listSharedAssets({
+                dsaId: "dsaId",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("listSharedAssets (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/asset-sharing/agreements/assets")
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listSharedAssets({
+                dsaId: "dsaId",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("listSharedAssets (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/asset-sharing/agreements/assets")
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listSharedAssets({
+                dsaId: "dsaId",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("listSharedAssets (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/asset-sharing/agreements/assets")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listSharedAssets({
+                dsaId: "dsaId",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("listSharedAssets (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/asset-sharing/agreements/assets")
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listSharedAssets({
+                dsaId: "dsaId",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("createSharedAssetsBatch (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { data: [{ serial: "GVJC3VXXXX" }] };
+        const rawResponseBody = {
+            data: [
+                {
+                    createdAtTime: "2024-01-13T10:00:00Z",
+                    createdByUserId: "111",
+                    endTime: "2025-01-13T10:00:00Z",
+                    id: "11111111-1111-1111-1111-111111111111",
+                    providerAssetId: "1234567890",
+                    recipientAssetId: "9876543210",
+                    serial: "GVJC-3VX-XXX",
+                    startTime: "2024-01-13T10:00:00Z",
+                },
+            ],
+        };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements/assets/batch")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.betaApIs.createSharedAssetsBatch({
+            dsaId: "dsaId",
+            data: [
+                {
+                    serial: "GVJC3VXXXX",
+                },
+            ],
+        });
+        expect(response).toEqual({
+            data: [
+                {
+                    createdAtTime: "2024-01-13T10:00:00Z",
+                    createdByUserId: "111",
+                    endTime: "2025-01-13T10:00:00Z",
+                    id: "11111111-1111-1111-1111-111111111111",
+                    providerAssetId: "1234567890",
+                    recipientAssetId: "9876543210",
+                    serial: "GVJC-3VX-XXX",
+                    startTime: "2024-01-13T10:00:00Z",
+                },
+            ],
+        });
+    });
+
+    test("createSharedAssetsBatch (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { data: [{ serial: "serial" }, { serial: "serial" }] };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements/assets/batch")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createSharedAssetsBatch({
+                dsaId: "dsaId",
+                data: [
+                    {
+                        serial: "serial",
+                    },
+                    {
+                        serial: "serial",
+                    },
+                ],
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("createSharedAssetsBatch (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { data: [{ serial: "serial" }, { serial: "serial" }] };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements/assets/batch")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createSharedAssetsBatch({
+                dsaId: "dsaId",
+                data: [
+                    {
+                        serial: "serial",
+                    },
+                    {
+                        serial: "serial",
+                    },
+                ],
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("createSharedAssetsBatch (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { data: [{ serial: "serial" }, { serial: "serial" }] };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements/assets/batch")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createSharedAssetsBatch({
+                dsaId: "dsaId",
+                data: [
+                    {
+                        serial: "serial",
+                    },
+                    {
+                        serial: "serial",
+                    },
+                ],
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("createSharedAssetsBatch (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { data: [{ serial: "serial" }, { serial: "serial" }] };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements/assets/batch")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createSharedAssetsBatch({
+                dsaId: "dsaId",
+                data: [
+                    {
+                        serial: "serial",
+                    },
+                    {
+                        serial: "serial",
+                    },
+                ],
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("createSharedAssetsBatch (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { data: [{ serial: "serial" }, { serial: "serial" }] };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements/assets/batch")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createSharedAssetsBatch({
+                dsaId: "dsaId",
+                data: [
+                    {
+                        serial: "serial",
+                    },
+                    {
+                        serial: "serial",
+                    },
+                ],
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("createSharedAssetsBatch (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { data: [{ serial: "serial" }, { serial: "serial" }] };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements/assets/batch")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createSharedAssetsBatch({
+                dsaId: "dsaId",
+                data: [
+                    {
+                        serial: "serial",
+                    },
+                    {
+                        serial: "serial",
+                    },
+                ],
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("createSharedAssetsBatch (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { data: [{ serial: "serial" }, { serial: "serial" }] };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements/assets/batch")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createSharedAssetsBatch({
+                dsaId: "dsaId",
+                data: [
+                    {
+                        serial: "serial",
+                    },
+                    {
+                        serial: "serial",
+                    },
+                ],
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("createSharedAssetsBatch (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { data: [{ serial: "serial" }, { serial: "serial" }] };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements/assets/batch")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createSharedAssetsBatch({
+                dsaId: "dsaId",
+                data: [
+                    {
+                        serial: "serial",
+                    },
+                    {
+                        serial: "serial",
+                    },
+                ],
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("createSharedAssetsBatch (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { data: [{ serial: "serial" }, { serial: "serial" }] };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements/assets/batch")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createSharedAssetsBatch({
+                dsaId: "dsaId",
+                data: [
+                    {
+                        serial: "serial",
+                    },
+                    {
+                        serial: "serial",
+                    },
+                ],
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("updateSharedAssetsBatch (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            data: [{ endTime: "2025-01-13T10:00:00Z", id: "11111111-1111-1111-1111-111111111111" }],
+        };
+        const rawResponseBody = {
+            data: [
+                {
+                    createdAtTime: "2024-01-13T10:00:00Z",
+                    createdByUserId: "111",
+                    endTime: "2025-01-13T10:00:00Z",
+                    id: "11111111-1111-1111-1111-111111111111",
+                    providerAssetId: "1234567890",
+                    recipientAssetId: "9876543210",
+                    serial: "GVJC-3VX-XXX",
+                    startTime: "2024-01-13T10:00:00Z",
+                },
+            ],
+        };
+        server
+            .mockEndpoint()
+            .patch("/fleet/asset-sharing/agreements/assets/batch")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.betaApIs.updateSharedAssetsBatch({
+            data: [
+                {
+                    endTime: "2025-01-13T10:00:00Z",
+                    id: "11111111-1111-1111-1111-111111111111",
+                },
+            ],
+        });
+        expect(response).toEqual({
+            data: [
+                {
+                    createdAtTime: "2024-01-13T10:00:00Z",
+                    createdByUserId: "111",
+                    endTime: "2025-01-13T10:00:00Z",
+                    id: "11111111-1111-1111-1111-111111111111",
+                    providerAssetId: "1234567890",
+                    recipientAssetId: "9876543210",
+                    serial: "GVJC-3VX-XXX",
+                    startTime: "2024-01-13T10:00:00Z",
+                },
+            ],
+        });
+    });
+
+    test("updateSharedAssetsBatch (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            data: [
+                { endTime: "endTime", id: "id" },
+                { endTime: "endTime", id: "id" },
+            ],
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/fleet/asset-sharing/agreements/assets/batch")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.updateSharedAssetsBatch({
+                data: [
+                    {
+                        endTime: "endTime",
+                        id: "id",
+                    },
+                    {
+                        endTime: "endTime",
+                        id: "id",
+                    },
+                ],
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("updateSharedAssetsBatch (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            data: [
+                { endTime: "endTime", id: "id" },
+                { endTime: "endTime", id: "id" },
+            ],
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/fleet/asset-sharing/agreements/assets/batch")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.updateSharedAssetsBatch({
+                data: [
+                    {
+                        endTime: "endTime",
+                        id: "id",
+                    },
+                    {
+                        endTime: "endTime",
+                        id: "id",
+                    },
+                ],
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("updateSharedAssetsBatch (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            data: [
+                { endTime: "endTime", id: "id" },
+                { endTime: "endTime", id: "id" },
+            ],
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/fleet/asset-sharing/agreements/assets/batch")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.updateSharedAssetsBatch({
+                data: [
+                    {
+                        endTime: "endTime",
+                        id: "id",
+                    },
+                    {
+                        endTime: "endTime",
+                        id: "id",
+                    },
+                ],
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("updateSharedAssetsBatch (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            data: [
+                { endTime: "endTime", id: "id" },
+                { endTime: "endTime", id: "id" },
+            ],
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/fleet/asset-sharing/agreements/assets/batch")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.updateSharedAssetsBatch({
+                data: [
+                    {
+                        endTime: "endTime",
+                        id: "id",
+                    },
+                    {
+                        endTime: "endTime",
+                        id: "id",
+                    },
+                ],
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("updateSharedAssetsBatch (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            data: [
+                { endTime: "endTime", id: "id" },
+                { endTime: "endTime", id: "id" },
+            ],
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/fleet/asset-sharing/agreements/assets/batch")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.updateSharedAssetsBatch({
+                data: [
+                    {
+                        endTime: "endTime",
+                        id: "id",
+                    },
+                    {
+                        endTime: "endTime",
+                        id: "id",
+                    },
+                ],
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("updateSharedAssetsBatch (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            data: [
+                { endTime: "endTime", id: "id" },
+                { endTime: "endTime", id: "id" },
+            ],
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/fleet/asset-sharing/agreements/assets/batch")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.updateSharedAssetsBatch({
+                data: [
+                    {
+                        endTime: "endTime",
+                        id: "id",
+                    },
+                    {
+                        endTime: "endTime",
+                        id: "id",
+                    },
+                ],
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("updateSharedAssetsBatch (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            data: [
+                { endTime: "endTime", id: "id" },
+                { endTime: "endTime", id: "id" },
+            ],
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/fleet/asset-sharing/agreements/assets/batch")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.updateSharedAssetsBatch({
+                data: [
+                    {
+                        endTime: "endTime",
+                        id: "id",
+                    },
+                    {
+                        endTime: "endTime",
+                        id: "id",
+                    },
+                ],
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("updateSharedAssetsBatch (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            data: [
+                { endTime: "endTime", id: "id" },
+                { endTime: "endTime", id: "id" },
+            ],
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/fleet/asset-sharing/agreements/assets/batch")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.updateSharedAssetsBatch({
+                data: [
+                    {
+                        endTime: "endTime",
+                        id: "id",
+                    },
+                    {
+                        endTime: "endTime",
+                        id: "id",
+                    },
+                ],
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("updateSharedAssetsBatch (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            data: [
+                { endTime: "endTime", id: "id" },
+                { endTime: "endTime", id: "id" },
+            ],
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/fleet/asset-sharing/agreements/assets/batch")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.updateSharedAssetsBatch({
+                data: [
+                    {
+                        endTime: "endTime",
+                        id: "id",
+                    },
+                    {
+                        endTime: "endTime",
+                        id: "id",
+                    },
+                ],
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("cancelAssetSharingAgreement (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = {
+            data: {
+                acceptedAtTime: "2024-01-15T11:00:00Z",
+                acceptedByUserId: "678",
+                canceledAtTime: "2024-01-15T11:00:00Z",
+                canceledByParty: "provider",
+                canceledByUserId: "678",
+                createdAtTime: "2024-01-13T10:00:00Z",
+                createdByUserId: "111",
+                deletedByUserId: "111",
+                id: "33333333-3333-3333-3333-333333333333",
+                operator: "provider",
+                providerDataPackages: ["safety", "maintenance"],
+                providerOrganizationId: "123",
+                recipientDataPackages: ["telematics", "location", "telematics", "all"],
+                recipientOrganizationId: "456",
+                rejectedAtTime: "2024-01-15T11:00:00Z",
+                rejectedByUserId: "678",
+                status: "pending",
+                updatedAtTime: "2024-01-13T10:00:00Z",
+            },
+        };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements/cancel")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.betaApIs.cancelAssetSharingAgreement({
+            id: "id",
+        });
+        expect(response).toEqual({
+            data: {
+                acceptedAtTime: "2024-01-15T11:00:00Z",
+                acceptedByUserId: "678",
+                canceledAtTime: "2024-01-15T11:00:00Z",
+                canceledByParty: "provider",
+                canceledByUserId: "678",
+                createdAtTime: "2024-01-13T10:00:00Z",
+                createdByUserId: "111",
+                deletedByUserId: "111",
+                id: "33333333-3333-3333-3333-333333333333",
+                operator: "provider",
+                providerDataPackages: ["safety", "maintenance"],
+                providerOrganizationId: "123",
+                recipientDataPackages: ["telematics", "location", "telematics", "all"],
+                recipientOrganizationId: "456",
+                rejectedAtTime: "2024-01-15T11:00:00Z",
+                rejectedByUserId: "678",
+                status: "pending",
+                updatedAtTime: "2024-01-13T10:00:00Z",
+            },
+        });
+    });
+
+    test("cancelAssetSharingAgreement (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements/cancel")
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.cancelAssetSharingAgreement({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("cancelAssetSharingAgreement (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements/cancel")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.cancelAssetSharingAgreement({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("cancelAssetSharingAgreement (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements/cancel")
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.cancelAssetSharingAgreement({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("cancelAssetSharingAgreement (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements/cancel")
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.cancelAssetSharingAgreement({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("cancelAssetSharingAgreement (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements/cancel")
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.cancelAssetSharingAgreement({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("cancelAssetSharingAgreement (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements/cancel")
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.cancelAssetSharingAgreement({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("cancelAssetSharingAgreement (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements/cancel")
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.cancelAssetSharingAgreement({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("cancelAssetSharingAgreement (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements/cancel")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.cancelAssetSharingAgreement({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("cancelAssetSharingAgreement (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements/cancel")
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.cancelAssetSharingAgreement({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("rejectAssetSharingAgreement (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = {
+            data: {
+                acceptedAtTime: "2024-01-15T11:00:00Z",
+                acceptedByUserId: "678",
+                canceledAtTime: "2024-01-15T11:00:00Z",
+                canceledByParty: "provider",
+                canceledByUserId: "678",
+                createdAtTime: "2024-01-13T10:00:00Z",
+                createdByUserId: "111",
+                deletedByUserId: "111",
+                id: "33333333-3333-3333-3333-333333333333",
+                operator: "provider",
+                providerDataPackages: ["safety", "maintenance"],
+                providerOrganizationId: "123",
+                recipientDataPackages: ["telematics", "location", "telematics", "all"],
+                recipientOrganizationId: "456",
+                rejectedAtTime: "2024-01-15T11:00:00Z",
+                rejectedByUserId: "678",
+                status: "pending",
+                updatedAtTime: "2024-01-13T10:00:00Z",
+            },
+        };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements/reject")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.betaApIs.rejectAssetSharingAgreement({
+            id: "id",
+        });
+        expect(response).toEqual({
+            data: {
+                acceptedAtTime: "2024-01-15T11:00:00Z",
+                acceptedByUserId: "678",
+                canceledAtTime: "2024-01-15T11:00:00Z",
+                canceledByParty: "provider",
+                canceledByUserId: "678",
+                createdAtTime: "2024-01-13T10:00:00Z",
+                createdByUserId: "111",
+                deletedByUserId: "111",
+                id: "33333333-3333-3333-3333-333333333333",
+                operator: "provider",
+                providerDataPackages: ["safety", "maintenance"],
+                providerOrganizationId: "123",
+                recipientDataPackages: ["telematics", "location", "telematics", "all"],
+                recipientOrganizationId: "456",
+                rejectedAtTime: "2024-01-15T11:00:00Z",
+                rejectedByUserId: "678",
+                status: "pending",
+                updatedAtTime: "2024-01-13T10:00:00Z",
+            },
+        });
+    });
+
+    test("rejectAssetSharingAgreement (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements/reject")
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.rejectAssetSharingAgreement({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("rejectAssetSharingAgreement (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements/reject")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.rejectAssetSharingAgreement({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("rejectAssetSharingAgreement (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements/reject")
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.rejectAssetSharingAgreement({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("rejectAssetSharingAgreement (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements/reject")
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.rejectAssetSharingAgreement({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("rejectAssetSharingAgreement (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements/reject")
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.rejectAssetSharingAgreement({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("rejectAssetSharingAgreement (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements/reject")
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.rejectAssetSharingAgreement({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("rejectAssetSharingAgreement (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements/reject")
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.rejectAssetSharingAgreement({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("rejectAssetSharingAgreement (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements/reject")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.rejectAssetSharingAgreement({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("rejectAssetSharingAgreement (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements/reject")
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.rejectAssetSharingAgreement({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
     test("listAssetAssignments (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
@@ -8445,7 +11301,7 @@ describe("BetaApIsClient", () => {
                 {
                     happenedAtTime: "2019-06-13T19:08:25Z",
                     isConnectedToVehicle: false,
-                    relayStates: [{ id: "relay1", isOpen: false }],
+                    relayStates: [{ id: "relay1", isOpen: true }],
                     vehicleId: "1234",
                 },
             ],
@@ -8471,7 +11327,7 @@ describe("BetaApIsClient", () => {
                     relayStates: [
                         {
                             id: "relay1",
-                            isOpen: false,
+                            isOpen: true,
                         },
                     ],
                     vehicleId: "1234",
@@ -12958,7 +15814,12 @@ describe("BetaApIsClient", () => {
                     priority: 1,
                     quantities: [{ capacityId: "850e8400-e29b-41d4-a716-446655440003", quantity: 25.5 }],
                     routeId: "950e8400-e29b-41d4-a716-446655440005",
-                    skillsRequired: ["650e8400-e29b-41d4-a716-446655440001", "650e8400-e29b-41d4-a716-446655440001"],
+                    skillsRequired: [
+                        "650e8400-e29b-41d4-a716-446655440001",
+                        "650e8400-e29b-41d4-a716-446655440001",
+                        "650e8400-e29b-41d4-a716-446655440001",
+                        "650e8400-e29b-41d4-a716-446655440001",
+                    ],
                     updatedAtTime: "2024-04-10T11:30:00Z",
                 },
             ],
@@ -13016,7 +15877,12 @@ describe("BetaApIsClient", () => {
                         },
                     ],
                     routeId: "950e8400-e29b-41d4-a716-446655440005",
-                    skillsRequired: ["650e8400-e29b-41d4-a716-446655440001", "650e8400-e29b-41d4-a716-446655440001"],
+                    skillsRequired: [
+                        "650e8400-e29b-41d4-a716-446655440001",
+                        "650e8400-e29b-41d4-a716-446655440001",
+                        "650e8400-e29b-41d4-a716-446655440001",
+                        "650e8400-e29b-41d4-a716-446655440001",
+                    ],
                     updatedAtTime: "2024-04-10T11:30:00Z",
                 },
             ],
@@ -15504,9 +18370,8 @@ describe("BetaApIsClient", () => {
                     },
                     id: "12345",
                     iftaExemptionTypes: [
-                        "Dolores architecto velit dolorem.",
-                        "Blanditiis deserunt velit voluptatem atque deserunt.",
-                        "Sed veniam magnam molestiae.",
+                        "Deserunt velit voluptatem atque deserunt voluptas sed.",
+                        "Magnam molestiae necessitatibus maiores dicta maiores.",
                     ],
                     isAutoDismissRolledStopsEnabled: false,
                     isShowAddressesEnabled: true,
@@ -15523,12 +18388,7 @@ describe("BetaApIsClient", () => {
                         ],
                     },
                     notes: "Receiving 6-2",
-                    placeTypes: [
-                        "Quia eos.",
-                        "In adipisci sunt.",
-                        "Explicabo amet eum exercitationem dignissimos quaerat debitis.",
-                        "Dolorem quo enim voluptas saepe.",
-                    ],
+                    placeTypes: ["Dolorem quis autem nostrum voluptas et quasi.", "Tenetur eveniet aliquid."],
                     routing: [
                         {
                             driverInstructions: "Use lane 2",
@@ -15553,9 +18413,8 @@ describe("BetaApIsClient", () => {
                             serviceWindows: [
                                 {
                                     days: [
-                                        "Ut sed.",
-                                        "Est quo quidem quae.",
-                                        "Ut voluptas et accusantium est labore.",
+                                        "Quo quidem.",
+                                        "Voluptatibus ut voluptas et accusantium est labore.",
                                         "Magni sint quia.",
                                     ],
                                     endTime: "17:00:01",
@@ -15564,11 +18423,7 @@ describe("BetaApIsClient", () => {
                             ],
                         },
                     ],
-                    safetyEventExclusions: [
-                        "Beatae tenetur nobis ut voluptate et ut.",
-                        "Id rem unde earum quia libero.",
-                        "Dolor suscipit explicabo esse labore.",
-                    ],
+                    safetyEventExclusions: ["Id dolor suscipit.", "Esse labore temporibus velit."],
                     streetView: {
                         headingDegrees: 90,
                         isEnabled: true,
@@ -15614,9 +18469,8 @@ describe("BetaApIsClient", () => {
                     },
                     id: "12345",
                     iftaExemptionTypes: [
-                        "Dolores architecto velit dolorem.",
-                        "Blanditiis deserunt velit voluptatem atque deserunt.",
-                        "Sed veniam magnam molestiae.",
+                        "Deserunt velit voluptatem atque deserunt voluptas sed.",
+                        "Magnam molestiae necessitatibus maiores dicta maiores.",
                     ],
                     isAutoDismissRolledStopsEnabled: false,
                     isShowAddressesEnabled: true,
@@ -15633,12 +18487,7 @@ describe("BetaApIsClient", () => {
                         ],
                     },
                     notes: "Receiving 6-2",
-                    placeTypes: [
-                        "Quia eos.",
-                        "In adipisci sunt.",
-                        "Explicabo amet eum exercitationem dignissimos quaerat debitis.",
-                        "Dolorem quo enim voluptas saepe.",
-                    ],
+                    placeTypes: ["Dolorem quis autem nostrum voluptas et quasi.", "Tenetur eveniet aliquid."],
                     routing: [
                         {
                             driverInstructions: "Use lane 2",
@@ -15671,9 +18520,8 @@ describe("BetaApIsClient", () => {
                             serviceWindows: [
                                 {
                                     days: [
-                                        "Ut sed.",
-                                        "Est quo quidem quae.",
-                                        "Ut voluptas et accusantium est labore.",
+                                        "Quo quidem.",
+                                        "Voluptatibus ut voluptas et accusantium est labore.",
                                         "Magni sint quia.",
                                     ],
                                     endTime: "17:00:01",
@@ -15682,11 +18530,7 @@ describe("BetaApIsClient", () => {
                             ],
                         },
                     ],
-                    safetyEventExclusions: [
-                        "Beatae tenetur nobis ut voluptate et ut.",
-                        "Id rem unde earum quia libero.",
-                        "Dolor suscipit explicabo esse labore.",
-                    ],
+                    safetyEventExclusions: ["Id dolor suscipit.", "Esse labore temporibus velit."],
                     streetView: {
                         headingDegrees: 90,
                         isEnabled: true,
@@ -15891,9 +18735,8 @@ describe("BetaApIsClient", () => {
                 },
                 id: "12345",
                 iftaExemptionTypes: [
-                    "Dolores architecto velit dolorem.",
-                    "Blanditiis deserunt velit voluptatem atque deserunt.",
-                    "Sed veniam magnam molestiae.",
+                    "Deserunt velit voluptatem atque deserunt voluptas sed.",
+                    "Magnam molestiae necessitatibus maiores dicta maiores.",
                 ],
                 isAutoDismissRolledStopsEnabled: false,
                 isShowAddressesEnabled: true,
@@ -15910,12 +18753,7 @@ describe("BetaApIsClient", () => {
                     ],
                 },
                 notes: "Receiving 6-2",
-                placeTypes: [
-                    "Quia eos.",
-                    "In adipisci sunt.",
-                    "Explicabo amet eum exercitationem dignissimos quaerat debitis.",
-                    "Dolorem quo enim voluptas saepe.",
-                ],
+                placeTypes: ["Dolorem quis autem nostrum voluptas et quasi.", "Tenetur eveniet aliquid."],
                 routing: [
                     {
                         driverInstructions: "Use lane 2",
@@ -15940,9 +18778,8 @@ describe("BetaApIsClient", () => {
                         serviceWindows: [
                             {
                                 days: [
-                                    "Ut sed.",
-                                    "Est quo quidem quae.",
-                                    "Ut voluptas et accusantium est labore.",
+                                    "Quo quidem.",
+                                    "Voluptatibus ut voluptas et accusantium est labore.",
                                     "Magni sint quia.",
                                 ],
                                 endTime: "17:00:01",
@@ -15951,11 +18788,7 @@ describe("BetaApIsClient", () => {
                         ],
                     },
                 ],
-                safetyEventExclusions: [
-                    "Beatae tenetur nobis ut voluptate et ut.",
-                    "Id rem unde earum quia libero.",
-                    "Dolor suscipit explicabo esse labore.",
-                ],
+                safetyEventExclusions: ["Id dolor suscipit.", "Esse labore temporibus velit."],
                 streetView: {
                     headingDegrees: 90,
                     isEnabled: true,
@@ -16016,9 +18849,8 @@ describe("BetaApIsClient", () => {
                 },
                 id: "12345",
                 iftaExemptionTypes: [
-                    "Dolores architecto velit dolorem.",
-                    "Blanditiis deserunt velit voluptatem atque deserunt.",
-                    "Sed veniam magnam molestiae.",
+                    "Deserunt velit voluptatem atque deserunt voluptas sed.",
+                    "Magnam molestiae necessitatibus maiores dicta maiores.",
                 ],
                 isAutoDismissRolledStopsEnabled: false,
                 isShowAddressesEnabled: true,
@@ -16035,12 +18867,7 @@ describe("BetaApIsClient", () => {
                     ],
                 },
                 notes: "Receiving 6-2",
-                placeTypes: [
-                    "Quia eos.",
-                    "In adipisci sunt.",
-                    "Explicabo amet eum exercitationem dignissimos quaerat debitis.",
-                    "Dolorem quo enim voluptas saepe.",
-                ],
+                placeTypes: ["Dolorem quis autem nostrum voluptas et quasi.", "Tenetur eveniet aliquid."],
                 routing: [
                     {
                         driverInstructions: "Use lane 2",
@@ -16073,9 +18900,8 @@ describe("BetaApIsClient", () => {
                         serviceWindows: [
                             {
                                 days: [
-                                    "Ut sed.",
-                                    "Est quo quidem quae.",
-                                    "Ut voluptas et accusantium est labore.",
+                                    "Quo quidem.",
+                                    "Voluptatibus ut voluptas et accusantium est labore.",
                                     "Magni sint quia.",
                                 ],
                                 endTime: "17:00:01",
@@ -16084,11 +18910,7 @@ describe("BetaApIsClient", () => {
                         ],
                     },
                 ],
-                safetyEventExclusions: [
-                    "Beatae tenetur nobis ut voluptate et ut.",
-                    "Id rem unde earum quia libero.",
-                    "Dolor suscipit explicabo esse labore.",
-                ],
+                safetyEventExclusions: ["Id dolor suscipit.", "Esse labore temporibus velit."],
                 streetView: {
                     headingDegrees: 90,
                     isEnabled: true,
@@ -16575,9 +19397,8 @@ describe("BetaApIsClient", () => {
                 },
                 id: "12345",
                 iftaExemptionTypes: [
-                    "Dolores architecto velit dolorem.",
-                    "Blanditiis deserunt velit voluptatem atque deserunt.",
-                    "Sed veniam magnam molestiae.",
+                    "Deserunt velit voluptatem atque deserunt voluptas sed.",
+                    "Magnam molestiae necessitatibus maiores dicta maiores.",
                 ],
                 isAutoDismissRolledStopsEnabled: false,
                 isShowAddressesEnabled: true,
@@ -16594,12 +19415,7 @@ describe("BetaApIsClient", () => {
                     ],
                 },
                 notes: "Receiving 6-2",
-                placeTypes: [
-                    "Quia eos.",
-                    "In adipisci sunt.",
-                    "Explicabo amet eum exercitationem dignissimos quaerat debitis.",
-                    "Dolorem quo enim voluptas saepe.",
-                ],
+                placeTypes: ["Dolorem quis autem nostrum voluptas et quasi.", "Tenetur eveniet aliquid."],
                 routing: [
                     {
                         driverInstructions: "Use lane 2",
@@ -16624,9 +19440,8 @@ describe("BetaApIsClient", () => {
                         serviceWindows: [
                             {
                                 days: [
-                                    "Ut sed.",
-                                    "Est quo quidem quae.",
-                                    "Ut voluptas et accusantium est labore.",
+                                    "Quo quidem.",
+                                    "Voluptatibus ut voluptas et accusantium est labore.",
                                     "Magni sint quia.",
                                 ],
                                 endTime: "17:00:01",
@@ -16635,11 +19450,7 @@ describe("BetaApIsClient", () => {
                         ],
                     },
                 ],
-                safetyEventExclusions: [
-                    "Beatae tenetur nobis ut voluptate et ut.",
-                    "Id rem unde earum quia libero.",
-                    "Dolor suscipit explicabo esse labore.",
-                ],
+                safetyEventExclusions: ["Id dolor suscipit.", "Esse labore temporibus velit."],
                 streetView: {
                     headingDegrees: 90,
                     isEnabled: true,
@@ -16696,9 +19507,8 @@ describe("BetaApIsClient", () => {
                 },
                 id: "12345",
                 iftaExemptionTypes: [
-                    "Dolores architecto velit dolorem.",
-                    "Blanditiis deserunt velit voluptatem atque deserunt.",
-                    "Sed veniam magnam molestiae.",
+                    "Deserunt velit voluptatem atque deserunt voluptas sed.",
+                    "Magnam molestiae necessitatibus maiores dicta maiores.",
                 ],
                 isAutoDismissRolledStopsEnabled: false,
                 isShowAddressesEnabled: true,
@@ -16715,12 +19525,7 @@ describe("BetaApIsClient", () => {
                     ],
                 },
                 notes: "Receiving 6-2",
-                placeTypes: [
-                    "Quia eos.",
-                    "In adipisci sunt.",
-                    "Explicabo amet eum exercitationem dignissimos quaerat debitis.",
-                    "Dolorem quo enim voluptas saepe.",
-                ],
+                placeTypes: ["Dolorem quis autem nostrum voluptas et quasi.", "Tenetur eveniet aliquid."],
                 routing: [
                     {
                         driverInstructions: "Use lane 2",
@@ -16753,9 +19558,8 @@ describe("BetaApIsClient", () => {
                         serviceWindows: [
                             {
                                 days: [
-                                    "Ut sed.",
-                                    "Est quo quidem quae.",
-                                    "Ut voluptas et accusantium est labore.",
+                                    "Quo quidem.",
+                                    "Voluptatibus ut voluptas et accusantium est labore.",
                                     "Magni sint quia.",
                                 ],
                                 endTime: "17:00:01",
@@ -16764,11 +19568,7 @@ describe("BetaApIsClient", () => {
                         ],
                     },
                 ],
-                safetyEventExclusions: [
-                    "Beatae tenetur nobis ut voluptate et ut.",
-                    "Id rem unde earum quia libero.",
-                    "Dolor suscipit explicabo esse labore.",
-                ],
+                safetyEventExclusions: ["Id dolor suscipit.", "Esse labore temporibus velit."],
                 streetView: {
                     headingDegrees: 90,
                     isEnabled: true,
@@ -24379,7 +27179,6 @@ describe("BetaApIsClient", () => {
                 rows: [
                     [{ key: "value" }, { key: "value" }, { key: "value" }, { key: "value" }],
                     [{ key: "value" }, { key: "value" }, { key: "value" }],
-                    [{ key: "value" }, { key: "value" }, { key: "value" }, { key: "value" }],
                 ],
                 status: "complete",
             },
@@ -24414,20 +27213,6 @@ describe("BetaApIsClient", () => {
                         },
                     ],
                     [
-                        {
-                            key: "value",
-                        },
-                        {
-                            key: "value",
-                        },
-                        {
-                            key: "value",
-                        },
-                    ],
-                    [
-                        {
-                            key: "value",
-                        },
                         {
                             key: "value",
                         },
@@ -27685,6 +30470,7 @@ describe("BetaApIsClient", () => {
                 "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
                 "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
                 "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
+                "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
             ],
         };
         const rawResponseBody = {
@@ -27702,6 +30488,7 @@ describe("BetaApIsClient", () => {
 
         const response = await client.betaApIs.patchSafetyEventsV2Batch({
             safetyEventIds: [
+                "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
                 "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
                 "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",
                 "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590",

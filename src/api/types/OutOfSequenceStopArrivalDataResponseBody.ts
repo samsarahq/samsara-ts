@@ -11,5 +11,6 @@ export interface OutOfSequenceStopArrivalDataResponseBody {
     driver?: Samsara.AlertObjectDriverResponseBody | undefined;
     /** Name of the stop the driver was expected to arrive at. */
     expectedStopName?: string | undefined;
+    route?: Samsara.AlertObjectRouteResponseBody | undefined;
     vehicle?: Samsara.AlertObjectVehicleResponseBody | undefined;
 }

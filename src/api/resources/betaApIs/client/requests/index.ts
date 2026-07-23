@@ -10,6 +10,7 @@ export type { DeleteFunctionRequest } from "./DeleteFunctionRequest.js";
 export type { DeleteFunctionStorageFileRequest } from "./DeleteFunctionStorageFileRequest.js";
 export type { DeleteHubRouteTemplateRequest } from "./DeleteHubRouteTemplateRequest.js";
 export type { DeleteJobRequest } from "./DeleteJobRequest.js";
+export type { DeletePartRequest } from "./DeletePartRequest.js";
 export type { DeletePlaceRequest } from "./DeletePlaceRequest.js";
 export type { DeletePlanOrdersRequest } from "./DeletePlanOrdersRequest.js";
 export type { DeletePreferredStationRequest } from "./DeletePreferredStationRequest.js";
@@ -20,6 +21,8 @@ export type { DeviceRecoveryMarkAssetMissingRequestBody } from "./DeviceRecovery
 export { DeviceRecoveryRecoverAssetRequestBody } from "./DeviceRecoveryRecoverAssetRequestBody.js";
 export type { DriverWorkflowAssignmentsPostDriverWorkflowAssignmentRequestBody } from "./DriverWorkflowAssignmentsPostDriverWorkflowAssignmentRequestBody.js";
 export type { EngineImmobilizerUpdateEngineImmobilizerStateRequestBody } from "./EngineImmobilizerUpdateEngineImmobilizerStateRequestBody.js";
+export type { EntityPartDefinitionsServiceCreatePartRequestBody } from "./EntityPartDefinitionsServiceCreatePartRequestBody.js";
+export type { EntityPartDefinitionsServiceUpdatePartRequestBody } from "./EntityPartDefinitionsServiceUpdatePartRequestBody.js";
 export type { EquipmentOutputControlSetEquipmentDigitalOutputRequestBody } from "./EquipmentOutputControlSetEquipmentDigitalOutputRequestBody.js";
 export type { EquipmentPatchEquipmentRequestBody } from "./EquipmentPatchEquipmentRequestBody.js";
 export type { FunctionsCreateFunctionRequestBody } from "./FunctionsCreateFunctionRequestBody.js";
@@ -70,6 +73,7 @@ export type { ListDriverWorkflowsRequest } from "./ListDriverWorkflowsRequest.js
 export type { ListFunctionsStorageFilesRequest } from "./ListFunctionsStorageFilesRequest.js";
 export type { ListHubRouteTemplatesRequest } from "./ListHubRouteTemplatesRequest.js";
 export type { ListMaintenanceVendorsRequest } from "./ListMaintenanceVendorsRequest.js";
+export type { ListPartsRequest } from "./ListPartsRequest.js";
 export type { ListPlanOrdersRequest } from "./ListPlanOrdersRequest.js";
 export type { ListPreferredStationsRequest } from "./ListPreferredStationsRequest.js";
 export type { ListPreventiveMaintenanceSchedulesRequest } from "./ListPreventiveMaintenanceSchedulesRequest.js";

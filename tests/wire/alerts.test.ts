@@ -1703,6 +1703,7 @@ describe("AlertsClient", () => {
                                     actualStopName: "actualStopName",
                                     driver: { id: "id" },
                                     expectedStopName: "expectedStopName",
+                                    route: { id: "id" },
                                     vehicle: { id: "id", serial: "serial" },
                                 },
                                 outsideGeofence: {
@@ -2069,6 +2070,7 @@ describe("AlertsClient", () => {
                                     actualStopName: "actualStopName",
                                     driver: { id: "id" },
                                     expectedStopName: "expectedStopName",
+                                    route: { id: "id" },
                                     vehicle: { id: "id", serial: "serial" },
                                 },
                                 outsideGeofence: {
@@ -2445,6 +2447,7 @@ describe("AlertsClient", () => {
                                     actualStopName: "actualStopName",
                                     driver: { id: "id" },
                                     expectedStopName: "expectedStopName",
+                                    route: { id: "id" },
                                     vehicle: { id: "id", serial: "serial" },
                                 },
                                 outsideGeofence: {
@@ -2811,6 +2814,7 @@ describe("AlertsClient", () => {
                                     actualStopName: "actualStopName",
                                     driver: { id: "id" },
                                     expectedStopName: "expectedStopName",
+                                    route: { id: "id" },
                                     vehicle: { id: "id", serial: "serial" },
                                 },
                                 outsideGeofence: {
@@ -3423,6 +3427,9 @@ describe("AlertsClient", () => {
                                         id: "id",
                                     },
                                     expectedStopName: "expectedStopName",
+                                    route: {
+                                        id: "id",
+                                    },
                                     vehicle: {
                                         id: "id",
                                         serial: "serial",
@@ -4178,6 +4185,9 @@ describe("AlertsClient", () => {
                                         id: "id",
                                     },
                                     expectedStopName: "expectedStopName",
+                                    route: {
+                                        id: "id",
+                                    },
                                     vehicle: {
                                         id: "id",
                                         serial: "serial",
@@ -4943,6 +4953,9 @@ describe("AlertsClient", () => {
                                         id: "id",
                                     },
                                     expectedStopName: "expectedStopName",
+                                    route: {
+                                        id: "id",
+                                    },
                                     vehicle: {
                                         id: "id",
                                         serial: "serial",
@@ -5698,6 +5711,9 @@ describe("AlertsClient", () => {
                                         id: "id",
                                     },
                                     expectedStopName: "expectedStopName",
+                                    route: {
+                                        id: "id",
+                                    },
                                     vehicle: {
                                         id: "id",
                                         serial: "serial",

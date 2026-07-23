@@ -9858,6 +9858,292 @@ describe("BetaApIsClient", () => {
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 
+    test("setEquipmentDigitalOutput (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { pinId: 1, state: true };
+        const rawResponseBody = { data: { durationSeconds: 60, id: 1234, pinId: 1, state: true } };
+        server
+            .mockEndpoint()
+            .patch("/fleet/equipment/1000000/digital-output")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.betaApIs.setEquipmentDigitalOutput({
+            id: 1000000,
+            pinId: 1,
+            state: true,
+        });
+        expect(response).toEqual({
+            data: {
+                durationSeconds: 60,
+                id: 1234,
+                pinId: 1,
+                state: true,
+            },
+        });
+    });
+
+    test("setEquipmentDigitalOutput (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { pinId: 1000000, state: true };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/fleet/equipment/1000000/digital-output")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.setEquipmentDigitalOutput({
+                id: 1000000,
+                pinId: 1000000,
+                state: true,
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("setEquipmentDigitalOutput (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { pinId: 1000000, state: true };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/fleet/equipment/1000000/digital-output")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.setEquipmentDigitalOutput({
+                id: 1000000,
+                pinId: 1000000,
+                state: true,
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("setEquipmentDigitalOutput (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { pinId: 1000000, state: true };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/fleet/equipment/1000000/digital-output")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.setEquipmentDigitalOutput({
+                id: 1000000,
+                pinId: 1000000,
+                state: true,
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("setEquipmentDigitalOutput (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { pinId: 1000000, state: true };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/fleet/equipment/1000000/digital-output")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.setEquipmentDigitalOutput({
+                id: 1000000,
+                pinId: 1000000,
+                state: true,
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("setEquipmentDigitalOutput (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { pinId: 1000000, state: true };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/fleet/equipment/1000000/digital-output")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.setEquipmentDigitalOutput({
+                id: 1000000,
+                pinId: 1000000,
+                state: true,
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("setEquipmentDigitalOutput (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { pinId: 1000000, state: true };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/fleet/equipment/1000000/digital-output")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.setEquipmentDigitalOutput({
+                id: 1000000,
+                pinId: 1000000,
+                state: true,
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("setEquipmentDigitalOutput (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { pinId: 1000000, state: true };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/fleet/equipment/1000000/digital-output")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.setEquipmentDigitalOutput({
+                id: 1000000,
+                pinId: 1000000,
+                state: true,
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("setEquipmentDigitalOutput (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { pinId: 1000000, state: true };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/fleet/equipment/1000000/digital-output")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.setEquipmentDigitalOutput({
+                id: 1000000,
+                pinId: 1000000,
+                state: true,
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("setEquipmentDigitalOutput (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { pinId: 1000000, state: true };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/fleet/equipment/1000000/digital-output")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.setEquipmentDigitalOutput({
+                id: 1000000,
+                pinId: 1000000,
+                state: true,
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
     test("getFleetInstallerPhotoUploads (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({

@@ -20,6 +20,7 @@ export type { DeviceRecoveryMarkAssetMissingRequestBody } from "./DeviceRecovery
 export { DeviceRecoveryRecoverAssetRequestBody } from "./DeviceRecoveryRecoverAssetRequestBody.js";
 export type { DriverWorkflowAssignmentsPostDriverWorkflowAssignmentRequestBody } from "./DriverWorkflowAssignmentsPostDriverWorkflowAssignmentRequestBody.js";
 export type { EngineImmobilizerUpdateEngineImmobilizerStateRequestBody } from "./EngineImmobilizerUpdateEngineImmobilizerStateRequestBody.js";
+export type { EquipmentOutputControlSetEquipmentDigitalOutputRequestBody } from "./EquipmentOutputControlSetEquipmentDigitalOutputRequestBody.js";
 export type { EquipmentPatchEquipmentRequestBody } from "./EquipmentPatchEquipmentRequestBody.js";
 export type { FunctionsCreateFunctionRequestBody } from "./FunctionsCreateFunctionRequestBody.js";
 export type { FunctionsPatchFunctionRequestBody } from "./FunctionsPatchFunctionRequestBody.js";

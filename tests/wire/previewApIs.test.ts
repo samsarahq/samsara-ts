@@ -1478,4 +1478,293 @@ describe("PreviewApIsClient", () => {
             });
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
+
+    test("updateUpcomingPreventiveMaintenance (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = {
+            data: {
+                asset: { id: "281474976710656" },
+                currentEngineHours: 12345,
+                currentOdometer: 12345,
+                currentOdometerMiles: 12345,
+                dueInDays: 12345,
+                dueInEngineHours: 12345,
+                dueInOdometer: 12345,
+                dueInOdometerMiles: 12345,
+                lastResolvedAt: "2019-06-13T19:08:25Z",
+                lastResolvedAtEngineHours: 12345,
+                lastResolvedAtOdometer: 12345,
+                nextEngineHours: 12345,
+                nextOdometer: 12345,
+                nextOdometerMiles: 12345,
+                nextTime: "2019-06-13T19:08:25Z",
+                priority: 12345,
+                schedule: { id: "281474976710656" },
+                status: "12345",
+                workOrder: { id: "281474976710656" },
+            },
+        };
+        server
+            .mockEndpoint()
+            .patch("/preview/maintenance/preventive/upcoming")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.previewApIs.updateUpcomingPreventiveMaintenance();
+        expect(response).toEqual({
+            data: {
+                asset: {
+                    id: "281474976710656",
+                },
+                currentEngineHours: 12345,
+                currentOdometer: 12345,
+                currentOdometerMiles: 12345,
+                dueInDays: 12345,
+                dueInEngineHours: 12345,
+                dueInOdometer: 12345,
+                dueInOdometerMiles: 12345,
+                lastResolvedAt: "2019-06-13T19:08:25Z",
+                lastResolvedAtEngineHours: 12345,
+                lastResolvedAtOdometer: 12345,
+                nextEngineHours: 12345,
+                nextOdometer: 12345,
+                nextOdometerMiles: 12345,
+                nextTime: "2019-06-13T19:08:25Z",
+                priority: 12345,
+                schedule: {
+                    id: "281474976710656",
+                },
+                status: "12345",
+                workOrder: {
+                    id: "281474976710656",
+                },
+            },
+        });
+    });
+
+    test("updateUpcomingPreventiveMaintenance (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/preview/maintenance/preventive/upcoming")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.updateUpcomingPreventiveMaintenance();
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("updateUpcomingPreventiveMaintenance (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/preview/maintenance/preventive/upcoming")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.updateUpcomingPreventiveMaintenance();
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("updateUpcomingPreventiveMaintenance (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/preview/maintenance/preventive/upcoming")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.updateUpcomingPreventiveMaintenance();
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("updateUpcomingPreventiveMaintenance (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/preview/maintenance/preventive/upcoming")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.updateUpcomingPreventiveMaintenance();
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("updateUpcomingPreventiveMaintenance (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/preview/maintenance/preventive/upcoming")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.updateUpcomingPreventiveMaintenance();
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("updateUpcomingPreventiveMaintenance (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/preview/maintenance/preventive/upcoming")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.updateUpcomingPreventiveMaintenance();
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("updateUpcomingPreventiveMaintenance (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/preview/maintenance/preventive/upcoming")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.updateUpcomingPreventiveMaintenance();
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("updateUpcomingPreventiveMaintenance (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/preview/maintenance/preventive/upcoming")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.updateUpcomingPreventiveMaintenance();
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("updateUpcomingPreventiveMaintenance (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/preview/maintenance/preventive/upcoming")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.updateUpcomingPreventiveMaintenance();
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
 });

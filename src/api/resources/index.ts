@@ -38,6 +38,7 @@ export * from "./driverVehicleAssignments/types/index.js";
 export * from "./equipment/client/requests/index.js";
 export * as equipment from "./equipment/index.js";
 export * from "./equipment/types/index.js";
+export * from "./fleet/client/requests/index.js";
 export * as fleet from "./fleet/index.js";
 export * from "./forms/client/requests/index.js";
 export * as forms from "./forms/index.js";

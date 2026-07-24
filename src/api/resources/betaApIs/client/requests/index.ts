@@ -25,6 +25,7 @@ export type { EntityPartDefinitionsServiceCreatePartRequestBody } from "./Entity
 export type { EntityPartDefinitionsServiceUpdatePartRequestBody } from "./EntityPartDefinitionsServiceUpdatePartRequestBody.js";
 export type { EquipmentOutputControlSetEquipmentDigitalOutputRequestBody } from "./EquipmentOutputControlSetEquipmentDigitalOutputRequestBody.js";
 export type { EquipmentPatchEquipmentRequestBody } from "./EquipmentPatchEquipmentRequestBody.js";
+export { FleetInstallerPhotoUploadsPostFleetInstallerPhotoUploadRequestBody } from "./FleetInstallerPhotoUploadsPostFleetInstallerPhotoUploadRequestBody.js";
 export type { FunctionsCreateFunctionRequestBody } from "./FunctionsCreateFunctionRequestBody.js";
 export type { FunctionsPatchFunctionRequestBody } from "./FunctionsPatchFunctionRequestBody.js";
 export type { FunctionsStartFunctionRunRequestBody } from "./FunctionsStartFunctionRunRequestBody.js";
@@ -85,6 +86,7 @@ export type { ListUpcomingPreventiveMaintenanceRequest } from "./ListUpcomingPre
 export type { ListVendorCategoriesRequest } from "./ListVendorCategoriesRequest.js";
 export { PlacesPatchPlaceRequestBody } from "./PlacesPatchPlaceRequestBody.js";
 export { PlacesPostPlaceRequestBody } from "./PlacesPostPlaceRequestBody.js";
+export type { PostFleetInstallerPhotoUploadCompleteRequest } from "./PostFleetInstallerPhotoUploadCompleteRequest.js";
 export type { PreferredStationsPatchPreferredStationRequestBody } from "./PreferredStationsPatchPreferredStationRequestBody.js";
 export type { PreferredStationsPostPreferredStationRequestBody } from "./PreferredStationsPostPreferredStationRequestBody.js";
 export type { QualificationsArchiveQualificationRecordRequestBody } from "./QualificationsArchiveQualificationRecordRequestBody.js";

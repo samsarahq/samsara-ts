@@ -3,7 +3,7 @@
 /**
  * Reference to a PreventativeMaintenanceSchedule
  */
-export interface EntityPreventativeMaintenanceSchedulePreventativeMaintenanceScheduleRefTypeResponseBody {
+export interface EntityListPreventiveMaintenanceSchedulesPreventativeMaintenanceScheduleRefTypeResponseBody {
     /** The ID of the referenced PreventativeMaintenanceSchedule. */
     id: string;
 }

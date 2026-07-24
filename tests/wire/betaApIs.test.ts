@@ -19201,7 +19201,7 @@ describe("BetaApIsClient", () => {
                     nextEngineHours: 12345,
                     nextOdometer: 12345,
                     nextTime: "2019-06-13T19:08:25Z",
-                    preventativeMaintenanceSchedule: { id: "281474976710656" },
+                    schedule: { id: "281474976710656" },
                     status: "12345",
                     workOrder: { id: "281474976710656" },
                 },
@@ -19234,7 +19234,7 @@ describe("BetaApIsClient", () => {
                     nextEngineHours: 12345,
                     nextOdometer: 12345,
                     nextTime: "2019-06-13T19:08:25Z",
-                    preventativeMaintenanceSchedule: {
+                    schedule: {
                         id: "281474976710656",
                     },
                     status: "12345",

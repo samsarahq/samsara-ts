@@ -5,18 +5,22 @@ import type * as Samsara from "../index.js";
 /**
  * UpcomingPreventativeMaintenance object
  */
-export interface EntityListUpcomingPreventiveMaintenanceTypeResponseBody {
-    asset?: Samsara.EntityListUpcomingPreventiveMaintenanceAssetRefTypeResponseBody | undefined;
+export interface EntityUpdateUpcomingPreventiveMaintenanceTypeResponseBody {
+    asset?: Samsara.EntityUpdateUpcomingPreventiveMaintenanceAssetRefTypeResponseBody | undefined;
     /** Current engine hours for the asset at the time of query. */
     currentEngineHours?: number | undefined;
     /** Current odometer reading for the asset at the time of query. Measured in meters. */
     currentOdometer?: number | undefined;
+    /** Current odometer reading for the asset at the time of query. Measured in miles. */
+    currentOdometerMiles?: number | undefined;
     /** The number of days until the next scheduled service for a date based PM. */
     dueInDays?: number | undefined;
     /** The number of engine hours until the next scheduled service. */
     dueInEngineHours?: number | undefined;
     /** The odometer distance until the next scheduled service. Measured in meters. */
     dueInOdometer?: number | undefined;
+    /** The odometer distance until the next scheduled service. Measured in miles. */
+    dueInOdometerMiles?: number | undefined;
     /** Date and time when the prior instance was resolved. */
     lastResolvedAt?: string | undefined;
     /** Engine hours at the time the prior instance was resolved. */
@@ -27,12 +31,16 @@ export interface EntityListUpcomingPreventiveMaintenanceTypeResponseBody {
     nextEngineHours?: number | undefined;
     /** The next odometer value that the vehicle is scheduled to be serviced. Measured in meters. */
     nextOdometer?: number | undefined;
+    /** The next odometer value that the vehicle is scheduled to be serviced. Measured in miles. */
+    nextOdometerMiles?: number | undefined;
     /** The next time that the vehicle is scheduled to be serviced for a date based PM. */
     nextTime?: string | undefined;
+    /** Estimated number of days until the next scheduled service, calculated by converting mileage and engine hour schedules to approximate daily rates. We take the minimum value for schedules with multiple interval types. */
+    priority?: number | undefined;
     schedule?:
-        | Samsara.EntityListUpcomingPreventiveMaintenancePreventativeMaintenanceScheduleRefTypeResponseBody
+        | Samsara.EntityUpdateUpcomingPreventiveMaintenancePreventativeMaintenanceScheduleRefTypeResponseBody
         | undefined;
     /** Status of the preventive maintenance schedule. */
     status?: string | undefined;
-    workOrder?: Samsara.EntityListUpcomingPreventiveMaintenanceWorkOrderRefTypeResponseBody | undefined;
+    workOrder?: Samsara.EntityUpdateUpcomingPreventiveMaintenanceWorkOrderRefTypeResponseBody | undefined;
 }

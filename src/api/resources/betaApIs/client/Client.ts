@@ -7215,9 +7215,9 @@ export class BetaApIsClient {
     ): Promise<
         core.WithRawResponse<Samsara.EntityUpcomingPreventativeMaintenancesServiceListUpcomingPreventiveMaintenanceResponseBody>
     > {
-        const { preventativeMaintenanceScheduleIds, assetIds, after, limit } = request;
+        const { scheduleIds, assetIds, after, limit } = request;
         const _queryParams: Record<string, unknown> = {
-            preventativeMaintenanceScheduleIds,
+            scheduleIds,
             assetIds,
             after,
             limit,

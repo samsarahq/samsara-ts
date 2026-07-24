@@ -3,7 +3,7 @@
 /**
  * Reference to a Asset
  */
-export interface EntityUpcomingPreventativeMaintenanceAssetRefTypeResponseBody {
+export interface EntityUpdateUpcomingPreventiveMaintenanceAssetRefTypeResponseBody {
     /** The ID of the referenced Asset. */
     id: string;
 }

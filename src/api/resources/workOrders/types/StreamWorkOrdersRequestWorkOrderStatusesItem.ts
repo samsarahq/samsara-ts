@@ -11,6 +11,7 @@ export const StreamWorkOrdersRequestWorkOrderStatusesItem = {
     Open: "Open",
     PendingApproval: "Pending Approval",
     PendingParts: "Pending Parts",
+    Planning: "Planning",
 } as const;
 export type StreamWorkOrdersRequestWorkOrderStatusesItem =
     (typeof StreamWorkOrdersRequestWorkOrderStatusesItem)[keyof typeof StreamWorkOrdersRequestWorkOrderStatusesItem];

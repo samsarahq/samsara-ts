@@ -120,11 +120,11 @@ export class SamsaraClient {
     protected _trips: TripsClient | undefined;
     protected _users: UsersClient | undefined;
     protected _legacy: LegacyClient | undefined;
+    protected _fleet: FleetClient | undefined;
     protected _messages: MessagesClient | undefined;
     protected _trailerAssignments: TrailerAssignmentsClient | undefined;
     protected _sensors: SensorsClient | undefined;
     protected _webhooks: WebhooksClient | undefined;
-    protected _fleet: FleetClient | undefined;
 
     constructor(options: SamsaraClient.Options = {}) {
         this._options = normalizeClientOptionsWithAuth(options);
@@ -338,6 +338,10 @@ export class SamsaraClient {
         return (this._legacy ??= new LegacyClient(this._options));
     }
 
+    public get fleet(): FleetClient {
+        return (this._fleet ??= new FleetClient(this._options));
+    }
+
     public get messages(): MessagesClient {
         return (this._messages ??= new MessagesClient(this._options));
     }
@@ -352,9 +356,5 @@ export class SamsaraClient {
 
     public get webhooks(): WebhooksClient {
         return (this._webhooks ??= new WebhooksClient(this._options));
-    }
-
-    public get fleet(): FleetClient {
-        return (this._fleet ??= new FleetClient(this._options));
     }
 }

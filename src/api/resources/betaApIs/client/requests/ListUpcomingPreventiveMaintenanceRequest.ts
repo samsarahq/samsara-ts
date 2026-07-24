@@ -5,8 +5,8 @@
  *     {}
  */
 export interface ListUpcomingPreventiveMaintenanceRequest {
-    /** A filter on the data based on this comma-separated list of Preventive Maintenance Schedule ID values. */
-    preventativeMaintenanceScheduleIds?: string;
+    /** A filter on the data based on this comma-separated list of Preventive maintenance schedule ID values. */
+    scheduleIds?: string;
     /** A filter on the data based on this comma-separated list of Asset ID values. */
     assetIds?: string;
     /**  If specified, this should be the endCursor value from the previous page of results. When present, this request will return the next page of results that occur immediately after the previous page of results. */

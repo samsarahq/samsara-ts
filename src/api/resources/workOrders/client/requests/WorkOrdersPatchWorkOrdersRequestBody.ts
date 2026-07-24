@@ -42,7 +42,7 @@ export interface WorkOrdersPatchWorkOrdersRequestBody {
     priority?: WorkOrdersPatchWorkOrdersRequestBody.Priority;
     /** Service Tasks for the work order. */
     serviceTaskInstances?: Samsara.ServiceTaskInstanceInputObjectRequestBody[];
-    /** The status of the work order  Valid values: `Assigned`, `Cancelled`, `Closed`, `Completed`, `Estimate`, `In Progress`, `On Hold`, `Open`, `Pending Approval`, `Pending Parts` */
+    /** The status of the work order  Valid values: `Assigned`, `Cancelled`, `Closed`, `Completed`, `Estimate`, `In Progress`, `On Hold`, `Open`, `Pending Approval`, `Pending Parts`, `Planning` */
     status?: WorkOrdersPatchWorkOrdersRequestBody.Status;
     tax?: Samsara.WorkOrderTaxObjectRequestBody;
     /** The vendor UUID for the work order. */
@@ -58,7 +58,7 @@ export namespace WorkOrdersPatchWorkOrdersRequestBody {
         Urgent: "Urgent",
     } as const;
     export type Priority = (typeof Priority)[keyof typeof Priority];
-    /** The status of the work order  Valid values: `Assigned`, `Cancelled`, `Closed`, `Completed`, `Estimate`, `In Progress`, `On Hold`, `Open`, `Pending Approval`, `Pending Parts` */
+    /** The status of the work order  Valid values: `Assigned`, `Cancelled`, `Closed`, `Completed`, `Estimate`, `In Progress`, `On Hold`, `Open`, `Pending Approval`, `Pending Parts`, `Planning` */
     export const Status = {
         Assigned: "Assigned",
         Cancelled: "Cancelled",
@@ -70,6 +70,7 @@ export namespace WorkOrdersPatchWorkOrdersRequestBody {
         Open: "Open",
         PendingApproval: "Pending Approval",
         PendingParts: "Pending Parts",
+        Planning: "Planning",
     } as const;
     export type Status = (typeof Status)[keyof typeof Status];
 }

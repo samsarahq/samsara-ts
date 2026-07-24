@@ -3,7 +3,7 @@
 /**
  * Reference to a WorkOrder
  */
-export interface EntityUpcomingPreventativeMaintenanceWorkOrderRefTypeResponseBody {
+export interface EntityListUpcomingPreventiveMaintenanceWorkOrderRefTypeResponseBody {
     /** The ID of the referenced WorkOrder. */
     id: string;
 }

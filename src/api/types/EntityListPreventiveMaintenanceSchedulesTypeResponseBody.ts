@@ -18,7 +18,7 @@ export interface EntityListPreventiveMaintenanceSchedulesTypeResponseBody {
     id?: string | undefined;
     /** IDs of other preventive maintenance schedules linked to this schedule. */
     linkedSchedules?:
-        | Samsara.EntityPreventativeMaintenanceSchedulePreventativeMaintenanceScheduleRefTypeResponseBody[]
+        | Samsara.EntityListPreventiveMaintenanceSchedulesPreventativeMaintenanceScheduleRefTypeResponseBody[]
         | undefined;
     /** Title of the preventive maintenance schedule. */
     title?: string | undefined;

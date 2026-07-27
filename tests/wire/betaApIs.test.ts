@@ -8173,6 +8173,294 @@ describe("BetaApIsClient", () => {
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 
+    test("listAssociations (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = {
+            data: [
+                {
+                    associationEndTime: "associationEndTime",
+                    associationStartTime: "associationStartTime",
+                    centralId: "centralId",
+                    peripheralId: "peripheralId",
+                    peripheralName: "peripheralName",
+                },
+                {
+                    associationEndTime: "associationEndTime",
+                    associationStartTime: "associationStartTime",
+                    centralId: "centralId",
+                    peripheralId: "peripheralId",
+                    peripheralName: "peripheralName",
+                },
+            ],
+            pagination: { endCursor: "endCursor", hasNextPage: true },
+        };
+        server
+            .mockEndpoint()
+            .get("/fleet/assets/associations")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.betaApIs.listAssociations({
+            startTime: "startTime",
+        });
+        expect(response).toEqual({
+            data: [
+                {
+                    associationEndTime: "associationEndTime",
+                    associationStartTime: "associationStartTime",
+                    centralId: "centralId",
+                    peripheralId: "peripheralId",
+                    peripheralName: "peripheralName",
+                },
+                {
+                    associationEndTime: "associationEndTime",
+                    associationStartTime: "associationStartTime",
+                    centralId: "centralId",
+                    peripheralId: "peripheralId",
+                    peripheralName: "peripheralName",
+                },
+            ],
+            pagination: {
+                endCursor: "endCursor",
+                hasNextPage: true,
+            },
+        });
+    });
+
+    test("listAssociations (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/assets/associations")
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listAssociations({
+                startTime: "startTime",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("listAssociations (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/assets/associations")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listAssociations({
+                startTime: "startTime",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("listAssociations (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/assets/associations")
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listAssociations({
+                startTime: "startTime",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("listAssociations (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/assets/associations")
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listAssociations({
+                startTime: "startTime",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("listAssociations (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/assets/associations")
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listAssociations({
+                startTime: "startTime",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("listAssociations (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/assets/associations")
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listAssociations({
+                startTime: "startTime",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("listAssociations (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/assets/associations")
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listAssociations({
+                startTime: "startTime",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("listAssociations (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/assets/associations")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listAssociations({
+                startTime: "startTime",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("listAssociations (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/assets/associations")
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listAssociations({
+                startTime: "startTime",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
     test("listDeviceRecoveryMissingAssets (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
@@ -16824,12 +17112,7 @@ describe("BetaApIsClient", () => {
                     priority: 1,
                     quantities: [{ capacityId: "850e8400-e29b-41d4-a716-446655440003", quantity: 25.5 }],
                     routeId: "950e8400-e29b-41d4-a716-446655440005",
-                    skillsRequired: [
-                        "650e8400-e29b-41d4-a716-446655440001",
-                        "650e8400-e29b-41d4-a716-446655440001",
-                        "650e8400-e29b-41d4-a716-446655440001",
-                        "650e8400-e29b-41d4-a716-446655440001",
-                    ],
+                    skillsRequired: ["650e8400-e29b-41d4-a716-446655440001", "650e8400-e29b-41d4-a716-446655440001"],
                     updatedAtTime: "2024-04-10T11:30:00Z",
                 },
             ],
@@ -16887,12 +17170,7 @@ describe("BetaApIsClient", () => {
                         },
                     ],
                     routeId: "950e8400-e29b-41d4-a716-446655440005",
-                    skillsRequired: [
-                        "650e8400-e29b-41d4-a716-446655440001",
-                        "650e8400-e29b-41d4-a716-446655440001",
-                        "650e8400-e29b-41d4-a716-446655440001",
-                        "650e8400-e29b-41d4-a716-446655440001",
-                    ],
+                    skillsRequired: ["650e8400-e29b-41d4-a716-446655440001", "650e8400-e29b-41d4-a716-446655440001"],
                     updatedAtTime: "2024-04-10T11:30:00Z",
                 },
             ],
@@ -19637,6 +19915,873 @@ describe("BetaApIsClient", () => {
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 
+    test("listPartInventory (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = {
+            data: [
+                {
+                    aisle: "12345",
+                    availableQuantity: 123.45,
+                    bin: "12345",
+                    createdAtTime: "2019-06-13T19:08:25Z",
+                    currentQuantity: 123.45,
+                    isCostTracked: true,
+                    isLowStock: true,
+                    maxStockLevel: 123.45,
+                    minStockLevel: 123.45,
+                    partSamsara: { id: "281474976710656" },
+                    place: { id: "281474976710656" },
+                    reorderQuantity: 123.45,
+                    reorderThreshold: 123.45,
+                    reservedQuantity: 123.45,
+                    row: "12345",
+                    unitCost: { amount: "12345", currency: "12345" },
+                    unitOfMeasureType: "12345",
+                    updatedAtTime: "2019-06-13T19:08:25Z",
+                },
+            ],
+            pagination: { endCursor: "MjkY", hasNextPage: true },
+        };
+        server
+            .mockEndpoint()
+            .get("/maintenance/parts/inventory-location")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.betaApIs.listPartInventory();
+        expect(response).toEqual({
+            data: [
+                {
+                    aisle: "12345",
+                    availableQuantity: 123.45,
+                    bin: "12345",
+                    createdAtTime: "2019-06-13T19:08:25Z",
+                    currentQuantity: 123.45,
+                    isCostTracked: true,
+                    isLowStock: true,
+                    maxStockLevel: 123.45,
+                    minStockLevel: 123.45,
+                    partSamsara: {
+                        id: "281474976710656",
+                    },
+                    place: {
+                        id: "281474976710656",
+                    },
+                    reorderQuantity: 123.45,
+                    reorderThreshold: 123.45,
+                    reservedQuantity: 123.45,
+                    row: "12345",
+                    unitCost: {
+                        amount: "12345",
+                        currency: "12345",
+                    },
+                    unitOfMeasureType: "12345",
+                    updatedAtTime: "2019-06-13T19:08:25Z",
+                },
+            ],
+            pagination: {
+                endCursor: "MjkY",
+                hasNextPage: true,
+            },
+        });
+    });
+
+    test("listPartInventory (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/parts/inventory-location")
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listPartInventory();
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("listPartInventory (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/parts/inventory-location")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listPartInventory();
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("listPartInventory (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/parts/inventory-location")
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listPartInventory();
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("listPartInventory (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/parts/inventory-location")
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listPartInventory();
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("listPartInventory (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/parts/inventory-location")
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listPartInventory();
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("listPartInventory (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/parts/inventory-location")
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listPartInventory();
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("listPartInventory (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/parts/inventory-location")
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listPartInventory();
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("listPartInventory (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/parts/inventory-location")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listPartInventory();
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("listPartInventory (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/parts/inventory-location")
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.listPartInventory();
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("createPartInventoryLocation (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = {
+            data: {
+                aisle: "12345",
+                availableQuantity: 123.45,
+                bin: "12345",
+                createdAtTime: "2019-06-13T19:08:25Z",
+                currentQuantity: 123.45,
+                id: "12345",
+                isCostTracked: true,
+                isLowStock: true,
+                maxStockLevel: 123.45,
+                minStockLevel: 123.45,
+                partSamsara: { id: "281474976710656" },
+                place: { id: "281474976710656" },
+                reorderQuantity: 123.45,
+                reorderThreshold: 123.45,
+                reservedQuantity: 123.45,
+                row: "12345",
+                unitCost: { amount: "12345", currency: "12345" },
+                unitOfMeasureType: "12345",
+                updatedAtTime: "2019-06-13T19:08:25Z",
+            },
+        };
+        server
+            .mockEndpoint()
+            .post("/maintenance/parts/inventory-location")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.betaApIs.createPartInventoryLocation();
+        expect(response).toEqual({
+            data: {
+                aisle: "12345",
+                availableQuantity: 123.45,
+                bin: "12345",
+                createdAtTime: "2019-06-13T19:08:25Z",
+                currentQuantity: 123.45,
+                id: "12345",
+                isCostTracked: true,
+                isLowStock: true,
+                maxStockLevel: 123.45,
+                minStockLevel: 123.45,
+                partSamsara: {
+                    id: "281474976710656",
+                },
+                place: {
+                    id: "281474976710656",
+                },
+                reorderQuantity: 123.45,
+                reorderThreshold: 123.45,
+                reservedQuantity: 123.45,
+                row: "12345",
+                unitCost: {
+                    amount: "12345",
+                    currency: "12345",
+                },
+                unitOfMeasureType: "12345",
+                updatedAtTime: "2019-06-13T19:08:25Z",
+            },
+        });
+    });
+
+    test("createPartInventoryLocation (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/maintenance/parts/inventory-location")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createPartInventoryLocation();
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("createPartInventoryLocation (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/maintenance/parts/inventory-location")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createPartInventoryLocation();
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("createPartInventoryLocation (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/maintenance/parts/inventory-location")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createPartInventoryLocation();
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("createPartInventoryLocation (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/maintenance/parts/inventory-location")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createPartInventoryLocation();
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("createPartInventoryLocation (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/maintenance/parts/inventory-location")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createPartInventoryLocation();
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("createPartInventoryLocation (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/maintenance/parts/inventory-location")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createPartInventoryLocation();
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("createPartInventoryLocation (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/maintenance/parts/inventory-location")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createPartInventoryLocation();
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("createPartInventoryLocation (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/maintenance/parts/inventory-location")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createPartInventoryLocation();
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("createPartInventoryLocation (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/maintenance/parts/inventory-location")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.createPartInventoryLocation();
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("updatePartInventoryLocation (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = {
+            data: {
+                aisle: "12345",
+                availableQuantity: 123.45,
+                bin: "12345",
+                createdAtTime: "2019-06-13T19:08:25Z",
+                currentQuantity: 123.45,
+                id: "12345",
+                isCostTracked: true,
+                isLowStock: true,
+                maxStockLevel: 123.45,
+                minStockLevel: 123.45,
+                partSamsara: { id: "281474976710656" },
+                place: { id: "281474976710656" },
+                reorderQuantity: 123.45,
+                reorderThreshold: 123.45,
+                reservedQuantity: 123.45,
+                row: "12345",
+                unitCost: { amount: "12345", currency: "12345" },
+                unitOfMeasureType: "12345",
+                updatedAtTime: "2019-06-13T19:08:25Z",
+            },
+        };
+        server
+            .mockEndpoint()
+            .patch("/maintenance/parts/inventory-location")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.betaApIs.updatePartInventoryLocation();
+        expect(response).toEqual({
+            data: {
+                aisle: "12345",
+                availableQuantity: 123.45,
+                bin: "12345",
+                createdAtTime: "2019-06-13T19:08:25Z",
+                currentQuantity: 123.45,
+                id: "12345",
+                isCostTracked: true,
+                isLowStock: true,
+                maxStockLevel: 123.45,
+                minStockLevel: 123.45,
+                partSamsara: {
+                    id: "281474976710656",
+                },
+                place: {
+                    id: "281474976710656",
+                },
+                reorderQuantity: 123.45,
+                reorderThreshold: 123.45,
+                reservedQuantity: 123.45,
+                row: "12345",
+                unitCost: {
+                    amount: "12345",
+                    currency: "12345",
+                },
+                unitOfMeasureType: "12345",
+                updatedAtTime: "2019-06-13T19:08:25Z",
+            },
+        });
+    });
+
+    test("updatePartInventoryLocation (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/maintenance/parts/inventory-location")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.updatePartInventoryLocation();
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("updatePartInventoryLocation (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/maintenance/parts/inventory-location")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.updatePartInventoryLocation();
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("updatePartInventoryLocation (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/maintenance/parts/inventory-location")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.updatePartInventoryLocation();
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("updatePartInventoryLocation (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/maintenance/parts/inventory-location")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.updatePartInventoryLocation();
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("updatePartInventoryLocation (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/maintenance/parts/inventory-location")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.updatePartInventoryLocation();
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("updatePartInventoryLocation (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/maintenance/parts/inventory-location")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.updatePartInventoryLocation();
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("updatePartInventoryLocation (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/maintenance/parts/inventory-location")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.updatePartInventoryLocation();
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("updatePartInventoryLocation (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/maintenance/parts/inventory-location")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.updatePartInventoryLocation();
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("updatePartInventoryLocation (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/maintenance/parts/inventory-location")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.betaApIs.updatePartInventoryLocation();
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
     test("listPreventiveMaintenanceSchedules (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
@@ -20447,8 +21592,8 @@ describe("BetaApIsClient", () => {
                     },
                     id: "12345",
                     iftaExemptionTypes: [
-                        "Deserunt velit voluptatem atque deserunt voluptas sed.",
-                        "Magnam molestiae necessitatibus maiores dicta maiores.",
+                        "Eum quam sunt sit doloribus in deserunt.",
+                        "Laudantium temporibus enim quia fugiat praesentium in.",
                     ],
                     isAutoDismissRolledStopsEnabled: false,
                     isShowAddressesEnabled: true,
@@ -20465,7 +21610,11 @@ describe("BetaApIsClient", () => {
                         ],
                     },
                     notes: "Receiving 6-2",
-                    placeTypes: ["Dolorem quis autem nostrum voluptas et quasi.", "Tenetur eveniet aliquid."],
+                    placeTypes: [
+                        "Voluptatem atque deserunt.",
+                        "Sed veniam magnam molestiae.",
+                        "Maiores dicta maiores assumenda.",
+                    ],
                     routing: [
                         {
                             driverInstructions: "Use lane 2",
@@ -20489,18 +21638,19 @@ describe("BetaApIsClient", () => {
                             serviceTime: { isEnabled: true, serviceTimeMinutes: 5 },
                             serviceWindows: [
                                 {
-                                    days: [
-                                        "Quo quidem.",
-                                        "Voluptatibus ut voluptas et accusantium est labore.",
-                                        "Magni sint quia.",
-                                    ],
+                                    days: ["Ut debitis distinctio sed.", "Hic tempore amet nostrum alias."],
                                     endTime: "17:00:01",
                                     startTime: "09:00:00",
                                 },
                             ],
                         },
                     ],
-                    safetyEventExclusions: ["Id dolor suscipit.", "Esse labore temporibus velit."],
+                    safetyEventExclusions: [
+                        "Repudiandae et laborum commodi possimus.",
+                        "Consequatur eos voluptatibus.",
+                        "Harum rerum ut doloribus voluptatum quaerat.",
+                        "Voluptatem reiciendis consectetur praesentium.",
+                    ],
                     streetView: {
                         headingDegrees: 90,
                         isEnabled: true,
@@ -20546,8 +21696,8 @@ describe("BetaApIsClient", () => {
                     },
                     id: "12345",
                     iftaExemptionTypes: [
-                        "Deserunt velit voluptatem atque deserunt voluptas sed.",
-                        "Magnam molestiae necessitatibus maiores dicta maiores.",
+                        "Eum quam sunt sit doloribus in deserunt.",
+                        "Laudantium temporibus enim quia fugiat praesentium in.",
                     ],
                     isAutoDismissRolledStopsEnabled: false,
                     isShowAddressesEnabled: true,
@@ -20564,7 +21714,11 @@ describe("BetaApIsClient", () => {
                         ],
                     },
                     notes: "Receiving 6-2",
-                    placeTypes: ["Dolorem quis autem nostrum voluptas et quasi.", "Tenetur eveniet aliquid."],
+                    placeTypes: [
+                        "Voluptatem atque deserunt.",
+                        "Sed veniam magnam molestiae.",
+                        "Maiores dicta maiores assumenda.",
+                    ],
                     routing: [
                         {
                             driverInstructions: "Use lane 2",
@@ -20596,18 +21750,19 @@ describe("BetaApIsClient", () => {
                             },
                             serviceWindows: [
                                 {
-                                    days: [
-                                        "Quo quidem.",
-                                        "Voluptatibus ut voluptas et accusantium est labore.",
-                                        "Magni sint quia.",
-                                    ],
+                                    days: ["Ut debitis distinctio sed.", "Hic tempore amet nostrum alias."],
                                     endTime: "17:00:01",
                                     startTime: "09:00:00",
                                 },
                             ],
                         },
                     ],
-                    safetyEventExclusions: ["Id dolor suscipit.", "Esse labore temporibus velit."],
+                    safetyEventExclusions: [
+                        "Repudiandae et laborum commodi possimus.",
+                        "Consequatur eos voluptatibus.",
+                        "Harum rerum ut doloribus voluptatum quaerat.",
+                        "Voluptatem reiciendis consectetur praesentium.",
+                    ],
                     streetView: {
                         headingDegrees: 90,
                         isEnabled: true,
@@ -20812,8 +21967,8 @@ describe("BetaApIsClient", () => {
                 },
                 id: "12345",
                 iftaExemptionTypes: [
-                    "Deserunt velit voluptatem atque deserunt voluptas sed.",
-                    "Magnam molestiae necessitatibus maiores dicta maiores.",
+                    "Eum quam sunt sit doloribus in deserunt.",
+                    "Laudantium temporibus enim quia fugiat praesentium in.",
                 ],
                 isAutoDismissRolledStopsEnabled: false,
                 isShowAddressesEnabled: true,
@@ -20830,7 +21985,11 @@ describe("BetaApIsClient", () => {
                     ],
                 },
                 notes: "Receiving 6-2",
-                placeTypes: ["Dolorem quis autem nostrum voluptas et quasi.", "Tenetur eveniet aliquid."],
+                placeTypes: [
+                    "Voluptatem atque deserunt.",
+                    "Sed veniam magnam molestiae.",
+                    "Maiores dicta maiores assumenda.",
+                ],
                 routing: [
                     {
                         driverInstructions: "Use lane 2",
@@ -20854,18 +22013,19 @@ describe("BetaApIsClient", () => {
                         serviceTime: { isEnabled: true, serviceTimeMinutes: 5 },
                         serviceWindows: [
                             {
-                                days: [
-                                    "Quo quidem.",
-                                    "Voluptatibus ut voluptas et accusantium est labore.",
-                                    "Magni sint quia.",
-                                ],
+                                days: ["Ut debitis distinctio sed.", "Hic tempore amet nostrum alias."],
                                 endTime: "17:00:01",
                                 startTime: "09:00:00",
                             },
                         ],
                     },
                 ],
-                safetyEventExclusions: ["Id dolor suscipit.", "Esse labore temporibus velit."],
+                safetyEventExclusions: [
+                    "Repudiandae et laborum commodi possimus.",
+                    "Consequatur eos voluptatibus.",
+                    "Harum rerum ut doloribus voluptatum quaerat.",
+                    "Voluptatem reiciendis consectetur praesentium.",
+                ],
                 streetView: {
                     headingDegrees: 90,
                     isEnabled: true,
@@ -20926,8 +22086,8 @@ describe("BetaApIsClient", () => {
                 },
                 id: "12345",
                 iftaExemptionTypes: [
-                    "Deserunt velit voluptatem atque deserunt voluptas sed.",
-                    "Magnam molestiae necessitatibus maiores dicta maiores.",
+                    "Eum quam sunt sit doloribus in deserunt.",
+                    "Laudantium temporibus enim quia fugiat praesentium in.",
                 ],
                 isAutoDismissRolledStopsEnabled: false,
                 isShowAddressesEnabled: true,
@@ -20944,7 +22104,11 @@ describe("BetaApIsClient", () => {
                     ],
                 },
                 notes: "Receiving 6-2",
-                placeTypes: ["Dolorem quis autem nostrum voluptas et quasi.", "Tenetur eveniet aliquid."],
+                placeTypes: [
+                    "Voluptatem atque deserunt.",
+                    "Sed veniam magnam molestiae.",
+                    "Maiores dicta maiores assumenda.",
+                ],
                 routing: [
                     {
                         driverInstructions: "Use lane 2",
@@ -20976,18 +22140,19 @@ describe("BetaApIsClient", () => {
                         },
                         serviceWindows: [
                             {
-                                days: [
-                                    "Quo quidem.",
-                                    "Voluptatibus ut voluptas et accusantium est labore.",
-                                    "Magni sint quia.",
-                                ],
+                                days: ["Ut debitis distinctio sed.", "Hic tempore amet nostrum alias."],
                                 endTime: "17:00:01",
                                 startTime: "09:00:00",
                             },
                         ],
                     },
                 ],
-                safetyEventExclusions: ["Id dolor suscipit.", "Esse labore temporibus velit."],
+                safetyEventExclusions: [
+                    "Repudiandae et laborum commodi possimus.",
+                    "Consequatur eos voluptatibus.",
+                    "Harum rerum ut doloribus voluptatum quaerat.",
+                    "Voluptatem reiciendis consectetur praesentium.",
+                ],
                 streetView: {
                     headingDegrees: 90,
                     isEnabled: true,
@@ -21474,8 +22639,8 @@ describe("BetaApIsClient", () => {
                 },
                 id: "12345",
                 iftaExemptionTypes: [
-                    "Deserunt velit voluptatem atque deserunt voluptas sed.",
-                    "Magnam molestiae necessitatibus maiores dicta maiores.",
+                    "Eum quam sunt sit doloribus in deserunt.",
+                    "Laudantium temporibus enim quia fugiat praesentium in.",
                 ],
                 isAutoDismissRolledStopsEnabled: false,
                 isShowAddressesEnabled: true,
@@ -21492,7 +22657,11 @@ describe("BetaApIsClient", () => {
                     ],
                 },
                 notes: "Receiving 6-2",
-                placeTypes: ["Dolorem quis autem nostrum voluptas et quasi.", "Tenetur eveniet aliquid."],
+                placeTypes: [
+                    "Voluptatem atque deserunt.",
+                    "Sed veniam magnam molestiae.",
+                    "Maiores dicta maiores assumenda.",
+                ],
                 routing: [
                     {
                         driverInstructions: "Use lane 2",
@@ -21516,18 +22685,19 @@ describe("BetaApIsClient", () => {
                         serviceTime: { isEnabled: true, serviceTimeMinutes: 5 },
                         serviceWindows: [
                             {
-                                days: [
-                                    "Quo quidem.",
-                                    "Voluptatibus ut voluptas et accusantium est labore.",
-                                    "Magni sint quia.",
-                                ],
+                                days: ["Ut debitis distinctio sed.", "Hic tempore amet nostrum alias."],
                                 endTime: "17:00:01",
                                 startTime: "09:00:00",
                             },
                         ],
                     },
                 ],
-                safetyEventExclusions: ["Id dolor suscipit.", "Esse labore temporibus velit."],
+                safetyEventExclusions: [
+                    "Repudiandae et laborum commodi possimus.",
+                    "Consequatur eos voluptatibus.",
+                    "Harum rerum ut doloribus voluptatum quaerat.",
+                    "Voluptatem reiciendis consectetur praesentium.",
+                ],
                 streetView: {
                     headingDegrees: 90,
                     isEnabled: true,
@@ -21584,8 +22754,8 @@ describe("BetaApIsClient", () => {
                 },
                 id: "12345",
                 iftaExemptionTypes: [
-                    "Deserunt velit voluptatem atque deserunt voluptas sed.",
-                    "Magnam molestiae necessitatibus maiores dicta maiores.",
+                    "Eum quam sunt sit doloribus in deserunt.",
+                    "Laudantium temporibus enim quia fugiat praesentium in.",
                 ],
                 isAutoDismissRolledStopsEnabled: false,
                 isShowAddressesEnabled: true,
@@ -21602,7 +22772,11 @@ describe("BetaApIsClient", () => {
                     ],
                 },
                 notes: "Receiving 6-2",
-                placeTypes: ["Dolorem quis autem nostrum voluptas et quasi.", "Tenetur eveniet aliquid."],
+                placeTypes: [
+                    "Voluptatem atque deserunt.",
+                    "Sed veniam magnam molestiae.",
+                    "Maiores dicta maiores assumenda.",
+                ],
                 routing: [
                     {
                         driverInstructions: "Use lane 2",
@@ -21634,18 +22808,19 @@ describe("BetaApIsClient", () => {
                         },
                         serviceWindows: [
                             {
-                                days: [
-                                    "Quo quidem.",
-                                    "Voluptatibus ut voluptas et accusantium est labore.",
-                                    "Magni sint quia.",
-                                ],
+                                days: ["Ut debitis distinctio sed.", "Hic tempore amet nostrum alias."],
                                 endTime: "17:00:01",
                                 startTime: "09:00:00",
                             },
                         ],
                     },
                 ],
-                safetyEventExclusions: ["Id dolor suscipit.", "Esse labore temporibus velit."],
+                safetyEventExclusions: [
+                    "Repudiandae et laborum commodi possimus.",
+                    "Consequatur eos voluptatibus.",
+                    "Harum rerum ut doloribus voluptatum quaerat.",
+                    "Voluptatem reiciendis consectetur praesentium.",
+                ],
                 streetView: {
                     headingDegrees: 90,
                     isEnabled: true,
@@ -29254,7 +30429,9 @@ describe("BetaApIsClient", () => {
             data: {
                 columns: [{ dataType: "string", name: "Device Name" }],
                 rows: [
-                    [{ key: "value" }, { key: "value" }, { key: "value" }, { key: "value" }],
+                    [{ key: "value" }, { key: "value" }],
+                    [{ key: "value" }, { key: "value" }, { key: "value" }],
+                    [{ key: "value" }, { key: "value" }, { key: "value" }],
                     [{ key: "value" }, { key: "value" }, { key: "value" }],
                 ],
                 status: "complete",
@@ -29279,6 +30456,22 @@ describe("BetaApIsClient", () => {
                         {
                             key: "value",
                         },
+                        {
+                            key: "value",
+                        },
+                    ],
+                    [
+                        {
+                            key: "value",
+                        },
+                        {
+                            key: "value",
+                        },
+                        {
+                            key: "value",
+                        },
+                    ],
+                    [
                         {
                             key: "value",
                         },
@@ -29508,13 +30701,8 @@ describe("BetaApIsClient", () => {
                     ],
                     isActive: true,
                     lastName: "Doe",
-                    specialInstructions: { isGuardianRequired: false, isSpecialEducation: true },
-                    tagIds: [
-                        "Recusandae temporibus eveniet nostrum autem.",
-                        "A harum temporibus aliquid eum exercitationem.",
-                        "Amet laborum odit.",
-                        "Ullam totam esse dolorum quis numquam.",
-                    ],
+                    specialInstructions: { isGuardianRequired: true, isSpecialEducation: false },
+                    tagIds: ["Officiis inventore est nemo molestias aut.", "Beatae libero laborum iure sit est."],
                     updatedAtTime: "2024-11-15T10:30:00Z",
                 },
             ],
@@ -29552,15 +30740,10 @@ describe("BetaApIsClient", () => {
                     isActive: true,
                     lastName: "Doe",
                     specialInstructions: {
-                        isGuardianRequired: false,
-                        isSpecialEducation: true,
+                        isGuardianRequired: true,
+                        isSpecialEducation: false,
                     },
-                    tagIds: [
-                        "Recusandae temporibus eveniet nostrum autem.",
-                        "A harum temporibus aliquid eum exercitationem.",
-                        "Amet laborum odit.",
-                        "Ullam totam esse dolorum quis numquam.",
-                    ],
+                    tagIds: ["Officiis inventore est nemo molestias aut.", "Beatae libero laborum iure sit est."],
                     updatedAtTime: "2024-11-15T10:30:00Z",
                 },
             ],
@@ -29817,13 +31000,8 @@ describe("BetaApIsClient", () => {
                 ],
                 isActive: true,
                 lastName: "Doe",
-                specialInstructions: { isGuardianRequired: false, isSpecialEducation: true },
-                tagIds: [
-                    "Recusandae temporibus eveniet nostrum autem.",
-                    "A harum temporibus aliquid eum exercitationem.",
-                    "Amet laborum odit.",
-                    "Ullam totam esse dolorum quis numquam.",
-                ],
+                specialInstructions: { isGuardianRequired: true, isSpecialEducation: false },
+                tagIds: ["Officiis inventore est nemo molestias aut.", "Beatae libero laborum iure sit est."],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
         };
@@ -29860,15 +31038,10 @@ describe("BetaApIsClient", () => {
                 isActive: true,
                 lastName: "Doe",
                 specialInstructions: {
-                    isGuardianRequired: false,
-                    isSpecialEducation: true,
+                    isGuardianRequired: true,
+                    isSpecialEducation: false,
                 },
-                tagIds: [
-                    "Recusandae temporibus eveniet nostrum autem.",
-                    "A harum temporibus aliquid eum exercitationem.",
-                    "Amet laborum odit.",
-                    "Ullam totam esse dolorum quis numquam.",
-                ],
+                tagIds: ["Officiis inventore est nemo molestias aut.", "Beatae libero laborum iure sit est."],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
         });
@@ -30138,13 +31311,8 @@ describe("BetaApIsClient", () => {
                 ],
                 isActive: true,
                 lastName: "Doe",
-                specialInstructions: { isGuardianRequired: false, isSpecialEducation: true },
-                tagIds: [
-                    "Recusandae temporibus eveniet nostrum autem.",
-                    "A harum temporibus aliquid eum exercitationem.",
-                    "Amet laborum odit.",
-                    "Ullam totam esse dolorum quis numquam.",
-                ],
+                specialInstructions: { isGuardianRequired: true, isSpecialEducation: false },
+                tagIds: ["Officiis inventore est nemo molestias aut.", "Beatae libero laborum iure sit est."],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
         };
@@ -30182,15 +31350,10 @@ describe("BetaApIsClient", () => {
                 isActive: true,
                 lastName: "Doe",
                 specialInstructions: {
-                    isGuardianRequired: false,
-                    isSpecialEducation: true,
+                    isGuardianRequired: true,
+                    isSpecialEducation: false,
                 },
-                tagIds: [
-                    "Recusandae temporibus eveniet nostrum autem.",
-                    "A harum temporibus aliquid eum exercitationem.",
-                    "Amet laborum odit.",
-                    "Ullam totam esse dolorum quis numquam.",
-                ],
+                tagIds: ["Officiis inventore est nemo molestias aut.", "Beatae libero laborum iure sit est."],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
         });
@@ -30711,13 +31874,8 @@ describe("BetaApIsClient", () => {
                 ],
                 isActive: true,
                 lastName: "Doe",
-                specialInstructions: { isGuardianRequired: false, isSpecialEducation: true },
-                tagIds: [
-                    "Recusandae temporibus eveniet nostrum autem.",
-                    "A harum temporibus aliquid eum exercitationem.",
-                    "Amet laborum odit.",
-                    "Ullam totam esse dolorum quis numquam.",
-                ],
+                specialInstructions: { isGuardianRequired: true, isSpecialEducation: false },
+                tagIds: ["Officiis inventore est nemo molestias aut.", "Beatae libero laborum iure sit est."],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
         };
@@ -30752,15 +31910,10 @@ describe("BetaApIsClient", () => {
                 isActive: true,
                 lastName: "Doe",
                 specialInstructions: {
-                    isGuardianRequired: false,
-                    isSpecialEducation: true,
+                    isGuardianRequired: true,
+                    isSpecialEducation: false,
                 },
-                tagIds: [
-                    "Recusandae temporibus eveniet nostrum autem.",
-                    "A harum temporibus aliquid eum exercitationem.",
-                    "Amet laborum odit.",
-                    "Ullam totam esse dolorum quis numquam.",
-                ],
+                tagIds: ["Officiis inventore est nemo molestias aut.", "Beatae libero laborum iure sit est."],
                 updatedAtTime: "2024-11-15T10:30:00Z",
             },
         });

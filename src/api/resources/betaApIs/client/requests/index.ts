@@ -5,6 +5,7 @@ export { AssetSharingAgreementsCreateAssetSharingAgreementRequestBody } from "./
 export type { AssetSharingAgreementsCreateSharedAssetsBatchRequestBody } from "./AssetSharingAgreementsCreateSharedAssetsBatchRequestBody.js";
 export type { AssetSharingAgreementsUpdateSharedAssetsBatchRequestBody } from "./AssetSharingAgreementsUpdateSharedAssetsBatchRequestBody.js";
 export type { CancelAssetSharingAgreementRequest } from "./CancelAssetSharingAgreementRequest.js";
+export type { CreateStockMovementActionServiceCreateStockMovementRequestBody } from "./CreateStockMovementActionServiceCreateStockMovementRequestBody.js";
 export type { DeleteAssetSharingAgreementRequest } from "./DeleteAssetSharingAgreementRequest.js";
 export type { DeleteFunctionRequest } from "./DeleteFunctionRequest.js";
 export type { DeleteFunctionStorageFileRequest } from "./DeleteFunctionStorageFileRequest.js";

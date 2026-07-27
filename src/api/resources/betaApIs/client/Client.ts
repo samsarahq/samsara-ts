@@ -7742,6 +7742,117 @@ export class BetaApIsClient {
     }
 
     /**
+     * Records a receive, transfer, scrap, or adjust stock movement against a part's inventory and returns the resulting inventory location(s). Not idempotent — retrying a request that already succeeded records the movement again.
+     *
+     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *
+     * To use this endpoint, select **Write Parts** under the Work Orders category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     *
+     *
+     *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
+     *
+     * @param {Samsara.CreateStockMovementActionServiceCreateStockMovementRequestBody} request
+     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Samsara.UnauthorizedError}
+     * @throws {@link Samsara.NotFoundError}
+     * @throws {@link Samsara.MethodNotAllowedError}
+     * @throws {@link Samsara.TooManyRequestsError}
+     * @throws {@link Samsara.InternalServerError}
+     * @throws {@link Samsara.NotImplementedError}
+     * @throws {@link Samsara.BadGatewayError}
+     * @throws {@link Samsara.ServiceUnavailableError}
+     * @throws {@link Samsara.GatewayTimeoutError}
+     *
+     * @example
+     *     await client.betaApIs.createStockMovement({
+     *         movementType: "12345",
+     *         partSamsaraId: "12345",
+     *         quantity: 123.45
+     *     })
+     */
+    public createStockMovement(
+        request: Samsara.CreateStockMovementActionServiceCreateStockMovementRequestBody,
+        requestOptions?: BetaApIsClient.RequestOptions,
+    ): core.HttpResponsePromise<Samsara.CreateStockMovementActionServiceCreateStockMovementResponseBody> {
+        return core.HttpResponsePromise.fromPromise(this.__createStockMovement(request, requestOptions));
+    }
+
+    private async __createStockMovement(
+        request: Samsara.CreateStockMovementActionServiceCreateStockMovementRequestBody,
+        requestOptions?: BetaApIsClient.RequestOptions,
+    ): Promise<core.WithRawResponse<Samsara.CreateStockMovementActionServiceCreateStockMovementResponseBody>> {
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ "X-Samsara-Version": requestOptions?.version }),
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.SamsaraEnvironment.ProductionApi,
+                "maintenance/parts/stock-movements",
+            ),
+            method: "POST",
+            headers: _headers,
+            contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
+            requestType: "json",
+            body: request,
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return {
+                data: _response.body as Samsara.CreateStockMovementActionServiceCreateStockMovementResponseBody,
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 401:
+                    throw new Samsara.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
+                case 404:
+                    throw new Samsara.NotFoundError(_response.error.body as unknown, _response.rawResponse);
+                case 405:
+                    throw new Samsara.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
+                case 429:
+                    throw new Samsara.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
+                case 500:
+                    throw new Samsara.InternalServerError(_response.error.body as unknown, _response.rawResponse);
+                case 501:
+                    throw new Samsara.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
+                case 502:
+                    throw new Samsara.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                case 503:
+                    throw new Samsara.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
+                case 504:
+                    throw new Samsara.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
+                default:
+                    throw new errors.SamsaraError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
+                    });
+            }
+        }
+
+        return handleNonStatusCodeError(
+            _response.error,
+            _response.rawResponse,
+            "POST",
+            "/maintenance/parts/stock-movements",
+        );
+    }
+
+    /**
      * Returns a paginated list of preventive maintenance schedules for the organization.
      *
      *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).

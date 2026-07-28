@@ -26,6 +26,7 @@ export type { EntityPartDefinitionsServiceCreatePartRequestBody } from "./Entity
 export type { EntityPartDefinitionsServiceUpdatePartRequestBody } from "./EntityPartDefinitionsServiceUpdatePartRequestBody.js";
 export type { EntityPartInventoryLocationsServiceCreatePartInventoryLocationRequestBody } from "./EntityPartInventoryLocationsServiceCreatePartInventoryLocationRequestBody.js";
 export type { EntityPartInventoryLocationsServiceUpdatePartInventoryLocationRequestBody } from "./EntityPartInventoryLocationsServiceUpdatePartInventoryLocationRequestBody.js";
+export { EntityWatchpointsServiceCreateWatchpointRequestBody } from "./EntityWatchpointsServiceCreateWatchpointRequestBody.js";
 export type { EquipmentOutputControlSetEquipmentDigitalOutputRequestBody } from "./EquipmentOutputControlSetEquipmentDigitalOutputRequestBody.js";
 export type { EquipmentPatchEquipmentRequestBody } from "./EquipmentPatchEquipmentRequestBody.js";
 export { FleetInstallerPhotoUploadsPostFleetInstallerPhotoUploadRequestBody } from "./FleetInstallerPhotoUploadsPostFleetInstallerPhotoUploadRequestBody.js";

@@ -16,16 +16,16 @@ describe("SettingsClient", () => {
 
         const rawResponseBody = {
             data: {
-                allowUnregulatedVehiclesEnabled: true,
+                allowUnregulatedVehiclesEnabled: false,
                 canadaHosEnabled: true,
                 carrierName: "ABC Trucking",
                 dotNumber: 12345678,
                 driverAutoDutyEnabled: false,
-                editCertifiedLogsEnabled: true,
+                editCertifiedLogsEnabled: false,
                 forceManualLocationForDutyStatusChangesEnabled: true,
                 forceReviewUnassignedHosEnabled: true,
                 mainOfficeFormattedAddress: "123 Main Street",
-                persistentDutyStatusEnabled: true,
+                persistentDutyStatusEnabled: false,
             },
         };
         server
@@ -39,16 +39,16 @@ describe("SettingsClient", () => {
         const response = await client.settings.getComplianceSettings();
         expect(response).toEqual({
             data: {
-                allowUnregulatedVehiclesEnabled: true,
+                allowUnregulatedVehiclesEnabled: false,
                 canadaHosEnabled: true,
                 carrierName: "ABC Trucking",
                 dotNumber: 12345678,
                 driverAutoDutyEnabled: false,
-                editCertifiedLogsEnabled: true,
+                editCertifiedLogsEnabled: false,
                 forceManualLocationForDutyStatusChangesEnabled: true,
                 forceReviewUnassignedHosEnabled: true,
                 mainOfficeFormattedAddress: "123 Main Street",
-                persistentDutyStatusEnabled: true,
+                persistentDutyStatusEnabled: false,
             },
         });
     });
@@ -271,16 +271,16 @@ describe("SettingsClient", () => {
         const rawRequestBody = {};
         const rawResponseBody = {
             data: {
-                allowUnregulatedVehiclesEnabled: true,
+                allowUnregulatedVehiclesEnabled: false,
                 canadaHosEnabled: true,
                 carrierName: "ABC Trucking",
                 dotNumber: 12345678,
                 driverAutoDutyEnabled: false,
-                editCertifiedLogsEnabled: true,
+                editCertifiedLogsEnabled: false,
                 forceManualLocationForDutyStatusChangesEnabled: true,
                 forceReviewUnassignedHosEnabled: true,
                 mainOfficeFormattedAddress: "123 Main Street",
-                persistentDutyStatusEnabled: true,
+                persistentDutyStatusEnabled: false,
             },
         };
         server
@@ -295,16 +295,16 @@ describe("SettingsClient", () => {
         const response = await client.settings.patchComplianceSettings();
         expect(response).toEqual({
             data: {
-                allowUnregulatedVehiclesEnabled: true,
+                allowUnregulatedVehiclesEnabled: false,
                 canadaHosEnabled: true,
                 carrierName: "ABC Trucking",
                 dotNumber: 12345678,
                 driverAutoDutyEnabled: false,
-                editCertifiedLogsEnabled: true,
+                editCertifiedLogsEnabled: false,
                 forceManualLocationForDutyStatusChangesEnabled: true,
                 forceReviewUnassignedHosEnabled: true,
                 mainOfficeFormattedAddress: "123 Main Street",
-                persistentDutyStatusEnabled: true,
+                persistentDutyStatusEnabled: false,
             },
         });
     });
@@ -537,14 +537,14 @@ describe("SettingsClient", () => {
         const rawResponseBody = {
             data: {
                 driverFleetId: "abc_trucking_co",
-                gamification: false,
+                gamification: true,
                 gamificationConfig: { anonymizeDriverNames: false },
-                orgVehicleSearch: false,
-                trailerSelection: true,
+                orgVehicleSearch: true,
+                trailerSelection: false,
                 trailerSelectionConfig: {
                     driverTrailerCreationEnabled: false,
                     maxNumOfTrailersSelected: 1000000,
-                    orgTrailerSearch: true,
+                    orgTrailerSearch: false,
                 },
             },
         };
@@ -560,16 +560,16 @@ describe("SettingsClient", () => {
         expect(response).toEqual({
             data: {
                 driverFleetId: "abc_trucking_co",
-                gamification: false,
+                gamification: true,
                 gamificationConfig: {
                     anonymizeDriverNames: false,
                 },
-                orgVehicleSearch: false,
-                trailerSelection: true,
+                orgVehicleSearch: true,
+                trailerSelection: false,
                 trailerSelectionConfig: {
                     driverTrailerCreationEnabled: false,
                     maxNumOfTrailersSelected: 1000000,
-                    orgTrailerSearch: true,
+                    orgTrailerSearch: false,
                 },
             },
         });
@@ -794,14 +794,14 @@ describe("SettingsClient", () => {
         const rawResponseBody = {
             data: {
                 driverFleetId: "abc_trucking_co",
-                gamification: false,
+                gamification: true,
                 gamificationConfig: { anonymizeDriverNames: false },
-                orgVehicleSearch: false,
-                trailerSelection: true,
+                orgVehicleSearch: true,
+                trailerSelection: false,
                 trailerSelectionConfig: {
                     driverTrailerCreationEnabled: false,
                     maxNumOfTrailersSelected: 1000000,
-                    orgTrailerSearch: true,
+                    orgTrailerSearch: false,
                 },
             },
         };
@@ -818,16 +818,16 @@ describe("SettingsClient", () => {
         expect(response).toEqual({
             data: {
                 driverFleetId: "abc_trucking_co",
-                gamification: false,
+                gamification: true,
                 gamificationConfig: {
                     anonymizeDriverNames: false,
                 },
-                orgVehicleSearch: false,
-                trailerSelection: true,
+                orgVehicleSearch: true,
+                trailerSelection: false,
                 trailerSelectionConfig: {
                     driverTrailerCreationEnabled: false,
                     maxNumOfTrailersSelected: 1000000,
-                    orgTrailerSearch: true,
+                    orgTrailerSearch: false,
                 },
             },
         });

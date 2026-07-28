@@ -21,8 +21,8 @@ describe("GatewaysClient", () => {
                     asset: { id: "8393848111" },
                     connectionStatus: { lastConnected: "2019-06-13T19:08:25Z" },
                     dataUsageLast30Days: {
-                        cellularDataUsageBytes: 9168409908548378000,
-                        hotspotUsageBytes: 4543079929184920000,
+                        cellularDataUsageBytes: 8966766145435889000,
+                        hotspotUsageBytes: 6933367980144720000,
                     },
                     model: "AG15",
                     serial: "GFRV-43N-VGX",
@@ -49,8 +49,8 @@ describe("GatewaysClient", () => {
                         lastConnected: "2019-06-13T19:08:25Z",
                     },
                     dataUsageLast30Days: {
-                        cellularDataUsageBytes: 9168409908548378000,
-                        hotspotUsageBytes: 4543079929184920000,
+                        cellularDataUsageBytes: 8966766145435889000,
+                        hotspotUsageBytes: 6933367980144720000,
                     },
                     model: "AG15",
                     serial: "GFRV-43N-VGX",
@@ -231,8 +231,8 @@ describe("GatewaysClient", () => {
                 asset: { externalIds: { key: "value" }, id: "8393848111" },
                 connectionStatus: { healthStatus: "Status Not Set", lastConnected: "2019-06-13T19:08:25Z" },
                 dataUsageLast30Days: {
-                    cellularDataUsageBytes: 9168409908548378000,
-                    hotspotUsageBytes: 4543079929184920000,
+                    cellularDataUsageBytes: 8966766145435889000,
+                    hotspotUsageBytes: 6933367980144720000,
                 },
                 model: "AG15",
                 serial: "GFRV-43N-VGX",
@@ -269,8 +269,8 @@ describe("GatewaysClient", () => {
                     lastConnected: "2019-06-13T19:08:25Z",
                 },
                 dataUsageLast30Days: {
-                    cellularDataUsageBytes: 9168409908548378000,
-                    hotspotUsageBytes: 4543079929184920000,
+                    cellularDataUsageBytes: 8966766145435889000,
+                    hotspotUsageBytes: 6933367980144720000,
                 },
                 model: "AG15",
                 serial: "GFRV-43N-VGX",

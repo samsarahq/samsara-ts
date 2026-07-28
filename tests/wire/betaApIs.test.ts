@@ -12892,7 +12892,7 @@ describe("BetaApIsClient", () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
         
-        const rawResponseBody = { "data" : [ { "createdAtTime" : "2024-04-10T11:30:00Z" , "customProperties" : [ { "customPropertyId" : "750e8400-e29b-41d4-a716-446655440004" , "name" : "CustomerType" , "value" : "Premium" } ] , "customerOrderId" : "ORDER-2024-001" , "delivery" : { "address" : "123 Business Way, San Francisco" , "appointmentWindow" : { "endTime" : "2024-04-10T17:00:00Z" , "startTime" : "2024-04-10T09:00:00Z" } , "customerLocationId" : "LOC-123" , "latitude" : 37.7749 , "longitude" : -122.4194 , "notes" : "Use main entrance" , "serviceTimeSeconds" : 600 } , "hubId" : "550e8400-e29b-41d4-a716-446655440000" , "id" : "a50e8400-e29b-41d4-a716-446655440006" , "pickup" : { "address" : "123 Business Way, San Francisco" , "appointmentWindow" : { "endTime" : "2024-04-10T17:00:00Z" , "startTime" : "2024-04-10T09:00:00Z" } , "customerLocationId" : "LOC-123" , "latitude" : 37.7749 , "longitude" : -122.4194 , "notes" : "Use main entrance" , "serviceTimeSeconds" : 600 } , "planId" : "650e8400-e29b-41d4-a716-446655440023" , "priority" : 1 , "quantities" : [ { "capacityId" : "850e8400-e29b-41d4-a716-446655440003" , "quantity" : 25.5 } ] , "routeId" : "950e8400-e29b-41d4-a716-446655440005" , "skillsRequired" : [ "650e8400-e29b-41d4-a716-446655440001" , "650e8400-e29b-41d4-a716-446655440001" , "650e8400-e29b-41d4-a716-446655440001" , "650e8400-e29b-41d4-a716-446655440001" ] , "updatedAtTime" : "2024-04-10T11:30:00Z" } ] , "pagination" : { "endCursor" : "YXJyYXljb25uZWN0aW9uOjEwMA==" , "hasNextPage" : false } };
+        const rawResponseBody = { "data" : [ { "createdAtTime" : "2024-04-10T11:30:00Z" , "customProperties" : [ { "customPropertyId" : "750e8400-e29b-41d4-a716-446655440004" , "name" : "CustomerType" , "value" : "Premium" } ] , "customerOrderId" : "ORDER-2024-001" , "delivery" : { "address" : "123 Business Way, San Francisco" , "appointmentWindow" : { "endTime" : "2024-04-10T17:00:00Z" , "startTime" : "2024-04-10T09:00:00Z" } , "customerLocationId" : "LOC-123" , "latitude" : 37.7749 , "longitude" : -122.4194 , "notes" : "Use main entrance" , "serviceTimeSeconds" : 600 } , "hubId" : "550e8400-e29b-41d4-a716-446655440000" , "id" : "a50e8400-e29b-41d4-a716-446655440006" , "pickup" : { "address" : "123 Business Way, San Francisco" , "appointmentWindow" : { "endTime" : "2024-04-10T17:00:00Z" , "startTime" : "2024-04-10T09:00:00Z" } , "customerLocationId" : "LOC-123" , "latitude" : 37.7749 , "longitude" : -122.4194 , "notes" : "Use main entrance" , "serviceTimeSeconds" : 600 } , "planId" : "650e8400-e29b-41d4-a716-446655440023" , "priority" : 1 , "quantities" : [ { "capacityId" : "850e8400-e29b-41d4-a716-446655440003" , "quantity" : 25.5 } ] , "routeId" : "950e8400-e29b-41d4-a716-446655440005" , "skillsRequired" : [ "650e8400-e29b-41d4-a716-446655440001" , "650e8400-e29b-41d4-a716-446655440001" , "650e8400-e29b-41d4-a716-446655440001" ] , "updatedAtTime" : "2024-04-10T11:30:00Z" } ] , "pagination" : { "endCursor" : "YXJyYXljb25uZWN0aW9uOjEwMA==" , "hasNextPage" : false } };
         server
             .mockEndpoint()
             .get("/hub/plan/orders").respondWith()
@@ -12946,7 +12946,7 @@ describe("BetaApIsClient", () => {
                     quantity: 25.5
                 }],
             routeId: "950e8400-e29b-41d4-a716-446655440005",
-            skillsRequired: ["650e8400-e29b-41d4-a716-446655440001", "650e8400-e29b-41d4-a716-446655440001", "650e8400-e29b-41d4-a716-446655440001", "650e8400-e29b-41d4-a716-446655440001"],
+            skillsRequired: ["650e8400-e29b-41d4-a716-446655440001", "650e8400-e29b-41d4-a716-446655440001", "650e8400-e29b-41d4-a716-446655440001"],
             updatedAtTime: "2024-04-10T11:30:00Z"
         }],
     pagination: {
@@ -13556,7 +13556,7 @@ describe("BetaApIsClient", () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
         const rawRequestBody = { "hubId" : "550e8400-e29b-41d4-a716-446655440000" , "name" : "Downtown Delivery Route" };
-        const rawResponseBody = { "data" : { "createdAtTime" : "2024-01-15T10:30:00Z" , "defaultDepotEnd" : { "externalId" : "DEPOT-001" , "formattedAddress" : "123 Industrial Blvd, Los Angeles, CA 90210, US" , "id" : "750e8400-e29b-41d4-a716-446655440002" , "latitude" : 34.0522 , "longitude" : -118.2437 , "name" : "Main Warehouse" } , "defaultDepotStart" : { "externalId" : "DEPOT-001" , "formattedAddress" : "123 Industrial Blvd, Los Angeles, CA 90210, US" , "id" : "750e8400-e29b-41d4-a716-446655440002" , "latitude" : 34.0522 , "longitude" : -118.2437 , "name" : "Main Warehouse" } , "defaultStartTimeOfDay" : "08:00" , "distanceMeters" : 15000 , "durationSeconds" : 3600 , "hubId" : "550e8400-e29b-41d4-a716-446655440000" , "id" : "660e8400-e29b-41d4-a716-446655440001" , "locations" : [ { "externalId" : "LOC-123" , "formattedAddress" : "456 Main St, Los Angeles, CA 90210, US" , "latitude" : 34.0522 , "longitude" : -118.2437 , "name" : "Customer ABC Warehouse" , "position" : 1 } ] , "name" : "Downtown Delivery Route" , "updatedAtTime" : "2024-01-15T12:00:00Z" } };
+        const rawResponseBody = { "data" : { "createdAtTime" : "2024-01-15T10:30:00Z" , "defaultDepotEnd" : { "externalId" : "DEPOT-001" , "formattedAddress" : "123 Industrial Blvd, Los Angeles, CA 90210, US" , "id" : "750e8400-e29b-41d4-a716-446655440002" , "latitude" : 34.0522 , "longitude" : -118.2437 , "name" : "Main Warehouse" } , "defaultDepotStart" : { "externalId" : "DEPOT-001" , "formattedAddress" : "123 Industrial Blvd, Los Angeles, CA 90210, US" , "id" : "750e8400-e29b-41d4-a716-446655440002" , "latitude" : 34.0522 , "longitude" : -118.2437 , "name" : "Main Warehouse" } , "defaultStartTimeOfDay" : "08:00" , "distanceMeters" : 15000 , "durationSeconds" : 3600 , "hubId" : "550e8400-e29b-41d4-a716-446655440000" , "hubTimezone" : "America/Los_Angeles" , "id" : "660e8400-e29b-41d4-a716-446655440001" , "locations" : [ { "externalId" : "LOC-123" , "formattedAddress" : "456 Main St, Los Angeles, CA 90210, US" , "latitude" : 34.0522 , "longitude" : -118.2437 , "name" : "Customer ABC Warehouse" , "position" : 1 } ] , "name" : "Downtown Delivery Route" , "updatedAtTime" : "2024-01-15T12:00:00Z" } };
         server
             .mockEndpoint()
             .post("/hub/route-templates").jsonBody(rawRequestBody)
@@ -13593,6 +13593,7 @@ describe("BetaApIsClient", () => {
         distanceMeters: 15000,
         durationSeconds: 3600,
         hubId: "550e8400-e29b-41d4-a716-446655440000",
+        hubTimezone: "America/Los_Angeles",
         id: "660e8400-e29b-41d4-a716-446655440001",
         locations: [{
                 externalId: "LOC-123",
@@ -16541,7 +16542,7 @@ describe("BetaApIsClient", () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
         
-        const rawResponseBody = { "data" : [ { "address" : "123 Main St" , "businessContacts" : { "email" : [ "warehouse@example.com" ] , "phoneNumbers" : [ "+14155551234" ] } , "cameraRecordingModeType" : "inherit" , "createdAtTime" : "2019-06-13T19:08:25Z" , "geofence" : { "circle" : { "latitude" : 37.7749 , "longitude" : -122.4194 , "radiusMeters" : 150 } , "polygon" : { "vertices" : [ { "latitude" : 37.7749 , "longitude" : -122.4194 } ] } , "type" : "circle" } , "id" : "12345" , "iftaExemptionTypes" : [ "Ut voluptas et accusantium est labore." , "Magni sint quia." , "Nihil sequi enim rem exercitationem." , "Quaerat earum repudiandae et laborum commodi possimus." ] , "isAutoDismissRolledStopsEnabled" : false , "isShowAddressesEnabled" : true , "name" : "Oakland Yard" , "navigation" : { "locations" : [ { "driverInstructions" : "Check in at booth." , "latitude" : 37.7749 , "locationType" : "entrance" , "longitude" : -122.4194 , "name" : "Main gate" } ] } , "notes" : "Receiving 6-2" , "placeTypes" : [ "Voluptas et." , "Quo tenetur eveniet aliquid dolor nesciunt qui." ] , "routing" : [ { "driverInstructions" : "Use lane 2" , "hubId" : "550e8400-e29b-41d4-a716-446655440003" , "hubNotes" : "Zone A preferred" , "isDepot" : false , "orderServiceTime" : { "capacityServiceTime" : { "capacityId" : "550e8400-e29b-41d4-a716-446655440001" , "quantityPerServiceTime" : 0.5 , "serviceTimeSeconds" : 60 } , "fixedServiceTimeSeconds" : 300 , "isEnabled" : true , "modeType" : "variable" } , "position" : "first" , "priority" : 3 , "requiredSkills" : [ { "id" : "550e8400-e29b-41d4-a716-446655440000" , "name" : "Refrigerated" } ] , "routingExternalId" : "store-A" , "serviceTime" : { "isEnabled" : true , "serviceTimeMinutes" : 5 } , "serviceWindows" : [ { "days" : [ "Rerum ut doloribus voluptatum quaerat nobis." , "Reiciendis consectetur praesentium cumque." ] , "endTime" : "17:00:01" , "startTime" : "09:00:00" } ] } ] , "safetyEventExclusions" : [ "Beatae ad autem." , "Nam ut eum." , "Quis commodi fuga." , "Dolores architecto velit dolorem." ] , "streetView" : { "headingDegrees" : 90 , "isEnabled" : true , "latitude" : 37.7749 , "longitude" : -122.4194 , "pitchDegrees" : 0 , "zoom" : 1 } , "tags" : [ { "id" : "1001" , "name" : "Yard" , "parentTagId" : "500" } ] , "updatedAtTime" : "2019-06-13T19:08:25Z" } ] , "pagination" : { "endCursor" : "MjkY" , "hasNextPage" : true } };
+        const rawResponseBody = { "data" : [ { "address" : "123 Main St" , "businessContacts" : { "email" : [ "warehouse@example.com" ] , "phoneNumbers" : [ "+14155551234" ] } , "cameraRecordingModeType" : "inherit" , "createdAtTime" : "2019-06-13T19:08:25Z" , "geofence" : { "circle" : { "latitude" : 37.7749 , "longitude" : -122.4194 , "radiusMeters" : 150 } , "polygon" : { "vertices" : [ { "latitude" : 37.7749 , "longitude" : -122.4194 } ] } , "type" : "circle" } , "id" : "12345" , "iftaExemptionTypes" : [ "Commodi fuga quis dolores architecto velit dolorem." , "Blanditiis deserunt velit voluptatem atque deserunt." , "Sed veniam magnam molestiae." , "Maiores dicta maiores assumenda." ] , "isAutoDismissRolledStopsEnabled" : false , "isShowAddressesEnabled" : true , "name" : "Oakland Yard" , "navigation" : { "locations" : [ { "driverInstructions" : "Check in at booth." , "latitude" : 37.7749 , "locationType" : "entrance" , "longitude" : -122.4194 , "name" : "Main gate" } ] } , "notes" : "Receiving 6-2" , "placeTypes" : [ "Et quasi quo tenetur eveniet." , "Dolor nesciunt." , "Dolorem quibusdam est." ] , "routing" : [ { "driverInstructions" : "Use lane 2" , "hubId" : "550e8400-e29b-41d4-a716-446655440003" , "hubNotes" : "Zone A preferred" , "isDepot" : false , "orderServiceTime" : { "capacityServiceTime" : { "capacityId" : "550e8400-e29b-41d4-a716-446655440001" , "quantityPerServiceTime" : 0.5 , "serviceTimeSeconds" : 60 } , "fixedServiceTimeSeconds" : 300 , "isEnabled" : true , "modeType" : "variable" } , "position" : "first" , "priority" : 3 , "requiredSkills" : [ { "id" : "550e8400-e29b-41d4-a716-446655440000" , "name" : "Refrigerated" } ] , "routingExternalId" : "store-A" , "serviceTime" : { "isEnabled" : true , "serviceTimeMinutes" : 5 } , "serviceWindows" : [ { "days" : [ "Ut voluptas et accusantium est labore." , "Magni sint quia." , "Nihil sequi enim rem exercitationem." , "Quaerat earum repudiandae et laborum commodi possimus." ] , "endTime" : "17:00:01" , "startTime" : "09:00:00" } ] } ] , "safetyEventExclusions" : [ "Ut voluptate et ut voluptas id rem." , "Earum quia libero." ] , "streetView" : { "headingDegrees" : 90 , "isEnabled" : true , "latitude" : 37.7749 , "longitude" : -122.4194 , "pitchDegrees" : 0 , "zoom" : 1 } , "tags" : [ { "id" : "1001" , "name" : "Yard" , "parentTagId" : "500" } ] , "updatedAtTime" : "2019-06-13T19:08:25Z" } ] , "pagination" : { "endCursor" : "MjkY" , "hasNextPage" : true } };
         server
             .mockEndpoint()
             .get("/places").respondWith()
@@ -16575,7 +16576,7 @@ describe("BetaApIsClient", () => {
                 type: "circle"
             },
             id: "12345",
-            iftaExemptionTypes: ["Ut voluptas et accusantium est labore.", "Magni sint quia.", "Nihil sequi enim rem exercitationem.", "Quaerat earum repudiandae et laborum commodi possimus."],
+            iftaExemptionTypes: ["Commodi fuga quis dolores architecto velit dolorem.", "Blanditiis deserunt velit voluptatem atque deserunt.", "Sed veniam magnam molestiae.", "Maiores dicta maiores assumenda."],
             isAutoDismissRolledStopsEnabled: false,
             isShowAddressesEnabled: true,
             name: "Oakland Yard",
@@ -16589,7 +16590,7 @@ describe("BetaApIsClient", () => {
                     }]
             },
             notes: "Receiving 6-2",
-            placeTypes: ["Voluptas et.", "Quo tenetur eveniet aliquid dolor nesciunt qui."],
+            placeTypes: ["Et quasi quo tenetur eveniet.", "Dolor nesciunt.", "Dolorem quibusdam est."],
             routing: [{
                     driverInstructions: "Use lane 2",
                     hubId: "550e8400-e29b-41d4-a716-446655440003",
@@ -16617,12 +16618,12 @@ describe("BetaApIsClient", () => {
                         serviceTimeMinutes: 5
                     },
                     serviceWindows: [{
-                            days: ["Rerum ut doloribus voluptatum quaerat nobis.", "Reiciendis consectetur praesentium cumque."],
+                            days: ["Ut voluptas et accusantium est labore.", "Magni sint quia.", "Nihil sequi enim rem exercitationem.", "Quaerat earum repudiandae et laborum commodi possimus."],
                             endTime: "17:00:01",
                             startTime: "09:00:00"
                         }]
                 }],
-            safetyEventExclusions: ["Beatae ad autem.", "Nam ut eum.", "Quis commodi fuga.", "Dolores architecto velit dolorem."],
+            safetyEventExclusions: ["Ut voluptate et ut voluptas id rem.", "Earum quia libero."],
             streetView: {
                 headingDegrees: 90,
                 isEnabled: true,
@@ -16804,7 +16805,7 @@ describe("BetaApIsClient", () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
         const rawRequestBody = { "address" : "123 Main St, Oakland, CA" , "geofence" : { } , "name" : "Oakland Yard" };
-        const rawResponseBody = { "data" : { "address" : "123 Main St" , "businessContacts" : { "contacts" : [ { "email" : "bob@example.com" , "name" : "Bob Smith" , "phoneNumber" : "+14155555678" } ] , "email" : [ "warehouse@example.com" ] , "phoneNumbers" : [ "+14155551234" ] } , "cameraRecordingModeType" : "inherit" , "createdAtTime" : "2019-06-13T19:08:25Z" , "geofence" : { "circle" : { "latitude" : 37.7749 , "longitude" : -122.4194 , "radiusMeters" : 150 } , "polygon" : { "vertices" : [ { "latitude" : 37.7749 , "longitude" : -122.4194 } ] } , "type" : "circle" } , "id" : "12345" , "iftaExemptionTypes" : [ "Ut voluptas et accusantium est labore." , "Magni sint quia." , "Nihil sequi enim rem exercitationem." , "Quaerat earum repudiandae et laborum commodi possimus." ] , "isAutoDismissRolledStopsEnabled" : false , "isShowAddressesEnabled" : true , "name" : "Oakland Yard" , "navigation" : { "locations" : [ { "driverInstructions" : "Check in at booth." , "latitude" : 37.7749 , "locationType" : "entrance" , "longitude" : -122.4194 , "name" : "Main gate" } ] } , "notes" : "Receiving 6-2" , "placeTypes" : [ "Voluptas et." , "Quo tenetur eveniet aliquid dolor nesciunt qui." ] , "routing" : [ { "driverInstructions" : "Use lane 2" , "hubId" : "550e8400-e29b-41d4-a716-446655440003" , "hubNotes" : "Zone A preferred" , "isDepot" : false , "orderServiceTime" : { "capacityServiceTime" : { "capacityId" : "550e8400-e29b-41d4-a716-446655440001" , "quantityPerServiceTime" : 0.5 , "serviceTimeSeconds" : 60 } , "fixedServiceTimeSeconds" : 300 , "isEnabled" : true , "modeType" : "variable" } , "position" : "first" , "priority" : 3 , "requiredSkills" : [ { "id" : "550e8400-e29b-41d4-a716-446655440000" , "name" : "Refrigerated" } ] , "routingExternalId" : "store-A" , "serviceTime" : { "isEnabled" : true , "serviceTimeMinutes" : 5 } , "serviceWindows" : [ { "days" : [ "Rerum ut doloribus voluptatum quaerat nobis." , "Reiciendis consectetur praesentium cumque." ] , "endTime" : "17:00:01" , "startTime" : "09:00:00" } ] } ] , "safetyEventExclusions" : [ "Beatae ad autem." , "Nam ut eum." , "Quis commodi fuga." , "Dolores architecto velit dolorem." ] , "streetView" : { "headingDegrees" : 90 , "isEnabled" : true , "latitude" : 37.7749 , "longitude" : -122.4194 , "pitchDegrees" : 0 , "zoom" : 1 } , "tags" : [ { "id" : "1001" , "name" : "Yard" , "parentTagId" : "500" } ] , "updatedAtTime" : "2019-06-13T19:08:25Z" } };
+        const rawResponseBody = { "data" : { "address" : "123 Main St" , "businessContacts" : { "contacts" : [ { "email" : "bob@example.com" , "name" : "Bob Smith" , "phoneNumber" : "+14155555678" } ] , "email" : [ "warehouse@example.com" ] , "phoneNumbers" : [ "+14155551234" ] } , "cameraRecordingModeType" : "inherit" , "createdAtTime" : "2019-06-13T19:08:25Z" , "geofence" : { "circle" : { "latitude" : 37.7749 , "longitude" : -122.4194 , "radiusMeters" : 150 } , "polygon" : { "vertices" : [ { "latitude" : 37.7749 , "longitude" : -122.4194 } ] } , "type" : "circle" } , "id" : "12345" , "iftaExemptionTypes" : [ "Commodi fuga quis dolores architecto velit dolorem." , "Blanditiis deserunt velit voluptatem atque deserunt." , "Sed veniam magnam molestiae." , "Maiores dicta maiores assumenda." ] , "isAutoDismissRolledStopsEnabled" : false , "isShowAddressesEnabled" : true , "name" : "Oakland Yard" , "navigation" : { "locations" : [ { "driverInstructions" : "Check in at booth." , "latitude" : 37.7749 , "locationType" : "entrance" , "longitude" : -122.4194 , "name" : "Main gate" } ] } , "notes" : "Receiving 6-2" , "placeTypes" : [ "Et quasi quo tenetur eveniet." , "Dolor nesciunt." , "Dolorem quibusdam est." ] , "routing" : [ { "driverInstructions" : "Use lane 2" , "hubId" : "550e8400-e29b-41d4-a716-446655440003" , "hubNotes" : "Zone A preferred" , "isDepot" : false , "orderServiceTime" : { "capacityServiceTime" : { "capacityId" : "550e8400-e29b-41d4-a716-446655440001" , "quantityPerServiceTime" : 0.5 , "serviceTimeSeconds" : 60 } , "fixedServiceTimeSeconds" : 300 , "isEnabled" : true , "modeType" : "variable" } , "position" : "first" , "priority" : 3 , "requiredSkills" : [ { "id" : "550e8400-e29b-41d4-a716-446655440000" , "name" : "Refrigerated" } ] , "routingExternalId" : "store-A" , "serviceTime" : { "isEnabled" : true , "serviceTimeMinutes" : 5 } , "serviceWindows" : [ { "days" : [ "Ut voluptas et accusantium est labore." , "Magni sint quia." , "Nihil sequi enim rem exercitationem." , "Quaerat earum repudiandae et laborum commodi possimus." ] , "endTime" : "17:00:01" , "startTime" : "09:00:00" } ] } ] , "safetyEventExclusions" : [ "Ut voluptate et ut voluptas id rem." , "Earum quia libero." ] , "streetView" : { "headingDegrees" : 90 , "isEnabled" : true , "latitude" : 37.7749 , "longitude" : -122.4194 , "pitchDegrees" : 0 , "zoom" : 1 } , "tags" : [ { "id" : "1001" , "name" : "Yard" , "parentTagId" : "500" } ] , "updatedAtTime" : "2019-06-13T19:08:25Z" } };
         server
             .mockEndpoint()
             .post("/places").jsonBody(rawRequestBody)
@@ -16848,7 +16849,7 @@ describe("BetaApIsClient", () => {
             type: "circle"
         },
         id: "12345",
-        iftaExemptionTypes: ["Ut voluptas et accusantium est labore.", "Magni sint quia.", "Nihil sequi enim rem exercitationem.", "Quaerat earum repudiandae et laborum commodi possimus."],
+        iftaExemptionTypes: ["Commodi fuga quis dolores architecto velit dolorem.", "Blanditiis deserunt velit voluptatem atque deserunt.", "Sed veniam magnam molestiae.", "Maiores dicta maiores assumenda."],
         isAutoDismissRolledStopsEnabled: false,
         isShowAddressesEnabled: true,
         name: "Oakland Yard",
@@ -16862,7 +16863,7 @@ describe("BetaApIsClient", () => {
                 }]
         },
         notes: "Receiving 6-2",
-        placeTypes: ["Voluptas et.", "Quo tenetur eveniet aliquid dolor nesciunt qui."],
+        placeTypes: ["Et quasi quo tenetur eveniet.", "Dolor nesciunt.", "Dolorem quibusdam est."],
         routing: [{
                 driverInstructions: "Use lane 2",
                 hubId: "550e8400-e29b-41d4-a716-446655440003",
@@ -16890,12 +16891,12 @@ describe("BetaApIsClient", () => {
                     serviceTimeMinutes: 5
                 },
                 serviceWindows: [{
-                        days: ["Rerum ut doloribus voluptatum quaerat nobis.", "Reiciendis consectetur praesentium cumque."],
+                        days: ["Ut voluptas et accusantium est labore.", "Magni sint quia.", "Nihil sequi enim rem exercitationem.", "Quaerat earum repudiandae et laborum commodi possimus."],
                         endTime: "17:00:01",
                         startTime: "09:00:00"
                     }]
             }],
-        safetyEventExclusions: ["Beatae ad autem.", "Nam ut eum.", "Quis commodi fuga.", "Dolores architecto velit dolorem."],
+        safetyEventExclusions: ["Ut voluptate et ut voluptas id rem.", "Earum quia libero."],
         streetView: {
             headingDegrees: 90,
             isEnabled: true,
@@ -17309,7 +17310,7 @@ describe("BetaApIsClient", () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
         const rawRequestBody = { };
-        const rawResponseBody = { "data" : { "address" : "123 Main St" , "businessContacts" : { "contacts" : [ { "email" : "bob@example.com" , "name" : "Bob Smith" , "phoneNumber" : "+14155555678" } ] , "email" : [ "warehouse@example.com" ] , "phoneNumbers" : [ "+14155551234" ] } , "cameraRecordingModeType" : "inherit" , "createdAtTime" : "2019-06-13T19:08:25Z" , "geofence" : { "circle" : { "latitude" : 37.7749 , "longitude" : -122.4194 , "radiusMeters" : 150 } , "polygon" : { "vertices" : [ { "latitude" : 37.7749 , "longitude" : -122.4194 } ] } , "type" : "circle" } , "id" : "12345" , "iftaExemptionTypes" : [ "Ut voluptas et accusantium est labore." , "Magni sint quia." , "Nihil sequi enim rem exercitationem." , "Quaerat earum repudiandae et laborum commodi possimus." ] , "isAutoDismissRolledStopsEnabled" : false , "isShowAddressesEnabled" : true , "name" : "Oakland Yard" , "navigation" : { "locations" : [ { "driverInstructions" : "Check in at booth." , "latitude" : 37.7749 , "locationType" : "entrance" , "longitude" : -122.4194 , "name" : "Main gate" } ] } , "notes" : "Receiving 6-2" , "placeTypes" : [ "Voluptas et." , "Quo tenetur eveniet aliquid dolor nesciunt qui." ] , "routing" : [ { "driverInstructions" : "Use lane 2" , "hubId" : "550e8400-e29b-41d4-a716-446655440003" , "hubNotes" : "Zone A preferred" , "isDepot" : false , "orderServiceTime" : { "capacityServiceTime" : { "capacityId" : "550e8400-e29b-41d4-a716-446655440001" , "quantityPerServiceTime" : 0.5 , "serviceTimeSeconds" : 60 } , "fixedServiceTimeSeconds" : 300 , "isEnabled" : true , "modeType" : "variable" } , "position" : "first" , "priority" : 3 , "requiredSkills" : [ { "id" : "550e8400-e29b-41d4-a716-446655440000" , "name" : "Refrigerated" } ] , "routingExternalId" : "store-A" , "serviceTime" : { "isEnabled" : true , "serviceTimeMinutes" : 5 } , "serviceWindows" : [ { "days" : [ "Rerum ut doloribus voluptatum quaerat nobis." , "Reiciendis consectetur praesentium cumque." ] , "endTime" : "17:00:01" , "startTime" : "09:00:00" } ] } ] , "safetyEventExclusions" : [ "Beatae ad autem." , "Nam ut eum." , "Quis commodi fuga." , "Dolores architecto velit dolorem." ] , "streetView" : { "headingDegrees" : 90 , "isEnabled" : true , "latitude" : 37.7749 , "longitude" : -122.4194 , "pitchDegrees" : 0 , "zoom" : 1 } , "tags" : [ { "id" : "1001" , "name" : "Yard" , "parentTagId" : "500" } ] , "updatedAtTime" : "2019-06-13T19:08:25Z" } };
+        const rawResponseBody = { "data" : { "address" : "123 Main St" , "businessContacts" : { "contacts" : [ { "email" : "bob@example.com" , "name" : "Bob Smith" , "phoneNumber" : "+14155555678" } ] , "email" : [ "warehouse@example.com" ] , "phoneNumbers" : [ "+14155551234" ] } , "cameraRecordingModeType" : "inherit" , "createdAtTime" : "2019-06-13T19:08:25Z" , "geofence" : { "circle" : { "latitude" : 37.7749 , "longitude" : -122.4194 , "radiusMeters" : 150 } , "polygon" : { "vertices" : [ { "latitude" : 37.7749 , "longitude" : -122.4194 } ] } , "type" : "circle" } , "id" : "12345" , "iftaExemptionTypes" : [ "Commodi fuga quis dolores architecto velit dolorem." , "Blanditiis deserunt velit voluptatem atque deserunt." , "Sed veniam magnam molestiae." , "Maiores dicta maiores assumenda." ] , "isAutoDismissRolledStopsEnabled" : false , "isShowAddressesEnabled" : true , "name" : "Oakland Yard" , "navigation" : { "locations" : [ { "driverInstructions" : "Check in at booth." , "latitude" : 37.7749 , "locationType" : "entrance" , "longitude" : -122.4194 , "name" : "Main gate" } ] } , "notes" : "Receiving 6-2" , "placeTypes" : [ "Et quasi quo tenetur eveniet." , "Dolor nesciunt." , "Dolorem quibusdam est." ] , "routing" : [ { "driverInstructions" : "Use lane 2" , "hubId" : "550e8400-e29b-41d4-a716-446655440003" , "hubNotes" : "Zone A preferred" , "isDepot" : false , "orderServiceTime" : { "capacityServiceTime" : { "capacityId" : "550e8400-e29b-41d4-a716-446655440001" , "quantityPerServiceTime" : 0.5 , "serviceTimeSeconds" : 60 } , "fixedServiceTimeSeconds" : 300 , "isEnabled" : true , "modeType" : "variable" } , "position" : "first" , "priority" : 3 , "requiredSkills" : [ { "id" : "550e8400-e29b-41d4-a716-446655440000" , "name" : "Refrigerated" } ] , "routingExternalId" : "store-A" , "serviceTime" : { "isEnabled" : true , "serviceTimeMinutes" : 5 } , "serviceWindows" : [ { "days" : [ "Ut voluptas et accusantium est labore." , "Magni sint quia." , "Nihil sequi enim rem exercitationem." , "Quaerat earum repudiandae et laborum commodi possimus." ] , "endTime" : "17:00:01" , "startTime" : "09:00:00" } ] } ] , "safetyEventExclusions" : [ "Ut voluptate et ut voluptas id rem." , "Earum quia libero." ] , "streetView" : { "headingDegrees" : 90 , "isEnabled" : true , "latitude" : 37.7749 , "longitude" : -122.4194 , "pitchDegrees" : 0 , "zoom" : 1 } , "tags" : [ { "id" : "1001" , "name" : "Yard" , "parentTagId" : "500" } ] , "updatedAtTime" : "2019-06-13T19:08:25Z" } };
         server
             .mockEndpoint()
             .patch("/places").jsonBody(rawRequestBody)
@@ -17349,7 +17350,7 @@ describe("BetaApIsClient", () => {
             type: "circle"
         },
         id: "12345",
-        iftaExemptionTypes: ["Ut voluptas et accusantium est labore.", "Magni sint quia.", "Nihil sequi enim rem exercitationem.", "Quaerat earum repudiandae et laborum commodi possimus."],
+        iftaExemptionTypes: ["Commodi fuga quis dolores architecto velit dolorem.", "Blanditiis deserunt velit voluptatem atque deserunt.", "Sed veniam magnam molestiae.", "Maiores dicta maiores assumenda."],
         isAutoDismissRolledStopsEnabled: false,
         isShowAddressesEnabled: true,
         name: "Oakland Yard",
@@ -17363,7 +17364,7 @@ describe("BetaApIsClient", () => {
                 }]
         },
         notes: "Receiving 6-2",
-        placeTypes: ["Voluptas et.", "Quo tenetur eveniet aliquid dolor nesciunt qui."],
+        placeTypes: ["Et quasi quo tenetur eveniet.", "Dolor nesciunt.", "Dolorem quibusdam est."],
         routing: [{
                 driverInstructions: "Use lane 2",
                 hubId: "550e8400-e29b-41d4-a716-446655440003",
@@ -17391,12 +17392,12 @@ describe("BetaApIsClient", () => {
                     serviceTimeMinutes: 5
                 },
                 serviceWindows: [{
-                        days: ["Rerum ut doloribus voluptatum quaerat nobis.", "Reiciendis consectetur praesentium cumque."],
+                        days: ["Ut voluptas et accusantium est labore.", "Magni sint quia.", "Nihil sequi enim rem exercitationem.", "Quaerat earum repudiandae et laborum commodi possimus."],
                         endTime: "17:00:01",
                         startTime: "09:00:00"
                     }]
             }],
-        safetyEventExclusions: ["Beatae ad autem.", "Nam ut eum.", "Quis commodi fuga.", "Dolores architecto velit dolorem."],
+        safetyEventExclusions: ["Ut voluptate et ut voluptas id rem.", "Earum quia libero."],
         streetView: {
             headingDegrees: 90,
             isEnabled: true,

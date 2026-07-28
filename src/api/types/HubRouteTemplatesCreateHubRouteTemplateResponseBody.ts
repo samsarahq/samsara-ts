@@ -3,5 +3,5 @@
 import type * as Samsara from "../index.js";
 
 export interface HubRouteTemplatesCreateHubRouteTemplateResponseBody {
-    data: Samsara.CreateHubRouteTemplateObjectResponseBody;
+    data: Samsara.HubRouteTemplateObjectResponseBody;
 }

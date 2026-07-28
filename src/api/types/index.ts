@@ -481,7 +481,6 @@ export * from "./CreateFunctionRequestConfigRequestBody.js";
 export * from "./CreateFunctionStorageFileDetailResponseBody.js";
 export * from "./CreateHubRouteTemplateDepotEndInputRequestBody.js";
 export * from "./CreateHubRouteTemplateDepotStartInputRequestBody.js";
-export * from "./CreateHubRouteTemplateObjectResponseBody.js";
 export * from "./CreatePartEntityPartDefinitionMoneyInputTypeRequestBody.js";
 export * from "./CreatePartEntityPartDefinitionMoneyTypeResponseBody.js";
 export * from "./CreatePartInventoryLocationEntityPartInventoryLocationMoneyInputTypeRequestBody.js";

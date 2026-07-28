@@ -13,5 +13,7 @@ export interface SafetyEventObjectResponseBody {
     id?: string | undefined;
     /** The time the safety event occurred in RFC 3339 milliseconds format. */
     time?: string | undefined;
+    /** The unique Samsara ID (uuid) of the safety event. */
+    uuid?: string | undefined;
     vehicle?: Samsara.SafetyEventVehicleObjectResponseBody | undefined;
 }

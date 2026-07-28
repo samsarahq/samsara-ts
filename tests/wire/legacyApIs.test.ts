@@ -904,7 +904,11 @@ describe("LegacyApIsClient", () => {
             data: [
                 {
                     id: "1622151765-212014918174029-1550954461759",
-                    safetyEvent: { id: "212014918174029-1550954461759", time: "2019-06-13T19:08:25.455Z" },
+                    safetyEvent: {
+                        id: "212014918174029-1550954461759",
+                        time: "2019-06-13T19:08:25.455Z",
+                        uuid: "abc123de-4567-89fg-hijk-lmnop1234567",
+                    },
                     time: "2019-10-12T07:20:50.52Z",
                     type: "BehaviorLabelActivityType",
                 },
@@ -927,6 +931,7 @@ describe("LegacyApIsClient", () => {
                     safetyEvent: {
                         id: "212014918174029-1550954461759",
                         time: "2019-06-13T19:08:25.455Z",
+                        uuid: "abc123de-4567-89fg-hijk-lmnop1234567",
                     },
                     time: "2019-10-12T07:20:50.52Z",
                     type: "BehaviorLabelActivityType",

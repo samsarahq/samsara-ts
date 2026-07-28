@@ -1717,6 +1717,15 @@ describe("AlertsClient", () => {
                                     vehicle: { id: "id", serial: "serial" },
                                 },
                                 personDetected: { cameraStream: { id: "id" } },
+                                preventiveMaintenanceScheduleDue: {
+                                    driver: { id: "id" },
+                                    dueReasons: ["date", "date"],
+                                    scheduleDescription: "scheduleDescription",
+                                    scheduleId: "scheduleId",
+                                    scheduleTitle: "scheduleTitle",
+                                    trailer: { id: "id" },
+                                    vehicle: { id: "id", serial: "serial" },
+                                },
                                 reading: {
                                     asset: { id: "id", serial: "serial", type: "uncategorized" },
                                     continuousThreshold: { operation: "GREATER", threshold: 1000000 },
@@ -2084,6 +2093,15 @@ describe("AlertsClient", () => {
                                     vehicle: { id: "id", serial: "serial" },
                                 },
                                 personDetected: { cameraStream: { id: "id" } },
+                                preventiveMaintenanceScheduleDue: {
+                                    driver: { id: "id" },
+                                    dueReasons: ["date", "date"],
+                                    scheduleDescription: "scheduleDescription",
+                                    scheduleId: "scheduleId",
+                                    scheduleTitle: "scheduleTitle",
+                                    trailer: { id: "id" },
+                                    vehicle: { id: "id", serial: "serial" },
+                                },
                                 reading: {
                                     asset: { id: "id", serial: "serial", type: "uncategorized" },
                                     continuousThreshold: { operation: "GREATER", threshold: 1000000 },
@@ -2461,6 +2479,15 @@ describe("AlertsClient", () => {
                                     vehicle: { id: "id", serial: "serial" },
                                 },
                                 personDetected: { cameraStream: { id: "id" } },
+                                preventiveMaintenanceScheduleDue: {
+                                    driver: { id: "id" },
+                                    dueReasons: ["date", "date"],
+                                    scheduleDescription: "scheduleDescription",
+                                    scheduleId: "scheduleId",
+                                    scheduleTitle: "scheduleTitle",
+                                    trailer: { id: "id" },
+                                    vehicle: { id: "id", serial: "serial" },
+                                },
                                 reading: {
                                     asset: { id: "id", serial: "serial", type: "uncategorized" },
                                     continuousThreshold: { operation: "GREATER", threshold: 1000000 },
@@ -2828,6 +2855,15 @@ describe("AlertsClient", () => {
                                     vehicle: { id: "id", serial: "serial" },
                                 },
                                 personDetected: { cameraStream: { id: "id" } },
+                                preventiveMaintenanceScheduleDue: {
+                                    driver: { id: "id" },
+                                    dueReasons: ["date", "date"],
+                                    scheduleDescription: "scheduleDescription",
+                                    scheduleId: "scheduleId",
+                                    scheduleTitle: "scheduleTitle",
+                                    trailer: { id: "id" },
+                                    vehicle: { id: "id", serial: "serial" },
+                                },
                                 reading: {
                                     asset: { id: "id", serial: "serial", type: "uncategorized" },
                                     continuousThreshold: { operation: "GREATER", threshold: 1000000 },
@@ -3464,6 +3500,22 @@ describe("AlertsClient", () => {
                                         id: "id",
                                     },
                                 },
+                                preventiveMaintenanceScheduleDue: {
+                                    driver: {
+                                        id: "id",
+                                    },
+                                    dueReasons: ["date", "date"],
+                                    scheduleDescription: "scheduleDescription",
+                                    scheduleId: "scheduleId",
+                                    scheduleTitle: "scheduleTitle",
+                                    trailer: {
+                                        id: "id",
+                                    },
+                                    vehicle: {
+                                        id: "id",
+                                        serial: "serial",
+                                    },
+                                },
                                 reading: {
                                     asset: {
                                         id: "id",
@@ -4220,6 +4272,22 @@ describe("AlertsClient", () => {
                                 personDetected: {
                                     cameraStream: {
                                         id: "id",
+                                    },
+                                },
+                                preventiveMaintenanceScheduleDue: {
+                                    driver: {
+                                        id: "id",
+                                    },
+                                    dueReasons: ["date", "date"],
+                                    scheduleDescription: "scheduleDescription",
+                                    scheduleId: "scheduleId",
+                                    scheduleTitle: "scheduleTitle",
+                                    trailer: {
+                                        id: "id",
+                                    },
+                                    vehicle: {
+                                        id: "id",
+                                        serial: "serial",
                                     },
                                 },
                                 reading: {
@@ -4990,6 +5058,22 @@ describe("AlertsClient", () => {
                                         id: "id",
                                     },
                                 },
+                                preventiveMaintenanceScheduleDue: {
+                                    driver: {
+                                        id: "id",
+                                    },
+                                    dueReasons: ["date", "date"],
+                                    scheduleDescription: "scheduleDescription",
+                                    scheduleId: "scheduleId",
+                                    scheduleTitle: "scheduleTitle",
+                                    trailer: {
+                                        id: "id",
+                                    },
+                                    vehicle: {
+                                        id: "id",
+                                        serial: "serial",
+                                    },
+                                },
                                 reading: {
                                     asset: {
                                         id: "id",
@@ -5746,6 +5830,22 @@ describe("AlertsClient", () => {
                                 personDetected: {
                                     cameraStream: {
                                         id: "id",
+                                    },
+                                },
+                                preventiveMaintenanceScheduleDue: {
+                                    driver: {
+                                        id: "id",
+                                    },
+                                    dueReasons: ["date", "date"],
+                                    scheduleDescription: "scheduleDescription",
+                                    scheduleId: "scheduleId",
+                                    scheduleTitle: "scheduleTitle",
+                                    trailer: {
+                                        id: "id",
+                                    },
+                                    vehicle: {
+                                        id: "id",
+                                        serial: "serial",
                                     },
                                 },
                                 reading: {

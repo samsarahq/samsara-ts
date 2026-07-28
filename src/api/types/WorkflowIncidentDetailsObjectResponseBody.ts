@@ -48,6 +48,7 @@ export interface WorkflowIncidentDetailsObjectResponseBody {
     outsideGeofence?: Samsara.OutsideGeofenceDataResponseBody | undefined;
     panicButton?: Samsara.PanicButtonResponseBody | undefined;
     personDetected?: Samsara.PersonDetectedResponseBody | undefined;
+    preventiveMaintenanceScheduleDue?: Samsara.PreventiveMaintenanceScheduleDueDataResponseBody | undefined;
     reading?: Samsara.ReadingTriggerDetailsResponseBody | undefined;
     reeferTemperature?: Samsara.ReeferTemperatureResponseBody | undefined;
     routeStartDelayed?: Samsara.RouteStartDelayedDataResponseBody | undefined;

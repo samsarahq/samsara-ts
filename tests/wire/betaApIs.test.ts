@@ -1664,7 +1664,7 @@ describe("BetaApIsClient", () => {
     test("updateEngineImmobilizerState (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
-        const rawRequestBody = { "relayStates" : [ { "id" : "relay1" , "isOpen" : true } ] };
+        const rawRequestBody = { "relayStates" : [ { "id" : "relay1" , "isOpen" : false } ] };
         
         server
             .mockEndpoint()
@@ -1678,7 +1678,7 @@ describe("BetaApIsClient", () => {
     id: 1000000,
     relayStates: [{
             id: "relay1",
-            isOpen: true
+            isOpen: false
         }]
 });
                             expect(response).toEqual(undefined);
@@ -8516,7 +8516,7 @@ describe("BetaApIsClient", () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
         
-        const rawResponseBody = { "data" : [ { "addressId" : "281474993384538" , "categoryIds" : [ "a1b2c3d4-e5f6-7890-abcd-ef1234567890" , "a1b2c3d4-e5f6-7890-abcd-ef1234567890" ] , "externalIds" : { "key" : "value" } , "id" : "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7" , "servicesProvided" : "Oil changes, tire rotations, brake services" , "vendorId" : "0000000772" } ] , "pagination" : { "endCursor" : "MjkY" , "hasNextPage" : true } };
+        const rawResponseBody = { "data" : [ { "addressId" : "281474993384538" , "categoryIds" : [ "a1b2c3d4-e5f6-7890-abcd-ef1234567890" , "a1b2c3d4-e5f6-7890-abcd-ef1234567890" , "a1b2c3d4-e5f6-7890-abcd-ef1234567890" ] , "externalIds" : { "key" : "value" } , "id" : "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7" , "servicesProvided" : "Oil changes, tire rotations, brake services" , "vendorId" : "0000000772" } ] , "pagination" : { "endCursor" : "MjkY" , "hasNextPage" : true } };
         server
             .mockEndpoint()
             .get("/fleet/maintenance/vendors").respondWith()
@@ -8529,7 +8529,7 @@ describe("BetaApIsClient", () => {
                             expect(response).toEqual({
     data: [{
             addressId: "281474993384538",
-            categoryIds: ["a1b2c3d4-e5f6-7890-abcd-ef1234567890", "a1b2c3d4-e5f6-7890-abcd-ef1234567890"],
+            categoryIds: ["a1b2c3d4-e5f6-7890-abcd-ef1234567890", "a1b2c3d4-e5f6-7890-abcd-ef1234567890", "a1b2c3d4-e5f6-7890-abcd-ef1234567890"],
             externalIds: {
                 "key": "value"
             },
@@ -9154,7 +9154,7 @@ describe("BetaApIsClient", () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
         
-        const rawResponseBody = { "data" : [ { "happenedAtTime" : "2019-06-13T19:08:25Z" , "isConnectedToVehicle" : false , "relayStates" : [ { "id" : "relay1" , "isOpen" : true } ] , "vehicleId" : "1234" } ] , "pagination" : { "endCursor" : "MjkY" , "hasNextPage" : true } };
+        const rawResponseBody = { "data" : [ { "happenedAtTime" : "2019-06-13T19:08:25Z" , "isConnectedToVehicle" : true , "relayStates" : [ { "id" : "relay1" , "isOpen" : false } ] , "vehicleId" : "1234" } ] , "pagination" : { "endCursor" : "MjkY" , "hasNextPage" : true } };
         server
             .mockEndpoint()
             .get("/fleet/vehicles/immobilizer/stream").respondWith()
@@ -9170,10 +9170,10 @@ describe("BetaApIsClient", () => {
                             expect(response).toEqual({
     data: [{
             happenedAtTime: "2019-06-13T19:08:25Z",
-            isConnectedToVehicle: false,
+            isConnectedToVehicle: true,
             relayStates: [{
                     id: "relay1",
-                    isOpen: true
+                    isOpen: false
                 }],
             vehicleId: "1234"
         }],
@@ -12381,6 +12381,278 @@ describe("BetaApIsClient", () => {
             }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
           
+    test("createWatchpoint (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { "location" : { "latitude" : 37.7749 , "longitude" : -122.4194 } , "mode" : "justOnce" , "observationType" : "roadDefect" };
+        const rawResponseBody = { "data" : { "createdAtTime" : "2026-07-15T10:00:00Z" , "id" : "2eb0e68c-d728-4d2f-b9a0-8bc6ded86422" , "lastObservationTime" : "2019-06-13T19:08:25Z" , "location" : { "latitude" : 37.7749 , "longitude" : -122.4194 } , "mode" : "unknown" , "monitoringEndTime" : "2026-08-14T10:00:00Z" , "monitoringStartTime" : "2026-07-15T10:00:00Z" , "name" : "Market Street watchpoint" , "note" : "Monitor the intersection for road defects." , "observationCount" : 1 , "observationType" : "unknown" , "samsaraDashboardUrl" : "https://cloud.samsara.com/o/123456/fleet/ground-intelligence?tab=monitors&monitorId=2eb0e68c-d728-4d2f-b9a0-8bc6ded86422" , "status" : "unknown" , "updatedAtTime" : "2026-07-15T10:00:01Z" } };
+        server
+            .mockEndpoint()
+            .post("/ground-intelligence/watchpoints").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(200).jsonBody(rawResponseBody)
+                .build();
+
+        
+                    
+                            const response = await client.betaApIs.createWatchpoint({
+    location: {
+        latitude: 37.7749,
+        longitude: -122.4194
+    },
+    mode: "justOnce",
+    observationType: "roadDefect"
+});
+                            expect(response).toEqual({
+    data: {
+        createdAtTime: "2026-07-15T10:00:00Z",
+        id: "2eb0e68c-d728-4d2f-b9a0-8bc6ded86422",
+        lastObservationTime: "2019-06-13T19:08:25Z",
+        location: {
+            latitude: 37.7749,
+            longitude: -122.4194
+        },
+        mode: "unknown",
+        monitoringEndTime: "2026-08-14T10:00:00Z",
+        monitoringStartTime: "2026-07-15T10:00:00Z",
+        name: "Market Street watchpoint",
+        note: "Monitor the intersection for road defects.",
+        observationCount: 1,
+        observationType: "unknown",
+        samsaraDashboardUrl: "https://cloud.samsara.com/o/123456/fleet/ground-intelligence?tab=monitors&monitorId=2eb0e68c-d728-4d2f-b9a0-8bc6ded86422",
+        status: "unknown",
+        updatedAtTime: "2026-07-15T10:00:01Z"
+    }
+});
+                          
+                
+    });
+          
+    test("createWatchpoint (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { "location" : { "latitude" : 90 , "longitude" : 180 } , "mode" : "justOnce" , "observationType" : "roadDefect" };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .post("/ground-intelligence/watchpoints").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(401).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.createWatchpoint({
+    location: {
+        latitude: 90,
+        longitude: 180
+    },
+    mode: "justOnce",
+    observationType: "roadDefect"
+})
+            }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+          
+    test("createWatchpoint (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { "location" : { "latitude" : 90 , "longitude" : 180 } , "mode" : "justOnce" , "observationType" : "roadDefect" };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .post("/ground-intelligence/watchpoints").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(404).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.createWatchpoint({
+    location: {
+        latitude: 90,
+        longitude: 180
+    },
+    mode: "justOnce",
+    observationType: "roadDefect"
+})
+            }).rejects.toThrow(Samsara.NotFoundError);
+    });
+          
+    test("createWatchpoint (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { "location" : { "latitude" : 90 , "longitude" : 180 } , "mode" : "justOnce" , "observationType" : "roadDefect" };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .post("/ground-intelligence/watchpoints").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(405).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.createWatchpoint({
+    location: {
+        latitude: 90,
+        longitude: 180
+    },
+    mode: "justOnce",
+    observationType: "roadDefect"
+})
+            }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+          
+    test("createWatchpoint (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { "location" : { "latitude" : 90 , "longitude" : 180 } , "mode" : "justOnce" , "observationType" : "roadDefect" };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .post("/ground-intelligence/watchpoints").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(429).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.createWatchpoint({
+    location: {
+        latitude: 90,
+        longitude: 180
+    },
+    mode: "justOnce",
+    observationType: "roadDefect"
+})
+            }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+          
+    test("createWatchpoint (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { "location" : { "latitude" : 90 , "longitude" : 180 } , "mode" : "justOnce" , "observationType" : "roadDefect" };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .post("/ground-intelligence/watchpoints").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(500).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.createWatchpoint({
+    location: {
+        latitude: 90,
+        longitude: 180
+    },
+    mode: "justOnce",
+    observationType: "roadDefect"
+})
+            }).rejects.toThrow(Samsara.InternalServerError);
+    });
+          
+    test("createWatchpoint (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { "location" : { "latitude" : 90 , "longitude" : 180 } , "mode" : "justOnce" , "observationType" : "roadDefect" };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .post("/ground-intelligence/watchpoints").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(501).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.createWatchpoint({
+    location: {
+        latitude: 90,
+        longitude: 180
+    },
+    mode: "justOnce",
+    observationType: "roadDefect"
+})
+            }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+          
+    test("createWatchpoint (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { "location" : { "latitude" : 90 , "longitude" : 180 } , "mode" : "justOnce" , "observationType" : "roadDefect" };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .post("/ground-intelligence/watchpoints").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(502).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.createWatchpoint({
+    location: {
+        latitude: 90,
+        longitude: 180
+    },
+    mode: "justOnce",
+    observationType: "roadDefect"
+})
+            }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+          
+    test("createWatchpoint (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { "location" : { "latitude" : 90 , "longitude" : 180 } , "mode" : "justOnce" , "observationType" : "roadDefect" };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .post("/ground-intelligence/watchpoints").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(503).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.createWatchpoint({
+    location: {
+        latitude: 90,
+        longitude: 180
+    },
+    mode: "justOnce",
+    observationType: "roadDefect"
+})
+            }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+          
+    test("createWatchpoint (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { "location" : { "latitude" : 90 , "longitude" : 180 } , "mode" : "justOnce" , "observationType" : "roadDefect" };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .post("/ground-intelligence/watchpoints").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(504).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.createWatchpoint({
+    location: {
+        latitude: 90,
+        longitude: 180
+    },
+    mode: "justOnce",
+    observationType: "roadDefect"
+})
+            }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+          
     test("updateShippingDocs (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
@@ -12620,7 +12892,7 @@ describe("BetaApIsClient", () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
         
-        const rawResponseBody = { "data" : [ { "createdAtTime" : "2024-04-10T11:30:00Z" , "customProperties" : [ { "customPropertyId" : "750e8400-e29b-41d4-a716-446655440004" , "name" : "CustomerType" , "value" : "Premium" } ] , "customerOrderId" : "ORDER-2024-001" , "delivery" : { "address" : "123 Business Way, San Francisco" , "appointmentWindow" : { "endTime" : "2024-04-10T17:00:00Z" , "startTime" : "2024-04-10T09:00:00Z" } , "customerLocationId" : "LOC-123" , "latitude" : 37.7749 , "longitude" : -122.4194 , "notes" : "Use main entrance" , "serviceTimeSeconds" : 600 } , "hubId" : "550e8400-e29b-41d4-a716-446655440000" , "id" : "a50e8400-e29b-41d4-a716-446655440006" , "pickup" : { "address" : "123 Business Way, San Francisco" , "appointmentWindow" : { "endTime" : "2024-04-10T17:00:00Z" , "startTime" : "2024-04-10T09:00:00Z" } , "customerLocationId" : "LOC-123" , "latitude" : 37.7749 , "longitude" : -122.4194 , "notes" : "Use main entrance" , "serviceTimeSeconds" : 600 } , "planId" : "650e8400-e29b-41d4-a716-446655440023" , "priority" : 1 , "quantities" : [ { "capacityId" : "850e8400-e29b-41d4-a716-446655440003" , "quantity" : 25.5 } ] , "routeId" : "950e8400-e29b-41d4-a716-446655440005" , "skillsRequired" : [ "650e8400-e29b-41d4-a716-446655440001" , "650e8400-e29b-41d4-a716-446655440001" ] , "updatedAtTime" : "2024-04-10T11:30:00Z" } ] , "pagination" : { "endCursor" : "YXJyYXljb25uZWN0aW9uOjEwMA==" , "hasNextPage" : false } };
+        const rawResponseBody = { "data" : [ { "createdAtTime" : "2024-04-10T11:30:00Z" , "customProperties" : [ { "customPropertyId" : "750e8400-e29b-41d4-a716-446655440004" , "name" : "CustomerType" , "value" : "Premium" } ] , "customerOrderId" : "ORDER-2024-001" , "delivery" : { "address" : "123 Business Way, San Francisco" , "appointmentWindow" : { "endTime" : "2024-04-10T17:00:00Z" , "startTime" : "2024-04-10T09:00:00Z" } , "customerLocationId" : "LOC-123" , "latitude" : 37.7749 , "longitude" : -122.4194 , "notes" : "Use main entrance" , "serviceTimeSeconds" : 600 } , "hubId" : "550e8400-e29b-41d4-a716-446655440000" , "id" : "a50e8400-e29b-41d4-a716-446655440006" , "pickup" : { "address" : "123 Business Way, San Francisco" , "appointmentWindow" : { "endTime" : "2024-04-10T17:00:00Z" , "startTime" : "2024-04-10T09:00:00Z" } , "customerLocationId" : "LOC-123" , "latitude" : 37.7749 , "longitude" : -122.4194 , "notes" : "Use main entrance" , "serviceTimeSeconds" : 600 } , "planId" : "650e8400-e29b-41d4-a716-446655440023" , "priority" : 1 , "quantities" : [ { "capacityId" : "850e8400-e29b-41d4-a716-446655440003" , "quantity" : 25.5 } ] , "routeId" : "950e8400-e29b-41d4-a716-446655440005" , "skillsRequired" : [ "650e8400-e29b-41d4-a716-446655440001" , "650e8400-e29b-41d4-a716-446655440001" , "650e8400-e29b-41d4-a716-446655440001" , "650e8400-e29b-41d4-a716-446655440001" ] , "updatedAtTime" : "2024-04-10T11:30:00Z" } ] , "pagination" : { "endCursor" : "YXJyYXljb25uZWN0aW9uOjEwMA==" , "hasNextPage" : false } };
         server
             .mockEndpoint()
             .get("/hub/plan/orders").respondWith()
@@ -12674,7 +12946,7 @@ describe("BetaApIsClient", () => {
                     quantity: 25.5
                 }],
             routeId: "950e8400-e29b-41d4-a716-446655440005",
-            skillsRequired: ["650e8400-e29b-41d4-a716-446655440001", "650e8400-e29b-41d4-a716-446655440001"],
+            skillsRequired: ["650e8400-e29b-41d4-a716-446655440001", "650e8400-e29b-41d4-a716-446655440001", "650e8400-e29b-41d4-a716-446655440001", "650e8400-e29b-41d4-a716-446655440001"],
             updatedAtTime: "2024-04-10T11:30:00Z"
         }],
     pagination: {
@@ -16269,7 +16541,7 @@ describe("BetaApIsClient", () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
         
-        const rawResponseBody = { "data" : [ { "address" : "123 Main St" , "businessContacts" : { "email" : [ "warehouse@example.com" ] , "phoneNumbers" : [ "+14155551234" ] } , "cameraRecordingModeType" : "inherit" , "createdAtTime" : "2019-06-13T19:08:25Z" , "geofence" : { "circle" : { "latitude" : 37.7749 , "longitude" : -122.4194 , "radiusMeters" : 150 } , "polygon" : { "vertices" : [ { "latitude" : 37.7749 , "longitude" : -122.4194 } ] } , "type" : "circle" } , "id" : "12345" , "iftaExemptionTypes" : [ "Eum quam sunt sit doloribus in deserunt." , "Laudantium temporibus enim quia fugiat praesentium in." ] , "isAutoDismissRolledStopsEnabled" : false , "isShowAddressesEnabled" : true , "name" : "Oakland Yard" , "navigation" : { "locations" : [ { "driverInstructions" : "Check in at booth." , "latitude" : 37.7749 , "locationType" : "entrance" , "longitude" : -122.4194 , "name" : "Main gate" } ] } , "notes" : "Receiving 6-2" , "placeTypes" : [ "Voluptatem atque deserunt." , "Sed veniam magnam molestiae." , "Maiores dicta maiores assumenda." ] , "routing" : [ { "driverInstructions" : "Use lane 2" , "hubId" : "550e8400-e29b-41d4-a716-446655440003" , "hubNotes" : "Zone A preferred" , "isDepot" : false , "orderServiceTime" : { "capacityServiceTime" : { "capacityId" : "550e8400-e29b-41d4-a716-446655440001" , "quantityPerServiceTime" : 0.5 , "serviceTimeSeconds" : 60 } , "fixedServiceTimeSeconds" : 300 , "isEnabled" : true , "modeType" : "variable" } , "position" : "first" , "priority" : 3 , "requiredSkills" : [ { "id" : "550e8400-e29b-41d4-a716-446655440000" , "name" : "Refrigerated" } ] , "routingExternalId" : "store-A" , "serviceTime" : { "isEnabled" : true , "serviceTimeMinutes" : 5 } , "serviceWindows" : [ { "days" : [ "Ut debitis distinctio sed." , "Hic tempore amet nostrum alias." ] , "endTime" : "17:00:01" , "startTime" : "09:00:00" } ] } ] , "safetyEventExclusions" : [ "Repudiandae et laborum commodi possimus." , "Consequatur eos voluptatibus." , "Harum rerum ut doloribus voluptatum quaerat." , "Voluptatem reiciendis consectetur praesentium." ] , "streetView" : { "headingDegrees" : 90 , "isEnabled" : true , "latitude" : 37.7749 , "longitude" : -122.4194 , "pitchDegrees" : 0 , "zoom" : 1 } , "tags" : [ { "id" : "1001" , "name" : "Yard" , "parentTagId" : "500" } ] , "updatedAtTime" : "2019-06-13T19:08:25Z" } ] , "pagination" : { "endCursor" : "MjkY" , "hasNextPage" : true } };
+        const rawResponseBody = { "data" : [ { "address" : "123 Main St" , "businessContacts" : { "email" : [ "warehouse@example.com" ] , "phoneNumbers" : [ "+14155551234" ] } , "cameraRecordingModeType" : "inherit" , "createdAtTime" : "2019-06-13T19:08:25Z" , "geofence" : { "circle" : { "latitude" : 37.7749 , "longitude" : -122.4194 , "radiusMeters" : 150 } , "polygon" : { "vertices" : [ { "latitude" : 37.7749 , "longitude" : -122.4194 } ] } , "type" : "circle" } , "id" : "12345" , "iftaExemptionTypes" : [ "Ut voluptas et accusantium est labore." , "Magni sint quia." , "Nihil sequi enim rem exercitationem." , "Quaerat earum repudiandae et laborum commodi possimus." ] , "isAutoDismissRolledStopsEnabled" : false , "isShowAddressesEnabled" : true , "name" : "Oakland Yard" , "navigation" : { "locations" : [ { "driverInstructions" : "Check in at booth." , "latitude" : 37.7749 , "locationType" : "entrance" , "longitude" : -122.4194 , "name" : "Main gate" } ] } , "notes" : "Receiving 6-2" , "placeTypes" : [ "Voluptas et." , "Quo tenetur eveniet aliquid dolor nesciunt qui." ] , "routing" : [ { "driverInstructions" : "Use lane 2" , "hubId" : "550e8400-e29b-41d4-a716-446655440003" , "hubNotes" : "Zone A preferred" , "isDepot" : false , "orderServiceTime" : { "capacityServiceTime" : { "capacityId" : "550e8400-e29b-41d4-a716-446655440001" , "quantityPerServiceTime" : 0.5 , "serviceTimeSeconds" : 60 } , "fixedServiceTimeSeconds" : 300 , "isEnabled" : true , "modeType" : "variable" } , "position" : "first" , "priority" : 3 , "requiredSkills" : [ { "id" : "550e8400-e29b-41d4-a716-446655440000" , "name" : "Refrigerated" } ] , "routingExternalId" : "store-A" , "serviceTime" : { "isEnabled" : true , "serviceTimeMinutes" : 5 } , "serviceWindows" : [ { "days" : [ "Rerum ut doloribus voluptatum quaerat nobis." , "Reiciendis consectetur praesentium cumque." ] , "endTime" : "17:00:01" , "startTime" : "09:00:00" } ] } ] , "safetyEventExclusions" : [ "Beatae ad autem." , "Nam ut eum." , "Quis commodi fuga." , "Dolores architecto velit dolorem." ] , "streetView" : { "headingDegrees" : 90 , "isEnabled" : true , "latitude" : 37.7749 , "longitude" : -122.4194 , "pitchDegrees" : 0 , "zoom" : 1 } , "tags" : [ { "id" : "1001" , "name" : "Yard" , "parentTagId" : "500" } ] , "updatedAtTime" : "2019-06-13T19:08:25Z" } ] , "pagination" : { "endCursor" : "MjkY" , "hasNextPage" : true } };
         server
             .mockEndpoint()
             .get("/places").respondWith()
@@ -16303,7 +16575,7 @@ describe("BetaApIsClient", () => {
                 type: "circle"
             },
             id: "12345",
-            iftaExemptionTypes: ["Eum quam sunt sit doloribus in deserunt.", "Laudantium temporibus enim quia fugiat praesentium in."],
+            iftaExemptionTypes: ["Ut voluptas et accusantium est labore.", "Magni sint quia.", "Nihil sequi enim rem exercitationem.", "Quaerat earum repudiandae et laborum commodi possimus."],
             isAutoDismissRolledStopsEnabled: false,
             isShowAddressesEnabled: true,
             name: "Oakland Yard",
@@ -16317,7 +16589,7 @@ describe("BetaApIsClient", () => {
                     }]
             },
             notes: "Receiving 6-2",
-            placeTypes: ["Voluptatem atque deserunt.", "Sed veniam magnam molestiae.", "Maiores dicta maiores assumenda."],
+            placeTypes: ["Voluptas et.", "Quo tenetur eveniet aliquid dolor nesciunt qui."],
             routing: [{
                     driverInstructions: "Use lane 2",
                     hubId: "550e8400-e29b-41d4-a716-446655440003",
@@ -16345,12 +16617,12 @@ describe("BetaApIsClient", () => {
                         serviceTimeMinutes: 5
                     },
                     serviceWindows: [{
-                            days: ["Ut debitis distinctio sed.", "Hic tempore amet nostrum alias."],
+                            days: ["Rerum ut doloribus voluptatum quaerat nobis.", "Reiciendis consectetur praesentium cumque."],
                             endTime: "17:00:01",
                             startTime: "09:00:00"
                         }]
                 }],
-            safetyEventExclusions: ["Repudiandae et laborum commodi possimus.", "Consequatur eos voluptatibus.", "Harum rerum ut doloribus voluptatum quaerat.", "Voluptatem reiciendis consectetur praesentium."],
+            safetyEventExclusions: ["Beatae ad autem.", "Nam ut eum.", "Quis commodi fuga.", "Dolores architecto velit dolorem."],
             streetView: {
                 headingDegrees: 90,
                 isEnabled: true,
@@ -16532,7 +16804,7 @@ describe("BetaApIsClient", () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
         const rawRequestBody = { "address" : "123 Main St, Oakland, CA" , "geofence" : { } , "name" : "Oakland Yard" };
-        const rawResponseBody = { "data" : { "address" : "123 Main St" , "businessContacts" : { "contacts" : [ { "email" : "bob@example.com" , "name" : "Bob Smith" , "phoneNumber" : "+14155555678" } ] , "email" : [ "warehouse@example.com" ] , "phoneNumbers" : [ "+14155551234" ] } , "cameraRecordingModeType" : "inherit" , "createdAtTime" : "2019-06-13T19:08:25Z" , "geofence" : { "circle" : { "latitude" : 37.7749 , "longitude" : -122.4194 , "radiusMeters" : 150 } , "polygon" : { "vertices" : [ { "latitude" : 37.7749 , "longitude" : -122.4194 } ] } , "type" : "circle" } , "id" : "12345" , "iftaExemptionTypes" : [ "Eum quam sunt sit doloribus in deserunt." , "Laudantium temporibus enim quia fugiat praesentium in." ] , "isAutoDismissRolledStopsEnabled" : false , "isShowAddressesEnabled" : true , "name" : "Oakland Yard" , "navigation" : { "locations" : [ { "driverInstructions" : "Check in at booth." , "latitude" : 37.7749 , "locationType" : "entrance" , "longitude" : -122.4194 , "name" : "Main gate" } ] } , "notes" : "Receiving 6-2" , "placeTypes" : [ "Voluptatem atque deserunt." , "Sed veniam magnam molestiae." , "Maiores dicta maiores assumenda." ] , "routing" : [ { "driverInstructions" : "Use lane 2" , "hubId" : "550e8400-e29b-41d4-a716-446655440003" , "hubNotes" : "Zone A preferred" , "isDepot" : false , "orderServiceTime" : { "capacityServiceTime" : { "capacityId" : "550e8400-e29b-41d4-a716-446655440001" , "quantityPerServiceTime" : 0.5 , "serviceTimeSeconds" : 60 } , "fixedServiceTimeSeconds" : 300 , "isEnabled" : true , "modeType" : "variable" } , "position" : "first" , "priority" : 3 , "requiredSkills" : [ { "id" : "550e8400-e29b-41d4-a716-446655440000" , "name" : "Refrigerated" } ] , "routingExternalId" : "store-A" , "serviceTime" : { "isEnabled" : true , "serviceTimeMinutes" : 5 } , "serviceWindows" : [ { "days" : [ "Ut debitis distinctio sed." , "Hic tempore amet nostrum alias." ] , "endTime" : "17:00:01" , "startTime" : "09:00:00" } ] } ] , "safetyEventExclusions" : [ "Repudiandae et laborum commodi possimus." , "Consequatur eos voluptatibus." , "Harum rerum ut doloribus voluptatum quaerat." , "Voluptatem reiciendis consectetur praesentium." ] , "streetView" : { "headingDegrees" : 90 , "isEnabled" : true , "latitude" : 37.7749 , "longitude" : -122.4194 , "pitchDegrees" : 0 , "zoom" : 1 } , "tags" : [ { "id" : "1001" , "name" : "Yard" , "parentTagId" : "500" } ] , "updatedAtTime" : "2019-06-13T19:08:25Z" } };
+        const rawResponseBody = { "data" : { "address" : "123 Main St" , "businessContacts" : { "contacts" : [ { "email" : "bob@example.com" , "name" : "Bob Smith" , "phoneNumber" : "+14155555678" } ] , "email" : [ "warehouse@example.com" ] , "phoneNumbers" : [ "+14155551234" ] } , "cameraRecordingModeType" : "inherit" , "createdAtTime" : "2019-06-13T19:08:25Z" , "geofence" : { "circle" : { "latitude" : 37.7749 , "longitude" : -122.4194 , "radiusMeters" : 150 } , "polygon" : { "vertices" : [ { "latitude" : 37.7749 , "longitude" : -122.4194 } ] } , "type" : "circle" } , "id" : "12345" , "iftaExemptionTypes" : [ "Ut voluptas et accusantium est labore." , "Magni sint quia." , "Nihil sequi enim rem exercitationem." , "Quaerat earum repudiandae et laborum commodi possimus." ] , "isAutoDismissRolledStopsEnabled" : false , "isShowAddressesEnabled" : true , "name" : "Oakland Yard" , "navigation" : { "locations" : [ { "driverInstructions" : "Check in at booth." , "latitude" : 37.7749 , "locationType" : "entrance" , "longitude" : -122.4194 , "name" : "Main gate" } ] } , "notes" : "Receiving 6-2" , "placeTypes" : [ "Voluptas et." , "Quo tenetur eveniet aliquid dolor nesciunt qui." ] , "routing" : [ { "driverInstructions" : "Use lane 2" , "hubId" : "550e8400-e29b-41d4-a716-446655440003" , "hubNotes" : "Zone A preferred" , "isDepot" : false , "orderServiceTime" : { "capacityServiceTime" : { "capacityId" : "550e8400-e29b-41d4-a716-446655440001" , "quantityPerServiceTime" : 0.5 , "serviceTimeSeconds" : 60 } , "fixedServiceTimeSeconds" : 300 , "isEnabled" : true , "modeType" : "variable" } , "position" : "first" , "priority" : 3 , "requiredSkills" : [ { "id" : "550e8400-e29b-41d4-a716-446655440000" , "name" : "Refrigerated" } ] , "routingExternalId" : "store-A" , "serviceTime" : { "isEnabled" : true , "serviceTimeMinutes" : 5 } , "serviceWindows" : [ { "days" : [ "Rerum ut doloribus voluptatum quaerat nobis." , "Reiciendis consectetur praesentium cumque." ] , "endTime" : "17:00:01" , "startTime" : "09:00:00" } ] } ] , "safetyEventExclusions" : [ "Beatae ad autem." , "Nam ut eum." , "Quis commodi fuga." , "Dolores architecto velit dolorem." ] , "streetView" : { "headingDegrees" : 90 , "isEnabled" : true , "latitude" : 37.7749 , "longitude" : -122.4194 , "pitchDegrees" : 0 , "zoom" : 1 } , "tags" : [ { "id" : "1001" , "name" : "Yard" , "parentTagId" : "500" } ] , "updatedAtTime" : "2019-06-13T19:08:25Z" } };
         server
             .mockEndpoint()
             .post("/places").jsonBody(rawRequestBody)
@@ -16576,7 +16848,7 @@ describe("BetaApIsClient", () => {
             type: "circle"
         },
         id: "12345",
-        iftaExemptionTypes: ["Eum quam sunt sit doloribus in deserunt.", "Laudantium temporibus enim quia fugiat praesentium in."],
+        iftaExemptionTypes: ["Ut voluptas et accusantium est labore.", "Magni sint quia.", "Nihil sequi enim rem exercitationem.", "Quaerat earum repudiandae et laborum commodi possimus."],
         isAutoDismissRolledStopsEnabled: false,
         isShowAddressesEnabled: true,
         name: "Oakland Yard",
@@ -16590,7 +16862,7 @@ describe("BetaApIsClient", () => {
                 }]
         },
         notes: "Receiving 6-2",
-        placeTypes: ["Voluptatem atque deserunt.", "Sed veniam magnam molestiae.", "Maiores dicta maiores assumenda."],
+        placeTypes: ["Voluptas et.", "Quo tenetur eveniet aliquid dolor nesciunt qui."],
         routing: [{
                 driverInstructions: "Use lane 2",
                 hubId: "550e8400-e29b-41d4-a716-446655440003",
@@ -16618,12 +16890,12 @@ describe("BetaApIsClient", () => {
                     serviceTimeMinutes: 5
                 },
                 serviceWindows: [{
-                        days: ["Ut debitis distinctio sed.", "Hic tempore amet nostrum alias."],
+                        days: ["Rerum ut doloribus voluptatum quaerat nobis.", "Reiciendis consectetur praesentium cumque."],
                         endTime: "17:00:01",
                         startTime: "09:00:00"
                     }]
             }],
-        safetyEventExclusions: ["Repudiandae et laborum commodi possimus.", "Consequatur eos voluptatibus.", "Harum rerum ut doloribus voluptatum quaerat.", "Voluptatem reiciendis consectetur praesentium."],
+        safetyEventExclusions: ["Beatae ad autem.", "Nam ut eum.", "Quis commodi fuga.", "Dolores architecto velit dolorem."],
         streetView: {
             headingDegrees: 90,
             isEnabled: true,
@@ -17037,7 +17309,7 @@ describe("BetaApIsClient", () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
         const rawRequestBody = { };
-        const rawResponseBody = { "data" : { "address" : "123 Main St" , "businessContacts" : { "contacts" : [ { "email" : "bob@example.com" , "name" : "Bob Smith" , "phoneNumber" : "+14155555678" } ] , "email" : [ "warehouse@example.com" ] , "phoneNumbers" : [ "+14155551234" ] } , "cameraRecordingModeType" : "inherit" , "createdAtTime" : "2019-06-13T19:08:25Z" , "geofence" : { "circle" : { "latitude" : 37.7749 , "longitude" : -122.4194 , "radiusMeters" : 150 } , "polygon" : { "vertices" : [ { "latitude" : 37.7749 , "longitude" : -122.4194 } ] } , "type" : "circle" } , "id" : "12345" , "iftaExemptionTypes" : [ "Eum quam sunt sit doloribus in deserunt." , "Laudantium temporibus enim quia fugiat praesentium in." ] , "isAutoDismissRolledStopsEnabled" : false , "isShowAddressesEnabled" : true , "name" : "Oakland Yard" , "navigation" : { "locations" : [ { "driverInstructions" : "Check in at booth." , "latitude" : 37.7749 , "locationType" : "entrance" , "longitude" : -122.4194 , "name" : "Main gate" } ] } , "notes" : "Receiving 6-2" , "placeTypes" : [ "Voluptatem atque deserunt." , "Sed veniam magnam molestiae." , "Maiores dicta maiores assumenda." ] , "routing" : [ { "driverInstructions" : "Use lane 2" , "hubId" : "550e8400-e29b-41d4-a716-446655440003" , "hubNotes" : "Zone A preferred" , "isDepot" : false , "orderServiceTime" : { "capacityServiceTime" : { "capacityId" : "550e8400-e29b-41d4-a716-446655440001" , "quantityPerServiceTime" : 0.5 , "serviceTimeSeconds" : 60 } , "fixedServiceTimeSeconds" : 300 , "isEnabled" : true , "modeType" : "variable" } , "position" : "first" , "priority" : 3 , "requiredSkills" : [ { "id" : "550e8400-e29b-41d4-a716-446655440000" , "name" : "Refrigerated" } ] , "routingExternalId" : "store-A" , "serviceTime" : { "isEnabled" : true , "serviceTimeMinutes" : 5 } , "serviceWindows" : [ { "days" : [ "Ut debitis distinctio sed." , "Hic tempore amet nostrum alias." ] , "endTime" : "17:00:01" , "startTime" : "09:00:00" } ] } ] , "safetyEventExclusions" : [ "Repudiandae et laborum commodi possimus." , "Consequatur eos voluptatibus." , "Harum rerum ut doloribus voluptatum quaerat." , "Voluptatem reiciendis consectetur praesentium." ] , "streetView" : { "headingDegrees" : 90 , "isEnabled" : true , "latitude" : 37.7749 , "longitude" : -122.4194 , "pitchDegrees" : 0 , "zoom" : 1 } , "tags" : [ { "id" : "1001" , "name" : "Yard" , "parentTagId" : "500" } ] , "updatedAtTime" : "2019-06-13T19:08:25Z" } };
+        const rawResponseBody = { "data" : { "address" : "123 Main St" , "businessContacts" : { "contacts" : [ { "email" : "bob@example.com" , "name" : "Bob Smith" , "phoneNumber" : "+14155555678" } ] , "email" : [ "warehouse@example.com" ] , "phoneNumbers" : [ "+14155551234" ] } , "cameraRecordingModeType" : "inherit" , "createdAtTime" : "2019-06-13T19:08:25Z" , "geofence" : { "circle" : { "latitude" : 37.7749 , "longitude" : -122.4194 , "radiusMeters" : 150 } , "polygon" : { "vertices" : [ { "latitude" : 37.7749 , "longitude" : -122.4194 } ] } , "type" : "circle" } , "id" : "12345" , "iftaExemptionTypes" : [ "Ut voluptas et accusantium est labore." , "Magni sint quia." , "Nihil sequi enim rem exercitationem." , "Quaerat earum repudiandae et laborum commodi possimus." ] , "isAutoDismissRolledStopsEnabled" : false , "isShowAddressesEnabled" : true , "name" : "Oakland Yard" , "navigation" : { "locations" : [ { "driverInstructions" : "Check in at booth." , "latitude" : 37.7749 , "locationType" : "entrance" , "longitude" : -122.4194 , "name" : "Main gate" } ] } , "notes" : "Receiving 6-2" , "placeTypes" : [ "Voluptas et." , "Quo tenetur eveniet aliquid dolor nesciunt qui." ] , "routing" : [ { "driverInstructions" : "Use lane 2" , "hubId" : "550e8400-e29b-41d4-a716-446655440003" , "hubNotes" : "Zone A preferred" , "isDepot" : false , "orderServiceTime" : { "capacityServiceTime" : { "capacityId" : "550e8400-e29b-41d4-a716-446655440001" , "quantityPerServiceTime" : 0.5 , "serviceTimeSeconds" : 60 } , "fixedServiceTimeSeconds" : 300 , "isEnabled" : true , "modeType" : "variable" } , "position" : "first" , "priority" : 3 , "requiredSkills" : [ { "id" : "550e8400-e29b-41d4-a716-446655440000" , "name" : "Refrigerated" } ] , "routingExternalId" : "store-A" , "serviceTime" : { "isEnabled" : true , "serviceTimeMinutes" : 5 } , "serviceWindows" : [ { "days" : [ "Rerum ut doloribus voluptatum quaerat nobis." , "Reiciendis consectetur praesentium cumque." ] , "endTime" : "17:00:01" , "startTime" : "09:00:00" } ] } ] , "safetyEventExclusions" : [ "Beatae ad autem." , "Nam ut eum." , "Quis commodi fuga." , "Dolores architecto velit dolorem." ] , "streetView" : { "headingDegrees" : 90 , "isEnabled" : true , "latitude" : 37.7749 , "longitude" : -122.4194 , "pitchDegrees" : 0 , "zoom" : 1 } , "tags" : [ { "id" : "1001" , "name" : "Yard" , "parentTagId" : "500" } ] , "updatedAtTime" : "2019-06-13T19:08:25Z" } };
         server
             .mockEndpoint()
             .patch("/places").jsonBody(rawRequestBody)
@@ -17077,7 +17349,7 @@ describe("BetaApIsClient", () => {
             type: "circle"
         },
         id: "12345",
-        iftaExemptionTypes: ["Eum quam sunt sit doloribus in deserunt.", "Laudantium temporibus enim quia fugiat praesentium in."],
+        iftaExemptionTypes: ["Ut voluptas et accusantium est labore.", "Magni sint quia.", "Nihil sequi enim rem exercitationem.", "Quaerat earum repudiandae et laborum commodi possimus."],
         isAutoDismissRolledStopsEnabled: false,
         isShowAddressesEnabled: true,
         name: "Oakland Yard",
@@ -17091,7 +17363,7 @@ describe("BetaApIsClient", () => {
                 }]
         },
         notes: "Receiving 6-2",
-        placeTypes: ["Voluptatem atque deserunt.", "Sed veniam magnam molestiae.", "Maiores dicta maiores assumenda."],
+        placeTypes: ["Voluptas et.", "Quo tenetur eveniet aliquid dolor nesciunt qui."],
         routing: [{
                 driverInstructions: "Use lane 2",
                 hubId: "550e8400-e29b-41d4-a716-446655440003",
@@ -17119,12 +17391,12 @@ describe("BetaApIsClient", () => {
                     serviceTimeMinutes: 5
                 },
                 serviceWindows: [{
-                        days: ["Ut debitis distinctio sed.", "Hic tempore amet nostrum alias."],
+                        days: ["Rerum ut doloribus voluptatum quaerat nobis.", "Reiciendis consectetur praesentium cumque."],
                         endTime: "17:00:01",
                         startTime: "09:00:00"
                     }]
             }],
-        safetyEventExclusions: ["Repudiandae et laborum commodi possimus.", "Consequatur eos voluptatibus.", "Harum rerum ut doloribus voluptatum quaerat.", "Voluptatem reiciendis consectetur praesentium."],
+        safetyEventExclusions: ["Beatae ad autem.", "Nam ut eum.", "Quis commodi fuga.", "Dolores architecto velit dolorem."],
         streetView: {
             headingDegrees: 90,
             isEnabled: true,
@@ -22672,7 +22944,7 @@ describe("BetaApIsClient", () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
         
-        const rawResponseBody = { "data" : { "columns" : [ { "dataType" : "string" , "name" : "Device Name" } ] , "rows" : [ [ { "key" : "value" } , { "key" : "value" } ] , [ { "key" : "value" } , { "key" : "value" } , { "key" : "value" } ] , [ { "key" : "value" } , { "key" : "value" } , { "key" : "value" } ] , [ { "key" : "value" } , { "key" : "value" } , { "key" : "value" } ] ] , "status" : "complete" } , "pagination" : { "endCursor" : "MjkY" , "hasNextPage" : true } };
+        const rawResponseBody = { "data" : { "columns" : [ { "dataType" : "string" , "name" : "Device Name" } ] , "rows" : [ [ { "key" : "value" } , { "key" : "value" } ] , [ { "key" : "value" } , { "key" : "value" } ] , [ { "key" : "value" } , { "key" : "value" } ] , [ { "key" : "value" } , { "key" : "value" } , { "key" : "value" } ] ] , "status" : "complete" } , "pagination" : { "endCursor" : "MjkY" , "hasNextPage" : true } };
         server
             .mockEndpoint()
             .get("/reports/runs/data").respondWith()
@@ -22698,11 +22970,7 @@ describe("BetaApIsClient", () => {
                     "key": "value"
                 }, {
                     "key": "value"
-                }, {
-                    "key": "value"
                 }], [{
-                    "key": "value"
-                }, {
                     "key": "value"
                 }, {
                     "key": "value"
@@ -22899,7 +23167,7 @@ describe("BetaApIsClient", () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
         
-        const rawResponseBody = { "data" : [ { "classification" : "grade5" , "createdAtTime" : "2024-11-15T10:00:00Z" , "externalIds" : { "key" : "value" } , "firstName" : "John" , "id" : "a1b2c3d4-5e6f-7a8b-9c0d-1e2f3a4b5c6d" , "identifiers" : [ { "id" : "b2c3d4e5-6f7a-8b9c-0d1e-2f3a4b5c6d7e" , "status" : "active" , "type" : "rfid" , "value" : "0418A2BC93" } ] , "isActive" : true , "lastName" : "Doe" , "specialInstructions" : { "isGuardianRequired" : true , "isSpecialEducation" : false } , "tagIds" : [ "Officiis inventore est nemo molestias aut." , "Beatae libero laborum iure sit est." ] , "updatedAtTime" : "2024-11-15T10:30:00Z" } ] , "pagination" : { "endCursor" : "MjkY" , "hasNextPage" : true } };
+        const rawResponseBody = { "data" : [ { "classification" : "grade5" , "createdAtTime" : "2024-11-15T10:00:00Z" , "externalIds" : { "key" : "value" } , "firstName" : "John" , "id" : "a1b2c3d4-5e6f-7a8b-9c0d-1e2f3a4b5c6d" , "identifiers" : [ { "id" : "b2c3d4e5-6f7a-8b9c-0d1e-2f3a4b5c6d7e" , "status" : "active" , "type" : "rfid" , "value" : "0418A2BC93" } ] , "isActive" : true , "lastName" : "Doe" , "specialInstructions" : { "isGuardianRequired" : false , "isSpecialEducation" : true } , "tagIds" : [ "Recusandae temporibus eveniet nostrum autem." , "A harum temporibus aliquid eum exercitationem." , "Amet laborum odit." , "Ullam totam esse dolorum quis numquam." ] , "updatedAtTime" : "2024-11-15T10:30:00Z" } ] , "pagination" : { "endCursor" : "MjkY" , "hasNextPage" : true } };
         server
             .mockEndpoint()
             .get("/ridership/passengers").respondWith()
@@ -22929,10 +23197,10 @@ describe("BetaApIsClient", () => {
             isActive: true,
             lastName: "Doe",
             specialInstructions: {
-                isGuardianRequired: true,
-                isSpecialEducation: false
+                isGuardianRequired: false,
+                isSpecialEducation: true
             },
-            tagIds: ["Officiis inventore est nemo molestias aut.", "Beatae libero laborum iure sit est."],
+            tagIds: ["Recusandae temporibus eveniet nostrum autem.", "A harum temporibus aliquid eum exercitationem.", "Amet laborum odit.", "Ullam totam esse dolorum quis numquam."],
             updatedAtTime: "2024-11-15T10:30:00Z"
         }],
     pagination: {
@@ -23119,7 +23387,7 @@ describe("BetaApIsClient", () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
         const rawRequestBody = { "firstName" : "John" , "lastName" : "Doe" };
-        const rawResponseBody = { "data" : { "classification" : "grade5" , "createdAtTime" : "2024-11-15T10:00:00Z" , "externalIds" : { "key" : "value" } , "firstName" : "John" , "id" : "a1b2c3d4-5e6f-7a8b-9c0d-1e2f3a4b5c6d" , "identifiers" : [ { "id" : "b2c3d4e5-6f7a-8b9c-0d1e-2f3a4b5c6d7e" , "status" : "active" , "type" : "rfid" , "value" : "0418A2BC93" } ] , "isActive" : true , "lastName" : "Doe" , "specialInstructions" : { "isGuardianRequired" : true , "isSpecialEducation" : false } , "tagIds" : [ "Officiis inventore est nemo molestias aut." , "Beatae libero laborum iure sit est." ] , "updatedAtTime" : "2024-11-15T10:30:00Z" } };
+        const rawResponseBody = { "data" : { "classification" : "grade5" , "createdAtTime" : "2024-11-15T10:00:00Z" , "externalIds" : { "key" : "value" } , "firstName" : "John" , "id" : "a1b2c3d4-5e6f-7a8b-9c0d-1e2f3a4b5c6d" , "identifiers" : [ { "id" : "b2c3d4e5-6f7a-8b9c-0d1e-2f3a4b5c6d7e" , "status" : "active" , "type" : "rfid" , "value" : "0418A2BC93" } ] , "isActive" : true , "lastName" : "Doe" , "specialInstructions" : { "isGuardianRequired" : false , "isSpecialEducation" : true } , "tagIds" : [ "Recusandae temporibus eveniet nostrum autem." , "A harum temporibus aliquid eum exercitationem." , "Amet laborum odit." , "Ullam totam esse dolorum quis numquam." ] , "updatedAtTime" : "2024-11-15T10:30:00Z" } };
         server
             .mockEndpoint()
             .post("/ridership/passengers").jsonBody(rawRequestBody)
@@ -23151,10 +23419,10 @@ describe("BetaApIsClient", () => {
         isActive: true,
         lastName: "Doe",
         specialInstructions: {
-            isGuardianRequired: true,
-            isSpecialEducation: false
+            isGuardianRequired: false,
+            isSpecialEducation: true
         },
-        tagIds: ["Officiis inventore est nemo molestias aut.", "Beatae libero laborum iure sit est."],
+        tagIds: ["Recusandae temporibus eveniet nostrum autem.", "A harum temporibus aliquid eum exercitationem.", "Amet laborum odit.", "Ullam totam esse dolorum quis numquam."],
         updatedAtTime: "2024-11-15T10:30:00Z"
     }
 });
@@ -23355,7 +23623,7 @@ describe("BetaApIsClient", () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
         const rawRequestBody = { "firstName" : "John" , "lastName" : "Doe" };
-        const rawResponseBody = { "data" : { "classification" : "grade5" , "createdAtTime" : "2024-11-15T10:00:00Z" , "externalIds" : { "key" : "value" } , "firstName" : "John" , "id" : "a1b2c3d4-5e6f-7a8b-9c0d-1e2f3a4b5c6d" , "identifiers" : [ { "id" : "b2c3d4e5-6f7a-8b9c-0d1e-2f3a4b5c6d7e" , "status" : "active" , "type" : "rfid" , "value" : "0418A2BC93" } ] , "isActive" : true , "lastName" : "Doe" , "specialInstructions" : { "isGuardianRequired" : true , "isSpecialEducation" : false } , "tagIds" : [ "Officiis inventore est nemo molestias aut." , "Beatae libero laborum iure sit est." ] , "updatedAtTime" : "2024-11-15T10:30:00Z" } };
+        const rawResponseBody = { "data" : { "classification" : "grade5" , "createdAtTime" : "2024-11-15T10:00:00Z" , "externalIds" : { "key" : "value" } , "firstName" : "John" , "id" : "a1b2c3d4-5e6f-7a8b-9c0d-1e2f3a4b5c6d" , "identifiers" : [ { "id" : "b2c3d4e5-6f7a-8b9c-0d1e-2f3a4b5c6d7e" , "status" : "active" , "type" : "rfid" , "value" : "0418A2BC93" } ] , "isActive" : true , "lastName" : "Doe" , "specialInstructions" : { "isGuardianRequired" : false , "isSpecialEducation" : true } , "tagIds" : [ "Recusandae temporibus eveniet nostrum autem." , "A harum temporibus aliquid eum exercitationem." , "Amet laborum odit." , "Ullam totam esse dolorum quis numquam." ] , "updatedAtTime" : "2024-11-15T10:30:00Z" } };
         server
             .mockEndpoint()
             .put("/ridership/passengers").jsonBody(rawRequestBody)
@@ -23388,10 +23656,10 @@ describe("BetaApIsClient", () => {
         isActive: true,
         lastName: "Doe",
         specialInstructions: {
-            isGuardianRequired: true,
-            isSpecialEducation: false
+            isGuardianRequired: false,
+            isSpecialEducation: true
         },
-        tagIds: ["Officiis inventore est nemo molestias aut.", "Beatae libero laborum iure sit est."],
+        tagIds: ["Recusandae temporibus eveniet nostrum autem.", "A harum temporibus aliquid eum exercitationem.", "Amet laborum odit.", "Ullam totam esse dolorum quis numquam."],
         updatedAtTime: "2024-11-15T10:30:00Z"
     }
 });
@@ -23792,7 +24060,7 @@ describe("BetaApIsClient", () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
         
-        const rawResponseBody = { "data" : { "classification" : "grade5" , "createdAtTime" : "2024-11-15T10:00:00Z" , "externalIds" : { "key" : "value" } , "firstName" : "John" , "id" : "a1b2c3d4-5e6f-7a8b-9c0d-1e2f3a4b5c6d" , "identifiers" : [ { "id" : "b2c3d4e5-6f7a-8b9c-0d1e-2f3a4b5c6d7e" , "status" : "active" , "type" : "rfid" , "value" : "0418A2BC93" } ] , "isActive" : true , "lastName" : "Doe" , "specialInstructions" : { "isGuardianRequired" : true , "isSpecialEducation" : false } , "tagIds" : [ "Officiis inventore est nemo molestias aut." , "Beatae libero laborum iure sit est." ] , "updatedAtTime" : "2024-11-15T10:30:00Z" } };
+        const rawResponseBody = { "data" : { "classification" : "grade5" , "createdAtTime" : "2024-11-15T10:00:00Z" , "externalIds" : { "key" : "value" } , "firstName" : "John" , "id" : "a1b2c3d4-5e6f-7a8b-9c0d-1e2f3a4b5c6d" , "identifiers" : [ { "id" : "b2c3d4e5-6f7a-8b9c-0d1e-2f3a4b5c6d7e" , "status" : "active" , "type" : "rfid" , "value" : "0418A2BC93" } ] , "isActive" : true , "lastName" : "Doe" , "specialInstructions" : { "isGuardianRequired" : false , "isSpecialEducation" : true } , "tagIds" : [ "Recusandae temporibus eveniet nostrum autem." , "A harum temporibus aliquid eum exercitationem." , "Amet laborum odit." , "Ullam totam esse dolorum quis numquam." ] , "updatedAtTime" : "2024-11-15T10:30:00Z" } };
         server
             .mockEndpoint()
             .get("/ridership/passengers/id").respondWith()
@@ -23822,10 +24090,10 @@ describe("BetaApIsClient", () => {
         isActive: true,
         lastName: "Doe",
         specialInstructions: {
-            isGuardianRequired: true,
-            isSpecialEducation: false
+            isGuardianRequired: false,
+            isSpecialEducation: true
         },
-        tagIds: ["Officiis inventore est nemo molestias aut.", "Beatae libero laborum iure sit est."],
+        tagIds: ["Recusandae temporibus eveniet nostrum autem.", "A harum temporibus aliquid eum exercitationem.", "Amet laborum odit.", "Ullam totam esse dolorum quis numquam."],
         updatedAtTime: "2024-11-15T10:30:00Z"
     }
 });
@@ -25130,7 +25398,7 @@ describe("BetaApIsClient", () => {
     test("patchSafetyEventsV2Batch (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
-        const rawRequestBody = { "safetyEventIds" : [ "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590" , "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590" , "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590" , "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590" ] };
+        const rawRequestBody = { "safetyEventIds" : [ "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590" , "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590" , "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590" ] };
         const rawResponseBody = { "requestId" : "a1b2c3d4-e5f6-7890-abcd-ef1234567890" , "responses" : [ { "data" : { "safetyEventId" : "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590" } , "status" : 202 } ] };
         server
             .mockEndpoint()
@@ -25142,7 +25410,7 @@ describe("BetaApIsClient", () => {
         
                     
                             const response = await client.betaApIs.patchSafetyEventsV2Batch({
-    safetyEventIds: ["bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590"]
+    safetyEventIds: ["bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590"]
 });
                             expect(response).toEqual({
     requestId: "a1b2c3d4-e5f6-7890-abcd-ef1234567890",

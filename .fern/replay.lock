@@ -288,7 +288,13 @@ generations:
     cli_version: unknown
     generator_versions:
       fernapi/fern-typescript-sdk: 3.48.1
-current_generation: b40810628aba8735462d9b0fcb6fbff435a106d0
+  - commit_sha: b91e9a57f187c6b74851f1fba8fc4c4454763e12
+    tree_hash: 490d93df1508ebe21c87139f30ebb7e39fd012b1
+    timestamp: 2026-07-29T08:49:41.827Z
+    cli_version: unknown
+    generator_versions:
+      fernapi/fern-typescript-sdk: 3.48.1
+current_generation: b91e9a57f187c6b74851f1fba8fc4c4454763e12
 patches:
   - id: patch-ed895c87
     content_hash: sha256:aab0c30c623e28c2b59c6e7133d3e3a73afe785a887ccdbe2326bbb6b568a487

@@ -16357,6 +16357,233 @@ describe("BetaApIsClient", () => {
             }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
           
+    test("listTimeEntries (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "data" : [ { "activityType" : "12345" , "clockInAtTime" : "2019-06-13T19:08:25Z" , "clockInLocation" : { "latitude" : 123.45 , "longitude" : 123.45 } , "clockInSource" : "12345" , "clockOutAtTime" : "2019-06-13T19:08:25Z" , "clockOutLocation" : { "latitude" : 123.45 , "longitude" : 123.45 } , "clockOutMethodType" : "12345" , "clockOutSource" : "12345" , "createdAtTime" : "2019-06-13T19:08:25Z" , "deletedAtTime" : "2019-06-13T19:08:25Z" , "deletedByUserId" : "12345" , "hourlyRate" : { "amount" : "12345" , "currency" : "12345" } , "id" : "12345" , "placeId" : "12345" , "serviceTaskId" : "12345" , "timeEntryStatus" : "12345" , "updatedAtTime" : "2019-06-13T19:08:25Z" , "userId" : "12345" , "workOrderId" : "12345" } ] , "pagination" : { "endCursor" : "MjkY" , "hasNextPage" : true } };
+        server
+            .mockEndpoint()
+            .get("/maintenance/time-entries/stream").respondWith()
+            .statusCode(200).jsonBody(rawResponseBody)
+                .build();
+
+        
+                    
+                            const response = await client.betaApIs.listTimeEntries({
+    startTime: "startTime"
+});
+                            expect(response).toEqual({
+    data: [{
+            activityType: "12345",
+            clockInAtTime: "2019-06-13T19:08:25Z",
+            clockInLocation: {
+                latitude: 123.45,
+                longitude: 123.45
+            },
+            clockInSource: "12345",
+            clockOutAtTime: "2019-06-13T19:08:25Z",
+            clockOutLocation: {
+                latitude: 123.45,
+                longitude: 123.45
+            },
+            clockOutMethodType: "12345",
+            clockOutSource: "12345",
+            createdAtTime: "2019-06-13T19:08:25Z",
+            deletedAtTime: "2019-06-13T19:08:25Z",
+            deletedByUserId: "12345",
+            hourlyRate: {
+                amount: "12345",
+                currency: "12345"
+            },
+            id: "12345",
+            placeId: "12345",
+            serviceTaskId: "12345",
+            timeEntryStatus: "12345",
+            updatedAtTime: "2019-06-13T19:08:25Z",
+            userId: "12345",
+            workOrderId: "12345"
+        }],
+    pagination: {
+        endCursor: "MjkY",
+        hasNextPage: true
+    }
+});
+                          
+                
+    });
+          
+    test("listTimeEntries (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/time-entries/stream").respondWith()
+            .statusCode(401).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.listTimeEntries({
+    startTime: "startTime"
+})
+            }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+          
+    test("listTimeEntries (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/time-entries/stream").respondWith()
+            .statusCode(404).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.listTimeEntries({
+    startTime: "startTime"
+})
+            }).rejects.toThrow(Samsara.NotFoundError);
+    });
+          
+    test("listTimeEntries (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/time-entries/stream").respondWith()
+            .statusCode(405).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.listTimeEntries({
+    startTime: "startTime"
+})
+            }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+          
+    test("listTimeEntries (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/time-entries/stream").respondWith()
+            .statusCode(429).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.listTimeEntries({
+    startTime: "startTime"
+})
+            }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+          
+    test("listTimeEntries (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/time-entries/stream").respondWith()
+            .statusCode(500).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.listTimeEntries({
+    startTime: "startTime"
+})
+            }).rejects.toThrow(Samsara.InternalServerError);
+    });
+          
+    test("listTimeEntries (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/time-entries/stream").respondWith()
+            .statusCode(501).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.listTimeEntries({
+    startTime: "startTime"
+})
+            }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+          
+    test("listTimeEntries (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/time-entries/stream").respondWith()
+            .statusCode(502).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.listTimeEntries({
+    startTime: "startTime"
+})
+            }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+          
+    test("listTimeEntries (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/time-entries/stream").respondWith()
+            .statusCode(503).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.listTimeEntries({
+    startTime: "startTime"
+})
+            }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+          
+    test("listTimeEntries (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/time-entries/stream").respondWith()
+            .statusCode(504).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.listTimeEntries({
+    startTime: "startTime"
+})
+            }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+          
     test("getWorkOrderTemplates (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });

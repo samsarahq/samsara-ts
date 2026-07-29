@@ -88,6 +88,7 @@ export type { ListRidershipPassengersRequest } from "./ListRidershipPassengersRe
 export type { ListRidershipRouteSetupsRequest } from "./ListRidershipRouteSetupsRequest.js";
 export type { ListSharedAssetsRequest } from "./ListSharedAssetsRequest.js";
 export type { ListTachographLiveDataRequest } from "./ListTachographLiveDataRequest.js";
+export type { ListTimeEntriesRequest } from "./ListTimeEntriesRequest.js";
 export type { ListUpcomingPreventiveMaintenanceRequest } from "./ListUpcomingPreventiveMaintenanceRequest.js";
 export type { ListVendorCategoriesRequest } from "./ListVendorCategoriesRequest.js";
 export { PlacesPatchPlaceRequestBody } from "./PlacesPatchPlaceRequestBody.js";

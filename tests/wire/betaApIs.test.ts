@@ -12653,6 +12653,228 @@ describe("BetaApIsClient", () => {
             }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
           
+    test("updateWatchpoint (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { };
+        const rawResponseBody = { "data" : { "createdAtTime" : "2026-07-15T10:00:00Z" , "id" : "2eb0e68c-d728-4d2f-b9a0-8bc6ded86422" , "lastObservationTime" : "2019-06-13T19:08:25Z" , "location" : { "latitude" : 37.7749 , "longitude" : -122.4194 } , "mode" : "unknown" , "monitoringEndTime" : "2026-08-14T10:00:00Z" , "monitoringStartTime" : "2026-07-15T10:00:00Z" , "name" : "Market Street watchpoint" , "note" : "Monitor the intersection for road defects." , "observationCount" : 1 , "observationType" : "unknown" , "samsaraDashboardUrl" : "https://cloud.samsara.com/o/123456/fleet/ground-intelligence?tab=monitors&monitorId=2eb0e68c-d728-4d2f-b9a0-8bc6ded86422" , "status" : "unknown" , "updatedAtTime" : "2026-07-15T10:00:01Z" } };
+        server
+            .mockEndpoint()
+            .patch("/ground-intelligence/watchpoints").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(200).jsonBody(rawResponseBody)
+                .build();
+
+        
+                    
+                            const response = await client.betaApIs.updateWatchpoint({
+    id: "id"
+});
+                            expect(response).toEqual({
+    data: {
+        createdAtTime: "2026-07-15T10:00:00Z",
+        id: "2eb0e68c-d728-4d2f-b9a0-8bc6ded86422",
+        lastObservationTime: "2019-06-13T19:08:25Z",
+        location: {
+            latitude: 37.7749,
+            longitude: -122.4194
+        },
+        mode: "unknown",
+        monitoringEndTime: "2026-08-14T10:00:00Z",
+        monitoringStartTime: "2026-07-15T10:00:00Z",
+        name: "Market Street watchpoint",
+        note: "Monitor the intersection for road defects.",
+        observationCount: 1,
+        observationType: "unknown",
+        samsaraDashboardUrl: "https://cloud.samsara.com/o/123456/fleet/ground-intelligence?tab=monitors&monitorId=2eb0e68c-d728-4d2f-b9a0-8bc6ded86422",
+        status: "unknown",
+        updatedAtTime: "2026-07-15T10:00:01Z"
+    }
+});
+                          
+                
+    });
+          
+    test("updateWatchpoint (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .patch("/ground-intelligence/watchpoints").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(401).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.updateWatchpoint({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+          
+    test("updateWatchpoint (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .patch("/ground-intelligence/watchpoints").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(404).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.updateWatchpoint({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.NotFoundError);
+    });
+          
+    test("updateWatchpoint (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .patch("/ground-intelligence/watchpoints").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(405).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.updateWatchpoint({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+          
+    test("updateWatchpoint (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .patch("/ground-intelligence/watchpoints").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(429).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.updateWatchpoint({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+          
+    test("updateWatchpoint (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .patch("/ground-intelligence/watchpoints").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(500).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.updateWatchpoint({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.InternalServerError);
+    });
+          
+    test("updateWatchpoint (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .patch("/ground-intelligence/watchpoints").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(501).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.updateWatchpoint({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+          
+    test("updateWatchpoint (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .patch("/ground-intelligence/watchpoints").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(502).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.updateWatchpoint({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+          
+    test("updateWatchpoint (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .patch("/ground-intelligence/watchpoints").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(503).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.updateWatchpoint({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+          
+    test("updateWatchpoint (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .patch("/ground-intelligence/watchpoints").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(504).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.updateWatchpoint({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+          
     test("updateShippingDocs (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });

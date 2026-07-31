@@ -26,6 +26,7 @@ export type { EntityPartDefinitionsServiceCreatePartRequestBody } from "./Entity
 export type { EntityPartDefinitionsServiceUpdatePartRequestBody } from "./EntityPartDefinitionsServiceUpdatePartRequestBody.js";
 export type { EntityPartInventoryLocationsServiceCreatePartInventoryLocationRequestBody } from "./EntityPartInventoryLocationsServiceCreatePartInventoryLocationRequestBody.js";
 export type { EntityPartInventoryLocationsServiceUpdatePartInventoryLocationRequestBody } from "./EntityPartInventoryLocationsServiceUpdatePartInventoryLocationRequestBody.js";
+export type { EntityUpcomingPreventativeMaintenancesServiceUpdateUpcomingPreventiveMaintenanceRequestBody } from "./EntityUpcomingPreventativeMaintenancesServiceUpdateUpcomingPreventiveMaintenanceRequestBody.js";
 export { EntityWatchpointsServiceCreateWatchpointRequestBody } from "./EntityWatchpointsServiceCreateWatchpointRequestBody.js";
 export { EntityWatchpointsServiceUpdateWatchpointRequestBody } from "./EntityWatchpointsServiceUpdateWatchpointRequestBody.js";
 export type { EquipmentOutputControlSetEquipmentDigitalOutputRequestBody } from "./EquipmentOutputControlSetEquipmentDigitalOutputRequestBody.js";
@@ -106,6 +107,7 @@ export type { ReadingsPostReadingsRequestBody } from "./ReadingsPostReadingsRequ
 export type { RejectAssetSharingAgreementRequest } from "./RejectAssetSharingAgreementRequest.js";
 export type { ReportsCreateReportRunRequestBody } from "./ReportsCreateReportRunRequestBody.js";
 export type { ResolveAssignmentByDetailsResolveAssignmentByDetailsRequestBody } from "./ResolveAssignmentByDetailsResolveAssignmentByDetailsRequestBody.js";
+export type { ResolvePreventiveMaintenanceActionServiceResolvePreventiveMaintenanceRequestBody } from "./ResolvePreventiveMaintenanceActionServiceResolvePreventiveMaintenanceRequestBody.js";
 export { RidershipPassengersCreateRidershipPassengerRequestBody } from "./RidershipPassengersCreateRidershipPassengerRequestBody.js";
 export { RidershipPassengersUpdateRidershipPassengerRequestBody } from "./RidershipPassengersUpdateRidershipPassengerRequestBody.js";
 export type { RidershipRouteSetupsCreateRidershipRouteSetupRequestBody } from "./RidershipRouteSetupsCreateRidershipRouteSetupRequestBody.js";

@@ -2,7 +2,7 @@
 
 import type * as Samsara from "../index.js";
 
-export interface RoutesStopWithFormsResponseObjectResponseBody {
+export interface RouteStopWithOrdersResponseObjectResponseBody {
     /** Actual arrival time, if it exists, for the route stop in RFC 3339 format. */
     actualArrivalTime?: string | undefined;
     /** Actual departure time, if it exists, for the route stop in RFC 3339 format. */
@@ -38,6 +38,8 @@ export interface RoutesStopWithFormsResponseObjectResponseBody {
     ontimeWindowAfterArrivalMs?: number | undefined;
     /** Specifies the time window (in milliseconds) before a stop's scheduled arrival time during which the stop is considered 'on-time'. */
     ontimeWindowBeforeArrivalMs?: number | undefined;
+    /** Canonical order tasks attached to this stop. */
+    orders: Samsara.RouteStopOrderTaskReferenceObjectResponseBody[];
     /** Planned driving distance from the previous stop in meters. Based on routing calculations at route creation time. Null for the first stop or if routing data is unavailable. */
     plannedDistanceMeters?: number | undefined;
     /** Scheduled arrival time, if it exists, for the stop in RFC 3339 format. */
@@ -50,10 +52,10 @@ export interface RoutesStopWithFormsResponseObjectResponseBody {
     /** Skipped time, if it exists, for the route stop in RFC 3339 format. */
     skippedTime?: string | undefined;
     /** The current state of the route stop.  Valid values: `unassigned`, `scheduled`, `en route`, `skipped`, `arrived`, `departed` */
-    state: RoutesStopWithFormsResponseObjectResponseBody.State;
+    state: RouteStopWithOrdersResponseObjectResponseBody.State;
 }
 
-export namespace RoutesStopWithFormsResponseObjectResponseBody {
+export namespace RouteStopWithOrdersResponseObjectResponseBody {
     /** The current state of the route stop.  Valid values: `unassigned`, `scheduled`, `en route`, `skipped`, `arrived`, `departed` */
     export const State = {
         Unassigned: "unassigned",

@@ -9,7 +9,7 @@ export interface ResolvePreventiveMaintenanceActionServiceResolvePreventiveMaint
     assetId?: string;
     /** ID of the preventive maintenance schedule to resolve. */
     scheduleId?: string;
-    /** When the maintenance was resolved, in epoch milliseconds. Defaults to the current time if not provided. */
+    /** RFC3339 time when the maintenance was resolved. Defaults to the current time if not provided. */
     resolvedAt?: string;
     /** Engine hours reading at the time of resolution. */
     resolvedAtEngineHours?: number;

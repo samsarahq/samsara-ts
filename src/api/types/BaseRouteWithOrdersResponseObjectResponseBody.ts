@@ -2,7 +2,7 @@
 
 import type * as Samsara from "../index.js";
 
-export interface BaseRouteWithStopFormsResponseObjectResponseBody {
+export interface BaseRouteWithOrdersResponseObjectResponseBody {
     /** Actual end time, if it exists, for the route in RFC 3339 format. */
     actualRouteEndTime?: string | undefined;
     /** Actual start time, if it exists, for the route in RFC 3339 format. */
@@ -26,7 +26,7 @@ export interface BaseRouteWithStopFormsResponseObjectResponseBody {
     scheduledRouteStartTime?: string | undefined;
     settings?: Samsara.RouteSettingsResponseBody | undefined;
     /** List of stops along the route */
-    stops?: Samsara.RoutesStopWithFormsResponseObjectResponseBody[] | undefined;
+    stops?: Samsara.RouteStopWithOrdersResponseObjectResponseBody[] | undefined;
     /** An array of IDs of tags to associate with this route. */
     tagIds?: string[] | undefined;
     vehicle?: Samsara.GoaVehicleTinyResponseResponseBody | undefined;

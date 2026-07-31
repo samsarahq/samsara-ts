@@ -13,17 +13,18 @@ export interface FormSubmissionRequestFieldInputObjectRequestBody {
     geofenceValue?: Samsara.FormSubmissionRequestGeofenceValueObjectRequestBody | undefined;
     /** ID of the forms input field object. */
     id: string;
+    mediaValue?: Samsara.FormSubmissionRequestMediaValueObjectRequestBody | undefined;
     multipleChoiceValue?: Samsara.FormSubmissionRequestMultipleChoiceValueObjectRequestBody | undefined;
     numberValue?: Samsara.FormSubmissionRequestNumberValueObjectRequestBody | undefined;
     personValue?: Samsara.FormSubmissionRequestPersonValueObjectRequestBody | undefined;
     tableValue?: Samsara.FormSubmissionRequestTableValueObjectRequestBody | undefined;
     textValue?: Samsara.FormSubmissionRequestTextValueObjectRequestBody | undefined;
-    /** Type of the field.  Valid values: `number`, `text`, `multiple_choice`, `check_boxes`, `datetime`, `asset`, `person`, `table`, `geofence`, `barcode` */
+    /** Type of the field.  Valid values: `number`, `text`, `multiple_choice`, `check_boxes`, `datetime`, `asset`, `person`, `table`, `geofence`, `barcode`, `media` */
     type: FormSubmissionRequestFieldInputObjectRequestBody.Type;
 }
 
 export namespace FormSubmissionRequestFieldInputObjectRequestBody {
-    /** Type of the field.  Valid values: `number`, `text`, `multiple_choice`, `check_boxes`, `datetime`, `asset`, `person`, `table`, `geofence`, `barcode` */
+    /** Type of the field.  Valid values: `number`, `text`, `multiple_choice`, `check_boxes`, `datetime`, `asset`, `person`, `table`, `geofence`, `barcode`, `media` */
     export const Type = {
         Number: "number",
         Text: "text",
@@ -35,6 +36,7 @@ export namespace FormSubmissionRequestFieldInputObjectRequestBody {
         Table: "table",
         Geofence: "geofence",
         Barcode: "barcode",
+        Media: "media",
     } as const;
     export type Type = (typeof Type)[keyof typeof Type];
 }

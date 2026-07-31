@@ -69,6 +69,7 @@ describe("RoutesClient", () => {
                             notes: "These are my notes",
                             ontimeWindowAfterArrivalMs: 300000,
                             ontimeWindowBeforeArrivalMs: 300000,
+                            orders: [{ id: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392", taskId: "12345678" }],
                             plannedDistanceMeters: 5200,
                             scheduledArrivalTime: "2019-06-13T19:08:25Z",
                             scheduledDepartureTime: "2019-06-13T19:08:25Z",
@@ -170,6 +171,12 @@ describe("RoutesClient", () => {
                             notes: "These are my notes",
                             ontimeWindowAfterArrivalMs: 300000,
                             ontimeWindowBeforeArrivalMs: 300000,
+                            orders: [
+                                {
+                                    id: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392",
+                                    taskId: "12345678",
+                                },
+                            ],
                             plannedDistanceMeters: 5200,
                             scheduledArrivalTime: "2019-06-13T19:08:25Z",
                             scheduledDepartureTime: "2019-06-13T19:08:25Z",
@@ -439,6 +446,7 @@ describe("RoutesClient", () => {
                         notes: "These are my notes",
                         ontimeWindowAfterArrivalMs: 300000,
                         ontimeWindowBeforeArrivalMs: 300000,
+                        orders: [{ id: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392", taskId: "12345678" }],
                         plannedDistanceMeters: 5200,
                         scheduledArrivalTime: "2019-06-13T19:08:25Z",
                         scheduledDepartureTime: "2019-06-13T19:08:25Z",
@@ -551,6 +559,12 @@ describe("RoutesClient", () => {
                         notes: "These are my notes",
                         ontimeWindowAfterArrivalMs: 300000,
                         ontimeWindowBeforeArrivalMs: 300000,
+                        orders: [
+                            {
+                                id: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392",
+                                taskId: "12345678",
+                            },
+                        ],
                         plannedDistanceMeters: 5200,
                         scheduledArrivalTime: "2019-06-13T19:08:25Z",
                         scheduledDepartureTime: "2019-06-13T19:08:25Z",
@@ -1343,6 +1357,7 @@ describe("RoutesClient", () => {
                         notes: "These are my notes",
                         ontimeWindowAfterArrivalMs: 300000,
                         ontimeWindowBeforeArrivalMs: 300000,
+                        orders: [{ id: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392", taskId: "12345678" }],
                         plannedDistanceMeters: 5200,
                         scheduledArrivalTime: "2019-06-13T19:08:25Z",
                         scheduledDepartureTime: "2019-06-13T19:08:25Z",
@@ -1447,6 +1462,12 @@ describe("RoutesClient", () => {
                         notes: "These are my notes",
                         ontimeWindowAfterArrivalMs: 300000,
                         ontimeWindowBeforeArrivalMs: 300000,
+                        orders: [
+                            {
+                                id: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392",
+                                taskId: "12345678",
+                            },
+                        ],
                         plannedDistanceMeters: 5200,
                         scheduledArrivalTime: "2019-06-13T19:08:25Z",
                         scheduledDepartureTime: "2019-06-13T19:08:25Z",
@@ -1947,6 +1968,7 @@ describe("RoutesClient", () => {
                         notes: "These are my notes",
                         ontimeWindowAfterArrivalMs: 300000,
                         ontimeWindowBeforeArrivalMs: 300000,
+                        orders: [{ id: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392", taskId: "12345678" }],
                         plannedDistanceMeters: 5200,
                         scheduledArrivalTime: "2019-06-13T19:08:25Z",
                         scheduledDepartureTime: "2019-06-13T19:08:25Z",
@@ -2058,6 +2080,12 @@ describe("RoutesClient", () => {
                         notes: "These are my notes",
                         ontimeWindowAfterArrivalMs: 300000,
                         ontimeWindowBeforeArrivalMs: 300000,
+                        orders: [
+                            {
+                                id: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392",
+                                taskId: "12345678",
+                            },
+                        ],
                         plannedDistanceMeters: 5200,
                         scheduledArrivalTime: "2019-06-13T19:08:25Z",
                         scheduledDepartureTime: "2019-06-13T19:08:25Z",

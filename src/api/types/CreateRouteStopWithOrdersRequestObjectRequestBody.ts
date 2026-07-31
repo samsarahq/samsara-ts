@@ -2,7 +2,7 @@
 
 import type * as Samsara from "../index.js";
 
-export interface CreateRoutesStopRequestObjectRequestBody {
+export interface CreateRouteStopWithOrdersRequestObjectRequestBody {
     /** ID of the address. An address [externalId](https://developers.samsara.com/docs/external-ids#using-external-ids) can also be used interchangeably here. */
     addressId?: string | undefined;
     /** Appointment windows for the stop. */
@@ -19,6 +19,8 @@ export interface CreateRoutesStopRequestObjectRequestBody {
     ontimeWindowAfterArrivalMs?: number | undefined;
     /** Specifies the time window (in milliseconds) before a stop's scheduled arrival time during which the stop is considered 'on-time'. */
     ontimeWindowBeforeArrivalMs?: number | undefined;
+    /** Orders to upsert and attach to this stop. */
+    orders?: Samsara.RouteStopOrderUpsertInputRequestBody[] | undefined;
     /** This is a required field for all stops EXCEPT the start and end, based on route start and stop settings selected. */
     scheduledArrivalTime?: string | undefined;
     /** This is a required field for all stops EXCEPT the start and end, based on route start and stop settings selected. */

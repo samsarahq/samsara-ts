@@ -21,6 +21,8 @@ export interface UpdateRoutesStopRequestObjectRequestBody {
     ontimeWindowAfterArrivalMs?: number | undefined;
     /** Specifies the time window (in milliseconds) before a stop's scheduled arrival time during which the stop is considered 'on-time'. */
     ontimeWindowBeforeArrivalMs?: number | undefined;
+    /** Orders to replace on this stop. Omit this field to preserve existing order attachments; provide an empty array to clear them. */
+    orders?: Samsara.RouteStopOrderUpsertInputRequestBody[] | undefined;
     /** This is a required field for all stops EXCEPT the start and end, based on route start and stop settings selected. */
     scheduledArrivalTime?: string | undefined;
     /** This is a required field for all stops EXCEPT the start and end, based on route start and stop settings selected. */

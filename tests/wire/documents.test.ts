@@ -348,13 +348,13 @@ describe("DocumentsClient", () => {
                 {
                     conditionalFieldSections: [
                         {
-                            conditionalFieldFirstIndex: 2529239247727561700,
-                            conditionalFieldLastIndex: 5262110667266989000,
-                            triggeringFieldIndex: 1302825110937476600,
+                            conditionalFieldFirstIndex: 8217465358527716000,
+                            conditionalFieldLastIndex: 1543582388420605000,
+                            triggeringFieldIndex: 7540159348423735000,
                             triggeringFieldValue: "Optiona 1",
                         },
                     ],
-                    createdAtTime: "1997-05-08T01:03:55Z",
+                    createdAtTime: "2014-09-02T18:11:09Z",
                     documentType: { id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7", name: "Fleet Truck List" },
                     driver: { id: "45646", name: "Driver Bob" },
                     fields: [
@@ -370,7 +370,7 @@ describe("DocumentsClient", () => {
                     route: { id: "131313", name: "Pineapple delivery" },
                     routeStop: { id: "494123", name: "Company Warehouse #1" },
                     state: "submitted",
-                    updatedAtTime: "2001-01-20T14:48:23Z",
+                    updatedAtTime: "1980-08-29T21:44:37Z",
                     vehicle: { id: "494123", name: "Fleet Truck #1" },
                 },
             ],
@@ -387,13 +387,13 @@ describe("DocumentsClient", () => {
                 {
                     conditionalFieldSections: [
                         {
-                            conditionalFieldFirstIndex: 2529239247727561700,
-                            conditionalFieldLastIndex: 5262110667266989000,
-                            triggeringFieldIndex: 1302825110937476600,
+                            conditionalFieldFirstIndex: 8217465358527716000,
+                            conditionalFieldLastIndex: 1543582388420605000,
+                            triggeringFieldIndex: 7540159348423735000,
                             triggeringFieldValue: "Optiona 1",
                         },
                     ],
-                    createdAtTime: "1997-05-08T01:03:55Z",
+                    createdAtTime: "2014-09-02T18:11:09Z",
                     documentType: {
                         id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
                         name: "Fleet Truck List",
@@ -424,7 +424,7 @@ describe("DocumentsClient", () => {
                         name: "Company Warehouse #1",
                     },
                     state: "submitted",
-                    updatedAtTime: "2001-01-20T14:48:23Z",
+                    updatedAtTime: "1980-08-29T21:44:37Z",
                     vehicle: {
                         id: "494123",
                         name: "Fleet Truck #1",
@@ -631,13 +631,13 @@ describe("DocumentsClient", () => {
             data: {
                 conditionalFieldSections: [
                     {
-                        conditionalFieldFirstIndex: 2529239247727561700,
-                        conditionalFieldLastIndex: 5262110667266989000,
-                        triggeringFieldIndex: 1302825110937476600,
+                        conditionalFieldFirstIndex: 8217465358527716000,
+                        conditionalFieldLastIndex: 1543582388420605000,
+                        triggeringFieldIndex: 7540159348423735000,
                         triggeringFieldValue: "Optiona 1",
                     },
                 ],
-                createdAtTime: "1997-05-08T01:03:55Z",
+                createdAtTime: "2014-09-02T18:11:09Z",
                 documentType: { id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7", name: "Fleet Truck List" },
                 driver: { externalIds: { key: "value" }, id: "45646", name: "Driver Bob" },
                 fields: [
@@ -649,7 +649,7 @@ describe("DocumentsClient", () => {
                 route: { externalIds: { key: "value" }, id: "131313", name: "Pineapple delivery" },
                 routeStop: { externalIds: { key: "value" }, id: "494123", name: "Company Warehouse #1" },
                 state: "submitted",
-                updatedAtTime: "2001-01-20T14:48:23Z",
+                updatedAtTime: "1980-08-29T21:44:37Z",
                 vehicle: { externalIds: { key: "value" }, id: "494123", name: "Fleet Truck #1" },
             },
         };
@@ -670,13 +670,13 @@ describe("DocumentsClient", () => {
             data: {
                 conditionalFieldSections: [
                     {
-                        conditionalFieldFirstIndex: 2529239247727561700,
-                        conditionalFieldLastIndex: 5262110667266989000,
-                        triggeringFieldIndex: 1302825110937476600,
+                        conditionalFieldFirstIndex: 8217465358527716000,
+                        conditionalFieldLastIndex: 1543582388420605000,
+                        triggeringFieldIndex: 7540159348423735000,
                         triggeringFieldValue: "Optiona 1",
                     },
                 ],
-                createdAtTime: "1997-05-08T01:03:55Z",
+                createdAtTime: "2014-09-02T18:11:09Z",
                 documentType: {
                     id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
                     name: "Fleet Truck List",
@@ -716,7 +716,7 @@ describe("DocumentsClient", () => {
                     name: "Company Warehouse #1",
                 },
                 state: "submitted",
-                updatedAtTime: "2001-01-20T14:48:23Z",
+                updatedAtTime: "1980-08-29T21:44:37Z",
                 vehicle: {
                     externalIds: {
                         key: "value",
@@ -1060,13 +1060,13 @@ describe("DocumentsClient", () => {
             data: {
                 conditionalFieldSections: [
                     {
-                        conditionalFieldFirstIndex: 2529239247727561700,
-                        conditionalFieldLastIndex: 5262110667266989000,
-                        triggeringFieldIndex: 1302825110937476600,
+                        conditionalFieldFirstIndex: 8217465358527716000,
+                        conditionalFieldLastIndex: 1543582388420605000,
+                        triggeringFieldIndex: 7540159348423735000,
                         triggeringFieldValue: "Optiona 1",
                     },
                 ],
-                createdAtTime: "1997-05-08T01:03:55Z",
+                createdAtTime: "2014-09-02T18:11:09Z",
                 documentType: { id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7", name: "Fleet Truck List" },
                 driver: { externalIds: { key: "value" }, id: "45646", name: "Driver Bob" },
                 fields: [
@@ -1078,7 +1078,7 @@ describe("DocumentsClient", () => {
                 route: { externalIds: { key: "value" }, id: "131313", name: "Pineapple delivery" },
                 routeStop: { externalIds: { key: "value" }, id: "494123", name: "Company Warehouse #1" },
                 state: "submitted",
-                updatedAtTime: "2001-01-20T14:48:23Z",
+                updatedAtTime: "1980-08-29T21:44:37Z",
                 vehicle: { externalIds: { key: "value" }, id: "494123", name: "Fleet Truck #1" },
             },
         };
@@ -1097,13 +1097,13 @@ describe("DocumentsClient", () => {
             data: {
                 conditionalFieldSections: [
                     {
-                        conditionalFieldFirstIndex: 2529239247727561700,
-                        conditionalFieldLastIndex: 5262110667266989000,
-                        triggeringFieldIndex: 1302825110937476600,
+                        conditionalFieldFirstIndex: 8217465358527716000,
+                        conditionalFieldLastIndex: 1543582388420605000,
+                        triggeringFieldIndex: 7540159348423735000,
                         triggeringFieldValue: "Optiona 1",
                     },
                 ],
-                createdAtTime: "1997-05-08T01:03:55Z",
+                createdAtTime: "2014-09-02T18:11:09Z",
                 documentType: {
                     id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
                     name: "Fleet Truck List",
@@ -1143,7 +1143,7 @@ describe("DocumentsClient", () => {
                     name: "Company Warehouse #1",
                 },
                 state: "submitted",
-                updatedAtTime: "2001-01-20T14:48:23Z",
+                updatedAtTime: "1980-08-29T21:44:37Z",
                 vehicle: {
                     externalIds: {
                         key: "value",

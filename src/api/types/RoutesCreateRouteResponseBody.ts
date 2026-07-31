@@ -3,5 +3,5 @@
 import type * as Samsara from "../index.js";
 
 export interface RoutesCreateRouteResponseBody {
-    data?: Samsara.BaseRouteWithStopFormsResponseObjectResponseBody | undefined;
+    data?: Samsara.BaseRouteWithOrdersResponseObjectResponseBody | undefined;
 }

@@ -22,7 +22,7 @@ export interface RoutesCreateRouteRequestBody {
     recomputeScheduledTimes?: boolean;
     settings?: Samsara.RouteSettingsRequestBody;
     /** List of stops along the route. For each stop, exactly one of `addressId` and `singleUseLocation` are required. Depending on the `settings` on your route, either a `scheduledArrivalTime` or `scheduledDepartureTime` must be specified for the first job. */
-    stops: Samsara.CreateRoutesStopRequestObjectRequestBody[];
+    stops: Samsara.CreateRouteStopWithOrdersRequestObjectRequestBody[];
     /** An array of IDs of tags to associate with this route. */
     tagIds?: string[];
     /** ID of the vehicle. Can be either a unique Samsara ID or an [external ID](https://developers.samsara.com/docs/external-ids) for the vehicle. */

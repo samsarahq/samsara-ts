@@ -2951,4 +2951,1263 @@ describe("PreviewApIsClient", () => {
             });
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
+
+    test("listPurchaseOrders (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = {
+            data: [
+                {
+                    createdAtTime: "2019-06-13T19:08:25Z",
+                    creationSource: "12345",
+                    deliveryAtTime: "2019-06-13T19:08:25Z",
+                    firstReceivedAtTime: "2019-06-13T19:08:25Z",
+                    fullyReceivedAtTime: "2019-06-13T19:08:25Z",
+                    glCode: "12345",
+                    id: "12345",
+                    invoiceNumber: "12345",
+                    mediaItemIds: ["12345", "12345", "12345", "12345"],
+                    notes: "12345",
+                    orderStatus: "12345",
+                    otherCost: { amount: "12345", currency: "12345" },
+                    parts: [
+                        {
+                            batchNumber: "12345",
+                            description: "12345",
+                            lineItemId: "12345",
+                            partSamsara: { id: "281474976710656" },
+                            place: { id: "281474976710656" },
+                            quantityOrdered: 123.45,
+                            quantityReceived: 123.45,
+                            unitOfMeasureType: "12345",
+                        },
+                    ],
+                    poNumber: "12345",
+                    poNumberPrefix: "12345",
+                    poNumberSuffix: "12345",
+                    sentAtTime: "2019-06-13T19:08:25Z",
+                    trackingNumber: "12345",
+                    updatedAtTime: "2019-06-13T19:08:25Z",
+                    vendor: { id: "281474976710656" },
+                },
+            ],
+            pagination: { endCursor: "MjkY", hasNextPage: true },
+        };
+        server
+            .mockEndpoint()
+            .get("/preview/maintenance/purchase-orders")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.previewApIs.listPurchaseOrders({
+            startTime: "startTime",
+        });
+        expect(response).toEqual({
+            data: [
+                {
+                    createdAtTime: "2019-06-13T19:08:25Z",
+                    creationSource: "12345",
+                    deliveryAtTime: "2019-06-13T19:08:25Z",
+                    firstReceivedAtTime: "2019-06-13T19:08:25Z",
+                    fullyReceivedAtTime: "2019-06-13T19:08:25Z",
+                    glCode: "12345",
+                    id: "12345",
+                    invoiceNumber: "12345",
+                    mediaItemIds: ["12345", "12345", "12345", "12345"],
+                    notes: "12345",
+                    orderStatus: "12345",
+                    otherCost: {
+                        amount: "12345",
+                        currency: "12345",
+                    },
+                    parts: [
+                        {
+                            batchNumber: "12345",
+                            description: "12345",
+                            lineItemId: "12345",
+                            partSamsara: {
+                                id: "281474976710656",
+                            },
+                            place: {
+                                id: "281474976710656",
+                            },
+                            quantityOrdered: 123.45,
+                            quantityReceived: 123.45,
+                            unitOfMeasureType: "12345",
+                        },
+                    ],
+                    poNumber: "12345",
+                    poNumberPrefix: "12345",
+                    poNumberSuffix: "12345",
+                    sentAtTime: "2019-06-13T19:08:25Z",
+                    trackingNumber: "12345",
+                    updatedAtTime: "2019-06-13T19:08:25Z",
+                    vendor: {
+                        id: "281474976710656",
+                    },
+                },
+            ],
+            pagination: {
+                endCursor: "MjkY",
+                hasNextPage: true,
+            },
+        });
+    });
+
+    test("listPurchaseOrders (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preview/maintenance/purchase-orders")
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.listPurchaseOrders({
+                startTime: "startTime",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("listPurchaseOrders (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preview/maintenance/purchase-orders")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.listPurchaseOrders({
+                startTime: "startTime",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("listPurchaseOrders (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preview/maintenance/purchase-orders")
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.listPurchaseOrders({
+                startTime: "startTime",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("listPurchaseOrders (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preview/maintenance/purchase-orders")
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.listPurchaseOrders({
+                startTime: "startTime",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("listPurchaseOrders (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preview/maintenance/purchase-orders")
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.listPurchaseOrders({
+                startTime: "startTime",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("listPurchaseOrders (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preview/maintenance/purchase-orders")
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.listPurchaseOrders({
+                startTime: "startTime",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("listPurchaseOrders (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preview/maintenance/purchase-orders")
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.listPurchaseOrders({
+                startTime: "startTime",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("listPurchaseOrders (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preview/maintenance/purchase-orders")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.listPurchaseOrders({
+                startTime: "startTime",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("listPurchaseOrders (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preview/maintenance/purchase-orders")
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.listPurchaseOrders({
+                startTime: "startTime",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("createPurchaseOrder (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { orderStatus: "12345", vendorId: "281474976710656" };
+        const rawResponseBody = {
+            data: {
+                createdAtTime: "2019-06-13T19:08:25Z",
+                creationSource: "12345",
+                deliveryAtTime: "2019-06-13T19:08:25Z",
+                firstReceivedAtTime: "2019-06-13T19:08:25Z",
+                fullyReceivedAtTime: "2019-06-13T19:08:25Z",
+                glCode: "12345",
+                id: "12345",
+                invoiceNumber: "12345",
+                mediaItemIds: ["12345", "12345", "12345", "12345"],
+                notes: "12345",
+                orderStatus: "12345",
+                otherCost: { amount: "12345", currency: "12345" },
+                parts: [
+                    {
+                        batchNumber: "12345",
+                        description: "12345",
+                        lineItemId: "12345",
+                        partSamsara: { id: "281474976710656" },
+                        place: { id: "281474976710656" },
+                        quantityOrdered: 123.45,
+                        quantityReceived: 123.45,
+                        unitOfMeasureType: "12345",
+                    },
+                ],
+                poNumber: "12345",
+                poNumberPrefix: "12345",
+                poNumberSuffix: "12345",
+                sentAtTime: "2019-06-13T19:08:25Z",
+                trackingNumber: "12345",
+                updatedAtTime: "2019-06-13T19:08:25Z",
+                vendor: { id: "281474976710656" },
+            },
+        };
+        server
+            .mockEndpoint()
+            .post("/preview/maintenance/purchase-orders")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.previewApIs.createPurchaseOrder({
+            orderStatus: "12345",
+            vendorId: "281474976710656",
+        });
+        expect(response).toEqual({
+            data: {
+                createdAtTime: "2019-06-13T19:08:25Z",
+                creationSource: "12345",
+                deliveryAtTime: "2019-06-13T19:08:25Z",
+                firstReceivedAtTime: "2019-06-13T19:08:25Z",
+                fullyReceivedAtTime: "2019-06-13T19:08:25Z",
+                glCode: "12345",
+                id: "12345",
+                invoiceNumber: "12345",
+                mediaItemIds: ["12345", "12345", "12345", "12345"],
+                notes: "12345",
+                orderStatus: "12345",
+                otherCost: {
+                    amount: "12345",
+                    currency: "12345",
+                },
+                parts: [
+                    {
+                        batchNumber: "12345",
+                        description: "12345",
+                        lineItemId: "12345",
+                        partSamsara: {
+                            id: "281474976710656",
+                        },
+                        place: {
+                            id: "281474976710656",
+                        },
+                        quantityOrdered: 123.45,
+                        quantityReceived: 123.45,
+                        unitOfMeasureType: "12345",
+                    },
+                ],
+                poNumber: "12345",
+                poNumberPrefix: "12345",
+                poNumberSuffix: "12345",
+                sentAtTime: "2019-06-13T19:08:25Z",
+                trackingNumber: "12345",
+                updatedAtTime: "2019-06-13T19:08:25Z",
+                vendor: {
+                    id: "281474976710656",
+                },
+            },
+        });
+    });
+
+    test("createPurchaseOrder (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { orderStatus: "orderStatus", vendorId: "vendorId" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/preview/maintenance/purchase-orders")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.createPurchaseOrder({
+                orderStatus: "orderStatus",
+                vendorId: "vendorId",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("createPurchaseOrder (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { orderStatus: "orderStatus", vendorId: "vendorId" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/preview/maintenance/purchase-orders")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.createPurchaseOrder({
+                orderStatus: "orderStatus",
+                vendorId: "vendorId",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("createPurchaseOrder (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { orderStatus: "orderStatus", vendorId: "vendorId" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/preview/maintenance/purchase-orders")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.createPurchaseOrder({
+                orderStatus: "orderStatus",
+                vendorId: "vendorId",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("createPurchaseOrder (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { orderStatus: "orderStatus", vendorId: "vendorId" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/preview/maintenance/purchase-orders")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.createPurchaseOrder({
+                orderStatus: "orderStatus",
+                vendorId: "vendorId",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("createPurchaseOrder (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { orderStatus: "orderStatus", vendorId: "vendorId" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/preview/maintenance/purchase-orders")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.createPurchaseOrder({
+                orderStatus: "orderStatus",
+                vendorId: "vendorId",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("createPurchaseOrder (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { orderStatus: "orderStatus", vendorId: "vendorId" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/preview/maintenance/purchase-orders")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.createPurchaseOrder({
+                orderStatus: "orderStatus",
+                vendorId: "vendorId",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("createPurchaseOrder (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { orderStatus: "orderStatus", vendorId: "vendorId" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/preview/maintenance/purchase-orders")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.createPurchaseOrder({
+                orderStatus: "orderStatus",
+                vendorId: "vendorId",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("createPurchaseOrder (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { orderStatus: "orderStatus", vendorId: "vendorId" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/preview/maintenance/purchase-orders")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.createPurchaseOrder({
+                orderStatus: "orderStatus",
+                vendorId: "vendorId",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("createPurchaseOrder (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { orderStatus: "orderStatus", vendorId: "vendorId" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/preview/maintenance/purchase-orders")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.createPurchaseOrder({
+                orderStatus: "orderStatus",
+                vendorId: "vendorId",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("deletePurchaseOrder (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        server.mockEndpoint().delete("/preview/maintenance/purchase-orders").respondWith().statusCode(200).build();
+
+        const response = await client.previewApIs.deletePurchaseOrder({
+            id: "id",
+        });
+        expect(response).toEqual(undefined);
+    });
+
+    test("deletePurchaseOrder (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .delete("/preview/maintenance/purchase-orders")
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.deletePurchaseOrder({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("deletePurchaseOrder (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .delete("/preview/maintenance/purchase-orders")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.deletePurchaseOrder({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("deletePurchaseOrder (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .delete("/preview/maintenance/purchase-orders")
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.deletePurchaseOrder({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("deletePurchaseOrder (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .delete("/preview/maintenance/purchase-orders")
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.deletePurchaseOrder({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("deletePurchaseOrder (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .delete("/preview/maintenance/purchase-orders")
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.deletePurchaseOrder({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("deletePurchaseOrder (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .delete("/preview/maintenance/purchase-orders")
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.deletePurchaseOrder({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("deletePurchaseOrder (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .delete("/preview/maintenance/purchase-orders")
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.deletePurchaseOrder({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("deletePurchaseOrder (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .delete("/preview/maintenance/purchase-orders")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.deletePurchaseOrder({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("deletePurchaseOrder (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .delete("/preview/maintenance/purchase-orders")
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.deletePurchaseOrder({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("updatePurchaseOrder (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = {
+            data: {
+                createdAtTime: "2019-06-13T19:08:25Z",
+                creationSource: "12345",
+                deliveryAtTime: "2019-06-13T19:08:25Z",
+                firstReceivedAtTime: "2019-06-13T19:08:25Z",
+                fullyReceivedAtTime: "2019-06-13T19:08:25Z",
+                glCode: "12345",
+                id: "12345",
+                invoiceNumber: "12345",
+                mediaItemIds: ["12345", "12345", "12345"],
+                notes: "12345",
+                orderStatus: "12345",
+                otherCost: { amount: "12345", currency: "12345" },
+                parts: [
+                    {
+                        batchNumber: "12345",
+                        description: "12345",
+                        lineItemId: "12345",
+                        partSamsara: { id: "281474976710656" },
+                        place: { id: "281474976710656" },
+                        quantityOrdered: 123.45,
+                        quantityReceived: 123.45,
+                        unitOfMeasureType: "12345",
+                    },
+                ],
+                poNumber: "12345",
+                poNumberPrefix: "12345",
+                poNumberSuffix: "12345",
+                sentAtTime: "2019-06-13T19:08:25Z",
+                trackingNumber: "12345",
+                updatedAtTime: "2019-06-13T19:08:25Z",
+                vendor: { id: "281474976710656" },
+            },
+        };
+        server
+            .mockEndpoint()
+            .patch("/preview/maintenance/purchase-orders")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.previewApIs.updatePurchaseOrder({
+            id: "id",
+        });
+        expect(response).toEqual({
+            data: {
+                createdAtTime: "2019-06-13T19:08:25Z",
+                creationSource: "12345",
+                deliveryAtTime: "2019-06-13T19:08:25Z",
+                firstReceivedAtTime: "2019-06-13T19:08:25Z",
+                fullyReceivedAtTime: "2019-06-13T19:08:25Z",
+                glCode: "12345",
+                id: "12345",
+                invoiceNumber: "12345",
+                mediaItemIds: ["12345", "12345", "12345"],
+                notes: "12345",
+                orderStatus: "12345",
+                otherCost: {
+                    amount: "12345",
+                    currency: "12345",
+                },
+                parts: [
+                    {
+                        batchNumber: "12345",
+                        description: "12345",
+                        lineItemId: "12345",
+                        partSamsara: {
+                            id: "281474976710656",
+                        },
+                        place: {
+                            id: "281474976710656",
+                        },
+                        quantityOrdered: 123.45,
+                        quantityReceived: 123.45,
+                        unitOfMeasureType: "12345",
+                    },
+                ],
+                poNumber: "12345",
+                poNumberPrefix: "12345",
+                poNumberSuffix: "12345",
+                sentAtTime: "2019-06-13T19:08:25Z",
+                trackingNumber: "12345",
+                updatedAtTime: "2019-06-13T19:08:25Z",
+                vendor: {
+                    id: "281474976710656",
+                },
+            },
+        });
+    });
+
+    test("updatePurchaseOrder (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/preview/maintenance/purchase-orders")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.updatePurchaseOrder({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("updatePurchaseOrder (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/preview/maintenance/purchase-orders")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.updatePurchaseOrder({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("updatePurchaseOrder (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/preview/maintenance/purchase-orders")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.updatePurchaseOrder({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("updatePurchaseOrder (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/preview/maintenance/purchase-orders")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.updatePurchaseOrder({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("updatePurchaseOrder (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/preview/maintenance/purchase-orders")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.updatePurchaseOrder({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("updatePurchaseOrder (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/preview/maintenance/purchase-orders")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.updatePurchaseOrder({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("updatePurchaseOrder (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/preview/maintenance/purchase-orders")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.updatePurchaseOrder({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("updatePurchaseOrder (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/preview/maintenance/purchase-orders")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.updatePurchaseOrder({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("updatePurchaseOrder (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/preview/maintenance/purchase-orders")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.previewApIs.updatePurchaseOrder({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
 });

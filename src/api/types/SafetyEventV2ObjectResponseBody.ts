@@ -13,13 +13,13 @@ export interface SafetyEventV2ObjectResponseBody {
     behaviorLabels: Samsara.SafetyEventV2BehaviorLabelsResponseBody[];
     /** The most up-to-date context labels associated with the safety event. AI generated labels can be updated by Safety Admins. */
     contextLabels: Samsara.SafetyEventV2ContextLabelsResponseBody[];
-    /** UTC time the Safety Event was created in Samsara in RFC 3339 format. */
+    /** UTC time the Safety Event was created in Samsara in RFC 3339 format. This field may differ from when the event was detected (`startMs`). */
     createdAtTime: string;
     /** Camera streams that detected the safety event. */
     detectedStreams?: Samsara.SafetyEventV2MediaResponseBody[] | undefined;
     dismissalReason?: Samsara.SafetyEventDismissalReasonResponseBody | undefined;
     driver: Samsara.SafetyEventV2DriverObjectResponseBody;
-    /** UTC time the Safety Event ended in RFC 3339 format. */
+    /** UTC time the Safety Event detection ended in RFC 3339 format. */
     endMs: string;
     /** The current state of the Safety Event.  Valid values: `unknown`, `needsReview`, `reviewed`, `needsCoaching`, `coached`, `dismissed`, `needsRecognition`, `recognized` */
     eventState: SafetyEventV2ObjectResponseBody.EventState;
@@ -35,7 +35,7 @@ export interface SafetyEventV2ObjectResponseBody {
     /** Media assets available for the safety event. */
     media?: Samsara.SafetyEventV2MediaResponseBody[] | undefined;
     speedingMetadata?: Samsara.SafetyEventSpeedingMetadataResponseBody | undefined;
-    /** UTC time the Safety Event started in RFC 3339 format. */
+    /** UTC time the Safety Event was detected in RFC 3339 format. */
     startMs: string;
     /** UTC time the trip ended in RFC 3339 format. Null when Safety Event occurs off-trip or the trip is ongoing. */
     tripEndTime?: string | undefined;

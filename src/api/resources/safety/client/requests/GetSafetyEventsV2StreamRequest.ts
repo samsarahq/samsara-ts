@@ -9,11 +9,11 @@ import type * as Samsara from "../../../../index.js";
  *     }
  */
 export interface GetSafetyEventsV2StreamRequest {
-    /** RFC 3339 timestamp that indicates when to begin receiving data. Value is compared against `updatedAtTime` or `createdAtTime` depending on the `queryByTimeField` parameter. */
+    /** RFC 3339 timestamp that indicates when to begin receiving data. Value is compared against `updatedAtTime` or the event detection time (`startMs`) depending on the `queryByTimeField` parameter. */
     startTime: string;
-    /** RFC 3339 timestamp. If not provided and filtering by `updatedAtTime` then the endpoint behaves as an unending feed of changes. If endTime is set the same as startTime, the most recent data point before that time will be returned per asset. Value is compared against `updatedAtTime` or `createdAtTime` depending on the `queryByTimeField` parameter. */
+    /** RFC 3339 timestamp. If not provided and filtering by `updatedAtTime` then the endpoint behaves as an unending feed of changes. If endTime is set the same as startTime, the most recent data point before that time will be returned per asset. Value is compared against `updatedAtTime` or the event detection time (`startMs`) depending on the `queryByTimeField` parameter. */
     endTime?: string;
-    /** Optional string that decides which field to compare against the provided time range.  Valid values: `updatedAtTime`, `createdAtTime` */
+    /** Optional string that decides which timestamp to compare against the provided time range. `updatedAtTime` filters by when the Safety Event was last updated in Samsara. `createdAtTime` filters by when the Safety Event was detected (`startMs` in the response).  Valid values: `updatedAtTime`, `createdAtTime` */
     queryByTimeField?: Samsara.GetSafetyEventsV2StreamRequestQueryByTimeField;
     /** Optional string of comma separated asset IDs. If asset ID is present, events for the specified asset(s) will be returned. Limit of 2000 asset IDs. */
     assetIds?: string | string[];

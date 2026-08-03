@@ -1,9 +1,13 @@
 export type { DeleteOrderRequest } from "./DeleteOrderRequest.js";
+export type { DeletePurchaseOrderRequest } from "./DeletePurchaseOrderRequest.js";
 export type { DriversAuthTokenCreateDriverAuthTokenRequestBody } from "./DriversAuthTokenCreateDriverAuthTokenRequestBody.js";
+export type { EntityPurchaseOrdersServiceCreatePurchaseOrderRequestBody } from "./EntityPurchaseOrdersServiceCreatePurchaseOrderRequestBody.js";
+export type { EntityPurchaseOrdersServiceUpdatePurchaseOrderRequestBody } from "./EntityPurchaseOrdersServiceUpdatePurchaseOrderRequestBody.js";
 export type { GetOrderDeletionsRequest } from "./GetOrderDeletionsRequest.js";
 export type { GetOrdersRequest } from "./GetOrdersRequest.js";
 export type { GetOrdersStreamRequest } from "./GetOrdersStreamRequest.js";
 export type { ListPartTransactionsRequest } from "./ListPartTransactionsRequest.js";
+export type { ListPurchaseOrdersRequest } from "./ListPurchaseOrdersRequest.js";
 export type { LockVehicleRequest } from "./LockVehicleRequest.js";
 export type { OrdersPostOrdersBatchRequestBody } from "./OrdersPostOrdersBatchRequestBody.js";
 export type { UnlockVehicleRequest } from "./UnlockVehicleRequest.js";

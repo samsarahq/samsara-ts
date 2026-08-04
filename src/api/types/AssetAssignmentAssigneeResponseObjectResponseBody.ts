@@ -4,7 +4,7 @@
  * Assignee for an asset assignment.
  */
 export interface AssetAssignmentAssigneeResponseObjectResponseBody {
-    /** Type of the assignee.  Valid values: `unknown`, `driver`, `asset`, `geofence` */
+    /** Type of the assignee.  Valid values: `unknown`, `driver`, `asset`, `geofence`, `job` */
     assigneeType: AssetAssignmentAssigneeResponseObjectResponseBody.AssigneeType;
     /** A map of external ids for the assignee. */
     externalIds?: Record<string, string> | undefined;
@@ -13,12 +13,13 @@ export interface AssetAssignmentAssigneeResponseObjectResponseBody {
 }
 
 export namespace AssetAssignmentAssigneeResponseObjectResponseBody {
-    /** Type of the assignee.  Valid values: `unknown`, `driver`, `asset`, `geofence` */
+    /** Type of the assignee.  Valid values: `unknown`, `driver`, `asset`, `geofence`, `job` */
     export const AssigneeType = {
         Unknown: "unknown",
         Driver: "driver",
         Asset: "asset",
         Geofence: "geofence",
+        Job: "job",
     } as const;
     export type AssigneeType = (typeof AssigneeType)[keyof typeof AssigneeType];
 }

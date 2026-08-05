@@ -14,6 +14,7 @@ export interface ReadingDefinitionResponseBody {
     entityType: string;
     /** Array of enumeration values */
     enumValues?: Samsara.EnumValueResponseBody[] | undefined;
+    grouping?: Samsara.ReadingGroupingResponseBody | undefined;
     /** Indicates whether this reading can be ingested using the API. */
     ingestionEnabled: boolean;
     /** The label for this reading that is suitable to show to a user. Translated to English. */

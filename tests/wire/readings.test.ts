@@ -21,6 +21,7 @@ describe("ReadingsClient", () => {
                     description: "Engine Speed",
                     entityType: "sensor",
                     enumValues: [{ label: "Critically High", symbol: "criticallyHigh" }],
+                    grouping: { id: "brakeLiningRemaining", label: "Brake Lining Remaining" },
                     ingestionEnabled: true,
                     label: "engineRpm",
                     readingId: "12345",
@@ -50,6 +51,10 @@ describe("ReadingsClient", () => {
                             symbol: "criticallyHigh",
                         },
                     ],
+                    grouping: {
+                        id: "brakeLiningRemaining",
+                        label: "Brake Lining Remaining",
+                    },
                     ingestionEnabled: true,
                     label: "engineRpm",
                     readingId: "12345",

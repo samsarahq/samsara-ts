@@ -12381,6 +12381,201 @@ describe("BetaApIsClient", () => {
             }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
           
+    test("listIssues (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "data" : [ { "createdAtTime" : "2019-06-13T19:08:25Z" , "dashboardUrl" : "https://cloud.samsara.com/o/123456/ground-intelligence/issues/123e4567-e89b-12d3-a456-426614174000" , "firstSeenTime" : "2019-06-13T19:08:25Z" , "id" : "123e4567-e89b-12d3-a456-426614174000" , "lastSeenTime" : "2019-06-13T19:08:25Z" , "location" : { "type" : "point" } , "observationCount" : 3 , "roadSegment" : { "roadName" : "Market Street" } , "severity" : "high" , "status" : "needsReview" , "type" : "pothole" , "updatedAtTime" : "2019-06-13T19:08:25Z" } ] , "pagination" : { "endCursor" : "MjkY" , "hasNextPage" : true } };
+        server
+            .mockEndpoint()
+            .get("/ground-intelligence/issues").respondWith()
+            .statusCode(200).jsonBody(rawResponseBody)
+                .build();
+
+        
+                    
+                            const response = await client.betaApIs.listIssues();
+                            expect(response).toEqual({
+    data: [{
+            createdAtTime: "2019-06-13T19:08:25Z",
+            dashboardUrl: "https://cloud.samsara.com/o/123456/ground-intelligence/issues/123e4567-e89b-12d3-a456-426614174000",
+            firstSeenTime: "2019-06-13T19:08:25Z",
+            id: "123e4567-e89b-12d3-a456-426614174000",
+            lastSeenTime: "2019-06-13T19:08:25Z",
+            location: {
+                type: "point"
+            },
+            observationCount: 3,
+            roadSegment: {
+                roadName: "Market Street"
+            },
+            severity: "high",
+            status: "needsReview",
+            type: "pothole",
+            updatedAtTime: "2019-06-13T19:08:25Z"
+        }],
+    pagination: {
+        endCursor: "MjkY",
+        hasNextPage: true
+    }
+});
+                          
+                
+    });
+          
+    test("listIssues (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .get("/ground-intelligence/issues").respondWith()
+            .statusCode(401).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.listIssues()
+            }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+          
+    test("listIssues (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .get("/ground-intelligence/issues").respondWith()
+            .statusCode(404).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.listIssues()
+            }).rejects.toThrow(Samsara.NotFoundError);
+    });
+          
+    test("listIssues (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .get("/ground-intelligence/issues").respondWith()
+            .statusCode(405).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.listIssues()
+            }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+          
+    test("listIssues (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .get("/ground-intelligence/issues").respondWith()
+            .statusCode(429).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.listIssues()
+            }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+          
+    test("listIssues (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .get("/ground-intelligence/issues").respondWith()
+            .statusCode(500).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.listIssues()
+            }).rejects.toThrow(Samsara.InternalServerError);
+    });
+          
+    test("listIssues (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .get("/ground-intelligence/issues").respondWith()
+            .statusCode(501).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.listIssues()
+            }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+          
+    test("listIssues (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .get("/ground-intelligence/issues").respondWith()
+            .statusCode(502).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.listIssues()
+            }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+          
+    test("listIssues (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .get("/ground-intelligence/issues").respondWith()
+            .statusCode(503).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.listIssues()
+            }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+          
+    test("listIssues (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .get("/ground-intelligence/issues").respondWith()
+            .statusCode(504).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.listIssues()
+            }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+          
     test("createWatchpoint (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
@@ -14455,7 +14650,7 @@ describe("BetaApIsClient", () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
         
-        const rawResponseBody = { "data" : [ { "archivedAtTime" : "2019-06-13T19:08:25Z" , "barcodeString" : "12345" , "category" : "12345" , "createdAtTime" : "2019-06-13T19:08:25Z" , "deletedAtTime" : "2019-06-13T19:08:25Z" , "description" : "12345" , "id" : "12345" , "isInventoryTracked" : true , "manufacturerPartNumber" : "12345" , "name" : "12345" , "partNumber" : "12345" , "partStatus" : "12345" , "subcategory" : "12345" , "unitCost" : { "amount" : "12345" , "currency" : "12345" } , "unitOfMeasureType" : "12345" , "updatedAtTime" : "2019-06-13T19:08:25Z" , "vmrsCode" : "12345" } ] , "pagination" : { "endCursor" : "MjkY" , "hasNextPage" : true } };
+        const rawResponseBody = { "data" : [ { "archivedAtTime" : "2019-06-13T19:08:25Z" , "barcodeString" : "12345" , "barcodeType" : "12345" , "category" : "12345" , "createdAtTime" : "2019-06-13T19:08:25Z" , "deletedAtTime" : "2019-06-13T19:08:25Z" , "description" : "12345" , "externalId" : "12345" , "id" : "12345" , "isInventoryTracked" : true , "manufacturerName" : "12345" , "manufacturerPartNumber" : "12345" , "name" : "12345" , "partNumber" : "12345" , "partStatus" : "12345" , "subcategory" : "12345" , "unitCost" : { "amount" : "12345" , "currency" : "12345" } , "unitOfMeasureType" : "12345" , "updatedAtTime" : "2019-06-13T19:08:25Z" , "vmrsCode" : "12345" } ] , "pagination" : { "endCursor" : "MjkY" , "hasNextPage" : true } };
         server
             .mockEndpoint()
             .get("/maintenance/parts").respondWith()
@@ -14469,12 +14664,15 @@ describe("BetaApIsClient", () => {
     data: [{
             archivedAtTime: "2019-06-13T19:08:25Z",
             barcodeString: "12345",
+            barcodeType: "12345",
             category: "12345",
             createdAtTime: "2019-06-13T19:08:25Z",
             deletedAtTime: "2019-06-13T19:08:25Z",
             description: "12345",
+            externalId: "12345",
             id: "12345",
             isInventoryTracked: true,
+            manufacturerName: "12345",
             manufacturerPartNumber: "12345",
             name: "12345",
             partNumber: "12345",
@@ -14654,7 +14852,7 @@ describe("BetaApIsClient", () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
         const rawRequestBody = { "partNumber" : "12345" };
-        const rawResponseBody = { "data" : { "archivedAtTime" : "2019-06-13T19:08:25Z" , "barcodeString" : "12345" , "category" : "12345" , "createdAtTime" : "2019-06-13T19:08:25Z" , "deletedAtTime" : "2019-06-13T19:08:25Z" , "description" : "12345" , "id" : "12345" , "isInventoryTracked" : true , "manufacturerPartNumber" : "12345" , "name" : "12345" , "partNumber" : "12345" , "partStatus" : "12345" , "subcategory" : "12345" , "unitCost" : { "amount" : "12345" , "currency" : "12345" } , "unitOfMeasureType" : "12345" , "updatedAtTime" : "2019-06-13T19:08:25Z" , "vmrsCode" : "12345" } };
+        const rawResponseBody = { "data" : { "archivedAtTime" : "2019-06-13T19:08:25Z" , "barcodeString" : "12345" , "barcodeType" : "12345" , "category" : "12345" , "createdAtTime" : "2019-06-13T19:08:25Z" , "deletedAtTime" : "2019-06-13T19:08:25Z" , "description" : "12345" , "externalId" : "12345" , "id" : "12345" , "isInventoryTracked" : true , "manufacturerName" : "12345" , "manufacturerPartNumber" : "12345" , "name" : "12345" , "partNumber" : "12345" , "partStatus" : "12345" , "subcategory" : "12345" , "unitCost" : { "amount" : "12345" , "currency" : "12345" } , "unitOfMeasureType" : "12345" , "updatedAtTime" : "2019-06-13T19:08:25Z" , "vmrsCode" : "12345" } };
         server
             .mockEndpoint()
             .post("/maintenance/parts").jsonBody(rawRequestBody)
@@ -14671,12 +14869,15 @@ describe("BetaApIsClient", () => {
     data: {
         archivedAtTime: "2019-06-13T19:08:25Z",
         barcodeString: "12345",
+        barcodeType: "12345",
         category: "12345",
         createdAtTime: "2019-06-13T19:08:25Z",
         deletedAtTime: "2019-06-13T19:08:25Z",
         description: "12345",
+        externalId: "12345",
         id: "12345",
         isInventoryTracked: true,
+        manufacturerName: "12345",
         manufacturerPartNumber: "12345",
         name: "12345",
         partNumber: "12345",
@@ -15070,7 +15271,7 @@ describe("BetaApIsClient", () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
         const rawRequestBody = { };
-        const rawResponseBody = { "data" : { "archivedAtTime" : "2019-06-13T19:08:25Z" , "barcodeString" : "12345" , "category" : "12345" , "createdAtTime" : "2019-06-13T19:08:25Z" , "deletedAtTime" : "2019-06-13T19:08:25Z" , "description" : "12345" , "id" : "12345" , "isInventoryTracked" : true , "manufacturerPartNumber" : "12345" , "name" : "12345" , "partNumber" : "12345" , "partStatus" : "12345" , "subcategory" : "12345" , "unitCost" : { "amount" : "12345" , "currency" : "12345" } , "unitOfMeasureType" : "12345" , "updatedAtTime" : "2019-06-13T19:08:25Z" , "vmrsCode" : "12345" } };
+        const rawResponseBody = { "data" : { "archivedAtTime" : "2019-06-13T19:08:25Z" , "barcodeString" : "12345" , "barcodeType" : "12345" , "category" : "12345" , "createdAtTime" : "2019-06-13T19:08:25Z" , "deletedAtTime" : "2019-06-13T19:08:25Z" , "description" : "12345" , "externalId" : "12345" , "id" : "12345" , "isInventoryTracked" : true , "manufacturerName" : "12345" , "manufacturerPartNumber" : "12345" , "name" : "12345" , "partNumber" : "12345" , "partStatus" : "12345" , "subcategory" : "12345" , "unitCost" : { "amount" : "12345" , "currency" : "12345" } , "unitOfMeasureType" : "12345" , "updatedAtTime" : "2019-06-13T19:08:25Z" , "vmrsCode" : "12345" } };
         server
             .mockEndpoint()
             .patch("/maintenance/parts").jsonBody(rawRequestBody)
@@ -15087,12 +15288,15 @@ describe("BetaApIsClient", () => {
     data: {
         archivedAtTime: "2019-06-13T19:08:25Z",
         barcodeString: "12345",
+        barcodeType: "12345",
         category: "12345",
         createdAtTime: "2019-06-13T19:08:25Z",
         deletedAtTime: "2019-06-13T19:08:25Z",
         description: "12345",
+        externalId: "12345",
         id: "12345",
         isInventoryTracked: true,
+        manufacturerName: "12345",
         manufacturerPartNumber: "12345",
         name: "12345",
         partNumber: "12345",
@@ -16979,7 +17183,7 @@ describe("BetaApIsClient", () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
         
-        const rawResponseBody = { "data" : [ { "createdAtTime" : "2019-06-13T19:08:25Z" , "creationSource" : "12345" , "deliveryAtTime" : "2019-06-13T19:08:25Z" , "firstReceivedAtTime" : "2019-06-13T19:08:25Z" , "fullyReceivedAtTime" : "2019-06-13T19:08:25Z" , "glCode" : "12345" , "id" : "12345" , "invoiceNumber" : "12345" , "mediaItemIds" : [ "12345" , "12345" , "12345" , "12345" ] , "notes" : "12345" , "orderStatus" : "12345" , "otherCost" : { "amount" : "12345" , "currency" : "12345" } , "parts" : [ { "batchNumber" : "12345" , "description" : "12345" , "lineItemId" : "12345" , "partSamsara" : { "id" : "281474976710656" } , "place" : { "id" : "281474976710656" } , "quantityOrdered" : 123.45 , "quantityReceived" : 123.45 , "unitOfMeasureType" : "12345" } ] , "poNumber" : "12345" , "poNumberPrefix" : "12345" , "poNumberSuffix" : "12345" , "sentAtTime" : "2019-06-13T19:08:25Z" , "trackingNumber" : "12345" , "updatedAtTime" : "2019-06-13T19:08:25Z" , "vendor" : { "id" : "281474976710656" } } ] , "pagination" : { "endCursor" : "MjkY" , "hasNextPage" : true } };
+        const rawResponseBody = { "data" : [ { "createdAtTime" : "2019-06-13T19:08:25Z" , "creationSource" : "12345" , "deliveryAtTime" : "2019-06-13T19:08:25Z" , "firstReceivedAtTime" : "2019-06-13T19:08:25Z" , "fullyReceivedAtTime" : "2019-06-13T19:08:25Z" , "glCode" : "12345" , "id" : "12345" , "invoiceNumber" : "12345" , "mediaItemIds" : [ "12345" , "12345" , "12345" ] , "notes" : "12345" , "orderStatus" : "12345" , "otherCost" : { "amount" : "12345" , "currency" : "12345" } , "parts" : [ { "batchNumber" : "12345" , "description" : "12345" , "lineItemId" : "12345" , "partSamsara" : { "id" : "281474976710656" } , "place" : { "id" : "281474976710656" } , "quantityOrdered" : 123.45 , "quantityReceived" : 123.45 , "unitOfMeasureType" : "12345" } ] , "poNumber" : "12345" , "poNumberPrefix" : "12345" , "poNumberSuffix" : "12345" , "sentAtTime" : "2019-06-13T19:08:25Z" , "trackingNumber" : "12345" , "updatedAtTime" : "2019-06-13T19:08:25Z" , "vendor" : { "id" : "281474976710656" } } ] , "pagination" : { "endCursor" : "MjkY" , "hasNextPage" : true } };
         server
             .mockEndpoint()
             .get("/maintenance/purchase-orders").respondWith()
@@ -17001,7 +17205,7 @@ describe("BetaApIsClient", () => {
             glCode: "12345",
             id: "12345",
             invoiceNumber: "12345",
-            mediaItemIds: ["12345", "12345", "12345", "12345"],
+            mediaItemIds: ["12345", "12345", "12345"],
             notes: "12345",
             orderStatus: "12345",
             otherCost: {
@@ -17660,7 +17864,7 @@ describe("BetaApIsClient", () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
         const rawRequestBody = { };
-        const rawResponseBody = { "data" : { "createdAtTime" : "2019-06-13T19:08:25Z" , "creationSource" : "12345" , "deliveryAtTime" : "2019-06-13T19:08:25Z" , "firstReceivedAtTime" : "2019-06-13T19:08:25Z" , "fullyReceivedAtTime" : "2019-06-13T19:08:25Z" , "glCode" : "12345" , "id" : "12345" , "invoiceNumber" : "12345" , "mediaItemIds" : [ "12345" , "12345" , "12345" ] , "notes" : "12345" , "orderStatus" : "12345" , "otherCost" : { "amount" : "12345" , "currency" : "12345" } , "parts" : [ { "batchNumber" : "12345" , "description" : "12345" , "lineItemId" : "12345" , "partSamsara" : { "id" : "281474976710656" } , "place" : { "id" : "281474976710656" } , "quantityOrdered" : 123.45 , "quantityReceived" : 123.45 , "unitOfMeasureType" : "12345" } ] , "poNumber" : "12345" , "poNumberPrefix" : "12345" , "poNumberSuffix" : "12345" , "sentAtTime" : "2019-06-13T19:08:25Z" , "trackingNumber" : "12345" , "updatedAtTime" : "2019-06-13T19:08:25Z" , "vendor" : { "id" : "281474976710656" } } };
+        const rawResponseBody = { "data" : { "createdAtTime" : "2019-06-13T19:08:25Z" , "creationSource" : "12345" , "deliveryAtTime" : "2019-06-13T19:08:25Z" , "firstReceivedAtTime" : "2019-06-13T19:08:25Z" , "fullyReceivedAtTime" : "2019-06-13T19:08:25Z" , "glCode" : "12345" , "id" : "12345" , "invoiceNumber" : "12345" , "mediaItemIds" : [ "12345" , "12345" ] , "notes" : "12345" , "orderStatus" : "12345" , "otherCost" : { "amount" : "12345" , "currency" : "12345" } , "parts" : [ { "batchNumber" : "12345" , "description" : "12345" , "lineItemId" : "12345" , "partSamsara" : { "id" : "281474976710656" } , "place" : { "id" : "281474976710656" } , "quantityOrdered" : 123.45 , "quantityReceived" : 123.45 , "unitOfMeasureType" : "12345" } ] , "poNumber" : "12345" , "poNumberPrefix" : "12345" , "poNumberSuffix" : "12345" , "sentAtTime" : "2019-06-13T19:08:25Z" , "trackingNumber" : "12345" , "updatedAtTime" : "2019-06-13T19:08:25Z" , "vendor" : { "id" : "281474976710656" } } };
         server
             .mockEndpoint()
             .patch("/maintenance/purchase-orders").jsonBody(rawRequestBody)
@@ -17683,7 +17887,7 @@ describe("BetaApIsClient", () => {
         glCode: "12345",
         id: "12345",
         invoiceNumber: "12345",
-        mediaItemIds: ["12345", "12345", "12345"],
+        mediaItemIds: ["12345", "12345"],
         notes: "12345",
         orderStatus: "12345",
         otherCost: {

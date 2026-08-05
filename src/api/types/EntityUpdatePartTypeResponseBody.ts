@@ -10,6 +10,8 @@ export interface EntityUpdatePartTypeResponseBody {
     archivedAtTime?: string | undefined;
     /** Barcode associated with the part definition. */
     barcodeString?: string | undefined;
+    /** Type of barcode associated with the part definition. */
+    barcodeType?: string | undefined;
     /** Category of the part definition. */
     category?: string | undefined;
     /** Time when the part was created. */
@@ -18,10 +20,14 @@ export interface EntityUpdatePartTypeResponseBody {
     deletedAtTime?: string | undefined;
     /** Description of the part definition. */
     description?: string | undefined;
+    /** Customer-supplied external identifier for the part. */
+    externalId?: string | undefined;
     /** Unique identifier for the part. */
     id?: string | undefined;
     /** Whether inventory tracking is enabled for this part. */
     isInventoryTracked?: boolean | undefined;
+    /** Name of the manufacturer for the part definition. */
+    manufacturerName?: string | undefined;
     /** Manufacturer-supplied part number. */
     manufacturerPartNumber?: string | undefined;
     /** Name of the part definition. */

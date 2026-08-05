@@ -13,10 +13,16 @@ export interface EntityPartDefinitionsServiceUpdatePartRequestBody {
     id: string;
     /** Barcode associated with the part definition. */
     barcodeString?: string;
+    /** Type of barcode associated with the part definition. */
+    barcodeType?: string;
     /** Description of the part definition. */
     description?: string;
+    /** Customer-supplied external identifier for the part. */
+    externalId?: string;
     /** Whether inventory tracking is enabled for this part. */
     isInventoryTracked?: boolean;
+    /** Name of the manufacturer for the part definition. */
+    manufacturerName?: string;
     /** Manufacturer-supplied part number. */
     manufacturerPartNumber?: string;
     /** Name of the part definition. */

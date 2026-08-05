@@ -83,6 +83,7 @@ export type { ListDeviceRecoveryMissingAssetsRequest } from "./ListDeviceRecover
 export type { ListDriverWorkflowsRequest } from "./ListDriverWorkflowsRequest.js";
 export type { ListFunctionsStorageFilesRequest } from "./ListFunctionsStorageFilesRequest.js";
 export type { ListHubRouteTemplatesRequest } from "./ListHubRouteTemplatesRequest.js";
+export type { ListIssuesRequest } from "./ListIssuesRequest.js";
 export type { ListMaintenanceVendorsRequest } from "./ListMaintenanceVendorsRequest.js";
 export type { ListPartInventoryRequest } from "./ListPartInventoryRequest.js";
 export type { ListPartsRequest } from "./ListPartsRequest.js";

@@ -3,7 +3,6 @@ export type { DriversAuthTokenCreateDriverAuthTokenRequestBody } from "./Drivers
 export type { GetOrderDeletionsRequest } from "./GetOrderDeletionsRequest.js";
 export type { GetOrdersRequest } from "./GetOrdersRequest.js";
 export type { GetOrdersStreamRequest } from "./GetOrdersStreamRequest.js";
-export type { ListPartTransactionsRequest } from "./ListPartTransactionsRequest.js";
 export type { LockVehicleRequest } from "./LockVehicleRequest.js";
 export type { OrdersPostOrdersBatchRequestBody } from "./OrdersPostOrdersBatchRequestBody.js";
 export type { UnlockVehicleRequest } from "./UnlockVehicleRequest.js";

@@ -87,6 +87,7 @@ export type { ListIssuesRequest } from "./ListIssuesRequest.js";
 export type { ListMaintenanceVendorsRequest } from "./ListMaintenanceVendorsRequest.js";
 export type { ListPartInventoryRequest } from "./ListPartInventoryRequest.js";
 export type { ListPartsRequest } from "./ListPartsRequest.js";
+export type { ListPartTransactionsRequest } from "./ListPartTransactionsRequest.js";
 export type { ListPlanOrdersRequest } from "./ListPlanOrdersRequest.js";
 export type { ListPreferredStationsRequest } from "./ListPreferredStationsRequest.js";
 export type { ListPreventiveMaintenanceSchedulesRequest } from "./ListPreventiveMaintenanceSchedulesRequest.js";

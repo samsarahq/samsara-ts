@@ -23,7 +23,7 @@ export namespace WebhooksPatchWebhookResponseBody {
     export type EventTypes = EventTypes.Item[];
 
     export namespace EventTypes {
-        /** This is the name of the event type.  Valid values: `AddressCreated`, `AddressDeleted`, `AddressUpdated`, `AlertIncident`, `AlertObjectEvent`, `DocumentSubmitted`, `DriverCreated`, `DriverUpdated`, `DvirSubmitted`, `EngineFaultOff`, `EngineFaultOn`, `FormSubmitted`, `FormUpdated`, `GatewayUnplugged`, `GeofenceEntry`, `GeofenceExit`, `IssueCreated`, `MissingDvirPastDue`, `PredictiveMaintenanceAlert`, `RouteStopArrival`, `RouteStopDeparture`, `RouteStopEarlyLateArrival`, `RouteStopEtaUpdated`, `RouteStopResequence`, `SevereSpeedingEnded`, `SevereSpeedingStarted`, `ShipmentTrackingEvent`, `SpeedingEventEnded`, `SpeedingEventStarted`, `SuddenFuelLevelDrop`, `SuddenFuelLevelRise`, `VehicleCreated`, `VehicleUpdated`, `WorkOrderCreatedOrChanged` */
+        /** This is the name of the event type.  Valid values: `AddressCreated`, `AddressDeleted`, `AddressUpdated`, `AlertIncident`, `AlertObjectEvent`, `DocumentSubmitted`, `DriverCreated`, `DriverUpdated`, `DvirSubmitted`, `EngineFaultOff`, `EngineFaultOn`, `FormSubmitted`, `FormUpdated`, `GatewayUnplugged`, `GeofenceEntry`, `GeofenceExit`, `IssueCreated`, `MissingDvirPastDue`, `PredictiveMaintenanceAlert`, `RouteStopArrival`, `RouteStopDeparture`, `RouteStopEarlyLateArrival`, `RouteStopEtaUpdated`, `RouteStopResequence`, `SevereSpeedingEnded`, `SevereSpeedingStarted`, `ShipmentTrackingEvent`, `SpeedingEventEnded`, `SpeedingEventStarted`, `SuddenFuelLevelDrop`, `SuddenFuelLevelRise`, `VehicleCreated`, `VehicleUpdated`, `VisualSearchMatch`, `WorkOrderCreatedOrChanged` */
         export const Item = {
             AddressCreated: "AddressCreated",
             AddressDeleted: "AddressDeleted",
@@ -58,6 +58,7 @@ export namespace WebhooksPatchWebhookResponseBody {
             SuddenFuelLevelRise: "SuddenFuelLevelRise",
             VehicleCreated: "VehicleCreated",
             VehicleUpdated: "VehicleUpdated",
+            VisualSearchMatch: "VisualSearchMatch",
             WorkOrderCreatedOrChanged: "WorkOrderCreatedOrChanged",
         } as const;
         export type Item = (typeof Item)[keyof typeof Item];

@@ -21,7 +21,7 @@ export interface AssetsCreateAssetRequestBody {
     name?: string;
     /** These are generic notes about the asset. Can be set or updated through the Samsara Dashboard or the API at any time. */
     notes?: string;
-    /** Indicates whether the asset is expected to have data ingested using the Readings API. */
+    /** Indicates whether the asset is expected to have data ingested using the Readings API. Do not set this to true for an asset that has, or is intended to have, a connected gateway. */
     readingsIngestionEnabled?: boolean;
     /** Whether or not the asset is regulated, unregulated (non-CMV), or a mixed use unregulated asset. Primarily used with vehicles.  Valid values: `mixed`, `regulated`, `unregulated` */
     regulationMode?: AssetsCreateAssetRequestBody.RegulationMode;

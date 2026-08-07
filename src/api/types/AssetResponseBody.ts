@@ -24,7 +24,7 @@ export interface AssetResponseBody {
     name?: string | undefined;
     /** These are generic notes about the asset. Can be set or updated through the Samsara Dashboard or the API at any time. */
     notes?: string | undefined;
-    /** Indicates whether the asset is expected to have data ingested using the Readings API. */
+    /** Indicates whether the asset is expected to have data ingested using the Readings API. Do not set this to true for an asset that has, or is intended to have, a connected gateway. */
     readingsIngestionEnabled?: boolean | undefined;
     /** Whether or not the asset is regulated, unregulated (non-CMV), or a mixed use unregulated asset. Primarily used with vehicles.  Valid values: `mixed`, `regulated`, `unregulated` */
     regulationMode?: AssetResponseBody.RegulationMode | undefined;

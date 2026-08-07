@@ -8,14 +8,14 @@ export interface TireFaultCodeDetailsObjectRequestBody {
     hasCautionaryTireFaultCodes?: boolean | undefined;
     /** If true then alert over temperature or extreme pressure over or under fault codes. Defaults to false. */
     hasCriticalTireFaultCodes?: boolean | undefined;
-    /** The tire manufacturer.  Valid values: `MANUFACTURER_BENDIX`, `MANUFACTURER_CONTINENTAL`, `MANUFACTURER_DORAN`, `MANUFACTURER_HENDRICKSON`, `MANUFACTURER_INVALID`, `MANUFACTURER_PRESSURE_PRO`, `MANUFACTURER_SENSATA`, `MANUFACTURER_UNIVERSAL_J1939`, `MANUFACTURER_UNIVERSAL_R141` */
+    /** The tire manufacturer.  Valid values: `MANUFACTURER_BENDIX`, `MANUFACTURER_CONTINENTAL`, `MANUFACTURER_DORAN`, `MANUFACTURER_HENDRICKSON`, `MANUFACTURER_INVALID`, `MANUFACTURER_PRESSURE_PRO`, `MANUFACTURER_SENSATA`, `MANUFACTURER_SYSGRATION`, `MANUFACTURER_UNIVERSAL_J1939`, `MANUFACTURER_UNIVERSAL_R141` */
     manufacturer: TireFaultCodeDetailsObjectRequestBody.Manufacturer;
     /** The list of specific tire fault codes to be alerted on. */
     specificTireFaultCodes?: TireFaultCodeDetailsObjectRequestBody.SpecificTireFaultCodes.Item[] | undefined;
 }
 
 export namespace TireFaultCodeDetailsObjectRequestBody {
-    /** The tire manufacturer.  Valid values: `MANUFACTURER_BENDIX`, `MANUFACTURER_CONTINENTAL`, `MANUFACTURER_DORAN`, `MANUFACTURER_HENDRICKSON`, `MANUFACTURER_INVALID`, `MANUFACTURER_PRESSURE_PRO`, `MANUFACTURER_SENSATA`, `MANUFACTURER_UNIVERSAL_J1939`, `MANUFACTURER_UNIVERSAL_R141` */
+    /** The tire manufacturer.  Valid values: `MANUFACTURER_BENDIX`, `MANUFACTURER_CONTINENTAL`, `MANUFACTURER_DORAN`, `MANUFACTURER_HENDRICKSON`, `MANUFACTURER_INVALID`, `MANUFACTURER_PRESSURE_PRO`, `MANUFACTURER_SENSATA`, `MANUFACTURER_SYSGRATION`, `MANUFACTURER_UNIVERSAL_J1939`, `MANUFACTURER_UNIVERSAL_R141` */
     export const Manufacturer = {
         ManufacturerBendix: "MANUFACTURER_BENDIX",
         ManufacturerContinental: "MANUFACTURER_CONTINENTAL",
@@ -24,6 +24,7 @@ export namespace TireFaultCodeDetailsObjectRequestBody {
         ManufacturerInvalid: "MANUFACTURER_INVALID",
         ManufacturerPressurePro: "MANUFACTURER_PRESSURE_PRO",
         ManufacturerSensata: "MANUFACTURER_SENSATA",
+        ManufacturerSysgration: "MANUFACTURER_SYSGRATION",
         ManufacturerUniversalJ1939: "MANUFACTURER_UNIVERSAL_J1939",
         ManufacturerUniversalR141: "MANUFACTURER_UNIVERSAL_R141",
     } as const;

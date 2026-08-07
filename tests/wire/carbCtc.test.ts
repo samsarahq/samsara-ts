@@ -139,6 +139,29 @@ describe("CarbCtcClient", () => {
             .mockEndpoint()
             .get("/fleet/carb-ctc/vehicles")
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.carbCtc.listCarbCtcVehicles();
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("listCarbCtcVehicles (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/carb-ctc/vehicles")
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -148,7 +171,7 @@ describe("CarbCtcClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("listCarbCtcVehicles (6)", async () => {
+    test("listCarbCtcVehicles (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -171,7 +194,7 @@ describe("CarbCtcClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("listCarbCtcVehicles (7)", async () => {
+    test("listCarbCtcVehicles (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -194,7 +217,7 @@ describe("CarbCtcClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("listCarbCtcVehicles (8)", async () => {
+    test("listCarbCtcVehicles (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -217,7 +240,7 @@ describe("CarbCtcClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("listCarbCtcVehicles (9)", async () => {
+    test("listCarbCtcVehicles (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -240,7 +263,7 @@ describe("CarbCtcClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("listCarbCtcVehicles (10)", async () => {
+    test("listCarbCtcVehicles (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -403,6 +426,31 @@ describe("CarbCtcClient", () => {
             .mockEndpoint()
             .get("/fleet/carb-ctc/vehicles/history")
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.carbCtc.listCarbCtcVehicleHistory({
+                vehicleIds: "vehicleIds",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("listCarbCtcVehicleHistory (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/carb-ctc/vehicles/history")
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -414,7 +462,7 @@ describe("CarbCtcClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("listCarbCtcVehicleHistory (6)", async () => {
+    test("listCarbCtcVehicleHistory (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -439,7 +487,7 @@ describe("CarbCtcClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("listCarbCtcVehicleHistory (7)", async () => {
+    test("listCarbCtcVehicleHistory (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -464,7 +512,7 @@ describe("CarbCtcClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("listCarbCtcVehicleHistory (8)", async () => {
+    test("listCarbCtcVehicleHistory (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -489,7 +537,7 @@ describe("CarbCtcClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("listCarbCtcVehicleHistory (9)", async () => {
+    test("listCarbCtcVehicleHistory (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -514,7 +562,7 @@ describe("CarbCtcClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("listCarbCtcVehicleHistory (10)", async () => {
+    test("listCarbCtcVehicleHistory (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,

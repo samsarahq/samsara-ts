@@ -1,4 +1,5 @@
 export * from "./BadGatewayError.js";
+export * from "./ContentTooLargeError.js";
 export * from "./GatewayTimeoutError.js";
 export * from "./InternalServerError.js";
 export * from "./MethodNotAllowedError.js";

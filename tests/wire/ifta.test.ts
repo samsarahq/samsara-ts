@@ -153,6 +153,31 @@ describe("IftaClient", () => {
             .mockEndpoint()
             .get("/fleet/reports/ifta/jurisdiction")
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.ifta.getIftaJurisdictionReports({
+                year: 1000000,
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("getIftaJurisdictionReports (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/reports/ifta/jurisdiction")
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -164,7 +189,7 @@ describe("IftaClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("getIftaJurisdictionReports (6)", async () => {
+    test("getIftaJurisdictionReports (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -189,7 +214,7 @@ describe("IftaClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("getIftaJurisdictionReports (7)", async () => {
+    test("getIftaJurisdictionReports (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -214,7 +239,7 @@ describe("IftaClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("getIftaJurisdictionReports (8)", async () => {
+    test("getIftaJurisdictionReports (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -239,7 +264,7 @@ describe("IftaClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("getIftaJurisdictionReports (9)", async () => {
+    test("getIftaJurisdictionReports (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -264,7 +289,7 @@ describe("IftaClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("getIftaJurisdictionReports (10)", async () => {
+    test("getIftaJurisdictionReports (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -455,6 +480,31 @@ describe("IftaClient", () => {
             .mockEndpoint()
             .get("/fleet/reports/ifta/vehicle")
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.ifta.getIftaVehicleReports({
+                year: 1000000,
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("getIftaVehicleReports (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/reports/ifta/vehicle")
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -466,7 +516,7 @@ describe("IftaClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("getIftaVehicleReports (6)", async () => {
+    test("getIftaVehicleReports (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -491,7 +541,7 @@ describe("IftaClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("getIftaVehicleReports (7)", async () => {
+    test("getIftaVehicleReports (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -516,7 +566,7 @@ describe("IftaClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("getIftaVehicleReports (8)", async () => {
+    test("getIftaVehicleReports (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -541,7 +591,7 @@ describe("IftaClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("getIftaVehicleReports (9)", async () => {
+    test("getIftaVehicleReports (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -566,7 +616,7 @@ describe("IftaClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("getIftaVehicleReports (10)", async () => {
+    test("getIftaVehicleReports (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -761,6 +811,33 @@ describe("IftaClient", () => {
             .post("/ifta-detail/csv")
             .jsonBody(rawRequestBody)
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.ifta.createIftaDetailJob({
+                endHour: "endHour",
+                startHour: "startHour",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("createIftaDetailJob (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { endHour: "endHour", startHour: "startHour" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/ifta-detail/csv")
+            .jsonBody(rawRequestBody)
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -773,7 +850,7 @@ describe("IftaClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("createIftaDetailJob (6)", async () => {
+    test("createIftaDetailJob (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -800,7 +877,7 @@ describe("IftaClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("createIftaDetailJob (7)", async () => {
+    test("createIftaDetailJob (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -827,7 +904,7 @@ describe("IftaClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("createIftaDetailJob (8)", async () => {
+    test("createIftaDetailJob (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -854,7 +931,7 @@ describe("IftaClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("createIftaDetailJob (9)", async () => {
+    test("createIftaDetailJob (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -881,7 +958,7 @@ describe("IftaClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("createIftaDetailJob (10)", async () => {
+    test("createIftaDetailJob (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1069,6 +1146,31 @@ describe("IftaClient", () => {
             .mockEndpoint()
             .get("/ifta-detail/csv/id")
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.ifta.getIftaDetailJob({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("getIftaDetailJob (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/ifta-detail/csv/id")
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -1080,7 +1182,7 @@ describe("IftaClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("getIftaDetailJob (6)", async () => {
+    test("getIftaDetailJob (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1105,7 +1207,7 @@ describe("IftaClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("getIftaDetailJob (7)", async () => {
+    test("getIftaDetailJob (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1130,7 +1232,7 @@ describe("IftaClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("getIftaDetailJob (8)", async () => {
+    test("getIftaDetailJob (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1155,7 +1257,7 @@ describe("IftaClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("getIftaDetailJob (9)", async () => {
+    test("getIftaDetailJob (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1180,7 +1282,7 @@ describe("IftaClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("getIftaDetailJob (10)", async () => {
+    test("getIftaDetailJob (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,

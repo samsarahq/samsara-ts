@@ -299,6 +299,25 @@ describe("TripsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+        server.mockEndpoint().get("/trips/stream").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.trips.getTrips({
+                startTime: "startTime",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("getTrips (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
         server.mockEndpoint().get("/trips/stream").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -308,7 +327,7 @@ describe("TripsClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("getTrips (6)", async () => {
+    test("getTrips (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -327,7 +346,7 @@ describe("TripsClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("getTrips (7)", async () => {
+    test("getTrips (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -346,7 +365,7 @@ describe("TripsClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("getTrips (8)", async () => {
+    test("getTrips (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -365,7 +384,7 @@ describe("TripsClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("getTrips (9)", async () => {
+    test("getTrips (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -384,7 +403,7 @@ describe("TripsClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("getTrips (10)", async () => {
+    test("getTrips (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,

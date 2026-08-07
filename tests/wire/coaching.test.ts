@@ -135,6 +135,29 @@ describe("CoachingClient", () => {
             .mockEndpoint()
             .get("/coaching/driver-coach-assignments")
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.coaching.getDriverCoachAssignment();
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("getDriverCoachAssignment (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/coaching/driver-coach-assignments")
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -144,7 +167,7 @@ describe("CoachingClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("getDriverCoachAssignment (6)", async () => {
+    test("getDriverCoachAssignment (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -167,7 +190,7 @@ describe("CoachingClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("getDriverCoachAssignment (7)", async () => {
+    test("getDriverCoachAssignment (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -190,7 +213,7 @@ describe("CoachingClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("getDriverCoachAssignment (8)", async () => {
+    test("getDriverCoachAssignment (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -213,7 +236,7 @@ describe("CoachingClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("getDriverCoachAssignment (9)", async () => {
+    test("getDriverCoachAssignment (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -236,7 +259,7 @@ describe("CoachingClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("getDriverCoachAssignment (10)", async () => {
+    test("getDriverCoachAssignment (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -386,6 +409,31 @@ describe("CoachingClient", () => {
             .mockEndpoint()
             .put("/coaching/driver-coach-assignments")
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.coaching.putDriverCoachAssignment({
+                driverId: "driverId",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("putDriverCoachAssignment (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .put("/coaching/driver-coach-assignments")
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -397,7 +445,7 @@ describe("CoachingClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("putDriverCoachAssignment (6)", async () => {
+    test("putDriverCoachAssignment (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -422,7 +470,7 @@ describe("CoachingClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("putDriverCoachAssignment (7)", async () => {
+    test("putDriverCoachAssignment (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -447,7 +495,7 @@ describe("CoachingClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("putDriverCoachAssignment (8)", async () => {
+    test("putDriverCoachAssignment (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -472,7 +520,7 @@ describe("CoachingClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("putDriverCoachAssignment (9)", async () => {
+    test("putDriverCoachAssignment (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -497,7 +545,7 @@ describe("CoachingClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("putDriverCoachAssignment (10)", async () => {
+    test("putDriverCoachAssignment (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -696,6 +744,31 @@ describe("CoachingClient", () => {
             .mockEndpoint()
             .get("/coaching/sessions/stream")
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.coaching.getCoachingSessions({
+                startTime: "2024-01-15T09:30:00Z",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("getCoachingSessions (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/coaching/sessions/stream")
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -707,7 +780,7 @@ describe("CoachingClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("getCoachingSessions (6)", async () => {
+    test("getCoachingSessions (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -732,7 +805,7 @@ describe("CoachingClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("getCoachingSessions (7)", async () => {
+    test("getCoachingSessions (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -757,7 +830,7 @@ describe("CoachingClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("getCoachingSessions (8)", async () => {
+    test("getCoachingSessions (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -782,7 +855,7 @@ describe("CoachingClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("getCoachingSessions (9)", async () => {
+    test("getCoachingSessions (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -807,7 +880,7 @@ describe("CoachingClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("getCoachingSessions (10)", async () => {
+    test("getCoachingSessions (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,

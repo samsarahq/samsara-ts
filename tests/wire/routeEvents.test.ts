@@ -160,6 +160,29 @@ describe("RouteEventsClient", () => {
             .mockEndpoint()
             .get("/route-events/stream")
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.routeEvents.getRouteEventsStream();
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("getRouteEventsStream (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/route-events/stream")
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -169,7 +192,7 @@ describe("RouteEventsClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("getRouteEventsStream (6)", async () => {
+    test("getRouteEventsStream (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -192,7 +215,7 @@ describe("RouteEventsClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("getRouteEventsStream (7)", async () => {
+    test("getRouteEventsStream (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -215,7 +238,7 @@ describe("RouteEventsClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("getRouteEventsStream (8)", async () => {
+    test("getRouteEventsStream (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -238,7 +261,7 @@ describe("RouteEventsClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("getRouteEventsStream (9)", async () => {
+    test("getRouteEventsStream (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -261,7 +284,7 @@ describe("RouteEventsClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("getRouteEventsStream (10)", async () => {
+    test("getRouteEventsStream (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,

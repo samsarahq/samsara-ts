@@ -141,6 +141,27 @@ describe("MediaClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+        server.mockEndpoint().get("/cameras/media").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.media.listUploadedMedia({
+                vehicleIds: "vehicleIds",
+                startTime: "startTime",
+                endTime: "endTime",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("listUploadedMedia (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
         server.mockEndpoint().get("/cameras/media").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -152,7 +173,7 @@ describe("MediaClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("listUploadedMedia (6)", async () => {
+    test("listUploadedMedia (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -173,7 +194,7 @@ describe("MediaClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("listUploadedMedia (7)", async () => {
+    test("listUploadedMedia (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -194,7 +215,7 @@ describe("MediaClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("listUploadedMedia (8)", async () => {
+    test("listUploadedMedia (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -215,7 +236,7 @@ describe("MediaClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("listUploadedMedia (9)", async () => {
+    test("listUploadedMedia (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -236,7 +257,7 @@ describe("MediaClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("listUploadedMedia (10)", async () => {
+    test("listUploadedMedia (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -408,6 +429,31 @@ describe("MediaClient", () => {
             .mockEndpoint()
             .get("/cameras/media/retrieval")
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.media.getMediaRetrieval({
+                retrievalId: "retrievalId",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("getMediaRetrieval (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/cameras/media/retrieval")
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -419,7 +465,7 @@ describe("MediaClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("getMediaRetrieval (6)", async () => {
+    test("getMediaRetrieval (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -444,7 +490,7 @@ describe("MediaClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("getMediaRetrieval (7)", async () => {
+    test("getMediaRetrieval (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -469,7 +515,7 @@ describe("MediaClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("getMediaRetrieval (8)", async () => {
+    test("getMediaRetrieval (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -494,7 +540,7 @@ describe("MediaClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("getMediaRetrieval (9)", async () => {
+    test("getMediaRetrieval (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -519,7 +565,7 @@ describe("MediaClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("getMediaRetrieval (10)", async () => {
+    test("getMediaRetrieval (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -709,6 +755,40 @@ describe("MediaClient", () => {
             .post("/cameras/media/retrieval")
             .jsonBody(rawRequestBody)
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.media.postMediaRetrieval({
+                endTime: "endTime",
+                mediaType: "image",
+                startTime: "startTime",
+                vehicleId: "vehicleId",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("postMediaRetrieval (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            endTime: "endTime",
+            mediaType: "image",
+            startTime: "startTime",
+            vehicleId: "vehicleId",
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/cameras/media/retrieval")
+            .jsonBody(rawRequestBody)
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -723,7 +803,7 @@ describe("MediaClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("postMediaRetrieval (6)", async () => {
+    test("postMediaRetrieval (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -757,7 +837,7 @@ describe("MediaClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("postMediaRetrieval (7)", async () => {
+    test("postMediaRetrieval (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -791,7 +871,7 @@ describe("MediaClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("postMediaRetrieval (8)", async () => {
+    test("postMediaRetrieval (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -825,7 +905,7 @@ describe("MediaClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("postMediaRetrieval (9)", async () => {
+    test("postMediaRetrieval (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -859,7 +939,7 @@ describe("MediaClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("postMediaRetrieval (10)", async () => {
+    test("postMediaRetrieval (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,

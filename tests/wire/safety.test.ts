@@ -677,6 +677,23 @@ describe("SafetyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+        server.mockEndpoint().get("/safety-events").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.safety.getSafetyEventsV2();
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("getSafetyEventsV2 (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
         server.mockEndpoint().get("/safety-events").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -684,7 +701,7 @@ describe("SafetyClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("getSafetyEventsV2 (6)", async () => {
+    test("getSafetyEventsV2 (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -701,7 +718,7 @@ describe("SafetyClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("getSafetyEventsV2 (7)", async () => {
+    test("getSafetyEventsV2 (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -718,7 +735,7 @@ describe("SafetyClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("getSafetyEventsV2 (8)", async () => {
+    test("getSafetyEventsV2 (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -735,7 +752,7 @@ describe("SafetyClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("getSafetyEventsV2 (9)", async () => {
+    test("getSafetyEventsV2 (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -752,7 +769,7 @@ describe("SafetyClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("getSafetyEventsV2 (10)", async () => {
+    test("getSafetyEventsV2 (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1016,6 +1033,31 @@ describe("SafetyClient", () => {
             .mockEndpoint()
             .get("/safety-events/stream")
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.safety.getSafetyEventsV2Stream({
+                startTime: "startTime",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("getSafetyEventsV2Stream (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/safety-events/stream")
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -1027,7 +1069,7 @@ describe("SafetyClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("getSafetyEventsV2Stream (6)", async () => {
+    test("getSafetyEventsV2Stream (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1052,7 +1094,7 @@ describe("SafetyClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("getSafetyEventsV2Stream (7)", async () => {
+    test("getSafetyEventsV2Stream (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1077,7 +1119,7 @@ describe("SafetyClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("getSafetyEventsV2Stream (8)", async () => {
+    test("getSafetyEventsV2Stream (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1102,7 +1144,7 @@ describe("SafetyClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("getSafetyEventsV2Stream (9)", async () => {
+    test("getSafetyEventsV2Stream (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1127,7 +1169,7 @@ describe("SafetyClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("getSafetyEventsV2Stream (10)", async () => {
+    test("getSafetyEventsV2Stream (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,

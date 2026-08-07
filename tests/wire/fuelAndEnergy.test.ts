@@ -221,6 +221,32 @@ describe("FuelAndEnergyClient", () => {
             .mockEndpoint()
             .get("/driver-efficiency/drivers")
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fuelAndEnergy.getDriverEfficiencyByDrivers({
+                startTime: "startTime",
+                endTime: "endTime",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("getDriverEfficiencyByDrivers (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/driver-efficiency/drivers")
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -233,7 +259,7 @@ describe("FuelAndEnergyClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("getDriverEfficiencyByDrivers (6)", async () => {
+    test("getDriverEfficiencyByDrivers (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -259,7 +285,7 @@ describe("FuelAndEnergyClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("getDriverEfficiencyByDrivers (7)", async () => {
+    test("getDriverEfficiencyByDrivers (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -285,7 +311,7 @@ describe("FuelAndEnergyClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("getDriverEfficiencyByDrivers (8)", async () => {
+    test("getDriverEfficiencyByDrivers (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -311,7 +337,7 @@ describe("FuelAndEnergyClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("getDriverEfficiencyByDrivers (9)", async () => {
+    test("getDriverEfficiencyByDrivers (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -337,7 +363,7 @@ describe("FuelAndEnergyClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("getDriverEfficiencyByDrivers (10)", async () => {
+    test("getDriverEfficiencyByDrivers (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -579,6 +605,32 @@ describe("FuelAndEnergyClient", () => {
             .mockEndpoint()
             .get("/driver-efficiency/vehicles")
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fuelAndEnergy.getDriverEfficiencyByVehicles({
+                startTime: "startTime",
+                endTime: "endTime",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("getDriverEfficiencyByVehicles (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/driver-efficiency/vehicles")
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -591,7 +643,7 @@ describe("FuelAndEnergyClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("getDriverEfficiencyByVehicles (6)", async () => {
+    test("getDriverEfficiencyByVehicles (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -617,7 +669,7 @@ describe("FuelAndEnergyClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("getDriverEfficiencyByVehicles (7)", async () => {
+    test("getDriverEfficiencyByVehicles (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -643,7 +695,7 @@ describe("FuelAndEnergyClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("getDriverEfficiencyByVehicles (8)", async () => {
+    test("getDriverEfficiencyByVehicles (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -669,7 +721,7 @@ describe("FuelAndEnergyClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("getDriverEfficiencyByVehicles (9)", async () => {
+    test("getDriverEfficiencyByVehicles (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -695,7 +747,7 @@ describe("FuelAndEnergyClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("getDriverEfficiencyByVehicles (10)", async () => {
+    test("getDriverEfficiencyByVehicles (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -881,6 +933,32 @@ describe("FuelAndEnergyClient", () => {
             .mockEndpoint()
             .get("/fleet/reports/drivers/fuel-energy")
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fuelAndEnergy.getFuelEnergyDriverReports({
+                startDate: "startDate",
+                endDate: "endDate",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("getFuelEnergyDriverReports (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/reports/drivers/fuel-energy")
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -893,7 +971,7 @@ describe("FuelAndEnergyClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("getFuelEnergyDriverReports (6)", async () => {
+    test("getFuelEnergyDriverReports (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -919,7 +997,7 @@ describe("FuelAndEnergyClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("getFuelEnergyDriverReports (7)", async () => {
+    test("getFuelEnergyDriverReports (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -945,7 +1023,7 @@ describe("FuelAndEnergyClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("getFuelEnergyDriverReports (8)", async () => {
+    test("getFuelEnergyDriverReports (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -971,7 +1049,7 @@ describe("FuelAndEnergyClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("getFuelEnergyDriverReports (9)", async () => {
+    test("getFuelEnergyDriverReports (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -997,7 +1075,7 @@ describe("FuelAndEnergyClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("getFuelEnergyDriverReports (10)", async () => {
+    test("getFuelEnergyDriverReports (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1184,6 +1262,32 @@ describe("FuelAndEnergyClient", () => {
             .mockEndpoint()
             .get("/fleet/reports/vehicles/fuel-energy")
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fuelAndEnergy.getFuelEnergyVehicleReports({
+                startDate: "startDate",
+                endDate: "endDate",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("getFuelEnergyVehicleReports (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/reports/vehicles/fuel-energy")
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -1196,7 +1300,7 @@ describe("FuelAndEnergyClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("getFuelEnergyVehicleReports (6)", async () => {
+    test("getFuelEnergyVehicleReports (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1222,7 +1326,7 @@ describe("FuelAndEnergyClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("getFuelEnergyVehicleReports (7)", async () => {
+    test("getFuelEnergyVehicleReports (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1248,7 +1352,7 @@ describe("FuelAndEnergyClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("getFuelEnergyVehicleReports (8)", async () => {
+    test("getFuelEnergyVehicleReports (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1274,7 +1378,7 @@ describe("FuelAndEnergyClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("getFuelEnergyVehicleReports (9)", async () => {
+    test("getFuelEnergyVehicleReports (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1300,7 +1404,7 @@ describe("FuelAndEnergyClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("getFuelEnergyVehicleReports (10)", async () => {
+    test("getFuelEnergyVehicleReports (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1506,6 +1610,45 @@ describe("FuelAndEnergyClient", () => {
             .post("/fuel-purchase")
             .jsonBody(rawRequestBody)
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fuelAndEnergy.postFuelPurchase({
+                fuelQuantityLiters: "fuelQuantityLiters",
+                transactionLocation: "transactionLocation",
+                transactionPrice: {
+                    amount: "amount",
+                    currency: "usd",
+                },
+                transactionReference: "x",
+                transactionTime: "transactionTime",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("postFuelPurchase (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            fuelQuantityLiters: "fuelQuantityLiters",
+            transactionLocation: "transactionLocation",
+            transactionPrice: { amount: "amount", currency: "usd" },
+            transactionReference: "x",
+            transactionTime: "transactionTime",
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fuel-purchase")
+            .jsonBody(rawRequestBody)
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -1524,7 +1667,7 @@ describe("FuelAndEnergyClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("postFuelPurchase (6)", async () => {
+    test("postFuelPurchase (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1563,7 +1706,7 @@ describe("FuelAndEnergyClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("postFuelPurchase (7)", async () => {
+    test("postFuelPurchase (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1602,7 +1745,7 @@ describe("FuelAndEnergyClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("postFuelPurchase (8)", async () => {
+    test("postFuelPurchase (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1641,7 +1784,7 @@ describe("FuelAndEnergyClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("postFuelPurchase (9)", async () => {
+    test("postFuelPurchase (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1680,7 +1823,7 @@ describe("FuelAndEnergyClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("postFuelPurchase (10)", async () => {
+    test("postFuelPurchase (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,

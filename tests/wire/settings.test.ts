@@ -136,6 +136,29 @@ describe("SettingsClient", () => {
             .mockEndpoint()
             .get("/fleet/settings/compliance")
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.settings.getComplianceSettings();
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("getComplianceSettings (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/settings/compliance")
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -145,7 +168,7 @@ describe("SettingsClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("getComplianceSettings (6)", async () => {
+    test("getComplianceSettings (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -168,7 +191,7 @@ describe("SettingsClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("getComplianceSettings (7)", async () => {
+    test("getComplianceSettings (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -191,7 +214,7 @@ describe("SettingsClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("getComplianceSettings (8)", async () => {
+    test("getComplianceSettings (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -214,7 +237,7 @@ describe("SettingsClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("getComplianceSettings (9)", async () => {
+    test("getComplianceSettings (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -237,7 +260,7 @@ describe("SettingsClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("getComplianceSettings (10)", async () => {
+    test("getComplianceSettings (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -396,6 +419,30 @@ describe("SettingsClient", () => {
             .patch("/fleet/settings/compliance")
             .jsonBody(rawRequestBody)
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.settings.patchComplianceSettings();
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("patchComplianceSettings (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/fleet/settings/compliance")
+            .jsonBody(rawRequestBody)
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -405,7 +452,7 @@ describe("SettingsClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("patchComplianceSettings (6)", async () => {
+    test("patchComplianceSettings (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -429,7 +476,7 @@ describe("SettingsClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("patchComplianceSettings (7)", async () => {
+    test("patchComplianceSettings (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -453,7 +500,7 @@ describe("SettingsClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("patchComplianceSettings (8)", async () => {
+    test("patchComplianceSettings (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -477,7 +524,7 @@ describe("SettingsClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("patchComplianceSettings (9)", async () => {
+    test("patchComplianceSettings (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -501,7 +548,7 @@ describe("SettingsClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("patchComplianceSettings (10)", async () => {
+    test("patchComplianceSettings (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -658,6 +705,29 @@ describe("SettingsClient", () => {
             .mockEndpoint()
             .get("/fleet/settings/driver-app")
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.settings.getDriverAppSettings();
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("getDriverAppSettings (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/settings/driver-app")
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -667,7 +737,7 @@ describe("SettingsClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("getDriverAppSettings (6)", async () => {
+    test("getDriverAppSettings (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -690,7 +760,7 @@ describe("SettingsClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("getDriverAppSettings (7)", async () => {
+    test("getDriverAppSettings (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -713,7 +783,7 @@ describe("SettingsClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("getDriverAppSettings (8)", async () => {
+    test("getDriverAppSettings (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -736,7 +806,7 @@ describe("SettingsClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("getDriverAppSettings (9)", async () => {
+    test("getDriverAppSettings (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -759,7 +829,7 @@ describe("SettingsClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("getDriverAppSettings (10)", async () => {
+    test("getDriverAppSettings (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -920,6 +990,30 @@ describe("SettingsClient", () => {
             .patch("/fleet/settings/driver-app")
             .jsonBody(rawRequestBody)
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.settings.patchDriverAppSettings();
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("patchDriverAppSettings (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/fleet/settings/driver-app")
+            .jsonBody(rawRequestBody)
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -929,7 +1023,7 @@ describe("SettingsClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("patchDriverAppSettings (6)", async () => {
+    test("patchDriverAppSettings (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -953,7 +1047,7 @@ describe("SettingsClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("patchDriverAppSettings (7)", async () => {
+    test("patchDriverAppSettings (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -977,7 +1071,7 @@ describe("SettingsClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("patchDriverAppSettings (8)", async () => {
+    test("patchDriverAppSettings (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1001,7 +1095,7 @@ describe("SettingsClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("patchDriverAppSettings (9)", async () => {
+    test("patchDriverAppSettings (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1025,7 +1119,7 @@ describe("SettingsClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("patchDriverAppSettings (10)", async () => {
+    test("patchDriverAppSettings (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1301,6 +1395,29 @@ describe("SettingsClient", () => {
             .mockEndpoint()
             .get("/fleet/settings/safety")
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.settings.getSafetySettings();
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("getSafetySettings (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/settings/safety")
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -1310,7 +1427,7 @@ describe("SettingsClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("getSafetySettings (6)", async () => {
+    test("getSafetySettings (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1333,7 +1450,7 @@ describe("SettingsClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("getSafetySettings (7)", async () => {
+    test("getSafetySettings (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1356,7 +1473,7 @@ describe("SettingsClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("getSafetySettings (8)", async () => {
+    test("getSafetySettings (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1379,7 +1496,7 @@ describe("SettingsClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("getSafetySettings (9)", async () => {
+    test("getSafetySettings (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1402,7 +1519,7 @@ describe("SettingsClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("getSafetySettings (10)", async () => {
+    test("getSafetySettings (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,

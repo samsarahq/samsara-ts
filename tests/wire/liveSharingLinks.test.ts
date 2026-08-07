@@ -143,6 +143,23 @@ describe("LiveSharingLinksClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+        server.mockEndpoint().get("/live-shares").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.liveSharingLinks.getLiveSharingLinks();
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("getLiveSharingLinks (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
         server.mockEndpoint().get("/live-shares").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -150,7 +167,7 @@ describe("LiveSharingLinksClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("getLiveSharingLinks (6)", async () => {
+    test("getLiveSharingLinks (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -167,7 +184,7 @@ describe("LiveSharingLinksClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("getLiveSharingLinks (7)", async () => {
+    test("getLiveSharingLinks (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -184,7 +201,7 @@ describe("LiveSharingLinksClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("getLiveSharingLinks (8)", async () => {
+    test("getLiveSharingLinks (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -201,7 +218,7 @@ describe("LiveSharingLinksClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("getLiveSharingLinks (9)", async () => {
+    test("getLiveSharingLinks (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -218,7 +235,7 @@ describe("LiveSharingLinksClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("getLiveSharingLinks (10)", async () => {
+    test("getLiveSharingLinks (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -409,6 +426,33 @@ describe("LiveSharingLinksClient", () => {
             .post("/live-shares")
             .jsonBody(rawRequestBody)
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.liveSharingLinks.createLiveSharingLink({
+                name: "name",
+                type: "assetsLocation",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("createLiveSharingLink (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { name: "name", type: "assetsLocation" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/live-shares")
+            .jsonBody(rawRequestBody)
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -421,7 +465,7 @@ describe("LiveSharingLinksClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("createLiveSharingLink (6)", async () => {
+    test("createLiveSharingLink (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -448,7 +492,7 @@ describe("LiveSharingLinksClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("createLiveSharingLink (7)", async () => {
+    test("createLiveSharingLink (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -475,7 +519,7 @@ describe("LiveSharingLinksClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("createLiveSharingLink (8)", async () => {
+    test("createLiveSharingLink (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -502,7 +546,7 @@ describe("LiveSharingLinksClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("createLiveSharingLink (9)", async () => {
+    test("createLiveSharingLink (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -529,7 +573,7 @@ describe("LiveSharingLinksClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("createLiveSharingLink (10)", async () => {
+    test("createLiveSharingLink (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -640,6 +684,25 @@ describe("LiveSharingLinksClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+        server.mockEndpoint().delete("/live-shares").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.liveSharingLinks.deleteLiveSharingLink({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("deleteLiveSharingLink (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
         server.mockEndpoint().delete("/live-shares").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -649,7 +712,7 @@ describe("LiveSharingLinksClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("deleteLiveSharingLink (6)", async () => {
+    test("deleteLiveSharingLink (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -668,7 +731,7 @@ describe("LiveSharingLinksClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("deleteLiveSharingLink (7)", async () => {
+    test("deleteLiveSharingLink (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -687,7 +750,7 @@ describe("LiveSharingLinksClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("deleteLiveSharingLink (8)", async () => {
+    test("deleteLiveSharingLink (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -706,7 +769,7 @@ describe("LiveSharingLinksClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("deleteLiveSharingLink (9)", async () => {
+    test("deleteLiveSharingLink (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -725,7 +788,7 @@ describe("LiveSharingLinksClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("deleteLiveSharingLink (10)", async () => {
+    test("deleteLiveSharingLink (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -918,6 +981,33 @@ describe("LiveSharingLinksClient", () => {
             .patch("/live-shares")
             .jsonBody(rawRequestBody)
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.liveSharingLinks.updateLiveSharingLink({
+                id: "id",
+                name: "name",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("updateLiveSharingLink (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { name: "name" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/live-shares")
+            .jsonBody(rawRequestBody)
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -930,7 +1020,7 @@ describe("LiveSharingLinksClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("updateLiveSharingLink (6)", async () => {
+    test("updateLiveSharingLink (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -957,7 +1047,7 @@ describe("LiveSharingLinksClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("updateLiveSharingLink (7)", async () => {
+    test("updateLiveSharingLink (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -984,7 +1074,7 @@ describe("LiveSharingLinksClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("updateLiveSharingLink (8)", async () => {
+    test("updateLiveSharingLink (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1011,7 +1101,7 @@ describe("LiveSharingLinksClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("updateLiveSharingLink (9)", async () => {
+    test("updateLiveSharingLink (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1038,7 +1128,7 @@ describe("LiveSharingLinksClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("updateLiveSharingLink (10)", async () => {
+    test("updateLiveSharingLink (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,

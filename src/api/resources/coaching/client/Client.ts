@@ -38,6 +38,7 @@ export class CoachingClient {
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
      * @throws {@link Samsara.MethodNotAllowedError}
+     * @throws {@link Samsara.ContentTooLargeError}
      * @throws {@link Samsara.TooManyRequestsError}
      * @throws {@link Samsara.InternalServerError}
      * @throws {@link Samsara.NotImplementedError}
@@ -104,6 +105,8 @@ export class CoachingClient {
                     throw new Samsara.NotFoundError(_response.error.body as unknown, _response.rawResponse);
                 case 405:
                     throw new Samsara.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
+                case 413:
+                    throw new Samsara.ContentTooLargeError(_response.error.body as unknown, _response.rawResponse);
                 case 429:
                     throw new Samsara.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
                 case 500:
@@ -149,6 +152,7 @@ export class CoachingClient {
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
      * @throws {@link Samsara.MethodNotAllowedError}
+     * @throws {@link Samsara.ContentTooLargeError}
      * @throws {@link Samsara.TooManyRequestsError}
      * @throws {@link Samsara.InternalServerError}
      * @throws {@link Samsara.NotImplementedError}
@@ -215,6 +219,8 @@ export class CoachingClient {
                     throw new Samsara.NotFoundError(_response.error.body as unknown, _response.rawResponse);
                 case 405:
                     throw new Samsara.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
+                case 413:
+                    throw new Samsara.ContentTooLargeError(_response.error.body as unknown, _response.rawResponse);
                 case 429:
                     throw new Samsara.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
                 case 500:
@@ -260,6 +266,7 @@ export class CoachingClient {
      * @throws {@link Samsara.UnauthorizedError}
      * @throws {@link Samsara.NotFoundError}
      * @throws {@link Samsara.MethodNotAllowedError}
+     * @throws {@link Samsara.ContentTooLargeError}
      * @throws {@link Samsara.TooManyRequestsError}
      * @throws {@link Samsara.InternalServerError}
      * @throws {@link Samsara.NotImplementedError}
@@ -341,6 +348,8 @@ export class CoachingClient {
                     throw new Samsara.NotFoundError(_response.error.body as unknown, _response.rawResponse);
                 case 405:
                     throw new Samsara.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
+                case 413:
+                    throw new Samsara.ContentTooLargeError(_response.error.body as unknown, _response.rawResponse);
                 case 429:
                     throw new Samsara.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
                 case 500:

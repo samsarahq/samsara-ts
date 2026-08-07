@@ -163,6 +163,32 @@ describe("SafetyScoresClient", () => {
             .mockEndpoint()
             .get("/safety-scores/drivers")
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.safetyScores.getDriverSafetyScores({
+                endTime: "endTime",
+                startTime: "startTime",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("getDriverSafetyScores (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/safety-scores/drivers")
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -175,7 +201,7 @@ describe("SafetyScoresClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("getDriverSafetyScores (6)", async () => {
+    test("getDriverSafetyScores (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -201,7 +227,7 @@ describe("SafetyScoresClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("getDriverSafetyScores (7)", async () => {
+    test("getDriverSafetyScores (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -227,7 +253,7 @@ describe("SafetyScoresClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("getDriverSafetyScores (8)", async () => {
+    test("getDriverSafetyScores (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -253,7 +279,7 @@ describe("SafetyScoresClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("getDriverSafetyScores (9)", async () => {
+    test("getDriverSafetyScores (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -279,7 +305,7 @@ describe("SafetyScoresClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("getDriverSafetyScores (10)", async () => {
+    test("getDriverSafetyScores (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -454,6 +480,33 @@ describe("SafetyScoresClient", () => {
             .mockEndpoint()
             .get("/safety-scores/tag-group")
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.safetyScores.getTagGroupSafetyScores({
+                endTime: "endTime",
+                startTime: "startTime",
+                scoreType: "driver",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("getTagGroupSafetyScores (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/safety-scores/tag-group")
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -467,7 +520,7 @@ describe("SafetyScoresClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("getTagGroupSafetyScores (6)", async () => {
+    test("getTagGroupSafetyScores (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -494,7 +547,7 @@ describe("SafetyScoresClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("getTagGroupSafetyScores (7)", async () => {
+    test("getTagGroupSafetyScores (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -521,7 +574,7 @@ describe("SafetyScoresClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("getTagGroupSafetyScores (8)", async () => {
+    test("getTagGroupSafetyScores (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -548,7 +601,7 @@ describe("SafetyScoresClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("getTagGroupSafetyScores (9)", async () => {
+    test("getTagGroupSafetyScores (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -575,7 +628,7 @@ describe("SafetyScoresClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("getTagGroupSafetyScores (10)", async () => {
+    test("getTagGroupSafetyScores (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -764,6 +817,33 @@ describe("SafetyScoresClient", () => {
             .mockEndpoint()
             .get("/safety-scores/tags")
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.safetyScores.getTagSafetyScores({
+                endTime: "endTime",
+                startTime: "startTime",
+                scoreType: "driver",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("getTagSafetyScores (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/safety-scores/tags")
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -777,7 +857,7 @@ describe("SafetyScoresClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("getTagSafetyScores (6)", async () => {
+    test("getTagSafetyScores (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -804,7 +884,7 @@ describe("SafetyScoresClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("getTagSafetyScores (7)", async () => {
+    test("getTagSafetyScores (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -831,7 +911,7 @@ describe("SafetyScoresClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("getTagSafetyScores (8)", async () => {
+    test("getTagSafetyScores (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -858,7 +938,7 @@ describe("SafetyScoresClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("getTagSafetyScores (9)", async () => {
+    test("getTagSafetyScores (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -885,7 +965,7 @@ describe("SafetyScoresClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("getTagSafetyScores (10)", async () => {
+    test("getTagSafetyScores (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1070,6 +1150,32 @@ describe("SafetyScoresClient", () => {
             .mockEndpoint()
             .get("/safety-scores/vehicles")
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.safetyScores.getVehicleSafetyScores({
+                endTime: "endTime",
+                startTime: "startTime",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("getVehicleSafetyScores (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/safety-scores/vehicles")
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -1082,7 +1188,7 @@ describe("SafetyScoresClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("getVehicleSafetyScores (6)", async () => {
+    test("getVehicleSafetyScores (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1108,7 +1214,7 @@ describe("SafetyScoresClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("getVehicleSafetyScores (7)", async () => {
+    test("getVehicleSafetyScores (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1134,7 +1240,7 @@ describe("SafetyScoresClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("getVehicleSafetyScores (8)", async () => {
+    test("getVehicleSafetyScores (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1160,7 +1266,7 @@ describe("SafetyScoresClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("getVehicleSafetyScores (9)", async () => {
+    test("getVehicleSafetyScores (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1186,7 +1292,7 @@ describe("SafetyScoresClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("getVehicleSafetyScores (10)", async () => {
+    test("getVehicleSafetyScores (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,

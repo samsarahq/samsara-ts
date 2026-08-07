@@ -153,6 +153,29 @@ describe("FleetClient", () => {
             .mockEndpoint()
             .get("/v1/fleet/locations")
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fleet.getFleetLocations();
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("getFleetLocations (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/v1/fleet/locations")
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -162,7 +185,7 @@ describe("FleetClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("getFleetLocations (6)", async () => {
+    test("getFleetLocations (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -185,7 +208,7 @@ describe("FleetClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("getFleetLocations (7)", async () => {
+    test("getFleetLocations (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -208,7 +231,7 @@ describe("FleetClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("getFleetLocations (8)", async () => {
+    test("getFleetLocations (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -231,7 +254,7 @@ describe("FleetClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("getFleetLocations (9)", async () => {
+    test("getFleetLocations (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -254,7 +277,7 @@ describe("FleetClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("getFleetLocations (10)", async () => {
+    test("getFleetLocations (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,

@@ -267,6 +267,29 @@ describe("HoursOfServiceClient", () => {
             .mockEndpoint()
             .get("/fleet/hos/daily-logs")
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.hoursOfService.getHosDailyLogs();
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("getHosDailyLogs (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/hos/daily-logs")
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -276,7 +299,7 @@ describe("HoursOfServiceClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("getHosDailyLogs (6)", async () => {
+    test("getHosDailyLogs (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -299,7 +322,7 @@ describe("HoursOfServiceClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("getHosDailyLogs (7)", async () => {
+    test("getHosDailyLogs (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -322,7 +345,7 @@ describe("HoursOfServiceClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("getHosDailyLogs (8)", async () => {
+    test("getHosDailyLogs (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -345,7 +368,7 @@ describe("HoursOfServiceClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("getHosDailyLogs (9)", async () => {
+    test("getHosDailyLogs (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -368,7 +391,7 @@ describe("HoursOfServiceClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("getHosDailyLogs (10)", async () => {
+    test("getHosDailyLogs (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -592,6 +615,29 @@ describe("HoursOfServiceClient", () => {
             .mockEndpoint()
             .get("/fleet/hos/violations")
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.hoursOfService.getHosViolations();
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("getHosViolations (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/hos/violations")
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -601,7 +647,7 @@ describe("HoursOfServiceClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("getHosViolations (6)", async () => {
+    test("getHosViolations (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -624,7 +670,7 @@ describe("HoursOfServiceClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("getHosViolations (7)", async () => {
+    test("getHosViolations (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -647,7 +693,7 @@ describe("HoursOfServiceClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("getHosViolations (8)", async () => {
+    test("getHosViolations (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -670,7 +716,7 @@ describe("HoursOfServiceClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("getHosViolations (9)", async () => {
+    test("getHosViolations (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -693,7 +739,7 @@ describe("HoursOfServiceClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("getHosViolations (10)", async () => {
+    test("getHosViolations (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,

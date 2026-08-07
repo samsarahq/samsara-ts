@@ -150,6 +150,26 @@ describe("IdlingClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+        server.mockEndpoint().get("/idling/events").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.idling.getIdlingEvents({
+                startTime: "startTime",
+                endTime: "endTime",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("getIdlingEvents (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
         server.mockEndpoint().get("/idling/events").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -160,7 +180,7 @@ describe("IdlingClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("getIdlingEvents (6)", async () => {
+    test("getIdlingEvents (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -180,7 +200,7 @@ describe("IdlingClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("getIdlingEvents (7)", async () => {
+    test("getIdlingEvents (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -200,7 +220,7 @@ describe("IdlingClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("getIdlingEvents (8)", async () => {
+    test("getIdlingEvents (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -220,7 +240,7 @@ describe("IdlingClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("getIdlingEvents (9)", async () => {
+    test("getIdlingEvents (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -240,7 +260,7 @@ describe("IdlingClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("getIdlingEvents (10)", async () => {
+    test("getIdlingEvents (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,

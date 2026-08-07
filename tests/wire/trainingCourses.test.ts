@@ -121,6 +121,23 @@ describe("TrainingCoursesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+        server.mockEndpoint().get("/training-courses").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.trainingCourses.getTrainingCourses();
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("getTrainingCourses (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
         server.mockEndpoint().get("/training-courses").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -128,7 +145,7 @@ describe("TrainingCoursesClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("getTrainingCourses (6)", async () => {
+    test("getTrainingCourses (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -145,7 +162,7 @@ describe("TrainingCoursesClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("getTrainingCourses (7)", async () => {
+    test("getTrainingCourses (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -162,7 +179,7 @@ describe("TrainingCoursesClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("getTrainingCourses (8)", async () => {
+    test("getTrainingCourses (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -179,7 +196,7 @@ describe("TrainingCoursesClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("getTrainingCourses (9)", async () => {
+    test("getTrainingCourses (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -196,7 +213,7 @@ describe("TrainingCoursesClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("getTrainingCourses (10)", async () => {
+    test("getTrainingCourses (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,

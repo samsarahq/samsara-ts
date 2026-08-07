@@ -141,6 +141,35 @@ describe("WorkOrdersClient", () => {
             .post("/maintenance/invoice-scans")
             .jsonBody(rawRequestBody)
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.workOrders.postInvoiceScan({
+                file: {
+                    base64Content: "base64Content",
+                    contentType: "contentType",
+                },
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("postInvoiceScan (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { file: { base64Content: "base64Content", contentType: "contentType" } };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/maintenance/invoice-scans")
+            .jsonBody(rawRequestBody)
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -155,7 +184,7 @@ describe("WorkOrdersClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("postInvoiceScan (6)", async () => {
+    test("postInvoiceScan (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -184,7 +213,7 @@ describe("WorkOrdersClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("postInvoiceScan (7)", async () => {
+    test("postInvoiceScan (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -213,7 +242,7 @@ describe("WorkOrdersClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("postInvoiceScan (8)", async () => {
+    test("postInvoiceScan (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -242,7 +271,7 @@ describe("WorkOrdersClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("postInvoiceScan (9)", async () => {
+    test("postInvoiceScan (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -271,7 +300,7 @@ describe("WorkOrdersClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("postInvoiceScan (10)", async () => {
+    test("postInvoiceScan (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -437,6 +466,29 @@ describe("WorkOrdersClient", () => {
             .mockEndpoint()
             .get("/maintenance/service-tasks")
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.workOrders.getServiceTasks();
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("getServiceTasks (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/service-tasks")
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -446,7 +498,7 @@ describe("WorkOrdersClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("getServiceTasks (6)", async () => {
+    test("getServiceTasks (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -469,7 +521,7 @@ describe("WorkOrdersClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("getServiceTasks (7)", async () => {
+    test("getServiceTasks (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -492,7 +544,7 @@ describe("WorkOrdersClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("getServiceTasks (8)", async () => {
+    test("getServiceTasks (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -515,7 +567,7 @@ describe("WorkOrdersClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("getServiceTasks (9)", async () => {
+    test("getServiceTasks (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -538,7 +590,7 @@ describe("WorkOrdersClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("getServiceTasks (10)", async () => {
+    test("getServiceTasks (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -856,6 +908,29 @@ describe("WorkOrdersClient", () => {
             .mockEndpoint()
             .get("/maintenance/work-orders")
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.workOrders.getWorkOrders();
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("getWorkOrders (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/work-orders")
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -865,7 +940,7 @@ describe("WorkOrdersClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("getWorkOrders (6)", async () => {
+    test("getWorkOrders (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -888,7 +963,7 @@ describe("WorkOrdersClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("getWorkOrders (7)", async () => {
+    test("getWorkOrders (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -911,7 +986,7 @@ describe("WorkOrdersClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("getWorkOrders (8)", async () => {
+    test("getWorkOrders (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -934,7 +1009,7 @@ describe("WorkOrdersClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("getWorkOrders (9)", async () => {
+    test("getWorkOrders (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -957,7 +1032,7 @@ describe("WorkOrdersClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("getWorkOrders (10)", async () => {
+    test("getWorkOrders (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1261,6 +1336,32 @@ describe("WorkOrdersClient", () => {
             .post("/maintenance/work-orders")
             .jsonBody(rawRequestBody)
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.workOrders.postWorkOrders({
+                assetId: "assetId",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("postWorkOrders (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { assetId: "assetId" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/maintenance/work-orders")
+            .jsonBody(rawRequestBody)
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -1272,7 +1373,7 @@ describe("WorkOrdersClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("postWorkOrders (6)", async () => {
+    test("postWorkOrders (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1298,7 +1399,7 @@ describe("WorkOrdersClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("postWorkOrders (7)", async () => {
+    test("postWorkOrders (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1324,7 +1425,7 @@ describe("WorkOrdersClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("postWorkOrders (8)", async () => {
+    test("postWorkOrders (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1350,7 +1451,7 @@ describe("WorkOrdersClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("postWorkOrders (9)", async () => {
+    test("postWorkOrders (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1376,7 +1477,7 @@ describe("WorkOrdersClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("postWorkOrders (10)", async () => {
+    test("postWorkOrders (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1508,6 +1609,31 @@ describe("WorkOrdersClient", () => {
             .mockEndpoint()
             .delete("/maintenance/work-orders")
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.workOrders.deleteWorkOrders({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("deleteWorkOrders (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .delete("/maintenance/work-orders")
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -1519,7 +1645,7 @@ describe("WorkOrdersClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("deleteWorkOrders (6)", async () => {
+    test("deleteWorkOrders (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1544,7 +1670,7 @@ describe("WorkOrdersClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("deleteWorkOrders (7)", async () => {
+    test("deleteWorkOrders (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1569,7 +1695,7 @@ describe("WorkOrdersClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("deleteWorkOrders (8)", async () => {
+    test("deleteWorkOrders (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1594,7 +1720,7 @@ describe("WorkOrdersClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("deleteWorkOrders (9)", async () => {
+    test("deleteWorkOrders (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1619,7 +1745,7 @@ describe("WorkOrdersClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("deleteWorkOrders (10)", async () => {
+    test("deleteWorkOrders (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1925,6 +2051,32 @@ describe("WorkOrdersClient", () => {
             .patch("/maintenance/work-orders")
             .jsonBody(rawRequestBody)
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.workOrders.patchWorkOrders({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("patchWorkOrders (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { id: "id" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/maintenance/work-orders")
+            .jsonBody(rawRequestBody)
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -1936,7 +2088,7 @@ describe("WorkOrdersClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("patchWorkOrders (6)", async () => {
+    test("patchWorkOrders (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1962,7 +2114,7 @@ describe("WorkOrdersClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("patchWorkOrders (7)", async () => {
+    test("patchWorkOrders (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1988,7 +2140,7 @@ describe("WorkOrdersClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("patchWorkOrders (8)", async () => {
+    test("patchWorkOrders (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -2014,7 +2166,7 @@ describe("WorkOrdersClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("patchWorkOrders (9)", async () => {
+    test("patchWorkOrders (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -2040,7 +2192,7 @@ describe("WorkOrdersClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("patchWorkOrders (10)", async () => {
+    test("patchWorkOrders (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -2369,6 +2521,31 @@ describe("WorkOrdersClient", () => {
             .mockEndpoint()
             .get("/maintenance/work-orders/stream")
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.workOrders.streamWorkOrders({
+                startTime: "startTime",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("streamWorkOrders (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/work-orders/stream")
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -2380,7 +2557,7 @@ describe("WorkOrdersClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("streamWorkOrders (6)", async () => {
+    test("streamWorkOrders (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -2405,7 +2582,7 @@ describe("WorkOrdersClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("streamWorkOrders (7)", async () => {
+    test("streamWorkOrders (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -2430,7 +2607,7 @@ describe("WorkOrdersClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("streamWorkOrders (8)", async () => {
+    test("streamWorkOrders (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -2455,7 +2632,7 @@ describe("WorkOrdersClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("streamWorkOrders (9)", async () => {
+    test("streamWorkOrders (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -2480,7 +2657,7 @@ describe("WorkOrdersClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("streamWorkOrders (10)", async () => {
+    test("streamWorkOrders (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,

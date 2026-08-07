@@ -117,6 +117,25 @@ describe("HubsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+        server.mockEndpoint().get("/hub/capacities").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.hubs.listHubCapacities({
+                hubId: "hubId",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("listHubCapacities (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
         server.mockEndpoint().get("/hub/capacities").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -126,7 +145,7 @@ describe("HubsClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("listHubCapacities (6)", async () => {
+    test("listHubCapacities (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -145,7 +164,7 @@ describe("HubsClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("listHubCapacities (7)", async () => {
+    test("listHubCapacities (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -164,7 +183,7 @@ describe("HubsClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("listHubCapacities (8)", async () => {
+    test("listHubCapacities (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -183,7 +202,7 @@ describe("HubsClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("listHubCapacities (9)", async () => {
+    test("listHubCapacities (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -202,7 +221,7 @@ describe("HubsClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("listHubCapacities (10)", async () => {
+    test("listHubCapacities (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -361,6 +380,31 @@ describe("HubsClient", () => {
             .mockEndpoint()
             .get("/hub/customProperties")
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.hubs.listHubCustomProperties({
+                hubId: "hubId",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("listHubCustomProperties (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/hub/customProperties")
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -372,7 +416,7 @@ describe("HubsClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("listHubCustomProperties (6)", async () => {
+    test("listHubCustomProperties (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -397,7 +441,7 @@ describe("HubsClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("listHubCustomProperties (7)", async () => {
+    test("listHubCustomProperties (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -422,7 +466,7 @@ describe("HubsClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("listHubCustomProperties (8)", async () => {
+    test("listHubCustomProperties (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -447,7 +491,7 @@ describe("HubsClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("listHubCustomProperties (9)", async () => {
+    test("listHubCustomProperties (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -472,7 +516,7 @@ describe("HubsClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("listHubCustomProperties (10)", async () => {
+    test("listHubCustomProperties (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -706,6 +750,33 @@ describe("HubsClient", () => {
             .patch("/hub/location/id")
             .jsonBody(rawRequestBody)
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.hubs.updateHubLocation({
+                id: "id",
+                data: {},
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("updateHubLocation (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { data: {} };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/hub/location/id")
+            .jsonBody(rawRequestBody)
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -718,7 +789,7 @@ describe("HubsClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("updateHubLocation (6)", async () => {
+    test("updateHubLocation (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -745,7 +816,7 @@ describe("HubsClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("updateHubLocation (7)", async () => {
+    test("updateHubLocation (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -772,7 +843,7 @@ describe("HubsClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("updateHubLocation (8)", async () => {
+    test("updateHubLocation (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -799,7 +870,7 @@ describe("HubsClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("updateHubLocation (9)", async () => {
+    test("updateHubLocation (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -826,7 +897,7 @@ describe("HubsClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("updateHubLocation (10)", async () => {
+    test("updateHubLocation (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -996,6 +1067,25 @@ describe("HubsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+        server.mockEndpoint().get("/hub/locations").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.hubs.listHubLocations({
+                hubId: "hubId",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("listHubLocations (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
         server.mockEndpoint().get("/hub/locations").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1005,7 +1095,7 @@ describe("HubsClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("listHubLocations (6)", async () => {
+    test("listHubLocations (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1024,7 +1114,7 @@ describe("HubsClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("listHubLocations (7)", async () => {
+    test("listHubLocations (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1043,7 +1133,7 @@ describe("HubsClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("listHubLocations (8)", async () => {
+    test("listHubLocations (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1062,7 +1152,7 @@ describe("HubsClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("listHubLocations (9)", async () => {
+    test("listHubLocations (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1081,7 +1171,7 @@ describe("HubsClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("listHubLocations (10)", async () => {
+    test("listHubLocations (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1428,6 +1518,64 @@ describe("HubsClient", () => {
             .post("/hub/locations")
             .jsonBody(rawRequestBody)
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.hubs.createHubLocations({
+                data: [
+                    {
+                        address: "address",
+                        customerLocationId: "customerLocationId",
+                        hubId: "hubId",
+                        isDepot: true,
+                        name: "name",
+                    },
+                    {
+                        address: "address",
+                        customerLocationId: "customerLocationId",
+                        hubId: "hubId",
+                        isDepot: true,
+                        name: "name",
+                    },
+                ],
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("createHubLocations (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            data: [
+                {
+                    address: "address",
+                    customerLocationId: "customerLocationId",
+                    hubId: "hubId",
+                    isDepot: true,
+                    name: "name",
+                },
+                {
+                    address: "address",
+                    customerLocationId: "customerLocationId",
+                    hubId: "hubId",
+                    isDepot: true,
+                    name: "name",
+                },
+            ],
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/hub/locations")
+            .jsonBody(rawRequestBody)
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -1454,7 +1602,7 @@ describe("HubsClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("createHubLocations (6)", async () => {
+    test("createHubLocations (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1512,7 +1660,7 @@ describe("HubsClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("createHubLocations (7)", async () => {
+    test("createHubLocations (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1570,7 +1718,7 @@ describe("HubsClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("createHubLocations (8)", async () => {
+    test("createHubLocations (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1628,7 +1776,7 @@ describe("HubsClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("createHubLocations (9)", async () => {
+    test("createHubLocations (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1686,7 +1834,7 @@ describe("HubsClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("createHubLocations (10)", async () => {
+    test("createHubLocations (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1854,6 +2002,25 @@ describe("HubsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+        server.mockEndpoint().get("/hub/skills").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.hubs.listHubSkills({
+                hubId: "hubId",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("listHubSkills (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
         server.mockEndpoint().get("/hub/skills").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1863,7 +2030,7 @@ describe("HubsClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("listHubSkills (6)", async () => {
+    test("listHubSkills (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1882,7 +2049,7 @@ describe("HubsClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("listHubSkills (7)", async () => {
+    test("listHubSkills (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1901,7 +2068,7 @@ describe("HubsClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("listHubSkills (8)", async () => {
+    test("listHubSkills (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1920,7 +2087,7 @@ describe("HubsClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("listHubSkills (9)", async () => {
+    test("listHubSkills (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1939,7 +2106,7 @@ describe("HubsClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("listHubSkills (10)", async () => {
+    test("listHubSkills (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -2060,6 +2227,23 @@ describe("HubsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+        server.mockEndpoint().get("/hubs").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.hubs.listHubs();
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("listHubs (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
         server.mockEndpoint().get("/hubs").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -2067,7 +2251,7 @@ describe("HubsClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("listHubs (6)", async () => {
+    test("listHubs (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -2084,7 +2268,7 @@ describe("HubsClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("listHubs (7)", async () => {
+    test("listHubs (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -2101,7 +2285,7 @@ describe("HubsClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("listHubs (8)", async () => {
+    test("listHubs (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -2118,7 +2302,7 @@ describe("HubsClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("listHubs (9)", async () => {
+    test("listHubs (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -2135,7 +2319,7 @@ describe("HubsClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("listHubs (10)", async () => {
+    test("listHubs (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,

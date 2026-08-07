@@ -235,6 +235,29 @@ describe("LegacyApIsClient", () => {
             .mockEndpoint()
             .get("/fleet/drivers/vehicle-assignments")
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.legacyApIs.getDriversVehicleAssignments();
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("getDriversVehicleAssignments (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/drivers/vehicle-assignments")
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -244,7 +267,7 @@ describe("LegacyApIsClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("getDriversVehicleAssignments (6)", async () => {
+    test("getDriversVehicleAssignments (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -267,7 +290,7 @@ describe("LegacyApIsClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("getDriversVehicleAssignments (7)", async () => {
+    test("getDriversVehicleAssignments (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -290,7 +313,7 @@ describe("LegacyApIsClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("getDriversVehicleAssignments (8)", async () => {
+    test("getDriversVehicleAssignments (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -313,7 +336,7 @@ describe("LegacyApIsClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("getDriversVehicleAssignments (9)", async () => {
+    test("getDriversVehicleAssignments (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -336,7 +359,7 @@ describe("LegacyApIsClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("getDriversVehicleAssignments (10)", async () => {
+    test("getDriversVehicleAssignments (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -658,6 +681,32 @@ describe("LegacyApIsClient", () => {
             .mockEndpoint()
             .get("/fleet/reports/vehicle/idling")
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.legacyApIs.getVehicleIdlingReports({
+                startTime: "startTime",
+                endTime: "endTime",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("getVehicleIdlingReports (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/reports/vehicle/idling")
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -670,7 +719,7 @@ describe("LegacyApIsClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("getVehicleIdlingReports (6)", async () => {
+    test("getVehicleIdlingReports (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -696,7 +745,7 @@ describe("LegacyApIsClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("getVehicleIdlingReports (7)", async () => {
+    test("getVehicleIdlingReports (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -722,7 +771,7 @@ describe("LegacyApIsClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("getVehicleIdlingReports (8)", async () => {
+    test("getVehicleIdlingReports (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -748,7 +797,7 @@ describe("LegacyApIsClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("getVehicleIdlingReports (9)", async () => {
+    test("getVehicleIdlingReports (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -774,7 +823,7 @@ describe("LegacyApIsClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("getVehicleIdlingReports (10)", async () => {
+    test("getVehicleIdlingReports (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1027,6 +1076,29 @@ describe("LegacyApIsClient", () => {
             .mockEndpoint()
             .get("/fleet/safety-events/audit-logs/feed")
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.legacyApIs.getSafetyActivityEventFeed();
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("getSafetyActivityEventFeed (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/safety-events/audit-logs/feed")
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -1036,7 +1108,7 @@ describe("LegacyApIsClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("getSafetyActivityEventFeed (6)", async () => {
+    test("getSafetyActivityEventFeed (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1059,7 +1131,7 @@ describe("LegacyApIsClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("getSafetyActivityEventFeed (7)", async () => {
+    test("getSafetyActivityEventFeed (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1082,7 +1154,7 @@ describe("LegacyApIsClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("getSafetyActivityEventFeed (8)", async () => {
+    test("getSafetyActivityEventFeed (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1105,7 +1177,7 @@ describe("LegacyApIsClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("getSafetyActivityEventFeed (9)", async () => {
+    test("getSafetyActivityEventFeed (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1128,7 +1200,7 @@ describe("LegacyApIsClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("getSafetyActivityEventFeed (10)", async () => {
+    test("getSafetyActivityEventFeed (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1298,6 +1370,29 @@ describe("LegacyApIsClient", () => {
             .mockEndpoint()
             .get("/fleet/vehicles/driver-assignments")
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.legacyApIs.getVehiclesDriverAssignments();
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("getVehiclesDriverAssignments (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/fleet/vehicles/driver-assignments")
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -1307,7 +1402,7 @@ describe("LegacyApIsClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("getVehiclesDriverAssignments (6)", async () => {
+    test("getVehiclesDriverAssignments (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1330,7 +1425,7 @@ describe("LegacyApIsClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("getVehiclesDriverAssignments (7)", async () => {
+    test("getVehiclesDriverAssignments (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1353,7 +1448,7 @@ describe("LegacyApIsClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("getVehiclesDriverAssignments (8)", async () => {
+    test("getVehiclesDriverAssignments (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1376,7 +1471,7 @@ describe("LegacyApIsClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("getVehiclesDriverAssignments (9)", async () => {
+    test("getVehiclesDriverAssignments (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1399,7 +1494,7 @@ describe("LegacyApIsClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("getVehiclesDriverAssignments (10)", async () => {
+    test("getVehiclesDriverAssignments (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,

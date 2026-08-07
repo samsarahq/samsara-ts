@@ -166,6 +166,23 @@ describe("AssetsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+        server.mockEndpoint().get("/assets").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.assets.list();
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("list (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
         server.mockEndpoint().get("/assets").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -173,7 +190,7 @@ describe("AssetsClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("list (6)", async () => {
+    test("list (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -190,7 +207,7 @@ describe("AssetsClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("list (7)", async () => {
+    test("list (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -207,7 +224,7 @@ describe("AssetsClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("list (8)", async () => {
+    test("list (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -224,7 +241,7 @@ describe("AssetsClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("list (9)", async () => {
+    test("list (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -241,7 +258,7 @@ describe("AssetsClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("list (10)", async () => {
+    test("list (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -432,6 +449,30 @@ describe("AssetsClient", () => {
             .post("/assets")
             .jsonBody(rawRequestBody)
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.assets.createAsset();
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("createAsset (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/assets")
+            .jsonBody(rawRequestBody)
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -441,7 +482,7 @@ describe("AssetsClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("createAsset (6)", async () => {
+    test("createAsset (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -465,7 +506,7 @@ describe("AssetsClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("createAsset (7)", async () => {
+    test("createAsset (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -489,7 +530,7 @@ describe("AssetsClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("createAsset (8)", async () => {
+    test("createAsset (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -513,7 +554,7 @@ describe("AssetsClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("createAsset (9)", async () => {
+    test("createAsset (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -537,7 +578,7 @@ describe("AssetsClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("createAsset (10)", async () => {
+    test("createAsset (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -645,6 +686,25 @@ describe("AssetsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+        server.mockEndpoint().delete("/assets").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.assets.deleteAsset({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("deleteAsset (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
         server.mockEndpoint().delete("/assets").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -654,7 +714,7 @@ describe("AssetsClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("deleteAsset (6)", async () => {
+    test("deleteAsset (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -673,7 +733,7 @@ describe("AssetsClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("deleteAsset (7)", async () => {
+    test("deleteAsset (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -692,7 +752,7 @@ describe("AssetsClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("deleteAsset (8)", async () => {
+    test("deleteAsset (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -711,7 +771,7 @@ describe("AssetsClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("deleteAsset (9)", async () => {
+    test("deleteAsset (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -730,7 +790,7 @@ describe("AssetsClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("deleteAsset (10)", async () => {
+    test("deleteAsset (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -931,6 +991,32 @@ describe("AssetsClient", () => {
             .patch("/assets")
             .jsonBody(rawRequestBody)
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.assets.updateAsset({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("updateAsset (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/assets")
+            .jsonBody(rawRequestBody)
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -942,7 +1028,7 @@ describe("AssetsClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("updateAsset (6)", async () => {
+    test("updateAsset (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -968,7 +1054,7 @@ describe("AssetsClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("updateAsset (7)", async () => {
+    test("updateAsset (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -994,7 +1080,7 @@ describe("AssetsClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("updateAsset (8)", async () => {
+    test("updateAsset (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1020,7 +1106,7 @@ describe("AssetsClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("updateAsset (9)", async () => {
+    test("updateAsset (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1046,7 +1132,7 @@ describe("AssetsClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("updateAsset (10)", async () => {
+    test("updateAsset (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1326,6 +1412,31 @@ describe("AssetsClient", () => {
             .mockEndpoint()
             .get("/v1/fleet/assets/1000000/locations")
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.assets.getAssetLocation({
+                assetId: 1000000,
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("getAssetLocation (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/v1/fleet/assets/1000000/locations")
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -1337,7 +1448,7 @@ describe("AssetsClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("getAssetLocation (6)", async () => {
+    test("getAssetLocation (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1362,7 +1473,7 @@ describe("AssetsClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("getAssetLocation (7)", async () => {
+    test("getAssetLocation (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1387,7 +1498,7 @@ describe("AssetsClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("getAssetLocation (8)", async () => {
+    test("getAssetLocation (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1412,7 +1523,7 @@ describe("AssetsClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("getAssetLocation (9)", async () => {
+    test("getAssetLocation (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1437,7 +1548,7 @@ describe("AssetsClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("getAssetLocation (10)", async () => {
+    test("getAssetLocation (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1636,6 +1747,33 @@ describe("AssetsClient", () => {
             .mockEndpoint()
             .get("/v1/fleet/assets/1000000/reefer")
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.assets.getAssetReefer({
+                assetId: 1000000,
+                startMs: 1000000,
+                endMs: 1000000,
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("getAssetReefer (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/v1/fleet/assets/1000000/reefer")
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -1649,7 +1787,7 @@ describe("AssetsClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("getAssetReefer (6)", async () => {
+    test("getAssetReefer (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1676,7 +1814,7 @@ describe("AssetsClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("getAssetReefer (7)", async () => {
+    test("getAssetReefer (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1703,7 +1841,7 @@ describe("AssetsClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("getAssetReefer (8)", async () => {
+    test("getAssetReefer (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1730,7 +1868,7 @@ describe("AssetsClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("getAssetReefer (9)", async () => {
+    test("getAssetReefer (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1757,7 +1895,7 @@ describe("AssetsClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("getAssetReefer (10)", async () => {
+    test("getAssetReefer (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,

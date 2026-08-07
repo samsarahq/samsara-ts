@@ -1156,6 +1156,23 @@ describe("FormsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+        server.mockEndpoint().get("/form-submissions").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.forms.getFormSubmissions();
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("getFormSubmissions (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
         server.mockEndpoint().get("/form-submissions").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1163,7 +1180,7 @@ describe("FormsClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("getFormSubmissions (6)", async () => {
+    test("getFormSubmissions (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1180,7 +1197,7 @@ describe("FormsClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("getFormSubmissions (7)", async () => {
+    test("getFormSubmissions (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1197,7 +1214,7 @@ describe("FormsClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("getFormSubmissions (8)", async () => {
+    test("getFormSubmissions (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1214,7 +1231,7 @@ describe("FormsClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("getFormSubmissions (9)", async () => {
+    test("getFormSubmissions (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1231,7 +1248,7 @@ describe("FormsClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("getFormSubmissions (10)", async () => {
+    test("getFormSubmissions (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1707,6 +1724,35 @@ describe("FormsClient", () => {
             .post("/form-submissions")
             .jsonBody(rawRequestBody)
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.forms.postFormSubmission({
+                formTemplate: {
+                    id: "id",
+                },
+                status: "notStarted",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("postFormSubmission (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { formTemplate: { id: "id" }, status: "notStarted" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/form-submissions")
+            .jsonBody(rawRequestBody)
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -1721,7 +1767,7 @@ describe("FormsClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("postFormSubmission (6)", async () => {
+    test("postFormSubmission (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1750,7 +1796,7 @@ describe("FormsClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("postFormSubmission (7)", async () => {
+    test("postFormSubmission (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1779,7 +1825,7 @@ describe("FormsClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("postFormSubmission (8)", async () => {
+    test("postFormSubmission (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1808,7 +1854,7 @@ describe("FormsClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("postFormSubmission (9)", async () => {
+    test("postFormSubmission (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1837,7 +1883,7 @@ describe("FormsClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("postFormSubmission (10)", async () => {
+    test("postFormSubmission (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -2307,6 +2353,32 @@ describe("FormsClient", () => {
             .patch("/form-submissions")
             .jsonBody(rawRequestBody)
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.forms.patchFormSubmission({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("patchFormSubmission (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { id: "id" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/form-submissions")
+            .jsonBody(rawRequestBody)
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -2318,7 +2390,7 @@ describe("FormsClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("patchFormSubmission (6)", async () => {
+    test("patchFormSubmission (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -2344,7 +2416,7 @@ describe("FormsClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("patchFormSubmission (7)", async () => {
+    test("patchFormSubmission (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -2370,7 +2442,7 @@ describe("FormsClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("patchFormSubmission (8)", async () => {
+    test("patchFormSubmission (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -2396,7 +2468,7 @@ describe("FormsClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("patchFormSubmission (9)", async () => {
+    test("patchFormSubmission (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -2422,7 +2494,7 @@ describe("FormsClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("patchFormSubmission (10)", async () => {
+    test("patchFormSubmission (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -2585,6 +2657,31 @@ describe("FormsClient", () => {
             .mockEndpoint()
             .get("/form-submissions/pdf-exports")
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.forms.getFormSubmissionsPdfExports({
+                pdfId: "pdfId",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("getFormSubmissionsPdfExports (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/form-submissions/pdf-exports")
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -2596,7 +2693,7 @@ describe("FormsClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("getFormSubmissionsPdfExports (6)", async () => {
+    test("getFormSubmissionsPdfExports (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -2621,7 +2718,7 @@ describe("FormsClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("getFormSubmissionsPdfExports (7)", async () => {
+    test("getFormSubmissionsPdfExports (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -2646,7 +2743,7 @@ describe("FormsClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("getFormSubmissionsPdfExports (8)", async () => {
+    test("getFormSubmissionsPdfExports (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -2671,7 +2768,7 @@ describe("FormsClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("getFormSubmissionsPdfExports (9)", async () => {
+    test("getFormSubmissionsPdfExports (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -2696,7 +2793,7 @@ describe("FormsClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("getFormSubmissionsPdfExports (10)", async () => {
+    test("getFormSubmissionsPdfExports (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -2858,6 +2955,31 @@ describe("FormsClient", () => {
             .mockEndpoint()
             .post("/form-submissions/pdf-exports")
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.forms.postFormSubmissionsPdfExports({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("postFormSubmissionsPdfExports (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/form-submissions/pdf-exports")
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -2869,7 +2991,7 @@ describe("FormsClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("postFormSubmissionsPdfExports (6)", async () => {
+    test("postFormSubmissionsPdfExports (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -2894,7 +3016,7 @@ describe("FormsClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("postFormSubmissionsPdfExports (7)", async () => {
+    test("postFormSubmissionsPdfExports (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -2919,7 +3041,7 @@ describe("FormsClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("postFormSubmissionsPdfExports (8)", async () => {
+    test("postFormSubmissionsPdfExports (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -2944,7 +3066,7 @@ describe("FormsClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("postFormSubmissionsPdfExports (9)", async () => {
+    test("postFormSubmissionsPdfExports (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -2969,7 +3091,7 @@ describe("FormsClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("postFormSubmissionsPdfExports (10)", async () => {
+    test("postFormSubmissionsPdfExports (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -3432,6 +3554,31 @@ describe("FormsClient", () => {
             .mockEndpoint()
             .get("/form-submissions/stream")
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.forms.getFormSubmissionsStream({
+                startTime: "startTime",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("getFormSubmissionsStream (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/form-submissions/stream")
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -3443,7 +3590,7 @@ describe("FormsClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("getFormSubmissionsStream (6)", async () => {
+    test("getFormSubmissionsStream (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -3468,7 +3615,7 @@ describe("FormsClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("getFormSubmissionsStream (7)", async () => {
+    test("getFormSubmissionsStream (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -3493,7 +3640,7 @@ describe("FormsClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("getFormSubmissionsStream (8)", async () => {
+    test("getFormSubmissionsStream (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -3518,7 +3665,7 @@ describe("FormsClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("getFormSubmissionsStream (9)", async () => {
+    test("getFormSubmissionsStream (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -3543,7 +3690,7 @@ describe("FormsClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("getFormSubmissionsStream (10)", async () => {
+    test("getFormSubmissionsStream (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -3806,6 +3953,23 @@ describe("FormsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+        server.mockEndpoint().get("/form-templates").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.forms.getFormTemplates();
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("getFormTemplates (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
         server.mockEndpoint().get("/form-templates").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -3813,7 +3977,7 @@ describe("FormsClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("getFormTemplates (6)", async () => {
+    test("getFormTemplates (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -3830,7 +3994,7 @@ describe("FormsClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("getFormTemplates (7)", async () => {
+    test("getFormTemplates (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -3847,7 +4011,7 @@ describe("FormsClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("getFormTemplates (8)", async () => {
+    test("getFormTemplates (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -3864,7 +4028,7 @@ describe("FormsClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("getFormTemplates (9)", async () => {
+    test("getFormTemplates (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -3881,7 +4045,7 @@ describe("FormsClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("getFormTemplates (10)", async () => {
+    test("getFormTemplates (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,

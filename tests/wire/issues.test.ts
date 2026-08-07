@@ -234,6 +234,23 @@ describe("IssuesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+        server.mockEndpoint().get("/issues").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.issues.getIssues();
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("getIssues (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
         server.mockEndpoint().get("/issues").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -241,7 +258,7 @@ describe("IssuesClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("getIssues (6)", async () => {
+    test("getIssues (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -258,7 +275,7 @@ describe("IssuesClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("getIssues (7)", async () => {
+    test("getIssues (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -275,7 +292,7 @@ describe("IssuesClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("getIssues (8)", async () => {
+    test("getIssues (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -292,7 +309,7 @@ describe("IssuesClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("getIssues (9)", async () => {
+    test("getIssues (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -309,7 +326,7 @@ describe("IssuesClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("getIssues (10)", async () => {
+    test("getIssues (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -529,6 +546,35 @@ describe("IssuesClient", () => {
             .post("/issues")
             .jsonBody(rawRequestBody)
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.issues.postIssue({
+                asset: {
+                    id: "id",
+                },
+                title: "title",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("postIssue (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { asset: { id: "id" }, title: "title" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/issues")
+            .jsonBody(rawRequestBody)
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -543,7 +589,7 @@ describe("IssuesClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("postIssue (6)", async () => {
+    test("postIssue (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -572,7 +618,7 @@ describe("IssuesClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("postIssue (7)", async () => {
+    test("postIssue (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -601,7 +647,7 @@ describe("IssuesClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("postIssue (8)", async () => {
+    test("postIssue (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -630,7 +676,7 @@ describe("IssuesClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("postIssue (9)", async () => {
+    test("postIssue (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -659,7 +705,7 @@ describe("IssuesClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("postIssue (10)", async () => {
+    test("postIssue (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -879,6 +925,32 @@ describe("IssuesClient", () => {
             .patch("/issues")
             .jsonBody(rawRequestBody)
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.issues.patchIssue({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("patchIssue (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { id: "id" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/issues")
+            .jsonBody(rawRequestBody)
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -890,7 +962,7 @@ describe("IssuesClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("patchIssue (6)", async () => {
+    test("patchIssue (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -916,7 +988,7 @@ describe("IssuesClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("patchIssue (7)", async () => {
+    test("patchIssue (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -942,7 +1014,7 @@ describe("IssuesClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("patchIssue (8)", async () => {
+    test("patchIssue (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -968,7 +1040,7 @@ describe("IssuesClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("patchIssue (9)", async () => {
+    test("patchIssue (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -994,7 +1066,7 @@ describe("IssuesClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("patchIssue (10)", async () => {
+    test("patchIssue (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1179,6 +1251,25 @@ describe("IssuesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+        server.mockEndpoint().get("/issues/stream").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.issues.getIssuesStream({
+                startTime: "startTime",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("getIssuesStream (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
         server.mockEndpoint().get("/issues/stream").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1188,7 +1279,7 @@ describe("IssuesClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("getIssuesStream (6)", async () => {
+    test("getIssuesStream (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1207,7 +1298,7 @@ describe("IssuesClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("getIssuesStream (7)", async () => {
+    test("getIssuesStream (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1226,7 +1317,7 @@ describe("IssuesClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("getIssuesStream (8)", async () => {
+    test("getIssuesStream (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1245,7 +1336,7 @@ describe("IssuesClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("getIssuesStream (9)", async () => {
+    test("getIssuesStream (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1264,7 +1355,7 @@ describe("IssuesClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("getIssuesStream (10)", async () => {
+    test("getIssuesStream (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,

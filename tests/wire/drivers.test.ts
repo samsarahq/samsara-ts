@@ -458,6 +458,32 @@ describe("DriversClient", () => {
             .post("/fleet/drivers/remote-sign-out")
             .jsonBody(rawRequestBody)
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.drivers.postDriverRemoteSignout({
+                driverId: "driverId",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("postDriverRemoteSignout (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { driverId: "driverId" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/drivers/remote-sign-out")
+            .jsonBody(rawRequestBody)
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -469,7 +495,7 @@ describe("DriversClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("postDriverRemoteSignout (6)", async () => {
+    test("postDriverRemoteSignout (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -495,7 +521,7 @@ describe("DriversClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("postDriverRemoteSignout (7)", async () => {
+    test("postDriverRemoteSignout (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -521,7 +547,7 @@ describe("DriversClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("postDriverRemoteSignout (8)", async () => {
+    test("postDriverRemoteSignout (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -547,7 +573,7 @@ describe("DriversClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("postDriverRemoteSignout (9)", async () => {
+    test("postDriverRemoteSignout (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -573,7 +599,7 @@ describe("DriversClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("postDriverRemoteSignout (10)", async () => {
+    test("postDriverRemoteSignout (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,

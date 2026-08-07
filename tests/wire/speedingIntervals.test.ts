@@ -367,6 +367,31 @@ describe("SpeedingIntervalsClient", () => {
             .mockEndpoint()
             .get("/speeding-intervals/stream")
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.speedingIntervals.getSpeedingIntervals({
+                startTime: "startTime",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("getSpeedingIntervals (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/speeding-intervals/stream")
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -378,7 +403,7 @@ describe("SpeedingIntervalsClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("getSpeedingIntervals (6)", async () => {
+    test("getSpeedingIntervals (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -403,7 +428,7 @@ describe("SpeedingIntervalsClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("getSpeedingIntervals (7)", async () => {
+    test("getSpeedingIntervals (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -428,7 +453,7 @@ describe("SpeedingIntervalsClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("getSpeedingIntervals (8)", async () => {
+    test("getSpeedingIntervals (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -453,7 +478,7 @@ describe("SpeedingIntervalsClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("getSpeedingIntervals (9)", async () => {
+    test("getSpeedingIntervals (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -478,7 +503,7 @@ describe("SpeedingIntervalsClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("getSpeedingIntervals (10)", async () => {
+    test("getSpeedingIntervals (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,

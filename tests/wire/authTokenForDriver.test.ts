@@ -130,6 +130,32 @@ describe("AuthTokenForDriverClient", () => {
             .post("/fleet/drivers/auth-token")
             .jsonBody(rawRequestBody)
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.authTokenForDriver.authToken({
+                code: "blackcurrant",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("authToken (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { code: "blackcurrant" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/drivers/auth-token")
+            .jsonBody(rawRequestBody)
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -141,7 +167,7 @@ describe("AuthTokenForDriverClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("authToken (6)", async () => {
+    test("authToken (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -167,7 +193,7 @@ describe("AuthTokenForDriverClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("authToken (7)", async () => {
+    test("authToken (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -193,7 +219,7 @@ describe("AuthTokenForDriverClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("authToken (8)", async () => {
+    test("authToken (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -219,7 +245,7 @@ describe("AuthTokenForDriverClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("authToken (9)", async () => {
+    test("authToken (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -245,7 +271,7 @@ describe("AuthTokenForDriverClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("authToken (10)", async () => {
+    test("authToken (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,

@@ -430,6 +430,37 @@ describe("IndustrialClient", () => {
             .patch("/industrial/assets/id/data-outputs")
             .jsonBody(rawRequestBody)
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.industrial.patchAssetDataOutputs({
+                id: "id",
+                values: {
+                    values: {
+                        key: "value",
+                    },
+                },
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("patchAssetDataOutputs (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { values: { values: { key: "value" } } };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/industrial/assets/id/data-outputs")
+            .jsonBody(rawRequestBody)
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -446,7 +477,7 @@ describe("IndustrialClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("patchAssetDataOutputs (6)", async () => {
+    test("patchAssetDataOutputs (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -477,7 +508,7 @@ describe("IndustrialClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("patchAssetDataOutputs (7)", async () => {
+    test("patchAssetDataOutputs (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -508,7 +539,7 @@ describe("IndustrialClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("patchAssetDataOutputs (8)", async () => {
+    test("patchAssetDataOutputs (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -539,7 +570,7 @@ describe("IndustrialClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("patchAssetDataOutputs (9)", async () => {
+    test("patchAssetDataOutputs (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -570,7 +601,7 @@ describe("IndustrialClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("patchAssetDataOutputs (10)", async () => {
+    test("patchAssetDataOutputs (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,

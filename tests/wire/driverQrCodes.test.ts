@@ -98,6 +98,23 @@ describe("DriverQrCodesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+        server.mockEndpoint().get("/drivers/qr-codes").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.driverQrCodes.getDriversQrCodes();
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("getDriversQrCodes (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
         server.mockEndpoint().get("/drivers/qr-codes").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -105,7 +122,7 @@ describe("DriverQrCodesClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("getDriversQrCodes (6)", async () => {
+    test("getDriversQrCodes (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -122,7 +139,7 @@ describe("DriverQrCodesClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("getDriversQrCodes (7)", async () => {
+    test("getDriversQrCodes (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -139,7 +156,7 @@ describe("DriverQrCodesClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("getDriversQrCodes (8)", async () => {
+    test("getDriversQrCodes (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -156,7 +173,7 @@ describe("DriverQrCodesClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("getDriversQrCodes (9)", async () => {
+    test("getDriversQrCodes (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -173,7 +190,7 @@ describe("DriverQrCodesClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("getDriversQrCodes (10)", async () => {
+    test("getDriversQrCodes (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -318,6 +335,32 @@ describe("DriverQrCodesClient", () => {
             .post("/drivers/qr-codes")
             .jsonBody(rawRequestBody)
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.driverQrCodes.createDriverQrCode({
+                driverId: 1000000,
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("createDriverQrCode (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { driverId: 1000000 };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/drivers/qr-codes")
+            .jsonBody(rawRequestBody)
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -329,7 +372,7 @@ describe("DriverQrCodesClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("createDriverQrCode (6)", async () => {
+    test("createDriverQrCode (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -355,7 +398,7 @@ describe("DriverQrCodesClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("createDriverQrCode (7)", async () => {
+    test("createDriverQrCode (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -381,7 +424,7 @@ describe("DriverQrCodesClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("createDriverQrCode (8)", async () => {
+    test("createDriverQrCode (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -407,7 +450,7 @@ describe("DriverQrCodesClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("createDriverQrCode (9)", async () => {
+    test("createDriverQrCode (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -433,7 +476,7 @@ describe("DriverQrCodesClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("createDriverQrCode (10)", async () => {
+    test("createDriverQrCode (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -576,6 +619,32 @@ describe("DriverQrCodesClient", () => {
             .delete("/drivers/qr-codes")
             .jsonBody(rawRequestBody)
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.driverQrCodes.deleteDriverQrCode({
+                driverId: 1000000,
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("deleteDriverQrCode (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { driverId: 1000000 };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .delete("/drivers/qr-codes")
+            .jsonBody(rawRequestBody)
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -587,7 +656,7 @@ describe("DriverQrCodesClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("deleteDriverQrCode (6)", async () => {
+    test("deleteDriverQrCode (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -613,7 +682,7 @@ describe("DriverQrCodesClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("deleteDriverQrCode (7)", async () => {
+    test("deleteDriverQrCode (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -639,7 +708,7 @@ describe("DriverQrCodesClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("deleteDriverQrCode (8)", async () => {
+    test("deleteDriverQrCode (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -665,7 +734,7 @@ describe("DriverQrCodesClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("deleteDriverQrCode (9)", async () => {
+    test("deleteDriverQrCode (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -691,7 +760,7 @@ describe("DriverQrCodesClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("deleteDriverQrCode (10)", async () => {
+    test("deleteDriverQrCode (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,

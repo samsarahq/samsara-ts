@@ -116,6 +116,23 @@ describe("WebhooksClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+        server.mockEndpoint().get("/webhooks").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.webhooks.listWebhooks();
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("listWebhooks (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
         server.mockEndpoint().get("/webhooks").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -123,7 +140,7 @@ describe("WebhooksClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("listWebhooks (6)", async () => {
+    test("listWebhooks (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -140,7 +157,7 @@ describe("WebhooksClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("listWebhooks (7)", async () => {
+    test("listWebhooks (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -157,7 +174,7 @@ describe("WebhooksClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("listWebhooks (8)", async () => {
+    test("listWebhooks (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -174,7 +191,7 @@ describe("WebhooksClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("listWebhooks (9)", async () => {
+    test("listWebhooks (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -191,7 +208,7 @@ describe("WebhooksClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("listWebhooks (10)", async () => {
+    test("listWebhooks (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -351,6 +368,33 @@ describe("WebhooksClient", () => {
             .post("/webhooks")
             .jsonBody(rawRequestBody)
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.webhooks.postWebhooks({
+                name: "name",
+                url: "url",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("postWebhooks (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { name: "name", url: "url" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/webhooks")
+            .jsonBody(rawRequestBody)
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -363,7 +407,7 @@ describe("WebhooksClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("postWebhooks (6)", async () => {
+    test("postWebhooks (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -390,7 +434,7 @@ describe("WebhooksClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("postWebhooks (7)", async () => {
+    test("postWebhooks (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -417,7 +461,7 @@ describe("WebhooksClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("postWebhooks (8)", async () => {
+    test("postWebhooks (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -444,7 +488,7 @@ describe("WebhooksClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("postWebhooks (9)", async () => {
+    test("postWebhooks (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -471,7 +515,7 @@ describe("WebhooksClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("postWebhooks (10)", async () => {
+    test("postWebhooks (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -604,6 +648,25 @@ describe("WebhooksClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+        server.mockEndpoint().get("/webhooks/id").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.webhooks.getWebhook({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("getWebhook (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
         server.mockEndpoint().get("/webhooks/id").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -613,7 +676,7 @@ describe("WebhooksClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("getWebhook (6)", async () => {
+    test("getWebhook (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -632,7 +695,7 @@ describe("WebhooksClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("getWebhook (7)", async () => {
+    test("getWebhook (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -651,7 +714,7 @@ describe("WebhooksClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("getWebhook (8)", async () => {
+    test("getWebhook (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -670,7 +733,7 @@ describe("WebhooksClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("getWebhook (9)", async () => {
+    test("getWebhook (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -689,7 +752,7 @@ describe("WebhooksClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("getWebhook (10)", async () => {
+    test("getWebhook (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -792,6 +855,25 @@ describe("WebhooksClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+        server.mockEndpoint().delete("/webhooks/id").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.webhooks.deleteWebhook({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("deleteWebhook (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
         server.mockEndpoint().delete("/webhooks/id").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -801,7 +883,7 @@ describe("WebhooksClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("deleteWebhook (6)", async () => {
+    test("deleteWebhook (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -820,7 +902,7 @@ describe("WebhooksClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("deleteWebhook (7)", async () => {
+    test("deleteWebhook (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -839,7 +921,7 @@ describe("WebhooksClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("deleteWebhook (8)", async () => {
+    test("deleteWebhook (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -858,7 +940,7 @@ describe("WebhooksClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("deleteWebhook (9)", async () => {
+    test("deleteWebhook (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -877,7 +959,7 @@ describe("WebhooksClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("deleteWebhook (10)", async () => {
+    test("deleteWebhook (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1035,6 +1117,32 @@ describe("WebhooksClient", () => {
             .patch("/webhooks/id")
             .jsonBody(rawRequestBody)
             .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.webhooks.patchWebhook({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("patchWebhook (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/webhooks/id")
+            .jsonBody(rawRequestBody)
+            .respondWith()
             .statusCode(429)
             .jsonBody(rawResponseBody)
             .build();
@@ -1046,7 +1154,7 @@ describe("WebhooksClient", () => {
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
-    test("patchWebhook (6)", async () => {
+    test("patchWebhook (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1072,7 +1180,7 @@ describe("WebhooksClient", () => {
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
-    test("patchWebhook (7)", async () => {
+    test("patchWebhook (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1098,7 +1206,7 @@ describe("WebhooksClient", () => {
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
-    test("patchWebhook (8)", async () => {
+    test("patchWebhook (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1124,7 +1232,7 @@ describe("WebhooksClient", () => {
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
-    test("patchWebhook (9)", async () => {
+    test("patchWebhook (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,
@@ -1150,7 +1258,7 @@ describe("WebhooksClient", () => {
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
-    test("patchWebhook (10)", async () => {
+    test("patchWebhook (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
             maxRetries: 0,

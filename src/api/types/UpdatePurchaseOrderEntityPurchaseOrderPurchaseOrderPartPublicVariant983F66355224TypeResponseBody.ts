@@ -3,23 +3,23 @@
 import type * as Samsara from "../index.js";
 
 /**
- * CreatePurchaseOrderEntityPurchaseOrderPurchaseOrderPart object
+ * UpdatePurchaseOrderEntityPurchaseOrderPurchaseOrderPart object
  */
-export interface CreatePurchaseOrderEntityPurchaseOrderPurchaseOrderPartTypeResponseBody {
+export interface UpdatePurchaseOrderEntityPurchaseOrderPurchaseOrderPartPublicVariant983F66355224TypeResponseBody {
     /** Batch or lot number for the ordered part. */
     batchNumber?: string | undefined;
-    coreCharge?: Samsara.CreatePurchaseOrderEntityPurchaseOrderPurchaseOrderCoreChargeTypeResponseBody | undefined;
+    coreCharge?: Samsara.UpdatePurchaseOrderEntityPurchaseOrderPurchaseOrderCoreChargeTypeResponseBody | undefined;
     /** Description of the ordered part. */
     description?: string | undefined;
     /** Stable identifier for the purchase order line. */
     lineItemId?: string | undefined;
-    partSamsara?: Samsara.EntityCreatePurchaseOrderPartDefinitionRefTypeResponseBody | undefined;
-    place?: Samsara.EntityCreatePurchaseOrderPlaceRefTypeResponseBody | undefined;
+    partSamsara?: Samsara.EntityUpdatePurchaseOrderPartDefinitionRefTypeResponseBody | undefined;
+    place?: Samsara.EntityUpdatePurchaseOrderPlaceRefTypeResponseBody | undefined;
     /** Quantity ordered on this line. */
     quantityOrdered?: number | undefined;
     /** Quantity received on this line. */
     quantityReceived?: number | undefined;
-    unitCost?: Samsara.CreatePurchaseOrderEntityPurchaseOrderMoneyTypeResponseBody | undefined;
+    unitCost?: Samsara.UpdatePurchaseOrderEntityPurchaseOrderMoneyPublicVariant55Aeb6731578TypeResponseBody | undefined;
     /** Unit of measure for quantities on this line. */
     unitOfMeasureType?: string | undefined;
 }

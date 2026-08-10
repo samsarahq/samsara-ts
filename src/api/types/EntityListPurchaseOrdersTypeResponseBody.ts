@@ -43,5 +43,5 @@ export interface EntityListPurchaseOrdersTypeResponseBody {
     trackingNumber?: string | undefined;
     /** RFC3339 time when the purchase order was last updated. */
     updatedAtTime?: string | undefined;
-    vendor?: Samsara.EntityListPurchaseOrdersVendorRefTypeResponseBody | undefined;
+    vendor?: Samsara.EntityListPurchaseOrdersVendorRefPublicVariant07Ae4B76C2BaTypeResponseBody | undefined;
 }

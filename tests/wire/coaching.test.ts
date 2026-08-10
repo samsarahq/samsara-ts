@@ -586,7 +586,15 @@ describe("CoachingClient", () => {
                     behaviors: [
                         {
                             coachableBehaviorType: "acceleration",
-                            coachableEvents: [{ id: "f5271458-21f9-4a9f-a290-780c6d8840ff" }],
+                            coachableEvents: [
+                                {
+                                    id: "f5271458-21f9-4a9f-a290-780c6d8840ff",
+                                    linkage: {
+                                        sourceId: "f5271458-21f9-4a9f-a290-780c6d8840ff",
+                                        sourceType: "triageEvent",
+                                    },
+                                },
+                            ],
                             id: "f5271458-21f9-4a9f-a290-780c6d8840ff",
                             lastCoachedTime: "2019-06-13T19:08:25Z",
                             note: "Need to wear seatbelt even for short trips.",
@@ -627,6 +635,10 @@ describe("CoachingClient", () => {
                             coachableEvents: [
                                 {
                                     id: "f5271458-21f9-4a9f-a290-780c6d8840ff",
+                                    linkage: {
+                                        sourceId: "f5271458-21f9-4a9f-a290-780c6d8840ff",
+                                        sourceType: "triageEvent",
+                                    },
                                 },
                             ],
                             id: "f5271458-21f9-4a9f-a290-780c6d8840ff",

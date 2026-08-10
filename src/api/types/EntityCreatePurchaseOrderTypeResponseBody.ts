@@ -28,9 +28,13 @@ export interface EntityCreatePurchaseOrderTypeResponseBody {
     notes?: string | undefined;
     /** Current customer-visible status of the purchase order. */
     orderStatus?: string | undefined;
-    otherCost?: Samsara.CreatePurchaseOrderEntityPurchaseOrderMoneyTypeResponseBody | undefined;
+    otherCost?:
+        | Samsara.CreatePurchaseOrderEntityPurchaseOrderMoneyPublicVariant8749B9E1F4AfTypeResponseBody
+        | undefined;
     /** Parts ordered on the purchase order. */
-    parts?: Samsara.CreatePurchaseOrderEntityPurchaseOrderPurchaseOrderPartTypeResponseBody[] | undefined;
+    parts?:
+        | Samsara.CreatePurchaseOrderEntityPurchaseOrderPurchaseOrderPartPublicVariant7E1B94919242TypeResponseBody[]
+        | undefined;
     /** Customer-visible purchase order number. */
     poNumber?: string | undefined;
     /** Optional prefix included in the purchase order number. */
@@ -43,5 +47,5 @@ export interface EntityCreatePurchaseOrderTypeResponseBody {
     trackingNumber?: string | undefined;
     /** RFC3339 time when the purchase order was last updated. */
     updatedAtTime?: string | undefined;
-    vendor?: Samsara.EntityCreatePurchaseOrderVendorRefTypeResponseBody | undefined;
+    vendor?: Samsara.EntityCreatePurchaseOrderVendorRefPublicVariant07Ae4B76C2BaTypeResponseBody | undefined;
 }

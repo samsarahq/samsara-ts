@@ -3,12 +3,12 @@
 import type * as Samsara from "../index.js";
 
 /**
- * CreatePurchaseOrderEntityPurchaseOrderPurchaseOrderPartInput object
+ * UpdatePurchaseOrderEntityPurchaseOrderPurchaseOrderPartInput object
  */
-export interface CreatePurchaseOrderEntityPurchaseOrderPurchaseOrderPartInputTypeRequestBody {
+export interface UpdatePurchaseOrderEntityPurchaseOrderPurchaseOrderPartInputPublicVarianta398Dc3A25A6TypeRequestBody {
     /** Batch or lot number for the ordered part. */
     batchNumber?: string | undefined;
-    coreCharge?: Samsara.CreatePurchaseOrderEntityPurchaseOrderPurchaseOrderCoreChargeInputTypeRequestBody | undefined;
+    coreCharge?: Samsara.UpdatePurchaseOrderEntityPurchaseOrderPurchaseOrderCoreChargeInputTypeRequestBody | undefined;
     /** Description of the ordered part. */
     description?: string | undefined;
     /** Stable identifier for the purchase order line. */
@@ -21,7 +21,9 @@ export interface CreatePurchaseOrderEntityPurchaseOrderPurchaseOrderPartInputTyp
     quantityOrdered: number;
     /** Quantity received on this line. */
     quantityReceived: number;
-    unitCost?: Samsara.CreatePurchaseOrderEntityPurchaseOrderMoneyInputTypeRequestBody | undefined;
+    unitCost?:
+        | Samsara.UpdatePurchaseOrderEntityPurchaseOrderMoneyInputPublicVarianta34Bfd5A4152TypeRequestBody
+        | undefined;
     /** Unit of measure for quantities on this line. */
     unitOfMeasureType: string;
 }

@@ -18965,7 +18965,7 @@ describe("BetaApIsClient", () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
         
-        const rawResponseBody = { "data" : [ { "createdAtTime" : "2019-06-13T19:08:25Z" , "creationSource" : "12345" , "deliveryAtTime" : "2019-06-13T19:08:25Z" , "firstReceivedAtTime" : "2019-06-13T19:08:25Z" , "fullyReceivedAtTime" : "2019-06-13T19:08:25Z" , "glCode" : "12345" , "id" : "12345" , "invoiceNumber" : "12345" , "mediaItemIds" : [ "12345" , "12345" , "12345" ] , "notes" : "12345" , "orderStatus" : "12345" , "otherCost" : { "amount" : "12345" , "currency" : "12345" } , "parts" : [ { "batchNumber" : "12345" , "description" : "12345" , "lineItemId" : "12345" , "partSamsara" : { "id" : "281474976710656" } , "place" : { "id" : "281474976710656" } , "quantityOrdered" : 123.45 , "quantityReceived" : 123.45 , "unitOfMeasureType" : "12345" } ] , "poNumber" : "12345" , "poNumberPrefix" : "12345" , "poNumberSuffix" : "12345" , "sentAtTime" : "2019-06-13T19:08:25Z" , "trackingNumber" : "12345" , "updatedAtTime" : "2019-06-13T19:08:25Z" , "vendor" : { "id" : "281474976710656" } } ] , "pagination" : { "endCursor" : "MjkY" , "hasNextPage" : true } };
+        const rawResponseBody = { "data" : [ { "createdAtTime" : "2019-06-13T19:08:25Z" , "creationSource" : "12345" , "deliveryAtTime" : "2019-06-13T19:08:25Z" , "firstReceivedAtTime" : "2019-06-13T19:08:25Z" , "fullyReceivedAtTime" : "2019-06-13T19:08:25Z" , "glCode" : "12345" , "id" : "281474976710656" , "invoiceNumber" : "12345" , "mediaItemIds" : [ "12345" , "12345" , "12345" ] , "notes" : "12345" , "orderStatus" : "12345" , "otherCost" : { "amount" : "12345" , "currency" : "12345" } , "parts" : [ { "batchNumber" : "12345" , "description" : "12345" , "lineItemId" : "12345" , "partSamsara" : { "id" : "281474976710656" } , "place" : { "id" : "281474976710656" } , "quantityOrdered" : 123.45 , "quantityReceived" : 123.45 , "unitOfMeasureType" : "12345" } ] , "poNumber" : "PO-1001" , "poNumberPrefix" : "12345" , "poNumberSuffix" : "12345" , "sentAtTime" : "2019-06-13T19:08:25Z" , "trackingNumber" : "12345" , "updatedAtTime" : "2019-06-13T19:08:25Z" , "vendor" : { "id" : "281474976710656" } } ] , "pagination" : { "endCursor" : "MjkY" , "hasNextPage" : true } };
         server
             .mockEndpoint()
             .get("/maintenance/purchase-orders").respondWith()
@@ -18975,7 +18975,11 @@ describe("BetaApIsClient", () => {
         
                     
                             const response = await client.betaApIs.listPurchaseOrders({
-    startTime: "startTime"
+    ids: "281474976710656",
+    poNumbers: "PO-1001",
+    vendorIds: "281474976710656",
+    endTime: "2026-07-31T00:00:00Z",
+    startTime: "2026-07-01T00:00:00Z"
 });
                             expect(response).toEqual({
     data: [{
@@ -18985,7 +18989,7 @@ describe("BetaApIsClient", () => {
             firstReceivedAtTime: "2019-06-13T19:08:25Z",
             fullyReceivedAtTime: "2019-06-13T19:08:25Z",
             glCode: "12345",
-            id: "12345",
+            id: "281474976710656",
             invoiceNumber: "12345",
             mediaItemIds: ["12345", "12345", "12345"],
             notes: "12345",
@@ -19008,7 +19012,7 @@ describe("BetaApIsClient", () => {
                     quantityReceived: 123.45,
                     unitOfMeasureType: "12345"
                 }],
-            poNumber: "12345",
+            poNumber: "PO-1001",
             poNumberPrefix: "12345",
             poNumberSuffix: "12345",
             sentAtTime: "2019-06-13T19:08:25Z",
@@ -19220,8 +19224,8 @@ describe("BetaApIsClient", () => {
     test("createPurchaseOrder (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
-        const rawRequestBody = { "orderStatus" : "12345" , "vendorId" : "281474976710656" };
-        const rawResponseBody = { "data" : { "createdAtTime" : "2019-06-13T19:08:25Z" , "creationSource" : "12345" , "deliveryAtTime" : "2019-06-13T19:08:25Z" , "firstReceivedAtTime" : "2019-06-13T19:08:25Z" , "fullyReceivedAtTime" : "2019-06-13T19:08:25Z" , "glCode" : "12345" , "id" : "12345" , "invoiceNumber" : "12345" , "mediaItemIds" : [ "12345" , "12345" , "12345" , "12345" ] , "notes" : "12345" , "orderStatus" : "12345" , "otherCost" : { "amount" : "12345" , "currency" : "12345" } , "parts" : [ { "batchNumber" : "12345" , "description" : "12345" , "lineItemId" : "12345" , "partSamsara" : { "id" : "281474976710656" } , "place" : { "id" : "281474976710656" } , "quantityOrdered" : 123.45 , "quantityReceived" : 123.45 , "unitOfMeasureType" : "12345" } ] , "poNumber" : "12345" , "poNumberPrefix" : "12345" , "poNumberSuffix" : "12345" , "sentAtTime" : "2019-06-13T19:08:25Z" , "trackingNumber" : "12345" , "updatedAtTime" : "2019-06-13T19:08:25Z" , "vendor" : { "id" : "281474976710656" } } };
+        const rawRequestBody = { "orderStatus" : "draft" , "vendorId" : "281474976710656" };
+        const rawResponseBody = { "data" : { "createdAtTime" : "2019-06-13T19:08:25Z" , "creationSource" : "12345" , "deliveryAtTime" : "2019-06-13T19:08:25Z" , "firstReceivedAtTime" : "2019-06-13T19:08:25Z" , "fullyReceivedAtTime" : "2019-06-13T19:08:25Z" , "glCode" : "GL-4000" , "id" : "12345" , "invoiceNumber" : "INV-12345" , "mediaItemIds" : [ "12345" , "12345" , "12345" , "12345" ] , "notes" : "Deliver to maintenance shop." , "orderStatus" : "draft" , "otherCost" : { "amount" : "24.50" , "currency" : "usd" } , "parts" : [ { "batchNumber" : "LOT-42" , "description" : "Oil filter" , "lineItemId" : "12345" , "partSamsara" : { "id" : "281474976710656" } , "place" : { "id" : "281474976710656" } , "quantityOrdered" : 10 , "quantityReceived" : 123.45 , "unitOfMeasureType" : "each" } ] , "poNumber" : "12345" , "poNumberPrefix" : "PO" , "poNumberSuffix" : "A" , "sentAtTime" : "2019-06-13T19:08:25Z" , "trackingNumber" : "1Z999AA10123456784" , "updatedAtTime" : "2019-06-13T19:08:25Z" , "vendor" : { "id" : "281474976710656" } } };
         server
             .mockEndpoint()
             .post("/maintenance/purchase-orders").jsonBody(rawRequestBody)
@@ -19232,7 +19236,7 @@ describe("BetaApIsClient", () => {
         
                     
                             const response = await client.betaApIs.createPurchaseOrder({
-    orderStatus: "12345",
+    orderStatus: "draft",
     vendorId: "281474976710656"
 });
                             expect(response).toEqual({
@@ -19242,19 +19246,19 @@ describe("BetaApIsClient", () => {
         deliveryAtTime: "2019-06-13T19:08:25Z",
         firstReceivedAtTime: "2019-06-13T19:08:25Z",
         fullyReceivedAtTime: "2019-06-13T19:08:25Z",
-        glCode: "12345",
+        glCode: "GL-4000",
         id: "12345",
-        invoiceNumber: "12345",
+        invoiceNumber: "INV-12345",
         mediaItemIds: ["12345", "12345", "12345", "12345"],
-        notes: "12345",
-        orderStatus: "12345",
+        notes: "Deliver to maintenance shop.",
+        orderStatus: "draft",
         otherCost: {
-            amount: "12345",
-            currency: "12345"
+            amount: "24.50",
+            currency: "usd"
         },
         parts: [{
-                batchNumber: "12345",
-                description: "12345",
+                batchNumber: "LOT-42",
+                description: "Oil filter",
                 lineItemId: "12345",
                 partSamsara: {
                     id: "281474976710656"
@@ -19262,15 +19266,15 @@ describe("BetaApIsClient", () => {
                 place: {
                     id: "281474976710656"
                 },
-                quantityOrdered: 123.45,
+                quantityOrdered: 10,
                 quantityReceived: 123.45,
-                unitOfMeasureType: "12345"
+                unitOfMeasureType: "each"
             }],
         poNumber: "12345",
-        poNumberPrefix: "12345",
-        poNumberSuffix: "12345",
+        poNumberPrefix: "PO",
+        poNumberSuffix: "A",
         sentAtTime: "2019-06-13T19:08:25Z",
-        trackingNumber: "12345",
+        trackingNumber: "1Z999AA10123456784",
         updatedAtTime: "2019-06-13T19:08:25Z",
         vendor: {
             id: "281474976710656"
@@ -19705,7 +19709,7 @@ describe("BetaApIsClient", () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
         const rawRequestBody = { };
-        const rawResponseBody = { "data" : { "createdAtTime" : "2019-06-13T19:08:25Z" , "creationSource" : "12345" , "deliveryAtTime" : "2019-06-13T19:08:25Z" , "firstReceivedAtTime" : "2019-06-13T19:08:25Z" , "fullyReceivedAtTime" : "2019-06-13T19:08:25Z" , "glCode" : "12345" , "id" : "12345" , "invoiceNumber" : "12345" , "mediaItemIds" : [ "12345" , "12345" ] , "notes" : "12345" , "orderStatus" : "12345" , "otherCost" : { "amount" : "12345" , "currency" : "12345" } , "parts" : [ { "batchNumber" : "12345" , "description" : "12345" , "lineItemId" : "12345" , "partSamsara" : { "id" : "281474976710656" } , "place" : { "id" : "281474976710656" } , "quantityOrdered" : 123.45 , "quantityReceived" : 123.45 , "unitOfMeasureType" : "12345" } ] , "poNumber" : "12345" , "poNumberPrefix" : "12345" , "poNumberSuffix" : "12345" , "sentAtTime" : "2019-06-13T19:08:25Z" , "trackingNumber" : "12345" , "updatedAtTime" : "2019-06-13T19:08:25Z" , "vendor" : { "id" : "281474976710656" } } };
+        const rawResponseBody = { "data" : { "createdAtTime" : "2019-06-13T19:08:25Z" , "creationSource" : "12345" , "deliveryAtTime" : "2019-06-13T19:08:25Z" , "firstReceivedAtTime" : "2019-06-13T19:08:25Z" , "fullyReceivedAtTime" : "2019-06-13T19:08:25Z" , "glCode" : "GL-4000" , "id" : "12345" , "invoiceNumber" : "INV-12345" , "mediaItemIds" : [ "12345" , "12345" ] , "notes" : "Deliver to maintenance shop." , "orderStatus" : "draft" , "otherCost" : { "amount" : "24.50" , "currency" : "usd" } , "parts" : [ { "batchNumber" : "LOT-42" , "description" : "Oil filter" , "lineItemId" : "12345" , "partSamsara" : { "id" : "281474976710656" } , "place" : { "id" : "281474976710656" } , "quantityOrdered" : 10 , "quantityReceived" : 123.45 , "unitOfMeasureType" : "each" } ] , "poNumber" : "12345" , "poNumberPrefix" : "PO" , "poNumberSuffix" : "A" , "sentAtTime" : "2019-06-13T19:08:25Z" , "trackingNumber" : "1Z999AA10123456784" , "updatedAtTime" : "2019-06-13T19:08:25Z" , "vendor" : { "id" : "281474976710656" } } };
         server
             .mockEndpoint()
             .patch("/maintenance/purchase-orders").jsonBody(rawRequestBody)
@@ -19725,19 +19729,19 @@ describe("BetaApIsClient", () => {
         deliveryAtTime: "2019-06-13T19:08:25Z",
         firstReceivedAtTime: "2019-06-13T19:08:25Z",
         fullyReceivedAtTime: "2019-06-13T19:08:25Z",
-        glCode: "12345",
+        glCode: "GL-4000",
         id: "12345",
-        invoiceNumber: "12345",
+        invoiceNumber: "INV-12345",
         mediaItemIds: ["12345", "12345"],
-        notes: "12345",
-        orderStatus: "12345",
+        notes: "Deliver to maintenance shop.",
+        orderStatus: "draft",
         otherCost: {
-            amount: "12345",
-            currency: "12345"
+            amount: "24.50",
+            currency: "usd"
         },
         parts: [{
-                batchNumber: "12345",
-                description: "12345",
+                batchNumber: "LOT-42",
+                description: "Oil filter",
                 lineItemId: "12345",
                 partSamsara: {
                     id: "281474976710656"
@@ -19745,15 +19749,15 @@ describe("BetaApIsClient", () => {
                 place: {
                     id: "281474976710656"
                 },
-                quantityOrdered: 123.45,
+                quantityOrdered: 10,
                 quantityReceived: 123.45,
-                unitOfMeasureType: "12345"
+                unitOfMeasureType: "each"
             }],
         poNumber: "12345",
-        poNumberPrefix: "12345",
-        poNumberSuffix: "12345",
+        poNumberPrefix: "PO",
+        poNumberSuffix: "A",
         sentAtTime: "2019-06-13T19:08:25Z",
-        trackingNumber: "12345",
+        trackingNumber: "1Z999AA10123456784",
         updatedAtTime: "2019-06-13T19:08:25Z",
         vendor: {
             id: "281474976710656"

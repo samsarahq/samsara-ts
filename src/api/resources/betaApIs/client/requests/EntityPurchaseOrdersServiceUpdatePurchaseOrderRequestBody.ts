@@ -19,9 +19,9 @@ export interface EntityPurchaseOrdersServiceUpdatePurchaseOrderRequestBody {
     notes?: string;
     /** Current customer-visible status of the purchase order. */
     orderStatus?: string;
-    otherCost?: Samsara.UpdatePurchaseOrderEntityPurchaseOrderMoneyInputTypeRequestBody;
+    otherCost?: Samsara.UpdatePurchaseOrderEntityPurchaseOrderMoneyInputPublicVarianta34Bfd5A4152TypeRequestBody;
     /** Parts ordered on the purchase order. */
-    parts?: Samsara.UpdatePurchaseOrderEntityPurchaseOrderPurchaseOrderPartInputTypeRequestBody[];
+    parts?: Samsara.UpdatePurchaseOrderEntityPurchaseOrderPurchaseOrderPartInputPublicVarianta398Dc3A25A6TypeRequestBody[];
     /** Shipment tracking number for the purchase order. */
     trackingNumber?: string;
     /** ID of the vendor supplying this purchase order. */

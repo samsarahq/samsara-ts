@@ -6194,7 +6194,11 @@ To use this endpoint, select **Read Purchase Orders** under the Work Orders cate
 
 ```typescript
 await client.betaApIs.listPurchaseOrders({
-    startTime: "startTime"
+    ids: "281474976710656",
+    poNumbers: "PO-1001",
+    vendorIds: "281474976710656",
+    endTime: "2026-07-31T00:00:00Z",
+    startTime: "2026-07-01T00:00:00Z"
 });
 
 ```
@@ -6266,7 +6270,7 @@ To use this endpoint, select **Write Purchase Orders** under the Work Orders cat
 
 ```typescript
 await client.betaApIs.createPurchaseOrder({
-    orderStatus: "12345",
+    orderStatus: "draft",
     vendorId: "281474976710656"
 });
 

@@ -5,7 +5,7 @@ import type * as Samsara from "../../../../index.js";
 /**
  * @example
  *     {
- *         orderStatus: "12345",
+ *         orderStatus: "draft",
  *         vendorId: "281474976710656"
  *     }
  */
@@ -18,9 +18,9 @@ export interface EntityPurchaseOrdersServiceCreatePurchaseOrderRequestBody {
     notes?: string;
     /** Current customer-visible status of the purchase order. */
     orderStatus: string;
-    otherCost?: Samsara.CreatePurchaseOrderEntityPurchaseOrderMoneyInputTypeRequestBody;
+    otherCost?: Samsara.CreatePurchaseOrderEntityPurchaseOrderMoneyInputPublicVarianta2E1675A5A65TypeRequestBody;
     /** Parts ordered on the purchase order. */
-    parts?: Samsara.CreatePurchaseOrderEntityPurchaseOrderPurchaseOrderPartInputTypeRequestBody[];
+    parts?: Samsara.CreatePurchaseOrderEntityPurchaseOrderPurchaseOrderPartInputPublicVariantaf77215807F1TypeRequestBody[];
     /** Optional prefix included in the purchase order number. */
     poNumberPrefix?: string;
     /** Optional suffix included in the purchase order number. */

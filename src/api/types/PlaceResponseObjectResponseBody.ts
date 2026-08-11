@@ -8,6 +8,10 @@ import type * as Samsara from "../index.js";
 export interface PlaceResponseObjectResponseBody {
     /** Address string. */
     address: string;
+    /** Latitude of the place pin (map marker), stored independently of the geofence. Omitted when no pin is set. */
+    addressLatitude?: number | undefined;
+    /** Longitude of the place pin (map marker), stored independently of the geofence. Omitted when no pin is set. */
+    addressLongitude?: number | undefined;
     businessContacts?: Samsara.PlaceBusinessContactsResponseResponseBody | undefined;
     /** Camera recording mode: inherit, fullRecording, driverPrivacy, completePrivacy, or unknown. */
     cameraRecordingModeType?: string | undefined;

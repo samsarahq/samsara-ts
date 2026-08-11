@@ -8,20 +8,21 @@ export interface TireFaultCodeDetailsObjectResponseBody {
     hasCautionaryTireFaultCodes?: boolean | undefined;
     /** If true then alert over temperature or extreme pressure over or under fault codes. Defaults to false. */
     hasCriticalTireFaultCodes?: boolean | undefined;
-    /** The tire manufacturer.  Valid values: `MANUFACTURER_BENDIX`, `MANUFACTURER_CONTINENTAL`, `MANUFACTURER_DORAN`, `MANUFACTURER_HENDRICKSON`, `MANUFACTURER_INVALID`, `MANUFACTURER_PRESSURE_PRO`, `MANUFACTURER_SENSATA`, `MANUFACTURER_SYSGRATION`, `MANUFACTURER_UNIVERSAL_J1939`, `MANUFACTURER_UNIVERSAL_R141` */
+    /** The tire manufacturer.  Valid values: `MANUFACTURER_BENDIX`, `MANUFACTURER_CONTINENTAL`, `MANUFACTURER_DORAN`, `MANUFACTURER_HENDRICKSON`, `MANUFACTURER_INVALID`, `MANUFACTURER_PASSENGER_CAN`, `MANUFACTURER_PRESSURE_PRO`, `MANUFACTURER_SENSATA`, `MANUFACTURER_SYSGRATION`, `MANUFACTURER_UNIVERSAL_J1939`, `MANUFACTURER_UNIVERSAL_R141` */
     manufacturer: TireFaultCodeDetailsObjectResponseBody.Manufacturer;
     /** The list of specific tire fault codes to be alerted on. */
     specificTireFaultCodes?: TireFaultCodeDetailsObjectResponseBody.SpecificTireFaultCodes.Item[] | undefined;
 }
 
 export namespace TireFaultCodeDetailsObjectResponseBody {
-    /** The tire manufacturer.  Valid values: `MANUFACTURER_BENDIX`, `MANUFACTURER_CONTINENTAL`, `MANUFACTURER_DORAN`, `MANUFACTURER_HENDRICKSON`, `MANUFACTURER_INVALID`, `MANUFACTURER_PRESSURE_PRO`, `MANUFACTURER_SENSATA`, `MANUFACTURER_SYSGRATION`, `MANUFACTURER_UNIVERSAL_J1939`, `MANUFACTURER_UNIVERSAL_R141` */
+    /** The tire manufacturer.  Valid values: `MANUFACTURER_BENDIX`, `MANUFACTURER_CONTINENTAL`, `MANUFACTURER_DORAN`, `MANUFACTURER_HENDRICKSON`, `MANUFACTURER_INVALID`, `MANUFACTURER_PASSENGER_CAN`, `MANUFACTURER_PRESSURE_PRO`, `MANUFACTURER_SENSATA`, `MANUFACTURER_SYSGRATION`, `MANUFACTURER_UNIVERSAL_J1939`, `MANUFACTURER_UNIVERSAL_R141` */
     export const Manufacturer = {
         ManufacturerBendix: "MANUFACTURER_BENDIX",
         ManufacturerContinental: "MANUFACTURER_CONTINENTAL",
         ManufacturerDoran: "MANUFACTURER_DORAN",
         ManufacturerHendrickson: "MANUFACTURER_HENDRICKSON",
         ManufacturerInvalid: "MANUFACTURER_INVALID",
+        ManufacturerPassengerCan: "MANUFACTURER_PASSENGER_CAN",
         ManufacturerPressurePro: "MANUFACTURER_PRESSURE_PRO",
         ManufacturerSensata: "MANUFACTURER_SENSATA",
         ManufacturerSysgration: "MANUFACTURER_SYSGRATION",

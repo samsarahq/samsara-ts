@@ -12,6 +12,8 @@ export interface VendorObjectResponseBody {
     externalIds?: Record<string, string> | undefined;
     /** Unique UUID of the vendor. */
     id: string;
+    /** The vendor's accounts-payable/ERP payee ID. */
+    payeeId?: string | undefined;
     /** Description of services provided by the vendor. */
     servicesProvided?: string | undefined;
     /** The vendor's legacy vendor ID from the source system. Multiple vendor locations may share the same vendorId if they belong to the same parent company. */

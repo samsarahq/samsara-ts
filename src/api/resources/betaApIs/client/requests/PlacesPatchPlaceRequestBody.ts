@@ -13,6 +13,10 @@ export interface PlacesPatchPlaceRequestBody {
     externalId?: string;
     /** Single-line address string. */
     address?: string;
+    /** Latitude of the place pin (map marker), stored independently of the geofence. When supplied, updates the pin; omitting it leaves the existing pin unchanged. Provide together with addressLongitude. */
+    addressLatitude?: number;
+    /** Longitude of the place pin (map marker), stored independently of the geofence. When supplied, updates the pin; omitting it leaves the existing pin unchanged. Provide together with addressLatitude. */
+    addressLongitude?: number;
     businessContacts?: Samsara.PostPlaceBusinessContactsInputRequestBody;
     /** Camera recording mode: fullRecording, driverPrivacy, completePrivacy, or inherit.  Valid values: `fullRecording`, `driverPrivacy`, `completePrivacy`, `inherit`, `unknown`, `unspecified` */
     cameraRecordingModeType?: PlacesPatchPlaceRequestBody.CameraRecordingModeType;

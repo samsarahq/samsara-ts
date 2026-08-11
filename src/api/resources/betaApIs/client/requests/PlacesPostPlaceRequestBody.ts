@@ -13,6 +13,10 @@ import type * as Samsara from "../../../../index.js";
 export interface PlacesPostPlaceRequestBody {
     /** Single-line address string. */
     address: string;
+    /** Latitude of the place pin (map marker), stored independently of the geofence. When supplied, sets the pin; otherwise the pin is left empty. Provide together with addressLongitude. */
+    addressLatitude?: number;
+    /** Longitude of the place pin (map marker), stored independently of the geofence. When supplied, sets the pin; otherwise the pin is left empty. Provide together with addressLatitude. */
+    addressLongitude?: number;
     businessContacts?: Samsara.PostPlaceBusinessContactsInputRequestBody;
     /** Camera recording mode: fullRecording, driverPrivacy, completePrivacy, or inherit.  Valid values: `fullRecording`, `driverPrivacy`, `completePrivacy`, `inherit`, `unknown`, `unspecified` */
     cameraRecordingModeType?: PlacesPostPlaceRequestBody.CameraRecordingModeType;

@@ -14,7 +14,7 @@ export interface RouteStopOrderUpsertInputRequestBody {
     id?: string | undefined;
     /** Human-readable order label. */
     samsaraCustomerOrderName?: string | undefined;
-    /** The task to upsert and attach to the containing stop. */
+    /** Tasks to upsert and attach to the containing stop. */
     tasks: Samsara.FleetOrderTaskUpsertInputRequestBody[];
 }
 

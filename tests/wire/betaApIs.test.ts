@@ -13507,7 +13507,7 @@ describe("BetaApIsClient", () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
         
-        const rawResponseBody = { "data" : [ { "createdAtTime" : "2019-06-13T19:08:25Z" , "dashboardUrl" : "https://cloud.samsara.com/o/123456/ground-intelligence/issues/123e4567-e89b-12d3-a456-426614174000" , "firstSeenTime" : "2019-06-13T19:08:25Z" , "id" : "123e4567-e89b-12d3-a456-426614174000" , "lastSeenTime" : "2019-06-13T19:08:25Z" , "location" : { "type" : "point" } , "observationCount" : 3 , "roadSegment" : { "roadName" : "Market Street" } , "severity" : "high" , "status" : "needsReview" , "type" : "pothole" , "updatedAtTime" : "2019-06-13T19:08:25Z" } ] , "pagination" : { "endCursor" : "MjkY" , "hasNextPage" : true } };
+        const rawResponseBody = { "data" : [ { "createdAtTime" : "2026-08-06T08:00:00Z" , "dashboardUrl" : "https://cloud.samsara.com/o/123456/ground-intelligence/issues/5267696d-a9f9-4031-bdf4-6fbc9ec64e57" , "firstSeenTime" : "2026-08-06T08:00:00Z" , "id" : "5267696d-a9f9-4031-bdf4-6fbc9ec64e57" , "lastSeenTime" : "2026-08-06T09:00:00Z" , "location" : { "type" : "point" } , "observationCount" : 3 , "roadSegment" : { "roadName" : "Market Street" } , "severity" : "high" , "status" : "dismissed" , "type" : "pothole" , "updatedAtTime" : "2026-08-06T10:00:00Z" } ] , "pagination" : { "endCursor" : "MjkY" , "hasNextPage" : true } };
         server
             .mockEndpoint()
             .get("/ground-intelligence/issues").respondWith()
@@ -13519,11 +13519,11 @@ describe("BetaApIsClient", () => {
                             const response = await client.betaApIs.listIssues();
                             expect(response).toEqual({
     data: [{
-            createdAtTime: "2019-06-13T19:08:25Z",
-            dashboardUrl: "https://cloud.samsara.com/o/123456/ground-intelligence/issues/123e4567-e89b-12d3-a456-426614174000",
-            firstSeenTime: "2019-06-13T19:08:25Z",
-            id: "123e4567-e89b-12d3-a456-426614174000",
-            lastSeenTime: "2019-06-13T19:08:25Z",
+            createdAtTime: "2026-08-06T08:00:00Z",
+            dashboardUrl: "https://cloud.samsara.com/o/123456/ground-intelligence/issues/5267696d-a9f9-4031-bdf4-6fbc9ec64e57",
+            firstSeenTime: "2026-08-06T08:00:00Z",
+            id: "5267696d-a9f9-4031-bdf4-6fbc9ec64e57",
+            lastSeenTime: "2026-08-06T09:00:00Z",
             location: {
                 type: "point"
             },
@@ -13532,9 +13532,9 @@ describe("BetaApIsClient", () => {
                 roadName: "Market Street"
             },
             severity: "high",
-            status: "needsReview",
+            status: "dismissed",
             type: "pothole",
-            updatedAtTime: "2019-06-13T19:08:25Z"
+            updatedAtTime: "2026-08-06T10:00:00Z"
         }],
     pagination: {
         endCursor: "MjkY",
@@ -13712,6 +13712,251 @@ describe("BetaApIsClient", () => {
         
             await expect(async () => {
                 return await client.betaApIs.listIssues()
+            }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+          
+    test("updateGroundIntelligenceIssue (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { };
+        const rawResponseBody = { "data" : { "createdAtTime" : "2026-08-06T08:00:00Z" , "dashboardUrl" : "https://cloud.samsara.com/o/123456/ground-intelligence/issues/5267696d-a9f9-4031-bdf4-6fbc9ec64e57" , "firstSeenTime" : "2026-08-06T08:00:00Z" , "id" : "5267696d-a9f9-4031-bdf4-6fbc9ec64e57" , "lastSeenTime" : "2026-08-06T09:00:00Z" , "location" : { "point" : { "latitude" : 37.7749 , "longitude" : -122.4194 } , "type" : "point" } , "observationCount" : 3 , "roadSegment" : { "roadName" : "Market Street" } , "severity" : "high" , "status" : "dismissed" , "type" : "pothole" , "updatedAtTime" : "2026-08-06T10:00:00Z" } };
+        server
+            .mockEndpoint()
+            .patch("/ground-intelligence/issues").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(200).jsonBody(rawResponseBody)
+                .build();
+
+        
+                    
+                            const response = await client.betaApIs.updateGroundIntelligenceIssue({
+    id: "id"
+});
+                            expect(response).toEqual({
+    data: {
+        createdAtTime: "2026-08-06T08:00:00Z",
+        dashboardUrl: "https://cloud.samsara.com/o/123456/ground-intelligence/issues/5267696d-a9f9-4031-bdf4-6fbc9ec64e57",
+        firstSeenTime: "2026-08-06T08:00:00Z",
+        id: "5267696d-a9f9-4031-bdf4-6fbc9ec64e57",
+        lastSeenTime: "2026-08-06T09:00:00Z",
+        location: {
+            point: {
+                latitude: 37.7749,
+                longitude: -122.4194
+            },
+            type: "point"
+        },
+        observationCount: 3,
+        roadSegment: {
+            roadName: "Market Street"
+        },
+        severity: "high",
+        status: "dismissed",
+        type: "pothole",
+        updatedAtTime: "2026-08-06T10:00:00Z"
+    }
+});
+                          
+                
+    });
+          
+    test("updateGroundIntelligenceIssue (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .patch("/ground-intelligence/issues").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(401).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.updateGroundIntelligenceIssue({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+          
+    test("updateGroundIntelligenceIssue (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .patch("/ground-intelligence/issues").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(404).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.updateGroundIntelligenceIssue({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.NotFoundError);
+    });
+          
+    test("updateGroundIntelligenceIssue (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .patch("/ground-intelligence/issues").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(405).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.updateGroundIntelligenceIssue({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+          
+    test("updateGroundIntelligenceIssue (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .patch("/ground-intelligence/issues").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(413).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.updateGroundIntelligenceIssue({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+          
+    test("updateGroundIntelligenceIssue (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .patch("/ground-intelligence/issues").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(429).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.updateGroundIntelligenceIssue({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+          
+    test("updateGroundIntelligenceIssue (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .patch("/ground-intelligence/issues").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(500).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.updateGroundIntelligenceIssue({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.InternalServerError);
+    });
+          
+    test("updateGroundIntelligenceIssue (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .patch("/ground-intelligence/issues").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(501).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.updateGroundIntelligenceIssue({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+          
+    test("updateGroundIntelligenceIssue (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .patch("/ground-intelligence/issues").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(502).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.updateGroundIntelligenceIssue({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+          
+    test("updateGroundIntelligenceIssue (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .patch("/ground-intelligence/issues").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(503).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.updateGroundIntelligenceIssue({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+          
+    test("updateGroundIntelligenceIssue (11)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .patch("/ground-intelligence/issues").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(504).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.updateGroundIntelligenceIssue({
+    id: "id"
+})
             }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
           

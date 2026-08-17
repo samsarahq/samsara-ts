@@ -1145,6 +1145,17 @@ export * from "./EntityGroundIntelligenceIssuesServiceListIssuesResponseBody.js"
 export * from "./EntityGroundIntelligenceIssuesServiceListIssuesServiceUnavailableErrorResponseBody.js";
 export * from "./EntityGroundIntelligenceIssuesServiceListIssuesTooManyRequestsErrorResponseBody.js";
 export * from "./EntityGroundIntelligenceIssuesServiceListIssuesUnauthorizedErrorResponseBody.js";
+export * from "./EntityGroundIntelligenceIssuesServiceUpdateGroundIntelligenceIssueBadGatewayErrorResponseBody.js";
+export * from "./EntityGroundIntelligenceIssuesServiceUpdateGroundIntelligenceIssueContentTooLargeErrorResponseBody.js";
+export * from "./EntityGroundIntelligenceIssuesServiceUpdateGroundIntelligenceIssueGatewayTimeoutErrorResponseBody.js";
+export * from "./EntityGroundIntelligenceIssuesServiceUpdateGroundIntelligenceIssueInternalServerErrorResponseBody.js";
+export * from "./EntityGroundIntelligenceIssuesServiceUpdateGroundIntelligenceIssueMethodNotAllowedErrorResponseBody.js";
+export * from "./EntityGroundIntelligenceIssuesServiceUpdateGroundIntelligenceIssueNotFoundErrorResponseBody.js";
+export * from "./EntityGroundIntelligenceIssuesServiceUpdateGroundIntelligenceIssueNotImplementedErrorResponseBody.js";
+export * from "./EntityGroundIntelligenceIssuesServiceUpdateGroundIntelligenceIssueResponseBody.js";
+export * from "./EntityGroundIntelligenceIssuesServiceUpdateGroundIntelligenceIssueServiceUnavailableErrorResponseBody.js";
+export * from "./EntityGroundIntelligenceIssuesServiceUpdateGroundIntelligenceIssueTooManyRequestsErrorResponseBody.js";
+export * from "./EntityGroundIntelligenceIssuesServiceUpdateGroundIntelligenceIssueUnauthorizedErrorResponseBody.js";
 export * from "./EntityInventoryTransactionsServiceListPartTransactionsBadGatewayErrorResponseBody.js";
 export * from "./EntityInventoryTransactionsServiceListPartTransactionsContentTooLargeErrorResponseBody.js";
 export * from "./EntityInventoryTransactionsServiceListPartTransactionsGatewayTimeoutErrorResponseBody.js";

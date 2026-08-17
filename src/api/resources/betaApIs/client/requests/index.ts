@@ -23,6 +23,7 @@ export type { DeviceRecoveryMarkAssetMissingRequestBody } from "./DeviceRecovery
 export { DeviceRecoveryRecoverAssetRequestBody } from "./DeviceRecoveryRecoverAssetRequestBody.js";
 export type { DriverWorkflowAssignmentsPostDriverWorkflowAssignmentRequestBody } from "./DriverWorkflowAssignmentsPostDriverWorkflowAssignmentRequestBody.js";
 export type { EngineImmobilizerUpdateEngineImmobilizerStateRequestBody } from "./EngineImmobilizerUpdateEngineImmobilizerStateRequestBody.js";
+export { EntityGroundIntelligenceIssuesServiceUpdateGroundIntelligenceIssueRequestBody } from "./EntityGroundIntelligenceIssuesServiceUpdateGroundIntelligenceIssueRequestBody.js";
 export type { EntityPartDefinitionsServiceCreatePartRequestBody } from "./EntityPartDefinitionsServiceCreatePartRequestBody.js";
 export type { EntityPartDefinitionsServiceUpdatePartRequestBody } from "./EntityPartDefinitionsServiceUpdatePartRequestBody.js";
 export type { EntityPartInventoryLocationsServiceCreatePartInventoryLocationRequestBody } from "./EntityPartInventoryLocationsServiceCreatePartInventoryLocationRequestBody.js";

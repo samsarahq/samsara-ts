@@ -21,7 +21,7 @@ export interface RoutesStopResponseObjectResponseBody {
     /** A map of external ids */
     externalIds?: Record<string, string> | undefined;
     /** List of forms associated with the stop. */
-    forms?: Samsara.GoaFormTinyResponseResponseBody[] | undefined;
+    forms?: Samsara.IdReferenceObjectResponseBody[] | undefined;
     /** Id of the stop */
     id: string;
     /** List of issues associated with the stop. */

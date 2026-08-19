@@ -9,6 +9,8 @@ import type * as Samsara from "../../../../index.js";
  *     }
  */
 export interface WorkOrdersPatchWorkOrdersRequestBody {
+    /** The historical time the work order was archived (closed or cancelled), in RFC 3339 format. Is automatically set when the status changes to Closed or Cancelled and this field is not provided. */
+    archivedAtTime?: string;
     /** The ID of the assigned mechanic. */
     assignedUserId?: string;
     /** The category of the work order */
@@ -42,6 +44,8 @@ export interface WorkOrdersPatchWorkOrdersRequestBody {
     priority?: WorkOrdersPatchWorkOrdersRequestBody.Priority;
     /** Service Tasks for the work order. */
     serviceTaskInstances?: Samsara.ServiceTaskInstanceInputObjectRequestBody[];
+    /** The historical time work started on the work order, in RFC 3339 format. Is automatically set when the status changes to an in-progress status and this field is not provided. */
+    startedAtTime?: string;
     /** The status of the work order  Valid values: `Assigned`, `Cancelled`, `Closed`, `Completed`, `Estimate`, `In Progress`, `On Hold`, `Open`, `Pending Approval`, `Pending Parts`, `Planning` */
     status?: WorkOrdersPatchWorkOrdersRequestBody.Status;
     tax?: Samsara.WorkOrderTaxObjectRequestBody;

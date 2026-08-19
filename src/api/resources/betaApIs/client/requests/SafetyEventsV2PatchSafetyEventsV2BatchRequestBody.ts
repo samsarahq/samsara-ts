@@ -168,7 +168,7 @@ export namespace SafetyEventsV2PatchSafetyEventsV2BatchRequestBody {
     export type ContextLabelsToAdd = ContextLabelsToAdd.Item[];
 
     export namespace ContextLabelsToAdd {
-        /** A context label name to add.  Valid values: `Congested`, `Construction`, `Coupling/Uncoupling`, `Cyclist/Motorcyclist`, `Defensive`, `Fog`, `Improper Seat Belt`, `Lead Car`, `Light Traffic`, `Moderate Traffic`, `Moderately Drowsy`, `Mounted Phone`, `Night`, `Parking Lot`, `Passenger Mobile Usage`, `Passenger Sleeping`, `Passengers`, `Pedestrians`, `Raining`, `Sensitive Media`, `Slightly Drowsy`, `Snowing`, `Snowy Road`, `Speed Sign Verified`, `Trailer Car`, `Very Drowsy`, `Wet Road`, `Wildlife` */
+        /** A context label name to add.  Valid values: `Congested`, `Construction`, `Coupling/Uncoupling`, `Cyclist/Motorcyclist`, `Defensive`, `Fog`, `Improper Seat Belt`, `Lead Car`, `Light Traffic`, `Moderate Traffic`, `Moderately Drowsy`, `Mounted Phone`, `Night`, `Parking Lot`, `Passenger Mobile Usage`, `Passenger Sleeping`, `Passengers`, `Pedestrians`, `Person Actively Directing Traffic`, `Raining`, `Sensitive Media`, `Slightly Drowsy`, `Snowing`, `Snowy Road`, `Speed Sign Verified`, `Traffic Control Person Present`, `Trailer Car`, `Very Drowsy`, `Wet Road`, `Wildlife` */
         export const Item = {
             Congested: "Congested",
             Construction: "Construction",
@@ -188,12 +188,14 @@ export namespace SafetyEventsV2PatchSafetyEventsV2BatchRequestBody {
             PassengerSleeping: "Passenger Sleeping",
             Passengers: "Passengers",
             Pedestrians: "Pedestrians",
+            PersonActivelyDirectingTraffic: "Person Actively Directing Traffic",
             Raining: "Raining",
             SensitiveMedia: "Sensitive Media",
             SlightlyDrowsy: "Slightly Drowsy",
             Snowing: "Snowing",
             SnowyRoad: "Snowy Road",
             SpeedSignVerified: "Speed Sign Verified",
+            TrafficControlPersonPresent: "Traffic Control Person Present",
             TrailerCar: "Trailer Car",
             VeryDrowsy: "Very Drowsy",
             WetRoad: "Wet Road",
@@ -205,7 +207,7 @@ export namespace SafetyEventsV2PatchSafetyEventsV2BatchRequestBody {
     export type ContextLabelsToRemove = ContextLabelsToRemove.Item[];
 
     export namespace ContextLabelsToRemove {
-        /** A context label name to remove.  Valid values: `Congested`, `Construction`, `Coupling/Uncoupling`, `Cyclist/Motorcyclist`, `Defensive`, `Fog`, `Improper Seat Belt`, `Lead Car`, `Light Traffic`, `Moderate Traffic`, `Moderately Drowsy`, `Mounted Phone`, `Night`, `Parking Lot`, `Passenger Mobile Usage`, `Passenger Sleeping`, `Passengers`, `Pedestrians`, `Raining`, `Sensitive Media`, `Slightly Drowsy`, `Snowing`, `Snowy Road`, `Speed Sign Verified`, `Trailer Car`, `Very Drowsy`, `Wet Road`, `Wildlife` */
+        /** A context label name to remove.  Valid values: `Congested`, `Construction`, `Coupling/Uncoupling`, `Cyclist/Motorcyclist`, `Defensive`, `Fog`, `Improper Seat Belt`, `Lead Car`, `Light Traffic`, `Moderate Traffic`, `Moderately Drowsy`, `Mounted Phone`, `Night`, `Parking Lot`, `Passenger Mobile Usage`, `Passenger Sleeping`, `Passengers`, `Pedestrians`, `Person Actively Directing Traffic`, `Raining`, `Sensitive Media`, `Slightly Drowsy`, `Snowing`, `Snowy Road`, `Speed Sign Verified`, `Traffic Control Person Present`, `Trailer Car`, `Very Drowsy`, `Wet Road`, `Wildlife` */
         export const Item = {
             Congested: "Congested",
             Construction: "Construction",
@@ -225,12 +227,14 @@ export namespace SafetyEventsV2PatchSafetyEventsV2BatchRequestBody {
             PassengerSleeping: "Passenger Sleeping",
             Passengers: "Passengers",
             Pedestrians: "Pedestrians",
+            PersonActivelyDirectingTraffic: "Person Actively Directing Traffic",
             Raining: "Raining",
             SensitiveMedia: "Sensitive Media",
             SlightlyDrowsy: "Slightly Drowsy",
             Snowing: "Snowing",
             SnowyRoad: "Snowy Road",
             SpeedSignVerified: "Speed Sign Verified",
+            TrafficControlPersonPresent: "Traffic Control Person Present",
             TrailerCar: "Trailer Car",
             VeryDrowsy: "Very Drowsy",
             WetRoad: "Wet Road",

@@ -1,6 +1,7 @@
 export type { AcceptAssetSharingAgreementRequest } from "./AcceptAssetSharingAgreementRequest.js";
 export { AssetAssignmentsCreateAssetAssignmentRequestBody } from "./AssetAssignmentsCreateAssetAssignmentRequestBody.js";
 export type { AssetAssignmentsUnassignAssetAssignmentRequestBody } from "./AssetAssignmentsUnassignAssetAssignmentRequestBody.js";
+export type { AssetSharingAgreementsCancelSharedAssetsBatchRequestBody } from "./AssetSharingAgreementsCancelSharedAssetsBatchRequestBody.js";
 export { AssetSharingAgreementsCreateAssetSharingAgreementRequestBody } from "./AssetSharingAgreementsCreateAssetSharingAgreementRequestBody.js";
 export type { AssetSharingAgreementsCreateSharedAssetsBatchRequestBody } from "./AssetSharingAgreementsCreateSharedAssetsBatchRequestBody.js";
 export type { AssetSharingAgreementsUpdateSharedAssetsBatchRequestBody } from "./AssetSharingAgreementsUpdateSharedAssetsBatchRequestBody.js";
@@ -18,6 +19,8 @@ export type { DeletePreferredStationRequest } from "./DeletePreferredStationRequ
 export type { DeletePurchaseOrderRequest } from "./DeletePurchaseOrderRequest.js";
 export type { DeleteRidershipPassengerRequest } from "./DeleteRidershipPassengerRequest.js";
 export type { DeleteRidershipRouteSetupRequest } from "./DeleteRidershipRouteSetupRequest.js";
+export type { DeleteWarrantyClaimRequest } from "./DeleteWarrantyClaimRequest.js";
+export type { DeleteWarrantyRequest } from "./DeleteWarrantyRequest.js";
 export type { DeployFunctionRequest } from "./DeployFunctionRequest.js";
 export type { DeviceRecoveryMarkAssetMissingRequestBody } from "./DeviceRecoveryMarkAssetMissingRequestBody.js";
 export { DeviceRecoveryRecoverAssetRequestBody } from "./DeviceRecoveryRecoverAssetRequestBody.js";
@@ -31,6 +34,10 @@ export type { EntityPartInventoryLocationsServiceUpdatePartInventoryLocationRequ
 export type { EntityPurchaseOrdersServiceCreatePurchaseOrderRequestBody } from "./EntityPurchaseOrdersServiceCreatePurchaseOrderRequestBody.js";
 export type { EntityPurchaseOrdersServiceUpdatePurchaseOrderRequestBody } from "./EntityPurchaseOrdersServiceUpdatePurchaseOrderRequestBody.js";
 export type { EntityUpcomingPreventativeMaintenancesServiceUpdateUpcomingPreventiveMaintenanceRequestBody } from "./EntityUpcomingPreventativeMaintenancesServiceUpdateUpcomingPreventiveMaintenanceRequestBody.js";
+export type { EntityWarrantiesServiceCreateWarrantyRequestBody } from "./EntityWarrantiesServiceCreateWarrantyRequestBody.js";
+export type { EntityWarrantiesServiceUpdateWarrantyRequestBody } from "./EntityWarrantiesServiceUpdateWarrantyRequestBody.js";
+export type { EntityWarrantyClaimsServiceCreateWarrantyClaimRequestBody } from "./EntityWarrantyClaimsServiceCreateWarrantyClaimRequestBody.js";
+export type { EntityWarrantyClaimsServiceUpdateWarrantyClaimRequestBody } from "./EntityWarrantyClaimsServiceUpdateWarrantyClaimRequestBody.js";
 export { EntityWatchpointsServiceCreateWatchpointRequestBody } from "./EntityWatchpointsServiceCreateWatchpointRequestBody.js";
 export { EntityWatchpointsServiceUpdateWatchpointRequestBody } from "./EntityWatchpointsServiceUpdateWatchpointRequestBody.js";
 export type { EquipmentOutputControlSetEquipmentDigitalOutputRequestBody } from "./EquipmentOutputControlSetEquipmentDigitalOutputRequestBody.js";
@@ -100,6 +107,8 @@ export type { ListTachographLiveDataRequest } from "./ListTachographLiveDataRequ
 export type { ListTimeEntriesRequest } from "./ListTimeEntriesRequest.js";
 export type { ListUpcomingPreventiveMaintenanceRequest } from "./ListUpcomingPreventiveMaintenanceRequest.js";
 export type { ListVendorCategoriesRequest } from "./ListVendorCategoriesRequest.js";
+export type { ListWarrantiesRequest } from "./ListWarrantiesRequest.js";
+export type { ListWarrantyClaimsRequest } from "./ListWarrantyClaimsRequest.js";
 export { PlacesPatchPlaceRequestBody } from "./PlacesPatchPlaceRequestBody.js";
 export { PlacesPostPlaceRequestBody } from "./PlacesPostPlaceRequestBody.js";
 export type { PostFleetInstallerPhotoUploadCompleteRequest } from "./PostFleetInstallerPhotoUploadCompleteRequest.js";
@@ -112,6 +121,7 @@ export type { QualificationsPostQualificationRecordRequestBody } from "./Qualifi
 export type { QualificationsUnarchiveQualificationRecordRequestBody } from "./QualificationsUnarchiveQualificationRecordRequestBody.js";
 export type { ReadingsPostReadingsRequestBody } from "./ReadingsPostReadingsRequestBody.js";
 export type { RejectAssetSharingAgreementRequest } from "./RejectAssetSharingAgreementRequest.js";
+export type { ReplaceWarrantyAssetAssignmentsActionServiceReplaceWarrantyAssetAssignmentsRequestBody } from "./ReplaceWarrantyAssetAssignmentsActionServiceReplaceWarrantyAssetAssignmentsRequestBody.js";
 export type { ReportsCreateReportRunRequestBody } from "./ReportsCreateReportRunRequestBody.js";
 export type { ResolveAssignmentByDetailsResolveAssignmentByDetailsRequestBody } from "./ResolveAssignmentByDetailsResolveAssignmentByDetailsRequestBody.js";
 export type { ResolvePreventiveMaintenanceActionServiceResolvePreventiveMaintenanceRequestBody } from "./ResolvePreventiveMaintenanceActionServiceResolvePreventiveMaintenanceRequestBody.js";

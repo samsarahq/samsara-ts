@@ -1,17 +1,8 @@
 export type { DeleteOrderRequest } from "./DeleteOrderRequest.js";
-export type { DeleteWarrantyClaimRequest } from "./DeleteWarrantyClaimRequest.js";
-export type { DeleteWarrantyRequest } from "./DeleteWarrantyRequest.js";
 export type { DriversAuthTokenCreateDriverAuthTokenRequestBody } from "./DriversAuthTokenCreateDriverAuthTokenRequestBody.js";
-export type { EntityWarrantiesServiceCreateWarrantyRequestBody } from "./EntityWarrantiesServiceCreateWarrantyRequestBody.js";
-export type { EntityWarrantiesServiceUpdateWarrantyRequestBody } from "./EntityWarrantiesServiceUpdateWarrantyRequestBody.js";
-export type { EntityWarrantyClaimsServiceCreateWarrantyClaimRequestBody } from "./EntityWarrantyClaimsServiceCreateWarrantyClaimRequestBody.js";
-export type { EntityWarrantyClaimsServiceUpdateWarrantyClaimRequestBody } from "./EntityWarrantyClaimsServiceUpdateWarrantyClaimRequestBody.js";
 export type { GetOrderDeletionsRequest } from "./GetOrderDeletionsRequest.js";
 export type { GetOrdersRequest } from "./GetOrdersRequest.js";
 export type { GetOrdersStreamRequest } from "./GetOrdersStreamRequest.js";
-export type { ListWarrantiesRequest } from "./ListWarrantiesRequest.js";
-export type { ListWarrantyClaimsRequest } from "./ListWarrantyClaimsRequest.js";
 export type { LockVehicleRequest } from "./LockVehicleRequest.js";
 export type { OrdersPostOrdersBatchRequestBody } from "./OrdersPostOrdersBatchRequestBody.js";
-export type { ReplaceWarrantyAssetAssignmentsActionServiceReplaceWarrantyAssetAssignmentsRequestBody } from "./ReplaceWarrantyAssetAssignmentsActionServiceReplaceWarrantyAssetAssignmentsRequestBody.js";
 export type { UnlockVehicleRequest } from "./UnlockVehicleRequest.js";

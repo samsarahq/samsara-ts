@@ -687,6 +687,7 @@ describe("WorkOrdersClient", () => {
                             ],
                         },
                     ],
+                    startedAtTime: "2019-06-13T19:08:25Z",
                     status: "Assigned",
                     tax: { basisPoints: 700, money: { amount: "94.01", currency: "usd" } },
                     unallocatedLabor: { cost: { amount: "94.01", currency: "usd" }, timeMinutes: 60 },
@@ -793,6 +794,7 @@ describe("WorkOrdersClient", () => {
                             ],
                         },
                     ],
+                    startedAtTime: "2019-06-13T19:08:25Z",
                     status: "Assigned",
                     tax: {
                         basisPoints: 700,
@@ -1120,6 +1122,7 @@ describe("WorkOrdersClient", () => {
                         status: "Unknown",
                     },
                 ],
+                startedAtTime: "2019-06-13T19:08:25Z",
                 status: "Assigned",
                 tax: { basisPoints: 700, money: { amount: "94.01", currency: "usd" } },
                 unallocatedLabor: { cost: { amount: "94.01", currency: "usd" }, timeMinutes: 60 },
@@ -1217,6 +1220,7 @@ describe("WorkOrdersClient", () => {
                         status: "Unknown",
                     },
                 ],
+                startedAtTime: "2019-06-13T19:08:25Z",
                 status: "Assigned",
                 tax: {
                     basisPoints: 700,
@@ -1835,6 +1839,7 @@ describe("WorkOrdersClient", () => {
                         status: "Unknown",
                     },
                 ],
+                startedAtTime: "2019-06-13T19:08:25Z",
                 status: "Assigned",
                 tax: { basisPoints: 700, money: { amount: "94.01", currency: "usd" } },
                 unallocatedLabor: { cost: { amount: "94.01", currency: "usd" }, timeMinutes: 60 },
@@ -1932,6 +1937,7 @@ describe("WorkOrdersClient", () => {
                         status: "Unknown",
                     },
                 ],
+                startedAtTime: "2019-06-13T19:08:25Z",
                 status: "Assigned",
                 tax: {
                     basisPoints: 700,
@@ -2292,6 +2298,7 @@ describe("WorkOrdersClient", () => {
                             ],
                         },
                     ],
+                    startedAtTime: "2019-06-13T19:08:25Z",
                     status: "Assigned",
                     tax: { basisPoints: 700, money: { amount: "94.01", currency: "usd" } },
                     unallocatedLabor: { cost: { amount: "94.01", currency: "usd" }, timeMinutes: 60 },
@@ -2400,6 +2407,7 @@ describe("WorkOrdersClient", () => {
                             ],
                         },
                     ],
+                    startedAtTime: "2019-06-13T19:08:25Z",
                     status: "Assigned",
                     tax: {
                         basisPoints: 700,

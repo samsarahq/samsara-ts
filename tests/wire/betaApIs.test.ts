@@ -5310,6 +5310,286 @@ describe("BetaApIsClient", () => {
             }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
           
+    test("cancelSharedAssetsBatch (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { "data" : [ { "id" : "12345" } ] };
+        const rawResponseBody = { "requestId" : "1f7f5081-9f8e-4b68-8b85-97dbe4b46d7e" , "responses" : [ { "data" : { "createdAtTime" : "2024-01-13T10:00:00Z" , "createdByUserId" : "111" , "endTime" : "2025-01-13T10:00:00Z" , "id" : "11111111-1111-1111-1111-111111111111" , "providerAssetId" : "1234567890" , "recipientAssetId" : "9876543210" , "serial" : "GVJC-3VX-XXX" , "startTime" : "2024-01-13T10:00:00Z" } , "message" : "Shared asset not found." , "status" : 200 } ] };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements/assets/cancel/batch").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(200).jsonBody(rawResponseBody)
+                .build();
+
+        
+                    
+                            const response = await client.betaApIs.cancelSharedAssetsBatch({
+    data: [{
+            id: "12345"
+        }]
+});
+                            expect(response).toEqual({
+    requestId: "1f7f5081-9f8e-4b68-8b85-97dbe4b46d7e",
+    responses: [{
+            data: {
+                createdAtTime: "2024-01-13T10:00:00Z",
+                createdByUserId: "111",
+                endTime: "2025-01-13T10:00:00Z",
+                id: "11111111-1111-1111-1111-111111111111",
+                providerAssetId: "1234567890",
+                recipientAssetId: "9876543210",
+                serial: "GVJC-3VX-XXX",
+                startTime: "2024-01-13T10:00:00Z"
+            },
+            message: "Shared asset not found.",
+            status: 200
+        }]
+});
+                          
+                
+    });
+          
+    test("cancelSharedAssetsBatch (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { "data" : [ { "id" : "id" } , { "id" : "id" } ] };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements/assets/cancel/batch").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(401).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.cancelSharedAssetsBatch({
+    data: [{
+            id: "id"
+        }, {
+            id: "id"
+        }]
+})
+            }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+          
+    test("cancelSharedAssetsBatch (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { "data" : [ { "id" : "id" } , { "id" : "id" } ] };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements/assets/cancel/batch").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(404).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.cancelSharedAssetsBatch({
+    data: [{
+            id: "id"
+        }, {
+            id: "id"
+        }]
+})
+            }).rejects.toThrow(Samsara.NotFoundError);
+    });
+          
+    test("cancelSharedAssetsBatch (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { "data" : [ { "id" : "id" } , { "id" : "id" } ] };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements/assets/cancel/batch").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(405).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.cancelSharedAssetsBatch({
+    data: [{
+            id: "id"
+        }, {
+            id: "id"
+        }]
+})
+            }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+          
+    test("cancelSharedAssetsBatch (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { "data" : [ { "id" : "id" } , { "id" : "id" } ] };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements/assets/cancel/batch").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(413).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.cancelSharedAssetsBatch({
+    data: [{
+            id: "id"
+        }, {
+            id: "id"
+        }]
+})
+            }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+          
+    test("cancelSharedAssetsBatch (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { "data" : [ { "id" : "id" } , { "id" : "id" } ] };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements/assets/cancel/batch").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(429).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.cancelSharedAssetsBatch({
+    data: [{
+            id: "id"
+        }, {
+            id: "id"
+        }]
+})
+            }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+          
+    test("cancelSharedAssetsBatch (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { "data" : [ { "id" : "id" } , { "id" : "id" } ] };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements/assets/cancel/batch").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(500).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.cancelSharedAssetsBatch({
+    data: [{
+            id: "id"
+        }, {
+            id: "id"
+        }]
+})
+            }).rejects.toThrow(Samsara.InternalServerError);
+    });
+          
+    test("cancelSharedAssetsBatch (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { "data" : [ { "id" : "id" } , { "id" : "id" } ] };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements/assets/cancel/batch").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(501).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.cancelSharedAssetsBatch({
+    data: [{
+            id: "id"
+        }, {
+            id: "id"
+        }]
+})
+            }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+          
+    test("cancelSharedAssetsBatch (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { "data" : [ { "id" : "id" } , { "id" : "id" } ] };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements/assets/cancel/batch").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(502).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.cancelSharedAssetsBatch({
+    data: [{
+            id: "id"
+        }, {
+            id: "id"
+        }]
+})
+            }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+          
+    test("cancelSharedAssetsBatch (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { "data" : [ { "id" : "id" } , { "id" : "id" } ] };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements/assets/cancel/batch").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(503).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.cancelSharedAssetsBatch({
+    data: [{
+            id: "id"
+        }, {
+            id: "id"
+        }]
+})
+            }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+          
+    test("cancelSharedAssetsBatch (11)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { "data" : [ { "id" : "id" } , { "id" : "id" } ] };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .post("/fleet/asset-sharing/agreements/assets/cancel/batch").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(504).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.cancelSharedAssetsBatch({
+    data: [{
+            id: "id"
+        }, {
+            id: "id"
+        }]
+})
+            }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+          
     test("cancelAssetSharingAgreement (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
@@ -20218,7 +20498,7 @@ describe("BetaApIsClient", () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
         
-        const rawResponseBody = { "data" : [ { "activityType" : "12345" , "clockInAtTime" : "2019-06-13T19:08:25Z" , "clockInLocation" : { "latitude" : 123.45 , "longitude" : 123.45 } , "clockInSource" : "12345" , "clockOutAtTime" : "2019-06-13T19:08:25Z" , "clockOutLocation" : { "latitude" : 123.45 , "longitude" : 123.45 } , "clockOutMethodType" : "12345" , "clockOutSource" : "12345" , "createdAtTime" : "2019-06-13T19:08:25Z" , "deletedAtTime" : "2019-06-13T19:08:25Z" , "deletedByUserId" : "12345" , "hourlyRate" : { "amount" : "12345" , "currency" : "12345" } , "id" : "12345" , "placeId" : "12345" , "serviceTaskId" : "12345" , "timeEntryStatus" : "12345" , "updatedAtTime" : "2019-06-13T19:08:25Z" , "userId" : "12345" , "workOrderId" : "12345" } ] , "pagination" : { "endCursor" : "MjkY" , "hasNextPage" : true } };
+        const rawResponseBody = { "data" : [ { "activityType" : "12345" , "clockInAtTime" : "2026-07-09T14:10:47.648Z" , "clockInLocation" : { "latitude" : 42.2364884 , "longitude" : -83.3113959 } , "clockInSource" : "mobile" , "clockOutAtTime" : "2026-07-09T14:15:47.296Z" , "clockOutLocation" : { "latitude" : 42.2365116 , "longitude" : -83.3114372 } , "clockOutMethodType" : "manual" , "clockOutSource" : "mobile" , "createdAtTime" : "2026-07-09T14:10:48.245Z" , "deletedAtTime" : "2019-06-13T19:08:25Z" , "deletedByUserId" : "12345" , "hourlyRate" : { "amount" : "24.50" , "currency" : "usd" } , "id" : "85436931-026c-466a-95ae-419a829e3a26" , "placeId" : "5000000795134" , "serviceTaskId" : "98e645fa-4b7e-446c-8613-cf2bb0a70727" , "timeEntryStatus" : "completed" , "updatedAtTime" : "2026-07-09T14:15:47.820Z" , "userId" : "590838" , "workOrderId" : "34" } ] , "pagination" : { "endCursor" : "MjkY" , "hasNextPage" : true } };
         server
             .mockEndpoint()
             .get("/maintenance/time-entries/stream").respondWith()
@@ -20233,33 +20513,33 @@ describe("BetaApIsClient", () => {
                             expect(response).toEqual({
     data: [{
             activityType: "12345",
-            clockInAtTime: "2019-06-13T19:08:25Z",
+            clockInAtTime: "2026-07-09T14:10:47.648Z",
             clockInLocation: {
-                latitude: 123.45,
-                longitude: 123.45
+                latitude: 42.2364884,
+                longitude: -83.3113959
             },
-            clockInSource: "12345",
-            clockOutAtTime: "2019-06-13T19:08:25Z",
+            clockInSource: "mobile",
+            clockOutAtTime: "2026-07-09T14:15:47.296Z",
             clockOutLocation: {
-                latitude: 123.45,
-                longitude: 123.45
+                latitude: 42.2365116,
+                longitude: -83.3114372
             },
-            clockOutMethodType: "12345",
-            clockOutSource: "12345",
-            createdAtTime: "2019-06-13T19:08:25Z",
+            clockOutMethodType: "manual",
+            clockOutSource: "mobile",
+            createdAtTime: "2026-07-09T14:10:48.245Z",
             deletedAtTime: "2019-06-13T19:08:25Z",
             deletedByUserId: "12345",
             hourlyRate: {
-                amount: "12345",
-                currency: "12345"
+                amount: "24.50",
+                currency: "usd"
             },
-            id: "12345",
-            placeId: "12345",
-            serviceTaskId: "12345",
-            timeEntryStatus: "12345",
-            updatedAtTime: "2019-06-13T19:08:25Z",
-            userId: "12345",
-            workOrderId: "12345"
+            id: "85436931-026c-466a-95ae-419a829e3a26",
+            placeId: "5000000795134",
+            serviceTaskId: "98e645fa-4b7e-446c-8613-cf2bb0a70727",
+            timeEntryStatus: "completed",
+            updatedAtTime: "2026-07-09T14:15:47.820Z",
+            userId: "590838",
+            workOrderId: "34"
         }],
     pagination: {
         endCursor: "MjkY",
@@ -20456,6 +20736,2248 @@ describe("BetaApIsClient", () => {
             await expect(async () => {
                 return await client.betaApIs.listTimeEntries({
     startTime: "startTime"
+})
+            }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+          
+    test("listWarranties (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "data" : [ { "baseCoverage" : { "description" : "12345" , "durationDays" : 12345 , "durationMonths" : 12345 , "engineDurationHours" : 12345 , "isOdometerDistanceUnlimited" : true , "name" : "12345" , "notes" : "12345" , "odometerDistanceMeters" : 12345 , "startEngineHours" : 12345 , "startOdometerMeters" : 12345 , "startTime" : "2019-06-13T19:08:25Z" } , "coverages" : [ { "description" : "12345" , "durationDays" : 12345 , "durationMonths" : 12345 , "engineDurationHours" : 12345 , "isOdometerDistanceUnlimited" : true , "name" : "12345" , "notes" : "12345" , "odometerDistanceMeters" : 12345 , "startEngineHours" : 12345 , "startOdometerMeters" : 12345 , "startTime" : "2019-06-13T19:08:25Z" } ] , "createdAtTime" : "2019-06-13T19:08:25Z" , "description" : "12345" , "durationDays" : 12345 , "durationMonths" : 12345 , "engineDurationHours" : 12345 , "externalIds" : [ { "key" : "12345" , "value" : "12345" } ] , "id" : "12345" , "name" : "12345" , "odometerDistanceMeters" : 12345 , "updatedAtTime" : "2019-06-13T19:08:25Z" , "vendor" : { "id" : "281474976710656" } , "warrantyType" : "12345" } ] , "pagination" : { "endCursor" : "MjkY" , "hasNextPage" : true } };
+        server
+            .mockEndpoint()
+            .get("/maintenance/warranties").respondWith()
+            .statusCode(200).jsonBody(rawResponseBody)
+                .build();
+
+        
+                    
+                            const response = await client.betaApIs.listWarranties();
+                            expect(response).toEqual({
+    data: [{
+            baseCoverage: {
+                description: "12345",
+                durationDays: 12345,
+                durationMonths: 12345,
+                engineDurationHours: 12345,
+                isOdometerDistanceUnlimited: true,
+                name: "12345",
+                notes: "12345",
+                odometerDistanceMeters: 12345,
+                startEngineHours: 12345,
+                startOdometerMeters: 12345,
+                startTime: "2019-06-13T19:08:25Z"
+            },
+            coverages: [{
+                    description: "12345",
+                    durationDays: 12345,
+                    durationMonths: 12345,
+                    engineDurationHours: 12345,
+                    isOdometerDistanceUnlimited: true,
+                    name: "12345",
+                    notes: "12345",
+                    odometerDistanceMeters: 12345,
+                    startEngineHours: 12345,
+                    startOdometerMeters: 12345,
+                    startTime: "2019-06-13T19:08:25Z"
+                }],
+            createdAtTime: "2019-06-13T19:08:25Z",
+            description: "12345",
+            durationDays: 12345,
+            durationMonths: 12345,
+            engineDurationHours: 12345,
+            externalIds: [{
+                    key: "12345",
+                    value: "12345"
+                }],
+            id: "12345",
+            name: "12345",
+            odometerDistanceMeters: 12345,
+            updatedAtTime: "2019-06-13T19:08:25Z",
+            vendor: {
+                id: "281474976710656"
+            },
+            warrantyType: "12345"
+        }],
+    pagination: {
+        endCursor: "MjkY",
+        hasNextPage: true
+    }
+});
+                          
+                
+    });
+          
+    test("listWarranties (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/warranties").respondWith()
+            .statusCode(401).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.listWarranties()
+            }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+          
+    test("listWarranties (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/warranties").respondWith()
+            .statusCode(404).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.listWarranties()
+            }).rejects.toThrow(Samsara.NotFoundError);
+    });
+          
+    test("listWarranties (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/warranties").respondWith()
+            .statusCode(405).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.listWarranties()
+            }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+          
+    test("listWarranties (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/warranties").respondWith()
+            .statusCode(413).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.listWarranties()
+            }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+          
+    test("listWarranties (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/warranties").respondWith()
+            .statusCode(429).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.listWarranties()
+            }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+          
+    test("listWarranties (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/warranties").respondWith()
+            .statusCode(500).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.listWarranties()
+            }).rejects.toThrow(Samsara.InternalServerError);
+    });
+          
+    test("listWarranties (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/warranties").respondWith()
+            .statusCode(501).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.listWarranties()
+            }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+          
+    test("listWarranties (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/warranties").respondWith()
+            .statusCode(502).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.listWarranties()
+            }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+          
+    test("listWarranties (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/warranties").respondWith()
+            .statusCode(503).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.listWarranties()
+            }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+          
+    test("listWarranties (11)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/warranties").respondWith()
+            .statusCode(504).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.listWarranties()
+            }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+          
+    test("createWarranty (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { "name" : "12345" };
+        const rawResponseBody = { "data" : { "baseCoverage" : { "description" : "12345" , "durationDays" : 12345 , "durationMonths" : 12345 , "engineDurationHours" : 12345 , "exclusions" : [ { "id" : "12345" , "itemType" : "12345" , "vmrsCode" : "12345" } ] , "inclusions" : [ { "id" : "12345" , "itemType" : "12345" , "vmrsCode" : "12345" } ] , "isOdometerDistanceUnlimited" : true , "name" : "12345" , "notes" : "12345" , "odometerDistanceMeters" : 12345 , "startEngineHours" : 12345 , "startOdometerMeters" : 12345 , "startTime" : "2019-06-13T19:08:25Z" } , "coverages" : [ { "description" : "12345" , "durationDays" : 12345 , "durationMonths" : 12345 , "engineDurationHours" : 12345 , "isOdometerDistanceUnlimited" : true , "name" : "12345" , "notes" : "12345" , "odometerDistanceMeters" : 12345 , "startEngineHours" : 12345 , "startOdometerMeters" : 12345 , "startTime" : "2019-06-13T19:08:25Z" } ] , "createdAtTime" : "2019-06-13T19:08:25Z" , "description" : "12345" , "durationDays" : 12345 , "durationMonths" : 12345 , "engineDurationHours" : 12345 , "externalIds" : [ { "key" : "12345" , "value" : "12345" } ] , "id" : "12345" , "name" : "12345" , "odometerDistanceMeters" : 12345 , "updatedAtTime" : "2019-06-13T19:08:25Z" , "vendor" : { "id" : "281474976710656" } , "warrantyType" : "12345" } };
+        server
+            .mockEndpoint()
+            .post("/maintenance/warranties").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(200).jsonBody(rawResponseBody)
+                .build();
+
+        
+                    
+                            const response = await client.betaApIs.createWarranty({
+    name: "12345"
+});
+                            expect(response).toEqual({
+    data: {
+        baseCoverage: {
+            description: "12345",
+            durationDays: 12345,
+            durationMonths: 12345,
+            engineDurationHours: 12345,
+            exclusions: [{
+                    id: "12345",
+                    itemType: "12345",
+                    vmrsCode: "12345"
+                }],
+            inclusions: [{
+                    id: "12345",
+                    itemType: "12345",
+                    vmrsCode: "12345"
+                }],
+            isOdometerDistanceUnlimited: true,
+            name: "12345",
+            notes: "12345",
+            odometerDistanceMeters: 12345,
+            startEngineHours: 12345,
+            startOdometerMeters: 12345,
+            startTime: "2019-06-13T19:08:25Z"
+        },
+        coverages: [{
+                description: "12345",
+                durationDays: 12345,
+                durationMonths: 12345,
+                engineDurationHours: 12345,
+                isOdometerDistanceUnlimited: true,
+                name: "12345",
+                notes: "12345",
+                odometerDistanceMeters: 12345,
+                startEngineHours: 12345,
+                startOdometerMeters: 12345,
+                startTime: "2019-06-13T19:08:25Z"
+            }],
+        createdAtTime: "2019-06-13T19:08:25Z",
+        description: "12345",
+        durationDays: 12345,
+        durationMonths: 12345,
+        engineDurationHours: 12345,
+        externalIds: [{
+                key: "12345",
+                value: "12345"
+            }],
+        id: "12345",
+        name: "12345",
+        odometerDistanceMeters: 12345,
+        updatedAtTime: "2019-06-13T19:08:25Z",
+        vendor: {
+            id: "281474976710656"
+        },
+        warrantyType: "12345"
+    }
+});
+                          
+                
+    });
+          
+    test("createWarranty (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { "name" : "name" };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .post("/maintenance/warranties").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(401).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.createWarranty({
+    name: "name"
+})
+            }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+          
+    test("createWarranty (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { "name" : "name" };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .post("/maintenance/warranties").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(404).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.createWarranty({
+    name: "name"
+})
+            }).rejects.toThrow(Samsara.NotFoundError);
+    });
+          
+    test("createWarranty (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { "name" : "name" };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .post("/maintenance/warranties").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(405).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.createWarranty({
+    name: "name"
+})
+            }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+          
+    test("createWarranty (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { "name" : "name" };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .post("/maintenance/warranties").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(413).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.createWarranty({
+    name: "name"
+})
+            }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+          
+    test("createWarranty (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { "name" : "name" };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .post("/maintenance/warranties").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(429).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.createWarranty({
+    name: "name"
+})
+            }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+          
+    test("createWarranty (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { "name" : "name" };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .post("/maintenance/warranties").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(500).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.createWarranty({
+    name: "name"
+})
+            }).rejects.toThrow(Samsara.InternalServerError);
+    });
+          
+    test("createWarranty (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { "name" : "name" };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .post("/maintenance/warranties").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(501).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.createWarranty({
+    name: "name"
+})
+            }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+          
+    test("createWarranty (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { "name" : "name" };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .post("/maintenance/warranties").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(502).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.createWarranty({
+    name: "name"
+})
+            }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+          
+    test("createWarranty (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { "name" : "name" };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .post("/maintenance/warranties").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(503).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.createWarranty({
+    name: "name"
+})
+            }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+          
+    test("createWarranty (11)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { "name" : "name" };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .post("/maintenance/warranties").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(504).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.createWarranty({
+    name: "name"
+})
+            }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+          
+    test("deleteWarranty (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        
+        server
+            .mockEndpoint()
+            .delete("/maintenance/warranties").respondWith()
+            .statusCode(200).build();
+
+        
+                    
+                            const response = await client.betaApIs.deleteWarranty({
+    id: "id"
+});
+                            expect(response).toEqual(undefined);
+                          
+                
+    });
+          
+    test("deleteWarranty (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .delete("/maintenance/warranties").respondWith()
+            .statusCode(401).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.deleteWarranty({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+          
+    test("deleteWarranty (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .delete("/maintenance/warranties").respondWith()
+            .statusCode(404).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.deleteWarranty({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.NotFoundError);
+    });
+          
+    test("deleteWarranty (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .delete("/maintenance/warranties").respondWith()
+            .statusCode(405).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.deleteWarranty({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+          
+    test("deleteWarranty (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .delete("/maintenance/warranties").respondWith()
+            .statusCode(413).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.deleteWarranty({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+          
+    test("deleteWarranty (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .delete("/maintenance/warranties").respondWith()
+            .statusCode(429).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.deleteWarranty({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+          
+    test("deleteWarranty (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .delete("/maintenance/warranties").respondWith()
+            .statusCode(500).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.deleteWarranty({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.InternalServerError);
+    });
+          
+    test("deleteWarranty (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .delete("/maintenance/warranties").respondWith()
+            .statusCode(501).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.deleteWarranty({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+          
+    test("deleteWarranty (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .delete("/maintenance/warranties").respondWith()
+            .statusCode(502).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.deleteWarranty({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+          
+    test("deleteWarranty (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .delete("/maintenance/warranties").respondWith()
+            .statusCode(503).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.deleteWarranty({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+          
+    test("deleteWarranty (11)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .delete("/maintenance/warranties").respondWith()
+            .statusCode(504).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.deleteWarranty({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+          
+    test("updateWarranty (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { };
+        const rawResponseBody = { "data" : { "baseCoverage" : { "description" : "12345" , "durationDays" : 12345 , "durationMonths" : 12345 , "engineDurationHours" : 12345 , "exclusions" : [ { "id" : "12345" , "itemType" : "12345" , "vmrsCode" : "12345" } ] , "inclusions" : [ { "id" : "12345" , "itemType" : "12345" , "vmrsCode" : "12345" } ] , "isOdometerDistanceUnlimited" : true , "name" : "12345" , "notes" : "12345" , "odometerDistanceMeters" : 12345 , "startEngineHours" : 12345 , "startOdometerMeters" : 12345 , "startTime" : "2019-06-13T19:08:25Z" } , "coverages" : [ { "description" : "12345" , "durationDays" : 12345 , "durationMonths" : 12345 , "engineDurationHours" : 12345 , "isOdometerDistanceUnlimited" : true , "name" : "12345" , "notes" : "12345" , "odometerDistanceMeters" : 12345 , "startEngineHours" : 12345 , "startOdometerMeters" : 12345 , "startTime" : "2019-06-13T19:08:25Z" } ] , "createdAtTime" : "2019-06-13T19:08:25Z" , "description" : "12345" , "durationDays" : 12345 , "durationMonths" : 12345 , "engineDurationHours" : 12345 , "externalIds" : [ { "key" : "12345" , "value" : "12345" } ] , "id" : "12345" , "name" : "12345" , "odometerDistanceMeters" : 12345 , "updatedAtTime" : "2019-06-13T19:08:25Z" , "vendor" : { "id" : "281474976710656" } , "warrantyType" : "12345" } };
+        server
+            .mockEndpoint()
+            .patch("/maintenance/warranties").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(200).jsonBody(rawResponseBody)
+                .build();
+
+        
+                    
+                            const response = await client.betaApIs.updateWarranty({
+    id: "id"
+});
+                            expect(response).toEqual({
+    data: {
+        baseCoverage: {
+            description: "12345",
+            durationDays: 12345,
+            durationMonths: 12345,
+            engineDurationHours: 12345,
+            exclusions: [{
+                    id: "12345",
+                    itemType: "12345",
+                    vmrsCode: "12345"
+                }],
+            inclusions: [{
+                    id: "12345",
+                    itemType: "12345",
+                    vmrsCode: "12345"
+                }],
+            isOdometerDistanceUnlimited: true,
+            name: "12345",
+            notes: "12345",
+            odometerDistanceMeters: 12345,
+            startEngineHours: 12345,
+            startOdometerMeters: 12345,
+            startTime: "2019-06-13T19:08:25Z"
+        },
+        coverages: [{
+                description: "12345",
+                durationDays: 12345,
+                durationMonths: 12345,
+                engineDurationHours: 12345,
+                isOdometerDistanceUnlimited: true,
+                name: "12345",
+                notes: "12345",
+                odometerDistanceMeters: 12345,
+                startEngineHours: 12345,
+                startOdometerMeters: 12345,
+                startTime: "2019-06-13T19:08:25Z"
+            }],
+        createdAtTime: "2019-06-13T19:08:25Z",
+        description: "12345",
+        durationDays: 12345,
+        durationMonths: 12345,
+        engineDurationHours: 12345,
+        externalIds: [{
+                key: "12345",
+                value: "12345"
+            }],
+        id: "12345",
+        name: "12345",
+        odometerDistanceMeters: 12345,
+        updatedAtTime: "2019-06-13T19:08:25Z",
+        vendor: {
+            id: "281474976710656"
+        },
+        warrantyType: "12345"
+    }
+});
+                          
+                
+    });
+          
+    test("updateWarranty (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .patch("/maintenance/warranties").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(401).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.updateWarranty({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+          
+    test("updateWarranty (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .patch("/maintenance/warranties").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(404).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.updateWarranty({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.NotFoundError);
+    });
+          
+    test("updateWarranty (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .patch("/maintenance/warranties").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(405).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.updateWarranty({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+          
+    test("updateWarranty (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .patch("/maintenance/warranties").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(413).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.updateWarranty({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+          
+    test("updateWarranty (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .patch("/maintenance/warranties").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(429).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.updateWarranty({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+          
+    test("updateWarranty (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .patch("/maintenance/warranties").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(500).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.updateWarranty({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.InternalServerError);
+    });
+          
+    test("updateWarranty (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .patch("/maintenance/warranties").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(501).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.updateWarranty({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+          
+    test("updateWarranty (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .patch("/maintenance/warranties").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(502).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.updateWarranty({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+          
+    test("updateWarranty (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .patch("/maintenance/warranties").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(503).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.updateWarranty({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+          
+    test("updateWarranty (11)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .patch("/maintenance/warranties").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(504).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.updateWarranty({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+          
+    test("replaceWarrantyAssetAssignments (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { };
+        const rawResponseBody = { "data" : { "data" : [ { "assetId" : "12345" , "createdAtTime" : "2019-06-13T19:08:25Z" , "id" : "12345" , "startEngineHours" : 12345 , "startOdometerMeters" : 12345 , "startTime" : "2019-06-13T19:08:25Z" , "updatedAtTime" : "2019-06-13T19:08:25Z" , "warrantyId" : "12345" } ] } };
+        server
+            .mockEndpoint()
+            .post("/maintenance/warranties/assets/replace").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(200).jsonBody(rawResponseBody)
+                .build();
+
+        
+                    
+                            const response = await client.betaApIs.replaceWarrantyAssetAssignments();
+                            expect(response).toEqual({
+    data: {
+        data: [{
+                assetId: "12345",
+                createdAtTime: "2019-06-13T19:08:25Z",
+                id: "12345",
+                startEngineHours: 12345,
+                startOdometerMeters: 12345,
+                startTime: "2019-06-13T19:08:25Z",
+                updatedAtTime: "2019-06-13T19:08:25Z",
+                warrantyId: "12345"
+            }]
+    }
+});
+                          
+                
+    });
+          
+    test("replaceWarrantyAssetAssignments (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .post("/maintenance/warranties/assets/replace").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(401).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.replaceWarrantyAssetAssignments()
+            }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+          
+    test("replaceWarrantyAssetAssignments (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .post("/maintenance/warranties/assets/replace").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(404).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.replaceWarrantyAssetAssignments()
+            }).rejects.toThrow(Samsara.NotFoundError);
+    });
+          
+    test("replaceWarrantyAssetAssignments (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .post("/maintenance/warranties/assets/replace").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(405).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.replaceWarrantyAssetAssignments()
+            }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+          
+    test("replaceWarrantyAssetAssignments (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .post("/maintenance/warranties/assets/replace").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(413).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.replaceWarrantyAssetAssignments()
+            }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+          
+    test("replaceWarrantyAssetAssignments (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .post("/maintenance/warranties/assets/replace").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(429).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.replaceWarrantyAssetAssignments()
+            }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+          
+    test("replaceWarrantyAssetAssignments (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .post("/maintenance/warranties/assets/replace").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(500).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.replaceWarrantyAssetAssignments()
+            }).rejects.toThrow(Samsara.InternalServerError);
+    });
+          
+    test("replaceWarrantyAssetAssignments (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .post("/maintenance/warranties/assets/replace").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(501).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.replaceWarrantyAssetAssignments()
+            }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+          
+    test("replaceWarrantyAssetAssignments (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .post("/maintenance/warranties/assets/replace").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(502).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.replaceWarrantyAssetAssignments()
+            }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+          
+    test("replaceWarrantyAssetAssignments (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .post("/maintenance/warranties/assets/replace").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(503).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.replaceWarrantyAssetAssignments()
+            }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+          
+    test("replaceWarrantyAssetAssignments (11)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .post("/maintenance/warranties/assets/replace").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(504).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.replaceWarrantyAssetAssignments()
+            }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+          
+    test("listWarrantyClaims (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "data" : [ { "asset" : { "id" : "281474976710656" } , "cause" : "12345" , "claimEngineHours" : 12345 , "claimOdometerMeters" : 12345 , "claimStatus" : "12345" , "componentInstanceIds" : [ "12345" , "12345" , "12345" , "12345" ] , "concern" : "12345" , "correction" : "12345" , "createdAtTime" : "2019-06-13T19:08:25Z" , "externalIds" : [ { "key" : "12345" , "value" : "12345" } ] , "id" : "12345" , "labor" : [ { "description" : "12345" , "serviceTaskId" : "12345" , "sourceWorkOrderId" : "12345" , "vmrsCode" : "12345" } ] , "linkedWarranty" : { "id" : "281474976710656" } , "linkedWorkOrderIds" : [ "12345" , "12345" , "12345" ] , "mediaItemIds" : [ "12345" , "12345" ] , "otherCost" : { "amount" : "12345" , "currency" : "12345" } , "parts" : [ { "description" : "12345" , "partDefinitionId" : "12345" , "partId" : "12345" , "quantity" : 12345 , "serviceTaskId" : "12345" , "sourceWorkOrderId" : "12345" , "vmrsCode" : "12345" } ] , "reimbursedAtTime" : "2019-06-13T19:08:25Z" , "reimbursements" : [ { "workOrderId" : "12345" } ] , "repairCompletedAtTime" : "2019-06-13T19:08:25Z" , "resolutionAtTime" : "2019-06-13T19:08:25Z" , "statusHistory" : [ { "happenedAtTime" : "2019-06-13T19:08:25Z" , "status" : "12345" , "userId" : "12345" } ] , "submittedAtTime" : "2019-06-13T19:08:25Z" , "updatedAtTime" : "2019-06-13T19:08:25Z" , "warrantyVendor" : { "id" : "281474976710656" } } ] , "pagination" : { "endCursor" : "MjkY" , "hasNextPage" : true } };
+        server
+            .mockEndpoint()
+            .get("/maintenance/warranty-claims").respondWith()
+            .statusCode(200).jsonBody(rawResponseBody)
+                .build();
+
+        
+                    
+                            const response = await client.betaApIs.listWarrantyClaims();
+                            expect(response).toEqual({
+    data: [{
+            asset: {
+                id: "281474976710656"
+            },
+            cause: "12345",
+            claimEngineHours: 12345,
+            claimOdometerMeters: 12345,
+            claimStatus: "12345",
+            componentInstanceIds: ["12345", "12345", "12345", "12345"],
+            concern: "12345",
+            correction: "12345",
+            createdAtTime: "2019-06-13T19:08:25Z",
+            externalIds: [{
+                    key: "12345",
+                    value: "12345"
+                }],
+            id: "12345",
+            labor: [{
+                    description: "12345",
+                    serviceTaskId: "12345",
+                    sourceWorkOrderId: "12345",
+                    vmrsCode: "12345"
+                }],
+            linkedWarranty: {
+                id: "281474976710656"
+            },
+            linkedWorkOrderIds: ["12345", "12345", "12345"],
+            mediaItemIds: ["12345", "12345"],
+            otherCost: {
+                amount: "12345",
+                currency: "12345"
+            },
+            parts: [{
+                    description: "12345",
+                    partDefinitionId: "12345",
+                    partId: "12345",
+                    quantity: 12345,
+                    serviceTaskId: "12345",
+                    sourceWorkOrderId: "12345",
+                    vmrsCode: "12345"
+                }],
+            reimbursedAtTime: "2019-06-13T19:08:25Z",
+            reimbursements: [{
+                    workOrderId: "12345"
+                }],
+            repairCompletedAtTime: "2019-06-13T19:08:25Z",
+            resolutionAtTime: "2019-06-13T19:08:25Z",
+            statusHistory: [{
+                    happenedAtTime: "2019-06-13T19:08:25Z",
+                    status: "12345",
+                    userId: "12345"
+                }],
+            submittedAtTime: "2019-06-13T19:08:25Z",
+            updatedAtTime: "2019-06-13T19:08:25Z",
+            warrantyVendor: {
+                id: "281474976710656"
+            }
+        }],
+    pagination: {
+        endCursor: "MjkY",
+        hasNextPage: true
+    }
+});
+                          
+                
+    });
+          
+    test("listWarrantyClaims (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/warranty-claims").respondWith()
+            .statusCode(401).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.listWarrantyClaims()
+            }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+          
+    test("listWarrantyClaims (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/warranty-claims").respondWith()
+            .statusCode(404).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.listWarrantyClaims()
+            }).rejects.toThrow(Samsara.NotFoundError);
+    });
+          
+    test("listWarrantyClaims (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/warranty-claims").respondWith()
+            .statusCode(405).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.listWarrantyClaims()
+            }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+          
+    test("listWarrantyClaims (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/warranty-claims").respondWith()
+            .statusCode(413).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.listWarrantyClaims()
+            }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+          
+    test("listWarrantyClaims (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/warranty-claims").respondWith()
+            .statusCode(429).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.listWarrantyClaims()
+            }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+          
+    test("listWarrantyClaims (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/warranty-claims").respondWith()
+            .statusCode(500).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.listWarrantyClaims()
+            }).rejects.toThrow(Samsara.InternalServerError);
+    });
+          
+    test("listWarrantyClaims (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/warranty-claims").respondWith()
+            .statusCode(501).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.listWarrantyClaims()
+            }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+          
+    test("listWarrantyClaims (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/warranty-claims").respondWith()
+            .statusCode(502).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.listWarrantyClaims()
+            }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+          
+    test("listWarrantyClaims (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/warranty-claims").respondWith()
+            .statusCode(503).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.listWarrantyClaims()
+            }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+          
+    test("listWarrantyClaims (11)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .get("/maintenance/warranty-claims").respondWith()
+            .statusCode(504).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.listWarrantyClaims()
+            }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+          
+    test("createWarrantyClaim (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { "assetId" : "281474976710656" };
+        const rawResponseBody = { "data" : { "asset" : { "id" : "281474976710656" } , "cause" : "12345" , "claimEngineHours" : 12345 , "claimOdometerMeters" : 12345 , "claimStatus" : "12345" , "componentInstanceIds" : [ "12345" , "12345" , "12345" , "12345" ] , "concern" : "12345" , "correction" : "12345" , "createdAtTime" : "2019-06-13T19:08:25Z" , "externalIds" : [ { "key" : "12345" , "value" : "12345" } ] , "id" : "12345" , "labor" : [ { "description" : "12345" , "serviceTaskId" : "12345" , "sourceWorkOrderId" : "12345" , "vmrsCode" : "12345" } ] , "linkedWarranty" : { "id" : "281474976710656" } , "linkedWorkOrderIds" : [ "12345" , "12345" , "12345" ] , "mediaItemIds" : [ "12345" , "12345" , "12345" , "12345" ] , "otherCost" : { "amount" : "12345" , "currency" : "12345" } , "parts" : [ { "description" : "12345" , "partDefinitionId" : "12345" , "partId" : "12345" , "quantity" : 12345 , "serviceTaskId" : "12345" , "sourceWorkOrderId" : "12345" , "vmrsCode" : "12345" } ] , "reimbursedAtTime" : "2019-06-13T19:08:25Z" , "reimbursements" : [ { "workOrderId" : "12345" } ] , "repairCompletedAtTime" : "2019-06-13T19:08:25Z" , "resolutionAtTime" : "2019-06-13T19:08:25Z" , "statusHistory" : [ { "happenedAtTime" : "2019-06-13T19:08:25Z" , "status" : "12345" , "userId" : "12345" } ] , "submittedAtTime" : "2019-06-13T19:08:25Z" , "updatedAtTime" : "2019-06-13T19:08:25Z" , "warrantyVendor" : { "id" : "281474976710656" } } };
+        server
+            .mockEndpoint()
+            .post("/maintenance/warranty-claims").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(200).jsonBody(rawResponseBody)
+                .build();
+
+        
+                    
+                            const response = await client.betaApIs.createWarrantyClaim({
+    assetId: "281474976710656"
+});
+                            expect(response).toEqual({
+    data: {
+        asset: {
+            id: "281474976710656"
+        },
+        cause: "12345",
+        claimEngineHours: 12345,
+        claimOdometerMeters: 12345,
+        claimStatus: "12345",
+        componentInstanceIds: ["12345", "12345", "12345", "12345"],
+        concern: "12345",
+        correction: "12345",
+        createdAtTime: "2019-06-13T19:08:25Z",
+        externalIds: [{
+                key: "12345",
+                value: "12345"
+            }],
+        id: "12345",
+        labor: [{
+                description: "12345",
+                serviceTaskId: "12345",
+                sourceWorkOrderId: "12345",
+                vmrsCode: "12345"
+            }],
+        linkedWarranty: {
+            id: "281474976710656"
+        },
+        linkedWorkOrderIds: ["12345", "12345", "12345"],
+        mediaItemIds: ["12345", "12345", "12345", "12345"],
+        otherCost: {
+            amount: "12345",
+            currency: "12345"
+        },
+        parts: [{
+                description: "12345",
+                partDefinitionId: "12345",
+                partId: "12345",
+                quantity: 12345,
+                serviceTaskId: "12345",
+                sourceWorkOrderId: "12345",
+                vmrsCode: "12345"
+            }],
+        reimbursedAtTime: "2019-06-13T19:08:25Z",
+        reimbursements: [{
+                workOrderId: "12345"
+            }],
+        repairCompletedAtTime: "2019-06-13T19:08:25Z",
+        resolutionAtTime: "2019-06-13T19:08:25Z",
+        statusHistory: [{
+                happenedAtTime: "2019-06-13T19:08:25Z",
+                status: "12345",
+                userId: "12345"
+            }],
+        submittedAtTime: "2019-06-13T19:08:25Z",
+        updatedAtTime: "2019-06-13T19:08:25Z",
+        warrantyVendor: {
+            id: "281474976710656"
+        }
+    }
+});
+                          
+                
+    });
+          
+    test("createWarrantyClaim (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { "assetId" : "assetId" };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .post("/maintenance/warranty-claims").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(401).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.createWarrantyClaim({
+    assetId: "assetId"
+})
+            }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+          
+    test("createWarrantyClaim (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { "assetId" : "assetId" };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .post("/maintenance/warranty-claims").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(404).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.createWarrantyClaim({
+    assetId: "assetId"
+})
+            }).rejects.toThrow(Samsara.NotFoundError);
+    });
+          
+    test("createWarrantyClaim (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { "assetId" : "assetId" };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .post("/maintenance/warranty-claims").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(405).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.createWarrantyClaim({
+    assetId: "assetId"
+})
+            }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+          
+    test("createWarrantyClaim (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { "assetId" : "assetId" };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .post("/maintenance/warranty-claims").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(413).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.createWarrantyClaim({
+    assetId: "assetId"
+})
+            }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+          
+    test("createWarrantyClaim (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { "assetId" : "assetId" };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .post("/maintenance/warranty-claims").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(429).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.createWarrantyClaim({
+    assetId: "assetId"
+})
+            }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+          
+    test("createWarrantyClaim (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { "assetId" : "assetId" };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .post("/maintenance/warranty-claims").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(500).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.createWarrantyClaim({
+    assetId: "assetId"
+})
+            }).rejects.toThrow(Samsara.InternalServerError);
+    });
+          
+    test("createWarrantyClaim (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { "assetId" : "assetId" };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .post("/maintenance/warranty-claims").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(501).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.createWarrantyClaim({
+    assetId: "assetId"
+})
+            }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+          
+    test("createWarrantyClaim (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { "assetId" : "assetId" };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .post("/maintenance/warranty-claims").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(502).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.createWarrantyClaim({
+    assetId: "assetId"
+})
+            }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+          
+    test("createWarrantyClaim (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { "assetId" : "assetId" };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .post("/maintenance/warranty-claims").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(503).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.createWarrantyClaim({
+    assetId: "assetId"
+})
+            }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+          
+    test("createWarrantyClaim (11)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { "assetId" : "assetId" };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .post("/maintenance/warranty-claims").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(504).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.createWarrantyClaim({
+    assetId: "assetId"
+})
+            }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+          
+    test("deleteWarrantyClaim (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        
+        server
+            .mockEndpoint()
+            .delete("/maintenance/warranty-claims").respondWith()
+            .statusCode(200).build();
+
+        
+                    
+                            const response = await client.betaApIs.deleteWarrantyClaim({
+    id: "id"
+});
+                            expect(response).toEqual(undefined);
+                          
+                
+    });
+          
+    test("deleteWarrantyClaim (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .delete("/maintenance/warranty-claims").respondWith()
+            .statusCode(401).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.deleteWarrantyClaim({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+          
+    test("deleteWarrantyClaim (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .delete("/maintenance/warranty-claims").respondWith()
+            .statusCode(404).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.deleteWarrantyClaim({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.NotFoundError);
+    });
+          
+    test("deleteWarrantyClaim (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .delete("/maintenance/warranty-claims").respondWith()
+            .statusCode(405).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.deleteWarrantyClaim({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+          
+    test("deleteWarrantyClaim (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .delete("/maintenance/warranty-claims").respondWith()
+            .statusCode(413).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.deleteWarrantyClaim({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+          
+    test("deleteWarrantyClaim (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .delete("/maintenance/warranty-claims").respondWith()
+            .statusCode(429).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.deleteWarrantyClaim({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+          
+    test("deleteWarrantyClaim (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .delete("/maintenance/warranty-claims").respondWith()
+            .statusCode(500).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.deleteWarrantyClaim({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.InternalServerError);
+    });
+          
+    test("deleteWarrantyClaim (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .delete("/maintenance/warranty-claims").respondWith()
+            .statusCode(501).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.deleteWarrantyClaim({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+          
+    test("deleteWarrantyClaim (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .delete("/maintenance/warranty-claims").respondWith()
+            .statusCode(502).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.deleteWarrantyClaim({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+          
+    test("deleteWarrantyClaim (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .delete("/maintenance/warranty-claims").respondWith()
+            .statusCode(503).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.deleteWarrantyClaim({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+          
+    test("deleteWarrantyClaim (11)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .delete("/maintenance/warranty-claims").respondWith()
+            .statusCode(504).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.deleteWarrantyClaim({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+          
+    test("updateWarrantyClaim (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { };
+        const rawResponseBody = { "data" : { "asset" : { "id" : "281474976710656" } , "cause" : "12345" , "claimEngineHours" : 12345 , "claimOdometerMeters" : 12345 , "claimStatus" : "12345" , "componentInstanceIds" : [ "12345" , "12345" , "12345" ] , "concern" : "12345" , "correction" : "12345" , "createdAtTime" : "2019-06-13T19:08:25Z" , "externalIds" : [ { "key" : "12345" , "value" : "12345" } ] , "id" : "12345" , "labor" : [ { "description" : "12345" , "serviceTaskId" : "12345" , "sourceWorkOrderId" : "12345" , "vmrsCode" : "12345" } ] , "linkedWarranty" : { "id" : "281474976710656" } , "linkedWorkOrderIds" : [ "12345" , "12345" ] , "mediaItemIds" : [ "12345" , "12345" ] , "otherCost" : { "amount" : "12345" , "currency" : "12345" } , "parts" : [ { "description" : "12345" , "partDefinitionId" : "12345" , "partId" : "12345" , "quantity" : 12345 , "serviceTaskId" : "12345" , "sourceWorkOrderId" : "12345" , "vmrsCode" : "12345" } ] , "reimbursedAtTime" : "2019-06-13T19:08:25Z" , "reimbursements" : [ { "workOrderId" : "12345" } ] , "repairCompletedAtTime" : "2019-06-13T19:08:25Z" , "resolutionAtTime" : "2019-06-13T19:08:25Z" , "statusHistory" : [ { "happenedAtTime" : "2019-06-13T19:08:25Z" , "status" : "12345" , "userId" : "12345" } ] , "submittedAtTime" : "2019-06-13T19:08:25Z" , "updatedAtTime" : "2019-06-13T19:08:25Z" , "warrantyVendor" : { "id" : "281474976710656" } } };
+        server
+            .mockEndpoint()
+            .patch("/maintenance/warranty-claims").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(200).jsonBody(rawResponseBody)
+                .build();
+
+        
+                    
+                            const response = await client.betaApIs.updateWarrantyClaim({
+    id: "id"
+});
+                            expect(response).toEqual({
+    data: {
+        asset: {
+            id: "281474976710656"
+        },
+        cause: "12345",
+        claimEngineHours: 12345,
+        claimOdometerMeters: 12345,
+        claimStatus: "12345",
+        componentInstanceIds: ["12345", "12345", "12345"],
+        concern: "12345",
+        correction: "12345",
+        createdAtTime: "2019-06-13T19:08:25Z",
+        externalIds: [{
+                key: "12345",
+                value: "12345"
+            }],
+        id: "12345",
+        labor: [{
+                description: "12345",
+                serviceTaskId: "12345",
+                sourceWorkOrderId: "12345",
+                vmrsCode: "12345"
+            }],
+        linkedWarranty: {
+            id: "281474976710656"
+        },
+        linkedWorkOrderIds: ["12345", "12345"],
+        mediaItemIds: ["12345", "12345"],
+        otherCost: {
+            amount: "12345",
+            currency: "12345"
+        },
+        parts: [{
+                description: "12345",
+                partDefinitionId: "12345",
+                partId: "12345",
+                quantity: 12345,
+                serviceTaskId: "12345",
+                sourceWorkOrderId: "12345",
+                vmrsCode: "12345"
+            }],
+        reimbursedAtTime: "2019-06-13T19:08:25Z",
+        reimbursements: [{
+                workOrderId: "12345"
+            }],
+        repairCompletedAtTime: "2019-06-13T19:08:25Z",
+        resolutionAtTime: "2019-06-13T19:08:25Z",
+        statusHistory: [{
+                happenedAtTime: "2019-06-13T19:08:25Z",
+                status: "12345",
+                userId: "12345"
+            }],
+        submittedAtTime: "2019-06-13T19:08:25Z",
+        updatedAtTime: "2019-06-13T19:08:25Z",
+        warrantyVendor: {
+            id: "281474976710656"
+        }
+    }
+});
+                          
+                
+    });
+          
+    test("updateWarrantyClaim (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .patch("/maintenance/warranty-claims").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(401).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.updateWarrantyClaim({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+          
+    test("updateWarrantyClaim (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .patch("/maintenance/warranty-claims").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(404).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.updateWarrantyClaim({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.NotFoundError);
+    });
+          
+    test("updateWarrantyClaim (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .patch("/maintenance/warranty-claims").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(405).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.updateWarrantyClaim({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+          
+    test("updateWarrantyClaim (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .patch("/maintenance/warranty-claims").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(413).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.updateWarrantyClaim({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+          
+    test("updateWarrantyClaim (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .patch("/maintenance/warranty-claims").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(429).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.updateWarrantyClaim({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+          
+    test("updateWarrantyClaim (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .patch("/maintenance/warranty-claims").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(500).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.updateWarrantyClaim({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.InternalServerError);
+    });
+          
+    test("updateWarrantyClaim (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .patch("/maintenance/warranty-claims").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(501).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.updateWarrantyClaim({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+          
+    test("updateWarrantyClaim (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .patch("/maintenance/warranty-claims").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(502).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.updateWarrantyClaim({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+          
+    test("updateWarrantyClaim (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .patch("/maintenance/warranty-claims").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(503).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.updateWarrantyClaim({
+    id: "id"
+})
+            }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+          
+    test("updateWarrantyClaim (11)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
+        const rawRequestBody = { };
+        const rawResponseBody = { "key" : "value" };
+        server
+            .mockEndpoint()
+            .patch("/maintenance/warranty-claims").jsonBody(rawRequestBody)
+                .respondWith()
+            .statusCode(504).jsonBody(rawResponseBody)
+                .build();
+
+        
+            await expect(async () => {
+                return await client.betaApIs.updateWarrantyClaim({
+    id: "id"
 })
             }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
@@ -27579,7 +30101,7 @@ describe("BetaApIsClient", () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
         
-        const rawResponseBody = { "data" : { "columns" : [ { "dataType" : "string" , "name" : "Device Name" } ] , "rows" : [ [ { "key" : "value" } , { "key" : "value" } , { "key" : "value" } , { "key" : "value" } ] , [ { "key" : "value" } , { "key" : "value" } ] , [ { "key" : "value" } , { "key" : "value" } ] ] , "status" : "complete" } , "pagination" : { "endCursor" : "MjkY" , "hasNextPage" : true } };
+        const rawResponseBody = { "data" : { "columns" : [ { "dataType" : "string" , "name" : "Device Name" } ] , "rows" : [ [ { "key" : "value" } , { "key" : "value" } , { "key" : "value" } , { "key" : "value" } ] , [ { "key" : "value" } , { "key" : "value" } , { "key" : "value" } ] ] , "status" : "complete" } , "pagination" : { "endCursor" : "MjkY" , "hasNextPage" : true } };
         server
             .mockEndpoint()
             .get("/reports/runs/data").respondWith()
@@ -27608,8 +30130,6 @@ describe("BetaApIsClient", () => {
                 }], [{
                     "key": "value"
                 }, {
-                    "key": "value"
-                }], [{
                     "key": "value"
                 }, {
                     "key": "value"

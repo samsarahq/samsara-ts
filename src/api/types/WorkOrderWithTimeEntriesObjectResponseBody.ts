@@ -46,6 +46,8 @@ export interface WorkOrderWithTimeEntriesObjectResponseBody {
     priority?: WorkOrderWithTimeEntriesObjectResponseBody.Priority | undefined;
     /** Service Tasks for the work order. */
     serviceTaskInstances?: Samsara.ServiceTaskInstanceWithTimeEntriesObjectResponseBody[] | undefined;
+    /** The time work started on the work order, in RFC 3339 format. */
+    startedAtTime?: string | undefined;
     /** The status of the work order  Valid values: `Assigned`, `Cancelled`, `Closed`, `Completed`, `Estimate`, `In Progress`, `On Hold`, `Open`, `Pending Approval`, `Pending Parts`, `Planning` */
     status: WorkOrderWithTimeEntriesObjectResponseBody.Status;
     tax?: Samsara.WorkOrderTaxObjectResponseBody | undefined;

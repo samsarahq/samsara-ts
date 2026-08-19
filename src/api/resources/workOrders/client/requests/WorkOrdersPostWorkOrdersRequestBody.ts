@@ -9,12 +9,16 @@ import type * as Samsara from "../../../../index.js";
  *     }
  */
 export interface WorkOrdersPostWorkOrdersRequestBody {
+    /** The historical time the work order was archived (closed or cancelled), in RFC 3339 format. Is automatically set when the status is Closed or Cancelled and this field is not provided. */
+    archivedAtTime?: string;
     /** The ID of the asset. */
     assetId: string;
     /** The ID of the assigned mechanic. */
     assignedUserId?: string;
     /** The category of the work order */
     category?: string;
+    /** The historical time the work order was completed, in RFC 3339 format. Is automatically set when the status is Closed or Completed and this field is not provided. */
+    completedAtTime?: string;
     /** A description of what needs to be fixed. */
     description?: string;
     discount?: Samsara.WorkOrderDiscountObjectRequestBody;
@@ -38,6 +42,10 @@ export interface WorkOrdersPostWorkOrdersRequestBody {
     priority?: WorkOrdersPostWorkOrdersRequestBody.Priority;
     /** Service Tasks for the work order. */
     serviceTaskInstances?: Samsara.ServiceTaskInstanceInputObjectRequestBody[];
+    /** The historical time work started on the work order, in RFC 3339 format. Is automatically set when the status is an in-progress status and this field is not provided. */
+    startedAtTime?: string;
+    /** The initial status of the work order. Defaults to Open when not provided.  Valid values: `Assigned`, `Cancelled`, `Closed`, `Completed`, `Estimate`, `In Progress`, `On Hold`, `Open`, `Pending Approval`, `Pending Parts`, `Planning` */
+    status?: WorkOrdersPostWorkOrdersRequestBody.Status;
     tax?: Samsara.WorkOrderTaxCreateObjectRequestBody;
     /** The vendor UUID for the work order. */
     vendorUuid?: string;
@@ -52,4 +60,19 @@ export namespace WorkOrdersPostWorkOrdersRequestBody {
         Urgent: "Urgent",
     } as const;
     export type Priority = (typeof Priority)[keyof typeof Priority];
+    /** The initial status of the work order. Defaults to Open when not provided.  Valid values: `Assigned`, `Cancelled`, `Closed`, `Completed`, `Estimate`, `In Progress`, `On Hold`, `Open`, `Pending Approval`, `Pending Parts`, `Planning` */
+    export const Status = {
+        Assigned: "Assigned",
+        Cancelled: "Cancelled",
+        Closed: "Closed",
+        Completed: "Completed",
+        Estimate: "Estimate",
+        InProgress: "In Progress",
+        OnHold: "On Hold",
+        Open: "Open",
+        PendingApproval: "Pending Approval",
+        PendingParts: "Pending Parts",
+        Planning: "Planning",
+    } as const;
+    export type Status = (typeof Status)[keyof typeof Status];
 }

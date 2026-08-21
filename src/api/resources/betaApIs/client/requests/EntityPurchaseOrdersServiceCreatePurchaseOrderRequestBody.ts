@@ -5,7 +5,7 @@ import type * as Samsara from "../../../../index.js";
 /**
  * @example
  *     {
- *         orderStatus: "draft",
+ *         orderStatus: "Unknown",
  *         vendorId: "281474976710656"
  *     }
  */
@@ -16,17 +16,37 @@ export interface EntityPurchaseOrdersServiceCreatePurchaseOrderRequestBody {
     invoiceNumber?: string;
     /** Free-text notes for the purchase order. */
     notes?: string;
-    /** Current customer-visible status of the purchase order. */
-    orderStatus: string;
+    /** Current customer-visible status of the purchase order.  Valid values: `Unknown`, `Draft`, `Open`, `InReview`, `Approved`, `Rejected`, `SentToVendor`, `PartiallyReceived`, `FullyReceived`, `Returned`, `Cancelled`, `Closed` */
+    orderStatus: EntityPurchaseOrdersServiceCreatePurchaseOrderRequestBody.OrderStatus;
     otherCost?: Samsara.CreatePurchaseOrderEntityPurchaseOrderMoneyInputPublicVarianta2E1675A5A65TypeRequestBody;
     /** Parts ordered on the purchase order. */
-    parts?: Samsara.CreatePurchaseOrderEntityPurchaseOrderPurchaseOrderPartInputPublicVariantaf77215807F1TypeRequestBody[];
+    parts?: Samsara.CreatePurchaseOrderEntityPurchaseOrderPurchaseOrderPartInputPublicVariant63E9Febe395ETypeRequestBody[];
     /** Optional prefix included in the purchase order number. */
     poNumberPrefix?: string;
     /** Optional suffix included in the purchase order number. */
     poNumberSuffix?: string;
+    tax?: Samsara.CreatePurchaseOrderEntityPurchaseOrderTaxAdjustmentInputTypeRequestBody;
     /** Shipment tracking number for the purchase order. */
     trackingNumber?: string;
     /** ID of the vendor supplying this purchase order. */
     vendorId: string;
+}
+
+export namespace EntityPurchaseOrdersServiceCreatePurchaseOrderRequestBody {
+    /** Current customer-visible status of the purchase order.  Valid values: `Unknown`, `Draft`, `Open`, `InReview`, `Approved`, `Rejected`, `SentToVendor`, `PartiallyReceived`, `FullyReceived`, `Returned`, `Cancelled`, `Closed` */
+    export const OrderStatus = {
+        Unknown: "Unknown",
+        Draft: "Draft",
+        Open: "Open",
+        InReview: "InReview",
+        Approved: "Approved",
+        Rejected: "Rejected",
+        SentToVendor: "SentToVendor",
+        PartiallyReceived: "PartiallyReceived",
+        FullyReceived: "FullyReceived",
+        Returned: "Returned",
+        Cancelled: "Cancelled",
+        Closed: "Closed",
+    } as const;
+    export type OrderStatus = (typeof OrderStatus)[keyof typeof OrderStatus];
 }

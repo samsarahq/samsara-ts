@@ -8,8 +8,8 @@ import type * as Samsara from "../index.js";
 export interface EntityCreatePurchaseOrderTypeResponseBody {
     /** RFC3339 time when the purchase order was created. */
     createdAtTime?: string | undefined;
-    /** Source that created the purchase order. */
-    creationSource?: string | undefined;
+    /** Source that created the purchase order.  Valid values: `Unknown`, `User`, `ScanPackingList` */
+    creationSource?: EntityCreatePurchaseOrderTypeResponseBody.CreationSource | undefined;
     /** RFC3339 expected delivery time. */
     deliveryAtTime?: string | undefined;
     /** RFC3339 time when the first item was received. */
@@ -26,14 +26,14 @@ export interface EntityCreatePurchaseOrderTypeResponseBody {
     mediaItemIds?: string[] | undefined;
     /** Free-text notes for the purchase order. */
     notes?: string | undefined;
-    /** Current customer-visible status of the purchase order. */
-    orderStatus?: string | undefined;
+    /** Current customer-visible status of the purchase order.  Valid values: `Unknown`, `Draft`, `Open`, `InReview`, `Approved`, `Rejected`, `SentToVendor`, `PartiallyReceived`, `FullyReceived`, `Returned`, `Cancelled`, `Closed` */
+    orderStatus?: EntityCreatePurchaseOrderTypeResponseBody.OrderStatus | undefined;
     otherCost?:
         | Samsara.CreatePurchaseOrderEntityPurchaseOrderMoneyPublicVariant8749B9E1F4AfTypeResponseBody
         | undefined;
     /** Parts ordered on the purchase order. */
     parts?:
-        | Samsara.CreatePurchaseOrderEntityPurchaseOrderPurchaseOrderPartPublicVariant7E1B94919242TypeResponseBody[]
+        | Samsara.CreatePurchaseOrderEntityPurchaseOrderPurchaseOrderPartPublicVariant0241C1BeccaeTypeResponseBody[]
         | undefined;
     /** Customer-visible purchase order number. */
     poNumber?: string | undefined;
@@ -43,9 +43,37 @@ export interface EntityCreatePurchaseOrderTypeResponseBody {
     poNumberSuffix?: string | undefined;
     /** RFC3339 time when the purchase order was sent to its vendor. */
     sentAtTime?: string | undefined;
+    tax?: Samsara.CreatePurchaseOrderEntityPurchaseOrderTaxAdjustmentTypeResponseBody | undefined;
+    taxTotal?: Samsara.CreatePurchaseOrderEntityPurchaseOrderMoneyTypeResponseBody | undefined;
     /** Shipment tracking number for the purchase order. */
     trackingNumber?: string | undefined;
     /** RFC3339 time when the purchase order was last updated. */
     updatedAtTime?: string | undefined;
     vendor?: Samsara.EntityCreatePurchaseOrderVendorRefPublicVariant07Ae4B76C2BaTypeResponseBody | undefined;
+}
+
+export namespace EntityCreatePurchaseOrderTypeResponseBody {
+    /** Source that created the purchase order.  Valid values: `Unknown`, `User`, `ScanPackingList` */
+    export const CreationSource = {
+        Unknown: "Unknown",
+        User: "User",
+        ScanPackingList: "ScanPackingList",
+    } as const;
+    export type CreationSource = (typeof CreationSource)[keyof typeof CreationSource];
+    /** Current customer-visible status of the purchase order.  Valid values: `Unknown`, `Draft`, `Open`, `InReview`, `Approved`, `Rejected`, `SentToVendor`, `PartiallyReceived`, `FullyReceived`, `Returned`, `Cancelled`, `Closed` */
+    export const OrderStatus = {
+        Unknown: "Unknown",
+        Draft: "Draft",
+        Open: "Open",
+        InReview: "InReview",
+        Approved: "Approved",
+        Rejected: "Rejected",
+        SentToVendor: "SentToVendor",
+        PartiallyReceived: "PartiallyReceived",
+        FullyReceived: "FullyReceived",
+        Returned: "Returned",
+        Cancelled: "Cancelled",
+        Closed: "Closed",
+    } as const;
+    export type OrderStatus = (typeof OrderStatus)[keyof typeof OrderStatus];
 }

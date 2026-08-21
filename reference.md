@@ -6416,7 +6416,7 @@ To use this endpoint, select **Write Purchase Orders** under the Work Orders cat
 
 ```typescript
 await client.betaApIs.createPurchaseOrder({
-    orderStatus: "draft",
+    orderStatus: "Unknown",
     vendorId: "281474976710656"
 });
 

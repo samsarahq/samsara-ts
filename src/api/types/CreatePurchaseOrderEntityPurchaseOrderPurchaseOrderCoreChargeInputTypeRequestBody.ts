@@ -6,8 +6,8 @@ import type * as Samsara from "../index.js";
  * CreatePurchaseOrderEntityPurchaseOrderPurchaseOrderCoreChargeInput object
  */
 export interface CreatePurchaseOrderEntityPurchaseOrderPurchaseOrderCoreChargeInputTypeRequestBody {
-    /** Whether the core charge is active or removed or disabled. */
-    coreChargeStatus: string;
+    /** Whether the core charge is active or removed or disabled.  Valid values: `Unknown`, `Active`, `RemovedOrDisabled` */
+    coreChargeStatus: CreatePurchaseOrderEntityPurchaseOrderPurchaseOrderCoreChargeInputTypeRequestBody.CoreChargeStatus;
     /** ID of the returnable core part. */
     corePartSamsaraId?: string | undefined;
     recoverabilityPolicy?:
@@ -16,4 +16,14 @@ export interface CreatePurchaseOrderEntityPurchaseOrderPurchaseOrderCoreChargeIn
     /** ID of the vendor that receives returned cores. */
     returnRecipientVendorId?: string | undefined;
     unitCoreAmount?: Samsara.CreatePurchaseOrderEntityPurchaseOrderMoneyInputTypeRequestBody | undefined;
+}
+
+export namespace CreatePurchaseOrderEntityPurchaseOrderPurchaseOrderCoreChargeInputTypeRequestBody {
+    /** Whether the core charge is active or removed or disabled.  Valid values: `Unknown`, `Active`, `RemovedOrDisabled` */
+    export const CoreChargeStatus = {
+        Unknown: "Unknown",
+        Active: "Active",
+        RemovedOrDisabled: "RemovedOrDisabled",
+    } as const;
+    export type CoreChargeStatus = (typeof CoreChargeStatus)[keyof typeof CoreChargeStatus];
 }

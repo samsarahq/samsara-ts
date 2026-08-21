@@ -168,7 +168,7 @@ export namespace SafetyEventsV2PatchSafetyEventsV2BatchRequestBody {
     export type ContextLabelsToAdd = ContextLabelsToAdd.Item[];
 
     export namespace ContextLabelsToAdd {
-        /** A context label name to add.  Valid values: `Congested`, `Construction`, `Coupling/Uncoupling`, `Cyclist/Motorcyclist`, `Defensive`, `Fog`, `Improper Seat Belt`, `Lead Car`, `Light Traffic`, `Moderate Traffic`, `Moderately Drowsy`, `Mounted Phone`, `Night`, `Parking Lot`, `Passenger Mobile Usage`, `Passenger Sleeping`, `Passengers`, `Pedestrians`, `Person Actively Directing Traffic`, `Raining`, `Sensitive Media`, `Slightly Drowsy`, `Snowing`, `Snowy Road`, `Speed Sign Verified`, `Traffic Control Person Present`, `Trailer Car`, `Very Drowsy`, `Wet Road`, `Wildlife` */
+        /** A context label name to add.  Valid values: `Congested`, `Construction`, `Coupling/Uncoupling`, `Cyclist/Motorcyclist`, `Defensive`, `Fog`, `Improper Seat Belt`, `Lead Car`, `Light Traffic`, `Moderate Traffic`, `Moderately Drowsy`, `Mounted Phone`, `Night`, `No Boots`, `No Coveralls`, `No Face Shield`, `No Gloves`, `No Hard Hat`, `No Hi-Vis Vest`, `No Safety Glasses`, `Parking Lot`, `Passenger Mobile Usage`, `Passenger Sleeping`, `Passengers`, `Pedestrians`, `Person Actively Directing Traffic`, `Raining`, `Sensitive Media`, `Slightly Drowsy`, `Snowing`, `Snowy Road`, `Speed Sign Verified`, `Traffic Control Person Present`, `Trailer Car`, `Very Drowsy`, `Wet Road`, `Wildlife` */
         export const Item = {
             Congested: "Congested",
             Construction: "Construction",
@@ -183,6 +183,13 @@ export namespace SafetyEventsV2PatchSafetyEventsV2BatchRequestBody {
             ModeratelyDrowsy: "Moderately Drowsy",
             MountedPhone: "Mounted Phone",
             Night: "Night",
+            NoBoots: "No Boots",
+            NoCoveralls: "No Coveralls",
+            NoFaceShield: "No Face Shield",
+            NoGloves: "No Gloves",
+            NoHardHat: "No Hard Hat",
+            NoHiVisVest: "No Hi-Vis Vest",
+            NoSafetyGlasses: "No Safety Glasses",
             ParkingLot: "Parking Lot",
             PassengerMobileUsage: "Passenger Mobile Usage",
             PassengerSleeping: "Passenger Sleeping",
@@ -207,7 +214,7 @@ export namespace SafetyEventsV2PatchSafetyEventsV2BatchRequestBody {
     export type ContextLabelsToRemove = ContextLabelsToRemove.Item[];
 
     export namespace ContextLabelsToRemove {
-        /** A context label name to remove.  Valid values: `Congested`, `Construction`, `Coupling/Uncoupling`, `Cyclist/Motorcyclist`, `Defensive`, `Fog`, `Improper Seat Belt`, `Lead Car`, `Light Traffic`, `Moderate Traffic`, `Moderately Drowsy`, `Mounted Phone`, `Night`, `Parking Lot`, `Passenger Mobile Usage`, `Passenger Sleeping`, `Passengers`, `Pedestrians`, `Person Actively Directing Traffic`, `Raining`, `Sensitive Media`, `Slightly Drowsy`, `Snowing`, `Snowy Road`, `Speed Sign Verified`, `Traffic Control Person Present`, `Trailer Car`, `Very Drowsy`, `Wet Road`, `Wildlife` */
+        /** A context label name to remove.  Valid values: `Congested`, `Construction`, `Coupling/Uncoupling`, `Cyclist/Motorcyclist`, `Defensive`, `Fog`, `Improper Seat Belt`, `Lead Car`, `Light Traffic`, `Moderate Traffic`, `Moderately Drowsy`, `Mounted Phone`, `Night`, `No Boots`, `No Coveralls`, `No Face Shield`, `No Gloves`, `No Hard Hat`, `No Hi-Vis Vest`, `No Safety Glasses`, `Parking Lot`, `Passenger Mobile Usage`, `Passenger Sleeping`, `Passengers`, `Pedestrians`, `Person Actively Directing Traffic`, `Raining`, `Sensitive Media`, `Slightly Drowsy`, `Snowing`, `Snowy Road`, `Speed Sign Verified`, `Traffic Control Person Present`, `Trailer Car`, `Very Drowsy`, `Wet Road`, `Wildlife` */
         export const Item = {
             Congested: "Congested",
             Construction: "Construction",
@@ -222,6 +229,13 @@ export namespace SafetyEventsV2PatchSafetyEventsV2BatchRequestBody {
             ModeratelyDrowsy: "Moderately Drowsy",
             MountedPhone: "Mounted Phone",
             Night: "Night",
+            NoBoots: "No Boots",
+            NoCoveralls: "No Coveralls",
+            NoFaceShield: "No Face Shield",
+            NoGloves: "No Gloves",
+            NoHardHat: "No Hard Hat",
+            NoHiVisVest: "No Hi-Vis Vest",
+            NoSafetyGlasses: "No Safety Glasses",
             ParkingLot: "Parking Lot",
             PassengerMobileUsage: "Passenger Mobile Usage",
             PassengerSleeping: "Passenger Sleeping",

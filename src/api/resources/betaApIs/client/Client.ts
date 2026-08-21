@@ -9370,7 +9370,7 @@ export class BetaApIsClient {
      *
      * @example
      *     await client.betaApIs.createPurchaseOrder({
-     *         orderStatus: "draft",
+     *         orderStatus: "Unknown",
      *         vendorId: "281474976710656"
      *     })
      */

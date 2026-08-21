@@ -6,8 +6,19 @@
 export interface CreatePurchaseOrderEntityPurchaseOrderCoreRecoverabilityPolicyTypeResponseBody {
     /** Absolute deadline for core return. */
     fixedRecoverableUntilTime?: string | undefined;
-    /** Recoverability policy type. */
-    policyType?: string | undefined;
+    /** Recoverability policy type.  Valid values: `Unknown`, `RelativeToReceipt`, `FixedDate`, `NoDeadline` */
+    policyType?: CreatePurchaseOrderEntityPurchaseOrderCoreRecoverabilityPolicyTypeResponseBody.PolicyType | undefined;
     /** Duration after receipt when the core must be returned. Measured in milliseconds. */
     relativeWindowDuration?: number | undefined;
+}
+
+export namespace CreatePurchaseOrderEntityPurchaseOrderCoreRecoverabilityPolicyTypeResponseBody {
+    /** Recoverability policy type.  Valid values: `Unknown`, `RelativeToReceipt`, `FixedDate`, `NoDeadline` */
+    export const PolicyType = {
+        Unknown: "Unknown",
+        RelativeToReceipt: "RelativeToReceipt",
+        FixedDate: "FixedDate",
+        NoDeadline: "NoDeadline",
+    } as const;
+    export type PolicyType = (typeof PolicyType)[keyof typeof PolicyType];
 }

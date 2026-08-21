@@ -3,31 +3,31 @@
 import type * as Samsara from "../index.js";
 
 /**
- * ListPurchaseOrdersEntityPurchaseOrderPurchaseOrderPart object
+ * UpdatePurchaseOrderEntityPurchaseOrderPurchaseOrderPart object
  */
-export interface ListPurchaseOrdersEntityPurchaseOrderPurchaseOrderPartTypeResponseBody {
+export interface UpdatePurchaseOrderEntityPurchaseOrderPurchaseOrderPartPublicVariantc060A0106Cf6TypeResponseBody {
     /** Batch or lot number for the ordered part. */
     batchNumber?: string | undefined;
-    coreCharge?: Samsara.ListPurchaseOrdersEntityPurchaseOrderPurchaseOrderCoreChargeTypeResponseBody | undefined;
+    coreCharge?: Samsara.UpdatePurchaseOrderEntityPurchaseOrderPurchaseOrderCoreChargeTypeResponseBody | undefined;
     /** Description of the ordered part. */
     description?: string | undefined;
     /** Stable identifier for the purchase order line. */
     lineItemId?: string | undefined;
-    partSamsara?: Samsara.EntityListPurchaseOrdersPartDefinitionRefTypeResponseBody | undefined;
-    place?: Samsara.EntityListPurchaseOrdersPlaceRefTypeResponseBody | undefined;
+    partSamsara?: Samsara.EntityUpdatePurchaseOrderPartDefinitionRefTypeResponseBody | undefined;
+    place?: Samsara.EntityUpdatePurchaseOrderPlaceRefTypeResponseBody | undefined;
     /** Quantity ordered on this line. */
     quantityOrdered?: number | undefined;
     /** Quantity received on this line. */
     quantityReceived?: number | undefined;
-    tax?: Samsara.ListPurchaseOrdersEntityPurchaseOrderTaxAdjustmentTypeResponseBody | undefined;
-    unitCost?: Samsara.ListPurchaseOrdersEntityPurchaseOrderMoneyTypeResponseBody | undefined;
+    tax?: Samsara.UpdatePurchaseOrderEntityPurchaseOrderTaxAdjustmentTypeResponseBody | undefined;
+    unitCost?: Samsara.UpdatePurchaseOrderEntityPurchaseOrderMoneyPublicVariant55Aeb6731578TypeResponseBody | undefined;
     /** Unit of measure for quantities on this line.  Valid values: `Unknown`, `Each`, `Set`, `Pack`, `Box`, `Pound`, `Kilogram`, `Ounce`, `Liter`, `Milliliter`, `Gallon`, `Quart`, `FluidOunce`, `Inch`, `Foot`, `Meter`, `Yard`, `SquareFoot`, `SquareMeter`, `Pint`, `Hundred`, `Roll` */
     unitOfMeasureType?:
-        | ListPurchaseOrdersEntityPurchaseOrderPurchaseOrderPartTypeResponseBody.UnitOfMeasureType
+        | UpdatePurchaseOrderEntityPurchaseOrderPurchaseOrderPartPublicVariantc060A0106Cf6TypeResponseBody.UnitOfMeasureType
         | undefined;
 }
 
-export namespace ListPurchaseOrdersEntityPurchaseOrderPurchaseOrderPartTypeResponseBody {
+export namespace UpdatePurchaseOrderEntityPurchaseOrderPurchaseOrderPartPublicVariantc060A0106Cf6TypeResponseBody {
     /** Unit of measure for quantities on this line.  Valid values: `Unknown`, `Each`, `Set`, `Pack`, `Box`, `Pound`, `Kilogram`, `Ounce`, `Liter`, `Milliliter`, `Gallon`, `Quart`, `FluidOunce`, `Inch`, `Foot`, `Meter`, `Yard`, `SquareFoot`, `SquareMeter`, `Pint`, `Hundred`, `Roll` */
     export const UnitOfMeasureType = {
         Unknown: "Unknown",

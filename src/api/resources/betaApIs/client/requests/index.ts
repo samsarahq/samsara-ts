@@ -31,8 +31,8 @@ export type { EntityPartDefinitionsServiceCreatePartRequestBody } from "./Entity
 export type { EntityPartDefinitionsServiceUpdatePartRequestBody } from "./EntityPartDefinitionsServiceUpdatePartRequestBody.js";
 export type { EntityPartInventoryLocationsServiceCreatePartInventoryLocationRequestBody } from "./EntityPartInventoryLocationsServiceCreatePartInventoryLocationRequestBody.js";
 export type { EntityPartInventoryLocationsServiceUpdatePartInventoryLocationRequestBody } from "./EntityPartInventoryLocationsServiceUpdatePartInventoryLocationRequestBody.js";
-export type { EntityPurchaseOrdersServiceCreatePurchaseOrderRequestBody } from "./EntityPurchaseOrdersServiceCreatePurchaseOrderRequestBody.js";
-export type { EntityPurchaseOrdersServiceUpdatePurchaseOrderRequestBody } from "./EntityPurchaseOrdersServiceUpdatePurchaseOrderRequestBody.js";
+export { EntityPurchaseOrdersServiceCreatePurchaseOrderRequestBody } from "./EntityPurchaseOrdersServiceCreatePurchaseOrderRequestBody.js";
+export { EntityPurchaseOrdersServiceUpdatePurchaseOrderRequestBody } from "./EntityPurchaseOrdersServiceUpdatePurchaseOrderRequestBody.js";
 export type { EntityUpcomingPreventativeMaintenancesServiceUpdateUpcomingPreventiveMaintenanceRequestBody } from "./EntityUpcomingPreventativeMaintenancesServiceUpdateUpcomingPreventiveMaintenanceRequestBody.js";
 export type { EntityWarrantiesServiceCreateWarrantyRequestBody } from "./EntityWarrantiesServiceCreateWarrantyRequestBody.js";
 export type { EntityWarrantiesServiceUpdateWarrantyRequestBody } from "./EntityWarrantiesServiceUpdateWarrantyRequestBody.js";

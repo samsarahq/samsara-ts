@@ -540,8 +540,10 @@ export * from "./CreatePurchaseOrderEntityPurchaseOrderMoneyPublicVariant8749B9E
 export * from "./CreatePurchaseOrderEntityPurchaseOrderMoneyTypeResponseBody.js";
 export * from "./CreatePurchaseOrderEntityPurchaseOrderPurchaseOrderCoreChargeInputTypeRequestBody.js";
 export * from "./CreatePurchaseOrderEntityPurchaseOrderPurchaseOrderCoreChargeTypeResponseBody.js";
-export * from "./CreatePurchaseOrderEntityPurchaseOrderPurchaseOrderPartInputPublicVariantaf77215807F1TypeRequestBody.js";
-export * from "./CreatePurchaseOrderEntityPurchaseOrderPurchaseOrderPartPublicVariant7E1B94919242TypeResponseBody.js";
+export * from "./CreatePurchaseOrderEntityPurchaseOrderPurchaseOrderPartInputPublicVariant63E9Febe395ETypeRequestBody.js";
+export * from "./CreatePurchaseOrderEntityPurchaseOrderPurchaseOrderPartPublicVariant0241C1BeccaeTypeResponseBody.js";
+export * from "./CreatePurchaseOrderEntityPurchaseOrderTaxAdjustmentInputTypeRequestBody.js";
+export * from "./CreatePurchaseOrderEntityPurchaseOrderTaxAdjustmentTypeResponseBody.js";
 export * from "./CreateReportConfigColumnRequestBody.js";
 export * from "./CreateReportConfigObjectRequestBody.js";
 export * from "./CreateRouteStopWithOrdersRequestObjectRequestBody.js";
@@ -2542,6 +2544,7 @@ export * from "./ListPurchaseOrdersEntityPurchaseOrderCoreRecoverabilityPolicyTy
 export * from "./ListPurchaseOrdersEntityPurchaseOrderMoneyTypeResponseBody.js";
 export * from "./ListPurchaseOrdersEntityPurchaseOrderPurchaseOrderCoreChargeTypeResponseBody.js";
 export * from "./ListPurchaseOrdersEntityPurchaseOrderPurchaseOrderPartTypeResponseBody.js";
+export * from "./ListPurchaseOrdersEntityPurchaseOrderTaxAdjustmentTypeResponseBody.js";
 export * from "./ListTagsResponse.js";
 export * from "./ListTimeEntriesEntityTimeEntryMoneyTypeResponseBody.js";
 export * from "./ListTimeEntriesEntityTimeEntryTimeEntryLocationTypeResponseBody.js";
@@ -4101,8 +4104,10 @@ export * from "./UpdatePurchaseOrderEntityPurchaseOrderMoneyPublicVariant55Aeb67
 export * from "./UpdatePurchaseOrderEntityPurchaseOrderMoneyTypeResponseBody.js";
 export * from "./UpdatePurchaseOrderEntityPurchaseOrderPurchaseOrderCoreChargeInputTypeRequestBody.js";
 export * from "./UpdatePurchaseOrderEntityPurchaseOrderPurchaseOrderCoreChargeTypeResponseBody.js";
-export * from "./UpdatePurchaseOrderEntityPurchaseOrderPurchaseOrderPartInputPublicVarianta398Dc3A25A6TypeRequestBody.js";
-export * from "./UpdatePurchaseOrderEntityPurchaseOrderPurchaseOrderPartPublicVariant983F66355224TypeResponseBody.js";
+export * from "./UpdatePurchaseOrderEntityPurchaseOrderPurchaseOrderPartInputPublicVariant1A94E81632EaTypeRequestBody.js";
+export * from "./UpdatePurchaseOrderEntityPurchaseOrderPurchaseOrderPartPublicVariantc060A0106Cf6TypeResponseBody.js";
+export * from "./UpdatePurchaseOrderEntityPurchaseOrderTaxAdjustmentInputTypeRequestBody.js";
+export * from "./UpdatePurchaseOrderEntityPurchaseOrderTaxAdjustmentTypeResponseBody.js";
 export * from "./UpdateRoutesStopRequestObjectRequestBody.js";
 export * from "./UpdateSharedAssetRequestObjectRequestBody.js";
 export * from "./UpdateWarrantyClaimEntityWarrantyClaimClaimReimbursementInputTypeRequestBody.js";

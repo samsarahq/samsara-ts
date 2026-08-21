@@ -3,31 +3,33 @@
 import type * as Samsara from "../index.js";
 
 /**
- * ListPurchaseOrdersEntityPurchaseOrderPurchaseOrderPart object
+ * CreatePurchaseOrderEntityPurchaseOrderPurchaseOrderPartInput object
  */
-export interface ListPurchaseOrdersEntityPurchaseOrderPurchaseOrderPartTypeResponseBody {
+export interface CreatePurchaseOrderEntityPurchaseOrderPurchaseOrderPartInputPublicVariant63E9Febe395ETypeRequestBody {
     /** Batch or lot number for the ordered part. */
     batchNumber?: string | undefined;
-    coreCharge?: Samsara.ListPurchaseOrdersEntityPurchaseOrderPurchaseOrderCoreChargeTypeResponseBody | undefined;
+    coreCharge?: Samsara.CreatePurchaseOrderEntityPurchaseOrderPurchaseOrderCoreChargeInputTypeRequestBody | undefined;
     /** Description of the ordered part. */
     description?: string | undefined;
     /** Stable identifier for the purchase order line. */
     lineItemId?: string | undefined;
-    partSamsara?: Samsara.EntityListPurchaseOrdersPartDefinitionRefTypeResponseBody | undefined;
-    place?: Samsara.EntityListPurchaseOrdersPlaceRefTypeResponseBody | undefined;
+    /** ID of the part definition ordered on this line. */
+    partSamsaraId: string;
+    /** Place linked to the maintenance site holding this line's inventory. The internal location identifier is never exposed. */
+    placeId?: string | undefined;
     /** Quantity ordered on this line. */
-    quantityOrdered?: number | undefined;
+    quantityOrdered: number;
     /** Quantity received on this line. */
-    quantityReceived?: number | undefined;
-    tax?: Samsara.ListPurchaseOrdersEntityPurchaseOrderTaxAdjustmentTypeResponseBody | undefined;
-    unitCost?: Samsara.ListPurchaseOrdersEntityPurchaseOrderMoneyTypeResponseBody | undefined;
-    /** Unit of measure for quantities on this line.  Valid values: `Unknown`, `Each`, `Set`, `Pack`, `Box`, `Pound`, `Kilogram`, `Ounce`, `Liter`, `Milliliter`, `Gallon`, `Quart`, `FluidOunce`, `Inch`, `Foot`, `Meter`, `Yard`, `SquareFoot`, `SquareMeter`, `Pint`, `Hundred`, `Roll` */
-    unitOfMeasureType?:
-        | ListPurchaseOrdersEntityPurchaseOrderPurchaseOrderPartTypeResponseBody.UnitOfMeasureType
+    quantityReceived: number;
+    tax?: Samsara.CreatePurchaseOrderEntityPurchaseOrderTaxAdjustmentInputTypeRequestBody | undefined;
+    unitCost?:
+        | Samsara.CreatePurchaseOrderEntityPurchaseOrderMoneyInputPublicVarianta2E1675A5A65TypeRequestBody
         | undefined;
+    /** Unit of measure for quantities on this line.  Valid values: `Unknown`, `Each`, `Set`, `Pack`, `Box`, `Pound`, `Kilogram`, `Ounce`, `Liter`, `Milliliter`, `Gallon`, `Quart`, `FluidOunce`, `Inch`, `Foot`, `Meter`, `Yard`, `SquareFoot`, `SquareMeter`, `Pint`, `Hundred`, `Roll` */
+    unitOfMeasureType: CreatePurchaseOrderEntityPurchaseOrderPurchaseOrderPartInputPublicVariant63E9Febe395ETypeRequestBody.UnitOfMeasureType;
 }
 
-export namespace ListPurchaseOrdersEntityPurchaseOrderPurchaseOrderPartTypeResponseBody {
+export namespace CreatePurchaseOrderEntityPurchaseOrderPurchaseOrderPartInputPublicVariant63E9Febe395ETypeRequestBody {
     /** Unit of measure for quantities on this line.  Valid values: `Unknown`, `Each`, `Set`, `Pack`, `Box`, `Pound`, `Kilogram`, `Ounce`, `Liter`, `Milliliter`, `Gallon`, `Quart`, `FluidOunce`, `Inch`, `Foot`, `Meter`, `Yard`, `SquareFoot`, `SquareMeter`, `Pint`, `Hundred`, `Roll` */
     export const UnitOfMeasureType = {
         Unknown: "Unknown",

@@ -17,13 +17,33 @@ export interface EntityPurchaseOrdersServiceUpdatePurchaseOrderRequestBody {
     invoiceNumber?: string;
     /** Free-text notes for the purchase order. */
     notes?: string;
-    /** Current customer-visible status of the purchase order. */
-    orderStatus?: string;
+    /** Current customer-visible status of the purchase order.  Valid values: `Unknown`, `Draft`, `Open`, `InReview`, `Approved`, `Rejected`, `SentToVendor`, `PartiallyReceived`, `FullyReceived`, `Returned`, `Cancelled`, `Closed` */
+    orderStatus?: EntityPurchaseOrdersServiceUpdatePurchaseOrderRequestBody.OrderStatus;
     otherCost?: Samsara.UpdatePurchaseOrderEntityPurchaseOrderMoneyInputPublicVarianta34Bfd5A4152TypeRequestBody;
     /** Parts ordered on the purchase order. */
-    parts?: Samsara.UpdatePurchaseOrderEntityPurchaseOrderPurchaseOrderPartInputPublicVarianta398Dc3A25A6TypeRequestBody[];
+    parts?: Samsara.UpdatePurchaseOrderEntityPurchaseOrderPurchaseOrderPartInputPublicVariant1A94E81632EaTypeRequestBody[];
+    tax?: Samsara.UpdatePurchaseOrderEntityPurchaseOrderTaxAdjustmentInputTypeRequestBody;
     /** Shipment tracking number for the purchase order. */
     trackingNumber?: string;
     /** ID of the vendor supplying this purchase order. */
     vendorId?: string;
+}
+
+export namespace EntityPurchaseOrdersServiceUpdatePurchaseOrderRequestBody {
+    /** Current customer-visible status of the purchase order.  Valid values: `Unknown`, `Draft`, `Open`, `InReview`, `Approved`, `Rejected`, `SentToVendor`, `PartiallyReceived`, `FullyReceived`, `Returned`, `Cancelled`, `Closed` */
+    export const OrderStatus = {
+        Unknown: "Unknown",
+        Draft: "Draft",
+        Open: "Open",
+        InReview: "InReview",
+        Approved: "Approved",
+        Rejected: "Rejected",
+        SentToVendor: "SentToVendor",
+        PartiallyReceived: "PartiallyReceived",
+        FullyReceived: "FullyReceived",
+        Returned: "Returned",
+        Cancelled: "Cancelled",
+        Closed: "Closed",
+    } as const;
+    export type OrderStatus = (typeof OrderStatus)[keyof typeof OrderStatus];
 }

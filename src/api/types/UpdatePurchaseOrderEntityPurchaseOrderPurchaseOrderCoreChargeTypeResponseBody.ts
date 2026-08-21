@@ -6,12 +6,24 @@ import type * as Samsara from "../index.js";
  * UpdatePurchaseOrderEntityPurchaseOrderPurchaseOrderCoreCharge object
  */
 export interface UpdatePurchaseOrderEntityPurchaseOrderPurchaseOrderCoreChargeTypeResponseBody {
-    /** Whether the core charge is active or removed or disabled. */
-    coreChargeStatus?: string | undefined;
+    /** Whether the core charge is active or removed or disabled.  Valid values: `Unknown`, `Active`, `RemovedOrDisabled` */
+    coreChargeStatus?:
+        | UpdatePurchaseOrderEntityPurchaseOrderPurchaseOrderCoreChargeTypeResponseBody.CoreChargeStatus
+        | undefined;
     corePartSamsara?: Samsara.EntityUpdatePurchaseOrderPartDefinitionRefTypeResponseBody | undefined;
     recoverabilityPolicy?:
         | Samsara.UpdatePurchaseOrderEntityPurchaseOrderCoreRecoverabilityPolicyTypeResponseBody
         | undefined;
     returnRecipientVendor?: Samsara.EntityUpdatePurchaseOrderVendorRefTypeResponseBody | undefined;
     unitCoreAmount?: Samsara.UpdatePurchaseOrderEntityPurchaseOrderMoneyTypeResponseBody | undefined;
+}
+
+export namespace UpdatePurchaseOrderEntityPurchaseOrderPurchaseOrderCoreChargeTypeResponseBody {
+    /** Whether the core charge is active or removed or disabled.  Valid values: `Unknown`, `Active`, `RemovedOrDisabled` */
+    export const CoreChargeStatus = {
+        Unknown: "Unknown",
+        Active: "Active",
+        RemovedOrDisabled: "RemovedOrDisabled",
+    } as const;
+    export type CoreChargeStatus = (typeof CoreChargeStatus)[keyof typeof CoreChargeStatus];
 }

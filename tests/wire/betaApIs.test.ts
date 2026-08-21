@@ -19491,7 +19491,7 @@ describe("BetaApIsClient", () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
         
-        const rawResponseBody = { "data" : [ { "createdAtTime" : "2019-06-13T19:08:25Z" , "creationSource" : "12345" , "deliveryAtTime" : "2019-06-13T19:08:25Z" , "firstReceivedAtTime" : "2019-06-13T19:08:25Z" , "fullyReceivedAtTime" : "2019-06-13T19:08:25Z" , "glCode" : "12345" , "id" : "281474976710656" , "invoiceNumber" : "12345" , "mediaItemIds" : [ "12345" , "12345" , "12345" ] , "notes" : "12345" , "orderStatus" : "12345" , "otherCost" : { "amount" : "12345" , "currency" : "12345" } , "parts" : [ { "batchNumber" : "12345" , "description" : "12345" , "lineItemId" : "12345" , "partSamsara" : { "id" : "281474976710656" } , "place" : { "id" : "281474976710656" } , "quantityOrdered" : 123.45 , "quantityReceived" : 123.45 , "unitOfMeasureType" : "12345" } ] , "poNumber" : "PO-1001" , "poNumberPrefix" : "12345" , "poNumberSuffix" : "12345" , "sentAtTime" : "2019-06-13T19:08:25Z" , "trackingNumber" : "12345" , "updatedAtTime" : "2019-06-13T19:08:25Z" , "vendor" : { "id" : "281474976710656" } } ] , "pagination" : { "endCursor" : "MjkY" , "hasNextPage" : true } };
+        const rawResponseBody = { "data" : [ { "createdAtTime" : "2019-06-13T19:08:25Z" , "creationSource" : "Unknown" , "deliveryAtTime" : "2019-06-13T19:08:25Z" , "firstReceivedAtTime" : "2019-06-13T19:08:25Z" , "fullyReceivedAtTime" : "2019-06-13T19:08:25Z" , "glCode" : "12345" , "id" : "281474976710656" , "invoiceNumber" : "12345" , "mediaItemIds" : [ "12345" , "12345" , "12345" ] , "notes" : "12345" , "orderStatus" : "Unknown" , "otherCost" : { "amount" : "12345" , "currency" : "12345" } , "parts" : [ { "batchNumber" : "12345" , "description" : "12345" , "lineItemId" : "12345" , "partSamsara" : { "id" : "281474976710656" } , "place" : { "id" : "281474976710656" } , "quantityOrdered" : 123.45 , "quantityReceived" : 123.45 } ] , "poNumber" : "PO-1001" , "poNumberPrefix" : "12345" , "poNumberSuffix" : "12345" , "sentAtTime" : "2019-06-13T19:08:25Z" , "tax" : { "basisPoints" : 12345 } , "taxTotal" : { "amount" : "12345" , "currency" : "12345" } , "trackingNumber" : "12345" , "updatedAtTime" : "2019-06-13T19:08:25Z" , "vendor" : { "id" : "281474976710656" } } ] , "pagination" : { "endCursor" : "MjkY" , "hasNextPage" : true } };
         server
             .mockEndpoint()
             .get("/maintenance/purchase-orders").respondWith()
@@ -19510,7 +19510,7 @@ describe("BetaApIsClient", () => {
                             expect(response).toEqual({
     data: [{
             createdAtTime: "2019-06-13T19:08:25Z",
-            creationSource: "12345",
+            creationSource: "Unknown",
             deliveryAtTime: "2019-06-13T19:08:25Z",
             firstReceivedAtTime: "2019-06-13T19:08:25Z",
             fullyReceivedAtTime: "2019-06-13T19:08:25Z",
@@ -19519,7 +19519,7 @@ describe("BetaApIsClient", () => {
             invoiceNumber: "12345",
             mediaItemIds: ["12345", "12345", "12345"],
             notes: "12345",
-            orderStatus: "12345",
+            orderStatus: "Unknown",
             otherCost: {
                 amount: "12345",
                 currency: "12345"
@@ -19535,13 +19535,19 @@ describe("BetaApIsClient", () => {
                         id: "281474976710656"
                     },
                     quantityOrdered: 123.45,
-                    quantityReceived: 123.45,
-                    unitOfMeasureType: "12345"
+                    quantityReceived: 123.45
                 }],
             poNumber: "PO-1001",
             poNumberPrefix: "12345",
             poNumberSuffix: "12345",
             sentAtTime: "2019-06-13T19:08:25Z",
+            tax: {
+                basisPoints: 12345
+            },
+            taxTotal: {
+                amount: "12345",
+                currency: "12345"
+            },
             trackingNumber: "12345",
             updatedAtTime: "2019-06-13T19:08:25Z",
             vendor: {
@@ -19750,8 +19756,8 @@ describe("BetaApIsClient", () => {
     test("createPurchaseOrder (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
-        const rawRequestBody = { "orderStatus" : "draft" , "vendorId" : "281474976710656" };
-        const rawResponseBody = { "data" : { "createdAtTime" : "2019-06-13T19:08:25Z" , "creationSource" : "12345" , "deliveryAtTime" : "2019-06-13T19:08:25Z" , "firstReceivedAtTime" : "2019-06-13T19:08:25Z" , "fullyReceivedAtTime" : "2019-06-13T19:08:25Z" , "glCode" : "GL-4000" , "id" : "12345" , "invoiceNumber" : "INV-12345" , "mediaItemIds" : [ "12345" , "12345" , "12345" , "12345" ] , "notes" : "Deliver to maintenance shop." , "orderStatus" : "draft" , "otherCost" : { "amount" : "24.50" , "currency" : "usd" } , "parts" : [ { "batchNumber" : "LOT-42" , "description" : "Oil filter" , "lineItemId" : "12345" , "partSamsara" : { "id" : "281474976710656" } , "place" : { "id" : "281474976710656" } , "quantityOrdered" : 10 , "quantityReceived" : 123.45 , "unitOfMeasureType" : "each" } ] , "poNumber" : "12345" , "poNumberPrefix" : "PO" , "poNumberSuffix" : "A" , "sentAtTime" : "2019-06-13T19:08:25Z" , "trackingNumber" : "1Z999AA10123456784" , "updatedAtTime" : "2019-06-13T19:08:25Z" , "vendor" : { "id" : "281474976710656" } } };
+        const rawRequestBody = { "orderStatus" : "Unknown" , "vendorId" : "281474976710656" };
+        const rawResponseBody = { "data" : { "createdAtTime" : "2019-06-13T19:08:25Z" , "creationSource" : "Unknown" , "deliveryAtTime" : "2019-06-13T19:08:25Z" , "firstReceivedAtTime" : "2019-06-13T19:08:25Z" , "fullyReceivedAtTime" : "2019-06-13T19:08:25Z" , "glCode" : "GL-4000" , "id" : "12345" , "invoiceNumber" : "INV-12345" , "mediaItemIds" : [ "12345" , "12345" , "12345" , "12345" ] , "notes" : "Deliver to maintenance shop." , "orderStatus" : "Unknown" , "otherCost" : { "amount" : "24.50" , "currency" : "usd" } , "parts" : [ { "batchNumber" : "LOT-42" , "description" : "Oil filter" , "lineItemId" : "12345" , "partSamsara" : { "id" : "281474976710656" } , "place" : { "id" : "281474976710656" } , "quantityOrdered" : 10 , "quantityReceived" : 123.45 } ] , "poNumber" : "12345" , "poNumberPrefix" : "PO" , "poNumberSuffix" : "A" , "sentAtTime" : "2019-06-13T19:08:25Z" , "tax" : { "basisPoints" : 12345 , "money" : { "amount" : "12345" , "currency" : "12345" } } , "taxTotal" : { "amount" : "12345" , "currency" : "12345" } , "trackingNumber" : "1Z999AA10123456784" , "updatedAtTime" : "2019-06-13T19:08:25Z" , "vendor" : { "id" : "281474976710656" } } };
         server
             .mockEndpoint()
             .post("/maintenance/purchase-orders").jsonBody(rawRequestBody)
@@ -19762,13 +19768,13 @@ describe("BetaApIsClient", () => {
         
                     
                             const response = await client.betaApIs.createPurchaseOrder({
-    orderStatus: "draft",
+    orderStatus: "Unknown",
     vendorId: "281474976710656"
 });
                             expect(response).toEqual({
     data: {
         createdAtTime: "2019-06-13T19:08:25Z",
-        creationSource: "12345",
+        creationSource: "Unknown",
         deliveryAtTime: "2019-06-13T19:08:25Z",
         firstReceivedAtTime: "2019-06-13T19:08:25Z",
         fullyReceivedAtTime: "2019-06-13T19:08:25Z",
@@ -19777,7 +19783,7 @@ describe("BetaApIsClient", () => {
         invoiceNumber: "INV-12345",
         mediaItemIds: ["12345", "12345", "12345", "12345"],
         notes: "Deliver to maintenance shop.",
-        orderStatus: "draft",
+        orderStatus: "Unknown",
         otherCost: {
             amount: "24.50",
             currency: "usd"
@@ -19793,13 +19799,23 @@ describe("BetaApIsClient", () => {
                     id: "281474976710656"
                 },
                 quantityOrdered: 10,
-                quantityReceived: 123.45,
-                unitOfMeasureType: "each"
+                quantityReceived: 123.45
             }],
         poNumber: "12345",
         poNumberPrefix: "PO",
         poNumberSuffix: "A",
         sentAtTime: "2019-06-13T19:08:25Z",
+        tax: {
+            basisPoints: 12345,
+            money: {
+                amount: "12345",
+                currency: "12345"
+            }
+        },
+        taxTotal: {
+            amount: "12345",
+            currency: "12345"
+        },
         trackingNumber: "1Z999AA10123456784",
         updatedAtTime: "2019-06-13T19:08:25Z",
         vendor: {
@@ -19814,7 +19830,7 @@ describe("BetaApIsClient", () => {
     test("createPurchaseOrder (2)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
-        const rawRequestBody = { "orderStatus" : "orderStatus" , "vendorId" : "vendorId" };
+        const rawRequestBody = { "orderStatus" : "Unknown" , "vendorId" : "vendorId" };
         const rawResponseBody = { "key" : "value" };
         server
             .mockEndpoint()
@@ -19826,7 +19842,7 @@ describe("BetaApIsClient", () => {
         
             await expect(async () => {
                 return await client.betaApIs.createPurchaseOrder({
-    orderStatus: "orderStatus",
+    orderStatus: "Unknown",
     vendorId: "vendorId"
 })
             }).rejects.toThrow(Samsara.UnauthorizedError);
@@ -19835,7 +19851,7 @@ describe("BetaApIsClient", () => {
     test("createPurchaseOrder (3)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
-        const rawRequestBody = { "orderStatus" : "orderStatus" , "vendorId" : "vendorId" };
+        const rawRequestBody = { "orderStatus" : "Unknown" , "vendorId" : "vendorId" };
         const rawResponseBody = { "key" : "value" };
         server
             .mockEndpoint()
@@ -19847,7 +19863,7 @@ describe("BetaApIsClient", () => {
         
             await expect(async () => {
                 return await client.betaApIs.createPurchaseOrder({
-    orderStatus: "orderStatus",
+    orderStatus: "Unknown",
     vendorId: "vendorId"
 })
             }).rejects.toThrow(Samsara.NotFoundError);
@@ -19856,7 +19872,7 @@ describe("BetaApIsClient", () => {
     test("createPurchaseOrder (4)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
-        const rawRequestBody = { "orderStatus" : "orderStatus" , "vendorId" : "vendorId" };
+        const rawRequestBody = { "orderStatus" : "Unknown" , "vendorId" : "vendorId" };
         const rawResponseBody = { "key" : "value" };
         server
             .mockEndpoint()
@@ -19868,7 +19884,7 @@ describe("BetaApIsClient", () => {
         
             await expect(async () => {
                 return await client.betaApIs.createPurchaseOrder({
-    orderStatus: "orderStatus",
+    orderStatus: "Unknown",
     vendorId: "vendorId"
 })
             }).rejects.toThrow(Samsara.MethodNotAllowedError);
@@ -19877,7 +19893,7 @@ describe("BetaApIsClient", () => {
     test("createPurchaseOrder (5)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
-        const rawRequestBody = { "orderStatus" : "orderStatus" , "vendorId" : "vendorId" };
+        const rawRequestBody = { "orderStatus" : "Unknown" , "vendorId" : "vendorId" };
         const rawResponseBody = { "key" : "value" };
         server
             .mockEndpoint()
@@ -19889,7 +19905,7 @@ describe("BetaApIsClient", () => {
         
             await expect(async () => {
                 return await client.betaApIs.createPurchaseOrder({
-    orderStatus: "orderStatus",
+    orderStatus: "Unknown",
     vendorId: "vendorId"
 })
             }).rejects.toThrow(Samsara.ContentTooLargeError);
@@ -19898,7 +19914,7 @@ describe("BetaApIsClient", () => {
     test("createPurchaseOrder (6)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
-        const rawRequestBody = { "orderStatus" : "orderStatus" , "vendorId" : "vendorId" };
+        const rawRequestBody = { "orderStatus" : "Unknown" , "vendorId" : "vendorId" };
         const rawResponseBody = { "key" : "value" };
         server
             .mockEndpoint()
@@ -19910,7 +19926,7 @@ describe("BetaApIsClient", () => {
         
             await expect(async () => {
                 return await client.betaApIs.createPurchaseOrder({
-    orderStatus: "orderStatus",
+    orderStatus: "Unknown",
     vendorId: "vendorId"
 })
             }).rejects.toThrow(Samsara.TooManyRequestsError);
@@ -19919,7 +19935,7 @@ describe("BetaApIsClient", () => {
     test("createPurchaseOrder (7)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
-        const rawRequestBody = { "orderStatus" : "orderStatus" , "vendorId" : "vendorId" };
+        const rawRequestBody = { "orderStatus" : "Unknown" , "vendorId" : "vendorId" };
         const rawResponseBody = { "key" : "value" };
         server
             .mockEndpoint()
@@ -19931,7 +19947,7 @@ describe("BetaApIsClient", () => {
         
             await expect(async () => {
                 return await client.betaApIs.createPurchaseOrder({
-    orderStatus: "orderStatus",
+    orderStatus: "Unknown",
     vendorId: "vendorId"
 })
             }).rejects.toThrow(Samsara.InternalServerError);
@@ -19940,7 +19956,7 @@ describe("BetaApIsClient", () => {
     test("createPurchaseOrder (8)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
-        const rawRequestBody = { "orderStatus" : "orderStatus" , "vendorId" : "vendorId" };
+        const rawRequestBody = { "orderStatus" : "Unknown" , "vendorId" : "vendorId" };
         const rawResponseBody = { "key" : "value" };
         server
             .mockEndpoint()
@@ -19952,7 +19968,7 @@ describe("BetaApIsClient", () => {
         
             await expect(async () => {
                 return await client.betaApIs.createPurchaseOrder({
-    orderStatus: "orderStatus",
+    orderStatus: "Unknown",
     vendorId: "vendorId"
 })
             }).rejects.toThrow(Samsara.NotImplementedError);
@@ -19961,7 +19977,7 @@ describe("BetaApIsClient", () => {
     test("createPurchaseOrder (9)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
-        const rawRequestBody = { "orderStatus" : "orderStatus" , "vendorId" : "vendorId" };
+        const rawRequestBody = { "orderStatus" : "Unknown" , "vendorId" : "vendorId" };
         const rawResponseBody = { "key" : "value" };
         server
             .mockEndpoint()
@@ -19973,7 +19989,7 @@ describe("BetaApIsClient", () => {
         
             await expect(async () => {
                 return await client.betaApIs.createPurchaseOrder({
-    orderStatus: "orderStatus",
+    orderStatus: "Unknown",
     vendorId: "vendorId"
 })
             }).rejects.toThrow(Samsara.BadGatewayError);
@@ -19982,7 +19998,7 @@ describe("BetaApIsClient", () => {
     test("createPurchaseOrder (10)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
-        const rawRequestBody = { "orderStatus" : "orderStatus" , "vendorId" : "vendorId" };
+        const rawRequestBody = { "orderStatus" : "Unknown" , "vendorId" : "vendorId" };
         const rawResponseBody = { "key" : "value" };
         server
             .mockEndpoint()
@@ -19994,7 +20010,7 @@ describe("BetaApIsClient", () => {
         
             await expect(async () => {
                 return await client.betaApIs.createPurchaseOrder({
-    orderStatus: "orderStatus",
+    orderStatus: "Unknown",
     vendorId: "vendorId"
 })
             }).rejects.toThrow(Samsara.ServiceUnavailableError);
@@ -20003,7 +20019,7 @@ describe("BetaApIsClient", () => {
     test("createPurchaseOrder (11)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
-        const rawRequestBody = { "orderStatus" : "orderStatus" , "vendorId" : "vendorId" };
+        const rawRequestBody = { "orderStatus" : "Unknown" , "vendorId" : "vendorId" };
         const rawResponseBody = { "key" : "value" };
         server
             .mockEndpoint()
@@ -20015,7 +20031,7 @@ describe("BetaApIsClient", () => {
         
             await expect(async () => {
                 return await client.betaApIs.createPurchaseOrder({
-    orderStatus: "orderStatus",
+    orderStatus: "Unknown",
     vendorId: "vendorId"
 })
             }).rejects.toThrow(Samsara.GatewayTimeoutError);
@@ -20235,7 +20251,7 @@ describe("BetaApIsClient", () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
         const rawRequestBody = { };
-        const rawResponseBody = { "data" : { "createdAtTime" : "2019-06-13T19:08:25Z" , "creationSource" : "12345" , "deliveryAtTime" : "2019-06-13T19:08:25Z" , "firstReceivedAtTime" : "2019-06-13T19:08:25Z" , "fullyReceivedAtTime" : "2019-06-13T19:08:25Z" , "glCode" : "GL-4000" , "id" : "12345" , "invoiceNumber" : "INV-12345" , "mediaItemIds" : [ "12345" , "12345" ] , "notes" : "Deliver to maintenance shop." , "orderStatus" : "draft" , "otherCost" : { "amount" : "24.50" , "currency" : "usd" } , "parts" : [ { "batchNumber" : "LOT-42" , "description" : "Oil filter" , "lineItemId" : "12345" , "partSamsara" : { "id" : "281474976710656" } , "place" : { "id" : "281474976710656" } , "quantityOrdered" : 10 , "quantityReceived" : 123.45 , "unitOfMeasureType" : "each" } ] , "poNumber" : "12345" , "poNumberPrefix" : "PO" , "poNumberSuffix" : "A" , "sentAtTime" : "2019-06-13T19:08:25Z" , "trackingNumber" : "1Z999AA10123456784" , "updatedAtTime" : "2019-06-13T19:08:25Z" , "vendor" : { "id" : "281474976710656" } } };
+        const rawResponseBody = { "data" : { "createdAtTime" : "2019-06-13T19:08:25Z" , "creationSource" : "Unknown" , "deliveryAtTime" : "2019-06-13T19:08:25Z" , "firstReceivedAtTime" : "2019-06-13T19:08:25Z" , "fullyReceivedAtTime" : "2019-06-13T19:08:25Z" , "glCode" : "GL-4000" , "id" : "12345" , "invoiceNumber" : "INV-12345" , "mediaItemIds" : [ "12345" , "12345" ] , "notes" : "Deliver to maintenance shop." , "orderStatus" : "Unknown" , "otherCost" : { "amount" : "24.50" , "currency" : "usd" } , "parts" : [ { "batchNumber" : "LOT-42" , "description" : "Oil filter" , "lineItemId" : "12345" , "partSamsara" : { "id" : "281474976710656" } , "place" : { "id" : "281474976710656" } , "quantityOrdered" : 10 , "quantityReceived" : 123.45 } ] , "poNumber" : "12345" , "poNumberPrefix" : "PO" , "poNumberSuffix" : "A" , "sentAtTime" : "2019-06-13T19:08:25Z" , "tax" : { "basisPoints" : 12345 , "money" : { "amount" : "12345" , "currency" : "12345" } } , "taxTotal" : { "amount" : "12345" , "currency" : "12345" } , "trackingNumber" : "1Z999AA10123456784" , "updatedAtTime" : "2019-06-13T19:08:25Z" , "vendor" : { "id" : "281474976710656" } } };
         server
             .mockEndpoint()
             .patch("/maintenance/purchase-orders").jsonBody(rawRequestBody)
@@ -20251,7 +20267,7 @@ describe("BetaApIsClient", () => {
                             expect(response).toEqual({
     data: {
         createdAtTime: "2019-06-13T19:08:25Z",
-        creationSource: "12345",
+        creationSource: "Unknown",
         deliveryAtTime: "2019-06-13T19:08:25Z",
         firstReceivedAtTime: "2019-06-13T19:08:25Z",
         fullyReceivedAtTime: "2019-06-13T19:08:25Z",
@@ -20260,7 +20276,7 @@ describe("BetaApIsClient", () => {
         invoiceNumber: "INV-12345",
         mediaItemIds: ["12345", "12345"],
         notes: "Deliver to maintenance shop.",
-        orderStatus: "draft",
+        orderStatus: "Unknown",
         otherCost: {
             amount: "24.50",
             currency: "usd"
@@ -20276,13 +20292,23 @@ describe("BetaApIsClient", () => {
                     id: "281474976710656"
                 },
                 quantityOrdered: 10,
-                quantityReceived: 123.45,
-                unitOfMeasureType: "each"
+                quantityReceived: 123.45
             }],
         poNumber: "12345",
         poNumberPrefix: "PO",
         poNumberSuffix: "A",
         sentAtTime: "2019-06-13T19:08:25Z",
+        tax: {
+            basisPoints: 12345,
+            money: {
+                amount: "12345",
+                currency: "12345"
+            }
+        },
+        taxTotal: {
+            amount: "12345",
+            currency: "12345"
+        },
         trackingNumber: "1Z999AA10123456784",
         updatedAtTime: "2019-06-13T19:08:25Z",
         vendor: {

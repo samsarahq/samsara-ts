@@ -9679,6 +9679,337 @@ export class BetaApIsClient {
     }
 
     /**
+     * Returns a paginated list of maintenance sites for the organization.
+     *
+     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *
+     * To use this endpoint, select **Read Maintenance Sites** under the Work Orders category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     *
+     *
+     *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
+     *
+     * @param {Samsara.ListMaintenanceSitesRequest} request
+     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Samsara.UnauthorizedError}
+     * @throws {@link Samsara.NotFoundError}
+     * @throws {@link Samsara.MethodNotAllowedError}
+     * @throws {@link Samsara.ContentTooLargeError}
+     * @throws {@link Samsara.TooManyRequestsError}
+     * @throws {@link Samsara.InternalServerError}
+     * @throws {@link Samsara.NotImplementedError}
+     * @throws {@link Samsara.BadGatewayError}
+     * @throws {@link Samsara.ServiceUnavailableError}
+     * @throws {@link Samsara.GatewayTimeoutError}
+     *
+     * @example
+     *     await client.betaApIs.listMaintenanceSites()
+     */
+    public listMaintenanceSites(
+        request: Samsara.ListMaintenanceSitesRequest = {},
+        requestOptions?: BetaApIsClient.RequestOptions,
+    ): core.HttpResponsePromise<Samsara.EntityMaintenanceSitesServiceListMaintenanceSitesResponseBody> {
+        return core.HttpResponsePromise.fromPromise(this.__listMaintenanceSites(request, requestOptions));
+    }
+
+    private async __listMaintenanceSites(
+        request: Samsara.ListMaintenanceSitesRequest = {},
+        requestOptions?: BetaApIsClient.RequestOptions,
+    ): Promise<core.WithRawResponse<Samsara.EntityMaintenanceSitesServiceListMaintenanceSitesResponseBody>> {
+        const { ids, isArchived, placeIds, after, limit, includeExternalIds } = request;
+        const _queryParams: Record<string, unknown> = {
+            ids,
+            isArchived,
+            placeIds,
+            after,
+            limit,
+            includeExternalIds,
+        };
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ "X-Samsara-Version": requestOptions?.version }),
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.SamsaraEnvironment.ProductionApi,
+                "maintenance/sites",
+            ),
+            method: "GET",
+            headers: _headers,
+            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return {
+                data: _response.body as Samsara.EntityMaintenanceSitesServiceListMaintenanceSitesResponseBody,
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 401:
+                    throw new Samsara.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
+                case 404:
+                    throw new Samsara.NotFoundError(_response.error.body as unknown, _response.rawResponse);
+                case 405:
+                    throw new Samsara.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
+                case 413:
+                    throw new Samsara.ContentTooLargeError(_response.error.body as unknown, _response.rawResponse);
+                case 429:
+                    throw new Samsara.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
+                case 500:
+                    throw new Samsara.InternalServerError(_response.error.body as unknown, _response.rawResponse);
+                case 501:
+                    throw new Samsara.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
+                case 502:
+                    throw new Samsara.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                case 503:
+                    throw new Samsara.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
+                case 504:
+                    throw new Samsara.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
+                default:
+                    throw new errors.SamsaraError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
+                    });
+            }
+        }
+
+        return handleNonStatusCodeError(_response.error, _response.rawResponse, "GET", "/maintenance/sites");
+    }
+
+    /**
+     * Creates a maintenance site for the organization. Exactly one of placeIds or customAddress must be set.
+     *
+     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *
+     * To use this endpoint, select **Write Maintenance Sites** under the Work Orders category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     *
+     *
+     *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
+     *
+     * @param {Samsara.EntityMaintenanceSitesServiceCreateMaintenanceSiteRequestBody} request
+     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Samsara.UnauthorizedError}
+     * @throws {@link Samsara.NotFoundError}
+     * @throws {@link Samsara.MethodNotAllowedError}
+     * @throws {@link Samsara.ContentTooLargeError}
+     * @throws {@link Samsara.TooManyRequestsError}
+     * @throws {@link Samsara.InternalServerError}
+     * @throws {@link Samsara.NotImplementedError}
+     * @throws {@link Samsara.BadGatewayError}
+     * @throws {@link Samsara.ServiceUnavailableError}
+     * @throws {@link Samsara.GatewayTimeoutError}
+     *
+     * @example
+     *     await client.betaApIs.createMaintenanceSite({
+     *         name: "12345",
+     *         siteCode: "12345",
+     *         siteType: "Unknown"
+     *     })
+     */
+    public createMaintenanceSite(
+        request: Samsara.EntityMaintenanceSitesServiceCreateMaintenanceSiteRequestBody,
+        requestOptions?: BetaApIsClient.RequestOptions,
+    ): core.HttpResponsePromise<Samsara.EntityMaintenanceSitesServiceCreateMaintenanceSiteResponseBody> {
+        return core.HttpResponsePromise.fromPromise(this.__createMaintenanceSite(request, requestOptions));
+    }
+
+    private async __createMaintenanceSite(
+        request: Samsara.EntityMaintenanceSitesServiceCreateMaintenanceSiteRequestBody,
+        requestOptions?: BetaApIsClient.RequestOptions,
+    ): Promise<core.WithRawResponse<Samsara.EntityMaintenanceSitesServiceCreateMaintenanceSiteResponseBody>> {
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ "X-Samsara-Version": requestOptions?.version }),
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.SamsaraEnvironment.ProductionApi,
+                "maintenance/sites",
+            ),
+            method: "POST",
+            headers: _headers,
+            contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
+            requestType: "json",
+            body: request,
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return {
+                data: _response.body as Samsara.EntityMaintenanceSitesServiceCreateMaintenanceSiteResponseBody,
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 401:
+                    throw new Samsara.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
+                case 404:
+                    throw new Samsara.NotFoundError(_response.error.body as unknown, _response.rawResponse);
+                case 405:
+                    throw new Samsara.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
+                case 413:
+                    throw new Samsara.ContentTooLargeError(_response.error.body as unknown, _response.rawResponse);
+                case 429:
+                    throw new Samsara.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
+                case 500:
+                    throw new Samsara.InternalServerError(_response.error.body as unknown, _response.rawResponse);
+                case 501:
+                    throw new Samsara.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
+                case 502:
+                    throw new Samsara.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                case 503:
+                    throw new Samsara.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
+                case 504:
+                    throw new Samsara.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
+                default:
+                    throw new errors.SamsaraError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
+                    });
+            }
+        }
+
+        return handleNonStatusCodeError(_response.error, _response.rawResponse, "POST", "/maintenance/sites");
+    }
+
+    /**
+     * Updates an existing maintenance site for the organization. Moving a site between placeIds and customAddress is not supported.
+     *
+     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *
+     * To use this endpoint, select **Write Maintenance Sites** under the Work Orders category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     *
+     *
+     *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
+     *
+     * @param {Samsara.EntityMaintenanceSitesServiceUpdateMaintenanceSiteRequestBody} request
+     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Samsara.UnauthorizedError}
+     * @throws {@link Samsara.NotFoundError}
+     * @throws {@link Samsara.MethodNotAllowedError}
+     * @throws {@link Samsara.ContentTooLargeError}
+     * @throws {@link Samsara.TooManyRequestsError}
+     * @throws {@link Samsara.InternalServerError}
+     * @throws {@link Samsara.NotImplementedError}
+     * @throws {@link Samsara.BadGatewayError}
+     * @throws {@link Samsara.ServiceUnavailableError}
+     * @throws {@link Samsara.GatewayTimeoutError}
+     *
+     * @example
+     *     await client.betaApIs.updateMaintenanceSite({
+     *         id: "id"
+     *     })
+     */
+    public updateMaintenanceSite(
+        request: Samsara.EntityMaintenanceSitesServiceUpdateMaintenanceSiteRequestBody,
+        requestOptions?: BetaApIsClient.RequestOptions,
+    ): core.HttpResponsePromise<Samsara.EntityMaintenanceSitesServiceUpdateMaintenanceSiteResponseBody> {
+        return core.HttpResponsePromise.fromPromise(this.__updateMaintenanceSite(request, requestOptions));
+    }
+
+    private async __updateMaintenanceSite(
+        request: Samsara.EntityMaintenanceSitesServiceUpdateMaintenanceSiteRequestBody,
+        requestOptions?: BetaApIsClient.RequestOptions,
+    ): Promise<core.WithRawResponse<Samsara.EntityMaintenanceSitesServiceUpdateMaintenanceSiteResponseBody>> {
+        const { id, ..._body } = request;
+        const _queryParams: Record<string, unknown> = {
+            id,
+        };
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ "X-Samsara-Version": requestOptions?.version }),
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.SamsaraEnvironment.ProductionApi,
+                "maintenance/sites",
+            ),
+            method: "PATCH",
+            headers: _headers,
+            contentType: "application/json",
+            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            requestType: "json",
+            body: _body,
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return {
+                data: _response.body as Samsara.EntityMaintenanceSitesServiceUpdateMaintenanceSiteResponseBody,
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 401:
+                    throw new Samsara.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
+                case 404:
+                    throw new Samsara.NotFoundError(_response.error.body as unknown, _response.rawResponse);
+                case 405:
+                    throw new Samsara.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
+                case 413:
+                    throw new Samsara.ContentTooLargeError(_response.error.body as unknown, _response.rawResponse);
+                case 429:
+                    throw new Samsara.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
+                case 500:
+                    throw new Samsara.InternalServerError(_response.error.body as unknown, _response.rawResponse);
+                case 501:
+                    throw new Samsara.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
+                case 502:
+                    throw new Samsara.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                case 503:
+                    throw new Samsara.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
+                case 504:
+                    throw new Samsara.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
+                default:
+                    throw new errors.SamsaraError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
+                    });
+            }
+        }
+
+        return handleNonStatusCodeError(_response.error, _response.rawResponse, "PATCH", "/maintenance/sites");
+    }
+
+    /**
      * Returns a paginated feed of technician time entries updated in the requested time window, including deletion tombstones.
      *
      *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
@@ -10225,6 +10556,123 @@ export class BetaApIsClient {
         }
 
         return handleNonStatusCodeError(_response.error, _response.rawResponse, "PATCH", "/maintenance/warranties");
+    }
+
+    /**
+     * Returns the assets assigned to a warranty.
+     *
+     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *
+     * To use this endpoint, select **Read Warranties** under the Work Orders category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     *
+     *
+     *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
+     *
+     * @param {Samsara.ListWarrantyAssetAssignmentsRequest} request
+     * @param {BetaApIsClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Samsara.UnauthorizedError}
+     * @throws {@link Samsara.NotFoundError}
+     * @throws {@link Samsara.MethodNotAllowedError}
+     * @throws {@link Samsara.ContentTooLargeError}
+     * @throws {@link Samsara.TooManyRequestsError}
+     * @throws {@link Samsara.InternalServerError}
+     * @throws {@link Samsara.NotImplementedError}
+     * @throws {@link Samsara.BadGatewayError}
+     * @throws {@link Samsara.ServiceUnavailableError}
+     * @throws {@link Samsara.GatewayTimeoutError}
+     *
+     * @example
+     *     await client.betaApIs.listWarrantyAssetAssignments({
+     *         warrantyId: "warrantyId"
+     *     })
+     */
+    public listWarrantyAssetAssignments(
+        request: Samsara.ListWarrantyAssetAssignmentsRequest,
+        requestOptions?: BetaApIsClient.RequestOptions,
+    ): core.HttpResponsePromise<Samsara.EntityWarrantyAssetAssignmentsServiceListWarrantyAssetAssignmentsResponseBody> {
+        return core.HttpResponsePromise.fromPromise(this.__listWarrantyAssetAssignments(request, requestOptions));
+    }
+
+    private async __listWarrantyAssetAssignments(
+        request: Samsara.ListWarrantyAssetAssignmentsRequest,
+        requestOptions?: BetaApIsClient.RequestOptions,
+    ): Promise<
+        core.WithRawResponse<Samsara.EntityWarrantyAssetAssignmentsServiceListWarrantyAssetAssignmentsResponseBody>
+    > {
+        const { warrantyId, after, limit } = request;
+        const _queryParams: Record<string, unknown> = {
+            warrantyId,
+            after,
+            limit,
+        };
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ "X-Samsara-Version": requestOptions?.version }),
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.SamsaraEnvironment.ProductionApi,
+                "maintenance/warranties/assets",
+            ),
+            method: "GET",
+            headers: _headers,
+            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return {
+                data: _response.body as Samsara.EntityWarrantyAssetAssignmentsServiceListWarrantyAssetAssignmentsResponseBody,
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 401:
+                    throw new Samsara.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
+                case 404:
+                    throw new Samsara.NotFoundError(_response.error.body as unknown, _response.rawResponse);
+                case 405:
+                    throw new Samsara.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
+                case 413:
+                    throw new Samsara.ContentTooLargeError(_response.error.body as unknown, _response.rawResponse);
+                case 429:
+                    throw new Samsara.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
+                case 500:
+                    throw new Samsara.InternalServerError(_response.error.body as unknown, _response.rawResponse);
+                case 501:
+                    throw new Samsara.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
+                case 502:
+                    throw new Samsara.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                case 503:
+                    throw new Samsara.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
+                case 504:
+                    throw new Samsara.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
+                default:
+                    throw new errors.SamsaraError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
+                    });
+            }
+        }
+
+        return handleNonStatusCodeError(
+            _response.error,
+            _response.rawResponse,
+            "GET",
+            "/maintenance/warranties/assets",
+        );
     }
 
     /**

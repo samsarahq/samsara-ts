@@ -9,7 +9,7 @@ import type * as Samsara from "../../../../index.js";
  *     }
  */
 export interface AssetsUpdateAssetRequestBody {
-    /** A filter selecting a single asset by id. */
+    /** ID of the asset to update. Can be either a unique Samsara ID or an [external ID](https://developers.samsara.com/docs/external-ids) for the asset. */
     id: string;
     /** A list of attributes to assign to the asset. If provided, this replaces the asset's entire set of attribute associations with exactly this list; omit this field to leave existing attribute associations unchanged, or pass an empty array to clear them. */
     attributes?: Samsara.GoaAttributeTinyRequestBody[];

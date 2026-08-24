@@ -27,6 +27,8 @@ export { DeviceRecoveryRecoverAssetRequestBody } from "./DeviceRecoveryRecoverAs
 export type { DriverWorkflowAssignmentsPostDriverWorkflowAssignmentRequestBody } from "./DriverWorkflowAssignmentsPostDriverWorkflowAssignmentRequestBody.js";
 export type { EngineImmobilizerUpdateEngineImmobilizerStateRequestBody } from "./EngineImmobilizerUpdateEngineImmobilizerStateRequestBody.js";
 export { EntityGroundIntelligenceIssuesServiceUpdateGroundIntelligenceIssueRequestBody } from "./EntityGroundIntelligenceIssuesServiceUpdateGroundIntelligenceIssueRequestBody.js";
+export { EntityMaintenanceSitesServiceCreateMaintenanceSiteRequestBody } from "./EntityMaintenanceSitesServiceCreateMaintenanceSiteRequestBody.js";
+export { EntityMaintenanceSitesServiceUpdateMaintenanceSiteRequestBody } from "./EntityMaintenanceSitesServiceUpdateMaintenanceSiteRequestBody.js";
 export type { EntityPartDefinitionsServiceCreatePartRequestBody } from "./EntityPartDefinitionsServiceCreatePartRequestBody.js";
 export type { EntityPartDefinitionsServiceUpdatePartRequestBody } from "./EntityPartDefinitionsServiceUpdatePartRequestBody.js";
 export type { EntityPartInventoryLocationsServiceCreatePartInventoryLocationRequestBody } from "./EntityPartInventoryLocationsServiceCreatePartInventoryLocationRequestBody.js";
@@ -92,6 +94,7 @@ export type { ListDriverWorkflowsRequest } from "./ListDriverWorkflowsRequest.js
 export type { ListFunctionsStorageFilesRequest } from "./ListFunctionsStorageFilesRequest.js";
 export type { ListHubRouteTemplatesRequest } from "./ListHubRouteTemplatesRequest.js";
 export type { ListIssuesRequest } from "./ListIssuesRequest.js";
+export type { ListMaintenanceSitesRequest } from "./ListMaintenanceSitesRequest.js";
 export type { ListMaintenanceVendorsRequest } from "./ListMaintenanceVendorsRequest.js";
 export type { ListPartInventoryRequest } from "./ListPartInventoryRequest.js";
 export type { ListPartsRequest } from "./ListPartsRequest.js";
@@ -108,6 +111,7 @@ export type { ListTimeEntriesRequest } from "./ListTimeEntriesRequest.js";
 export type { ListUpcomingPreventiveMaintenanceRequest } from "./ListUpcomingPreventiveMaintenanceRequest.js";
 export type { ListVendorCategoriesRequest } from "./ListVendorCategoriesRequest.js";
 export type { ListWarrantiesRequest } from "./ListWarrantiesRequest.js";
+export type { ListWarrantyAssetAssignmentsRequest } from "./ListWarrantyAssetAssignmentsRequest.js";
 export type { ListWarrantyClaimsRequest } from "./ListWarrantyClaimsRequest.js";
 export { PlacesPatchPlaceRequestBody } from "./PlacesPatchPlaceRequestBody.js";
 export { PlacesPostPlaceRequestBody } from "./PlacesPostPlaceRequestBody.js";

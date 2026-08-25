@@ -18,9 +18,9 @@ export interface EntityPurchaseOrdersServiceCreatePurchaseOrderRequestBody {
     notes?: string;
     /** Current customer-visible status of the purchase order.  Valid values: `Unknown`, `Draft`, `Open`, `InReview`, `Approved`, `Rejected`, `SentToVendor`, `PartiallyReceived`, `FullyReceived`, `Returned`, `Cancelled`, `Closed` */
     orderStatus: EntityPurchaseOrdersServiceCreatePurchaseOrderRequestBody.OrderStatus;
-    otherCost?: Samsara.CreatePurchaseOrderEntityPurchaseOrderMoneyInputPublicVarianta2E1675A5A65TypeRequestBody;
+    otherCost?: Samsara.CreatePurchaseOrderEntityPurchaseOrderMoneyInputPublicVariantc9366B66E6FcTypeRequestBody;
     /** Parts ordered on the purchase order. */
-    parts?: Samsara.CreatePurchaseOrderEntityPurchaseOrderPurchaseOrderPartInputPublicVariant63E9Febe395ETypeRequestBody[];
+    parts?: Samsara.CreatePurchaseOrderEntityPurchaseOrderPurchaseOrderPartInputPublicVariantfe4658938A0FTypeRequestBody[];
     /** Optional prefix included in the purchase order number. */
     poNumberPrefix?: string;
     /** Optional suffix included in the purchase order number. */

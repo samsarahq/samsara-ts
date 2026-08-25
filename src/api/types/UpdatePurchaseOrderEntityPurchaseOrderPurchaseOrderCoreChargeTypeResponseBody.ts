@@ -3,7 +3,7 @@
 import type * as Samsara from "../index.js";
 
 /**
- * UpdatePurchaseOrderEntityPurchaseOrderPurchaseOrderCoreCharge object
+ * PurchaseOrderCoreCharge object
  */
 export interface UpdatePurchaseOrderEntityPurchaseOrderPurchaseOrderCoreChargeTypeResponseBody {
     /** Whether the core charge is active or removed or disabled.  Valid values: `Unknown`, `Active`, `RemovedOrDisabled` */

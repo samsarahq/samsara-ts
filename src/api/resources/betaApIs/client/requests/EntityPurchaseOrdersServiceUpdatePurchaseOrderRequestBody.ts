@@ -19,9 +19,9 @@ export interface EntityPurchaseOrdersServiceUpdatePurchaseOrderRequestBody {
     notes?: string;
     /** Current customer-visible status of the purchase order.  Valid values: `Unknown`, `Draft`, `Open`, `InReview`, `Approved`, `Rejected`, `SentToVendor`, `PartiallyReceived`, `FullyReceived`, `Returned`, `Cancelled`, `Closed` */
     orderStatus?: EntityPurchaseOrdersServiceUpdatePurchaseOrderRequestBody.OrderStatus;
-    otherCost?: Samsara.UpdatePurchaseOrderEntityPurchaseOrderMoneyInputPublicVarianta34Bfd5A4152TypeRequestBody;
+    otherCost?: Samsara.UpdatePurchaseOrderEntityPurchaseOrderMoneyInputPublicVariantc9366B66E6FcTypeRequestBody;
     /** Parts ordered on the purchase order. */
-    parts?: Samsara.UpdatePurchaseOrderEntityPurchaseOrderPurchaseOrderPartInputPublicVariant1A94E81632EaTypeRequestBody[];
+    parts?: Samsara.UpdatePurchaseOrderEntityPurchaseOrderPurchaseOrderPartInputPublicVariant5E7C0Da15F4CTypeRequestBody[];
     tax?: Samsara.UpdatePurchaseOrderEntityPurchaseOrderTaxAdjustmentInputTypeRequestBody;
     /** Shipment tracking number for the purchase order. */
     trackingNumber?: string;

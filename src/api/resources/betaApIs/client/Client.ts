@@ -5569,12 +5569,14 @@ export class BetaApIsClient {
         request: Samsara.ListFunctionsStorageFilesRequest = {},
         requestOptions?: BetaApIsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.FunctionsStorageListFunctionsStorageFilesResponseBody>> {
-        const { after, limit, includeDownloadUrls, includeUploadUrls } = request;
+        const { after, limit, includeDownloadUrls, includeUploadUrls, prefix, groupByFolder } = request;
         const _queryParams: Record<string, unknown> = {
             after,
             limit,
             includeDownloadUrls,
             includeUploadUrls,
+            prefix,
+            groupByFolder,
         };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(

@@ -3,7 +3,7 @@
 import type * as Samsara from "../index.js";
 
 /**
- * ListPurchaseOrdersEntityPurchaseOrderPurchaseOrderPart object
+ * PurchaseOrderPart object
  */
 export interface ListPurchaseOrdersEntityPurchaseOrderPurchaseOrderPartTypeResponseBody {
     /** Batch or lot number for the ordered part. */
@@ -21,14 +21,14 @@ export interface ListPurchaseOrdersEntityPurchaseOrderPurchaseOrderPartTypeRespo
     quantityReceived?: number | undefined;
     tax?: Samsara.ListPurchaseOrdersEntityPurchaseOrderTaxAdjustmentTypeResponseBody | undefined;
     unitCost?: Samsara.ListPurchaseOrdersEntityPurchaseOrderMoneyTypeResponseBody | undefined;
-    /** Unit of measure for quantities on this line.  Valid values: `Unknown`, `Each`, `Set`, `Pack`, `Box`, `Pound`, `Kilogram`, `Ounce`, `Liter`, `Milliliter`, `Gallon`, `Quart`, `FluidOunce`, `Inch`, `Foot`, `Meter`, `Yard`, `SquareFoot`, `SquareMeter`, `Pint`, `Hundred`, `Roll` */
+    /** Unit of measure for quantities on this line. Read-only: derived from the line's part definition, and ignored if supplied on create or update.  Valid values: `Unknown`, `Each`, `Set`, `Pack`, `Box`, `Pound`, `Kilogram`, `Ounce`, `Liter`, `Milliliter`, `Gallon`, `Quart`, `FluidOunce`, `Inch`, `Foot`, `Meter`, `Yard`, `SquareFoot`, `SquareMeter`, `Pint`, `Hundred`, `Roll` */
     unitOfMeasureType?:
         | ListPurchaseOrdersEntityPurchaseOrderPurchaseOrderPartTypeResponseBody.UnitOfMeasureType
         | undefined;
 }
 
 export namespace ListPurchaseOrdersEntityPurchaseOrderPurchaseOrderPartTypeResponseBody {
-    /** Unit of measure for quantities on this line.  Valid values: `Unknown`, `Each`, `Set`, `Pack`, `Box`, `Pound`, `Kilogram`, `Ounce`, `Liter`, `Milliliter`, `Gallon`, `Quart`, `FluidOunce`, `Inch`, `Foot`, `Meter`, `Yard`, `SquareFoot`, `SquareMeter`, `Pint`, `Hundred`, `Roll` */
+    /** Unit of measure for quantities on this line. Read-only: derived from the line's part definition, and ignored if supplied on create or update.  Valid values: `Unknown`, `Each`, `Set`, `Pack`, `Box`, `Pound`, `Kilogram`, `Ounce`, `Liter`, `Milliliter`, `Gallon`, `Quart`, `FluidOunce`, `Inch`, `Foot`, `Meter`, `Yard`, `SquareFoot`, `SquareMeter`, `Pint`, `Hundred`, `Roll` */
     export const UnitOfMeasureType = {
         Unknown: "Unknown",
         Each: "Each",

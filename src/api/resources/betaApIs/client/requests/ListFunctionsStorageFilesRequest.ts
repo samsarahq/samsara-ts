@@ -13,4 +13,8 @@ export interface ListFunctionsStorageFilesRequest {
     includeDownloadUrls?: boolean;
     /** If true, include presigned upload URLs for each file. Requires write permission. */
     includeUploadUrls?: boolean;
+    /** Only list files and immediate subfolders under this path prefix, for example `logs/`. */
+    prefix?: string;
+    /** When true, roll immediate subfolders up into the `folders` field and return only files directly under the prefix in `data`. */
+    groupByFolder?: boolean;
 }

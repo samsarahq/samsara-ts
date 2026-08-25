@@ -11651,7 +11651,7 @@ describe("BetaApIsClient", () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({ "maxRetries" : 0 , "token" : "test" , "version" : "2025-06-11" , "environment" : server.baseUrl });
         
-        const rawResponseBody = { "data" : [ { "modifiedAtTime" : "2024-01-01T12:00:00Z" , "name" : "my-script.js" , "sizeBytes" : 1024 , "urls" : [ { "expiresAtTime" : "2024-01-01T13:00:00Z" , "url" : "https://s3.amazonaws.com/bucket/key?signature=abc123" , "urlType" : "download" } ] } ] , "pagination" : { "endCursor" : "MjkY" , "hasNextPage" : true } };
+        const rawResponseBody = { "data" : [ { "modifiedAtTime" : "2024-01-01T12:00:00Z" , "name" : "my-script.js" , "sizeBytes" : 1024 , "urls" : [ { "expiresAtTime" : "2024-01-01T13:00:00Z" , "url" : "https://s3.amazonaws.com/bucket/key?signature=abc123" , "urlType" : "download" } ] } ] , "folders" : [ { "name" : "logs/archive/" } ] , "pagination" : { "endCursor" : "MjkY" , "hasNextPage" : true } };
         server
             .mockEndpoint()
             .get("/functions-storage/ls").respondWith()
@@ -11671,6 +11671,9 @@ describe("BetaApIsClient", () => {
                     url: "https://s3.amazonaws.com/bucket/key?signature=abc123",
                     urlType: "download"
                 }]
+        }],
+    folders: [{
+            name: "logs/archive/"
         }],
     pagination: {
         endCursor: "MjkY",

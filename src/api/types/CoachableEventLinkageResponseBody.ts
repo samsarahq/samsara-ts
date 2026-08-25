@@ -6,14 +6,14 @@
 export interface CoachableEventLinkageResponseBody {
     /** Unique identifier to the upstream data source. For safety events, this is the event uuid. */
     sourceId: string;
-    /** Upstream data source backing this coachable event.  Valid values: `triageEvent`, `hosViolation`, `idling` */
+    /** Upstream data source backing this coachable event.  Valid values: `safetyEvent`, `hosViolation`, `idling` */
     sourceType: CoachableEventLinkageResponseBody.SourceType;
 }
 
 export namespace CoachableEventLinkageResponseBody {
-    /** Upstream data source backing this coachable event.  Valid values: `triageEvent`, `hosViolation`, `idling` */
+    /** Upstream data source backing this coachable event.  Valid values: `safetyEvent`, `hosViolation`, `idling` */
     export const SourceType = {
-        TriageEvent: "triageEvent",
+        SafetyEvent: "safetyEvent",
         HosViolation: "hosViolation",
         Idling: "idling",
     } as const;

@@ -29,11 +29,11 @@ export interface EntityUpdatePurchaseOrderTypeResponseBody {
     /** Current customer-visible status of the purchase order.  Valid values: `Unknown`, `Draft`, `Open`, `InReview`, `Approved`, `Rejected`, `SentToVendor`, `PartiallyReceived`, `FullyReceived`, `Returned`, `Cancelled`, `Closed` */
     orderStatus?: EntityUpdatePurchaseOrderTypeResponseBody.OrderStatus | undefined;
     otherCost?:
-        | Samsara.UpdatePurchaseOrderEntityPurchaseOrderMoneyPublicVariant55Aeb6731578TypeResponseBody
+        | Samsara.UpdatePurchaseOrderEntityPurchaseOrderMoneyPublicVariantf6994A15F796TypeResponseBody
         | undefined;
     /** Parts ordered on the purchase order. */
     parts?:
-        | Samsara.UpdatePurchaseOrderEntityPurchaseOrderPurchaseOrderPartPublicVariantc060A0106Cf6TypeResponseBody[]
+        | Samsara.UpdatePurchaseOrderEntityPurchaseOrderPurchaseOrderPartPublicVarianteafe48Db3764TypeResponseBody[]
         | undefined;
     /** Customer-visible purchase order number. */
     poNumber?: string | undefined;

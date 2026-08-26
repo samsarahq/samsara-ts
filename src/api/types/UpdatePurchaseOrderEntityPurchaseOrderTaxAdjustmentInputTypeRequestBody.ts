@@ -3,7 +3,7 @@
 import type * as Samsara from "../index.js";
 
 /**
- * UpdatePurchaseOrderEntityPurchaseOrderTaxAdjustmentInput object
+ * TaxAdjustment object
  */
 export interface UpdatePurchaseOrderEntityPurchaseOrderTaxAdjustmentInputTypeRequestBody {
     /** Tax rate in basis points. Set exactly one of money or basisPoints. */

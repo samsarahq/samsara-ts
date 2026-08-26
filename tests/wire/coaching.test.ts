@@ -591,7 +591,7 @@ describe("CoachingClient", () => {
                                     id: "f5271458-21f9-4a9f-a290-780c6d8840ff",
                                     linkage: {
                                         sourceId: "f5271458-21f9-4a9f-a290-780c6d8840ff",
-                                        sourceType: "triageEvent",
+                                        sourceType: "safetyEvent",
                                     },
                                 },
                             ],
@@ -637,7 +637,7 @@ describe("CoachingClient", () => {
                                     id: "f5271458-21f9-4a9f-a290-780c6d8840ff",
                                     linkage: {
                                         sourceId: "f5271458-21f9-4a9f-a290-780c6d8840ff",
-                                        sourceType: "triageEvent",
+                                        sourceType: "safetyEvent",
                                     },
                                 },
                             ],

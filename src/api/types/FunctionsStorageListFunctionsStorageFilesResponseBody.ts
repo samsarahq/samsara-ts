@@ -5,5 +5,7 @@ import type * as Samsara from "../index.js";
 export interface FunctionsStorageListFunctionsStorageFilesResponseBody {
     /** Array of files in Functions storage. */
     data: Samsara.FunctionsStorageFileResponseBody[];
+    /** Immediate subfolders under the prefix. Populated only when `groupByFolder` is true. */
+    folders?: Samsara.FunctionsStorageFolderResponseBody[] | undefined;
     pagination: Samsara.GoaPaginationResponseResponseBody;
 }

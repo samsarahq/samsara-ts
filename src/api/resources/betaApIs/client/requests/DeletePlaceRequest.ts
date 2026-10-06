@@ -2,11 +2,11 @@
 
 /**
  * @example
- *     {
- *         placeId: 1000000
- *     }
+ *     {}
  */
 export interface DeletePlaceRequest {
-    /** Samsara place id to delete. */
-    placeId: number;
+    /** Samsara place id to delete. Mutually exclusive with `externalId`; provide exactly one. */
+    placeId?: number;
+    /** External id token in `key:value` form (e.g. crmId:warehouse-east). Mutually exclusive with `placeId`; provide exactly one. */
+    externalId?: string;
 }

@@ -4,6 +4,6 @@
  * Metadata about this driver assignment
  */
 export interface PatchDriverVehicleAssignmentsV2RequestBodyMetadataRequestBody {
-    /** Describes where the external assignment is coming from */
+    /** Exact metadata source name. When vehicleId, driverId, and startTime are omitted, identifies the existing assignment to update. When those identity fields are provided, sets or updates the assignment's source name. */
     sourceName?: string | undefined;
 }

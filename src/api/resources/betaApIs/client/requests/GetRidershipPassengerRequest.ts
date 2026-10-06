@@ -7,7 +7,7 @@
  *     }
  */
 export interface GetRidershipPassengerRequest {
-    /** ID of the ridership passenger. This can either be the Samsara-specified UUID, or an external ID. External IDs are customer-specified key-value pairs. To specify an external ID, use the following format: `key:value`. For example, `student:STU-001`. */
+    /** Samsara UUID of the passenger, or an external ID in `key:value` format, such as `student:STU-001`. */
     id: string;
     /** Optional boolean indicating whether to return external IDs on supported entities */
     includeExternalIds?: boolean;

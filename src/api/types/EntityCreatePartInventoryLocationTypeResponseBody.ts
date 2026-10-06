@@ -14,7 +14,7 @@ export interface EntityCreatePartInventoryLocationTypeResponseBody {
     bin?: string | undefined;
     /** Time when the inventory level record was created. */
     createdAtTime?: string | undefined;
-    /** Total physical quantity on hand at this location, equal to the available quantity plus the reserved quantity. Read-only; changes only via stock movements. */
+    /** Total physical quantity on hand at this location, equal to the available quantity plus the reserved quantity. Settable only when creating the record, to seed initial stock; thereafter it changes only via stock movements. */
     currentQuantity?: number | undefined;
     /** Unique identifier for the part inventory level record. The internal composite key is never exposed; identify the part and location via part ID and place ID. */
     id?: string | undefined;
@@ -22,6 +22,8 @@ export interface EntityCreatePartInventoryLocationTypeResponseBody {
     isCostTracked?: boolean | undefined;
     /** Whether the available quantity is greater than zero and at or below the reorder threshold. */
     isLowStock?: boolean | undefined;
+    /** Whether the part is tracked at this location without stock management. */
+    isNonStock?: boolean | undefined;
     /** Maximum quantity to keep in stock at this location. */
     maxStockLevel?: number | undefined;
     /** Minimum quantity to keep in stock at this location. */
@@ -37,8 +39,37 @@ export interface EntityCreatePartInventoryLocationTypeResponseBody {
     /** Row within the location where the part is stored. */
     row?: string | undefined;
     unitCost?: Samsara.CreatePartInventoryLocationEntityPartInventoryLocationMoneyTypeResponseBody | undefined;
-    /** Unit of measure that the quantity fields on this record are expressed in. Surfaced here so the unit of all quantity fields is visible in-response. */
-    unitOfMeasureType?: string | undefined;
+    /** Unit of measure that the quantity fields on this record are expressed in. Surfaced here so the unit of all quantity fields is visible in-response.  Valid values: `Unknown`, `Each`, `Set`, `Pack`, `Box`, `Pound`, `Kilogram`, `Ounce`, `Liter`, `Milliliter`, `Gallon`, `Quart`, `FluidOunce`, `Inch`, `Foot`, `Meter`, `Yard`, `SquareFoot`, `SquareMeter`, `Pint`, `Hundred`, `Roll` */
+    unitOfMeasureType?: EntityCreatePartInventoryLocationTypeResponseBody.UnitOfMeasureType | undefined;
     /** Time when the inventory level record was last updated. */
     updatedAtTime?: string | undefined;
+}
+
+export namespace EntityCreatePartInventoryLocationTypeResponseBody {
+    /** Unit of measure that the quantity fields on this record are expressed in. Surfaced here so the unit of all quantity fields is visible in-response.  Valid values: `Unknown`, `Each`, `Set`, `Pack`, `Box`, `Pound`, `Kilogram`, `Ounce`, `Liter`, `Milliliter`, `Gallon`, `Quart`, `FluidOunce`, `Inch`, `Foot`, `Meter`, `Yard`, `SquareFoot`, `SquareMeter`, `Pint`, `Hundred`, `Roll` */
+    export const UnitOfMeasureType = {
+        Unknown: "Unknown",
+        Each: "Each",
+        Set: "Set",
+        Pack: "Pack",
+        Box: "Box",
+        Pound: "Pound",
+        Kilogram: "Kilogram",
+        Ounce: "Ounce",
+        Liter: "Liter",
+        Milliliter: "Milliliter",
+        Gallon: "Gallon",
+        Quart: "Quart",
+        FluidOunce: "FluidOunce",
+        Inch: "Inch",
+        Foot: "Foot",
+        Meter: "Meter",
+        Yard: "Yard",
+        SquareFoot: "SquareFoot",
+        SquareMeter: "SquareMeter",
+        Pint: "Pint",
+        Hundred: "Hundred",
+        Roll: "Roll",
+    } as const;
+    export type UnitOfMeasureType = (typeof UnitOfMeasureType)[keyof typeof UnitOfMeasureType];
 }

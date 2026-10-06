@@ -628,6 +628,7 @@ describe("WorkOrdersClient", () => {
                     archivedAtTime: "2019-06-13T19:08:25Z",
                     assetId: "12443",
                     assignedUserId: "1234",
+                    assignees: [{ userId: "67890" }],
                     attachments: [
                         {
                             id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
@@ -651,9 +652,9 @@ describe("WorkOrdersClient", () => {
                     maintenanceSite: {
                         name: "LAX Service Bay 3",
                         placeExternalIds: {
-                            "Totam ipsum quaerat.": "Blanditiis laborum.",
-                            "Velit nihil.": "Placeat id.",
-                            "Velit quia consequatur saepe.": "Repellendus temporibus.",
+                            "Blanditiis laborum.": "Quis nesciunt excepturi voluptatem.",
+                            "Occaecati repellendus.": "Adipisci velit nihil.",
+                            "Placeat id.": "Totam ipsum quaerat.",
                         },
                         placeId: "123456",
                     },
@@ -662,6 +663,7 @@ describe("WorkOrdersClient", () => {
                     priority: "High",
                     serviceTaskInstances: [
                         {
+                            assignees: [{ userId: "67890" }],
                             id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
                             laborHourlyCost: { amount: "94.01", currency: "usd" },
                             laborTimeMinutes: 60,
@@ -718,6 +720,11 @@ describe("WorkOrdersClient", () => {
                     archivedAtTime: "2019-06-13T19:08:25Z",
                     assetId: "12443",
                     assignedUserId: "1234",
+                    assignees: [
+                        {
+                            userId: "67890",
+                        },
+                    ],
                     attachments: [
                         {
                             id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
@@ -752,9 +759,9 @@ describe("WorkOrdersClient", () => {
                     maintenanceSite: {
                         name: "LAX Service Bay 3",
                         placeExternalIds: {
-                            "Totam ipsum quaerat.": "Blanditiis laborum.",
-                            "Velit nihil.": "Placeat id.",
-                            "Velit quia consequatur saepe.": "Repellendus temporibus.",
+                            "Blanditiis laborum.": "Quis nesciunt excepturi voluptatem.",
+                            "Occaecati repellendus.": "Adipisci velit nihil.",
+                            "Placeat id.": "Totam ipsum quaerat.",
                         },
                         placeId: "123456",
                     },
@@ -763,6 +770,11 @@ describe("WorkOrdersClient", () => {
                     priority: "High",
                     serviceTaskInstances: [
                         {
+                            assignees: [
+                                {
+                                    userId: "67890",
+                                },
+                            ],
                             id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
                             laborHourlyCost: {
                                 amount: "94.01",
@@ -1071,6 +1083,7 @@ describe("WorkOrdersClient", () => {
                 archivedAtTime: "2019-06-13T19:08:25Z",
                 assetId: "12443",
                 assignedUserId: "1234",
+                assignees: [{ userId: "67890" }],
                 attachments: [
                     {
                         id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
@@ -1094,9 +1107,9 @@ describe("WorkOrdersClient", () => {
                 maintenanceSite: {
                     name: "LAX Service Bay 3",
                     placeExternalIds: {
-                        "Totam ipsum quaerat.": "Blanditiis laborum.",
-                        "Velit nihil.": "Placeat id.",
-                        "Velit quia consequatur saepe.": "Repellendus temporibus.",
+                        "Blanditiis laborum.": "Quis nesciunt excepturi voluptatem.",
+                        "Occaecati repellendus.": "Adipisci velit nihil.",
+                        "Placeat id.": "Totam ipsum quaerat.",
                     },
                     placeId: "123456",
                 },
@@ -1105,6 +1118,7 @@ describe("WorkOrdersClient", () => {
                 priority: "High",
                 serviceTaskInstances: [
                     {
+                        assignees: [{ userId: "67890" }],
                         id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
                         laborHourlyCost: { amount: "94.01", currency: "usd" },
                         laborTimeMinutes: 60,
@@ -1152,6 +1166,11 @@ describe("WorkOrdersClient", () => {
                 archivedAtTime: "2019-06-13T19:08:25Z",
                 assetId: "12443",
                 assignedUserId: "1234",
+                assignees: [
+                    {
+                        userId: "67890",
+                    },
+                ],
                 attachments: [
                     {
                         id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
@@ -1186,9 +1205,9 @@ describe("WorkOrdersClient", () => {
                 maintenanceSite: {
                     name: "LAX Service Bay 3",
                     placeExternalIds: {
-                        "Totam ipsum quaerat.": "Blanditiis laborum.",
-                        "Velit nihil.": "Placeat id.",
-                        "Velit quia consequatur saepe.": "Repellendus temporibus.",
+                        "Blanditiis laborum.": "Quis nesciunt excepturi voluptatem.",
+                        "Occaecati repellendus.": "Adipisci velit nihil.",
+                        "Placeat id.": "Totam ipsum quaerat.",
                     },
                     placeId: "123456",
                 },
@@ -1197,6 +1216,11 @@ describe("WorkOrdersClient", () => {
                 priority: "High",
                 serviceTaskInstances: [
                     {
+                        assignees: [
+                            {
+                                userId: "67890",
+                            },
+                        ],
                         id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
                         laborHourlyCost: {
                             amount: "94.01",
@@ -1788,6 +1812,7 @@ describe("WorkOrdersClient", () => {
                 archivedAtTime: "2019-06-13T19:08:25Z",
                 assetId: "12443",
                 assignedUserId: "1234",
+                assignees: [{ userId: "67890" }],
                 attachments: [
                     {
                         id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
@@ -1811,9 +1836,9 @@ describe("WorkOrdersClient", () => {
                 maintenanceSite: {
                     name: "LAX Service Bay 3",
                     placeExternalIds: {
-                        "Totam ipsum quaerat.": "Blanditiis laborum.",
-                        "Velit nihil.": "Placeat id.",
-                        "Velit quia consequatur saepe.": "Repellendus temporibus.",
+                        "Blanditiis laborum.": "Quis nesciunt excepturi voluptatem.",
+                        "Occaecati repellendus.": "Adipisci velit nihil.",
+                        "Placeat id.": "Totam ipsum quaerat.",
                     },
                     placeId: "123456",
                 },
@@ -1822,6 +1847,7 @@ describe("WorkOrdersClient", () => {
                 priority: "High",
                 serviceTaskInstances: [
                     {
+                        assignees: [{ userId: "67890" }],
                         id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
                         laborHourlyCost: { amount: "94.01", currency: "usd" },
                         laborTimeMinutes: 60,
@@ -1869,6 +1895,11 @@ describe("WorkOrdersClient", () => {
                 archivedAtTime: "2019-06-13T19:08:25Z",
                 assetId: "12443",
                 assignedUserId: "1234",
+                assignees: [
+                    {
+                        userId: "67890",
+                    },
+                ],
                 attachments: [
                     {
                         id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
@@ -1903,9 +1934,9 @@ describe("WorkOrdersClient", () => {
                 maintenanceSite: {
                     name: "LAX Service Bay 3",
                     placeExternalIds: {
-                        "Totam ipsum quaerat.": "Blanditiis laborum.",
-                        "Velit nihil.": "Placeat id.",
-                        "Velit quia consequatur saepe.": "Repellendus temporibus.",
+                        "Blanditiis laborum.": "Quis nesciunt excepturi voluptatem.",
+                        "Occaecati repellendus.": "Adipisci velit nihil.",
+                        "Placeat id.": "Totam ipsum quaerat.",
                     },
                     placeId: "123456",
                 },
@@ -1914,6 +1945,11 @@ describe("WorkOrdersClient", () => {
                 priority: "High",
                 serviceTaskInstances: [
                     {
+                        assignees: [
+                            {
+                                userId: "67890",
+                            },
+                        ],
                         id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
                         laborHourlyCost: {
                             amount: "94.01",
@@ -2239,6 +2275,7 @@ describe("WorkOrdersClient", () => {
                     archivedAtTime: "2019-06-13T19:08:25Z",
                     assetId: "12443",
                     assignedUserId: "1234",
+                    assignees: [{ userId: "67890" }],
                     attachments: [
                         {
                             id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
@@ -2262,9 +2299,9 @@ describe("WorkOrdersClient", () => {
                     maintenanceSite: {
                         name: "LAX Service Bay 3",
                         placeExternalIds: {
-                            "Totam ipsum quaerat.": "Blanditiis laborum.",
-                            "Velit nihil.": "Placeat id.",
-                            "Velit quia consequatur saepe.": "Repellendus temporibus.",
+                            "Blanditiis laborum.": "Quis nesciunt excepturi voluptatem.",
+                            "Occaecati repellendus.": "Adipisci velit nihil.",
+                            "Placeat id.": "Totam ipsum quaerat.",
                         },
                         placeId: "123456",
                     },
@@ -2273,6 +2310,7 @@ describe("WorkOrdersClient", () => {
                     priority: "High",
                     serviceTaskInstances: [
                         {
+                            assignees: [{ userId: "67890" }],
                             id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
                             laborHourlyCost: { amount: "94.01", currency: "usd" },
                             laborTimeMinutes: 60,
@@ -2331,6 +2369,11 @@ describe("WorkOrdersClient", () => {
                     archivedAtTime: "2019-06-13T19:08:25Z",
                     assetId: "12443",
                     assignedUserId: "1234",
+                    assignees: [
+                        {
+                            userId: "67890",
+                        },
+                    ],
                     attachments: [
                         {
                             id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
@@ -2365,9 +2408,9 @@ describe("WorkOrdersClient", () => {
                     maintenanceSite: {
                         name: "LAX Service Bay 3",
                         placeExternalIds: {
-                            "Totam ipsum quaerat.": "Blanditiis laborum.",
-                            "Velit nihil.": "Placeat id.",
-                            "Velit quia consequatur saepe.": "Repellendus temporibus.",
+                            "Blanditiis laborum.": "Quis nesciunt excepturi voluptatem.",
+                            "Occaecati repellendus.": "Adipisci velit nihil.",
+                            "Placeat id.": "Totam ipsum quaerat.",
                         },
                         placeId: "123456",
                     },
@@ -2376,6 +2419,11 @@ describe("WorkOrdersClient", () => {
                     priority: "High",
                     serviceTaskInstances: [
                         {
+                            assignees: [
+                                {
+                                    userId: "67890",
+                                },
+                            ],
                             id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
                             laborHourlyCost: {
                                 amount: "94.01",

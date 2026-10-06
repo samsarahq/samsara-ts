@@ -3,7 +3,7 @@
 import type * as Samsara from "../index.js";
 
 /**
- * CreateWarrantyClaimEntityWarrantyClaimWarrantyClaimLaborInput object
+ * WarrantyClaimLabor object
  */
 export interface CreateWarrantyClaimEntityWarrantyClaimWarrantyClaimLaborInputTypeRequestBody {
     cost?: Samsara.CreateWarrantyClaimEntityWarrantyClaimMoneyInputTypeRequestBody | undefined;

@@ -12,7 +12,7 @@ import type * as Samsara from "../../../../index.js";
  *     }
  */
 export interface RidershipRouteSetupsCreateRidershipRouteSetupRequestBody {
-    /** List of passenger assignments for the route. */
+    /** Passenger assignments for the route, with each passenger listed once. */
     passengers: Samsara.RidershipRouteSetupPassengerInputRequestBody[];
     /** The Samsara route ID returned by the Routing API, or an external ID in `key:value` format. For example, `extRoute:WB-12`. */
     routeId: string;

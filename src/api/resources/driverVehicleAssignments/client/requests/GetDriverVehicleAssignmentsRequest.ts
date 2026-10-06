@@ -19,7 +19,7 @@ export interface GetDriverVehicleAssignmentsRequest {
     driverIds?: string | string[];
     /** ID of the vehicle. This can either be the Samsara-specified ID, or an external ID. External IDs are customer specified key-value pairs created in the POST or PATCH requests of this resource. To specify an external ID as part of a path parameter, use the following format: "key:value". For example, "maintenanceId:250020". */
     vehicleIds?: string | string[];
-    /** Filters assignments by the exact metadata source name supplied when the assignment was created. Requires filterBy=drivers. When set, driver and vehicle ID, tag, and assignment type filters are not supported. */
+    /** Filters assignments by the exact metadata source name supplied when the assignment was created. Requires filterBy=drivers. When set, driver and vehicle ID, tag, and assignment type filters are not supported. `startTime` and `endTime` are optional here: if omitted, matching assignments are returned regardless of when they occurred, rather than being limited to the recent window used by the other filters. */
     sourceName?: string;
     /**  A filter on the data based on this comma-separated list of driver tag IDs. Example: `tagIds=1234,5678` */
     driverTagIds?: string;

@@ -40,7 +40,17 @@ export interface EntityUpdateUpcomingPreventiveMaintenanceTypeResponseBody {
     schedule?:
         | Samsara.EntityUpdateUpcomingPreventiveMaintenancePreventativeMaintenanceScheduleRefTypeResponseBody
         | undefined;
-    /** Status of the preventive maintenance schedule. */
-    status?: string | undefined;
+    /** Status of the preventive maintenance schedule.  Valid values: `unknown`, `overdue`, `upcoming` */
+    status?: EntityUpdateUpcomingPreventiveMaintenanceTypeResponseBody.Status | undefined;
     workOrder?: Samsara.EntityUpdateUpcomingPreventiveMaintenanceWorkOrderRefTypeResponseBody | undefined;
+}
+
+export namespace EntityUpdateUpcomingPreventiveMaintenanceTypeResponseBody {
+    /** Status of the preventive maintenance schedule.  Valid values: `unknown`, `overdue`, `upcoming` */
+    export const Status = {
+        Unknown: "unknown",
+        Overdue: "overdue",
+        Upcoming: "upcoming",
+    } as const;
+    export type Status = (typeof Status)[keyof typeof Status];
 }

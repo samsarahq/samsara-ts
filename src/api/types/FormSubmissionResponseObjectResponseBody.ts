@@ -33,7 +33,7 @@ export interface FormSubmissionResponseObjectResponseBody {
     /** ID of the route stop. Sometimes returned if the submission was assigned to a route stop. */
     routeStopId?: string | undefined;
     score?: Samsara.FormsScoreObjectResponseBody | undefined;
-    /** State for the Form Submission. Always returned.  Valid values: `notStarted`, `completed`, `archived`, `inProgress`, `needsReview`, `changesRequested`, `approved` */
+    /** State for the Form Submission. Always returned.  Valid values: `notStarted`, `completed`, `archived`, `inProgress`, `needsReview`, `changesRequested`, `approved`, `denied` */
     status: FormSubmissionResponseObjectResponseBody.Status;
     /** Submission time of the form submission. UTC timestamp in RFC 3339 format. */
     submittedAtTime: string;
@@ -45,7 +45,7 @@ export interface FormSubmissionResponseObjectResponseBody {
 }
 
 export namespace FormSubmissionResponseObjectResponseBody {
-    /** State for the Form Submission. Always returned.  Valid values: `notStarted`, `completed`, `archived`, `inProgress`, `needsReview`, `changesRequested`, `approved` */
+    /** State for the Form Submission. Always returned.  Valid values: `notStarted`, `completed`, `archived`, `inProgress`, `needsReview`, `changesRequested`, `approved`, `denied` */
     export const Status = {
         NotStarted: "notStarted",
         Completed: "completed",
@@ -54,6 +54,7 @@ export namespace FormSubmissionResponseObjectResponseBody {
         NeedsReview: "needsReview",
         ChangesRequested: "changesRequested",
         Approved: "approved",
+        Denied: "denied",
     } as const;
     export type Status = (typeof Status)[keyof typeof Status];
 }

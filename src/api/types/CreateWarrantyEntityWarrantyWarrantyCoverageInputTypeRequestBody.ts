@@ -3,7 +3,7 @@
 import type * as Samsara from "../index.js";
 
 /**
- * CreateWarrantyEntityWarrantyWarrantyCoverageInput object
+ * WarrantyCoverage object
  */
 export interface CreateWarrantyEntityWarrantyWarrantyCoverageInputTypeRequestBody {
     /** Description of what this coverage group covers. */

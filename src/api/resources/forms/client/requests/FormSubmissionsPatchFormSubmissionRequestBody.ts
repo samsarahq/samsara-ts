@@ -22,20 +22,21 @@ export interface FormSubmissionsPatchFormSubmissionRequestBody {
     isRequired?: boolean;
     /** ID of the route stop the form submission is assigned to. Must be a unique Samsara ID. */
     routeStopId?: string;
-    /** Status of the form submission.  Valid values: `notStarted`, `archived`, `inProgress`, `changesRequested`, `approved` */
+    /** Status of the form submission.  Valid values: `notStarted`, `archived`, `inProgress`, `changesRequested`, `approved`, `denied` */
     status?: FormSubmissionsPatchFormSubmissionRequestBody.Status;
     /** Title of the form submission. */
     title?: string;
 }
 
 export namespace FormSubmissionsPatchFormSubmissionRequestBody {
-    /** Status of the form submission.  Valid values: `notStarted`, `archived`, `inProgress`, `changesRequested`, `approved` */
+    /** Status of the form submission.  Valid values: `notStarted`, `archived`, `inProgress`, `changesRequested`, `approved`, `denied` */
     export const Status = {
         NotStarted: "notStarted",
         Archived: "archived",
         InProgress: "inProgress",
         ChangesRequested: "changesRequested",
         Approved: "approved",
+        Denied: "denied",
     } as const;
     export type Status = (typeof Status)[keyof typeof Status];
 }

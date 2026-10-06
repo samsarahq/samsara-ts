@@ -31,11 +31,27 @@ export interface EntityListPartTransactionsTypeResponseBody {
     resultingQuantity?: number | undefined;
     /** Transfer only — destination maintenance site (place ID). */
     toPlaceId?: string | undefined;
-    /** The kind of inventory movement this record represents. */
-    transactionType?: string | undefined;
+    /** The kind of inventory movement this record represents.  Valid values: `Unknown`, `Receive`, `Transfer`, `Scrap`, `Adjust`, `Reserve`, `Issue`, `Release`, `Return` */
+    transactionType?: EntityListPartTransactionsTypeResponseBody.TransactionType | undefined;
     /** Per-unit cost recorded with the transaction. Present on receive transactions. */
     unitCost?: number | undefined;
     /** Vendor the part was received from. Present on receive transactions. Resolvable via GET /fleet/maintenance/vendors. */
     vendorId?: string | undefined;
     workOrder?: Samsara.EntityListPartTransactionsWorkOrderRefTypeResponseBody | undefined;
+}
+
+export namespace EntityListPartTransactionsTypeResponseBody {
+    /** The kind of inventory movement this record represents.  Valid values: `Unknown`, `Receive`, `Transfer`, `Scrap`, `Adjust`, `Reserve`, `Issue`, `Release`, `Return` */
+    export const TransactionType = {
+        Unknown: "Unknown",
+        Receive: "Receive",
+        Transfer: "Transfer",
+        Scrap: "Scrap",
+        Adjust: "Adjust",
+        Reserve: "Reserve",
+        Issue: "Issue",
+        Release: "Release",
+        Return: "Return",
+    } as const;
+    export type TransactionType = (typeof TransactionType)[keyof typeof TransactionType];
 }

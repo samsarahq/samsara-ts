@@ -10,23 +10,23 @@ import type * as Samsara from "../../../../index.js";
  *     }
  */
 export interface RidershipPassengersCreateRidershipPassengerRequestBody {
-    /** Classification or grade level of the passenger.  Valid values: `unknown`, `pk1`, `pk2`, `pk3`, `pk4`, `k`, `grade1`, `grade2`, `grade3`, `grade4`, `grade5`, `grade6`, `grade7`, `grade8`, `grade9`, `grade10`, `grade11`, `grade12` */
+    /** Passenger grade level: `pk1`–`pk4` are pre-kindergarten categories, `k` is kindergarten, and `grade1`–`grade12` are grades 1–12. Use `unknown` when the grade level is not known.  Valid values: `unknown`, `pk1`, `pk2`, `pk3`, `pk4`, `k`, `grade1`, `grade2`, `grade3`, `grade4`, `grade5`, `grade6`, `grade7`, `grade8`, `grade9`, `grade10`, `grade11`, `grade12` */
     classification?: RidershipPassengersCreateRidershipPassengerRequestBody.Classification;
-    /** A map of external ids */
+    /** Customer-defined IDs that link this passenger to another system, such as {"student": "STU-001"}. */
     externalIds?: Record<string, string>;
-    /** First name of the passenger. */
+    /** Passenger's first name. Maximum 100 characters. */
     firstName: string;
-    /** List of identifiers associated with the passenger. */
+    /** Identifiers used to recognize the passenger, such as RFID card values. Maximum 10. */
     identifiers?: Samsara.RidershipPassengerIdentifierInputRequestBody[];
-    /** Last name of the passenger. */
+    /** Passenger's last name. Maximum 100 characters. */
     lastName: string;
     specialInstructions?: Samsara.RidershipPassengerSpecialInstructionsInputRequestBody;
-    /** IDs of tags to associate with the passenger. */
+    /** Up to 10 Samsara tag IDs to assign to the passenger; external IDs are not supported here. Omit or send `[]` to create a passenger without tags. */
     tagIds?: string[];
 }
 
 export namespace RidershipPassengersCreateRidershipPassengerRequestBody {
-    /** Classification or grade level of the passenger.  Valid values: `unknown`, `pk1`, `pk2`, `pk3`, `pk4`, `k`, `grade1`, `grade2`, `grade3`, `grade4`, `grade5`, `grade6`, `grade7`, `grade8`, `grade9`, `grade10`, `grade11`, `grade12` */
+    /** Passenger grade level: `pk1`–`pk4` are pre-kindergarten categories, `k` is kindergarten, and `grade1`–`grade12` are grades 1–12. Use `unknown` when the grade level is not known.  Valid values: `unknown`, `pk1`, `pk2`, `pk3`, `pk4`, `k`, `grade1`, `grade2`, `grade3`, `grade4`, `grade5`, `grade6`, `grade7`, `grade8`, `grade9`, `grade10`, `grade11`, `grade12` */
     export const Classification = {
         Unknown: "unknown",
         Pk1: "pk1",

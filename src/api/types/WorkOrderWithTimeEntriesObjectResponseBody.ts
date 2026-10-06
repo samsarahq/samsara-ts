@@ -12,6 +12,8 @@ export interface WorkOrderWithTimeEntriesObjectResponseBody {
     assetId: string;
     /** The ID of the assigned mechanic. */
     assignedUserId?: string | undefined;
+    /** Dashboard users assigned to the work order. Only returned for organizations with multiple work order assignees enabled. Technicians backed only by a driver are not represented. */
+    assignees?: Samsara.WorkOrderAssigneeObjectResponseBody[] | undefined;
     /** Files attached to the work order. */
     attachments?: Samsara.WorkOrderAttachmentObjectResponseBody[] | undefined;
     /** The category of the work order */

@@ -5,6 +5,774 @@ import { SamsaraClient } from "../../src/Client";
 import { mockServerPool } from "../mock-server/MockServerPool";
 
 describe("LegacyApIsClient", () => {
+    test("getDriverEfficiencyByDrivers (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = {
+            data: [
+                {
+                    difficultyScore: { overallScore: "4", topographyScore: "5", vehicleWeightScore: "4" },
+                    driverId: "driver_001",
+                    percentageData: {
+                        anticipationPercentage: 9.5,
+                        coastingPercentage: 45.6,
+                        cruiseControlPercentage: 45.6,
+                        greenBandPercentage: 78.9,
+                        highGradeRoadDrivingPercentage: 15.3,
+                        highTorquePercentage: 23.4,
+                        idlingPercentage: 12.8,
+                        overSpeedPercentage: 5.6,
+                        wearFreeBrakePercentage: 88.2,
+                    },
+                    rawData: {
+                        anticipationBrakeEventCount: 17,
+                        averageVehicleWeightKg: 14500,
+                        coastingDurationMs: 1900800,
+                        cruiseControlDurationMs: 3283200,
+                        driveTimeDurationMs: 7200000,
+                        engineOnDurationMs: 7500000,
+                        greenBandDurationMs: 5683200,
+                        highGradeRoadDrivingDurationMs: 1108800,
+                        highTorqueDurationMs: 1684800,
+                        idlingDurationMs: 921600,
+                        overSpeedDurationMs: 403200,
+                        totalBrakeDurationMs: 1022400,
+                        totalBrakeEventCount: 85,
+                        wearFreeBrakeDurationMs: 6340800,
+                    },
+                    scoreData: {
+                        anticipationScore: "C",
+                        coastingScore: "C",
+                        cruiseControlScore: "B",
+                        greenBandScore: "A",
+                        highTorqueScore: "A",
+                        idlingScore: "B",
+                        overSpeedScore: "B",
+                        overallScore: "A",
+                        wearFreeBrakeScore: "A",
+                    },
+                },
+            ],
+            pagination: { endCursor: "MjkY", hasNextPage: true },
+        };
+        server
+            .mockEndpoint()
+            .get("/driver-efficiency/drivers")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.legacyApIs.getDriverEfficiencyByDrivers({
+            startTime: "startTime",
+            endTime: "endTime",
+        });
+        expect(response).toEqual({
+            data: [
+                {
+                    difficultyScore: {
+                        overallScore: "4",
+                        topographyScore: "5",
+                        vehicleWeightScore: "4",
+                    },
+                    driverId: "driver_001",
+                    percentageData: {
+                        anticipationPercentage: 9.5,
+                        coastingPercentage: 45.6,
+                        cruiseControlPercentage: 45.6,
+                        greenBandPercentage: 78.9,
+                        highGradeRoadDrivingPercentage: 15.3,
+                        highTorquePercentage: 23.4,
+                        idlingPercentage: 12.8,
+                        overSpeedPercentage: 5.6,
+                        wearFreeBrakePercentage: 88.2,
+                    },
+                    rawData: {
+                        anticipationBrakeEventCount: 17,
+                        averageVehicleWeightKg: 14500,
+                        coastingDurationMs: 1900800,
+                        cruiseControlDurationMs: 3283200,
+                        driveTimeDurationMs: 7200000,
+                        engineOnDurationMs: 7500000,
+                        greenBandDurationMs: 5683200,
+                        highGradeRoadDrivingDurationMs: 1108800,
+                        highTorqueDurationMs: 1684800,
+                        idlingDurationMs: 921600,
+                        overSpeedDurationMs: 403200,
+                        totalBrakeDurationMs: 1022400,
+                        totalBrakeEventCount: 85,
+                        wearFreeBrakeDurationMs: 6340800,
+                    },
+                    scoreData: {
+                        anticipationScore: "C",
+                        coastingScore: "C",
+                        cruiseControlScore: "B",
+                        greenBandScore: "A",
+                        highTorqueScore: "A",
+                        idlingScore: "B",
+                        overSpeedScore: "B",
+                        overallScore: "A",
+                        wearFreeBrakeScore: "A",
+                    },
+                },
+            ],
+            pagination: {
+                endCursor: "MjkY",
+                hasNextPage: true,
+            },
+        });
+    });
+
+    test("getDriverEfficiencyByDrivers (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/driver-efficiency/drivers")
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.legacyApIs.getDriverEfficiencyByDrivers({
+                startTime: "startTime",
+                endTime: "endTime",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("getDriverEfficiencyByDrivers (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/driver-efficiency/drivers")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.legacyApIs.getDriverEfficiencyByDrivers({
+                startTime: "startTime",
+                endTime: "endTime",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("getDriverEfficiencyByDrivers (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/driver-efficiency/drivers")
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.legacyApIs.getDriverEfficiencyByDrivers({
+                startTime: "startTime",
+                endTime: "endTime",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("getDriverEfficiencyByDrivers (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/driver-efficiency/drivers")
+            .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.legacyApIs.getDriverEfficiencyByDrivers({
+                startTime: "startTime",
+                endTime: "endTime",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("getDriverEfficiencyByDrivers (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/driver-efficiency/drivers")
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.legacyApIs.getDriverEfficiencyByDrivers({
+                startTime: "startTime",
+                endTime: "endTime",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("getDriverEfficiencyByDrivers (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/driver-efficiency/drivers")
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.legacyApIs.getDriverEfficiencyByDrivers({
+                startTime: "startTime",
+                endTime: "endTime",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("getDriverEfficiencyByDrivers (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/driver-efficiency/drivers")
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.legacyApIs.getDriverEfficiencyByDrivers({
+                startTime: "startTime",
+                endTime: "endTime",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("getDriverEfficiencyByDrivers (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/driver-efficiency/drivers")
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.legacyApIs.getDriverEfficiencyByDrivers({
+                startTime: "startTime",
+                endTime: "endTime",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("getDriverEfficiencyByDrivers (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/driver-efficiency/drivers")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.legacyApIs.getDriverEfficiencyByDrivers({
+                startTime: "startTime",
+                endTime: "endTime",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("getDriverEfficiencyByDrivers (11)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/driver-efficiency/drivers")
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.legacyApIs.getDriverEfficiencyByDrivers({
+                startTime: "startTime",
+                endTime: "endTime",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("getDriverEfficiencyByVehicles (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = {
+            data: [
+                {
+                    difficultyScore: { overallScore: "4", topographyScore: "5", vehicleWeightScore: "4" },
+                    percentageData: {
+                        anticipationPercentage: 9.5,
+                        coastingPercentage: 45.6,
+                        cruiseControlPercentage: 45.6,
+                        greenBandPercentage: 78.9,
+                        highGradeRoadDrivingPercentage: 15.3,
+                        highTorquePercentage: 23.4,
+                        idlingPercentage: 12.8,
+                        overSpeedPercentage: 5.6,
+                        wearFreeBrakePercentage: 88.2,
+                    },
+                    rawData: {
+                        anticipationBrakeEventCount: 17,
+                        averageVehicleWeightKg: 14500,
+                        coastingDurationMs: 1900800,
+                        cruiseControlDurationMs: 3283200,
+                        driveTimeDurationMs: 7200000,
+                        engineOnDurationMs: 7500000,
+                        greenBandDurationMs: 5683200,
+                        highGradeRoadDrivingDurationMs: 1108800,
+                        highTorqueDurationMs: 1684800,
+                        idlingDurationMs: 921600,
+                        overSpeedDurationMs: 403200,
+                        totalBrakeDurationMs: 1022400,
+                        totalBrakeEventCount: 85,
+                        wearFreeBrakeDurationMs: 6340800,
+                    },
+                    scoreData: {
+                        anticipationScore: "C",
+                        coastingScore: "C",
+                        cruiseControlScore: "B",
+                        greenBandScore: "A",
+                        highTorqueScore: "A",
+                        idlingScore: "B",
+                        overSpeedScore: "B",
+                        overallScore: "A",
+                        wearFreeBrakeScore: "A",
+                    },
+                    vehicleId: "vehicle_001",
+                },
+            ],
+            pagination: { endCursor: "MjkY", hasNextPage: true },
+        };
+        server
+            .mockEndpoint()
+            .get("/driver-efficiency/vehicles")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.legacyApIs.getDriverEfficiencyByVehicles({
+            startTime: "startTime",
+            endTime: "endTime",
+        });
+        expect(response).toEqual({
+            data: [
+                {
+                    difficultyScore: {
+                        overallScore: "4",
+                        topographyScore: "5",
+                        vehicleWeightScore: "4",
+                    },
+                    percentageData: {
+                        anticipationPercentage: 9.5,
+                        coastingPercentage: 45.6,
+                        cruiseControlPercentage: 45.6,
+                        greenBandPercentage: 78.9,
+                        highGradeRoadDrivingPercentage: 15.3,
+                        highTorquePercentage: 23.4,
+                        idlingPercentage: 12.8,
+                        overSpeedPercentage: 5.6,
+                        wearFreeBrakePercentage: 88.2,
+                    },
+                    rawData: {
+                        anticipationBrakeEventCount: 17,
+                        averageVehicleWeightKg: 14500,
+                        coastingDurationMs: 1900800,
+                        cruiseControlDurationMs: 3283200,
+                        driveTimeDurationMs: 7200000,
+                        engineOnDurationMs: 7500000,
+                        greenBandDurationMs: 5683200,
+                        highGradeRoadDrivingDurationMs: 1108800,
+                        highTorqueDurationMs: 1684800,
+                        idlingDurationMs: 921600,
+                        overSpeedDurationMs: 403200,
+                        totalBrakeDurationMs: 1022400,
+                        totalBrakeEventCount: 85,
+                        wearFreeBrakeDurationMs: 6340800,
+                    },
+                    scoreData: {
+                        anticipationScore: "C",
+                        coastingScore: "C",
+                        cruiseControlScore: "B",
+                        greenBandScore: "A",
+                        highTorqueScore: "A",
+                        idlingScore: "B",
+                        overSpeedScore: "B",
+                        overallScore: "A",
+                        wearFreeBrakeScore: "A",
+                    },
+                    vehicleId: "vehicle_001",
+                },
+            ],
+            pagination: {
+                endCursor: "MjkY",
+                hasNextPage: true,
+            },
+        });
+    });
+
+    test("getDriverEfficiencyByVehicles (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/driver-efficiency/vehicles")
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.legacyApIs.getDriverEfficiencyByVehicles({
+                startTime: "startTime",
+                endTime: "endTime",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("getDriverEfficiencyByVehicles (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/driver-efficiency/vehicles")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.legacyApIs.getDriverEfficiencyByVehicles({
+                startTime: "startTime",
+                endTime: "endTime",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("getDriverEfficiencyByVehicles (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/driver-efficiency/vehicles")
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.legacyApIs.getDriverEfficiencyByVehicles({
+                startTime: "startTime",
+                endTime: "endTime",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("getDriverEfficiencyByVehicles (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/driver-efficiency/vehicles")
+            .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.legacyApIs.getDriverEfficiencyByVehicles({
+                startTime: "startTime",
+                endTime: "endTime",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("getDriverEfficiencyByVehicles (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/driver-efficiency/vehicles")
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.legacyApIs.getDriverEfficiencyByVehicles({
+                startTime: "startTime",
+                endTime: "endTime",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("getDriverEfficiencyByVehicles (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/driver-efficiency/vehicles")
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.legacyApIs.getDriverEfficiencyByVehicles({
+                startTime: "startTime",
+                endTime: "endTime",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("getDriverEfficiencyByVehicles (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/driver-efficiency/vehicles")
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.legacyApIs.getDriverEfficiencyByVehicles({
+                startTime: "startTime",
+                endTime: "endTime",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("getDriverEfficiencyByVehicles (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/driver-efficiency/vehicles")
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.legacyApIs.getDriverEfficiencyByVehicles({
+                startTime: "startTime",
+                endTime: "endTime",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("getDriverEfficiencyByVehicles (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/driver-efficiency/vehicles")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.legacyApIs.getDriverEfficiencyByVehicles({
+                startTime: "startTime",
+                endTime: "endTime",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("getDriverEfficiencyByVehicles (11)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/driver-efficiency/vehicles")
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.legacyApIs.getDriverEfficiencyByVehicles({
+                startTime: "startTime",
+                endTime: "endTime",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
     test("getDvirDefects", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({

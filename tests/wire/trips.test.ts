@@ -37,6 +37,7 @@ describe("TripsClient", () => {
                         latitude: 1.1,
                         longitude: 1.1,
                     },
+                    finalDistanceMeters: 1000000,
                     startLocation: {
                         accuracyMeters: 1.1,
                         address: {
@@ -55,6 +56,7 @@ describe("TripsClient", () => {
                         longitude: 1.1,
                     },
                     tripEndTime: "tripEndTime",
+                    tripPurpose: "unknown",
                     tripStartTime: "tripStartTime",
                     updatedAtTime: "updatedAtTime",
                 },
@@ -79,6 +81,7 @@ describe("TripsClient", () => {
                         latitude: 1.1,
                         longitude: 1.1,
                     },
+                    finalDistanceMeters: 1000000,
                     startLocation: {
                         accuracyMeters: 1.1,
                         address: {
@@ -97,6 +100,7 @@ describe("TripsClient", () => {
                         longitude: 1.1,
                     },
                     tripEndTime: "tripEndTime",
+                    tripPurpose: "unknown",
                     tripStartTime: "tripStartTime",
                     updatedAtTime: "updatedAtTime",
                 },
@@ -141,6 +145,7 @@ describe("TripsClient", () => {
                         latitude: 1.1,
                         longitude: 1.1,
                     },
+                    finalDistanceMeters: 1000000,
                     startLocation: {
                         accuracyMeters: 1.1,
                         address: {
@@ -164,6 +169,7 @@ describe("TripsClient", () => {
                         longitude: 1.1,
                     },
                     tripEndTime: "tripEndTime",
+                    tripPurpose: "unknown",
                     tripStartTime: "tripStartTime",
                     updatedAtTime: "updatedAtTime",
                 },
@@ -198,6 +204,7 @@ describe("TripsClient", () => {
                         latitude: 1.1,
                         longitude: 1.1,
                     },
+                    finalDistanceMeters: 1000000,
                     startLocation: {
                         accuracyMeters: 1.1,
                         address: {
@@ -221,6 +228,7 @@ describe("TripsClient", () => {
                         longitude: 1.1,
                     },
                     tripEndTime: "tripEndTime",
+                    tripPurpose: "unknown",
                     tripStartTime: "tripStartTime",
                     updatedAtTime: "updatedAtTime",
                 },

@@ -11,7 +11,7 @@ export interface DeviceResponseResponseBody {
     /** The last time the device was connected, in RFC 3339 format. */
     lastConnectedTime?: string | undefined;
     lastKnownLocation?: Samsara.LastKnownLocationResponseResponseBody | undefined;
-    /** The product model name of the device.  Valid values: `AG24`, `AG24EU`, `AG26`, `AG26EU`, `AG45`, `AG45EU`, `AG46`, `AG46EU`, `AG46P`, `AG46PEU`, `AG51`, `AG51EU`, `AG52`, `AG52EU`, `AG53`, `AG53EU`, `AHD1`, `AIM4`, `AT11`, `AT11X`, `AT12`, `AT12X`, `AT13`, `CM31`, `CM32`, `CM33`, `CM34`, `LM11`, `OEM`, `OEMP`, `OEMR`, `OEMV`, `VG34`, `VG34EU`, `VG34FN`, `VG34M`, `VG54EU`, `VG54NA`, `VG55EU`, `VG55NA` */
+    /** The product model name of the device.  Valid values: `AG24`, `AG24EU`, `AG26`, `AG26EU`, `AG45`, `AG45EU`, `AG46`, `AG46EU`, `AG46P`, `AG46PEU`, `AG51`, `AG51EU`, `AG52`, `AG52EU`, `AG53`, `AG53EU`, `AHD1`, `AIM4`, `AT11`, `AT11X`, `AT12`, `AT12X`, `AT13`, `Baxter`, `CM31`, `CM32`, `CM33`, `CM34`, `LM11`, `OEM`, `OEMP`, `OEMR`, `OEMV`, `VG34`, `VG34EU`, `VG34FN`, `VG34M`, `VG54EU`, `VG54NA`, `VG55EU`, `VG55NA` */
     model: DeviceResponseResponseBody.Model;
     /** The serial number of the device. */
     serial: string;
@@ -20,7 +20,7 @@ export interface DeviceResponseResponseBody {
 }
 
 export namespace DeviceResponseResponseBody {
-    /** The product model name of the device.  Valid values: `AG24`, `AG24EU`, `AG26`, `AG26EU`, `AG45`, `AG45EU`, `AG46`, `AG46EU`, `AG46P`, `AG46PEU`, `AG51`, `AG51EU`, `AG52`, `AG52EU`, `AG53`, `AG53EU`, `AHD1`, `AIM4`, `AT11`, `AT11X`, `AT12`, `AT12X`, `AT13`, `CM31`, `CM32`, `CM33`, `CM34`, `LM11`, `OEM`, `OEMP`, `OEMR`, `OEMV`, `VG34`, `VG34EU`, `VG34FN`, `VG34M`, `VG54EU`, `VG54NA`, `VG55EU`, `VG55NA` */
+    /** The product model name of the device.  Valid values: `AG24`, `AG24EU`, `AG26`, `AG26EU`, `AG45`, `AG45EU`, `AG46`, `AG46EU`, `AG46P`, `AG46PEU`, `AG51`, `AG51EU`, `AG52`, `AG52EU`, `AG53`, `AG53EU`, `AHD1`, `AIM4`, `AT11`, `AT11X`, `AT12`, `AT12X`, `AT13`, `Baxter`, `CM31`, `CM32`, `CM33`, `CM34`, `LM11`, `OEM`, `OEMP`, `OEMR`, `OEMV`, `VG34`, `VG34EU`, `VG34FN`, `VG34M`, `VG54EU`, `VG54NA`, `VG55EU`, `VG55NA` */
     export const Model = {
         Ag24: "AG24",
         Ag24Eu: "AG24EU",
@@ -45,6 +45,7 @@ export namespace DeviceResponseResponseBody {
         At12: "AT12",
         At12X: "AT12X",
         At13: "AT13",
+        Baxter: "Baxter",
         Cm31: "CM31",
         Cm32: "CM32",
         Cm33: "CM33",

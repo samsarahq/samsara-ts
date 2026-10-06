@@ -7,7 +7,7 @@
  *     }
  */
 export interface ListRidershipPassengersRequest {
-    /** ID of a tag to filter passengers by. */
+    /** Samsara ID of the tag to filter passengers by, such as `5678`. External IDs are not supported here. */
     tagId: string;
     /**  If specified, this should be the endCursor value from the previous page of results. When present, this request will return the next page of results that occur immediately after the previous page of results. */
     after?: string;

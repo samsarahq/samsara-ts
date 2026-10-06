@@ -5,774 +5,6 @@ import { SamsaraClient } from "../../src/Client";
 import { mockServerPool } from "../mock-server/MockServerPool";
 
 describe("FuelAndEnergyClient", () => {
-    test("getDriverEfficiencyByDrivers (1)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = {
-            data: [
-                {
-                    difficultyScore: { overallScore: "4", topographyScore: "5", vehicleWeightScore: "4" },
-                    driverId: "driver_001",
-                    percentageData: {
-                        anticipationPercentage: 9.5,
-                        coastingPercentage: 45.6,
-                        cruiseControlPercentage: 45.6,
-                        greenBandPercentage: 78.9,
-                        highGradeRoadDrivingPercentage: 15.3,
-                        highTorquePercentage: 23.4,
-                        idlingPercentage: 12.8,
-                        overSpeedPercentage: 5.6,
-                        wearFreeBrakePercentage: 88.2,
-                    },
-                    rawData: {
-                        anticipationBrakeEventCount: 17,
-                        averageVehicleWeightKg: 14500,
-                        coastingDurationMs: 1900800,
-                        cruiseControlDurationMs: 3283200,
-                        driveTimeDurationMs: 7200000,
-                        engineOnDurationMs: 7500000,
-                        greenBandDurationMs: 5683200,
-                        highGradeRoadDrivingDurationMs: 1108800,
-                        highTorqueDurationMs: 1684800,
-                        idlingDurationMs: 921600,
-                        overSpeedDurationMs: 403200,
-                        totalBrakeDurationMs: 1022400,
-                        totalBrakeEventCount: 85,
-                        wearFreeBrakeDurationMs: 6340800,
-                    },
-                    scoreData: {
-                        anticipationScore: "C",
-                        coastingScore: "C",
-                        cruiseControlScore: "B",
-                        greenBandScore: "A",
-                        highTorqueScore: "A",
-                        idlingScore: "B",
-                        overSpeedScore: "B",
-                        overallScore: "A",
-                        wearFreeBrakeScore: "A",
-                    },
-                },
-            ],
-            pagination: { endCursor: "MjkY", hasNextPage: true },
-        };
-        server
-            .mockEndpoint()
-            .get("/driver-efficiency/drivers")
-            .respondWith()
-            .statusCode(200)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        const response = await client.fuelAndEnergy.getDriverEfficiencyByDrivers({
-            startTime: "startTime",
-            endTime: "endTime",
-        });
-        expect(response).toEqual({
-            data: [
-                {
-                    difficultyScore: {
-                        overallScore: "4",
-                        topographyScore: "5",
-                        vehicleWeightScore: "4",
-                    },
-                    driverId: "driver_001",
-                    percentageData: {
-                        anticipationPercentage: 9.5,
-                        coastingPercentage: 45.6,
-                        cruiseControlPercentage: 45.6,
-                        greenBandPercentage: 78.9,
-                        highGradeRoadDrivingPercentage: 15.3,
-                        highTorquePercentage: 23.4,
-                        idlingPercentage: 12.8,
-                        overSpeedPercentage: 5.6,
-                        wearFreeBrakePercentage: 88.2,
-                    },
-                    rawData: {
-                        anticipationBrakeEventCount: 17,
-                        averageVehicleWeightKg: 14500,
-                        coastingDurationMs: 1900800,
-                        cruiseControlDurationMs: 3283200,
-                        driveTimeDurationMs: 7200000,
-                        engineOnDurationMs: 7500000,
-                        greenBandDurationMs: 5683200,
-                        highGradeRoadDrivingDurationMs: 1108800,
-                        highTorqueDurationMs: 1684800,
-                        idlingDurationMs: 921600,
-                        overSpeedDurationMs: 403200,
-                        totalBrakeDurationMs: 1022400,
-                        totalBrakeEventCount: 85,
-                        wearFreeBrakeDurationMs: 6340800,
-                    },
-                    scoreData: {
-                        anticipationScore: "C",
-                        coastingScore: "C",
-                        cruiseControlScore: "B",
-                        greenBandScore: "A",
-                        highTorqueScore: "A",
-                        idlingScore: "B",
-                        overSpeedScore: "B",
-                        overallScore: "A",
-                        wearFreeBrakeScore: "A",
-                    },
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
-    });
-
-    test("getDriverEfficiencyByDrivers (2)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .get("/driver-efficiency/drivers")
-            .respondWith()
-            .statusCode(401)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.fuelAndEnergy.getDriverEfficiencyByDrivers({
-                startTime: "startTime",
-                endTime: "endTime",
-            });
-        }).rejects.toThrow(Samsara.UnauthorizedError);
-    });
-
-    test("getDriverEfficiencyByDrivers (3)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .get("/driver-efficiency/drivers")
-            .respondWith()
-            .statusCode(404)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.fuelAndEnergy.getDriverEfficiencyByDrivers({
-                startTime: "startTime",
-                endTime: "endTime",
-            });
-        }).rejects.toThrow(Samsara.NotFoundError);
-    });
-
-    test("getDriverEfficiencyByDrivers (4)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .get("/driver-efficiency/drivers")
-            .respondWith()
-            .statusCode(405)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.fuelAndEnergy.getDriverEfficiencyByDrivers({
-                startTime: "startTime",
-                endTime: "endTime",
-            });
-        }).rejects.toThrow(Samsara.MethodNotAllowedError);
-    });
-
-    test("getDriverEfficiencyByDrivers (5)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .get("/driver-efficiency/drivers")
-            .respondWith()
-            .statusCode(413)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.fuelAndEnergy.getDriverEfficiencyByDrivers({
-                startTime: "startTime",
-                endTime: "endTime",
-            });
-        }).rejects.toThrow(Samsara.ContentTooLargeError);
-    });
-
-    test("getDriverEfficiencyByDrivers (6)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .get("/driver-efficiency/drivers")
-            .respondWith()
-            .statusCode(429)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.fuelAndEnergy.getDriverEfficiencyByDrivers({
-                startTime: "startTime",
-                endTime: "endTime",
-            });
-        }).rejects.toThrow(Samsara.TooManyRequestsError);
-    });
-
-    test("getDriverEfficiencyByDrivers (7)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .get("/driver-efficiency/drivers")
-            .respondWith()
-            .statusCode(500)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.fuelAndEnergy.getDriverEfficiencyByDrivers({
-                startTime: "startTime",
-                endTime: "endTime",
-            });
-        }).rejects.toThrow(Samsara.InternalServerError);
-    });
-
-    test("getDriverEfficiencyByDrivers (8)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .get("/driver-efficiency/drivers")
-            .respondWith()
-            .statusCode(501)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.fuelAndEnergy.getDriverEfficiencyByDrivers({
-                startTime: "startTime",
-                endTime: "endTime",
-            });
-        }).rejects.toThrow(Samsara.NotImplementedError);
-    });
-
-    test("getDriverEfficiencyByDrivers (9)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .get("/driver-efficiency/drivers")
-            .respondWith()
-            .statusCode(502)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.fuelAndEnergy.getDriverEfficiencyByDrivers({
-                startTime: "startTime",
-                endTime: "endTime",
-            });
-        }).rejects.toThrow(Samsara.BadGatewayError);
-    });
-
-    test("getDriverEfficiencyByDrivers (10)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .get("/driver-efficiency/drivers")
-            .respondWith()
-            .statusCode(503)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.fuelAndEnergy.getDriverEfficiencyByDrivers({
-                startTime: "startTime",
-                endTime: "endTime",
-            });
-        }).rejects.toThrow(Samsara.ServiceUnavailableError);
-    });
-
-    test("getDriverEfficiencyByDrivers (11)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .get("/driver-efficiency/drivers")
-            .respondWith()
-            .statusCode(504)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.fuelAndEnergy.getDriverEfficiencyByDrivers({
-                startTime: "startTime",
-                endTime: "endTime",
-            });
-        }).rejects.toThrow(Samsara.GatewayTimeoutError);
-    });
-
-    test("getDriverEfficiencyByVehicles (1)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = {
-            data: [
-                {
-                    difficultyScore: { overallScore: "4", topographyScore: "5", vehicleWeightScore: "4" },
-                    percentageData: {
-                        anticipationPercentage: 9.5,
-                        coastingPercentage: 45.6,
-                        cruiseControlPercentage: 45.6,
-                        greenBandPercentage: 78.9,
-                        highGradeRoadDrivingPercentage: 15.3,
-                        highTorquePercentage: 23.4,
-                        idlingPercentage: 12.8,
-                        overSpeedPercentage: 5.6,
-                        wearFreeBrakePercentage: 88.2,
-                    },
-                    rawData: {
-                        anticipationBrakeEventCount: 17,
-                        averageVehicleWeightKg: 14500,
-                        coastingDurationMs: 1900800,
-                        cruiseControlDurationMs: 3283200,
-                        driveTimeDurationMs: 7200000,
-                        engineOnDurationMs: 7500000,
-                        greenBandDurationMs: 5683200,
-                        highGradeRoadDrivingDurationMs: 1108800,
-                        highTorqueDurationMs: 1684800,
-                        idlingDurationMs: 921600,
-                        overSpeedDurationMs: 403200,
-                        totalBrakeDurationMs: 1022400,
-                        totalBrakeEventCount: 85,
-                        wearFreeBrakeDurationMs: 6340800,
-                    },
-                    scoreData: {
-                        anticipationScore: "C",
-                        coastingScore: "C",
-                        cruiseControlScore: "B",
-                        greenBandScore: "A",
-                        highTorqueScore: "A",
-                        idlingScore: "B",
-                        overSpeedScore: "B",
-                        overallScore: "A",
-                        wearFreeBrakeScore: "A",
-                    },
-                    vehicleId: "vehicle_001",
-                },
-            ],
-            pagination: { endCursor: "MjkY", hasNextPage: true },
-        };
-        server
-            .mockEndpoint()
-            .get("/driver-efficiency/vehicles")
-            .respondWith()
-            .statusCode(200)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        const response = await client.fuelAndEnergy.getDriverEfficiencyByVehicles({
-            startTime: "startTime",
-            endTime: "endTime",
-        });
-        expect(response).toEqual({
-            data: [
-                {
-                    difficultyScore: {
-                        overallScore: "4",
-                        topographyScore: "5",
-                        vehicleWeightScore: "4",
-                    },
-                    percentageData: {
-                        anticipationPercentage: 9.5,
-                        coastingPercentage: 45.6,
-                        cruiseControlPercentage: 45.6,
-                        greenBandPercentage: 78.9,
-                        highGradeRoadDrivingPercentage: 15.3,
-                        highTorquePercentage: 23.4,
-                        idlingPercentage: 12.8,
-                        overSpeedPercentage: 5.6,
-                        wearFreeBrakePercentage: 88.2,
-                    },
-                    rawData: {
-                        anticipationBrakeEventCount: 17,
-                        averageVehicleWeightKg: 14500,
-                        coastingDurationMs: 1900800,
-                        cruiseControlDurationMs: 3283200,
-                        driveTimeDurationMs: 7200000,
-                        engineOnDurationMs: 7500000,
-                        greenBandDurationMs: 5683200,
-                        highGradeRoadDrivingDurationMs: 1108800,
-                        highTorqueDurationMs: 1684800,
-                        idlingDurationMs: 921600,
-                        overSpeedDurationMs: 403200,
-                        totalBrakeDurationMs: 1022400,
-                        totalBrakeEventCount: 85,
-                        wearFreeBrakeDurationMs: 6340800,
-                    },
-                    scoreData: {
-                        anticipationScore: "C",
-                        coastingScore: "C",
-                        cruiseControlScore: "B",
-                        greenBandScore: "A",
-                        highTorqueScore: "A",
-                        idlingScore: "B",
-                        overSpeedScore: "B",
-                        overallScore: "A",
-                        wearFreeBrakeScore: "A",
-                    },
-                    vehicleId: "vehicle_001",
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
-    });
-
-    test("getDriverEfficiencyByVehicles (2)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .get("/driver-efficiency/vehicles")
-            .respondWith()
-            .statusCode(401)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.fuelAndEnergy.getDriverEfficiencyByVehicles({
-                startTime: "startTime",
-                endTime: "endTime",
-            });
-        }).rejects.toThrow(Samsara.UnauthorizedError);
-    });
-
-    test("getDriverEfficiencyByVehicles (3)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .get("/driver-efficiency/vehicles")
-            .respondWith()
-            .statusCode(404)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.fuelAndEnergy.getDriverEfficiencyByVehicles({
-                startTime: "startTime",
-                endTime: "endTime",
-            });
-        }).rejects.toThrow(Samsara.NotFoundError);
-    });
-
-    test("getDriverEfficiencyByVehicles (4)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .get("/driver-efficiency/vehicles")
-            .respondWith()
-            .statusCode(405)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.fuelAndEnergy.getDriverEfficiencyByVehicles({
-                startTime: "startTime",
-                endTime: "endTime",
-            });
-        }).rejects.toThrow(Samsara.MethodNotAllowedError);
-    });
-
-    test("getDriverEfficiencyByVehicles (5)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .get("/driver-efficiency/vehicles")
-            .respondWith()
-            .statusCode(413)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.fuelAndEnergy.getDriverEfficiencyByVehicles({
-                startTime: "startTime",
-                endTime: "endTime",
-            });
-        }).rejects.toThrow(Samsara.ContentTooLargeError);
-    });
-
-    test("getDriverEfficiencyByVehicles (6)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .get("/driver-efficiency/vehicles")
-            .respondWith()
-            .statusCode(429)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.fuelAndEnergy.getDriverEfficiencyByVehicles({
-                startTime: "startTime",
-                endTime: "endTime",
-            });
-        }).rejects.toThrow(Samsara.TooManyRequestsError);
-    });
-
-    test("getDriverEfficiencyByVehicles (7)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .get("/driver-efficiency/vehicles")
-            .respondWith()
-            .statusCode(500)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.fuelAndEnergy.getDriverEfficiencyByVehicles({
-                startTime: "startTime",
-                endTime: "endTime",
-            });
-        }).rejects.toThrow(Samsara.InternalServerError);
-    });
-
-    test("getDriverEfficiencyByVehicles (8)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .get("/driver-efficiency/vehicles")
-            .respondWith()
-            .statusCode(501)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.fuelAndEnergy.getDriverEfficiencyByVehicles({
-                startTime: "startTime",
-                endTime: "endTime",
-            });
-        }).rejects.toThrow(Samsara.NotImplementedError);
-    });
-
-    test("getDriverEfficiencyByVehicles (9)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .get("/driver-efficiency/vehicles")
-            .respondWith()
-            .statusCode(502)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.fuelAndEnergy.getDriverEfficiencyByVehicles({
-                startTime: "startTime",
-                endTime: "endTime",
-            });
-        }).rejects.toThrow(Samsara.BadGatewayError);
-    });
-
-    test("getDriverEfficiencyByVehicles (10)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .get("/driver-efficiency/vehicles")
-            .respondWith()
-            .statusCode(503)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.fuelAndEnergy.getDriverEfficiencyByVehicles({
-                startTime: "startTime",
-                endTime: "endTime",
-            });
-        }).rejects.toThrow(Samsara.ServiceUnavailableError);
-    });
-
-    test("getDriverEfficiencyByVehicles (11)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server
-            .mockEndpoint()
-            .get("/driver-efficiency/vehicles")
-            .respondWith()
-            .statusCode(504)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        await expect(async () => {
-            return await client.fuelAndEnergy.getDriverEfficiencyByVehicles({
-                startTime: "startTime",
-                endTime: "endTime",
-            });
-        }).rejects.toThrow(Samsara.GatewayTimeoutError);
-    });
-
     test("getFuelEnergyDriverReports (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({
@@ -1858,6 +1090,1813 @@ describe("FuelAndEnergyClient", () => {
                 },
                 transactionReference: "x",
                 transactionTime: "transactionTime",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("listPreferredStations (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = {
+            data: [
+                {
+                    address: {
+                        city: "Green River",
+                        country: "US",
+                        line1: "8901 US Hwy 374",
+                        postalCode: "82935",
+                        state: "WY",
+                    },
+                    discounts: [
+                        {
+                            discount: { amount: "640.2", currency: "usd" },
+                            discountPercent: "3.5",
+                            discountType: "centsPerUnit",
+                            fuelType: "gasoline",
+                        },
+                    ],
+                    externalIds: { key: "value" },
+                    id: "sta_abc123",
+                    latitude: 41.5168,
+                    longitude: -109.471,
+                    name: "Pilot Travel Center #432",
+                    prices: [
+                        {
+                            fuelType: "gasoline",
+                            grossPrice: { amount: "640.2", currency: "usd" },
+                            netPrice: { amount: "640.2", currency: "usd" },
+                            volumeUnit: "liter",
+                        },
+                    ],
+                },
+            ],
+            pagination: { endCursor: "MjkY", hasNextPage: true },
+        };
+        server
+            .mockEndpoint()
+            .get("/preferred-stations")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.fuelAndEnergy.listPreferredStations();
+        expect(response).toEqual({
+            data: [
+                {
+                    address: {
+                        city: "Green River",
+                        country: "US",
+                        line1: "8901 US Hwy 374",
+                        postalCode: "82935",
+                        state: "WY",
+                    },
+                    discounts: [
+                        {
+                            discount: {
+                                amount: "640.2",
+                                currency: "usd",
+                            },
+                            discountPercent: "3.5",
+                            discountType: "centsPerUnit",
+                            fuelType: "gasoline",
+                        },
+                    ],
+                    externalIds: {
+                        key: "value",
+                    },
+                    id: "sta_abc123",
+                    latitude: 41.5168,
+                    longitude: -109.471,
+                    name: "Pilot Travel Center #432",
+                    prices: [
+                        {
+                            fuelType: "gasoline",
+                            grossPrice: {
+                                amount: "640.2",
+                                currency: "usd",
+                            },
+                            netPrice: {
+                                amount: "640.2",
+                                currency: "usd",
+                            },
+                            volumeUnit: "liter",
+                        },
+                    ],
+                },
+            ],
+            pagination: {
+                endCursor: "MjkY",
+                hasNextPage: true,
+            },
+        });
+    });
+
+    test("listPreferredStations (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preferred-stations")
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fuelAndEnergy.listPreferredStations();
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("listPreferredStations (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preferred-stations")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fuelAndEnergy.listPreferredStations();
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("listPreferredStations (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preferred-stations")
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fuelAndEnergy.listPreferredStations();
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("listPreferredStations (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preferred-stations")
+            .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fuelAndEnergy.listPreferredStations();
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("listPreferredStations (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preferred-stations")
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fuelAndEnergy.listPreferredStations();
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("listPreferredStations (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preferred-stations")
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fuelAndEnergy.listPreferredStations();
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("listPreferredStations (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preferred-stations")
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fuelAndEnergy.listPreferredStations();
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("listPreferredStations (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preferred-stations")
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fuelAndEnergy.listPreferredStations();
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("listPreferredStations (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preferred-stations")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fuelAndEnergy.listPreferredStations();
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("listPreferredStations (11)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preferred-stations")
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fuelAndEnergy.listPreferredStations();
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("postPreferredStation (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            address: { city: "Green River", country: "US", line1: "8901 US Hwy 374", postalCode: "82935" },
+            externalIds: { key: "value" },
+            name: "Station #432",
+        };
+        const rawResponseBody = {
+            data: {
+                address: {
+                    city: "Green River",
+                    country: "US",
+                    line1: "8901 US Hwy 374",
+                    postalCode: "82935",
+                    state: "WY",
+                },
+                discounts: [
+                    {
+                        discount: { amount: "640.2", currency: "usd" },
+                        discountPercent: "3.5",
+                        discountType: "centsPerUnit",
+                        fuelType: "gasoline",
+                    },
+                ],
+                externalIds: { key: "value" },
+                id: "sta_abc123",
+                latitude: 41.5168,
+                longitude: -109.471,
+                name: "Pilot Travel Center #432",
+                prices: [
+                    {
+                        fuelType: "gasoline",
+                        grossPrice: { amount: "640.2", currency: "usd" },
+                        netPrice: { amount: "640.2", currency: "usd" },
+                        volumeUnit: "liter",
+                    },
+                ],
+            },
+        };
+        server
+            .mockEndpoint()
+            .post("/preferred-stations")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.fuelAndEnergy.postPreferredStation({
+            address: {
+                city: "Green River",
+                country: "US",
+                line1: "8901 US Hwy 374",
+                postalCode: "82935",
+            },
+            externalIds: {
+                key: "value",
+            },
+            name: "Station #432",
+        });
+        expect(response).toEqual({
+            data: {
+                address: {
+                    city: "Green River",
+                    country: "US",
+                    line1: "8901 US Hwy 374",
+                    postalCode: "82935",
+                    state: "WY",
+                },
+                discounts: [
+                    {
+                        discount: {
+                            amount: "640.2",
+                            currency: "usd",
+                        },
+                        discountPercent: "3.5",
+                        discountType: "centsPerUnit",
+                        fuelType: "gasoline",
+                    },
+                ],
+                externalIds: {
+                    key: "value",
+                },
+                id: "sta_abc123",
+                latitude: 41.5168,
+                longitude: -109.471,
+                name: "Pilot Travel Center #432",
+                prices: [
+                    {
+                        fuelType: "gasoline",
+                        grossPrice: {
+                            amount: "640.2",
+                            currency: "usd",
+                        },
+                        netPrice: {
+                            amount: "640.2",
+                            currency: "usd",
+                        },
+                        volumeUnit: "liter",
+                    },
+                ],
+            },
+        });
+    });
+
+    test("postPreferredStation (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            address: { city: "city", country: "country", line1: "line1", postalCode: "postalCode" },
+            externalIds: { externalIds: "externalIds" },
+            name: "name",
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/preferred-stations")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fuelAndEnergy.postPreferredStation({
+                address: {
+                    city: "city",
+                    country: "country",
+                    line1: "line1",
+                    postalCode: "postalCode",
+                },
+                externalIds: {
+                    externalIds: "externalIds",
+                },
+                name: "name",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("postPreferredStation (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            address: { city: "city", country: "country", line1: "line1", postalCode: "postalCode" },
+            externalIds: { externalIds: "externalIds" },
+            name: "name",
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/preferred-stations")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fuelAndEnergy.postPreferredStation({
+                address: {
+                    city: "city",
+                    country: "country",
+                    line1: "line1",
+                    postalCode: "postalCode",
+                },
+                externalIds: {
+                    externalIds: "externalIds",
+                },
+                name: "name",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("postPreferredStation (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            address: { city: "city", country: "country", line1: "line1", postalCode: "postalCode" },
+            externalIds: { externalIds: "externalIds" },
+            name: "name",
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/preferred-stations")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fuelAndEnergy.postPreferredStation({
+                address: {
+                    city: "city",
+                    country: "country",
+                    line1: "line1",
+                    postalCode: "postalCode",
+                },
+                externalIds: {
+                    externalIds: "externalIds",
+                },
+                name: "name",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("postPreferredStation (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            address: { city: "city", country: "country", line1: "line1", postalCode: "postalCode" },
+            externalIds: { externalIds: "externalIds" },
+            name: "name",
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/preferred-stations")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fuelAndEnergy.postPreferredStation({
+                address: {
+                    city: "city",
+                    country: "country",
+                    line1: "line1",
+                    postalCode: "postalCode",
+                },
+                externalIds: {
+                    externalIds: "externalIds",
+                },
+                name: "name",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("postPreferredStation (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            address: { city: "city", country: "country", line1: "line1", postalCode: "postalCode" },
+            externalIds: { externalIds: "externalIds" },
+            name: "name",
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/preferred-stations")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fuelAndEnergy.postPreferredStation({
+                address: {
+                    city: "city",
+                    country: "country",
+                    line1: "line1",
+                    postalCode: "postalCode",
+                },
+                externalIds: {
+                    externalIds: "externalIds",
+                },
+                name: "name",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("postPreferredStation (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            address: { city: "city", country: "country", line1: "line1", postalCode: "postalCode" },
+            externalIds: { externalIds: "externalIds" },
+            name: "name",
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/preferred-stations")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fuelAndEnergy.postPreferredStation({
+                address: {
+                    city: "city",
+                    country: "country",
+                    line1: "line1",
+                    postalCode: "postalCode",
+                },
+                externalIds: {
+                    externalIds: "externalIds",
+                },
+                name: "name",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("postPreferredStation (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            address: { city: "city", country: "country", line1: "line1", postalCode: "postalCode" },
+            externalIds: { externalIds: "externalIds" },
+            name: "name",
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/preferred-stations")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fuelAndEnergy.postPreferredStation({
+                address: {
+                    city: "city",
+                    country: "country",
+                    line1: "line1",
+                    postalCode: "postalCode",
+                },
+                externalIds: {
+                    externalIds: "externalIds",
+                },
+                name: "name",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("postPreferredStation (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            address: { city: "city", country: "country", line1: "line1", postalCode: "postalCode" },
+            externalIds: { externalIds: "externalIds" },
+            name: "name",
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/preferred-stations")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fuelAndEnergy.postPreferredStation({
+                address: {
+                    city: "city",
+                    country: "country",
+                    line1: "line1",
+                    postalCode: "postalCode",
+                },
+                externalIds: {
+                    externalIds: "externalIds",
+                },
+                name: "name",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("postPreferredStation (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            address: { city: "city", country: "country", line1: "line1", postalCode: "postalCode" },
+            externalIds: { externalIds: "externalIds" },
+            name: "name",
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/preferred-stations")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fuelAndEnergy.postPreferredStation({
+                address: {
+                    city: "city",
+                    country: "country",
+                    line1: "line1",
+                    postalCode: "postalCode",
+                },
+                externalIds: {
+                    externalIds: "externalIds",
+                },
+                name: "name",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("postPreferredStation (11)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {
+            address: { city: "city", country: "country", line1: "line1", postalCode: "postalCode" },
+            externalIds: { externalIds: "externalIds" },
+            name: "name",
+        };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .post("/preferred-stations")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fuelAndEnergy.postPreferredStation({
+                address: {
+                    city: "city",
+                    country: "country",
+                    line1: "line1",
+                    postalCode: "postalCode",
+                },
+                externalIds: {
+                    externalIds: "externalIds",
+                },
+                name: "name",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("deletePreferredStation (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        server.mockEndpoint().delete("/preferred-stations").respondWith().statusCode(200).build();
+
+        const response = await client.fuelAndEnergy.deletePreferredStation({
+            id: "id",
+        });
+        expect(response).toEqual(undefined);
+    });
+
+    test("deletePreferredStation (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .delete("/preferred-stations")
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fuelAndEnergy.deletePreferredStation({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("deletePreferredStation (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .delete("/preferred-stations")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fuelAndEnergy.deletePreferredStation({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("deletePreferredStation (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .delete("/preferred-stations")
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fuelAndEnergy.deletePreferredStation({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("deletePreferredStation (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .delete("/preferred-stations")
+            .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fuelAndEnergy.deletePreferredStation({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("deletePreferredStation (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .delete("/preferred-stations")
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fuelAndEnergy.deletePreferredStation({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("deletePreferredStation (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .delete("/preferred-stations")
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fuelAndEnergy.deletePreferredStation({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("deletePreferredStation (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .delete("/preferred-stations")
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fuelAndEnergy.deletePreferredStation({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("deletePreferredStation (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .delete("/preferred-stations")
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fuelAndEnergy.deletePreferredStation({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("deletePreferredStation (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .delete("/preferred-stations")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fuelAndEnergy.deletePreferredStation({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("deletePreferredStation (11)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .delete("/preferred-stations")
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fuelAndEnergy.deletePreferredStation({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("patchPreferredStation (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = {
+            data: {
+                address: {
+                    city: "Green River",
+                    country: "US",
+                    line1: "8901 US Hwy 374",
+                    postalCode: "82935",
+                    state: "WY",
+                },
+                discounts: [
+                    {
+                        discount: { amount: "640.2", currency: "usd" },
+                        discountPercent: "3.5",
+                        discountType: "centsPerUnit",
+                        fuelType: "gasoline",
+                    },
+                ],
+                externalIds: { key: "value" },
+                id: "sta_abc123",
+                latitude: 41.5168,
+                longitude: -109.471,
+                name: "Pilot Travel Center #432",
+                prices: [
+                    {
+                        fuelType: "gasoline",
+                        grossPrice: { amount: "640.2", currency: "usd" },
+                        netPrice: { amount: "640.2", currency: "usd" },
+                        volumeUnit: "liter",
+                    },
+                ],
+            },
+        };
+        server
+            .mockEndpoint()
+            .patch("/preferred-stations")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.fuelAndEnergy.patchPreferredStation({
+            id: "id",
+        });
+        expect(response).toEqual({
+            data: {
+                address: {
+                    city: "Green River",
+                    country: "US",
+                    line1: "8901 US Hwy 374",
+                    postalCode: "82935",
+                    state: "WY",
+                },
+                discounts: [
+                    {
+                        discount: {
+                            amount: "640.2",
+                            currency: "usd",
+                        },
+                        discountPercent: "3.5",
+                        discountType: "centsPerUnit",
+                        fuelType: "gasoline",
+                    },
+                ],
+                externalIds: {
+                    key: "value",
+                },
+                id: "sta_abc123",
+                latitude: 41.5168,
+                longitude: -109.471,
+                name: "Pilot Travel Center #432",
+                prices: [
+                    {
+                        fuelType: "gasoline",
+                        grossPrice: {
+                            amount: "640.2",
+                            currency: "usd",
+                        },
+                        netPrice: {
+                            amount: "640.2",
+                            currency: "usd",
+                        },
+                        volumeUnit: "liter",
+                    },
+                ],
+            },
+        });
+    });
+
+    test("patchPreferredStation (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/preferred-stations")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fuelAndEnergy.patchPreferredStation({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("patchPreferredStation (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/preferred-stations")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fuelAndEnergy.patchPreferredStation({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("patchPreferredStation (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/preferred-stations")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fuelAndEnergy.patchPreferredStation({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("patchPreferredStation (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/preferred-stations")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fuelAndEnergy.patchPreferredStation({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("patchPreferredStation (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/preferred-stations")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fuelAndEnergy.patchPreferredStation({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("patchPreferredStation (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/preferred-stations")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fuelAndEnergy.patchPreferredStation({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("patchPreferredStation (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/preferred-stations")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fuelAndEnergy.patchPreferredStation({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("patchPreferredStation (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/preferred-stations")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fuelAndEnergy.patchPreferredStation({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("patchPreferredStation (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/preferred-stations")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fuelAndEnergy.patchPreferredStation({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("patchPreferredStation (11)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/preferred-stations")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fuelAndEnergy.patchPreferredStation({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("getPreferredStation (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = {
+            data: {
+                address: {
+                    city: "Green River",
+                    country: "US",
+                    line1: "8901 US Hwy 374",
+                    postalCode: "82935",
+                    state: "WY",
+                },
+                discounts: [
+                    {
+                        discount: { amount: "640.2", currency: "usd" },
+                        discountPercent: "3.5",
+                        discountType: "centsPerUnit",
+                        fuelType: "gasoline",
+                    },
+                ],
+                externalIds: { key: "value" },
+                id: "sta_abc123",
+                latitude: 41.5168,
+                longitude: -109.471,
+                name: "Pilot Travel Center #432",
+                prices: [
+                    {
+                        fuelType: "gasoline",
+                        grossPrice: { amount: "640.2", currency: "usd" },
+                        netPrice: { amount: "640.2", currency: "usd" },
+                        volumeUnit: "liter",
+                    },
+                ],
+            },
+        };
+        server
+            .mockEndpoint()
+            .get("/preferred-stations/id")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.fuelAndEnergy.getPreferredStation({
+            id: "id",
+        });
+        expect(response).toEqual({
+            data: {
+                address: {
+                    city: "Green River",
+                    country: "US",
+                    line1: "8901 US Hwy 374",
+                    postalCode: "82935",
+                    state: "WY",
+                },
+                discounts: [
+                    {
+                        discount: {
+                            amount: "640.2",
+                            currency: "usd",
+                        },
+                        discountPercent: "3.5",
+                        discountType: "centsPerUnit",
+                        fuelType: "gasoline",
+                    },
+                ],
+                externalIds: {
+                    key: "value",
+                },
+                id: "sta_abc123",
+                latitude: 41.5168,
+                longitude: -109.471,
+                name: "Pilot Travel Center #432",
+                prices: [
+                    {
+                        fuelType: "gasoline",
+                        grossPrice: {
+                            amount: "640.2",
+                            currency: "usd",
+                        },
+                        netPrice: {
+                            amount: "640.2",
+                            currency: "usd",
+                        },
+                        volumeUnit: "liter",
+                    },
+                ],
+            },
+        });
+    });
+
+    test("getPreferredStation (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preferred-stations/id")
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fuelAndEnergy.getPreferredStation({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("getPreferredStation (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preferred-stations/id")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fuelAndEnergy.getPreferredStation({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("getPreferredStation (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preferred-stations/id")
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fuelAndEnergy.getPreferredStation({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("getPreferredStation (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preferred-stations/id")
+            .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fuelAndEnergy.getPreferredStation({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("getPreferredStation (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preferred-stations/id")
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fuelAndEnergy.getPreferredStation({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("getPreferredStation (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preferred-stations/id")
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fuelAndEnergy.getPreferredStation({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("getPreferredStation (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preferred-stations/id")
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fuelAndEnergy.getPreferredStation({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("getPreferredStation (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preferred-stations/id")
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fuelAndEnergy.getPreferredStation({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("getPreferredStation (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preferred-stations/id")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fuelAndEnergy.getPreferredStation({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("getPreferredStation (11)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .get("/preferred-stations/id")
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.fuelAndEnergy.getPreferredStation({
+                id: "id",
             });
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });

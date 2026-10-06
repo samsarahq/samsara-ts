@@ -28,8 +28,25 @@ export interface EntityListIssuesTypeResponseBody {
     severity?: string | undefined;
     /** Current customer-facing review status of this issue. */
     status?: string | undefined;
-    /** Customer-facing type for this issue. */
-    type?: string | undefined;
+    /** Customer-facing type for this issue.  Valid values: `unknown`, `pothole`, `roadCracking`, `patchedPothole`, `transverseCrack`, `longitudinalCrack`, `alligatorCrack`, `utilityCut`, `steelPlate`, `repavingNeeded` */
+    type?: EntityListIssuesTypeResponseBody.Type | undefined;
     /** Time when this issue record was most recently updated. */
     updatedAtTime?: string | undefined;
+}
+
+export namespace EntityListIssuesTypeResponseBody {
+    /** Customer-facing type for this issue.  Valid values: `unknown`, `pothole`, `roadCracking`, `patchedPothole`, `transverseCrack`, `longitudinalCrack`, `alligatorCrack`, `utilityCut`, `steelPlate`, `repavingNeeded` */
+    export const Type = {
+        Unknown: "unknown",
+        Pothole: "pothole",
+        RoadCracking: "roadCracking",
+        PatchedPothole: "patchedPothole",
+        TransverseCrack: "transverseCrack",
+        LongitudinalCrack: "longitudinalCrack",
+        AlligatorCrack: "alligatorCrack",
+        UtilityCut: "utilityCut",
+        SteelPlate: "steelPlate",
+        RepavingNeeded: "repavingNeeded",
+    } as const;
+    export type Type = (typeof Type)[keyof typeof Type];
 }

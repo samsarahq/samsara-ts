@@ -4,10 +4,10 @@
  * A passenger assignment within a route setup.
  */
 export interface RidershipRouteSetupPassengerObjectResponseBody {
-    /** The stop ID for the passenger's drop-off. */
+    /** Routing API stop task ID for the passenger's drop-off. Omitted when no drop-off stop is assigned. */
     dropOffStopId?: string | undefined;
     /** The Samsara UUID of the passenger. */
     passengerId: string;
-    /** The stop ID for the passenger's pick-up. */
+    /** Routing API stop task ID for the passenger's pickup. Omitted when no pickup stop is assigned. */
     pickUpStopId?: string | undefined;
 }

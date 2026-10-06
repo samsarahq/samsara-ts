@@ -7,6 +7,10 @@
 export interface ListMaintenanceVendorsRequest {
     /** A comma-separated list of up to 100 vendor IDs to filter on. Accepts Samsara UUIDs or external IDs in key:value format. See [external IDs](https://developers.samsara.com/docs/external-ids). */
     ids?: string | string[];
+    /** A comma-separated list of up to 100 external IDs in key:value format to filter vendors on. See [external IDs](https://developers.samsara.com/docs/external-ids). */
+    externalIds?: string | string[];
+    /** Include resolved vendor settings and their sources. Defaults to false. */
+    includeResolvedSettings?: boolean;
     /** When true, include externalIds on each vendor in the response. Default false. */
     includeExternalIds?: boolean;
     /**  If specified, this should be the endCursor value from the previous page of results. When present, this request will return the next page of results that occur immediately after the previous page of results. */

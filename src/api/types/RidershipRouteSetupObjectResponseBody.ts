@@ -10,7 +10,7 @@ export interface RidershipRouteSetupObjectResponseBody {
     createdAtTime: string;
     /** List of passenger assignments. */
     passengers: Samsara.RidershipRouteSetupPassengerObjectResponseBody[];
-    /** The route ID. */
+    /** Samsara ID of the Routing API route associated with this passenger setup. */
     routeId: string;
     /** The time the route setup was last updated in RFC 3339 format. */
     updatedAtTime: string;

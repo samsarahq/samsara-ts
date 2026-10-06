@@ -25,4 +25,6 @@ export interface GetPlacesRequest {
     placeTypes?: string;
     /** Filter places by name text. */
     name?: string;
+    /** Comma-separated route-planning hub IDs (UUIDs). Returns places associated with any of the given hubs. */
+    hubIds?: string;
 }

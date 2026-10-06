@@ -13,8 +13,8 @@ export interface EntityListWarrantyClaimsTypeResponseBody {
     claimEngineHours?: number | undefined;
     /** Asset odometer reading at the time of repair. Measured in meters. */
     claimOdometerMeters?: number | undefined;
-    /** Current status of the claim. */
-    claimStatus?: string | undefined;
+    /** Current status of the claim.  Valid values: `unknown`, `created`, `submitted`, `inReview`, `approved`, `rejected`, `resubmitted`, `reimbursed` */
+    claimStatus?: EntityListWarrantyClaimsTypeResponseBody.ClaimStatus | undefined;
     /** IDs of asset component instances covered by this claim. */
     componentInstanceIds?: string[] | undefined;
     /** The concern of the 3 Cs - what was reported. */
@@ -54,4 +54,19 @@ export interface EntityListWarrantyClaimsTypeResponseBody {
     /** When the claim was last updated. */
     updatedAtTime?: string | undefined;
     warrantyVendor?: Samsara.EntityListWarrantyClaimsVendorRefTypeResponseBody | undefined;
+}
+
+export namespace EntityListWarrantyClaimsTypeResponseBody {
+    /** Current status of the claim.  Valid values: `unknown`, `created`, `submitted`, `inReview`, `approved`, `rejected`, `resubmitted`, `reimbursed` */
+    export const ClaimStatus = {
+        Unknown: "unknown",
+        Created: "created",
+        Submitted: "submitted",
+        InReview: "inReview",
+        Approved: "approved",
+        Rejected: "rejected",
+        Resubmitted: "resubmitted",
+        Reimbursed: "reimbursed",
+    } as const;
+    export type ClaimStatus = (typeof ClaimStatus)[keyof typeof ClaimStatus];
 }

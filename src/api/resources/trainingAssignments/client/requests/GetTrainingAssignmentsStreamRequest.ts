@@ -13,7 +13,7 @@ export interface GetTrainingAssignmentsStreamRequest {
     startTime: string;
     /**  An end time in RFC 3339 format. Defaults to now if not provided. Millisecond precision and timezones are supported. (Examples: 2019-06-13T19:08:25Z, 2019-06-13T19:08:25.455Z, OR 2015-09-15T14:00:12-04:00). */
     endTime?: string;
-    /** Optional string of comma separated learner IDs. If learner ID is present, training assignments for the specified learner(s) will be returned. Max value for this value is 100 objects. Example: `learnerIds=driver-281474,driver-46282156` */
+    /** Optional string of comma separated learner IDs. Learner IDs use the format `driver-<id>` or `user-<id>`. If learner ID is present, training assignments for the specified learner(s) will be returned. Max value for this value is 100 objects. Example: `learnerIds=driver-281474,user-46282156`. Non-driver user learners are available only for organizations with non-driver training enabled. Contact your Samsara representative to request access. */
     learnerIds?: string | string[];
     /** Optional string of comma separated course IDs. If course ID is present, training assignments for the specified course ID(s) will be returned. Max value for this value is 100 objects. Defaults to returning all courses. Example: `courseIds=a4db8702-79d5-4396-a717-e301d52ecc11,c6490f6a-d84e-49b5-b0ad-b6baae304075` */
     courseIds?: string | string[];

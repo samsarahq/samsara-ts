@@ -3,7 +3,7 @@
 import type * as Samsara from "../index.js";
 
 /**
- * EntityCreateStockMovementStockMovementLocation object
+ * StockMovementLocation object
  */
 export interface EntityCreateStockMovementStockMovementLocationTypeResponseBody {
     /** Aisle within the location where the part is stored. */

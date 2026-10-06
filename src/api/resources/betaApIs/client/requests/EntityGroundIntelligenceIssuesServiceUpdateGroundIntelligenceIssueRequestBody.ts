@@ -15,7 +15,7 @@ export interface EntityGroundIntelligenceIssuesServiceUpdateGroundIntelligenceIs
     dismissalReason?: EntityGroundIntelligenceIssuesServiceUpdateGroundIntelligenceIssueRequestBody.DismissalReason;
     /** Customer-facing review status for the issue.  Valid values: `needsReview`, `reviewed`, `resolved`, `dismissed` */
     status?: EntityGroundIntelligenceIssuesServiceUpdateGroundIntelligenceIssueRequestBody.Status;
-    /** Customer-facing road-condition type for the issue.  Valid values: `pothole`, `roadCracking`, `patchedPothole` */
+    /** Customer-facing road-condition type for the issue.  Valid values: `pothole`, `roadCracking`, `patchedPothole`, `transverseCrack`, `longitudinalCrack`, `alligatorCrack`, `utilityCut`, `steelPlate`, `repavingNeeded` */
     type?: EntityGroundIntelligenceIssuesServiceUpdateGroundIntelligenceIssueRequestBody.Type;
 }
 
@@ -37,11 +37,17 @@ export namespace EntityGroundIntelligenceIssuesServiceUpdateGroundIntelligenceIs
         Dismissed: "dismissed",
     } as const;
     export type Status = (typeof Status)[keyof typeof Status];
-    /** Customer-facing road-condition type for the issue.  Valid values: `pothole`, `roadCracking`, `patchedPothole` */
+    /** Customer-facing road-condition type for the issue.  Valid values: `pothole`, `roadCracking`, `patchedPothole`, `transverseCrack`, `longitudinalCrack`, `alligatorCrack`, `utilityCut`, `steelPlate`, `repavingNeeded` */
     export const Type = {
         Pothole: "pothole",
         RoadCracking: "roadCracking",
         PatchedPothole: "patchedPothole",
+        TransverseCrack: "transverseCrack",
+        LongitudinalCrack: "longitudinalCrack",
+        AlligatorCrack: "alligatorCrack",
+        UtilityCut: "utilityCut",
+        SteelPlate: "steelPlate",
+        RepavingNeeded: "repavingNeeded",
     } as const;
     export type Type = (typeof Type)[keyof typeof Type];
 }

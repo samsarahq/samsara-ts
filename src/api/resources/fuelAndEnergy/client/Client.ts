@@ -23,240 +23,6 @@ export class FuelAndEnergyClient {
     }
 
     /**
-     * This endpoint will return driver efficiency data that has been collected for your organization and grouped by drivers based on the time parameters passed in. Results are paginated.
-     *
-     * **Note:** The data from this endpoint comes from the Driver Efficiency (Eco-Driving) Report. The existing [/fleet/drivers/efficiency](https://developers.samsara.com/reference/getdriverefficiency) endpoint has now been moved to Legacy.
-     *
-     *  <b>Rate limit:</b> 10 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
-     *
-     * To use this endpoint, select **Read Driver Efficiency** under the Fuel & Energy category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
-     *
-     *
-     *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
-     *
-     * @param {Samsara.GetDriverEfficiencyByDriversRequest} request
-     * @param {FuelAndEnergyClient.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @throws {@link Samsara.UnauthorizedError}
-     * @throws {@link Samsara.NotFoundError}
-     * @throws {@link Samsara.MethodNotAllowedError}
-     * @throws {@link Samsara.ContentTooLargeError}
-     * @throws {@link Samsara.TooManyRequestsError}
-     * @throws {@link Samsara.InternalServerError}
-     * @throws {@link Samsara.NotImplementedError}
-     * @throws {@link Samsara.BadGatewayError}
-     * @throws {@link Samsara.ServiceUnavailableError}
-     * @throws {@link Samsara.GatewayTimeoutError}
-     *
-     * @example
-     *     await client.fuelAndEnergy.getDriverEfficiencyByDrivers({
-     *         startTime: "startTime",
-     *         endTime: "endTime"
-     *     })
-     */
-    public getDriverEfficiencyByDrivers(
-        request: Samsara.GetDriverEfficiencyByDriversRequest,
-        requestOptions?: FuelAndEnergyClient.RequestOptions,
-    ): core.HttpResponsePromise<Samsara.DriverEfficiencyGetDriverEfficiencyByDriversResponseBody> {
-        return core.HttpResponsePromise.fromPromise(this.__getDriverEfficiencyByDrivers(request, requestOptions));
-    }
-
-    private async __getDriverEfficiencyByDrivers(
-        request: Samsara.GetDriverEfficiencyByDriversRequest,
-        requestOptions?: FuelAndEnergyClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Samsara.DriverEfficiencyGetDriverEfficiencyByDriversResponseBody>> {
-        const { startTime, endTime, driverIds, dataFormats, tagIds, parentTagIds, after } = request;
-        const _queryParams: Record<string, unknown> = {
-            startTime,
-            endTime,
-            driverIds,
-            dataFormats,
-            tagIds,
-            parentTagIds,
-            after,
-        };
-        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
-        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
-            _authRequest.headers,
-            this._options?.headers,
-            mergeOnlyDefinedHeaders({ "X-Samsara-Version": requestOptions?.version }),
-            requestOptions?.headers,
-        );
-        const _response = await core.fetcher({
-            url: core.url.join(
-                (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.SamsaraEnvironment.ProductionApi,
-                "driver-efficiency/drivers",
-            ),
-            method: "GET",
-            headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
-            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
-            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
-            fetchFn: this._options?.fetch,
-            logging: this._options.logging,
-        });
-        if (_response.ok) {
-            return {
-                data: _response.body as Samsara.DriverEfficiencyGetDriverEfficiencyByDriversResponseBody,
-                rawResponse: _response.rawResponse,
-            };
-        }
-
-        if (_response.error.reason === "status-code") {
-            switch (_response.error.statusCode) {
-                case 401:
-                    throw new Samsara.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
-                case 404:
-                    throw new Samsara.NotFoundError(_response.error.body as unknown, _response.rawResponse);
-                case 405:
-                    throw new Samsara.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
-                case 413:
-                    throw new Samsara.ContentTooLargeError(_response.error.body as unknown, _response.rawResponse);
-                case 429:
-                    throw new Samsara.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
-                case 500:
-                    throw new Samsara.InternalServerError(_response.error.body as unknown, _response.rawResponse);
-                case 501:
-                    throw new Samsara.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
-                case 502:
-                    throw new Samsara.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
-                case 503:
-                    throw new Samsara.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
-                case 504:
-                    throw new Samsara.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
-                default:
-                    throw new errors.SamsaraError({
-                        statusCode: _response.error.statusCode,
-                        body: _response.error.body,
-                        rawResponse: _response.rawResponse,
-                    });
-            }
-        }
-
-        return handleNonStatusCodeError(_response.error, _response.rawResponse, "GET", "/driver-efficiency/drivers");
-    }
-
-    /**
-     * This endpoint will return driver efficiency data that has been collected for your organization and grouped by vehicle drivers used based on the time parameters passed in. Results are paginated.
-     *
-     * **Note:** The data from this endpoint comes from the Driver Efficiency (Eco-Driving) Report. The existing [/fleet/drivers/efficiency](https://developers.samsara.com/reference/getdriverefficiency) endpoint has now been moved to Legacy.
-     *
-     *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
-     *
-     * To use this endpoint, select **Read Driver Efficiency** under the Fuel & Energy category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
-     *
-     *
-     *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
-     *
-     * @param {Samsara.GetDriverEfficiencyByVehiclesRequest} request
-     * @param {FuelAndEnergyClient.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @throws {@link Samsara.UnauthorizedError}
-     * @throws {@link Samsara.NotFoundError}
-     * @throws {@link Samsara.MethodNotAllowedError}
-     * @throws {@link Samsara.ContentTooLargeError}
-     * @throws {@link Samsara.TooManyRequestsError}
-     * @throws {@link Samsara.InternalServerError}
-     * @throws {@link Samsara.NotImplementedError}
-     * @throws {@link Samsara.BadGatewayError}
-     * @throws {@link Samsara.ServiceUnavailableError}
-     * @throws {@link Samsara.GatewayTimeoutError}
-     *
-     * @example
-     *     await client.fuelAndEnergy.getDriverEfficiencyByVehicles({
-     *         startTime: "startTime",
-     *         endTime: "endTime"
-     *     })
-     */
-    public getDriverEfficiencyByVehicles(
-        request: Samsara.GetDriverEfficiencyByVehiclesRequest,
-        requestOptions?: FuelAndEnergyClient.RequestOptions,
-    ): core.HttpResponsePromise<Samsara.DriverEfficiencyGetDriverEfficiencyByVehiclesResponseBody> {
-        return core.HttpResponsePromise.fromPromise(this.__getDriverEfficiencyByVehicles(request, requestOptions));
-    }
-
-    private async __getDriverEfficiencyByVehicles(
-        request: Samsara.GetDriverEfficiencyByVehiclesRequest,
-        requestOptions?: FuelAndEnergyClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Samsara.DriverEfficiencyGetDriverEfficiencyByVehiclesResponseBody>> {
-        const { startTime, endTime, vehicleIds, dataFormats, tagIds, parentTagIds, after } = request;
-        const _queryParams: Record<string, unknown> = {
-            startTime,
-            endTime,
-            vehicleIds,
-            dataFormats,
-            tagIds,
-            parentTagIds,
-            after,
-        };
-        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
-        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
-            _authRequest.headers,
-            this._options?.headers,
-            mergeOnlyDefinedHeaders({ "X-Samsara-Version": requestOptions?.version }),
-            requestOptions?.headers,
-        );
-        const _response = await core.fetcher({
-            url: core.url.join(
-                (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.SamsaraEnvironment.ProductionApi,
-                "driver-efficiency/vehicles",
-            ),
-            method: "GET",
-            headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
-            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
-            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
-            fetchFn: this._options?.fetch,
-            logging: this._options.logging,
-        });
-        if (_response.ok) {
-            return {
-                data: _response.body as Samsara.DriverEfficiencyGetDriverEfficiencyByVehiclesResponseBody,
-                rawResponse: _response.rawResponse,
-            };
-        }
-
-        if (_response.error.reason === "status-code") {
-            switch (_response.error.statusCode) {
-                case 401:
-                    throw new Samsara.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
-                case 404:
-                    throw new Samsara.NotFoundError(_response.error.body as unknown, _response.rawResponse);
-                case 405:
-                    throw new Samsara.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
-                case 413:
-                    throw new Samsara.ContentTooLargeError(_response.error.body as unknown, _response.rawResponse);
-                case 429:
-                    throw new Samsara.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
-                case 500:
-                    throw new Samsara.InternalServerError(_response.error.body as unknown, _response.rawResponse);
-                case 501:
-                    throw new Samsara.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
-                case 502:
-                    throw new Samsara.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
-                case 503:
-                    throw new Samsara.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
-                case 504:
-                    throw new Samsara.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
-                default:
-                    throw new errors.SamsaraError({
-                        statusCode: _response.error.statusCode,
-                        body: _response.error.body,
-                        rawResponse: _response.rawResponse,
-                    });
-            }
-        }
-
-        return handleNonStatusCodeError(_response.error, _response.rawResponse, "GET", "/driver-efficiency/vehicles");
-    }
-
-    /**
      * Get fuel and energy efficiency driver reports for the requested time range.
      *
      *  <b>Rate limit:</b> 5 requests/sec (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
@@ -607,5 +373,553 @@ export class FuelAndEnergyClient {
         }
 
         return handleNonStatusCodeError(_response.error, _response.rawResponse, "POST", "/fuel-purchase");
+    }
+
+    /**
+     * List all preferred fuel stations for your organization.
+     *
+     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *
+     * To use this endpoint, select **Read Fuel Purchase** under the Fuel & Energy category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     *
+     *
+     *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
+     *
+     * @param {Samsara.ListPreferredStationsRequest} request
+     * @param {FuelAndEnergyClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Samsara.UnauthorizedError}
+     * @throws {@link Samsara.NotFoundError}
+     * @throws {@link Samsara.MethodNotAllowedError}
+     * @throws {@link Samsara.ContentTooLargeError}
+     * @throws {@link Samsara.TooManyRequestsError}
+     * @throws {@link Samsara.InternalServerError}
+     * @throws {@link Samsara.NotImplementedError}
+     * @throws {@link Samsara.BadGatewayError}
+     * @throws {@link Samsara.ServiceUnavailableError}
+     * @throws {@link Samsara.GatewayTimeoutError}
+     *
+     * @example
+     *     await client.fuelAndEnergy.listPreferredStations()
+     */
+    public listPreferredStations(
+        request: Samsara.ListPreferredStationsRequest = {},
+        requestOptions?: FuelAndEnergyClient.RequestOptions,
+    ): core.HttpResponsePromise<Samsara.PreferredStationsListPreferredStationsResponseBody> {
+        return core.HttpResponsePromise.fromPromise(this.__listPreferredStations(request, requestOptions));
+    }
+
+    private async __listPreferredStations(
+        request: Samsara.ListPreferredStationsRequest = {},
+        requestOptions?: FuelAndEnergyClient.RequestOptions,
+    ): Promise<core.WithRawResponse<Samsara.PreferredStationsListPreferredStationsResponseBody>> {
+        const { limit, after, includeExternalIds } = request;
+        const _queryParams: Record<string, unknown> = {
+            limit,
+            after,
+            includeExternalIds,
+        };
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ "X-Samsara-Version": requestOptions?.version }),
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.SamsaraEnvironment.ProductionApi,
+                "preferred-stations",
+            ),
+            method: "GET",
+            headers: _headers,
+            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return {
+                data: _response.body as Samsara.PreferredStationsListPreferredStationsResponseBody,
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 401:
+                    throw new Samsara.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
+                case 404:
+                    throw new Samsara.NotFoundError(_response.error.body as unknown, _response.rawResponse);
+                case 405:
+                    throw new Samsara.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
+                case 413:
+                    throw new Samsara.ContentTooLargeError(_response.error.body as unknown, _response.rawResponse);
+                case 429:
+                    throw new Samsara.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
+                case 500:
+                    throw new Samsara.InternalServerError(_response.error.body as unknown, _response.rawResponse);
+                case 501:
+                    throw new Samsara.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
+                case 502:
+                    throw new Samsara.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                case 503:
+                    throw new Samsara.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
+                case 504:
+                    throw new Samsara.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
+                default:
+                    throw new errors.SamsaraError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
+                    });
+            }
+        }
+
+        return handleNonStatusCodeError(_response.error, _response.rawResponse, "GET", "/preferred-stations");
+    }
+
+    /**
+     * Create a preferred fuel station for your organization.
+     *
+     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *
+     * To use this endpoint, select **Write Fuel Purchase** under the Fuel & Energy category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     *
+     *
+     *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
+     *
+     * @param {Samsara.PreferredStationsPostPreferredStationRequestBody} request
+     * @param {FuelAndEnergyClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Samsara.UnauthorizedError}
+     * @throws {@link Samsara.NotFoundError}
+     * @throws {@link Samsara.MethodNotAllowedError}
+     * @throws {@link Samsara.ContentTooLargeError}
+     * @throws {@link Samsara.TooManyRequestsError}
+     * @throws {@link Samsara.InternalServerError}
+     * @throws {@link Samsara.NotImplementedError}
+     * @throws {@link Samsara.BadGatewayError}
+     * @throws {@link Samsara.ServiceUnavailableError}
+     * @throws {@link Samsara.GatewayTimeoutError}
+     *
+     * @example
+     *     await client.fuelAndEnergy.postPreferredStation({
+     *         address: {
+     *             city: "Green River",
+     *             country: "US",
+     *             line1: "8901 US Hwy 374",
+     *             postalCode: "82935"
+     *         },
+     *         externalIds: {
+     *             "key": "value"
+     *         },
+     *         name: "Station #432"
+     *     })
+     */
+    public postPreferredStation(
+        request: Samsara.PreferredStationsPostPreferredStationRequestBody,
+        requestOptions?: FuelAndEnergyClient.RequestOptions,
+    ): core.HttpResponsePromise<Samsara.PreferredStationsPostPreferredStationResponseBody> {
+        return core.HttpResponsePromise.fromPromise(this.__postPreferredStation(request, requestOptions));
+    }
+
+    private async __postPreferredStation(
+        request: Samsara.PreferredStationsPostPreferredStationRequestBody,
+        requestOptions?: FuelAndEnergyClient.RequestOptions,
+    ): Promise<core.WithRawResponse<Samsara.PreferredStationsPostPreferredStationResponseBody>> {
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ "X-Samsara-Version": requestOptions?.version }),
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.SamsaraEnvironment.ProductionApi,
+                "preferred-stations",
+            ),
+            method: "POST",
+            headers: _headers,
+            contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
+            requestType: "json",
+            body: request,
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return {
+                data: _response.body as Samsara.PreferredStationsPostPreferredStationResponseBody,
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 401:
+                    throw new Samsara.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
+                case 404:
+                    throw new Samsara.NotFoundError(_response.error.body as unknown, _response.rawResponse);
+                case 405:
+                    throw new Samsara.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
+                case 413:
+                    throw new Samsara.ContentTooLargeError(_response.error.body as unknown, _response.rawResponse);
+                case 429:
+                    throw new Samsara.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
+                case 500:
+                    throw new Samsara.InternalServerError(_response.error.body as unknown, _response.rawResponse);
+                case 501:
+                    throw new Samsara.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
+                case 502:
+                    throw new Samsara.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                case 503:
+                    throw new Samsara.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
+                case 504:
+                    throw new Samsara.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
+                default:
+                    throw new errors.SamsaraError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
+                    });
+            }
+        }
+
+        return handleNonStatusCodeError(_response.error, _response.rawResponse, "POST", "/preferred-stations");
+    }
+
+    /**
+     * Delete a preferred fuel station for your organization.
+     *
+     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *
+     * To use this endpoint, select **Write Fuel Purchase** under the Fuel & Energy category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     *
+     *
+     *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
+     *
+     * @param {Samsara.DeletePreferredStationRequest} request
+     * @param {FuelAndEnergyClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Samsara.UnauthorizedError}
+     * @throws {@link Samsara.NotFoundError}
+     * @throws {@link Samsara.MethodNotAllowedError}
+     * @throws {@link Samsara.ContentTooLargeError}
+     * @throws {@link Samsara.TooManyRequestsError}
+     * @throws {@link Samsara.InternalServerError}
+     * @throws {@link Samsara.NotImplementedError}
+     * @throws {@link Samsara.BadGatewayError}
+     * @throws {@link Samsara.ServiceUnavailableError}
+     * @throws {@link Samsara.GatewayTimeoutError}
+     *
+     * @example
+     *     await client.fuelAndEnergy.deletePreferredStation({
+     *         id: "id"
+     *     })
+     */
+    public deletePreferredStation(
+        request: Samsara.DeletePreferredStationRequest,
+        requestOptions?: FuelAndEnergyClient.RequestOptions,
+    ): core.HttpResponsePromise<void> {
+        return core.HttpResponsePromise.fromPromise(this.__deletePreferredStation(request, requestOptions));
+    }
+
+    private async __deletePreferredStation(
+        request: Samsara.DeletePreferredStationRequest,
+        requestOptions?: FuelAndEnergyClient.RequestOptions,
+    ): Promise<core.WithRawResponse<void>> {
+        const { id } = request;
+        const _queryParams: Record<string, unknown> = {
+            id,
+        };
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ "X-Samsara-Version": requestOptions?.version }),
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.SamsaraEnvironment.ProductionApi,
+                "preferred-stations",
+            ),
+            method: "DELETE",
+            headers: _headers,
+            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return { data: undefined, rawResponse: _response.rawResponse };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 401:
+                    throw new Samsara.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
+                case 404:
+                    throw new Samsara.NotFoundError(_response.error.body as unknown, _response.rawResponse);
+                case 405:
+                    throw new Samsara.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
+                case 413:
+                    throw new Samsara.ContentTooLargeError(_response.error.body as unknown, _response.rawResponse);
+                case 429:
+                    throw new Samsara.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
+                case 500:
+                    throw new Samsara.InternalServerError(_response.error.body as unknown, _response.rawResponse);
+                case 501:
+                    throw new Samsara.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
+                case 502:
+                    throw new Samsara.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                case 503:
+                    throw new Samsara.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
+                case 504:
+                    throw new Samsara.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
+                default:
+                    throw new errors.SamsaraError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
+                    });
+            }
+        }
+
+        return handleNonStatusCodeError(_response.error, _response.rawResponse, "DELETE", "/preferred-stations");
+    }
+
+    /**
+     * Update a preferred fuel station for your organization.
+     *
+     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *
+     * To use this endpoint, select **Write Fuel Purchase** under the Fuel & Energy category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     *
+     *
+     *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
+     *
+     * @param {Samsara.PreferredStationsPatchPreferredStationRequestBody} request
+     * @param {FuelAndEnergyClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Samsara.UnauthorizedError}
+     * @throws {@link Samsara.NotFoundError}
+     * @throws {@link Samsara.MethodNotAllowedError}
+     * @throws {@link Samsara.ContentTooLargeError}
+     * @throws {@link Samsara.TooManyRequestsError}
+     * @throws {@link Samsara.InternalServerError}
+     * @throws {@link Samsara.NotImplementedError}
+     * @throws {@link Samsara.BadGatewayError}
+     * @throws {@link Samsara.ServiceUnavailableError}
+     * @throws {@link Samsara.GatewayTimeoutError}
+     *
+     * @example
+     *     await client.fuelAndEnergy.patchPreferredStation({
+     *         id: "id"
+     *     })
+     */
+    public patchPreferredStation(
+        request: Samsara.PreferredStationsPatchPreferredStationRequestBody,
+        requestOptions?: FuelAndEnergyClient.RequestOptions,
+    ): core.HttpResponsePromise<Samsara.PreferredStationsPatchPreferredStationResponseBody> {
+        return core.HttpResponsePromise.fromPromise(this.__patchPreferredStation(request, requestOptions));
+    }
+
+    private async __patchPreferredStation(
+        request: Samsara.PreferredStationsPatchPreferredStationRequestBody,
+        requestOptions?: FuelAndEnergyClient.RequestOptions,
+    ): Promise<core.WithRawResponse<Samsara.PreferredStationsPatchPreferredStationResponseBody>> {
+        const { id, ..._body } = request;
+        const _queryParams: Record<string, unknown> = {
+            id,
+        };
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ "X-Samsara-Version": requestOptions?.version }),
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.SamsaraEnvironment.ProductionApi,
+                "preferred-stations",
+            ),
+            method: "PATCH",
+            headers: _headers,
+            contentType: "application/json",
+            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            requestType: "json",
+            body: _body,
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return {
+                data: _response.body as Samsara.PreferredStationsPatchPreferredStationResponseBody,
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 401:
+                    throw new Samsara.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
+                case 404:
+                    throw new Samsara.NotFoundError(_response.error.body as unknown, _response.rawResponse);
+                case 405:
+                    throw new Samsara.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
+                case 413:
+                    throw new Samsara.ContentTooLargeError(_response.error.body as unknown, _response.rawResponse);
+                case 429:
+                    throw new Samsara.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
+                case 500:
+                    throw new Samsara.InternalServerError(_response.error.body as unknown, _response.rawResponse);
+                case 501:
+                    throw new Samsara.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
+                case 502:
+                    throw new Samsara.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                case 503:
+                    throw new Samsara.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
+                case 504:
+                    throw new Samsara.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
+                default:
+                    throw new errors.SamsaraError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
+                    });
+            }
+        }
+
+        return handleNonStatusCodeError(_response.error, _response.rawResponse, "PATCH", "/preferred-stations");
+    }
+
+    /**
+     * Get a single preferred fuel station by ID.
+     *
+     *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
+     *
+     * To use this endpoint, select **Read Fuel Purchase** under the Fuel & Energy category when creating or editing an API token. <a href="https://developers.samsara.com/docs/authentication#scopes-for-api-tokens" target="_blank">Learn More.</a>
+     *
+     *
+     *  **Submit Feedback**: Likes, dislikes, and API feature requests should be filed as feedback in our <a href="https://forms.gle/zkD4NCH7HjKb7mm69" target="_blank">API feedback form</a>. If you encountered an issue or noticed inaccuracies in the API documentation, please <a href="https://www.samsara.com/help" target="_blank">submit a case</a> to our support team.
+     *
+     * @param {Samsara.GetPreferredStationRequest} request
+     * @param {FuelAndEnergyClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Samsara.UnauthorizedError}
+     * @throws {@link Samsara.NotFoundError}
+     * @throws {@link Samsara.MethodNotAllowedError}
+     * @throws {@link Samsara.ContentTooLargeError}
+     * @throws {@link Samsara.TooManyRequestsError}
+     * @throws {@link Samsara.InternalServerError}
+     * @throws {@link Samsara.NotImplementedError}
+     * @throws {@link Samsara.BadGatewayError}
+     * @throws {@link Samsara.ServiceUnavailableError}
+     * @throws {@link Samsara.GatewayTimeoutError}
+     *
+     * @example
+     *     await client.fuelAndEnergy.getPreferredStation({
+     *         id: "id"
+     *     })
+     */
+    public getPreferredStation(
+        request: Samsara.GetPreferredStationRequest,
+        requestOptions?: FuelAndEnergyClient.RequestOptions,
+    ): core.HttpResponsePromise<Samsara.PreferredStationsGetPreferredStationResponseBody> {
+        return core.HttpResponsePromise.fromPromise(this.__getPreferredStation(request, requestOptions));
+    }
+
+    private async __getPreferredStation(
+        request: Samsara.GetPreferredStationRequest,
+        requestOptions?: FuelAndEnergyClient.RequestOptions,
+    ): Promise<core.WithRawResponse<Samsara.PreferredStationsGetPreferredStationResponseBody>> {
+        const { id, includeExternalIds } = request;
+        const _queryParams: Record<string, unknown> = {
+            includeExternalIds,
+        };
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ "X-Samsara-Version": requestOptions?.version }),
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.SamsaraEnvironment.ProductionApi,
+                `preferred-stations/${core.url.encodePathParam(id)}`,
+            ),
+            method: "GET",
+            headers: _headers,
+            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return {
+                data: _response.body as Samsara.PreferredStationsGetPreferredStationResponseBody,
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 401:
+                    throw new Samsara.UnauthorizedError(_response.error.body as unknown, _response.rawResponse);
+                case 404:
+                    throw new Samsara.NotFoundError(_response.error.body as unknown, _response.rawResponse);
+                case 405:
+                    throw new Samsara.MethodNotAllowedError(_response.error.body as unknown, _response.rawResponse);
+                case 413:
+                    throw new Samsara.ContentTooLargeError(_response.error.body as unknown, _response.rawResponse);
+                case 429:
+                    throw new Samsara.TooManyRequestsError(_response.error.body as unknown, _response.rawResponse);
+                case 500:
+                    throw new Samsara.InternalServerError(_response.error.body as unknown, _response.rawResponse);
+                case 501:
+                    throw new Samsara.NotImplementedError(_response.error.body as unknown, _response.rawResponse);
+                case 502:
+                    throw new Samsara.BadGatewayError(_response.error.body as unknown, _response.rawResponse);
+                case 503:
+                    throw new Samsara.ServiceUnavailableError(_response.error.body as unknown, _response.rawResponse);
+                case 504:
+                    throw new Samsara.GatewayTimeoutError(_response.error.body as unknown, _response.rawResponse);
+                default:
+                    throw new errors.SamsaraError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
+                    });
+            }
+        }
+
+        return handleNonStatusCodeError(_response.error, _response.rawResponse, "GET", "/preferred-stations/{id}");
     }
 }

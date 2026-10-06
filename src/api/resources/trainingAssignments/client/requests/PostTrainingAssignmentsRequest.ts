@@ -12,6 +12,6 @@ export interface PostTrainingAssignmentsRequest {
     courseId: string;
     /** Due date of the training assignment in RFC 3339 format. Millisecond precision and timezones are supported. */
     dueAtTime: string;
-    /** Optional string of comma separated learner IDs. If learner ID is present, training assignments for the specified learner(s) will be returned. Max value for this value is 100 objects. Example: `learnerIds=driver-281474,driver-46282156` */
+    /** String of comma separated learner IDs using the format `driver-<id>` or `user-<id>`. Training assignments for the specified course ID and learner(s) will be created. Max value for this value is 100 objects. Example: `learnerIds=driver-281474,user-46282156`. Non-driver user learners are available only for organizations with non-driver training enabled. Contact your Samsara representative to request access. */
     learnerIds?: string | string[];
 }

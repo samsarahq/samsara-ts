@@ -4,14 +4,14 @@
  * Information about an active health reason affecting the device.
  */
 export interface HealthReasonResponseResponseBody {
-    /** The type of health reason detected.  Valid values: `assetUnplugged`, `cameraMisaligned`, `dataPending`, `healthy`, `inwardCameraObstruction`, `irregularRecording`, `lowDeviceBattery`, `missingEldDiagnostics`, `missingVin`, `needsReplacement`, `newlyInstalledDevice`, `noGpsSignal`, `notDetected`, `outwardCameraObstruction`, `recordingTimeRequired`, `unknown`, `vgUnplugged` */
+    /** The type of health reason detected.  Valid values: `assetUnplugged`, `cameraMisaligned`, `dataPending`, `healthy`, `inwardCameraObstruction`, `irregularRecording`, `lowConnectivity`, `lowDeviceBattery`, `lowUptime`, `mediaInputLowConnectivity`, `missingEldDiagnostics`, `missingVin`, `needsAttribute`, `needsReplacement`, `newlyInstalledDevice`, `noGpsSignal`, `notDetected`, `outwardCameraObstruction`, `recordingTimeRequired`, `unknown`, `unstablePower`, `vgUnplugged` */
     healthReasonCode?: HealthReasonResponseResponseBody.HealthReasonCode | undefined;
     /** The timestamp when this health reason began, in RFC3339 format. */
     startTime?: string | undefined;
 }
 
 export namespace HealthReasonResponseResponseBody {
-    /** The type of health reason detected.  Valid values: `assetUnplugged`, `cameraMisaligned`, `dataPending`, `healthy`, `inwardCameraObstruction`, `irregularRecording`, `lowDeviceBattery`, `missingEldDiagnostics`, `missingVin`, `needsReplacement`, `newlyInstalledDevice`, `noGpsSignal`, `notDetected`, `outwardCameraObstruction`, `recordingTimeRequired`, `unknown`, `vgUnplugged` */
+    /** The type of health reason detected.  Valid values: `assetUnplugged`, `cameraMisaligned`, `dataPending`, `healthy`, `inwardCameraObstruction`, `irregularRecording`, `lowConnectivity`, `lowDeviceBattery`, `lowUptime`, `mediaInputLowConnectivity`, `missingEldDiagnostics`, `missingVin`, `needsAttribute`, `needsReplacement`, `newlyInstalledDevice`, `noGpsSignal`, `notDetected`, `outwardCameraObstruction`, `recordingTimeRequired`, `unknown`, `unstablePower`, `vgUnplugged` */
     export const HealthReasonCode = {
         AssetUnplugged: "assetUnplugged",
         CameraMisaligned: "cameraMisaligned",
@@ -19,9 +19,13 @@ export namespace HealthReasonResponseResponseBody {
         Healthy: "healthy",
         InwardCameraObstruction: "inwardCameraObstruction",
         IrregularRecording: "irregularRecording",
+        LowConnectivity: "lowConnectivity",
         LowDeviceBattery: "lowDeviceBattery",
+        LowUptime: "lowUptime",
+        MediaInputLowConnectivity: "mediaInputLowConnectivity",
         MissingEldDiagnostics: "missingEldDiagnostics",
         MissingVin: "missingVin",
+        NeedsAttribute: "needsAttribute",
         NeedsReplacement: "needsReplacement",
         NewlyInstalledDevice: "newlyInstalledDevice",
         NoGpsSignal: "noGpsSignal",
@@ -29,6 +33,7 @@ export namespace HealthReasonResponseResponseBody {
         OutwardCameraObstruction: "outwardCameraObstruction",
         RecordingTimeRequired: "recordingTimeRequired",
         Unknown: "unknown",
+        UnstablePower: "unstablePower",
         VgUnplugged: "vgUnplugged",
     } as const;
     export type HealthReasonCode = (typeof HealthReasonCode)[keyof typeof HealthReasonCode];

@@ -3,17 +3,17 @@
 import type * as Samsara from "../index.js";
 
 /**
- * Order task
+ * Order task. One of `customerLocationId`, `address`, or both `latitude` and `longitude` is required.
  */
 export interface OrderTaskResponseBody {
-    /** The full address string for the order */
+    /** The full address string for the order. One of `customerLocationId`, `address`, or both `latitude` and `longitude` is required. */
     address?: string | undefined;
     appointmentWindow?: Samsara.AppointmentWindowResponseBody | undefined;
-    /** The customer-provided identifier of the location associated with the order */
+    /** The customer-provided identifier of the location associated with the order. One of `customerLocationId`, `address`, or both `latitude` and `longitude` is required. */
     customerLocationId?: string | undefined;
-    /** Latitude of the order. Optional if address is provided; the address will be geocoded to obtain coordinates. */
+    /** Latitude of the order. Optional if address is provided; the address will be geocoded to obtain coordinates. One of `customerLocationId`, `address`, or both `latitude` and `longitude` is required. */
     latitude?: number | undefined;
-    /** Longitude of the order. Optional if address is provided; the address will be geocoded to obtain coordinates. */
+    /** Longitude of the order. Optional if address is provided; the address will be geocoded to obtain coordinates. One of `customerLocationId`, `address`, or both `latitude` and `longitude` is required. */
     longitude?: number | undefined;
     /** Any additional notes for the order */
     notes?: string | undefined;

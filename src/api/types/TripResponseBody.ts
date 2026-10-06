@@ -12,12 +12,16 @@ export interface TripResponseBody {
     /** [RFC 3339] Time the trip was created in Samsara in UTC. */
     createdAtTime: string;
     endLocation?: Samsara.LocationResponseResponseBody | undefined;
+    /** Final distance driven in meters, calculated from GPS data. Only populated once the trip has completed (`completionStatus: completed`); null while the trip is in progress. Later corrections (e.g. late-arriving GPS data) are not signaled by updatedAtTime. */
+    finalDistanceMeters?: number | undefined;
     startLocation: Samsara.LocationResponseResponseBody;
     /** [RFC 3339] Time the trip ended in UTC. */
     tripEndTime?: string | undefined;
+    /** The driver-assigned purpose of the trip. Only populated for completed trips when your organization is licensed for mileage reporting; null while the trip is in progress or when not licensed. `unassigned` means the driver has not classified the trip. Reflects the explicit Driver App classification, not automatic classification. When a driver changes the purpose after the trip completes, the trip is re-served through the `updatedAtTime` feed with the new value.  Valid values: `unknown`, `unassigned`, `personal`, `business`, `commute` */
+    tripPurpose?: TripResponseBody.TripPurpose | undefined;
     /** [RFC 3339] Time the trip started in UTC. */
     tripStartTime: string;
-    /** [RFC 3339] Time the trip was updated in Samsara in UTC. Valid updates are when `endTime` populates or `completionStatus` changes values. */
+    /** [RFC 3339] Time the trip was updated in Samsara in UTC. Valid updates are when `endTime` populates, `completionStatus` changes values, or a driver changes the trip's `tripPurpose` after the trip has completed. To receive later purpose corrections, poll with `queryBy=updatedAtTime`; feed data trails real time by a few seconds. */
     updatedAtTime: string;
 }
 
@@ -28,4 +32,13 @@ export namespace TripResponseBody {
         Completed: "completed",
     } as const;
     export type CompletionStatus = (typeof CompletionStatus)[keyof typeof CompletionStatus];
+    /** The driver-assigned purpose of the trip. Only populated for completed trips when your organization is licensed for mileage reporting; null while the trip is in progress or when not licensed. `unassigned` means the driver has not classified the trip. Reflects the explicit Driver App classification, not automatic classification. When a driver changes the purpose after the trip completes, the trip is re-served through the `updatedAtTime` feed with the new value.  Valid values: `unknown`, `unassigned`, `personal`, `business`, `commute` */
+    export const TripPurpose = {
+        Unknown: "unknown",
+        Unassigned: "unassigned",
+        Personal: "personal",
+        Business: "business",
+        Commute: "commute",
+    } as const;
+    export type TripPurpose = (typeof TripPurpose)[keyof typeof TripPurpose];
 }

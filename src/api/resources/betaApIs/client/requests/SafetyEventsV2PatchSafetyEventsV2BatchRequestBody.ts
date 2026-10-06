@@ -5,7 +5,7 @@ import type * as Samsara from "../../../../index.js";
 /**
  * @example
  *     {
- *         safetyEventIds: ["bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590"]
+ *         safetyEventIds: ["bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590", "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590"]
  *     }
  */
 export interface SafetyEventsV2PatchSafetyEventsV2BatchRequestBody {
@@ -28,7 +28,7 @@ export namespace SafetyEventsV2PatchSafetyEventsV2BatchRequestBody {
     export type BehaviorLabelsToAdd = BehaviorLabelsToAdd.Item[];
 
     export namespace BehaviorLabelsToAdd {
-        /** A behavior label name to add.  Valid values: `Acceleration`, `AggressiveDriving`, `BluetoothHeadset`, `Braking`, `ContextConstructionOrWorkZone`, `ContextSnowyOrIcy`, `ContextVulnerableRoadUser`, `ContextWet`, `Crash`, `DefensiveDriving`, `DidNotYield`, `Drinking`, `Drowsy`, `Eating`, `EatingDrinking`, `EdgeDistractedDriving`, `EdgeRailroadCrossingViolation`, `FollowingDistance`, `FollowingDistanceModerate`, `FollowingDistanceSevere`, `ForwardCollisionWarning`, `GenericDistraction`, `GenericTailgating`, `HarshImpact`, `HarshTurn`, `HeavySpeeding`, `HighSpeedSuddenDisconnect`, `HosViolation`, `Idling`, `Invalid`, `LaneDeparture`, `LateResponse`, `LeftTurn`, `LightSpeeding`, `MaxSpeed`, `MobileUsage`, `ModerateSpeeding`, `NearCollison`, `NearPedestrianCollision`, `NoSeatbelt`, `ObstructedCamera`, `OperationalEvent`, `OtherViolation`, `Passenger`, `PolicyViolationMask`, `ProtectiveEquipment`, `ProximityWarning`, `RanRedLight`, `RearCollisionWarning`, `Reversing`, `RollingStop`, `RolloverProtection`, `SevereSpeeding`, `Smoking`, `Speeding`, `UTurn`, `UnsafeManeuver`, `UnsafeParking`, `VehicleInBlindSpotWarning`, `VulnerableRoadUserCollisionWarning`, `YawControl` */
+        /** A behavior label name to add.  Valid values: `Acceleration`, `AggressiveDriving`, `BluetoothHeadset`, `Braking`, `ContextConstructionOrWorkZone`, `ContextSnowyOrIcy`, `ContextVulnerableRoadUser`, `ContextWet`, `Crash`, `DefensiveDriving`, `DidNotYield`, `Drinking`, `Drowsy`, `Eating`, `EatingDrinking`, `EdgeDistractedDriving`, `EdgeRailroadCrossingViolation`, `FollowingDistance`, `FollowingDistanceModerate`, `FollowingDistanceSevere`, `ForwardCollisionWarning`, `GenericDistraction`, `GenericTailgating`, `HarshImpact`, `HarshTurn`, `HeavySpeeding`, `HighSpeedSuddenDisconnect`, `HosViolation`, `Idling`, `ImproperEgress`, `Invalid`, `LaneDeparture`, `LateResponse`, `LeftTurn`, `LightSpeeding`, `MaxSpeed`, `MobileUsage`, `ModerateSpeeding`, `NearCollison`, `NearPedestrianCollision`, `NoSeatbelt`, `ObstructedCamera`, `OperationalEvent`, `OtherViolation`, `Passenger`, `PolicyViolationMask`, `ProtectiveEquipment`, `ProximityWarning`, `RanRedLight`, `RearCollisionWarning`, `Reversing`, `RollingStop`, `RolloverProtection`, `SevereSpeeding`, `Smoking`, `Speeding`, `UTurn`, `UnsafeManeuver`, `UnsafeParking`, `VehicleInBlindSpotWarning`, `VulnerableRoadUserCollisionWarning`, `YawControl` */
         export const Item = {
             Acceleration: "Acceleration",
             AggressiveDriving: "AggressiveDriving",
@@ -59,6 +59,7 @@ export namespace SafetyEventsV2PatchSafetyEventsV2BatchRequestBody {
             HighSpeedSuddenDisconnect: "HighSpeedSuddenDisconnect",
             HosViolation: "HosViolation",
             Idling: "Idling",
+            ImproperEgress: "ImproperEgress",
             Invalid: "Invalid",
             LaneDeparture: "LaneDeparture",
             LateResponse: "LateResponse",
@@ -98,7 +99,7 @@ export namespace SafetyEventsV2PatchSafetyEventsV2BatchRequestBody {
     export type BehaviorLabelsToRemove = BehaviorLabelsToRemove.Item[];
 
     export namespace BehaviorLabelsToRemove {
-        /** A behavior label name to remove.  Valid values: `Acceleration`, `AggressiveDriving`, `BluetoothHeadset`, `Braking`, `ContextConstructionOrWorkZone`, `ContextSnowyOrIcy`, `ContextVulnerableRoadUser`, `ContextWet`, `Crash`, `DefensiveDriving`, `DidNotYield`, `Drinking`, `Drowsy`, `Eating`, `EatingDrinking`, `EdgeDistractedDriving`, `EdgeRailroadCrossingViolation`, `FollowingDistance`, `FollowingDistanceModerate`, `FollowingDistanceSevere`, `ForwardCollisionWarning`, `GenericDistraction`, `GenericTailgating`, `HarshImpact`, `HarshTurn`, `HeavySpeeding`, `HighSpeedSuddenDisconnect`, `HosViolation`, `Idling`, `Invalid`, `LaneDeparture`, `LateResponse`, `LeftTurn`, `LightSpeeding`, `MaxSpeed`, `MobileUsage`, `ModerateSpeeding`, `NearCollison`, `NearPedestrianCollision`, `NoSeatbelt`, `ObstructedCamera`, `OperationalEvent`, `OtherViolation`, `Passenger`, `PolicyViolationMask`, `ProtectiveEquipment`, `ProximityWarning`, `RanRedLight`, `RearCollisionWarning`, `Reversing`, `RollingStop`, `RolloverProtection`, `SevereSpeeding`, `Smoking`, `Speeding`, `UTurn`, `UnsafeManeuver`, `UnsafeParking`, `VehicleInBlindSpotWarning`, `VulnerableRoadUserCollisionWarning`, `YawControl` */
+        /** A behavior label name to remove.  Valid values: `Acceleration`, `AggressiveDriving`, `BluetoothHeadset`, `Braking`, `ContextConstructionOrWorkZone`, `ContextSnowyOrIcy`, `ContextVulnerableRoadUser`, `ContextWet`, `Crash`, `DefensiveDriving`, `DidNotYield`, `Drinking`, `Drowsy`, `Eating`, `EatingDrinking`, `EdgeDistractedDriving`, `EdgeRailroadCrossingViolation`, `FollowingDistance`, `FollowingDistanceModerate`, `FollowingDistanceSevere`, `ForwardCollisionWarning`, `GenericDistraction`, `GenericTailgating`, `HarshImpact`, `HarshTurn`, `HeavySpeeding`, `HighSpeedSuddenDisconnect`, `HosViolation`, `Idling`, `ImproperEgress`, `Invalid`, `LaneDeparture`, `LateResponse`, `LeftTurn`, `LightSpeeding`, `MaxSpeed`, `MobileUsage`, `ModerateSpeeding`, `NearCollison`, `NearPedestrianCollision`, `NoSeatbelt`, `ObstructedCamera`, `OperationalEvent`, `OtherViolation`, `Passenger`, `PolicyViolationMask`, `ProtectiveEquipment`, `ProximityWarning`, `RanRedLight`, `RearCollisionWarning`, `Reversing`, `RollingStop`, `RolloverProtection`, `SevereSpeeding`, `Smoking`, `Speeding`, `UTurn`, `UnsafeManeuver`, `UnsafeParking`, `VehicleInBlindSpotWarning`, `VulnerableRoadUserCollisionWarning`, `YawControl` */
         export const Item = {
             Acceleration: "Acceleration",
             AggressiveDriving: "AggressiveDriving",
@@ -129,6 +130,7 @@ export namespace SafetyEventsV2PatchSafetyEventsV2BatchRequestBody {
             HighSpeedSuddenDisconnect: "HighSpeedSuddenDisconnect",
             HosViolation: "HosViolation",
             Idling: "Idling",
+            ImproperEgress: "ImproperEgress",
             Invalid: "Invalid",
             LaneDeparture: "LaneDeparture",
             LateResponse: "LateResponse",
@@ -168,21 +170,22 @@ export namespace SafetyEventsV2PatchSafetyEventsV2BatchRequestBody {
     export type ContextLabelsToAdd = ContextLabelsToAdd.Item[];
 
     export namespace ContextLabelsToAdd {
-        /** A context label name to add.  Valid values: `Congested`, `Construction`, `Coupling/Uncoupling`, `Cyclist/Motorcyclist`, `Defensive`, `Fog`, `Improper Seat Belt`, `Lead Car`, `Light Traffic`, `Moderate Traffic`, `Moderately Drowsy`, `Mounted Phone`, `Night`, `No Boots`, `No Coveralls`, `No Face Shield`, `No Gloves`, `No Hard Hat`, `No Hi-Vis Vest`, `No Safety Glasses`, `Parking Lot`, `Passenger Mobile Usage`, `Passenger Sleeping`, `Passengers`, `Pedestrians`, `Person Actively Directing Traffic`, `Raining`, `Sensitive Media`, `Slightly Drowsy`, `Snowing`, `Snowy Road`, `Speed Sign Verified`, `Traffic Control Person Present`, `Trailer Car`, `Very Drowsy`, `Wet Road`, `Wildlife` */
+        /** A context label name to add.  Valid values: `Congested`, `Construction`, `Coupling/Uncoupling`, `Cyclist/Motorcyclist`, `Defensive`, `Facing Away From Vehicle`, `Fog`, `Improper Seat Belt`, `Items in Hand`, `Lead Car`, `Light Traffic`, `Moderate Traffic`, `Moderately Drowsy`, `Mounted Phone`, `No Boots`, `No Coveralls`, `No Face Shield`, `No Gloves`, `No Hard Hat`, `No Hi-Vis Vest`, `No Safety Glasses`, `Parking Lot`, `Passenger Mobile Usage`, `Passenger Sleeping`, `Passengers`, `Pedestrians`, `Raining`, `Sensitive Media`, `Slightly Drowsy`, `Snowing`, `Snowy Road`, `Speed Sign Verified`, `Trailer Car`, `Very Drowsy`, `Wet Road`, `Wildlife` */
         export const Item = {
             Congested: "Congested",
             Construction: "Construction",
             CouplingUncoupling: "Coupling/Uncoupling",
             CyclistMotorcyclist: "Cyclist/Motorcyclist",
             Defensive: "Defensive",
+            FacingAwayFromVehicle: "Facing Away From Vehicle",
             Fog: "Fog",
             ImproperSeatBelt: "Improper Seat Belt",
+            ItemsInHand: "Items in Hand",
             LeadCar: "Lead Car",
             LightTraffic: "Light Traffic",
             ModerateTraffic: "Moderate Traffic",
             ModeratelyDrowsy: "Moderately Drowsy",
             MountedPhone: "Mounted Phone",
-            Night: "Night",
             NoBoots: "No Boots",
             NoCoveralls: "No Coveralls",
             NoFaceShield: "No Face Shield",
@@ -195,14 +198,12 @@ export namespace SafetyEventsV2PatchSafetyEventsV2BatchRequestBody {
             PassengerSleeping: "Passenger Sleeping",
             Passengers: "Passengers",
             Pedestrians: "Pedestrians",
-            PersonActivelyDirectingTraffic: "Person Actively Directing Traffic",
             Raining: "Raining",
             SensitiveMedia: "Sensitive Media",
             SlightlyDrowsy: "Slightly Drowsy",
             Snowing: "Snowing",
             SnowyRoad: "Snowy Road",
             SpeedSignVerified: "Speed Sign Verified",
-            TrafficControlPersonPresent: "Traffic Control Person Present",
             TrailerCar: "Trailer Car",
             VeryDrowsy: "Very Drowsy",
             WetRoad: "Wet Road",
@@ -214,21 +215,22 @@ export namespace SafetyEventsV2PatchSafetyEventsV2BatchRequestBody {
     export type ContextLabelsToRemove = ContextLabelsToRemove.Item[];
 
     export namespace ContextLabelsToRemove {
-        /** A context label name to remove.  Valid values: `Congested`, `Construction`, `Coupling/Uncoupling`, `Cyclist/Motorcyclist`, `Defensive`, `Fog`, `Improper Seat Belt`, `Lead Car`, `Light Traffic`, `Moderate Traffic`, `Moderately Drowsy`, `Mounted Phone`, `Night`, `No Boots`, `No Coveralls`, `No Face Shield`, `No Gloves`, `No Hard Hat`, `No Hi-Vis Vest`, `No Safety Glasses`, `Parking Lot`, `Passenger Mobile Usage`, `Passenger Sleeping`, `Passengers`, `Pedestrians`, `Person Actively Directing Traffic`, `Raining`, `Sensitive Media`, `Slightly Drowsy`, `Snowing`, `Snowy Road`, `Speed Sign Verified`, `Traffic Control Person Present`, `Trailer Car`, `Very Drowsy`, `Wet Road`, `Wildlife` */
+        /** A context label name to remove.  Valid values: `Congested`, `Construction`, `Coupling/Uncoupling`, `Cyclist/Motorcyclist`, `Defensive`, `Facing Away From Vehicle`, `Fog`, `Improper Seat Belt`, `Items in Hand`, `Lead Car`, `Light Traffic`, `Moderate Traffic`, `Moderately Drowsy`, `Mounted Phone`, `No Boots`, `No Coveralls`, `No Face Shield`, `No Gloves`, `No Hard Hat`, `No Hi-Vis Vest`, `No Safety Glasses`, `Parking Lot`, `Passenger Mobile Usage`, `Passenger Sleeping`, `Passengers`, `Pedestrians`, `Raining`, `Sensitive Media`, `Slightly Drowsy`, `Snowing`, `Snowy Road`, `Speed Sign Verified`, `Trailer Car`, `Very Drowsy`, `Wet Road`, `Wildlife` */
         export const Item = {
             Congested: "Congested",
             Construction: "Construction",
             CouplingUncoupling: "Coupling/Uncoupling",
             CyclistMotorcyclist: "Cyclist/Motorcyclist",
             Defensive: "Defensive",
+            FacingAwayFromVehicle: "Facing Away From Vehicle",
             Fog: "Fog",
             ImproperSeatBelt: "Improper Seat Belt",
+            ItemsInHand: "Items in Hand",
             LeadCar: "Lead Car",
             LightTraffic: "Light Traffic",
             ModerateTraffic: "Moderate Traffic",
             ModeratelyDrowsy: "Moderately Drowsy",
             MountedPhone: "Mounted Phone",
-            Night: "Night",
             NoBoots: "No Boots",
             NoCoveralls: "No Coveralls",
             NoFaceShield: "No Face Shield",
@@ -241,14 +243,12 @@ export namespace SafetyEventsV2PatchSafetyEventsV2BatchRequestBody {
             PassengerSleeping: "Passenger Sleeping",
             Passengers: "Passengers",
             Pedestrians: "Pedestrians",
-            PersonActivelyDirectingTraffic: "Person Actively Directing Traffic",
             Raining: "Raining",
             SensitiveMedia: "Sensitive Media",
             SlightlyDrowsy: "Slightly Drowsy",
             Snowing: "Snowing",
             SnowyRoad: "Snowy Road",
             SpeedSignVerified: "Speed Sign Verified",
-            TrafficControlPersonPresent: "Traffic Control Person Present",
             TrailerCar: "Trailer Car",
             VeryDrowsy: "Very Drowsy",
             WetRoad: "Wet Road",

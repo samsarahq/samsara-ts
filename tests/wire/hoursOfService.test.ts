@@ -762,6 +762,339 @@ describe("HoursOfServiceClient", () => {
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 
+    test("updateShippingDocs (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { shippingDocs: "ShippingID1, ShippingID2" };
+        const rawResponseBody = {
+            data: {
+                adverseDrivingClaimed: false,
+                bigDayClaimed: false,
+                carrierFormattedAddress: "1990 Alameda Street, San Francisco, CA 94103",
+                carrierName: "Carrier Name",
+                carrierUsDotNumber: 1234,
+                homeTerminalFormattedAddress: "1990 Alameda Street, San Francisco, CA 94103",
+                homeTerminalName: "Home Terminal Name",
+                isCertified: true,
+                isUsShortHaulActive: false,
+                trailerNames: ["10293", "Trailer ID 1"],
+            },
+        };
+        server
+            .mockEndpoint()
+            .patch("/hos/daily-logs/log-meta-data")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.hoursOfService.updateShippingDocs({
+            hosDate: "hosDate",
+            driverID: "driverID",
+            shippingDocs: "ShippingID1, ShippingID2",
+        });
+        expect(response).toEqual({
+            data: {
+                adverseDrivingClaimed: false,
+                bigDayClaimed: false,
+                carrierFormattedAddress: "1990 Alameda Street, San Francisco, CA 94103",
+                carrierName: "Carrier Name",
+                carrierUsDotNumber: 1234,
+                homeTerminalFormattedAddress: "1990 Alameda Street, San Francisco, CA 94103",
+                homeTerminalName: "Home Terminal Name",
+                isCertified: true,
+                isUsShortHaulActive: false,
+                trailerNames: ["10293", "Trailer ID 1"],
+            },
+        });
+    });
+
+    test("updateShippingDocs (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { shippingDocs: "shippingDocs" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/hos/daily-logs/log-meta-data")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.hoursOfService.updateShippingDocs({
+                hosDate: "hosDate",
+                driverID: "driverID",
+                shippingDocs: "shippingDocs",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("updateShippingDocs (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { shippingDocs: "shippingDocs" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/hos/daily-logs/log-meta-data")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.hoursOfService.updateShippingDocs({
+                hosDate: "hosDate",
+                driverID: "driverID",
+                shippingDocs: "shippingDocs",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("updateShippingDocs (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { shippingDocs: "shippingDocs" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/hos/daily-logs/log-meta-data")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.hoursOfService.updateShippingDocs({
+                hosDate: "hosDate",
+                driverID: "driverID",
+                shippingDocs: "shippingDocs",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("updateShippingDocs (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { shippingDocs: "shippingDocs" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/hos/daily-logs/log-meta-data")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.hoursOfService.updateShippingDocs({
+                hosDate: "hosDate",
+                driverID: "driverID",
+                shippingDocs: "shippingDocs",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("updateShippingDocs (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { shippingDocs: "shippingDocs" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/hos/daily-logs/log-meta-data")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.hoursOfService.updateShippingDocs({
+                hosDate: "hosDate",
+                driverID: "driverID",
+                shippingDocs: "shippingDocs",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("updateShippingDocs (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { shippingDocs: "shippingDocs" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/hos/daily-logs/log-meta-data")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.hoursOfService.updateShippingDocs({
+                hosDate: "hosDate",
+                driverID: "driverID",
+                shippingDocs: "shippingDocs",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("updateShippingDocs (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { shippingDocs: "shippingDocs" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/hos/daily-logs/log-meta-data")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.hoursOfService.updateShippingDocs({
+                hosDate: "hosDate",
+                driverID: "driverID",
+                shippingDocs: "shippingDocs",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("updateShippingDocs (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { shippingDocs: "shippingDocs" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/hos/daily-logs/log-meta-data")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.hoursOfService.updateShippingDocs({
+                hosDate: "hosDate",
+                driverID: "driverID",
+                shippingDocs: "shippingDocs",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("updateShippingDocs (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { shippingDocs: "shippingDocs" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/hos/daily-logs/log-meta-data")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.hoursOfService.updateShippingDocs({
+                hosDate: "hosDate",
+                driverID: "driverID",
+                shippingDocs: "shippingDocs",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("updateShippingDocs (11)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { shippingDocs: "shippingDocs" };
+        const rawResponseBody = { key: "value" };
+        server
+            .mockEndpoint()
+            .patch("/hos/daily-logs/log-meta-data")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.hoursOfService.updateShippingDocs({
+                hosDate: "hosDate",
+                driverID: "driverID",
+                shippingDocs: "shippingDocs",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
     test("setCurrentDutyStatus", async () => {
         const server = mockServerPool.createServer();
         const client = new SamsaraClient({

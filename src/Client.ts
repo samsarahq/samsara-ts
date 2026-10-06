@@ -31,10 +31,12 @@ import { LegacyApIsClient } from "./api/resources/legacyApIs/client/Client.js";
 import { LiveSharingLinksClient } from "./api/resources/liveSharingLinks/client/Client.js";
 import { LocationAndSpeedClient } from "./api/resources/locationAndSpeed/client/Client.js";
 import { MaintenanceClient } from "./api/resources/maintenance/client/Client.js";
+import { MaintenanceSitesClient } from "./api/resources/maintenanceSites/client/Client.js";
 import { MediaClient } from "./api/resources/media/client/Client.js";
 import { MessagesClient } from "./api/resources/messages/client/Client.js";
 import { OrganizationInfoClient } from "./api/resources/organizationInfo/client/Client.js";
 import { PlansClient } from "./api/resources/plans/client/Client.js";
+import { PreventiveMaintenanceClient } from "./api/resources/preventiveMaintenance/client/Client.js";
 import { PreviewApIsClient } from "./api/resources/previewApIs/client/Client.js";
 import { ReadingsClient } from "./api/resources/readings/client/Client.js";
 import { RouteEventsClient } from "./api/resources/routeEvents/client/Client.js";
@@ -78,12 +80,11 @@ export class SamsaraClient {
     protected _coaching: CoachingClient | undefined;
     protected _contacts: ContactsClient | undefined;
     protected _maintenance: MaintenanceClient | undefined;
-    protected _fuelAndEnergy: FuelAndEnergyClient | undefined;
+    protected _legacyApIs: LegacyApIsClient | undefined;
     protected _driverTrailerAssignments: DriverTrailerAssignmentsClient | undefined;
     protected _driverQrCodes: DriverQrCodesClient | undefined;
     protected _carbCtc: CarbCtcClient | undefined;
     protected _carrierProposedAssignments: CarrierProposedAssignmentsClient | undefined;
-    protected _legacyApIs: LegacyApIsClient | undefined;
     protected _documents: DocumentsClient | undefined;
     protected _driverVehicleAssignments: DriverVehicleAssignmentsClient | undefined;
     protected _drivers: DriversClient | undefined;
@@ -91,6 +92,7 @@ export class SamsaraClient {
     protected _tachographEuOnly: TachographEuOnlyClient | undefined;
     protected _equipment: EquipmentClient | undefined;
     protected _hoursOfService: HoursOfServiceClient | undefined;
+    protected _fuelAndEnergy: FuelAndEnergyClient | undefined;
     protected _ifta: IftaClient | undefined;
     protected _routes: RoutesClient | undefined;
     protected _settings: SettingsClient | undefined;
@@ -107,6 +109,8 @@ export class SamsaraClient {
     protected _issues: IssuesClient | undefined;
     protected _liveSharingLinks: LiveSharingLinksClient | undefined;
     protected _workOrders: WorkOrdersClient | undefined;
+    protected _preventiveMaintenance: PreventiveMaintenanceClient | undefined;
+    protected _maintenanceSites: MaintenanceSitesClient | undefined;
     protected _organizationInfo: OrganizationInfoClient | undefined;
     protected _previewApIs: PreviewApIsClient | undefined;
     protected _readings: ReadingsClient | undefined;
@@ -170,8 +174,8 @@ export class SamsaraClient {
         return (this._maintenance ??= new MaintenanceClient(this._options));
     }
 
-    public get fuelAndEnergy(): FuelAndEnergyClient {
-        return (this._fuelAndEnergy ??= new FuelAndEnergyClient(this._options));
+    public get legacyApIs(): LegacyApIsClient {
+        return (this._legacyApIs ??= new LegacyApIsClient(this._options));
     }
 
     public get driverTrailerAssignments(): DriverTrailerAssignmentsClient {
@@ -188,10 +192,6 @@ export class SamsaraClient {
 
     public get carrierProposedAssignments(): CarrierProposedAssignmentsClient {
         return (this._carrierProposedAssignments ??= new CarrierProposedAssignmentsClient(this._options));
-    }
-
-    public get legacyApIs(): LegacyApIsClient {
-        return (this._legacyApIs ??= new LegacyApIsClient(this._options));
     }
 
     public get documents(): DocumentsClient {
@@ -220,6 +220,10 @@ export class SamsaraClient {
 
     public get hoursOfService(): HoursOfServiceClient {
         return (this._hoursOfService ??= new HoursOfServiceClient(this._options));
+    }
+
+    public get fuelAndEnergy(): FuelAndEnergyClient {
+        return (this._fuelAndEnergy ??= new FuelAndEnergyClient(this._options));
     }
 
     public get ifta(): IftaClient {
@@ -284,6 +288,14 @@ export class SamsaraClient {
 
     public get workOrders(): WorkOrdersClient {
         return (this._workOrders ??= new WorkOrdersClient(this._options));
+    }
+
+    public get preventiveMaintenance(): PreventiveMaintenanceClient {
+        return (this._preventiveMaintenance ??= new PreventiveMaintenanceClient(this._options));
+    }
+
+    public get maintenanceSites(): MaintenanceSitesClient {
+        return (this._maintenanceSites ??= new MaintenanceSitesClient(this._options));
     }
 
     public get organizationInfo(): OrganizationInfoClient {

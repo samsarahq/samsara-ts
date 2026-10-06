@@ -910,7 +910,7 @@ describe("DriverVehicleAssignmentsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { driverId: "494123", startTime: "2019-06-13T19:08:25Z", vehicleId: "281474978683353" };
+        const rawRequestBody = {};
         const rawResponseBody = { data: { message: "Driver assignment was successfully updated" } };
         server
             .mockEndpoint()
@@ -921,11 +921,7 @@ describe("DriverVehicleAssignmentsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.driverVehicleAssignments.updateDriverVehicleAssignment({
-            driverId: "494123",
-            startTime: "2019-06-13T19:08:25Z",
-            vehicleId: "281474978683353",
-        });
+        const response = await client.driverVehicleAssignments.updateDriverVehicleAssignment();
         expect(response).toEqual({
             data: {
                 message: "Driver assignment was successfully updated",
@@ -941,7 +937,7 @@ describe("DriverVehicleAssignmentsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { driverId: "driverId", startTime: "startTime", vehicleId: "vehicleId" };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
@@ -953,11 +949,7 @@ describe("DriverVehicleAssignmentsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.driverVehicleAssignments.updateDriverVehicleAssignment({
-                driverId: "driverId",
-                startTime: "startTime",
-                vehicleId: "vehicleId",
-            });
+            return await client.driverVehicleAssignments.updateDriverVehicleAssignment();
         }).rejects.toThrow(Samsara.UnauthorizedError);
     });
 
@@ -969,7 +961,7 @@ describe("DriverVehicleAssignmentsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { driverId: "driverId", startTime: "startTime", vehicleId: "vehicleId" };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
@@ -981,11 +973,7 @@ describe("DriverVehicleAssignmentsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.driverVehicleAssignments.updateDriverVehicleAssignment({
-                driverId: "driverId",
-                startTime: "startTime",
-                vehicleId: "vehicleId",
-            });
+            return await client.driverVehicleAssignments.updateDriverVehicleAssignment();
         }).rejects.toThrow(Samsara.NotFoundError);
     });
 
@@ -997,7 +985,7 @@ describe("DriverVehicleAssignmentsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { driverId: "driverId", startTime: "startTime", vehicleId: "vehicleId" };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
@@ -1009,11 +997,7 @@ describe("DriverVehicleAssignmentsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.driverVehicleAssignments.updateDriverVehicleAssignment({
-                driverId: "driverId",
-                startTime: "startTime",
-                vehicleId: "vehicleId",
-            });
+            return await client.driverVehicleAssignments.updateDriverVehicleAssignment();
         }).rejects.toThrow(Samsara.MethodNotAllowedError);
     });
 
@@ -1025,7 +1009,7 @@ describe("DriverVehicleAssignmentsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { driverId: "driverId", startTime: "startTime", vehicleId: "vehicleId" };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
@@ -1037,11 +1021,7 @@ describe("DriverVehicleAssignmentsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.driverVehicleAssignments.updateDriverVehicleAssignment({
-                driverId: "driverId",
-                startTime: "startTime",
-                vehicleId: "vehicleId",
-            });
+            return await client.driverVehicleAssignments.updateDriverVehicleAssignment();
         }).rejects.toThrow(Samsara.ContentTooLargeError);
     });
 
@@ -1053,7 +1033,7 @@ describe("DriverVehicleAssignmentsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { driverId: "driverId", startTime: "startTime", vehicleId: "vehicleId" };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
@@ -1065,11 +1045,7 @@ describe("DriverVehicleAssignmentsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.driverVehicleAssignments.updateDriverVehicleAssignment({
-                driverId: "driverId",
-                startTime: "startTime",
-                vehicleId: "vehicleId",
-            });
+            return await client.driverVehicleAssignments.updateDriverVehicleAssignment();
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
@@ -1081,7 +1057,7 @@ describe("DriverVehicleAssignmentsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { driverId: "driverId", startTime: "startTime", vehicleId: "vehicleId" };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
@@ -1093,11 +1069,7 @@ describe("DriverVehicleAssignmentsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.driverVehicleAssignments.updateDriverVehicleAssignment({
-                driverId: "driverId",
-                startTime: "startTime",
-                vehicleId: "vehicleId",
-            });
+            return await client.driverVehicleAssignments.updateDriverVehicleAssignment();
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
@@ -1109,7 +1081,7 @@ describe("DriverVehicleAssignmentsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { driverId: "driverId", startTime: "startTime", vehicleId: "vehicleId" };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
@@ -1121,11 +1093,7 @@ describe("DriverVehicleAssignmentsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.driverVehicleAssignments.updateDriverVehicleAssignment({
-                driverId: "driverId",
-                startTime: "startTime",
-                vehicleId: "vehicleId",
-            });
+            return await client.driverVehicleAssignments.updateDriverVehicleAssignment();
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
@@ -1137,7 +1105,7 @@ describe("DriverVehicleAssignmentsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { driverId: "driverId", startTime: "startTime", vehicleId: "vehicleId" };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
@@ -1149,11 +1117,7 @@ describe("DriverVehicleAssignmentsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.driverVehicleAssignments.updateDriverVehicleAssignment({
-                driverId: "driverId",
-                startTime: "startTime",
-                vehicleId: "vehicleId",
-            });
+            return await client.driverVehicleAssignments.updateDriverVehicleAssignment();
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
@@ -1165,7 +1129,7 @@ describe("DriverVehicleAssignmentsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { driverId: "driverId", startTime: "startTime", vehicleId: "vehicleId" };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
@@ -1177,11 +1141,7 @@ describe("DriverVehicleAssignmentsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.driverVehicleAssignments.updateDriverVehicleAssignment({
-                driverId: "driverId",
-                startTime: "startTime",
-                vehicleId: "vehicleId",
-            });
+            return await client.driverVehicleAssignments.updateDriverVehicleAssignment();
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
@@ -1193,7 +1153,7 @@ describe("DriverVehicleAssignmentsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { driverId: "driverId", startTime: "startTime", vehicleId: "vehicleId" };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
         server
             .mockEndpoint()
@@ -1205,11 +1165,7 @@ describe("DriverVehicleAssignmentsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.driverVehicleAssignments.updateDriverVehicleAssignment({
-                driverId: "driverId",
-                startTime: "startTime",
-                vehicleId: "vehicleId",
-            });
+            return await client.driverVehicleAssignments.updateDriverVehicleAssignment();
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 });

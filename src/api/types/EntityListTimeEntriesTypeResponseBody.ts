@@ -6,20 +6,20 @@ import type * as Samsara from "../index.js";
  * TimeEntry object
  */
 export interface EntityListTimeEntriesTypeResponseBody {
-    /** Non-repair activity associated with the time entry. Omitted for work-order time. */
-    activityType?: string | undefined;
+    /** Non-repair activity associated with the time entry. Omitted for work-order time.  Valid values: `unknown`, `break`, `shopCleaning`, `partsHandling`, `operationalTest`, `equipmentSetup`, `inspection`, `roadCall`, `training`, `administrative`, `shopMiscellaneous` */
+    activityType?: EntityListTimeEntriesTypeResponseBody.ActivityType | undefined;
     /** Time when the technician clocked in. */
     clockInAtTime?: string | undefined;
     clockInLocation?: Samsara.ListTimeEntriesEntityTimeEntryTimeEntryLocationTypeResponseBody | undefined;
-    /** Surface that recorded the clock-in. */
-    clockInSource?: string | undefined;
+    /** Surface that recorded the clock-in.  Valid values: `unknown`, `cloud`, `mobile` */
+    clockInSource?: EntityListTimeEntriesTypeResponseBody.ClockInSource | undefined;
     /** Time when the technician clocked out. Omitted while the entry is in progress. */
     clockOutAtTime?: string | undefined;
     clockOutLocation?: Samsara.ListTimeEntriesEntityTimeEntryTimeEntryLocationTypeResponseBody | undefined;
-    /** Method that ended the time entry. */
-    clockOutMethodType?: string | undefined;
-    /** Surface that recorded the clock-out. */
-    clockOutSource?: string | undefined;
+    /** Method that ended the time entry.  Valid values: `unknown`, `manual`, `overwrite`, `clockIn`, `autoClockOut` */
+    clockOutMethodType?: EntityListTimeEntriesTypeResponseBody.ClockOutMethodType | undefined;
+    /** Surface that recorded the clock-out.  Valid values: `unknown`, `cloud`, `mobile` */
+    clockOutSource?: EntityListTimeEntriesTypeResponseBody.ClockOutSource | undefined;
     /** Time when the time entry was created. */
     createdAtTime?: string | undefined;
     /** Time when the time entry was deleted. Deleted records contain only the ID, this field, and deletedByUserId when available. */
@@ -33,12 +33,60 @@ export interface EntityListTimeEntriesTypeResponseBody {
     placeId?: string | undefined;
     /** Work-order service-task instance associated with the time entry, when present. */
     serviceTaskId?: string | undefined;
-    /** Whether the time entry is in progress or completed. */
-    timeEntryStatus?: string | undefined;
+    /** Whether the time entry is in progress or completed.  Valid values: `unknown`, `inProgress`, `completed` */
+    timeEntryStatus?: EntityListTimeEntriesTypeResponseBody.TimeEntryStatus | undefined;
     /** Time when the time entry was last updated. The feed window and ordering operate on this field. */
     updatedAtTime?: string | undefined;
     /** Dashboard user ID of the technician. Omitted when the technician is not linked to a dashboard user. */
     userId?: string | undefined;
     /** Work order associated with the time entry. Omitted for non-repair activities. */
     workOrderId?: string | undefined;
+}
+
+export namespace EntityListTimeEntriesTypeResponseBody {
+    /** Non-repair activity associated with the time entry. Omitted for work-order time.  Valid values: `unknown`, `break`, `shopCleaning`, `partsHandling`, `operationalTest`, `equipmentSetup`, `inspection`, `roadCall`, `training`, `administrative`, `shopMiscellaneous` */
+    export const ActivityType = {
+        Unknown: "unknown",
+        Break: "break",
+        ShopCleaning: "shopCleaning",
+        PartsHandling: "partsHandling",
+        OperationalTest: "operationalTest",
+        EquipmentSetup: "equipmentSetup",
+        Inspection: "inspection",
+        RoadCall: "roadCall",
+        Training: "training",
+        Administrative: "administrative",
+        ShopMiscellaneous: "shopMiscellaneous",
+    } as const;
+    export type ActivityType = (typeof ActivityType)[keyof typeof ActivityType];
+    /** Surface that recorded the clock-in.  Valid values: `unknown`, `cloud`, `mobile` */
+    export const ClockInSource = {
+        Unknown: "unknown",
+        Cloud: "cloud",
+        Mobile: "mobile",
+    } as const;
+    export type ClockInSource = (typeof ClockInSource)[keyof typeof ClockInSource];
+    /** Method that ended the time entry.  Valid values: `unknown`, `manual`, `overwrite`, `clockIn`, `autoClockOut` */
+    export const ClockOutMethodType = {
+        Unknown: "unknown",
+        Manual: "manual",
+        Overwrite: "overwrite",
+        ClockIn: "clockIn",
+        AutoClockOut: "autoClockOut",
+    } as const;
+    export type ClockOutMethodType = (typeof ClockOutMethodType)[keyof typeof ClockOutMethodType];
+    /** Surface that recorded the clock-out.  Valid values: `unknown`, `cloud`, `mobile` */
+    export const ClockOutSource = {
+        Unknown: "unknown",
+        Cloud: "cloud",
+        Mobile: "mobile",
+    } as const;
+    export type ClockOutSource = (typeof ClockOutSource)[keyof typeof ClockOutSource];
+    /** Whether the time entry is in progress or completed.  Valid values: `unknown`, `inProgress`, `completed` */
+    export const TimeEntryStatus = {
+        Unknown: "unknown",
+        InProgress: "inProgress",
+        Completed: "completed",
+    } as const;
+    export type TimeEntryStatus = (typeof TimeEntryStatus)[keyof typeof TimeEntryStatus];
 }

@@ -4,6 +4,6 @@
  * The details of a form approval. Only valid for forms that require approvals.
  */
 export interface FormSubmissionRequestApprovalDetailsRequestBody {
-    /** Comment for the approval decision. Sometimes required when updating status to 'changesRequested'. Only valid when requesting changes or approving a form submission. */
+    /** Comment for the approval decision. Required when updating status to 'changesRequested' or 'denied'. Only valid when requesting changes, approving, or denying a form submission. */
     comment?: string | undefined;
 }

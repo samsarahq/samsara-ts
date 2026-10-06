@@ -6,6 +6,8 @@ import type * as Samsara from "../index.js";
  * Work Order Service Task object.
  */
 export interface ServiceTaskInstanceObjectResponseBody {
+    /** Dashboard users assigned to the service task. Only returned for organizations with service task assignees enabled. Technicians backed only by a driver are not represented. */
+    assignees?: Samsara.ServiceTaskAssigneeObjectResponseBody[] | undefined;
     /** ID of the service task instance. */
     id: string;
     laborHourlyCost?: Samsara.WorkOrderMoneyObjectResponseBody | undefined;

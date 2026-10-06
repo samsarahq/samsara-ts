@@ -30,6 +30,17 @@ export interface EntityListWarrantiesTypeResponseBody {
     /** When the warranty was last updated. */
     updatedAtTime?: string | undefined;
     vendor?: Samsara.EntityListWarrantiesVendorRefTypeResponseBody | undefined;
-    /** Type of warranty, for example manufacturer, extended, other, or unknown. */
-    warrantyType?: string | undefined;
+    /** Type of warranty, for example manufacturer, extended, other, or unknown.  Valid values: `unknown`, `manufacturer`, `extended`, `other` */
+    warrantyType?: EntityListWarrantiesTypeResponseBody.WarrantyType | undefined;
+}
+
+export namespace EntityListWarrantiesTypeResponseBody {
+    /** Type of warranty, for example manufacturer, extended, other, or unknown.  Valid values: `unknown`, `manufacturer`, `extended`, `other` */
+    export const WarrantyType = {
+        Unknown: "unknown",
+        Manufacturer: "manufacturer",
+        Extended: "extended",
+        Other: "other",
+    } as const;
+    export type WarrantyType = (typeof WarrantyType)[keyof typeof WarrantyType];
 }

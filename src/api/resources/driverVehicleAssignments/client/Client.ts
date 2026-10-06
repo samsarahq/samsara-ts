@@ -378,7 +378,7 @@ export class DriverVehicleAssignmentsClient {
     }
 
     /**
-     * Update driver assignments that were created using the `POST fleet/driver-vehicle-assignments`. Vehicle Id, Driver Id, and Start Time must match an existing assignment.
+     * Update driver assignments that were created using the `POST fleet/driver-vehicle-assignments`. Identify the assignment either with vehicleId, driverId, and startTime, or with metadata.sourceName alone.
      *
      *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
      *
@@ -402,21 +402,17 @@ export class DriverVehicleAssignmentsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.driverVehicleAssignments.updateDriverVehicleAssignment({
-     *         driverId: "494123",
-     *         startTime: "2019-06-13T19:08:25Z",
-     *         vehicleId: "281474978683353"
-     *     })
+     *     await client.driverVehicleAssignments.updateDriverVehicleAssignment()
      */
     public updateDriverVehicleAssignment(
-        request: Samsara.DriverVehicleAssignmentsV2UpdateDriverVehicleAssignmentRequestBody,
+        request: Samsara.DriverVehicleAssignmentsV2UpdateDriverVehicleAssignmentRequestBody = {},
         requestOptions?: DriverVehicleAssignmentsClient.RequestOptions,
     ): core.HttpResponsePromise<Samsara.DriverVehicleAssignmentsV2UpdateDriverVehicleAssignmentResponseBody> {
         return core.HttpResponsePromise.fromPromise(this.__updateDriverVehicleAssignment(request, requestOptions));
     }
 
     private async __updateDriverVehicleAssignment(
-        request: Samsara.DriverVehicleAssignmentsV2UpdateDriverVehicleAssignmentRequestBody,
+        request: Samsara.DriverVehicleAssignmentsV2UpdateDriverVehicleAssignmentRequestBody = {},
         requestOptions?: DriverVehicleAssignmentsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.DriverVehicleAssignmentsV2UpdateDriverVehicleAssignmentResponseBody>> {
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();

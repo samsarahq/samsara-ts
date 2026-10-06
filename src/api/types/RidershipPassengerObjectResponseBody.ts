@@ -3,14 +3,14 @@
 import type * as Samsara from "../index.js";
 
 /**
- * A ridership passenger entity.
+ * A passenger and their ridership details.
  */
 export interface RidershipPassengerObjectResponseBody {
-    /** Classification or grade level of the passenger. */
+    /** Passenger grade level: `pk1`–`pk4` are pre-kindergarten categories, `k` is kindergarten, and `grade1`–`grade12` are grades 1–12. */
     classification?: string | undefined;
     /** The time the passenger was created in RFC 3339 format. */
     createdAtTime: string;
-    /** A map of external ids */
+    /** Customer-defined IDs that link this passenger to another system, such as {"student": "STU-001"}. */
     externalIds?: Record<string, string> | undefined;
     /** First name of the passenger. */
     firstName: string;
@@ -23,7 +23,7 @@ export interface RidershipPassengerObjectResponseBody {
     /** Last name of the passenger. */
     lastName: string;
     specialInstructions?: Samsara.RidershipPassengerSpecialInstructionsObjectResponseBody | undefined;
-    /** IDs of tags associated with this passenger. */
+    /** Samsara IDs of the tags assigned to this passenger. */
     tagIds?: string[] | undefined;
     /** The time the passenger was last updated in RFC 3339 format. */
     updatedAtTime: string;

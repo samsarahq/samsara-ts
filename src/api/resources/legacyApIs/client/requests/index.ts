@@ -1,3 +1,5 @@
+export type { GetDriverEfficiencyByDriversRequest } from "./GetDriverEfficiencyByDriversRequest.js";
+export type { GetDriverEfficiencyByVehiclesRequest } from "./GetDriverEfficiencyByVehiclesRequest.js";
 export type { GetDriversVehicleAssignmentsRequest } from "./GetDriversVehicleAssignmentsRequest.js";
 export type { GetDvirDefectsRequest } from "./GetDvirDefectsRequest.js";
 export type { GetDvirHistoryRequest } from "./GetDvirHistoryRequest.js";

@@ -34,15 +34,55 @@ export interface EntityCreatePartTypeResponseBody {
     name?: string | undefined;
     /** Customer-visible part number for the part. */
     partNumber?: string | undefined;
-    /** Status of the part. */
-    partStatus?: string | undefined;
+    /** Status of the part.  Valid values: `Unknown`, `Active`, `Archived`, `Deleted` */
+    partStatus?: EntityCreatePartTypeResponseBody.PartStatus | undefined;
+    preferredVendor?: Samsara.EntityCreatePartVendorRefTypeResponseBody | undefined;
+    /** The preferred vendor's part number for this part definition. */
+    preferredVendorPartNumber?: string | undefined;
     /** Subcategory of the part definition. */
     subcategory?: string | undefined;
     unitCost?: Samsara.CreatePartEntityPartDefinitionMoneyTypeResponseBody | undefined;
-    /** Unit of measure for the part. */
-    unitOfMeasureType?: string | undefined;
+    /** Unit of measure for the part.  Valid values: `Unknown`, `Each`, `Set`, `Pack`, `Box`, `Pound`, `Kilogram`, `Ounce`, `Liter`, `Milliliter`, `Gallon`, `Quart`, `FluidOunce`, `Inch`, `Foot`, `Meter`, `Yard`, `SquareFoot`, `SquareMeter`, `Pint`, `Hundred`, `Roll` */
+    unitOfMeasureType?: EntityCreatePartTypeResponseBody.UnitOfMeasureType | undefined;
     /** Time when the part was last updated. */
     updatedAtTime?: string | undefined;
     /** VMRS code associated with the part definition. */
     vmrsCode?: string | undefined;
+}
+
+export namespace EntityCreatePartTypeResponseBody {
+    /** Status of the part.  Valid values: `Unknown`, `Active`, `Archived`, `Deleted` */
+    export const PartStatus = {
+        Unknown: "Unknown",
+        Active: "Active",
+        Archived: "Archived",
+        Deleted: "Deleted",
+    } as const;
+    export type PartStatus = (typeof PartStatus)[keyof typeof PartStatus];
+    /** Unit of measure for the part.  Valid values: `Unknown`, `Each`, `Set`, `Pack`, `Box`, `Pound`, `Kilogram`, `Ounce`, `Liter`, `Milliliter`, `Gallon`, `Quart`, `FluidOunce`, `Inch`, `Foot`, `Meter`, `Yard`, `SquareFoot`, `SquareMeter`, `Pint`, `Hundred`, `Roll` */
+    export const UnitOfMeasureType = {
+        Unknown: "Unknown",
+        Each: "Each",
+        Set: "Set",
+        Pack: "Pack",
+        Box: "Box",
+        Pound: "Pound",
+        Kilogram: "Kilogram",
+        Ounce: "Ounce",
+        Liter: "Liter",
+        Milliliter: "Milliliter",
+        Gallon: "Gallon",
+        Quart: "Quart",
+        FluidOunce: "FluidOunce",
+        Inch: "Inch",
+        Foot: "Foot",
+        Meter: "Meter",
+        Yard: "Yard",
+        SquareFoot: "SquareFoot",
+        SquareMeter: "SquareMeter",
+        Pint: "Pint",
+        Hundred: "Hundred",
+        Roll: "Roll",
+    } as const;
+    export type UnitOfMeasureType = (typeof UnitOfMeasureType)[keyof typeof UnitOfMeasureType];
 }

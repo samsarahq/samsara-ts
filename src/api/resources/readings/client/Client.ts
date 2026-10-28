@@ -306,8 +306,17 @@ export class ReadingsClient {
         request: Samsara.GetReadingsSnapshotRequest,
         requestOptions?: ReadingsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.ReadingsGetReadingsSnapshotResponseBody>> {
-        const { after, readingIds, entityIds, externalIds, asOfTime, entityType, assetTypes, includeExternalIds } =
-            request;
+        const {
+            after,
+            readingIds,
+            entityIds,
+            externalIds,
+            asOfTime,
+            entityType,
+            assetTypes,
+            includeExternalIds,
+            hasGateway,
+        } = request;
         const _queryParams: Record<string, unknown> = {
             after,
             readingIds,
@@ -317,6 +326,7 @@ export class ReadingsClient {
             entityType,
             assetTypes,
             includeExternalIds,
+            hasGateway,
         };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(

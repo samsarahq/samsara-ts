@@ -7,7 +7,7 @@ export interface FunctionRunContextResponseBody {
     /** Unique request identifier for the execution. */
     requestId: string;
     /** The request payload sent to the Function. */
-    requestPayload?: Record<string, unknown> | undefined;
+    requestPayload?: unknown | undefined;
     /** The response payload returned by the Function. */
-    responsePayload?: Record<string, unknown> | undefined;
+    responsePayload?: unknown | undefined;
 }

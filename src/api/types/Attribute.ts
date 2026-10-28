@@ -5,7 +5,7 @@ import type * as Samsara from "../index.js";
 export interface Attribute {
     /** Denotes the data type of the attribute's values. Valid values: `single-select`, `multi-select`, `text`, `freeform-multi-select`, `number`, `date`. */
     attributeType?: Attribute.AttributeType | undefined;
-    /** Denotes the type of entity, driver or asset. Valid values: `driver`, `asset`. */
+    /** Denotes the type of entity, driver, asset, or workOrder. Valid values: `driver`, `asset`, `workOrder`. */
     entityType?: Attribute.EntityType | undefined;
     /** The samsara id of the attribute object. */
     id?: string | undefined;
@@ -32,10 +32,11 @@ export namespace Attribute {
         Date: "date",
     } as const;
     export type AttributeType = (typeof AttributeType)[keyof typeof AttributeType];
-    /** Denotes the type of entity, driver or asset. Valid values: `driver`, `asset`. */
+    /** Denotes the type of entity, driver, asset, or workOrder. Valid values: `driver`, `asset`, `workOrder`. */
     export const EntityType = {
         Driver: "driver",
         Asset: "asset",
+        WorkOrder: "workOrder",
     } as const;
     export type EntityType = (typeof EntityType)[keyof typeof EntityType];
     /** Unit of the attribute (only for Number attributes). */

@@ -8,6 +8,10 @@ import type * as Samsara from "../index.js";
 export interface EntityListTimeEntriesTypeResponseBody {
     /** Non-repair activity associated with the time entry. Omitted for work-order time.  Valid values: `unknown`, `break`, `shopCleaning`, `partsHandling`, `operationalTest`, `equipmentSetup`, `inspection`, `roadCall`, `training`, `administrative`, `shopMiscellaneous` */
     activityType?: EntityListTimeEntriesTypeResponseBody.ActivityType | undefined;
+    /** ID of the non-repair activity, including activity types defined by the organization, which activityType reports as unknown. Omitted for work-order time. */
+    activityTypeId?: string | undefined;
+    /** The organization's display name for the non-repair activity. Omitted for work-order time. */
+    activityTypeName?: string | undefined;
     /** Time when the technician clocked in. */
     clockInAtTime?: string | undefined;
     clockInLocation?: Samsara.ListTimeEntriesEntityTimeEntryTimeEntryLocationTypeResponseBody | undefined;

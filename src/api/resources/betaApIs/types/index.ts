@@ -1,4 +1,5 @@
 export * from "./GetAssetsInputsRequestType.js";
+export * from "./GetDepreciationTransactionsRequestQueryByTimeField.js";
 export * from "./GetDriverEfficiencyRequestDriverActivationStatus.js";
 export * from "./GetHosEldEventsRequestDriverActivationStatus.js";
 export * from "./GetJobsRequestStatus.js";

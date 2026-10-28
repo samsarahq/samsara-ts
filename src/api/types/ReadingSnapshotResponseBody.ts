@@ -13,5 +13,5 @@ export interface ReadingSnapshotResponseBody {
     /** The ID of the reading for which the data is being returned. */
     readingId: string;
     /** The value of the reading. */
-    value?: Record<string, unknown> | undefined;
+    value?: unknown | undefined;
 }

@@ -1308,13 +1308,13 @@ describe("PreviewApIsClient", () => {
             responses: [
                 {
                     data: {
-                        createdAtTime: "1983-09-13T11:27:33Z",
+                        createdAtTime: "1990-08-31T23:49:19Z",
                         customerProperties: [{ key: "purchaseOrderNumber", value: "PO-12345" }],
                         id: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392",
                         samsaraCustomerOrderName: "Order 12345",
                         tasks: [
                             {
-                                createdAtTime: "1993-10-27T05:05:19Z",
+                                createdAtTime: "1977-01-10T23:36:08Z",
                                 customerProperties: [{ key: "purchaseOrderNumber", value: "PO-12345" }],
                                 dispatcherNotes: "Customer requires lift gate",
                                 driverNotes: "Use loading dock 4",
@@ -1326,26 +1326,26 @@ describe("PreviewApIsClient", () => {
                                         capacityId: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392",
                                         id: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392",
                                         label: "pallets",
-                                        value: 0.8891437441477907,
+                                        value: 0.23962707185822993,
                                     },
                                 ],
                                 routeId: "12345678",
-                                serviceDurationSeconds: 2653587382275664400,
+                                serviceDurationSeconds: 1920015009061035500,
                                 serviceWindows: [
                                     {
-                                        endTime: "2003-04-07T16:38:08Z",
+                                        endTime: "1975-07-07T21:36:20Z",
                                         id: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392",
-                                        startTime: "2005-03-11T20:28:08Z",
+                                        startTime: "1975-02-20T04:43:33Z",
                                     },
                                 ],
                                 taskType: "unknown",
-                                updatedAtTime: "2006-02-24T15:47:24Z",
+                                updatedAtTime: "2014-02-20T05:13:14Z",
                             },
                         ],
-                        updatedAtTime: "1971-07-03T21:11:30Z",
+                        updatedAtTime: "2003-10-18T15:58:15Z",
                     },
                     message: "data[0].tasks[0].taskType is invalid",
-                    status: 1792300152622576000,
+                    status: 7796043317718989000,
                 },
             ],
         };
@@ -1366,7 +1366,7 @@ describe("PreviewApIsClient", () => {
             responses: [
                 {
                     data: {
-                        createdAtTime: "1983-09-13T11:27:33Z",
+                        createdAtTime: "1990-08-31T23:49:19Z",
                         customerProperties: [
                             {
                                 key: "purchaseOrderNumber",
@@ -1377,7 +1377,7 @@ describe("PreviewApIsClient", () => {
                         samsaraCustomerOrderName: "Order 12345",
                         tasks: [
                             {
-                                createdAtTime: "1993-10-27T05:05:19Z",
+                                createdAtTime: "1977-01-10T23:36:08Z",
                                 customerProperties: [
                                     {
                                         key: "purchaseOrderNumber",
@@ -1394,26 +1394,26 @@ describe("PreviewApIsClient", () => {
                                         capacityId: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392",
                                         id: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392",
                                         label: "pallets",
-                                        value: 0.8891437441477907,
+                                        value: 0.23962707185822993,
                                     },
                                 ],
                                 routeId: "12345678",
-                                serviceDurationSeconds: 2653587382275664400,
+                                serviceDurationSeconds: 1920015009061035500,
                                 serviceWindows: [
                                     {
-                                        endTime: "2003-04-07T16:38:08Z",
+                                        endTime: "1975-07-07T21:36:20Z",
                                         id: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392",
-                                        startTime: "2005-03-11T20:28:08Z",
+                                        startTime: "1975-02-20T04:43:33Z",
                                     },
                                 ],
                                 taskType: "unknown",
-                                updatedAtTime: "2006-02-24T15:47:24Z",
+                                updatedAtTime: "2014-02-20T05:13:14Z",
                             },
                         ],
-                        updatedAtTime: "1971-07-03T21:11:30Z",
+                        updatedAtTime: "2003-10-18T15:58:15Z",
                     },
                     message: "data[0].tasks[0].taskType is invalid",
-                    status: 1792300152622576000,
+                    status: 7796043317718989000,
                 },
             ],
         });
@@ -1689,7 +1689,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = {
-            data: [{ deletedAtTime: "1996-12-03T23:18:35Z", id: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392" }],
+            data: [{ deletedAtTime: "1976-05-07T19:03:50Z", id: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392" }],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
         server
@@ -1704,7 +1704,7 @@ describe("PreviewApIsClient", () => {
         expect(response).toEqual({
             data: [
                 {
-                    deletedAtTime: "1996-12-03T23:18:35Z",
+                    deletedAtTime: "1976-05-07T19:03:50Z",
                     id: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392",
                 },
             ],
@@ -1957,13 +1957,13 @@ describe("PreviewApIsClient", () => {
         const rawResponseBody = {
             data: [
                 {
-                    createdAtTime: "1983-09-13T11:27:33Z",
+                    createdAtTime: "1990-08-31T23:49:19Z",
                     customerProperties: [{ key: "purchaseOrderNumber", value: "PO-12345" }],
                     id: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392",
                     samsaraCustomerOrderName: "Order 12345",
                     tasks: [
                         {
-                            createdAtTime: "1993-10-27T05:05:19Z",
+                            createdAtTime: "1977-01-10T23:36:08Z",
                             customerProperties: [{ key: "purchaseOrderNumber", value: "PO-12345" }],
                             dispatcherNotes: "Customer requires lift gate",
                             driverNotes: "Use loading dock 4",
@@ -1975,23 +1975,23 @@ describe("PreviewApIsClient", () => {
                                     capacityId: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392",
                                     id: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392",
                                     label: "pallets",
-                                    value: 0.8891437441477907,
+                                    value: 0.23962707185822993,
                                 },
                             ],
                             routeId: "12345678",
-                            serviceDurationSeconds: 2653587382275664400,
+                            serviceDurationSeconds: 1920015009061035500,
                             serviceWindows: [
                                 {
-                                    endTime: "2003-04-07T16:38:08Z",
+                                    endTime: "1975-07-07T21:36:20Z",
                                     id: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392",
-                                    startTime: "2005-03-11T20:28:08Z",
+                                    startTime: "1975-02-20T04:43:33Z",
                                 },
                             ],
                             taskType: "unknown",
-                            updatedAtTime: "2006-02-24T15:47:24Z",
+                            updatedAtTime: "2014-02-20T05:13:14Z",
                         },
                     ],
-                    updatedAtTime: "1971-07-03T21:11:30Z",
+                    updatedAtTime: "2003-10-18T15:58:15Z",
                 },
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
@@ -2010,7 +2010,7 @@ describe("PreviewApIsClient", () => {
         expect(response).toEqual({
             data: [
                 {
-                    createdAtTime: "1983-09-13T11:27:33Z",
+                    createdAtTime: "1990-08-31T23:49:19Z",
                     customerProperties: [
                         {
                             key: "purchaseOrderNumber",
@@ -2021,7 +2021,7 @@ describe("PreviewApIsClient", () => {
                     samsaraCustomerOrderName: "Order 12345",
                     tasks: [
                         {
-                            createdAtTime: "1993-10-27T05:05:19Z",
+                            createdAtTime: "1977-01-10T23:36:08Z",
                             customerProperties: [
                                 {
                                     key: "purchaseOrderNumber",
@@ -2038,23 +2038,23 @@ describe("PreviewApIsClient", () => {
                                     capacityId: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392",
                                     id: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392",
                                     label: "pallets",
-                                    value: 0.8891437441477907,
+                                    value: 0.23962707185822993,
                                 },
                             ],
                             routeId: "12345678",
-                            serviceDurationSeconds: 2653587382275664400,
+                            serviceDurationSeconds: 1920015009061035500,
                             serviceWindows: [
                                 {
-                                    endTime: "2003-04-07T16:38:08Z",
+                                    endTime: "1975-07-07T21:36:20Z",
                                     id: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392",
-                                    startTime: "2005-03-11T20:28:08Z",
+                                    startTime: "1975-02-20T04:43:33Z",
                                 },
                             ],
                             taskType: "unknown",
-                            updatedAtTime: "2006-02-24T15:47:24Z",
+                            updatedAtTime: "2014-02-20T05:13:14Z",
                         },
                     ],
-                    updatedAtTime: "1971-07-03T21:11:30Z",
+                    updatedAtTime: "2003-10-18T15:58:15Z",
                 },
             ],
             pagination: {

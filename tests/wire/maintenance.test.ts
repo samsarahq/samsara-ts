@@ -4622,6 +4622,8 @@ describe("MaintenanceClient", () => {
             data: [
                 {
                     activityType: "unknown",
+                    activityTypeId: "12345",
+                    activityTypeName: "12345",
                     clockInAtTime: "2026-07-09T14:10:47.648Z",
                     clockInLocation: { latitude: 42.2364884, longitude: -83.3113959 },
                     clockInSource: "mobile",
@@ -4659,6 +4661,8 @@ describe("MaintenanceClient", () => {
             data: [
                 {
                     activityType: "unknown",
+                    activityTypeId: "12345",
+                    activityTypeName: "12345",
                     clockInAtTime: "2026-07-09T14:10:47.648Z",
                     clockInLocation: {
                         latitude: 42.2364884,
@@ -6969,7 +6973,7 @@ describe("MaintenanceClient", () => {
                     claimEngineHours: 12345,
                     claimOdometerMeters: 12345,
                     claimStatus: "unknown",
-                    componentInstanceIds: ["12345", "12345", "12345"],
+                    componentInstanceIds: ["12345", "12345", "12345", "12345"],
                     concern: "12345",
                     correction: "12345",
                     createdAtTime: "2019-06-13T19:08:25Z",
@@ -6979,8 +6983,8 @@ describe("MaintenanceClient", () => {
                         { description: "12345", serviceTaskId: "12345", sourceWorkOrderId: "12345", vmrsCode: "12345" },
                     ],
                     linkedWarranty: { id: "281474976710656" },
-                    linkedWorkOrderIds: ["12345", "12345", "12345"],
-                    mediaItemIds: ["12345", "12345", "12345"],
+                    linkedWorkOrderIds: ["12345", "12345", "12345", "12345"],
+                    mediaItemIds: ["12345", "12345"],
                     otherCost: { amount: "12345", currency: "12345" },
                     parts: [
                         {
@@ -7024,7 +7028,7 @@ describe("MaintenanceClient", () => {
                     claimEngineHours: 12345,
                     claimOdometerMeters: 12345,
                     claimStatus: "unknown",
-                    componentInstanceIds: ["12345", "12345", "12345"],
+                    componentInstanceIds: ["12345", "12345", "12345", "12345"],
                     concern: "12345",
                     correction: "12345",
                     createdAtTime: "2019-06-13T19:08:25Z",
@@ -7046,8 +7050,8 @@ describe("MaintenanceClient", () => {
                     linkedWarranty: {
                         id: "281474976710656",
                     },
-                    linkedWorkOrderIds: ["12345", "12345", "12345"],
-                    mediaItemIds: ["12345", "12345", "12345"],
+                    linkedWorkOrderIds: ["12345", "12345", "12345", "12345"],
+                    mediaItemIds: ["12345", "12345"],
                     otherCost: {
                         amount: "12345",
                         currency: "12345",
@@ -7347,7 +7351,7 @@ describe("MaintenanceClient", () => {
                     { description: "12345", serviceTaskId: "12345", sourceWorkOrderId: "12345", vmrsCode: "12345" },
                 ],
                 linkedWarranty: { id: "281474976710656" },
-                linkedWorkOrderIds: ["12345", "12345", "12345", "12345"],
+                linkedWorkOrderIds: ["12345", "12345"],
                 mediaItemIds: ["12345", "12345", "12345"],
                 otherCost: { amount: "12345", currency: "12345" },
                 parts: [
@@ -7414,7 +7418,7 @@ describe("MaintenanceClient", () => {
                 linkedWarranty: {
                     id: "281474976710656",
                 },
-                linkedWorkOrderIds: ["12345", "12345", "12345", "12345"],
+                linkedWorkOrderIds: ["12345", "12345"],
                 mediaItemIds: ["12345", "12345", "12345"],
                 otherCost: {
                     amount: "12345",
@@ -7997,7 +8001,7 @@ describe("MaintenanceClient", () => {
                 claimEngineHours: 12345,
                 claimOdometerMeters: 12345,
                 claimStatus: "unknown",
-                componentInstanceIds: ["12345", "12345", "12345", "12345"],
+                componentInstanceIds: ["12345", "12345"],
                 concern: "12345",
                 correction: "12345",
                 createdAtTime: "2019-06-13T19:08:25Z",
@@ -8052,7 +8056,7 @@ describe("MaintenanceClient", () => {
                 claimEngineHours: 12345,
                 claimOdometerMeters: 12345,
                 claimStatus: "unknown",
-                componentInstanceIds: ["12345", "12345", "12345", "12345"],
+                componentInstanceIds: ["12345", "12345"],
                 concern: "12345",
                 correction: "12345",
                 createdAtTime: "2019-06-13T19:08:25Z",

@@ -25,7 +25,7 @@ describe("ReadingsClient", () => {
                     ingestionEnabled: true,
                     label: "engineRpm",
                     readingId: "12345",
-                    type: { key: "value" },
+                    type: "Ipsa id recusandae libero sit qui officiis.",
                 },
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
@@ -58,9 +58,7 @@ describe("ReadingsClient", () => {
                     ingestionEnabled: true,
                     label: "engineRpm",
                     readingId: "12345",
-                    type: {
-                        key: "value",
-                    },
+                    type: "Ipsa id recusandae libero sit qui officiis.",
                 },
             ],
             pagination: {
@@ -315,7 +313,7 @@ describe("ReadingsClient", () => {
                     entityId: "123456",
                     externalIds: { key: "value" },
                     happenedAtTime: "2020-01-27T07:06:25Z",
-                    value: { key: "value" },
+                    value: "off",
                 },
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
@@ -334,9 +332,7 @@ describe("ReadingsClient", () => {
                         key: "value",
                     },
                     happenedAtTime: "2020-01-27T07:06:25Z",
-                    value: {
-                        key: "value",
-                    },
+                    value: "off",
                 },
             ],
             pagination: {
@@ -562,7 +558,7 @@ describe("ReadingsClient", () => {
                     externalIds: { key: "value" },
                     happenedAtTime: "2020-01-27T07:06:25Z",
                     readingId: "engineSpeed",
-                    value: { key: "value" },
+                    value: "off",
                 },
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
@@ -582,9 +578,7 @@ describe("ReadingsClient", () => {
                     },
                     happenedAtTime: "2020-01-27T07:06:25Z",
                     readingId: "engineSpeed",
-                    value: {
-                        key: "value",
-                    },
+                    value: "off",
                 },
             ],
             pagination: {

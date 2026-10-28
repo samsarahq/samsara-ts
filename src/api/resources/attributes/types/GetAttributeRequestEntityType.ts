@@ -3,6 +3,7 @@
 export const GetAttributeRequestEntityType = {
     Driver: "driver",
     Asset: "asset",
+    WorkOrder: "workOrder",
 } as const;
 export type GetAttributeRequestEntityType =
     (typeof GetAttributeRequestEntityType)[keyof typeof GetAttributeRequestEntityType];

@@ -3,6 +3,7 @@
 export const DeleteAttributesRequestEntityType = {
     Driver: "driver",
     Asset: "asset",
+    WorkOrder: "workOrder",
 } as const;
 export type DeleteAttributesRequestEntityType =
     (typeof DeleteAttributesRequestEntityType)[keyof typeof DeleteAttributesRequestEntityType];

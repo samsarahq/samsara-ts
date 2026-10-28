@@ -14,8 +14,11 @@ import type * as Samsara from "../../../../index.js";
  *     }
  */
 export interface EntityWatchpointsServiceCreateWatchpointRequestBody {
+    bearingRange?: Samsara.WatchpointBearingRangeTypeRequestBody;
+    /** Conditions to detect in new observations. Defaults to none. Requires custom detections to be enabled for your organization. Types must be distinct. */
+    customDetections?: Samsara.WatchpointCustomDetectionRequestTypeRequestBody[];
     location: Samsara.WatchpointLatLngTypeRequestBody;
-    /** Recurrence frequency for observations.  Valid values: `justOnce`, `daily`, `weekly`, `monthly` */
+    /** Recurrence frequency for observations.  Valid values: `justOnce`, `daily`, `weekly`, `monthly`, `every15Minutes`, `hourly` */
     mode: EntityWatchpointsServiceCreateWatchpointRequestBody.Mode;
     /** Customer-provided name for the watchpoint. */
     name?: string;
@@ -23,15 +26,19 @@ export interface EntityWatchpointsServiceCreateWatchpointRequestBody {
     note?: string;
     /** Type of condition to observe at this watchpoint.  Valid values: `roadDefect`, `utilityCut`, `guardrail`, `streetlight`, `signage`, `stormDrain`, `graffiti`, `vegetation`, `blight`, `illegalDumping`, `littering`, `highVegetationWeeds`, `fire`, `other` */
     observationType: EntityWatchpointsServiceCreateWatchpointRequestBody.ObservationType;
+    /** Sends the authenticated user a dashboard notification for each new observation. Defaults to false. Ignored when the API token is not associated with a user. */
+    sendDashboardNotification?: boolean;
 }
 
 export namespace EntityWatchpointsServiceCreateWatchpointRequestBody {
-    /** Recurrence frequency for observations.  Valid values: `justOnce`, `daily`, `weekly`, `monthly` */
+    /** Recurrence frequency for observations.  Valid values: `justOnce`, `daily`, `weekly`, `monthly`, `every15Minutes`, `hourly` */
     export const Mode = {
         JustOnce: "justOnce",
         Daily: "daily",
         Weekly: "weekly",
         Monthly: "monthly",
+        Every15Minutes: "every15Minutes",
+        Hourly: "hourly",
     } as const;
     export type Mode = (typeof Mode)[keyof typeof Mode];
     /** Type of condition to observe at this watchpoint.  Valid values: `roadDefect`, `utilityCut`, `guardrail`, `streetlight`, `signage`, `stormDrain`, `graffiti`, `vegetation`, `blight`, `illegalDumping`, `littering`, `highVegetationWeeds`, `fire`, `other` */

@@ -12,6 +12,6 @@ import type * as Samsara from "../../../../index.js";
 export interface GetAttributeRequest {
     /** Samsara-provided UUID of the attribute. */
     id: string;
-    /** Denotes the type of entity, driver or asset. */
+    /** Denotes the type of entity, driver, asset, or workOrder. `workOrder` requires work order attributes to be enabled for the organization. */
     entityType: Samsara.GetAttributeRequestEntityType;
 }

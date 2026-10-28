@@ -6,7 +6,7 @@
 export interface AssetSharingAgreementResponseObjectResponseBody {
     /** Time the agreement was accepted, in RFC 3339 format. */
     acceptedAtTime?: string | undefined;
-    /** User ID who accepted the agreement (visible only to recipient). */
+    /** User ID who accepted the agreement (visible only to the accepting organization). */
     acceptedByUserId?: string | undefined;
     /** Time the agreement was canceled, in RFC 3339 format. */
     canceledAtTime?: string | undefined;
@@ -16,14 +16,18 @@ export interface AssetSharingAgreementResponseObjectResponseBody {
     canceledByUserId?: string | undefined;
     /** Time the agreement was created, in RFC 3339 format. */
     createdAtTime: string;
-    /** User ID in provider org who created the agreement. */
+    /** Party that created the agreement, determined from the authenticated caller. Older agreements default to provider. Returns unknown if the party cannot be determined.  Valid values: `provider`, `recipient`, `unknown` */
+    createdByParty: AssetSharingAgreementResponseObjectResponseBody.CreatedByParty;
+    /** User ID who created the agreement (visible only to the creating organization). */
     createdByUserId?: string | undefined;
-    /** User ID in provider org who soft-deleted the agreement. */
+    /** User ID who soft-deleted the agreement (visible only to the deleting organization). */
     deletedByUserId?: string | undefined;
     /** Unique identifier for the agreement. */
     id: string;
     /** Defines where the gateways will be located.  Valid values: `provider`, `recipient` */
     operator: AssetSharingAgreementResponseObjectResponseBody.Operator;
+    /** Party whose Asset Sharing license supports the agreement. Older agreements default to provider. Returns unknown if the party cannot be determined.  Valid values: `provider`, `recipient`, `unknown` */
+    payer: AssetSharingAgreementResponseObjectResponseBody.Payer;
     /** List of data packages the provider will see. */
     providerDataPackages: AssetSharingAgreementResponseObjectResponseBody.ProviderDataPackages.Item[];
     /** ID of the organization that owns the assets shared under the agreement. */
@@ -34,7 +38,7 @@ export interface AssetSharingAgreementResponseObjectResponseBody {
     recipientOrganizationId: string;
     /** Time the agreement was rejected, in RFC 3339 format. */
     rejectedAtTime?: string | undefined;
-    /** User ID who rejected the agreement (visible only to recipient). */
+    /** User ID who rejected the agreement (visible only to the rejecting organization). */
     rejectedByUserId?: string | undefined;
     /** The status of the agreement.  Valid values: `pending`, `accepted`, `rejected`, `canceled` */
     status: AssetSharingAgreementResponseObjectResponseBody.Status;
@@ -49,12 +53,26 @@ export namespace AssetSharingAgreementResponseObjectResponseBody {
         Recipient: "recipient",
     } as const;
     export type CanceledByParty = (typeof CanceledByParty)[keyof typeof CanceledByParty];
+    /** Party that created the agreement, determined from the authenticated caller. Older agreements default to provider. Returns unknown if the party cannot be determined.  Valid values: `provider`, `recipient`, `unknown` */
+    export const CreatedByParty = {
+        Provider: "provider",
+        Recipient: "recipient",
+        Unknown: "unknown",
+    } as const;
+    export type CreatedByParty = (typeof CreatedByParty)[keyof typeof CreatedByParty];
     /** Defines where the gateways will be located.  Valid values: `provider`, `recipient` */
     export const Operator = {
         Provider: "provider",
         Recipient: "recipient",
     } as const;
     export type Operator = (typeof Operator)[keyof typeof Operator];
+    /** Party whose Asset Sharing license supports the agreement. Older agreements default to provider. Returns unknown if the party cannot be determined.  Valid values: `provider`, `recipient`, `unknown` */
+    export const Payer = {
+        Provider: "provider",
+        Recipient: "recipient",
+        Unknown: "unknown",
+    } as const;
+    export type Payer = (typeof Payer)[keyof typeof Payer];
     export type ProviderDataPackages = ProviderDataPackages.Item[];
 
     export namespace ProviderDataPackages {

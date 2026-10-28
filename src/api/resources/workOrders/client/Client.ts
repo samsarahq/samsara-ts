@@ -278,11 +278,12 @@ export class WorkOrdersClient {
         request: Samsara.GetWorkOrdersRequest = {},
         requestOptions?: WorkOrdersClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.WorkOrdersGetWorkOrdersResponseBody>> {
-        const { ids, after, includeExternalIds } = request;
+        const { ids, after, includeExternalIds, includeAttributes } = request;
         const _queryParams: Record<string, unknown> = {
             ids,
             after,
             includeExternalIds,
+            includeAttributes,
         };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -707,7 +708,16 @@ export class WorkOrdersClient {
         request: Samsara.StreamWorkOrdersRequest,
         requestOptions?: WorkOrdersClient.RequestOptions,
     ): Promise<core.WithRawResponse<Samsara.WorkOrdersStreamWorkOrdersResponseBody>> {
-        const { after, startTime, endTime, workOrderStatuses, assetIds, assignedUserIds, includeExternalIds } = request;
+        const {
+            after,
+            startTime,
+            endTime,
+            workOrderStatuses,
+            assetIds,
+            assignedUserIds,
+            includeExternalIds,
+            includeAttributes,
+        } = request;
         const _queryParams: Record<string, unknown> = {
             after,
             startTime,
@@ -720,6 +730,7 @@ export class WorkOrdersClient {
             assetIds,
             assignedUserIds,
             includeExternalIds,
+            includeAttributes,
         };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(

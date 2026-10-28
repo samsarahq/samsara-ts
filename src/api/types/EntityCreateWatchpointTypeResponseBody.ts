@@ -6,14 +6,17 @@ import type * as Samsara from "../index.js";
  * Watchpoint object
  */
 export interface EntityCreateWatchpointTypeResponseBody {
+    bearingRange?: Samsara.WatchpointBearingRangeTypeResponseBody | undefined;
     /** Time when the watchpoint resource was created. */
     createdAtTime: string;
+    /** Configured detections. Omitted when none are configured. */
+    customDetections?: Samsara.WatchpointCustomDetectionResponseTypeResponseBody[] | undefined;
     /** Unique identifier for the watchpoint. */
     id: string;
     /** Time when the most recent observation was collected, or null when unavailable. */
     lastObservationTime: string | null;
     location: Samsara.WatchpointLatLngTypeResponseBody;
-    /** Recurrence frequency for observations.  Valid values: `unknown`, `justOnce`, `daily`, `weekly`, `monthly` */
+    /** Recurrence frequency for observations.  Valid values: `unknown`, `justOnce`, `daily`, `weekly`, `monthly`, `every15Minutes`, `hourly` */
     mode: EntityCreateWatchpointTypeResponseBody.Mode;
     /** Server-derived end of the current monitoring window. */
     monitoringEndTime: string;
@@ -36,13 +39,15 @@ export interface EntityCreateWatchpointTypeResponseBody {
 }
 
 export namespace EntityCreateWatchpointTypeResponseBody {
-    /** Recurrence frequency for observations.  Valid values: `unknown`, `justOnce`, `daily`, `weekly`, `monthly` */
+    /** Recurrence frequency for observations.  Valid values: `unknown`, `justOnce`, `daily`, `weekly`, `monthly`, `every15Minutes`, `hourly` */
     export const Mode = {
         Unknown: "unknown",
         JustOnce: "justOnce",
         Daily: "daily",
         Weekly: "weekly",
         Monthly: "monthly",
+        Every15Minutes: "every15Minutes",
+        Hourly: "hourly",
     } as const;
     export type Mode = (typeof Mode)[keyof typeof Mode];
     /** Type of condition to observe at this watchpoint.  Valid values: `unknown`, `roadDefect`, `utilityCut`, `guardrail`, `streetlight`, `signage`, `stormDrain`, `graffiti`, `vegetation`, `blight`, `illegalDumping`, `littering`, `highVegetationWeeds`, `fire`, `other` */

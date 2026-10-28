@@ -9,7 +9,7 @@ import type * as Samsara from "../../../../index.js";
  *     }
  */
 export interface GetAttributesByEntityTypeRequest {
-    /** Denotes the type of entity, driver or asset. */
+    /** Denotes the type of entity, driver, asset, or workOrder. `workOrder` requires work order attributes to be enabled for the organization. */
     entityType: Samsara.GetAttributesByEntityTypeRequestEntityType;
     /** The limit for how many objects will be in the response. Default and max for this value is 512 objects. */
     limit?: number;

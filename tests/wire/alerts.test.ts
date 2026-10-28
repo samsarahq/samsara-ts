@@ -1990,6 +1990,11 @@ describe("AlertsClient", () => {
                                     trailer: { id: "id" },
                                     vehicle: { id: "id", serial: "serial" },
                                 },
+                                thermographTemperature: {
+                                    driver: { id: "id" },
+                                    trailer: { id: "id" },
+                                    vehicle: { id: "id", serial: "serial" },
+                                },
                                 tireFaults: {
                                     driver: { id: "id" },
                                     trailer: { id: "id" },
@@ -2362,6 +2367,11 @@ describe("AlertsClient", () => {
                                     vehicle: { id: "id", serial: "serial" },
                                 },
                                 tamperingDetected: {
+                                    driver: { id: "id" },
+                                    trailer: { id: "id" },
+                                    vehicle: { id: "id", serial: "serial" },
+                                },
+                                thermographTemperature: {
                                     driver: { id: "id" },
                                     trailer: { id: "id" },
                                     vehicle: { id: "id", serial: "serial" },
@@ -2752,6 +2762,11 @@ describe("AlertsClient", () => {
                                     trailer: { id: "id" },
                                     vehicle: { id: "id", serial: "serial" },
                                 },
+                                thermographTemperature: {
+                                    driver: { id: "id" },
+                                    trailer: { id: "id" },
+                                    vehicle: { id: "id", serial: "serial" },
+                                },
                                 tireFaults: {
                                     driver: { id: "id" },
                                     trailer: { id: "id" },
@@ -3124,6 +3139,11 @@ describe("AlertsClient", () => {
                                     vehicle: { id: "id", serial: "serial" },
                                 },
                                 tamperingDetected: {
+                                    driver: { id: "id" },
+                                    trailer: { id: "id" },
+                                    vehicle: { id: "id", serial: "serial" },
+                                },
+                                thermographTemperature: {
                                     driver: { id: "id" },
                                     trailer: { id: "id" },
                                     vehicle: { id: "id", serial: "serial" },
@@ -3874,6 +3894,18 @@ describe("AlertsClient", () => {
                                         serial: "serial",
                                     },
                                 },
+                                thermographTemperature: {
+                                    driver: {
+                                        id: "id",
+                                    },
+                                    trailer: {
+                                        id: "id",
+                                    },
+                                    vehicle: {
+                                        id: "id",
+                                        serial: "serial",
+                                    },
+                                },
                                 tireFaults: {
                                     driver: {
                                         id: "id",
@@ -4637,6 +4669,18 @@ describe("AlertsClient", () => {
                                     },
                                 },
                                 tamperingDetected: {
+                                    driver: {
+                                        id: "id",
+                                    },
+                                    trailer: {
+                                        id: "id",
+                                    },
+                                    vehicle: {
+                                        id: "id",
+                                        serial: "serial",
+                                    },
+                                },
+                                thermographTemperature: {
                                     driver: {
                                         id: "id",
                                     },
@@ -5432,6 +5476,18 @@ describe("AlertsClient", () => {
                                         serial: "serial",
                                     },
                                 },
+                                thermographTemperature: {
+                                    driver: {
+                                        id: "id",
+                                    },
+                                    trailer: {
+                                        id: "id",
+                                    },
+                                    vehicle: {
+                                        id: "id",
+                                        serial: "serial",
+                                    },
+                                },
                                 tireFaults: {
                                     driver: {
                                         id: "id",
@@ -6195,6 +6251,18 @@ describe("AlertsClient", () => {
                                     },
                                 },
                                 tamperingDetected: {
+                                    driver: {
+                                        id: "id",
+                                    },
+                                    trailer: {
+                                        id: "id",
+                                    },
+                                    vehicle: {
+                                        id: "id",
+                                        serial: "serial",
+                                    },
+                                },
+                                thermographTemperature: {
                                     driver: {
                                         id: "id",
                                     },

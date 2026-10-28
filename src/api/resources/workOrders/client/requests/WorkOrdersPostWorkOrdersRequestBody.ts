@@ -15,10 +15,14 @@ export interface WorkOrdersPostWorkOrdersRequestBody {
     assetId: string;
     /** The ID of the assigned mechanic. */
     assignedUserId?: string;
+    /** A list of custom fields (attributes) to assign to the work order. Each entry requires the attribute `id`. Use `stringValues` for text, single-select, and multi-select attributes, `numberValues` for number attributes, and `dateValues` (YYYY-MM-DD) for date attributes. For single-select and multi-select attributes, send the text of a defined option. The request is rejected if any attribute or value is invalid. Only available for organizations with work order custom fields enabled. */
+    attributes?: Samsara.GoaAttributeTinyRequestBody[];
     /** The category of the work order */
     category?: string;
     /** The historical time the work order was completed, in RFC 3339 format. Is automatically set when the status is Closed or Completed and this field is not provided. */
     completedAtTime?: string;
+    /** ID of the dashboard user to attribute as the work order creator for display and creator notifications. Does not change who is recorded as the API actor in the activity log. Must be a user in the organization. When omitted, defaults to the API token owner. Accepted only when the organization has the create-created-by feature enabled. */
+    createdByUserId?: string;
     /** A description of what needs to be fixed. */
     description?: string;
     discount?: Samsara.WorkOrderDiscountObjectRequestBody;
@@ -44,7 +48,7 @@ export interface WorkOrdersPostWorkOrdersRequestBody {
     serviceTaskInstances?: Samsara.ServiceTaskInstanceInputObjectRequestBody[];
     /** The historical time work started on the work order, in RFC 3339 format. Is automatically set when the status is an in-progress status and this field is not provided. */
     startedAtTime?: string;
-    /** The initial status of the work order. Defaults to Open when not provided.  Valid values: `Assigned`, `Cancelled`, `Closed`, `Completed`, `Estimate`, `In Progress`, `On Hold`, `Open`, `Pending Approval`, `Pending Parts`, `Planning` */
+    /** The initial user-selectable status of the work order. Defaults to Open when not provided. Estimate workflow statuses are system-managed and cannot be set directly.  Valid values: `Assigned`, `Cancelled`, `Closed`, `Completed`, `Estimate`, `In Progress`, `On Hold`, `Open`, `Pending Approval`, `Pending Parts`, `Planning` */
     status?: WorkOrdersPostWorkOrdersRequestBody.Status;
     tax?: Samsara.WorkOrderTaxCreateObjectRequestBody;
     /** The vendor UUID for the work order. */
@@ -60,7 +64,7 @@ export namespace WorkOrdersPostWorkOrdersRequestBody {
         Urgent: "Urgent",
     } as const;
     export type Priority = (typeof Priority)[keyof typeof Priority];
-    /** The initial status of the work order. Defaults to Open when not provided.  Valid values: `Assigned`, `Cancelled`, `Closed`, `Completed`, `Estimate`, `In Progress`, `On Hold`, `Open`, `Pending Approval`, `Pending Parts`, `Planning` */
+    /** The initial user-selectable status of the work order. Defaults to Open when not provided. Estimate workflow statuses are system-managed and cannot be set directly.  Valid values: `Assigned`, `Cancelled`, `Closed`, `Completed`, `Estimate`, `In Progress`, `On Hold`, `Open`, `Pending Approval`, `Pending Parts`, `Planning` */
     export const Status = {
         Assigned: "Assigned",
         Cancelled: "Cancelled",

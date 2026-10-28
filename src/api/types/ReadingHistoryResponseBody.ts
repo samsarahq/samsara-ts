@@ -11,5 +11,5 @@ export interface ReadingHistoryResponseBody {
     /** The time in RFC 3339 format when the reading was measured. */
     happenedAtTime?: string | undefined;
     /** The value of the reading. */
-    value?: Record<string, unknown> | undefined;
+    value?: unknown | undefined;
 }

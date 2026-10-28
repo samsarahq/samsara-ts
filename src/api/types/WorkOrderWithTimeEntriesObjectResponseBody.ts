@@ -16,6 +16,8 @@ export interface WorkOrderWithTimeEntriesObjectResponseBody {
     assignees?: Samsara.WorkOrderAssigneeObjectResponseBody[] | undefined;
     /** Files attached to the work order. */
     attachments?: Samsara.WorkOrderAttachmentObjectResponseBody[] | undefined;
+    /** Custom fields (attributes) set on the work order. Returned by the work order endpoints when includeAttributes is true, and in work order webhook and stream payloads when work order attributes are enabled for the organization. */
+    attributes?: Samsara.GoaAttributeTinyResponseBody[] | undefined;
     /** The category of the work order */
     category?: string | undefined;
     /** Notes on the work order. */
@@ -24,7 +26,7 @@ export interface WorkOrderWithTimeEntriesObjectResponseBody {
     completedAtTime?: string | undefined;
     /** The time the work order was created in RFC 3339 format. */
     createdAtTime: string;
-    /** The ID of the creator of the work order. */
+    /** The ID of the creator of the work order. On create, integrations may optionally set this to attribute Created-by UI and creator notifications to a dashboard user; the activity log still records the API token owner as the create actor when that override is used. */
     createdByUserId?: string | undefined;
     /** A description of what needs to be fixed. */
     description?: string | undefined;
@@ -33,6 +35,8 @@ export interface WorkOrderWithTimeEntriesObjectResponseBody {
     dueAtTime?: string | undefined;
     /** The engine hours at the time of the work order. */
     engineHours?: number | undefined;
+    /** Identifier for this work order in a third-party system, as set when the work order was imported (for example a Fleetio or Eptura work order ID). Returned by the work order endpoints when the request sets `includeExternalIds=true`, and in work order webhook payloads, when the work order has an external ID. Use it to match imported work orders to their source records, for example before attaching files with POST /maintenance/work-orders/attachments. Only returned for organizations with this field enabled. */
+    externalId?: string | undefined;
     /** The unique id of the work order. */
     id: string;
     /** The invoice number for the work order. */
@@ -50,7 +54,7 @@ export interface WorkOrderWithTimeEntriesObjectResponseBody {
     serviceTaskInstances?: Samsara.ServiceTaskInstanceWithTimeEntriesObjectResponseBody[] | undefined;
     /** The time work started on the work order, in RFC 3339 format. */
     startedAtTime?: string | undefined;
-    /** The status of the work order  Valid values: `Assigned`, `Cancelled`, `Closed`, `Completed`, `Estimate`, `In Progress`, `On Hold`, `Open`, `Pending Approval`, `Pending Parts`, `Planning` */
+    /** The status of the work order, including system-managed estimate workflow statuses.  Valid values: `Assigned`, `Awaiting estimate approval`, `Awaiting estimates`, `Cancelled`, `Closed`, `Completed`, `Estimate`, `Estimate approval denied`, `Estimate approved`, `Estimates ready`, `In Progress`, `Needs Vendor Selection`, `On Hold`, `Open`, `Pending Approval`, `Pending Parts`, `Planning` */
     status: WorkOrderWithTimeEntriesObjectResponseBody.Status;
     tax?: Samsara.WorkOrderTaxObjectResponseBody | undefined;
     unallocatedLabor?: Samsara.WorkOrderUnallocatedLaborObjectResponseBody | undefined;
@@ -71,14 +75,20 @@ export namespace WorkOrderWithTimeEntriesObjectResponseBody {
         Urgent: "Urgent",
     } as const;
     export type Priority = (typeof Priority)[keyof typeof Priority];
-    /** The status of the work order  Valid values: `Assigned`, `Cancelled`, `Closed`, `Completed`, `Estimate`, `In Progress`, `On Hold`, `Open`, `Pending Approval`, `Pending Parts`, `Planning` */
+    /** The status of the work order, including system-managed estimate workflow statuses.  Valid values: `Assigned`, `Awaiting estimate approval`, `Awaiting estimates`, `Cancelled`, `Closed`, `Completed`, `Estimate`, `Estimate approval denied`, `Estimate approved`, `Estimates ready`, `In Progress`, `Needs Vendor Selection`, `On Hold`, `Open`, `Pending Approval`, `Pending Parts`, `Planning` */
     export const Status = {
         Assigned: "Assigned",
+        AwaitingEstimateApproval: "Awaiting estimate approval",
+        AwaitingEstimates: "Awaiting estimates",
         Cancelled: "Cancelled",
         Closed: "Closed",
         Completed: "Completed",
         Estimate: "Estimate",
+        EstimateApprovalDenied: "Estimate approval denied",
+        EstimateApproved: "Estimate approved",
+        EstimatesReady: "Estimates ready",
         InProgress: "In Progress",
+        NeedsVendorSelection: "Needs Vendor Selection",
         OnHold: "On Hold",
         Open: "Open",
         PendingApproval: "Pending Approval",

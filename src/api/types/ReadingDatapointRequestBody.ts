@@ -14,8 +14,7 @@ export interface ReadingDatapointRequestBody {
     happenedAtTime: string;
     /** The ID of the reading, you can get it from the /readings/definitions endpoint. */
     readingId: string;
-    /** The value of the reading. Can be any object. See the /readings/definitions endpoint for the value type for each reading. */
-    value: Record<string, unknown>;
+    value?: unknown | undefined;
 }
 
 export namespace ReadingDatapointRequestBody {

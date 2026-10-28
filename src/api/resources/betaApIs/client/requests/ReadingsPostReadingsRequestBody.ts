@@ -9,9 +9,7 @@ import type * as Samsara from "../../../../index.js";
  *                 entityType: "asset",
  *                 happenedAtTime: "2023-10-27T10:00:00Z",
  *                 readingId: "airInletPressure",
- *                 value: {
- *                     "key": "value"
- *                 }
+ *                 value: "off"
  *             }]
  *     }
  */

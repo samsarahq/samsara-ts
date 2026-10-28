@@ -6,21 +6,26 @@
  *         operator: "provider",
  *         providerDataPackages: ["all", "maintenance", "maintenance", "maintenance"],
  *         recipientDataPackages: ["all", "reefer", "all", "maintenance"],
- *         recipientOrganizationId: "456",
- *         recipientOrganizationName: "Acme Logistics"
+ *         recipientOrganizationId: "456"
  *     }
  */
 export interface AssetSharingAgreementsCreateAssetSharingAgreementRequestBody {
     /** Defines where the gateways will be located.  Valid values: `provider`, `recipient` */
     operator: AssetSharingAgreementsCreateAssetSharingAgreementRequestBody.Operator;
+    /** Party whose Asset Sharing license supports the agreement. Defaults to the creator when the flexible operating model is enabled. Otherwise, the provider pays; omit this field or specify provider. Specifying recipient requires the flexible operating model to be enabled.  Valid values: `provider`, `recipient` */
+    payer?: AssetSharingAgreementsCreateAssetSharingAgreementRequestBody.Payer;
     /** List of data packages the provider will see. */
     providerDataPackages: AssetSharingAgreementsCreateAssetSharingAgreementRequestBody.ProviderDataPackages.Item[];
+    /** ID of the organization that owns the assets. Defaults to the caller's organization. Recipient-initiated agreements require the flexible operating model to be enabled. */
+    providerOrganizationId?: string;
+    /** Display name for the provider. Required when the caller is the recipient; the caller's own organization name is resolved automatically. */
+    providerOrganizationName?: string;
     /** List of data packages the recipient will see. */
     recipientDataPackages: AssetSharingAgreementsCreateAssetSharingAgreementRequestBody.RecipientDataPackages.Item[];
     /** The ID of the recipient organization. */
     recipientOrganizationId: string;
-    /** The display name to use for the recipient organization. */
-    recipientOrganizationName: string;
+    /** Display name for the recipient. Required when the caller is the provider; the caller's own organization name is resolved automatically. */
+    recipientOrganizationName?: string;
 }
 
 export namespace AssetSharingAgreementsCreateAssetSharingAgreementRequestBody {
@@ -30,6 +35,12 @@ export namespace AssetSharingAgreementsCreateAssetSharingAgreementRequestBody {
         Recipient: "recipient",
     } as const;
     export type Operator = (typeof Operator)[keyof typeof Operator];
+    /** Party whose Asset Sharing license supports the agreement. Defaults to the creator when the flexible operating model is enabled. Otherwise, the provider pays; omit this field or specify provider. Specifying recipient requires the flexible operating model to be enabled.  Valid values: `provider`, `recipient` */
+    export const Payer = {
+        Provider: "provider",
+        Recipient: "recipient",
+    } as const;
+    export type Payer = (typeof Payer)[keyof typeof Payer];
     export type ProviderDataPackages = ProviderDataPackages.Item[];
 
     export namespace ProviderDataPackages {

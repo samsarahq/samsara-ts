@@ -21,6 +21,5 @@ export interface ReadingDefinitionResponseBody {
     label: string;
     /** The ID of the reading used to fetch time series data in other endpoints. */
     readingId: string;
-    /** The type information for the reading. Contains the complete type structure including dataType, unit, enumValues, fields, etc. */
-    type: Record<string, unknown>;
+    type?: unknown | undefined;
 }

@@ -3,6 +3,7 @@
 export const GetAttributesByEntityTypeRequestEntityType = {
     Driver: "driver",
     Asset: "asset",
+    WorkOrder: "workOrder",
 } as const;
 export type GetAttributesByEntityTypeRequestEntityType =
     (typeof GetAttributesByEntityTypeRequestEntityType)[keyof typeof GetAttributesByEntityTypeRequestEntityType];

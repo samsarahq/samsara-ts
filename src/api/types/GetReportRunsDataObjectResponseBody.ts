@@ -6,7 +6,7 @@ export interface GetReportRunsDataObjectResponseBody {
     /** Columns of this report run. */
     columns: Samsara.ReportColumnsObjectResponseBody[];
     /** Array where each inner array represents a row of data, and each element in the inner array is a value for the column. Inner array items are nullable, data types: double, string, timestamp as string in RFC3339 format. The number of columns defined in the report run is to the number of inner array items. */
-    rows: Record<string, unknown>[][];
+    rows: unknown[][];
     /** Status of the report run.  Valid values: `complete`, `pending`, `failed`, `canceled`, `unknown` */
     status: GetReportRunsDataObjectResponseBody.Status;
 }

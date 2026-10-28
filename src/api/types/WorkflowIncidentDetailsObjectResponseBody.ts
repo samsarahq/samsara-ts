@@ -65,6 +65,7 @@ export interface WorkflowIncidentDetailsObjectResponseBody {
     suddenFuelLevelDrop?: Samsara.SuddenFuelLevelDropResponseBody | undefined;
     suddenFuelLevelRise?: Samsara.SuddenFuelLevelRiseResponseBody | undefined;
     tamperingDetected?: Samsara.TamperingDetectedResponseBody | undefined;
+    thermographTemperature?: Samsara.ThermographTemperatureResponseBody | undefined;
     tireFaults?: Samsara.TireFaultsResponseBody | undefined;
     trailerMovingWithoutPower?: Samsara.TrailerMovingWithoutPowerDataResponseBody | undefined;
     unassignedDriving?: Samsara.UnassignedDrivingDataResponseBody | undefined;

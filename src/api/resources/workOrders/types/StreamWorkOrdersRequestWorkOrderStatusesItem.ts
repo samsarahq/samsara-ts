@@ -2,11 +2,17 @@
 
 export const StreamWorkOrdersRequestWorkOrderStatusesItem = {
     Assigned: "Assigned",
+    AwaitingEstimateApproval: "Awaiting estimate approval",
+    AwaitingEstimates: "Awaiting estimates",
     Cancelled: "Cancelled",
     Closed: "Closed",
     Completed: "Completed",
     Estimate: "Estimate",
+    EstimateApprovalDenied: "Estimate approval denied",
+    EstimateApproved: "Estimate approved",
+    EstimatesReady: "Estimates ready",
     InProgress: "In Progress",
+    NeedsVendorSelection: "Needs Vendor Selection",
     OnHold: "On Hold",
     Open: "Open",
     PendingApproval: "Pending Approval",

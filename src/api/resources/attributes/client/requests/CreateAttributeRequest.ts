@@ -15,7 +15,7 @@ export interface CreateAttributeRequest {
     attributeType: CreateAttributeRequest.AttributeType;
     /** Entities that will be applied to this attribute */
     entities?: Samsara.CreateAttributeRequestEntities[];
-    /** Denotes the type of entity, driver or asset. */
+    /** Denotes the type of entity, driver, asset, or workOrder. `workOrder` requires work order attributes to be enabled for the organization. Work order attributes are created without `entities`; set attribute values on work orders through the work orders API. */
     entityType: CreateAttributeRequest.EntityType;
     /** Name */
     name: string;
@@ -38,10 +38,11 @@ export namespace CreateAttributeRequest {
         Date: "date",
     } as const;
     export type AttributeType = (typeof AttributeType)[keyof typeof AttributeType];
-    /** Denotes the type of entity, driver or asset. */
+    /** Denotes the type of entity, driver, asset, or workOrder. `workOrder` requires work order attributes to be enabled for the organization. Work order attributes are created without `entities`; set attribute values on work orders through the work orders API. */
     export const EntityType = {
         Driver: "driver",
         Asset: "asset",
+        WorkOrder: "workOrder",
     } as const;
     export type EntityType = (typeof EntityType)[keyof typeof EntityType];
     /** Unit of the attribute (only for Number attributes). */

@@ -19,4 +19,6 @@ export interface ServiceTaskDefinitionObjectResponseBody {
     name: string;
     /** The subcategory of the service task. */
     subcategory?: string | undefined;
+    /** Full VMRS code path (e.g. 034-005-001) assigned to the service task. Omitted when the task has no VMRS code or the organization has VMRS codes turned off. */
+    vmrsCode?: string | undefined;
 }

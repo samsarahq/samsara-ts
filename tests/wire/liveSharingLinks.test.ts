@@ -39,47 +39,11 @@ describe("LiveSharingLinksClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server.mockEndpoint().get("/live-shares").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.liveSharingLinks.getLiveSharingLinks();
-        expect(response).toEqual({
-            data: [
-                {
-                    assetsLocationLinkConfig: {
-                        assetId: "1234",
-                        location: {
-                            formattedAddress: "1990 Alameda Street, San Francisco, CA 94103",
-                            latitude: 37.456345,
-                            longitude: 34.5633749,
-                            name: "Suburbs",
-                        },
-                        tags: [
-                            {
-                                id: "3914",
-                                name: "East Coast",
-                                parentTagId: "4815",
-                            },
-                        ],
-                    },
-                    assetsNearLocationLinkConfig: {
-                        addressId: "1234",
-                    },
-                    assetsOnRouteLinkConfig: {
-                        recurringRouteId: "1234",
-                    },
-                    description: "Sample description",
-                    expiresAtTime: "2020-01-27T07:06:25Z",
-                    id: "leesdwqjx42dkvp86so",
-                    liveSharingUrl: "https://cloud.samsara.com/o/123456/fleet/viewer/address/7hf4lnu455wep22rtun",
-                    name: "Example Live Sharing Link name",
-                    type: "assetsLocation",
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getLiveSharingLinks (2)", async () => {
@@ -92,6 +56,7 @@ describe("LiveSharingLinksClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/live-shares").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -109,6 +74,7 @@ describe("LiveSharingLinksClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/live-shares").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -126,6 +92,7 @@ describe("LiveSharingLinksClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/live-shares").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -143,6 +110,7 @@ describe("LiveSharingLinksClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/live-shares").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -160,6 +128,7 @@ describe("LiveSharingLinksClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/live-shares").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -177,6 +146,7 @@ describe("LiveSharingLinksClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/live-shares").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -194,6 +164,7 @@ describe("LiveSharingLinksClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/live-shares").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -211,6 +182,7 @@ describe("LiveSharingLinksClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/live-shares").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -228,6 +200,7 @@ describe("LiveSharingLinksClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/live-shares").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -245,6 +218,7 @@ describe("LiveSharingLinksClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/live-shares").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -283,6 +257,7 @@ describe("LiveSharingLinksClient", () => {
                 type: "assetsLocation",
             },
         };
+
         server
             .mockEndpoint()
             .post("/live-shares")
@@ -296,38 +271,7 @@ describe("LiveSharingLinksClient", () => {
             name: "Example Live Sharing Link name",
             type: "assetsLocation",
         });
-        expect(response).toEqual({
-            data: {
-                assetsLocationLinkConfig: {
-                    assetId: "1234",
-                    location: {
-                        formattedAddress: "1990 Alameda Street, San Francisco, CA 94103",
-                        latitude: 37.456345,
-                        longitude: 34.5633749,
-                        name: "Suburbs",
-                    },
-                    tags: [
-                        {
-                            id: "3914",
-                            name: "East Coast",
-                            parentTagId: "4815",
-                        },
-                    ],
-                },
-                assetsNearLocationLinkConfig: {
-                    addressId: "1234",
-                },
-                assetsOnRouteLinkConfig: {
-                    recurringRouteId: "1234",
-                },
-                description: "Sample description",
-                expiresAtTime: "2020-01-27T07:06:25Z",
-                id: "leesdwqjx42dkvp86so",
-                liveSharingUrl: "https://cloud.samsara.com/o/123456/fleet/viewer/address/7hf4lnu455wep22rtun",
-                name: "Example Live Sharing Link name",
-                type: "assetsLocation",
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createLiveSharingLink (2)", async () => {
@@ -340,6 +284,7 @@ describe("LiveSharingLinksClient", () => {
         });
         const rawRequestBody = { name: "name", type: "assetsLocation" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/live-shares")
@@ -367,6 +312,7 @@ describe("LiveSharingLinksClient", () => {
         });
         const rawRequestBody = { name: "name", type: "assetsLocation" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/live-shares")
@@ -394,6 +340,7 @@ describe("LiveSharingLinksClient", () => {
         });
         const rawRequestBody = { name: "name", type: "assetsLocation" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/live-shares")
@@ -421,6 +368,7 @@ describe("LiveSharingLinksClient", () => {
         });
         const rawRequestBody = { name: "name", type: "assetsLocation" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/live-shares")
@@ -448,6 +396,7 @@ describe("LiveSharingLinksClient", () => {
         });
         const rawRequestBody = { name: "name", type: "assetsLocation" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/live-shares")
@@ -475,6 +424,7 @@ describe("LiveSharingLinksClient", () => {
         });
         const rawRequestBody = { name: "name", type: "assetsLocation" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/live-shares")
@@ -502,6 +452,7 @@ describe("LiveSharingLinksClient", () => {
         });
         const rawRequestBody = { name: "name", type: "assetsLocation" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/live-shares")
@@ -529,6 +480,7 @@ describe("LiveSharingLinksClient", () => {
         });
         const rawRequestBody = { name: "name", type: "assetsLocation" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/live-shares")
@@ -556,6 +508,7 @@ describe("LiveSharingLinksClient", () => {
         });
         const rawRequestBody = { name: "name", type: "assetsLocation" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/live-shares")
@@ -583,6 +536,7 @@ describe("LiveSharingLinksClient", () => {
         });
         const rawRequestBody = { name: "name", type: "assetsLocation" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/live-shares")
@@ -627,6 +581,7 @@ describe("LiveSharingLinksClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().delete("/live-shares").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -646,6 +601,7 @@ describe("LiveSharingLinksClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().delete("/live-shares").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -665,6 +621,7 @@ describe("LiveSharingLinksClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().delete("/live-shares").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -684,6 +641,7 @@ describe("LiveSharingLinksClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().delete("/live-shares").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -703,6 +661,7 @@ describe("LiveSharingLinksClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().delete("/live-shares").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -722,6 +681,7 @@ describe("LiveSharingLinksClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().delete("/live-shares").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -741,6 +701,7 @@ describe("LiveSharingLinksClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().delete("/live-shares").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -760,6 +721,7 @@ describe("LiveSharingLinksClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().delete("/live-shares").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -779,6 +741,7 @@ describe("LiveSharingLinksClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().delete("/live-shares").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -798,6 +761,7 @@ describe("LiveSharingLinksClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().delete("/live-shares").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -838,6 +802,7 @@ describe("LiveSharingLinksClient", () => {
                 type: "assetsLocation",
             },
         };
+
         server
             .mockEndpoint()
             .patch("/live-shares")
@@ -851,38 +816,7 @@ describe("LiveSharingLinksClient", () => {
             id: "id",
             name: "Example Live Sharing Link name",
         });
-        expect(response).toEqual({
-            data: {
-                assetsLocationLinkConfig: {
-                    assetId: "1234",
-                    location: {
-                        formattedAddress: "1990 Alameda Street, San Francisco, CA 94103",
-                        latitude: 37.456345,
-                        longitude: 34.5633749,
-                        name: "Suburbs",
-                    },
-                    tags: [
-                        {
-                            id: "3914",
-                            name: "East Coast",
-                            parentTagId: "4815",
-                        },
-                    ],
-                },
-                assetsNearLocationLinkConfig: {
-                    addressId: "1234",
-                },
-                assetsOnRouteLinkConfig: {
-                    recurringRouteId: "1234",
-                },
-                description: "Sample description",
-                expiresAtTime: "2020-01-27T07:06:25Z",
-                id: "leesdwqjx42dkvp86so",
-                liveSharingUrl: "https://cloud.samsara.com/o/123456/fleet/viewer/address/7hf4lnu455wep22rtun",
-                name: "Example Live Sharing Link name",
-                type: "assetsLocation",
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("updateLiveSharingLink (2)", async () => {
@@ -895,6 +829,7 @@ describe("LiveSharingLinksClient", () => {
         });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/live-shares")
@@ -922,6 +857,7 @@ describe("LiveSharingLinksClient", () => {
         });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/live-shares")
@@ -949,6 +885,7 @@ describe("LiveSharingLinksClient", () => {
         });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/live-shares")
@@ -976,6 +913,7 @@ describe("LiveSharingLinksClient", () => {
         });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/live-shares")
@@ -1003,6 +941,7 @@ describe("LiveSharingLinksClient", () => {
         });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/live-shares")
@@ -1030,6 +969,7 @@ describe("LiveSharingLinksClient", () => {
         });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/live-shares")
@@ -1057,6 +997,7 @@ describe("LiveSharingLinksClient", () => {
         });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/live-shares")
@@ -1084,6 +1025,7 @@ describe("LiveSharingLinksClient", () => {
         });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/live-shares")
@@ -1111,6 +1053,7 @@ describe("LiveSharingLinksClient", () => {
         });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/live-shares")
@@ -1138,6 +1081,7 @@ describe("LiveSharingLinksClient", () => {
         });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/live-shares")

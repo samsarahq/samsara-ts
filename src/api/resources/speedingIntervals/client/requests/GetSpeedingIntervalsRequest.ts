@@ -5,6 +5,7 @@ import type * as Samsara from "../../../../index.js";
 /**
  * @example
  *     {
+ *         assetIds: ["assetIds"],
  *         startTime: "startTime"
  *     }
  */

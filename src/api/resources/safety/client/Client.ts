@@ -47,7 +47,9 @@ export class SafetyClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.safety.getSafetyEventsV2()
+     *     await client.safety.getSafetyEventsV2({
+     *         safetyEventIds: ["safetyEventIds"]
+     *     })
      */
     public getSafetyEventsV2(
         request: Samsara.GetSafetyEventsV2Request = {},
@@ -63,9 +65,9 @@ export class SafetyClient {
         const { safetyEventIds, includeAsset, includeDriver, includeVgOnlyEvents, after } = request;
         const _queryParams: Record<string, unknown> = {
             safetyEventIds,
-            includeAsset,
-            includeDriver,
-            includeVgOnlyEvents,
+            includeAsset: includeAsset ?? "false",
+            includeDriver: includeDriver ?? "false",
+            includeVgOnlyEvents: includeVgOnlyEvents ?? "false",
             after,
         };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
@@ -84,7 +86,12 @@ export class SafetyClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .add("safetyEventIds", _queryParams.safetyEventIds, { style: "comma" })
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -190,16 +197,16 @@ export class SafetyClient {
         const _queryParams: Record<string, unknown> = {
             startTime,
             endTime,
-            queryByTimeField: queryByTimeField != null ? queryByTimeField : undefined,
+            queryByTimeField: (queryByTimeField != null ? queryByTimeField : undefined) ?? "updatedAtTime",
             assetIds,
             driverIds,
             tagIds,
             assignedCoaches,
             behaviorLabels,
             eventStates,
-            includeAsset,
-            includeDriver,
-            includeVgOnlyEvents,
+            includeAsset: includeAsset ?? "false",
+            includeDriver: includeDriver ?? "false",
+            includeVgOnlyEvents: includeVgOnlyEvents ?? "false",
             after,
         };
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
@@ -218,7 +225,17 @@ export class SafetyClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .add("assetIds", _queryParams.assetIds, { style: "comma" })
+                .add("driverIds", _queryParams.driverIds, { style: "comma" })
+                .add("tagIds", _queryParams.tagIds, { style: "comma" })
+                .add("assignedCoaches", _queryParams.assignedCoaches, { style: "comma" })
+                .add("behaviorLabels", _queryParams.behaviorLabels, { style: "comma" })
+                .add("eventStates", _queryParams.eventStates, { style: "comma" })
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -319,7 +336,11 @@ export class SafetyClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -399,7 +420,11 @@ export class SafetyClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,

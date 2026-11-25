@@ -24,23 +24,11 @@ describe("MessagesClient", () => {
                 },
             ],
         };
+
         server.mockEndpoint().get("/v1/fleet/messages").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.messages.v1GetMessages();
-        expect(response).toEqual({
-            data: [
-                {
-                    driverId: 555,
-                    isRead: true,
-                    sender: {
-                        name: "John Doe",
-                        type: "dispatch",
-                    },
-                    sentAtMs: 1462881998034,
-                    text: "This is a message.",
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("V1createMessages", async () => {
@@ -53,6 +41,7 @@ describe("MessagesClient", () => {
         });
         const rawRequestBody = { driverIds: [111, 222, 333], text: "This is a message." };
         const rawResponseBody = { data: [{ driverId: 555, text: "This is a message." }] };
+
         server
             .mockEndpoint()
             .post("/v1/fleet/messages")
@@ -66,13 +55,6 @@ describe("MessagesClient", () => {
             driverIds: [111, 222, 333],
             text: "This is a message.",
         });
-        expect(response).toEqual({
-            data: [
-                {
-                    driverId: 555,
-                    text: "This is a message.",
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 });

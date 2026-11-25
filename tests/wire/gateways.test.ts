@@ -30,37 +30,11 @@ describe("GatewaysClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server.mockEndpoint().get("/gateways").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.gateways.getGateways();
-        expect(response).toEqual({
-            data: [
-                {
-                    accessoryDevices: [
-                        {
-                            model: "EM11",
-                            serial: "ABCD-123-EFG",
-                        },
-                    ],
-                    asset: {
-                        id: "8393848111",
-                    },
-                    connectionStatus: {
-                        lastConnected: "2019-06-13T19:08:25Z",
-                    },
-                    dataUsageLast30Days: {
-                        cellularDataUsageBytes: 1881967158240695300,
-                        hotspotUsageBytes: 6473124134001760000,
-                    },
-                    model: "AG15",
-                    serial: "GFRV-43N-VGX",
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getGateways (2)", async () => {
@@ -73,6 +47,7 @@ describe("GatewaysClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/gateways").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -90,6 +65,7 @@ describe("GatewaysClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/gateways").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -107,6 +83,7 @@ describe("GatewaysClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/gateways").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -124,6 +101,7 @@ describe("GatewaysClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/gateways").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -141,6 +119,7 @@ describe("GatewaysClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/gateways").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -158,6 +137,7 @@ describe("GatewaysClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/gateways").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -175,6 +155,7 @@ describe("GatewaysClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/gateways").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -192,6 +173,7 @@ describe("GatewaysClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/gateways").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -209,6 +191,7 @@ describe("GatewaysClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/gateways").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -226,6 +209,7 @@ describe("GatewaysClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/gateways").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -255,6 +239,7 @@ describe("GatewaysClient", () => {
                 serial: "GFRV-43N-VGX",
             },
         };
+
         server
             .mockEndpoint()
             .post("/gateways")
@@ -267,32 +252,7 @@ describe("GatewaysClient", () => {
         const response = await client.gateways.postGateway({
             serial: "GFRV-43N-VGX",
         });
-        expect(response).toEqual({
-            data: {
-                accessoryDevices: [
-                    {
-                        model: "EM11",
-                        serial: "ABCD-123-EFG",
-                    },
-                ],
-                asset: {
-                    externalIds: {
-                        key: "value",
-                    },
-                    id: "8393848111",
-                },
-                connectionStatus: {
-                    healthStatus: "Status Not Set",
-                    lastConnected: "2019-06-13T19:08:25Z",
-                },
-                dataUsageLast30Days: {
-                    cellularDataUsageBytes: 1881967158240695300,
-                    hotspotUsageBytes: 6473124134001760000,
-                },
-                model: "AG15",
-                serial: "GFRV-43N-VGX",
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("postGateway (2)", async () => {
@@ -305,6 +265,7 @@ describe("GatewaysClient", () => {
         });
         const rawRequestBody = { serial: "serial" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/gateways")
@@ -331,6 +292,7 @@ describe("GatewaysClient", () => {
         });
         const rawRequestBody = { serial: "serial" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/gateways")
@@ -357,6 +319,7 @@ describe("GatewaysClient", () => {
         });
         const rawRequestBody = { serial: "serial" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/gateways")
@@ -383,6 +346,7 @@ describe("GatewaysClient", () => {
         });
         const rawRequestBody = { serial: "serial" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/gateways")
@@ -409,6 +373,7 @@ describe("GatewaysClient", () => {
         });
         const rawRequestBody = { serial: "serial" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/gateways")
@@ -435,6 +400,7 @@ describe("GatewaysClient", () => {
         });
         const rawRequestBody = { serial: "serial" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/gateways")
@@ -461,6 +427,7 @@ describe("GatewaysClient", () => {
         });
         const rawRequestBody = { serial: "serial" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/gateways")
@@ -487,6 +454,7 @@ describe("GatewaysClient", () => {
         });
         const rawRequestBody = { serial: "serial" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/gateways")
@@ -513,6 +481,7 @@ describe("GatewaysClient", () => {
         });
         const rawRequestBody = { serial: "serial" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/gateways")
@@ -539,6 +508,7 @@ describe("GatewaysClient", () => {
         });
         const rawRequestBody = { serial: "serial" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/gateways")
@@ -582,6 +552,7 @@ describe("GatewaysClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().delete("/gateways/id").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -601,6 +572,7 @@ describe("GatewaysClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().delete("/gateways/id").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -620,6 +592,7 @@ describe("GatewaysClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().delete("/gateways/id").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -639,6 +612,7 @@ describe("GatewaysClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().delete("/gateways/id").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -658,6 +632,7 @@ describe("GatewaysClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().delete("/gateways/id").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -677,6 +652,7 @@ describe("GatewaysClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().delete("/gateways/id").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -696,6 +672,7 @@ describe("GatewaysClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().delete("/gateways/id").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -715,6 +692,7 @@ describe("GatewaysClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().delete("/gateways/id").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -734,6 +712,7 @@ describe("GatewaysClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().delete("/gateways/id").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -753,6 +732,7 @@ describe("GatewaysClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().delete("/gateways/id").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
 
         await expect(async () => {

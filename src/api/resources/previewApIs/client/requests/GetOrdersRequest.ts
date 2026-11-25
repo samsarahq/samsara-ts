@@ -2,7 +2,9 @@
 
 /**
  * @example
- *     {}
+ *     {
+ *         orderIds: ["orderIds"]
+ *     }
  */
 export interface GetOrdersRequest {
     /** Comma-separated Samsara order UUIDs or external ID tokens. Maximum 100. */

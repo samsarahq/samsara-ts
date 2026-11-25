@@ -17,26 +17,18 @@ describe("DriverTrailerAssignmentsClient", () => {
         const rawResponseBody = {
             data: [
                 {
-                    createdAtTime: "createdAtTime",
-                    driver: { driverId: "driverId", externalIds: { externalIds: "externalIds" } },
-                    endTime: "endTime",
-                    id: "id",
-                    startTime: "startTime",
-                    trailer: { trailerId: "trailerId" },
-                    updatedAtTime: "updatedAtTime",
-                },
-                {
-                    createdAtTime: "createdAtTime",
-                    driver: { driverId: "driverId", externalIds: { externalIds: "externalIds" } },
-                    endTime: "endTime",
-                    id: "id",
-                    startTime: "startTime",
-                    trailer: { trailerId: "trailerId" },
-                    updatedAtTime: "updatedAtTime",
+                    createdAtTime: "2019-06-13T19:08:25Z",
+                    driver: { driverId: "0987" },
+                    endTime: "2019-06-13T20:10:25Z",
+                    id: "08b3aeada5f4ab3010c0b4efa28d2d1890dbf8d48d2d6",
+                    startTime: "2019-06-13T19:08:25Z",
+                    trailer: { trailerId: "494123" },
+                    updatedAtTime: "2019-06-13T19:10:25Z",
                 },
             ],
-            pagination: { endCursor: "endCursor", hasNextPage: true },
+            pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/driver-trailer-assignments")
@@ -45,47 +37,10 @@ describe("DriverTrailerAssignmentsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.driverTrailerAssignments.getDriverTrailerAssignments();
-        expect(response).toEqual({
-            data: [
-                {
-                    createdAtTime: "createdAtTime",
-                    driver: {
-                        driverId: "driverId",
-                        externalIds: {
-                            externalIds: "externalIds",
-                        },
-                    },
-                    endTime: "endTime",
-                    id: "id",
-                    startTime: "startTime",
-                    trailer: {
-                        trailerId: "trailerId",
-                    },
-                    updatedAtTime: "updatedAtTime",
-                },
-                {
-                    createdAtTime: "createdAtTime",
-                    driver: {
-                        driverId: "driverId",
-                        externalIds: {
-                            externalIds: "externalIds",
-                        },
-                    },
-                    endTime: "endTime",
-                    id: "id",
-                    startTime: "startTime",
-                    trailer: {
-                        trailerId: "trailerId",
-                    },
-                    updatedAtTime: "updatedAtTime",
-                },
-            ],
-            pagination: {
-                endCursor: "endCursor",
-                hasNextPage: true,
-            },
+        const response = await client.driverTrailerAssignments.getDriverTrailerAssignments({
+            driverIds: ["driverIds"],
         });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getDriverTrailerAssignments (2)", async () => {
@@ -98,6 +53,7 @@ describe("DriverTrailerAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/driver-trailer-assignments")
@@ -121,6 +77,7 @@ describe("DriverTrailerAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/driver-trailer-assignments")
@@ -144,6 +101,7 @@ describe("DriverTrailerAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/driver-trailer-assignments")
@@ -167,6 +125,7 @@ describe("DriverTrailerAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/driver-trailer-assignments")
@@ -190,6 +149,7 @@ describe("DriverTrailerAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/driver-trailer-assignments")
@@ -213,6 +173,7 @@ describe("DriverTrailerAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/driver-trailer-assignments")
@@ -236,6 +197,7 @@ describe("DriverTrailerAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/driver-trailer-assignments")
@@ -259,6 +221,7 @@ describe("DriverTrailerAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/driver-trailer-assignments")
@@ -282,6 +245,7 @@ describe("DriverTrailerAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/driver-trailer-assignments")
@@ -305,6 +269,7 @@ describe("DriverTrailerAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/driver-trailer-assignments")
@@ -337,6 +302,7 @@ describe("DriverTrailerAssignmentsClient", () => {
                 updatedAtTime: "2019-06-13T19:08:25Z",
             },
         };
+
         server
             .mockEndpoint()
             .post("/driver-trailer-assignments")
@@ -350,16 +316,7 @@ describe("DriverTrailerAssignmentsClient", () => {
             driverId: "494123",
             trailerId: "12345",
         });
-        expect(response).toEqual({
-            data: {
-                createdAtTime: "2019-06-13T19:08:25Z",
-                driverId: "0987",
-                id: "08b3aeada5f4ab3010c0b4efa28d2d1890dbf8d48d2d6",
-                startTime: "2019-06-13T19:08:25Z",
-                trailerId: "494123",
-                updatedAtTime: "2019-06-13T19:08:25Z",
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createDriverTrailerAssignment (2)", async () => {
@@ -372,6 +329,7 @@ describe("DriverTrailerAssignmentsClient", () => {
         });
         const rawRequestBody = { driverId: "driverId", trailerId: "trailerId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/driver-trailer-assignments")
@@ -399,6 +357,7 @@ describe("DriverTrailerAssignmentsClient", () => {
         });
         const rawRequestBody = { driverId: "driverId", trailerId: "trailerId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/driver-trailer-assignments")
@@ -426,6 +385,7 @@ describe("DriverTrailerAssignmentsClient", () => {
         });
         const rawRequestBody = { driverId: "driverId", trailerId: "trailerId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/driver-trailer-assignments")
@@ -453,6 +413,7 @@ describe("DriverTrailerAssignmentsClient", () => {
         });
         const rawRequestBody = { driverId: "driverId", trailerId: "trailerId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/driver-trailer-assignments")
@@ -480,6 +441,7 @@ describe("DriverTrailerAssignmentsClient", () => {
         });
         const rawRequestBody = { driverId: "driverId", trailerId: "trailerId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/driver-trailer-assignments")
@@ -507,6 +469,7 @@ describe("DriverTrailerAssignmentsClient", () => {
         });
         const rawRequestBody = { driverId: "driverId", trailerId: "trailerId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/driver-trailer-assignments")
@@ -534,6 +497,7 @@ describe("DriverTrailerAssignmentsClient", () => {
         });
         const rawRequestBody = { driverId: "driverId", trailerId: "trailerId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/driver-trailer-assignments")
@@ -561,6 +525,7 @@ describe("DriverTrailerAssignmentsClient", () => {
         });
         const rawRequestBody = { driverId: "driverId", trailerId: "trailerId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/driver-trailer-assignments")
@@ -588,6 +553,7 @@ describe("DriverTrailerAssignmentsClient", () => {
         });
         const rawRequestBody = { driverId: "driverId", trailerId: "trailerId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/driver-trailer-assignments")
@@ -615,6 +581,7 @@ describe("DriverTrailerAssignmentsClient", () => {
         });
         const rawRequestBody = { driverId: "driverId", trailerId: "trailerId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/driver-trailer-assignments")
@@ -652,6 +619,7 @@ describe("DriverTrailerAssignmentsClient", () => {
                 updatedAtTime: "2019-06-13T19:08:25Z",
             },
         };
+
         server
             .mockEndpoint()
             .patch("/driver-trailer-assignments")
@@ -665,17 +633,7 @@ describe("DriverTrailerAssignmentsClient", () => {
             id: "id",
             endTime: "2019-06-13T19:08:25Z",
         });
-        expect(response).toEqual({
-            data: {
-                createdAtTime: "2019-06-13T19:08:25Z",
-                driverId: "0987",
-                endTime: "2019-06-13T19:08:25Z",
-                id: "08b3aeada5f4ab3010c0b4efa28d2d1890dbf8d48d2d6",
-                startTime: "2019-06-13T19:08:25Z",
-                trailerId: "494123",
-                updatedAtTime: "2019-06-13T19:08:25Z",
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("updateDriverTrailerAssignment (2)", async () => {
@@ -688,6 +646,7 @@ describe("DriverTrailerAssignmentsClient", () => {
         });
         const rawRequestBody = { endTime: "endTime" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/driver-trailer-assignments")
@@ -715,6 +674,7 @@ describe("DriverTrailerAssignmentsClient", () => {
         });
         const rawRequestBody = { endTime: "endTime" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/driver-trailer-assignments")
@@ -742,6 +702,7 @@ describe("DriverTrailerAssignmentsClient", () => {
         });
         const rawRequestBody = { endTime: "endTime" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/driver-trailer-assignments")
@@ -769,6 +730,7 @@ describe("DriverTrailerAssignmentsClient", () => {
         });
         const rawRequestBody = { endTime: "endTime" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/driver-trailer-assignments")
@@ -796,6 +758,7 @@ describe("DriverTrailerAssignmentsClient", () => {
         });
         const rawRequestBody = { endTime: "endTime" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/driver-trailer-assignments")
@@ -823,6 +786,7 @@ describe("DriverTrailerAssignmentsClient", () => {
         });
         const rawRequestBody = { endTime: "endTime" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/driver-trailer-assignments")
@@ -850,6 +814,7 @@ describe("DriverTrailerAssignmentsClient", () => {
         });
         const rawRequestBody = { endTime: "endTime" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/driver-trailer-assignments")
@@ -877,6 +842,7 @@ describe("DriverTrailerAssignmentsClient", () => {
         });
         const rawRequestBody = { endTime: "endTime" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/driver-trailer-assignments")
@@ -904,6 +870,7 @@ describe("DriverTrailerAssignmentsClient", () => {
         });
         const rawRequestBody = { endTime: "endTime" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/driver-trailer-assignments")
@@ -931,6 +898,7 @@ describe("DriverTrailerAssignmentsClient", () => {
         });
         const rawRequestBody = { endTime: "endTime" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/driver-trailer-assignments")

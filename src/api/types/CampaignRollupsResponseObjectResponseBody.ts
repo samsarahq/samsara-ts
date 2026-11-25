@@ -6,7 +6,7 @@ import type * as Samsara from "../index.js";
  * Progress rollups for a campaign's items.
  */
 export interface CampaignRollupsResponseObjectResponseBody {
-    /** Number of items that have been in a non-terminal state (`pending`, `hold`, `ready`, `workOrderCreated`) for more than 30 days. */
+    /** Number of items that have been in a non-terminal state (`pending`, `hold`, `ready`, `workOrderCreated`, `workOrderCanceled`) for more than 30 days. */
     agingItemCount: number;
     /** Unique ID of the campaign. */
     campaignId: string;

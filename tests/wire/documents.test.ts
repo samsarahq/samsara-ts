@@ -30,19 +30,39 @@ describe("DocumentsClient", () => {
                             fieldType: "multipleChoice",
                             label: "Was there damage?",
                             multipleChoiceFieldTypeMetaData: [{ label: "Yes" }, { label: "No" }],
+                            numberFieldTypeMetaData: { numberOfDecimalPlaces: 4983279330600016000 },
                             requiredField: true,
+                            signatureFieldTypeMetaData: { legalText: "Verified by signee." },
                         },
-                        { fieldType: "photo", label: "Damage Photos", requiredField: false },
+                        {
+                            fieldType: "photo",
+                            label: "Damage Photos",
+                            multipleChoiceFieldTypeMetaData: [{ label: "Fuel Receipt" }],
+                            numberFieldTypeMetaData: { numberOfDecimalPlaces: 4983279330600016000 },
+                            requiredField: false,
+                            signatureFieldTypeMetaData: { legalText: "Verified by signee." },
+                        },
                         {
                             fieldType: "number",
                             label: "Number of vehicles impacted",
+                            multipleChoiceFieldTypeMetaData: [{ label: "Fuel Receipt" }],
                             numberFieldTypeMetaData: { numberOfDecimalPlaces: 2 },
                             requiredField: false,
+                            signatureFieldTypeMetaData: { legalText: "Verified by signee." },
                         },
-                        { fieldType: "dateTime", label: "Date and time", requiredField: true },
+                        {
+                            fieldType: "dateTime",
+                            label: "Date and time",
+                            multipleChoiceFieldTypeMetaData: [{ label: "Fuel Receipt" }],
+                            numberFieldTypeMetaData: { numberOfDecimalPlaces: 4983279330600016000 },
+                            requiredField: true,
+                            signatureFieldTypeMetaData: { legalText: "Verified by signee." },
+                        },
                         {
                             fieldType: "signature",
                             label: "Sign",
+                            multipleChoiceFieldTypeMetaData: [{ label: "Fuel Receipt" }],
+                            numberFieldTypeMetaData: { numberOfDecimalPlaces: 4983279330600016000 },
                             requiredField: true,
                             signatureFieldTypeMetaData: { legalText: "Legal Text" },
                         },
@@ -54,6 +74,7 @@ describe("DocumentsClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/fleet/document-types")
@@ -63,68 +84,7 @@ describe("DocumentsClient", () => {
             .build();
 
         const response = await client.documents.getDocumentTypes();
-        expect(response).toEqual({
-            data: [
-                {
-                    conditionalFieldSections: [
-                        {
-                            conditionalFieldFirstIndex: 1,
-                            conditionalFieldLastIndex: 2,
-                            triggeringFieldIndex: 0,
-                            triggeringFieldValue: "Yes",
-                        },
-                    ],
-                    fieldTypes: [
-                        {
-                            fieldType: "multipleChoice",
-                            label: "Was there damage?",
-                            multipleChoiceFieldTypeMetaData: [
-                                {
-                                    label: "Yes",
-                                },
-                                {
-                                    label: "No",
-                                },
-                            ],
-                            requiredField: true,
-                        },
-                        {
-                            fieldType: "photo",
-                            label: "Damage Photos",
-                            requiredField: false,
-                        },
-                        {
-                            fieldType: "number",
-                            label: "Number of vehicles impacted",
-                            numberFieldTypeMetaData: {
-                                numberOfDecimalPlaces: 2,
-                            },
-                            requiredField: false,
-                        },
-                        {
-                            fieldType: "dateTime",
-                            label: "Date and time",
-                            requiredField: true,
-                        },
-                        {
-                            fieldType: "signature",
-                            label: "Sign",
-                            requiredField: true,
-                            signatureFieldTypeMetaData: {
-                                legalText: "Legal Text",
-                            },
-                        },
-                    ],
-                    id: "4aff772c-a7bb-45e6-8e41-6a53e34feb83",
-                    name: "Accident Report",
-                    orgId: 12345,
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getDocumentTypes (2)", async () => {
@@ -137,6 +97,7 @@ describe("DocumentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/document-types")
@@ -160,6 +121,7 @@ describe("DocumentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/document-types")
@@ -183,6 +145,7 @@ describe("DocumentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/document-types")
@@ -206,6 +169,7 @@ describe("DocumentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/document-types")
@@ -229,6 +193,7 @@ describe("DocumentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/document-types")
@@ -252,6 +217,7 @@ describe("DocumentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/document-types")
@@ -275,6 +241,7 @@ describe("DocumentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/document-types")
@@ -298,6 +265,7 @@ describe("DocumentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/document-types")
@@ -321,6 +289,7 @@ describe("DocumentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/document-types")
@@ -344,6 +313,7 @@ describe("DocumentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/document-types")
@@ -384,7 +354,31 @@ describe("DocumentsClient", () => {
                         {
                             label: "Load weight",
                             type: "photo",
-                            value: { numberValue: 123.456, stringValue: "Red Truck" },
+                            value: {
+                                barcodeValue: [{ barcodeType: "org.gs1.EAN-13", barcodeValue: "0853883003114" }],
+                                dateTimeValue: { dateTime: "1973-12-20T17:06:49Z" },
+                                multipleChoiceValue: [{ selected: false, value: "Yes" }],
+                                numberValue: 123.456,
+                                photoValue: [
+                                    {
+                                        id: "f5271458-21f9-4a9f-a290-780c6d8840ff",
+                                        url: "https://samsara-driver-media-upload.s3.us-west-2.amazonaws.com/123456",
+                                    },
+                                ],
+                                scannedDocumentValue: [
+                                    {
+                                        id: "f5271458-21f9-4a9f-a290-780c6d8840ff",
+                                        url: "https://samsara-driver-media-upload.s3.us-west-2.amazonaws.com/123456",
+                                    },
+                                ],
+                                signatureValue: {
+                                    id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
+                                    name: "John Smith",
+                                    signedAtTime: "1989-09-25T02:38:09Z",
+                                    url: "https://samsara-driver-media-upload.s3.us-west-2.amazonaws.com/123456",
+                                },
+                                stringValue: "Red Truck",
+                            },
                         },
                     ],
                     id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
@@ -399,66 +393,14 @@ describe("DocumentsClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server.mockEndpoint().get("/fleet/documents").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.documents.getDocuments({
             startTime: "startTime",
             endTime: "endTime",
         });
-        expect(response).toEqual({
-            data: [
-                {
-                    conditionalFieldSections: [
-                        {
-                            conditionalFieldFirstIndex: 8217465358527716000,
-                            conditionalFieldLastIndex: 1543582388420605000,
-                            triggeringFieldIndex: 7540159348423735000,
-                            triggeringFieldValue: "Optiona 1",
-                        },
-                    ],
-                    createdAtTime: "2015-09-08T06:33:15Z",
-                    documentType: {
-                        id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                        name: "Fleet Truck List",
-                    },
-                    driver: {
-                        id: "45646",
-                        name: "Driver Bob",
-                    },
-                    fields: [
-                        {
-                            label: "Load weight",
-                            type: "photo",
-                            value: {
-                                numberValue: 123.456,
-                                stringValue: "Red Truck",
-                            },
-                        },
-                    ],
-                    id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                    name: "Dropoff Slip 123",
-                    notes: "Missing a crate",
-                    route: {
-                        id: "131313",
-                        name: "Pineapple delivery",
-                    },
-                    routeStop: {
-                        id: "494123",
-                        name: "Company Warehouse #1",
-                    },
-                    state: "submitted",
-                    updatedAtTime: "1975-05-20T03:23:39Z",
-                    vehicle: {
-                        id: "494123",
-                        name: "Fleet Truck #1",
-                    },
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getDocuments (2)", async () => {
@@ -471,6 +413,7 @@ describe("DocumentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/documents").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -491,6 +434,7 @@ describe("DocumentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/documents").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -511,6 +455,7 @@ describe("DocumentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/documents").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -531,6 +476,7 @@ describe("DocumentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/documents").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -551,6 +497,7 @@ describe("DocumentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/documents").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -571,6 +518,7 @@ describe("DocumentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/documents").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -591,6 +539,7 @@ describe("DocumentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/documents").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -611,6 +560,7 @@ describe("DocumentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/documents").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -631,6 +581,7 @@ describe("DocumentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/documents").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -651,6 +602,7 @@ describe("DocumentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/documents").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -684,7 +636,35 @@ describe("DocumentsClient", () => {
                 documentType: { id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7", name: "Fleet Truck List" },
                 driver: { externalIds: { key: "value" }, id: "45646", name: "Driver Bob" },
                 fields: [
-                    { label: "Load weight", type: "photo", value: { numberValue: 123.456, stringValue: "Red Truck" } },
+                    {
+                        label: "Load weight",
+                        type: "photo",
+                        value: {
+                            barcodeValue: [{ barcodeType: "org.gs1.EAN-13", barcodeValue: "0853883003114" }],
+                            dateTimeValue: { dateTime: "1973-12-20T17:06:49Z" },
+                            multipleChoiceValue: [{ selected: false, value: "Yes" }],
+                            numberValue: 123.456,
+                            photoValue: [
+                                {
+                                    id: "f5271458-21f9-4a9f-a290-780c6d8840ff",
+                                    url: "https://samsara-driver-media-upload.s3.us-west-2.amazonaws.com/123456",
+                                },
+                            ],
+                            scannedDocumentValue: [
+                                {
+                                    id: "f5271458-21f9-4a9f-a290-780c6d8840ff",
+                                    url: "https://samsara-driver-media-upload.s3.us-west-2.amazonaws.com/123456",
+                                },
+                            ],
+                            signatureValue: {
+                                id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
+                                name: "John Smith",
+                                signedAtTime: "1989-09-25T02:38:09Z",
+                                url: "https://samsara-driver-media-upload.s3.us-west-2.amazonaws.com/123456",
+                            },
+                            stringValue: "Red Truck",
+                        },
+                    },
                 ],
                 id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
                 name: "Dropoff Slip 123",
@@ -696,6 +676,7 @@ describe("DocumentsClient", () => {
                 vehicle: { externalIds: { key: "value" }, id: "494123", name: "Fleet Truck #1" },
             },
         };
+
         server
             .mockEndpoint()
             .post("/fleet/documents")
@@ -709,66 +690,7 @@ describe("DocumentsClient", () => {
             documentTypeId: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
             driverId: "45646",
         });
-        expect(response).toEqual({
-            data: {
-                conditionalFieldSections: [
-                    {
-                        conditionalFieldFirstIndex: 8217465358527716000,
-                        conditionalFieldLastIndex: 1543582388420605000,
-                        triggeringFieldIndex: 7540159348423735000,
-                        triggeringFieldValue: "Optiona 1",
-                    },
-                ],
-                createdAtTime: "2015-09-08T06:33:15Z",
-                documentType: {
-                    id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                    name: "Fleet Truck List",
-                },
-                driver: {
-                    externalIds: {
-                        key: "value",
-                    },
-                    id: "45646",
-                    name: "Driver Bob",
-                },
-                fields: [
-                    {
-                        label: "Load weight",
-                        type: "photo",
-                        value: {
-                            numberValue: 123.456,
-                            stringValue: "Red Truck",
-                        },
-                    },
-                ],
-                id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                name: "Dropoff Slip 123",
-                notes: "Missing a crate",
-                route: {
-                    externalIds: {
-                        key: "value",
-                    },
-                    id: "131313",
-                    name: "Pineapple delivery",
-                },
-                routeStop: {
-                    externalIds: {
-                        key: "value",
-                    },
-                    id: "494123",
-                    name: "Company Warehouse #1",
-                },
-                state: "submitted",
-                updatedAtTime: "1975-05-20T03:23:39Z",
-                vehicle: {
-                    externalIds: {
-                        key: "value",
-                    },
-                    id: "494123",
-                    name: "Fleet Truck #1",
-                },
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("postDocument (2)", async () => {
@@ -781,6 +703,7 @@ describe("DocumentsClient", () => {
         });
         const rawRequestBody = { documentTypeId: "documentTypeId", driverId: "driverId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/documents")
@@ -808,6 +731,7 @@ describe("DocumentsClient", () => {
         });
         const rawRequestBody = { documentTypeId: "documentTypeId", driverId: "driverId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/documents")
@@ -835,6 +759,7 @@ describe("DocumentsClient", () => {
         });
         const rawRequestBody = { documentTypeId: "documentTypeId", driverId: "driverId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/documents")
@@ -862,6 +787,7 @@ describe("DocumentsClient", () => {
         });
         const rawRequestBody = { documentTypeId: "documentTypeId", driverId: "driverId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/documents")
@@ -889,6 +815,7 @@ describe("DocumentsClient", () => {
         });
         const rawRequestBody = { documentTypeId: "documentTypeId", driverId: "driverId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/documents")
@@ -916,6 +843,7 @@ describe("DocumentsClient", () => {
         });
         const rawRequestBody = { documentTypeId: "documentTypeId", driverId: "driverId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/documents")
@@ -943,6 +871,7 @@ describe("DocumentsClient", () => {
         });
         const rawRequestBody = { documentTypeId: "documentTypeId", driverId: "driverId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/documents")
@@ -970,6 +899,7 @@ describe("DocumentsClient", () => {
         });
         const rawRequestBody = { documentTypeId: "documentTypeId", driverId: "driverId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/documents")
@@ -997,6 +927,7 @@ describe("DocumentsClient", () => {
         });
         const rawRequestBody = { documentTypeId: "documentTypeId", driverId: "driverId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/documents")
@@ -1024,6 +955,7 @@ describe("DocumentsClient", () => {
         });
         const rawRequestBody = { documentTypeId: "documentTypeId", driverId: "driverId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/documents")
@@ -1053,6 +985,7 @@ describe("DocumentsClient", () => {
         const rawResponseBody = {
             data: { documentId: "6c8c0c01-206a-41a4-9d21-15b9978d04cb", id: "5c8c0c01-206a-41a4-9d21-15b9978d04cb" },
         };
+
         server
             .mockEndpoint()
             .post("/fleet/documents/pdfs")
@@ -1065,12 +998,7 @@ describe("DocumentsClient", () => {
         const response = await client.documents.generateDocumentPdf({
             documentId: "6c8c0c01-206a-41a4-9d21-15b9978d04cb",
         });
-        expect(response).toEqual({
-            data: {
-                documentId: "6c8c0c01-206a-41a4-9d21-15b9978d04cb",
-                id: "5c8c0c01-206a-41a4-9d21-15b9978d04cb",
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getDocumentPdf", async () => {
@@ -1093,6 +1021,7 @@ describe("DocumentsClient", () => {
                 requestedAtTime: "2020-01-02T15:04:05+07:00",
             },
         };
+
         server
             .mockEndpoint()
             .get("/fleet/documents/pdfs/id")
@@ -1104,17 +1033,7 @@ describe("DocumentsClient", () => {
         const response = await client.documents.getDocumentPdf({
             id: "id",
         });
-        expect(response).toEqual({
-            data: {
-                completedAtTime: "2020-01-02T15:04:06+07:00",
-                documentId: "6c8c0c01-206a-41a4-9d21-15b9978d04cb",
-                downloadDocumentPdfUrl:
-                    "https://samsara-driver-document-pdfs.s3.us-west-2.amazonaws.com/org/38487/42a4cffc-409d-4ddf-ba1c-5e3bbb961cba?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASI...&X-Amz-Date=20200423T162507Z&X-Amz-Expires=86400&X-Amz-Security-Token=IQoJ...-Amz-SignedHeaders=host&response-expires=2020-04-24T16%3A25%3A07Z&X-Amz-Signature=1c6fe87...",
-                id: "5c8c0c01-206a-41a4-9d21-15b9978d04cb",
-                jobStatus: "requested",
-                requestedAtTime: "2020-01-02T15:04:05+07:00",
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getDocument (1)", async () => {
@@ -1140,7 +1059,35 @@ describe("DocumentsClient", () => {
                 documentType: { id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7", name: "Fleet Truck List" },
                 driver: { externalIds: { key: "value" }, id: "45646", name: "Driver Bob" },
                 fields: [
-                    { label: "Load weight", type: "photo", value: { numberValue: 123.456, stringValue: "Red Truck" } },
+                    {
+                        label: "Load weight",
+                        type: "photo",
+                        value: {
+                            barcodeValue: [{ barcodeType: "org.gs1.EAN-13", barcodeValue: "0853883003114" }],
+                            dateTimeValue: { dateTime: "1973-12-20T17:06:49Z" },
+                            multipleChoiceValue: [{ selected: false, value: "Yes" }],
+                            numberValue: 123.456,
+                            photoValue: [
+                                {
+                                    id: "f5271458-21f9-4a9f-a290-780c6d8840ff",
+                                    url: "https://samsara-driver-media-upload.s3.us-west-2.amazonaws.com/123456",
+                                },
+                            ],
+                            scannedDocumentValue: [
+                                {
+                                    id: "f5271458-21f9-4a9f-a290-780c6d8840ff",
+                                    url: "https://samsara-driver-media-upload.s3.us-west-2.amazonaws.com/123456",
+                                },
+                            ],
+                            signatureValue: {
+                                id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
+                                name: "John Smith",
+                                signedAtTime: "1989-09-25T02:38:09Z",
+                                url: "https://samsara-driver-media-upload.s3.us-west-2.amazonaws.com/123456",
+                            },
+                            stringValue: "Red Truck",
+                        },
+                    },
                 ],
                 id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
                 name: "Dropoff Slip 123",
@@ -1152,6 +1099,7 @@ describe("DocumentsClient", () => {
                 vehicle: { externalIds: { key: "value" }, id: "494123", name: "Fleet Truck #1" },
             },
         };
+
         server
             .mockEndpoint()
             .get("/fleet/documents/id")
@@ -1163,66 +1111,7 @@ describe("DocumentsClient", () => {
         const response = await client.documents.getDocument({
             id: "id",
         });
-        expect(response).toEqual({
-            data: {
-                conditionalFieldSections: [
-                    {
-                        conditionalFieldFirstIndex: 8217465358527716000,
-                        conditionalFieldLastIndex: 1543582388420605000,
-                        triggeringFieldIndex: 7540159348423735000,
-                        triggeringFieldValue: "Optiona 1",
-                    },
-                ],
-                createdAtTime: "2015-09-08T06:33:15Z",
-                documentType: {
-                    id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                    name: "Fleet Truck List",
-                },
-                driver: {
-                    externalIds: {
-                        key: "value",
-                    },
-                    id: "45646",
-                    name: "Driver Bob",
-                },
-                fields: [
-                    {
-                        label: "Load weight",
-                        type: "photo",
-                        value: {
-                            numberValue: 123.456,
-                            stringValue: "Red Truck",
-                        },
-                    },
-                ],
-                id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                name: "Dropoff Slip 123",
-                notes: "Missing a crate",
-                route: {
-                    externalIds: {
-                        key: "value",
-                    },
-                    id: "131313",
-                    name: "Pineapple delivery",
-                },
-                routeStop: {
-                    externalIds: {
-                        key: "value",
-                    },
-                    id: "494123",
-                    name: "Company Warehouse #1",
-                },
-                state: "submitted",
-                updatedAtTime: "1975-05-20T03:23:39Z",
-                vehicle: {
-                    externalIds: {
-                        key: "value",
-                    },
-                    id: "494123",
-                    name: "Fleet Truck #1",
-                },
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getDocument (2)", async () => {
@@ -1235,6 +1124,7 @@ describe("DocumentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/documents/id")
@@ -1260,6 +1150,7 @@ describe("DocumentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/documents/id")
@@ -1285,6 +1176,7 @@ describe("DocumentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/documents/id")
@@ -1310,6 +1202,7 @@ describe("DocumentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/documents/id")
@@ -1335,6 +1228,7 @@ describe("DocumentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/documents/id")
@@ -1360,6 +1254,7 @@ describe("DocumentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/documents/id")
@@ -1385,6 +1280,7 @@ describe("DocumentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/documents/id")
@@ -1410,6 +1306,7 @@ describe("DocumentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/documents/id")
@@ -1435,6 +1332,7 @@ describe("DocumentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/documents/id")
@@ -1460,6 +1358,7 @@ describe("DocumentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/documents/id")
@@ -1502,6 +1401,7 @@ describe("DocumentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/fleet/documents/id")
@@ -1527,6 +1427,7 @@ describe("DocumentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/fleet/documents/id")
@@ -1552,6 +1453,7 @@ describe("DocumentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/fleet/documents/id")
@@ -1577,6 +1479,7 @@ describe("DocumentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/fleet/documents/id")
@@ -1602,6 +1505,7 @@ describe("DocumentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/fleet/documents/id")
@@ -1627,6 +1531,7 @@ describe("DocumentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/fleet/documents/id")
@@ -1652,6 +1557,7 @@ describe("DocumentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/fleet/documents/id")
@@ -1677,6 +1583,7 @@ describe("DocumentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/fleet/documents/id")
@@ -1702,6 +1609,7 @@ describe("DocumentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/fleet/documents/id")
@@ -1727,6 +1635,7 @@ describe("DocumentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/fleet/documents/id")

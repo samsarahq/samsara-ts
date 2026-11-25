@@ -47,7 +47,9 @@ export class IssuesClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.issues.getIssues()
+     *     await client.issues.getIssues({
+     *         ids: ["ids"]
+     *     })
      */
     public getIssues(
         request: Samsara.GetIssuesRequest = {},
@@ -81,7 +83,13 @@ export class IssuesClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .add("ids", _queryParams.ids, { style: "comma" })
+                .add("include", _queryParams.include, { style: "comma" })
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -186,7 +194,7 @@ export class IssuesClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: request,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
@@ -290,7 +298,7 @@ export class IssuesClient {
             method: "PATCH",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: request,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
@@ -405,7 +413,16 @@ export class IssuesClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .add("status", _queryParams.status, { style: "comma" })
+                .add("assetIds", _queryParams.assetIds, { style: "comma" })
+                .add("assetExternalIds", _queryParams.assetExternalIds, { style: "comma" })
+                .add("include", _queryParams.include, { style: "comma" })
+                .add("assignedToRouteStopIds", _queryParams.assignedToRouteStopIds, { style: "comma" })
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,

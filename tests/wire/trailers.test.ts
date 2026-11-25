@@ -30,39 +30,11 @@ describe("TrailersClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server.mockEndpoint().get("/fleet/trailers").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.trailers.listTrailers();
-        expect(response).toEqual({
-            data: [
-                {
-                    enabledForMobile: true,
-                    externalIds: {
-                        key: "value",
-                    },
-                    id: "494123",
-                    installedGateway: {
-                        model: "AG15",
-                        serial: "GFRV-43N-VGX",
-                    },
-                    licensePlate: "7TYP290",
-                    name: "Trailer-123",
-                    notes: "These are my trailer notes",
-                    tags: [
-                        {
-                            id: "3914",
-                            name: "East Coast",
-                            parentTagId: "4815",
-                        },
-                    ],
-                    trailerSerialNumber: "8V8WD530FLN016251",
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("listTrailers (2)", async () => {
@@ -75,6 +47,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/trailers").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -92,6 +65,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/trailers").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -109,6 +83,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/trailers").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -126,6 +101,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/trailers").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -143,6 +119,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/trailers").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -160,6 +137,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/trailers").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -177,6 +155,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/trailers").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -194,6 +173,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/trailers").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -211,6 +191,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/trailers").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -228,6 +209,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/trailers").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -266,6 +248,7 @@ describe("TrailersClient", () => {
                 trailerSerialNumber: "8V8WD530FLN016251",
             },
         };
+
         server
             .mockEndpoint()
             .post("/fleet/trailers")
@@ -278,39 +261,7 @@ describe("TrailersClient", () => {
         const response = await client.trailers.createTrailer({
             name: "Trailer-123",
         });
-        expect(response).toEqual({
-            data: {
-                attributes: [
-                    {
-                        dateValues: ["2024-01-15", "2024-12-31"],
-                        id: "494123",
-                        name: "Compliance/ELD",
-                        numberValues: [867, 5309],
-                        stringValues: ["HQ", "Leased"],
-                    },
-                ],
-                enabledForMobile: true,
-                externalIds: {
-                    key: "value",
-                },
-                id: "494123",
-                installedGateway: {
-                    model: "AG15",
-                    serial: "GFRV-43N-VGX",
-                },
-                licensePlate: "7TYP290",
-                name: "Trailer-123",
-                notes: "These are my trailer notes",
-                tags: [
-                    {
-                        id: "3914",
-                        name: "East Coast",
-                        parentTagId: "4815",
-                    },
-                ],
-                trailerSerialNumber: "8V8WD530FLN016251",
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createTrailer (2)", async () => {
@@ -323,6 +274,7 @@ describe("TrailersClient", () => {
         });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/trailers")
@@ -349,6 +301,7 @@ describe("TrailersClient", () => {
         });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/trailers")
@@ -375,6 +328,7 @@ describe("TrailersClient", () => {
         });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/trailers")
@@ -401,6 +355,7 @@ describe("TrailersClient", () => {
         });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/trailers")
@@ -427,6 +382,7 @@ describe("TrailersClient", () => {
         });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/trailers")
@@ -453,6 +409,7 @@ describe("TrailersClient", () => {
         });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/trailers")
@@ -479,6 +436,7 @@ describe("TrailersClient", () => {
         });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/trailers")
@@ -505,6 +463,7 @@ describe("TrailersClient", () => {
         });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/trailers")
@@ -531,6 +490,7 @@ describe("TrailersClient", () => {
         });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/trailers")
@@ -557,6 +517,7 @@ describe("TrailersClient", () => {
         });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/trailers")
@@ -595,6 +556,7 @@ describe("TrailersClient", () => {
                         headingDegrees: 7982033236946874000,
                         latitude: 0.02659130816226228,
                         longitude: 0.468774774626828,
+                        reverseGeo: { formattedLocation: "850 Made Up Lane, Orange, CA" },
                         speedMilesPerHour: 842599652113183900,
                         time: "2020-01-27T07:06:25Z",
                     },
@@ -647,6 +609,7 @@ describe("TrailersClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/fleet/trailers/stats")
@@ -658,127 +621,7 @@ describe("TrailersClient", () => {
         const response = await client.trailers.getTrailerStatsSnapshot({
             types: "types",
         });
-        expect(response).toEqual({
-            data: [
-                {
-                    carrierReeferState: {
-                        substateValue: "`Pretrip`, `Defrost`",
-                        time: "2020-01-27T07:06:25Z",
-                        value: "`Off`, `On`",
-                    },
-                    externalIds: {
-                        key: "value",
-                    },
-                    gps: {
-                        headingDegrees: 7982033236946874000,
-                        latitude: 0.02659130816226228,
-                        longitude: 0.468774774626828,
-                        speedMilesPerHour: 842599652113183900,
-                        time: "2020-01-27T07:06:25Z",
-                    },
-                    gpsOdometerMeters: {
-                        time: "2020-01-27T07:06:25Z",
-                        value: 50,
-                    },
-                    id: "1234",
-                    name: "Trailer-123",
-                    reeferAlarms: {
-                        alarms: [
-                            {
-                                alarmCode: "3",
-                                description: "Test alarm",
-                                operatorAction: "Manually disable alarm",
-                                severity: 6264683518707844000,
-                            },
-                        ],
-                        time: "2020-01-27T07:06:25Z",
-                    },
-                    reeferAmbientAirTemperatureMilliC: {
-                        time: "2020-01-27T07:06:25Z",
-                        value: 50,
-                    },
-                    reeferDoorStateZone1: {
-                        time: "2020-01-27T07:06:25Z",
-                        value: "open",
-                    },
-                    reeferDoorStateZone2: {
-                        time: "2020-01-27T07:06:25Z",
-                        value: "open",
-                    },
-                    reeferDoorStateZone3: {
-                        time: "2020-01-27T07:06:25Z",
-                        value: "open",
-                    },
-                    reeferFuelPercent: {
-                        time: "2020-01-27T07:06:25Z",
-                        value: 50,
-                    },
-                    reeferObdEngineSeconds: {
-                        time: "2020-01-27T07:06:25Z",
-                        value: 50,
-                    },
-                    reeferReturnAirTemperatureMilliCZone1: {
-                        time: "2020-01-27T07:06:25Z",
-                        value: 50,
-                    },
-                    reeferReturnAirTemperatureMilliCZone2: {
-                        time: "2020-01-27T07:06:25Z",
-                        value: 50,
-                    },
-                    reeferReturnAirTemperatureMilliCZone3: {
-                        time: "2020-01-27T07:06:25Z",
-                        value: 50,
-                    },
-                    reeferRunMode: {
-                        time: "2020-01-27T07:06:25Z",
-                        value: "`Start/Stop`,`Continuous`",
-                    },
-                    reeferSetPointTemperatureMilliCZone1: {
-                        time: "2020-01-27T07:06:25Z",
-                        value: 50,
-                    },
-                    reeferSetPointTemperatureMilliCZone2: {
-                        time: "2020-01-27T07:06:25Z",
-                        value: 50,
-                    },
-                    reeferSetPointTemperatureMilliCZone3: {
-                        time: "2020-01-27T07:06:25Z",
-                        value: 50,
-                    },
-                    reeferStateZone1: {
-                        substateValue: "`Pretrip`, `Defrost`",
-                        time: "2020-01-27T07:06:25Z",
-                        value: "`Off`, `On`",
-                    },
-                    reeferStateZone2: {
-                        substateValue: "`Pretrip`, `Defrost`",
-                        time: "2020-01-27T07:06:25Z",
-                        value: "`Off`, `On`",
-                    },
-                    reeferStateZone3: {
-                        substateValue: "`Pretrip`, `Defrost`",
-                        time: "2020-01-27T07:06:25Z",
-                        value: "`Off`, `On`",
-                    },
-                    reeferSupplyAirTemperatureMilliCZone1: {
-                        time: "2020-01-27T07:06:25Z",
-                        value: 50,
-                    },
-                    reeferSupplyAirTemperatureMilliCZone2: {
-                        time: "2020-01-27T07:06:25Z",
-                        value: 50,
-                    },
-                    reeferSupplyAirTemperatureMilliCZone3: {
-                        time: "2020-01-27T07:06:25Z",
-                        value: 50,
-                    },
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getTrailerStatsSnapshot (2)", async () => {
@@ -791,6 +634,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/trailers/stats")
@@ -816,6 +660,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/trailers/stats")
@@ -841,6 +686,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/trailers/stats")
@@ -866,6 +712,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/trailers/stats")
@@ -891,6 +738,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/trailers/stats")
@@ -916,6 +764,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/trailers/stats")
@@ -941,6 +790,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/trailers/stats")
@@ -966,6 +816,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/trailers/stats")
@@ -991,6 +842,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/trailers/stats")
@@ -1016,6 +868,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/trailers/stats")
@@ -1044,19 +897,203 @@ describe("TrailersClient", () => {
             data: [
                 {
                     carrierReeferState: [
-                        { substateValue: "`Pretrip`, `Defrost`", time: "2020-01-27T07:06:25Z", value: "`Off`, `On`" },
+                        {
+                            decorations: {
+                                carrierReeferState: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                gps: {
+                                    headingDegrees: 7982033236946874000,
+                                    latitude: 0.02659130816226228,
+                                    longitude: 0.468774774626828,
+                                    reverseGeo: { formattedLocation: "850 Made Up Lane, Orange, CA" },
+                                    speedMilesPerHour: 842599652113183900,
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                gpsOdometerMeters: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferAlarms: {
+                                    alarms: [
+                                        {
+                                            alarmCode: "3",
+                                            description: "Test alarm",
+                                            operatorAction: "Manually disable alarm",
+                                            severity: 6264683518707844000,
+                                        },
+                                    ],
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                reeferAmbientAirTemperatureMilliC: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferDoorStateZone1: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone2: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone3: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferFuelPercent: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferObdEngineSeconds: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferRunMode: { time: "2020-01-27T07:06:25Z", value: "`Start/Stop`,`Continuous`" },
+                                reeferSetPointTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferStateZone1: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone2: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone3: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferSupplyAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                            },
+                            substateValue: "`Pretrip`, `Defrost`",
+                            time: "2020-01-27T07:06:25Z",
+                            value: "`Off`, `On`",
+                        },
                     ],
                     externalIds: { key: "value" },
                     gps: [
                         {
+                            decorations: {
+                                carrierReeferState: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                gps: {
+                                    headingDegrees: 7982033236946874000,
+                                    latitude: 0.02659130816226228,
+                                    longitude: 0.468774774626828,
+                                    reverseGeo: { formattedLocation: "850 Made Up Lane, Orange, CA" },
+                                    speedMilesPerHour: 842599652113183900,
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                gpsOdometerMeters: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferAlarms: {
+                                    alarms: [
+                                        {
+                                            alarmCode: "3",
+                                            description: "Test alarm",
+                                            operatorAction: "Manually disable alarm",
+                                            severity: 6264683518707844000,
+                                        },
+                                    ],
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                reeferAmbientAirTemperatureMilliC: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferDoorStateZone1: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone2: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone3: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferFuelPercent: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferObdEngineSeconds: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferRunMode: { time: "2020-01-27T07:06:25Z", value: "`Start/Stop`,`Continuous`" },
+                                reeferSetPointTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferStateZone1: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone2: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone3: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferSupplyAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                            },
                             headingDegrees: 1495749085005925000,
                             latitude: 0.5449429145346,
                             longitude: 0.46982365750308985,
+                            reverseGeo: { formattedLocation: "850 Made Up Lane, Orange, CA" },
                             speedMilesPerHour: 152047843600549300,
                             time: "2020-01-27T07:06:25Z",
                         },
                     ],
-                    gpsOdometerMeters: [{ time: "2020-01-27T07:06:25Z", value: 50 }],
+                    gpsOdometerMeters: [
+                        {
+                            decorations: {
+                                carrierReeferState: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                gps: {
+                                    headingDegrees: 7982033236946874000,
+                                    latitude: 0.02659130816226228,
+                                    longitude: 0.468774774626828,
+                                    reverseGeo: { formattedLocation: "850 Made Up Lane, Orange, CA" },
+                                    speedMilesPerHour: 842599652113183900,
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                gpsOdometerMeters: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferAlarms: {
+                                    alarms: [
+                                        {
+                                            alarmCode: "3",
+                                            description: "Test alarm",
+                                            operatorAction: "Manually disable alarm",
+                                            severity: 6264683518707844000,
+                                        },
+                                    ],
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                reeferAmbientAirTemperatureMilliC: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferDoorStateZone1: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone2: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone3: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferFuelPercent: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferObdEngineSeconds: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferRunMode: { time: "2020-01-27T07:06:25Z", value: "`Start/Stop`,`Continuous`" },
+                                reeferSetPointTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferStateZone1: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone2: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone3: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferSupplyAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                            },
+                            time: "2020-01-27T07:06:25Z",
+                            value: 50,
+                        },
+                    ],
                     id: "1234",
                     name: "Trailer-123",
                     reeferAlarms: [
@@ -1069,38 +1106,1291 @@ describe("TrailersClient", () => {
                                     severity: 6264683518707844000,
                                 },
                             ],
+                            decorations: {
+                                carrierReeferState: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                gps: {
+                                    headingDegrees: 7982033236946874000,
+                                    latitude: 0.02659130816226228,
+                                    longitude: 0.468774774626828,
+                                    reverseGeo: { formattedLocation: "850 Made Up Lane, Orange, CA" },
+                                    speedMilesPerHour: 842599652113183900,
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                gpsOdometerMeters: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferAlarms: {
+                                    alarms: [
+                                        {
+                                            alarmCode: "3",
+                                            description: "Test alarm",
+                                            operatorAction: "Manually disable alarm",
+                                            severity: 6264683518707844000,
+                                        },
+                                    ],
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                reeferAmbientAirTemperatureMilliC: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferDoorStateZone1: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone2: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone3: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferFuelPercent: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferObdEngineSeconds: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferRunMode: { time: "2020-01-27T07:06:25Z", value: "`Start/Stop`,`Continuous`" },
+                                reeferSetPointTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferStateZone1: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone2: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone3: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferSupplyAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                            },
                             time: "2020-01-27T07:06:25Z",
                         },
                     ],
-                    reeferAmbientAirTemperatureMilliC: [{ time: "2020-01-27T07:06:25Z", value: 50 }],
-                    reeferDoorStateZone1: [{ time: "2020-01-27T07:06:25Z", value: "open" }],
-                    reeferDoorStateZone2: [{ time: "2020-01-27T07:06:25Z", value: "open" }],
-                    reeferDoorStateZone3: [{ time: "2020-01-27T07:06:25Z", value: "open" }],
-                    reeferFuelPercent: [{ time: "2020-01-27T07:06:25Z", value: 50 }],
-                    reeferObdEngineSeconds: [{ time: "2020-01-27T07:06:25Z", value: 50 }],
-                    reeferReturnAirTemperatureMilliCZone1: [{ time: "2020-01-27T07:06:25Z", value: 50 }],
-                    reeferReturnAirTemperatureMilliCZone2: [{ time: "2020-01-27T07:06:25Z", value: 50 }],
-                    reeferReturnAirTemperatureMilliCZone3: [{ time: "2020-01-27T07:06:25Z", value: 50 }],
-                    reeferRunMode: [{ time: "2020-01-27T07:06:25Z", value: "`Start/Stop`,`Continuous`" }],
-                    reeferSetPointTemperatureMilliCZone1: [{ time: "2020-01-27T07:06:25Z", value: 50 }],
-                    reeferSetPointTemperatureMilliCZone2: [{ time: "2020-01-27T07:06:25Z", value: 50 }],
-                    reeferSetPointTemperatureMilliCZone3: [{ time: "2020-01-27T07:06:25Z", value: 50 }],
+                    reeferAmbientAirTemperatureMilliC: [
+                        {
+                            decorations: {
+                                carrierReeferState: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                gps: {
+                                    headingDegrees: 7982033236946874000,
+                                    latitude: 0.02659130816226228,
+                                    longitude: 0.468774774626828,
+                                    reverseGeo: { formattedLocation: "850 Made Up Lane, Orange, CA" },
+                                    speedMilesPerHour: 842599652113183900,
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                gpsOdometerMeters: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferAlarms: {
+                                    alarms: [
+                                        {
+                                            alarmCode: "3",
+                                            description: "Test alarm",
+                                            operatorAction: "Manually disable alarm",
+                                            severity: 6264683518707844000,
+                                        },
+                                    ],
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                reeferAmbientAirTemperatureMilliC: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferDoorStateZone1: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone2: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone3: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferFuelPercent: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferObdEngineSeconds: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferRunMode: { time: "2020-01-27T07:06:25Z", value: "`Start/Stop`,`Continuous`" },
+                                reeferSetPointTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferStateZone1: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone2: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone3: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferSupplyAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                            },
+                            time: "2020-01-27T07:06:25Z",
+                            value: 50,
+                        },
+                    ],
+                    reeferDoorStateZone1: [
+                        {
+                            decorations: {
+                                carrierReeferState: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                gps: {
+                                    headingDegrees: 7982033236946874000,
+                                    latitude: 0.02659130816226228,
+                                    longitude: 0.468774774626828,
+                                    reverseGeo: { formattedLocation: "850 Made Up Lane, Orange, CA" },
+                                    speedMilesPerHour: 842599652113183900,
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                gpsOdometerMeters: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferAlarms: {
+                                    alarms: [
+                                        {
+                                            alarmCode: "3",
+                                            description: "Test alarm",
+                                            operatorAction: "Manually disable alarm",
+                                            severity: 6264683518707844000,
+                                        },
+                                    ],
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                reeferAmbientAirTemperatureMilliC: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferDoorStateZone1: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone2: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone3: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferFuelPercent: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferObdEngineSeconds: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferRunMode: { time: "2020-01-27T07:06:25Z", value: "`Start/Stop`,`Continuous`" },
+                                reeferSetPointTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferStateZone1: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone2: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone3: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferSupplyAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                            },
+                            time: "2020-01-27T07:06:25Z",
+                            value: "open",
+                        },
+                    ],
+                    reeferDoorStateZone2: [
+                        {
+                            decorations: {
+                                carrierReeferState: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                gps: {
+                                    headingDegrees: 7982033236946874000,
+                                    latitude: 0.02659130816226228,
+                                    longitude: 0.468774774626828,
+                                    reverseGeo: { formattedLocation: "850 Made Up Lane, Orange, CA" },
+                                    speedMilesPerHour: 842599652113183900,
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                gpsOdometerMeters: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferAlarms: {
+                                    alarms: [
+                                        {
+                                            alarmCode: "3",
+                                            description: "Test alarm",
+                                            operatorAction: "Manually disable alarm",
+                                            severity: 6264683518707844000,
+                                        },
+                                    ],
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                reeferAmbientAirTemperatureMilliC: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferDoorStateZone1: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone2: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone3: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferFuelPercent: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferObdEngineSeconds: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferRunMode: { time: "2020-01-27T07:06:25Z", value: "`Start/Stop`,`Continuous`" },
+                                reeferSetPointTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferStateZone1: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone2: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone3: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferSupplyAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                            },
+                            time: "2020-01-27T07:06:25Z",
+                            value: "open",
+                        },
+                    ],
+                    reeferDoorStateZone3: [
+                        {
+                            decorations: {
+                                carrierReeferState: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                gps: {
+                                    headingDegrees: 7982033236946874000,
+                                    latitude: 0.02659130816226228,
+                                    longitude: 0.468774774626828,
+                                    reverseGeo: { formattedLocation: "850 Made Up Lane, Orange, CA" },
+                                    speedMilesPerHour: 842599652113183900,
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                gpsOdometerMeters: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferAlarms: {
+                                    alarms: [
+                                        {
+                                            alarmCode: "3",
+                                            description: "Test alarm",
+                                            operatorAction: "Manually disable alarm",
+                                            severity: 6264683518707844000,
+                                        },
+                                    ],
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                reeferAmbientAirTemperatureMilliC: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferDoorStateZone1: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone2: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone3: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferFuelPercent: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferObdEngineSeconds: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferRunMode: { time: "2020-01-27T07:06:25Z", value: "`Start/Stop`,`Continuous`" },
+                                reeferSetPointTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferStateZone1: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone2: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone3: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferSupplyAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                            },
+                            time: "2020-01-27T07:06:25Z",
+                            value: "open",
+                        },
+                    ],
+                    reeferFuelPercent: [
+                        {
+                            decorations: {
+                                carrierReeferState: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                gps: {
+                                    headingDegrees: 7982033236946874000,
+                                    latitude: 0.02659130816226228,
+                                    longitude: 0.468774774626828,
+                                    reverseGeo: { formattedLocation: "850 Made Up Lane, Orange, CA" },
+                                    speedMilesPerHour: 842599652113183900,
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                gpsOdometerMeters: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferAlarms: {
+                                    alarms: [
+                                        {
+                                            alarmCode: "3",
+                                            description: "Test alarm",
+                                            operatorAction: "Manually disable alarm",
+                                            severity: 6264683518707844000,
+                                        },
+                                    ],
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                reeferAmbientAirTemperatureMilliC: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferDoorStateZone1: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone2: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone3: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferFuelPercent: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferObdEngineSeconds: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferRunMode: { time: "2020-01-27T07:06:25Z", value: "`Start/Stop`,`Continuous`" },
+                                reeferSetPointTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferStateZone1: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone2: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone3: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferSupplyAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                            },
+                            time: "2020-01-27T07:06:25Z",
+                            value: 50,
+                        },
+                    ],
+                    reeferObdEngineSeconds: [
+                        {
+                            decorations: {
+                                carrierReeferState: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                gps: {
+                                    headingDegrees: 7982033236946874000,
+                                    latitude: 0.02659130816226228,
+                                    longitude: 0.468774774626828,
+                                    reverseGeo: { formattedLocation: "850 Made Up Lane, Orange, CA" },
+                                    speedMilesPerHour: 842599652113183900,
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                gpsOdometerMeters: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferAlarms: {
+                                    alarms: [
+                                        {
+                                            alarmCode: "3",
+                                            description: "Test alarm",
+                                            operatorAction: "Manually disable alarm",
+                                            severity: 6264683518707844000,
+                                        },
+                                    ],
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                reeferAmbientAirTemperatureMilliC: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferDoorStateZone1: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone2: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone3: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferFuelPercent: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferObdEngineSeconds: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferRunMode: { time: "2020-01-27T07:06:25Z", value: "`Start/Stop`,`Continuous`" },
+                                reeferSetPointTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferStateZone1: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone2: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone3: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferSupplyAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                            },
+                            time: "2020-01-27T07:06:25Z",
+                            value: 50,
+                        },
+                    ],
+                    reeferReturnAirTemperatureMilliCZone1: [
+                        {
+                            decorations: {
+                                carrierReeferState: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                gps: {
+                                    headingDegrees: 7982033236946874000,
+                                    latitude: 0.02659130816226228,
+                                    longitude: 0.468774774626828,
+                                    reverseGeo: { formattedLocation: "850 Made Up Lane, Orange, CA" },
+                                    speedMilesPerHour: 842599652113183900,
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                gpsOdometerMeters: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferAlarms: {
+                                    alarms: [
+                                        {
+                                            alarmCode: "3",
+                                            description: "Test alarm",
+                                            operatorAction: "Manually disable alarm",
+                                            severity: 6264683518707844000,
+                                        },
+                                    ],
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                reeferAmbientAirTemperatureMilliC: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferDoorStateZone1: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone2: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone3: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferFuelPercent: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferObdEngineSeconds: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferRunMode: { time: "2020-01-27T07:06:25Z", value: "`Start/Stop`,`Continuous`" },
+                                reeferSetPointTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferStateZone1: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone2: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone3: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferSupplyAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                            },
+                            time: "2020-01-27T07:06:25Z",
+                            value: 50,
+                        },
+                    ],
+                    reeferReturnAirTemperatureMilliCZone2: [
+                        {
+                            decorations: {
+                                carrierReeferState: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                gps: {
+                                    headingDegrees: 7982033236946874000,
+                                    latitude: 0.02659130816226228,
+                                    longitude: 0.468774774626828,
+                                    reverseGeo: { formattedLocation: "850 Made Up Lane, Orange, CA" },
+                                    speedMilesPerHour: 842599652113183900,
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                gpsOdometerMeters: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferAlarms: {
+                                    alarms: [
+                                        {
+                                            alarmCode: "3",
+                                            description: "Test alarm",
+                                            operatorAction: "Manually disable alarm",
+                                            severity: 6264683518707844000,
+                                        },
+                                    ],
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                reeferAmbientAirTemperatureMilliC: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferDoorStateZone1: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone2: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone3: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferFuelPercent: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferObdEngineSeconds: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferRunMode: { time: "2020-01-27T07:06:25Z", value: "`Start/Stop`,`Continuous`" },
+                                reeferSetPointTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferStateZone1: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone2: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone3: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferSupplyAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                            },
+                            time: "2020-01-27T07:06:25Z",
+                            value: 50,
+                        },
+                    ],
+                    reeferReturnAirTemperatureMilliCZone3: [
+                        {
+                            decorations: {
+                                carrierReeferState: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                gps: {
+                                    headingDegrees: 7982033236946874000,
+                                    latitude: 0.02659130816226228,
+                                    longitude: 0.468774774626828,
+                                    reverseGeo: { formattedLocation: "850 Made Up Lane, Orange, CA" },
+                                    speedMilesPerHour: 842599652113183900,
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                gpsOdometerMeters: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferAlarms: {
+                                    alarms: [
+                                        {
+                                            alarmCode: "3",
+                                            description: "Test alarm",
+                                            operatorAction: "Manually disable alarm",
+                                            severity: 6264683518707844000,
+                                        },
+                                    ],
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                reeferAmbientAirTemperatureMilliC: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferDoorStateZone1: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone2: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone3: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferFuelPercent: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferObdEngineSeconds: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferRunMode: { time: "2020-01-27T07:06:25Z", value: "`Start/Stop`,`Continuous`" },
+                                reeferSetPointTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferStateZone1: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone2: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone3: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferSupplyAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                            },
+                            time: "2020-01-27T07:06:25Z",
+                            value: 50,
+                        },
+                    ],
+                    reeferRunMode: [
+                        {
+                            decorations: {
+                                carrierReeferState: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                gps: {
+                                    headingDegrees: 7982033236946874000,
+                                    latitude: 0.02659130816226228,
+                                    longitude: 0.468774774626828,
+                                    reverseGeo: { formattedLocation: "850 Made Up Lane, Orange, CA" },
+                                    speedMilesPerHour: 842599652113183900,
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                gpsOdometerMeters: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferAlarms: {
+                                    alarms: [
+                                        {
+                                            alarmCode: "3",
+                                            description: "Test alarm",
+                                            operatorAction: "Manually disable alarm",
+                                            severity: 6264683518707844000,
+                                        },
+                                    ],
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                reeferAmbientAirTemperatureMilliC: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferDoorStateZone1: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone2: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone3: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferFuelPercent: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferObdEngineSeconds: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferRunMode: { time: "2020-01-27T07:06:25Z", value: "`Start/Stop`,`Continuous`" },
+                                reeferSetPointTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferStateZone1: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone2: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone3: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferSupplyAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                            },
+                            time: "2020-01-27T07:06:25Z",
+                            value: "`Start/Stop`,`Continuous`",
+                        },
+                    ],
+                    reeferSetPointTemperatureMilliCZone1: [
+                        {
+                            decorations: {
+                                carrierReeferState: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                gps: {
+                                    headingDegrees: 7982033236946874000,
+                                    latitude: 0.02659130816226228,
+                                    longitude: 0.468774774626828,
+                                    reverseGeo: { formattedLocation: "850 Made Up Lane, Orange, CA" },
+                                    speedMilesPerHour: 842599652113183900,
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                gpsOdometerMeters: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferAlarms: {
+                                    alarms: [
+                                        {
+                                            alarmCode: "3",
+                                            description: "Test alarm",
+                                            operatorAction: "Manually disable alarm",
+                                            severity: 6264683518707844000,
+                                        },
+                                    ],
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                reeferAmbientAirTemperatureMilliC: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferDoorStateZone1: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone2: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone3: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferFuelPercent: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferObdEngineSeconds: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferRunMode: { time: "2020-01-27T07:06:25Z", value: "`Start/Stop`,`Continuous`" },
+                                reeferSetPointTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferStateZone1: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone2: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone3: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferSupplyAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                            },
+                            time: "2020-01-27T07:06:25Z",
+                            value: 50,
+                        },
+                    ],
+                    reeferSetPointTemperatureMilliCZone2: [
+                        {
+                            decorations: {
+                                carrierReeferState: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                gps: {
+                                    headingDegrees: 7982033236946874000,
+                                    latitude: 0.02659130816226228,
+                                    longitude: 0.468774774626828,
+                                    reverseGeo: { formattedLocation: "850 Made Up Lane, Orange, CA" },
+                                    speedMilesPerHour: 842599652113183900,
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                gpsOdometerMeters: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferAlarms: {
+                                    alarms: [
+                                        {
+                                            alarmCode: "3",
+                                            description: "Test alarm",
+                                            operatorAction: "Manually disable alarm",
+                                            severity: 6264683518707844000,
+                                        },
+                                    ],
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                reeferAmbientAirTemperatureMilliC: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferDoorStateZone1: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone2: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone3: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferFuelPercent: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferObdEngineSeconds: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferRunMode: { time: "2020-01-27T07:06:25Z", value: "`Start/Stop`,`Continuous`" },
+                                reeferSetPointTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferStateZone1: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone2: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone3: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferSupplyAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                            },
+                            time: "2020-01-27T07:06:25Z",
+                            value: 50,
+                        },
+                    ],
+                    reeferSetPointTemperatureMilliCZone3: [
+                        {
+                            decorations: {
+                                carrierReeferState: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                gps: {
+                                    headingDegrees: 7982033236946874000,
+                                    latitude: 0.02659130816226228,
+                                    longitude: 0.468774774626828,
+                                    reverseGeo: { formattedLocation: "850 Made Up Lane, Orange, CA" },
+                                    speedMilesPerHour: 842599652113183900,
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                gpsOdometerMeters: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferAlarms: {
+                                    alarms: [
+                                        {
+                                            alarmCode: "3",
+                                            description: "Test alarm",
+                                            operatorAction: "Manually disable alarm",
+                                            severity: 6264683518707844000,
+                                        },
+                                    ],
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                reeferAmbientAirTemperatureMilliC: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferDoorStateZone1: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone2: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone3: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferFuelPercent: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferObdEngineSeconds: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferRunMode: { time: "2020-01-27T07:06:25Z", value: "`Start/Stop`,`Continuous`" },
+                                reeferSetPointTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferStateZone1: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone2: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone3: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferSupplyAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                            },
+                            time: "2020-01-27T07:06:25Z",
+                            value: 50,
+                        },
+                    ],
                     reeferStateZone1: [
-                        { substateValue: "`Pretrip`, `Defrost`", time: "2020-01-27T07:06:25Z", value: "`Off`, `On`" },
+                        {
+                            decorations: {
+                                carrierReeferState: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                gps: {
+                                    headingDegrees: 7982033236946874000,
+                                    latitude: 0.02659130816226228,
+                                    longitude: 0.468774774626828,
+                                    reverseGeo: { formattedLocation: "850 Made Up Lane, Orange, CA" },
+                                    speedMilesPerHour: 842599652113183900,
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                gpsOdometerMeters: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferAlarms: {
+                                    alarms: [
+                                        {
+                                            alarmCode: "3",
+                                            description: "Test alarm",
+                                            operatorAction: "Manually disable alarm",
+                                            severity: 6264683518707844000,
+                                        },
+                                    ],
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                reeferAmbientAirTemperatureMilliC: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferDoorStateZone1: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone2: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone3: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferFuelPercent: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferObdEngineSeconds: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferRunMode: { time: "2020-01-27T07:06:25Z", value: "`Start/Stop`,`Continuous`" },
+                                reeferSetPointTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferStateZone1: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone2: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone3: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferSupplyAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                            },
+                            substateValue: "`Pretrip`, `Defrost`",
+                            time: "2020-01-27T07:06:25Z",
+                            value: "`Off`, `On`",
+                        },
                     ],
                     reeferStateZone2: [
-                        { substateValue: "`Pretrip`, `Defrost`", time: "2020-01-27T07:06:25Z", value: "`Off`, `On`" },
+                        {
+                            decorations: {
+                                carrierReeferState: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                gps: {
+                                    headingDegrees: 7982033236946874000,
+                                    latitude: 0.02659130816226228,
+                                    longitude: 0.468774774626828,
+                                    reverseGeo: { formattedLocation: "850 Made Up Lane, Orange, CA" },
+                                    speedMilesPerHour: 842599652113183900,
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                gpsOdometerMeters: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferAlarms: {
+                                    alarms: [
+                                        {
+                                            alarmCode: "3",
+                                            description: "Test alarm",
+                                            operatorAction: "Manually disable alarm",
+                                            severity: 6264683518707844000,
+                                        },
+                                    ],
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                reeferAmbientAirTemperatureMilliC: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferDoorStateZone1: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone2: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone3: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferFuelPercent: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferObdEngineSeconds: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferRunMode: { time: "2020-01-27T07:06:25Z", value: "`Start/Stop`,`Continuous`" },
+                                reeferSetPointTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferStateZone1: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone2: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone3: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferSupplyAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                            },
+                            substateValue: "`Pretrip`, `Defrost`",
+                            time: "2020-01-27T07:06:25Z",
+                            value: "`Off`, `On`",
+                        },
                     ],
                     reeferStateZone3: [
-                        { substateValue: "`Pretrip`, `Defrost`", time: "2020-01-27T07:06:25Z", value: "`Off`, `On`" },
+                        {
+                            decorations: {
+                                carrierReeferState: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                gps: {
+                                    headingDegrees: 7982033236946874000,
+                                    latitude: 0.02659130816226228,
+                                    longitude: 0.468774774626828,
+                                    reverseGeo: { formattedLocation: "850 Made Up Lane, Orange, CA" },
+                                    speedMilesPerHour: 842599652113183900,
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                gpsOdometerMeters: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferAlarms: {
+                                    alarms: [
+                                        {
+                                            alarmCode: "3",
+                                            description: "Test alarm",
+                                            operatorAction: "Manually disable alarm",
+                                            severity: 6264683518707844000,
+                                        },
+                                    ],
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                reeferAmbientAirTemperatureMilliC: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferDoorStateZone1: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone2: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone3: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferFuelPercent: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferObdEngineSeconds: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferRunMode: { time: "2020-01-27T07:06:25Z", value: "`Start/Stop`,`Continuous`" },
+                                reeferSetPointTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferStateZone1: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone2: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone3: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferSupplyAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                            },
+                            substateValue: "`Pretrip`, `Defrost`",
+                            time: "2020-01-27T07:06:25Z",
+                            value: "`Off`, `On`",
+                        },
                     ],
-                    reeferSupplyAirTemperatureMilliCZone1: [{ time: "2020-01-27T07:06:25Z", value: 50 }],
-                    reeferSupplyAirTemperatureMilliCZone2: [{ time: "2020-01-27T07:06:25Z", value: 50 }],
-                    reeferSupplyAirTemperatureMilliCZone3: [{ time: "2020-01-27T07:06:25Z", value: 50 }],
+                    reeferSupplyAirTemperatureMilliCZone1: [
+                        {
+                            decorations: {
+                                carrierReeferState: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                gps: {
+                                    headingDegrees: 7982033236946874000,
+                                    latitude: 0.02659130816226228,
+                                    longitude: 0.468774774626828,
+                                    reverseGeo: { formattedLocation: "850 Made Up Lane, Orange, CA" },
+                                    speedMilesPerHour: 842599652113183900,
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                gpsOdometerMeters: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferAlarms: {
+                                    alarms: [
+                                        {
+                                            alarmCode: "3",
+                                            description: "Test alarm",
+                                            operatorAction: "Manually disable alarm",
+                                            severity: 6264683518707844000,
+                                        },
+                                    ],
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                reeferAmbientAirTemperatureMilliC: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferDoorStateZone1: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone2: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone3: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferFuelPercent: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferObdEngineSeconds: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferRunMode: { time: "2020-01-27T07:06:25Z", value: "`Start/Stop`,`Continuous`" },
+                                reeferSetPointTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferStateZone1: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone2: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone3: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferSupplyAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                            },
+                            time: "2020-01-27T07:06:25Z",
+                            value: 50,
+                        },
+                    ],
+                    reeferSupplyAirTemperatureMilliCZone2: [
+                        {
+                            decorations: {
+                                carrierReeferState: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                gps: {
+                                    headingDegrees: 7982033236946874000,
+                                    latitude: 0.02659130816226228,
+                                    longitude: 0.468774774626828,
+                                    reverseGeo: { formattedLocation: "850 Made Up Lane, Orange, CA" },
+                                    speedMilesPerHour: 842599652113183900,
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                gpsOdometerMeters: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferAlarms: {
+                                    alarms: [
+                                        {
+                                            alarmCode: "3",
+                                            description: "Test alarm",
+                                            operatorAction: "Manually disable alarm",
+                                            severity: 6264683518707844000,
+                                        },
+                                    ],
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                reeferAmbientAirTemperatureMilliC: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferDoorStateZone1: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone2: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone3: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferFuelPercent: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferObdEngineSeconds: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferRunMode: { time: "2020-01-27T07:06:25Z", value: "`Start/Stop`,`Continuous`" },
+                                reeferSetPointTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferStateZone1: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone2: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone3: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferSupplyAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                            },
+                            time: "2020-01-27T07:06:25Z",
+                            value: 50,
+                        },
+                    ],
+                    reeferSupplyAirTemperatureMilliCZone3: [
+                        {
+                            decorations: {
+                                carrierReeferState: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                gps: {
+                                    headingDegrees: 7982033236946874000,
+                                    latitude: 0.02659130816226228,
+                                    longitude: 0.468774774626828,
+                                    reverseGeo: { formattedLocation: "850 Made Up Lane, Orange, CA" },
+                                    speedMilesPerHour: 842599652113183900,
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                gpsOdometerMeters: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferAlarms: {
+                                    alarms: [
+                                        {
+                                            alarmCode: "3",
+                                            description: "Test alarm",
+                                            operatorAction: "Manually disable alarm",
+                                            severity: 6264683518707844000,
+                                        },
+                                    ],
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                reeferAmbientAirTemperatureMilliC: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferDoorStateZone1: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone2: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone3: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferFuelPercent: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferObdEngineSeconds: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferRunMode: { time: "2020-01-27T07:06:25Z", value: "`Start/Stop`,`Continuous`" },
+                                reeferSetPointTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferStateZone1: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone2: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone3: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferSupplyAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                            },
+                            time: "2020-01-27T07:06:25Z",
+                            value: 50,
+                        },
+                    ],
                 },
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/fleet/trailers/stats/feed")
@@ -1112,173 +2402,7 @@ describe("TrailersClient", () => {
         const response = await client.trailers.getTrailerStatsFeed({
             types: "types",
         });
-        expect(response).toEqual({
-            data: [
-                {
-                    carrierReeferState: [
-                        {
-                            substateValue: "`Pretrip`, `Defrost`",
-                            time: "2020-01-27T07:06:25Z",
-                            value: "`Off`, `On`",
-                        },
-                    ],
-                    externalIds: {
-                        key: "value",
-                    },
-                    gps: [
-                        {
-                            headingDegrees: 1495749085005925000,
-                            latitude: 0.5449429145346,
-                            longitude: 0.46982365750308985,
-                            speedMilesPerHour: 152047843600549300,
-                            time: "2020-01-27T07:06:25Z",
-                        },
-                    ],
-                    gpsOdometerMeters: [
-                        {
-                            time: "2020-01-27T07:06:25Z",
-                            value: 50,
-                        },
-                    ],
-                    id: "1234",
-                    name: "Trailer-123",
-                    reeferAlarms: [
-                        {
-                            alarms: [
-                                {
-                                    alarmCode: "3",
-                                    description: "Test alarm",
-                                    operatorAction: "Manually disable alarm",
-                                    severity: 6264683518707844000,
-                                },
-                            ],
-                            time: "2020-01-27T07:06:25Z",
-                        },
-                    ],
-                    reeferAmbientAirTemperatureMilliC: [
-                        {
-                            time: "2020-01-27T07:06:25Z",
-                            value: 50,
-                        },
-                    ],
-                    reeferDoorStateZone1: [
-                        {
-                            time: "2020-01-27T07:06:25Z",
-                            value: "open",
-                        },
-                    ],
-                    reeferDoorStateZone2: [
-                        {
-                            time: "2020-01-27T07:06:25Z",
-                            value: "open",
-                        },
-                    ],
-                    reeferDoorStateZone3: [
-                        {
-                            time: "2020-01-27T07:06:25Z",
-                            value: "open",
-                        },
-                    ],
-                    reeferFuelPercent: [
-                        {
-                            time: "2020-01-27T07:06:25Z",
-                            value: 50,
-                        },
-                    ],
-                    reeferObdEngineSeconds: [
-                        {
-                            time: "2020-01-27T07:06:25Z",
-                            value: 50,
-                        },
-                    ],
-                    reeferReturnAirTemperatureMilliCZone1: [
-                        {
-                            time: "2020-01-27T07:06:25Z",
-                            value: 50,
-                        },
-                    ],
-                    reeferReturnAirTemperatureMilliCZone2: [
-                        {
-                            time: "2020-01-27T07:06:25Z",
-                            value: 50,
-                        },
-                    ],
-                    reeferReturnAirTemperatureMilliCZone3: [
-                        {
-                            time: "2020-01-27T07:06:25Z",
-                            value: 50,
-                        },
-                    ],
-                    reeferRunMode: [
-                        {
-                            time: "2020-01-27T07:06:25Z",
-                            value: "`Start/Stop`,`Continuous`",
-                        },
-                    ],
-                    reeferSetPointTemperatureMilliCZone1: [
-                        {
-                            time: "2020-01-27T07:06:25Z",
-                            value: 50,
-                        },
-                    ],
-                    reeferSetPointTemperatureMilliCZone2: [
-                        {
-                            time: "2020-01-27T07:06:25Z",
-                            value: 50,
-                        },
-                    ],
-                    reeferSetPointTemperatureMilliCZone3: [
-                        {
-                            time: "2020-01-27T07:06:25Z",
-                            value: 50,
-                        },
-                    ],
-                    reeferStateZone1: [
-                        {
-                            substateValue: "`Pretrip`, `Defrost`",
-                            time: "2020-01-27T07:06:25Z",
-                            value: "`Off`, `On`",
-                        },
-                    ],
-                    reeferStateZone2: [
-                        {
-                            substateValue: "`Pretrip`, `Defrost`",
-                            time: "2020-01-27T07:06:25Z",
-                            value: "`Off`, `On`",
-                        },
-                    ],
-                    reeferStateZone3: [
-                        {
-                            substateValue: "`Pretrip`, `Defrost`",
-                            time: "2020-01-27T07:06:25Z",
-                            value: "`Off`, `On`",
-                        },
-                    ],
-                    reeferSupplyAirTemperatureMilliCZone1: [
-                        {
-                            time: "2020-01-27T07:06:25Z",
-                            value: 50,
-                        },
-                    ],
-                    reeferSupplyAirTemperatureMilliCZone2: [
-                        {
-                            time: "2020-01-27T07:06:25Z",
-                            value: 50,
-                        },
-                    ],
-                    reeferSupplyAirTemperatureMilliCZone3: [
-                        {
-                            time: "2020-01-27T07:06:25Z",
-                            value: 50,
-                        },
-                    ],
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getTrailerStatsFeed (2)", async () => {
@@ -1291,6 +2415,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/trailers/stats/feed")
@@ -1316,6 +2441,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/trailers/stats/feed")
@@ -1341,6 +2467,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/trailers/stats/feed")
@@ -1366,6 +2493,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/trailers/stats/feed")
@@ -1391,6 +2519,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/trailers/stats/feed")
@@ -1416,6 +2545,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/trailers/stats/feed")
@@ -1441,6 +2571,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/trailers/stats/feed")
@@ -1466,6 +2597,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/trailers/stats/feed")
@@ -1491,6 +2623,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/trailers/stats/feed")
@@ -1516,6 +2649,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/trailers/stats/feed")
@@ -1544,19 +2678,203 @@ describe("TrailersClient", () => {
             data: [
                 {
                     carrierReeferState: [
-                        { substateValue: "`Pretrip`, `Defrost`", time: "2020-01-27T07:06:25Z", value: "`Off`, `On`" },
+                        {
+                            decorations: {
+                                carrierReeferState: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                gps: {
+                                    headingDegrees: 7982033236946874000,
+                                    latitude: 0.02659130816226228,
+                                    longitude: 0.468774774626828,
+                                    reverseGeo: { formattedLocation: "850 Made Up Lane, Orange, CA" },
+                                    speedMilesPerHour: 842599652113183900,
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                gpsOdometerMeters: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferAlarms: {
+                                    alarms: [
+                                        {
+                                            alarmCode: "3",
+                                            description: "Test alarm",
+                                            operatorAction: "Manually disable alarm",
+                                            severity: 6264683518707844000,
+                                        },
+                                    ],
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                reeferAmbientAirTemperatureMilliC: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferDoorStateZone1: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone2: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone3: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferFuelPercent: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferObdEngineSeconds: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferRunMode: { time: "2020-01-27T07:06:25Z", value: "`Start/Stop`,`Continuous`" },
+                                reeferSetPointTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferStateZone1: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone2: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone3: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferSupplyAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                            },
+                            substateValue: "`Pretrip`, `Defrost`",
+                            time: "2020-01-27T07:06:25Z",
+                            value: "`Off`, `On`",
+                        },
                     ],
                     externalIds: { key: "value" },
                     gps: [
                         {
+                            decorations: {
+                                carrierReeferState: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                gps: {
+                                    headingDegrees: 7982033236946874000,
+                                    latitude: 0.02659130816226228,
+                                    longitude: 0.468774774626828,
+                                    reverseGeo: { formattedLocation: "850 Made Up Lane, Orange, CA" },
+                                    speedMilesPerHour: 842599652113183900,
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                gpsOdometerMeters: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferAlarms: {
+                                    alarms: [
+                                        {
+                                            alarmCode: "3",
+                                            description: "Test alarm",
+                                            operatorAction: "Manually disable alarm",
+                                            severity: 6264683518707844000,
+                                        },
+                                    ],
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                reeferAmbientAirTemperatureMilliC: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferDoorStateZone1: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone2: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone3: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferFuelPercent: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferObdEngineSeconds: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferRunMode: { time: "2020-01-27T07:06:25Z", value: "`Start/Stop`,`Continuous`" },
+                                reeferSetPointTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferStateZone1: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone2: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone3: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferSupplyAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                            },
                             headingDegrees: 1495749085005925000,
                             latitude: 0.5449429145346,
                             longitude: 0.46982365750308985,
+                            reverseGeo: { formattedLocation: "850 Made Up Lane, Orange, CA" },
                             speedMilesPerHour: 152047843600549300,
                             time: "2020-01-27T07:06:25Z",
                         },
                     ],
-                    gpsOdometerMeters: [{ time: "2020-01-27T07:06:25Z", value: 50 }],
+                    gpsOdometerMeters: [
+                        {
+                            decorations: {
+                                carrierReeferState: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                gps: {
+                                    headingDegrees: 7982033236946874000,
+                                    latitude: 0.02659130816226228,
+                                    longitude: 0.468774774626828,
+                                    reverseGeo: { formattedLocation: "850 Made Up Lane, Orange, CA" },
+                                    speedMilesPerHour: 842599652113183900,
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                gpsOdometerMeters: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferAlarms: {
+                                    alarms: [
+                                        {
+                                            alarmCode: "3",
+                                            description: "Test alarm",
+                                            operatorAction: "Manually disable alarm",
+                                            severity: 6264683518707844000,
+                                        },
+                                    ],
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                reeferAmbientAirTemperatureMilliC: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferDoorStateZone1: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone2: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone3: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferFuelPercent: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferObdEngineSeconds: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferRunMode: { time: "2020-01-27T07:06:25Z", value: "`Start/Stop`,`Continuous`" },
+                                reeferSetPointTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferStateZone1: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone2: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone3: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferSupplyAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                            },
+                            time: "2020-01-27T07:06:25Z",
+                            value: 50,
+                        },
+                    ],
                     id: "1234",
                     name: "Trailer-123",
                     reeferAlarms: [
@@ -1569,38 +2887,1291 @@ describe("TrailersClient", () => {
                                     severity: 6264683518707844000,
                                 },
                             ],
+                            decorations: {
+                                carrierReeferState: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                gps: {
+                                    headingDegrees: 7982033236946874000,
+                                    latitude: 0.02659130816226228,
+                                    longitude: 0.468774774626828,
+                                    reverseGeo: { formattedLocation: "850 Made Up Lane, Orange, CA" },
+                                    speedMilesPerHour: 842599652113183900,
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                gpsOdometerMeters: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferAlarms: {
+                                    alarms: [
+                                        {
+                                            alarmCode: "3",
+                                            description: "Test alarm",
+                                            operatorAction: "Manually disable alarm",
+                                            severity: 6264683518707844000,
+                                        },
+                                    ],
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                reeferAmbientAirTemperatureMilliC: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferDoorStateZone1: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone2: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone3: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferFuelPercent: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferObdEngineSeconds: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferRunMode: { time: "2020-01-27T07:06:25Z", value: "`Start/Stop`,`Continuous`" },
+                                reeferSetPointTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferStateZone1: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone2: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone3: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferSupplyAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                            },
                             time: "2020-01-27T07:06:25Z",
                         },
                     ],
-                    reeferAmbientAirTemperatureMilliC: [{ time: "2020-01-27T07:06:25Z", value: 50 }],
-                    reeferDoorStateZone1: [{ time: "2020-01-27T07:06:25Z", value: "open" }],
-                    reeferDoorStateZone2: [{ time: "2020-01-27T07:06:25Z", value: "open" }],
-                    reeferDoorStateZone3: [{ time: "2020-01-27T07:06:25Z", value: "open" }],
-                    reeferFuelPercent: [{ time: "2020-01-27T07:06:25Z", value: 50 }],
-                    reeferObdEngineSeconds: [{ time: "2020-01-27T07:06:25Z", value: 50 }],
-                    reeferReturnAirTemperatureMilliCZone1: [{ time: "2020-01-27T07:06:25Z", value: 50 }],
-                    reeferReturnAirTemperatureMilliCZone2: [{ time: "2020-01-27T07:06:25Z", value: 50 }],
-                    reeferReturnAirTemperatureMilliCZone3: [{ time: "2020-01-27T07:06:25Z", value: 50 }],
-                    reeferRunMode: [{ time: "2020-01-27T07:06:25Z", value: "`Start/Stop`,`Continuous`" }],
-                    reeferSetPointTemperatureMilliCZone1: [{ time: "2020-01-27T07:06:25Z", value: 50 }],
-                    reeferSetPointTemperatureMilliCZone2: [{ time: "2020-01-27T07:06:25Z", value: 50 }],
-                    reeferSetPointTemperatureMilliCZone3: [{ time: "2020-01-27T07:06:25Z", value: 50 }],
+                    reeferAmbientAirTemperatureMilliC: [
+                        {
+                            decorations: {
+                                carrierReeferState: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                gps: {
+                                    headingDegrees: 7982033236946874000,
+                                    latitude: 0.02659130816226228,
+                                    longitude: 0.468774774626828,
+                                    reverseGeo: { formattedLocation: "850 Made Up Lane, Orange, CA" },
+                                    speedMilesPerHour: 842599652113183900,
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                gpsOdometerMeters: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferAlarms: {
+                                    alarms: [
+                                        {
+                                            alarmCode: "3",
+                                            description: "Test alarm",
+                                            operatorAction: "Manually disable alarm",
+                                            severity: 6264683518707844000,
+                                        },
+                                    ],
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                reeferAmbientAirTemperatureMilliC: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferDoorStateZone1: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone2: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone3: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferFuelPercent: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferObdEngineSeconds: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferRunMode: { time: "2020-01-27T07:06:25Z", value: "`Start/Stop`,`Continuous`" },
+                                reeferSetPointTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferStateZone1: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone2: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone3: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferSupplyAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                            },
+                            time: "2020-01-27T07:06:25Z",
+                            value: 50,
+                        },
+                    ],
+                    reeferDoorStateZone1: [
+                        {
+                            decorations: {
+                                carrierReeferState: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                gps: {
+                                    headingDegrees: 7982033236946874000,
+                                    latitude: 0.02659130816226228,
+                                    longitude: 0.468774774626828,
+                                    reverseGeo: { formattedLocation: "850 Made Up Lane, Orange, CA" },
+                                    speedMilesPerHour: 842599652113183900,
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                gpsOdometerMeters: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferAlarms: {
+                                    alarms: [
+                                        {
+                                            alarmCode: "3",
+                                            description: "Test alarm",
+                                            operatorAction: "Manually disable alarm",
+                                            severity: 6264683518707844000,
+                                        },
+                                    ],
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                reeferAmbientAirTemperatureMilliC: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferDoorStateZone1: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone2: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone3: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferFuelPercent: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferObdEngineSeconds: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferRunMode: { time: "2020-01-27T07:06:25Z", value: "`Start/Stop`,`Continuous`" },
+                                reeferSetPointTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferStateZone1: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone2: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone3: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferSupplyAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                            },
+                            time: "2020-01-27T07:06:25Z",
+                            value: "open",
+                        },
+                    ],
+                    reeferDoorStateZone2: [
+                        {
+                            decorations: {
+                                carrierReeferState: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                gps: {
+                                    headingDegrees: 7982033236946874000,
+                                    latitude: 0.02659130816226228,
+                                    longitude: 0.468774774626828,
+                                    reverseGeo: { formattedLocation: "850 Made Up Lane, Orange, CA" },
+                                    speedMilesPerHour: 842599652113183900,
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                gpsOdometerMeters: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferAlarms: {
+                                    alarms: [
+                                        {
+                                            alarmCode: "3",
+                                            description: "Test alarm",
+                                            operatorAction: "Manually disable alarm",
+                                            severity: 6264683518707844000,
+                                        },
+                                    ],
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                reeferAmbientAirTemperatureMilliC: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferDoorStateZone1: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone2: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone3: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferFuelPercent: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferObdEngineSeconds: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferRunMode: { time: "2020-01-27T07:06:25Z", value: "`Start/Stop`,`Continuous`" },
+                                reeferSetPointTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferStateZone1: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone2: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone3: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferSupplyAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                            },
+                            time: "2020-01-27T07:06:25Z",
+                            value: "open",
+                        },
+                    ],
+                    reeferDoorStateZone3: [
+                        {
+                            decorations: {
+                                carrierReeferState: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                gps: {
+                                    headingDegrees: 7982033236946874000,
+                                    latitude: 0.02659130816226228,
+                                    longitude: 0.468774774626828,
+                                    reverseGeo: { formattedLocation: "850 Made Up Lane, Orange, CA" },
+                                    speedMilesPerHour: 842599652113183900,
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                gpsOdometerMeters: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferAlarms: {
+                                    alarms: [
+                                        {
+                                            alarmCode: "3",
+                                            description: "Test alarm",
+                                            operatorAction: "Manually disable alarm",
+                                            severity: 6264683518707844000,
+                                        },
+                                    ],
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                reeferAmbientAirTemperatureMilliC: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferDoorStateZone1: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone2: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone3: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferFuelPercent: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferObdEngineSeconds: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferRunMode: { time: "2020-01-27T07:06:25Z", value: "`Start/Stop`,`Continuous`" },
+                                reeferSetPointTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferStateZone1: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone2: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone3: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferSupplyAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                            },
+                            time: "2020-01-27T07:06:25Z",
+                            value: "open",
+                        },
+                    ],
+                    reeferFuelPercent: [
+                        {
+                            decorations: {
+                                carrierReeferState: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                gps: {
+                                    headingDegrees: 7982033236946874000,
+                                    latitude: 0.02659130816226228,
+                                    longitude: 0.468774774626828,
+                                    reverseGeo: { formattedLocation: "850 Made Up Lane, Orange, CA" },
+                                    speedMilesPerHour: 842599652113183900,
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                gpsOdometerMeters: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferAlarms: {
+                                    alarms: [
+                                        {
+                                            alarmCode: "3",
+                                            description: "Test alarm",
+                                            operatorAction: "Manually disable alarm",
+                                            severity: 6264683518707844000,
+                                        },
+                                    ],
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                reeferAmbientAirTemperatureMilliC: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferDoorStateZone1: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone2: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone3: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferFuelPercent: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferObdEngineSeconds: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferRunMode: { time: "2020-01-27T07:06:25Z", value: "`Start/Stop`,`Continuous`" },
+                                reeferSetPointTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferStateZone1: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone2: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone3: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferSupplyAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                            },
+                            time: "2020-01-27T07:06:25Z",
+                            value: 50,
+                        },
+                    ],
+                    reeferObdEngineSeconds: [
+                        {
+                            decorations: {
+                                carrierReeferState: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                gps: {
+                                    headingDegrees: 7982033236946874000,
+                                    latitude: 0.02659130816226228,
+                                    longitude: 0.468774774626828,
+                                    reverseGeo: { formattedLocation: "850 Made Up Lane, Orange, CA" },
+                                    speedMilesPerHour: 842599652113183900,
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                gpsOdometerMeters: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferAlarms: {
+                                    alarms: [
+                                        {
+                                            alarmCode: "3",
+                                            description: "Test alarm",
+                                            operatorAction: "Manually disable alarm",
+                                            severity: 6264683518707844000,
+                                        },
+                                    ],
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                reeferAmbientAirTemperatureMilliC: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferDoorStateZone1: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone2: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone3: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferFuelPercent: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferObdEngineSeconds: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferRunMode: { time: "2020-01-27T07:06:25Z", value: "`Start/Stop`,`Continuous`" },
+                                reeferSetPointTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferStateZone1: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone2: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone3: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferSupplyAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                            },
+                            time: "2020-01-27T07:06:25Z",
+                            value: 50,
+                        },
+                    ],
+                    reeferReturnAirTemperatureMilliCZone1: [
+                        {
+                            decorations: {
+                                carrierReeferState: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                gps: {
+                                    headingDegrees: 7982033236946874000,
+                                    latitude: 0.02659130816226228,
+                                    longitude: 0.468774774626828,
+                                    reverseGeo: { formattedLocation: "850 Made Up Lane, Orange, CA" },
+                                    speedMilesPerHour: 842599652113183900,
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                gpsOdometerMeters: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferAlarms: {
+                                    alarms: [
+                                        {
+                                            alarmCode: "3",
+                                            description: "Test alarm",
+                                            operatorAction: "Manually disable alarm",
+                                            severity: 6264683518707844000,
+                                        },
+                                    ],
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                reeferAmbientAirTemperatureMilliC: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferDoorStateZone1: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone2: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone3: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferFuelPercent: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferObdEngineSeconds: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferRunMode: { time: "2020-01-27T07:06:25Z", value: "`Start/Stop`,`Continuous`" },
+                                reeferSetPointTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferStateZone1: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone2: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone3: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferSupplyAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                            },
+                            time: "2020-01-27T07:06:25Z",
+                            value: 50,
+                        },
+                    ],
+                    reeferReturnAirTemperatureMilliCZone2: [
+                        {
+                            decorations: {
+                                carrierReeferState: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                gps: {
+                                    headingDegrees: 7982033236946874000,
+                                    latitude: 0.02659130816226228,
+                                    longitude: 0.468774774626828,
+                                    reverseGeo: { formattedLocation: "850 Made Up Lane, Orange, CA" },
+                                    speedMilesPerHour: 842599652113183900,
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                gpsOdometerMeters: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferAlarms: {
+                                    alarms: [
+                                        {
+                                            alarmCode: "3",
+                                            description: "Test alarm",
+                                            operatorAction: "Manually disable alarm",
+                                            severity: 6264683518707844000,
+                                        },
+                                    ],
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                reeferAmbientAirTemperatureMilliC: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferDoorStateZone1: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone2: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone3: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferFuelPercent: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferObdEngineSeconds: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferRunMode: { time: "2020-01-27T07:06:25Z", value: "`Start/Stop`,`Continuous`" },
+                                reeferSetPointTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferStateZone1: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone2: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone3: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferSupplyAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                            },
+                            time: "2020-01-27T07:06:25Z",
+                            value: 50,
+                        },
+                    ],
+                    reeferReturnAirTemperatureMilliCZone3: [
+                        {
+                            decorations: {
+                                carrierReeferState: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                gps: {
+                                    headingDegrees: 7982033236946874000,
+                                    latitude: 0.02659130816226228,
+                                    longitude: 0.468774774626828,
+                                    reverseGeo: { formattedLocation: "850 Made Up Lane, Orange, CA" },
+                                    speedMilesPerHour: 842599652113183900,
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                gpsOdometerMeters: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferAlarms: {
+                                    alarms: [
+                                        {
+                                            alarmCode: "3",
+                                            description: "Test alarm",
+                                            operatorAction: "Manually disable alarm",
+                                            severity: 6264683518707844000,
+                                        },
+                                    ],
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                reeferAmbientAirTemperatureMilliC: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferDoorStateZone1: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone2: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone3: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferFuelPercent: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferObdEngineSeconds: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferRunMode: { time: "2020-01-27T07:06:25Z", value: "`Start/Stop`,`Continuous`" },
+                                reeferSetPointTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferStateZone1: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone2: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone3: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferSupplyAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                            },
+                            time: "2020-01-27T07:06:25Z",
+                            value: 50,
+                        },
+                    ],
+                    reeferRunMode: [
+                        {
+                            decorations: {
+                                carrierReeferState: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                gps: {
+                                    headingDegrees: 7982033236946874000,
+                                    latitude: 0.02659130816226228,
+                                    longitude: 0.468774774626828,
+                                    reverseGeo: { formattedLocation: "850 Made Up Lane, Orange, CA" },
+                                    speedMilesPerHour: 842599652113183900,
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                gpsOdometerMeters: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferAlarms: {
+                                    alarms: [
+                                        {
+                                            alarmCode: "3",
+                                            description: "Test alarm",
+                                            operatorAction: "Manually disable alarm",
+                                            severity: 6264683518707844000,
+                                        },
+                                    ],
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                reeferAmbientAirTemperatureMilliC: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferDoorStateZone1: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone2: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone3: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferFuelPercent: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferObdEngineSeconds: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferRunMode: { time: "2020-01-27T07:06:25Z", value: "`Start/Stop`,`Continuous`" },
+                                reeferSetPointTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferStateZone1: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone2: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone3: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferSupplyAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                            },
+                            time: "2020-01-27T07:06:25Z",
+                            value: "`Start/Stop`,`Continuous`",
+                        },
+                    ],
+                    reeferSetPointTemperatureMilliCZone1: [
+                        {
+                            decorations: {
+                                carrierReeferState: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                gps: {
+                                    headingDegrees: 7982033236946874000,
+                                    latitude: 0.02659130816226228,
+                                    longitude: 0.468774774626828,
+                                    reverseGeo: { formattedLocation: "850 Made Up Lane, Orange, CA" },
+                                    speedMilesPerHour: 842599652113183900,
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                gpsOdometerMeters: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferAlarms: {
+                                    alarms: [
+                                        {
+                                            alarmCode: "3",
+                                            description: "Test alarm",
+                                            operatorAction: "Manually disable alarm",
+                                            severity: 6264683518707844000,
+                                        },
+                                    ],
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                reeferAmbientAirTemperatureMilliC: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferDoorStateZone1: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone2: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone3: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferFuelPercent: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferObdEngineSeconds: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferRunMode: { time: "2020-01-27T07:06:25Z", value: "`Start/Stop`,`Continuous`" },
+                                reeferSetPointTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferStateZone1: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone2: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone3: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferSupplyAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                            },
+                            time: "2020-01-27T07:06:25Z",
+                            value: 50,
+                        },
+                    ],
+                    reeferSetPointTemperatureMilliCZone2: [
+                        {
+                            decorations: {
+                                carrierReeferState: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                gps: {
+                                    headingDegrees: 7982033236946874000,
+                                    latitude: 0.02659130816226228,
+                                    longitude: 0.468774774626828,
+                                    reverseGeo: { formattedLocation: "850 Made Up Lane, Orange, CA" },
+                                    speedMilesPerHour: 842599652113183900,
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                gpsOdometerMeters: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferAlarms: {
+                                    alarms: [
+                                        {
+                                            alarmCode: "3",
+                                            description: "Test alarm",
+                                            operatorAction: "Manually disable alarm",
+                                            severity: 6264683518707844000,
+                                        },
+                                    ],
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                reeferAmbientAirTemperatureMilliC: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferDoorStateZone1: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone2: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone3: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferFuelPercent: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferObdEngineSeconds: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferRunMode: { time: "2020-01-27T07:06:25Z", value: "`Start/Stop`,`Continuous`" },
+                                reeferSetPointTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferStateZone1: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone2: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone3: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferSupplyAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                            },
+                            time: "2020-01-27T07:06:25Z",
+                            value: 50,
+                        },
+                    ],
+                    reeferSetPointTemperatureMilliCZone3: [
+                        {
+                            decorations: {
+                                carrierReeferState: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                gps: {
+                                    headingDegrees: 7982033236946874000,
+                                    latitude: 0.02659130816226228,
+                                    longitude: 0.468774774626828,
+                                    reverseGeo: { formattedLocation: "850 Made Up Lane, Orange, CA" },
+                                    speedMilesPerHour: 842599652113183900,
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                gpsOdometerMeters: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferAlarms: {
+                                    alarms: [
+                                        {
+                                            alarmCode: "3",
+                                            description: "Test alarm",
+                                            operatorAction: "Manually disable alarm",
+                                            severity: 6264683518707844000,
+                                        },
+                                    ],
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                reeferAmbientAirTemperatureMilliC: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferDoorStateZone1: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone2: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone3: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferFuelPercent: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferObdEngineSeconds: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferRunMode: { time: "2020-01-27T07:06:25Z", value: "`Start/Stop`,`Continuous`" },
+                                reeferSetPointTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferStateZone1: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone2: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone3: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferSupplyAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                            },
+                            time: "2020-01-27T07:06:25Z",
+                            value: 50,
+                        },
+                    ],
                     reeferStateZone1: [
-                        { substateValue: "`Pretrip`, `Defrost`", time: "2020-01-27T07:06:25Z", value: "`Off`, `On`" },
+                        {
+                            decorations: {
+                                carrierReeferState: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                gps: {
+                                    headingDegrees: 7982033236946874000,
+                                    latitude: 0.02659130816226228,
+                                    longitude: 0.468774774626828,
+                                    reverseGeo: { formattedLocation: "850 Made Up Lane, Orange, CA" },
+                                    speedMilesPerHour: 842599652113183900,
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                gpsOdometerMeters: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferAlarms: {
+                                    alarms: [
+                                        {
+                                            alarmCode: "3",
+                                            description: "Test alarm",
+                                            operatorAction: "Manually disable alarm",
+                                            severity: 6264683518707844000,
+                                        },
+                                    ],
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                reeferAmbientAirTemperatureMilliC: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferDoorStateZone1: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone2: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone3: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferFuelPercent: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferObdEngineSeconds: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferRunMode: { time: "2020-01-27T07:06:25Z", value: "`Start/Stop`,`Continuous`" },
+                                reeferSetPointTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferStateZone1: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone2: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone3: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferSupplyAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                            },
+                            substateValue: "`Pretrip`, `Defrost`",
+                            time: "2020-01-27T07:06:25Z",
+                            value: "`Off`, `On`",
+                        },
                     ],
                     reeferStateZone2: [
-                        { substateValue: "`Pretrip`, `Defrost`", time: "2020-01-27T07:06:25Z", value: "`Off`, `On`" },
+                        {
+                            decorations: {
+                                carrierReeferState: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                gps: {
+                                    headingDegrees: 7982033236946874000,
+                                    latitude: 0.02659130816226228,
+                                    longitude: 0.468774774626828,
+                                    reverseGeo: { formattedLocation: "850 Made Up Lane, Orange, CA" },
+                                    speedMilesPerHour: 842599652113183900,
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                gpsOdometerMeters: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferAlarms: {
+                                    alarms: [
+                                        {
+                                            alarmCode: "3",
+                                            description: "Test alarm",
+                                            operatorAction: "Manually disable alarm",
+                                            severity: 6264683518707844000,
+                                        },
+                                    ],
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                reeferAmbientAirTemperatureMilliC: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferDoorStateZone1: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone2: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone3: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferFuelPercent: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferObdEngineSeconds: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferRunMode: { time: "2020-01-27T07:06:25Z", value: "`Start/Stop`,`Continuous`" },
+                                reeferSetPointTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferStateZone1: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone2: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone3: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferSupplyAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                            },
+                            substateValue: "`Pretrip`, `Defrost`",
+                            time: "2020-01-27T07:06:25Z",
+                            value: "`Off`, `On`",
+                        },
                     ],
                     reeferStateZone3: [
-                        { substateValue: "`Pretrip`, `Defrost`", time: "2020-01-27T07:06:25Z", value: "`Off`, `On`" },
+                        {
+                            decorations: {
+                                carrierReeferState: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                gps: {
+                                    headingDegrees: 7982033236946874000,
+                                    latitude: 0.02659130816226228,
+                                    longitude: 0.468774774626828,
+                                    reverseGeo: { formattedLocation: "850 Made Up Lane, Orange, CA" },
+                                    speedMilesPerHour: 842599652113183900,
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                gpsOdometerMeters: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferAlarms: {
+                                    alarms: [
+                                        {
+                                            alarmCode: "3",
+                                            description: "Test alarm",
+                                            operatorAction: "Manually disable alarm",
+                                            severity: 6264683518707844000,
+                                        },
+                                    ],
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                reeferAmbientAirTemperatureMilliC: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferDoorStateZone1: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone2: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone3: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferFuelPercent: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferObdEngineSeconds: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferRunMode: { time: "2020-01-27T07:06:25Z", value: "`Start/Stop`,`Continuous`" },
+                                reeferSetPointTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferStateZone1: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone2: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone3: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferSupplyAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                            },
+                            substateValue: "`Pretrip`, `Defrost`",
+                            time: "2020-01-27T07:06:25Z",
+                            value: "`Off`, `On`",
+                        },
                     ],
-                    reeferSupplyAirTemperatureMilliCZone1: [{ time: "2020-01-27T07:06:25Z", value: 50 }],
-                    reeferSupplyAirTemperatureMilliCZone2: [{ time: "2020-01-27T07:06:25Z", value: 50 }],
-                    reeferSupplyAirTemperatureMilliCZone3: [{ time: "2020-01-27T07:06:25Z", value: 50 }],
+                    reeferSupplyAirTemperatureMilliCZone1: [
+                        {
+                            decorations: {
+                                carrierReeferState: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                gps: {
+                                    headingDegrees: 7982033236946874000,
+                                    latitude: 0.02659130816226228,
+                                    longitude: 0.468774774626828,
+                                    reverseGeo: { formattedLocation: "850 Made Up Lane, Orange, CA" },
+                                    speedMilesPerHour: 842599652113183900,
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                gpsOdometerMeters: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferAlarms: {
+                                    alarms: [
+                                        {
+                                            alarmCode: "3",
+                                            description: "Test alarm",
+                                            operatorAction: "Manually disable alarm",
+                                            severity: 6264683518707844000,
+                                        },
+                                    ],
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                reeferAmbientAirTemperatureMilliC: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferDoorStateZone1: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone2: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone3: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferFuelPercent: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferObdEngineSeconds: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferRunMode: { time: "2020-01-27T07:06:25Z", value: "`Start/Stop`,`Continuous`" },
+                                reeferSetPointTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferStateZone1: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone2: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone3: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferSupplyAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                            },
+                            time: "2020-01-27T07:06:25Z",
+                            value: 50,
+                        },
+                    ],
+                    reeferSupplyAirTemperatureMilliCZone2: [
+                        {
+                            decorations: {
+                                carrierReeferState: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                gps: {
+                                    headingDegrees: 7982033236946874000,
+                                    latitude: 0.02659130816226228,
+                                    longitude: 0.468774774626828,
+                                    reverseGeo: { formattedLocation: "850 Made Up Lane, Orange, CA" },
+                                    speedMilesPerHour: 842599652113183900,
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                gpsOdometerMeters: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferAlarms: {
+                                    alarms: [
+                                        {
+                                            alarmCode: "3",
+                                            description: "Test alarm",
+                                            operatorAction: "Manually disable alarm",
+                                            severity: 6264683518707844000,
+                                        },
+                                    ],
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                reeferAmbientAirTemperatureMilliC: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferDoorStateZone1: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone2: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone3: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferFuelPercent: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferObdEngineSeconds: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferRunMode: { time: "2020-01-27T07:06:25Z", value: "`Start/Stop`,`Continuous`" },
+                                reeferSetPointTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferStateZone1: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone2: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone3: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferSupplyAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                            },
+                            time: "2020-01-27T07:06:25Z",
+                            value: 50,
+                        },
+                    ],
+                    reeferSupplyAirTemperatureMilliCZone3: [
+                        {
+                            decorations: {
+                                carrierReeferState: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                gps: {
+                                    headingDegrees: 7982033236946874000,
+                                    latitude: 0.02659130816226228,
+                                    longitude: 0.468774774626828,
+                                    reverseGeo: { formattedLocation: "850 Made Up Lane, Orange, CA" },
+                                    speedMilesPerHour: 842599652113183900,
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                gpsOdometerMeters: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferAlarms: {
+                                    alarms: [
+                                        {
+                                            alarmCode: "3",
+                                            description: "Test alarm",
+                                            operatorAction: "Manually disable alarm",
+                                            severity: 6264683518707844000,
+                                        },
+                                    ],
+                                    time: "2020-01-27T07:06:25Z",
+                                },
+                                reeferAmbientAirTemperatureMilliC: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferDoorStateZone1: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone2: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferDoorStateZone3: { time: "2020-01-27T07:06:25Z", value: "open" },
+                                reeferFuelPercent: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferObdEngineSeconds: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferReturnAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferRunMode: { time: "2020-01-27T07:06:25Z", value: "`Start/Stop`,`Continuous`" },
+                                reeferSetPointTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSetPointTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferStateZone1: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone2: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferStateZone3: {
+                                    substateValue: "`Pretrip`, `Defrost`",
+                                    time: "2020-01-27T07:06:25Z",
+                                    value: "`Off`, `On`",
+                                },
+                                reeferSupplyAirTemperatureMilliCZone1: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone2: { time: "2020-01-27T07:06:25Z", value: 50 },
+                                reeferSupplyAirTemperatureMilliCZone3: { time: "2020-01-27T07:06:25Z", value: 50 },
+                            },
+                            time: "2020-01-27T07:06:25Z",
+                            value: 50,
+                        },
+                    ],
                 },
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/fleet/trailers/stats/history")
@@ -1614,173 +4185,7 @@ describe("TrailersClient", () => {
             endTime: "endTime",
             types: "types",
         });
-        expect(response).toEqual({
-            data: [
-                {
-                    carrierReeferState: [
-                        {
-                            substateValue: "`Pretrip`, `Defrost`",
-                            time: "2020-01-27T07:06:25Z",
-                            value: "`Off`, `On`",
-                        },
-                    ],
-                    externalIds: {
-                        key: "value",
-                    },
-                    gps: [
-                        {
-                            headingDegrees: 1495749085005925000,
-                            latitude: 0.5449429145346,
-                            longitude: 0.46982365750308985,
-                            speedMilesPerHour: 152047843600549300,
-                            time: "2020-01-27T07:06:25Z",
-                        },
-                    ],
-                    gpsOdometerMeters: [
-                        {
-                            time: "2020-01-27T07:06:25Z",
-                            value: 50,
-                        },
-                    ],
-                    id: "1234",
-                    name: "Trailer-123",
-                    reeferAlarms: [
-                        {
-                            alarms: [
-                                {
-                                    alarmCode: "3",
-                                    description: "Test alarm",
-                                    operatorAction: "Manually disable alarm",
-                                    severity: 6264683518707844000,
-                                },
-                            ],
-                            time: "2020-01-27T07:06:25Z",
-                        },
-                    ],
-                    reeferAmbientAirTemperatureMilliC: [
-                        {
-                            time: "2020-01-27T07:06:25Z",
-                            value: 50,
-                        },
-                    ],
-                    reeferDoorStateZone1: [
-                        {
-                            time: "2020-01-27T07:06:25Z",
-                            value: "open",
-                        },
-                    ],
-                    reeferDoorStateZone2: [
-                        {
-                            time: "2020-01-27T07:06:25Z",
-                            value: "open",
-                        },
-                    ],
-                    reeferDoorStateZone3: [
-                        {
-                            time: "2020-01-27T07:06:25Z",
-                            value: "open",
-                        },
-                    ],
-                    reeferFuelPercent: [
-                        {
-                            time: "2020-01-27T07:06:25Z",
-                            value: 50,
-                        },
-                    ],
-                    reeferObdEngineSeconds: [
-                        {
-                            time: "2020-01-27T07:06:25Z",
-                            value: 50,
-                        },
-                    ],
-                    reeferReturnAirTemperatureMilliCZone1: [
-                        {
-                            time: "2020-01-27T07:06:25Z",
-                            value: 50,
-                        },
-                    ],
-                    reeferReturnAirTemperatureMilliCZone2: [
-                        {
-                            time: "2020-01-27T07:06:25Z",
-                            value: 50,
-                        },
-                    ],
-                    reeferReturnAirTemperatureMilliCZone3: [
-                        {
-                            time: "2020-01-27T07:06:25Z",
-                            value: 50,
-                        },
-                    ],
-                    reeferRunMode: [
-                        {
-                            time: "2020-01-27T07:06:25Z",
-                            value: "`Start/Stop`,`Continuous`",
-                        },
-                    ],
-                    reeferSetPointTemperatureMilliCZone1: [
-                        {
-                            time: "2020-01-27T07:06:25Z",
-                            value: 50,
-                        },
-                    ],
-                    reeferSetPointTemperatureMilliCZone2: [
-                        {
-                            time: "2020-01-27T07:06:25Z",
-                            value: 50,
-                        },
-                    ],
-                    reeferSetPointTemperatureMilliCZone3: [
-                        {
-                            time: "2020-01-27T07:06:25Z",
-                            value: 50,
-                        },
-                    ],
-                    reeferStateZone1: [
-                        {
-                            substateValue: "`Pretrip`, `Defrost`",
-                            time: "2020-01-27T07:06:25Z",
-                            value: "`Off`, `On`",
-                        },
-                    ],
-                    reeferStateZone2: [
-                        {
-                            substateValue: "`Pretrip`, `Defrost`",
-                            time: "2020-01-27T07:06:25Z",
-                            value: "`Off`, `On`",
-                        },
-                    ],
-                    reeferStateZone3: [
-                        {
-                            substateValue: "`Pretrip`, `Defrost`",
-                            time: "2020-01-27T07:06:25Z",
-                            value: "`Off`, `On`",
-                        },
-                    ],
-                    reeferSupplyAirTemperatureMilliCZone1: [
-                        {
-                            time: "2020-01-27T07:06:25Z",
-                            value: 50,
-                        },
-                    ],
-                    reeferSupplyAirTemperatureMilliCZone2: [
-                        {
-                            time: "2020-01-27T07:06:25Z",
-                            value: 50,
-                        },
-                    ],
-                    reeferSupplyAirTemperatureMilliCZone3: [
-                        {
-                            time: "2020-01-27T07:06:25Z",
-                            value: 50,
-                        },
-                    ],
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getTrailerStatsHistory (2)", async () => {
@@ -1793,6 +4198,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/trailers/stats/history")
@@ -1820,6 +4226,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/trailers/stats/history")
@@ -1847,6 +4254,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/trailers/stats/history")
@@ -1874,6 +4282,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/trailers/stats/history")
@@ -1901,6 +4310,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/trailers/stats/history")
@@ -1928,6 +4338,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/trailers/stats/history")
@@ -1955,6 +4366,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/trailers/stats/history")
@@ -1982,6 +4394,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/trailers/stats/history")
@@ -2009,6 +4422,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/trailers/stats/history")
@@ -2036,6 +4450,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/trailers/stats/history")
@@ -2084,44 +4499,13 @@ describe("TrailersClient", () => {
                 trailerSerialNumber: "8V8WD530FLN016251",
             },
         };
+
         server.mockEndpoint().get("/fleet/trailers/id").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.trailers.getTrailer({
             id: "id",
         });
-        expect(response).toEqual({
-            data: {
-                attributes: [
-                    {
-                        dateValues: ["2024-01-15", "2024-12-31"],
-                        id: "494123",
-                        name: "Compliance/ELD",
-                        numberValues: [867, 5309],
-                        stringValues: ["HQ", "Leased"],
-                    },
-                ],
-                enabledForMobile: true,
-                externalIds: {
-                    key: "value",
-                },
-                id: "494123",
-                installedGateway: {
-                    model: "AG15",
-                    serial: "GFRV-43N-VGX",
-                },
-                licensePlate: "7TYP290",
-                name: "Trailer-123",
-                notes: "These are my trailer notes",
-                tags: [
-                    {
-                        id: "3914",
-                        name: "East Coast",
-                        parentTagId: "4815",
-                    },
-                ],
-                trailerSerialNumber: "8V8WD530FLN016251",
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getTrailer (2)", async () => {
@@ -2134,6 +4518,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/trailers/id").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -2153,6 +4538,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/trailers/id").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -2172,6 +4558,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/trailers/id").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -2191,6 +4578,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/trailers/id").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -2210,6 +4598,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/trailers/id").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -2229,6 +4618,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/trailers/id").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -2248,6 +4638,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/trailers/id").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -2267,6 +4658,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/trailers/id").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -2286,6 +4678,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/trailers/id").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -2305,6 +4698,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/trailers/id").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -2341,6 +4735,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/fleet/trailers/id")
@@ -2366,6 +4761,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/fleet/trailers/id")
@@ -2391,6 +4787,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/fleet/trailers/id")
@@ -2416,6 +4813,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/fleet/trailers/id")
@@ -2441,6 +4839,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/fleet/trailers/id")
@@ -2466,6 +4865,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/fleet/trailers/id")
@@ -2491,6 +4891,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/fleet/trailers/id")
@@ -2516,6 +4917,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/fleet/trailers/id")
@@ -2541,6 +4943,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/fleet/trailers/id")
@@ -2566,6 +4969,7 @@ describe("TrailersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/fleet/trailers/id")
@@ -2612,6 +5016,7 @@ describe("TrailersClient", () => {
                 trailerSerialNumber: "8V8WD530FLN016251",
             },
         };
+
         server
             .mockEndpoint()
             .patch("/fleet/trailers/id")
@@ -2624,39 +5029,7 @@ describe("TrailersClient", () => {
         const response = await client.trailers.updateTrailer({
             id: "id",
         });
-        expect(response).toEqual({
-            data: {
-                attributes: [
-                    {
-                        dateValues: ["2024-01-15", "2024-12-31"],
-                        id: "494123",
-                        name: "Compliance/ELD",
-                        numberValues: [867, 5309],
-                        stringValues: ["HQ", "Leased"],
-                    },
-                ],
-                enabledForMobile: true,
-                externalIds: {
-                    key: "value",
-                },
-                id: "494123",
-                installedGateway: {
-                    model: "AG15",
-                    serial: "GFRV-43N-VGX",
-                },
-                licensePlate: "7TYP290",
-                name: "Trailer-123",
-                notes: "These are my trailer notes",
-                tags: [
-                    {
-                        id: "3914",
-                        name: "East Coast",
-                        parentTagId: "4815",
-                    },
-                ],
-                trailerSerialNumber: "8V8WD530FLN016251",
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("updateTrailer (2)", async () => {
@@ -2669,6 +5042,7 @@ describe("TrailersClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/fleet/trailers/id")
@@ -2695,6 +5069,7 @@ describe("TrailersClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/fleet/trailers/id")
@@ -2721,6 +5096,7 @@ describe("TrailersClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/fleet/trailers/id")
@@ -2747,6 +5123,7 @@ describe("TrailersClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/fleet/trailers/id")
@@ -2773,6 +5150,7 @@ describe("TrailersClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/fleet/trailers/id")
@@ -2799,6 +5177,7 @@ describe("TrailersClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/fleet/trailers/id")
@@ -2825,6 +5204,7 @@ describe("TrailersClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/fleet/trailers/id")
@@ -2851,6 +5231,7 @@ describe("TrailersClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/fleet/trailers/id")
@@ -2877,6 +5258,7 @@ describe("TrailersClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/fleet/trailers/id")
@@ -2903,6 +5285,7 @@ describe("TrailersClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/fleet/trailers/id")

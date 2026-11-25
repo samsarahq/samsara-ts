@@ -8,6 +8,7 @@ export interface BaseRouteWithOrdersResponseObjectResponseBody {
     /** Actual start time, if it exists, for the route in RFC 3339 format. */
     actualRouteStartTime?: string | undefined;
     driver?: Samsara.GoaDriverTinyResponseResponseBody | undefined;
+    equipmentProfile?: Samsara.RouteEquipmentProfileObjectResponseBody | undefined;
     /** A map of external ids */
     externalIds?: Record<string, string> | undefined;
     /** ID of the route */

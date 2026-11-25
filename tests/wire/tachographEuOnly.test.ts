@@ -28,6 +28,7 @@ describe("TachographEuOnlyClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/fleet/drivers/tachograph-activity/history")
@@ -40,27 +41,7 @@ describe("TachographEuOnlyClient", () => {
             startTime: "startTime",
             endTime: "endTime",
         });
-        expect(response).toEqual({
-            data: [
-                {
-                    activity: [
-                        {
-                            endTime: "2020-01-03T16:04:05Z07:00",
-                            isManualEntry: false,
-                            startTime: "2020-01-02T15:04:05Z07:00",
-                        },
-                    ],
-                    driver: {
-                        id: "88668",
-                        name: "Susan Bob",
-                    },
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getDriverTachographFiles", async () => {
@@ -88,6 +69,7 @@ describe("TachographEuOnlyClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/fleet/drivers/tachograph-files/history")
@@ -100,28 +82,7 @@ describe("TachographEuOnlyClient", () => {
             startTime: "startTime",
             endTime: "endTime",
         });
-        expect(response).toEqual({
-            data: [
-                {
-                    driver: {
-                        id: "88668",
-                        name: "Susan Bob",
-                    },
-                    files: [
-                        {
-                            cardNumber: "1000000492436002",
-                            createdAtTime: "2020-01-02T15:04:05Z07:00",
-                            id: "4aff772c-a7bb-45e6-8e41-6a53e34feb83",
-                            url: "https://samsara-tachograph-files.s3.us-west-2.amazonaws.com/123/456/789/4aff772c-a7bb-45e6-8e41-6a53e34feb83.ddd",
-                        },
-                    ],
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getVehicleTachographFiles", async () => {
@@ -153,6 +114,7 @@ describe("TachographEuOnlyClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/fleet/vehicles/tachograph-files/history")
@@ -165,31 +127,6 @@ describe("TachographEuOnlyClient", () => {
             startTime: "startTime",
             endTime: "endTime",
         });
-        expect(response).toEqual({
-            data: [
-                {
-                    files: [
-                        {
-                            createdAtTime: "2020-01-02T15:04:05Z07:00",
-                            id: "4aff772c-a7bb-45e6-8e41-6a53e34feb83",
-                            url: "https://samsara-tachograph-files.s3.us-west-2.amazonaws.com/123/456/789/4aff772c-a7bb-45e6-8e41-6a53e34feb83.ddd",
-                            vehicleIdentificationNumber: "1000000492436002",
-                        },
-                    ],
-                    vehicle: {
-                        ExternalIds: {
-                            maintenanceId: "250020",
-                            payrollId: "ABFS18600",
-                        },
-                        id: "123456789",
-                        name: "Midwest Truck #4",
-                    },
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 });

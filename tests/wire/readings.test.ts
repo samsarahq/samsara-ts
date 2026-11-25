@@ -30,6 +30,7 @@ describe("ReadingsClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/readings/definitions")
@@ -39,33 +40,7 @@ describe("ReadingsClient", () => {
             .build();
 
         const response = await client.readings.listReadingsDefinitions();
-        expect(response).toEqual({
-            data: [
-                {
-                    category: "smartTrailer",
-                    description: "Engine Speed",
-                    entityType: "sensor",
-                    enumValues: [
-                        {
-                            label: "Critically High",
-                            symbol: "criticallyHigh",
-                        },
-                    ],
-                    grouping: {
-                        id: "brakeLiningRemaining",
-                        label: "Brake Lining Remaining",
-                    },
-                    ingestionEnabled: true,
-                    label: "engineRpm",
-                    readingId: "12345",
-                    type: "Ipsa id recusandae libero sit qui officiis.",
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("listReadingsDefinitions (2)", async () => {
@@ -78,6 +53,7 @@ describe("ReadingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/readings/definitions")
@@ -101,6 +77,7 @@ describe("ReadingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/readings/definitions")
@@ -124,6 +101,7 @@ describe("ReadingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/readings/definitions")
@@ -147,6 +125,7 @@ describe("ReadingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/readings/definitions")
@@ -170,6 +149,7 @@ describe("ReadingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/readings/definitions")
@@ -193,6 +173,7 @@ describe("ReadingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/readings/definitions")
@@ -216,6 +197,7 @@ describe("ReadingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/readings/definitions")
@@ -239,6 +221,7 @@ describe("ReadingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/readings/definitions")
@@ -262,6 +245,7 @@ describe("ReadingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/readings/definitions")
@@ -285,6 +269,7 @@ describe("ReadingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/readings/definitions")
@@ -318,28 +303,14 @@ describe("ReadingsClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server.mockEndpoint().get("/readings/history").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.readings.getReadingsHistory({
             readingId: "readingId",
             entityType: "entityType",
         });
-        expect(response).toEqual({
-            data: [
-                {
-                    entityId: "123456",
-                    externalIds: {
-                        key: "value",
-                    },
-                    happenedAtTime: "2020-01-27T07:06:25Z",
-                    value: "off",
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getReadingsHistory (2)", async () => {
@@ -352,6 +323,7 @@ describe("ReadingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/readings/history").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -372,6 +344,7 @@ describe("ReadingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/readings/history").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -392,6 +365,7 @@ describe("ReadingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/readings/history").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -412,6 +386,7 @@ describe("ReadingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/readings/history").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -432,6 +407,7 @@ describe("ReadingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/readings/history").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -452,6 +428,7 @@ describe("ReadingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/readings/history").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -472,6 +449,7 @@ describe("ReadingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/readings/history").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -492,6 +470,7 @@ describe("ReadingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/readings/history").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -512,6 +491,7 @@ describe("ReadingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/readings/history").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -532,6 +512,7 @@ describe("ReadingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/readings/history").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -563,29 +544,14 @@ describe("ReadingsClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server.mockEndpoint().get("/readings/latest").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.readings.getReadingsSnapshot({
             readingIds: "readingIds",
             entityType: "entityType",
         });
-        expect(response).toEqual({
-            data: [
-                {
-                    entityId: "123456",
-                    externalIds: {
-                        key: "value",
-                    },
-                    happenedAtTime: "2020-01-27T07:06:25Z",
-                    readingId: "engineSpeed",
-                    value: "off",
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getReadingsSnapshot (2)", async () => {
@@ -598,6 +564,7 @@ describe("ReadingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/readings/latest").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -618,6 +585,7 @@ describe("ReadingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/readings/latest").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -638,6 +606,7 @@ describe("ReadingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/readings/latest").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -658,6 +627,7 @@ describe("ReadingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/readings/latest").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -678,6 +648,7 @@ describe("ReadingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/readings/latest").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -698,6 +669,7 @@ describe("ReadingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/readings/latest").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -718,6 +690,7 @@ describe("ReadingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/readings/latest").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -738,6 +711,7 @@ describe("ReadingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/readings/latest").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -758,6 +732,7 @@ describe("ReadingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/readings/latest").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -778,6 +753,7 @@ describe("ReadingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/readings/latest").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
 
         await expect(async () => {

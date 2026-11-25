@@ -43,6 +43,7 @@ describe("CarrierProposedAssignmentsClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/fleet/carrier-proposed-assignments")
@@ -52,48 +53,7 @@ describe("CarrierProposedAssignmentsClient", () => {
             .build();
 
         const response = await client.carrierProposedAssignments.listCarrierProposedAssignments();
-        expect(response).toEqual({
-            data: [
-                {
-                    acceptedTime: "2020-01-27T07:06:25Z",
-                    activeTime: "2020-01-27T07:06:25Z",
-                    driver: {
-                        externalIds: {
-                            maintenanceId: "250020",
-                            payrollId: "ABFS18600",
-                        },
-                        id: "88668",
-                        name: "Susan Bob",
-                    },
-                    firstSeenTime: "2020-01-27T07:06:25Z",
-                    id: "08b3aeada5f4ab3010c0b4efa28d2d1890dbf8d48d2d",
-                    rejectedTime: "2020-01-27T07:06:25Z",
-                    shippingDocs: "Delivery 123, chips and soda",
-                    trailers: [
-                        {
-                            externalIds: {
-                                maintenanceId: "250020",
-                                payrollId: "ABFS18600",
-                            },
-                            id: "123456789",
-                            name: "Midwest Trailer #5",
-                        },
-                    ],
-                    vehicle: {
-                        ExternalIds: {
-                            maintenanceId: "250020",
-                            payrollId: "ABFS18600",
-                        },
-                        id: "123456789",
-                        name: "Midwest Truck #4",
-                    },
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createCarrierProposedAssignment", async () => {
@@ -132,6 +92,7 @@ describe("CarrierProposedAssignmentsClient", () => {
                 },
             },
         };
+
         server
             .mockEndpoint()
             .post("/fleet/carrier-proposed-assignments")
@@ -145,41 +106,6 @@ describe("CarrierProposedAssignmentsClient", () => {
             driverId: "42",
             vehicleId: "123",
         });
-        expect(response).toEqual({
-            data: {
-                acceptedTime: "2020-01-27T07:06:25Z",
-                activeTime: "2020-01-27T07:06:25Z",
-                driver: {
-                    externalIds: {
-                        maintenanceId: "250020",
-                        payrollId: "ABFS18600",
-                    },
-                    id: "88668",
-                    name: "Susan Bob",
-                },
-                firstSeenTime: "2020-01-27T07:06:25Z",
-                id: "08b3aeada5f4ab3010c0b4efa28d2d1890dbf8d48d2d",
-                rejectedTime: "2020-01-27T07:06:25Z",
-                shippingDocs: "Delivery 123, chips and soda",
-                trailers: [
-                    {
-                        externalIds: {
-                            maintenanceId: "250020",
-                            payrollId: "ABFS18600",
-                        },
-                        id: "123456789",
-                        name: "Midwest Trailer #5",
-                    },
-                ],
-                vehicle: {
-                    ExternalIds: {
-                        maintenanceId: "250020",
-                        payrollId: "ABFS18600",
-                    },
-                    id: "123456789",
-                    name: "Midwest Truck #4",
-                },
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 });

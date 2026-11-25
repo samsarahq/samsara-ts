@@ -28,31 +28,11 @@ describe("WebhooksClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server.mockEndpoint().get("/webhooks").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.webhooks.listWebhooks();
-        expect(response).toEqual({
-            data: [
-                {
-                    customHeaders: [
-                        {
-                            key: "format",
-                            value: "xcmol-532",
-                        },
-                    ],
-                    eventTypes: ["AddressCreated", "AddressCreated"],
-                    id: "23918",
-                    name: "Webhook-123",
-                    secretKey: "11121-31231-1231212",
-                    url: "https://www.webhook-123.com/webhook/listener",
-                    version: "2018-01-01",
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("listWebhooks (2)", async () => {
@@ -65,6 +45,7 @@ describe("WebhooksClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/webhooks").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -82,6 +63,7 @@ describe("WebhooksClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/webhooks").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -99,6 +81,7 @@ describe("WebhooksClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/webhooks").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -116,6 +99,7 @@ describe("WebhooksClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/webhooks").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -133,6 +117,7 @@ describe("WebhooksClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/webhooks").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -150,6 +135,7 @@ describe("WebhooksClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/webhooks").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -167,6 +153,7 @@ describe("WebhooksClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/webhooks").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -184,6 +171,7 @@ describe("WebhooksClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/webhooks").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -201,6 +189,7 @@ describe("WebhooksClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/webhooks").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -218,6 +207,7 @@ describe("WebhooksClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/webhooks").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -243,6 +233,7 @@ describe("WebhooksClient", () => {
             url: "https://www.webhook-123.com/webhook/listener",
             version: "2018-01-01",
         };
+
         server
             .mockEndpoint()
             .post("/webhooks")
@@ -256,20 +247,7 @@ describe("WebhooksClient", () => {
             name: "Webhook-123",
             url: "https://www.Webhook-123.com/webhook/listener",
         });
-        expect(response).toEqual({
-            customHeaders: [
-                {
-                    key: "format",
-                    value: "xcmol-532",
-                },
-            ],
-            eventTypes: ["AddressCreated", "AddressCreated"],
-            id: "23918",
-            name: "Webhook-123",
-            secretKey: "11121-31231-1231212",
-            url: "https://www.webhook-123.com/webhook/listener",
-            version: "2018-01-01",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("postWebhooks (2)", async () => {
@@ -282,6 +260,7 @@ describe("WebhooksClient", () => {
         });
         const rawRequestBody = { name: "name", url: "url" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/webhooks")
@@ -309,6 +288,7 @@ describe("WebhooksClient", () => {
         });
         const rawRequestBody = { name: "name", url: "url" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/webhooks")
@@ -336,6 +316,7 @@ describe("WebhooksClient", () => {
         });
         const rawRequestBody = { name: "name", url: "url" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/webhooks")
@@ -363,6 +344,7 @@ describe("WebhooksClient", () => {
         });
         const rawRequestBody = { name: "name", url: "url" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/webhooks")
@@ -390,6 +372,7 @@ describe("WebhooksClient", () => {
         });
         const rawRequestBody = { name: "name", url: "url" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/webhooks")
@@ -417,6 +400,7 @@ describe("WebhooksClient", () => {
         });
         const rawRequestBody = { name: "name", url: "url" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/webhooks")
@@ -444,6 +428,7 @@ describe("WebhooksClient", () => {
         });
         const rawRequestBody = { name: "name", url: "url" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/webhooks")
@@ -471,6 +456,7 @@ describe("WebhooksClient", () => {
         });
         const rawRequestBody = { name: "name", url: "url" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/webhooks")
@@ -498,6 +484,7 @@ describe("WebhooksClient", () => {
         });
         const rawRequestBody = { name: "name", url: "url" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/webhooks")
@@ -525,6 +512,7 @@ describe("WebhooksClient", () => {
         });
         const rawRequestBody = { name: "name", url: "url" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/webhooks")
@@ -560,25 +548,13 @@ describe("WebhooksClient", () => {
             url: "https://www.webhook-123.com/webhook/listener",
             version: "2018-01-01",
         };
+
         server.mockEndpoint().get("/webhooks/id").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.webhooks.getWebhook({
             id: "id",
         });
-        expect(response).toEqual({
-            customHeaders: [
-                {
-                    key: "format",
-                    value: "xcmol-532",
-                },
-            ],
-            eventTypes: ["AddressCreated", "AddressCreated"],
-            id: "23918",
-            name: "Webhook-123",
-            secretKey: "11121-31231-1231212",
-            url: "https://www.webhook-123.com/webhook/listener",
-            version: "2018-01-01",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getWebhook (2)", async () => {
@@ -591,6 +567,7 @@ describe("WebhooksClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/webhooks/id").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -610,6 +587,7 @@ describe("WebhooksClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/webhooks/id").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -629,6 +607,7 @@ describe("WebhooksClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/webhooks/id").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -648,6 +627,7 @@ describe("WebhooksClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/webhooks/id").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -667,6 +647,7 @@ describe("WebhooksClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/webhooks/id").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -686,6 +667,7 @@ describe("WebhooksClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/webhooks/id").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -705,6 +687,7 @@ describe("WebhooksClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/webhooks/id").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -724,6 +707,7 @@ describe("WebhooksClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/webhooks/id").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -743,6 +727,7 @@ describe("WebhooksClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/webhooks/id").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -762,6 +747,7 @@ describe("WebhooksClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/webhooks/id").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -798,6 +784,7 @@ describe("WebhooksClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().delete("/webhooks/id").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -817,6 +804,7 @@ describe("WebhooksClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().delete("/webhooks/id").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -836,6 +824,7 @@ describe("WebhooksClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().delete("/webhooks/id").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -855,6 +844,7 @@ describe("WebhooksClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().delete("/webhooks/id").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -874,6 +864,7 @@ describe("WebhooksClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().delete("/webhooks/id").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -893,6 +884,7 @@ describe("WebhooksClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().delete("/webhooks/id").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -912,6 +904,7 @@ describe("WebhooksClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().delete("/webhooks/id").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -931,6 +924,7 @@ describe("WebhooksClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().delete("/webhooks/id").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -950,6 +944,7 @@ describe("WebhooksClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().delete("/webhooks/id").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -969,6 +964,7 @@ describe("WebhooksClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().delete("/webhooks/id").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -996,6 +992,7 @@ describe("WebhooksClient", () => {
             url: "https://www.webhook-123.com/webhook/listener",
             version: "2018-01-01",
         };
+
         server
             .mockEndpoint()
             .patch("/webhooks/id")
@@ -1008,20 +1005,7 @@ describe("WebhooksClient", () => {
         const response = await client.webhooks.patchWebhook({
             id: "id",
         });
-        expect(response).toEqual({
-            customHeaders: [
-                {
-                    key: "format",
-                    value: "xcmol-532",
-                },
-            ],
-            eventTypes: ["AddressCreated", "AddressCreated", "AddressCreated", "AddressCreated"],
-            id: "23918",
-            name: "Webhook-123",
-            secretKey: "11121-31231-1231212",
-            url: "https://www.webhook-123.com/webhook/listener",
-            version: "2018-01-01",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("patchWebhook (2)", async () => {
@@ -1034,6 +1018,7 @@ describe("WebhooksClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/webhooks/id")
@@ -1060,6 +1045,7 @@ describe("WebhooksClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/webhooks/id")
@@ -1086,6 +1072,7 @@ describe("WebhooksClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/webhooks/id")
@@ -1112,6 +1099,7 @@ describe("WebhooksClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/webhooks/id")
@@ -1138,6 +1126,7 @@ describe("WebhooksClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/webhooks/id")
@@ -1164,6 +1153,7 @@ describe("WebhooksClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/webhooks/id")
@@ -1190,6 +1180,7 @@ describe("WebhooksClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/webhooks/id")
@@ -1216,6 +1207,7 @@ describe("WebhooksClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/webhooks/id")
@@ -1242,6 +1234,7 @@ describe("WebhooksClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/webhooks/id")
@@ -1268,6 +1261,7 @@ describe("WebhooksClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/webhooks/id")

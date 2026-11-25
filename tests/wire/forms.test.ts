@@ -17,1082 +17,166 @@ describe("FormsClient", () => {
         const rawResponseBody = {
             data: [
                 {
-                    approvalDetails: { comment: "comment" },
-                    asset: {
-                        entryType: "tracked",
-                        externalIds: { externalIds: "externalIds" },
-                        id: "id",
-                        name: "name",
-                    },
-                    assignedAtTime: "2024-01-15T09:30:00Z",
-                    assignedTo: { id: "id", type: "driver" },
-                    createdAtTime: "2024-01-15T09:30:00Z",
-                    dueAtTime: "2024-01-15T09:30:00Z",
-                    durationMs: 1000000,
-                    externalIds: { externalIds: "externalIds" },
+                    approvalDetails: { comment: "Requesting some changes to the submission." },
+                    asset: { entryType: "tracked", id: "281474982859091", name: "trailer 123" },
+                    assignedAtTime: "2019-06-13T19:08:25Z",
+                    assignedTo: { id: "938172", type: "driver" },
+                    createdAtTime: "2019-06-13T19:08:25Z",
+                    dueAtTime: "2019-06-13T19:08:25Z",
+                    durationMs: 105000,
+                    externalIds: { key: "value" },
                     fields: [
                         {
-                            assetValue: {
-                                asset: {
-                                    entryType: "tracked",
-                                    externalIds: { externalIds: "externalIds" },
-                                    id: "id",
-                                    name: "name",
-                                },
+                            assetValue: { asset: { entryType: "tracked", id: "281474982859091", name: "trailer 123" } },
+                            barcodeValue: { barcodes: [{ value: "1A2B3C4D5E" }] },
+                            checkBoxesValue: {
+                                value: ["Option A", "Option B"],
+                                valueIds: [
+                                    "0cbbddb3-2541-4889-b4eb-92171cbfc142",
+                                    "d33198cb-369f-4278-8120-d92d3ebf74bf",
+                                ],
                             },
-                            barcodeValue: { barcodes: [{ value: "value" }, { value: "value" }] },
-                            checkBoxesValue: { value: ["value", "value"], valueIds: ["valueIds", "valueIds"] },
-                            dateTimeValue: { dateValue: "2023-01-15", type: "datetime", value: "2024-01-15T09:30:00Z" },
+                            dateTimeValue: { dateValue: "2024-08-08", type: "datetime", value: "2024-08-08T18:53:23Z" },
                             geofenceValue: {
                                 geofence: {
-                                    address: "address",
+                                    address: "123 Main St, Anytown, USA 12345",
                                     entryType: "tracked",
-                                    externalIds: { externalIds: "externalIds" },
-                                    id: "id",
-                                    name: "name",
+                                    id: "1234567890",
+                                    name: "Geofence Name",
                                 },
                             },
-                            id: "id",
-                            issue: { externalIds: { externalIds: "externalIds" }, id: "id" },
-                            label: "label",
+                            id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
+                            issue: { id: "12345" },
+                            label: "Engine Hours",
                             mediaList: [
                                 {
-                                    id: "id",
+                                    id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
                                     processingStatus: "unknown",
-                                    url: "url",
-                                    urlExpiresAt: "2024-01-15T09:30:00Z",
-                                },
-                                {
-                                    id: "id",
-                                    processingStatus: "unknown",
-                                    url: "url",
-                                    urlExpiresAt: "2024-01-15T09:30:00Z",
+                                    url: "https://samsara-forms-submission-media-uploads.s3.us-west-2.amazonaws.com/123456",
+                                    urlExpiresAt: "2019-06-13T19:08:25Z",
                                 },
                             ],
                             mediaValue: {
                                 mediaList: [
                                     {
-                                        id: "id",
+                                        id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
                                         processingStatus: "unknown",
-                                        url: "url",
-                                        urlExpiresAt: "2024-01-15T09:30:00Z",
-                                    },
-                                    {
-                                        id: "id",
-                                        processingStatus: "unknown",
-                                        url: "url",
-                                        urlExpiresAt: "2024-01-15T09:30:00Z",
+                                        url: "https://samsara-forms-submission-media-uploads.s3.us-west-2.amazonaws.com/123456",
+                                        urlExpiresAt: "2019-06-13T19:08:25Z",
                                     },
                                 ],
                             },
-                            multipleChoiceValue: { value: "value", valueId: "valueId" },
-                            note: "note",
-                            numberValue: { value: 1.1 },
+                            multipleChoiceValue: { value: "Yes", valueId: "94096370-7228-4d83-ae5d-b20f3e45c0fc" },
+                            note: "Fire and oil can lead to an accident.",
+                            numberValue: { value: 123.456 },
                             personValue: {
                                 person: {
                                     entryType: "tracked",
-                                    name: "name",
-                                    polymorphicUserId: { id: "id", type: "driver" },
+                                    name: "Jake",
+                                    polymorphicUserId: { id: "938172", type: "driver" },
                                 },
                             },
                             signatureValue: {
                                 media: {
-                                    id: "id",
+                                    id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
                                     processingStatus: "unknown",
-                                    url: "url",
-                                    urlExpiresAt: "2024-01-15T09:30:00Z",
+                                    url: "https://samsara-forms-submission-media-uploads.s3.us-west-2.amazonaws.com/123456",
+                                    urlExpiresAt: "2019-06-13T19:08:25Z",
                                 },
                             },
                             tableValue: {
-                                columns: [
-                                    { id: "id", label: "label", type: "text" },
-                                    { id: "id", label: "label", type: "text" },
-                                ],
+                                columns: [{ id: "id", label: "Store Number", type: "text" }],
                                 rows: [
-                                    { cells: [], id: "id" },
-                                    { cells: [], id: "id" },
-                                ],
-                            },
-                            textValue: { value: "value" },
-                            type: "number",
-                        },
-                        {
-                            assetValue: {
-                                asset: {
-                                    entryType: "tracked",
-                                    externalIds: { externalIds: "externalIds" },
-                                    id: "id",
-                                    name: "name",
-                                },
-                            },
-                            barcodeValue: { barcodes: [{ value: "value" }, { value: "value" }] },
-                            checkBoxesValue: { value: ["value", "value"], valueIds: ["valueIds", "valueIds"] },
-                            dateTimeValue: { dateValue: "2023-01-15", type: "datetime", value: "2024-01-15T09:30:00Z" },
-                            geofenceValue: {
-                                geofence: {
-                                    address: "address",
-                                    entryType: "tracked",
-                                    externalIds: { externalIds: "externalIds" },
-                                    id: "id",
-                                    name: "name",
-                                },
-                            },
-                            id: "id",
-                            issue: { externalIds: { externalIds: "externalIds" }, id: "id" },
-                            label: "label",
-                            mediaList: [
-                                {
-                                    id: "id",
-                                    processingStatus: "unknown",
-                                    url: "url",
-                                    urlExpiresAt: "2024-01-15T09:30:00Z",
-                                },
-                                {
-                                    id: "id",
-                                    processingStatus: "unknown",
-                                    url: "url",
-                                    urlExpiresAt: "2024-01-15T09:30:00Z",
-                                },
-                            ],
-                            mediaValue: {
-                                mediaList: [
                                     {
+                                        cells: [
+                                            {
+                                                barcodeValue: { barcodes: [{ value: "1A2B3C4D5E" }] },
+                                                checkBoxesValue: {
+                                                    value: ["Option A", "Option B"],
+                                                    valueIds: [
+                                                        "0cbbddb3-2541-4889-b4eb-92171cbfc142",
+                                                        "d33198cb-369f-4278-8120-d92d3ebf74bf",
+                                                    ],
+                                                },
+                                                dateTimeValue: {
+                                                    dateValue: "2024-08-08",
+                                                    type: "datetime",
+                                                    value: "2024-08-08T18:53:23Z",
+                                                },
+                                                id: "id",
+                                                mediaValue: {
+                                                    mediaList: [
+                                                        {
+                                                            id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
+                                                            processingStatus: "unknown",
+                                                            url: "https://samsara-forms-submission-media-uploads.s3.us-west-2.amazonaws.com/123456",
+                                                            urlExpiresAt: "2019-06-13T19:08:25Z",
+                                                        },
+                                                    ],
+                                                },
+                                                multipleChoiceValue: {
+                                                    value: "Yes",
+                                                    valueId: "94096370-7228-4d83-ae5d-b20f3e45c0fc",
+                                                },
+                                                numberValue: { value: 123.456 },
+                                                personValue: {
+                                                    person: {
+                                                        entryType: "tracked",
+                                                        name: "Jake",
+                                                        polymorphicUserId: { id: "938172", type: "driver" },
+                                                    },
+                                                },
+                                                signatureValue: {
+                                                    media: {
+                                                        id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
+                                                        processingStatus: "unknown",
+                                                        url: "https://samsara-forms-submission-media-uploads.s3.us-west-2.amazonaws.com/123456",
+                                                        urlExpiresAt: "2019-06-13T19:08:25Z",
+                                                    },
+                                                },
+                                                textValue: { value: "Exposed wires" },
+                                                type: "number",
+                                            },
+                                        ],
                                         id: "id",
-                                        processingStatus: "unknown",
-                                        url: "url",
-                                        urlExpiresAt: "2024-01-15T09:30:00Z",
-                                    },
-                                    {
-                                        id: "id",
-                                        processingStatus: "unknown",
-                                        url: "url",
-                                        urlExpiresAt: "2024-01-15T09:30:00Z",
                                     },
                                 ],
                             },
-                            multipleChoiceValue: { value: "value", valueId: "valueId" },
-                            note: "note",
-                            numberValue: { value: 1.1 },
-                            personValue: {
-                                person: {
-                                    entryType: "tracked",
-                                    name: "name",
-                                    polymorphicUserId: { id: "id", type: "driver" },
-                                },
-                            },
-                            signatureValue: {
-                                media: {
-                                    id: "id",
-                                    processingStatus: "unknown",
-                                    url: "url",
-                                    urlExpiresAt: "2024-01-15T09:30:00Z",
-                                },
-                            },
-                            tableValue: {
-                                columns: [
-                                    { id: "id", label: "label", type: "text" },
-                                    { id: "id", label: "label", type: "text" },
-                                ],
-                                rows: [
-                                    { cells: [], id: "id" },
-                                    { cells: [], id: "id" },
-                                ],
-                            },
-                            textValue: { value: "value" },
+                            textValue: { value: "Exposed wires" },
                             type: "number",
                         },
                     ],
-                    formTemplate: { id: "id", revisionId: "revisionId" },
+                    formTemplate: {
+                        id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
+                        revisionId: "1214a1fa-f0c6-408b-bf85-51dc3bc71ac7",
+                    },
                     geofence: {
-                        address: "address",
+                        address: "123 Main St, Anytown, USA 12345",
                         entryType: "tracked",
-                        externalIds: { externalIds: "externalIds" },
-                        id: "id",
-                        name: "name",
+                        id: "1234567890",
+                        name: "Geofence Name",
                     },
-                    id: "id",
+                    id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
                     isRequired: true,
-                    location: { latitude: 1.1, longitude: 1.1 },
-                    routeId: "routeId",
-                    routeStopId: "routeStopId",
-                    score: { maxPoints: 1.1, scorePercent: 1.1, scorePoints: 1.1 },
+                    location: { latitude: 12333122.3, longitude: 1233331.4 },
+                    routeId: "123456789",
+                    routeStopId: "987654321",
+                    score: { maxPoints: 80, scorePercent: 75, scorePoints: 60 },
                     status: "notStarted",
-                    submittedAtTime: "2024-01-15T09:30:00Z",
-                    submittedBy: { id: "id", type: "driver" },
-                    title: "title",
-                    updatedAtTime: "2024-01-15T09:30:00Z",
-                },
-                {
-                    approvalDetails: { comment: "comment" },
-                    asset: {
-                        entryType: "tracked",
-                        externalIds: { externalIds: "externalIds" },
-                        id: "id",
-                        name: "name",
-                    },
-                    assignedAtTime: "2024-01-15T09:30:00Z",
-                    assignedTo: { id: "id", type: "driver" },
-                    createdAtTime: "2024-01-15T09:30:00Z",
-                    dueAtTime: "2024-01-15T09:30:00Z",
-                    durationMs: 1000000,
-                    externalIds: { externalIds: "externalIds" },
-                    fields: [
-                        {
-                            assetValue: {
-                                asset: {
-                                    entryType: "tracked",
-                                    externalIds: { externalIds: "externalIds" },
-                                    id: "id",
-                                    name: "name",
-                                },
-                            },
-                            barcodeValue: { barcodes: [{ value: "value" }, { value: "value" }] },
-                            checkBoxesValue: { value: ["value", "value"], valueIds: ["valueIds", "valueIds"] },
-                            dateTimeValue: { dateValue: "2023-01-15", type: "datetime", value: "2024-01-15T09:30:00Z" },
-                            geofenceValue: {
-                                geofence: {
-                                    address: "address",
-                                    entryType: "tracked",
-                                    externalIds: { externalIds: "externalIds" },
-                                    id: "id",
-                                    name: "name",
-                                },
-                            },
-                            id: "id",
-                            issue: { externalIds: { externalIds: "externalIds" }, id: "id" },
-                            label: "label",
-                            mediaList: [
-                                {
-                                    id: "id",
-                                    processingStatus: "unknown",
-                                    url: "url",
-                                    urlExpiresAt: "2024-01-15T09:30:00Z",
-                                },
-                                {
-                                    id: "id",
-                                    processingStatus: "unknown",
-                                    url: "url",
-                                    urlExpiresAt: "2024-01-15T09:30:00Z",
-                                },
-                            ],
-                            mediaValue: {
-                                mediaList: [
-                                    {
-                                        id: "id",
-                                        processingStatus: "unknown",
-                                        url: "url",
-                                        urlExpiresAt: "2024-01-15T09:30:00Z",
-                                    },
-                                    {
-                                        id: "id",
-                                        processingStatus: "unknown",
-                                        url: "url",
-                                        urlExpiresAt: "2024-01-15T09:30:00Z",
-                                    },
-                                ],
-                            },
-                            multipleChoiceValue: { value: "value", valueId: "valueId" },
-                            note: "note",
-                            numberValue: { value: 1.1 },
-                            personValue: {
-                                person: {
-                                    entryType: "tracked",
-                                    name: "name",
-                                    polymorphicUserId: { id: "id", type: "driver" },
-                                },
-                            },
-                            signatureValue: {
-                                media: {
-                                    id: "id",
-                                    processingStatus: "unknown",
-                                    url: "url",
-                                    urlExpiresAt: "2024-01-15T09:30:00Z",
-                                },
-                            },
-                            tableValue: {
-                                columns: [
-                                    { id: "id", label: "label", type: "text" },
-                                    { id: "id", label: "label", type: "text" },
-                                ],
-                                rows: [
-                                    { cells: [], id: "id" },
-                                    { cells: [], id: "id" },
-                                ],
-                            },
-                            textValue: { value: "value" },
-                            type: "number",
-                        },
-                        {
-                            assetValue: {
-                                asset: {
-                                    entryType: "tracked",
-                                    externalIds: { externalIds: "externalIds" },
-                                    id: "id",
-                                    name: "name",
-                                },
-                            },
-                            barcodeValue: { barcodes: [{ value: "value" }, { value: "value" }] },
-                            checkBoxesValue: { value: ["value", "value"], valueIds: ["valueIds", "valueIds"] },
-                            dateTimeValue: { dateValue: "2023-01-15", type: "datetime", value: "2024-01-15T09:30:00Z" },
-                            geofenceValue: {
-                                geofence: {
-                                    address: "address",
-                                    entryType: "tracked",
-                                    externalIds: { externalIds: "externalIds" },
-                                    id: "id",
-                                    name: "name",
-                                },
-                            },
-                            id: "id",
-                            issue: { externalIds: { externalIds: "externalIds" }, id: "id" },
-                            label: "label",
-                            mediaList: [
-                                {
-                                    id: "id",
-                                    processingStatus: "unknown",
-                                    url: "url",
-                                    urlExpiresAt: "2024-01-15T09:30:00Z",
-                                },
-                                {
-                                    id: "id",
-                                    processingStatus: "unknown",
-                                    url: "url",
-                                    urlExpiresAt: "2024-01-15T09:30:00Z",
-                                },
-                            ],
-                            mediaValue: {
-                                mediaList: [
-                                    {
-                                        id: "id",
-                                        processingStatus: "unknown",
-                                        url: "url",
-                                        urlExpiresAt: "2024-01-15T09:30:00Z",
-                                    },
-                                    {
-                                        id: "id",
-                                        processingStatus: "unknown",
-                                        url: "url",
-                                        urlExpiresAt: "2024-01-15T09:30:00Z",
-                                    },
-                                ],
-                            },
-                            multipleChoiceValue: { value: "value", valueId: "valueId" },
-                            note: "note",
-                            numberValue: { value: 1.1 },
-                            personValue: {
-                                person: {
-                                    entryType: "tracked",
-                                    name: "name",
-                                    polymorphicUserId: { id: "id", type: "driver" },
-                                },
-                            },
-                            signatureValue: {
-                                media: {
-                                    id: "id",
-                                    processingStatus: "unknown",
-                                    url: "url",
-                                    urlExpiresAt: "2024-01-15T09:30:00Z",
-                                },
-                            },
-                            tableValue: {
-                                columns: [
-                                    { id: "id", label: "label", type: "text" },
-                                    { id: "id", label: "label", type: "text" },
-                                ],
-                                rows: [
-                                    { cells: [], id: "id" },
-                                    { cells: [], id: "id" },
-                                ],
-                            },
-                            textValue: { value: "value" },
-                            type: "number",
-                        },
-                    ],
-                    formTemplate: { id: "id", revisionId: "revisionId" },
-                    geofence: {
-                        address: "address",
-                        entryType: "tracked",
-                        externalIds: { externalIds: "externalIds" },
-                        id: "id",
-                        name: "name",
-                    },
-                    id: "id",
-                    isRequired: true,
-                    location: { latitude: 1.1, longitude: 1.1 },
-                    routeId: "routeId",
-                    routeStopId: "routeStopId",
-                    score: { maxPoints: 1.1, scorePercent: 1.1, scorePoints: 1.1 },
-                    status: "notStarted",
-                    submittedAtTime: "2024-01-15T09:30:00Z",
-                    submittedBy: { id: "id", type: "driver" },
-                    title: "title",
-                    updatedAtTime: "2024-01-15T09:30:00Z",
+                    submittedAtTime: "2019-06-13T19:08:25Z",
+                    submittedBy: { id: "938172", type: "driver" },
+                    title: "Form Submission Title",
+                    updatedAtTime: "2019-06-13T19:08:25Z",
                 },
             ],
         };
+
         server.mockEndpoint().get("/form-submissions").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
-        const response = await client.forms.getFormSubmissions();
-        expect(response).toEqual({
-            data: [
-                {
-                    approvalDetails: {
-                        comment: "comment",
-                    },
-                    asset: {
-                        entryType: "tracked",
-                        externalIds: {
-                            externalIds: "externalIds",
-                        },
-                        id: "id",
-                        name: "name",
-                    },
-                    assignedAtTime: "2024-01-15T09:30:00Z",
-                    assignedTo: {
-                        id: "id",
-                        type: "driver",
-                    },
-                    createdAtTime: "2024-01-15T09:30:00Z",
-                    dueAtTime: "2024-01-15T09:30:00Z",
-                    durationMs: 1000000,
-                    externalIds: {
-                        externalIds: "externalIds",
-                    },
-                    fields: [
-                        {
-                            assetValue: {
-                                asset: {
-                                    entryType: "tracked",
-                                    externalIds: {
-                                        externalIds: "externalIds",
-                                    },
-                                    id: "id",
-                                    name: "name",
-                                },
-                            },
-                            barcodeValue: {
-                                barcodes: [
-                                    {
-                                        value: "value",
-                                    },
-                                    {
-                                        value: "value",
-                                    },
-                                ],
-                            },
-                            checkBoxesValue: {
-                                value: ["value", "value"],
-                                valueIds: ["valueIds", "valueIds"],
-                            },
-                            dateTimeValue: {
-                                dateValue: "2023-01-15",
-                                type: "datetime",
-                                value: "2024-01-15T09:30:00Z",
-                            },
-                            geofenceValue: {
-                                geofence: {
-                                    address: "address",
-                                    entryType: "tracked",
-                                    externalIds: {
-                                        externalIds: "externalIds",
-                                    },
-                                    id: "id",
-                                    name: "name",
-                                },
-                            },
-                            id: "id",
-                            issue: {
-                                externalIds: {
-                                    externalIds: "externalIds",
-                                },
-                                id: "id",
-                            },
-                            label: "label",
-                            mediaList: [
-                                {
-                                    id: "id",
-                                    processingStatus: "unknown",
-                                    url: "url",
-                                    urlExpiresAt: "2024-01-15T09:30:00Z",
-                                },
-                                {
-                                    id: "id",
-                                    processingStatus: "unknown",
-                                    url: "url",
-                                    urlExpiresAt: "2024-01-15T09:30:00Z",
-                                },
-                            ],
-                            mediaValue: {
-                                mediaList: [
-                                    {
-                                        id: "id",
-                                        processingStatus: "unknown",
-                                        url: "url",
-                                        urlExpiresAt: "2024-01-15T09:30:00Z",
-                                    },
-                                    {
-                                        id: "id",
-                                        processingStatus: "unknown",
-                                        url: "url",
-                                        urlExpiresAt: "2024-01-15T09:30:00Z",
-                                    },
-                                ],
-                            },
-                            multipleChoiceValue: {
-                                value: "value",
-                                valueId: "valueId",
-                            },
-                            note: "note",
-                            numberValue: {
-                                value: 1.1,
-                            },
-                            personValue: {
-                                person: {
-                                    entryType: "tracked",
-                                    name: "name",
-                                    polymorphicUserId: {
-                                        id: "id",
-                                        type: "driver",
-                                    },
-                                },
-                            },
-                            signatureValue: {
-                                media: {
-                                    id: "id",
-                                    processingStatus: "unknown",
-                                    url: "url",
-                                    urlExpiresAt: "2024-01-15T09:30:00Z",
-                                },
-                            },
-                            tableValue: {
-                                columns: [
-                                    {
-                                        id: "id",
-                                        label: "label",
-                                        type: "text",
-                                    },
-                                    {
-                                        id: "id",
-                                        label: "label",
-                                        type: "text",
-                                    },
-                                ],
-                                rows: [
-                                    {
-                                        cells: [],
-                                        id: "id",
-                                    },
-                                    {
-                                        cells: [],
-                                        id: "id",
-                                    },
-                                ],
-                            },
-                            textValue: {
-                                value: "value",
-                            },
-                            type: "number",
-                        },
-                        {
-                            assetValue: {
-                                asset: {
-                                    entryType: "tracked",
-                                    externalIds: {
-                                        externalIds: "externalIds",
-                                    },
-                                    id: "id",
-                                    name: "name",
-                                },
-                            },
-                            barcodeValue: {
-                                barcodes: [
-                                    {
-                                        value: "value",
-                                    },
-                                    {
-                                        value: "value",
-                                    },
-                                ],
-                            },
-                            checkBoxesValue: {
-                                value: ["value", "value"],
-                                valueIds: ["valueIds", "valueIds"],
-                            },
-                            dateTimeValue: {
-                                dateValue: "2023-01-15",
-                                type: "datetime",
-                                value: "2024-01-15T09:30:00Z",
-                            },
-                            geofenceValue: {
-                                geofence: {
-                                    address: "address",
-                                    entryType: "tracked",
-                                    externalIds: {
-                                        externalIds: "externalIds",
-                                    },
-                                    id: "id",
-                                    name: "name",
-                                },
-                            },
-                            id: "id",
-                            issue: {
-                                externalIds: {
-                                    externalIds: "externalIds",
-                                },
-                                id: "id",
-                            },
-                            label: "label",
-                            mediaList: [
-                                {
-                                    id: "id",
-                                    processingStatus: "unknown",
-                                    url: "url",
-                                    urlExpiresAt: "2024-01-15T09:30:00Z",
-                                },
-                                {
-                                    id: "id",
-                                    processingStatus: "unknown",
-                                    url: "url",
-                                    urlExpiresAt: "2024-01-15T09:30:00Z",
-                                },
-                            ],
-                            mediaValue: {
-                                mediaList: [
-                                    {
-                                        id: "id",
-                                        processingStatus: "unknown",
-                                        url: "url",
-                                        urlExpiresAt: "2024-01-15T09:30:00Z",
-                                    },
-                                    {
-                                        id: "id",
-                                        processingStatus: "unknown",
-                                        url: "url",
-                                        urlExpiresAt: "2024-01-15T09:30:00Z",
-                                    },
-                                ],
-                            },
-                            multipleChoiceValue: {
-                                value: "value",
-                                valueId: "valueId",
-                            },
-                            note: "note",
-                            numberValue: {
-                                value: 1.1,
-                            },
-                            personValue: {
-                                person: {
-                                    entryType: "tracked",
-                                    name: "name",
-                                    polymorphicUserId: {
-                                        id: "id",
-                                        type: "driver",
-                                    },
-                                },
-                            },
-                            signatureValue: {
-                                media: {
-                                    id: "id",
-                                    processingStatus: "unknown",
-                                    url: "url",
-                                    urlExpiresAt: "2024-01-15T09:30:00Z",
-                                },
-                            },
-                            tableValue: {
-                                columns: [
-                                    {
-                                        id: "id",
-                                        label: "label",
-                                        type: "text",
-                                    },
-                                    {
-                                        id: "id",
-                                        label: "label",
-                                        type: "text",
-                                    },
-                                ],
-                                rows: [
-                                    {
-                                        cells: [],
-                                        id: "id",
-                                    },
-                                    {
-                                        cells: [],
-                                        id: "id",
-                                    },
-                                ],
-                            },
-                            textValue: {
-                                value: "value",
-                            },
-                            type: "number",
-                        },
-                    ],
-                    formTemplate: {
-                        id: "id",
-                        revisionId: "revisionId",
-                    },
-                    geofence: {
-                        address: "address",
-                        entryType: "tracked",
-                        externalIds: {
-                            externalIds: "externalIds",
-                        },
-                        id: "id",
-                        name: "name",
-                    },
-                    id: "id",
-                    isRequired: true,
-                    location: {
-                        latitude: 1.1,
-                        longitude: 1.1,
-                    },
-                    routeId: "routeId",
-                    routeStopId: "routeStopId",
-                    score: {
-                        maxPoints: 1.1,
-                        scorePercent: 1.1,
-                        scorePoints: 1.1,
-                    },
-                    status: "notStarted",
-                    submittedAtTime: "2024-01-15T09:30:00Z",
-                    submittedBy: {
-                        id: "id",
-                        type: "driver",
-                    },
-                    title: "title",
-                    updatedAtTime: "2024-01-15T09:30:00Z",
-                },
-                {
-                    approvalDetails: {
-                        comment: "comment",
-                    },
-                    asset: {
-                        entryType: "tracked",
-                        externalIds: {
-                            externalIds: "externalIds",
-                        },
-                        id: "id",
-                        name: "name",
-                    },
-                    assignedAtTime: "2024-01-15T09:30:00Z",
-                    assignedTo: {
-                        id: "id",
-                        type: "driver",
-                    },
-                    createdAtTime: "2024-01-15T09:30:00Z",
-                    dueAtTime: "2024-01-15T09:30:00Z",
-                    durationMs: 1000000,
-                    externalIds: {
-                        externalIds: "externalIds",
-                    },
-                    fields: [
-                        {
-                            assetValue: {
-                                asset: {
-                                    entryType: "tracked",
-                                    externalIds: {
-                                        externalIds: "externalIds",
-                                    },
-                                    id: "id",
-                                    name: "name",
-                                },
-                            },
-                            barcodeValue: {
-                                barcodes: [
-                                    {
-                                        value: "value",
-                                    },
-                                    {
-                                        value: "value",
-                                    },
-                                ],
-                            },
-                            checkBoxesValue: {
-                                value: ["value", "value"],
-                                valueIds: ["valueIds", "valueIds"],
-                            },
-                            dateTimeValue: {
-                                dateValue: "2023-01-15",
-                                type: "datetime",
-                                value: "2024-01-15T09:30:00Z",
-                            },
-                            geofenceValue: {
-                                geofence: {
-                                    address: "address",
-                                    entryType: "tracked",
-                                    externalIds: {
-                                        externalIds: "externalIds",
-                                    },
-                                    id: "id",
-                                    name: "name",
-                                },
-                            },
-                            id: "id",
-                            issue: {
-                                externalIds: {
-                                    externalIds: "externalIds",
-                                },
-                                id: "id",
-                            },
-                            label: "label",
-                            mediaList: [
-                                {
-                                    id: "id",
-                                    processingStatus: "unknown",
-                                    url: "url",
-                                    urlExpiresAt: "2024-01-15T09:30:00Z",
-                                },
-                                {
-                                    id: "id",
-                                    processingStatus: "unknown",
-                                    url: "url",
-                                    urlExpiresAt: "2024-01-15T09:30:00Z",
-                                },
-                            ],
-                            mediaValue: {
-                                mediaList: [
-                                    {
-                                        id: "id",
-                                        processingStatus: "unknown",
-                                        url: "url",
-                                        urlExpiresAt: "2024-01-15T09:30:00Z",
-                                    },
-                                    {
-                                        id: "id",
-                                        processingStatus: "unknown",
-                                        url: "url",
-                                        urlExpiresAt: "2024-01-15T09:30:00Z",
-                                    },
-                                ],
-                            },
-                            multipleChoiceValue: {
-                                value: "value",
-                                valueId: "valueId",
-                            },
-                            note: "note",
-                            numberValue: {
-                                value: 1.1,
-                            },
-                            personValue: {
-                                person: {
-                                    entryType: "tracked",
-                                    name: "name",
-                                    polymorphicUserId: {
-                                        id: "id",
-                                        type: "driver",
-                                    },
-                                },
-                            },
-                            signatureValue: {
-                                media: {
-                                    id: "id",
-                                    processingStatus: "unknown",
-                                    url: "url",
-                                    urlExpiresAt: "2024-01-15T09:30:00Z",
-                                },
-                            },
-                            tableValue: {
-                                columns: [
-                                    {
-                                        id: "id",
-                                        label: "label",
-                                        type: "text",
-                                    },
-                                    {
-                                        id: "id",
-                                        label: "label",
-                                        type: "text",
-                                    },
-                                ],
-                                rows: [
-                                    {
-                                        cells: [],
-                                        id: "id",
-                                    },
-                                    {
-                                        cells: [],
-                                        id: "id",
-                                    },
-                                ],
-                            },
-                            textValue: {
-                                value: "value",
-                            },
-                            type: "number",
-                        },
-                        {
-                            assetValue: {
-                                asset: {
-                                    entryType: "tracked",
-                                    externalIds: {
-                                        externalIds: "externalIds",
-                                    },
-                                    id: "id",
-                                    name: "name",
-                                },
-                            },
-                            barcodeValue: {
-                                barcodes: [
-                                    {
-                                        value: "value",
-                                    },
-                                    {
-                                        value: "value",
-                                    },
-                                ],
-                            },
-                            checkBoxesValue: {
-                                value: ["value", "value"],
-                                valueIds: ["valueIds", "valueIds"],
-                            },
-                            dateTimeValue: {
-                                dateValue: "2023-01-15",
-                                type: "datetime",
-                                value: "2024-01-15T09:30:00Z",
-                            },
-                            geofenceValue: {
-                                geofence: {
-                                    address: "address",
-                                    entryType: "tracked",
-                                    externalIds: {
-                                        externalIds: "externalIds",
-                                    },
-                                    id: "id",
-                                    name: "name",
-                                },
-                            },
-                            id: "id",
-                            issue: {
-                                externalIds: {
-                                    externalIds: "externalIds",
-                                },
-                                id: "id",
-                            },
-                            label: "label",
-                            mediaList: [
-                                {
-                                    id: "id",
-                                    processingStatus: "unknown",
-                                    url: "url",
-                                    urlExpiresAt: "2024-01-15T09:30:00Z",
-                                },
-                                {
-                                    id: "id",
-                                    processingStatus: "unknown",
-                                    url: "url",
-                                    urlExpiresAt: "2024-01-15T09:30:00Z",
-                                },
-                            ],
-                            mediaValue: {
-                                mediaList: [
-                                    {
-                                        id: "id",
-                                        processingStatus: "unknown",
-                                        url: "url",
-                                        urlExpiresAt: "2024-01-15T09:30:00Z",
-                                    },
-                                    {
-                                        id: "id",
-                                        processingStatus: "unknown",
-                                        url: "url",
-                                        urlExpiresAt: "2024-01-15T09:30:00Z",
-                                    },
-                                ],
-                            },
-                            multipleChoiceValue: {
-                                value: "value",
-                                valueId: "valueId",
-                            },
-                            note: "note",
-                            numberValue: {
-                                value: 1.1,
-                            },
-                            personValue: {
-                                person: {
-                                    entryType: "tracked",
-                                    name: "name",
-                                    polymorphicUserId: {
-                                        id: "id",
-                                        type: "driver",
-                                    },
-                                },
-                            },
-                            signatureValue: {
-                                media: {
-                                    id: "id",
-                                    processingStatus: "unknown",
-                                    url: "url",
-                                    urlExpiresAt: "2024-01-15T09:30:00Z",
-                                },
-                            },
-                            tableValue: {
-                                columns: [
-                                    {
-                                        id: "id",
-                                        label: "label",
-                                        type: "text",
-                                    },
-                                    {
-                                        id: "id",
-                                        label: "label",
-                                        type: "text",
-                                    },
-                                ],
-                                rows: [
-                                    {
-                                        cells: [],
-                                        id: "id",
-                                    },
-                                    {
-                                        cells: [],
-                                        id: "id",
-                                    },
-                                ],
-                            },
-                            textValue: {
-                                value: "value",
-                            },
-                            type: "number",
-                        },
-                    ],
-                    formTemplate: {
-                        id: "id",
-                        revisionId: "revisionId",
-                    },
-                    geofence: {
-                        address: "address",
-                        entryType: "tracked",
-                        externalIds: {
-                            externalIds: "externalIds",
-                        },
-                        id: "id",
-                        name: "name",
-                    },
-                    id: "id",
-                    isRequired: true,
-                    location: {
-                        latitude: 1.1,
-                        longitude: 1.1,
-                    },
-                    routeId: "routeId",
-                    routeStopId: "routeStopId",
-                    score: {
-                        maxPoints: 1.1,
-                        scorePercent: 1.1,
-                        scorePoints: 1.1,
-                    },
-                    status: "notStarted",
-                    submittedAtTime: "2024-01-15T09:30:00Z",
-                    submittedBy: {
-                        id: "id",
-                        type: "driver",
-                    },
-                    title: "title",
-                    updatedAtTime: "2024-01-15T09:30:00Z",
-                },
-            ],
+        const response = await client.forms.getFormSubmissions({
+            ids: ["ids"],
         });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getFormSubmissions (2)", async () => {
@@ -1105,6 +189,7 @@ describe("FormsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/form-submissions").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1122,6 +207,7 @@ describe("FormsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/form-submissions").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1139,6 +225,7 @@ describe("FormsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/form-submissions").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1156,6 +243,7 @@ describe("FormsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/form-submissions").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1173,6 +261,7 @@ describe("FormsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/form-submissions").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1190,6 +279,7 @@ describe("FormsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/form-submissions").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1207,6 +297,7 @@ describe("FormsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/form-submissions").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1224,6 +315,7 @@ describe("FormsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/form-submissions").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1241,6 +333,7 @@ describe("FormsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/form-submissions").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1258,6 +351,7 @@ describe("FormsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/form-submissions").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1297,12 +391,21 @@ describe("FormsClient", () => {
                 externalIds: { key: "value" },
                 fields: [
                     {
+                        assetValue: { asset: { entryType: "tracked", id: "281474982859091", name: "trailer 123" } },
                         barcodeValue: { barcodes: [{ value: "1A2B3C4D5E" }] },
                         checkBoxesValue: {
                             value: ["Option A", "Option B"],
                             valueIds: ["0cbbddb3-2541-4889-b4eb-92171cbfc142", "d33198cb-369f-4278-8120-d92d3ebf74bf"],
                         },
                         dateTimeValue: { dateValue: "2024-08-08", type: "datetime", value: "2024-08-08T18:53:23Z" },
+                        geofenceValue: {
+                            geofence: {
+                                address: "123 Main St, Anytown, USA 12345",
+                                entryType: "tracked",
+                                id: "1234567890",
+                                name: "Geofence Name",
+                            },
+                        },
                         id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
                         issue: { id: "12345" },
                         label: "Engine Hours",
@@ -1327,6 +430,13 @@ describe("FormsClient", () => {
                         multipleChoiceValue: { value: "Yes", valueId: "94096370-7228-4d83-ae5d-b20f3e45c0fc" },
                         note: "Fire and oil can lead to an accident.",
                         numberValue: { value: 123.456 },
+                        personValue: {
+                            person: {
+                                entryType: "tracked",
+                                name: "Jake",
+                                polymorphicUserId: { id: "938172", type: "driver" },
+                            },
+                        },
                         signatureValue: {
                             media: {
                                 id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
@@ -1370,6 +480,13 @@ describe("FormsClient", () => {
                                                 valueId: "94096370-7228-4d83-ae5d-b20f3e45c0fc",
                                             },
                                             numberValue: { value: 123.456 },
+                                            personValue: {
+                                                person: {
+                                                    entryType: "tracked",
+                                                    name: "Jake",
+                                                    polymorphicUserId: { id: "938172", type: "driver" },
+                                                },
+                                            },
                                             signatureValue: {
                                                 media: {
                                                     id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
@@ -1414,6 +531,7 @@ describe("FormsClient", () => {
                 updatedAtTime: "2019-06-13T19:08:25Z",
             },
         };
+
         server
             .mockEndpoint()
             .post("/form-submissions")
@@ -1430,196 +548,7 @@ describe("FormsClient", () => {
             },
             status: "notStarted",
         });
-        expect(response).toEqual({
-            data: {
-                approvalDetails: {
-                    comment: "Requesting some changes to the submission.",
-                },
-                asset: {
-                    entryType: "tracked",
-                    externalIds: {
-                        key: "value",
-                    },
-                    id: "281474982859091",
-                    name: "trailer 123",
-                },
-                assignedAtTime: "2019-06-13T19:08:25Z",
-                assignedTo: {
-                    id: "938172",
-                    type: "driver",
-                },
-                createdAtTime: "2019-06-13T19:08:25Z",
-                dueAtTime: "2019-06-13T19:08:25Z",
-                durationMs: 105000,
-                externalIds: {
-                    key: "value",
-                },
-                fields: [
-                    {
-                        barcodeValue: {
-                            barcodes: [
-                                {
-                                    value: "1A2B3C4D5E",
-                                },
-                            ],
-                        },
-                        checkBoxesValue: {
-                            value: ["Option A", "Option B"],
-                            valueIds: ["0cbbddb3-2541-4889-b4eb-92171cbfc142", "d33198cb-369f-4278-8120-d92d3ebf74bf"],
-                        },
-                        dateTimeValue: {
-                            dateValue: "2024-08-08",
-                            type: "datetime",
-                            value: "2024-08-08T18:53:23Z",
-                        },
-                        id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                        issue: {
-                            id: "12345",
-                        },
-                        label: "Engine Hours",
-                        mediaList: [
-                            {
-                                id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                                processingStatus: "unknown",
-                                url: "https://samsara-forms-submission-media-uploads.s3.us-west-2.amazonaws.com/123456",
-                                urlExpiresAt: "2019-06-13T19:08:25Z",
-                            },
-                        ],
-                        mediaValue: {
-                            mediaList: [
-                                {
-                                    id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                                    processingStatus: "unknown",
-                                    url: "https://samsara-forms-submission-media-uploads.s3.us-west-2.amazonaws.com/123456",
-                                    urlExpiresAt: "2019-06-13T19:08:25Z",
-                                },
-                            ],
-                        },
-                        multipleChoiceValue: {
-                            value: "Yes",
-                            valueId: "94096370-7228-4d83-ae5d-b20f3e45c0fc",
-                        },
-                        note: "Fire and oil can lead to an accident.",
-                        numberValue: {
-                            value: 123.456,
-                        },
-                        signatureValue: {
-                            media: {
-                                id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                                processingStatus: "unknown",
-                                url: "https://samsara-forms-submission-media-uploads.s3.us-west-2.amazonaws.com/123456",
-                                urlExpiresAt: "2019-06-13T19:08:25Z",
-                            },
-                        },
-                        tableValue: {
-                            columns: [
-                                {
-                                    id: "id",
-                                    label: "Store Number",
-                                    type: "text",
-                                },
-                            ],
-                            rows: [
-                                {
-                                    cells: [
-                                        {
-                                            barcodeValue: {
-                                                barcodes: [
-                                                    {
-                                                        value: "1A2B3C4D5E",
-                                                    },
-                                                ],
-                                            },
-                                            checkBoxesValue: {
-                                                value: ["Option A", "Option B"],
-                                                valueIds: [
-                                                    "0cbbddb3-2541-4889-b4eb-92171cbfc142",
-                                                    "d33198cb-369f-4278-8120-d92d3ebf74bf",
-                                                ],
-                                            },
-                                            dateTimeValue: {
-                                                dateValue: "2024-08-08",
-                                                type: "datetime",
-                                                value: "2024-08-08T18:53:23Z",
-                                            },
-                                            id: "id",
-                                            mediaValue: {
-                                                mediaList: [
-                                                    {
-                                                        id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                                                        processingStatus: "unknown",
-                                                        url: "https://samsara-forms-submission-media-uploads.s3.us-west-2.amazonaws.com/123456",
-                                                        urlExpiresAt: "2019-06-13T19:08:25Z",
-                                                    },
-                                                ],
-                                            },
-                                            multipleChoiceValue: {
-                                                value: "Yes",
-                                                valueId: "94096370-7228-4d83-ae5d-b20f3e45c0fc",
-                                            },
-                                            numberValue: {
-                                                value: 123.456,
-                                            },
-                                            signatureValue: {
-                                                media: {
-                                                    id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                                                    processingStatus: "unknown",
-                                                    url: "https://samsara-forms-submission-media-uploads.s3.us-west-2.amazonaws.com/123456",
-                                                    urlExpiresAt: "2019-06-13T19:08:25Z",
-                                                },
-                                            },
-                                            textValue: {
-                                                value: "Exposed wires",
-                                            },
-                                            type: "number",
-                                        },
-                                    ],
-                                    id: "id",
-                                },
-                            ],
-                        },
-                        textValue: {
-                            value: "Exposed wires",
-                        },
-                        type: "number",
-                    },
-                ],
-                formTemplate: {
-                    id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                    revisionId: "1214a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                },
-                geofence: {
-                    address: "123 Main St, Anytown, USA 12345",
-                    entryType: "tracked",
-                    externalIds: {
-                        key: "value",
-                    },
-                    id: "1234567890",
-                    name: "Geofence Name",
-                },
-                id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                isRequired: true,
-                location: {
-                    latitude: 12333122.3,
-                    longitude: 1233331.4,
-                },
-                routeId: "123456789",
-                routeStopId: "987654321",
-                score: {
-                    maxPoints: 80,
-                    scorePercent: 75,
-                    scorePoints: 60,
-                },
-                status: "notStarted",
-                submittedAtTime: "2019-06-13T19:08:25Z",
-                submittedBy: {
-                    id: "938172",
-                    type: "driver",
-                },
-                title: "Form Submission Title",
-                updatedAtTime: "2019-06-13T19:08:25Z",
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("postFormSubmission (2)", async () => {
@@ -1632,6 +561,7 @@ describe("FormsClient", () => {
         });
         const rawRequestBody = { formTemplate: { id: "id" }, status: "notStarted" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/form-submissions")
@@ -1661,6 +591,7 @@ describe("FormsClient", () => {
         });
         const rawRequestBody = { formTemplate: { id: "id" }, status: "notStarted" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/form-submissions")
@@ -1690,6 +621,7 @@ describe("FormsClient", () => {
         });
         const rawRequestBody = { formTemplate: { id: "id" }, status: "notStarted" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/form-submissions")
@@ -1719,6 +651,7 @@ describe("FormsClient", () => {
         });
         const rawRequestBody = { formTemplate: { id: "id" }, status: "notStarted" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/form-submissions")
@@ -1748,6 +681,7 @@ describe("FormsClient", () => {
         });
         const rawRequestBody = { formTemplate: { id: "id" }, status: "notStarted" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/form-submissions")
@@ -1777,6 +711,7 @@ describe("FormsClient", () => {
         });
         const rawRequestBody = { formTemplate: { id: "id" }, status: "notStarted" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/form-submissions")
@@ -1806,6 +741,7 @@ describe("FormsClient", () => {
         });
         const rawRequestBody = { formTemplate: { id: "id" }, status: "notStarted" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/form-submissions")
@@ -1835,6 +771,7 @@ describe("FormsClient", () => {
         });
         const rawRequestBody = { formTemplate: { id: "id" }, status: "notStarted" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/form-submissions")
@@ -1864,6 +801,7 @@ describe("FormsClient", () => {
         });
         const rawRequestBody = { formTemplate: { id: "id" }, status: "notStarted" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/form-submissions")
@@ -1893,6 +831,7 @@ describe("FormsClient", () => {
         });
         const rawRequestBody = { formTemplate: { id: "id" }, status: "notStarted" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/form-submissions")
@@ -1938,12 +877,21 @@ describe("FormsClient", () => {
                 externalIds: { key: "value" },
                 fields: [
                     {
+                        assetValue: { asset: { entryType: "tracked", id: "281474982859091", name: "trailer 123" } },
                         barcodeValue: { barcodes: [{ value: "1A2B3C4D5E" }] },
                         checkBoxesValue: {
                             value: ["Option A", "Option B"],
                             valueIds: ["0cbbddb3-2541-4889-b4eb-92171cbfc142", "d33198cb-369f-4278-8120-d92d3ebf74bf"],
                         },
                         dateTimeValue: { dateValue: "2024-08-08", type: "datetime", value: "2024-08-08T18:53:23Z" },
+                        geofenceValue: {
+                            geofence: {
+                                address: "123 Main St, Anytown, USA 12345",
+                                entryType: "tracked",
+                                id: "1234567890",
+                                name: "Geofence Name",
+                            },
+                        },
                         id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
                         issue: { id: "12345" },
                         label: "Engine Hours",
@@ -1968,6 +916,13 @@ describe("FormsClient", () => {
                         multipleChoiceValue: { value: "Yes", valueId: "94096370-7228-4d83-ae5d-b20f3e45c0fc" },
                         note: "Fire and oil can lead to an accident.",
                         numberValue: { value: 123.456 },
+                        personValue: {
+                            person: {
+                                entryType: "tracked",
+                                name: "Jake",
+                                polymorphicUserId: { id: "938172", type: "driver" },
+                            },
+                        },
                         signatureValue: {
                             media: {
                                 id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
@@ -2011,6 +966,13 @@ describe("FormsClient", () => {
                                                 valueId: "94096370-7228-4d83-ae5d-b20f3e45c0fc",
                                             },
                                             numberValue: { value: 123.456 },
+                                            personValue: {
+                                                person: {
+                                                    entryType: "tracked",
+                                                    name: "Jake",
+                                                    polymorphicUserId: { id: "938172", type: "driver" },
+                                                },
+                                            },
                                             signatureValue: {
                                                 media: {
                                                     id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
@@ -2055,6 +1017,7 @@ describe("FormsClient", () => {
                 updatedAtTime: "2019-06-13T19:08:25Z",
             },
         };
+
         server
             .mockEndpoint()
             .patch("/form-submissions")
@@ -2068,196 +1031,7 @@ describe("FormsClient", () => {
             id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac8",
             status: "notStarted",
         });
-        expect(response).toEqual({
-            data: {
-                approvalDetails: {
-                    comment: "Requesting some changes to the submission.",
-                },
-                asset: {
-                    entryType: "tracked",
-                    externalIds: {
-                        key: "value",
-                    },
-                    id: "281474982859091",
-                    name: "trailer 123",
-                },
-                assignedAtTime: "2019-06-13T19:08:25Z",
-                assignedTo: {
-                    id: "938172",
-                    type: "driver",
-                },
-                createdAtTime: "2019-06-13T19:08:25Z",
-                dueAtTime: "2019-06-13T19:08:25Z",
-                durationMs: 105000,
-                externalIds: {
-                    key: "value",
-                },
-                fields: [
-                    {
-                        barcodeValue: {
-                            barcodes: [
-                                {
-                                    value: "1A2B3C4D5E",
-                                },
-                            ],
-                        },
-                        checkBoxesValue: {
-                            value: ["Option A", "Option B"],
-                            valueIds: ["0cbbddb3-2541-4889-b4eb-92171cbfc142", "d33198cb-369f-4278-8120-d92d3ebf74bf"],
-                        },
-                        dateTimeValue: {
-                            dateValue: "2024-08-08",
-                            type: "datetime",
-                            value: "2024-08-08T18:53:23Z",
-                        },
-                        id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                        issue: {
-                            id: "12345",
-                        },
-                        label: "Engine Hours",
-                        mediaList: [
-                            {
-                                id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                                processingStatus: "unknown",
-                                url: "https://samsara-forms-submission-media-uploads.s3.us-west-2.amazonaws.com/123456",
-                                urlExpiresAt: "2019-06-13T19:08:25Z",
-                            },
-                        ],
-                        mediaValue: {
-                            mediaList: [
-                                {
-                                    id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                                    processingStatus: "unknown",
-                                    url: "https://samsara-forms-submission-media-uploads.s3.us-west-2.amazonaws.com/123456",
-                                    urlExpiresAt: "2019-06-13T19:08:25Z",
-                                },
-                            ],
-                        },
-                        multipleChoiceValue: {
-                            value: "Yes",
-                            valueId: "94096370-7228-4d83-ae5d-b20f3e45c0fc",
-                        },
-                        note: "Fire and oil can lead to an accident.",
-                        numberValue: {
-                            value: 123.456,
-                        },
-                        signatureValue: {
-                            media: {
-                                id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                                processingStatus: "unknown",
-                                url: "https://samsara-forms-submission-media-uploads.s3.us-west-2.amazonaws.com/123456",
-                                urlExpiresAt: "2019-06-13T19:08:25Z",
-                            },
-                        },
-                        tableValue: {
-                            columns: [
-                                {
-                                    id: "id",
-                                    label: "Store Number",
-                                    type: "text",
-                                },
-                            ],
-                            rows: [
-                                {
-                                    cells: [
-                                        {
-                                            barcodeValue: {
-                                                barcodes: [
-                                                    {
-                                                        value: "1A2B3C4D5E",
-                                                    },
-                                                ],
-                                            },
-                                            checkBoxesValue: {
-                                                value: ["Option A", "Option B"],
-                                                valueIds: [
-                                                    "0cbbddb3-2541-4889-b4eb-92171cbfc142",
-                                                    "d33198cb-369f-4278-8120-d92d3ebf74bf",
-                                                ],
-                                            },
-                                            dateTimeValue: {
-                                                dateValue: "2024-08-08",
-                                                type: "datetime",
-                                                value: "2024-08-08T18:53:23Z",
-                                            },
-                                            id: "id",
-                                            mediaValue: {
-                                                mediaList: [
-                                                    {
-                                                        id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                                                        processingStatus: "unknown",
-                                                        url: "https://samsara-forms-submission-media-uploads.s3.us-west-2.amazonaws.com/123456",
-                                                        urlExpiresAt: "2019-06-13T19:08:25Z",
-                                                    },
-                                                ],
-                                            },
-                                            multipleChoiceValue: {
-                                                value: "Yes",
-                                                valueId: "94096370-7228-4d83-ae5d-b20f3e45c0fc",
-                                            },
-                                            numberValue: {
-                                                value: 123.456,
-                                            },
-                                            signatureValue: {
-                                                media: {
-                                                    id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                                                    processingStatus: "unknown",
-                                                    url: "https://samsara-forms-submission-media-uploads.s3.us-west-2.amazonaws.com/123456",
-                                                    urlExpiresAt: "2019-06-13T19:08:25Z",
-                                                },
-                                            },
-                                            textValue: {
-                                                value: "Exposed wires",
-                                            },
-                                            type: "number",
-                                        },
-                                    ],
-                                    id: "id",
-                                },
-                            ],
-                        },
-                        textValue: {
-                            value: "Exposed wires",
-                        },
-                        type: "number",
-                    },
-                ],
-                formTemplate: {
-                    id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                    revisionId: "1214a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                },
-                geofence: {
-                    address: "123 Main St, Anytown, USA 12345",
-                    entryType: "tracked",
-                    externalIds: {
-                        key: "value",
-                    },
-                    id: "1234567890",
-                    name: "Geofence Name",
-                },
-                id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                isRequired: true,
-                location: {
-                    latitude: 12333122.3,
-                    longitude: 1233331.4,
-                },
-                routeId: "123456789",
-                routeStopId: "987654321",
-                score: {
-                    maxPoints: 80,
-                    scorePercent: 75,
-                    scorePoints: 60,
-                },
-                status: "notStarted",
-                submittedAtTime: "2019-06-13T19:08:25Z",
-                submittedBy: {
-                    id: "938172",
-                    type: "driver",
-                },
-                title: "Form Submission Title",
-                updatedAtTime: "2019-06-13T19:08:25Z",
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("patchFormSubmission (2)", async () => {
@@ -2270,6 +1044,7 @@ describe("FormsClient", () => {
         });
         const rawRequestBody = { id: "id" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/form-submissions")
@@ -2296,6 +1071,7 @@ describe("FormsClient", () => {
         });
         const rawRequestBody = { id: "id" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/form-submissions")
@@ -2322,6 +1098,7 @@ describe("FormsClient", () => {
         });
         const rawRequestBody = { id: "id" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/form-submissions")
@@ -2348,6 +1125,7 @@ describe("FormsClient", () => {
         });
         const rawRequestBody = { id: "id" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/form-submissions")
@@ -2374,6 +1152,7 @@ describe("FormsClient", () => {
         });
         const rawRequestBody = { id: "id" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/form-submissions")
@@ -2400,6 +1179,7 @@ describe("FormsClient", () => {
         });
         const rawRequestBody = { id: "id" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/form-submissions")
@@ -2426,6 +1206,7 @@ describe("FormsClient", () => {
         });
         const rawRequestBody = { id: "id" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/form-submissions")
@@ -2452,6 +1233,7 @@ describe("FormsClient", () => {
         });
         const rawRequestBody = { id: "id" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/form-submissions")
@@ -2478,6 +1260,7 @@ describe("FormsClient", () => {
         });
         const rawRequestBody = { id: "id" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/form-submissions")
@@ -2504,6 +1287,7 @@ describe("FormsClient", () => {
         });
         const rawRequestBody = { id: "id" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/form-submissions")
@@ -2542,6 +1326,7 @@ describe("FormsClient", () => {
                 requestedAtTime: "2019-06-13T19:08:25Z",
             },
         };
+
         server
             .mockEndpoint()
             .get("/form-submissions/pdf-exports")
@@ -2553,19 +1338,7 @@ describe("FormsClient", () => {
         const response = await client.forms.getFormSubmissionsPdfExports({
             pdfId: "pdfId",
         });
-        expect(response).toEqual({
-            data: {
-                completedAtTime: "2019-06-13T19:08:25Z",
-                errorMessage: "PDF export timed out.",
-                expiresAtTime: "2019-06-13T19:08:25Z",
-                id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                jobStatus: "unknown",
-                pdfId: "300af62b-5aea-43a9-b4cf-a59667e817ed",
-                pdfUrl: "https://samsara-pdf-exports.s3.us-west-2.amazonaws.com/123456",
-                pdfUrlExpiresAtTime: "2019-06-13T19:08:25Z",
-                requestedAtTime: "2019-06-13T19:08:25Z",
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getFormSubmissionsPdfExports (2)", async () => {
@@ -2578,6 +1351,7 @@ describe("FormsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/form-submissions/pdf-exports")
@@ -2603,6 +1377,7 @@ describe("FormsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/form-submissions/pdf-exports")
@@ -2628,6 +1403,7 @@ describe("FormsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/form-submissions/pdf-exports")
@@ -2653,6 +1429,7 @@ describe("FormsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/form-submissions/pdf-exports")
@@ -2678,6 +1455,7 @@ describe("FormsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/form-submissions/pdf-exports")
@@ -2703,6 +1481,7 @@ describe("FormsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/form-submissions/pdf-exports")
@@ -2728,6 +1507,7 @@ describe("FormsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/form-submissions/pdf-exports")
@@ -2753,6 +1533,7 @@ describe("FormsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/form-submissions/pdf-exports")
@@ -2778,6 +1559,7 @@ describe("FormsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/form-submissions/pdf-exports")
@@ -2803,6 +1585,7 @@ describe("FormsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/form-submissions/pdf-exports")
@@ -2840,6 +1623,7 @@ describe("FormsClient", () => {
                 requestedAtTime: "2019-06-13T19:08:25Z",
             },
         };
+
         server
             .mockEndpoint()
             .post("/form-submissions/pdf-exports")
@@ -2851,19 +1635,7 @@ describe("FormsClient", () => {
         const response = await client.forms.postFormSubmissionsPdfExports({
             id: "id",
         });
-        expect(response).toEqual({
-            data: {
-                completedAtTime: "2019-06-13T19:08:25Z",
-                errorMessage: "PDF export timed out.",
-                expiresAtTime: "2019-06-13T19:08:25Z",
-                id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                jobStatus: "unknown",
-                pdfId: "300af62b-5aea-43a9-b4cf-a59667e817ed",
-                pdfUrl: "https://samsara-pdf-exports.s3.us-west-2.amazonaws.com/123456",
-                pdfUrlExpiresAtTime: "2019-06-13T19:08:25Z",
-                requestedAtTime: "2019-06-13T19:08:25Z",
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("postFormSubmissionsPdfExports (2)", async () => {
@@ -2876,6 +1648,7 @@ describe("FormsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/form-submissions/pdf-exports")
@@ -2901,6 +1674,7 @@ describe("FormsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/form-submissions/pdf-exports")
@@ -2926,6 +1700,7 @@ describe("FormsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/form-submissions/pdf-exports")
@@ -2951,6 +1726,7 @@ describe("FormsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/form-submissions/pdf-exports")
@@ -2976,6 +1752,7 @@ describe("FormsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/form-submissions/pdf-exports")
@@ -3001,6 +1778,7 @@ describe("FormsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/form-submissions/pdf-exports")
@@ -3026,6 +1804,7 @@ describe("FormsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/form-submissions/pdf-exports")
@@ -3051,6 +1830,7 @@ describe("FormsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/form-submissions/pdf-exports")
@@ -3076,6 +1856,7 @@ describe("FormsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/form-submissions/pdf-exports")
@@ -3101,6 +1882,7 @@ describe("FormsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/form-submissions/pdf-exports")
@@ -3138,6 +1920,7 @@ describe("FormsClient", () => {
                     externalIds: { key: "value" },
                     fields: [
                         {
+                            assetValue: { asset: { entryType: "tracked", id: "281474982859091", name: "trailer 123" } },
                             barcodeValue: { barcodes: [{ value: "1A2B3C4D5E" }] },
                             checkBoxesValue: {
                                 value: ["Option A", "Option B"],
@@ -3147,6 +1930,14 @@ describe("FormsClient", () => {
                                 ],
                             },
                             dateTimeValue: { dateValue: "2024-08-08", type: "datetime", value: "2024-08-08T18:53:23Z" },
+                            geofenceValue: {
+                                geofence: {
+                                    address: "123 Main St, Anytown, USA 12345",
+                                    entryType: "tracked",
+                                    id: "1234567890",
+                                    name: "Geofence Name",
+                                },
+                            },
                             id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
                             issue: { id: "12345" },
                             label: "Engine Hours",
@@ -3171,6 +1962,13 @@ describe("FormsClient", () => {
                             multipleChoiceValue: { value: "Yes", valueId: "94096370-7228-4d83-ae5d-b20f3e45c0fc" },
                             note: "Fire and oil can lead to an accident.",
                             numberValue: { value: 123.456 },
+                            personValue: {
+                                person: {
+                                    entryType: "tracked",
+                                    name: "Jake",
+                                    polymorphicUserId: { id: "938172", type: "driver" },
+                                },
+                            },
                             signatureValue: {
                                 media: {
                                     id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
@@ -3214,6 +2012,13 @@ describe("FormsClient", () => {
                                                     valueId: "94096370-7228-4d83-ae5d-b20f3e45c0fc",
                                                 },
                                                 numberValue: { value: 123.456 },
+                                                personValue: {
+                                                    person: {
+                                                        entryType: "tracked",
+                                                        name: "Jake",
+                                                        polymorphicUserId: { id: "938172", type: "driver" },
+                                                    },
+                                                },
                                                 signatureValue: {
                                                     media: {
                                                         id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
@@ -3259,6 +2064,7 @@ describe("FormsClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/form-submissions/stream")
@@ -3270,199 +2076,7 @@ describe("FormsClient", () => {
         const response = await client.forms.getFormSubmissionsStream({
             startTime: "startTime",
         });
-        expect(response).toEqual({
-            data: [
-                {
-                    approvalDetails: {
-                        comment: "Requesting some changes to the submission.",
-                    },
-                    asset: {
-                        entryType: "tracked",
-                        id: "281474982859091",
-                        name: "trailer 123",
-                    },
-                    assignedAtTime: "2019-06-13T19:08:25Z",
-                    assignedTo: {
-                        id: "938172",
-                        type: "driver",
-                    },
-                    createdAtTime: "2019-06-13T19:08:25Z",
-                    dueAtTime: "2019-06-13T19:08:25Z",
-                    durationMs: 105000,
-                    externalIds: {
-                        key: "value",
-                    },
-                    fields: [
-                        {
-                            barcodeValue: {
-                                barcodes: [
-                                    {
-                                        value: "1A2B3C4D5E",
-                                    },
-                                ],
-                            },
-                            checkBoxesValue: {
-                                value: ["Option A", "Option B"],
-                                valueIds: [
-                                    "0cbbddb3-2541-4889-b4eb-92171cbfc142",
-                                    "d33198cb-369f-4278-8120-d92d3ebf74bf",
-                                ],
-                            },
-                            dateTimeValue: {
-                                dateValue: "2024-08-08",
-                                type: "datetime",
-                                value: "2024-08-08T18:53:23Z",
-                            },
-                            id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                            issue: {
-                                id: "12345",
-                            },
-                            label: "Engine Hours",
-                            mediaList: [
-                                {
-                                    id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                                    processingStatus: "unknown",
-                                    url: "https://samsara-forms-submission-media-uploads.s3.us-west-2.amazonaws.com/123456",
-                                    urlExpiresAt: "2019-06-13T19:08:25Z",
-                                },
-                            ],
-                            mediaValue: {
-                                mediaList: [
-                                    {
-                                        id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                                        processingStatus: "unknown",
-                                        url: "https://samsara-forms-submission-media-uploads.s3.us-west-2.amazonaws.com/123456",
-                                        urlExpiresAt: "2019-06-13T19:08:25Z",
-                                    },
-                                ],
-                            },
-                            multipleChoiceValue: {
-                                value: "Yes",
-                                valueId: "94096370-7228-4d83-ae5d-b20f3e45c0fc",
-                            },
-                            note: "Fire and oil can lead to an accident.",
-                            numberValue: {
-                                value: 123.456,
-                            },
-                            signatureValue: {
-                                media: {
-                                    id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                                    processingStatus: "unknown",
-                                    url: "https://samsara-forms-submission-media-uploads.s3.us-west-2.amazonaws.com/123456",
-                                    urlExpiresAt: "2019-06-13T19:08:25Z",
-                                },
-                            },
-                            tableValue: {
-                                columns: [
-                                    {
-                                        id: "id",
-                                        label: "Store Number",
-                                        type: "text",
-                                    },
-                                ],
-                                rows: [
-                                    {
-                                        cells: [
-                                            {
-                                                barcodeValue: {
-                                                    barcodes: [
-                                                        {
-                                                            value: "1A2B3C4D5E",
-                                                        },
-                                                    ],
-                                                },
-                                                checkBoxesValue: {
-                                                    value: ["Option A", "Option B"],
-                                                    valueIds: [
-                                                        "0cbbddb3-2541-4889-b4eb-92171cbfc142",
-                                                        "d33198cb-369f-4278-8120-d92d3ebf74bf",
-                                                    ],
-                                                },
-                                                dateTimeValue: {
-                                                    dateValue: "2024-08-08",
-                                                    type: "datetime",
-                                                    value: "2024-08-08T18:53:23Z",
-                                                },
-                                                id: "id",
-                                                mediaValue: {
-                                                    mediaList: [
-                                                        {
-                                                            id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                                                            processingStatus: "unknown",
-                                                            url: "https://samsara-forms-submission-media-uploads.s3.us-west-2.amazonaws.com/123456",
-                                                            urlExpiresAt: "2019-06-13T19:08:25Z",
-                                                        },
-                                                    ],
-                                                },
-                                                multipleChoiceValue: {
-                                                    value: "Yes",
-                                                    valueId: "94096370-7228-4d83-ae5d-b20f3e45c0fc",
-                                                },
-                                                numberValue: {
-                                                    value: 123.456,
-                                                },
-                                                signatureValue: {
-                                                    media: {
-                                                        id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                                                        processingStatus: "unknown",
-                                                        url: "https://samsara-forms-submission-media-uploads.s3.us-west-2.amazonaws.com/123456",
-                                                        urlExpiresAt: "2019-06-13T19:08:25Z",
-                                                    },
-                                                },
-                                                textValue: {
-                                                    value: "Exposed wires",
-                                                },
-                                                type: "number",
-                                            },
-                                        ],
-                                        id: "id",
-                                    },
-                                ],
-                            },
-                            textValue: {
-                                value: "Exposed wires",
-                            },
-                            type: "number",
-                        },
-                    ],
-                    formTemplate: {
-                        id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                        revisionId: "1214a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                    },
-                    geofence: {
-                        address: "123 Main St, Anytown, USA 12345",
-                        entryType: "tracked",
-                        id: "1234567890",
-                        name: "Geofence Name",
-                    },
-                    id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                    isRequired: true,
-                    location: {
-                        latitude: 12333122.3,
-                        longitude: 1233331.4,
-                    },
-                    routeId: "123456789",
-                    routeStopId: "987654321",
-                    score: {
-                        maxPoints: 80,
-                        scorePercent: 75,
-                        scorePoints: 60,
-                    },
-                    status: "notStarted",
-                    submittedAtTime: "2019-06-13T19:08:25Z",
-                    submittedBy: {
-                        id: "938172",
-                        type: "driver",
-                    },
-                    title: "Form Submission Title",
-                    updatedAtTime: "2019-06-13T19:08:25Z",
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getFormSubmissionsStream (2)", async () => {
@@ -3475,6 +2089,7 @@ describe("FormsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/form-submissions/stream")
@@ -3500,6 +2115,7 @@ describe("FormsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/form-submissions/stream")
@@ -3525,6 +2141,7 @@ describe("FormsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/form-submissions/stream")
@@ -3550,6 +2167,7 @@ describe("FormsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/form-submissions/stream")
@@ -3575,6 +2193,7 @@ describe("FormsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/form-submissions/stream")
@@ -3600,6 +2219,7 @@ describe("FormsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/form-submissions/stream")
@@ -3625,6 +2245,7 @@ describe("FormsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/form-submissions/stream")
@@ -3650,6 +2271,7 @@ describe("FormsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/form-submissions/stream")
@@ -3675,6 +2297,7 @@ describe("FormsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/form-submissions/stream")
@@ -3700,6 +2323,7 @@ describe("FormsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/form-submissions/stream")
@@ -3762,6 +2386,21 @@ describe("FormsClient", () => {
                                     type: "number",
                                 },
                             ],
+                            conditionalActions: [
+                                {
+                                    actions: [
+                                        {
+                                            fieldId: "bd673690-f09b-4f3d-93bd-99c4b2971554",
+                                            sectionId: "bd673690-f09b-4f3d-93bd-99c4b2971554",
+                                            type: "askFollowupQuestion",
+                                        },
+                                    ],
+                                    condition: {
+                                        selectedOptionIds: ["9814a1fa-f0c6-408b-bf85-51dc3bc71ac7"],
+                                        type: "multipleChoiceValueCondition",
+                                    },
+                                },
+                            ],
                             filterByRoleIds: ["23d4d8d3-dc10-4e7a-a183-69968751f23e"],
                             id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
                             includeDrivers: true,
@@ -3800,96 +2439,11 @@ describe("FormsClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server.mockEndpoint().get("/form-templates").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.forms.getFormTemplates();
-        expect(response).toEqual({
-            data: [
-                {
-                    approvalConfig: {
-                        singleApprovalConfig: {
-                            allowManualApproverSelection: true,
-                            requirements: {
-                                roleIds: ["23d4d8d3-dc10-4e7a-a183-69968751f23e"],
-                            },
-                        },
-                        type: "singleApproval",
-                    },
-                    createdAtTime: "2019-06-13T19:08:25Z",
-                    createdBy: {
-                        id: "938172",
-                        type: "driver",
-                    },
-                    description: "This is a form template description.",
-                    fields: [
-                        {
-                            allowManualEntry: true,
-                            allowedAssetTypes: ["vehicle", "trailer"],
-                            autofillFromId: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                            columns: [
-                                {
-                                    allowManualEntry: true,
-                                    filterByRoleIds: ["23d4d8d3-dc10-4e7a-a183-69968751f23e"],
-                                    id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                                    includeDrivers: true,
-                                    includeUsers: true,
-                                    label: "Engine Hours",
-                                    numDecimalPlaces: 2,
-                                    options: [
-                                        {
-                                            id: "e879028d-bce5-0238-ffec-11cd9236bcda",
-                                            ignoreQuestionFromScoreIfSelected: false,
-                                            label: "Yes",
-                                            optionScoreWeight: 5,
-                                        },
-                                    ],
-                                    type: "number",
-                                },
-                            ],
-                            filterByRoleIds: ["23d4d8d3-dc10-4e7a-a183-69968751f23e"],
-                            id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                            includeDrivers: true,
-                            includeUsers: true,
-                            isAutofillSource: true,
-                            isRequired: true,
-                            label: "Engine Hours",
-                            numDecimalPlaces: 2,
-                            options: [
-                                {
-                                    id: "e879028d-bce5-0238-ffec-11cd9236bcda",
-                                    ignoreQuestionFromScoreIfSelected: false,
-                                    label: "Yes",
-                                    optionScoreWeight: 5,
-                                },
-                            ],
-                            questionWeight: 5,
-                            type: "number",
-                        },
-                    ],
-                    formCategory: "general",
-                    id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                    revisionId: "1214a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                    sections: [
-                        {
-                            fieldIndexFirstInclusive: 0,
-                            fieldIndexLastInclusive: 9,
-                            id: "dbab5bc8-e41c-4b52-bfa5-fd2c7e809b00",
-                            label: "Engine Hours",
-                        },
-                    ],
-                    title: "Form Template Title",
-                    updatedAtTime: "2019-06-13T19:08:25Z",
-                    updatedBy: {
-                        id: "938172",
-                        type: "driver",
-                    },
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getFormTemplates (2)", async () => {
@@ -3902,6 +2456,7 @@ describe("FormsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/form-templates").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -3919,6 +2474,7 @@ describe("FormsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/form-templates").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -3936,6 +2492,7 @@ describe("FormsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/form-templates").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -3953,6 +2510,7 @@ describe("FormsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/form-templates").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -3970,6 +2528,7 @@ describe("FormsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/form-templates").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -3987,6 +2546,7 @@ describe("FormsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/form-templates").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -4004,6 +2564,7 @@ describe("FormsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/form-templates").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -4021,6 +2582,7 @@ describe("FormsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/form-templates").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -4038,6 +2600,7 @@ describe("FormsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/form-templates").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -4055,6 +2618,7 @@ describe("FormsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/form-templates").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
 
         await expect(async () => {

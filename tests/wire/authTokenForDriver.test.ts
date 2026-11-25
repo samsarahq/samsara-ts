@@ -17,6 +17,7 @@ describe("AuthTokenForDriverClient", () => {
         const rawResponseBody = {
             data: { expirationTime: 1710000000000, token: "ZmFrZVRva2VuXzMyQnl0ZXNMb25nRm9yVGVzdA" },
         };
+
         server
             .mockEndpoint()
             .post("/fleet/drivers/auth-token")
@@ -29,12 +30,7 @@ describe("AuthTokenForDriverClient", () => {
         const response = await client.authTokenForDriver.authToken({
             code: "dp[gZc1wAigz4uGa0Hh",
         });
-        expect(response).toEqual({
-            data: {
-                expirationTime: 1710000000000,
-                token: "ZmFrZVRva2VuXzMyQnl0ZXNMb25nRm9yVGVzdA",
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("authToken (2)", async () => {
@@ -47,6 +43,7 @@ describe("AuthTokenForDriverClient", () => {
         });
         const rawRequestBody = { code: "blackcurrant" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/drivers/auth-token")
@@ -73,6 +70,7 @@ describe("AuthTokenForDriverClient", () => {
         });
         const rawRequestBody = { code: "blackcurrant" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/drivers/auth-token")
@@ -99,6 +97,7 @@ describe("AuthTokenForDriverClient", () => {
         });
         const rawRequestBody = { code: "blackcurrant" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/drivers/auth-token")
@@ -125,6 +124,7 @@ describe("AuthTokenForDriverClient", () => {
         });
         const rawRequestBody = { code: "blackcurrant" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/drivers/auth-token")
@@ -151,6 +151,7 @@ describe("AuthTokenForDriverClient", () => {
         });
         const rawRequestBody = { code: "blackcurrant" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/drivers/auth-token")
@@ -177,6 +178,7 @@ describe("AuthTokenForDriverClient", () => {
         });
         const rawRequestBody = { code: "blackcurrant" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/drivers/auth-token")
@@ -203,6 +205,7 @@ describe("AuthTokenForDriverClient", () => {
         });
         const rawRequestBody = { code: "blackcurrant" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/drivers/auth-token")
@@ -229,6 +232,7 @@ describe("AuthTokenForDriverClient", () => {
         });
         const rawRequestBody = { code: "blackcurrant" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/drivers/auth-token")
@@ -255,6 +259,7 @@ describe("AuthTokenForDriverClient", () => {
         });
         const rawRequestBody = { code: "blackcurrant" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/drivers/auth-token")
@@ -281,6 +286,7 @@ describe("AuthTokenForDriverClient", () => {
         });
         const rawRequestBody = { code: "blackcurrant" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/drivers/auth-token")

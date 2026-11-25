@@ -4,6 +4,6 @@ import type * as Samsara from "../index.js";
 
 export interface WorkOrdersStreamWorkOrdersResponseBody {
     /** Work Orders */
-    data: Samsara.WorkOrderWithTimeEntriesObjectResponseBody[];
+    data: Samsara.WorkOrderWithTimeEntriesObjectV20261112ResponseBody[];
     pagination: Samsara.GoaPaginationResponseResponseBody;
 }

@@ -30,6 +30,7 @@ describe("IftaClient", () => {
                 year: 2021,
             },
         };
+
         server
             .mockEndpoint()
             .get("/fleet/reports/ifta/jurisdiction")
@@ -41,27 +42,7 @@ describe("IftaClient", () => {
         const response = await client.ifta.getIftaJurisdictionReports({
             year: 1000000,
         });
-        expect(response).toEqual({
-            data: {
-                jurisdictionReports: [
-                    {
-                        jurisdiction: "GA",
-                        taxPaidLiters: 25.5,
-                        taxableMeters: 2350,
-                        totalMeters: 2350,
-                    },
-                ],
-                month: "January",
-                quarter: "Q4",
-                troubleshooting: {
-                    noPurchasesFound: false,
-                    unassignedFuelTypePurchases: 200,
-                    unassignedFuelTypeVehicles: 2500,
-                    unassignedVehiclePurchases: 2500,
-                },
-                year: 2021,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getIftaJurisdictionReports (2)", async () => {
@@ -74,6 +55,7 @@ describe("IftaClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/reports/ifta/jurisdiction")
@@ -99,6 +81,7 @@ describe("IftaClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/reports/ifta/jurisdiction")
@@ -124,6 +107,7 @@ describe("IftaClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/reports/ifta/jurisdiction")
@@ -149,6 +133,7 @@ describe("IftaClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/reports/ifta/jurisdiction")
@@ -174,6 +159,7 @@ describe("IftaClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/reports/ifta/jurisdiction")
@@ -199,6 +185,7 @@ describe("IftaClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/reports/ifta/jurisdiction")
@@ -224,6 +211,7 @@ describe("IftaClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/reports/ifta/jurisdiction")
@@ -249,6 +237,7 @@ describe("IftaClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/reports/ifta/jurisdiction")
@@ -274,6 +263,7 @@ describe("IftaClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/reports/ifta/jurisdiction")
@@ -299,6 +289,7 @@ describe("IftaClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/reports/ifta/jurisdiction")
@@ -345,6 +336,7 @@ describe("IftaClient", () => {
             },
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/fleet/reports/ifta/vehicle")
@@ -356,39 +348,7 @@ describe("IftaClient", () => {
         const response = await client.ifta.getIftaVehicleReports({
             year: 1000000,
         });
-        expect(response).toEqual({
-            data: {
-                month: "January",
-                quarter: "Q4",
-                troubleshooting: {
-                    noPurchasesFound: false,
-                    unassignedFuelTypePurchases: 200,
-                    unassignedFuelTypeVehicles: 2500,
-                    unassignedVehiclePurchases: 2500,
-                },
-                vehicleReports: [
-                    {
-                        jurisdictions: [
-                            {
-                                jurisdiction: "GA",
-                                taxPaidLiters: 25.5,
-                                taxableMeters: 2350,
-                                totalMeters: 2350,
-                            },
-                        ],
-                        vehicle: {
-                            id: "494123",
-                            name: "Fleet Truck #1",
-                        },
-                    },
-                ],
-                year: 2021,
-            },
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getIftaVehicleReports (2)", async () => {
@@ -401,6 +361,7 @@ describe("IftaClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/reports/ifta/vehicle")
@@ -426,6 +387,7 @@ describe("IftaClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/reports/ifta/vehicle")
@@ -451,6 +413,7 @@ describe("IftaClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/reports/ifta/vehicle")
@@ -476,6 +439,7 @@ describe("IftaClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/reports/ifta/vehicle")
@@ -501,6 +465,7 @@ describe("IftaClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/reports/ifta/vehicle")
@@ -526,6 +491,7 @@ describe("IftaClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/reports/ifta/vehicle")
@@ -551,6 +517,7 @@ describe("IftaClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/reports/ifta/vehicle")
@@ -576,6 +543,7 @@ describe("IftaClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/reports/ifta/vehicle")
@@ -601,6 +569,7 @@ describe("IftaClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/reports/ifta/vehicle")
@@ -626,6 +595,7 @@ describe("IftaClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/reports/ifta/vehicle")
@@ -675,6 +645,7 @@ describe("IftaClient", () => {
                 startedAtTime: "2019-06-13T19:00:00Z",
             },
         };
+
         server
             .mockEndpoint()
             .post("/ifta-detail/csv")
@@ -688,31 +659,7 @@ describe("IftaClient", () => {
             endHour: "2019-06-13T19:00:00Z",
             startHour: "2019-06-13T19:00:00Z",
         });
-        expect(response).toEqual({
-            data: {
-                args: {
-                    endHour: "2019-06-13T19:00:00Z",
-                    startHour: "2019-06-13T19:00:00Z",
-                    vehicleIds: [12345678, 56789123],
-                },
-                completedAtTime: "2019-06-13T19:00:00Z",
-                details: "Try limiting the number of vehicles requested per job to reduce the processing duration.",
-                failedAtTime: "2019-06-13T19:00:00Z",
-                files: [
-                    {
-                        createdAtTime: "2019-06-13T19:00:00Z",
-                        downloadUrl: "https://s3.download-url.com",
-                        downloadUrlExpirationTime: "2019-06-13T19:00:00Z",
-                        name: "output-001.csv.gz",
-                        recordCount: 927776079462837100,
-                    },
-                ],
-                jobId: "8cabba84-bef4-4951-8cd2-78ce898fd8e6",
-                jobStatus: "Requested",
-                requestedAtTime: "2019-06-13T19:00:00Z",
-                startedAtTime: "2019-06-13T19:00:00Z",
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createIftaDetailJob (2)", async () => {
@@ -725,6 +672,7 @@ describe("IftaClient", () => {
         });
         const rawRequestBody = { endHour: "endHour", startHour: "startHour" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/ifta-detail/csv")
@@ -752,6 +700,7 @@ describe("IftaClient", () => {
         });
         const rawRequestBody = { endHour: "endHour", startHour: "startHour" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/ifta-detail/csv")
@@ -779,6 +728,7 @@ describe("IftaClient", () => {
         });
         const rawRequestBody = { endHour: "endHour", startHour: "startHour" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/ifta-detail/csv")
@@ -806,6 +756,7 @@ describe("IftaClient", () => {
         });
         const rawRequestBody = { endHour: "endHour", startHour: "startHour" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/ifta-detail/csv")
@@ -833,6 +784,7 @@ describe("IftaClient", () => {
         });
         const rawRequestBody = { endHour: "endHour", startHour: "startHour" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/ifta-detail/csv")
@@ -860,6 +812,7 @@ describe("IftaClient", () => {
         });
         const rawRequestBody = { endHour: "endHour", startHour: "startHour" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/ifta-detail/csv")
@@ -887,6 +840,7 @@ describe("IftaClient", () => {
         });
         const rawRequestBody = { endHour: "endHour", startHour: "startHour" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/ifta-detail/csv")
@@ -914,6 +868,7 @@ describe("IftaClient", () => {
         });
         const rawRequestBody = { endHour: "endHour", startHour: "startHour" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/ifta-detail/csv")
@@ -941,6 +896,7 @@ describe("IftaClient", () => {
         });
         const rawRequestBody = { endHour: "endHour", startHour: "startHour" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/ifta-detail/csv")
@@ -968,6 +924,7 @@ describe("IftaClient", () => {
         });
         const rawRequestBody = { endHour: "endHour", startHour: "startHour" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/ifta-detail/csv")
@@ -1019,6 +976,7 @@ describe("IftaClient", () => {
                 startedAtTime: "2019-06-13T19:00:00Z",
             },
         };
+
         server
             .mockEndpoint()
             .get("/ifta-detail/csv/id")
@@ -1030,31 +988,7 @@ describe("IftaClient", () => {
         const response = await client.ifta.getIftaDetailJob({
             id: "id",
         });
-        expect(response).toEqual({
-            data: {
-                args: {
-                    endHour: "2019-06-13T19:00:00Z",
-                    startHour: "2019-06-13T19:00:00Z",
-                    vehicleIds: [12345678, 56789123],
-                },
-                completedAtTime: "2019-06-13T19:00:00Z",
-                details: "Try limiting the number of vehicles requested per job to reduce the processing duration.",
-                failedAtTime: "2019-06-13T19:00:00Z",
-                files: [
-                    {
-                        createdAtTime: "2019-06-13T19:00:00Z",
-                        downloadUrl: "https://s3.download-url.com",
-                        downloadUrlExpirationTime: "2019-06-13T19:00:00Z",
-                        name: "output-001.csv.gz",
-                        recordCount: 927776079462837100,
-                    },
-                ],
-                jobId: "8cabba84-bef4-4951-8cd2-78ce898fd8e6",
-                jobStatus: "Requested",
-                requestedAtTime: "2019-06-13T19:00:00Z",
-                startedAtTime: "2019-06-13T19:00:00Z",
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getIftaDetailJob (2)", async () => {
@@ -1067,6 +1001,7 @@ describe("IftaClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/ifta-detail/csv/id")
@@ -1092,6 +1027,7 @@ describe("IftaClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/ifta-detail/csv/id")
@@ -1117,6 +1053,7 @@ describe("IftaClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/ifta-detail/csv/id")
@@ -1142,6 +1079,7 @@ describe("IftaClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/ifta-detail/csv/id")
@@ -1167,6 +1105,7 @@ describe("IftaClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/ifta-detail/csv/id")
@@ -1192,6 +1131,7 @@ describe("IftaClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/ifta-detail/csv/id")
@@ -1217,6 +1157,7 @@ describe("IftaClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/ifta-detail/csv/id")
@@ -1242,6 +1183,7 @@ describe("IftaClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/ifta-detail/csv/id")
@@ -1267,6 +1209,7 @@ describe("IftaClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/ifta-detail/csv/id")
@@ -1292,6 +1235,7 @@ describe("IftaClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/ifta-detail/csv/id")

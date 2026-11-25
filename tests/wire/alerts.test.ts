@@ -17,7 +17,32 @@ describe("AlertsClient", () => {
         const rawResponseBody = {
             data: [
                 {
-                    actions: [{ actionTypeId: 1 }],
+                    actions: [
+                        {
+                            actionParams: {
+                                driverAppNotification: {
+                                    inAppNotificationOptions: {
+                                        canDictateAlertTitle: false,
+                                        canPlayAlertSound: false,
+                                        customText: "Custom text",
+                                        isEnabled: true,
+                                    },
+                                    pushNotificationOptions: { isEnabled: true },
+                                },
+                                recipients: [
+                                    {
+                                        contactId: "1234",
+                                        notificationTypes: ["sms", "email", "email"],
+                                        roleId: "67004a16-be3c-4ef6-a51b-1c45a2c27a92",
+                                        type: "user",
+                                        userId: "1234",
+                                    },
+                                ],
+                                webhooks: { webhookIds: ["123", "123", "123", "123"] },
+                            },
+                            actionTypeId: 1,
+                        },
+                    ],
                     createdAtTime: "2019-06-13T19:08:25Z",
                     externalIds: { key: "value" },
                     id: "e1c5dffc-c7b7-47b0-a778-6a65de638abf",
@@ -42,11 +67,247 @@ describe("AlertsClient", () => {
                         tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
                         widgets: [{ widgetId: "12434" }],
                     },
-                    triggers: [{ triggerTypeId: 1000 }],
+                    triggers: [
+                        {
+                            triggerParams: {
+                                ambientTemperature: {
+                                    cargoIsFull: true,
+                                    doorsAreClosed: true,
+                                    minDurationMilliseconds: 600000,
+                                    operation: "GREATER",
+                                    temperatureCelcius: 60,
+                                },
+                                cellSignalLoss: { minDurationMilliseconds: 600000 },
+                                defLevel: {
+                                    defLevelPercent: 100,
+                                    minDurationMilliseconds: 600000,
+                                    operation: "GREATER",
+                                },
+                                deviceMovement: { minDurationMilliseconds: 600000 },
+                                dvirSubmittedDevice: {
+                                    dvirMinDurationMilliseconds: 600000,
+                                    dvirSubmissionTypes: [
+                                        "SAFE_WITH_DEFECTS",
+                                        "UNSAFE",
+                                        "SAFE_NO_DEFECTS",
+                                        "SAFE_NO_DEFECTS",
+                                    ],
+                                },
+                                engineIdle: { minDurationMilliseconds: 600000 },
+                                engineOff: { minDurationMilliseconds: 600000 },
+                                engineOn: { minDurationMilliseconds: 600000 },
+                                fuelLevel: { fuelLevelPercent: 20, minDurationMilliseconds: 600000, operation: "LESS" },
+                                gatewayDisconnected: { minDurationMilliseconds: 3600000 },
+                                gatewayUnplugged: { minDurationMilliseconds: 600000 },
+                                geofenceEntry: {
+                                    location: {
+                                        addressIds: [
+                                            "Placeat tempore soluta.",
+                                            "Nostrum non omnis non esse voluptas.",
+                                            "Minus nobis.",
+                                        ],
+                                        addressTypes: [
+                                            "workforceSite",
+                                            "agricultureSource",
+                                            "shortHaul",
+                                            "agricultureSource",
+                                        ],
+                                        circle: {
+                                            latitude: 37.7749,
+                                            longitude: 137.7749,
+                                            name: "My Geofence Cirlce",
+                                            radiusMeters: 23,
+                                        },
+                                        polygon: {
+                                            name: "My Geofence Polygon",
+                                            vertices: [{ latitude: 37.7749, longitude: 137.7749 }],
+                                        },
+                                        tagIds: ["4815", "4815", "4815", "4815"],
+                                    },
+                                },
+                                geofenceExit: {
+                                    location: {
+                                        addressIds: [
+                                            "Placeat tempore soluta.",
+                                            "Nostrum non omnis non esse voluptas.",
+                                            "Minus nobis.",
+                                        ],
+                                        addressTypes: [
+                                            "workforceSite",
+                                            "agricultureSource",
+                                            "shortHaul",
+                                            "agricultureSource",
+                                        ],
+                                        circle: {
+                                            latitude: 37.7749,
+                                            longitude: 137.7749,
+                                            name: "My Geofence Cirlce",
+                                            radiusMeters: 23,
+                                        },
+                                        polygon: {
+                                            name: "My Geofence Polygon",
+                                            vertices: [{ latitude: 37.7749, longitude: 137.7749 }],
+                                        },
+                                        tagIds: ["4815", "4815", "4815", "4815"],
+                                    },
+                                },
+                                gpsSignalLoss: { minDurationMilliseconds: 600000 },
+                                hosViolation: {
+                                    maxUntilViolationMilliseconds: 600000,
+                                    violation: "CaliforniaMealbreakMissed",
+                                },
+                                insideGeofence: {
+                                    location: {
+                                        addressIds: [
+                                            "Placeat tempore soluta.",
+                                            "Nostrum non omnis non esse voluptas.",
+                                            "Minus nobis.",
+                                        ],
+                                        addressTypes: [
+                                            "workforceSite",
+                                            "agricultureSource",
+                                            "shortHaul",
+                                            "agricultureSource",
+                                        ],
+                                        circle: {
+                                            latitude: 37.7749,
+                                            longitude: 137.7749,
+                                            name: "My Geofence Cirlce",
+                                            radiusMeters: 23,
+                                        },
+                                        polygon: {
+                                            name: "My Geofence Polygon",
+                                            vertices: [{ latitude: 37.7749, longitude: 137.7749 }],
+                                        },
+                                        tagIds: ["4815", "4815", "4815", "4815"],
+                                    },
+                                    minDurationMilliseconds: 600000,
+                                },
+                                outOfRoute: { maxOffRouteMeters: 100, minDurationMilliseconds: 600000 },
+                                outsideGeofence: {
+                                    location: {
+                                        addressIds: [
+                                            "Placeat tempore soluta.",
+                                            "Nostrum non omnis non esse voluptas.",
+                                            "Minus nobis.",
+                                        ],
+                                        addressTypes: [
+                                            "workforceSite",
+                                            "agricultureSource",
+                                            "shortHaul",
+                                            "agricultureSource",
+                                        ],
+                                        circle: {
+                                            latitude: 37.7749,
+                                            longitude: 137.7749,
+                                            name: "My Geofence Cirlce",
+                                            radiusMeters: 23,
+                                        },
+                                        polygon: {
+                                            name: "My Geofence Polygon",
+                                            vertices: [{ latitude: 37.7749, longitude: 137.7749 }],
+                                        },
+                                        tagIds: ["4815", "4815", "4815", "4815"],
+                                    },
+                                    minDurationMilliseconds: 600000,
+                                },
+                                panicButton: { isFilteringOutPowerLoss: true },
+                                reading: {
+                                    continuousThreshold: { operation: "GREATER", threshold: 20, upperThreshold: 30 },
+                                    entityType: "Asset",
+                                    enumThreshold: { number: 2, symbol: "HIGH" },
+                                    id: "engineTemperature",
+                                    minDurationMilliseconds: 600000,
+                                },
+                                routeStopEstimatedArrival: {
+                                    alertBeforeArrivalMilliseconds: 300000,
+                                    hasLiveShareLink: true,
+                                    isAlertOnRouteStopOnly: true,
+                                    location: {
+                                        addressIds: [
+                                            "Placeat tempore soluta.",
+                                            "Nostrum non omnis non esse voluptas.",
+                                            "Minus nobis.",
+                                        ],
+                                        addressTypes: [
+                                            "workforceSite",
+                                            "agricultureSource",
+                                            "shortHaul",
+                                            "agricultureSource",
+                                        ],
+                                        circle: {
+                                            latitude: 37.7749,
+                                            longitude: 137.7749,
+                                            name: "My Geofence Cirlce",
+                                            radiusMeters: 23,
+                                        },
+                                        polygon: {
+                                            name: "My Geofence Polygon",
+                                            vertices: [{ latitude: 37.7749, longitude: 137.7749 }],
+                                        },
+                                        tagIds: ["4815", "4815", "4815", "4815"],
+                                    },
+                                },
+                                safetyBehavior: {
+                                    behaviorCount: { comparison: "EQUAL_TO", numBehaviors: 10, numDays: 30 },
+                                    behaviors: ["NearPedestrianCollision", "VehicleInBlindSpotWarning"],
+                                    drivers: {
+                                        driverIds: ["12434", "12434", "12434", "12434"],
+                                        tagIds: ["12434", "12434", "12434"],
+                                    },
+                                    safetyScore: { comparison: "EQUAL_TO", score: 60 },
+                                    severities: ["high", "medium", "high"],
+                                    statuses: ["NEEDS_RECOGNITION", "NEEDS_REVIEW", "NEEDS_COACHING"],
+                                },
+                                scheduledMaintenance: { dueInDays: 10, scheduleId: "123" },
+                                scheduledMaintenanceByEngineHours: { dueInHours: 5000, scheduleId: "123" },
+                                scheduledMaintenanceOdometer: { dueInMeters: 5000, scheduleId: "123" },
+                                speed: {
+                                    minDurationMilliseconds: 600000,
+                                    operation: "GREATER",
+                                    speedKilometersPerHour: 120,
+                                },
+                                suddenFuelLevelDrop: { minFuelLevelChangeInPercents: 6 },
+                                suddenFuelLevelRise: { minFuelLevelChangeInPercents: 6 },
+                                tireFaultCode: {
+                                    hasCautionaryTireFaultCodes: true,
+                                    hasCriticalTireFaultCodes: true,
+                                    manufacturer: "MANUFACTURER_BENDIX",
+                                    specificTireFaultCodes: [
+                                        "TIRE_ALERT_ACROSS_AXLE_FAULT",
+                                        "TIRE_ALERT_ACROSS_AXLE_FAULT",
+                                    ],
+                                },
+                                trainingAssignmentNearDueDate: {
+                                    conditionUnits: "DAYS",
+                                    conditionValue: 1,
+                                    timezone: "America/Los_Angeles",
+                                },
+                                unassignedDriving: { minDurationMilliseconds: 600000 },
+                                vehicleBatteryVoltage: {
+                                    batteryVolts: 100,
+                                    minDurationMilliseconds: 600000,
+                                    operation: "GREATER",
+                                },
+                                vehicleFaultCode: {
+                                    hasAnyAmberWarningLampCodes: true,
+                                    hasAnyFaultCodes: true,
+                                    hasAnyMalfunctionIndicatorLampCodes: true,
+                                    hasAnyProtectionLampCodes: true,
+                                    hasAnyRedStopLampCodes: true,
+                                    hasAnyTrailerAbsLampCodes: true,
+                                    minDurationMilliseconds: 600000,
+                                    specificFaultCodes: [{ faultCode: "1067", type: "INVALID_FAULT_CODE_TYPE" }],
+                                },
+                            },
+                            triggerTypeId: 1000,
+                        },
+                    ],
                 },
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/alerts/configurations")
@@ -56,71 +317,7 @@ describe("AlertsClient", () => {
             .build();
 
         const response = await client.alerts.getConfigurations();
-        expect(response).toEqual({
-            data: [
-                {
-                    actions: [
-                        {
-                            actionTypeId: 1,
-                        },
-                    ],
-                    createdAtTime: "2019-06-13T19:08:25Z",
-                    externalIds: {
-                        key: "value",
-                    },
-                    id: "e1c5dffc-c7b7-47b0-a778-6a65de638abf",
-                    isEnabled: true,
-                    lastModifiedAtTime: "2019-06-13T19:08:25Z",
-                    name: "My Harsh Event Alert",
-                    operationalSettings: {
-                        timeRangeType: "activeBetween",
-                        timeRanges: [
-                            {
-                                daysOfWeek: ["SATURDAY", "WEDNESDAY", "SUNDAY", "FRIDAY"],
-                                endTime: "20:00",
-                                startTime: "11:00",
-                                timezone: "America/Los_Angeles",
-                            },
-                        ],
-                    },
-                    scope: {
-                        all: true,
-                        assets: [
-                            {
-                                assetId: "12443",
-                                assetType: "uncategorized",
-                            },
-                        ],
-                        drivers: [
-                            {
-                                driverId: "12434",
-                            },
-                        ],
-                        tags: [
-                            {
-                                id: "3914",
-                                name: "East Coast",
-                                parentTagId: "4815",
-                            },
-                        ],
-                        widgets: [
-                            {
-                                widgetId: "12434",
-                            },
-                        ],
-                    },
-                    triggers: [
-                        {
-                            triggerTypeId: 1000,
-                        },
-                    ],
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getConfigurations (2)", async () => {
@@ -133,6 +330,7 @@ describe("AlertsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/alerts/configurations")
@@ -156,6 +354,7 @@ describe("AlertsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/alerts/configurations")
@@ -179,6 +378,7 @@ describe("AlertsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/alerts/configurations")
@@ -202,6 +402,7 @@ describe("AlertsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/alerts/configurations")
@@ -225,6 +426,7 @@ describe("AlertsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/alerts/configurations")
@@ -248,6 +450,7 @@ describe("AlertsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/alerts/configurations")
@@ -271,6 +474,7 @@ describe("AlertsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/alerts/configurations")
@@ -294,6 +498,7 @@ describe("AlertsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/alerts/configurations")
@@ -317,6 +522,7 @@ describe("AlertsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/alerts/configurations")
@@ -340,6 +546,7 @@ describe("AlertsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/alerts/configurations")
@@ -370,7 +577,32 @@ describe("AlertsClient", () => {
         };
         const rawResponseBody = {
             data: {
-                actions: [{ actionTypeId: 1 }],
+                actions: [
+                    {
+                        actionParams: {
+                            driverAppNotification: {
+                                inAppNotificationOptions: {
+                                    canDictateAlertTitle: false,
+                                    canPlayAlertSound: false,
+                                    customText: "Custom text",
+                                    isEnabled: true,
+                                },
+                                pushNotificationOptions: { isEnabled: true },
+                            },
+                            recipients: [
+                                {
+                                    contactId: "1234",
+                                    notificationTypes: ["sms", "email", "email"],
+                                    roleId: "67004a16-be3c-4ef6-a51b-1c45a2c27a92",
+                                    type: "user",
+                                    userId: "1234",
+                                },
+                            ],
+                            webhooks: { webhookIds: ["123", "123", "123", "123"] },
+                        },
+                        actionTypeId: 1,
+                    },
+                ],
                 createdAtTime: "2019-06-13T19:08:25Z",
                 externalIds: { key: "value" },
                 id: "e1c5dffc-c7b7-47b0-a778-6a65de638abf",
@@ -395,9 +627,241 @@ describe("AlertsClient", () => {
                     tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
                     widgets: [{ widgetId: "12434" }],
                 },
-                triggers: [{ triggerTypeId: 1000 }],
+                triggers: [
+                    {
+                        triggerParams: {
+                            ambientTemperature: {
+                                cargoIsFull: true,
+                                doorsAreClosed: true,
+                                minDurationMilliseconds: 600000,
+                                operation: "GREATER",
+                                temperatureCelcius: 60,
+                            },
+                            cellSignalLoss: { minDurationMilliseconds: 600000 },
+                            defLevel: { defLevelPercent: 100, minDurationMilliseconds: 600000, operation: "GREATER" },
+                            deviceMovement: { minDurationMilliseconds: 600000 },
+                            dvirSubmittedDevice: {
+                                dvirMinDurationMilliseconds: 600000,
+                                dvirSubmissionTypes: [
+                                    "SAFE_WITH_DEFECTS",
+                                    "UNSAFE",
+                                    "SAFE_NO_DEFECTS",
+                                    "SAFE_NO_DEFECTS",
+                                ],
+                            },
+                            engineIdle: { minDurationMilliseconds: 600000 },
+                            engineOff: { minDurationMilliseconds: 600000 },
+                            engineOn: { minDurationMilliseconds: 600000 },
+                            fuelLevel: { fuelLevelPercent: 20, minDurationMilliseconds: 600000, operation: "LESS" },
+                            gatewayDisconnected: { minDurationMilliseconds: 3600000 },
+                            gatewayUnplugged: { minDurationMilliseconds: 600000 },
+                            geofenceEntry: {
+                                location: {
+                                    addressIds: [
+                                        "Placeat tempore soluta.",
+                                        "Nostrum non omnis non esse voluptas.",
+                                        "Minus nobis.",
+                                    ],
+                                    addressTypes: [
+                                        "workforceSite",
+                                        "agricultureSource",
+                                        "shortHaul",
+                                        "agricultureSource",
+                                    ],
+                                    circle: {
+                                        latitude: 37.7749,
+                                        longitude: 137.7749,
+                                        name: "My Geofence Cirlce",
+                                        radiusMeters: 23,
+                                    },
+                                    polygon: {
+                                        name: "My Geofence Polygon",
+                                        vertices: [{ latitude: 37.7749, longitude: 137.7749 }],
+                                    },
+                                    tagIds: ["4815", "4815", "4815", "4815"],
+                                },
+                            },
+                            geofenceExit: {
+                                location: {
+                                    addressIds: [
+                                        "Placeat tempore soluta.",
+                                        "Nostrum non omnis non esse voluptas.",
+                                        "Minus nobis.",
+                                    ],
+                                    addressTypes: [
+                                        "workforceSite",
+                                        "agricultureSource",
+                                        "shortHaul",
+                                        "agricultureSource",
+                                    ],
+                                    circle: {
+                                        latitude: 37.7749,
+                                        longitude: 137.7749,
+                                        name: "My Geofence Cirlce",
+                                        radiusMeters: 23,
+                                    },
+                                    polygon: {
+                                        name: "My Geofence Polygon",
+                                        vertices: [{ latitude: 37.7749, longitude: 137.7749 }],
+                                    },
+                                    tagIds: ["4815", "4815", "4815", "4815"],
+                                },
+                            },
+                            gpsSignalLoss: { minDurationMilliseconds: 600000 },
+                            hosViolation: {
+                                maxUntilViolationMilliseconds: 600000,
+                                violation: "CaliforniaMealbreakMissed",
+                            },
+                            insideGeofence: {
+                                location: {
+                                    addressIds: [
+                                        "Placeat tempore soluta.",
+                                        "Nostrum non omnis non esse voluptas.",
+                                        "Minus nobis.",
+                                    ],
+                                    addressTypes: [
+                                        "workforceSite",
+                                        "agricultureSource",
+                                        "shortHaul",
+                                        "agricultureSource",
+                                    ],
+                                    circle: {
+                                        latitude: 37.7749,
+                                        longitude: 137.7749,
+                                        name: "My Geofence Cirlce",
+                                        radiusMeters: 23,
+                                    },
+                                    polygon: {
+                                        name: "My Geofence Polygon",
+                                        vertices: [{ latitude: 37.7749, longitude: 137.7749 }],
+                                    },
+                                    tagIds: ["4815", "4815", "4815", "4815"],
+                                },
+                                minDurationMilliseconds: 600000,
+                            },
+                            outOfRoute: { maxOffRouteMeters: 100, minDurationMilliseconds: 600000 },
+                            outsideGeofence: {
+                                location: {
+                                    addressIds: [
+                                        "Placeat tempore soluta.",
+                                        "Nostrum non omnis non esse voluptas.",
+                                        "Minus nobis.",
+                                    ],
+                                    addressTypes: [
+                                        "workforceSite",
+                                        "agricultureSource",
+                                        "shortHaul",
+                                        "agricultureSource",
+                                    ],
+                                    circle: {
+                                        latitude: 37.7749,
+                                        longitude: 137.7749,
+                                        name: "My Geofence Cirlce",
+                                        radiusMeters: 23,
+                                    },
+                                    polygon: {
+                                        name: "My Geofence Polygon",
+                                        vertices: [{ latitude: 37.7749, longitude: 137.7749 }],
+                                    },
+                                    tagIds: ["4815", "4815", "4815", "4815"],
+                                },
+                                minDurationMilliseconds: 600000,
+                            },
+                            panicButton: { isFilteringOutPowerLoss: true },
+                            reading: {
+                                continuousThreshold: { operation: "GREATER", threshold: 20, upperThreshold: 30 },
+                                entityType: "Asset",
+                                enumThreshold: { number: 2, symbol: "HIGH" },
+                                id: "engineTemperature",
+                                minDurationMilliseconds: 600000,
+                            },
+                            routeStopEstimatedArrival: {
+                                alertBeforeArrivalMilliseconds: 300000,
+                                hasLiveShareLink: true,
+                                isAlertOnRouteStopOnly: true,
+                                location: {
+                                    addressIds: [
+                                        "Placeat tempore soluta.",
+                                        "Nostrum non omnis non esse voluptas.",
+                                        "Minus nobis.",
+                                    ],
+                                    addressTypes: [
+                                        "workforceSite",
+                                        "agricultureSource",
+                                        "shortHaul",
+                                        "agricultureSource",
+                                    ],
+                                    circle: {
+                                        latitude: 37.7749,
+                                        longitude: 137.7749,
+                                        name: "My Geofence Cirlce",
+                                        radiusMeters: 23,
+                                    },
+                                    polygon: {
+                                        name: "My Geofence Polygon",
+                                        vertices: [{ latitude: 37.7749, longitude: 137.7749 }],
+                                    },
+                                    tagIds: ["4815", "4815", "4815", "4815"],
+                                },
+                            },
+                            safetyBehavior: {
+                                behaviorCount: { comparison: "EQUAL_TO", numBehaviors: 10, numDays: 30 },
+                                behaviors: ["NearPedestrianCollision", "VehicleInBlindSpotWarning"],
+                                drivers: {
+                                    driverIds: ["12434", "12434", "12434", "12434"],
+                                    tagIds: ["12434", "12434", "12434"],
+                                },
+                                safetyScore: { comparison: "EQUAL_TO", score: 60 },
+                                severities: ["high", "medium", "high"],
+                                statuses: ["NEEDS_RECOGNITION", "NEEDS_REVIEW", "NEEDS_COACHING"],
+                            },
+                            scheduledMaintenance: { dueInDays: 10, scheduleId: "123" },
+                            scheduledMaintenanceByEngineHours: { dueInHours: 5000, scheduleId: "123" },
+                            scheduledMaintenanceOdometer: { dueInMeters: 5000, scheduleId: "123" },
+                            speed: {
+                                minDurationMilliseconds: 600000,
+                                operation: "GREATER",
+                                speedKilometersPerHour: 120,
+                            },
+                            suddenFuelLevelDrop: { minFuelLevelChangeInPercents: 6 },
+                            suddenFuelLevelRise: { minFuelLevelChangeInPercents: 6 },
+                            tireFaultCode: {
+                                hasCautionaryTireFaultCodes: true,
+                                hasCriticalTireFaultCodes: true,
+                                manufacturer: "MANUFACTURER_BENDIX",
+                                specificTireFaultCodes: [
+                                    "TIRE_ALERT_ACROSS_AXLE_FAULT",
+                                    "TIRE_ALERT_ACROSS_AXLE_FAULT",
+                                ],
+                            },
+                            trainingAssignmentNearDueDate: {
+                                conditionUnits: "DAYS",
+                                conditionValue: 1,
+                                timezone: "America/Los_Angeles",
+                            },
+                            unassignedDriving: { minDurationMilliseconds: 600000 },
+                            vehicleBatteryVoltage: {
+                                batteryVolts: 100,
+                                minDurationMilliseconds: 600000,
+                                operation: "GREATER",
+                            },
+                            vehicleFaultCode: {
+                                hasAnyAmberWarningLampCodes: true,
+                                hasAnyFaultCodes: true,
+                                hasAnyMalfunctionIndicatorLampCodes: true,
+                                hasAnyProtectionLampCodes: true,
+                                hasAnyRedStopLampCodes: true,
+                                hasAnyTrailerAbsLampCodes: true,
+                                minDurationMilliseconds: 600000,
+                                specificFaultCodes: [{ faultCode: "1067", type: "INVALID_FAULT_CODE_TYPE" }],
+                            },
+                        },
+                        triggerTypeId: 1000,
+                    },
+                ],
             },
         };
+
         server
             .mockEndpoint()
             .post("/alerts/configurations")
@@ -424,65 +888,7 @@ describe("AlertsClient", () => {
                 },
             ],
         });
-        expect(response).toEqual({
-            data: {
-                actions: [
-                    {
-                        actionTypeId: 1,
-                    },
-                ],
-                createdAtTime: "2019-06-13T19:08:25Z",
-                externalIds: {
-                    key: "value",
-                },
-                id: "e1c5dffc-c7b7-47b0-a778-6a65de638abf",
-                isEnabled: true,
-                lastModifiedAtTime: "2019-06-13T19:08:25Z",
-                name: "My Harsh Event Alert",
-                operationalSettings: {
-                    timeRangeType: "activeBetween",
-                    timeRanges: [
-                        {
-                            daysOfWeek: ["SATURDAY", "WEDNESDAY", "SUNDAY", "FRIDAY"],
-                            endTime: "20:00",
-                            startTime: "11:00",
-                            timezone: "America/Los_Angeles",
-                        },
-                    ],
-                },
-                scope: {
-                    all: true,
-                    assets: [
-                        {
-                            assetId: "12443",
-                            assetType: "uncategorized",
-                        },
-                    ],
-                    drivers: [
-                        {
-                            driverId: "12434",
-                        },
-                    ],
-                    tags: [
-                        {
-                            id: "3914",
-                            name: "East Coast",
-                            parentTagId: "4815",
-                        },
-                    ],
-                    widgets: [
-                        {
-                            widgetId: "12434",
-                        },
-                    ],
-                },
-                triggers: [
-                    {
-                        triggerTypeId: 1000,
-                    },
-                ],
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("postConfigurations (2)", async () => {
@@ -501,6 +907,7 @@ describe("AlertsClient", () => {
             triggers: [{ triggerTypeId: 1 }, { triggerTypeId: 1 }],
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/alerts/configurations")
@@ -553,6 +960,7 @@ describe("AlertsClient", () => {
             triggers: [{ triggerTypeId: 1 }, { triggerTypeId: 1 }],
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/alerts/configurations")
@@ -605,6 +1013,7 @@ describe("AlertsClient", () => {
             triggers: [{ triggerTypeId: 1 }, { triggerTypeId: 1 }],
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/alerts/configurations")
@@ -657,6 +1066,7 @@ describe("AlertsClient", () => {
             triggers: [{ triggerTypeId: 1 }, { triggerTypeId: 1 }],
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/alerts/configurations")
@@ -709,6 +1119,7 @@ describe("AlertsClient", () => {
             triggers: [{ triggerTypeId: 1 }, { triggerTypeId: 1 }],
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/alerts/configurations")
@@ -761,6 +1172,7 @@ describe("AlertsClient", () => {
             triggers: [{ triggerTypeId: 1 }, { triggerTypeId: 1 }],
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/alerts/configurations")
@@ -813,6 +1225,7 @@ describe("AlertsClient", () => {
             triggers: [{ triggerTypeId: 1 }, { triggerTypeId: 1 }],
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/alerts/configurations")
@@ -865,6 +1278,7 @@ describe("AlertsClient", () => {
             triggers: [{ triggerTypeId: 1 }, { triggerTypeId: 1 }],
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/alerts/configurations")
@@ -917,6 +1331,7 @@ describe("AlertsClient", () => {
             triggers: [{ triggerTypeId: 1 }, { triggerTypeId: 1 }],
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/alerts/configurations")
@@ -969,6 +1384,7 @@ describe("AlertsClient", () => {
             triggers: [{ triggerTypeId: 1 }, { triggerTypeId: 1 }],
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/alerts/configurations")
@@ -1032,6 +1448,7 @@ describe("AlertsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/alerts/configurations")
@@ -1057,6 +1474,7 @@ describe("AlertsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/alerts/configurations")
@@ -1082,6 +1500,7 @@ describe("AlertsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/alerts/configurations")
@@ -1107,6 +1526,7 @@ describe("AlertsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/alerts/configurations")
@@ -1132,6 +1552,7 @@ describe("AlertsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/alerts/configurations")
@@ -1157,6 +1578,7 @@ describe("AlertsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/alerts/configurations")
@@ -1182,6 +1604,7 @@ describe("AlertsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/alerts/configurations")
@@ -1207,6 +1630,7 @@ describe("AlertsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/alerts/configurations")
@@ -1232,6 +1656,7 @@ describe("AlertsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/alerts/configurations")
@@ -1257,6 +1682,7 @@ describe("AlertsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/alerts/configurations")
@@ -1283,7 +1709,32 @@ describe("AlertsClient", () => {
         const rawRequestBody = { id: "e1c5dffc-c7b7-47b0-a778-6a65de638abf" };
         const rawResponseBody = {
             data: {
-                actions: [{ actionTypeId: 1 }],
+                actions: [
+                    {
+                        actionParams: {
+                            driverAppNotification: {
+                                inAppNotificationOptions: {
+                                    canDictateAlertTitle: false,
+                                    canPlayAlertSound: false,
+                                    customText: "Custom text",
+                                    isEnabled: true,
+                                },
+                                pushNotificationOptions: { isEnabled: true },
+                            },
+                            recipients: [
+                                {
+                                    contactId: "1234",
+                                    notificationTypes: ["sms", "email", "email"],
+                                    roleId: "67004a16-be3c-4ef6-a51b-1c45a2c27a92",
+                                    type: "user",
+                                    userId: "1234",
+                                },
+                            ],
+                            webhooks: { webhookIds: ["123", "123", "123", "123"] },
+                        },
+                        actionTypeId: 1,
+                    },
+                ],
                 createdAtTime: "2019-06-13T19:08:25Z",
                 externalIds: { key: "value" },
                 id: "e1c5dffc-c7b7-47b0-a778-6a65de638abf",
@@ -1308,9 +1759,241 @@ describe("AlertsClient", () => {
                     tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
                     widgets: [{ widgetId: "12434" }],
                 },
-                triggers: [{ triggerTypeId: 1000 }],
+                triggers: [
+                    {
+                        triggerParams: {
+                            ambientTemperature: {
+                                cargoIsFull: true,
+                                doorsAreClosed: true,
+                                minDurationMilliseconds: 600000,
+                                operation: "GREATER",
+                                temperatureCelcius: 60,
+                            },
+                            cellSignalLoss: { minDurationMilliseconds: 600000 },
+                            defLevel: { defLevelPercent: 100, minDurationMilliseconds: 600000, operation: "GREATER" },
+                            deviceMovement: { minDurationMilliseconds: 600000 },
+                            dvirSubmittedDevice: {
+                                dvirMinDurationMilliseconds: 600000,
+                                dvirSubmissionTypes: [
+                                    "SAFE_WITH_DEFECTS",
+                                    "UNSAFE",
+                                    "SAFE_NO_DEFECTS",
+                                    "SAFE_NO_DEFECTS",
+                                ],
+                            },
+                            engineIdle: { minDurationMilliseconds: 600000 },
+                            engineOff: { minDurationMilliseconds: 600000 },
+                            engineOn: { minDurationMilliseconds: 600000 },
+                            fuelLevel: { fuelLevelPercent: 20, minDurationMilliseconds: 600000, operation: "LESS" },
+                            gatewayDisconnected: { minDurationMilliseconds: 3600000 },
+                            gatewayUnplugged: { minDurationMilliseconds: 600000 },
+                            geofenceEntry: {
+                                location: {
+                                    addressIds: [
+                                        "Placeat tempore soluta.",
+                                        "Nostrum non omnis non esse voluptas.",
+                                        "Minus nobis.",
+                                    ],
+                                    addressTypes: [
+                                        "workforceSite",
+                                        "agricultureSource",
+                                        "shortHaul",
+                                        "agricultureSource",
+                                    ],
+                                    circle: {
+                                        latitude: 37.7749,
+                                        longitude: 137.7749,
+                                        name: "My Geofence Cirlce",
+                                        radiusMeters: 23,
+                                    },
+                                    polygon: {
+                                        name: "My Geofence Polygon",
+                                        vertices: [{ latitude: 37.7749, longitude: 137.7749 }],
+                                    },
+                                    tagIds: ["4815", "4815", "4815", "4815"],
+                                },
+                            },
+                            geofenceExit: {
+                                location: {
+                                    addressIds: [
+                                        "Placeat tempore soluta.",
+                                        "Nostrum non omnis non esse voluptas.",
+                                        "Minus nobis.",
+                                    ],
+                                    addressTypes: [
+                                        "workforceSite",
+                                        "agricultureSource",
+                                        "shortHaul",
+                                        "agricultureSource",
+                                    ],
+                                    circle: {
+                                        latitude: 37.7749,
+                                        longitude: 137.7749,
+                                        name: "My Geofence Cirlce",
+                                        radiusMeters: 23,
+                                    },
+                                    polygon: {
+                                        name: "My Geofence Polygon",
+                                        vertices: [{ latitude: 37.7749, longitude: 137.7749 }],
+                                    },
+                                    tagIds: ["4815", "4815", "4815", "4815"],
+                                },
+                            },
+                            gpsSignalLoss: { minDurationMilliseconds: 600000 },
+                            hosViolation: {
+                                maxUntilViolationMilliseconds: 600000,
+                                violation: "CaliforniaMealbreakMissed",
+                            },
+                            insideGeofence: {
+                                location: {
+                                    addressIds: [
+                                        "Placeat tempore soluta.",
+                                        "Nostrum non omnis non esse voluptas.",
+                                        "Minus nobis.",
+                                    ],
+                                    addressTypes: [
+                                        "workforceSite",
+                                        "agricultureSource",
+                                        "shortHaul",
+                                        "agricultureSource",
+                                    ],
+                                    circle: {
+                                        latitude: 37.7749,
+                                        longitude: 137.7749,
+                                        name: "My Geofence Cirlce",
+                                        radiusMeters: 23,
+                                    },
+                                    polygon: {
+                                        name: "My Geofence Polygon",
+                                        vertices: [{ latitude: 37.7749, longitude: 137.7749 }],
+                                    },
+                                    tagIds: ["4815", "4815", "4815", "4815"],
+                                },
+                                minDurationMilliseconds: 600000,
+                            },
+                            outOfRoute: { maxOffRouteMeters: 100, minDurationMilliseconds: 600000 },
+                            outsideGeofence: {
+                                location: {
+                                    addressIds: [
+                                        "Placeat tempore soluta.",
+                                        "Nostrum non omnis non esse voluptas.",
+                                        "Minus nobis.",
+                                    ],
+                                    addressTypes: [
+                                        "workforceSite",
+                                        "agricultureSource",
+                                        "shortHaul",
+                                        "agricultureSource",
+                                    ],
+                                    circle: {
+                                        latitude: 37.7749,
+                                        longitude: 137.7749,
+                                        name: "My Geofence Cirlce",
+                                        radiusMeters: 23,
+                                    },
+                                    polygon: {
+                                        name: "My Geofence Polygon",
+                                        vertices: [{ latitude: 37.7749, longitude: 137.7749 }],
+                                    },
+                                    tagIds: ["4815", "4815", "4815", "4815"],
+                                },
+                                minDurationMilliseconds: 600000,
+                            },
+                            panicButton: { isFilteringOutPowerLoss: true },
+                            reading: {
+                                continuousThreshold: { operation: "GREATER", threshold: 20, upperThreshold: 30 },
+                                entityType: "Asset",
+                                enumThreshold: { number: 2, symbol: "HIGH" },
+                                id: "engineTemperature",
+                                minDurationMilliseconds: 600000,
+                            },
+                            routeStopEstimatedArrival: {
+                                alertBeforeArrivalMilliseconds: 300000,
+                                hasLiveShareLink: true,
+                                isAlertOnRouteStopOnly: true,
+                                location: {
+                                    addressIds: [
+                                        "Placeat tempore soluta.",
+                                        "Nostrum non omnis non esse voluptas.",
+                                        "Minus nobis.",
+                                    ],
+                                    addressTypes: [
+                                        "workforceSite",
+                                        "agricultureSource",
+                                        "shortHaul",
+                                        "agricultureSource",
+                                    ],
+                                    circle: {
+                                        latitude: 37.7749,
+                                        longitude: 137.7749,
+                                        name: "My Geofence Cirlce",
+                                        radiusMeters: 23,
+                                    },
+                                    polygon: {
+                                        name: "My Geofence Polygon",
+                                        vertices: [{ latitude: 37.7749, longitude: 137.7749 }],
+                                    },
+                                    tagIds: ["4815", "4815", "4815", "4815"],
+                                },
+                            },
+                            safetyBehavior: {
+                                behaviorCount: { comparison: "EQUAL_TO", numBehaviors: 10, numDays: 30 },
+                                behaviors: ["NearPedestrianCollision", "VehicleInBlindSpotWarning"],
+                                drivers: {
+                                    driverIds: ["12434", "12434", "12434", "12434"],
+                                    tagIds: ["12434", "12434", "12434"],
+                                },
+                                safetyScore: { comparison: "EQUAL_TO", score: 60 },
+                                severities: ["high", "medium", "high"],
+                                statuses: ["NEEDS_RECOGNITION", "NEEDS_REVIEW", "NEEDS_COACHING"],
+                            },
+                            scheduledMaintenance: { dueInDays: 10, scheduleId: "123" },
+                            scheduledMaintenanceByEngineHours: { dueInHours: 5000, scheduleId: "123" },
+                            scheduledMaintenanceOdometer: { dueInMeters: 5000, scheduleId: "123" },
+                            speed: {
+                                minDurationMilliseconds: 600000,
+                                operation: "GREATER",
+                                speedKilometersPerHour: 120,
+                            },
+                            suddenFuelLevelDrop: { minFuelLevelChangeInPercents: 6 },
+                            suddenFuelLevelRise: { minFuelLevelChangeInPercents: 6 },
+                            tireFaultCode: {
+                                hasCautionaryTireFaultCodes: true,
+                                hasCriticalTireFaultCodes: true,
+                                manufacturer: "MANUFACTURER_BENDIX",
+                                specificTireFaultCodes: [
+                                    "TIRE_ALERT_ACROSS_AXLE_FAULT",
+                                    "TIRE_ALERT_ACROSS_AXLE_FAULT",
+                                ],
+                            },
+                            trainingAssignmentNearDueDate: {
+                                conditionUnits: "DAYS",
+                                conditionValue: 1,
+                                timezone: "America/Los_Angeles",
+                            },
+                            unassignedDriving: { minDurationMilliseconds: 600000 },
+                            vehicleBatteryVoltage: {
+                                batteryVolts: 100,
+                                minDurationMilliseconds: 600000,
+                                operation: "GREATER",
+                            },
+                            vehicleFaultCode: {
+                                hasAnyAmberWarningLampCodes: true,
+                                hasAnyFaultCodes: true,
+                                hasAnyMalfunctionIndicatorLampCodes: true,
+                                hasAnyProtectionLampCodes: true,
+                                hasAnyRedStopLampCodes: true,
+                                hasAnyTrailerAbsLampCodes: true,
+                                minDurationMilliseconds: 600000,
+                                specificFaultCodes: [{ faultCode: "1067", type: "INVALID_FAULT_CODE_TYPE" }],
+                            },
+                        },
+                        triggerTypeId: 1000,
+                    },
+                ],
             },
         };
+
         server
             .mockEndpoint()
             .patch("/alerts/configurations")
@@ -1323,65 +2006,7 @@ describe("AlertsClient", () => {
         const response = await client.alerts.patchConfigurations({
             id: "e1c5dffc-c7b7-47b0-a778-6a65de638abf",
         });
-        expect(response).toEqual({
-            data: {
-                actions: [
-                    {
-                        actionTypeId: 1,
-                    },
-                ],
-                createdAtTime: "2019-06-13T19:08:25Z",
-                externalIds: {
-                    key: "value",
-                },
-                id: "e1c5dffc-c7b7-47b0-a778-6a65de638abf",
-                isEnabled: true,
-                lastModifiedAtTime: "2019-06-13T19:08:25Z",
-                name: "My Harsh Event Alert",
-                operationalSettings: {
-                    timeRangeType: "activeBetween",
-                    timeRanges: [
-                        {
-                            daysOfWeek: ["SATURDAY", "WEDNESDAY", "SUNDAY", "FRIDAY"],
-                            endTime: "20:00",
-                            startTime: "11:00",
-                            timezone: "America/Los_Angeles",
-                        },
-                    ],
-                },
-                scope: {
-                    all: true,
-                    assets: [
-                        {
-                            assetId: "12443",
-                            assetType: "uncategorized",
-                        },
-                    ],
-                    drivers: [
-                        {
-                            driverId: "12434",
-                        },
-                    ],
-                    tags: [
-                        {
-                            id: "3914",
-                            name: "East Coast",
-                            parentTagId: "4815",
-                        },
-                    ],
-                    widgets: [
-                        {
-                            widgetId: "12434",
-                        },
-                    ],
-                },
-                triggers: [
-                    {
-                        triggerTypeId: 1000,
-                    },
-                ],
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("patchConfigurations (2)", async () => {
@@ -1394,6 +2019,7 @@ describe("AlertsClient", () => {
         });
         const rawRequestBody = { id: "id" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/alerts/configurations")
@@ -1420,6 +2046,7 @@ describe("AlertsClient", () => {
         });
         const rawRequestBody = { id: "id" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/alerts/configurations")
@@ -1446,6 +2073,7 @@ describe("AlertsClient", () => {
         });
         const rawRequestBody = { id: "id" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/alerts/configurations")
@@ -1472,6 +2100,7 @@ describe("AlertsClient", () => {
         });
         const rawRequestBody = { id: "id" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/alerts/configurations")
@@ -1498,6 +2127,7 @@ describe("AlertsClient", () => {
         });
         const rawRequestBody = { id: "id" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/alerts/configurations")
@@ -1524,6 +2154,7 @@ describe("AlertsClient", () => {
         });
         const rawRequestBody = { id: "id" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/alerts/configurations")
@@ -1550,6 +2181,7 @@ describe("AlertsClient", () => {
         });
         const rawRequestBody = { id: "id" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/alerts/configurations")
@@ -1576,6 +2208,7 @@ describe("AlertsClient", () => {
         });
         const rawRequestBody = { id: "id" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/alerts/configurations")
@@ -1602,6 +2235,7 @@ describe("AlertsClient", () => {
         });
         const rawRequestBody = { id: "id" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/alerts/configurations")
@@ -1628,6 +2262,7 @@ describe("AlertsClient", () => {
         });
         const rawRequestBody = { id: "id" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/alerts/configurations")
@@ -1658,1550 +2293,2882 @@ describe("AlertsClient", () => {
                 {
                     conditions: [
                         {
-                            description: "description",
+                            description: "Alert Type Description",
                             details: {
-                                ambientTemperature: { sensor: { id: "id" } },
-                                cameraConnectorDisconected: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
+                                ambientTemperature: {
+                                    sensor: {
+                                        id: "22222",
+                                        name: "Sensor-123",
+                                        pinnedDeviceId: "22222",
+                                        product: { shortName: "EM1" },
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
                                 },
-                                cameraStreamIssue: { cameraDevice: { id: "id" } },
+                                cameraConnectorDisconected: {
+                                    driver: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "45646",
+                                        name: "Driver Bob",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                    trailer: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Trailer-123",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                        trailerSerialNumber: "8V8WD530FLN016251",
+                                    },
+                                    vehicle: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Fleet Truck #1",
+                                        serial: "GFRV-43N-VGX",
+                                        staticAssignedDriver: { id: "0987", name: "Driver Name" },
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                },
+                                cameraStreamIssue: {
+                                    cameraDevice: {
+                                        id: "22222",
+                                        name: "Camera-123",
+                                        sites: [
+                                            {
+                                                id: "1111aaaa-11aa-11aa-11aa-111111aaaaaa",
+                                                name: "Site-123",
+                                                tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                            },
+                                        ],
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                },
                                 cellSignalLoss: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
+                                    driver: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "45646",
+                                        name: "Driver Bob",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                    trailer: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Trailer-123",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                        trailerSerialNumber: "8V8WD530FLN016251",
+                                    },
+                                    vehicle: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Fleet Truck #1",
+                                        serial: "GFRV-43N-VGX",
+                                        staticAssignedDriver: { id: "0987", name: "Driver Name" },
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
                                 },
                                 cloudBackupUploadIssue: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
+                                    driver: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "45646",
+                                        name: "Driver Bob",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                    trailer: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Trailer-123",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                        trailerSerialNumber: "8V8WD530FLN016251",
+                                    },
+                                    vehicle: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Fleet Truck #1",
+                                        serial: "GFRV-43N-VGX",
+                                        staticAssignedDriver: { id: "0987", name: "Driver Name" },
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
                                 },
                                 dashcamDisconnected: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
+                                    driver: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "45646",
+                                        name: "Driver Bob",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                    trailer: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Trailer-123",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                        trailerSerialNumber: "8V8WD530FLN016251",
+                                    },
+                                    vehicle: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Fleet Truck #1",
+                                        serial: "GFRV-43N-VGX",
+                                        staticAssignedDriver: { id: "0987", name: "Driver Name" },
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
                                 },
-                                dataInputValue: { machineInput: { id: "id" } },
+                                dataInputValue: { machineInput: { id: "20170306", name: "DataInput-123" } },
                                 deviceMovement: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
+                                    driver: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "45646",
+                                        name: "Driver Bob",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                    trailer: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Trailer-123",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                        trailerSerialNumber: "8V8WD530FLN016251",
+                                    },
+                                    vehicle: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Fleet Truck #1",
+                                        serial: "GFRV-43N-VGX",
+                                        staticAssignedDriver: { id: "0987", name: "Driver Name" },
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
                                 },
                                 deviceMovementStopped: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
+                                    driver: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "45646",
+                                        name: "Driver Bob",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                    trailer: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Trailer-123",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                        trailerSerialNumber: "8V8WD530FLN016251",
+                                    },
+                                    vehicle: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Fleet Truck #1",
+                                        serial: "GFRV-43N-VGX",
+                                        staticAssignedDriver: { id: "0987", name: "Driver Name" },
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
                                 },
                                 doorOpen: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
+                                    driver: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "45646",
+                                        name: "Driver Bob",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                    trailer: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Trailer-123",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                        trailerSerialNumber: "8V8WD530FLN016251",
+                                    },
+                                    vehicle: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Fleet Truck #1",
+                                        serial: "GFRV-43N-VGX",
+                                        staticAssignedDriver: { id: "0987", name: "Driver Name" },
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
                                 },
                                 driverAppSignIn: {
-                                    driver: { id: "id" },
-                                    pinnedVehicle: { id: "id", serial: "serial" },
+                                    driver: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "45646",
+                                        name: "Driver Bob",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                    pinnedVehicle: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Fleet Truck #1",
+                                        serial: "GFRV-43N-VGX",
+                                        staticAssignedDriver: { id: "0987", name: "Driver Name" },
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
                                 },
-                                driverAppSignOut: { driver: { id: "id" } },
-                                driverDocumentSubmitted: {},
-                                driverMessageReceived: { driver: { id: "id" } },
-                                driverMessageSent: { driver: { id: "id" } },
-                                driverRecorded: { driver: { id: "id" }, vehicle: { id: "id", serial: "serial" } },
-                                dvirSubmittedDevice: { driver: { id: "id" }, vehicle: {} },
-                                engineIdle: { driver: { id: "id" }, vehicle: { id: "id", serial: "serial" } },
+                                driverAppSignOut: {
+                                    driver: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "45646",
+                                        name: "Driver Bob",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                },
+                                driverDocumentSubmitted: {
+                                    document: {
+                                        conditionalFieldSections: [
+                                            {
+                                                conditionalFieldFirstIndex: 8217465358527716000,
+                                                conditionalFieldLastIndex: 1543582388420605000,
+                                                triggeringFieldIndex: 7540159348423735000,
+                                                triggeringFieldValue: "Optiona 1",
+                                            },
+                                        ],
+                                        createdAtTime: "2015-09-08T06:33:15Z",
+                                        documentType: {
+                                            id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
+                                            name: "Fleet Truck List",
+                                        },
+                                        driver: { id: "45646", name: "Driver Bob" },
+                                        fields: [
+                                            {
+                                                label: "Load weight",
+                                                type: "photo",
+                                                value: {
+                                                    barcodeValue: [
+                                                        {
+                                                            barcodeType: "org.gs1.EAN-13",
+                                                            barcodeValue: "0853883003114",
+                                                        },
+                                                    ],
+                                                    dateTimeValue: { dateTime: "1973-12-20T17:06:49Z" },
+                                                    multipleChoiceValue: [{ selected: false, value: "Yes" }],
+                                                    numberValue: 123.456,
+                                                    photoValue: [
+                                                        {
+                                                            id: "f5271458-21f9-4a9f-a290-780c6d8840ff",
+                                                            url: "https://samsara-driver-media-upload.s3.us-west-2.amazonaws.com/123456",
+                                                        },
+                                                    ],
+                                                    scannedDocumentValue: [
+                                                        {
+                                                            id: "f5271458-21f9-4a9f-a290-780c6d8840ff",
+                                                            url: "https://samsara-driver-media-upload.s3.us-west-2.amazonaws.com/123456",
+                                                        },
+                                                    ],
+                                                    signatureValue: {
+                                                        id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
+                                                        name: "John Smith",
+                                                        signedAtTime: "1989-09-25T02:38:09Z",
+                                                        url: "https://samsara-driver-media-upload.s3.us-west-2.amazonaws.com/123456",
+                                                    },
+                                                    stringValue: "Red Truck",
+                                                },
+                                            },
+                                        ],
+                                        id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
+                                        name: "Dropoff Slip 123",
+                                        notes: "Missing a crate",
+                                        route: { id: "131313", name: "Pineapple delivery" },
+                                        routeStop: { id: "494123", name: "Company Warehouse #1" },
+                                        state: "submitted",
+                                        updatedAtTime: "1975-05-20T03:23:39Z",
+                                        vehicle: { id: "494123", name: "Fleet Truck #1" },
+                                    },
+                                },
+                                driverMessageReceived: {
+                                    driver: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "45646",
+                                        name: "Driver Bob",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                },
+                                driverMessageSent: {
+                                    driver: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "45646",
+                                        name: "Driver Bob",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                },
+                                driverRecorded: {
+                                    driver: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "45646",
+                                        name: "Driver Bob",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                    vehicle: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Fleet Truck #1",
+                                        serial: "GFRV-43N-VGX",
+                                        staticAssignedDriver: { id: "0987", name: "Driver Name" },
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                },
+                                dvirSubmittedDevice: {
+                                    driver: { id: "45646", name: "Driver Bob" },
+                                    dvir: {
+                                        authorSignature: {
+                                            signatoryUser: { id: "938172", name: "Joe Driver" },
+                                            signedAtTime: "2020-01-27T07:06:25Z",
+                                            type: "driver",
+                                        },
+                                        defects: [
+                                            {
+                                                comment: "Air compressor not working",
+                                                createdAtTime: "2020-01-27T07:06:25Z",
+                                                defectType: "Air Compressor",
+                                                defectTypeId: "550e8400-e29b-41d4-a716-446655440000",
+                                                id: "18",
+                                                isResolved: false,
+                                                mechanicNotes:
+                                                    "Extremely large oddly shaped hole in passenger side window.",
+                                                mechanicNotesUpdatedAtTime: "2020-01-27T07:06:25Z",
+                                                resolvedAtTime: "2020-01-27T07:06:25Z",
+                                                resolvedBy: { id: "8172", name: "Jane Mechanic", type: "driver" },
+                                                trailer: { id: "494123", name: "Fleet Truck #1" },
+                                                vehicle: {
+                                                    gateway: { model: "AG15", serial: "GFRV-43N-VGX" },
+                                                    id: "494123",
+                                                    licensePlate: "6SAM123",
+                                                    name: "Fleet Truck #1",
+                                                    vin: "1GBJ6P1B2HV112765",
+                                                },
+                                            },
+                                        ],
+                                        endTime: "2020-01-27T07:06:25Z",
+                                        formattedLocation: "350 Rhode Island St Ste. 400S, San Francisco, CA 94103",
+                                        id: "12345",
+                                        mechanicNotes: "Replaced headlight on passenger side.",
+                                        needsCorrection: false,
+                                        odometerMeters: 91823,
+                                        safetyStatus: "safe",
+                                        secondSignature: {
+                                            signatoryUser: { id: "938172", name: "Joe Driver" },
+                                            signedAtTime: "2020-01-27T07:06:25Z",
+                                            type: "driver",
+                                        },
+                                        startTime: "2020-01-27T07:06:25Z",
+                                        thirdSignature: {
+                                            signatoryUser: { id: "938172", name: "Joe Driver" },
+                                            signedAtTime: "2020-01-27T07:06:25Z",
+                                            type: "driver",
+                                        },
+                                        trailer: { id: "494123", name: "Fleet Truck #1" },
+                                        type: "preTrip",
+                                    },
+                                    vehicle: {
+                                        gateway: { model: "AG15", serial: "GFRV-43N-VGX" },
+                                        id: "494123",
+                                        licensePlate: "6SAM123",
+                                        name: "Fleet Truck #1",
+                                        vin: "1GBJ6P1B2HV112765",
+                                    },
+                                },
+                                engineIdle: {
+                                    driver: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "45646",
+                                        name: "Driver Bob",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                    vehicle: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Fleet Truck #1",
+                                        serial: "GFRV-43N-VGX",
+                                        staticAssignedDriver: { id: "0987", name: "Driver Name" },
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                },
                                 engineOff: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
+                                    driver: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "45646",
+                                        name: "Driver Bob",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                    trailer: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Trailer-123",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                        trailerSerialNumber: "8V8WD530FLN016251",
+                                    },
+                                    vehicle: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Fleet Truck #1",
+                                        serial: "GFRV-43N-VGX",
+                                        staticAssignedDriver: { id: "0987", name: "Driver Name" },
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
                                 },
                                 engineOn: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
+                                    driver: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "45646",
+                                        name: "Driver Bob",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                    trailer: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Trailer-123",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                        trailerSerialNumber: "8V8WD530FLN016251",
+                                    },
+                                    vehicle: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Fleet Truck #1",
+                                        serial: "GFRV-43N-VGX",
+                                        staticAssignedDriver: { id: "0987", name: "Driver Name" },
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
                                 },
                                 formSubmitted: {
                                     form: {
-                                        assignedAtTime: "2024-01-15T09:30:00Z",
-                                        createdAtTime: "2024-01-15T09:30:00Z",
-                                        dueAtTime: "2024-01-15T09:30:00Z",
-                                        durationMs: 1000000,
-                                        externalIds: {},
-                                        fields: [],
-                                        formTemplate: { id: "id", revisionId: "revisionId" },
-                                        id: "id",
+                                        approvalDetails: { comment: "Requesting some changes to the submission." },
+                                        asset: { entryType: "tracked", id: "281474982859091", name: "trailer 123" },
+                                        assignedAtTime: "2019-06-13T19:08:25Z",
+                                        assignedTo: { id: "938172", type: "driver" },
+                                        createdAtTime: "2019-06-13T19:08:25Z",
+                                        dueAtTime: "2019-06-13T19:08:25Z",
+                                        durationMs: 105000,
+                                        fields: [
+                                            {
+                                                assetValue: {
+                                                    asset: {
+                                                        entryType: "tracked",
+                                                        id: "281474982859091",
+                                                        name: "trailer 123",
+                                                    },
+                                                },
+                                                barcodeValue: { barcodes: [{ value: "1A2B3C4D5E" }] },
+                                                checkBoxesValue: {
+                                                    value: ["Option A", "Option B"],
+                                                    valueIds: [
+                                                        "0cbbddb3-2541-4889-b4eb-92171cbfc142",
+                                                        "d33198cb-369f-4278-8120-d92d3ebf74bf",
+                                                    ],
+                                                },
+                                                dateTimeValue: {
+                                                    dateValue: "2024-08-08",
+                                                    type: "datetime",
+                                                    value: "2024-08-08T18:53:23Z",
+                                                },
+                                                geofenceValue: {
+                                                    geofence: {
+                                                        address: "123 Main St, Anytown, USA 12345",
+                                                        entryType: "tracked",
+                                                        id: "1234567890",
+                                                        name: "Geofence Name",
+                                                    },
+                                                },
+                                                id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
+                                                issue: { id: "12345" },
+                                                label: "Engine Hours",
+                                                mediaList: [
+                                                    {
+                                                        id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
+                                                        processingStatus: "unknown",
+                                                        url: "https://samsara-forms-submission-media-uploads.s3.us-west-2.amazonaws.com/123456",
+                                                        urlExpiresAt: "2019-06-13T19:08:25Z",
+                                                    },
+                                                ],
+                                                mediaValue: {
+                                                    mediaList: [
+                                                        {
+                                                            id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
+                                                            processingStatus: "unknown",
+                                                            url: "https://samsara-forms-submission-media-uploads.s3.us-west-2.amazonaws.com/123456",
+                                                            urlExpiresAt: "2019-06-13T19:08:25Z",
+                                                        },
+                                                    ],
+                                                },
+                                                multipleChoiceValue: {
+                                                    value: "Yes",
+                                                    valueId: "94096370-7228-4d83-ae5d-b20f3e45c0fc",
+                                                },
+                                                note: "Fire and oil can lead to an accident.",
+                                                numberValue: { value: 123.456 },
+                                                personValue: {
+                                                    person: {
+                                                        entryType: "tracked",
+                                                        name: "Jake",
+                                                        polymorphicUserId: { id: "938172", type: "driver" },
+                                                    },
+                                                },
+                                                signatureValue: {
+                                                    media: {
+                                                        id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
+                                                        processingStatus: "unknown",
+                                                        url: "https://samsara-forms-submission-media-uploads.s3.us-west-2.amazonaws.com/123456",
+                                                        urlExpiresAt: "2019-06-13T19:08:25Z",
+                                                    },
+                                                },
+                                                tableValue: {
+                                                    columns: [{ id: "id", label: "Store Number", type: "text" }],
+                                                    rows: [
+                                                        {
+                                                            cells: [
+                                                                {
+                                                                    barcodeValue: {
+                                                                        barcodes: [{ value: "1A2B3C4D5E" }],
+                                                                    },
+                                                                    checkBoxesValue: {
+                                                                        value: ["Option A", "Option B"],
+                                                                        valueIds: [
+                                                                            "0cbbddb3-2541-4889-b4eb-92171cbfc142",
+                                                                            "d33198cb-369f-4278-8120-d92d3ebf74bf",
+                                                                        ],
+                                                                    },
+                                                                    dateTimeValue: {
+                                                                        dateValue: "2024-08-08",
+                                                                        type: "datetime",
+                                                                        value: "2024-08-08T18:53:23Z",
+                                                                    },
+                                                                    id: "id",
+                                                                    mediaValue: {
+                                                                        mediaList: [
+                                                                            {
+                                                                                id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
+                                                                                processingStatus: "unknown",
+                                                                                url: "https://samsara-forms-submission-media-uploads.s3.us-west-2.amazonaws.com/123456",
+                                                                                urlExpiresAt: "2019-06-13T19:08:25Z",
+                                                                            },
+                                                                        ],
+                                                                    },
+                                                                    multipleChoiceValue: {
+                                                                        value: "Yes",
+                                                                        valueId: "94096370-7228-4d83-ae5d-b20f3e45c0fc",
+                                                                    },
+                                                                    numberValue: { value: 123.456 },
+                                                                    personValue: {
+                                                                        person: {
+                                                                            entryType: "tracked",
+                                                                            name: "Jake",
+                                                                            polymorphicUserId: {
+                                                                                id: "938172",
+                                                                                type: "driver",
+                                                                            },
+                                                                        },
+                                                                    },
+                                                                    signatureValue: {
+                                                                        media: {
+                                                                            id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
+                                                                            processingStatus: "unknown",
+                                                                            url: "https://samsara-forms-submission-media-uploads.s3.us-west-2.amazonaws.com/123456",
+                                                                            urlExpiresAt: "2019-06-13T19:08:25Z",
+                                                                        },
+                                                                    },
+                                                                    textValue: { value: "Exposed wires" },
+                                                                    type: "number",
+                                                                },
+                                                            ],
+                                                            id: "id",
+                                                        },
+                                                    ],
+                                                },
+                                                textValue: { value: "Exposed wires" },
+                                                type: "number",
+                                            },
+                                        ],
+                                        formTemplate: {
+                                            id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
+                                            revisionId: "1214a1fa-f0c6-408b-bf85-51dc3bc71ac7",
+                                        },
+                                        geofence: {
+                                            address: "123 Main St, Anytown, USA 12345",
+                                            entryType: "tracked",
+                                            id: "1234567890",
+                                            name: "Geofence Name",
+                                        },
+                                        id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
                                         isRequired: true,
-                                        routeId: "routeId",
-                                        routeStopId: "routeStopId",
+                                        location: { latitude: 12333122.3, longitude: 1233331.4 },
+                                        routeId: "123456789",
+                                        routeStopId: "987654321",
+                                        score: { maxPoints: 80, scorePercent: 75, scorePoints: 60 },
                                         status: "notStarted",
-                                        submittedAtTime: "2024-01-15T09:30:00Z",
-                                        submittedBy: { id: "id", type: "driver" },
-                                        title: "title",
-                                        updatedAtTime: "2024-01-15T09:30:00Z",
+                                        submittedAtTime: "2019-06-13T19:08:25Z",
+                                        submittedBy: { id: "938172", type: "driver" },
+                                        title: "Form Submission Title",
+                                        updatedAtTime: "2019-06-13T19:08:25Z",
                                     },
                                 },
                                 formUpdated: {
                                     form: {
-                                        assignedAtTime: "2024-01-15T09:30:00Z",
-                                        createdAtTime: "2024-01-15T09:30:00Z",
-                                        dueAtTime: "2024-01-15T09:30:00Z",
-                                        durationMs: 1000000,
-                                        externalIds: {},
-                                        fields: [],
-                                        formTemplate: { id: "id", revisionId: "revisionId" },
-                                        id: "id",
+                                        approvalDetails: { comment: "Requesting some changes to the submission." },
+                                        asset: { entryType: "tracked", id: "281474982859091", name: "trailer 123" },
+                                        assignedAtTime: "2019-06-13T19:08:25Z",
+                                        assignedTo: { id: "938172", type: "driver" },
+                                        createdAtTime: "2019-06-13T19:08:25Z",
+                                        dueAtTime: "2019-06-13T19:08:25Z",
+                                        durationMs: 105000,
+                                        fields: [
+                                            {
+                                                assetValue: {
+                                                    asset: {
+                                                        entryType: "tracked",
+                                                        id: "281474982859091",
+                                                        name: "trailer 123",
+                                                    },
+                                                },
+                                                barcodeValue: { barcodes: [{ value: "1A2B3C4D5E" }] },
+                                                checkBoxesValue: {
+                                                    value: ["Option A", "Option B"],
+                                                    valueIds: [
+                                                        "0cbbddb3-2541-4889-b4eb-92171cbfc142",
+                                                        "d33198cb-369f-4278-8120-d92d3ebf74bf",
+                                                    ],
+                                                },
+                                                dateTimeValue: {
+                                                    dateValue: "2024-08-08",
+                                                    type: "datetime",
+                                                    value: "2024-08-08T18:53:23Z",
+                                                },
+                                                geofenceValue: {
+                                                    geofence: {
+                                                        address: "123 Main St, Anytown, USA 12345",
+                                                        entryType: "tracked",
+                                                        id: "1234567890",
+                                                        name: "Geofence Name",
+                                                    },
+                                                },
+                                                id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
+                                                issue: { id: "12345" },
+                                                label: "Engine Hours",
+                                                mediaList: [
+                                                    {
+                                                        id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
+                                                        processingStatus: "unknown",
+                                                        url: "https://samsara-forms-submission-media-uploads.s3.us-west-2.amazonaws.com/123456",
+                                                        urlExpiresAt: "2019-06-13T19:08:25Z",
+                                                    },
+                                                ],
+                                                mediaValue: {
+                                                    mediaList: [
+                                                        {
+                                                            id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
+                                                            processingStatus: "unknown",
+                                                            url: "https://samsara-forms-submission-media-uploads.s3.us-west-2.amazonaws.com/123456",
+                                                            urlExpiresAt: "2019-06-13T19:08:25Z",
+                                                        },
+                                                    ],
+                                                },
+                                                multipleChoiceValue: {
+                                                    value: "Yes",
+                                                    valueId: "94096370-7228-4d83-ae5d-b20f3e45c0fc",
+                                                },
+                                                note: "Fire and oil can lead to an accident.",
+                                                numberValue: { value: 123.456 },
+                                                personValue: {
+                                                    person: {
+                                                        entryType: "tracked",
+                                                        name: "Jake",
+                                                        polymorphicUserId: { id: "938172", type: "driver" },
+                                                    },
+                                                },
+                                                signatureValue: {
+                                                    media: {
+                                                        id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
+                                                        processingStatus: "unknown",
+                                                        url: "https://samsara-forms-submission-media-uploads.s3.us-west-2.amazonaws.com/123456",
+                                                        urlExpiresAt: "2019-06-13T19:08:25Z",
+                                                    },
+                                                },
+                                                tableValue: {
+                                                    columns: [{ id: "id", label: "Store Number", type: "text" }],
+                                                    rows: [
+                                                        {
+                                                            cells: [
+                                                                {
+                                                                    barcodeValue: {
+                                                                        barcodes: [{ value: "1A2B3C4D5E" }],
+                                                                    },
+                                                                    checkBoxesValue: {
+                                                                        value: ["Option A", "Option B"],
+                                                                        valueIds: [
+                                                                            "0cbbddb3-2541-4889-b4eb-92171cbfc142",
+                                                                            "d33198cb-369f-4278-8120-d92d3ebf74bf",
+                                                                        ],
+                                                                    },
+                                                                    dateTimeValue: {
+                                                                        dateValue: "2024-08-08",
+                                                                        type: "datetime",
+                                                                        value: "2024-08-08T18:53:23Z",
+                                                                    },
+                                                                    id: "id",
+                                                                    mediaValue: {
+                                                                        mediaList: [
+                                                                            {
+                                                                                id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
+                                                                                processingStatus: "unknown",
+                                                                                url: "https://samsara-forms-submission-media-uploads.s3.us-west-2.amazonaws.com/123456",
+                                                                                urlExpiresAt: "2019-06-13T19:08:25Z",
+                                                                            },
+                                                                        ],
+                                                                    },
+                                                                    multipleChoiceValue: {
+                                                                        value: "Yes",
+                                                                        valueId: "94096370-7228-4d83-ae5d-b20f3e45c0fc",
+                                                                    },
+                                                                    numberValue: { value: 123.456 },
+                                                                    personValue: {
+                                                                        person: {
+                                                                            entryType: "tracked",
+                                                                            name: "Jake",
+                                                                            polymorphicUserId: {
+                                                                                id: "938172",
+                                                                                type: "driver",
+                                                                            },
+                                                                        },
+                                                                    },
+                                                                    signatureValue: {
+                                                                        media: {
+                                                                            id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
+                                                                            processingStatus: "unknown",
+                                                                            url: "https://samsara-forms-submission-media-uploads.s3.us-west-2.amazonaws.com/123456",
+                                                                            urlExpiresAt: "2019-06-13T19:08:25Z",
+                                                                        },
+                                                                    },
+                                                                    textValue: { value: "Exposed wires" },
+                                                                    type: "number",
+                                                                },
+                                                            ],
+                                                            id: "id",
+                                                        },
+                                                    ],
+                                                },
+                                                textValue: { value: "Exposed wires" },
+                                                type: "number",
+                                            },
+                                        ],
+                                        formTemplate: {
+                                            id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
+                                            revisionId: "1214a1fa-f0c6-408b-bf85-51dc3bc71ac7",
+                                        },
+                                        geofence: {
+                                            address: "123 Main St, Anytown, USA 12345",
+                                            entryType: "tracked",
+                                            id: "1234567890",
+                                            name: "Geofence Name",
+                                        },
+                                        id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
                                         isRequired: true,
-                                        routeId: "routeId",
-                                        routeStopId: "routeStopId",
+                                        location: { latitude: 12333122.3, longitude: 1233331.4 },
+                                        routeId: "123456789",
+                                        routeStopId: "987654321",
+                                        score: { maxPoints: 80, scorePercent: 75, scorePoints: 60 },
                                         status: "notStarted",
-                                        submittedAtTime: "2024-01-15T09:30:00Z",
-                                        submittedBy: { id: "id", type: "driver" },
-                                        title: "title",
-                                        updatedAtTime: "2024-01-15T09:30:00Z",
+                                        submittedAtTime: "2019-06-13T19:08:25Z",
+                                        submittedBy: { id: "938172", type: "driver" },
+                                        title: "Form Submission Title",
+                                        updatedAtTime: "2019-06-13T19:08:25Z",
                                     },
                                 },
                                 fuelLevelPercentage: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
+                                    driver: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "45646",
+                                        name: "Driver Bob",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                    trailer: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Trailer-123",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                        trailerSerialNumber: "8V8WD530FLN016251",
+                                    },
+                                    vehicle: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Fleet Truck #1",
+                                        serial: "GFRV-43N-VGX",
+                                        staticAssignedDriver: { id: "0987", name: "Driver Name" },
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
                                 },
                                 gatewayDisconnected: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
+                                    driver: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "45646",
+                                        name: "Driver Bob",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                    trailer: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Trailer-123",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                        trailerSerialNumber: "8V8WD530FLN016251",
+                                    },
+                                    vehicle: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Fleet Truck #1",
+                                        serial: "GFRV-43N-VGX",
+                                        staticAssignedDriver: { id: "0987", name: "Driver Name" },
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
                                 },
-                                gatewayUnplugged: { model: "AG15", serial: "serial", vehicle: {} },
+                                gatewayUnplugged: {
+                                    model: "AG15",
+                                    serial: "GFRV-43N-VGX",
+                                    vehicle: { id: "494123", name: "Fleet Truck #1" },
+                                },
                                 geofenceEntry: {
-                                    address: { formattedAddress: "formattedAddress", id: "id", name: "name" },
-                                    fuelVolume: { unit: "GALLONS", value: 1.1 },
-                                    vehicle: {},
+                                    address: {
+                                        formattedAddress: "350 Rhode Island St, San Francisco, CA",
+                                        geofence: {
+                                            circle: { latitude: 37.7749, longitude: 137.7749, radiusMeters: 23 },
+                                            polygon: { vertices: [{ latitude: 37.7749, longitude: 137.7749 }] },
+                                            settings: { showAddresses: [{ latitude: 37.7749, longitude: 137.7749 }] },
+                                        },
+                                        id: "494123",
+                                        name: "Company Office #1",
+                                    },
+                                    fuelVolume: { unit: "GALLONS", value: 0.20629708148393924 },
+                                    vehicle: {
+                                        gateway: { model: "AG15", serial: "GFRV-43N-VGX" },
+                                        id: "494123",
+                                        licensePlate: "6SAM123",
+                                        name: "Fleet Truck #1",
+                                        vin: "1GBJ6P1B2HV112765",
+                                    },
                                 },
                                 geofenceExit: {
-                                    address: { formattedAddress: "formattedAddress", id: "id", name: "name" },
-                                    fuelVolume: { unit: "GALLONS", value: 1.1 },
-                                    vehicle: {},
+                                    address: {
+                                        formattedAddress: "350 Rhode Island St, San Francisco, CA",
+                                        geofence: {
+                                            circle: { latitude: 37.7749, longitude: 137.7749, radiusMeters: 23 },
+                                            polygon: { vertices: [{ latitude: 37.7749, longitude: 137.7749 }] },
+                                            settings: { showAddresses: [{ latitude: 37.7749, longitude: 137.7749 }] },
+                                        },
+                                        id: "494123",
+                                        name: "Company Office #1",
+                                    },
+                                    fuelVolume: { unit: "GALLONS", value: 0.20629708148393924 },
+                                    vehicle: {
+                                        gateway: { model: "AG15", serial: "GFRV-43N-VGX" },
+                                        id: "494123",
+                                        licensePlate: "6SAM123",
+                                        name: "Fleet Truck #1",
+                                        vin: "1GBJ6P1B2HV112765",
+                                    },
                                 },
                                 gpsSignalLoss: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
+                                    driver: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "45646",
+                                        name: "Driver Bob",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                    trailer: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Trailer-123",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                        trailerSerialNumber: "8V8WD530FLN016251",
+                                    },
+                                    vehicle: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Fleet Truck #1",
+                                        serial: "GFRV-43N-VGX",
+                                        staticAssignedDriver: { id: "0987", name: "Driver Name" },
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
                                 },
-                                harshEvent: { driver: { id: "id" }, vehicle: { id: "id", serial: "serial" } },
-                                hosDutyStatus: { driver: { id: "id" } },
-                                hosViolation: { driver: { id: "id" } },
-                                inactivity: { cameraStream: { id: "id" } },
+                                harshEvent: {
+                                    driver: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "45646",
+                                        name: "Driver Bob",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                    vehicle: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Fleet Truck #1",
+                                        serial: "GFRV-43N-VGX",
+                                        staticAssignedDriver: { id: "0987", name: "Driver Name" },
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                },
+                                hosDutyStatus: {
+                                    driver: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "45646",
+                                        name: "Driver Bob",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                },
+                                hosViolation: {
+                                    driver: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "45646",
+                                        name: "Driver Bob",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                },
+                                inactivity: {
+                                    cameraStream: {
+                                        cameraDevice: {
+                                            id: "22222",
+                                            name: "Camera-123",
+                                            sites: [
+                                                {
+                                                    id: "1111aaaa-11aa-11aa-11aa-111111aaaaaa",
+                                                    name: "Site-123",
+                                                    tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                                },
+                                            ],
+                                            tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                        },
+                                        id: "54321",
+                                        name: "Stream-123",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                },
                                 insideGeofence: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
+                                    driver: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "45646",
+                                        name: "Driver Bob",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                    trailer: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Trailer-123",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                        trailerSerialNumber: "8V8WD530FLN016251",
+                                    },
+                                    vehicle: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Fleet Truck #1",
+                                        serial: "GFRV-43N-VGX",
+                                        staticAssignedDriver: { id: "0987", name: "Driver Name" },
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
                                 },
                                 issueCreated: {
                                     issue: {
-                                        createdAtTime: "2024-01-15T09:30:00Z",
-                                        description: "description",
-                                        dueDate: "2024-01-15T09:30:00Z",
-                                        externalIds: {},
-                                        id: "id",
-                                        issueSource: { type: "form" },
-                                        mediaList: [],
-                                        priority: "low",
+                                        asset: { entryType: "tracked", id: "281474982859091", name: "trailer 123" },
+                                        assignedTo: { id: "938172", type: "driver" },
+                                        createdAtTime: "2019-06-13T19:08:25Z",
+                                        description: "Oil spill in left corner of SF1",
+                                        dueDate: "2019-06-13T19:08:25Z",
+                                        id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
+                                        issueSource: { id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7", type: "form" },
+                                        mediaList: [
+                                            {
+                                                id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
+                                                processingStatus: "unknown",
+                                                url: "https://samsara-forms-submission-media-uploads.s3.us-west-2.amazonaws.com/123456",
+                                                urlExpiresAt: "2019-06-13T19:08:25Z",
+                                            },
+                                        ],
                                         status: "open",
-                                        submittedAtTime: "2024-01-15T09:30:00Z",
-                                        submittedBy: { id: "id", type: "driver" },
-                                        title: "title",
-                                        updatedAtTime: "2024-01-15T09:30:00Z",
+                                        submittedAtTime: "2019-06-13T19:08:25Z",
+                                        submittedBy: { id: "938172", type: "driver" },
+                                        title: "Oil spill",
+                                        updatedAtTime: "2019-06-13T19:08:25Z",
                                     },
                                 },
                                 jammingDetected: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
+                                    driver: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "45646",
+                                        name: "Driver Bob",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                    trailer: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Trailer-123",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                        trailerSerialNumber: "8V8WD530FLN016251",
+                                    },
+                                    vehicle: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Fleet Truck #1",
+                                        serial: "GFRV-43N-VGX",
+                                        staticAssignedDriver: { id: "0987", name: "Driver Name" },
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
                                 },
                                 missingDvirPastDue: {
-                                    dvir: { inspectionType: "preTrip", relatedDevices: [], uuid: "uuid" },
+                                    dvir: {
+                                        baseFormSubmission: {
+                                            assignedToPolymorphicUser: {
+                                                name: "John Doe",
+                                                polymorphicUserId: "driver-12345",
+                                            },
+                                            dueDate: "2019-06-13T19:08:25Z",
+                                            serverUpdatedAt: "2020-01-27T07:06:25Z",
+                                            uuid: "550e8400-e29b-41d4-a716-446655440000",
+                                        },
+                                        inspectionType: "preTrip",
+                                        relatedDevices: [
+                                            {
+                                                assetType: "Vehicle",
+                                                device: {
+                                                    licensePlate: "ABC-1234",
+                                                    name: "Fleet Truck #1",
+                                                    vehicleVin: "1HGBH41JXMN109186",
+                                                },
+                                                deviceId: 494123,
+                                            },
+                                        ],
+                                        uuid: "550e8400-e29b-41d4-a716-446655440000",
+                                    },
                                 },
-                                motionDetected: { cameraStream: { id: "id" } },
+                                motionDetected: {
+                                    cameraStream: {
+                                        cameraDevice: {
+                                            id: "22222",
+                                            name: "Camera-123",
+                                            sites: [
+                                                {
+                                                    id: "1111aaaa-11aa-11aa-11aa-111111aaaaaa",
+                                                    name: "Site-123",
+                                                    tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                                },
+                                            ],
+                                            tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                        },
+                                        id: "54321",
+                                        name: "Stream-123",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                },
                                 outOfRoute: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
+                                    driver: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "45646",
+                                        name: "Driver Bob",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                    trailer: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Trailer-123",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                        trailerSerialNumber: "8V8WD530FLN016251",
+                                    },
+                                    vehicle: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Fleet Truck #1",
+                                        serial: "GFRV-43N-VGX",
+                                        staticAssignedDriver: { id: "0987", name: "Driver Name" },
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
                                 },
                                 outOfSequenceStopArrival: {
-                                    actualStopName: "actualStopName",
-                                    driver: { id: "id" },
-                                    expectedStopName: "expectedStopName",
-                                    route: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
+                                    actualStopName: "Stop B",
+                                    driver: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "45646",
+                                        name: "Driver Bob",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                    expectedStopName: "Stop A",
+                                    route: { id: "494123", name: "Route 1" },
+                                    vehicle: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Fleet Truck #1",
+                                        serial: "GFRV-43N-VGX",
+                                        staticAssignedDriver: { id: "0987", name: "Driver Name" },
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
                                 },
                                 outsideGeofence: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
+                                    driver: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "45646",
+                                        name: "Driver Bob",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                    trailer: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Trailer-123",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                        trailerSerialNumber: "8V8WD530FLN016251",
+                                    },
+                                    vehicle: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Fleet Truck #1",
+                                        serial: "GFRV-43N-VGX",
+                                        staticAssignedDriver: { id: "0987", name: "Driver Name" },
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
                                 },
                                 panicButton: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
+                                    driver: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "45646",
+                                        name: "Driver Bob",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                    trailer: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Trailer-123",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                        trailerSerialNumber: "8V8WD530FLN016251",
+                                    },
+                                    vehicle: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Fleet Truck #1",
+                                        serial: "GFRV-43N-VGX",
+                                        staticAssignedDriver: { id: "0987", name: "Driver Name" },
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
                                 },
-                                personDetected: { cameraStream: { id: "id" } },
+                                personDetected: {
+                                    cameraStream: {
+                                        cameraDevice: {
+                                            id: "22222",
+                                            name: "Camera-123",
+                                            sites: [
+                                                {
+                                                    id: "1111aaaa-11aa-11aa-11aa-111111aaaaaa",
+                                                    name: "Site-123",
+                                                    tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                                },
+                                            ],
+                                            tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                        },
+                                        id: "54321",
+                                        name: "Stream-123",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                },
                                 preventiveMaintenanceScheduleDue: {
-                                    driver: { id: "id" },
-                                    dueReasons: ["date", "date"],
-                                    scheduleDescription: "scheduleDescription",
-                                    scheduleId: "scheduleId",
-                                    scheduleTitle: "scheduleTitle",
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
+                                    driver: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "45646",
+                                        name: "Driver Bob",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                    dueReasons: ["engineHours", "date"],
+                                    scheduleDescription: "Replace synthetic oil and filter",
+                                    scheduleId: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
+                                    scheduleTitle: "Oil Change - Synthetic",
+                                    trailer: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Trailer-123",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                        trailerSerialNumber: "8V8WD530FLN016251",
+                                    },
+                                    vehicle: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Fleet Truck #1",
+                                        serial: "GFRV-43N-VGX",
+                                        staticAssignedDriver: { id: "0987", name: "Driver Name" },
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
                                 },
                                 reading: {
-                                    asset: { id: "id", serial: "serial", type: "uncategorized" },
-                                    continuousThreshold: { operation: "GREATER", threshold: 1000000 },
-                                    enumThreshold: {},
-                                    id: "id",
+                                    asset: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Fleet Truck #1",
+                                        serial: "GFRV-43N-VGX",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                        type: "uncategorized",
+                                    },
+                                    continuousThreshold: { operation: "GREATER", threshold: 20, upperThreshold: 30 },
+                                    enumThreshold: { number: 2, symbol: "HIGH" },
+                                    id: "engineTemperature",
                                 },
                                 reeferTemperature: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
+                                    driver: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "45646",
+                                        name: "Driver Bob",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                    trailer: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Trailer-123",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                        trailerSerialNumber: "8V8WD530FLN016251",
+                                    },
+                                    vehicle: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Fleet Truck #1",
+                                        serial: "GFRV-43N-VGX",
+                                        staticAssignedDriver: { id: "0987", name: "Driver Name" },
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
                                 },
-                                routeStartDelayed: { driver: { id: "id" }, vehicle: { id: "id", serial: "serial" } },
+                                routeStartDelayed: {
+                                    driver: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "45646",
+                                        name: "Driver Bob",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                    vehicle: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Fleet Truck #1",
+                                        serial: "GFRV-43N-VGX",
+                                        staticAssignedDriver: { id: "0987", name: "Driver Name" },
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                },
                                 routeStopArrival: {
-                                    driver: { id: "id" },
-                                    operation: "stop arrived",
+                                    driver: { id: "45646", name: "Driver Bob" },
                                     route: {
-                                        actualRouteEndTime: "2024-01-15T09:30:00Z",
-                                        actualRouteStartTime: "2024-01-15T09:30:00Z",
-                                        externalIds: {},
-                                        id: "id",
-                                        name: "name",
-                                        notes: "notes",
-                                        scheduledRouteEndTime: "2024-01-15T09:30:00Z",
-                                        scheduledRouteStartTime: "2024-01-15T09:30:00Z",
-                                        settings: {},
-                                        stops: [],
+                                        actualRouteEndTime: "2019-06-13T19:08:25Z",
+                                        actualRouteStartTime: "2019-06-13T19:08:25Z",
+                                        id: "342341",
+                                        name: "Bid 123",
+                                        notes: "These are my notes",
+                                        scheduledRouteEndTime: "2019-06-13T19:08:25Z",
+                                        scheduledRouteStartTime: "2019-06-13T19:08:25Z",
+                                        stops: [
+                                            {
+                                                actualArrivalTime: "2006-01-02T08:04:05Z",
+                                                actualDepartureTime: "2006-01-02T08:04:05Z",
+                                                actualDistanceMeters: 5450,
+                                                address: { id: "494123", name: "Company Office #1" },
+                                                appointmentWindows: [
+                                                    {
+                                                        endTime: "2019-06-13T20:08:25Z",
+                                                        startTime: "2019-06-13T19:08:25Z",
+                                                    },
+                                                ],
+                                                documents: [{ id: "494123", name: "Fuel Receipt Wichita" }],
+                                                enRouteTime: "2006-01-02T08:04:05Z",
+                                                eta: "2006-01-02T08:04:05Z",
+                                                forms: [{ id: "12345" }],
+                                                id: "324231",
+                                                issues: [{ id: "32812" }],
+                                                liveSharingUrl:
+                                                    "https://cloud.samsara.com/fleet/viewer/job/fleet_viewer_token",
+                                                locationLiveSharingLinks: [
+                                                    {
+                                                        expiresAtTime: "2020-01-27T07:06:25Z",
+                                                        liveSharingUrl:
+                                                            "https://cloud.samsara.com/o/123456/fleet/viewer/address/gEAitEnnOwcv92cuPzcU",
+                                                        name: "Name",
+                                                    },
+                                                ],
+                                                name: "Stop #1",
+                                                notes: "These are my notes",
+                                                ontimeWindowAfterArrivalMs: 300000,
+                                                ontimeWindowBeforeArrivalMs: 300000,
+                                                plannedDistanceMeters: 5200,
+                                                scheduledArrivalTime: "2019-06-13T19:08:25Z",
+                                                scheduledDepartureTime: "2019-06-13T19:08:25Z",
+                                                sequenceNumber: 10,
+                                                singleUseLocation: {
+                                                    address: "1234 Main St, San Jose, CA",
+                                                    latitude: 123.456,
+                                                    longitude: 37.459,
+                                                    radiusMeters: 100,
+                                                },
+                                                skippedTime: "2006-01-02T08:04:05Z",
+                                                state: "unassigned",
+                                            },
+                                        ],
                                     },
                                     routeStopDetails: {
-                                        actualArrivalTime: "2024-01-15T09:30:00Z",
-                                        actualDepartureTime: "2024-01-15T09:30:00Z",
-                                        enRouteTime: "2024-01-15T09:30:00Z",
-                                        eta: "2024-01-15T09:30:00Z",
-                                        externalIds: {},
-                                        id: "id",
-                                        liveSharingUrl: "liveSharingUrl",
-                                        skippedTime: "2024-01-15T09:30:00Z",
+                                        actualArrivalTime: "2006-01-02T08:04:05Z",
+                                        actualDepartureTime: "2006-01-02T08:04:05Z",
+                                        enRouteTime: "2006-01-02T08:04:05Z",
+                                        eta: "2006-01-02T08:04:05Z",
+                                        id: "141414",
+                                        liveSharingUrl: "https://cloud.samsara.com/fleet/viewer/job/fleet_viewer_token",
+                                        skippedTime: "2006-01-02T08:04:05Z",
                                         state: "unassigned",
                                     },
-                                    time: "2024-01-15T09:30:00Z",
+                                    time: "2020-01-27T07:06:25Z",
                                     type: "route tracking",
-                                    vehicle: {},
+                                    vehicle: {
+                                        gateway: { model: "AG15", serial: "GFRV-43N-VGX" },
+                                        id: "494123",
+                                        licensePlate: "6SAM123",
+                                        name: "Fleet Truck #1",
+                                        vin: "1GBJ6P1B2HV112765",
+                                    },
                                 },
                                 routeStopDeparture: {
-                                    driver: { id: "id" },
-                                    operation: "stop arrived",
+                                    driver: { id: "45646", name: "Driver Bob" },
                                     route: {
-                                        actualRouteEndTime: "2024-01-15T09:30:00Z",
-                                        actualRouteStartTime: "2024-01-15T09:30:00Z",
-                                        externalIds: {},
-                                        id: "id",
-                                        name: "name",
-                                        notes: "notes",
-                                        scheduledRouteEndTime: "2024-01-15T09:30:00Z",
-                                        scheduledRouteStartTime: "2024-01-15T09:30:00Z",
-                                        settings: {},
-                                        stops: [],
+                                        actualRouteEndTime: "2019-06-13T19:08:25Z",
+                                        actualRouteStartTime: "2019-06-13T19:08:25Z",
+                                        id: "342341",
+                                        name: "Bid 123",
+                                        notes: "These are my notes",
+                                        scheduledRouteEndTime: "2019-06-13T19:08:25Z",
+                                        scheduledRouteStartTime: "2019-06-13T19:08:25Z",
+                                        stops: [
+                                            {
+                                                actualArrivalTime: "2006-01-02T08:04:05Z",
+                                                actualDepartureTime: "2006-01-02T08:04:05Z",
+                                                actualDistanceMeters: 5450,
+                                                address: { id: "494123", name: "Company Office #1" },
+                                                appointmentWindows: [
+                                                    {
+                                                        endTime: "2019-06-13T20:08:25Z",
+                                                        startTime: "2019-06-13T19:08:25Z",
+                                                    },
+                                                ],
+                                                documents: [{ id: "494123", name: "Fuel Receipt Wichita" }],
+                                                enRouteTime: "2006-01-02T08:04:05Z",
+                                                eta: "2006-01-02T08:04:05Z",
+                                                forms: [{ id: "12345" }],
+                                                id: "324231",
+                                                issues: [{ id: "32812" }],
+                                                liveSharingUrl:
+                                                    "https://cloud.samsara.com/fleet/viewer/job/fleet_viewer_token",
+                                                locationLiveSharingLinks: [
+                                                    {
+                                                        expiresAtTime: "2020-01-27T07:06:25Z",
+                                                        liveSharingUrl:
+                                                            "https://cloud.samsara.com/o/123456/fleet/viewer/address/gEAitEnnOwcv92cuPzcU",
+                                                        name: "Name",
+                                                    },
+                                                ],
+                                                name: "Stop #1",
+                                                notes: "These are my notes",
+                                                ontimeWindowAfterArrivalMs: 300000,
+                                                ontimeWindowBeforeArrivalMs: 300000,
+                                                plannedDistanceMeters: 5200,
+                                                scheduledArrivalTime: "2019-06-13T19:08:25Z",
+                                                scheduledDepartureTime: "2019-06-13T19:08:25Z",
+                                                sequenceNumber: 10,
+                                                singleUseLocation: {
+                                                    address: "1234 Main St, San Jose, CA",
+                                                    latitude: 123.456,
+                                                    longitude: 37.459,
+                                                    radiusMeters: 100,
+                                                },
+                                                skippedTime: "2006-01-02T08:04:05Z",
+                                                state: "unassigned",
+                                            },
+                                        ],
                                     },
                                     routeStopDetails: {
-                                        actualArrivalTime: "2024-01-15T09:30:00Z",
-                                        actualDepartureTime: "2024-01-15T09:30:00Z",
-                                        enRouteTime: "2024-01-15T09:30:00Z",
-                                        eta: "2024-01-15T09:30:00Z",
-                                        externalIds: {},
-                                        id: "id",
-                                        liveSharingUrl: "liveSharingUrl",
-                                        skippedTime: "2024-01-15T09:30:00Z",
+                                        actualArrivalTime: "2006-01-02T08:04:05Z",
+                                        actualDepartureTime: "2006-01-02T08:04:05Z",
+                                        enRouteTime: "2006-01-02T08:04:05Z",
+                                        eta: "2006-01-02T08:04:05Z",
+                                        id: "141414",
+                                        liveSharingUrl: "https://cloud.samsara.com/fleet/viewer/job/fleet_viewer_token",
+                                        skippedTime: "2006-01-02T08:04:05Z",
                                         state: "unassigned",
                                     },
-                                    time: "2024-01-15T09:30:00Z",
+                                    time: "2020-01-27T07:06:25Z",
                                     type: "route tracking",
-                                    vehicle: {},
+                                    vehicle: {
+                                        gateway: { model: "AG15", serial: "GFRV-43N-VGX" },
+                                        id: "494123",
+                                        licensePlate: "6SAM123",
+                                        name: "Fleet Truck #1",
+                                        vin: "1GBJ6P1B2HV112765",
+                                    },
                                 },
                                 routeStopETA: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
+                                    driver: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "45646",
+                                        name: "Driver Bob",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                    trailer: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Trailer-123",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                        trailerSerialNumber: "8V8WD530FLN016251",
+                                    },
+                                    vehicle: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Fleet Truck #1",
+                                        serial: "GFRV-43N-VGX",
+                                        staticAssignedDriver: { id: "0987", name: "Driver Name" },
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
                                 },
                                 routeStopEarlyLateArrival: {
-                                    arrivalStatus: "early",
-                                    deviationMinutes: 1000000,
-                                    driver: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
+                                    deviationMinutes: 15,
+                                    driver: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "45646",
+                                        name: "Driver Bob",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                    vehicle: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Fleet Truck #1",
+                                        serial: "GFRV-43N-VGX",
+                                        staticAssignedDriver: { id: "0987", name: "Driver Name" },
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
                                 },
                                 scheduledMaintenance: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
+                                    driver: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "45646",
+                                        name: "Driver Bob",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                    trailer: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Trailer-123",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                        trailerSerialNumber: "8V8WD530FLN016251",
+                                    },
+                                    vehicle: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Fleet Truck #1",
+                                        serial: "GFRV-43N-VGX",
+                                        staticAssignedDriver: { id: "0987", name: "Driver Name" },
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
                                 },
                                 scheduledMaintenanceByEngineHours: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
+                                    driver: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "45646",
+                                        name: "Driver Bob",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                    trailer: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Trailer-123",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                        trailerSerialNumber: "8V8WD530FLN016251",
+                                    },
+                                    vehicle: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Fleet Truck #1",
+                                        serial: "GFRV-43N-VGX",
+                                        staticAssignedDriver: { id: "0987", name: "Driver Name" },
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
                                 },
                                 scheduledMaintenanceOdometer: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
+                                    driver: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "45646",
+                                        name: "Driver Bob",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                    trailer: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Trailer-123",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                        trailerSerialNumber: "8V8WD530FLN016251",
+                                    },
+                                    vehicle: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Fleet Truck #1",
+                                        serial: "GFRV-43N-VGX",
+                                        staticAssignedDriver: { id: "0987", name: "Driver Name" },
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
                                 },
                                 severeSpeeding: {
-                                    data: { startTime: "startTime", tripStartTime: "tripStartTime", vehicle: {} },
+                                    data: {
+                                        startTime: "2019-06-13T19:08:25Z",
+                                        tripStartTime: "2019-06-13T19:08:25Z",
+                                        vehicle: {
+                                            id: "494123",
+                                            licensePlate: "6SAM123",
+                                            name: "Fleet Truck #1",
+                                            vehicleVin: "1GBJ6P1B2HV112765",
+                                        },
+                                    },
                                 },
                                 siteGatewayDisconnected: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
+                                    driver: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "45646",
+                                        name: "Driver Bob",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                    trailer: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Trailer-123",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                        trailerSerialNumber: "8V8WD530FLN016251",
+                                    },
+                                    vehicle: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Fleet Truck #1",
+                                        serial: "GFRV-43N-VGX",
+                                        staticAssignedDriver: { id: "0987", name: "Driver Name" },
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
                                 },
                                 speed: {
-                                    currentSpeedKilometersPerHour: 1,
-                                    driver: { id: "id" },
-                                    minDurationMilliseconds: 1000000,
+                                    currentSpeedKilometersPerHour: 100,
+                                    driver: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "45646",
+                                        name: "Driver Bob",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                    minDurationMilliseconds: 100000,
                                     operation: "GREATER",
-                                    thresholdSpeedKilometersPerHour: 1,
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
+                                    thresholdSpeedKilometersPerHour: 100,
+                                    trailer: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Trailer-123",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                        trailerSerialNumber: "8V8WD530FLN016251",
+                                    },
+                                    vehicle: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Fleet Truck #1",
+                                        serial: "GFRV-43N-VGX",
+                                        staticAssignedDriver: { id: "0987", name: "Driver Name" },
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
                                 },
                                 suddenFuelLevelDrop: {
-                                    changeEndTime: "2024-01-15T09:30:00Z",
-                                    changeStartTime: "2024-01-15T09:30:00Z",
-                                    driver: { id: "id" },
-                                    fuelLevelAfterMillipercent: 1,
-                                    fuelLevelBeforeMillipercent: 1,
-                                    location: {},
-                                    vehicle: { id: "id", serial: "serial" },
+                                    changeEndTime: "2020-01-27T07:06:25Z",
+                                    changeStartTime: "2020-01-27T07:06:25Z",
+                                    driver: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "45646",
+                                        name: "Driver Bob",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                    fuelLevelAfterMillipercent: 70000,
+                                    fuelLevelBeforeMillipercent: 50000,
+                                    location: { latitude: 37.7749, longitude: 137.7749 },
+                                    vehicle: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Fleet Truck #1",
+                                        serial: "GFRV-43N-VGX",
+                                        staticAssignedDriver: { id: "0987", name: "Driver Name" },
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
                                 },
                                 suddenFuelLevelRise: {
-                                    changeEndTime: "2024-01-15T09:30:00Z",
-                                    changeStartTime: "2024-01-15T09:30:00Z",
-                                    driver: { id: "id" },
-                                    fuelLevelAfterMillipercent: 1,
-                                    fuelLevelBeforeMillipercent: 1,
-                                    location: {},
-                                    vehicle: { id: "id", serial: "serial" },
+                                    changeEndTime: "2020-01-27T07:06:25Z",
+                                    changeStartTime: "2020-01-27T07:06:25Z",
+                                    driver: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "45646",
+                                        name: "Driver Bob",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                    fuelLevelAfterMillipercent: 70000,
+                                    fuelLevelBeforeMillipercent: 50000,
+                                    location: { latitude: 37.7749, longitude: 137.7749 },
+                                    vehicle: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Fleet Truck #1",
+                                        serial: "GFRV-43N-VGX",
+                                        staticAssignedDriver: { id: "0987", name: "Driver Name" },
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
                                 },
                                 tamperingDetected: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
+                                    driver: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "45646",
+                                        name: "Driver Bob",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                    trailer: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Trailer-123",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                        trailerSerialNumber: "8V8WD530FLN016251",
+                                    },
+                                    vehicle: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Fleet Truck #1",
+                                        serial: "GFRV-43N-VGX",
+                                        staticAssignedDriver: { id: "0987", name: "Driver Name" },
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
                                 },
                                 thermographTemperature: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
+                                    driver: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "45646",
+                                        name: "Driver Bob",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                    trailer: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Trailer-123",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                        trailerSerialNumber: "8V8WD530FLN016251",
+                                    },
+                                    vehicle: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Fleet Truck #1",
+                                        serial: "GFRV-43N-VGX",
+                                        staticAssignedDriver: { id: "0987", name: "Driver Name" },
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
                                 },
                                 tireFaults: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
+                                    driver: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "45646",
+                                        name: "Driver Bob",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                    trailer: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Trailer-123",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                        trailerSerialNumber: "8V8WD530FLN016251",
+                                    },
+                                    vehicle: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Fleet Truck #1",
+                                        serial: "GFRV-43N-VGX",
+                                        staticAssignedDriver: { id: "0987", name: "Driver Name" },
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
                                 },
                                 trailerMovingWithoutPower: {
-                                    currentVoltage: 1,
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
+                                    currentVoltage: 1115956427,
+                                    driver: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "45646",
+                                        name: "Driver Bob",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                    trailer: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Trailer-123",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                        trailerSerialNumber: "8V8WD530FLN016251",
+                                    },
                                 },
-                                unassignedDriving: { driver: { id: "id" }, vehicle: { id: "id", serial: "serial" } },
+                                unassignedDriving: {
+                                    driver: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "45646",
+                                        name: "Driver Bob",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                    vehicle: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Fleet Truck #1",
+                                        serial: "GFRV-43N-VGX",
+                                        staticAssignedDriver: { id: "0987", name: "Driver Name" },
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                },
                                 vehicleBatteryVoltage: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
+                                    driver: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "45646",
+                                        name: "Driver Bob",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                    trailer: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Trailer-123",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                        trailerSerialNumber: "8V8WD530FLN016251",
+                                    },
+                                    vehicle: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Fleet Truck #1",
+                                        serial: "GFRV-43N-VGX",
+                                        staticAssignedDriver: { id: "0987", name: "Driver Name" },
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
                                 },
                                 vehicleDefLevelPercentage: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
+                                    driver: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "45646",
+                                        name: "Driver Bob",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                    trailer: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Trailer-123",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                        trailerSerialNumber: "8V8WD530FLN016251",
+                                    },
+                                    vehicle: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Fleet Truck #1",
+                                        serial: "GFRV-43N-VGX",
+                                        staticAssignedDriver: { id: "0987", name: "Driver Name" },
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
                                 },
-                                vehicleDetected: { cameraStream: { id: "id" } },
+                                vehicleDetected: {
+                                    cameraStream: {
+                                        cameraDevice: {
+                                            id: "22222",
+                                            name: "Camera-123",
+                                            sites: [
+                                                {
+                                                    id: "1111aaaa-11aa-11aa-11aa-111111aaaaaa",
+                                                    name: "Site-123",
+                                                    tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                                },
+                                            ],
+                                            tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                        },
+                                        id: "54321",
+                                        name: "Stream-123",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                },
                                 vehicleFaults: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
+                                    driver: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "45646",
+                                        name: "Driver Bob",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                    trailer: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Trailer-123",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                        trailerSerialNumber: "8V8WD530FLN016251",
+                                    },
+                                    vehicle: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Fleet Truck #1",
+                                        serial: "GFRV-43N-VGX",
+                                        staticAssignedDriver: { id: "0987", name: "Driver Name" },
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
                                 },
                                 vehicleTrailerMismatch: {
-                                    currentlyPullingTrailers: [],
-                                    driver: { id: "id" },
-                                    driverSelectedTrailers: [],
-                                    vehicle: { id: "id", serial: "serial" },
+                                    currentlyPullingTrailers: [
+                                        {
+                                            attributes: [
+                                                {
+                                                    dateValues: ["2024-01-15", "2024-12-31"],
+                                                    id: "494123",
+                                                    name: "Compliance/ELD",
+                                                    numberValues: [867, 5309],
+                                                    stringValues: ["HQ", "Leased"],
+                                                },
+                                            ],
+                                            id: "494123",
+                                            name: "Trailer-123",
+                                            tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                            trailerSerialNumber: "8V8WD530FLN016251",
+                                        },
+                                    ],
+                                    driver: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "45646",
+                                        name: "Driver Bob",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                    driverSelectedTrailers: [
+                                        {
+                                            attributes: [
+                                                {
+                                                    dateValues: ["2024-01-15", "2024-12-31"],
+                                                    id: "494123",
+                                                    name: "Compliance/ELD",
+                                                    numberValues: [867, 5309],
+                                                    stringValues: ["HQ", "Leased"],
+                                                },
+                                            ],
+                                            id: "494123",
+                                            name: "Trailer-123",
+                                            tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                            trailerSerialNumber: "8V8WD530FLN016251",
+                                        },
+                                    ],
+                                    vehicle: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Fleet Truck #1",
+                                        serial: "GFRV-43N-VGX",
+                                        staticAssignedDriver: { id: "0987", name: "Driver Name" },
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
                                 },
                                 workerSafetySos: {
-                                    driver: { id: "id" },
-                                    location: {},
+                                    driver: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "45646",
+                                        name: "Driver Bob",
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                    location: { latitude: 37.7749, longitude: 137.7749 },
                                     sourceType: "appSos",
-                                    vehicle: { id: "id", serial: "serial" },
-                                    workerSafetyIncidentUrl: "workerSafetyIncidentUrl",
+                                    vehicle: {
+                                        attributes: [
+                                            {
+                                                dateValues: ["2024-01-15", "2024-12-31"],
+                                                id: "494123",
+                                                name: "Compliance/ELD",
+                                                numberValues: [867, 5309],
+                                                stringValues: ["HQ", "Leased"],
+                                            },
+                                        ],
+                                        id: "494123",
+                                        name: "Fleet Truck #1",
+                                        serial: "GFRV-43N-VGX",
+                                        staticAssignedDriver: { id: "0987", name: "Driver Name" },
+                                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                                    },
+                                    workerSafetyIncidentUrl:
+                                        "https://cloud.samsara.com/o/1/fleet/worker/incidents/9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
                                 },
                             },
-                            triggerId: 1000000,
-                        },
-                        {
-                            description: "description",
-                            details: {
-                                ambientTemperature: { sensor: { id: "id" } },
-                                cameraConnectorDisconected: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                cameraStreamIssue: { cameraDevice: { id: "id" } },
-                                cellSignalLoss: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                cloudBackupUploadIssue: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                dashcamDisconnected: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                dataInputValue: { machineInput: { id: "id" } },
-                                deviceMovement: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                deviceMovementStopped: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                doorOpen: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                driverAppSignIn: {
-                                    driver: { id: "id" },
-                                    pinnedVehicle: { id: "id", serial: "serial" },
-                                },
-                                driverAppSignOut: { driver: { id: "id" } },
-                                driverDocumentSubmitted: {},
-                                driverMessageReceived: { driver: { id: "id" } },
-                                driverMessageSent: { driver: { id: "id" } },
-                                driverRecorded: { driver: { id: "id" }, vehicle: { id: "id", serial: "serial" } },
-                                dvirSubmittedDevice: { driver: { id: "id" }, vehicle: {} },
-                                engineIdle: { driver: { id: "id" }, vehicle: { id: "id", serial: "serial" } },
-                                engineOff: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                engineOn: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                formSubmitted: {
-                                    form: {
-                                        assignedAtTime: "2024-01-15T09:30:00Z",
-                                        createdAtTime: "2024-01-15T09:30:00Z",
-                                        dueAtTime: "2024-01-15T09:30:00Z",
-                                        durationMs: 1000000,
-                                        externalIds: {},
-                                        fields: [],
-                                        formTemplate: { id: "id", revisionId: "revisionId" },
-                                        id: "id",
-                                        isRequired: true,
-                                        routeId: "routeId",
-                                        routeStopId: "routeStopId",
-                                        status: "notStarted",
-                                        submittedAtTime: "2024-01-15T09:30:00Z",
-                                        submittedBy: { id: "id", type: "driver" },
-                                        title: "title",
-                                        updatedAtTime: "2024-01-15T09:30:00Z",
-                                    },
-                                },
-                                formUpdated: {
-                                    form: {
-                                        assignedAtTime: "2024-01-15T09:30:00Z",
-                                        createdAtTime: "2024-01-15T09:30:00Z",
-                                        dueAtTime: "2024-01-15T09:30:00Z",
-                                        durationMs: 1000000,
-                                        externalIds: {},
-                                        fields: [],
-                                        formTemplate: { id: "id", revisionId: "revisionId" },
-                                        id: "id",
-                                        isRequired: true,
-                                        routeId: "routeId",
-                                        routeStopId: "routeStopId",
-                                        status: "notStarted",
-                                        submittedAtTime: "2024-01-15T09:30:00Z",
-                                        submittedBy: { id: "id", type: "driver" },
-                                        title: "title",
-                                        updatedAtTime: "2024-01-15T09:30:00Z",
-                                    },
-                                },
-                                fuelLevelPercentage: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                gatewayDisconnected: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                gatewayUnplugged: { model: "AG15", serial: "serial", vehicle: {} },
-                                geofenceEntry: {
-                                    address: { formattedAddress: "formattedAddress", id: "id", name: "name" },
-                                    fuelVolume: { unit: "GALLONS", value: 1.1 },
-                                    vehicle: {},
-                                },
-                                geofenceExit: {
-                                    address: { formattedAddress: "formattedAddress", id: "id", name: "name" },
-                                    fuelVolume: { unit: "GALLONS", value: 1.1 },
-                                    vehicle: {},
-                                },
-                                gpsSignalLoss: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                harshEvent: { driver: { id: "id" }, vehicle: { id: "id", serial: "serial" } },
-                                hosDutyStatus: { driver: { id: "id" } },
-                                hosViolation: { driver: { id: "id" } },
-                                inactivity: { cameraStream: { id: "id" } },
-                                insideGeofence: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                issueCreated: {
-                                    issue: {
-                                        createdAtTime: "2024-01-15T09:30:00Z",
-                                        description: "description",
-                                        dueDate: "2024-01-15T09:30:00Z",
-                                        externalIds: {},
-                                        id: "id",
-                                        issueSource: { type: "form" },
-                                        mediaList: [],
-                                        priority: "low",
-                                        status: "open",
-                                        submittedAtTime: "2024-01-15T09:30:00Z",
-                                        submittedBy: { id: "id", type: "driver" },
-                                        title: "title",
-                                        updatedAtTime: "2024-01-15T09:30:00Z",
-                                    },
-                                },
-                                jammingDetected: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                missingDvirPastDue: {
-                                    dvir: { inspectionType: "preTrip", relatedDevices: [], uuid: "uuid" },
-                                },
-                                motionDetected: { cameraStream: { id: "id" } },
-                                outOfRoute: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                outOfSequenceStopArrival: {
-                                    actualStopName: "actualStopName",
-                                    driver: { id: "id" },
-                                    expectedStopName: "expectedStopName",
-                                    route: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                outsideGeofence: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                panicButton: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                personDetected: { cameraStream: { id: "id" } },
-                                preventiveMaintenanceScheduleDue: {
-                                    driver: { id: "id" },
-                                    dueReasons: ["date", "date"],
-                                    scheduleDescription: "scheduleDescription",
-                                    scheduleId: "scheduleId",
-                                    scheduleTitle: "scheduleTitle",
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                reading: {
-                                    asset: { id: "id", serial: "serial", type: "uncategorized" },
-                                    continuousThreshold: { operation: "GREATER", threshold: 1000000 },
-                                    enumThreshold: {},
-                                    id: "id",
-                                },
-                                reeferTemperature: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                routeStartDelayed: { driver: { id: "id" }, vehicle: { id: "id", serial: "serial" } },
-                                routeStopArrival: {
-                                    driver: { id: "id" },
-                                    operation: "stop arrived",
-                                    route: {
-                                        actualRouteEndTime: "2024-01-15T09:30:00Z",
-                                        actualRouteStartTime: "2024-01-15T09:30:00Z",
-                                        externalIds: {},
-                                        id: "id",
-                                        name: "name",
-                                        notes: "notes",
-                                        scheduledRouteEndTime: "2024-01-15T09:30:00Z",
-                                        scheduledRouteStartTime: "2024-01-15T09:30:00Z",
-                                        settings: {},
-                                        stops: [],
-                                    },
-                                    routeStopDetails: {
-                                        actualArrivalTime: "2024-01-15T09:30:00Z",
-                                        actualDepartureTime: "2024-01-15T09:30:00Z",
-                                        enRouteTime: "2024-01-15T09:30:00Z",
-                                        eta: "2024-01-15T09:30:00Z",
-                                        externalIds: {},
-                                        id: "id",
-                                        liveSharingUrl: "liveSharingUrl",
-                                        skippedTime: "2024-01-15T09:30:00Z",
-                                        state: "unassigned",
-                                    },
-                                    time: "2024-01-15T09:30:00Z",
-                                    type: "route tracking",
-                                    vehicle: {},
-                                },
-                                routeStopDeparture: {
-                                    driver: { id: "id" },
-                                    operation: "stop arrived",
-                                    route: {
-                                        actualRouteEndTime: "2024-01-15T09:30:00Z",
-                                        actualRouteStartTime: "2024-01-15T09:30:00Z",
-                                        externalIds: {},
-                                        id: "id",
-                                        name: "name",
-                                        notes: "notes",
-                                        scheduledRouteEndTime: "2024-01-15T09:30:00Z",
-                                        scheduledRouteStartTime: "2024-01-15T09:30:00Z",
-                                        settings: {},
-                                        stops: [],
-                                    },
-                                    routeStopDetails: {
-                                        actualArrivalTime: "2024-01-15T09:30:00Z",
-                                        actualDepartureTime: "2024-01-15T09:30:00Z",
-                                        enRouteTime: "2024-01-15T09:30:00Z",
-                                        eta: "2024-01-15T09:30:00Z",
-                                        externalIds: {},
-                                        id: "id",
-                                        liveSharingUrl: "liveSharingUrl",
-                                        skippedTime: "2024-01-15T09:30:00Z",
-                                        state: "unassigned",
-                                    },
-                                    time: "2024-01-15T09:30:00Z",
-                                    type: "route tracking",
-                                    vehicle: {},
-                                },
-                                routeStopETA: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                routeStopEarlyLateArrival: {
-                                    arrivalStatus: "early",
-                                    deviationMinutes: 1000000,
-                                    driver: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                scheduledMaintenance: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                scheduledMaintenanceByEngineHours: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                scheduledMaintenanceOdometer: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                severeSpeeding: {
-                                    data: { startTime: "startTime", tripStartTime: "tripStartTime", vehicle: {} },
-                                },
-                                siteGatewayDisconnected: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                speed: {
-                                    currentSpeedKilometersPerHour: 1,
-                                    driver: { id: "id" },
-                                    minDurationMilliseconds: 1000000,
-                                    operation: "GREATER",
-                                    thresholdSpeedKilometersPerHour: 1,
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                suddenFuelLevelDrop: {
-                                    changeEndTime: "2024-01-15T09:30:00Z",
-                                    changeStartTime: "2024-01-15T09:30:00Z",
-                                    driver: { id: "id" },
-                                    fuelLevelAfterMillipercent: 1,
-                                    fuelLevelBeforeMillipercent: 1,
-                                    location: {},
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                suddenFuelLevelRise: {
-                                    changeEndTime: "2024-01-15T09:30:00Z",
-                                    changeStartTime: "2024-01-15T09:30:00Z",
-                                    driver: { id: "id" },
-                                    fuelLevelAfterMillipercent: 1,
-                                    fuelLevelBeforeMillipercent: 1,
-                                    location: {},
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                tamperingDetected: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                thermographTemperature: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                tireFaults: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                trailerMovingWithoutPower: {
-                                    currentVoltage: 1,
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                },
-                                unassignedDriving: { driver: { id: "id" }, vehicle: { id: "id", serial: "serial" } },
-                                vehicleBatteryVoltage: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                vehicleDefLevelPercentage: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                vehicleDetected: { cameraStream: { id: "id" } },
-                                vehicleFaults: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                vehicleTrailerMismatch: {
-                                    currentlyPullingTrailers: [],
-                                    driver: { id: "id" },
-                                    driverSelectedTrailers: [],
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                workerSafetySos: {
-                                    driver: { id: "id" },
-                                    location: {},
-                                    sourceType: "appSos",
-                                    vehicle: { id: "id", serial: "serial" },
-                                    workerSafetyIncidentUrl: "workerSafetyIncidentUrl",
-                                },
-                            },
-                            triggerId: 1000000,
+                            triggerId: 1000,
                         },
                     ],
-                    configurationId: "configurationId",
-                    happenedAtTime: "happenedAtTime",
-                    incidentUrl: "incidentUrl",
+                    configurationId: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
+                    happenedAtTime: "2019-06-13T19:08:25Z",
+                    incidentUrl: "https://cloud.samsara.com/o/1/fleet/workflows/123",
                     isResolved: true,
-                    resolvedAtTime: "resolvedAtTime",
-                    updatedAtTime: "updatedAtTime",
-                },
-                {
-                    conditions: [
-                        {
-                            description: "description",
-                            details: {
-                                ambientTemperature: { sensor: { id: "id" } },
-                                cameraConnectorDisconected: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                cameraStreamIssue: { cameraDevice: { id: "id" } },
-                                cellSignalLoss: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                cloudBackupUploadIssue: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                dashcamDisconnected: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                dataInputValue: { machineInput: { id: "id" } },
-                                deviceMovement: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                deviceMovementStopped: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                doorOpen: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                driverAppSignIn: {
-                                    driver: { id: "id" },
-                                    pinnedVehicle: { id: "id", serial: "serial" },
-                                },
-                                driverAppSignOut: { driver: { id: "id" } },
-                                driverDocumentSubmitted: {},
-                                driverMessageReceived: { driver: { id: "id" } },
-                                driverMessageSent: { driver: { id: "id" } },
-                                driverRecorded: { driver: { id: "id" }, vehicle: { id: "id", serial: "serial" } },
-                                dvirSubmittedDevice: { driver: { id: "id" }, vehicle: {} },
-                                engineIdle: { driver: { id: "id" }, vehicle: { id: "id", serial: "serial" } },
-                                engineOff: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                engineOn: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                formSubmitted: {
-                                    form: {
-                                        assignedAtTime: "2024-01-15T09:30:00Z",
-                                        createdAtTime: "2024-01-15T09:30:00Z",
-                                        dueAtTime: "2024-01-15T09:30:00Z",
-                                        durationMs: 1000000,
-                                        externalIds: {},
-                                        fields: [],
-                                        formTemplate: { id: "id", revisionId: "revisionId" },
-                                        id: "id",
-                                        isRequired: true,
-                                        routeId: "routeId",
-                                        routeStopId: "routeStopId",
-                                        status: "notStarted",
-                                        submittedAtTime: "2024-01-15T09:30:00Z",
-                                        submittedBy: { id: "id", type: "driver" },
-                                        title: "title",
-                                        updatedAtTime: "2024-01-15T09:30:00Z",
-                                    },
-                                },
-                                formUpdated: {
-                                    form: {
-                                        assignedAtTime: "2024-01-15T09:30:00Z",
-                                        createdAtTime: "2024-01-15T09:30:00Z",
-                                        dueAtTime: "2024-01-15T09:30:00Z",
-                                        durationMs: 1000000,
-                                        externalIds: {},
-                                        fields: [],
-                                        formTemplate: { id: "id", revisionId: "revisionId" },
-                                        id: "id",
-                                        isRequired: true,
-                                        routeId: "routeId",
-                                        routeStopId: "routeStopId",
-                                        status: "notStarted",
-                                        submittedAtTime: "2024-01-15T09:30:00Z",
-                                        submittedBy: { id: "id", type: "driver" },
-                                        title: "title",
-                                        updatedAtTime: "2024-01-15T09:30:00Z",
-                                    },
-                                },
-                                fuelLevelPercentage: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                gatewayDisconnected: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                gatewayUnplugged: { model: "AG15", serial: "serial", vehicle: {} },
-                                geofenceEntry: {
-                                    address: { formattedAddress: "formattedAddress", id: "id", name: "name" },
-                                    fuelVolume: { unit: "GALLONS", value: 1.1 },
-                                    vehicle: {},
-                                },
-                                geofenceExit: {
-                                    address: { formattedAddress: "formattedAddress", id: "id", name: "name" },
-                                    fuelVolume: { unit: "GALLONS", value: 1.1 },
-                                    vehicle: {},
-                                },
-                                gpsSignalLoss: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                harshEvent: { driver: { id: "id" }, vehicle: { id: "id", serial: "serial" } },
-                                hosDutyStatus: { driver: { id: "id" } },
-                                hosViolation: { driver: { id: "id" } },
-                                inactivity: { cameraStream: { id: "id" } },
-                                insideGeofence: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                issueCreated: {
-                                    issue: {
-                                        createdAtTime: "2024-01-15T09:30:00Z",
-                                        description: "description",
-                                        dueDate: "2024-01-15T09:30:00Z",
-                                        externalIds: {},
-                                        id: "id",
-                                        issueSource: { type: "form" },
-                                        mediaList: [],
-                                        priority: "low",
-                                        status: "open",
-                                        submittedAtTime: "2024-01-15T09:30:00Z",
-                                        submittedBy: { id: "id", type: "driver" },
-                                        title: "title",
-                                        updatedAtTime: "2024-01-15T09:30:00Z",
-                                    },
-                                },
-                                jammingDetected: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                missingDvirPastDue: {
-                                    dvir: { inspectionType: "preTrip", relatedDevices: [], uuid: "uuid" },
-                                },
-                                motionDetected: { cameraStream: { id: "id" } },
-                                outOfRoute: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                outOfSequenceStopArrival: {
-                                    actualStopName: "actualStopName",
-                                    driver: { id: "id" },
-                                    expectedStopName: "expectedStopName",
-                                    route: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                outsideGeofence: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                panicButton: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                personDetected: { cameraStream: { id: "id" } },
-                                preventiveMaintenanceScheduleDue: {
-                                    driver: { id: "id" },
-                                    dueReasons: ["date", "date"],
-                                    scheduleDescription: "scheduleDescription",
-                                    scheduleId: "scheduleId",
-                                    scheduleTitle: "scheduleTitle",
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                reading: {
-                                    asset: { id: "id", serial: "serial", type: "uncategorized" },
-                                    continuousThreshold: { operation: "GREATER", threshold: 1000000 },
-                                    enumThreshold: {},
-                                    id: "id",
-                                },
-                                reeferTemperature: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                routeStartDelayed: { driver: { id: "id" }, vehicle: { id: "id", serial: "serial" } },
-                                routeStopArrival: {
-                                    driver: { id: "id" },
-                                    operation: "stop arrived",
-                                    route: {
-                                        actualRouteEndTime: "2024-01-15T09:30:00Z",
-                                        actualRouteStartTime: "2024-01-15T09:30:00Z",
-                                        externalIds: {},
-                                        id: "id",
-                                        name: "name",
-                                        notes: "notes",
-                                        scheduledRouteEndTime: "2024-01-15T09:30:00Z",
-                                        scheduledRouteStartTime: "2024-01-15T09:30:00Z",
-                                        settings: {},
-                                        stops: [],
-                                    },
-                                    routeStopDetails: {
-                                        actualArrivalTime: "2024-01-15T09:30:00Z",
-                                        actualDepartureTime: "2024-01-15T09:30:00Z",
-                                        enRouteTime: "2024-01-15T09:30:00Z",
-                                        eta: "2024-01-15T09:30:00Z",
-                                        externalIds: {},
-                                        id: "id",
-                                        liveSharingUrl: "liveSharingUrl",
-                                        skippedTime: "2024-01-15T09:30:00Z",
-                                        state: "unassigned",
-                                    },
-                                    time: "2024-01-15T09:30:00Z",
-                                    type: "route tracking",
-                                    vehicle: {},
-                                },
-                                routeStopDeparture: {
-                                    driver: { id: "id" },
-                                    operation: "stop arrived",
-                                    route: {
-                                        actualRouteEndTime: "2024-01-15T09:30:00Z",
-                                        actualRouteStartTime: "2024-01-15T09:30:00Z",
-                                        externalIds: {},
-                                        id: "id",
-                                        name: "name",
-                                        notes: "notes",
-                                        scheduledRouteEndTime: "2024-01-15T09:30:00Z",
-                                        scheduledRouteStartTime: "2024-01-15T09:30:00Z",
-                                        settings: {},
-                                        stops: [],
-                                    },
-                                    routeStopDetails: {
-                                        actualArrivalTime: "2024-01-15T09:30:00Z",
-                                        actualDepartureTime: "2024-01-15T09:30:00Z",
-                                        enRouteTime: "2024-01-15T09:30:00Z",
-                                        eta: "2024-01-15T09:30:00Z",
-                                        externalIds: {},
-                                        id: "id",
-                                        liveSharingUrl: "liveSharingUrl",
-                                        skippedTime: "2024-01-15T09:30:00Z",
-                                        state: "unassigned",
-                                    },
-                                    time: "2024-01-15T09:30:00Z",
-                                    type: "route tracking",
-                                    vehicle: {},
-                                },
-                                routeStopETA: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                routeStopEarlyLateArrival: {
-                                    arrivalStatus: "early",
-                                    deviationMinutes: 1000000,
-                                    driver: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                scheduledMaintenance: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                scheduledMaintenanceByEngineHours: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                scheduledMaintenanceOdometer: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                severeSpeeding: {
-                                    data: { startTime: "startTime", tripStartTime: "tripStartTime", vehicle: {} },
-                                },
-                                siteGatewayDisconnected: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                speed: {
-                                    currentSpeedKilometersPerHour: 1,
-                                    driver: { id: "id" },
-                                    minDurationMilliseconds: 1000000,
-                                    operation: "GREATER",
-                                    thresholdSpeedKilometersPerHour: 1,
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                suddenFuelLevelDrop: {
-                                    changeEndTime: "2024-01-15T09:30:00Z",
-                                    changeStartTime: "2024-01-15T09:30:00Z",
-                                    driver: { id: "id" },
-                                    fuelLevelAfterMillipercent: 1,
-                                    fuelLevelBeforeMillipercent: 1,
-                                    location: {},
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                suddenFuelLevelRise: {
-                                    changeEndTime: "2024-01-15T09:30:00Z",
-                                    changeStartTime: "2024-01-15T09:30:00Z",
-                                    driver: { id: "id" },
-                                    fuelLevelAfterMillipercent: 1,
-                                    fuelLevelBeforeMillipercent: 1,
-                                    location: {},
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                tamperingDetected: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                thermographTemperature: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                tireFaults: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                trailerMovingWithoutPower: {
-                                    currentVoltage: 1,
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                },
-                                unassignedDriving: { driver: { id: "id" }, vehicle: { id: "id", serial: "serial" } },
-                                vehicleBatteryVoltage: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                vehicleDefLevelPercentage: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                vehicleDetected: { cameraStream: { id: "id" } },
-                                vehicleFaults: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                vehicleTrailerMismatch: {
-                                    currentlyPullingTrailers: [],
-                                    driver: { id: "id" },
-                                    driverSelectedTrailers: [],
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                workerSafetySos: {
-                                    driver: { id: "id" },
-                                    location: {},
-                                    sourceType: "appSos",
-                                    vehicle: { id: "id", serial: "serial" },
-                                    workerSafetyIncidentUrl: "workerSafetyIncidentUrl",
-                                },
-                            },
-                            triggerId: 1000000,
-                        },
-                        {
-                            description: "description",
-                            details: {
-                                ambientTemperature: { sensor: { id: "id" } },
-                                cameraConnectorDisconected: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                cameraStreamIssue: { cameraDevice: { id: "id" } },
-                                cellSignalLoss: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                cloudBackupUploadIssue: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                dashcamDisconnected: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                dataInputValue: { machineInput: { id: "id" } },
-                                deviceMovement: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                deviceMovementStopped: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                doorOpen: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                driverAppSignIn: {
-                                    driver: { id: "id" },
-                                    pinnedVehicle: { id: "id", serial: "serial" },
-                                },
-                                driverAppSignOut: { driver: { id: "id" } },
-                                driverDocumentSubmitted: {},
-                                driverMessageReceived: { driver: { id: "id" } },
-                                driverMessageSent: { driver: { id: "id" } },
-                                driverRecorded: { driver: { id: "id" }, vehicle: { id: "id", serial: "serial" } },
-                                dvirSubmittedDevice: { driver: { id: "id" }, vehicle: {} },
-                                engineIdle: { driver: { id: "id" }, vehicle: { id: "id", serial: "serial" } },
-                                engineOff: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                engineOn: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                formSubmitted: {
-                                    form: {
-                                        assignedAtTime: "2024-01-15T09:30:00Z",
-                                        createdAtTime: "2024-01-15T09:30:00Z",
-                                        dueAtTime: "2024-01-15T09:30:00Z",
-                                        durationMs: 1000000,
-                                        externalIds: {},
-                                        fields: [],
-                                        formTemplate: { id: "id", revisionId: "revisionId" },
-                                        id: "id",
-                                        isRequired: true,
-                                        routeId: "routeId",
-                                        routeStopId: "routeStopId",
-                                        status: "notStarted",
-                                        submittedAtTime: "2024-01-15T09:30:00Z",
-                                        submittedBy: { id: "id", type: "driver" },
-                                        title: "title",
-                                        updatedAtTime: "2024-01-15T09:30:00Z",
-                                    },
-                                },
-                                formUpdated: {
-                                    form: {
-                                        assignedAtTime: "2024-01-15T09:30:00Z",
-                                        createdAtTime: "2024-01-15T09:30:00Z",
-                                        dueAtTime: "2024-01-15T09:30:00Z",
-                                        durationMs: 1000000,
-                                        externalIds: {},
-                                        fields: [],
-                                        formTemplate: { id: "id", revisionId: "revisionId" },
-                                        id: "id",
-                                        isRequired: true,
-                                        routeId: "routeId",
-                                        routeStopId: "routeStopId",
-                                        status: "notStarted",
-                                        submittedAtTime: "2024-01-15T09:30:00Z",
-                                        submittedBy: { id: "id", type: "driver" },
-                                        title: "title",
-                                        updatedAtTime: "2024-01-15T09:30:00Z",
-                                    },
-                                },
-                                fuelLevelPercentage: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                gatewayDisconnected: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                gatewayUnplugged: { model: "AG15", serial: "serial", vehicle: {} },
-                                geofenceEntry: {
-                                    address: { formattedAddress: "formattedAddress", id: "id", name: "name" },
-                                    fuelVolume: { unit: "GALLONS", value: 1.1 },
-                                    vehicle: {},
-                                },
-                                geofenceExit: {
-                                    address: { formattedAddress: "formattedAddress", id: "id", name: "name" },
-                                    fuelVolume: { unit: "GALLONS", value: 1.1 },
-                                    vehicle: {},
-                                },
-                                gpsSignalLoss: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                harshEvent: { driver: { id: "id" }, vehicle: { id: "id", serial: "serial" } },
-                                hosDutyStatus: { driver: { id: "id" } },
-                                hosViolation: { driver: { id: "id" } },
-                                inactivity: { cameraStream: { id: "id" } },
-                                insideGeofence: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                issueCreated: {
-                                    issue: {
-                                        createdAtTime: "2024-01-15T09:30:00Z",
-                                        description: "description",
-                                        dueDate: "2024-01-15T09:30:00Z",
-                                        externalIds: {},
-                                        id: "id",
-                                        issueSource: { type: "form" },
-                                        mediaList: [],
-                                        priority: "low",
-                                        status: "open",
-                                        submittedAtTime: "2024-01-15T09:30:00Z",
-                                        submittedBy: { id: "id", type: "driver" },
-                                        title: "title",
-                                        updatedAtTime: "2024-01-15T09:30:00Z",
-                                    },
-                                },
-                                jammingDetected: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                missingDvirPastDue: {
-                                    dvir: { inspectionType: "preTrip", relatedDevices: [], uuid: "uuid" },
-                                },
-                                motionDetected: { cameraStream: { id: "id" } },
-                                outOfRoute: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                outOfSequenceStopArrival: {
-                                    actualStopName: "actualStopName",
-                                    driver: { id: "id" },
-                                    expectedStopName: "expectedStopName",
-                                    route: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                outsideGeofence: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                panicButton: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                personDetected: { cameraStream: { id: "id" } },
-                                preventiveMaintenanceScheduleDue: {
-                                    driver: { id: "id" },
-                                    dueReasons: ["date", "date"],
-                                    scheduleDescription: "scheduleDescription",
-                                    scheduleId: "scheduleId",
-                                    scheduleTitle: "scheduleTitle",
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                reading: {
-                                    asset: { id: "id", serial: "serial", type: "uncategorized" },
-                                    continuousThreshold: { operation: "GREATER", threshold: 1000000 },
-                                    enumThreshold: {},
-                                    id: "id",
-                                },
-                                reeferTemperature: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                routeStartDelayed: { driver: { id: "id" }, vehicle: { id: "id", serial: "serial" } },
-                                routeStopArrival: {
-                                    driver: { id: "id" },
-                                    operation: "stop arrived",
-                                    route: {
-                                        actualRouteEndTime: "2024-01-15T09:30:00Z",
-                                        actualRouteStartTime: "2024-01-15T09:30:00Z",
-                                        externalIds: {},
-                                        id: "id",
-                                        name: "name",
-                                        notes: "notes",
-                                        scheduledRouteEndTime: "2024-01-15T09:30:00Z",
-                                        scheduledRouteStartTime: "2024-01-15T09:30:00Z",
-                                        settings: {},
-                                        stops: [],
-                                    },
-                                    routeStopDetails: {
-                                        actualArrivalTime: "2024-01-15T09:30:00Z",
-                                        actualDepartureTime: "2024-01-15T09:30:00Z",
-                                        enRouteTime: "2024-01-15T09:30:00Z",
-                                        eta: "2024-01-15T09:30:00Z",
-                                        externalIds: {},
-                                        id: "id",
-                                        liveSharingUrl: "liveSharingUrl",
-                                        skippedTime: "2024-01-15T09:30:00Z",
-                                        state: "unassigned",
-                                    },
-                                    time: "2024-01-15T09:30:00Z",
-                                    type: "route tracking",
-                                    vehicle: {},
-                                },
-                                routeStopDeparture: {
-                                    driver: { id: "id" },
-                                    operation: "stop arrived",
-                                    route: {
-                                        actualRouteEndTime: "2024-01-15T09:30:00Z",
-                                        actualRouteStartTime: "2024-01-15T09:30:00Z",
-                                        externalIds: {},
-                                        id: "id",
-                                        name: "name",
-                                        notes: "notes",
-                                        scheduledRouteEndTime: "2024-01-15T09:30:00Z",
-                                        scheduledRouteStartTime: "2024-01-15T09:30:00Z",
-                                        settings: {},
-                                        stops: [],
-                                    },
-                                    routeStopDetails: {
-                                        actualArrivalTime: "2024-01-15T09:30:00Z",
-                                        actualDepartureTime: "2024-01-15T09:30:00Z",
-                                        enRouteTime: "2024-01-15T09:30:00Z",
-                                        eta: "2024-01-15T09:30:00Z",
-                                        externalIds: {},
-                                        id: "id",
-                                        liveSharingUrl: "liveSharingUrl",
-                                        skippedTime: "2024-01-15T09:30:00Z",
-                                        state: "unassigned",
-                                    },
-                                    time: "2024-01-15T09:30:00Z",
-                                    type: "route tracking",
-                                    vehicle: {},
-                                },
-                                routeStopETA: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                routeStopEarlyLateArrival: {
-                                    arrivalStatus: "early",
-                                    deviationMinutes: 1000000,
-                                    driver: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                scheduledMaintenance: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                scheduledMaintenanceByEngineHours: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                scheduledMaintenanceOdometer: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                severeSpeeding: {
-                                    data: { startTime: "startTime", tripStartTime: "tripStartTime", vehicle: {} },
-                                },
-                                siteGatewayDisconnected: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                speed: {
-                                    currentSpeedKilometersPerHour: 1,
-                                    driver: { id: "id" },
-                                    minDurationMilliseconds: 1000000,
-                                    operation: "GREATER",
-                                    thresholdSpeedKilometersPerHour: 1,
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                suddenFuelLevelDrop: {
-                                    changeEndTime: "2024-01-15T09:30:00Z",
-                                    changeStartTime: "2024-01-15T09:30:00Z",
-                                    driver: { id: "id" },
-                                    fuelLevelAfterMillipercent: 1,
-                                    fuelLevelBeforeMillipercent: 1,
-                                    location: {},
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                suddenFuelLevelRise: {
-                                    changeEndTime: "2024-01-15T09:30:00Z",
-                                    changeStartTime: "2024-01-15T09:30:00Z",
-                                    driver: { id: "id" },
-                                    fuelLevelAfterMillipercent: 1,
-                                    fuelLevelBeforeMillipercent: 1,
-                                    location: {},
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                tamperingDetected: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                thermographTemperature: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                tireFaults: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                trailerMovingWithoutPower: {
-                                    currentVoltage: 1,
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                },
-                                unassignedDriving: { driver: { id: "id" }, vehicle: { id: "id", serial: "serial" } },
-                                vehicleBatteryVoltage: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                vehicleDefLevelPercentage: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                vehicleDetected: { cameraStream: { id: "id" } },
-                                vehicleFaults: {
-                                    driver: { id: "id" },
-                                    trailer: { id: "id" },
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                vehicleTrailerMismatch: {
-                                    currentlyPullingTrailers: [],
-                                    driver: { id: "id" },
-                                    driverSelectedTrailers: [],
-                                    vehicle: { id: "id", serial: "serial" },
-                                },
-                                workerSafetySos: {
-                                    driver: { id: "id" },
-                                    location: {},
-                                    sourceType: "appSos",
-                                    vehicle: { id: "id", serial: "serial" },
-                                    workerSafetyIncidentUrl: "workerSafetyIncidentUrl",
-                                },
-                            },
-                            triggerId: 1000000,
-                        },
-                    ],
-                    configurationId: "configurationId",
-                    happenedAtTime: "happenedAtTime",
-                    incidentUrl: "incidentUrl",
-                    isResolved: true,
-                    resolvedAtTime: "resolvedAtTime",
-                    updatedAtTime: "updatedAtTime",
+                    resolvedAtTime: "2019-06-13T19:08:25Z",
+                    updatedAtTime: "2019-06-13T19:08:25Z",
                 },
             ],
-            pagination: { endCursor: "endCursor", hasNextPage: true },
+            pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/alerts/incidents/stream")
@@ -3212,3179 +5179,9 @@ describe("AlertsClient", () => {
 
         const response = await client.alerts.getIncidents({
             startTime: "startTime",
+            configurationIds: ["configurationIds"],
         });
-        expect(response).toEqual({
-            data: [
-                {
-                    conditions: [
-                        {
-                            description: "description",
-                            details: {
-                                ambientTemperature: {
-                                    sensor: {
-                                        id: "id",
-                                    },
-                                },
-                                cameraConnectorDisconected: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                cameraStreamIssue: {
-                                    cameraDevice: {
-                                        id: "id",
-                                    },
-                                },
-                                cellSignalLoss: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                cloudBackupUploadIssue: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                dashcamDisconnected: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                dataInputValue: {
-                                    machineInput: {
-                                        id: "id",
-                                    },
-                                },
-                                deviceMovement: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                deviceMovementStopped: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                doorOpen: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                driverAppSignIn: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    pinnedVehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                driverAppSignOut: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                },
-                                driverDocumentSubmitted: {},
-                                driverMessageReceived: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                },
-                                driverMessageSent: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                },
-                                driverRecorded: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                dvirSubmittedDevice: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    vehicle: {},
-                                },
-                                engineIdle: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                engineOff: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                engineOn: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                formSubmitted: {
-                                    form: {
-                                        assignedAtTime: "2024-01-15T09:30:00Z",
-                                        createdAtTime: "2024-01-15T09:30:00Z",
-                                        dueAtTime: "2024-01-15T09:30:00Z",
-                                        durationMs: 1000000,
-                                        externalIds: {},
-                                        fields: [],
-                                        formTemplate: {
-                                            id: "id",
-                                            revisionId: "revisionId",
-                                        },
-                                        id: "id",
-                                        isRequired: true,
-                                        routeId: "routeId",
-                                        routeStopId: "routeStopId",
-                                        status: "notStarted",
-                                        submittedAtTime: "2024-01-15T09:30:00Z",
-                                        submittedBy: {
-                                            id: "id",
-                                            type: "driver",
-                                        },
-                                        title: "title",
-                                        updatedAtTime: "2024-01-15T09:30:00Z",
-                                    },
-                                },
-                                formUpdated: {
-                                    form: {
-                                        assignedAtTime: "2024-01-15T09:30:00Z",
-                                        createdAtTime: "2024-01-15T09:30:00Z",
-                                        dueAtTime: "2024-01-15T09:30:00Z",
-                                        durationMs: 1000000,
-                                        externalIds: {},
-                                        fields: [],
-                                        formTemplate: {
-                                            id: "id",
-                                            revisionId: "revisionId",
-                                        },
-                                        id: "id",
-                                        isRequired: true,
-                                        routeId: "routeId",
-                                        routeStopId: "routeStopId",
-                                        status: "notStarted",
-                                        submittedAtTime: "2024-01-15T09:30:00Z",
-                                        submittedBy: {
-                                            id: "id",
-                                            type: "driver",
-                                        },
-                                        title: "title",
-                                        updatedAtTime: "2024-01-15T09:30:00Z",
-                                    },
-                                },
-                                fuelLevelPercentage: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                gatewayDisconnected: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                gatewayUnplugged: {
-                                    model: "AG15",
-                                    serial: "serial",
-                                    vehicle: {},
-                                },
-                                geofenceEntry: {
-                                    address: {
-                                        formattedAddress: "formattedAddress",
-                                        id: "id",
-                                        name: "name",
-                                    },
-                                    fuelVolume: {
-                                        unit: "GALLONS",
-                                        value: 1.1,
-                                    },
-                                    vehicle: {},
-                                },
-                                geofenceExit: {
-                                    address: {
-                                        formattedAddress: "formattedAddress",
-                                        id: "id",
-                                        name: "name",
-                                    },
-                                    fuelVolume: {
-                                        unit: "GALLONS",
-                                        value: 1.1,
-                                    },
-                                    vehicle: {},
-                                },
-                                gpsSignalLoss: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                harshEvent: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                hosDutyStatus: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                },
-                                hosViolation: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                },
-                                inactivity: {
-                                    cameraStream: {
-                                        id: "id",
-                                    },
-                                },
-                                insideGeofence: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                issueCreated: {
-                                    issue: {
-                                        createdAtTime: "2024-01-15T09:30:00Z",
-                                        description: "description",
-                                        dueDate: "2024-01-15T09:30:00Z",
-                                        externalIds: {},
-                                        id: "id",
-                                        issueSource: {
-                                            type: "form",
-                                        },
-                                        mediaList: [],
-                                        priority: "low",
-                                        status: "open",
-                                        submittedAtTime: "2024-01-15T09:30:00Z",
-                                        submittedBy: {
-                                            id: "id",
-                                            type: "driver",
-                                        },
-                                        title: "title",
-                                        updatedAtTime: "2024-01-15T09:30:00Z",
-                                    },
-                                },
-                                jammingDetected: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                missingDvirPastDue: {
-                                    dvir: {
-                                        inspectionType: "preTrip",
-                                        relatedDevices: [],
-                                        uuid: "uuid",
-                                    },
-                                },
-                                motionDetected: {
-                                    cameraStream: {
-                                        id: "id",
-                                    },
-                                },
-                                outOfRoute: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                outOfSequenceStopArrival: {
-                                    actualStopName: "actualStopName",
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    expectedStopName: "expectedStopName",
-                                    route: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                outsideGeofence: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                panicButton: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                personDetected: {
-                                    cameraStream: {
-                                        id: "id",
-                                    },
-                                },
-                                preventiveMaintenanceScheduleDue: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    dueReasons: ["date", "date"],
-                                    scheduleDescription: "scheduleDescription",
-                                    scheduleId: "scheduleId",
-                                    scheduleTitle: "scheduleTitle",
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                reading: {
-                                    asset: {
-                                        id: "id",
-                                        serial: "serial",
-                                        type: "uncategorized",
-                                    },
-                                    continuousThreshold: {
-                                        operation: "GREATER",
-                                        threshold: 1000000,
-                                    },
-                                    enumThreshold: {},
-                                    id: "id",
-                                },
-                                reeferTemperature: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                routeStartDelayed: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                routeStopArrival: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    operation: "stop arrived",
-                                    route: {
-                                        actualRouteEndTime: "2024-01-15T09:30:00Z",
-                                        actualRouteStartTime: "2024-01-15T09:30:00Z",
-                                        externalIds: {},
-                                        id: "id",
-                                        name: "name",
-                                        notes: "notes",
-                                        scheduledRouteEndTime: "2024-01-15T09:30:00Z",
-                                        scheduledRouteStartTime: "2024-01-15T09:30:00Z",
-                                        settings: {},
-                                        stops: [],
-                                    },
-                                    routeStopDetails: {
-                                        actualArrivalTime: "2024-01-15T09:30:00Z",
-                                        actualDepartureTime: "2024-01-15T09:30:00Z",
-                                        enRouteTime: "2024-01-15T09:30:00Z",
-                                        eta: "2024-01-15T09:30:00Z",
-                                        externalIds: {},
-                                        id: "id",
-                                        liveSharingUrl: "liveSharingUrl",
-                                        skippedTime: "2024-01-15T09:30:00Z",
-                                        state: "unassigned",
-                                    },
-                                    time: "2024-01-15T09:30:00Z",
-                                    type: "route tracking",
-                                    vehicle: {},
-                                },
-                                routeStopDeparture: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    operation: "stop arrived",
-                                    route: {
-                                        actualRouteEndTime: "2024-01-15T09:30:00Z",
-                                        actualRouteStartTime: "2024-01-15T09:30:00Z",
-                                        externalIds: {},
-                                        id: "id",
-                                        name: "name",
-                                        notes: "notes",
-                                        scheduledRouteEndTime: "2024-01-15T09:30:00Z",
-                                        scheduledRouteStartTime: "2024-01-15T09:30:00Z",
-                                        settings: {},
-                                        stops: [],
-                                    },
-                                    routeStopDetails: {
-                                        actualArrivalTime: "2024-01-15T09:30:00Z",
-                                        actualDepartureTime: "2024-01-15T09:30:00Z",
-                                        enRouteTime: "2024-01-15T09:30:00Z",
-                                        eta: "2024-01-15T09:30:00Z",
-                                        externalIds: {},
-                                        id: "id",
-                                        liveSharingUrl: "liveSharingUrl",
-                                        skippedTime: "2024-01-15T09:30:00Z",
-                                        state: "unassigned",
-                                    },
-                                    time: "2024-01-15T09:30:00Z",
-                                    type: "route tracking",
-                                    vehicle: {},
-                                },
-                                routeStopETA: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                routeStopEarlyLateArrival: {
-                                    arrivalStatus: "early",
-                                    deviationMinutes: 1000000,
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                scheduledMaintenance: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                scheduledMaintenanceByEngineHours: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                scheduledMaintenanceOdometer: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                severeSpeeding: {
-                                    data: {
-                                        startTime: "startTime",
-                                        tripStartTime: "tripStartTime",
-                                        vehicle: {},
-                                    },
-                                },
-                                siteGatewayDisconnected: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                speed: {
-                                    currentSpeedKilometersPerHour: 1,
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    minDurationMilliseconds: 1000000,
-                                    operation: "GREATER",
-                                    thresholdSpeedKilometersPerHour: 1,
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                suddenFuelLevelDrop: {
-                                    changeEndTime: "2024-01-15T09:30:00Z",
-                                    changeStartTime: "2024-01-15T09:30:00Z",
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    fuelLevelAfterMillipercent: 1,
-                                    fuelLevelBeforeMillipercent: 1,
-                                    location: {},
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                suddenFuelLevelRise: {
-                                    changeEndTime: "2024-01-15T09:30:00Z",
-                                    changeStartTime: "2024-01-15T09:30:00Z",
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    fuelLevelAfterMillipercent: 1,
-                                    fuelLevelBeforeMillipercent: 1,
-                                    location: {},
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                tamperingDetected: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                thermographTemperature: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                tireFaults: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                trailerMovingWithoutPower: {
-                                    currentVoltage: 1,
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                },
-                                unassignedDriving: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                vehicleBatteryVoltage: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                vehicleDefLevelPercentage: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                vehicleDetected: {
-                                    cameraStream: {
-                                        id: "id",
-                                    },
-                                },
-                                vehicleFaults: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                vehicleTrailerMismatch: {
-                                    currentlyPullingTrailers: [],
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    driverSelectedTrailers: [],
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                workerSafetySos: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    location: {},
-                                    sourceType: "appSos",
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                    workerSafetyIncidentUrl: "workerSafetyIncidentUrl",
-                                },
-                            },
-                            triggerId: 1000000,
-                        },
-                        {
-                            description: "description",
-                            details: {
-                                ambientTemperature: {
-                                    sensor: {
-                                        id: "id",
-                                    },
-                                },
-                                cameraConnectorDisconected: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                cameraStreamIssue: {
-                                    cameraDevice: {
-                                        id: "id",
-                                    },
-                                },
-                                cellSignalLoss: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                cloudBackupUploadIssue: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                dashcamDisconnected: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                dataInputValue: {
-                                    machineInput: {
-                                        id: "id",
-                                    },
-                                },
-                                deviceMovement: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                deviceMovementStopped: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                doorOpen: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                driverAppSignIn: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    pinnedVehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                driverAppSignOut: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                },
-                                driverDocumentSubmitted: {},
-                                driverMessageReceived: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                },
-                                driverMessageSent: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                },
-                                driverRecorded: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                dvirSubmittedDevice: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    vehicle: {},
-                                },
-                                engineIdle: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                engineOff: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                engineOn: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                formSubmitted: {
-                                    form: {
-                                        assignedAtTime: "2024-01-15T09:30:00Z",
-                                        createdAtTime: "2024-01-15T09:30:00Z",
-                                        dueAtTime: "2024-01-15T09:30:00Z",
-                                        durationMs: 1000000,
-                                        externalIds: {},
-                                        fields: [],
-                                        formTemplate: {
-                                            id: "id",
-                                            revisionId: "revisionId",
-                                        },
-                                        id: "id",
-                                        isRequired: true,
-                                        routeId: "routeId",
-                                        routeStopId: "routeStopId",
-                                        status: "notStarted",
-                                        submittedAtTime: "2024-01-15T09:30:00Z",
-                                        submittedBy: {
-                                            id: "id",
-                                            type: "driver",
-                                        },
-                                        title: "title",
-                                        updatedAtTime: "2024-01-15T09:30:00Z",
-                                    },
-                                },
-                                formUpdated: {
-                                    form: {
-                                        assignedAtTime: "2024-01-15T09:30:00Z",
-                                        createdAtTime: "2024-01-15T09:30:00Z",
-                                        dueAtTime: "2024-01-15T09:30:00Z",
-                                        durationMs: 1000000,
-                                        externalIds: {},
-                                        fields: [],
-                                        formTemplate: {
-                                            id: "id",
-                                            revisionId: "revisionId",
-                                        },
-                                        id: "id",
-                                        isRequired: true,
-                                        routeId: "routeId",
-                                        routeStopId: "routeStopId",
-                                        status: "notStarted",
-                                        submittedAtTime: "2024-01-15T09:30:00Z",
-                                        submittedBy: {
-                                            id: "id",
-                                            type: "driver",
-                                        },
-                                        title: "title",
-                                        updatedAtTime: "2024-01-15T09:30:00Z",
-                                    },
-                                },
-                                fuelLevelPercentage: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                gatewayDisconnected: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                gatewayUnplugged: {
-                                    model: "AG15",
-                                    serial: "serial",
-                                    vehicle: {},
-                                },
-                                geofenceEntry: {
-                                    address: {
-                                        formattedAddress: "formattedAddress",
-                                        id: "id",
-                                        name: "name",
-                                    },
-                                    fuelVolume: {
-                                        unit: "GALLONS",
-                                        value: 1.1,
-                                    },
-                                    vehicle: {},
-                                },
-                                geofenceExit: {
-                                    address: {
-                                        formattedAddress: "formattedAddress",
-                                        id: "id",
-                                        name: "name",
-                                    },
-                                    fuelVolume: {
-                                        unit: "GALLONS",
-                                        value: 1.1,
-                                    },
-                                    vehicle: {},
-                                },
-                                gpsSignalLoss: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                harshEvent: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                hosDutyStatus: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                },
-                                hosViolation: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                },
-                                inactivity: {
-                                    cameraStream: {
-                                        id: "id",
-                                    },
-                                },
-                                insideGeofence: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                issueCreated: {
-                                    issue: {
-                                        createdAtTime: "2024-01-15T09:30:00Z",
-                                        description: "description",
-                                        dueDate: "2024-01-15T09:30:00Z",
-                                        externalIds: {},
-                                        id: "id",
-                                        issueSource: {
-                                            type: "form",
-                                        },
-                                        mediaList: [],
-                                        priority: "low",
-                                        status: "open",
-                                        submittedAtTime: "2024-01-15T09:30:00Z",
-                                        submittedBy: {
-                                            id: "id",
-                                            type: "driver",
-                                        },
-                                        title: "title",
-                                        updatedAtTime: "2024-01-15T09:30:00Z",
-                                    },
-                                },
-                                jammingDetected: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                missingDvirPastDue: {
-                                    dvir: {
-                                        inspectionType: "preTrip",
-                                        relatedDevices: [],
-                                        uuid: "uuid",
-                                    },
-                                },
-                                motionDetected: {
-                                    cameraStream: {
-                                        id: "id",
-                                    },
-                                },
-                                outOfRoute: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                outOfSequenceStopArrival: {
-                                    actualStopName: "actualStopName",
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    expectedStopName: "expectedStopName",
-                                    route: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                outsideGeofence: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                panicButton: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                personDetected: {
-                                    cameraStream: {
-                                        id: "id",
-                                    },
-                                },
-                                preventiveMaintenanceScheduleDue: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    dueReasons: ["date", "date"],
-                                    scheduleDescription: "scheduleDescription",
-                                    scheduleId: "scheduleId",
-                                    scheduleTitle: "scheduleTitle",
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                reading: {
-                                    asset: {
-                                        id: "id",
-                                        serial: "serial",
-                                        type: "uncategorized",
-                                    },
-                                    continuousThreshold: {
-                                        operation: "GREATER",
-                                        threshold: 1000000,
-                                    },
-                                    enumThreshold: {},
-                                    id: "id",
-                                },
-                                reeferTemperature: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                routeStartDelayed: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                routeStopArrival: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    operation: "stop arrived",
-                                    route: {
-                                        actualRouteEndTime: "2024-01-15T09:30:00Z",
-                                        actualRouteStartTime: "2024-01-15T09:30:00Z",
-                                        externalIds: {},
-                                        id: "id",
-                                        name: "name",
-                                        notes: "notes",
-                                        scheduledRouteEndTime: "2024-01-15T09:30:00Z",
-                                        scheduledRouteStartTime: "2024-01-15T09:30:00Z",
-                                        settings: {},
-                                        stops: [],
-                                    },
-                                    routeStopDetails: {
-                                        actualArrivalTime: "2024-01-15T09:30:00Z",
-                                        actualDepartureTime: "2024-01-15T09:30:00Z",
-                                        enRouteTime: "2024-01-15T09:30:00Z",
-                                        eta: "2024-01-15T09:30:00Z",
-                                        externalIds: {},
-                                        id: "id",
-                                        liveSharingUrl: "liveSharingUrl",
-                                        skippedTime: "2024-01-15T09:30:00Z",
-                                        state: "unassigned",
-                                    },
-                                    time: "2024-01-15T09:30:00Z",
-                                    type: "route tracking",
-                                    vehicle: {},
-                                },
-                                routeStopDeparture: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    operation: "stop arrived",
-                                    route: {
-                                        actualRouteEndTime: "2024-01-15T09:30:00Z",
-                                        actualRouteStartTime: "2024-01-15T09:30:00Z",
-                                        externalIds: {},
-                                        id: "id",
-                                        name: "name",
-                                        notes: "notes",
-                                        scheduledRouteEndTime: "2024-01-15T09:30:00Z",
-                                        scheduledRouteStartTime: "2024-01-15T09:30:00Z",
-                                        settings: {},
-                                        stops: [],
-                                    },
-                                    routeStopDetails: {
-                                        actualArrivalTime: "2024-01-15T09:30:00Z",
-                                        actualDepartureTime: "2024-01-15T09:30:00Z",
-                                        enRouteTime: "2024-01-15T09:30:00Z",
-                                        eta: "2024-01-15T09:30:00Z",
-                                        externalIds: {},
-                                        id: "id",
-                                        liveSharingUrl: "liveSharingUrl",
-                                        skippedTime: "2024-01-15T09:30:00Z",
-                                        state: "unassigned",
-                                    },
-                                    time: "2024-01-15T09:30:00Z",
-                                    type: "route tracking",
-                                    vehicle: {},
-                                },
-                                routeStopETA: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                routeStopEarlyLateArrival: {
-                                    arrivalStatus: "early",
-                                    deviationMinutes: 1000000,
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                scheduledMaintenance: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                scheduledMaintenanceByEngineHours: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                scheduledMaintenanceOdometer: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                severeSpeeding: {
-                                    data: {
-                                        startTime: "startTime",
-                                        tripStartTime: "tripStartTime",
-                                        vehicle: {},
-                                    },
-                                },
-                                siteGatewayDisconnected: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                speed: {
-                                    currentSpeedKilometersPerHour: 1,
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    minDurationMilliseconds: 1000000,
-                                    operation: "GREATER",
-                                    thresholdSpeedKilometersPerHour: 1,
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                suddenFuelLevelDrop: {
-                                    changeEndTime: "2024-01-15T09:30:00Z",
-                                    changeStartTime: "2024-01-15T09:30:00Z",
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    fuelLevelAfterMillipercent: 1,
-                                    fuelLevelBeforeMillipercent: 1,
-                                    location: {},
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                suddenFuelLevelRise: {
-                                    changeEndTime: "2024-01-15T09:30:00Z",
-                                    changeStartTime: "2024-01-15T09:30:00Z",
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    fuelLevelAfterMillipercent: 1,
-                                    fuelLevelBeforeMillipercent: 1,
-                                    location: {},
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                tamperingDetected: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                thermographTemperature: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                tireFaults: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                trailerMovingWithoutPower: {
-                                    currentVoltage: 1,
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                },
-                                unassignedDriving: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                vehicleBatteryVoltage: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                vehicleDefLevelPercentage: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                vehicleDetected: {
-                                    cameraStream: {
-                                        id: "id",
-                                    },
-                                },
-                                vehicleFaults: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                vehicleTrailerMismatch: {
-                                    currentlyPullingTrailers: [],
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    driverSelectedTrailers: [],
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                workerSafetySos: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    location: {},
-                                    sourceType: "appSos",
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                    workerSafetyIncidentUrl: "workerSafetyIncidentUrl",
-                                },
-                            },
-                            triggerId: 1000000,
-                        },
-                    ],
-                    configurationId: "configurationId",
-                    happenedAtTime: "happenedAtTime",
-                    incidentUrl: "incidentUrl",
-                    isResolved: true,
-                    resolvedAtTime: "resolvedAtTime",
-                    updatedAtTime: "updatedAtTime",
-                },
-                {
-                    conditions: [
-                        {
-                            description: "description",
-                            details: {
-                                ambientTemperature: {
-                                    sensor: {
-                                        id: "id",
-                                    },
-                                },
-                                cameraConnectorDisconected: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                cameraStreamIssue: {
-                                    cameraDevice: {
-                                        id: "id",
-                                    },
-                                },
-                                cellSignalLoss: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                cloudBackupUploadIssue: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                dashcamDisconnected: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                dataInputValue: {
-                                    machineInput: {
-                                        id: "id",
-                                    },
-                                },
-                                deviceMovement: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                deviceMovementStopped: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                doorOpen: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                driverAppSignIn: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    pinnedVehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                driverAppSignOut: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                },
-                                driverDocumentSubmitted: {},
-                                driverMessageReceived: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                },
-                                driverMessageSent: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                },
-                                driverRecorded: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                dvirSubmittedDevice: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    vehicle: {},
-                                },
-                                engineIdle: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                engineOff: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                engineOn: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                formSubmitted: {
-                                    form: {
-                                        assignedAtTime: "2024-01-15T09:30:00Z",
-                                        createdAtTime: "2024-01-15T09:30:00Z",
-                                        dueAtTime: "2024-01-15T09:30:00Z",
-                                        durationMs: 1000000,
-                                        externalIds: {},
-                                        fields: [],
-                                        formTemplate: {
-                                            id: "id",
-                                            revisionId: "revisionId",
-                                        },
-                                        id: "id",
-                                        isRequired: true,
-                                        routeId: "routeId",
-                                        routeStopId: "routeStopId",
-                                        status: "notStarted",
-                                        submittedAtTime: "2024-01-15T09:30:00Z",
-                                        submittedBy: {
-                                            id: "id",
-                                            type: "driver",
-                                        },
-                                        title: "title",
-                                        updatedAtTime: "2024-01-15T09:30:00Z",
-                                    },
-                                },
-                                formUpdated: {
-                                    form: {
-                                        assignedAtTime: "2024-01-15T09:30:00Z",
-                                        createdAtTime: "2024-01-15T09:30:00Z",
-                                        dueAtTime: "2024-01-15T09:30:00Z",
-                                        durationMs: 1000000,
-                                        externalIds: {},
-                                        fields: [],
-                                        formTemplate: {
-                                            id: "id",
-                                            revisionId: "revisionId",
-                                        },
-                                        id: "id",
-                                        isRequired: true,
-                                        routeId: "routeId",
-                                        routeStopId: "routeStopId",
-                                        status: "notStarted",
-                                        submittedAtTime: "2024-01-15T09:30:00Z",
-                                        submittedBy: {
-                                            id: "id",
-                                            type: "driver",
-                                        },
-                                        title: "title",
-                                        updatedAtTime: "2024-01-15T09:30:00Z",
-                                    },
-                                },
-                                fuelLevelPercentage: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                gatewayDisconnected: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                gatewayUnplugged: {
-                                    model: "AG15",
-                                    serial: "serial",
-                                    vehicle: {},
-                                },
-                                geofenceEntry: {
-                                    address: {
-                                        formattedAddress: "formattedAddress",
-                                        id: "id",
-                                        name: "name",
-                                    },
-                                    fuelVolume: {
-                                        unit: "GALLONS",
-                                        value: 1.1,
-                                    },
-                                    vehicle: {},
-                                },
-                                geofenceExit: {
-                                    address: {
-                                        formattedAddress: "formattedAddress",
-                                        id: "id",
-                                        name: "name",
-                                    },
-                                    fuelVolume: {
-                                        unit: "GALLONS",
-                                        value: 1.1,
-                                    },
-                                    vehicle: {},
-                                },
-                                gpsSignalLoss: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                harshEvent: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                hosDutyStatus: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                },
-                                hosViolation: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                },
-                                inactivity: {
-                                    cameraStream: {
-                                        id: "id",
-                                    },
-                                },
-                                insideGeofence: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                issueCreated: {
-                                    issue: {
-                                        createdAtTime: "2024-01-15T09:30:00Z",
-                                        description: "description",
-                                        dueDate: "2024-01-15T09:30:00Z",
-                                        externalIds: {},
-                                        id: "id",
-                                        issueSource: {
-                                            type: "form",
-                                        },
-                                        mediaList: [],
-                                        priority: "low",
-                                        status: "open",
-                                        submittedAtTime: "2024-01-15T09:30:00Z",
-                                        submittedBy: {
-                                            id: "id",
-                                            type: "driver",
-                                        },
-                                        title: "title",
-                                        updatedAtTime: "2024-01-15T09:30:00Z",
-                                    },
-                                },
-                                jammingDetected: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                missingDvirPastDue: {
-                                    dvir: {
-                                        inspectionType: "preTrip",
-                                        relatedDevices: [],
-                                        uuid: "uuid",
-                                    },
-                                },
-                                motionDetected: {
-                                    cameraStream: {
-                                        id: "id",
-                                    },
-                                },
-                                outOfRoute: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                outOfSequenceStopArrival: {
-                                    actualStopName: "actualStopName",
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    expectedStopName: "expectedStopName",
-                                    route: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                outsideGeofence: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                panicButton: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                personDetected: {
-                                    cameraStream: {
-                                        id: "id",
-                                    },
-                                },
-                                preventiveMaintenanceScheduleDue: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    dueReasons: ["date", "date"],
-                                    scheduleDescription: "scheduleDescription",
-                                    scheduleId: "scheduleId",
-                                    scheduleTitle: "scheduleTitle",
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                reading: {
-                                    asset: {
-                                        id: "id",
-                                        serial: "serial",
-                                        type: "uncategorized",
-                                    },
-                                    continuousThreshold: {
-                                        operation: "GREATER",
-                                        threshold: 1000000,
-                                    },
-                                    enumThreshold: {},
-                                    id: "id",
-                                },
-                                reeferTemperature: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                routeStartDelayed: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                routeStopArrival: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    operation: "stop arrived",
-                                    route: {
-                                        actualRouteEndTime: "2024-01-15T09:30:00Z",
-                                        actualRouteStartTime: "2024-01-15T09:30:00Z",
-                                        externalIds: {},
-                                        id: "id",
-                                        name: "name",
-                                        notes: "notes",
-                                        scheduledRouteEndTime: "2024-01-15T09:30:00Z",
-                                        scheduledRouteStartTime: "2024-01-15T09:30:00Z",
-                                        settings: {},
-                                        stops: [],
-                                    },
-                                    routeStopDetails: {
-                                        actualArrivalTime: "2024-01-15T09:30:00Z",
-                                        actualDepartureTime: "2024-01-15T09:30:00Z",
-                                        enRouteTime: "2024-01-15T09:30:00Z",
-                                        eta: "2024-01-15T09:30:00Z",
-                                        externalIds: {},
-                                        id: "id",
-                                        liveSharingUrl: "liveSharingUrl",
-                                        skippedTime: "2024-01-15T09:30:00Z",
-                                        state: "unassigned",
-                                    },
-                                    time: "2024-01-15T09:30:00Z",
-                                    type: "route tracking",
-                                    vehicle: {},
-                                },
-                                routeStopDeparture: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    operation: "stop arrived",
-                                    route: {
-                                        actualRouteEndTime: "2024-01-15T09:30:00Z",
-                                        actualRouteStartTime: "2024-01-15T09:30:00Z",
-                                        externalIds: {},
-                                        id: "id",
-                                        name: "name",
-                                        notes: "notes",
-                                        scheduledRouteEndTime: "2024-01-15T09:30:00Z",
-                                        scheduledRouteStartTime: "2024-01-15T09:30:00Z",
-                                        settings: {},
-                                        stops: [],
-                                    },
-                                    routeStopDetails: {
-                                        actualArrivalTime: "2024-01-15T09:30:00Z",
-                                        actualDepartureTime: "2024-01-15T09:30:00Z",
-                                        enRouteTime: "2024-01-15T09:30:00Z",
-                                        eta: "2024-01-15T09:30:00Z",
-                                        externalIds: {},
-                                        id: "id",
-                                        liveSharingUrl: "liveSharingUrl",
-                                        skippedTime: "2024-01-15T09:30:00Z",
-                                        state: "unassigned",
-                                    },
-                                    time: "2024-01-15T09:30:00Z",
-                                    type: "route tracking",
-                                    vehicle: {},
-                                },
-                                routeStopETA: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                routeStopEarlyLateArrival: {
-                                    arrivalStatus: "early",
-                                    deviationMinutes: 1000000,
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                scheduledMaintenance: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                scheduledMaintenanceByEngineHours: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                scheduledMaintenanceOdometer: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                severeSpeeding: {
-                                    data: {
-                                        startTime: "startTime",
-                                        tripStartTime: "tripStartTime",
-                                        vehicle: {},
-                                    },
-                                },
-                                siteGatewayDisconnected: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                speed: {
-                                    currentSpeedKilometersPerHour: 1,
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    minDurationMilliseconds: 1000000,
-                                    operation: "GREATER",
-                                    thresholdSpeedKilometersPerHour: 1,
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                suddenFuelLevelDrop: {
-                                    changeEndTime: "2024-01-15T09:30:00Z",
-                                    changeStartTime: "2024-01-15T09:30:00Z",
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    fuelLevelAfterMillipercent: 1,
-                                    fuelLevelBeforeMillipercent: 1,
-                                    location: {},
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                suddenFuelLevelRise: {
-                                    changeEndTime: "2024-01-15T09:30:00Z",
-                                    changeStartTime: "2024-01-15T09:30:00Z",
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    fuelLevelAfterMillipercent: 1,
-                                    fuelLevelBeforeMillipercent: 1,
-                                    location: {},
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                tamperingDetected: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                thermographTemperature: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                tireFaults: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                trailerMovingWithoutPower: {
-                                    currentVoltage: 1,
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                },
-                                unassignedDriving: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                vehicleBatteryVoltage: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                vehicleDefLevelPercentage: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                vehicleDetected: {
-                                    cameraStream: {
-                                        id: "id",
-                                    },
-                                },
-                                vehicleFaults: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                vehicleTrailerMismatch: {
-                                    currentlyPullingTrailers: [],
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    driverSelectedTrailers: [],
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                workerSafetySos: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    location: {},
-                                    sourceType: "appSos",
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                    workerSafetyIncidentUrl: "workerSafetyIncidentUrl",
-                                },
-                            },
-                            triggerId: 1000000,
-                        },
-                        {
-                            description: "description",
-                            details: {
-                                ambientTemperature: {
-                                    sensor: {
-                                        id: "id",
-                                    },
-                                },
-                                cameraConnectorDisconected: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                cameraStreamIssue: {
-                                    cameraDevice: {
-                                        id: "id",
-                                    },
-                                },
-                                cellSignalLoss: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                cloudBackupUploadIssue: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                dashcamDisconnected: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                dataInputValue: {
-                                    machineInput: {
-                                        id: "id",
-                                    },
-                                },
-                                deviceMovement: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                deviceMovementStopped: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                doorOpen: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                driverAppSignIn: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    pinnedVehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                driverAppSignOut: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                },
-                                driverDocumentSubmitted: {},
-                                driverMessageReceived: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                },
-                                driverMessageSent: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                },
-                                driverRecorded: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                dvirSubmittedDevice: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    vehicle: {},
-                                },
-                                engineIdle: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                engineOff: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                engineOn: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                formSubmitted: {
-                                    form: {
-                                        assignedAtTime: "2024-01-15T09:30:00Z",
-                                        createdAtTime: "2024-01-15T09:30:00Z",
-                                        dueAtTime: "2024-01-15T09:30:00Z",
-                                        durationMs: 1000000,
-                                        externalIds: {},
-                                        fields: [],
-                                        formTemplate: {
-                                            id: "id",
-                                            revisionId: "revisionId",
-                                        },
-                                        id: "id",
-                                        isRequired: true,
-                                        routeId: "routeId",
-                                        routeStopId: "routeStopId",
-                                        status: "notStarted",
-                                        submittedAtTime: "2024-01-15T09:30:00Z",
-                                        submittedBy: {
-                                            id: "id",
-                                            type: "driver",
-                                        },
-                                        title: "title",
-                                        updatedAtTime: "2024-01-15T09:30:00Z",
-                                    },
-                                },
-                                formUpdated: {
-                                    form: {
-                                        assignedAtTime: "2024-01-15T09:30:00Z",
-                                        createdAtTime: "2024-01-15T09:30:00Z",
-                                        dueAtTime: "2024-01-15T09:30:00Z",
-                                        durationMs: 1000000,
-                                        externalIds: {},
-                                        fields: [],
-                                        formTemplate: {
-                                            id: "id",
-                                            revisionId: "revisionId",
-                                        },
-                                        id: "id",
-                                        isRequired: true,
-                                        routeId: "routeId",
-                                        routeStopId: "routeStopId",
-                                        status: "notStarted",
-                                        submittedAtTime: "2024-01-15T09:30:00Z",
-                                        submittedBy: {
-                                            id: "id",
-                                            type: "driver",
-                                        },
-                                        title: "title",
-                                        updatedAtTime: "2024-01-15T09:30:00Z",
-                                    },
-                                },
-                                fuelLevelPercentage: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                gatewayDisconnected: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                gatewayUnplugged: {
-                                    model: "AG15",
-                                    serial: "serial",
-                                    vehicle: {},
-                                },
-                                geofenceEntry: {
-                                    address: {
-                                        formattedAddress: "formattedAddress",
-                                        id: "id",
-                                        name: "name",
-                                    },
-                                    fuelVolume: {
-                                        unit: "GALLONS",
-                                        value: 1.1,
-                                    },
-                                    vehicle: {},
-                                },
-                                geofenceExit: {
-                                    address: {
-                                        formattedAddress: "formattedAddress",
-                                        id: "id",
-                                        name: "name",
-                                    },
-                                    fuelVolume: {
-                                        unit: "GALLONS",
-                                        value: 1.1,
-                                    },
-                                    vehicle: {},
-                                },
-                                gpsSignalLoss: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                harshEvent: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                hosDutyStatus: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                },
-                                hosViolation: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                },
-                                inactivity: {
-                                    cameraStream: {
-                                        id: "id",
-                                    },
-                                },
-                                insideGeofence: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                issueCreated: {
-                                    issue: {
-                                        createdAtTime: "2024-01-15T09:30:00Z",
-                                        description: "description",
-                                        dueDate: "2024-01-15T09:30:00Z",
-                                        externalIds: {},
-                                        id: "id",
-                                        issueSource: {
-                                            type: "form",
-                                        },
-                                        mediaList: [],
-                                        priority: "low",
-                                        status: "open",
-                                        submittedAtTime: "2024-01-15T09:30:00Z",
-                                        submittedBy: {
-                                            id: "id",
-                                            type: "driver",
-                                        },
-                                        title: "title",
-                                        updatedAtTime: "2024-01-15T09:30:00Z",
-                                    },
-                                },
-                                jammingDetected: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                missingDvirPastDue: {
-                                    dvir: {
-                                        inspectionType: "preTrip",
-                                        relatedDevices: [],
-                                        uuid: "uuid",
-                                    },
-                                },
-                                motionDetected: {
-                                    cameraStream: {
-                                        id: "id",
-                                    },
-                                },
-                                outOfRoute: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                outOfSequenceStopArrival: {
-                                    actualStopName: "actualStopName",
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    expectedStopName: "expectedStopName",
-                                    route: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                outsideGeofence: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                panicButton: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                personDetected: {
-                                    cameraStream: {
-                                        id: "id",
-                                    },
-                                },
-                                preventiveMaintenanceScheduleDue: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    dueReasons: ["date", "date"],
-                                    scheduleDescription: "scheduleDescription",
-                                    scheduleId: "scheduleId",
-                                    scheduleTitle: "scheduleTitle",
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                reading: {
-                                    asset: {
-                                        id: "id",
-                                        serial: "serial",
-                                        type: "uncategorized",
-                                    },
-                                    continuousThreshold: {
-                                        operation: "GREATER",
-                                        threshold: 1000000,
-                                    },
-                                    enumThreshold: {},
-                                    id: "id",
-                                },
-                                reeferTemperature: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                routeStartDelayed: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                routeStopArrival: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    operation: "stop arrived",
-                                    route: {
-                                        actualRouteEndTime: "2024-01-15T09:30:00Z",
-                                        actualRouteStartTime: "2024-01-15T09:30:00Z",
-                                        externalIds: {},
-                                        id: "id",
-                                        name: "name",
-                                        notes: "notes",
-                                        scheduledRouteEndTime: "2024-01-15T09:30:00Z",
-                                        scheduledRouteStartTime: "2024-01-15T09:30:00Z",
-                                        settings: {},
-                                        stops: [],
-                                    },
-                                    routeStopDetails: {
-                                        actualArrivalTime: "2024-01-15T09:30:00Z",
-                                        actualDepartureTime: "2024-01-15T09:30:00Z",
-                                        enRouteTime: "2024-01-15T09:30:00Z",
-                                        eta: "2024-01-15T09:30:00Z",
-                                        externalIds: {},
-                                        id: "id",
-                                        liveSharingUrl: "liveSharingUrl",
-                                        skippedTime: "2024-01-15T09:30:00Z",
-                                        state: "unassigned",
-                                    },
-                                    time: "2024-01-15T09:30:00Z",
-                                    type: "route tracking",
-                                    vehicle: {},
-                                },
-                                routeStopDeparture: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    operation: "stop arrived",
-                                    route: {
-                                        actualRouteEndTime: "2024-01-15T09:30:00Z",
-                                        actualRouteStartTime: "2024-01-15T09:30:00Z",
-                                        externalIds: {},
-                                        id: "id",
-                                        name: "name",
-                                        notes: "notes",
-                                        scheduledRouteEndTime: "2024-01-15T09:30:00Z",
-                                        scheduledRouteStartTime: "2024-01-15T09:30:00Z",
-                                        settings: {},
-                                        stops: [],
-                                    },
-                                    routeStopDetails: {
-                                        actualArrivalTime: "2024-01-15T09:30:00Z",
-                                        actualDepartureTime: "2024-01-15T09:30:00Z",
-                                        enRouteTime: "2024-01-15T09:30:00Z",
-                                        eta: "2024-01-15T09:30:00Z",
-                                        externalIds: {},
-                                        id: "id",
-                                        liveSharingUrl: "liveSharingUrl",
-                                        skippedTime: "2024-01-15T09:30:00Z",
-                                        state: "unassigned",
-                                    },
-                                    time: "2024-01-15T09:30:00Z",
-                                    type: "route tracking",
-                                    vehicle: {},
-                                },
-                                routeStopETA: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                routeStopEarlyLateArrival: {
-                                    arrivalStatus: "early",
-                                    deviationMinutes: 1000000,
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                scheduledMaintenance: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                scheduledMaintenanceByEngineHours: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                scheduledMaintenanceOdometer: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                severeSpeeding: {
-                                    data: {
-                                        startTime: "startTime",
-                                        tripStartTime: "tripStartTime",
-                                        vehicle: {},
-                                    },
-                                },
-                                siteGatewayDisconnected: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                speed: {
-                                    currentSpeedKilometersPerHour: 1,
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    minDurationMilliseconds: 1000000,
-                                    operation: "GREATER",
-                                    thresholdSpeedKilometersPerHour: 1,
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                suddenFuelLevelDrop: {
-                                    changeEndTime: "2024-01-15T09:30:00Z",
-                                    changeStartTime: "2024-01-15T09:30:00Z",
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    fuelLevelAfterMillipercent: 1,
-                                    fuelLevelBeforeMillipercent: 1,
-                                    location: {},
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                suddenFuelLevelRise: {
-                                    changeEndTime: "2024-01-15T09:30:00Z",
-                                    changeStartTime: "2024-01-15T09:30:00Z",
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    fuelLevelAfterMillipercent: 1,
-                                    fuelLevelBeforeMillipercent: 1,
-                                    location: {},
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                tamperingDetected: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                thermographTemperature: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                tireFaults: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                trailerMovingWithoutPower: {
-                                    currentVoltage: 1,
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                },
-                                unassignedDriving: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                vehicleBatteryVoltage: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                vehicleDefLevelPercentage: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                vehicleDetected: {
-                                    cameraStream: {
-                                        id: "id",
-                                    },
-                                },
-                                vehicleFaults: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    trailer: {
-                                        id: "id",
-                                    },
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                vehicleTrailerMismatch: {
-                                    currentlyPullingTrailers: [],
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    driverSelectedTrailers: [],
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                },
-                                workerSafetySos: {
-                                    driver: {
-                                        id: "id",
-                                    },
-                                    location: {},
-                                    sourceType: "appSos",
-                                    vehicle: {
-                                        id: "id",
-                                        serial: "serial",
-                                    },
-                                    workerSafetyIncidentUrl: "workerSafetyIncidentUrl",
-                                },
-                            },
-                            triggerId: 1000000,
-                        },
-                    ],
-                    configurationId: "configurationId",
-                    happenedAtTime: "happenedAtTime",
-                    incidentUrl: "incidentUrl",
-                    isResolved: true,
-                    resolvedAtTime: "resolvedAtTime",
-                    updatedAtTime: "updatedAtTime",
-                },
-            ],
-            pagination: {
-                endCursor: "endCursor",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getIncidents (2)", async () => {
@@ -6397,6 +5194,7 @@ describe("AlertsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/alerts/incidents/stream")
@@ -6422,6 +5220,7 @@ describe("AlertsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/alerts/incidents/stream")
@@ -6447,6 +5246,7 @@ describe("AlertsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/alerts/incidents/stream")
@@ -6472,6 +5272,7 @@ describe("AlertsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/alerts/incidents/stream")
@@ -6497,6 +5298,7 @@ describe("AlertsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/alerts/incidents/stream")
@@ -6522,6 +5324,7 @@ describe("AlertsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/alerts/incidents/stream")
@@ -6547,6 +5350,7 @@ describe("AlertsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/alerts/incidents/stream")
@@ -6572,6 +5376,7 @@ describe("AlertsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/alerts/incidents/stream")
@@ -6597,6 +5402,7 @@ describe("AlertsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/alerts/incidents/stream")
@@ -6622,6 +5428,7 @@ describe("AlertsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/alerts/incidents/stream")

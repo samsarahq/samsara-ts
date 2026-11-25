@@ -28,34 +28,13 @@ describe("AttributesClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server.mockEndpoint().get("/attributes").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.attributes.getAttributesByEntityType({
             entityType: "driver",
         });
-        expect(response).toEqual({
-            data: [
-                {
-                    attributeType: "single-select",
-                    entityType: "driver",
-                    id: "123e4567-e89b-12d3-a456-426614174000",
-                    name: "License Certifications",
-                    numberValues: [1.1],
-                    stringValues: ["stringValues"],
-                    unit: "NO_UNIT",
-                    values: [
-                        {
-                            id: "123e4567-e89b-12d3-a456-426614174000",
-                            stringValue: "CDL",
-                        },
-                    ],
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createAttribute", async () => {
@@ -69,7 +48,7 @@ describe("AttributesClient", () => {
         const rawRequestBody = { attributeType: "single-select", entityType: "driver", name: "License Certifications" };
         const rawResponseBody = {
             data: {
-                entities: [{}],
+                entities: [{ values: [{ id: "123e4567-e89b-12d3-a456-426614174000", stringValue: "CDL" }] }],
                 attributeType: "single-select",
                 entityType: "driver",
                 id: "123e4567-e89b-12d3-a456-426614174000",
@@ -80,6 +59,7 @@ describe("AttributesClient", () => {
                 values: [{ id: "123e4567-e89b-12d3-a456-426614174000", stringValue: "CDL" }],
             },
         };
+
         server
             .mockEndpoint()
             .post("/attributes")
@@ -94,24 +74,7 @@ describe("AttributesClient", () => {
             entityType: "driver",
             name: "License Certifications",
         });
-        expect(response).toEqual({
-            data: {
-                entities: [{}],
-                attributeType: "single-select",
-                entityType: "driver",
-                id: "123e4567-e89b-12d3-a456-426614174000",
-                name: "License Certifications",
-                numberValues: [1.1],
-                stringValues: ["stringValues"],
-                unit: "NO_UNIT",
-                values: [
-                    {
-                        id: "123e4567-e89b-12d3-a456-426614174000",
-                        stringValue: "CDL",
-                    },
-                ],
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getAttribute", async () => {
@@ -125,7 +88,7 @@ describe("AttributesClient", () => {
 
         const rawResponseBody = {
             data: {
-                entities: [{}],
+                entities: [{ values: [{ id: "123e4567-e89b-12d3-a456-426614174000", stringValue: "CDL" }] }],
                 attributeType: "single-select",
                 entityType: "driver",
                 id: "123e4567-e89b-12d3-a456-426614174000",
@@ -136,30 +99,14 @@ describe("AttributesClient", () => {
                 values: [{ id: "123e4567-e89b-12d3-a456-426614174000", stringValue: "CDL" }],
             },
         };
+
         server.mockEndpoint().get("/attributes/id").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.attributes.getAttribute({
             id: "id",
             entityType: "driver",
         });
-        expect(response).toEqual({
-            data: {
-                entities: [{}],
-                attributeType: "single-select",
-                entityType: "driver",
-                id: "123e4567-e89b-12d3-a456-426614174000",
-                name: "License Certifications",
-                numberValues: [1.1],
-                stringValues: ["stringValues"],
-                unit: "NO_UNIT",
-                values: [
-                    {
-                        id: "123e4567-e89b-12d3-a456-426614174000",
-                        stringValue: "CDL",
-                    },
-                ],
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("delete", async () => {
@@ -191,7 +138,7 @@ describe("AttributesClient", () => {
         const rawRequestBody = { entityType: "driver" };
         const rawResponseBody = {
             data: {
-                entities: [{}],
+                entities: [{ values: [{ id: "123e4567-e89b-12d3-a456-426614174000", stringValue: "CDL" }] }],
                 attributeType: "single-select",
                 entityType: "driver",
                 id: "123e4567-e89b-12d3-a456-426614174000",
@@ -202,6 +149,7 @@ describe("AttributesClient", () => {
                 values: [{ id: "123e4567-e89b-12d3-a456-426614174000", stringValue: "CDL" }],
             },
         };
+
         server
             .mockEndpoint()
             .patch("/attributes/id")
@@ -215,23 +163,6 @@ describe("AttributesClient", () => {
             id: "id",
             entityType: "driver",
         });
-        expect(response).toEqual({
-            data: {
-                entities: [{}],
-                attributeType: "single-select",
-                entityType: "driver",
-                id: "123e4567-e89b-12d3-a456-426614174000",
-                name: "License Certifications",
-                numberValues: [1.1],
-                stringValues: ["stringValues"],
-                unit: "NO_UNIT",
-                values: [
-                    {
-                        id: "123e4567-e89b-12d3-a456-426614174000",
-                        stringValue: "CDL",
-                    },
-                ],
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 });

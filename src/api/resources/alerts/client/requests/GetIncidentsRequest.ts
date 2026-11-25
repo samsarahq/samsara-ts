@@ -3,7 +3,8 @@
 /**
  * @example
  *     {
- *         startTime: "startTime"
+ *         startTime: "startTime",
+ *         configurationIds: ["configurationIds"]
  *     }
  */
 export interface GetIncidentsRequest {

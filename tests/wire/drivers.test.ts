@@ -35,6 +35,7 @@ describe("DriversClient", () => {
                     eldExempt: true,
                     eldExemptReason: "Bad driver",
                     eldPcEnabled: true,
+                    eldSettings: { rulesets: [{ jurisdiction: "AR" }] },
                     eldYmEnabled: true,
                     email: "susan.jones@example.com",
                     externalIds: { maintenanceId: "250020", payrollId: "ABFS18600" },
@@ -69,6 +70,7 @@ describe("DriversClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint({ once: false })
             .get("/fleet/drivers")
@@ -77,93 +79,7 @@ describe("DriversClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const expected = {
-            data: [
-                {
-                    attributes: [
-                        {
-                            id: "123e4567-e89b-12d3-a456-426614174000",
-                            name: "License Certifications",
-                        },
-                    ],
-                    carrierSettings: {
-                        carrierName: "Acme Inc.",
-                        dotNumber: 98231,
-                        homeTerminalAddress: "1234 Pear St., Scranton, PA 62814",
-                        homeTerminalName: "Acme Inc.",
-                        mainOfficeAddress: "1234 Pear St., Scranton, PA 62814",
-                    },
-                    createdAtTime: "2019-05-18T20:27:35Z",
-                    currentIdCardCode: "941767043",
-                    dateOfBirth: "1985-07-21",
-                    driverActivationStatus: "active",
-                    eldAdverseWeatherExemptionEnabled: true,
-                    eldBigDayExemptionEnabled: true,
-                    eldDayStartHour: 1000000,
-                    eldExempt: true,
-                    eldExemptReason: "Bad driver",
-                    eldPcEnabled: true,
-                    eldYmEnabled: true,
-                    email: "susan.jones@example.com",
-                    externalIds: {
-                        maintenanceId: "250020",
-                        payrollId: "ABFS18600",
-                    },
-                    hasDrivingFeaturesHidden: true,
-                    hasVehicleUnpinningEnabled: true,
-                    id: "123",
-                    isDeactivated: false,
-                    licenseNumber: "E1234567",
-                    licenseState: "CA",
-                    locale: "us",
-                    name: "Susan Jones",
-                    notes: "Also goes by the nickname Furious Fred.",
-                    peerGroupTag: {
-                        id: "3914",
-                        name: "East Coast",
-                        parentTagId: "4815",
-                    },
-                    phone: "5558234327",
-                    profileImageUrl: "https://example.com/images/driver-profile.jpg",
-                    staticAssignedVehicle: {
-                        id: "123456789",
-                        name: "Midwest Truck #4",
-                    },
-                    tachographCardNumber: "1000000492436002",
-                    tags: [
-                        {
-                            id: "3914",
-                            name: "East Coast",
-                            parentTagId: "4815",
-                        },
-                    ],
-                    timezone: "America/Los_Angeles",
-                    trailerGroupTag: {
-                        id: "3914",
-                        name: "West Coast",
-                        parentTagId: "4815",
-                    },
-                    updatedAtTime: "2019-06-13T19:08:25Z",
-                    usDriverRulesetOverride: {
-                        cycle: "USA Property (8/70)",
-                        restart: "34-hour Restart",
-                        restbreak: "Property (off-duty/sleeper)",
-                        usStateToOverride: "",
-                    },
-                    username: "SusanJones",
-                    vehicleGroupTag: {
-                        id: "3914",
-                        name: "East Coast",
-                        parentTagId: "4815",
-                    },
-                    waitingTimeDutyStatusEnabled: true,
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        };
+        const expected = rawResponseBody;
         const page = await client.drivers.list();
 
         expect(expected.data).toEqual(page.data);
@@ -234,6 +150,7 @@ describe("DriversClient", () => {
                 waitingTimeDutyStatusEnabled: true,
             },
         };
+
         server
             .mockEndpoint()
             .post("/fleet/drivers")
@@ -248,94 +165,7 @@ describe("DriversClient", () => {
             password: "aSecurePassword1234",
             username: "SusanJones",
         });
-        expect(response).toEqual({
-            data: {
-                attributes: [
-                    {
-                        id: "123e4567-e89b-12d3-a456-426614174000",
-                        name: "License Certifications",
-                    },
-                ],
-                carrierSettings: {
-                    carrierName: "Acme Inc.",
-                    dotNumber: 98231,
-                    homeTerminalAddress: "1234 Pear St., Scranton, PA 62814",
-                    homeTerminalName: "Acme Inc.",
-                    mainOfficeAddress: "1234 Pear St., Scranton, PA 62814",
-                },
-                createdAtTime: "2019-05-18T20:27:35Z",
-                currentIdCardCode: "941767043",
-                dateOfBirth: "1985-07-21",
-                driverActivationStatus: "active",
-                eldAdverseWeatherExemptionEnabled: true,
-                eldBigDayExemptionEnabled: true,
-                eldDayStartHour: 1000000,
-                eldExempt: true,
-                eldExemptReason: "Bad driver",
-                eldPcEnabled: true,
-                eldSettings: {
-                    rulesets: [
-                        {
-                            jurisdiction: "AR",
-                        },
-                    ],
-                },
-                eldYmEnabled: true,
-                email: "susan.jones@example.com",
-                externalIds: {
-                    maintenanceId: "250020",
-                    payrollId: "ABFS18600",
-                },
-                hasDrivingFeaturesHidden: true,
-                hasVehicleUnpinningEnabled: true,
-                id: "123",
-                isDeactivated: false,
-                licenseNumber: "E1234567",
-                licenseState: "CA",
-                locale: "us",
-                name: "Susan Jones",
-                notes: "Also goes by the nickname Furious Fred.",
-                peerGroupTag: {
-                    id: "3914",
-                    name: "East Coast",
-                    parentTagId: "4815",
-                },
-                phone: "5558234327",
-                profileImageUrl: "https://example.com/images/driver-profile.jpg",
-                staticAssignedVehicle: {
-                    id: "123456789",
-                    name: "Midwest Truck #4",
-                },
-                tachographCardNumber: "1000000492436002",
-                tags: [
-                    {
-                        id: "3914",
-                        name: "East Coast",
-                        parentTagId: "4815",
-                    },
-                ],
-                timezone: "America/Los_Angeles",
-                trailerGroupTag: {
-                    id: "3914",
-                    name: "West Coast",
-                    parentTagId: "4815",
-                },
-                updatedAtTime: "2019-06-13T19:08:25Z",
-                usDriverRulesetOverride: {
-                    cycle: "USA Property (8/70)",
-                    restart: "34-hour Restart",
-                    restbreak: "Property (off-duty/sleeper)",
-                    usStateToOverride: "",
-                },
-                username: "SusanJones",
-                vehicleGroupTag: {
-                    id: "3914",
-                    name: "East Coast",
-                    parentTagId: "4815",
-                },
-                waitingTimeDutyStatusEnabled: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("postDriverRemoteSignout (1)", async () => {
@@ -348,6 +178,7 @@ describe("DriversClient", () => {
         });
         const rawRequestBody = { driverId: "12434" };
         const rawResponseBody = { driverName: "Michael" };
+
         server
             .mockEndpoint()
             .post("/fleet/drivers/remote-sign-out")
@@ -360,9 +191,7 @@ describe("DriversClient", () => {
         const response = await client.drivers.postDriverRemoteSignout({
             driverId: "12434",
         });
-        expect(response).toEqual({
-            driverName: "Michael",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("postDriverRemoteSignout (2)", async () => {
@@ -375,6 +204,7 @@ describe("DriversClient", () => {
         });
         const rawRequestBody = { driverId: "driverId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/drivers/remote-sign-out")
@@ -401,6 +231,7 @@ describe("DriversClient", () => {
         });
         const rawRequestBody = { driverId: "driverId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/drivers/remote-sign-out")
@@ -427,6 +258,7 @@ describe("DriversClient", () => {
         });
         const rawRequestBody = { driverId: "driverId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/drivers/remote-sign-out")
@@ -453,6 +285,7 @@ describe("DriversClient", () => {
         });
         const rawRequestBody = { driverId: "driverId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/drivers/remote-sign-out")
@@ -479,6 +312,7 @@ describe("DriversClient", () => {
         });
         const rawRequestBody = { driverId: "driverId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/drivers/remote-sign-out")
@@ -505,6 +339,7 @@ describe("DriversClient", () => {
         });
         const rawRequestBody = { driverId: "driverId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/drivers/remote-sign-out")
@@ -531,6 +366,7 @@ describe("DriversClient", () => {
         });
         const rawRequestBody = { driverId: "driverId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/drivers/remote-sign-out")
@@ -557,6 +393,7 @@ describe("DriversClient", () => {
         });
         const rawRequestBody = { driverId: "driverId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/drivers/remote-sign-out")
@@ -583,6 +420,7 @@ describe("DriversClient", () => {
         });
         const rawRequestBody = { driverId: "driverId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/drivers/remote-sign-out")
@@ -609,6 +447,7 @@ describe("DriversClient", () => {
         });
         const rawRequestBody = { driverId: "driverId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/drivers/remote-sign-out")
@@ -687,99 +526,13 @@ describe("DriversClient", () => {
                 waitingTimeDutyStatusEnabled: true,
             },
         };
+
         server.mockEndpoint().get("/fleet/drivers/id").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.drivers.get({
             id: "id",
         });
-        expect(response).toEqual({
-            data: {
-                attributes: [
-                    {
-                        id: "123e4567-e89b-12d3-a456-426614174000",
-                        name: "License Certifications",
-                    },
-                ],
-                carrierSettings: {
-                    carrierName: "Acme Inc.",
-                    dotNumber: 98231,
-                    homeTerminalAddress: "1234 Pear St., Scranton, PA 62814",
-                    homeTerminalName: "Acme Inc.",
-                    mainOfficeAddress: "1234 Pear St., Scranton, PA 62814",
-                },
-                createdAtTime: "2019-05-18T20:27:35Z",
-                currentIdCardCode: "941767043",
-                dateOfBirth: "1985-07-21",
-                driverActivationStatus: "active",
-                eldAdverseWeatherExemptionEnabled: true,
-                eldBigDayExemptionEnabled: true,
-                eldDayStartHour: 1000000,
-                eldExempt: true,
-                eldExemptReason: "Bad driver",
-                eldPcEnabled: true,
-                eldSettings: {
-                    rulesets: [
-                        {
-                            jurisdiction: "AR",
-                        },
-                    ],
-                },
-                eldYmEnabled: true,
-                email: "susan.jones@example.com",
-                externalIds: {
-                    maintenanceId: "250020",
-                    payrollId: "ABFS18600",
-                },
-                hasDrivingFeaturesHidden: true,
-                hasVehicleUnpinningEnabled: true,
-                id: "123",
-                isDeactivated: false,
-                licenseNumber: "E1234567",
-                licenseState: "CA",
-                locale: "us",
-                name: "Susan Jones",
-                notes: "Also goes by the nickname Furious Fred.",
-                peerGroupTag: {
-                    id: "3914",
-                    name: "East Coast",
-                    parentTagId: "4815",
-                },
-                phone: "5558234327",
-                profileImageUrl: "https://example.com/images/driver-profile.jpg",
-                staticAssignedVehicle: {
-                    id: "123456789",
-                    name: "Midwest Truck #4",
-                },
-                tachographCardNumber: "1000000492436002",
-                tags: [
-                    {
-                        id: "3914",
-                        name: "East Coast",
-                        parentTagId: "4815",
-                    },
-                ],
-                timezone: "America/Los_Angeles",
-                trailerGroupTag: {
-                    id: "3914",
-                    name: "West Coast",
-                    parentTagId: "4815",
-                },
-                updatedAtTime: "2019-06-13T19:08:25Z",
-                usDriverRulesetOverride: {
-                    cycle: "USA Property (8/70)",
-                    restart: "34-hour Restart",
-                    restbreak: "Property (off-duty/sleeper)",
-                    usStateToOverride: "",
-                },
-                username: "SusanJones",
-                vehicleGroupTag: {
-                    id: "3914",
-                    name: "East Coast",
-                    parentTagId: "4815",
-                },
-                waitingTimeDutyStatusEnabled: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("delete", async () => {
@@ -861,6 +614,7 @@ describe("DriversClient", () => {
                 waitingTimeDutyStatusEnabled: true,
             },
         };
+
         server
             .mockEndpoint()
             .patch("/fleet/drivers/id")
@@ -873,93 +627,6 @@ describe("DriversClient", () => {
         const response = await client.drivers.update({
             id: "id",
         });
-        expect(response).toEqual({
-            data: {
-                attributes: [
-                    {
-                        id: "123e4567-e89b-12d3-a456-426614174000",
-                        name: "License Certifications",
-                    },
-                ],
-                carrierSettings: {
-                    carrierName: "Acme Inc.",
-                    dotNumber: 98231,
-                    homeTerminalAddress: "1234 Pear St., Scranton, PA 62814",
-                    homeTerminalName: "Acme Inc.",
-                    mainOfficeAddress: "1234 Pear St., Scranton, PA 62814",
-                },
-                createdAtTime: "2019-05-18T20:27:35Z",
-                currentIdCardCode: "941767043",
-                dateOfBirth: "1985-07-21",
-                driverActivationStatus: "active",
-                eldAdverseWeatherExemptionEnabled: true,
-                eldBigDayExemptionEnabled: true,
-                eldDayStartHour: 1000000,
-                eldExempt: true,
-                eldExemptReason: "Bad driver",
-                eldPcEnabled: true,
-                eldSettings: {
-                    rulesets: [
-                        {
-                            jurisdiction: "AR",
-                        },
-                    ],
-                },
-                eldYmEnabled: true,
-                email: "susan.jones@example.com",
-                externalIds: {
-                    maintenanceId: "250020",
-                    payrollId: "ABFS18600",
-                },
-                hasDrivingFeaturesHidden: true,
-                hasVehicleUnpinningEnabled: true,
-                id: "123",
-                isDeactivated: false,
-                licenseNumber: "E1234567",
-                licenseState: "CA",
-                locale: "us",
-                name: "Susan Jones",
-                notes: "Also goes by the nickname Furious Fred.",
-                peerGroupTag: {
-                    id: "3914",
-                    name: "East Coast",
-                    parentTagId: "4815",
-                },
-                phone: "5558234327",
-                profileImageUrl: "https://example.com/images/driver-profile.jpg",
-                staticAssignedVehicle: {
-                    id: "123456789",
-                    name: "Midwest Truck #4",
-                },
-                tachographCardNumber: "1000000492436002",
-                tags: [
-                    {
-                        id: "3914",
-                        name: "East Coast",
-                        parentTagId: "4815",
-                    },
-                ],
-                timezone: "America/Los_Angeles",
-                trailerGroupTag: {
-                    id: "3914",
-                    name: "West Coast",
-                    parentTagId: "4815",
-                },
-                updatedAtTime: "2019-06-13T19:08:25Z",
-                usDriverRulesetOverride: {
-                    cycle: "USA Property (8/70)",
-                    restart: "34-hour Restart",
-                    restbreak: "Property (off-duty/sleeper)",
-                    usStateToOverride: "",
-                },
-                username: "SusanJones",
-                vehicleGroupTag: {
-                    id: "3914",
-                    name: "East Coast",
-                    parentTagId: "4815",
-                },
-                waitingTimeDutyStatusEnabled: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 });

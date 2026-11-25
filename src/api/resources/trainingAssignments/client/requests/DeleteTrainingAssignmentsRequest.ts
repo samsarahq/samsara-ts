@@ -2,7 +2,9 @@
 
 /**
  * @example
- *     {}
+ *     {
+ *         ids: ["ids"]
+ *     }
  */
 export interface DeleteTrainingAssignmentsRequest {
     /** String of comma separated assignments IDs. Max value for this value is 100 objects. Example: `ids=a4db8702-79d5-4396-a717-e301d52ecc11,c6490f6a-d84e-49b5-b0ad-b6baae304075` */

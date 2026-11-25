@@ -29,6 +29,7 @@ describe("SafetyScoresClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/safety-scores/drivers")
@@ -41,34 +42,7 @@ describe("SafetyScoresClient", () => {
             endTime: "endTime",
             startTime: "startTime",
         });
-        expect(response).toEqual({
-            data: [
-                {
-                    behaviors: [
-                        {
-                            behaviorType: "acceleration",
-                            count: 5,
-                            scoreImpact: -18.91020325321117,
-                        },
-                    ],
-                    driveDistanceMeters: 2207296,
-                    driveTimeMilliseconds: 136997730,
-                    driverId: "1234",
-                    driverScore: 92,
-                    speeding: [
-                        {
-                            durationMilliseconds: 178773,
-                            scoreImpact: -0.13049340306587562,
-                            speedingType: "light",
-                        },
-                    ],
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getDriverSafetyScores (2)", async () => {
@@ -81,6 +55,7 @@ describe("SafetyScoresClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/safety-scores/drivers")
@@ -107,6 +82,7 @@ describe("SafetyScoresClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/safety-scores/drivers")
@@ -133,6 +109,7 @@ describe("SafetyScoresClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/safety-scores/drivers")
@@ -159,6 +136,7 @@ describe("SafetyScoresClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/safety-scores/drivers")
@@ -185,6 +163,7 @@ describe("SafetyScoresClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/safety-scores/drivers")
@@ -211,6 +190,7 @@ describe("SafetyScoresClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/safety-scores/drivers")
@@ -237,6 +217,7 @@ describe("SafetyScoresClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/safety-scores/drivers")
@@ -263,6 +244,7 @@ describe("SafetyScoresClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/safety-scores/drivers")
@@ -289,6 +271,7 @@ describe("SafetyScoresClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/safety-scores/drivers")
@@ -315,6 +298,7 @@ describe("SafetyScoresClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/safety-scores/drivers")
@@ -349,6 +333,7 @@ describe("SafetyScoresClient", () => {
                 speeding: [{ durationMilliseconds: 178773, scoreImpact: -0.13049340306587562, speedingType: "light" }],
             },
         };
+
         server
             .mockEndpoint()
             .get("/safety-scores/tag-group")
@@ -362,27 +347,7 @@ describe("SafetyScoresClient", () => {
             startTime: "startTime",
             scoreType: "driver",
         });
-        expect(response).toEqual({
-            data: {
-                behaviors: [
-                    {
-                        behaviorType: "acceleration",
-                        count: 5,
-                        scoreImpact: -18.91020325321117,
-                    },
-                ],
-                combinedScore: 92,
-                driveDistanceMeters: 2207296,
-                driveTimeMilliseconds: 136997730,
-                speeding: [
-                    {
-                        durationMilliseconds: 178773,
-                        scoreImpact: -0.13049340306587562,
-                        speedingType: "light",
-                    },
-                ],
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getTagGroupSafetyScores (2)", async () => {
@@ -395,6 +360,7 @@ describe("SafetyScoresClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/safety-scores/tag-group")
@@ -422,6 +388,7 @@ describe("SafetyScoresClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/safety-scores/tag-group")
@@ -449,6 +416,7 @@ describe("SafetyScoresClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/safety-scores/tag-group")
@@ -476,6 +444,7 @@ describe("SafetyScoresClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/safety-scores/tag-group")
@@ -503,6 +472,7 @@ describe("SafetyScoresClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/safety-scores/tag-group")
@@ -530,6 +500,7 @@ describe("SafetyScoresClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/safety-scores/tag-group")
@@ -557,6 +528,7 @@ describe("SafetyScoresClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/safety-scores/tag-group")
@@ -584,6 +556,7 @@ describe("SafetyScoresClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/safety-scores/tag-group")
@@ -611,6 +584,7 @@ describe("SafetyScoresClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/safety-scores/tag-group")
@@ -638,6 +612,7 @@ describe("SafetyScoresClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/safety-scores/tag-group")
@@ -679,6 +654,7 @@ describe("SafetyScoresClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/safety-scores/tags")
@@ -692,34 +668,7 @@ describe("SafetyScoresClient", () => {
             startTime: "startTime",
             scoreType: "driver",
         });
-        expect(response).toEqual({
-            data: [
-                {
-                    behaviors: [
-                        {
-                            behaviorType: "acceleration",
-                            count: 5,
-                            scoreImpact: -18.91020325321117,
-                        },
-                    ],
-                    driveDistanceMeters: 2207296,
-                    driveTimeMilliseconds: 136997730,
-                    speeding: [
-                        {
-                            durationMilliseconds: 178773,
-                            scoreImpact: -0.13049340306587562,
-                            speedingType: "light",
-                        },
-                    ],
-                    tagId: "5678",
-                    tagScore: 92,
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getTagSafetyScores (2)", async () => {
@@ -732,6 +681,7 @@ describe("SafetyScoresClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/safety-scores/tags")
@@ -759,6 +709,7 @@ describe("SafetyScoresClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/safety-scores/tags")
@@ -786,6 +737,7 @@ describe("SafetyScoresClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/safety-scores/tags")
@@ -813,6 +765,7 @@ describe("SafetyScoresClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/safety-scores/tags")
@@ -840,6 +793,7 @@ describe("SafetyScoresClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/safety-scores/tags")
@@ -867,6 +821,7 @@ describe("SafetyScoresClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/safety-scores/tags")
@@ -894,6 +849,7 @@ describe("SafetyScoresClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/safety-scores/tags")
@@ -921,6 +877,7 @@ describe("SafetyScoresClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/safety-scores/tags")
@@ -948,6 +905,7 @@ describe("SafetyScoresClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/safety-scores/tags")
@@ -975,6 +933,7 @@ describe("SafetyScoresClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/safety-scores/tags")
@@ -1016,6 +975,7 @@ describe("SafetyScoresClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/safety-scores/vehicles")
@@ -1028,34 +988,7 @@ describe("SafetyScoresClient", () => {
             endTime: "endTime",
             startTime: "startTime",
         });
-        expect(response).toEqual({
-            data: [
-                {
-                    behaviors: [
-                        {
-                            behaviorType: "acceleration",
-                            count: 5,
-                            scoreImpact: -18.91020325321117,
-                        },
-                    ],
-                    driveDistanceMeters: 2207296,
-                    driveTimeMilliseconds: 136997730,
-                    speeding: [
-                        {
-                            durationMilliseconds: 178773,
-                            scoreImpact: -0.13049340306587562,
-                            speedingType: "light",
-                        },
-                    ],
-                    vehicleId: "5678",
-                    vehicleScore: 92,
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getVehicleSafetyScores (2)", async () => {
@@ -1068,6 +1001,7 @@ describe("SafetyScoresClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/safety-scores/vehicles")
@@ -1094,6 +1028,7 @@ describe("SafetyScoresClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/safety-scores/vehicles")
@@ -1120,6 +1055,7 @@ describe("SafetyScoresClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/safety-scores/vehicles")
@@ -1146,6 +1082,7 @@ describe("SafetyScoresClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/safety-scores/vehicles")
@@ -1172,6 +1109,7 @@ describe("SafetyScoresClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/safety-scores/vehicles")
@@ -1198,6 +1136,7 @@ describe("SafetyScoresClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/safety-scores/vehicles")
@@ -1224,6 +1163,7 @@ describe("SafetyScoresClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/safety-scores/vehicles")
@@ -1250,6 +1190,7 @@ describe("SafetyScoresClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/safety-scores/vehicles")
@@ -1276,6 +1217,7 @@ describe("SafetyScoresClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/safety-scores/vehicles")
@@ -1302,6 +1244,7 @@ describe("SafetyScoresClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/safety-scores/vehicles")

@@ -19,12 +19,29 @@ describe("LocationAndSpeedClient", () => {
                 {
                     asset: { id: "12345" },
                     happenedAtTime: "2020-01-27T07:06:25Z",
-                    location: { accuracyMeters: 5.801, headingDegrees: 120, latitude: 37.7749, longitude: 137.2719 },
+                    location: {
+                        accuracyMeters: 5.801,
+                        address: {
+                            city: "New York",
+                            country: "USA",
+                            neighborhood: "Mission District",
+                            pointOfInterest: "The Eiffel Tower",
+                            postalCode: "10010",
+                            state: "New York",
+                            street: "Main Street",
+                            streetNumber: "16",
+                        },
+                        geofence: { id: "12345" },
+                        headingDegrees: 120,
+                        latitude: 37.7749,
+                        longitude: 137.2719,
+                    },
                     speed: { ecuSpeedMetersPerSecond: 30.2, gpsSpeedMetersPerSecond: 30.2 },
                 },
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/assets/location-and-speed/stream")
@@ -34,30 +51,7 @@ describe("LocationAndSpeedClient", () => {
             .build();
 
         const response = await client.locationAndSpeed.getLocationAndSpeed();
-        expect(response).toEqual({
-            data: [
-                {
-                    asset: {
-                        id: "12345",
-                    },
-                    happenedAtTime: "2020-01-27T07:06:25Z",
-                    location: {
-                        accuracyMeters: 5.801,
-                        headingDegrees: 120,
-                        latitude: 37.7749,
-                        longitude: 137.2719,
-                    },
-                    speed: {
-                        ecuSpeedMetersPerSecond: 30.2,
-                        gpsSpeedMetersPerSecond: 30.2,
-                    },
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getLocationAndSpeed (2)", async () => {
@@ -70,6 +64,7 @@ describe("LocationAndSpeedClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/assets/location-and-speed/stream")
@@ -93,6 +88,7 @@ describe("LocationAndSpeedClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/assets/location-and-speed/stream")
@@ -116,6 +112,7 @@ describe("LocationAndSpeedClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/assets/location-and-speed/stream")
@@ -139,6 +136,7 @@ describe("LocationAndSpeedClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/assets/location-and-speed/stream")
@@ -162,6 +160,7 @@ describe("LocationAndSpeedClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/assets/location-and-speed/stream")
@@ -185,6 +184,7 @@ describe("LocationAndSpeedClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/assets/location-and-speed/stream")
@@ -208,6 +208,7 @@ describe("LocationAndSpeedClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/assets/location-and-speed/stream")
@@ -231,6 +232,7 @@ describe("LocationAndSpeedClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/assets/location-and-speed/stream")
@@ -254,6 +256,7 @@ describe("LocationAndSpeedClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/assets/location-and-speed/stream")
@@ -277,6 +280,7 @@ describe("LocationAndSpeedClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/assets/location-and-speed/stream")

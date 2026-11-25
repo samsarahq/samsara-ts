@@ -35,49 +35,14 @@ describe("IdlingClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server.mockEndpoint().get("/idling/events").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.idling.getIdlingEvents({
             startTime: "startTime",
             endTime: "endTime",
         });
-        expect(response).toEqual({
-            data: [
-                {
-                    address: {
-                        addressTypes: ["yard", "industrialSite"],
-                        id: "1234567890",
-                    },
-                    airTemperatureMillicelsius: 25000,
-                    asset: {
-                        id: 1234567890,
-                    },
-                    durationMilliseconds: 860000,
-                    eventUuid: "1234567890",
-                    fuelConsumedMilliliters: 2500,
-                    fuelCost: {
-                        amount: "640.2",
-                        currency: "usd",
-                    },
-                    gaseousFuelConsumedGrams: 2500,
-                    gaseousFuelCost: {
-                        amount: "640.2",
-                        currency: "usd",
-                    },
-                    latitude: 37.7749,
-                    longitude: -122.4194,
-                    operator: {
-                        id: 1234567890,
-                    },
-                    ptoState: "active, inactive",
-                    startTime: "2019-06-13T17:08:25Z",
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getIdlingEvents (2)", async () => {
@@ -90,6 +55,7 @@ describe("IdlingClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/idling/events").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -110,6 +76,7 @@ describe("IdlingClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/idling/events").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -130,6 +97,7 @@ describe("IdlingClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/idling/events").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -150,6 +118,7 @@ describe("IdlingClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/idling/events").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -170,6 +139,7 @@ describe("IdlingClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/idling/events").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -190,6 +160,7 @@ describe("IdlingClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/idling/events").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -210,6 +181,7 @@ describe("IdlingClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/idling/events").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -230,6 +202,7 @@ describe("IdlingClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/idling/events").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -250,6 +223,7 @@ describe("IdlingClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/idling/events").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -270,6 +244,7 @@ describe("IdlingClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/idling/events").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
 
         await expect(async () => {

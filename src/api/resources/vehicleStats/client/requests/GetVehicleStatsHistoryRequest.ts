@@ -6,7 +6,8 @@ import type * as Samsara from "../../../../index.js";
  * @example
  *     {
  *         startTime: "startTime",
- *         endTime: "endTime"
+ *         endTime: "endTime",
+ *         types: ["ambientAirTemperatureMilliC"]
  *     }
  */
 export interface GetVehicleStatsHistoryRequest {

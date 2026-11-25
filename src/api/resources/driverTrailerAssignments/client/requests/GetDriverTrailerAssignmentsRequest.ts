@@ -2,7 +2,9 @@
 
 /**
  * @example
- *     {}
+ *     {
+ *         driverIds: ["driverIds"]
+ *     }
  */
 export interface GetDriverTrailerAssignmentsRequest {
     /**  A filter on the data based on this comma-separated list of driver IDs and externalIds. Example: `driverIds=1234,5678,payroll:4841` */

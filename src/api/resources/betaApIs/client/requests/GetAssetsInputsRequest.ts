@@ -5,6 +5,7 @@ import type * as Samsara from "../../../../index.js";
 /**
  * @example
  *     {
+ *         ids: ["ids"],
  *         type: "auxInput1",
  *         startTime: "startTime"
  *     }

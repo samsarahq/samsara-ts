@@ -22,11 +22,14 @@ export function handleNonStatusCodeError(
                 rawResponse: rawResponse,
             });
         case "timeout":
-            throw new errors.SamsaraTimeoutError(`Timeout exceeded when calling ${method} ${path}.`);
+            throw new errors.SamsaraTimeoutError(`Timeout exceeded when calling ${method} ${path}.`, {
+                cause: error.cause,
+            });
         case "unknown":
             throw new errors.SamsaraError({
                 message: error.errorMessage,
                 rawResponse: rawResponse,
+                cause: error.cause,
             });
         default:
             throw new errors.SamsaraError({

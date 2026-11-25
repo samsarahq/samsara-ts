@@ -27,6 +27,7 @@ describe("SensorsClient", () => {
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .post("/v1/sensors/cargo")
@@ -39,20 +40,7 @@ describe("SensorsClient", () => {
         const response = await client.sensors.v1GetSensorsCargo({
             sensors: [122],
         });
-        expect(response).toEqual({
-            groupId: 101,
-            sensors: [
-                {
-                    cargoEmpty: true,
-                    cargoStatusTime: "2019-04-17T16:42:55Z",
-                    id: 122,
-                    name: "Trailer Cargo V1Sensor",
-                    redEyeDistance: 175,
-                    trailerId: 123,
-                    vehicleId: 124,
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("V1getSensorsDoor", async () => {
@@ -77,6 +65,7 @@ describe("SensorsClient", () => {
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .post("/v1/sensors/door")
@@ -89,19 +78,7 @@ describe("SensorsClient", () => {
         const response = await client.sensors.v1GetSensorsDoor({
             sensors: [122],
         });
-        expect(response).toEqual({
-            groupId: 101,
-            sensors: [
-                {
-                    doorClosed: true,
-                    doorStatusTime: "2019-04-17T16:42:55Z",
-                    id: 122,
-                    name: "Trailer Door V1Sensor",
-                    trailerId: 123,
-                    vehicleId: 124,
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("V1getSensorsHistory", async () => {
@@ -119,6 +96,7 @@ describe("SensorsClient", () => {
             stepMs: 3600000,
         };
         const rawResponseBody = { results: [{ series: [1], timeMs: 1453449599999 }] };
+
         server
             .mockEndpoint()
             .post("/v1/sensors/history")
@@ -139,14 +117,7 @@ describe("SensorsClient", () => {
             startMs: 1462878398034,
             stepMs: 3600000,
         });
-        expect(response).toEqual({
-            results: [
-                {
-                    series: [1],
-                    timeMs: 1453449599999,
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("V1getSensorsHumidity", async () => {
@@ -171,6 +142,7 @@ describe("SensorsClient", () => {
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .post("/v1/sensors/humidity")
@@ -183,19 +155,7 @@ describe("SensorsClient", () => {
         const response = await client.sensors.v1GetSensorsHumidity({
             sensors: [122],
         });
-        expect(response).toEqual({
-            groupId: 101,
-            sensors: [
-                {
-                    humidity: 53,
-                    humidityTime: "2019-04-17T16:42:55Z",
-                    id: 122,
-                    name: "Freezer Humidity V1Sensor",
-                    trailerId: 123,
-                    vehicleId: 124,
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("V1getSensors", async () => {
@@ -220,22 +180,11 @@ describe("SensorsClient", () => {
                 },
             ],
         };
+
         server.mockEndpoint().post("/v1/sensors/list").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.sensors.v1GetSensors();
-        expect(response).toEqual({
-            sensors: [
-                {
-                    activatedAtMs: 1635881752799,
-                    healthStatus: "RequiresInvestigation",
-                    id: 123,
-                    lastTransmissionAtMs: 1613440186723,
-                    macAddress: "11:11:11:11:11:11",
-                    name: "Freezer ABC",
-                    sensorType: "EM21",
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("V1getSensorsTemperature", async () => {
@@ -262,6 +211,7 @@ describe("SensorsClient", () => {
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .post("/v1/sensors/temperature")
@@ -274,20 +224,6 @@ describe("SensorsClient", () => {
         const response = await client.sensors.v1GetSensorsTemperature({
             sensors: [122],
         });
-        expect(response).toEqual({
-            groupId: 101,
-            sensors: [
-                {
-                    ambientTemperature: 11057,
-                    ambientTemperatureTime: "2019-04-17T16:42:55Z",
-                    id: 122,
-                    name: "Freezer Temp V1Sensor",
-                    probeTemperature: -20145,
-                    probeTemperatureTime: "2019-04-17T16:42:55Z",
-                    trailerId: 123,
-                    vehicleId: 124,
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 });

@@ -33,44 +33,11 @@ describe("MaintenanceSitesClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server.mockEndpoint().get("/maintenance/sites").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.maintenanceSites.listMaintenanceSites();
-        expect(response).toEqual({
-            data: [
-                {
-                    archivedAt: "2019-06-13T19:08:25Z",
-                    createdAt: "2019-06-13T19:08:25Z",
-                    customAddress: {
-                        formattedAddress: "12345",
-                        latitude: 123.45,
-                        longitude: 123.45,
-                    },
-                    description: "12345",
-                    externalIds: [
-                        {
-                            key: "12345",
-                            value: "12345",
-                        },
-                    ],
-                    id: "12345",
-                    isArchived: true,
-                    name: "12345",
-                    places: [
-                        {
-                            id: "281474976710656",
-                        },
-                    ],
-                    siteCode: "12345",
-                    siteType: "Unknown",
-                    updatedAt: "2019-06-13T19:08:25Z",
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("listMaintenanceSites (2)", async () => {
@@ -83,6 +50,7 @@ describe("MaintenanceSitesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/maintenance/sites").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -100,6 +68,7 @@ describe("MaintenanceSitesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/maintenance/sites").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -117,6 +86,7 @@ describe("MaintenanceSitesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/maintenance/sites").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -134,6 +104,7 @@ describe("MaintenanceSitesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/maintenance/sites").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -151,6 +122,7 @@ describe("MaintenanceSitesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/maintenance/sites").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -168,6 +140,7 @@ describe("MaintenanceSitesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/maintenance/sites").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -185,6 +158,7 @@ describe("MaintenanceSitesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/maintenance/sites").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -202,6 +176,7 @@ describe("MaintenanceSitesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/maintenance/sites").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -219,6 +194,7 @@ describe("MaintenanceSitesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/maintenance/sites").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -236,6 +212,7 @@ describe("MaintenanceSitesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/maintenance/sites").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -268,6 +245,7 @@ describe("MaintenanceSitesClient", () => {
                 updatedAt: "2019-06-13T19:08:25Z",
             },
         };
+
         server
             .mockEndpoint()
             .post("/maintenance/sites")
@@ -282,35 +260,7 @@ describe("MaintenanceSitesClient", () => {
             siteCode: "12345",
             siteType: "Unknown",
         });
-        expect(response).toEqual({
-            data: {
-                archivedAt: "2019-06-13T19:08:25Z",
-                createdAt: "2019-06-13T19:08:25Z",
-                customAddress: {
-                    formattedAddress: "12345",
-                    latitude: 123.45,
-                    longitude: 123.45,
-                },
-                description: "12345",
-                externalIds: [
-                    {
-                        key: "12345",
-                        value: "12345",
-                    },
-                ],
-                id: "12345",
-                isArchived: true,
-                name: "12345",
-                places: [
-                    {
-                        id: "281474976710656",
-                    },
-                ],
-                siteCode: "12345",
-                siteType: "Unknown",
-                updatedAt: "2019-06-13T19:08:25Z",
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createMaintenanceSite (2)", async () => {
@@ -323,6 +273,7 @@ describe("MaintenanceSitesClient", () => {
         });
         const rawRequestBody = { name: "name", siteCode: "siteCode", siteType: "Unknown" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/sites")
@@ -351,6 +302,7 @@ describe("MaintenanceSitesClient", () => {
         });
         const rawRequestBody = { name: "name", siteCode: "siteCode", siteType: "Unknown" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/sites")
@@ -379,6 +331,7 @@ describe("MaintenanceSitesClient", () => {
         });
         const rawRequestBody = { name: "name", siteCode: "siteCode", siteType: "Unknown" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/sites")
@@ -407,6 +360,7 @@ describe("MaintenanceSitesClient", () => {
         });
         const rawRequestBody = { name: "name", siteCode: "siteCode", siteType: "Unknown" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/sites")
@@ -435,6 +389,7 @@ describe("MaintenanceSitesClient", () => {
         });
         const rawRequestBody = { name: "name", siteCode: "siteCode", siteType: "Unknown" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/sites")
@@ -463,6 +418,7 @@ describe("MaintenanceSitesClient", () => {
         });
         const rawRequestBody = { name: "name", siteCode: "siteCode", siteType: "Unknown" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/sites")
@@ -491,6 +447,7 @@ describe("MaintenanceSitesClient", () => {
         });
         const rawRequestBody = { name: "name", siteCode: "siteCode", siteType: "Unknown" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/sites")
@@ -519,6 +476,7 @@ describe("MaintenanceSitesClient", () => {
         });
         const rawRequestBody = { name: "name", siteCode: "siteCode", siteType: "Unknown" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/sites")
@@ -547,6 +505,7 @@ describe("MaintenanceSitesClient", () => {
         });
         const rawRequestBody = { name: "name", siteCode: "siteCode", siteType: "Unknown" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/sites")
@@ -575,6 +534,7 @@ describe("MaintenanceSitesClient", () => {
         });
         const rawRequestBody = { name: "name", siteCode: "siteCode", siteType: "Unknown" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/sites")
@@ -618,6 +578,7 @@ describe("MaintenanceSitesClient", () => {
                 updatedAt: "2019-06-13T19:08:25Z",
             },
         };
+
         server
             .mockEndpoint()
             .patch("/maintenance/sites")
@@ -630,35 +591,7 @@ describe("MaintenanceSitesClient", () => {
         const response = await client.maintenanceSites.updateMaintenanceSite({
             id: "id",
         });
-        expect(response).toEqual({
-            data: {
-                archivedAt: "2019-06-13T19:08:25Z",
-                createdAt: "2019-06-13T19:08:25Z",
-                customAddress: {
-                    formattedAddress: "12345",
-                    latitude: 123.45,
-                    longitude: 123.45,
-                },
-                description: "12345",
-                externalIds: [
-                    {
-                        key: "12345",
-                        value: "12345",
-                    },
-                ],
-                id: "12345",
-                isArchived: true,
-                name: "12345",
-                places: [
-                    {
-                        id: "281474976710656",
-                    },
-                ],
-                siteCode: "12345",
-                siteType: "Unknown",
-                updatedAt: "2019-06-13T19:08:25Z",
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("updateMaintenanceSite (2)", async () => {
@@ -671,6 +604,7 @@ describe("MaintenanceSitesClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/sites")
@@ -697,6 +631,7 @@ describe("MaintenanceSitesClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/sites")
@@ -723,6 +658,7 @@ describe("MaintenanceSitesClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/sites")
@@ -749,6 +685,7 @@ describe("MaintenanceSitesClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/sites")
@@ -775,6 +712,7 @@ describe("MaintenanceSitesClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/sites")
@@ -801,6 +739,7 @@ describe("MaintenanceSitesClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/sites")
@@ -827,6 +766,7 @@ describe("MaintenanceSitesClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/sites")
@@ -853,6 +793,7 @@ describe("MaintenanceSitesClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/sites")
@@ -879,6 +820,7 @@ describe("MaintenanceSitesClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/sites")
@@ -905,6 +847,7 @@ describe("MaintenanceSitesClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/sites")

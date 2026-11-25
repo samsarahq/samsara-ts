@@ -17,227 +17,60 @@ describe("TripsClient", () => {
         const rawResponseBody = {
             data: [
                 {
-                    asset: { id: "id", name: "name", type: "uncategorized", vin: "vin" },
+                    asset: { id: "12345", name: "MyAsset-1234", vin: "1GBJ6P1B2HV112765" },
                     completionStatus: "inProgress",
-                    createdAtTime: "createdAtTime",
+                    createdAtTime: "2024-04-16T19:08:25Z",
                     endLocation: {
-                        accuracyMeters: 1.1,
+                        accuracyMeters: 5.801,
                         address: {
-                            city: "city",
-                            country: "country",
-                            neighborhood: "neighborhood",
-                            pointOfInterest: "pointOfInterest",
-                            postalCode: "postalCode",
-                            state: "state",
-                            street: "street",
-                            streetNumber: "streetNumber",
+                            city: "New York",
+                            country: "USA",
+                            neighborhood: "Mission District",
+                            pointOfInterest: "The Eiffel Tower",
+                            postalCode: "10010",
+                            state: "New York",
+                            street: "Main Street",
+                            streetNumber: "16",
                         },
-                        geofence: { externalIds: { externalIds: "externalIds" }, id: "id" },
-                        headingDegrees: 1000000,
-                        latitude: 1.1,
-                        longitude: 1.1,
+                        geofence: { id: "12345" },
+                        headingDegrees: 120,
+                        latitude: 37.7749,
+                        longitude: 137.2719,
                     },
-                    finalDistanceMeters: 1000000,
+                    finalDistanceMeters: 2500,
                     startLocation: {
-                        accuracyMeters: 1.1,
+                        accuracyMeters: 5.801,
                         address: {
-                            city: "city",
-                            country: "country",
-                            neighborhood: "neighborhood",
-                            pointOfInterest: "pointOfInterest",
-                            postalCode: "postalCode",
-                            state: "state",
-                            street: "street",
-                            streetNumber: "streetNumber",
+                            city: "New York",
+                            country: "USA",
+                            neighborhood: "Mission District",
+                            pointOfInterest: "The Eiffel Tower",
+                            postalCode: "10010",
+                            state: "New York",
+                            street: "Main Street",
+                            streetNumber: "16",
                         },
-                        geofence: { externalIds: { externalIds: "externalIds" }, id: "id" },
-                        headingDegrees: 1000000,
-                        latitude: 1.1,
-                        longitude: 1.1,
+                        geofence: { id: "12345" },
+                        headingDegrees: 120,
+                        latitude: 37.7749,
+                        longitude: 137.2719,
                     },
-                    tripEndTime: "tripEndTime",
+                    tripEndTime: "2024-04-16T20:00:00Z",
                     tripPurpose: "unknown",
-                    tripStartTime: "tripStartTime",
-                    updatedAtTime: "updatedAtTime",
-                },
-                {
-                    asset: { id: "id", name: "name", type: "uncategorized", vin: "vin" },
-                    completionStatus: "inProgress",
-                    createdAtTime: "createdAtTime",
-                    endLocation: {
-                        accuracyMeters: 1.1,
-                        address: {
-                            city: "city",
-                            country: "country",
-                            neighborhood: "neighborhood",
-                            pointOfInterest: "pointOfInterest",
-                            postalCode: "postalCode",
-                            state: "state",
-                            street: "street",
-                            streetNumber: "streetNumber",
-                        },
-                        geofence: { externalIds: { externalIds: "externalIds" }, id: "id" },
-                        headingDegrees: 1000000,
-                        latitude: 1.1,
-                        longitude: 1.1,
-                    },
-                    finalDistanceMeters: 1000000,
-                    startLocation: {
-                        accuracyMeters: 1.1,
-                        address: {
-                            city: "city",
-                            country: "country",
-                            neighborhood: "neighborhood",
-                            pointOfInterest: "pointOfInterest",
-                            postalCode: "postalCode",
-                            state: "state",
-                            street: "street",
-                            streetNumber: "streetNumber",
-                        },
-                        geofence: { externalIds: { externalIds: "externalIds" }, id: "id" },
-                        headingDegrees: 1000000,
-                        latitude: 1.1,
-                        longitude: 1.1,
-                    },
-                    tripEndTime: "tripEndTime",
-                    tripPurpose: "unknown",
-                    tripStartTime: "tripStartTime",
-                    updatedAtTime: "updatedAtTime",
+                    tripStartTime: "2024-04-16T19:08:25Z",
+                    updatedAtTime: "2024-04-16T19:08:25Z",
                 },
             ],
-            pagination: { endCursor: "endCursor", hasNextPage: true },
+            pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server.mockEndpoint().get("/trips/stream").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.trips.getTrips({
             startTime: "startTime",
+            ids: ["ids"],
         });
-        expect(response).toEqual({
-            data: [
-                {
-                    asset: {
-                        id: "id",
-                        name: "name",
-                        type: "uncategorized",
-                        vin: "vin",
-                    },
-                    completionStatus: "inProgress",
-                    createdAtTime: "createdAtTime",
-                    endLocation: {
-                        accuracyMeters: 1.1,
-                        address: {
-                            city: "city",
-                            country: "country",
-                            neighborhood: "neighborhood",
-                            pointOfInterest: "pointOfInterest",
-                            postalCode: "postalCode",
-                            state: "state",
-                            street: "street",
-                            streetNumber: "streetNumber",
-                        },
-                        geofence: {
-                            externalIds: {
-                                externalIds: "externalIds",
-                            },
-                            id: "id",
-                        },
-                        headingDegrees: 1000000,
-                        latitude: 1.1,
-                        longitude: 1.1,
-                    },
-                    finalDistanceMeters: 1000000,
-                    startLocation: {
-                        accuracyMeters: 1.1,
-                        address: {
-                            city: "city",
-                            country: "country",
-                            neighborhood: "neighborhood",
-                            pointOfInterest: "pointOfInterest",
-                            postalCode: "postalCode",
-                            state: "state",
-                            street: "street",
-                            streetNumber: "streetNumber",
-                        },
-                        geofence: {
-                            externalIds: {
-                                externalIds: "externalIds",
-                            },
-                            id: "id",
-                        },
-                        headingDegrees: 1000000,
-                        latitude: 1.1,
-                        longitude: 1.1,
-                    },
-                    tripEndTime: "tripEndTime",
-                    tripPurpose: "unknown",
-                    tripStartTime: "tripStartTime",
-                    updatedAtTime: "updatedAtTime",
-                },
-                {
-                    asset: {
-                        id: "id",
-                        name: "name",
-                        type: "uncategorized",
-                        vin: "vin",
-                    },
-                    completionStatus: "inProgress",
-                    createdAtTime: "createdAtTime",
-                    endLocation: {
-                        accuracyMeters: 1.1,
-                        address: {
-                            city: "city",
-                            country: "country",
-                            neighborhood: "neighborhood",
-                            pointOfInterest: "pointOfInterest",
-                            postalCode: "postalCode",
-                            state: "state",
-                            street: "street",
-                            streetNumber: "streetNumber",
-                        },
-                        geofence: {
-                            externalIds: {
-                                externalIds: "externalIds",
-                            },
-                            id: "id",
-                        },
-                        headingDegrees: 1000000,
-                        latitude: 1.1,
-                        longitude: 1.1,
-                    },
-                    finalDistanceMeters: 1000000,
-                    startLocation: {
-                        accuracyMeters: 1.1,
-                        address: {
-                            city: "city",
-                            country: "country",
-                            neighborhood: "neighborhood",
-                            pointOfInterest: "pointOfInterest",
-                            postalCode: "postalCode",
-                            state: "state",
-                            street: "street",
-                            streetNumber: "streetNumber",
-                        },
-                        geofence: {
-                            externalIds: {
-                                externalIds: "externalIds",
-                            },
-                            id: "id",
-                        },
-                        headingDegrees: 1000000,
-                        latitude: 1.1,
-                        longitude: 1.1,
-                    },
-                    tripEndTime: "tripEndTime",
-                    tripPurpose: "unknown",
-                    tripStartTime: "tripStartTime",
-                    updatedAtTime: "updatedAtTime",
-                },
-            ],
-            pagination: {
-                endCursor: "endCursor",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getTrips (2)", async () => {
@@ -250,6 +83,7 @@ describe("TripsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/trips/stream").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -269,6 +103,7 @@ describe("TripsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/trips/stream").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -288,6 +123,7 @@ describe("TripsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/trips/stream").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -307,6 +143,7 @@ describe("TripsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/trips/stream").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -326,6 +163,7 @@ describe("TripsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/trips/stream").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -345,6 +183,7 @@ describe("TripsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/trips/stream").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -364,6 +203,7 @@ describe("TripsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/trips/stream").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -383,6 +223,7 @@ describe("TripsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/trips/stream").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -402,6 +243,7 @@ describe("TripsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/trips/stream").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -421,6 +263,7 @@ describe("TripsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/trips/stream").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -461,6 +304,7 @@ describe("TripsClient", () => {
                 },
             ],
         };
+
         server.mockEndpoint().get("/v1/fleet/trips").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.trips.v1GetFleetTrips({
@@ -468,41 +312,6 @@ describe("TripsClient", () => {
             startMs: 1000000,
             endMs: 1000000,
         });
-        expect(response).toEqual({
-            trips: [
-                {
-                    assetIds: [122],
-                    codriverIds: [122],
-                    distanceMeters: 2500,
-                    driverId: 719,
-                    endAddress: {
-                        address: "123 Main St, Sunnyvale, CA 94089",
-                        id: 581,
-                        name: "Ramen Tatsunoya",
-                    },
-                    endCoordinates: {
-                        latitude: 23.413702345,
-                        longitude: -91.502888123,
-                    },
-                    endLocation: "571 S Lake Ave, Pasadena, CA 91101",
-                    endMs: 1462881998034,
-                    endOdometer: 210430500,
-                    fuelConsumedMl: 75700,
-                    startAddress: {
-                        address: "123 Main St, Sunnyvale, CA 94089",
-                        id: 581,
-                        name: "Ramen Tatsunoya",
-                    },
-                    startCoordinates: {
-                        latitude: 29.443702345,
-                        longitude: -98.502888123,
-                    },
-                    startLocation: "16 N Fair Oaks Ave, Pasadena, CA 91103",
-                    startMs: 1462878398034,
-                    startOdometer: 210430450,
-                    tollMeters: 32000,
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 });

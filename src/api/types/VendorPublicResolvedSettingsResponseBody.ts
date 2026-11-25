@@ -8,19 +8,19 @@ import type * as Samsara from "../index.js";
 export interface VendorPublicResolvedSettingsResponseBody {
     /** Resolved attribute selections. System default empty. */
     assetAttributeSelections: Samsara.VendorPublicAttributeSelectionResponseBody[];
-    /** system, vendorGroup, vendorLocation, or unknown. */
+    /** system, vendor, vendorLocation, or unknown. */
     assetAttributeSelectionsSource: string;
     defaultLaborRatePerHour?: Samsara.VendorPublicMoneyResponseBody | undefined;
-    /** system, vendorGroup, vendorLocation, or unknown. */
+    /** system, vendor, vendorLocation, or unknown. */
     defaultLaborRatePerHourSource: string;
     /** Both location and parent, if present, are active. */
     isActive: boolean;
     /** Resolved mobile service. System default false. */
     isMobile: boolean;
-    /** system, vendorGroup, vendorLocation, or unknown. */
+    /** system, vendor, vendorLocation, or unknown. */
     isMobileSource: string;
     /** Resolved preferred status. System default false. */
     isPreferred: boolean;
-    /** system, vendorGroup, vendorLocation, or unknown. */
+    /** system, vendor, vendorLocation, or unknown. */
     isPreferredSource: string;
 }

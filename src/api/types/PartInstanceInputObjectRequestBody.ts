@@ -8,8 +8,12 @@ export interface PartInstanceInputObjectRequestBody {
     costCentsOverride?: number | undefined;
     /** ID of the part instance. Only set if updating an existing part instance. */
     id?: string | undefined;
+    /** ID of the maintenance site that stocks this part. Uses the same ID as GET /maintenance/sites. This is not the Places API placeId. Accepted only when total part quantity is enabled for the organization. */
+    maintenanceSiteId?: string | undefined;
     /** ID of the part definition. */
     partId: string;
-    /** The quantity of the part in the parts pre defined unit of measure. */
-    quantity: number;
+    /** The stock quantity of the part in the part's predefined unit of measure. When requestedQuantity is also sent, quantity is the stock amount and requestedQuantity is the total demand. Required when requestedQuantity is omitted. */
+    quantity?: number | undefined;
+    /** Total quantity needed for the part, in the part's predefined unit of measure, including any shortage. When both fields are sent, this field is the total demand and quantity is the stock amount. Send 0 for zero demand. A shortage request is reconciled asynchronously after the work order is saved. Accepted only when total part quantity is enabled for the organization. */
+    requestedQuantity?: number | undefined;
 }

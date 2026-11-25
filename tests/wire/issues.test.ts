@@ -17,160 +17,38 @@ describe("IssuesClient", () => {
         const rawResponseBody = {
             data: [
                 {
-                    asset: {
-                        entryType: "tracked",
-                        externalIds: { externalIds: "externalIds" },
-                        id: "id",
-                        name: "name",
-                    },
-                    assignedTo: { id: "id", type: "driver" },
-                    createdAtTime: "2024-01-15T09:30:00Z",
-                    description: "description",
-                    dueDate: "2024-01-15T09:30:00Z",
-                    externalIds: { externalIds: "externalIds" },
-                    id: "id",
-                    issueSource: { id: "id", type: "form" },
+                    asset: { entryType: "tracked", id: "281474982859091", name: "trailer 123" },
+                    assignedTo: { id: "938172", type: "driver" },
+                    createdAtTime: "2019-06-13T19:08:25Z",
+                    description: "Oil spill in left corner of SF1",
+                    dueDate: "2019-06-13T19:08:25Z",
+                    externalIds: { key: "value" },
+                    id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
+                    issueSource: { id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7", type: "form" },
                     mediaList: [
-                        { id: "id", processingStatus: "unknown", url: "url", urlExpiresAt: "2024-01-15T09:30:00Z" },
-                        { id: "id", processingStatus: "unknown", url: "url", urlExpiresAt: "2024-01-15T09:30:00Z" },
+                        {
+                            id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
+                            processingStatus: "unknown",
+                            url: "https://samsara-forms-submission-media-uploads.s3.us-west-2.amazonaws.com/123456",
+                            urlExpiresAt: "2019-06-13T19:08:25Z",
+                        },
                     ],
                     priority: "low",
                     status: "open",
-                    submittedAtTime: "2024-01-15T09:30:00Z",
-                    submittedBy: { id: "id", type: "driver" },
-                    title: "title",
-                    updatedAtTime: "2024-01-15T09:30:00Z",
-                },
-                {
-                    asset: {
-                        entryType: "tracked",
-                        externalIds: { externalIds: "externalIds" },
-                        id: "id",
-                        name: "name",
-                    },
-                    assignedTo: { id: "id", type: "driver" },
-                    createdAtTime: "2024-01-15T09:30:00Z",
-                    description: "description",
-                    dueDate: "2024-01-15T09:30:00Z",
-                    externalIds: { externalIds: "externalIds" },
-                    id: "id",
-                    issueSource: { id: "id", type: "form" },
-                    mediaList: [
-                        { id: "id", processingStatus: "unknown", url: "url", urlExpiresAt: "2024-01-15T09:30:00Z" },
-                        { id: "id", processingStatus: "unknown", url: "url", urlExpiresAt: "2024-01-15T09:30:00Z" },
-                    ],
-                    priority: "low",
-                    status: "open",
-                    submittedAtTime: "2024-01-15T09:30:00Z",
-                    submittedBy: { id: "id", type: "driver" },
-                    title: "title",
-                    updatedAtTime: "2024-01-15T09:30:00Z",
+                    submittedAtTime: "2019-06-13T19:08:25Z",
+                    submittedBy: { id: "938172", type: "driver" },
+                    title: "Oil spill",
+                    updatedAtTime: "2019-06-13T19:08:25Z",
                 },
             ],
         };
+
         server.mockEndpoint().get("/issues").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
-        const response = await client.issues.getIssues();
-        expect(response).toEqual({
-            data: [
-                {
-                    asset: {
-                        entryType: "tracked",
-                        externalIds: {
-                            externalIds: "externalIds",
-                        },
-                        id: "id",
-                        name: "name",
-                    },
-                    assignedTo: {
-                        id: "id",
-                        type: "driver",
-                    },
-                    createdAtTime: "2024-01-15T09:30:00Z",
-                    description: "description",
-                    dueDate: "2024-01-15T09:30:00Z",
-                    externalIds: {
-                        externalIds: "externalIds",
-                    },
-                    id: "id",
-                    issueSource: {
-                        id: "id",
-                        type: "form",
-                    },
-                    mediaList: [
-                        {
-                            id: "id",
-                            processingStatus: "unknown",
-                            url: "url",
-                            urlExpiresAt: "2024-01-15T09:30:00Z",
-                        },
-                        {
-                            id: "id",
-                            processingStatus: "unknown",
-                            url: "url",
-                            urlExpiresAt: "2024-01-15T09:30:00Z",
-                        },
-                    ],
-                    priority: "low",
-                    status: "open",
-                    submittedAtTime: "2024-01-15T09:30:00Z",
-                    submittedBy: {
-                        id: "id",
-                        type: "driver",
-                    },
-                    title: "title",
-                    updatedAtTime: "2024-01-15T09:30:00Z",
-                },
-                {
-                    asset: {
-                        entryType: "tracked",
-                        externalIds: {
-                            externalIds: "externalIds",
-                        },
-                        id: "id",
-                        name: "name",
-                    },
-                    assignedTo: {
-                        id: "id",
-                        type: "driver",
-                    },
-                    createdAtTime: "2024-01-15T09:30:00Z",
-                    description: "description",
-                    dueDate: "2024-01-15T09:30:00Z",
-                    externalIds: {
-                        externalIds: "externalIds",
-                    },
-                    id: "id",
-                    issueSource: {
-                        id: "id",
-                        type: "form",
-                    },
-                    mediaList: [
-                        {
-                            id: "id",
-                            processingStatus: "unknown",
-                            url: "url",
-                            urlExpiresAt: "2024-01-15T09:30:00Z",
-                        },
-                        {
-                            id: "id",
-                            processingStatus: "unknown",
-                            url: "url",
-                            urlExpiresAt: "2024-01-15T09:30:00Z",
-                        },
-                    ],
-                    priority: "low",
-                    status: "open",
-                    submittedAtTime: "2024-01-15T09:30:00Z",
-                    submittedBy: {
-                        id: "id",
-                        type: "driver",
-                    },
-                    title: "title",
-                    updatedAtTime: "2024-01-15T09:30:00Z",
-                },
-            ],
+        const response = await client.issues.getIssues({
+            ids: ["ids"],
         });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getIssues (2)", async () => {
@@ -183,6 +61,7 @@ describe("IssuesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/issues").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -200,6 +79,7 @@ describe("IssuesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/issues").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -217,6 +97,7 @@ describe("IssuesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/issues").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -234,6 +115,7 @@ describe("IssuesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/issues").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -251,6 +133,7 @@ describe("IssuesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/issues").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -268,6 +151,7 @@ describe("IssuesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/issues").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -285,6 +169,7 @@ describe("IssuesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/issues").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -302,6 +187,7 @@ describe("IssuesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/issues").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -319,6 +205,7 @@ describe("IssuesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/issues").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -336,6 +223,7 @@ describe("IssuesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/issues").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -383,6 +271,7 @@ describe("IssuesClient", () => {
                 updatedAtTime: "2019-06-13T19:08:25Z",
             },
         };
+
         server
             .mockEndpoint()
             .post("/issues")
@@ -398,50 +287,7 @@ describe("IssuesClient", () => {
             },
             title: "Front bumper scratch",
         });
-        expect(response).toEqual({
-            data: {
-                asset: {
-                    entryType: "tracked",
-                    externalIds: {
-                        key: "value",
-                    },
-                    id: "281474982859091",
-                    name: "trailer 123",
-                },
-                assignedTo: {
-                    id: "938172",
-                    type: "driver",
-                },
-                createdAtTime: "2019-06-13T19:08:25Z",
-                description: "Oil spill in left corner of SF1",
-                dueDate: "2019-06-13T19:08:25Z",
-                externalIds: {
-                    key: "value",
-                },
-                id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                issueSource: {
-                    id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                    type: "form",
-                },
-                mediaList: [
-                    {
-                        id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                        processingStatus: "unknown",
-                        url: "https://samsara-forms-submission-media-uploads.s3.us-west-2.amazonaws.com/123456",
-                        urlExpiresAt: "2019-06-13T19:08:25Z",
-                    },
-                ],
-                priority: "low",
-                status: "open",
-                submittedAtTime: "2019-06-13T19:08:25Z",
-                submittedBy: {
-                    id: "938172",
-                    type: "driver",
-                },
-                title: "Oil spill",
-                updatedAtTime: "2019-06-13T19:08:25Z",
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("postIssue (2)", async () => {
@@ -454,6 +300,7 @@ describe("IssuesClient", () => {
         });
         const rawRequestBody = { asset: { id: "id" }, title: "title" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/issues")
@@ -483,6 +330,7 @@ describe("IssuesClient", () => {
         });
         const rawRequestBody = { asset: { id: "id" }, title: "title" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/issues")
@@ -512,6 +360,7 @@ describe("IssuesClient", () => {
         });
         const rawRequestBody = { asset: { id: "id" }, title: "title" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/issues")
@@ -541,6 +390,7 @@ describe("IssuesClient", () => {
         });
         const rawRequestBody = { asset: { id: "id" }, title: "title" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/issues")
@@ -570,6 +420,7 @@ describe("IssuesClient", () => {
         });
         const rawRequestBody = { asset: { id: "id" }, title: "title" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/issues")
@@ -599,6 +450,7 @@ describe("IssuesClient", () => {
         });
         const rawRequestBody = { asset: { id: "id" }, title: "title" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/issues")
@@ -628,6 +480,7 @@ describe("IssuesClient", () => {
         });
         const rawRequestBody = { asset: { id: "id" }, title: "title" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/issues")
@@ -657,6 +510,7 @@ describe("IssuesClient", () => {
         });
         const rawRequestBody = { asset: { id: "id" }, title: "title" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/issues")
@@ -686,6 +540,7 @@ describe("IssuesClient", () => {
         });
         const rawRequestBody = { asset: { id: "id" }, title: "title" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/issues")
@@ -715,6 +570,7 @@ describe("IssuesClient", () => {
         });
         const rawRequestBody = { asset: { id: "id" }, title: "title" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/issues")
@@ -774,6 +630,7 @@ describe("IssuesClient", () => {
                 updatedAtTime: "2019-06-13T19:08:25Z",
             },
         };
+
         server
             .mockEndpoint()
             .patch("/issues")
@@ -786,50 +643,7 @@ describe("IssuesClient", () => {
         const response = await client.issues.patchIssue({
             id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
         });
-        expect(response).toEqual({
-            data: {
-                asset: {
-                    entryType: "tracked",
-                    externalIds: {
-                        key: "value",
-                    },
-                    id: "281474982859091",
-                    name: "trailer 123",
-                },
-                assignedTo: {
-                    id: "938172",
-                    type: "driver",
-                },
-                createdAtTime: "2019-06-13T19:08:25Z",
-                description: "Oil spill in left corner of SF1",
-                dueDate: "2019-06-13T19:08:25Z",
-                externalIds: {
-                    key: "value",
-                },
-                id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                issueSource: {
-                    id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                    type: "form",
-                },
-                mediaList: [
-                    {
-                        id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                        processingStatus: "unknown",
-                        url: "https://samsara-forms-submission-media-uploads.s3.us-west-2.amazonaws.com/123456",
-                        urlExpiresAt: "2019-06-13T19:08:25Z",
-                    },
-                ],
-                priority: "low",
-                status: "open",
-                submittedAtTime: "2019-06-13T19:08:25Z",
-                submittedBy: {
-                    id: "938172",
-                    type: "driver",
-                },
-                title: "Oil spill",
-                updatedAtTime: "2019-06-13T19:08:25Z",
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("patchIssue (2)", async () => {
@@ -842,6 +656,7 @@ describe("IssuesClient", () => {
         });
         const rawRequestBody = { id: "id" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/issues")
@@ -868,6 +683,7 @@ describe("IssuesClient", () => {
         });
         const rawRequestBody = { id: "id" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/issues")
@@ -894,6 +710,7 @@ describe("IssuesClient", () => {
         });
         const rawRequestBody = { id: "id" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/issues")
@@ -920,6 +737,7 @@ describe("IssuesClient", () => {
         });
         const rawRequestBody = { id: "id" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/issues")
@@ -946,6 +764,7 @@ describe("IssuesClient", () => {
         });
         const rawRequestBody = { id: "id" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/issues")
@@ -972,6 +791,7 @@ describe("IssuesClient", () => {
         });
         const rawRequestBody = { id: "id" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/issues")
@@ -998,6 +818,7 @@ describe("IssuesClient", () => {
         });
         const rawRequestBody = { id: "id" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/issues")
@@ -1024,6 +845,7 @@ describe("IssuesClient", () => {
         });
         const rawRequestBody = { id: "id" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/issues")
@@ -1050,6 +872,7 @@ describe("IssuesClient", () => {
         });
         const rawRequestBody = { id: "id" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/issues")
@@ -1076,6 +899,7 @@ describe("IssuesClient", () => {
         });
         const rawRequestBody = { id: "id" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/issues")
@@ -1130,58 +954,13 @@ describe("IssuesClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server.mockEndpoint().get("/issues/stream").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.issues.getIssuesStream({
             startTime: "startTime",
         });
-        expect(response).toEqual({
-            data: [
-                {
-                    asset: {
-                        entryType: "tracked",
-                        id: "281474982859091",
-                        name: "trailer 123",
-                    },
-                    assignedTo: {
-                        id: "938172",
-                        type: "driver",
-                    },
-                    createdAtTime: "2019-06-13T19:08:25Z",
-                    description: "Oil spill in left corner of SF1",
-                    dueDate: "2019-06-13T19:08:25Z",
-                    externalIds: {
-                        key: "value",
-                    },
-                    id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                    issueSource: {
-                        id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                        type: "form",
-                    },
-                    mediaList: [
-                        {
-                            id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                            processingStatus: "unknown",
-                            url: "https://samsara-forms-submission-media-uploads.s3.us-west-2.amazonaws.com/123456",
-                            urlExpiresAt: "2019-06-13T19:08:25Z",
-                        },
-                    ],
-                    priority: "low",
-                    status: "open",
-                    submittedAtTime: "2019-06-13T19:08:25Z",
-                    submittedBy: {
-                        id: "938172",
-                        type: "driver",
-                    },
-                    title: "Oil spill",
-                    updatedAtTime: "2019-06-13T19:08:25Z",
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getIssuesStream (2)", async () => {
@@ -1194,6 +973,7 @@ describe("IssuesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/issues/stream").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1213,6 +993,7 @@ describe("IssuesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/issues/stream").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1232,6 +1013,7 @@ describe("IssuesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/issues/stream").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1251,6 +1033,7 @@ describe("IssuesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/issues/stream").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1270,6 +1053,7 @@ describe("IssuesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/issues/stream").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1289,6 +1073,7 @@ describe("IssuesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/issues/stream").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1308,6 +1093,7 @@ describe("IssuesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/issues/stream").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1327,6 +1113,7 @@ describe("IssuesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/issues/stream").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1346,6 +1133,7 @@ describe("IssuesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/issues/stream").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1365,6 +1153,7 @@ describe("IssuesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/issues/stream").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
 
         await expect(async () => {

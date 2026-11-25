@@ -29,6 +29,7 @@ describe("AddressesClient", () => {
                                 { latitude: 37.765363, longitude: -123.403098 },
                             ],
                         },
+                        settings: { showAddresses: false },
                     },
                     id: "22408",
                     latitude: 37.765363,
@@ -40,6 +41,7 @@ describe("AddressesClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint({ once: false })
             .get("/addresses")
@@ -48,61 +50,7 @@ describe("AddressesClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const expected = {
-            data: [
-                {
-                    addressTypes: ["yard"],
-                    contacts: [
-                        {
-                            firstName: "Jane",
-                            id: "22408",
-                            lastName: "Jones",
-                        },
-                    ],
-                    createdAtTime: "2019-05-18T20:27:35Z",
-                    formattedAddress: "350 Rhode Island St, San Francisco, CA",
-                    geofence: {
-                        circle: {
-                            latitude: 37.765363,
-                            longitude: -122.4029238,
-                            radiusMeters: 25,
-                        },
-                        polygon: {
-                            vertices: [
-                                {
-                                    latitude: 37.765363,
-                                    longitude: -122.403098,
-                                },
-                                {
-                                    latitude: 38.765363,
-                                    longitude: -122.403098,
-                                },
-                                {
-                                    latitude: 37.765363,
-                                    longitude: -123.403098,
-                                },
-                            ],
-                        },
-                    },
-                    id: "22408",
-                    latitude: 37.765363,
-                    longitude: -122.4029238,
-                    name: "Samsara HQ",
-                    notes: "Hours of operation: 8am - 6pm; Truck entrance on the Rhode Island street side.",
-                    tags: [
-                        {
-                            id: "3914",
-                            name: "East Coast",
-                            parentTagId: "4815",
-                        },
-                    ],
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        };
+        const expected = rawResponseBody;
         const page = await client.addresses.list();
 
         expect(expected.data).toEqual(page.data);
@@ -149,6 +97,7 @@ describe("AddressesClient", () => {
                 tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
             },
         };
+
         server
             .mockEndpoint()
             .post("/addresses")
@@ -163,58 +112,7 @@ describe("AddressesClient", () => {
             geofence: {},
             name: "Samsara HQ",
         });
-        expect(response).toEqual({
-            data: {
-                addressTypes: ["yard"],
-                contacts: [
-                    {
-                        firstName: "Jane",
-                        id: "22408",
-                        lastName: "Jones",
-                    },
-                ],
-                createdAtTime: "2019-05-18T20:27:35Z",
-                formattedAddress: "350 Rhode Island St, San Francisco, CA",
-                geofence: {
-                    circle: {
-                        latitude: 37.765363,
-                        longitude: -122.4029238,
-                        radiusMeters: 25,
-                    },
-                    polygon: {
-                        vertices: [
-                            {
-                                latitude: 37.765363,
-                                longitude: -122.403098,
-                            },
-                            {
-                                latitude: 38.765363,
-                                longitude: -122.403098,
-                            },
-                            {
-                                latitude: 37.765363,
-                                longitude: -123.403098,
-                            },
-                        ],
-                    },
-                    settings: {
-                        showAddresses: false,
-                    },
-                },
-                id: "22408",
-                latitude: 37.765363,
-                longitude: -122.4029238,
-                name: "Samsara HQ",
-                notes: "Hours of operation: 8am - 6pm; Truck entrance on the Rhode Island street side.",
-                tags: [
-                    {
-                        id: "3914",
-                        name: "East Coast",
-                        parentTagId: "4815",
-                    },
-                ],
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("get", async () => {
@@ -251,63 +149,13 @@ describe("AddressesClient", () => {
                 tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
             },
         };
+
         server.mockEndpoint().get("/addresses/id").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.addresses.get({
             id: "id",
         });
-        expect(response).toEqual({
-            data: {
-                addressTypes: ["yard"],
-                contacts: [
-                    {
-                        firstName: "Jane",
-                        id: "22408",
-                        lastName: "Jones",
-                    },
-                ],
-                createdAtTime: "2019-05-18T20:27:35Z",
-                formattedAddress: "350 Rhode Island St, San Francisco, CA",
-                geofence: {
-                    circle: {
-                        latitude: 37.765363,
-                        longitude: -122.4029238,
-                        radiusMeters: 25,
-                    },
-                    polygon: {
-                        vertices: [
-                            {
-                                latitude: 37.765363,
-                                longitude: -122.403098,
-                            },
-                            {
-                                latitude: 38.765363,
-                                longitude: -122.403098,
-                            },
-                            {
-                                latitude: 37.765363,
-                                longitude: -123.403098,
-                            },
-                        ],
-                    },
-                    settings: {
-                        showAddresses: false,
-                    },
-                },
-                id: "22408",
-                latitude: 37.765363,
-                longitude: -122.4029238,
-                name: "Samsara HQ",
-                notes: "Hours of operation: 8am - 6pm; Truck entrance on the Rhode Island street side.",
-                tags: [
-                    {
-                        id: "3914",
-                        name: "East Coast",
-                        parentTagId: "4815",
-                    },
-                ],
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("delete", async () => {
@@ -361,6 +209,7 @@ describe("AddressesClient", () => {
                 tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
             },
         };
+
         server
             .mockEndpoint()
             .patch("/addresses/id")
@@ -373,57 +222,6 @@ describe("AddressesClient", () => {
         const response = await client.addresses.update({
             id: "id",
         });
-        expect(response).toEqual({
-            data: {
-                addressTypes: ["yard"],
-                contacts: [
-                    {
-                        firstName: "Jane",
-                        id: "22408",
-                        lastName: "Jones",
-                    },
-                ],
-                createdAtTime: "2019-05-18T20:27:35Z",
-                formattedAddress: "350 Rhode Island St, San Francisco, CA",
-                geofence: {
-                    circle: {
-                        latitude: 37.765363,
-                        longitude: -122.4029238,
-                        radiusMeters: 25,
-                    },
-                    polygon: {
-                        vertices: [
-                            {
-                                latitude: 37.765363,
-                                longitude: -122.403098,
-                            },
-                            {
-                                latitude: 38.765363,
-                                longitude: -122.403098,
-                            },
-                            {
-                                latitude: 37.765363,
-                                longitude: -123.403098,
-                            },
-                        ],
-                    },
-                    settings: {
-                        showAddresses: false,
-                    },
-                },
-                id: "22408",
-                latitude: 37.765363,
-                longitude: -122.4029238,
-                name: "Samsara HQ",
-                notes: "Hours of operation: 8am - 6pm; Truck entrance on the Rhode Island street side.",
-                tags: [
-                    {
-                        id: "3914",
-                        name: "East Coast",
-                        parentTagId: "4815",
-                    },
-                ],
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 });

@@ -22,7 +22,7 @@ export interface MaintenanceEstimateBatchCreateInputRequestBody {
     /** Same-WO/vendor denied estimate superseded by this quote. */
     supersedesEstimateId?: string | undefined;
     tax: Samsara.MaintenanceEstimateMoneyRequestBody;
-    /** Same-org vendor location UUID or external ID. */
+    /** Same-org vendor location UUID or external ID. Resolve the location via GET /fleet/maintenance/vendor-locations. */
     vendorId: string;
     /** Same-org numeric work order ID. */
     workOrderId: string;

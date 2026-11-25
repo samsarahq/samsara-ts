@@ -3,6 +3,7 @@
 /**
  * @example
  *     {
+ *         ids: ["ids"],
  *         dueAtTime: "dueAtTime"
  *     }
  */

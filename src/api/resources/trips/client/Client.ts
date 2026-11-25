@@ -48,7 +48,8 @@ export class TripsClient {
      *
      * @example
      *     await client.trips.getTrips({
-     *         startTime: "startTime"
+     *         startTime: "startTime",
+     *         ids: ["ids"]
      *     })
      */
     public getTrips(
@@ -64,11 +65,11 @@ export class TripsClient {
     ): Promise<core.WithRawResponse<Samsara.TripsGetTripsResponseBody>> {
         const { includeAsset, completionStatus, startTime, endTime, queryBy, after, ids } = request;
         const _queryParams: Record<string, unknown> = {
-            includeAsset,
-            completionStatus: completionStatus != null ? completionStatus : undefined,
+            includeAsset: includeAsset ?? "false",
+            completionStatus: (completionStatus != null ? completionStatus : undefined) ?? "all",
             startTime,
             endTime,
-            queryBy: queryBy != null ? queryBy : undefined,
+            queryBy: (queryBy != null ? queryBy : undefined) ?? "updatedAtTime",
             after,
             ids,
         };
@@ -88,7 +89,12 @@ export class TripsClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .add("ids", _queryParams.ids, { style: "comma" })
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -185,7 +191,11 @@ export class TripsClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,

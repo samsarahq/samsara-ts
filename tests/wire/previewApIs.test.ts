@@ -17,6 +17,7 @@ describe("PreviewApIsClient", () => {
         const rawResponseBody = {
             data: { expirationTime: 1710000000000, token: "ZmFrZVRva2VuXzMyQnl0ZXNMb25nRm9yVGVzdA" },
         };
+
         server
             .mockEndpoint()
             .post("/preview/fleet/drivers/create-auth-token")
@@ -29,12 +30,7 @@ describe("PreviewApIsClient", () => {
         const response = await client.previewApIs.createDriverAuthToken({
             code: "dp[gZc1wAigz4uGa0Hh",
         });
-        expect(response).toEqual({
-            data: {
-                expirationTime: 1710000000000,
-                token: "ZmFrZVRva2VuXzMyQnl0ZXNMb25nRm9yVGVzdA",
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createDriverAuthToken (2)", async () => {
@@ -47,6 +43,7 @@ describe("PreviewApIsClient", () => {
         });
         const rawRequestBody = { code: "blackcurrant" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/preview/fleet/drivers/create-auth-token")
@@ -73,6 +70,7 @@ describe("PreviewApIsClient", () => {
         });
         const rawRequestBody = { code: "blackcurrant" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/preview/fleet/drivers/create-auth-token")
@@ -99,6 +97,7 @@ describe("PreviewApIsClient", () => {
         });
         const rawRequestBody = { code: "blackcurrant" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/preview/fleet/drivers/create-auth-token")
@@ -125,6 +124,7 @@ describe("PreviewApIsClient", () => {
         });
         const rawRequestBody = { code: "blackcurrant" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/preview/fleet/drivers/create-auth-token")
@@ -151,6 +151,7 @@ describe("PreviewApIsClient", () => {
         });
         const rawRequestBody = { code: "blackcurrant" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/preview/fleet/drivers/create-auth-token")
@@ -177,6 +178,7 @@ describe("PreviewApIsClient", () => {
         });
         const rawRequestBody = { code: "blackcurrant" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/preview/fleet/drivers/create-auth-token")
@@ -203,6 +205,7 @@ describe("PreviewApIsClient", () => {
         });
         const rawRequestBody = { code: "blackcurrant" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/preview/fleet/drivers/create-auth-token")
@@ -229,6 +232,7 @@ describe("PreviewApIsClient", () => {
         });
         const rawRequestBody = { code: "blackcurrant" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/preview/fleet/drivers/create-auth-token")
@@ -255,6 +259,7 @@ describe("PreviewApIsClient", () => {
         });
         const rawRequestBody = { code: "blackcurrant" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/preview/fleet/drivers/create-auth-token")
@@ -281,6 +286,7 @@ describe("PreviewApIsClient", () => {
         });
         const rawRequestBody = { code: "blackcurrant" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/preview/fleet/drivers/create-auth-token")
@@ -309,189 +315,60 @@ describe("PreviewApIsClient", () => {
         const rawResponseBody = {
             data: [
                 {
-                    createdAtTime: "2024-01-15T09:30:00Z",
-                    customerProperties: [
-                        { key: "key", value: "value" },
-                        { key: "key", value: "value" },
-                    ],
-                    externalIds: {},
-                    id: "id",
-                    samsaraCustomerOrderName: "samsaraCustomerOrderName",
+                    createdAtTime: "1991-03-10T05:05:44Z",
+                    customerProperties: [{ key: "purchaseOrderNumber", value: "PO-12345" }],
+                    id: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392",
+                    samsaraCustomerOrderName: "Order 12345",
                     tasks: [
                         {
-                            createdAtTime: "2024-01-15T09:30:00Z",
-                            customerProperties: [
-                                { key: "key", value: "value" },
-                                { key: "key", value: "value" },
-                            ],
-                            dispatcherNotes: "dispatcherNotes",
-                            driverNotes: "driverNotes",
-                            hubId: "hubId",
-                            id: "id",
+                            createdAtTime: "1978-04-10T10:12:48Z",
+                            customerProperties: [{ key: "purchaseOrderNumber", value: "PO-12345" }],
+                            dispatcherNotes: "Customer requires lift gate",
+                            driverNotes: "Use loading dock 4",
+                            hubId: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392",
+                            id: "12345678",
                             positionConstraintType: "unknown",
                             quantities: [
-                                { capacityId: "capacityId", id: "id", label: "label", value: 1.1 },
-                                { capacityId: "capacityId", id: "id", label: "label", value: 1.1 },
+                                {
+                                    capacityId: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392",
+                                    id: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392",
+                                    label: "pallets",
+                                    value: 0.9093771758102452,
+                                },
                             ],
-                            routeId: "routeId",
-                            serviceDurationSeconds: 1000000,
+                            routeId: "12345678",
+                            serviceDurationSeconds: 5383547431771835000,
                             serviceLocation: {
-                                addressId: "addressId",
+                                addressId: "12345678",
                                 customAddress: {
-                                    addressLine1: "addressLine1",
-                                    addressLine2: "addressLine2",
-                                    city: "city",
-                                    country: "country",
-                                    formattedAddress: "formattedAddress",
-                                    latitude: 1.1,
-                                    longitude: 1.1,
-                                    postalCode: "postalCode",
-                                    state: "state",
+                                    addressLine1: "123 Main St",
+                                    addressLine2: "Dock 4",
+                                    city: "Oakland",
+                                    country: "US",
+                                    formattedAddress: "123 Main St, Oakland, CA 94607",
+                                    latitude: 0.17951671081016027,
+                                    longitude: 0.7662845147315845,
+                                    postalCode: "94607",
+                                    state: "CA",
                                 },
                                 serviceLocationType: "unknown",
                             },
                             serviceWindows: [
-                                { endTime: "2024-01-15T09:30:00Z", id: "id", startTime: "2024-01-15T09:30:00Z" },
-                                { endTime: "2024-01-15T09:30:00Z", id: "id", startTime: "2024-01-15T09:30:00Z" },
-                            ],
-                            taskType: "unknown",
-                            updatedAtTime: "2024-01-15T09:30:00Z",
-                        },
-                        {
-                            createdAtTime: "2024-01-15T09:30:00Z",
-                            customerProperties: [
-                                { key: "key", value: "value" },
-                                { key: "key", value: "value" },
-                            ],
-                            dispatcherNotes: "dispatcherNotes",
-                            driverNotes: "driverNotes",
-                            hubId: "hubId",
-                            id: "id",
-                            positionConstraintType: "unknown",
-                            quantities: [
-                                { capacityId: "capacityId", id: "id", label: "label", value: 1.1 },
-                                { capacityId: "capacityId", id: "id", label: "label", value: 1.1 },
-                            ],
-                            routeId: "routeId",
-                            serviceDurationSeconds: 1000000,
-                            serviceLocation: {
-                                addressId: "addressId",
-                                customAddress: {
-                                    addressLine1: "addressLine1",
-                                    addressLine2: "addressLine2",
-                                    city: "city",
-                                    country: "country",
-                                    formattedAddress: "formattedAddress",
-                                    latitude: 1.1,
-                                    longitude: 1.1,
-                                    postalCode: "postalCode",
-                                    state: "state",
+                                {
+                                    endTime: "1985-04-25T22:02:51Z",
+                                    id: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392",
+                                    startTime: "1977-05-21T10:40:21Z",
                                 },
-                                serviceLocationType: "unknown",
-                            },
-                            serviceWindows: [
-                                { endTime: "2024-01-15T09:30:00Z", id: "id", startTime: "2024-01-15T09:30:00Z" },
-                                { endTime: "2024-01-15T09:30:00Z", id: "id", startTime: "2024-01-15T09:30:00Z" },
                             ],
                             taskType: "unknown",
-                            updatedAtTime: "2024-01-15T09:30:00Z",
+                            updatedAtTime: "1989-01-02T14:22:45Z",
                         },
                     ],
-                    updatedAtTime: "2024-01-15T09:30:00Z",
-                },
-                {
-                    createdAtTime: "2024-01-15T09:30:00Z",
-                    customerProperties: [
-                        { key: "key", value: "value" },
-                        { key: "key", value: "value" },
-                    ],
-                    externalIds: {},
-                    id: "id",
-                    samsaraCustomerOrderName: "samsaraCustomerOrderName",
-                    tasks: [
-                        {
-                            createdAtTime: "2024-01-15T09:30:00Z",
-                            customerProperties: [
-                                { key: "key", value: "value" },
-                                { key: "key", value: "value" },
-                            ],
-                            dispatcherNotes: "dispatcherNotes",
-                            driverNotes: "driverNotes",
-                            hubId: "hubId",
-                            id: "id",
-                            positionConstraintType: "unknown",
-                            quantities: [
-                                { capacityId: "capacityId", id: "id", label: "label", value: 1.1 },
-                                { capacityId: "capacityId", id: "id", label: "label", value: 1.1 },
-                            ],
-                            routeId: "routeId",
-                            serviceDurationSeconds: 1000000,
-                            serviceLocation: {
-                                addressId: "addressId",
-                                customAddress: {
-                                    addressLine1: "addressLine1",
-                                    addressLine2: "addressLine2",
-                                    city: "city",
-                                    country: "country",
-                                    formattedAddress: "formattedAddress",
-                                    latitude: 1.1,
-                                    longitude: 1.1,
-                                    postalCode: "postalCode",
-                                    state: "state",
-                                },
-                                serviceLocationType: "unknown",
-                            },
-                            serviceWindows: [
-                                { endTime: "2024-01-15T09:30:00Z", id: "id", startTime: "2024-01-15T09:30:00Z" },
-                                { endTime: "2024-01-15T09:30:00Z", id: "id", startTime: "2024-01-15T09:30:00Z" },
-                            ],
-                            taskType: "unknown",
-                            updatedAtTime: "2024-01-15T09:30:00Z",
-                        },
-                        {
-                            createdAtTime: "2024-01-15T09:30:00Z",
-                            customerProperties: [
-                                { key: "key", value: "value" },
-                                { key: "key", value: "value" },
-                            ],
-                            dispatcherNotes: "dispatcherNotes",
-                            driverNotes: "driverNotes",
-                            hubId: "hubId",
-                            id: "id",
-                            positionConstraintType: "unknown",
-                            quantities: [
-                                { capacityId: "capacityId", id: "id", label: "label", value: 1.1 },
-                                { capacityId: "capacityId", id: "id", label: "label", value: 1.1 },
-                            ],
-                            routeId: "routeId",
-                            serviceDurationSeconds: 1000000,
-                            serviceLocation: {
-                                addressId: "addressId",
-                                customAddress: {
-                                    addressLine1: "addressLine1",
-                                    addressLine2: "addressLine2",
-                                    city: "city",
-                                    country: "country",
-                                    formattedAddress: "formattedAddress",
-                                    latitude: 1.1,
-                                    longitude: 1.1,
-                                    postalCode: "postalCode",
-                                    state: "state",
-                                },
-                                serviceLocationType: "unknown",
-                            },
-                            serviceWindows: [
-                                { endTime: "2024-01-15T09:30:00Z", id: "id", startTime: "2024-01-15T09:30:00Z" },
-                                { endTime: "2024-01-15T09:30:00Z", id: "id", startTime: "2024-01-15T09:30:00Z" },
-                            ],
-                            taskType: "unknown",
-                            updatedAtTime: "2024-01-15T09:30:00Z",
-                        },
-                    ],
-                    updatedAtTime: "2024-01-15T09:30:00Z",
+                    updatedAtTime: "1994-05-17T11:50:16Z",
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .get("/preview/fleet/orders")
@@ -500,301 +377,10 @@ describe("PreviewApIsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.previewApIs.getOrders();
-        expect(response).toEqual({
-            data: [
-                {
-                    createdAtTime: "2024-01-15T09:30:00Z",
-                    customerProperties: [
-                        {
-                            key: "key",
-                            value: "value",
-                        },
-                        {
-                            key: "key",
-                            value: "value",
-                        },
-                    ],
-                    externalIds: {},
-                    id: "id",
-                    samsaraCustomerOrderName: "samsaraCustomerOrderName",
-                    tasks: [
-                        {
-                            createdAtTime: "2024-01-15T09:30:00Z",
-                            customerProperties: [
-                                {
-                                    key: "key",
-                                    value: "value",
-                                },
-                                {
-                                    key: "key",
-                                    value: "value",
-                                },
-                            ],
-                            dispatcherNotes: "dispatcherNotes",
-                            driverNotes: "driverNotes",
-                            hubId: "hubId",
-                            id: "id",
-                            positionConstraintType: "unknown",
-                            quantities: [
-                                {
-                                    capacityId: "capacityId",
-                                    id: "id",
-                                    label: "label",
-                                    value: 1.1,
-                                },
-                                {
-                                    capacityId: "capacityId",
-                                    id: "id",
-                                    label: "label",
-                                    value: 1.1,
-                                },
-                            ],
-                            routeId: "routeId",
-                            serviceDurationSeconds: 1000000,
-                            serviceLocation: {
-                                addressId: "addressId",
-                                customAddress: {
-                                    addressLine1: "addressLine1",
-                                    addressLine2: "addressLine2",
-                                    city: "city",
-                                    country: "country",
-                                    formattedAddress: "formattedAddress",
-                                    latitude: 1.1,
-                                    longitude: 1.1,
-                                    postalCode: "postalCode",
-                                    state: "state",
-                                },
-                                serviceLocationType: "unknown",
-                            },
-                            serviceWindows: [
-                                {
-                                    endTime: "2024-01-15T09:30:00Z",
-                                    id: "id",
-                                    startTime: "2024-01-15T09:30:00Z",
-                                },
-                                {
-                                    endTime: "2024-01-15T09:30:00Z",
-                                    id: "id",
-                                    startTime: "2024-01-15T09:30:00Z",
-                                },
-                            ],
-                            taskType: "unknown",
-                            updatedAtTime: "2024-01-15T09:30:00Z",
-                        },
-                        {
-                            createdAtTime: "2024-01-15T09:30:00Z",
-                            customerProperties: [
-                                {
-                                    key: "key",
-                                    value: "value",
-                                },
-                                {
-                                    key: "key",
-                                    value: "value",
-                                },
-                            ],
-                            dispatcherNotes: "dispatcherNotes",
-                            driverNotes: "driverNotes",
-                            hubId: "hubId",
-                            id: "id",
-                            positionConstraintType: "unknown",
-                            quantities: [
-                                {
-                                    capacityId: "capacityId",
-                                    id: "id",
-                                    label: "label",
-                                    value: 1.1,
-                                },
-                                {
-                                    capacityId: "capacityId",
-                                    id: "id",
-                                    label: "label",
-                                    value: 1.1,
-                                },
-                            ],
-                            routeId: "routeId",
-                            serviceDurationSeconds: 1000000,
-                            serviceLocation: {
-                                addressId: "addressId",
-                                customAddress: {
-                                    addressLine1: "addressLine1",
-                                    addressLine2: "addressLine2",
-                                    city: "city",
-                                    country: "country",
-                                    formattedAddress: "formattedAddress",
-                                    latitude: 1.1,
-                                    longitude: 1.1,
-                                    postalCode: "postalCode",
-                                    state: "state",
-                                },
-                                serviceLocationType: "unknown",
-                            },
-                            serviceWindows: [
-                                {
-                                    endTime: "2024-01-15T09:30:00Z",
-                                    id: "id",
-                                    startTime: "2024-01-15T09:30:00Z",
-                                },
-                                {
-                                    endTime: "2024-01-15T09:30:00Z",
-                                    id: "id",
-                                    startTime: "2024-01-15T09:30:00Z",
-                                },
-                            ],
-                            taskType: "unknown",
-                            updatedAtTime: "2024-01-15T09:30:00Z",
-                        },
-                    ],
-                    updatedAtTime: "2024-01-15T09:30:00Z",
-                },
-                {
-                    createdAtTime: "2024-01-15T09:30:00Z",
-                    customerProperties: [
-                        {
-                            key: "key",
-                            value: "value",
-                        },
-                        {
-                            key: "key",
-                            value: "value",
-                        },
-                    ],
-                    externalIds: {},
-                    id: "id",
-                    samsaraCustomerOrderName: "samsaraCustomerOrderName",
-                    tasks: [
-                        {
-                            createdAtTime: "2024-01-15T09:30:00Z",
-                            customerProperties: [
-                                {
-                                    key: "key",
-                                    value: "value",
-                                },
-                                {
-                                    key: "key",
-                                    value: "value",
-                                },
-                            ],
-                            dispatcherNotes: "dispatcherNotes",
-                            driverNotes: "driverNotes",
-                            hubId: "hubId",
-                            id: "id",
-                            positionConstraintType: "unknown",
-                            quantities: [
-                                {
-                                    capacityId: "capacityId",
-                                    id: "id",
-                                    label: "label",
-                                    value: 1.1,
-                                },
-                                {
-                                    capacityId: "capacityId",
-                                    id: "id",
-                                    label: "label",
-                                    value: 1.1,
-                                },
-                            ],
-                            routeId: "routeId",
-                            serviceDurationSeconds: 1000000,
-                            serviceLocation: {
-                                addressId: "addressId",
-                                customAddress: {
-                                    addressLine1: "addressLine1",
-                                    addressLine2: "addressLine2",
-                                    city: "city",
-                                    country: "country",
-                                    formattedAddress: "formattedAddress",
-                                    latitude: 1.1,
-                                    longitude: 1.1,
-                                    postalCode: "postalCode",
-                                    state: "state",
-                                },
-                                serviceLocationType: "unknown",
-                            },
-                            serviceWindows: [
-                                {
-                                    endTime: "2024-01-15T09:30:00Z",
-                                    id: "id",
-                                    startTime: "2024-01-15T09:30:00Z",
-                                },
-                                {
-                                    endTime: "2024-01-15T09:30:00Z",
-                                    id: "id",
-                                    startTime: "2024-01-15T09:30:00Z",
-                                },
-                            ],
-                            taskType: "unknown",
-                            updatedAtTime: "2024-01-15T09:30:00Z",
-                        },
-                        {
-                            createdAtTime: "2024-01-15T09:30:00Z",
-                            customerProperties: [
-                                {
-                                    key: "key",
-                                    value: "value",
-                                },
-                                {
-                                    key: "key",
-                                    value: "value",
-                                },
-                            ],
-                            dispatcherNotes: "dispatcherNotes",
-                            driverNotes: "driverNotes",
-                            hubId: "hubId",
-                            id: "id",
-                            positionConstraintType: "unknown",
-                            quantities: [
-                                {
-                                    capacityId: "capacityId",
-                                    id: "id",
-                                    label: "label",
-                                    value: 1.1,
-                                },
-                                {
-                                    capacityId: "capacityId",
-                                    id: "id",
-                                    label: "label",
-                                    value: 1.1,
-                                },
-                            ],
-                            routeId: "routeId",
-                            serviceDurationSeconds: 1000000,
-                            serviceLocation: {
-                                addressId: "addressId",
-                                customAddress: {
-                                    addressLine1: "addressLine1",
-                                    addressLine2: "addressLine2",
-                                    city: "city",
-                                    country: "country",
-                                    formattedAddress: "formattedAddress",
-                                    latitude: 1.1,
-                                    longitude: 1.1,
-                                    postalCode: "postalCode",
-                                    state: "state",
-                                },
-                                serviceLocationType: "unknown",
-                            },
-                            serviceWindows: [
-                                {
-                                    endTime: "2024-01-15T09:30:00Z",
-                                    id: "id",
-                                    startTime: "2024-01-15T09:30:00Z",
-                                },
-                                {
-                                    endTime: "2024-01-15T09:30:00Z",
-                                    id: "id",
-                                    startTime: "2024-01-15T09:30:00Z",
-                                },
-                            ],
-                            taskType: "unknown",
-                            updatedAtTime: "2024-01-15T09:30:00Z",
-                        },
-                    ],
-                    updatedAtTime: "2024-01-15T09:30:00Z",
-                },
-            ],
+        const response = await client.previewApIs.getOrders({
+            orderIds: ["orderIds"],
         });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getOrders (2)", async () => {
@@ -807,6 +393,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/preview/fleet/orders")
@@ -830,6 +417,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/preview/fleet/orders")
@@ -853,6 +441,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/preview/fleet/orders")
@@ -876,6 +465,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/preview/fleet/orders")
@@ -899,6 +489,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/preview/fleet/orders")
@@ -922,6 +513,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/preview/fleet/orders")
@@ -945,6 +537,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/preview/fleet/orders")
@@ -968,6 +561,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/preview/fleet/orders")
@@ -991,6 +585,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/preview/fleet/orders")
@@ -1014,6 +609,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/preview/fleet/orders")
@@ -1054,6 +650,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/preview/fleet/orders")
@@ -1079,6 +676,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/preview/fleet/orders")
@@ -1104,6 +702,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/preview/fleet/orders")
@@ -1129,6 +728,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/preview/fleet/orders")
@@ -1154,6 +754,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/preview/fleet/orders")
@@ -1179,6 +780,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/preview/fleet/orders")
@@ -1204,6 +806,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/preview/fleet/orders")
@@ -1229,6 +832,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/preview/fleet/orders")
@@ -1254,6 +858,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/preview/fleet/orders")
@@ -1279,6 +884,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/preview/fleet/orders")
@@ -1308,13 +914,13 @@ describe("PreviewApIsClient", () => {
             responses: [
                 {
                     data: {
-                        createdAtTime: "1990-08-31T23:49:19Z",
+                        createdAtTime: "1991-03-10T05:05:44Z",
                         customerProperties: [{ key: "purchaseOrderNumber", value: "PO-12345" }],
                         id: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392",
                         samsaraCustomerOrderName: "Order 12345",
                         tasks: [
                             {
-                                createdAtTime: "1977-01-10T23:36:08Z",
+                                createdAtTime: "1978-04-10T10:12:48Z",
                                 customerProperties: [{ key: "purchaseOrderNumber", value: "PO-12345" }],
                                 dispatcherNotes: "Customer requires lift gate",
                                 driverNotes: "Use loading dock 4",
@@ -1326,29 +932,45 @@ describe("PreviewApIsClient", () => {
                                         capacityId: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392",
                                         id: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392",
                                         label: "pallets",
-                                        value: 0.23962707185822993,
+                                        value: 0.9093771758102452,
                                     },
                                 ],
                                 routeId: "12345678",
-                                serviceDurationSeconds: 1920015009061035500,
+                                serviceDurationSeconds: 5383547431771835000,
+                                serviceLocation: {
+                                    addressId: "12345678",
+                                    customAddress: {
+                                        addressLine1: "123 Main St",
+                                        addressLine2: "Dock 4",
+                                        city: "Oakland",
+                                        country: "US",
+                                        formattedAddress: "123 Main St, Oakland, CA 94607",
+                                        latitude: 0.17951671081016027,
+                                        longitude: 0.7662845147315845,
+                                        postalCode: "94607",
+                                        state: "CA",
+                                    },
+                                    serviceLocationType: "unknown",
+                                },
                                 serviceWindows: [
                                     {
-                                        endTime: "1975-07-07T21:36:20Z",
+                                        endTime: "1985-04-25T22:02:51Z",
                                         id: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392",
-                                        startTime: "1975-02-20T04:43:33Z",
+                                        startTime: "1977-05-21T10:40:21Z",
                                     },
                                 ],
                                 taskType: "unknown",
-                                updatedAtTime: "2014-02-20T05:13:14Z",
+                                updatedAtTime: "1989-01-02T14:22:45Z",
                             },
                         ],
-                        updatedAtTime: "2003-10-18T15:58:15Z",
+                        updatedAtTime: "1994-05-17T11:50:16Z",
                     },
                     message: "data[0].tasks[0].taskType is invalid",
-                    status: 7796043317718989000,
+                    status: 3501619759319876600,
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .post("/preview/fleet/orders/batch")
@@ -1361,62 +983,7 @@ describe("PreviewApIsClient", () => {
         const response = await client.previewApIs.postOrdersBatch({
             data: [{}],
         });
-        expect(response).toEqual({
-            requestId: "1f7f5081-9f8e-4b68-8b85-97dbe4b46d7e",
-            responses: [
-                {
-                    data: {
-                        createdAtTime: "1990-08-31T23:49:19Z",
-                        customerProperties: [
-                            {
-                                key: "purchaseOrderNumber",
-                                value: "PO-12345",
-                            },
-                        ],
-                        id: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392",
-                        samsaraCustomerOrderName: "Order 12345",
-                        tasks: [
-                            {
-                                createdAtTime: "1977-01-10T23:36:08Z",
-                                customerProperties: [
-                                    {
-                                        key: "purchaseOrderNumber",
-                                        value: "PO-12345",
-                                    },
-                                ],
-                                dispatcherNotes: "Customer requires lift gate",
-                                driverNotes: "Use loading dock 4",
-                                hubId: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392",
-                                id: "12345678",
-                                positionConstraintType: "unknown",
-                                quantities: [
-                                    {
-                                        capacityId: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392",
-                                        id: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392",
-                                        label: "pallets",
-                                        value: 0.23962707185822993,
-                                    },
-                                ],
-                                routeId: "12345678",
-                                serviceDurationSeconds: 1920015009061035500,
-                                serviceWindows: [
-                                    {
-                                        endTime: "1975-07-07T21:36:20Z",
-                                        id: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392",
-                                        startTime: "1975-02-20T04:43:33Z",
-                                    },
-                                ],
-                                taskType: "unknown",
-                                updatedAtTime: "2014-02-20T05:13:14Z",
-                            },
-                        ],
-                        updatedAtTime: "2003-10-18T15:58:15Z",
-                    },
-                    message: "data[0].tasks[0].taskType is invalid",
-                    status: 7796043317718989000,
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("postOrdersBatch (2)", async () => {
@@ -1429,6 +996,7 @@ describe("PreviewApIsClient", () => {
         });
         const rawRequestBody = { data: [{}, {}] };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/preview/fleet/orders/batch")
@@ -1455,6 +1023,7 @@ describe("PreviewApIsClient", () => {
         });
         const rawRequestBody = { data: [{}, {}] };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/preview/fleet/orders/batch")
@@ -1481,6 +1050,7 @@ describe("PreviewApIsClient", () => {
         });
         const rawRequestBody = { data: [{}, {}] };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/preview/fleet/orders/batch")
@@ -1507,6 +1077,7 @@ describe("PreviewApIsClient", () => {
         });
         const rawRequestBody = { data: [{}, {}] };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/preview/fleet/orders/batch")
@@ -1533,6 +1104,7 @@ describe("PreviewApIsClient", () => {
         });
         const rawRequestBody = { data: [{}, {}] };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/preview/fleet/orders/batch")
@@ -1559,6 +1131,7 @@ describe("PreviewApIsClient", () => {
         });
         const rawRequestBody = { data: [{}, {}] };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/preview/fleet/orders/batch")
@@ -1585,6 +1158,7 @@ describe("PreviewApIsClient", () => {
         });
         const rawRequestBody = { data: [{}, {}] };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/preview/fleet/orders/batch")
@@ -1611,6 +1185,7 @@ describe("PreviewApIsClient", () => {
         });
         const rawRequestBody = { data: [{}, {}] };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/preview/fleet/orders/batch")
@@ -1637,6 +1212,7 @@ describe("PreviewApIsClient", () => {
         });
         const rawRequestBody = { data: [{}, {}] };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/preview/fleet/orders/batch")
@@ -1663,6 +1239,7 @@ describe("PreviewApIsClient", () => {
         });
         const rawRequestBody = { data: [{}, {}] };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/preview/fleet/orders/batch")
@@ -1689,9 +1266,10 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = {
-            data: [{ deletedAtTime: "1976-05-07T19:03:50Z", id: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392" }],
+            data: [{ deletedAtTime: "2002-10-15T00:19:39Z", id: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392" }],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/preview/fleet/orders/deletions")
@@ -1701,18 +1279,7 @@ describe("PreviewApIsClient", () => {
             .build();
 
         const response = await client.previewApIs.getOrderDeletions();
-        expect(response).toEqual({
-            data: [
-                {
-                    deletedAtTime: "1976-05-07T19:03:50Z",
-                    id: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392",
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getOrderDeletions (2)", async () => {
@@ -1725,6 +1292,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/preview/fleet/orders/deletions")
@@ -1748,6 +1316,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/preview/fleet/orders/deletions")
@@ -1771,6 +1340,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/preview/fleet/orders/deletions")
@@ -1794,6 +1364,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/preview/fleet/orders/deletions")
@@ -1817,6 +1388,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/preview/fleet/orders/deletions")
@@ -1840,6 +1412,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/preview/fleet/orders/deletions")
@@ -1863,6 +1436,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/preview/fleet/orders/deletions")
@@ -1886,6 +1460,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/preview/fleet/orders/deletions")
@@ -1909,6 +1484,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/preview/fleet/orders/deletions")
@@ -1932,6 +1508,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/preview/fleet/orders/deletions")
@@ -1957,13 +1534,13 @@ describe("PreviewApIsClient", () => {
         const rawResponseBody = {
             data: [
                 {
-                    createdAtTime: "1990-08-31T23:49:19Z",
+                    createdAtTime: "1991-03-10T05:05:44Z",
                     customerProperties: [{ key: "purchaseOrderNumber", value: "PO-12345" }],
                     id: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392",
                     samsaraCustomerOrderName: "Order 12345",
                     tasks: [
                         {
-                            createdAtTime: "1977-01-10T23:36:08Z",
+                            createdAtTime: "1978-04-10T10:12:48Z",
                             customerProperties: [{ key: "purchaseOrderNumber", value: "PO-12345" }],
                             dispatcherNotes: "Customer requires lift gate",
                             driverNotes: "Use loading dock 4",
@@ -1975,27 +1552,43 @@ describe("PreviewApIsClient", () => {
                                     capacityId: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392",
                                     id: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392",
                                     label: "pallets",
-                                    value: 0.23962707185822993,
+                                    value: 0.9093771758102452,
                                 },
                             ],
                             routeId: "12345678",
-                            serviceDurationSeconds: 1920015009061035500,
+                            serviceDurationSeconds: 5383547431771835000,
+                            serviceLocation: {
+                                addressId: "12345678",
+                                customAddress: {
+                                    addressLine1: "123 Main St",
+                                    addressLine2: "Dock 4",
+                                    city: "Oakland",
+                                    country: "US",
+                                    formattedAddress: "123 Main St, Oakland, CA 94607",
+                                    latitude: 0.17951671081016027,
+                                    longitude: 0.7662845147315845,
+                                    postalCode: "94607",
+                                    state: "CA",
+                                },
+                                serviceLocationType: "unknown",
+                            },
                             serviceWindows: [
                                 {
-                                    endTime: "1975-07-07T21:36:20Z",
+                                    endTime: "1985-04-25T22:02:51Z",
                                     id: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392",
-                                    startTime: "1975-02-20T04:43:33Z",
+                                    startTime: "1977-05-21T10:40:21Z",
                                 },
                             ],
                             taskType: "unknown",
-                            updatedAtTime: "2014-02-20T05:13:14Z",
+                            updatedAtTime: "1989-01-02T14:22:45Z",
                         },
                     ],
-                    updatedAtTime: "2003-10-18T15:58:15Z",
+                    updatedAtTime: "1994-05-17T11:50:16Z",
                 },
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/preview/fleet/orders/stream")
@@ -2007,61 +1600,7 @@ describe("PreviewApIsClient", () => {
         const response = await client.previewApIs.getOrdersStream({
             startTime: "2024-01-15T09:30:00Z",
         });
-        expect(response).toEqual({
-            data: [
-                {
-                    createdAtTime: "1990-08-31T23:49:19Z",
-                    customerProperties: [
-                        {
-                            key: "purchaseOrderNumber",
-                            value: "PO-12345",
-                        },
-                    ],
-                    id: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392",
-                    samsaraCustomerOrderName: "Order 12345",
-                    tasks: [
-                        {
-                            createdAtTime: "1977-01-10T23:36:08Z",
-                            customerProperties: [
-                                {
-                                    key: "purchaseOrderNumber",
-                                    value: "PO-12345",
-                                },
-                            ],
-                            dispatcherNotes: "Customer requires lift gate",
-                            driverNotes: "Use loading dock 4",
-                            hubId: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392",
-                            id: "12345678",
-                            positionConstraintType: "unknown",
-                            quantities: [
-                                {
-                                    capacityId: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392",
-                                    id: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392",
-                                    label: "pallets",
-                                    value: 0.23962707185822993,
-                                },
-                            ],
-                            routeId: "12345678",
-                            serviceDurationSeconds: 1920015009061035500,
-                            serviceWindows: [
-                                {
-                                    endTime: "1975-07-07T21:36:20Z",
-                                    id: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392",
-                                    startTime: "1975-02-20T04:43:33Z",
-                                },
-                            ],
-                            taskType: "unknown",
-                            updatedAtTime: "2014-02-20T05:13:14Z",
-                        },
-                    ],
-                    updatedAtTime: "2003-10-18T15:58:15Z",
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getOrdersStream (2)", async () => {
@@ -2074,6 +1613,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/preview/fleet/orders/stream")
@@ -2099,6 +1639,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/preview/fleet/orders/stream")
@@ -2124,6 +1665,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/preview/fleet/orders/stream")
@@ -2149,6 +1691,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/preview/fleet/orders/stream")
@@ -2174,6 +1717,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/preview/fleet/orders/stream")
@@ -2199,6 +1743,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/preview/fleet/orders/stream")
@@ -2224,6 +1769,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/preview/fleet/orders/stream")
@@ -2249,6 +1795,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/preview/fleet/orders/stream")
@@ -2274,6 +1821,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/preview/fleet/orders/stream")
@@ -2299,6 +1847,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/preview/fleet/orders/stream")
@@ -2341,6 +1890,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/preview/fleet/vehicles/id/lock")
@@ -2366,6 +1916,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/preview/fleet/vehicles/id/lock")
@@ -2391,6 +1942,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/preview/fleet/vehicles/id/lock")
@@ -2416,6 +1968,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/preview/fleet/vehicles/id/lock")
@@ -2441,6 +1994,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/preview/fleet/vehicles/id/lock")
@@ -2466,6 +2020,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/preview/fleet/vehicles/id/lock")
@@ -2491,6 +2046,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/preview/fleet/vehicles/id/lock")
@@ -2516,6 +2072,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/preview/fleet/vehicles/id/lock")
@@ -2541,6 +2098,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/preview/fleet/vehicles/id/lock")
@@ -2566,6 +2124,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/preview/fleet/vehicles/id/lock")
@@ -2608,6 +2167,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/preview/fleet/vehicles/id/lock")
@@ -2633,6 +2193,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/preview/fleet/vehicles/id/lock")
@@ -2658,6 +2219,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/preview/fleet/vehicles/id/lock")
@@ -2683,6 +2245,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/preview/fleet/vehicles/id/lock")
@@ -2708,6 +2271,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/preview/fleet/vehicles/id/lock")
@@ -2733,6 +2297,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/preview/fleet/vehicles/id/lock")
@@ -2758,6 +2323,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/preview/fleet/vehicles/id/lock")
@@ -2783,6 +2349,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/preview/fleet/vehicles/id/lock")
@@ -2808,6 +2375,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/preview/fleet/vehicles/id/lock")
@@ -2833,6 +2401,7 @@ describe("PreviewApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/preview/fleet/vehicles/id/lock")

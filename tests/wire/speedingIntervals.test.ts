@@ -17,122 +17,42 @@ describe("SpeedingIntervalsClient", () => {
         const rawResponseBody = {
             data: [
                 {
-                    asset: { id: "id", name: "name", type: "uncategorized", vin: "vin" },
-                    createdAtTime: "createdAtTime",
-                    driverId: "driverId",
+                    asset: { id: "12345", name: "MyAsset-1234", vin: "1GBJ6P1B2HV112765" },
+                    createdAtTime: "2023-01-27T07:06:25Z",
+                    driverId: "12345",
                     intervals: [
                         {
-                            endTime: "endTime",
+                            endTime: "2023-01-27T07:06:25Z",
                             isDismissed: true,
                             location: {
-                                accuracyMeters: 1.1,
+                                accuracyMeters: 5.801,
                                 address: {
-                                    city: "city",
-                                    country: "country",
-                                    neighborhood: "neighborhood",
-                                    pointOfInterest: "pointOfInterest",
-                                    postalCode: "postalCode",
-                                    state: "state",
-                                    street: "street",
-                                    streetNumber: "streetNumber",
+                                    city: "New York",
+                                    country: "USA",
+                                    neighborhood: "Mission District",
+                                    pointOfInterest: "The Eiffel Tower",
+                                    postalCode: "10010",
+                                    state: "New York",
+                                    street: "Main Street",
+                                    streetNumber: "16",
                                 },
-                                headingDegrees: 1000000,
-                                latitude: 1.1,
-                                longitude: 1.1,
+                                headingDegrees: 120,
+                                latitude: 37.7749,
+                                longitude: 137.2719,
                             },
-                            maxSpeedKilometersPerHour: 1.1,
-                            postedSpeedLimitKilometersPerHour: 1.1,
+                            maxSpeedKilometersPerHour: 65,
+                            postedSpeedLimitKilometersPerHour: 75,
                             severityLevel: "light",
-                            startTime: "startTime",
-                        },
-                        {
-                            endTime: "endTime",
-                            isDismissed: true,
-                            location: {
-                                accuracyMeters: 1.1,
-                                address: {
-                                    city: "city",
-                                    country: "country",
-                                    neighborhood: "neighborhood",
-                                    pointOfInterest: "pointOfInterest",
-                                    postalCode: "postalCode",
-                                    state: "state",
-                                    street: "street",
-                                    streetNumber: "streetNumber",
-                                },
-                                headingDegrees: 1000000,
-                                latitude: 1.1,
-                                longitude: 1.1,
-                            },
-                            maxSpeedKilometersPerHour: 1.1,
-                            postedSpeedLimitKilometersPerHour: 1.1,
-                            severityLevel: "light",
-                            startTime: "startTime",
+                            startTime: "2023-01-27T07:06:25Z",
                         },
                     ],
-                    tripStartTime: "tripStartTime",
-                    updatedAtTime: "updatedAtTime",
-                },
-                {
-                    asset: { id: "id", name: "name", type: "uncategorized", vin: "vin" },
-                    createdAtTime: "createdAtTime",
-                    driverId: "driverId",
-                    intervals: [
-                        {
-                            endTime: "endTime",
-                            isDismissed: true,
-                            location: {
-                                accuracyMeters: 1.1,
-                                address: {
-                                    city: "city",
-                                    country: "country",
-                                    neighborhood: "neighborhood",
-                                    pointOfInterest: "pointOfInterest",
-                                    postalCode: "postalCode",
-                                    state: "state",
-                                    street: "street",
-                                    streetNumber: "streetNumber",
-                                },
-                                headingDegrees: 1000000,
-                                latitude: 1.1,
-                                longitude: 1.1,
-                            },
-                            maxSpeedKilometersPerHour: 1.1,
-                            postedSpeedLimitKilometersPerHour: 1.1,
-                            severityLevel: "light",
-                            startTime: "startTime",
-                        },
-                        {
-                            endTime: "endTime",
-                            isDismissed: true,
-                            location: {
-                                accuracyMeters: 1.1,
-                                address: {
-                                    city: "city",
-                                    country: "country",
-                                    neighborhood: "neighborhood",
-                                    pointOfInterest: "pointOfInterest",
-                                    postalCode: "postalCode",
-                                    state: "state",
-                                    street: "street",
-                                    streetNumber: "streetNumber",
-                                },
-                                headingDegrees: 1000000,
-                                latitude: 1.1,
-                                longitude: 1.1,
-                            },
-                            maxSpeedKilometersPerHour: 1.1,
-                            postedSpeedLimitKilometersPerHour: 1.1,
-                            severityLevel: "light",
-                            startTime: "startTime",
-                        },
-                    ],
-                    tripStartTime: "tripStartTime",
-                    updatedAtTime: "updatedAtTime",
+                    tripStartTime: "2023-01-27T07:06:25Z",
+                    updatedAtTime: "2023-01-27T10:04:20Z",
                 },
             ],
-            pagination: { endCursor: "endCursor", hasNextPage: true },
+            pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/speeding-intervals/stream")
@@ -142,140 +62,10 @@ describe("SpeedingIntervalsClient", () => {
             .build();
 
         const response = await client.speedingIntervals.getSpeedingIntervals({
+            assetIds: ["assetIds"],
             startTime: "startTime",
         });
-        expect(response).toEqual({
-            data: [
-                {
-                    asset: {
-                        id: "id",
-                        name: "name",
-                        type: "uncategorized",
-                        vin: "vin",
-                    },
-                    createdAtTime: "createdAtTime",
-                    driverId: "driverId",
-                    intervals: [
-                        {
-                            endTime: "endTime",
-                            isDismissed: true,
-                            location: {
-                                accuracyMeters: 1.1,
-                                address: {
-                                    city: "city",
-                                    country: "country",
-                                    neighborhood: "neighborhood",
-                                    pointOfInterest: "pointOfInterest",
-                                    postalCode: "postalCode",
-                                    state: "state",
-                                    street: "street",
-                                    streetNumber: "streetNumber",
-                                },
-                                headingDegrees: 1000000,
-                                latitude: 1.1,
-                                longitude: 1.1,
-                            },
-                            maxSpeedKilometersPerHour: 1.1,
-                            postedSpeedLimitKilometersPerHour: 1.1,
-                            severityLevel: "light",
-                            startTime: "startTime",
-                        },
-                        {
-                            endTime: "endTime",
-                            isDismissed: true,
-                            location: {
-                                accuracyMeters: 1.1,
-                                address: {
-                                    city: "city",
-                                    country: "country",
-                                    neighborhood: "neighborhood",
-                                    pointOfInterest: "pointOfInterest",
-                                    postalCode: "postalCode",
-                                    state: "state",
-                                    street: "street",
-                                    streetNumber: "streetNumber",
-                                },
-                                headingDegrees: 1000000,
-                                latitude: 1.1,
-                                longitude: 1.1,
-                            },
-                            maxSpeedKilometersPerHour: 1.1,
-                            postedSpeedLimitKilometersPerHour: 1.1,
-                            severityLevel: "light",
-                            startTime: "startTime",
-                        },
-                    ],
-                    tripStartTime: "tripStartTime",
-                    updatedAtTime: "updatedAtTime",
-                },
-                {
-                    asset: {
-                        id: "id",
-                        name: "name",
-                        type: "uncategorized",
-                        vin: "vin",
-                    },
-                    createdAtTime: "createdAtTime",
-                    driverId: "driverId",
-                    intervals: [
-                        {
-                            endTime: "endTime",
-                            isDismissed: true,
-                            location: {
-                                accuracyMeters: 1.1,
-                                address: {
-                                    city: "city",
-                                    country: "country",
-                                    neighborhood: "neighborhood",
-                                    pointOfInterest: "pointOfInterest",
-                                    postalCode: "postalCode",
-                                    state: "state",
-                                    street: "street",
-                                    streetNumber: "streetNumber",
-                                },
-                                headingDegrees: 1000000,
-                                latitude: 1.1,
-                                longitude: 1.1,
-                            },
-                            maxSpeedKilometersPerHour: 1.1,
-                            postedSpeedLimitKilometersPerHour: 1.1,
-                            severityLevel: "light",
-                            startTime: "startTime",
-                        },
-                        {
-                            endTime: "endTime",
-                            isDismissed: true,
-                            location: {
-                                accuracyMeters: 1.1,
-                                address: {
-                                    city: "city",
-                                    country: "country",
-                                    neighborhood: "neighborhood",
-                                    pointOfInterest: "pointOfInterest",
-                                    postalCode: "postalCode",
-                                    state: "state",
-                                    street: "street",
-                                    streetNumber: "streetNumber",
-                                },
-                                headingDegrees: 1000000,
-                                latitude: 1.1,
-                                longitude: 1.1,
-                            },
-                            maxSpeedKilometersPerHour: 1.1,
-                            postedSpeedLimitKilometersPerHour: 1.1,
-                            severityLevel: "light",
-                            startTime: "startTime",
-                        },
-                    ],
-                    tripStartTime: "tripStartTime",
-                    updatedAtTime: "updatedAtTime",
-                },
-            ],
-            pagination: {
-                endCursor: "endCursor",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getSpeedingIntervals (2)", async () => {
@@ -288,6 +78,7 @@ describe("SpeedingIntervalsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/speeding-intervals/stream")
@@ -313,6 +104,7 @@ describe("SpeedingIntervalsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/speeding-intervals/stream")
@@ -338,6 +130,7 @@ describe("SpeedingIntervalsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/speeding-intervals/stream")
@@ -363,6 +156,7 @@ describe("SpeedingIntervalsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/speeding-intervals/stream")
@@ -388,6 +182,7 @@ describe("SpeedingIntervalsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/speeding-intervals/stream")
@@ -413,6 +208,7 @@ describe("SpeedingIntervalsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/speeding-intervals/stream")
@@ -438,6 +234,7 @@ describe("SpeedingIntervalsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/speeding-intervals/stream")
@@ -463,6 +260,7 @@ describe("SpeedingIntervalsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/speeding-intervals/stream")
@@ -488,6 +286,7 @@ describe("SpeedingIntervalsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/speeding-intervals/stream")
@@ -513,6 +312,7 @@ describe("SpeedingIntervalsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/speeding-intervals/stream")

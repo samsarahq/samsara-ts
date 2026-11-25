@@ -49,7 +49,8 @@ export class TrainingAssignmentsClient {
      * @example
      *     await client.trainingAssignments.postTrainingAssignments({
      *         courseId: "courseId",
-     *         dueAtTime: "dueAtTime"
+     *         dueAtTime: "dueAtTime",
+     *         learnerIds: ["learnerIds"]
      *     })
      */
     public postTrainingAssignments(
@@ -85,7 +86,12 @@ export class TrainingAssignmentsClient {
             ),
             method: "POST",
             headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .add("learnerIds", _queryParams.learnerIds, { style: "comma" })
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -158,7 +164,9 @@ export class TrainingAssignmentsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.trainingAssignments.deleteTrainingAssignments()
+     *     await client.trainingAssignments.deleteTrainingAssignments({
+     *         ids: ["ids"]
+     *     })
      */
     public deleteTrainingAssignments(
         request: Samsara.DeleteTrainingAssignmentsRequest = {},
@@ -191,7 +199,12 @@ export class TrainingAssignmentsClient {
             ),
             method: "DELETE",
             headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .add("ids", _queryParams.ids, { style: "comma" })
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -262,6 +275,7 @@ export class TrainingAssignmentsClient {
      *
      * @example
      *     await client.trainingAssignments.patchTrainingAssignments({
+     *         ids: ["ids"],
      *         dueAtTime: "dueAtTime"
      *     })
      */
@@ -297,7 +311,12 @@ export class TrainingAssignmentsClient {
             ),
             method: "PATCH",
             headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .add("ids", _queryParams.ids, { style: "comma" })
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -412,7 +431,15 @@ export class TrainingAssignmentsClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .add("learnerIds", _queryParams.learnerIds, { style: "comma" })
+                .add("courseIds", _queryParams.courseIds, { style: "comma" })
+                .add("status", _queryParams.status, { style: "comma" })
+                .add("categoryIds", _queryParams.categoryIds, { style: "comma" })
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,

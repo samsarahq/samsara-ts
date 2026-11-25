@@ -28,6 +28,7 @@ describe("SettingsClient", () => {
                 persistentDutyStatusEnabled: false,
             },
         };
+
         server
             .mockEndpoint()
             .get("/fleet/settings/compliance")
@@ -37,20 +38,7 @@ describe("SettingsClient", () => {
             .build();
 
         const response = await client.settings.getComplianceSettings();
-        expect(response).toEqual({
-            data: {
-                allowUnregulatedVehiclesEnabled: false,
-                canadaHosEnabled: true,
-                carrierName: "ABC Trucking",
-                dotNumber: 12345678,
-                driverAutoDutyEnabled: false,
-                editCertifiedLogsEnabled: true,
-                forceManualLocationForDutyStatusChangesEnabled: true,
-                forceReviewUnassignedHosEnabled: false,
-                mainOfficeFormattedAddress: "123 Main Street",
-                persistentDutyStatusEnabled: false,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getComplianceSettings (2)", async () => {
@@ -63,6 +51,7 @@ describe("SettingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/settings/compliance")
@@ -86,6 +75,7 @@ describe("SettingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/settings/compliance")
@@ -109,6 +99,7 @@ describe("SettingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/settings/compliance")
@@ -132,6 +123,7 @@ describe("SettingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/settings/compliance")
@@ -155,6 +147,7 @@ describe("SettingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/settings/compliance")
@@ -178,6 +171,7 @@ describe("SettingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/settings/compliance")
@@ -201,6 +195,7 @@ describe("SettingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/settings/compliance")
@@ -224,6 +219,7 @@ describe("SettingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/settings/compliance")
@@ -247,6 +243,7 @@ describe("SettingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/settings/compliance")
@@ -270,6 +267,7 @@ describe("SettingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/settings/compliance")
@@ -306,6 +304,7 @@ describe("SettingsClient", () => {
                 persistentDutyStatusEnabled: false,
             },
         };
+
         server
             .mockEndpoint()
             .patch("/fleet/settings/compliance")
@@ -316,20 +315,7 @@ describe("SettingsClient", () => {
             .build();
 
         const response = await client.settings.patchComplianceSettings();
-        expect(response).toEqual({
-            data: {
-                allowUnregulatedVehiclesEnabled: false,
-                canadaHosEnabled: true,
-                carrierName: "ABC Trucking",
-                dotNumber: 12345678,
-                driverAutoDutyEnabled: false,
-                editCertifiedLogsEnabled: true,
-                forceManualLocationForDutyStatusChangesEnabled: true,
-                forceReviewUnassignedHosEnabled: false,
-                mainOfficeFormattedAddress: "123 Main Street",
-                persistentDutyStatusEnabled: false,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("patchComplianceSettings (2)", async () => {
@@ -342,6 +328,7 @@ describe("SettingsClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/fleet/settings/compliance")
@@ -366,6 +353,7 @@ describe("SettingsClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/fleet/settings/compliance")
@@ -390,6 +378,7 @@ describe("SettingsClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/fleet/settings/compliance")
@@ -414,6 +403,7 @@ describe("SettingsClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/fleet/settings/compliance")
@@ -438,6 +428,7 @@ describe("SettingsClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/fleet/settings/compliance")
@@ -462,6 +453,7 @@ describe("SettingsClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/fleet/settings/compliance")
@@ -486,6 +478,7 @@ describe("SettingsClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/fleet/settings/compliance")
@@ -510,6 +503,7 @@ describe("SettingsClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/fleet/settings/compliance")
@@ -534,6 +528,7 @@ describe("SettingsClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/fleet/settings/compliance")
@@ -558,6 +553,7 @@ describe("SettingsClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/fleet/settings/compliance")
@@ -595,6 +591,7 @@ describe("SettingsClient", () => {
                 },
             },
         };
+
         server
             .mockEndpoint()
             .get("/fleet/settings/driver-app")
@@ -604,22 +601,7 @@ describe("SettingsClient", () => {
             .build();
 
         const response = await client.settings.getDriverAppSettings();
-        expect(response).toEqual({
-            data: {
-                driverFleetId: "abc_trucking_co",
-                gamification: false,
-                gamificationConfig: {
-                    anonymizeDriverNames: true,
-                },
-                orgVehicleSearch: false,
-                trailerSelection: false,
-                trailerSelectionConfig: {
-                    driverTrailerCreationEnabled: true,
-                    maxNumOfTrailersSelected: 1000000,
-                    orgTrailerSearch: false,
-                },
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getDriverAppSettings (2)", async () => {
@@ -632,6 +614,7 @@ describe("SettingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/settings/driver-app")
@@ -655,6 +638,7 @@ describe("SettingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/settings/driver-app")
@@ -678,6 +662,7 @@ describe("SettingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/settings/driver-app")
@@ -701,6 +686,7 @@ describe("SettingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/settings/driver-app")
@@ -724,6 +710,7 @@ describe("SettingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/settings/driver-app")
@@ -747,6 +734,7 @@ describe("SettingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/settings/driver-app")
@@ -770,6 +758,7 @@ describe("SettingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/settings/driver-app")
@@ -793,6 +782,7 @@ describe("SettingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/settings/driver-app")
@@ -816,6 +806,7 @@ describe("SettingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/settings/driver-app")
@@ -839,6 +830,7 @@ describe("SettingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/settings/driver-app")
@@ -875,6 +867,7 @@ describe("SettingsClient", () => {
                 },
             },
         };
+
         server
             .mockEndpoint()
             .patch("/fleet/settings/driver-app")
@@ -885,22 +878,7 @@ describe("SettingsClient", () => {
             .build();
 
         const response = await client.settings.patchDriverAppSettings();
-        expect(response).toEqual({
-            data: {
-                driverFleetId: "abc_trucking_co",
-                gamification: false,
-                gamificationConfig: {
-                    anonymizeDriverNames: true,
-                },
-                orgVehicleSearch: false,
-                trailerSelection: false,
-                trailerSelectionConfig: {
-                    driverTrailerCreationEnabled: true,
-                    maxNumOfTrailersSelected: 1000000,
-                    orgTrailerSearch: false,
-                },
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("patchDriverAppSettings (2)", async () => {
@@ -913,6 +891,7 @@ describe("SettingsClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/fleet/settings/driver-app")
@@ -937,6 +916,7 @@ describe("SettingsClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/fleet/settings/driver-app")
@@ -961,6 +941,7 @@ describe("SettingsClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/fleet/settings/driver-app")
@@ -985,6 +966,7 @@ describe("SettingsClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/fleet/settings/driver-app")
@@ -1009,6 +991,7 @@ describe("SettingsClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/fleet/settings/driver-app")
@@ -1033,6 +1016,7 @@ describe("SettingsClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/fleet/settings/driver-app")
@@ -1057,6 +1041,7 @@ describe("SettingsClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/fleet/settings/driver-app")
@@ -1081,6 +1066,7 @@ describe("SettingsClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/fleet/settings/driver-app")
@@ -1105,6 +1091,7 @@ describe("SettingsClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/fleet/settings/driver-app")
@@ -1129,6 +1116,7 @@ describe("SettingsClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/fleet/settings/driver-app")
@@ -1156,7 +1144,19 @@ describe("SettingsClient", () => {
             data: [
                 {
                     defaultVehicleType: "off",
-                    distractedDrivingDetectionAlerts: { isEnabled: true },
+                    distractedDrivingDetectionAlerts: {
+                        inattentiveDrivingDetectionAlerts: {
+                            hasInCabAudioAlertsEnabled: true,
+                            isEnabled: true,
+                            speedingThresholdMph: 10,
+                        },
+                        isEnabled: true,
+                        mobileUsageDetectionAlerts: {
+                            hasInCabAudioAlertsEnabled: true,
+                            isEnabled: true,
+                            speedingThresholdMph: 5,
+                        },
+                    },
                     followingDistanceDetectionAlerts: {
                         durationMs: 15000,
                         hasInCabAudioAlertsEnabled: true,
@@ -1164,7 +1164,11 @@ describe("SettingsClient", () => {
                         speedingThresholdMph: 35,
                     },
                     forwardCollisionDetectionAlerts: { hasInCabAudioAlertsEnabled: true, isEnabled: true },
-                    harshEventSensitivity: {},
+                    harshEventSensitivity: {
+                        harshAccelSensitivityGForce: { heavyDuty: "0.29", lightDuty: "0.33", passenger: "0.43" },
+                        harshBrakeSensitivityGForce: { heavyDuty: "0.29", lightDuty: "0.33", passenger: "0.43" },
+                        harshTurnSensitivityGForce: { heavyDuty: "0.29", lightDuty: "0.33", passenger: "0.43" },
+                    },
                     harshEventSensitivityV2: {},
                     policyViolationsDetectionAlerts: {
                         eventsAvailableForTesting: ["smoking", "eatingDrinking"],
@@ -1220,6 +1224,7 @@ describe("SettingsClient", () => {
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .get("/fleet/settings/safety")
@@ -1229,87 +1234,7 @@ describe("SettingsClient", () => {
             .build();
 
         const response = await client.settings.getSafetySettings();
-        expect(response).toEqual({
-            data: [
-                {
-                    defaultVehicleType: "off",
-                    distractedDrivingDetectionAlerts: {
-                        isEnabled: true,
-                    },
-                    followingDistanceDetectionAlerts: {
-                        durationMs: 15000,
-                        hasInCabAudioAlertsEnabled: true,
-                        isEnabled: true,
-                        speedingThresholdMph: 35,
-                    },
-                    forwardCollisionDetectionAlerts: {
-                        hasInCabAudioAlertsEnabled: true,
-                        isEnabled: true,
-                    },
-                    harshEventSensitivity: {},
-                    harshEventSensitivityV2: {},
-                    policyViolationsDetectionAlerts: {
-                        eventsAvailableForTesting: ["smoking", "eatingDrinking"],
-                        eventsToCoach: ["noSeatbelt", "noMask"],
-                        hasInCabAudioAlertsEnabled: true,
-                        isEnabled: true,
-                        speedingThresholdMph: 5,
-                    },
-                    rollingStopDetectionAlerts: {
-                        isEnabled: true,
-                        speedingThresholdMph: 0,
-                    },
-                    safetyScoreConfiguration: {
-                        aiInattentiveDrivingDetectionWeight: 2,
-                        crashWeight: 1,
-                        defensiveDrivingWeight: 0,
-                        didNotYieldWeight: 0,
-                        drowsyWeight: 0,
-                        eatingDrinkingWeight: 0,
-                        followingDistanceModerateWeight: 0,
-                        followingDistanceSevereWeight: 0,
-                        followingDistanceWeight: 2,
-                        forwardCollisionWarningWeight: 0,
-                        harshAccelWeight: 1,
-                        harshBrakeWeight: 1,
-                        harshTurnWeight: 1,
-                        heavySpeedingWeight: 1,
-                        inattentiveDrivingWeight: 0,
-                        laneDepartureWeight: 0,
-                        lateResponseWeight: 0,
-                        lightSpeedingWeight: 0,
-                        maxSpeedWeight: 1,
-                        mobileUsageWeight: 0,
-                        moderateSpeedingWeight: 1,
-                        nearCollisionWeight: 0,
-                        noSeatbeltWeight: 0,
-                        obstructedCameraWeight: 0,
-                        ranRedLightWeight: 0,
-                        rollingStopWeight: 0,
-                        severeSpeedingWeight: 1,
-                        smokingWeight: 0,
-                        speedingWeight: 0,
-                        vulnerableRoadUserWeight: 0,
-                    },
-                    safetyScoreTarget: 90,
-                    speedingSettings: {
-                        severityLevels: [
-                            {
-                                durationMs: 60,
-                                isEnabled: true,
-                                severityLevel: "light",
-                                speedOverLimitThreshold: 10,
-                            },
-                        ],
-                    },
-                    voiceCoaching: {
-                        eventsToCoach: ["crash", "inCabSpeeding", "maximumSpeed"],
-                        isEnabled: true,
-                        speedingThresholdMph: 10,
-                    },
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getSafetySettings (2)", async () => {
@@ -1322,6 +1247,7 @@ describe("SettingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/settings/safety")
@@ -1345,6 +1271,7 @@ describe("SettingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/settings/safety")
@@ -1368,6 +1295,7 @@ describe("SettingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/settings/safety")
@@ -1391,6 +1319,7 @@ describe("SettingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/settings/safety")
@@ -1414,6 +1343,7 @@ describe("SettingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/settings/safety")
@@ -1437,6 +1367,7 @@ describe("SettingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/settings/safety")
@@ -1460,6 +1391,7 @@ describe("SettingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/settings/safety")
@@ -1483,6 +1415,7 @@ describe("SettingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/settings/safety")
@@ -1506,6 +1439,7 @@ describe("SettingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/settings/safety")
@@ -1529,6 +1463,7 @@ describe("SettingsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/settings/safety")

@@ -90,7 +90,7 @@ export class IdlingClient {
             ptoState: ptoState != null ? ptoState : undefined,
             minAirTemperatureMillicelsius,
             maxAirTemperatureMillicelsius,
-            excludeEventsWithUnknownAirTemperature,
+            excludeEventsWithUnknownAirTemperature: excludeEventsWithUnknownAirTemperature ?? "false",
             minDurationMilliseconds,
             maxDurationMilliseconds,
             tagIds,
@@ -115,7 +115,15 @@ export class IdlingClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .add("assetIds", _queryParams.assetIds, { style: "comma" })
+                .add("operatorIds", _queryParams.operatorIds, { style: "comma" })
+                .add("tagIds", _queryParams.tagIds, { style: "comma" })
+                .add("parentTagIds", _queryParams.parentTagIds, { style: "comma" })
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,

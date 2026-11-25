@@ -35,6 +35,7 @@ describe("MediaClient", () => {
             },
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server.mockEndpoint().get("/cameras/media").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.media.listUploadedMedia({
@@ -42,30 +43,7 @@ describe("MediaClient", () => {
             startTime: "startTime",
             endTime: "endTime",
         });
-        expect(response).toEqual({
-            data: {
-                media: [
-                    {
-                        auxCamSerial: "ABDVJ123456789",
-                        availableAtTime: "2019-11-11T14:00:12-04:00",
-                        endTime: "2019-06-13T19:08:25Z",
-                        input: "dashcamForwardFacing",
-                        mediaType: "image",
-                        startTime: "2019-06-13T19:08:25Z",
-                        triggerReason: "api",
-                        urlInfo: {
-                            url: "https://sample.s3.url.com/image.jpeg",
-                            urlExpiryTime: "2019-11-11T14:00:12-04:00",
-                        },
-                        vehicleId: "1234",
-                    },
-                ],
-            },
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("listUploadedMedia (2)", async () => {
@@ -78,6 +56,7 @@ describe("MediaClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/cameras/media").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -99,6 +78,7 @@ describe("MediaClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/cameras/media").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -120,6 +100,7 @@ describe("MediaClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/cameras/media").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -141,6 +122,7 @@ describe("MediaClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/cameras/media").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -162,6 +144,7 @@ describe("MediaClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/cameras/media").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -183,6 +166,7 @@ describe("MediaClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/cameras/media").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -204,6 +188,7 @@ describe("MediaClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/cameras/media").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -225,6 +210,7 @@ describe("MediaClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/cameras/media").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -246,6 +232,7 @@ describe("MediaClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/cameras/media").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -267,6 +254,7 @@ describe("MediaClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/cameras/media").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -307,6 +295,7 @@ describe("MediaClient", () => {
                 ],
             },
         };
+
         server
             .mockEndpoint()
             .get("/cameras/media/retrieval")
@@ -318,26 +307,7 @@ describe("MediaClient", () => {
         const response = await client.media.getMediaRetrieval({
             retrievalId: "retrievalId",
         });
-        expect(response).toEqual({
-            data: {
-                media: [
-                    {
-                        auxcamSerial: "CSS6-23A-HJF",
-                        availableAtTime: "2019-11-11T14:00:12-04:00",
-                        endTime: "2019-06-13T19:08:25Z",
-                        input: "dashcamDriverFacing",
-                        mediaType: "image",
-                        startTime: "2019-06-13T19:08:25Z",
-                        status: "available",
-                        urlInfo: {
-                            url: "https://sample.s3.url.com/image.jpeg",
-                            urlExpiryTime: "2019-11-11T14:00:12-04:00",
-                        },
-                        vehicleId: "1234",
-                    },
-                ],
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getMediaRetrieval (2)", async () => {
@@ -350,6 +320,7 @@ describe("MediaClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/cameras/media/retrieval")
@@ -375,6 +346,7 @@ describe("MediaClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/cameras/media/retrieval")
@@ -400,6 +372,7 @@ describe("MediaClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/cameras/media/retrieval")
@@ -425,6 +398,7 @@ describe("MediaClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/cameras/media/retrieval")
@@ -450,6 +424,7 @@ describe("MediaClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/cameras/media/retrieval")
@@ -475,6 +450,7 @@ describe("MediaClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/cameras/media/retrieval")
@@ -500,6 +476,7 @@ describe("MediaClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/cameras/media/retrieval")
@@ -525,6 +502,7 @@ describe("MediaClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/cameras/media/retrieval")
@@ -550,6 +528,7 @@ describe("MediaClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/cameras/media/retrieval")
@@ -575,6 +554,7 @@ describe("MediaClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/cameras/media/retrieval")
@@ -610,6 +590,7 @@ describe("MediaClient", () => {
                 retrievalId: "2308cec4-82e0-46f1-8b3c-a3592e5cc21e",
             },
         };
+
         server
             .mockEndpoint()
             .post("/cameras/media/retrieval")
@@ -625,12 +606,7 @@ describe("MediaClient", () => {
             startTime: "2019-06-13T19:08:25Z",
             vehicleId: "1234",
         });
-        expect(response).toEqual({
-            data: {
-                quotaStatus: "Current monthly usage is 80000.4 seconds of high-res video out of 900000.0 available.",
-                retrievalId: "2308cec4-82e0-46f1-8b3c-a3592e5cc21e",
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("postMediaRetrieval (2)", async () => {
@@ -648,6 +624,7 @@ describe("MediaClient", () => {
             vehicleId: "vehicleId",
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/cameras/media/retrieval")
@@ -682,6 +659,7 @@ describe("MediaClient", () => {
             vehicleId: "vehicleId",
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/cameras/media/retrieval")
@@ -716,6 +694,7 @@ describe("MediaClient", () => {
             vehicleId: "vehicleId",
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/cameras/media/retrieval")
@@ -750,6 +729,7 @@ describe("MediaClient", () => {
             vehicleId: "vehicleId",
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/cameras/media/retrieval")
@@ -784,6 +764,7 @@ describe("MediaClient", () => {
             vehicleId: "vehicleId",
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/cameras/media/retrieval")
@@ -818,6 +799,7 @@ describe("MediaClient", () => {
             vehicleId: "vehicleId",
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/cameras/media/retrieval")
@@ -852,6 +834,7 @@ describe("MediaClient", () => {
             vehicleId: "vehicleId",
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/cameras/media/retrieval")
@@ -886,6 +869,7 @@ describe("MediaClient", () => {
             vehicleId: "vehicleId",
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/cameras/media/retrieval")
@@ -920,6 +904,7 @@ describe("MediaClient", () => {
             vehicleId: "vehicleId",
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/cameras/media/retrieval")
@@ -954,6 +939,7 @@ describe("MediaClient", () => {
             vehicleId: "vehicleId",
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/cameras/media/retrieval")

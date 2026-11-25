@@ -26,24 +26,11 @@ describe("MaintenanceClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server.mockEndpoint().get("/defect-types").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.maintenance.getDefectTypes();
-        expect(response).toEqual({
-            data: [
-                {
-                    createdAtTime: "2020-01-27T07:06:25Z",
-                    id: "25d6151e-29b5-453e-875a-7c5425332e09",
-                    label: "Air Compressor",
-                    sectionType: "exteriorFront",
-                    severity: "major",
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getDefectTypes (2)", async () => {
@@ -56,6 +43,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/defect-types").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -73,6 +61,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/defect-types").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -90,6 +79,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/defect-types").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -107,6 +97,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/defect-types").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -124,6 +115,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/defect-types").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -141,6 +133,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/defect-types").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -158,6 +151,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/defect-types").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -175,6 +169,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/defect-types").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -192,6 +187,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/defect-types").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -209,6 +205,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/defect-types").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -251,48 +248,13 @@ describe("MaintenanceClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server.mockEndpoint().get("/defects/stream").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.maintenance.streamDefects({
             startTime: "startTime",
         });
-        expect(response).toEqual({
-            data: [
-                {
-                    comment: "Engine failure.",
-                    createdAtTime: "2020-01-27T07:06:25Z",
-                    defectPhotos: [
-                        {
-                            createdAtTime: "2020-01-27T07:06:25Z",
-                            url: "https://s3.samsara.com/samsara-driver-media-upload/defect-photo-path",
-                        },
-                    ],
-                    defectSafetyStatus: "safe",
-                    defectTypeId: "25d6151e-29b5-453e-875a-7c5425332e09",
-                    dvirId: "292371177",
-                    id: "9700544",
-                    isResolved: true,
-                    mechanicNotes: "Broken passenger side window.",
-                    resolvedAtTime: "2020-01-27T07:06:25Z",
-                    resolvedBy: {
-                        id: "8172",
-                        name: "Jane Mechanic",
-                        type: "driver",
-                    },
-                    trailer: {
-                        id: "494123",
-                    },
-                    updatedAtTime: "2020-01-27T07:06:25Z",
-                    vehicle: {
-                        id: "494125",
-                    },
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("streamDefects (2)", async () => {
@@ -305,6 +267,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/defects/stream").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -324,6 +287,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/defects/stream").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -343,6 +307,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/defects/stream").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -362,6 +327,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/defects/stream").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -381,6 +347,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/defects/stream").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -400,6 +367,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/defects/stream").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -419,6 +387,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/defects/stream").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -438,6 +407,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/defects/stream").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -457,6 +427,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/defects/stream").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -476,6 +447,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/defects/stream").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -515,46 +487,13 @@ describe("MaintenanceClient", () => {
             updatedAtTime: "2020-01-27T07:06:25Z",
             vehicle: { externalIds: { key: "value" }, id: "494125" },
         };
+
         server.mockEndpoint().get("/defects/id").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.maintenance.getDefect({
             id: "id",
         });
-        expect(response).toEqual({
-            comment: "Engine failure.",
-            createdAtTime: "2020-01-27T07:06:25Z",
-            defectPhotos: [
-                {
-                    createdAtTime: "2020-01-27T07:06:25Z",
-                    url: "https://s3.samsara.com/samsara-driver-media-upload/defect-photo-path",
-                },
-            ],
-            defectSafetyStatus: "safe",
-            defectTypeId: "25d6151e-29b5-453e-875a-7c5425332e09",
-            dvirId: "292371177",
-            id: "9700544",
-            isResolved: true,
-            mechanicNotes: "Broken passenger side window.",
-            resolvedAtTime: "2020-01-27T07:06:25Z",
-            resolvedBy: {
-                id: "8172",
-                name: "Jane Mechanic",
-                type: "driver",
-            },
-            trailer: {
-                externalIds: {
-                    key: "value",
-                },
-                id: "494123",
-            },
-            updatedAtTime: "2020-01-27T07:06:25Z",
-            vehicle: {
-                externalIds: {
-                    key: "value",
-                },
-                id: "494125",
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getDefect (2)", async () => {
@@ -567,6 +506,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/defects/id").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -586,6 +526,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/defects/id").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -605,6 +546,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/defects/id").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -624,6 +566,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/defects/id").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -643,6 +586,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/defects/id").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -662,6 +606,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/defects/id").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -681,6 +626,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/defects/id").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -700,6 +646,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/defects/id").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -719,6 +666,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/defects/id").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -738,6 +686,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/defects/id").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -797,65 +746,13 @@ describe("MaintenanceClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server.mockEndpoint().get("/dvirs/stream").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.maintenance.getDvirs({
             startTime: "startTime",
         });
-        expect(response).toEqual({
-            data: [
-                {
-                    authorSignature: {
-                        signatoryUser: {
-                            id: "938172",
-                        },
-                        signedAtTime: "2020-01-27T07:06:25Z",
-                        type: "driver",
-                    },
-                    defectIds: ["8d218e6c-7a16-4f9f-90f7-cc1d93b9e596", "25d6151e-29b5-453e-875a-7c5425332e09"],
-                    dvirSubmissionBeginTime: "2020-01-27T07:06:25Z",
-                    dvirSubmissionTime: "2020-01-27T07:06:25Z",
-                    formattedAddress: "350 Rhode Island St Ste. 400S, San Francisco, CA 94103",
-                    id: "12345",
-                    mechanicNotes: "Replaced headlight on passenger side.",
-                    odometerMeters: 91823,
-                    safetyStatus: "unknown",
-                    secondSignature: {
-                        signatoryUser: {
-                            id: "938172",
-                        },
-                        signedAtTime: "2020-01-27T07:06:25Z",
-                        type: "driver",
-                    },
-                    thirdSignature: {
-                        signatoryUser: {
-                            id: "938172",
-                        },
-                        signedAtTime: "2020-01-27T07:06:25Z",
-                        type: "driver",
-                    },
-                    trailer: {
-                        id: "494123",
-                    },
-                    type: "preTrip",
-                    updatedAtTime: "2020-01-27T07:06:25Z",
-                    vehicle: {
-                        id: "494123",
-                    },
-                    walkaroundPhotos: [
-                        {
-                            createdAtTime: "2020-01-27T07:06:25Z",
-                            name: "Name 1",
-                            url: "https://s3.samsara.com/samsara-driver-media-upload/walkaround-photo-path",
-                        },
-                    ],
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getDvirs (2)", async () => {
@@ -868,6 +765,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/dvirs/stream").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -887,6 +785,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/dvirs/stream").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -906,6 +805,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/dvirs/stream").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -925,6 +825,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/dvirs/stream").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -944,6 +845,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/dvirs/stream").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -963,6 +865,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/dvirs/stream").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -982,6 +885,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/dvirs/stream").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1001,6 +905,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/dvirs/stream").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1020,6 +925,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/dvirs/stream").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1039,6 +945,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/dvirs/stream").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1093,72 +1000,13 @@ describe("MaintenanceClient", () => {
                 },
             ],
         };
+
         server.mockEndpoint().get("/dvirs/id").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.maintenance.getDvir({
             id: "id",
         });
-        expect(response).toEqual({
-            authorSignature: {
-                signatoryUser: {
-                    externalIds: {
-                        key: "value",
-                    },
-                    id: "938172",
-                },
-                signedAtTime: "2020-01-27T07:06:25Z",
-                type: "driver",
-            },
-            defectIds: ["8d218e6c-7a16-4f9f-90f7-cc1d93b9e596", "25d6151e-29b5-453e-875a-7c5425332e09"],
-            dvirSubmissionBeginTime: "2020-01-27T07:06:25Z",
-            dvirSubmissionTime: "2020-01-27T07:06:25Z",
-            formattedAddress: "350 Rhode Island St Ste. 400S, San Francisco, CA 94103",
-            id: "12345",
-            mechanicNotes: "Replaced headlight on passenger side.",
-            odometerMeters: 91823,
-            safetyStatus: "unknown",
-            secondSignature: {
-                signatoryUser: {
-                    externalIds: {
-                        key: "value",
-                    },
-                    id: "938172",
-                },
-                signedAtTime: "2020-01-27T07:06:25Z",
-                type: "driver",
-            },
-            thirdSignature: {
-                signatoryUser: {
-                    externalIds: {
-                        key: "value",
-                    },
-                    id: "938172",
-                },
-                signedAtTime: "2020-01-27T07:06:25Z",
-                type: "driver",
-            },
-            trailer: {
-                externalIds: {
-                    key: "value",
-                },
-                id: "494123",
-            },
-            type: "preTrip",
-            updatedAtTime: "2020-01-27T07:06:25Z",
-            vehicle: {
-                externalIds: {
-                    key: "value",
-                },
-                id: "494123",
-            },
-            walkaroundPhotos: [
-                {
-                    createdAtTime: "2020-01-27T07:06:25Z",
-                    name: "Name 1",
-                    url: "https://s3.samsara.com/samsara-driver-media-upload/walkaround-photo-path",
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getDvir (2)", async () => {
@@ -1171,6 +1019,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/dvirs/id").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1190,6 +1039,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/dvirs/id").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1209,6 +1059,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/dvirs/id").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1228,6 +1079,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/dvirs/id").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1247,6 +1099,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/dvirs/id").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1266,6 +1119,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/dvirs/id").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1285,6 +1139,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/dvirs/id").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1304,6 +1159,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/dvirs/id").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1323,6 +1179,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/dvirs/id").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1342,6 +1199,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/dvirs/id").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1379,6 +1237,7 @@ describe("MaintenanceClient", () => {
                 },
             },
         };
+
         server
             .mockEndpoint()
             .patch("/fleet/defects/id")
@@ -1391,35 +1250,7 @@ describe("MaintenanceClient", () => {
         const response = await client.maintenance.updateDvirDefect({
             id: "id",
         });
-        expect(response).toEqual({
-            data: {
-                comment: "Air Compressor not working",
-                createdAtTime: "2020-01-27T07:06:25Z",
-                defectType: "Air Compressor",
-                id: "18",
-                isResolved: true,
-                mechanicNotes: "Extremely large oddly shaped hole in passenger side window.",
-                mechanicNotesUpdatedAtTime: "2020-01-27T07:06:25Z",
-                resolvedAtTime: "2020-01-27T07:06:25Z",
-                resolvedBy: {
-                    id: "11",
-                    name: "Christopher 'The Handyman' Zhen",
-                    type: "driver",
-                },
-                trailer: {
-                    id: "123456789",
-                    name: "Midwest Trailer #5",
-                },
-                vehicle: {
-                    ExternalIds: {
-                        maintenanceId: "250020",
-                        payrollId: "ABFS18600",
-                    },
-                    id: "123456789",
-                    name: "Midwest Truck #4",
-                },
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createDvir", async () => {
@@ -1467,6 +1298,13 @@ describe("MaintenanceClient", () => {
                         mechanicNotes: "Extremely large oddly shaped hole in passenger side window.",
                         mechanicNotesUpdatedAtTime: "2020-01-27T07:06:25Z",
                         resolvedAtTime: "2020-01-27T07:06:25Z",
+                        resolvedBy: { id: "11", name: "Christopher 'The Handyman' Zhen" },
+                        trailer: { id: "123456789", name: "Midwest Trailer #5" },
+                        vehicle: {
+                            ExternalIds: { maintenanceId: "250020", payrollId: "ABFS18600" },
+                            id: "123456789",
+                            name: "Midwest Truck #4",
+                        },
                     },
                 ],
                 trailerName: "Midwest Trailer #5",
@@ -1486,10 +1324,18 @@ describe("MaintenanceClient", () => {
                         mechanicNotes: "Extremely large oddly shaped hole in passenger side window.",
                         mechanicNotesUpdatedAtTime: "2020-01-27T07:06:25Z",
                         resolvedAtTime: "2020-01-27T07:06:25Z",
+                        resolvedBy: { id: "11", name: "Christopher 'The Handyman' Zhen" },
+                        trailer: { id: "123456789", name: "Midwest Trailer #5" },
+                        vehicle: {
+                            ExternalIds: { maintenanceId: "250020", payrollId: "ABFS18600" },
+                            id: "123456789",
+                            name: "Midwest Truck #4",
+                        },
                     },
                 ],
             },
         };
+
         server
             .mockEndpoint()
             .post("/fleet/dvirs")
@@ -1504,80 +1350,7 @@ describe("MaintenanceClient", () => {
             safetyStatus: "safe",
             type: "mechanic",
         });
-        expect(response).toEqual({
-            data: {
-                authorSignature: {
-                    signatoryUser: {
-                        id: "88668",
-                        name: "Susan Bob",
-                    },
-                    signedAtTime: "2020-01-27T07:06:25Z",
-                    type: "driver",
-                },
-                endTime: "2020-01-27T07:06:25Z",
-                id: "7107471",
-                licensePlate: "XHK1234",
-                location: "350 Rhode Island St Ste. 400S, San Francisco, CA 94103",
-                mechanicNotes: "Replaced headlight on passenger side.",
-                odometerMeters: 14010293,
-                safetyStatus: "safe",
-                secondSignature: {
-                    signatoryUser: {
-                        id: "88668",
-                        name: "Susan Bob",
-                    },
-                    signedAtTime: "2020-01-27T07:06:25Z",
-                    type: "driver",
-                },
-                startTime: "2020-01-27T07:06:25Z",
-                thirdSignature: {
-                    signatoryUser: {
-                        id: "88668",
-                        name: "Susan Bob",
-                    },
-                    signedAtTime: "2020-01-27T07:06:25Z",
-                    type: "driver",
-                },
-                trailer: {
-                    id: "123456789",
-                    name: "Midwest Trailer #5",
-                },
-                trailerDefects: [
-                    {
-                        comment: "Air Compressor not working",
-                        createdAtTime: "2020-01-27T07:06:25Z",
-                        defectType: "Air Compressor",
-                        id: "18",
-                        isResolved: true,
-                        mechanicNotes: "Extremely large oddly shaped hole in passenger side window.",
-                        mechanicNotesUpdatedAtTime: "2020-01-27T07:06:25Z",
-                        resolvedAtTime: "2020-01-27T07:06:25Z",
-                    },
-                ],
-                trailerName: "Midwest Trailer #5",
-                type: "preTrip",
-                vehicle: {
-                    ExternalIds: {
-                        maintenanceId: "250020",
-                        payrollId: "ABFS18600",
-                    },
-                    id: "123456789",
-                    name: "Midwest Truck #4",
-                },
-                vehicleDefects: [
-                    {
-                        comment: "Air Compressor not working",
-                        createdAtTime: "2020-01-27T07:06:25Z",
-                        defectType: "Air Compressor",
-                        id: "18",
-                        isResolved: true,
-                        mechanicNotes: "Extremely large oddly shaped hole in passenger side window.",
-                        mechanicNotesUpdatedAtTime: "2020-01-27T07:06:25Z",
-                        resolvedAtTime: "2020-01-27T07:06:25Z",
-                    },
-                ],
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("updateDvir", async () => {
@@ -1625,6 +1398,13 @@ describe("MaintenanceClient", () => {
                         mechanicNotes: "Extremely large oddly shaped hole in passenger side window.",
                         mechanicNotesUpdatedAtTime: "2020-01-27T07:06:25Z",
                         resolvedAtTime: "2020-01-27T07:06:25Z",
+                        resolvedBy: { id: "11", name: "Christopher 'The Handyman' Zhen" },
+                        trailer: { id: "123456789", name: "Midwest Trailer #5" },
+                        vehicle: {
+                            ExternalIds: { maintenanceId: "250020", payrollId: "ABFS18600" },
+                            id: "123456789",
+                            name: "Midwest Truck #4",
+                        },
                     },
                 ],
                 trailerName: "Midwest Trailer #5",
@@ -1644,10 +1424,18 @@ describe("MaintenanceClient", () => {
                         mechanicNotes: "Extremely large oddly shaped hole in passenger side window.",
                         mechanicNotesUpdatedAtTime: "2020-01-27T07:06:25Z",
                         resolvedAtTime: "2020-01-27T07:06:25Z",
+                        resolvedBy: { id: "11", name: "Christopher 'The Handyman' Zhen" },
+                        trailer: { id: "123456789", name: "Midwest Trailer #5" },
+                        vehicle: {
+                            ExternalIds: { maintenanceId: "250020", payrollId: "ABFS18600" },
+                            id: "123456789",
+                            name: "Midwest Truck #4",
+                        },
                     },
                 ],
             },
         };
+
         server
             .mockEndpoint()
             .patch("/fleet/dvirs/id")
@@ -1662,80 +1450,2665 @@ describe("MaintenanceClient", () => {
             authorId: "11",
             isResolved: true,
         });
-        expect(response).toEqual({
-            data: {
-                authorSignature: {
-                    signatoryUser: {
-                        id: "88668",
-                        name: "Susan Bob",
-                    },
-                    signedAtTime: "2020-01-27T07:06:25Z",
-                    type: "driver",
-                },
-                endTime: "2020-01-27T07:06:25Z",
-                id: "7107471",
-                licensePlate: "XHK1234",
-                location: "350 Rhode Island St Ste. 400S, San Francisco, CA 94103",
-                mechanicNotes: "Replaced headlight on passenger side.",
-                odometerMeters: 14010293,
-                safetyStatus: "safe",
-                secondSignature: {
-                    signatoryUser: {
-                        id: "88668",
-                        name: "Susan Bob",
-                    },
-                    signedAtTime: "2020-01-27T07:06:25Z",
-                    type: "driver",
-                },
-                startTime: "2020-01-27T07:06:25Z",
-                thirdSignature: {
-                    signatoryUser: {
-                        id: "88668",
-                        name: "Susan Bob",
-                    },
-                    signedAtTime: "2020-01-27T07:06:25Z",
-                    type: "driver",
-                },
-                trailer: {
-                    id: "123456789",
-                    name: "Midwest Trailer #5",
-                },
-                trailerDefects: [
-                    {
-                        comment: "Air Compressor not working",
-                        createdAtTime: "2020-01-27T07:06:25Z",
-                        defectType: "Air Compressor",
-                        id: "18",
-                        isResolved: true,
-                        mechanicNotes: "Extremely large oddly shaped hole in passenger side window.",
-                        mechanicNotesUpdatedAtTime: "2020-01-27T07:06:25Z",
-                        resolvedAtTime: "2020-01-27T07:06:25Z",
-                    },
-                ],
-                trailerName: "Midwest Trailer #5",
-                type: "preTrip",
-                vehicle: {
-                    ExternalIds: {
-                        maintenanceId: "250020",
-                        payrollId: "ABFS18600",
-                    },
-                    id: "123456789",
-                    name: "Midwest Truck #4",
-                },
-                vehicleDefects: [
-                    {
-                        comment: "Air Compressor not working",
-                        createdAtTime: "2020-01-27T07:06:25Z",
-                        defectType: "Air Compressor",
-                        id: "18",
-                        isResolved: true,
-                        mechanicNotes: "Extremely large oddly shaped hole in passenger side window.",
-                        mechanicNotesUpdatedAtTime: "2020-01-27T07:06:25Z",
-                        resolvedAtTime: "2020-01-27T07:06:25Z",
-                    },
-                ],
-            },
+        expect(response).toEqual(rawResponseBody);
+    });
+
+    test("listVendorCategories (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
         });
+
+        const rawResponseBody = {
+            data: [{ id: "a1b2c3d4-e5f6-7890-abcd-ef1234567890", name: "Tires" }],
+            pagination: { endCursor: "MjkY", hasNextPage: true },
+        };
+
+        server
+            .mockEndpoint()
+            .get("/fleet/maintenance/vendor-categories")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.maintenance.listVendorCategories();
+        expect(response).toEqual(rawResponseBody);
+    });
+
+    test("listVendorCategories (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/fleet/maintenance/vendor-categories")
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.listVendorCategories();
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("listVendorCategories (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/fleet/maintenance/vendor-categories")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.listVendorCategories();
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("listVendorCategories (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/fleet/maintenance/vendor-categories")
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.listVendorCategories();
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("listVendorCategories (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/fleet/maintenance/vendor-categories")
+            .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.listVendorCategories();
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("listVendorCategories (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/fleet/maintenance/vendor-categories")
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.listVendorCategories();
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("listVendorCategories (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/fleet/maintenance/vendor-categories")
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.listVendorCategories();
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("listVendorCategories (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/fleet/maintenance/vendor-categories")
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.listVendorCategories();
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("listVendorCategories (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/fleet/maintenance/vendor-categories")
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.listVendorCategories();
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("listVendorCategories (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/fleet/maintenance/vendor-categories")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.listVendorCategories();
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("listVendorCategories (11)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/fleet/maintenance/vendor-categories")
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.listVendorCategories();
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("listVendorLocations (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = {
+            data: [
+                {
+                    addressId: "281474993384538",
+                    assetAttributeSelections: [
+                        {
+                            attributeId: "11111111-1111-4111-8111-111111111111",
+                            values: [{ id: "11111111-1111-4111-8111-111111111111" }],
+                        },
+                    ],
+                    categoryIds: [
+                        "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                        "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                        "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                        "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+                    ],
+                    defaultLaborRatePerHour: { amount: "140.00", currency: "USD" },
+                    externalIds: { key: "value" },
+                    id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
+                    isMobile: false,
+                    isPreferred: false,
+                    parentVendorId: "11111111-1111-4111-8111-111111111111",
+                    payeeId: "PAYEE-12345",
+                    resolvedSettings: {
+                        assetAttributeSelections: [
+                            {
+                                attributeId: "11111111-1111-4111-8111-111111111111",
+                                values: [{ id: "11111111-1111-4111-8111-111111111111" }],
+                            },
+                        ],
+                        assetAttributeSelectionsSource: "system",
+                        defaultLaborRatePerHour: { amount: "140.00", currency: "USD" },
+                        defaultLaborRatePerHourSource: "system",
+                        isActive: false,
+                        isMobile: false,
+                        isMobileSource: "system",
+                        isPreferred: false,
+                        isPreferredSource: "system",
+                    },
+                    servicesProvided: "Oil changes, tire rotations, brake services",
+                    status: "active",
+                    vendorId: "0000000772",
+                },
+            ],
+            pagination: { endCursor: "MjkY", hasNextPage: true },
+        };
+
+        server
+            .mockEndpoint()
+            .get("/fleet/maintenance/vendor-locations")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.maintenance.listVendorLocations();
+        expect(response).toEqual(rawResponseBody);
+    });
+
+    test("listVendorLocations (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/fleet/maintenance/vendor-locations")
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.listVendorLocations();
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("listVendorLocations (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/fleet/maintenance/vendor-locations")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.listVendorLocations();
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("listVendorLocations (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/fleet/maintenance/vendor-locations")
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.listVendorLocations();
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("listVendorLocations (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/fleet/maintenance/vendor-locations")
+            .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.listVendorLocations();
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("listVendorLocations (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/fleet/maintenance/vendor-locations")
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.listVendorLocations();
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("listVendorLocations (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/fleet/maintenance/vendor-locations")
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.listVendorLocations();
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("listVendorLocations (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/fleet/maintenance/vendor-locations")
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.listVendorLocations();
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("listVendorLocations (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/fleet/maintenance/vendor-locations")
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.listVendorLocations();
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("listVendorLocations (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/fleet/maintenance/vendor-locations")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.listVendorLocations();
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("listVendorLocations (11)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/fleet/maintenance/vendor-locations")
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.listVendorLocations();
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("createVendorLocation (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { addressId: "281474976710656" };
+        const rawResponseBody = {
+            data: {
+                assetAttributeSelections: [{ attributeId: "12345", values: [{ id: "12345" }] }],
+                contacts: [{ email: "12345", name: "12345", phoneNumber: "12345" }],
+                defaultLaborRatePerHour: { amount: "12345", currency: "12345" },
+                emailAddresses: ["12345", "12345", "12345", "12345"],
+                externalId: "12345",
+                externalIds: [{ key: "12345", value: "12345" }],
+                id: "12345",
+                isMobile: true,
+                isPreferred: true,
+                parentVendorId: "12345",
+                payeeId: "12345",
+                phoneNumbers: ["12345", "12345"],
+                placeId: { id: "281474976710656" },
+                servicesProvided: "12345",
+                status: "active",
+                vendorId: "12345",
+            },
+        };
+
+        server
+            .mockEndpoint()
+            .post("/fleet/maintenance/vendor-locations")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.maintenance.createVendorLocation({
+            addressId: "281474976710656",
+        });
+        expect(response).toEqual(rawResponseBody);
+    });
+
+    test("createVendorLocation (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { addressId: "addressId" };
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/fleet/maintenance/vendor-locations")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.createVendorLocation({
+                addressId: "addressId",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("createVendorLocation (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { addressId: "addressId" };
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/fleet/maintenance/vendor-locations")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.createVendorLocation({
+                addressId: "addressId",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("createVendorLocation (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { addressId: "addressId" };
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/fleet/maintenance/vendor-locations")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.createVendorLocation({
+                addressId: "addressId",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("createVendorLocation (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { addressId: "addressId" };
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/fleet/maintenance/vendor-locations")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.createVendorLocation({
+                addressId: "addressId",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("createVendorLocation (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { addressId: "addressId" };
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/fleet/maintenance/vendor-locations")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.createVendorLocation({
+                addressId: "addressId",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("createVendorLocation (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { addressId: "addressId" };
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/fleet/maintenance/vendor-locations")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.createVendorLocation({
+                addressId: "addressId",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("createVendorLocation (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { addressId: "addressId" };
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/fleet/maintenance/vendor-locations")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.createVendorLocation({
+                addressId: "addressId",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("createVendorLocation (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { addressId: "addressId" };
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/fleet/maintenance/vendor-locations")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.createVendorLocation({
+                addressId: "addressId",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("createVendorLocation (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { addressId: "addressId" };
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/fleet/maintenance/vendor-locations")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.createVendorLocation({
+                addressId: "addressId",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("createVendorLocation (11)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { addressId: "addressId" };
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/fleet/maintenance/vendor-locations")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.createVendorLocation({
+                addressId: "addressId",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("deleteVendorLocation (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        server.mockEndpoint().delete("/fleet/maintenance/vendor-locations").respondWith().statusCode(200).build();
+
+        const response = await client.maintenance.deleteVendorLocation({
+            id: "id",
+        });
+        expect(response).toEqual(undefined);
+    });
+
+    test("deleteVendorLocation (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .delete("/fleet/maintenance/vendor-locations")
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.deleteVendorLocation({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("deleteVendorLocation (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .delete("/fleet/maintenance/vendor-locations")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.deleteVendorLocation({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("deleteVendorLocation (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .delete("/fleet/maintenance/vendor-locations")
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.deleteVendorLocation({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("deleteVendorLocation (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .delete("/fleet/maintenance/vendor-locations")
+            .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.deleteVendorLocation({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("deleteVendorLocation (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .delete("/fleet/maintenance/vendor-locations")
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.deleteVendorLocation({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("deleteVendorLocation (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .delete("/fleet/maintenance/vendor-locations")
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.deleteVendorLocation({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("deleteVendorLocation (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .delete("/fleet/maintenance/vendor-locations")
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.deleteVendorLocation({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("deleteVendorLocation (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .delete("/fleet/maintenance/vendor-locations")
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.deleteVendorLocation({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("deleteVendorLocation (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .delete("/fleet/maintenance/vendor-locations")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.deleteVendorLocation({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("deleteVendorLocation (11)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .delete("/fleet/maintenance/vendor-locations")
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.deleteVendorLocation({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("updateVendorLocation (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = {
+            data: {
+                assetAttributeSelections: [{ attributeId: "12345", values: [{ id: "12345" }] }],
+                contacts: [{ email: "12345", name: "12345", phoneNumber: "12345" }],
+                defaultLaborRatePerHour: { amount: "12345", currency: "12345" },
+                emailAddresses: ["12345", "12345", "12345"],
+                externalId: "12345",
+                externalIds: [{ key: "12345", value: "12345" }],
+                id: "12345",
+                isMobile: true,
+                isPreferred: true,
+                parentVendorId: "12345",
+                payeeId: "12345",
+                phoneNumbers: ["12345", "12345", "12345", "12345"],
+                placeId: { id: "281474976710656" },
+                servicesProvided: "12345",
+                status: "active",
+                vendorId: "12345",
+            },
+        };
+
+        server
+            .mockEndpoint()
+            .patch("/fleet/maintenance/vendor-locations")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.maintenance.updateVendorLocation({
+            id: "id",
+        });
+        expect(response).toEqual(rawResponseBody);
+    });
+
+    test("updateVendorLocation (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .patch("/fleet/maintenance/vendor-locations")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.updateVendorLocation({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("updateVendorLocation (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .patch("/fleet/maintenance/vendor-locations")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.updateVendorLocation({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("updateVendorLocation (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .patch("/fleet/maintenance/vendor-locations")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.updateVendorLocation({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("updateVendorLocation (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .patch("/fleet/maintenance/vendor-locations")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.updateVendorLocation({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("updateVendorLocation (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .patch("/fleet/maintenance/vendor-locations")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.updateVendorLocation({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("updateVendorLocation (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .patch("/fleet/maintenance/vendor-locations")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.updateVendorLocation({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("updateVendorLocation (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .patch("/fleet/maintenance/vendor-locations")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.updateVendorLocation({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("updateVendorLocation (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .patch("/fleet/maintenance/vendor-locations")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.updateVendorLocation({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("updateVendorLocation (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .patch("/fleet/maintenance/vendor-locations")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.updateVendorLocation({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("updateVendorLocation (11)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .patch("/fleet/maintenance/vendor-locations")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.updateVendorLocation({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("listVendors (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = {
+            data: [
+                {
+                    assetAttributeSelections: [{ attributeId: "12345", values: [{ id: "12345" }] }],
+                    createdAtTime: "2019-06-13T19:08:25Z",
+                    defaultLaborRatePerHour: { amount: "12345", currency: "12345" },
+                    externalIds: [{ key: "12345", value: "12345" }],
+                    id: "12345",
+                    isMobile: true,
+                    isPreferred: true,
+                    name: "12345",
+                    primaryCorporateContact: { email: "12345", name: "12345", phoneNumber: "12345" },
+                    status: "active",
+                    updatedAtTime: "2019-06-13T19:08:25Z",
+                },
+            ],
+            pagination: { endCursor: "MjkY", hasNextPage: true },
+        };
+
+        server
+            .mockEndpoint()
+            .get("/fleet/maintenance/vendors")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.maintenance.listVendors();
+        expect(response).toEqual(rawResponseBody);
+    });
+
+    test("listVendors (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/fleet/maintenance/vendors")
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.listVendors();
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("listVendors (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/fleet/maintenance/vendors")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.listVendors();
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("listVendors (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/fleet/maintenance/vendors")
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.listVendors();
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("listVendors (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/fleet/maintenance/vendors")
+            .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.listVendors();
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("listVendors (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/fleet/maintenance/vendors")
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.listVendors();
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("listVendors (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/fleet/maintenance/vendors")
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.listVendors();
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("listVendors (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/fleet/maintenance/vendors")
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.listVendors();
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("listVendors (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/fleet/maintenance/vendors")
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.listVendors();
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("listVendors (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/fleet/maintenance/vendors")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.listVendors();
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("listVendors (11)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/fleet/maintenance/vendors")
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.listVendors();
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("createVendor (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { name: "12345" };
+        const rawResponseBody = {
+            data: {
+                assetAttributeSelections: [{ attributeId: "12345", values: [{ id: "12345" }] }],
+                createdAtTime: "2019-06-13T19:08:25Z",
+                defaultLaborRatePerHour: { amount: "12345", currency: "12345" },
+                externalIds: [{ key: "12345", value: "12345" }],
+                id: "12345",
+                isMobile: true,
+                isPreferred: true,
+                name: "12345",
+                primaryCorporateContact: { email: "12345", name: "12345", phoneNumber: "12345" },
+                status: "active",
+                updatedAtTime: "2019-06-13T19:08:25Z",
+            },
+        };
+
+        server
+            .mockEndpoint()
+            .post("/fleet/maintenance/vendors")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.maintenance.createVendor({
+            name: "12345",
+        });
+        expect(response).toEqual(rawResponseBody);
+    });
+
+    test("createVendor (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { name: "name" };
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/fleet/maintenance/vendors")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.createVendor({
+                name: "name",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("createVendor (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { name: "name" };
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/fleet/maintenance/vendors")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.createVendor({
+                name: "name",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("createVendor (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { name: "name" };
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/fleet/maintenance/vendors")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.createVendor({
+                name: "name",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("createVendor (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { name: "name" };
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/fleet/maintenance/vendors")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.createVendor({
+                name: "name",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("createVendor (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { name: "name" };
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/fleet/maintenance/vendors")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.createVendor({
+                name: "name",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("createVendor (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { name: "name" };
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/fleet/maintenance/vendors")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.createVendor({
+                name: "name",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("createVendor (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { name: "name" };
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/fleet/maintenance/vendors")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.createVendor({
+                name: "name",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("createVendor (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { name: "name" };
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/fleet/maintenance/vendors")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.createVendor({
+                name: "name",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("createVendor (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { name: "name" };
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/fleet/maintenance/vendors")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.createVendor({
+                name: "name",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("createVendor (11)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { name: "name" };
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/fleet/maintenance/vendors")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.createVendor({
+                name: "name",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("deleteVendor (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        server.mockEndpoint().delete("/fleet/maintenance/vendors").respondWith().statusCode(200).build();
+
+        const response = await client.maintenance.deleteVendor({
+            id: "id",
+        });
+        expect(response).toEqual(undefined);
+    });
+
+    test("deleteVendor (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .delete("/fleet/maintenance/vendors")
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.deleteVendor({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("deleteVendor (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .delete("/fleet/maintenance/vendors")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.deleteVendor({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("deleteVendor (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .delete("/fleet/maintenance/vendors")
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.deleteVendor({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("deleteVendor (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .delete("/fleet/maintenance/vendors")
+            .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.deleteVendor({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("deleteVendor (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .delete("/fleet/maintenance/vendors")
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.deleteVendor({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("deleteVendor (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .delete("/fleet/maintenance/vendors")
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.deleteVendor({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("deleteVendor (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .delete("/fleet/maintenance/vendors")
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.deleteVendor({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("deleteVendor (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .delete("/fleet/maintenance/vendors")
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.deleteVendor({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("deleteVendor (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .delete("/fleet/maintenance/vendors")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.deleteVendor({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("deleteVendor (11)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .delete("/fleet/maintenance/vendors")
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.deleteVendor({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("updateVendor (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = {
+            data: {
+                assetAttributeSelections: [{ attributeId: "12345", values: [{ id: "12345" }] }],
+                createdAtTime: "2019-06-13T19:08:25Z",
+                defaultLaborRatePerHour: { amount: "12345", currency: "12345" },
+                externalIds: [{ key: "12345", value: "12345" }],
+                id: "12345",
+                isMobile: true,
+                isPreferred: true,
+                name: "12345",
+                primaryCorporateContact: { email: "12345", name: "12345", phoneNumber: "12345" },
+                status: "active",
+                updatedAtTime: "2019-06-13T19:08:25Z",
+            },
+        };
+
+        server
+            .mockEndpoint()
+            .patch("/fleet/maintenance/vendors")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.maintenance.updateVendor({
+            id: "id",
+        });
+        expect(response).toEqual(rawResponseBody);
+    });
+
+    test("updateVendor (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .patch("/fleet/maintenance/vendors")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.updateVendor({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("updateVendor (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .patch("/fleet/maintenance/vendors")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.updateVendor({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("updateVendor (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .patch("/fleet/maintenance/vendors")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.updateVendor({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("updateVendor (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .patch("/fleet/maintenance/vendors")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.updateVendor({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("updateVendor (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .patch("/fleet/maintenance/vendors")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.updateVendor({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("updateVendor (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .patch("/fleet/maintenance/vendors")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.updateVendor({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("updateVendor (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .patch("/fleet/maintenance/vendors")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.updateVendor({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("updateVendor (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .patch("/fleet/maintenance/vendors")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.updateVendor({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("updateVendor (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .patch("/fleet/maintenance/vendors")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.updateVendor({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("updateVendor (11)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .patch("/fleet/maintenance/vendors")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.updateVendor({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 
     test("listParts (1)", async () => {
@@ -1776,46 +4149,11 @@ describe("MaintenanceClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server.mockEndpoint().get("/maintenance/parts").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.maintenance.listParts();
-        expect(response).toEqual({
-            data: [
-                {
-                    archivedAtTime: "2019-06-13T19:08:25Z",
-                    barcodeString: "12345",
-                    barcodeType: "12345",
-                    category: "12345",
-                    createdAtTime: "2019-06-13T19:08:25Z",
-                    deletedAtTime: "2019-06-13T19:08:25Z",
-                    description: "12345",
-                    externalId: "12345",
-                    id: "12345",
-                    isInventoryTracked: true,
-                    manufacturerName: "12345",
-                    manufacturerPartNumber: "12345",
-                    name: "12345",
-                    partNumber: "12345",
-                    partStatus: "Unknown",
-                    preferredVendor: {
-                        id: "281474976710656",
-                    },
-                    preferredVendorPartNumber: "12345",
-                    subcategory: "12345",
-                    unitCost: {
-                        amount: "12345",
-                        currency: "12345",
-                    },
-                    unitOfMeasureType: "Unknown",
-                    updatedAtTime: "2019-06-13T19:08:25Z",
-                    vmrsCode: "12345",
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("listParts (2)", async () => {
@@ -1828,6 +4166,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/maintenance/parts").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1845,6 +4184,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/maintenance/parts").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1862,6 +4202,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/maintenance/parts").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1879,6 +4220,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/maintenance/parts").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1896,6 +4238,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/maintenance/parts").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1913,6 +4256,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/maintenance/parts").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1930,6 +4274,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/maintenance/parts").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1947,6 +4292,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/maintenance/parts").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1964,6 +4310,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/maintenance/parts").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1981,6 +4328,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/maintenance/parts").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -2023,6 +4371,7 @@ describe("MaintenanceClient", () => {
                 vmrsCode: "12345",
             },
         };
+
         server
             .mockEndpoint()
             .post("/maintenance/parts")
@@ -2035,37 +4384,7 @@ describe("MaintenanceClient", () => {
         const response = await client.maintenance.createPart({
             partNumber: "12345",
         });
-        expect(response).toEqual({
-            data: {
-                archivedAtTime: "2019-06-13T19:08:25Z",
-                barcodeString: "12345",
-                barcodeType: "12345",
-                category: "12345",
-                createdAtTime: "2019-06-13T19:08:25Z",
-                deletedAtTime: "2019-06-13T19:08:25Z",
-                description: "12345",
-                externalId: "12345",
-                id: "12345",
-                isInventoryTracked: true,
-                manufacturerName: "12345",
-                manufacturerPartNumber: "12345",
-                name: "12345",
-                partNumber: "12345",
-                partStatus: "Unknown",
-                preferredVendor: {
-                    id: "281474976710656",
-                },
-                preferredVendorPartNumber: "12345",
-                subcategory: "12345",
-                unitCost: {
-                    amount: "12345",
-                    currency: "12345",
-                },
-                unitOfMeasureType: "Unknown",
-                updatedAtTime: "2019-06-13T19:08:25Z",
-                vmrsCode: "12345",
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createPart (2)", async () => {
@@ -2078,6 +4397,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = { partNumber: "partNumber" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/parts")
@@ -2104,6 +4424,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = { partNumber: "partNumber" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/parts")
@@ -2130,6 +4451,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = { partNumber: "partNumber" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/parts")
@@ -2156,6 +4478,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = { partNumber: "partNumber" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/parts")
@@ -2182,6 +4505,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = { partNumber: "partNumber" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/parts")
@@ -2208,6 +4532,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = { partNumber: "partNumber" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/parts")
@@ -2234,6 +4559,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = { partNumber: "partNumber" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/parts")
@@ -2260,6 +4586,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = { partNumber: "partNumber" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/parts")
@@ -2286,6 +4613,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = { partNumber: "partNumber" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/parts")
@@ -2312,6 +4640,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = { partNumber: "partNumber" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/parts")
@@ -2355,6 +4684,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/maintenance/parts")
@@ -2380,6 +4710,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/maintenance/parts")
@@ -2405,6 +4736,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/maintenance/parts")
@@ -2430,6 +4762,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/maintenance/parts")
@@ -2455,6 +4788,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/maintenance/parts")
@@ -2480,6 +4814,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/maintenance/parts")
@@ -2505,6 +4840,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/maintenance/parts")
@@ -2530,6 +4866,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/maintenance/parts")
@@ -2555,6 +4892,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/maintenance/parts")
@@ -2580,6 +4918,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/maintenance/parts")
@@ -2630,6 +4969,7 @@ describe("MaintenanceClient", () => {
                 vmrsCode: "12345",
             },
         };
+
         server
             .mockEndpoint()
             .patch("/maintenance/parts")
@@ -2642,37 +4982,7 @@ describe("MaintenanceClient", () => {
         const response = await client.maintenance.updatePart({
             id: "id",
         });
-        expect(response).toEqual({
-            data: {
-                archivedAtTime: "2019-06-13T19:08:25Z",
-                barcodeString: "12345",
-                barcodeType: "12345",
-                category: "12345",
-                createdAtTime: "2019-06-13T19:08:25Z",
-                deletedAtTime: "2019-06-13T19:08:25Z",
-                description: "12345",
-                externalId: "12345",
-                id: "12345",
-                isInventoryTracked: true,
-                manufacturerName: "12345",
-                manufacturerPartNumber: "12345",
-                name: "12345",
-                partNumber: "12345",
-                partStatus: "Unknown",
-                preferredVendor: {
-                    id: "281474976710656",
-                },
-                preferredVendorPartNumber: "12345",
-                subcategory: "12345",
-                unitCost: {
-                    amount: "12345",
-                    currency: "12345",
-                },
-                unitOfMeasureType: "Unknown",
-                updatedAtTime: "2019-06-13T19:08:25Z",
-                vmrsCode: "12345",
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("updatePart (2)", async () => {
@@ -2685,6 +4995,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/parts")
@@ -2711,6 +5022,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/parts")
@@ -2737,6 +5049,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/parts")
@@ -2763,6 +5076,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/parts")
@@ -2789,6 +5103,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/parts")
@@ -2815,6 +5130,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/parts")
@@ -2841,6 +5157,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/parts")
@@ -2867,6 +5184,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/parts")
@@ -2893,6 +5211,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/parts")
@@ -2919,6 +5238,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/parts")
@@ -2970,6 +5290,7 @@ describe("MaintenanceClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/maintenance/parts/inventory-location")
@@ -2979,42 +5300,7 @@ describe("MaintenanceClient", () => {
             .build();
 
         const response = await client.maintenance.listPartInventory();
-        expect(response).toEqual({
-            data: [
-                {
-                    aisle: "12345",
-                    availableQuantity: 123.45,
-                    bin: "12345",
-                    createdAtTime: "2019-06-13T19:08:25Z",
-                    currentQuantity: 123.45,
-                    isCostTracked: true,
-                    isLowStock: true,
-                    isNonStock: true,
-                    maxStockLevel: 123.45,
-                    minStockLevel: 123.45,
-                    partSamsara: {
-                        id: "281474976710656",
-                    },
-                    place: {
-                        id: "281474976710656",
-                    },
-                    reorderQuantity: 123.45,
-                    reorderThreshold: 123.45,
-                    reservedQuantity: 123.45,
-                    row: "12345",
-                    unitCost: {
-                        amount: "12345",
-                        currency: "12345",
-                    },
-                    unitOfMeasureType: "Unknown",
-                    updatedAtTime: "2019-06-13T19:08:25Z",
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("listPartInventory (2)", async () => {
@@ -3027,6 +5313,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/parts/inventory-location")
@@ -3050,6 +5337,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/parts/inventory-location")
@@ -3073,6 +5361,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/parts/inventory-location")
@@ -3096,6 +5385,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/parts/inventory-location")
@@ -3119,6 +5409,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/parts/inventory-location")
@@ -3142,6 +5433,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/parts/inventory-location")
@@ -3165,6 +5457,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/parts/inventory-location")
@@ -3188,6 +5481,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/parts/inventory-location")
@@ -3211,6 +5505,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/parts/inventory-location")
@@ -3234,6 +5529,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/parts/inventory-location")
@@ -3280,6 +5576,7 @@ describe("MaintenanceClient", () => {
                 updatedAtTime: "2019-06-13T19:08:25Z",
             },
         };
+
         server
             .mockEndpoint()
             .post("/maintenance/parts/inventory-location")
@@ -3290,37 +5587,7 @@ describe("MaintenanceClient", () => {
             .build();
 
         const response = await client.maintenance.createPartInventoryLocation();
-        expect(response).toEqual({
-            data: {
-                aisle: "12345",
-                availableQuantity: 123.45,
-                bin: "12345",
-                createdAtTime: "2019-06-13T19:08:25Z",
-                currentQuantity: 123.45,
-                id: "12345",
-                isCostTracked: true,
-                isLowStock: true,
-                isNonStock: true,
-                maxStockLevel: 123.45,
-                minStockLevel: 123.45,
-                partSamsara: {
-                    id: "281474976710656",
-                },
-                place: {
-                    id: "281474976710656",
-                },
-                reorderQuantity: 123.45,
-                reorderThreshold: 123.45,
-                reservedQuantity: 123.45,
-                row: "12345",
-                unitCost: {
-                    amount: "12345",
-                    currency: "12345",
-                },
-                unitOfMeasureType: "Unknown",
-                updatedAtTime: "2019-06-13T19:08:25Z",
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createPartInventoryLocation (2)", async () => {
@@ -3333,6 +5600,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/parts/inventory-location")
@@ -3357,6 +5625,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/parts/inventory-location")
@@ -3381,6 +5650,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/parts/inventory-location")
@@ -3405,6 +5675,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/parts/inventory-location")
@@ -3429,6 +5700,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/parts/inventory-location")
@@ -3453,6 +5725,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/parts/inventory-location")
@@ -3477,6 +5750,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/parts/inventory-location")
@@ -3501,6 +5775,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/parts/inventory-location")
@@ -3525,6 +5800,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/parts/inventory-location")
@@ -3549,6 +5825,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/parts/inventory-location")
@@ -3596,6 +5873,7 @@ describe("MaintenanceClient", () => {
                 updatedAtTime: "2019-06-13T19:08:25Z",
             },
         };
+
         server
             .mockEndpoint()
             .patch("/maintenance/parts/inventory-location")
@@ -3606,37 +5884,7 @@ describe("MaintenanceClient", () => {
             .build();
 
         const response = await client.maintenance.updatePartInventoryLocation();
-        expect(response).toEqual({
-            data: {
-                aisle: "12345",
-                availableQuantity: 123.45,
-                bin: "12345",
-                createdAtTime: "2019-06-13T19:08:25Z",
-                currentQuantity: 123.45,
-                id: "12345",
-                isCostTracked: true,
-                isLowStock: true,
-                isNonStock: true,
-                maxStockLevel: 123.45,
-                minStockLevel: 123.45,
-                partSamsara: {
-                    id: "281474976710656",
-                },
-                place: {
-                    id: "281474976710656",
-                },
-                reorderQuantity: 123.45,
-                reorderThreshold: 123.45,
-                reservedQuantity: 123.45,
-                row: "12345",
-                unitCost: {
-                    amount: "12345",
-                    currency: "12345",
-                },
-                unitOfMeasureType: "Unknown",
-                updatedAtTime: "2019-06-13T19:08:25Z",
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("updatePartInventoryLocation (2)", async () => {
@@ -3649,6 +5897,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/parts/inventory-location")
@@ -3673,6 +5922,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/parts/inventory-location")
@@ -3697,6 +5947,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/parts/inventory-location")
@@ -3721,6 +5972,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/parts/inventory-location")
@@ -3745,6 +5997,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/parts/inventory-location")
@@ -3769,6 +6022,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/parts/inventory-location")
@@ -3793,6 +6047,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/parts/inventory-location")
@@ -3817,6 +6072,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/parts/inventory-location")
@@ -3841,6 +6097,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/parts/inventory-location")
@@ -3865,6 +6122,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/parts/inventory-location")
@@ -3934,6 +6192,7 @@ describe("MaintenanceClient", () => {
                 },
             },
         };
+
         server
             .mockEndpoint()
             .post("/maintenance/parts/stock-movements")
@@ -3948,58 +6207,7 @@ describe("MaintenanceClient", () => {
             partSamsaraId: "12345",
             quantity: 123.45,
         });
-        expect(response).toEqual({
-            data: {
-                destinationLocation: {
-                    aisle: "12345",
-                    availableQuantity: 123.45,
-                    bin: "12345",
-                    createdAtTime: "2019-06-13T19:08:25Z",
-                    currentQuantity: 123.45,
-                    id: "12345",
-                    isCostTracked: true,
-                    isLowStock: true,
-                    maxStockLevel: 123.45,
-                    minStockLevel: 123.45,
-                    partSamsara: "12345",
-                    place: "12345",
-                    reorderQuantity: 123.45,
-                    reorderThreshold: 123.45,
-                    reservedQuantity: 123.45,
-                    row: "12345",
-                    unitCost: {
-                        amount: "12345",
-                        currency: "12345",
-                    },
-                    unitOfMeasureType: "12345",
-                    updatedAtTime: "2019-06-13T19:08:25Z",
-                },
-                sourceLocation: {
-                    aisle: "12345",
-                    availableQuantity: 123.45,
-                    bin: "12345",
-                    createdAtTime: "2019-06-13T19:08:25Z",
-                    currentQuantity: 123.45,
-                    id: "12345",
-                    isCostTracked: true,
-                    isLowStock: true,
-                    maxStockLevel: 123.45,
-                    minStockLevel: 123.45,
-                    partSamsara: "12345",
-                    place: "12345",
-                    reorderQuantity: 123.45,
-                    reorderThreshold: 123.45,
-                    reservedQuantity: 123.45,
-                    row: "12345",
-                    unitCost: {
-                        amount: "12345",
-                        currency: "12345",
-                    },
-                    unitOfMeasureType: "12345",
-                    updatedAtTime: "2019-06-13T19:08:25Z",
-                },
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createStockMovement (2)", async () => {
@@ -4012,6 +6220,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = { movementType: "movementType", partSamsaraId: "partSamsaraId", quantity: 1.1 };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/parts/stock-movements")
@@ -4040,6 +6249,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = { movementType: "movementType", partSamsaraId: "partSamsaraId", quantity: 1.1 };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/parts/stock-movements")
@@ -4068,6 +6278,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = { movementType: "movementType", partSamsaraId: "partSamsaraId", quantity: 1.1 };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/parts/stock-movements")
@@ -4096,6 +6307,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = { movementType: "movementType", partSamsaraId: "partSamsaraId", quantity: 1.1 };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/parts/stock-movements")
@@ -4124,6 +6336,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = { movementType: "movementType", partSamsaraId: "partSamsaraId", quantity: 1.1 };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/parts/stock-movements")
@@ -4152,6 +6365,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = { movementType: "movementType", partSamsaraId: "partSamsaraId", quantity: 1.1 };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/parts/stock-movements")
@@ -4180,6 +6394,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = { movementType: "movementType", partSamsaraId: "partSamsaraId", quantity: 1.1 };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/parts/stock-movements")
@@ -4208,6 +6423,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = { movementType: "movementType", partSamsaraId: "partSamsaraId", quantity: 1.1 };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/parts/stock-movements")
@@ -4236,6 +6452,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = { movementType: "movementType", partSamsaraId: "partSamsaraId", quantity: 1.1 };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/parts/stock-movements")
@@ -4264,6 +6481,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = { movementType: "movementType", partSamsaraId: "partSamsaraId", quantity: 1.1 };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/parts/stock-movements")
@@ -4315,6 +6533,7 @@ describe("MaintenanceClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/maintenance/parts/transactions")
@@ -4326,37 +6545,7 @@ describe("MaintenanceClient", () => {
         const response = await client.maintenance.listPartTransactions({
             happenedAtTimeStart: "happenedAtTimeStart",
         });
-        expect(response).toEqual({
-            data: [
-                {
-                    batch: "12345",
-                    createdAtTime: "2019-06-13T19:08:25Z",
-                    createdByUserId: "12345",
-                    fromPlaceId: "12345",
-                    happenedAtTime: "2019-06-13T19:08:25Z",
-                    id: "12345",
-                    notes: "12345",
-                    part: {
-                        id: "281474976710656",
-                    },
-                    placeId: "12345",
-                    purchaseOrder: "12345",
-                    quantity: 123.45,
-                    resultingQuantity: 123.45,
-                    toPlaceId: "12345",
-                    transactionType: "Unknown",
-                    unitCost: 123.45,
-                    vendorId: "12345",
-                    workOrder: {
-                        id: "281474976710656",
-                    },
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("listPartTransactions (2)", async () => {
@@ -4369,6 +6558,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/parts/transactions")
@@ -4394,6 +6584,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/parts/transactions")
@@ -4419,6 +6610,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/parts/transactions")
@@ -4444,6 +6636,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/parts/transactions")
@@ -4469,6 +6662,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/parts/transactions")
@@ -4494,6 +6688,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/parts/transactions")
@@ -4519,6 +6714,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/parts/transactions")
@@ -4544,6 +6740,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/parts/transactions")
@@ -4569,6 +6766,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/parts/transactions")
@@ -4594,6 +6792,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/parts/transactions")
@@ -4605,6 +6804,1322 @@ describe("MaintenanceClient", () => {
         await expect(async () => {
             return await client.maintenance.listPartTransactions({
                 happenedAtTimeStart: "happenedAtTimeStart",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("listPurchaseOrders (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = {
+            data: [
+                {
+                    createdAtTime: "2019-06-13T19:08:25Z",
+                    creationSource: "Unknown",
+                    deliveryAtTime: "2019-06-13T19:08:25Z",
+                    firstReceivedAtTime: "2019-06-13T19:08:25Z",
+                    fullyReceivedAtTime: "2019-06-13T19:08:25Z",
+                    glCode: "12345",
+                    id: "281474976710656",
+                    invoiceNumber: "12345",
+                    mediaItemIds: ["12345", "12345"],
+                    notes: "12345",
+                    orderStatus: "Unknown",
+                    otherCost: { amount: "12345", currency: "12345" },
+                    parts: [
+                        {
+                            batchNumber: "12345",
+                            coreCharge: {
+                                corePartSamsara: { id: "281474976710656" },
+                                recoverabilityPolicy: {
+                                    fixedRecoverableUntilTime: "2019-06-13T19:08:25Z",
+                                    relativeWindowDuration: 12345,
+                                },
+                                returnRecipientVendor: { id: "281474976710656" },
+                                unitCoreAmount: { amount: "12345", currency: "12345" },
+                            },
+                            description: "12345",
+                            lineItemId: "12345",
+                            partSamsara: { id: "281474976710656" },
+                            partsRequest: { id: "281474976710656" },
+                            partsRequestLine: { id: "281474976710656" },
+                            place: { id: "281474976710656" },
+                            quantityOrdered: 123.45,
+                            quantityReceived: 123.45,
+                            tax: { basisPoints: 12345, money: { amount: "12345", currency: "12345" } },
+                            unitCost: { amount: "12345", currency: "12345" },
+                        },
+                    ],
+                    poNumber: "PO-1001",
+                    poNumberPrefix: "12345",
+                    poNumberSuffix: "12345",
+                    sentAtTime: "2019-06-13T19:08:25Z",
+                    tax: { basisPoints: 12345, money: { amount: "12345", currency: "12345" } },
+                    taxTotal: { amount: "12345", currency: "12345" },
+                    trackingNumber: "12345",
+                    updatedAtTime: "2019-06-13T19:08:25Z",
+                    vendor: { id: "281474976710656" },
+                },
+            ],
+            pagination: { endCursor: "MjkY", hasNextPage: true },
+        };
+
+        server
+            .mockEndpoint()
+            .get("/maintenance/purchase-orders")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.maintenance.listPurchaseOrders({
+            ids: "281474976710656",
+            poNumbers: "PO-1001",
+            vendorIds: "281474976710656",
+            endTime: "2026-07-31T00:00:00Z",
+            startTime: "2026-07-01T00:00:00Z",
+        });
+        expect(response).toEqual(rawResponseBody);
+    });
+
+    test("listPurchaseOrders (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/maintenance/purchase-orders")
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.listPurchaseOrders({
+                startTime: "startTime",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("listPurchaseOrders (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/maintenance/purchase-orders")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.listPurchaseOrders({
+                startTime: "startTime",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("listPurchaseOrders (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/maintenance/purchase-orders")
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.listPurchaseOrders({
+                startTime: "startTime",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("listPurchaseOrders (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/maintenance/purchase-orders")
+            .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.listPurchaseOrders({
+                startTime: "startTime",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("listPurchaseOrders (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/maintenance/purchase-orders")
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.listPurchaseOrders({
+                startTime: "startTime",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("listPurchaseOrders (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/maintenance/purchase-orders")
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.listPurchaseOrders({
+                startTime: "startTime",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("listPurchaseOrders (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/maintenance/purchase-orders")
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.listPurchaseOrders({
+                startTime: "startTime",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("listPurchaseOrders (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/maintenance/purchase-orders")
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.listPurchaseOrders({
+                startTime: "startTime",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("listPurchaseOrders (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/maintenance/purchase-orders")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.listPurchaseOrders({
+                startTime: "startTime",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("listPurchaseOrders (11)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .get("/maintenance/purchase-orders")
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.listPurchaseOrders({
+                startTime: "startTime",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("createPurchaseOrder (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { orderStatus: "Unknown", vendorId: "281474976710656" };
+        const rawResponseBody = {
+            data: {
+                createdAtTime: "2019-06-13T19:08:25Z",
+                creationSource: "Unknown",
+                deliveryAtTime: "2019-06-13T19:08:25Z",
+                firstReceivedAtTime: "2019-06-13T19:08:25Z",
+                fullyReceivedAtTime: "2019-06-13T19:08:25Z",
+                glCode: "GL-4000",
+                id: "12345",
+                invoiceNumber: "INV-12345",
+                mediaItemIds: ["12345", "12345", "12345", "12345"],
+                notes: "Deliver to maintenance shop.",
+                orderStatus: "Unknown",
+                otherCost: { amount: "24.50", currency: "usd" },
+                parts: [
+                    {
+                        batchNumber: "LOT-42",
+                        coreCharge: {
+                            corePartSamsara: { id: "281474976710656" },
+                            recoverabilityPolicy: {
+                                fixedRecoverableUntilTime: "2019-06-13T19:08:25Z",
+                                relativeWindowDuration: 12345,
+                            },
+                            returnRecipientVendor: { id: "281474976710656" },
+                            unitCoreAmount: { amount: "12345", currency: "12345" },
+                        },
+                        description: "Oil filter",
+                        lineItemId: "12345",
+                        partSamsara: { id: "281474976710656" },
+                        partsRequest: { id: "281474976710656" },
+                        partsRequestLine: { id: "281474976710656" },
+                        place: { id: "281474976710656" },
+                        quantityOrdered: 10,
+                        quantityReceived: 123.45,
+                        tax: { basisPoints: 12345, money: { amount: "12345", currency: "12345" } },
+                        unitCost: { amount: "24.50", currency: "usd" },
+                    },
+                ],
+                poNumber: "12345",
+                poNumberPrefix: "PO",
+                poNumberSuffix: "A",
+                sentAtTime: "2019-06-13T19:08:25Z",
+                tax: { basisPoints: 12345, money: { amount: "12345", currency: "12345" } },
+                taxTotal: { amount: "12345", currency: "12345" },
+                trackingNumber: "1Z999AA10123456784",
+                updatedAtTime: "2019-06-13T19:08:25Z",
+                vendor: { id: "281474976710656" },
+            },
+        };
+
+        server
+            .mockEndpoint()
+            .post("/maintenance/purchase-orders")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.maintenance.createPurchaseOrder({
+            orderStatus: "Unknown",
+            vendorId: "281474976710656",
+        });
+        expect(response).toEqual(rawResponseBody);
+    });
+
+    test("createPurchaseOrder (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { orderStatus: "Unknown", vendorId: "vendorId" };
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/maintenance/purchase-orders")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.createPurchaseOrder({
+                orderStatus: "Unknown",
+                vendorId: "vendorId",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("createPurchaseOrder (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { orderStatus: "Unknown", vendorId: "vendorId" };
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/maintenance/purchase-orders")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.createPurchaseOrder({
+                orderStatus: "Unknown",
+                vendorId: "vendorId",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("createPurchaseOrder (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { orderStatus: "Unknown", vendorId: "vendorId" };
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/maintenance/purchase-orders")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.createPurchaseOrder({
+                orderStatus: "Unknown",
+                vendorId: "vendorId",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("createPurchaseOrder (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { orderStatus: "Unknown", vendorId: "vendorId" };
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/maintenance/purchase-orders")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.createPurchaseOrder({
+                orderStatus: "Unknown",
+                vendorId: "vendorId",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("createPurchaseOrder (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { orderStatus: "Unknown", vendorId: "vendorId" };
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/maintenance/purchase-orders")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.createPurchaseOrder({
+                orderStatus: "Unknown",
+                vendorId: "vendorId",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("createPurchaseOrder (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { orderStatus: "Unknown", vendorId: "vendorId" };
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/maintenance/purchase-orders")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.createPurchaseOrder({
+                orderStatus: "Unknown",
+                vendorId: "vendorId",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("createPurchaseOrder (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { orderStatus: "Unknown", vendorId: "vendorId" };
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/maintenance/purchase-orders")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.createPurchaseOrder({
+                orderStatus: "Unknown",
+                vendorId: "vendorId",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("createPurchaseOrder (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { orderStatus: "Unknown", vendorId: "vendorId" };
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/maintenance/purchase-orders")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.createPurchaseOrder({
+                orderStatus: "Unknown",
+                vendorId: "vendorId",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("createPurchaseOrder (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { orderStatus: "Unknown", vendorId: "vendorId" };
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/maintenance/purchase-orders")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.createPurchaseOrder({
+                orderStatus: "Unknown",
+                vendorId: "vendorId",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("createPurchaseOrder (11)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = { orderStatus: "Unknown", vendorId: "vendorId" };
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .post("/maintenance/purchase-orders")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.createPurchaseOrder({
+                orderStatus: "Unknown",
+                vendorId: "vendorId",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("deletePurchaseOrder (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        server.mockEndpoint().delete("/maintenance/purchase-orders").respondWith().statusCode(200).build();
+
+        const response = await client.maintenance.deletePurchaseOrder({
+            id: "id",
+        });
+        expect(response).toEqual(undefined);
+    });
+
+    test("deletePurchaseOrder (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .delete("/maintenance/purchase-orders")
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.deletePurchaseOrder({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("deletePurchaseOrder (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .delete("/maintenance/purchase-orders")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.deletePurchaseOrder({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("deletePurchaseOrder (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .delete("/maintenance/purchase-orders")
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.deletePurchaseOrder({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("deletePurchaseOrder (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .delete("/maintenance/purchase-orders")
+            .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.deletePurchaseOrder({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("deletePurchaseOrder (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .delete("/maintenance/purchase-orders")
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.deletePurchaseOrder({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("deletePurchaseOrder (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .delete("/maintenance/purchase-orders")
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.deletePurchaseOrder({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("deletePurchaseOrder (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .delete("/maintenance/purchase-orders")
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.deletePurchaseOrder({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("deletePurchaseOrder (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .delete("/maintenance/purchase-orders")
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.deletePurchaseOrder({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("deletePurchaseOrder (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .delete("/maintenance/purchase-orders")
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.deletePurchaseOrder({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("deletePurchaseOrder (11)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .delete("/maintenance/purchase-orders")
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.deletePurchaseOrder({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("updatePurchaseOrder (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = {
+            data: {
+                createdAtTime: "2019-06-13T19:08:25Z",
+                creationSource: "Unknown",
+                deliveryAtTime: "2019-06-13T19:08:25Z",
+                firstReceivedAtTime: "2019-06-13T19:08:25Z",
+                fullyReceivedAtTime: "2019-06-13T19:08:25Z",
+                glCode: "GL-4000",
+                id: "12345",
+                invoiceNumber: "INV-12345",
+                mediaItemIds: ["12345", "12345", "12345", "12345"],
+                notes: "Deliver to maintenance shop.",
+                orderStatus: "Unknown",
+                otherCost: { amount: "24.50", currency: "usd" },
+                parts: [
+                    {
+                        batchNumber: "LOT-42",
+                        coreCharge: {
+                            corePartSamsara: { id: "281474976710656" },
+                            recoverabilityPolicy: {
+                                fixedRecoverableUntilTime: "2019-06-13T19:08:25Z",
+                                relativeWindowDuration: 12345,
+                            },
+                            returnRecipientVendor: { id: "281474976710656" },
+                            unitCoreAmount: { amount: "12345", currency: "12345" },
+                        },
+                        description: "Oil filter",
+                        lineItemId: "12345",
+                        partSamsara: { id: "281474976710656" },
+                        partsRequest: { id: "281474976710656" },
+                        partsRequestLine: { id: "281474976710656" },
+                        place: { id: "281474976710656" },
+                        quantityOrdered: 10,
+                        quantityReceived: 123.45,
+                        tax: { basisPoints: 12345, money: { amount: "12345", currency: "12345" } },
+                        unitCost: { amount: "24.50", currency: "usd" },
+                    },
+                ],
+                poNumber: "12345",
+                poNumberPrefix: "PO",
+                poNumberSuffix: "A",
+                sentAtTime: "2019-06-13T19:08:25Z",
+                tax: { basisPoints: 12345, money: { amount: "12345", currency: "12345" } },
+                taxTotal: { amount: "12345", currency: "12345" },
+                trackingNumber: "1Z999AA10123456784",
+                updatedAtTime: "2019-06-13T19:08:25Z",
+                vendor: { id: "281474976710656" },
+            },
+        };
+
+        server
+            .mockEndpoint()
+            .patch("/maintenance/purchase-orders")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.maintenance.updatePurchaseOrder({
+            id: "id",
+        });
+        expect(response).toEqual(rawResponseBody);
+    });
+
+    test("updatePurchaseOrder (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .patch("/maintenance/purchase-orders")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.updatePurchaseOrder({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("updatePurchaseOrder (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .patch("/maintenance/purchase-orders")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.updatePurchaseOrder({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("updatePurchaseOrder (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .patch("/maintenance/purchase-orders")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(405)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.updatePurchaseOrder({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("updatePurchaseOrder (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .patch("/maintenance/purchase-orders")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(413)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.updatePurchaseOrder({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("updatePurchaseOrder (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .patch("/maintenance/purchase-orders")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(429)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.updatePurchaseOrder({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("updatePurchaseOrder (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .patch("/maintenance/purchase-orders")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(500)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.updatePurchaseOrder({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("updatePurchaseOrder (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .patch("/maintenance/purchase-orders")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(501)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.updatePurchaseOrder({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("updatePurchaseOrder (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .patch("/maintenance/purchase-orders")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(502)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.updatePurchaseOrder({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("updatePurchaseOrder (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .patch("/maintenance/purchase-orders")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(503)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.updatePurchaseOrder({
+                id: "id",
+            });
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("updatePurchaseOrder (11)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+        const rawRequestBody = {};
+        const rawResponseBody = { key: "value" };
+
+        server
+            .mockEndpoint()
+            .patch("/maintenance/purchase-orders")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(504)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.maintenance.updatePurchaseOrder({
+                id: "id",
             });
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
@@ -4646,6 +8161,7 @@ describe("MaintenanceClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/maintenance/time-entries/stream")
@@ -4657,46 +8173,7 @@ describe("MaintenanceClient", () => {
         const response = await client.maintenance.listTimeEntries({
             startTime: "startTime",
         });
-        expect(response).toEqual({
-            data: [
-                {
-                    activityType: "unknown",
-                    activityTypeId: "12345",
-                    activityTypeName: "12345",
-                    clockInAtTime: "2026-07-09T14:10:47.648Z",
-                    clockInLocation: {
-                        latitude: 42.2364884,
-                        longitude: -83.3113959,
-                    },
-                    clockInSource: "mobile",
-                    clockOutAtTime: "2026-07-09T14:15:47.296Z",
-                    clockOutLocation: {
-                        latitude: 42.2365116,
-                        longitude: -83.3114372,
-                    },
-                    clockOutMethodType: "manual",
-                    clockOutSource: "mobile",
-                    createdAtTime: "2026-07-09T14:10:48.245Z",
-                    deletedAtTime: "2019-06-13T19:08:25Z",
-                    deletedByUserId: "12345",
-                    hourlyRate: {
-                        amount: "24.50",
-                        currency: "usd",
-                    },
-                    id: "85436931-026c-466a-95ae-419a829e3a26",
-                    placeId: "5000000795134",
-                    serviceTaskId: "98e645fa-4b7e-446c-8613-cf2bb0a70727",
-                    timeEntryStatus: "completed",
-                    updatedAtTime: "2026-07-09T14:15:47.820Z",
-                    userId: "590838",
-                    workOrderId: "34",
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("listTimeEntries (2)", async () => {
@@ -4709,6 +8186,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/time-entries/stream")
@@ -4734,6 +8212,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/time-entries/stream")
@@ -4759,6 +8238,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/time-entries/stream")
@@ -4784,6 +8264,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/time-entries/stream")
@@ -4809,6 +8290,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/time-entries/stream")
@@ -4834,6 +8316,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/time-entries/stream")
@@ -4859,6 +8342,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/time-entries/stream")
@@ -4884,6 +8368,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/time-entries/stream")
@@ -4909,6 +8394,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/time-entries/stream")
@@ -4934,6 +8420,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/time-entries/stream")
@@ -4966,6 +8453,8 @@ describe("MaintenanceClient", () => {
                         durationDays: 12345,
                         durationMonths: 12345,
                         engineDurationHours: 12345,
+                        exclusions: [{ id: "12345", vmrsCode: "12345" }],
+                        inclusions: [{ id: "12345", vmrsCode: "12345" }],
                         isOdometerDistanceUnlimited: true,
                         name: "12345",
                         notes: "12345",
@@ -4980,6 +8469,8 @@ describe("MaintenanceClient", () => {
                             durationDays: 12345,
                             durationMonths: 12345,
                             engineDurationHours: 12345,
+                            exclusions: [{ id: "12345", vmrsCode: "12345" }],
+                            inclusions: [{ id: "12345", vmrsCode: "12345" }],
                             isOdometerDistanceUnlimited: true,
                             name: "12345",
                             notes: "12345",
@@ -5005,6 +8496,7 @@ describe("MaintenanceClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/maintenance/warranties")
@@ -5014,63 +8506,7 @@ describe("MaintenanceClient", () => {
             .build();
 
         const response = await client.maintenance.listWarranties();
-        expect(response).toEqual({
-            data: [
-                {
-                    baseCoverage: {
-                        description: "12345",
-                        durationDays: 12345,
-                        durationMonths: 12345,
-                        engineDurationHours: 12345,
-                        isOdometerDistanceUnlimited: true,
-                        name: "12345",
-                        notes: "12345",
-                        odometerDistanceMeters: 12345,
-                        startEngineHours: 12345,
-                        startOdometerMeters: 12345,
-                        startTime: "2019-06-13T19:08:25Z",
-                    },
-                    coverages: [
-                        {
-                            description: "12345",
-                            durationDays: 12345,
-                            durationMonths: 12345,
-                            engineDurationHours: 12345,
-                            isOdometerDistanceUnlimited: true,
-                            name: "12345",
-                            notes: "12345",
-                            odometerDistanceMeters: 12345,
-                            startEngineHours: 12345,
-                            startOdometerMeters: 12345,
-                            startTime: "2019-06-13T19:08:25Z",
-                        },
-                    ],
-                    createdAtTime: "2019-06-13T19:08:25Z",
-                    description: "12345",
-                    durationDays: 12345,
-                    durationMonths: 12345,
-                    engineDurationHours: 12345,
-                    externalIds: [
-                        {
-                            key: "12345",
-                            value: "12345",
-                        },
-                    ],
-                    id: "12345",
-                    name: "12345",
-                    odometerDistanceMeters: 12345,
-                    updatedAtTime: "2019-06-13T19:08:25Z",
-                    vendor: {
-                        id: "281474976710656",
-                    },
-                    warrantyType: "unknown",
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("listWarranties (2)", async () => {
@@ -5083,6 +8519,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/warranties")
@@ -5106,6 +8543,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/warranties")
@@ -5129,6 +8567,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/warranties")
@@ -5152,6 +8591,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/warranties")
@@ -5175,6 +8615,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/warranties")
@@ -5198,6 +8639,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/warranties")
@@ -5221,6 +8663,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/warranties")
@@ -5244,6 +8687,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/warranties")
@@ -5267,6 +8711,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/warranties")
@@ -5290,6 +8735,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/warranties")
@@ -5335,6 +8781,8 @@ describe("MaintenanceClient", () => {
                         durationDays: 12345,
                         durationMonths: 12345,
                         engineDurationHours: 12345,
+                        exclusions: [{ id: "12345", vmrsCode: "12345" }],
+                        inclusions: [{ id: "12345", vmrsCode: "12345" }],
                         isOdometerDistanceUnlimited: true,
                         name: "12345",
                         notes: "12345",
@@ -5358,6 +8806,7 @@ describe("MaintenanceClient", () => {
                 warrantyType: "unknown",
             },
         };
+
         server
             .mockEndpoint()
             .post("/maintenance/warranties")
@@ -5370,69 +8819,7 @@ describe("MaintenanceClient", () => {
         const response = await client.maintenance.createWarranty({
             name: "12345",
         });
-        expect(response).toEqual({
-            data: {
-                baseCoverage: {
-                    description: "12345",
-                    durationDays: 12345,
-                    durationMonths: 12345,
-                    engineDurationHours: 12345,
-                    exclusions: [
-                        {
-                            id: "12345",
-                            vmrsCode: "12345",
-                        },
-                    ],
-                    inclusions: [
-                        {
-                            id: "12345",
-                            vmrsCode: "12345",
-                        },
-                    ],
-                    isOdometerDistanceUnlimited: true,
-                    name: "12345",
-                    notes: "12345",
-                    odometerDistanceMeters: 12345,
-                    startEngineHours: 12345,
-                    startOdometerMeters: 12345,
-                    startTime: "2019-06-13T19:08:25Z",
-                },
-                coverages: [
-                    {
-                        description: "12345",
-                        durationDays: 12345,
-                        durationMonths: 12345,
-                        engineDurationHours: 12345,
-                        isOdometerDistanceUnlimited: true,
-                        name: "12345",
-                        notes: "12345",
-                        odometerDistanceMeters: 12345,
-                        startEngineHours: 12345,
-                        startOdometerMeters: 12345,
-                        startTime: "2019-06-13T19:08:25Z",
-                    },
-                ],
-                createdAtTime: "2019-06-13T19:08:25Z",
-                description: "12345",
-                durationDays: 12345,
-                durationMonths: 12345,
-                engineDurationHours: 12345,
-                externalIds: [
-                    {
-                        key: "12345",
-                        value: "12345",
-                    },
-                ],
-                id: "12345",
-                name: "12345",
-                odometerDistanceMeters: 12345,
-                updatedAtTime: "2019-06-13T19:08:25Z",
-                vendor: {
-                    id: "281474976710656",
-                },
-                warrantyType: "unknown",
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createWarranty (2)", async () => {
@@ -5445,6 +8832,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/warranties")
@@ -5471,6 +8859,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/warranties")
@@ -5497,6 +8886,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/warranties")
@@ -5523,6 +8913,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/warranties")
@@ -5549,6 +8940,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/warranties")
@@ -5575,6 +8967,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/warranties")
@@ -5601,6 +8994,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/warranties")
@@ -5627,6 +9021,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/warranties")
@@ -5653,6 +9048,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/warranties")
@@ -5679,6 +9075,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = { name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/warranties")
@@ -5722,6 +9119,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/maintenance/warranties")
@@ -5747,6 +9145,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/maintenance/warranties")
@@ -5772,6 +9171,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/maintenance/warranties")
@@ -5797,6 +9197,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/maintenance/warranties")
@@ -5822,6 +9223,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/maintenance/warranties")
@@ -5847,6 +9249,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/maintenance/warranties")
@@ -5872,6 +9275,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/maintenance/warranties")
@@ -5897,6 +9301,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/maintenance/warranties")
@@ -5922,6 +9327,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/maintenance/warranties")
@@ -5947,6 +9353,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/maintenance/warranties")
@@ -5994,6 +9401,8 @@ describe("MaintenanceClient", () => {
                         durationDays: 12345,
                         durationMonths: 12345,
                         engineDurationHours: 12345,
+                        exclusions: [{ id: "12345", vmrsCode: "12345" }],
+                        inclusions: [{ id: "12345", vmrsCode: "12345" }],
                         isOdometerDistanceUnlimited: true,
                         name: "12345",
                         notes: "12345",
@@ -6017,6 +9426,7 @@ describe("MaintenanceClient", () => {
                 warrantyType: "unknown",
             },
         };
+
         server
             .mockEndpoint()
             .patch("/maintenance/warranties")
@@ -6029,69 +9439,7 @@ describe("MaintenanceClient", () => {
         const response = await client.maintenance.updateWarranty({
             id: "id",
         });
-        expect(response).toEqual({
-            data: {
-                baseCoverage: {
-                    description: "12345",
-                    durationDays: 12345,
-                    durationMonths: 12345,
-                    engineDurationHours: 12345,
-                    exclusions: [
-                        {
-                            id: "12345",
-                            vmrsCode: "12345",
-                        },
-                    ],
-                    inclusions: [
-                        {
-                            id: "12345",
-                            vmrsCode: "12345",
-                        },
-                    ],
-                    isOdometerDistanceUnlimited: true,
-                    name: "12345",
-                    notes: "12345",
-                    odometerDistanceMeters: 12345,
-                    startEngineHours: 12345,
-                    startOdometerMeters: 12345,
-                    startTime: "2019-06-13T19:08:25Z",
-                },
-                coverages: [
-                    {
-                        description: "12345",
-                        durationDays: 12345,
-                        durationMonths: 12345,
-                        engineDurationHours: 12345,
-                        isOdometerDistanceUnlimited: true,
-                        name: "12345",
-                        notes: "12345",
-                        odometerDistanceMeters: 12345,
-                        startEngineHours: 12345,
-                        startOdometerMeters: 12345,
-                        startTime: "2019-06-13T19:08:25Z",
-                    },
-                ],
-                createdAtTime: "2019-06-13T19:08:25Z",
-                description: "12345",
-                durationDays: 12345,
-                durationMonths: 12345,
-                engineDurationHours: 12345,
-                externalIds: [
-                    {
-                        key: "12345",
-                        value: "12345",
-                    },
-                ],
-                id: "12345",
-                name: "12345",
-                odometerDistanceMeters: 12345,
-                updatedAtTime: "2019-06-13T19:08:25Z",
-                vendor: {
-                    id: "281474976710656",
-                },
-                warrantyType: "unknown",
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("updateWarranty (2)", async () => {
@@ -6104,6 +9452,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/warranties")
@@ -6130,6 +9479,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/warranties")
@@ -6156,6 +9506,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/warranties")
@@ -6182,6 +9533,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/warranties")
@@ -6208,6 +9560,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/warranties")
@@ -6234,6 +9587,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/warranties")
@@ -6260,6 +9614,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/warranties")
@@ -6286,6 +9641,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/warranties")
@@ -6312,6 +9668,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/warranties")
@@ -6338,6 +9695,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/warranties")
@@ -6378,6 +9736,7 @@ describe("MaintenanceClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/maintenance/warranties/assets")
@@ -6389,28 +9748,7 @@ describe("MaintenanceClient", () => {
         const response = await client.maintenance.listWarrantyAssetAssignments({
             warrantyId: "warrantyId",
         });
-        expect(response).toEqual({
-            data: [
-                {
-                    asset: {
-                        id: "281474976710656",
-                    },
-                    createdAtTime: "2019-06-13T19:08:25Z",
-                    id: "12345",
-                    startEngineHours: 12345,
-                    startOdometerMeters: 12345,
-                    startTime: "2019-06-13T19:08:25Z",
-                    updatedAtTime: "2019-06-13T19:08:25Z",
-                    warranty: {
-                        id: "281474976710656",
-                    },
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("listWarrantyAssetAssignments (2)", async () => {
@@ -6423,6 +9761,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/warranties/assets")
@@ -6448,6 +9787,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/warranties/assets")
@@ -6473,6 +9813,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/warranties/assets")
@@ -6498,6 +9839,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/warranties/assets")
@@ -6523,6 +9865,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/warranties/assets")
@@ -6548,6 +9891,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/warranties/assets")
@@ -6573,6 +9917,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/warranties/assets")
@@ -6598,6 +9943,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/warranties/assets")
@@ -6623,6 +9969,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/warranties/assets")
@@ -6648,6 +9995,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/warranties/assets")
@@ -6688,6 +10036,7 @@ describe("MaintenanceClient", () => {
                 ],
             },
         };
+
         server
             .mockEndpoint()
             .post("/maintenance/warranties/assets/replace")
@@ -6698,22 +10047,7 @@ describe("MaintenanceClient", () => {
             .build();
 
         const response = await client.maintenance.replaceWarrantyAssetAssignments();
-        expect(response).toEqual({
-            data: {
-                data: [
-                    {
-                        assetId: "12345",
-                        createdAtTime: "2019-06-13T19:08:25Z",
-                        id: "12345",
-                        startEngineHours: 12345,
-                        startOdometerMeters: 12345,
-                        startTime: "2019-06-13T19:08:25Z",
-                        updatedAtTime: "2019-06-13T19:08:25Z",
-                        warrantyId: "12345",
-                    },
-                ],
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("replaceWarrantyAssetAssignments (2)", async () => {
@@ -6726,6 +10060,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/warranties/assets/replace")
@@ -6750,6 +10085,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/warranties/assets/replace")
@@ -6774,6 +10110,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/warranties/assets/replace")
@@ -6798,6 +10135,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/warranties/assets/replace")
@@ -6822,6 +10160,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/warranties/assets/replace")
@@ -6846,6 +10185,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/warranties/assets/replace")
@@ -6870,6 +10210,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/warranties/assets/replace")
@@ -6894,6 +10235,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/warranties/assets/replace")
@@ -6918,6 +10260,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/warranties/assets/replace")
@@ -6942,6 +10285,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/warranties/assets/replace")
@@ -6973,14 +10317,20 @@ describe("MaintenanceClient", () => {
                     claimEngineHours: 12345,
                     claimOdometerMeters: 12345,
                     claimStatus: "unknown",
-                    componentInstanceIds: ["12345", "12345", "12345", "12345"],
+                    componentInstanceIds: ["12345", "12345", "12345"],
                     concern: "12345",
                     correction: "12345",
                     createdAtTime: "2019-06-13T19:08:25Z",
                     externalIds: [{ key: "12345", value: "12345" }],
                     id: "12345",
                     labor: [
-                        { description: "12345", serviceTaskId: "12345", sourceWorkOrderId: "12345", vmrsCode: "12345" },
+                        {
+                            cost: { amount: "12345", currency: "12345" },
+                            description: "12345",
+                            serviceTaskId: "12345",
+                            sourceWorkOrderId: "12345",
+                            vmrsCode: "12345",
+                        },
                     ],
                     linkedWarranty: { id: "281474976710656" },
                     linkedWorkOrderIds: ["12345", "12345", "12345", "12345"],
@@ -6988,6 +10338,7 @@ describe("MaintenanceClient", () => {
                     otherCost: { amount: "12345", currency: "12345" },
                     parts: [
                         {
+                            cost: { amount: "12345", currency: "12345" },
                             description: "12345",
                             partDefinitionId: "12345",
                             partId: "12345",
@@ -6998,7 +10349,7 @@ describe("MaintenanceClient", () => {
                         },
                     ],
                     reimbursedAtTime: "2019-06-13T19:08:25Z",
-                    reimbursements: [{ workOrderId: "12345" }],
+                    reimbursements: [{ reimbursement: { amount: "12345", currency: "12345" }, workOrderId: "12345" }],
                     repairCompletedAtTime: "2019-06-13T19:08:25Z",
                     resolutionAtTime: "2019-06-13T19:08:25Z",
                     statusHistory: [{ happenedAtTime: "2019-06-13T19:08:25Z", userId: "12345" }],
@@ -7009,6 +10360,7 @@ describe("MaintenanceClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/maintenance/warranty-claims")
@@ -7018,81 +10370,7 @@ describe("MaintenanceClient", () => {
             .build();
 
         const response = await client.maintenance.listWarrantyClaims();
-        expect(response).toEqual({
-            data: [
-                {
-                    asset: {
-                        id: "281474976710656",
-                    },
-                    cause: "12345",
-                    claimEngineHours: 12345,
-                    claimOdometerMeters: 12345,
-                    claimStatus: "unknown",
-                    componentInstanceIds: ["12345", "12345", "12345", "12345"],
-                    concern: "12345",
-                    correction: "12345",
-                    createdAtTime: "2019-06-13T19:08:25Z",
-                    externalIds: [
-                        {
-                            key: "12345",
-                            value: "12345",
-                        },
-                    ],
-                    id: "12345",
-                    labor: [
-                        {
-                            description: "12345",
-                            serviceTaskId: "12345",
-                            sourceWorkOrderId: "12345",
-                            vmrsCode: "12345",
-                        },
-                    ],
-                    linkedWarranty: {
-                        id: "281474976710656",
-                    },
-                    linkedWorkOrderIds: ["12345", "12345", "12345", "12345"],
-                    mediaItemIds: ["12345", "12345"],
-                    otherCost: {
-                        amount: "12345",
-                        currency: "12345",
-                    },
-                    parts: [
-                        {
-                            description: "12345",
-                            partDefinitionId: "12345",
-                            partId: "12345",
-                            quantity: 12345,
-                            serviceTaskId: "12345",
-                            sourceWorkOrderId: "12345",
-                            vmrsCode: "12345",
-                        },
-                    ],
-                    reimbursedAtTime: "2019-06-13T19:08:25Z",
-                    reimbursements: [
-                        {
-                            workOrderId: "12345",
-                        },
-                    ],
-                    repairCompletedAtTime: "2019-06-13T19:08:25Z",
-                    resolutionAtTime: "2019-06-13T19:08:25Z",
-                    statusHistory: [
-                        {
-                            happenedAtTime: "2019-06-13T19:08:25Z",
-                            userId: "12345",
-                        },
-                    ],
-                    submittedAtTime: "2019-06-13T19:08:25Z",
-                    updatedAtTime: "2019-06-13T19:08:25Z",
-                    warrantyVendor: {
-                        id: "281474976710656",
-                    },
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("listWarrantyClaims (2)", async () => {
@@ -7105,6 +10383,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/warranty-claims")
@@ -7128,6 +10407,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/warranty-claims")
@@ -7151,6 +10431,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/warranty-claims")
@@ -7174,6 +10455,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/warranty-claims")
@@ -7197,6 +10479,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/warranty-claims")
@@ -7220,6 +10503,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/warranty-claims")
@@ -7243,6 +10527,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/warranty-claims")
@@ -7266,6 +10551,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/warranty-claims")
@@ -7289,6 +10575,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/warranty-claims")
@@ -7312,6 +10599,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/warranty-claims")
@@ -7348,14 +10636,21 @@ describe("MaintenanceClient", () => {
                 externalIds: [{ key: "12345", value: "12345" }],
                 id: "12345",
                 labor: [
-                    { description: "12345", serviceTaskId: "12345", sourceWorkOrderId: "12345", vmrsCode: "12345" },
+                    {
+                        cost: { amount: "12345", currency: "12345" },
+                        description: "12345",
+                        serviceTaskId: "12345",
+                        sourceWorkOrderId: "12345",
+                        vmrsCode: "12345",
+                    },
                 ],
                 linkedWarranty: { id: "281474976710656" },
-                linkedWorkOrderIds: ["12345", "12345"],
-                mediaItemIds: ["12345", "12345", "12345"],
+                linkedWorkOrderIds: ["12345", "12345", "12345"],
+                mediaItemIds: ["12345", "12345", "12345", "12345"],
                 otherCost: { amount: "12345", currency: "12345" },
                 parts: [
                     {
+                        cost: { amount: "12345", currency: "12345" },
                         description: "12345",
                         partDefinitionId: "12345",
                         partId: "12345",
@@ -7366,7 +10661,7 @@ describe("MaintenanceClient", () => {
                     },
                 ],
                 reimbursedAtTime: "2019-06-13T19:08:25Z",
-                reimbursements: [{ workOrderId: "12345" }],
+                reimbursements: [{ reimbursement: { amount: "12345", currency: "12345" }, workOrderId: "12345" }],
                 repairCompletedAtTime: "2019-06-13T19:08:25Z",
                 resolutionAtTime: "2019-06-13T19:08:25Z",
                 statusHistory: [{ happenedAtTime: "2019-06-13T19:08:25Z", userId: "12345" }],
@@ -7375,6 +10670,7 @@ describe("MaintenanceClient", () => {
                 warrantyVendor: { id: "281474976710656" },
             },
         };
+
         server
             .mockEndpoint()
             .post("/maintenance/warranty-claims")
@@ -7387,75 +10683,7 @@ describe("MaintenanceClient", () => {
         const response = await client.maintenance.createWarrantyClaim({
             assetId: "281474976710656",
         });
-        expect(response).toEqual({
-            data: {
-                asset: {
-                    id: "281474976710656",
-                },
-                cause: "12345",
-                claimEngineHours: 12345,
-                claimOdometerMeters: 12345,
-                claimStatus: "unknown",
-                componentInstanceIds: ["12345", "12345", "12345", "12345"],
-                concern: "12345",
-                correction: "12345",
-                createdAtTime: "2019-06-13T19:08:25Z",
-                externalIds: [
-                    {
-                        key: "12345",
-                        value: "12345",
-                    },
-                ],
-                id: "12345",
-                labor: [
-                    {
-                        description: "12345",
-                        serviceTaskId: "12345",
-                        sourceWorkOrderId: "12345",
-                        vmrsCode: "12345",
-                    },
-                ],
-                linkedWarranty: {
-                    id: "281474976710656",
-                },
-                linkedWorkOrderIds: ["12345", "12345"],
-                mediaItemIds: ["12345", "12345", "12345"],
-                otherCost: {
-                    amount: "12345",
-                    currency: "12345",
-                },
-                parts: [
-                    {
-                        description: "12345",
-                        partDefinitionId: "12345",
-                        partId: "12345",
-                        quantity: 12345,
-                        serviceTaskId: "12345",
-                        sourceWorkOrderId: "12345",
-                        vmrsCode: "12345",
-                    },
-                ],
-                reimbursedAtTime: "2019-06-13T19:08:25Z",
-                reimbursements: [
-                    {
-                        workOrderId: "12345",
-                    },
-                ],
-                repairCompletedAtTime: "2019-06-13T19:08:25Z",
-                resolutionAtTime: "2019-06-13T19:08:25Z",
-                statusHistory: [
-                    {
-                        happenedAtTime: "2019-06-13T19:08:25Z",
-                        userId: "12345",
-                    },
-                ],
-                submittedAtTime: "2019-06-13T19:08:25Z",
-                updatedAtTime: "2019-06-13T19:08:25Z",
-                warrantyVendor: {
-                    id: "281474976710656",
-                },
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createWarrantyClaim (2)", async () => {
@@ -7468,6 +10696,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = { assetId: "assetId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/warranty-claims")
@@ -7494,6 +10723,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = { assetId: "assetId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/warranty-claims")
@@ -7520,6 +10750,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = { assetId: "assetId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/warranty-claims")
@@ -7546,6 +10777,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = { assetId: "assetId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/warranty-claims")
@@ -7572,6 +10804,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = { assetId: "assetId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/warranty-claims")
@@ -7598,6 +10831,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = { assetId: "assetId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/warranty-claims")
@@ -7624,6 +10858,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = { assetId: "assetId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/warranty-claims")
@@ -7650,6 +10885,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = { assetId: "assetId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/warranty-claims")
@@ -7676,6 +10912,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = { assetId: "assetId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/warranty-claims")
@@ -7702,6 +10939,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = { assetId: "assetId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/warranty-claims")
@@ -7745,6 +10983,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/maintenance/warranty-claims")
@@ -7770,6 +11009,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/maintenance/warranty-claims")
@@ -7795,6 +11035,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/maintenance/warranty-claims")
@@ -7820,6 +11061,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/maintenance/warranty-claims")
@@ -7845,6 +11087,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/maintenance/warranty-claims")
@@ -7870,6 +11113,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/maintenance/warranty-claims")
@@ -7895,6 +11139,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/maintenance/warranty-claims")
@@ -7920,6 +11165,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/maintenance/warranty-claims")
@@ -7945,6 +11191,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/maintenance/warranty-claims")
@@ -7970,6 +11217,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/maintenance/warranty-claims")
@@ -8001,21 +11249,28 @@ describe("MaintenanceClient", () => {
                 claimEngineHours: 12345,
                 claimOdometerMeters: 12345,
                 claimStatus: "unknown",
-                componentInstanceIds: ["12345", "12345"],
+                componentInstanceIds: ["12345", "12345", "12345"],
                 concern: "12345",
                 correction: "12345",
                 createdAtTime: "2019-06-13T19:08:25Z",
                 externalIds: [{ key: "12345", value: "12345" }],
                 id: "12345",
                 labor: [
-                    { description: "12345", serviceTaskId: "12345", sourceWorkOrderId: "12345", vmrsCode: "12345" },
+                    {
+                        cost: { amount: "12345", currency: "12345" },
+                        description: "12345",
+                        serviceTaskId: "12345",
+                        sourceWorkOrderId: "12345",
+                        vmrsCode: "12345",
+                    },
                 ],
                 linkedWarranty: { id: "281474976710656" },
-                linkedWorkOrderIds: ["12345", "12345"],
-                mediaItemIds: ["12345", "12345"],
+                linkedWorkOrderIds: ["12345", "12345", "12345"],
+                mediaItemIds: ["12345", "12345", "12345", "12345"],
                 otherCost: { amount: "12345", currency: "12345" },
                 parts: [
                     {
+                        cost: { amount: "12345", currency: "12345" },
                         description: "12345",
                         partDefinitionId: "12345",
                         partId: "12345",
@@ -8026,7 +11281,7 @@ describe("MaintenanceClient", () => {
                     },
                 ],
                 reimbursedAtTime: "2019-06-13T19:08:25Z",
-                reimbursements: [{ workOrderId: "12345" }],
+                reimbursements: [{ reimbursement: { amount: "12345", currency: "12345" }, workOrderId: "12345" }],
                 repairCompletedAtTime: "2019-06-13T19:08:25Z",
                 resolutionAtTime: "2019-06-13T19:08:25Z",
                 statusHistory: [{ happenedAtTime: "2019-06-13T19:08:25Z", userId: "12345" }],
@@ -8035,6 +11290,7 @@ describe("MaintenanceClient", () => {
                 warrantyVendor: { id: "281474976710656" },
             },
         };
+
         server
             .mockEndpoint()
             .patch("/maintenance/warranty-claims")
@@ -8047,75 +11303,7 @@ describe("MaintenanceClient", () => {
         const response = await client.maintenance.updateWarrantyClaim({
             id: "id",
         });
-        expect(response).toEqual({
-            data: {
-                asset: {
-                    id: "281474976710656",
-                },
-                cause: "12345",
-                claimEngineHours: 12345,
-                claimOdometerMeters: 12345,
-                claimStatus: "unknown",
-                componentInstanceIds: ["12345", "12345"],
-                concern: "12345",
-                correction: "12345",
-                createdAtTime: "2019-06-13T19:08:25Z",
-                externalIds: [
-                    {
-                        key: "12345",
-                        value: "12345",
-                    },
-                ],
-                id: "12345",
-                labor: [
-                    {
-                        description: "12345",
-                        serviceTaskId: "12345",
-                        sourceWorkOrderId: "12345",
-                        vmrsCode: "12345",
-                    },
-                ],
-                linkedWarranty: {
-                    id: "281474976710656",
-                },
-                linkedWorkOrderIds: ["12345", "12345"],
-                mediaItemIds: ["12345", "12345"],
-                otherCost: {
-                    amount: "12345",
-                    currency: "12345",
-                },
-                parts: [
-                    {
-                        description: "12345",
-                        partDefinitionId: "12345",
-                        partId: "12345",
-                        quantity: 12345,
-                        serviceTaskId: "12345",
-                        sourceWorkOrderId: "12345",
-                        vmrsCode: "12345",
-                    },
-                ],
-                reimbursedAtTime: "2019-06-13T19:08:25Z",
-                reimbursements: [
-                    {
-                        workOrderId: "12345",
-                    },
-                ],
-                repairCompletedAtTime: "2019-06-13T19:08:25Z",
-                resolutionAtTime: "2019-06-13T19:08:25Z",
-                statusHistory: [
-                    {
-                        happenedAtTime: "2019-06-13T19:08:25Z",
-                        userId: "12345",
-                    },
-                ],
-                submittedAtTime: "2019-06-13T19:08:25Z",
-                updatedAtTime: "2019-06-13T19:08:25Z",
-                warrantyVendor: {
-                    id: "281474976710656",
-                },
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("updateWarrantyClaim (2)", async () => {
@@ -8128,6 +11316,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/warranty-claims")
@@ -8154,6 +11343,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/warranty-claims")
@@ -8180,6 +11370,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/warranty-claims")
@@ -8206,6 +11397,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/warranty-claims")
@@ -8232,6 +11424,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/warranty-claims")
@@ -8258,6 +11451,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/warranty-claims")
@@ -8284,6 +11478,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/warranty-claims")
@@ -8310,6 +11505,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/warranty-claims")
@@ -8336,6 +11532,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/warranty-claims")
@@ -8362,6 +11559,7 @@ describe("MaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/warranty-claims")
@@ -8388,6 +11586,7 @@ describe("MaintenanceClient", () => {
         });
 
         const rawResponseBody = { vehicles: [{ id: 112 }] };
+
         server
             .mockEndpoint()
             .get("/v1/fleet/maintenance/list")
@@ -8397,12 +11596,6 @@ describe("MaintenanceClient", () => {
             .build();
 
         const response = await client.maintenance.v1GetFleetMaintenanceList();
-        expect(response).toEqual({
-            vehicles: [
-                {
-                    id: 112,
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 });

@@ -20,6 +20,10 @@ describe("RoutesClient", () => {
                     actualRouteEndTime: "2019-06-13T19:08:25Z",
                     actualRouteStartTime: "2019-06-13T19:08:25Z",
                     driver: { id: "45646", name: "Driver Bob" },
+                    equipmentProfile: {
+                        hubId: "018f7b62-7d55-7b9e-a92f-2a6b7ff10393",
+                        id: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392",
+                    },
                     externalIds: { key: "value" },
                     id: "342341",
                     name: "Bid 123",
@@ -90,119 +94,14 @@ describe("RoutesClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server.mockEndpoint().get("/fleet/routes").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.routes.fetchRoutes({
             startTime: "startTime",
             endTime: "endTime",
         });
-        expect(response).toEqual({
-            data: [
-                {
-                    actualRouteEndTime: "2019-06-13T19:08:25Z",
-                    actualRouteStartTime: "2019-06-13T19:08:25Z",
-                    driver: {
-                        id: "45646",
-                        name: "Driver Bob",
-                    },
-                    externalIds: {
-                        key: "value",
-                    },
-                    id: "342341",
-                    name: "Bid 123",
-                    notes: "These are my notes",
-                    orgLocalTimezone: "America/Los_Angeles",
-                    recurringRouteLiveSharingLinks: [
-                        {
-                            expiresAtTime: "2020-01-27T07:06:25Z",
-                            liveSharingUrl:
-                                "https://cloud.samsara.com/o/123456/fleet/viewer/address/gEAitEnnOwcv92cuPzcU",
-                            name: "Name",
-                        },
-                    ],
-                    scheduledRouteEndTime: "2019-06-13T19:08:25Z",
-                    scheduledRouteStartTime: "2019-06-13T19:08:25Z",
-                    stops: [
-                        {
-                            actualArrivalTime: "2006-01-02T08:04:05Z",
-                            actualDepartureTime: "2006-01-02T08:04:05Z",
-                            actualDistanceMeters: 5450,
-                            address: {
-                                id: "494123",
-                                name: "Company Office #1",
-                            },
-                            appointmentWindows: [
-                                {
-                                    endTime: "2019-06-13T20:08:25Z",
-                                    startTime: "2019-06-13T19:08:25Z",
-                                },
-                            ],
-                            documents: [
-                                {
-                                    id: "494123",
-                                    name: "Fuel Receipt Wichita",
-                                },
-                            ],
-                            enRouteTime: "2006-01-02T08:04:05Z",
-                            eta: "2006-01-02T08:04:05Z",
-                            forms: [
-                                {
-                                    formTemplateId: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                                    id: "41234",
-                                    isRequired: true,
-                                },
-                            ],
-                            id: "324231",
-                            issues: [
-                                {
-                                    id: "32812",
-                                },
-                            ],
-                            liveSharingUrl: "https://cloud.samsara.com/fleet/viewer/job/fleet_viewer_token",
-                            locationLiveSharingLinks: [
-                                {
-                                    expiresAtTime: "2020-01-27T07:06:25Z",
-                                    liveSharingUrl:
-                                        "https://cloud.samsara.com/o/123456/fleet/viewer/address/gEAitEnnOwcv92cuPzcU",
-                                    name: "Name",
-                                },
-                            ],
-                            name: "Stop #1",
-                            notes: "These are my notes",
-                            ontimeWindowAfterArrivalMs: 300000,
-                            ontimeWindowBeforeArrivalMs: 300000,
-                            orders: [
-                                {
-                                    id: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392",
-                                    taskId: "12345678",
-                                },
-                            ],
-                            plannedDistanceMeters: 5200,
-                            scheduledArrivalTime: "2019-06-13T19:08:25Z",
-                            scheduledDepartureTime: "2019-06-13T19:08:25Z",
-                            sequenceNumber: 10,
-                            singleUseLocation: {
-                                address: "1234 Main St, San Jose, CA",
-                                latitude: 123.456,
-                                longitude: 37.459,
-                                radiusMeters: 100,
-                            },
-                            skippedTime: "2006-01-02T08:04:05Z",
-                            state: "unassigned",
-                        },
-                    ],
-                    tagIds: ["123", "321"],
-                    vehicle: {
-                        id: "494123",
-                        name: "Fleet Truck #1",
-                    },
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("fetchRoutes (2)", async () => {
@@ -215,6 +114,7 @@ describe("RoutesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/routes").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -235,6 +135,7 @@ describe("RoutesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/routes").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -255,6 +156,7 @@ describe("RoutesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/routes").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -275,6 +177,7 @@ describe("RoutesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/routes").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -295,6 +198,7 @@ describe("RoutesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/routes").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -315,6 +219,7 @@ describe("RoutesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/routes").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -335,6 +240,7 @@ describe("RoutesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/routes").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -355,6 +261,7 @@ describe("RoutesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/routes").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -375,6 +282,7 @@ describe("RoutesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/routes").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -395,6 +303,7 @@ describe("RoutesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/routes").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -419,6 +328,10 @@ describe("RoutesClient", () => {
                 actualRouteEndTime: "2019-06-13T19:08:25Z",
                 actualRouteStartTime: "2019-06-13T19:08:25Z",
                 driver: { externalIds: { key: "value" }, id: "45646", name: "Driver Bob" },
+                equipmentProfile: {
+                    hubId: "018f7b62-7d55-7b9e-a92f-2a6b7ff10393",
+                    id: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392",
+                },
                 externalIds: { key: "value" },
                 id: "342341",
                 name: "Bid 123",
@@ -485,6 +398,7 @@ describe("RoutesClient", () => {
                 vehicle: { externalIds: { key: "value" }, id: "494123", name: "Fleet Truck #1" },
             },
         };
+
         server
             .mockEndpoint()
             .post("/fleet/routes")
@@ -498,117 +412,7 @@ describe("RoutesClient", () => {
             name: "Bid 123",
             stops: [{}],
         });
-        expect(response).toEqual({
-            data: {
-                actualRouteEndTime: "2019-06-13T19:08:25Z",
-                actualRouteStartTime: "2019-06-13T19:08:25Z",
-                driver: {
-                    externalIds: {
-                        key: "value",
-                    },
-                    id: "45646",
-                    name: "Driver Bob",
-                },
-                externalIds: {
-                    key: "value",
-                },
-                id: "342341",
-                name: "Bid 123",
-                notes: "These are my notes",
-                orgLocalTimezone: "America/Los_Angeles",
-                recurringRouteLiveSharingLinks: [
-                    {
-                        expiresAtTime: "2020-01-27T07:06:25Z",
-                        liveSharingUrl: "https://cloud.samsara.com/o/123456/fleet/viewer/address/gEAitEnnOwcv92cuPzcU",
-                        name: "Name",
-                    },
-                ],
-                scheduledRouteEndTime: "2019-06-13T19:08:25Z",
-                scheduledRouteStartTime: "2019-06-13T19:08:25Z",
-                settings: {
-                    routeCompletionCondition: "arriveLastStop",
-                    routeStartingCondition: "departFirstStop",
-                    sequencingMethod: "unknown",
-                },
-                stops: [
-                    {
-                        actualArrivalTime: "2006-01-02T08:04:05Z",
-                        actualDepartureTime: "2006-01-02T08:04:05Z",
-                        actualDistanceMeters: 5450,
-                        address: {
-                            id: "494123",
-                            name: "Company Office #1",
-                        },
-                        appointmentWindows: [
-                            {
-                                endTime: "2019-06-13T20:08:25Z",
-                                startTime: "2019-06-13T19:08:25Z",
-                            },
-                        ],
-                        documents: [
-                            {
-                                id: "494123",
-                                name: "Fuel Receipt Wichita",
-                            },
-                        ],
-                        enRouteTime: "2006-01-02T08:04:05Z",
-                        eta: "2006-01-02T08:04:05Z",
-                        forms: [
-                            {
-                                formTemplateId: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                                id: "41234",
-                                isRequired: true,
-                            },
-                        ],
-                        id: "324231",
-                        issues: [
-                            {
-                                id: "32812",
-                            },
-                        ],
-                        liveSharingUrl: "https://cloud.samsara.com/fleet/viewer/job/fleet_viewer_token",
-                        locationLiveSharingLinks: [
-                            {
-                                expiresAtTime: "2020-01-27T07:06:25Z",
-                                liveSharingUrl:
-                                    "https://cloud.samsara.com/o/123456/fleet/viewer/address/gEAitEnnOwcv92cuPzcU",
-                                name: "Name",
-                            },
-                        ],
-                        name: "Stop #1",
-                        notes: "These are my notes",
-                        ontimeWindowAfterArrivalMs: 300000,
-                        ontimeWindowBeforeArrivalMs: 300000,
-                        orders: [
-                            {
-                                id: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392",
-                                taskId: "12345678",
-                            },
-                        ],
-                        plannedDistanceMeters: 5200,
-                        scheduledArrivalTime: "2019-06-13T19:08:25Z",
-                        scheduledDepartureTime: "2019-06-13T19:08:25Z",
-                        sequenceNumber: 10,
-                        singleUseLocation: {
-                            address: "1234 Main St, San Jose, CA",
-                            latitude: 123.456,
-                            longitude: 37.459,
-                            radiusMeters: 100,
-                        },
-                        skippedTime: "2006-01-02T08:04:05Z",
-                        state: "unassigned",
-                    },
-                ],
-                tagIds: ["123", "321"],
-                vehicle: {
-                    externalIds: {
-                        key: "value",
-                    },
-                    id: "494123",
-                    name: "Fleet Truck #1",
-                },
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createRoute (2)", async () => {
@@ -621,6 +425,7 @@ describe("RoutesClient", () => {
         });
         const rawRequestBody = { name: "name", stops: [{}, {}] };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/routes")
@@ -648,6 +453,7 @@ describe("RoutesClient", () => {
         });
         const rawRequestBody = { name: "name", stops: [{}, {}] };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/routes")
@@ -675,6 +481,7 @@ describe("RoutesClient", () => {
         });
         const rawRequestBody = { name: "name", stops: [{}, {}] };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/routes")
@@ -702,6 +509,7 @@ describe("RoutesClient", () => {
         });
         const rawRequestBody = { name: "name", stops: [{}, {}] };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/routes")
@@ -729,6 +537,7 @@ describe("RoutesClient", () => {
         });
         const rawRequestBody = { name: "name", stops: [{}, {}] };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/routes")
@@ -756,6 +565,7 @@ describe("RoutesClient", () => {
         });
         const rawRequestBody = { name: "name", stops: [{}, {}] };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/routes")
@@ -783,6 +593,7 @@ describe("RoutesClient", () => {
         });
         const rawRequestBody = { name: "name", stops: [{}, {}] };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/routes")
@@ -810,6 +621,7 @@ describe("RoutesClient", () => {
         });
         const rawRequestBody = { name: "name", stops: [{}, {}] };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/routes")
@@ -837,6 +649,7 @@ describe("RoutesClient", () => {
         });
         const rawRequestBody = { name: "name", stops: [{}, {}] };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/routes")
@@ -864,6 +677,7 @@ describe("RoutesClient", () => {
         });
         const rawRequestBody = { name: "name", stops: [{}, {}] };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/routes")
@@ -930,6 +744,10 @@ describe("RoutesClient", () => {
                         actualRouteEndTime: "2019-06-13T19:08:25Z",
                         actualRouteStartTime: "2019-06-13T19:08:25Z",
                         driver: { id: "45646", name: "Driver Bob" },
+                        equipmentProfile: {
+                            hubId: "018f7b62-7d55-7b9e-a92f-2a6b7ff10393",
+                            id: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392",
+                        },
                         id: "342341",
                         name: "Bid 123",
                         notes: "These are my notes",
@@ -987,6 +805,7 @@ describe("RoutesClient", () => {
                             },
                         ],
                         tagIds: ["123", "321"],
+                        vehicle: { id: "494123", name: "Fleet Truck #1" },
                     },
                     source: "automatic",
                     time: "2020-01-27T07:06:25Z",
@@ -995,6 +814,7 @@ describe("RoutesClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/fleet/routes/audit-logs/feed")
@@ -1004,136 +824,7 @@ describe("RoutesClient", () => {
             .build();
 
         const response = await client.routes.getRoutesFeed();
-        expect(response).toEqual({
-            data: [
-                {
-                    changes: {
-                        after: {
-                            stops: [
-                                {
-                                    actualArrivalTime: "2006-01-02T08:04:05Z",
-                                    actualDepartureTime: "2006-01-02T08:04:05Z",
-                                    enRouteTime: "2006-01-02T08:04:05Z",
-                                    eta: "2006-01-02T08:04:05Z",
-                                    id: "141414",
-                                    liveSharingUrl: "https://cloud.samsara.com/fleet/viewer/job/fleet_viewer_token",
-                                    scheduledArrivalTime: "2019-06-13T19:08:25Z",
-                                    scheduledDepartureTime: "2019-06-13T19:08:25Z",
-                                    skippedTime: "2006-01-02T08:04:05Z",
-                                },
-                            ],
-                        },
-                        before: {
-                            stops: [
-                                {
-                                    actualArrivalTime: "2006-01-02T08:04:05Z",
-                                    actualDepartureTime: "2006-01-02T08:04:05Z",
-                                    enRouteTime: "2006-01-02T08:04:05Z",
-                                    eta: "2006-01-02T08:04:05Z",
-                                    id: "141414",
-                                    liveSharingUrl: "https://cloud.samsara.com/fleet/viewer/job/fleet_viewer_token",
-                                    scheduledArrivalTime: "2019-06-13T19:08:25Z",
-                                    scheduledDepartureTime: "2019-06-13T19:08:25Z",
-                                    skippedTime: "2006-01-02T08:04:05Z",
-                                },
-                            ],
-                        },
-                    },
-                    operation: "stop scheduled",
-                    route: {
-                        actualRouteEndTime: "2019-06-13T19:08:25Z",
-                        actualRouteStartTime: "2019-06-13T19:08:25Z",
-                        driver: {
-                            id: "45646",
-                            name: "Driver Bob",
-                        },
-                        id: "342341",
-                        name: "Bid 123",
-                        notes: "These are my notes",
-                        orgLocalTimezone: "America/Los_Angeles",
-                        recurringRouteLiveSharingLinks: [
-                            {
-                                expiresAtTime: "2020-01-27T07:06:25Z",
-                                liveSharingUrl:
-                                    "https://cloud.samsara.com/o/123456/fleet/viewer/address/gEAitEnnOwcv92cuPzcU",
-                                name: "Name",
-                            },
-                        ],
-                        scheduledRouteEndTime: "2019-06-13T19:08:25Z",
-                        scheduledRouteStartTime: "2019-06-13T19:08:25Z",
-                        stops: [
-                            {
-                                actualArrivalTime: "2006-01-02T08:04:05Z",
-                                actualDepartureTime: "2006-01-02T08:04:05Z",
-                                actualDistanceMeters: 5450,
-                                address: {
-                                    id: "494123",
-                                    name: "Company Office #1",
-                                },
-                                appointmentWindows: [
-                                    {
-                                        endTime: "2019-06-13T20:08:25Z",
-                                        startTime: "2019-06-13T19:08:25Z",
-                                    },
-                                ],
-                                documents: [
-                                    {
-                                        id: "494123",
-                                        name: "Fuel Receipt Wichita",
-                                    },
-                                ],
-                                enRouteTime: "2006-01-02T08:04:05Z",
-                                eta: "2006-01-02T08:04:05Z",
-                                forms: [
-                                    {
-                                        id: "12345",
-                                    },
-                                ],
-                                id: "324231",
-                                issues: [
-                                    {
-                                        id: "32812",
-                                    },
-                                ],
-                                liveSharingUrl: "https://cloud.samsara.com/fleet/viewer/job/fleet_viewer_token",
-                                locationLiveSharingLinks: [
-                                    {
-                                        expiresAtTime: "2020-01-27T07:06:25Z",
-                                        liveSharingUrl:
-                                            "https://cloud.samsara.com/o/123456/fleet/viewer/address/gEAitEnnOwcv92cuPzcU",
-                                        name: "Name",
-                                    },
-                                ],
-                                name: "Stop #1",
-                                notes: "These are my notes",
-                                ontimeWindowAfterArrivalMs: 300000,
-                                ontimeWindowBeforeArrivalMs: 300000,
-                                plannedDistanceMeters: 5200,
-                                scheduledArrivalTime: "2019-06-13T19:08:25Z",
-                                scheduledDepartureTime: "2019-06-13T19:08:25Z",
-                                sequenceNumber: 10,
-                                singleUseLocation: {
-                                    address: "1234 Main St, San Jose, CA",
-                                    latitude: 123.456,
-                                    longitude: 37.459,
-                                    radiusMeters: 100,
-                                },
-                                skippedTime: "2006-01-02T08:04:05Z",
-                                state: "unassigned",
-                            },
-                        ],
-                        tagIds: ["123", "321"],
-                    },
-                    source: "automatic",
-                    time: "2020-01-27T07:06:25Z",
-                    type: "route tracking",
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getRoutesFeed (2)", async () => {
@@ -1146,6 +837,7 @@ describe("RoutesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/routes/audit-logs/feed")
@@ -1169,6 +861,7 @@ describe("RoutesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/routes/audit-logs/feed")
@@ -1192,6 +885,7 @@ describe("RoutesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/routes/audit-logs/feed")
@@ -1215,6 +909,7 @@ describe("RoutesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/routes/audit-logs/feed")
@@ -1238,6 +933,7 @@ describe("RoutesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/routes/audit-logs/feed")
@@ -1261,6 +957,7 @@ describe("RoutesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/routes/audit-logs/feed")
@@ -1284,6 +981,7 @@ describe("RoutesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/routes/audit-logs/feed")
@@ -1307,6 +1005,7 @@ describe("RoutesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/routes/audit-logs/feed")
@@ -1330,6 +1029,7 @@ describe("RoutesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/routes/audit-logs/feed")
@@ -1353,6 +1053,7 @@ describe("RoutesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/routes/audit-logs/feed")
@@ -1380,6 +1081,10 @@ describe("RoutesClient", () => {
                 actualRouteEndTime: "2019-06-13T19:08:25Z",
                 actualRouteStartTime: "2019-06-13T19:08:25Z",
                 driver: { externalIds: { key: "value" }, id: "45646", name: "Driver Bob" },
+                equipmentProfile: {
+                    hubId: "018f7b62-7d55-7b9e-a92f-2a6b7ff10393",
+                    id: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392",
+                },
                 externalIds: { key: "value" },
                 id: "342341",
                 name: "Bid 123",
@@ -1446,122 +1151,13 @@ describe("RoutesClient", () => {
                 vehicle: { externalIds: { key: "value" }, id: "494123", name: "Fleet Truck #1" },
             },
         };
+
         server.mockEndpoint().get("/fleet/routes/id").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.routes.fetchRoute({
             id: "id",
         });
-        expect(response).toEqual({
-            data: {
-                actualRouteEndTime: "2019-06-13T19:08:25Z",
-                actualRouteStartTime: "2019-06-13T19:08:25Z",
-                driver: {
-                    externalIds: {
-                        key: "value",
-                    },
-                    id: "45646",
-                    name: "Driver Bob",
-                },
-                externalIds: {
-                    key: "value",
-                },
-                id: "342341",
-                name: "Bid 123",
-                notes: "These are my notes",
-                orgLocalTimezone: "America/Los_Angeles",
-                recurringRouteLiveSharingLinks: [
-                    {
-                        expiresAtTime: "2020-01-27T07:06:25Z",
-                        liveSharingUrl: "https://cloud.samsara.com/o/123456/fleet/viewer/address/gEAitEnnOwcv92cuPzcU",
-                        name: "Name",
-                    },
-                ],
-                scheduledRouteEndTime: "2019-06-13T19:08:25Z",
-                scheduledRouteStartTime: "2019-06-13T19:08:25Z",
-                settings: {
-                    routeCompletionCondition: "arriveLastStop",
-                    routeStartingCondition: "departFirstStop",
-                    sequencingMethod: "unknown",
-                },
-                stops: [
-                    {
-                        actualArrivalTime: "2006-01-02T08:04:05Z",
-                        actualDepartureTime: "2006-01-02T08:04:05Z",
-                        actualDistanceMeters: 5450,
-                        address: {
-                            id: "494123",
-                            name: "Company Office #1",
-                        },
-                        appointmentWindows: [
-                            {
-                                endTime: "2019-06-13T20:08:25Z",
-                                startTime: "2019-06-13T19:08:25Z",
-                            },
-                        ],
-                        documents: [
-                            {
-                                id: "494123",
-                                name: "Fuel Receipt Wichita",
-                            },
-                        ],
-                        enRouteTime: "2006-01-02T08:04:05Z",
-                        eta: "2006-01-02T08:04:05Z",
-                        forms: [
-                            {
-                                formTemplateId: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                                id: "41234",
-                                isRequired: true,
-                            },
-                        ],
-                        id: "324231",
-                        issues: [
-                            {
-                                id: "32812",
-                            },
-                        ],
-                        liveSharingUrl: "https://cloud.samsara.com/fleet/viewer/job/fleet_viewer_token",
-                        locationLiveSharingLinks: [
-                            {
-                                expiresAtTime: "2020-01-27T07:06:25Z",
-                                liveSharingUrl:
-                                    "https://cloud.samsara.com/o/123456/fleet/viewer/address/gEAitEnnOwcv92cuPzcU",
-                                name: "Name",
-                            },
-                        ],
-                        name: "Stop #1",
-                        notes: "These are my notes",
-                        ontimeWindowAfterArrivalMs: 300000,
-                        ontimeWindowBeforeArrivalMs: 300000,
-                        orders: [
-                            {
-                                id: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392",
-                                taskId: "12345678",
-                            },
-                        ],
-                        plannedDistanceMeters: 5200,
-                        scheduledArrivalTime: "2019-06-13T19:08:25Z",
-                        scheduledDepartureTime: "2019-06-13T19:08:25Z",
-                        sequenceNumber: 10,
-                        singleUseLocation: {
-                            address: "1234 Main St, San Jose, CA",
-                            latitude: 123.456,
-                            longitude: 37.459,
-                            radiusMeters: 100,
-                        },
-                        skippedTime: "2006-01-02T08:04:05Z",
-                        state: "unassigned",
-                    },
-                ],
-                tagIds: ["123", "321"],
-                vehicle: {
-                    externalIds: {
-                        key: "value",
-                    },
-                    id: "494123",
-                    name: "Fleet Truck #1",
-                },
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("fetchRoute (2)", async () => {
@@ -1574,6 +1170,7 @@ describe("RoutesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/routes/id").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1593,6 +1190,7 @@ describe("RoutesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/routes/id").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1612,6 +1210,7 @@ describe("RoutesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/routes/id").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1631,6 +1230,7 @@ describe("RoutesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/routes/id").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1650,6 +1250,7 @@ describe("RoutesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/routes/id").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1669,6 +1270,7 @@ describe("RoutesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/routes/id").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1688,6 +1290,7 @@ describe("RoutesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/routes/id").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1707,6 +1310,7 @@ describe("RoutesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/routes/id").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1726,6 +1330,7 @@ describe("RoutesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/routes/id").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1745,6 +1350,7 @@ describe("RoutesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/routes/id").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1781,6 +1387,7 @@ describe("RoutesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/fleet/routes/id")
@@ -1806,6 +1413,7 @@ describe("RoutesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/fleet/routes/id")
@@ -1831,6 +1439,7 @@ describe("RoutesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/fleet/routes/id")
@@ -1856,6 +1465,7 @@ describe("RoutesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/fleet/routes/id")
@@ -1881,6 +1491,7 @@ describe("RoutesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/fleet/routes/id")
@@ -1906,6 +1517,7 @@ describe("RoutesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/fleet/routes/id")
@@ -1931,6 +1543,7 @@ describe("RoutesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/fleet/routes/id")
@@ -1956,6 +1569,7 @@ describe("RoutesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/fleet/routes/id")
@@ -1981,6 +1595,7 @@ describe("RoutesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/fleet/routes/id")
@@ -2006,6 +1621,7 @@ describe("RoutesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/fleet/routes/id")
@@ -2035,6 +1651,10 @@ describe("RoutesClient", () => {
                 actualRouteEndTime: "2019-06-13T19:08:25Z",
                 actualRouteStartTime: "2019-06-13T19:08:25Z",
                 driver: { externalIds: { key: "value" }, id: "45646", name: "Driver Bob" },
+                equipmentProfile: {
+                    hubId: "018f7b62-7d55-7b9e-a92f-2a6b7ff10393",
+                    id: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392",
+                },
                 externalIds: { key: "value" },
                 id: "342341",
                 name: "Bid 123",
@@ -2101,6 +1721,7 @@ describe("RoutesClient", () => {
                 vehicle: { externalIds: { key: "value" }, id: "494123", name: "Fleet Truck #1" },
             },
         };
+
         server
             .mockEndpoint()
             .patch("/fleet/routes/id")
@@ -2113,117 +1734,7 @@ describe("RoutesClient", () => {
         const response = await client.routes.patchRoute({
             id: "id",
         });
-        expect(response).toEqual({
-            data: {
-                actualRouteEndTime: "2019-06-13T19:08:25Z",
-                actualRouteStartTime: "2019-06-13T19:08:25Z",
-                driver: {
-                    externalIds: {
-                        key: "value",
-                    },
-                    id: "45646",
-                    name: "Driver Bob",
-                },
-                externalIds: {
-                    key: "value",
-                },
-                id: "342341",
-                name: "Bid 123",
-                notes: "These are my notes",
-                orgLocalTimezone: "America/Los_Angeles",
-                recurringRouteLiveSharingLinks: [
-                    {
-                        expiresAtTime: "2020-01-27T07:06:25Z",
-                        liveSharingUrl: "https://cloud.samsara.com/o/123456/fleet/viewer/address/gEAitEnnOwcv92cuPzcU",
-                        name: "Name",
-                    },
-                ],
-                scheduledRouteEndTime: "2019-06-13T19:08:25Z",
-                scheduledRouteStartTime: "2019-06-13T19:08:25Z",
-                settings: {
-                    routeCompletionCondition: "arriveLastStop",
-                    routeStartingCondition: "departFirstStop",
-                    sequencingMethod: "unknown",
-                },
-                stops: [
-                    {
-                        actualArrivalTime: "2006-01-02T08:04:05Z",
-                        actualDepartureTime: "2006-01-02T08:04:05Z",
-                        actualDistanceMeters: 5450,
-                        address: {
-                            id: "494123",
-                            name: "Company Office #1",
-                        },
-                        appointmentWindows: [
-                            {
-                                endTime: "2019-06-13T20:08:25Z",
-                                startTime: "2019-06-13T19:08:25Z",
-                            },
-                        ],
-                        documents: [
-                            {
-                                id: "494123",
-                                name: "Fuel Receipt Wichita",
-                            },
-                        ],
-                        enRouteTime: "2006-01-02T08:04:05Z",
-                        eta: "2006-01-02T08:04:05Z",
-                        forms: [
-                            {
-                                formTemplateId: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                                id: "41234",
-                                isRequired: true,
-                            },
-                        ],
-                        id: "324231",
-                        issues: [
-                            {
-                                id: "32812",
-                            },
-                        ],
-                        liveSharingUrl: "https://cloud.samsara.com/fleet/viewer/job/fleet_viewer_token",
-                        locationLiveSharingLinks: [
-                            {
-                                expiresAtTime: "2020-01-27T07:06:25Z",
-                                liveSharingUrl:
-                                    "https://cloud.samsara.com/o/123456/fleet/viewer/address/gEAitEnnOwcv92cuPzcU",
-                                name: "Name",
-                            },
-                        ],
-                        name: "Stop #1",
-                        notes: "These are my notes",
-                        ontimeWindowAfterArrivalMs: 300000,
-                        ontimeWindowBeforeArrivalMs: 300000,
-                        orders: [
-                            {
-                                id: "018f7b62-7d55-7b9e-a92f-2a6b7ff10392",
-                                taskId: "12345678",
-                            },
-                        ],
-                        plannedDistanceMeters: 5200,
-                        scheduledArrivalTime: "2019-06-13T19:08:25Z",
-                        scheduledDepartureTime: "2019-06-13T19:08:25Z",
-                        sequenceNumber: 10,
-                        singleUseLocation: {
-                            address: "1234 Main St, San Jose, CA",
-                            latitude: 123.456,
-                            longitude: 37.459,
-                            radiusMeters: 100,
-                        },
-                        skippedTime: "2006-01-02T08:04:05Z",
-                        state: "unassigned",
-                    },
-                ],
-                tagIds: ["123", "321"],
-                vehicle: {
-                    externalIds: {
-                        key: "value",
-                    },
-                    id: "494123",
-                    name: "Fleet Truck #1",
-                },
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("patchRoute (2)", async () => {
@@ -2236,6 +1747,7 @@ describe("RoutesClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/fleet/routes/id")
@@ -2262,6 +1774,7 @@ describe("RoutesClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/fleet/routes/id")
@@ -2288,6 +1801,7 @@ describe("RoutesClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/fleet/routes/id")
@@ -2314,6 +1828,7 @@ describe("RoutesClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/fleet/routes/id")
@@ -2340,6 +1855,7 @@ describe("RoutesClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/fleet/routes/id")
@@ -2366,6 +1882,7 @@ describe("RoutesClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/fleet/routes/id")
@@ -2392,6 +1909,7 @@ describe("RoutesClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/fleet/routes/id")
@@ -2418,6 +1936,7 @@ describe("RoutesClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/fleet/routes/id")
@@ -2444,6 +1963,7 @@ describe("RoutesClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/fleet/routes/id")
@@ -2470,6 +1990,7 @@ describe("RoutesClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/fleet/routes/id")
@@ -2555,93 +2076,13 @@ describe("RoutesClient", () => {
             ],
             pagination: { endCursor: "YXJyYXljb25uZWN0aW9uOjEwMA==", hasNextPage: false },
         };
+
         server.mockEndpoint().get("/hub/plan/routes").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.routes.listHubPlanRoutes({
             planId: "planId",
         });
-        expect(response).toEqual({
-            data: [
-                {
-                    cost: 125.5,
-                    createdAt: "2024-04-10T10:30:00Z",
-                    dispatchRouteId: "123456",
-                    distanceMeters: 15420,
-                    driver: {
-                        id: "12345",
-                        name: "Driver Bob",
-                    },
-                    durationSeconds: 3600,
-                    hubId: "550e8400-e29b-41d4-a716-446655440000",
-                    id: "950e8400-e29b-41d4-a716-446655440005",
-                    isEdited: false,
-                    isPinned: false,
-                    name: "Route 1",
-                    orgLocationTimezone: "America/Los_Angeles",
-                    planId: "850e8400-e29b-41d4-a716-446655440003",
-                    quantities: [
-                        {
-                            capacityId: "f1e2d3c4-b5a6-9870-fedc-ba0987654321",
-                            quantity: 750,
-                        },
-                    ],
-                    scheduledRouteEndTime: "2019-06-13T19:08:25Z",
-                    scheduledRouteStartTime: "2024-04-10T08:00:00Z",
-                    stops: [
-                        {
-                            hubLocationId: "d4e5f6a7-b8c9-0123-defa-456789012345",
-                            id: "c3d4e5f6-a7b8-9012-cdef-345678901234",
-                            name: "Stop 1",
-                            notes: "",
-                            orders: [
-                                {
-                                    customProperties: [
-                                        {
-                                            id: "b2c3d4e5-f6a7-8901-bcde-f23456789012",
-                                            name: "CustomerType",
-                                            value: "Premium",
-                                        },
-                                    ],
-                                    customerLocationId: "LOC-12345",
-                                    id: "e5f6a7b8-c9d0-1234-efab-567890123456",
-                                    quantities: [
-                                        {
-                                            capacityId: "f1e2d3c4-b5a6-9870-fedc-ba0987654321",
-                                            quantity: 750,
-                                        },
-                                    ],
-                                    requiredSkills: [
-                                        {
-                                            id: "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
-                                            name: "Forklift Operation",
-                                        },
-                                    ],
-                                    serviceWindow: "9:00AM - 5:00PM",
-                                    type: "pickup",
-                                },
-                            ],
-                            scheduledArrivalTime: "2024-04-10T09:00:00Z",
-                            scheduledDepartureTime: "2024-04-10T09:30:00Z",
-                            singleUseLocation: {
-                                address: "1234 Main St, San Jose, CA",
-                                latitude: 123.456,
-                                longitude: 37.459,
-                            },
-                        },
-                    ],
-                    type: "dynamic",
-                    updatedAt: "2024-04-10T10:30:00Z",
-                    vehicle: {
-                        id: "67890",
-                        name: "Fleet Truck #1",
-                    },
-                },
-            ],
-            pagination: {
-                endCursor: "YXJyYXljb25uZWN0aW9uOjEwMA==",
-                hasNextPage: false,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("listHubPlanRoutes (2)", async () => {
@@ -2654,6 +2095,7 @@ describe("RoutesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/hub/plan/routes").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -2673,6 +2115,7 @@ describe("RoutesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/hub/plan/routes").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -2692,6 +2135,7 @@ describe("RoutesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/hub/plan/routes").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -2711,6 +2155,7 @@ describe("RoutesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/hub/plan/routes").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -2730,6 +2175,7 @@ describe("RoutesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/hub/plan/routes").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -2749,6 +2195,7 @@ describe("RoutesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/hub/plan/routes").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -2768,6 +2215,7 @@ describe("RoutesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/hub/plan/routes").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -2787,6 +2235,7 @@ describe("RoutesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/hub/plan/routes").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -2806,6 +2255,7 @@ describe("RoutesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/hub/plan/routes").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -2825,6 +2275,7 @@ describe("RoutesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/hub/plan/routes").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
 
         await expect(async () => {

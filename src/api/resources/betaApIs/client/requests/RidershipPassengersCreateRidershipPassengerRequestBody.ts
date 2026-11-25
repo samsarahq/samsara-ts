@@ -21,7 +21,7 @@ export interface RidershipPassengersCreateRidershipPassengerRequestBody {
     /** Passenger's last name. Maximum 100 characters. */
     lastName: string;
     specialInstructions?: Samsara.RidershipPassengerSpecialInstructionsInputRequestBody;
-    /** Up to 10 Samsara tag IDs to assign to the passenger; external IDs are not supported here. Omit or send `[]` to create a passenger without tags. */
+    /** Up to 10 Samsara tag IDs to assign to the passenger; external IDs are not supported here. Omit or send `[]` to create a passenger without tags. If your API token is restricted to certain tags, every tag must be within its scope. */
     tagIds?: string[];
 }
 

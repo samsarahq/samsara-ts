@@ -2,7 +2,9 @@
 
 /**
  * @example
- *     {}
+ *     {
+ *         safetyEventIds: ["safetyEventIds"]
+ *     }
  */
 export interface GetSafetyEventsV2Request {
     /** Required string of comma separated Safety Event IDs. Unique Samsara IDs (uuid) of the safety event. */

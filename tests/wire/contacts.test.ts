@@ -25,24 +25,11 @@ describe("ContactsClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server.mockEndpoint().get("/contacts").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.contacts.listContacts();
-        expect(response).toEqual({
-            data: [
-                {
-                    email: "jane.jones@yahoo.com",
-                    firstName: "Jane",
-                    id: "22408",
-                    lastName: "Jones",
-                    phone: "111-222-3344",
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createContact", async () => {
@@ -63,6 +50,7 @@ describe("ContactsClient", () => {
                 phone: "111-222-3344",
             },
         };
+
         server
             .mockEndpoint()
             .post("/contacts")
@@ -73,15 +61,7 @@ describe("ContactsClient", () => {
             .build();
 
         const response = await client.contacts.createContact();
-        expect(response).toEqual({
-            data: {
-                email: "jane.jones@yahoo.com",
-                firstName: "Jane",
-                id: "22408",
-                lastName: "Jones",
-                phone: "111-222-3344",
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getContact", async () => {
@@ -102,20 +82,13 @@ describe("ContactsClient", () => {
                 phone: "111-222-3344",
             },
         };
+
         server.mockEndpoint().get("/contacts/id").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.contacts.getContact({
             id: "id",
         });
-        expect(response).toEqual({
-            data: {
-                email: "jane.jones@yahoo.com",
-                firstName: "Jane",
-                id: "22408",
-                lastName: "Jones",
-                phone: "111-222-3344",
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("delete", async () => {
@@ -153,6 +126,7 @@ describe("ContactsClient", () => {
                 phone: "111-222-3344",
             },
         };
+
         server
             .mockEndpoint()
             .patch("/contacts/id")
@@ -165,14 +139,6 @@ describe("ContactsClient", () => {
         const response = await client.contacts.updateContact({
             id: "id",
         });
-        expect(response).toEqual({
-            data: {
-                email: "jane.jones@yahoo.com",
-                firstName: "Jane",
-                id: "22408",
-                lastName: "Jones",
-                phone: "111-222-3344",
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 });

@@ -4,17 +4,18 @@
  * Information about an active health reason affecting the device.
  */
 export interface HealthReasonResponseResponseBody {
-    /** The type of health reason detected.  Valid values: `assetUnplugged`, `cameraMisaligned`, `dataPending`, `healthy`, `inwardCameraObstruction`, `irregularRecording`, `lowConnectivity`, `lowDeviceBattery`, `lowUptime`, `mediaInputLowConnectivity`, `missingEldDiagnostics`, `missingVin`, `needsAttribute`, `needsReplacement`, `newlyInstalledDevice`, `noGpsSignal`, `notDetected`, `outwardCameraObstruction`, `recordingTimeRequired`, `unknown`, `unstablePower`, `vgUnplugged` */
+    /** The type of health reason detected.  Valid values: `assetUnplugged`, `cameraMisaligned`, `criticalHardwareIssue`, `dataPending`, `healthy`, `inwardCameraObstruction`, `irregularRecording`, `lowConnectivity`, `lowDeviceBattery`, `lowUptime`, `mediaInputLowConnectivity`, `missingEldDiagnostics`, `missingVin`, `needsAttribute`, `needsReplacement`, `newlyInstalledDevice`, `noGpsSignal`, `notDetected`, `outwardCameraObstruction`, `recordingTimeRequired`, `unknown`, `unstablePower`, `vgUnplugged` */
     healthReasonCode?: HealthReasonResponseResponseBody.HealthReasonCode | undefined;
     /** The timestamp when this health reason began, in RFC3339 format. */
     startTime?: string | undefined;
 }
 
 export namespace HealthReasonResponseResponseBody {
-    /** The type of health reason detected.  Valid values: `assetUnplugged`, `cameraMisaligned`, `dataPending`, `healthy`, `inwardCameraObstruction`, `irregularRecording`, `lowConnectivity`, `lowDeviceBattery`, `lowUptime`, `mediaInputLowConnectivity`, `missingEldDiagnostics`, `missingVin`, `needsAttribute`, `needsReplacement`, `newlyInstalledDevice`, `noGpsSignal`, `notDetected`, `outwardCameraObstruction`, `recordingTimeRequired`, `unknown`, `unstablePower`, `vgUnplugged` */
+    /** The type of health reason detected.  Valid values: `assetUnplugged`, `cameraMisaligned`, `criticalHardwareIssue`, `dataPending`, `healthy`, `inwardCameraObstruction`, `irregularRecording`, `lowConnectivity`, `lowDeviceBattery`, `lowUptime`, `mediaInputLowConnectivity`, `missingEldDiagnostics`, `missingVin`, `needsAttribute`, `needsReplacement`, `newlyInstalledDevice`, `noGpsSignal`, `notDetected`, `outwardCameraObstruction`, `recordingTimeRequired`, `unknown`, `unstablePower`, `vgUnplugged` */
     export const HealthReasonCode = {
         AssetUnplugged: "assetUnplugged",
         CameraMisaligned: "cameraMisaligned",
+        CriticalHardwareIssue: "criticalHardwareIssue",
         DataPending: "dataPending",
         Healthy: "healthy",
         InwardCameraObstruction: "inwardCameraObstruction",

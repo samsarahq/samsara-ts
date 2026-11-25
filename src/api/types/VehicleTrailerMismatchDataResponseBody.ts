@@ -6,10 +6,10 @@ import type * as Samsara from "../index.js";
  * Details specific to Trailer Assignment Mismatch.
  */
 export interface VehicleTrailerMismatchDataResponseBody {
-    /** Trailers the vehicle is currently associated with pulling. */
+    /** Trailers the vehicle was associated with pulling in the incident metadata. An empty array means no trailer associations were recorded. Omitted when metadata or all referenced trailer details are unavailable. */
     currentlyPullingTrailers?: Samsara.AlertObjectTrailerResponseBody[] | undefined;
     driver?: Samsara.AlertObjectDriverResponseBody | undefined;
-    /** Trailers the driver selected in the dispatch workflow. */
+    /** Trailers the driver selected in the incident metadata. An empty array means no trailers were selected. Omitted when metadata or all referenced trailer details are unavailable. */
     driverSelectedTrailers?: Samsara.AlertObjectTrailerResponseBody[] | undefined;
     vehicle?: Samsara.AlertObjectVehicleResponseBody | undefined;
 }

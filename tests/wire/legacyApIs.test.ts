@@ -61,6 +61,7 @@ describe("LegacyApIsClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/driver-efficiency/drivers")
@@ -73,60 +74,7 @@ describe("LegacyApIsClient", () => {
             startTime: "startTime",
             endTime: "endTime",
         });
-        expect(response).toEqual({
-            data: [
-                {
-                    difficultyScore: {
-                        overallScore: "4",
-                        topographyScore: "5",
-                        vehicleWeightScore: "4",
-                    },
-                    driverId: "driver_001",
-                    percentageData: {
-                        anticipationPercentage: 9.5,
-                        coastingPercentage: 45.6,
-                        cruiseControlPercentage: 45.6,
-                        greenBandPercentage: 78.9,
-                        highGradeRoadDrivingPercentage: 15.3,
-                        highTorquePercentage: 23.4,
-                        idlingPercentage: 12.8,
-                        overSpeedPercentage: 5.6,
-                        wearFreeBrakePercentage: 88.2,
-                    },
-                    rawData: {
-                        anticipationBrakeEventCount: 17,
-                        averageVehicleWeightKg: 14500,
-                        coastingDurationMs: 1900800,
-                        cruiseControlDurationMs: 3283200,
-                        driveTimeDurationMs: 7200000,
-                        engineOnDurationMs: 7500000,
-                        greenBandDurationMs: 5683200,
-                        highGradeRoadDrivingDurationMs: 1108800,
-                        highTorqueDurationMs: 1684800,
-                        idlingDurationMs: 921600,
-                        overSpeedDurationMs: 403200,
-                        totalBrakeDurationMs: 1022400,
-                        totalBrakeEventCount: 85,
-                        wearFreeBrakeDurationMs: 6340800,
-                    },
-                    scoreData: {
-                        anticipationScore: "C",
-                        coastingScore: "C",
-                        cruiseControlScore: "B",
-                        greenBandScore: "A",
-                        highTorqueScore: "A",
-                        idlingScore: "B",
-                        overSpeedScore: "B",
-                        overallScore: "A",
-                        wearFreeBrakeScore: "A",
-                    },
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getDriverEfficiencyByDrivers (2)", async () => {
@@ -139,6 +87,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/driver-efficiency/drivers")
@@ -165,6 +114,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/driver-efficiency/drivers")
@@ -191,6 +141,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/driver-efficiency/drivers")
@@ -217,6 +168,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/driver-efficiency/drivers")
@@ -243,6 +195,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/driver-efficiency/drivers")
@@ -269,6 +222,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/driver-efficiency/drivers")
@@ -295,6 +249,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/driver-efficiency/drivers")
@@ -321,6 +276,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/driver-efficiency/drivers")
@@ -347,6 +303,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/driver-efficiency/drivers")
@@ -373,6 +330,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/driver-efficiency/drivers")
@@ -445,6 +403,7 @@ describe("LegacyApIsClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/driver-efficiency/vehicles")
@@ -457,60 +416,7 @@ describe("LegacyApIsClient", () => {
             startTime: "startTime",
             endTime: "endTime",
         });
-        expect(response).toEqual({
-            data: [
-                {
-                    difficultyScore: {
-                        overallScore: "4",
-                        topographyScore: "5",
-                        vehicleWeightScore: "4",
-                    },
-                    percentageData: {
-                        anticipationPercentage: 9.5,
-                        coastingPercentage: 45.6,
-                        cruiseControlPercentage: 45.6,
-                        greenBandPercentage: 78.9,
-                        highGradeRoadDrivingPercentage: 15.3,
-                        highTorquePercentage: 23.4,
-                        idlingPercentage: 12.8,
-                        overSpeedPercentage: 5.6,
-                        wearFreeBrakePercentage: 88.2,
-                    },
-                    rawData: {
-                        anticipationBrakeEventCount: 17,
-                        averageVehicleWeightKg: 14500,
-                        coastingDurationMs: 1900800,
-                        cruiseControlDurationMs: 3283200,
-                        driveTimeDurationMs: 7200000,
-                        engineOnDurationMs: 7500000,
-                        greenBandDurationMs: 5683200,
-                        highGradeRoadDrivingDurationMs: 1108800,
-                        highTorqueDurationMs: 1684800,
-                        idlingDurationMs: 921600,
-                        overSpeedDurationMs: 403200,
-                        totalBrakeDurationMs: 1022400,
-                        totalBrakeEventCount: 85,
-                        wearFreeBrakeDurationMs: 6340800,
-                    },
-                    scoreData: {
-                        anticipationScore: "C",
-                        coastingScore: "C",
-                        cruiseControlScore: "B",
-                        greenBandScore: "A",
-                        highTorqueScore: "A",
-                        idlingScore: "B",
-                        overSpeedScore: "B",
-                        overallScore: "A",
-                        wearFreeBrakeScore: "A",
-                    },
-                    vehicleId: "vehicle_001",
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getDriverEfficiencyByVehicles (2)", async () => {
@@ -523,6 +429,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/driver-efficiency/vehicles")
@@ -549,6 +456,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/driver-efficiency/vehicles")
@@ -575,6 +483,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/driver-efficiency/vehicles")
@@ -601,6 +510,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/driver-efficiency/vehicles")
@@ -627,6 +537,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/driver-efficiency/vehicles")
@@ -653,6 +564,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/driver-efficiency/vehicles")
@@ -679,6 +591,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/driver-efficiency/vehicles")
@@ -705,6 +618,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/driver-efficiency/vehicles")
@@ -731,6 +645,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/driver-efficiency/vehicles")
@@ -757,6 +672,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/driver-efficiency/vehicles")
@@ -804,6 +720,7 @@ describe("LegacyApIsClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/fleet/defects/history")
@@ -816,40 +733,7 @@ describe("LegacyApIsClient", () => {
             startTime: "startTime",
             endTime: "endTime",
         });
-        expect(response).toEqual({
-            data: [
-                {
-                    comment: "Air Compressor not working",
-                    createdAtTime: "2020-01-27T07:06:25Z",
-                    defectType: "Air Compressor",
-                    id: "18",
-                    isResolved: true,
-                    mechanicNotes: "Extremely large oddly shaped hole in passenger side window.",
-                    mechanicNotesUpdatedAtTime: "2020-01-27T07:06:25Z",
-                    resolvedAtTime: "2020-01-27T07:06:25Z",
-                    resolvedBy: {
-                        id: "11",
-                        name: "Christopher 'The Handyman' Zhen",
-                    },
-                    trailer: {
-                        id: "123456789",
-                        name: "Midwest Trailer #5",
-                    },
-                    vehicle: {
-                        ExternalIds: {
-                            maintenanceId: "250020",
-                            payrollId: "ABFS18600",
-                        },
-                        id: "123456789",
-                        name: "Midwest Truck #4",
-                    },
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getDriversVehicleAssignments (1)", async () => {
@@ -881,6 +765,7 @@ describe("LegacyApIsClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/fleet/drivers/vehicle-assignments")
@@ -890,34 +775,7 @@ describe("LegacyApIsClient", () => {
             .build();
 
         const response = await client.legacyApIs.getDriversVehicleAssignments();
-        expect(response).toEqual({
-            data: [
-                {
-                    driverActivationStatus: "active",
-                    externalIds: {
-                        key: "value",
-                    },
-                    id: "494123",
-                    name: "Joe Driver",
-                    vehicleAssignments: [
-                        {
-                            assignmentType: "driverApp",
-                            endTime: "2019-06-13T19:08:25Z",
-                            isPassenger: false,
-                            startTime: "2019-06-13T19:08:25Z",
-                            vehicle: {
-                                id: "494123",
-                                name: "Fleet Truck #1",
-                            },
-                        },
-                    ],
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getDriversVehicleAssignments (2)", async () => {
@@ -930,6 +788,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/drivers/vehicle-assignments")
@@ -953,6 +812,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/drivers/vehicle-assignments")
@@ -976,6 +836,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/drivers/vehicle-assignments")
@@ -999,6 +860,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/drivers/vehicle-assignments")
@@ -1022,6 +884,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/drivers/vehicle-assignments")
@@ -1045,6 +908,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/drivers/vehicle-assignments")
@@ -1068,6 +932,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/drivers/vehicle-assignments")
@@ -1091,6 +956,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/drivers/vehicle-assignments")
@@ -1114,6 +980,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/drivers/vehicle-assignments")
@@ -1137,6 +1004,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/drivers/vehicle-assignments")
@@ -1184,6 +1052,13 @@ describe("LegacyApIsClient", () => {
                             mechanicNotes: "Extremely large oddly shaped hole in passenger side window.",
                             mechanicNotesUpdatedAtTime: "2020-01-27T07:06:25Z",
                             resolvedAtTime: "2020-01-27T07:06:25Z",
+                            resolvedBy: { id: "11", name: "Christopher 'The Handyman' Zhen" },
+                            trailer: { id: "123456789", name: "Midwest Trailer #5" },
+                            vehicle: {
+                                ExternalIds: { maintenanceId: "250020", payrollId: "ABFS18600" },
+                                id: "123456789",
+                                name: "Midwest Truck #4",
+                            },
                         },
                     ],
                     trailerName: "Midwest Trailer #5",
@@ -1203,12 +1078,20 @@ describe("LegacyApIsClient", () => {
                             mechanicNotes: "Extremely large oddly shaped hole in passenger side window.",
                             mechanicNotesUpdatedAtTime: "2020-01-27T07:06:25Z",
                             resolvedAtTime: "2020-01-27T07:06:25Z",
+                            resolvedBy: { id: "11", name: "Christopher 'The Handyman' Zhen" },
+                            trailer: { id: "123456789", name: "Midwest Trailer #5" },
+                            vehicle: {
+                                ExternalIds: { maintenanceId: "250020", payrollId: "ABFS18600" },
+                                id: "123456789",
+                                name: "Midwest Truck #4",
+                            },
                         },
                     ],
                 },
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/fleet/dvirs/history")
@@ -1221,71 +1104,7 @@ describe("LegacyApIsClient", () => {
             startTime: "startTime",
             endTime: "endTime",
         });
-        expect(response).toEqual({
-            data: [
-                {
-                    authorSignature: {
-                        signedAtTime: "2020-01-27T07:06:25Z",
-                    },
-                    endTime: "2020-01-27T07:06:25Z",
-                    id: "7107471",
-                    licensePlate: "XHK1234",
-                    location: "350 Rhode Island St Ste. 400S, San Francisco, CA 94103",
-                    mechanicNotes: "Replaced headlight on passenger side.",
-                    odometerMeters: 14010293,
-                    safetyStatus: "safe",
-                    secondSignature: {
-                        signedAtTime: "2020-01-27T07:06:25Z",
-                    },
-                    startTime: "2020-01-27T07:06:25Z",
-                    thirdSignature: {
-                        signedAtTime: "2020-01-27T07:06:25Z",
-                    },
-                    trailer: {
-                        id: "123456789",
-                        name: "Midwest Trailer #5",
-                    },
-                    trailerDefects: [
-                        {
-                            comment: "Air Compressor not working",
-                            createdAtTime: "2020-01-27T07:06:25Z",
-                            defectType: "Air Compressor",
-                            id: "18",
-                            isResolved: true,
-                            mechanicNotes: "Extremely large oddly shaped hole in passenger side window.",
-                            mechanicNotesUpdatedAtTime: "2020-01-27T07:06:25Z",
-                            resolvedAtTime: "2020-01-27T07:06:25Z",
-                        },
-                    ],
-                    trailerName: "Midwest Trailer #5",
-                    type: "preTrip",
-                    vehicle: {
-                        ExternalIds: {
-                            maintenanceId: "250020",
-                            payrollId: "ABFS18600",
-                        },
-                        id: "123456789",
-                        name: "Midwest Truck #4",
-                    },
-                    vehicleDefects: [
-                        {
-                            comment: "Air Compressor not working",
-                            createdAtTime: "2020-01-27T07:06:25Z",
-                            defectType: "Air Compressor",
-                            id: "18",
-                            isResolved: true,
-                            mechanicNotes: "Extremely large oddly shaped hole in passenger side window.",
-                            mechanicNotesUpdatedAtTime: "2020-01-27T07:06:25Z",
-                            resolvedAtTime: "2020-01-27T07:06:25Z",
-                        },
-                    ],
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getVehicleIdlingReports (1)", async () => {
@@ -1317,6 +1136,7 @@ describe("LegacyApIsClient", () => {
             requestEndTime: "2019-06-13T19:08:25Z",
             requestStartTime: "2019-06-13T19:08:25Z",
         };
+
         server
             .mockEndpoint()
             .get("/fleet/reports/vehicle/idling")
@@ -1329,32 +1149,7 @@ describe("LegacyApIsClient", () => {
             startTime: "startTime",
             endTime: "endTime",
         });
-        expect(response).toEqual({
-            data: [
-                {
-                    address: {
-                        formatted: "123 Main Street Atlanta, GA 30307",
-                        latitude: 34.654567,
-                        longitude: 34.654567,
-                    },
-                    durationMs: 860000,
-                    endTime: "2019-06-13T19:08:25Z",
-                    fuelConsumptionMl: 2500,
-                    isPtoActive: false,
-                    startTime: "2019-06-13T19:08:25Z",
-                    vehicle: {
-                        id: "494123",
-                        name: "Fleet Truck #1",
-                    },
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-            requestEndTime: "2019-06-13T19:08:25Z",
-            requestStartTime: "2019-06-13T19:08:25Z",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getVehicleIdlingReports (2)", async () => {
@@ -1367,6 +1162,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/reports/vehicle/idling")
@@ -1393,6 +1189,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/reports/vehicle/idling")
@@ -1419,6 +1216,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/reports/vehicle/idling")
@@ -1445,6 +1243,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/reports/vehicle/idling")
@@ -1471,6 +1270,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/reports/vehicle/idling")
@@ -1497,6 +1297,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/reports/vehicle/idling")
@@ -1523,6 +1324,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/reports/vehicle/idling")
@@ -1549,6 +1351,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/reports/vehicle/idling")
@@ -1575,6 +1378,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/reports/vehicle/idling")
@@ -1601,6 +1405,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/reports/vehicle/idling")
@@ -1651,6 +1456,7 @@ describe("LegacyApIsClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/fleet/safety-events")
@@ -1663,49 +1469,7 @@ describe("LegacyApIsClient", () => {
             startTime: "startTime",
             endTime: "endTime",
         });
-        expect(response).toEqual({
-            data: [
-                {
-                    behaviorLabels: [
-                        {
-                            label: "genericTailgating",
-                            name: "Tailgating",
-                            source: "automated",
-                        },
-                    ],
-                    coachingState: "needsReview",
-                    downloadForwardVideoUrl:
-                        "https://s3.console.aws.amazon.com/s3/buckets/samsara-dashcam-videos/21575/212014918400828/1553060687222/huKA7IhpBV-camera-video-segment-1244214895.mp4",
-                    downloadInwardVideoUrl:
-                        "https://s3.console.aws.amazon.com/s3/buckets/samsara-dashcam-videos/21575/212014918400828/1553060687222/huKA7IhpBV-camera-video-segment-1244214895.mp4",
-                    downloadTrackedInwardVideoUrl:
-                        "https://s3.console.aws.amazon.com/s3/buckets/samsara-dashcam-videos/21575/212014918400828/1553060687222/huKA7IhpBV-camera-video-segment-1244214895.mp4",
-                    driver: {
-                        id: "88668",
-                        name: "Susan Bob",
-                    },
-                    id: "212014918174029-1550954461759",
-                    location: {
-                        latitude: 122.142,
-                        longitude: -93.343,
-                    },
-                    maxAccelerationGForce: 0.123,
-                    time: "2019-06-13T19:08:25.455Z",
-                    vehicle: {
-                        ExternalIds: {
-                            maintenanceId: "250020",
-                            payrollId: "ABFS18600",
-                        },
-                        id: "123456789",
-                        name: "Midwest Truck #4",
-                    },
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getSafetyActivityEventFeed (1)", async () => {
@@ -1722,9 +1486,12 @@ describe("LegacyApIsClient", () => {
                 {
                     id: "1622151765-212014918174029-1550954461759",
                     safetyEvent: {
+                        behaviorLabels: [{ name: "Acceleration" }],
+                        driver: { id: "0987" },
                         id: "212014918174029-1550954461759",
                         time: "2019-06-13T19:08:25.455Z",
                         uuid: "abc123de-4567-89fg-hijk-lmnop1234567",
+                        vehicle: { id: "1234" },
                     },
                     time: "2019-10-12T07:20:50.52Z",
                     type: "BehaviorLabelActivityType",
@@ -1732,6 +1499,7 @@ describe("LegacyApIsClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/fleet/safety-events/audit-logs/feed")
@@ -1741,24 +1509,7 @@ describe("LegacyApIsClient", () => {
             .build();
 
         const response = await client.legacyApIs.getSafetyActivityEventFeed();
-        expect(response).toEqual({
-            data: [
-                {
-                    id: "1622151765-212014918174029-1550954461759",
-                    safetyEvent: {
-                        id: "212014918174029-1550954461759",
-                        time: "2019-06-13T19:08:25.455Z",
-                        uuid: "abc123de-4567-89fg-hijk-lmnop1234567",
-                    },
-                    time: "2019-10-12T07:20:50.52Z",
-                    type: "BehaviorLabelActivityType",
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getSafetyActivityEventFeed (2)", async () => {
@@ -1771,6 +1522,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/safety-events/audit-logs/feed")
@@ -1794,6 +1546,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/safety-events/audit-logs/feed")
@@ -1817,6 +1570,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/safety-events/audit-logs/feed")
@@ -1840,6 +1594,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/safety-events/audit-logs/feed")
@@ -1863,6 +1618,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/safety-events/audit-logs/feed")
@@ -1886,6 +1642,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/safety-events/audit-logs/feed")
@@ -1909,6 +1666,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/safety-events/audit-logs/feed")
@@ -1932,6 +1690,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/safety-events/audit-logs/feed")
@@ -1955,6 +1714,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/safety-events/audit-logs/feed")
@@ -1978,6 +1738,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/safety-events/audit-logs/feed")
@@ -2018,6 +1779,7 @@ describe("LegacyApIsClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/fleet/vehicles/driver-assignments")
@@ -2027,32 +1789,7 @@ describe("LegacyApIsClient", () => {
             .build();
 
         const response = await client.legacyApIs.getVehiclesDriverAssignments();
-        expect(response).toEqual({
-            data: [
-                {
-                    driverAssignments: [
-                        {
-                            driver: {
-                                id: "45646",
-                                name: "Driver Bob",
-                            },
-                            endTime: "2019-06-13T19:08:25Z",
-                            isPassenger: false,
-                            startTime: "2019-06-13T19:08:25Z",
-                        },
-                    ],
-                    externalIds: {
-                        key: "value",
-                    },
-                    id: "494123",
-                    name: "Bus-123",
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getVehiclesDriverAssignments (2)", async () => {
@@ -2065,6 +1802,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/vehicles/driver-assignments")
@@ -2088,6 +1826,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/vehicles/driver-assignments")
@@ -2111,6 +1850,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/vehicles/driver-assignments")
@@ -2134,6 +1874,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/vehicles/driver-assignments")
@@ -2157,6 +1898,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/vehicles/driver-assignments")
@@ -2180,6 +1922,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/vehicles/driver-assignments")
@@ -2203,6 +1946,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/vehicles/driver-assignments")
@@ -2226,6 +1970,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/vehicles/driver-assignments")
@@ -2249,6 +1994,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/vehicles/driver-assignments")
@@ -2272,6 +2018,7 @@ describe("LegacyApIsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/vehicles/driver-assignments")
@@ -2311,6 +2058,7 @@ describe("LegacyApIsClient", () => {
                 longitude: -96.14907287,
             },
         };
+
         server
             .mockEndpoint()
             .get("/v1/fleet/vehicles/1000000/safety/harsh_event")
@@ -2323,22 +2071,6 @@ describe("LegacyApIsClient", () => {
             vehicleId: 1000000,
             timestamp: 1000000,
         });
-        expect(response).toEqual({
-            downloadForwardVideoUrl:
-                "https://samsara-dashcam-videos.s3.us-west-2.amazonaws.com/123/212123456789012/1539201872984/abC123De4-camera-video-segment-123456789.mp4?...",
-            downloadInwardVideoUrl:
-                "https://samsara-dashcam-videos.s3.us-west-2.amazonaws.com/123/212123456789012/1539201872984/abC123De4-camera-video-segment-driver-123456789.mp4?...",
-            downloadTrackedInwardVideoUrl:
-                "https://samsara-dashcam-videos.s3.us-west-2.amazonaws.com/123/212123456789012/1539201872984/abC123De4-camera-video-segment-driver-123456789.tracked.mp4?...",
-            harshEventType: "Harsh Braking",
-            incidentReportUrl:
-                "https://cloud.samsara.com/o/1234/fleet/reports/safety/vehicle/212123456789012/incident/1539201882984",
-            isDistracted: true,
-            location: {
-                address: "350 Rhode Island St, San Francisco, CA",
-                latitude: 33.07614328,
-                longitude: -96.14907287,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 });

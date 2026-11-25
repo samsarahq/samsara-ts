@@ -20,6 +20,8 @@ export interface EntityListPreventiveMaintenanceSchedulesTypeResponseBody {
     linkedSchedules?:
         | Samsara.EntityListPreventiveMaintenanceSchedulesPreventativeMaintenanceScheduleRefTypeResponseBody[]
         | undefined;
+    /** Optional PM schedule type. Wire values are A, B, C, or D. Omitted when the schedule is untyped. */
+    scheduleType?: string | undefined;
     /** Title of the preventive maintenance schedule. */
     title?: string | undefined;
     /** ID of the work order template associated with this schedule. */

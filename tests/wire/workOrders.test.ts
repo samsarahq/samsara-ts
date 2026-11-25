@@ -17,6 +17,7 @@ describe("WorkOrdersClient", () => {
             file: { base64Content: "JVBERi0xLjQKJeLjz9MKMyAwIG9iago8P...", contentType: "application/pdf" },
         };
         const rawResponseBody = { data: { workOrderId: "123456" } };
+
         server
             .mockEndpoint()
             .post("/maintenance/invoice-scans")
@@ -32,11 +33,7 @@ describe("WorkOrdersClient", () => {
                 contentType: "application/pdf",
             },
         });
-        expect(response).toEqual({
-            data: {
-                workOrderId: "123456",
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("postInvoiceScan (2)", async () => {
@@ -49,6 +46,7 @@ describe("WorkOrdersClient", () => {
         });
         const rawRequestBody = { file: { base64Content: "base64Content", contentType: "contentType" } };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/invoice-scans")
@@ -78,6 +76,7 @@ describe("WorkOrdersClient", () => {
         });
         const rawRequestBody = { file: { base64Content: "base64Content", contentType: "contentType" } };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/invoice-scans")
@@ -107,6 +106,7 @@ describe("WorkOrdersClient", () => {
         });
         const rawRequestBody = { file: { base64Content: "base64Content", contentType: "contentType" } };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/invoice-scans")
@@ -136,6 +136,7 @@ describe("WorkOrdersClient", () => {
         });
         const rawRequestBody = { file: { base64Content: "base64Content", contentType: "contentType" } };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/invoice-scans")
@@ -165,6 +166,7 @@ describe("WorkOrdersClient", () => {
         });
         const rawRequestBody = { file: { base64Content: "base64Content", contentType: "contentType" } };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/invoice-scans")
@@ -194,6 +196,7 @@ describe("WorkOrdersClient", () => {
         });
         const rawRequestBody = { file: { base64Content: "base64Content", contentType: "contentType" } };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/invoice-scans")
@@ -223,6 +226,7 @@ describe("WorkOrdersClient", () => {
         });
         const rawRequestBody = { file: { base64Content: "base64Content", contentType: "contentType" } };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/invoice-scans")
@@ -252,6 +256,7 @@ describe("WorkOrdersClient", () => {
         });
         const rawRequestBody = { file: { base64Content: "base64Content", contentType: "contentType" } };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/invoice-scans")
@@ -281,6 +286,7 @@ describe("WorkOrdersClient", () => {
         });
         const rawRequestBody = { file: { base64Content: "base64Content", contentType: "contentType" } };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/invoice-scans")
@@ -310,6 +316,7 @@ describe("WorkOrdersClient", () => {
         });
         const rawRequestBody = { file: { base64Content: "base64Content", contentType: "contentType" } };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/invoice-scans")
@@ -353,6 +360,7 @@ describe("WorkOrdersClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/maintenance/service-tasks")
@@ -362,27 +370,7 @@ describe("WorkOrdersClient", () => {
             .build();
 
         const response = await client.workOrders.getServiceTasks();
-        expect(response).toEqual({
-            data: [
-                {
-                    category: "Engine",
-                    description: "Standard oil change service including filter replacement.",
-                    estimatedLaborTimeMinutes: 30,
-                    estimatedPartsCost: {
-                        amount: "94.01",
-                        currency: "usd",
-                    },
-                    id: "abf63a9a-4d75-423d-b49f-38a071e6ce36",
-                    name: "Oil Change",
-                    subcategory: "Oil and Lubrication",
-                    vmrsCode: "034-005-001",
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getServiceTasks (2)", async () => {
@@ -395,6 +383,7 @@ describe("WorkOrdersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/service-tasks")
@@ -418,6 +407,7 @@ describe("WorkOrdersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/service-tasks")
@@ -441,6 +431,7 @@ describe("WorkOrdersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/service-tasks")
@@ -464,6 +455,7 @@ describe("WorkOrdersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/service-tasks")
@@ -487,6 +479,7 @@ describe("WorkOrdersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/service-tasks")
@@ -510,6 +503,7 @@ describe("WorkOrdersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/service-tasks")
@@ -533,6 +527,7 @@ describe("WorkOrdersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/service-tasks")
@@ -556,6 +551,7 @@ describe("WorkOrdersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/service-tasks")
@@ -579,6 +575,7 @@ describe("WorkOrdersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/service-tasks")
@@ -602,6 +599,7 @@ describe("WorkOrdersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/service-tasks")
@@ -677,6 +675,7 @@ describe("WorkOrdersClient", () => {
                         {
                             assignees: [{ userId: "67890" }],
                             id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
+                            laborCost: { amount: "94.01", currency: "usd" },
                             laborHourlyCost: { amount: "94.01", currency: "usd" },
                             laborTimeMinutes: 60,
                             notes: "Replaced gasket; will revisit next service.",
@@ -684,13 +683,21 @@ describe("WorkOrdersClient", () => {
                                 {
                                     costCentsOverride: 1000,
                                     id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
+                                    maintenanceSiteId: "5523a39f-42ef-4820-83d0-dfe73dbe7853",
                                     partId: "P0077",
                                     quantity: 2.5,
+                                    requestedQuantity: 5,
                                 },
                             ],
                             partsCost: { amount: "94.01", currency: "usd" },
                             serviceTaskId: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
                             status: "Unknown",
+                            subtasks: [
+                                {
+                                    form: { formSubmissionUuid: "5523a39f-42ef-4820-83d0-dfe73dbe7853" },
+                                    procedure: { isCompleted: false, name: "Inspect brakes" },
+                                },
+                            ],
                             timeEntries: [
                                 {
                                     clockInAtTime: "2026-05-11T14:00:00Z",
@@ -701,6 +708,7 @@ describe("WorkOrdersClient", () => {
                             ],
                         },
                     ],
+                    shopId: "shop-10482",
                     startedAtTime: "2019-06-13T19:08:25Z",
                     status: "Assigned",
                     tax: { basisPoints: 700, money: { amount: "94.01", currency: "usd" } },
@@ -710,11 +718,14 @@ describe("WorkOrdersClient", () => {
                     workOrderTemplateIds: [
                         "5523a39f-42ef-4820-83d0-dfe73dbe7853",
                         "5523a39f-42ef-4820-83d0-dfe73dbe7853",
+                        "5523a39f-42ef-4820-83d0-dfe73dbe7853",
+                        "5523a39f-42ef-4820-83d0-dfe73dbe7853",
                     ],
                 },
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/maintenance/work-orders")
@@ -724,137 +735,7 @@ describe("WorkOrdersClient", () => {
             .build();
 
         const response = await client.workOrders.getWorkOrders();
-        expect(response).toEqual({
-            data: [
-                {
-                    archivedAtTime: "2019-06-13T19:08:25Z",
-                    assetId: "12443",
-                    assignedUserId: "1234",
-                    assignees: [
-                        {
-                            userId: "67890",
-                        },
-                    ],
-                    attachments: [
-                        {
-                            id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                            processingStatus: "unknown",
-                            url: "https://samsara-forms-submission-media-uploads.s3.us-west-2.amazonaws.com/123456",
-                            urlExpiresAt: "2019-06-13T19:08:25Z",
-                        },
-                    ],
-                    attributes: [
-                        {
-                            dateValues: ["2024-01-15", "2024-12-31"],
-                            id: "494123",
-                            name: "Compliance/ELD",
-                            numberValues: [867, 5309],
-                            stringValues: ["HQ", "Leased"],
-                        },
-                    ],
-                    category: "PREVENTIVE",
-                    closingNotes: "Everything was fixed without issues.",
-                    completedAtTime: "2019-06-13T19:08:25Z",
-                    createdAtTime: "2019-06-13T19:08:25Z",
-                    createdByUserId: "1234",
-                    description: "The vehicle is not starting.",
-                    discount: {
-                        basisPoints: 500,
-                        money: {
-                            amount: "94.01",
-                            currency: "usd",
-                        },
-                    },
-                    dueAtTime: "2019-06-13T19:08:25Z",
-                    engineHours: 91823,
-                    externalId: "WO-10482",
-                    id: "5",
-                    invoiceNumber: "123456",
-                    items: [
-                        {
-                            id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                            type: "DVIR",
-                        },
-                    ],
-                    maintenanceSite: {
-                        name: "LAX Service Bay 3",
-                        placeExternalIds: {
-                            "Blanditiis laborum.": "Quis nesciunt excepturi voluptatem.",
-                            "Occaecati repellendus.": "Adipisci velit nihil.",
-                            "Placeat id.": "Totam ipsum quaerat.",
-                        },
-                        placeId: "123456",
-                    },
-                    odometerMeters: 91823,
-                    poNumber: "123456",
-                    priority: "High",
-                    serviceTaskInstances: [
-                        {
-                            assignees: [
-                                {
-                                    userId: "67890",
-                                },
-                            ],
-                            id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                            laborHourlyCost: {
-                                amount: "94.01",
-                                currency: "usd",
-                            },
-                            laborTimeMinutes: 60,
-                            notes: "Replaced gasket; will revisit next service.",
-                            parts: [
-                                {
-                                    costCentsOverride: 1000,
-                                    id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                                    partId: "P0077",
-                                    quantity: 2.5,
-                                },
-                            ],
-                            partsCost: {
-                                amount: "94.01",
-                                currency: "usd",
-                            },
-                            serviceTaskId: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                            status: "Unknown",
-                            timeEntries: [
-                                {
-                                    clockInAtTime: "2026-05-11T14:00:00Z",
-                                    clockOutAtTime: "2026-05-11T15:30:00Z",
-                                    driverId: "12345",
-                                    userId: "67890",
-                                },
-                            ],
-                        },
-                    ],
-                    startedAtTime: "2019-06-13T19:08:25Z",
-                    status: "Assigned",
-                    tax: {
-                        basisPoints: 700,
-                        money: {
-                            amount: "94.01",
-                            currency: "usd",
-                        },
-                    },
-                    unallocatedLabor: {
-                        cost: {
-                            amount: "94.01",
-                            currency: "usd",
-                        },
-                        timeMinutes: 60,
-                    },
-                    updatedAtTime: "2019-06-13T19:08:25Z",
-                    vendorUuid: "5523a39f-42ef-4820-83d0-dfe73dbe7853",
-                    workOrderTemplateIds: [
-                        "5523a39f-42ef-4820-83d0-dfe73dbe7853",
-                        "5523a39f-42ef-4820-83d0-dfe73dbe7853",
-                    ],
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getWorkOrders (2)", async () => {
@@ -867,6 +748,7 @@ describe("WorkOrdersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/work-orders")
@@ -890,6 +772,7 @@ describe("WorkOrdersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/work-orders")
@@ -913,6 +796,7 @@ describe("WorkOrdersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/work-orders")
@@ -936,6 +820,7 @@ describe("WorkOrdersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/work-orders")
@@ -959,6 +844,7 @@ describe("WorkOrdersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/work-orders")
@@ -982,6 +868,7 @@ describe("WorkOrdersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/work-orders")
@@ -1005,6 +892,7 @@ describe("WorkOrdersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/work-orders")
@@ -1028,6 +916,7 @@ describe("WorkOrdersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/work-orders")
@@ -1051,6 +940,7 @@ describe("WorkOrdersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/work-orders")
@@ -1074,6 +964,7 @@ describe("WorkOrdersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/work-orders")
@@ -1147,6 +1038,7 @@ describe("WorkOrdersClient", () => {
                     {
                         assignees: [{ userId: "67890" }],
                         id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
+                        laborCost: { amount: "94.01", currency: "usd" },
                         laborHourlyCost: { amount: "94.01", currency: "usd" },
                         laborTimeMinutes: 60,
                         notes: "Replaced gasket; will revisit next service.",
@@ -1154,15 +1046,24 @@ describe("WorkOrdersClient", () => {
                             {
                                 costCentsOverride: 1000,
                                 id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
+                                maintenanceSiteId: "5523a39f-42ef-4820-83d0-dfe73dbe7853",
                                 partId: "P0077",
                                 quantity: 2.5,
+                                requestedQuantity: 5,
                             },
                         ],
                         partsCost: { amount: "94.01", currency: "usd" },
                         serviceTaskId: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
                         status: "Unknown",
+                        subtasks: [
+                            {
+                                form: { formSubmissionUuid: "5523a39f-42ef-4820-83d0-dfe73dbe7853" },
+                                procedure: { isCompleted: false, name: "Inspect brakes" },
+                            },
+                        ],
                     },
                 ],
+                shopId: "shop-10482",
                 startedAtTime: "2019-06-13T19:08:25Z",
                 status: "Assigned",
                 tax: { basisPoints: 700, money: { amount: "94.01", currency: "usd" } },
@@ -1176,6 +1077,7 @@ describe("WorkOrdersClient", () => {
                 ],
             },
         };
+
         server
             .mockEndpoint()
             .post("/maintenance/work-orders")
@@ -1188,123 +1090,7 @@ describe("WorkOrdersClient", () => {
         const response = await client.workOrders.postWorkOrders({
             assetId: "12443",
         });
-        expect(response).toEqual({
-            data: {
-                archivedAtTime: "2019-06-13T19:08:25Z",
-                assetId: "12443",
-                assignedUserId: "1234",
-                assignees: [
-                    {
-                        userId: "67890",
-                    },
-                ],
-                attachments: [
-                    {
-                        id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                        processingStatus: "unknown",
-                        url: "https://samsara-forms-submission-media-uploads.s3.us-west-2.amazonaws.com/123456",
-                        urlExpiresAt: "2019-06-13T19:08:25Z",
-                    },
-                ],
-                attributes: [
-                    {
-                        dateValues: ["2024-01-15", "2024-12-31"],
-                        id: "494123",
-                        name: "Compliance/ELD",
-                        numberValues: [867, 5309],
-                        stringValues: ["HQ", "Leased"],
-                    },
-                ],
-                category: "PREVENTIVE",
-                closingNotes: "Everything was fixed without issues.",
-                completedAtTime: "2019-06-13T19:08:25Z",
-                createdAtTime: "2019-06-13T19:08:25Z",
-                createdByUserId: "1234",
-                description: "The vehicle is not starting.",
-                discount: {
-                    basisPoints: 500,
-                    money: {
-                        amount: "94.01",
-                        currency: "usd",
-                    },
-                },
-                dueAtTime: "2019-06-13T19:08:25Z",
-                engineHours: 91823,
-                id: "5",
-                invoiceNumber: "123456",
-                items: [
-                    {
-                        id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                        type: "DVIR",
-                    },
-                ],
-                maintenanceSite: {
-                    name: "LAX Service Bay 3",
-                    placeExternalIds: {
-                        "Blanditiis laborum.": "Quis nesciunt excepturi voluptatem.",
-                        "Occaecati repellendus.": "Adipisci velit nihil.",
-                        "Placeat id.": "Totam ipsum quaerat.",
-                    },
-                    placeId: "123456",
-                },
-                odometerMeters: 91823,
-                poNumber: "123456",
-                priority: "High",
-                serviceTaskInstances: [
-                    {
-                        assignees: [
-                            {
-                                userId: "67890",
-                            },
-                        ],
-                        id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                        laborHourlyCost: {
-                            amount: "94.01",
-                            currency: "usd",
-                        },
-                        laborTimeMinutes: 60,
-                        notes: "Replaced gasket; will revisit next service.",
-                        parts: [
-                            {
-                                costCentsOverride: 1000,
-                                id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                                partId: "P0077",
-                                quantity: 2.5,
-                            },
-                        ],
-                        partsCost: {
-                            amount: "94.01",
-                            currency: "usd",
-                        },
-                        serviceTaskId: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                        status: "Unknown",
-                    },
-                ],
-                startedAtTime: "2019-06-13T19:08:25Z",
-                status: "Assigned",
-                tax: {
-                    basisPoints: 700,
-                    money: {
-                        amount: "94.01",
-                        currency: "usd",
-                    },
-                },
-                unallocatedLabor: {
-                    cost: {
-                        amount: "94.01",
-                        currency: "usd",
-                    },
-                    timeMinutes: 60,
-                },
-                updatedAtTime: "2019-06-13T19:08:25Z",
-                vendorUuid: "5523a39f-42ef-4820-83d0-dfe73dbe7853",
-                workOrderTemplateIds: [
-                    "5523a39f-42ef-4820-83d0-dfe73dbe7853",
-                    "5523a39f-42ef-4820-83d0-dfe73dbe7853",
-                    "5523a39f-42ef-4820-83d0-dfe73dbe7853",
-                ],
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("postWorkOrders (2)", async () => {
@@ -1317,6 +1103,7 @@ describe("WorkOrdersClient", () => {
         });
         const rawRequestBody = { assetId: "assetId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/work-orders")
@@ -1343,6 +1130,7 @@ describe("WorkOrdersClient", () => {
         });
         const rawRequestBody = { assetId: "assetId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/work-orders")
@@ -1369,6 +1157,7 @@ describe("WorkOrdersClient", () => {
         });
         const rawRequestBody = { assetId: "assetId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/work-orders")
@@ -1395,6 +1184,7 @@ describe("WorkOrdersClient", () => {
         });
         const rawRequestBody = { assetId: "assetId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/work-orders")
@@ -1421,6 +1211,7 @@ describe("WorkOrdersClient", () => {
         });
         const rawRequestBody = { assetId: "assetId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/work-orders")
@@ -1447,6 +1238,7 @@ describe("WorkOrdersClient", () => {
         });
         const rawRequestBody = { assetId: "assetId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/work-orders")
@@ -1473,6 +1265,7 @@ describe("WorkOrdersClient", () => {
         });
         const rawRequestBody = { assetId: "assetId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/work-orders")
@@ -1499,6 +1292,7 @@ describe("WorkOrdersClient", () => {
         });
         const rawRequestBody = { assetId: "assetId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/work-orders")
@@ -1525,6 +1319,7 @@ describe("WorkOrdersClient", () => {
         });
         const rawRequestBody = { assetId: "assetId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/work-orders")
@@ -1551,6 +1346,7 @@ describe("WorkOrdersClient", () => {
         });
         const rawRequestBody = { assetId: "assetId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/work-orders")
@@ -1594,6 +1390,7 @@ describe("WorkOrdersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/maintenance/work-orders")
@@ -1619,6 +1416,7 @@ describe("WorkOrdersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/maintenance/work-orders")
@@ -1644,6 +1442,7 @@ describe("WorkOrdersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/maintenance/work-orders")
@@ -1669,6 +1468,7 @@ describe("WorkOrdersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/maintenance/work-orders")
@@ -1694,6 +1494,7 @@ describe("WorkOrdersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/maintenance/work-orders")
@@ -1719,6 +1520,7 @@ describe("WorkOrdersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/maintenance/work-orders")
@@ -1744,6 +1546,7 @@ describe("WorkOrdersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/maintenance/work-orders")
@@ -1769,6 +1572,7 @@ describe("WorkOrdersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/maintenance/work-orders")
@@ -1794,6 +1598,7 @@ describe("WorkOrdersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/maintenance/work-orders")
@@ -1819,6 +1624,7 @@ describe("WorkOrdersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/maintenance/work-orders")
@@ -1894,6 +1700,7 @@ describe("WorkOrdersClient", () => {
                     {
                         assignees: [{ userId: "67890" }],
                         id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
+                        laborCost: { amount: "94.01", currency: "usd" },
                         laborHourlyCost: { amount: "94.01", currency: "usd" },
                         laborTimeMinutes: 60,
                         notes: "Replaced gasket; will revisit next service.",
@@ -1901,15 +1708,24 @@ describe("WorkOrdersClient", () => {
                             {
                                 costCentsOverride: 1000,
                                 id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
+                                maintenanceSiteId: "5523a39f-42ef-4820-83d0-dfe73dbe7853",
                                 partId: "P0077",
                                 quantity: 2.5,
+                                requestedQuantity: 5,
                             },
                         ],
                         partsCost: { amount: "94.01", currency: "usd" },
                         serviceTaskId: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
                         status: "Unknown",
+                        subtasks: [
+                            {
+                                form: { formSubmissionUuid: "5523a39f-42ef-4820-83d0-dfe73dbe7853" },
+                                procedure: { isCompleted: false, name: "Inspect brakes" },
+                            },
+                        ],
                     },
                 ],
+                shopId: "shop-10482",
                 startedAtTime: "2019-06-13T19:08:25Z",
                 status: "Assigned",
                 tax: { basisPoints: 700, money: { amount: "94.01", currency: "usd" } },
@@ -1923,6 +1739,7 @@ describe("WorkOrdersClient", () => {
                 ],
             },
         };
+
         server
             .mockEndpoint()
             .patch("/maintenance/work-orders")
@@ -1935,123 +1752,7 @@ describe("WorkOrdersClient", () => {
         const response = await client.workOrders.patchWorkOrders({
             id: "5",
         });
-        expect(response).toEqual({
-            data: {
-                archivedAtTime: "2019-06-13T19:08:25Z",
-                assetId: "12443",
-                assignedUserId: "1234",
-                assignees: [
-                    {
-                        userId: "67890",
-                    },
-                ],
-                attachments: [
-                    {
-                        id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                        processingStatus: "unknown",
-                        url: "https://samsara-forms-submission-media-uploads.s3.us-west-2.amazonaws.com/123456",
-                        urlExpiresAt: "2019-06-13T19:08:25Z",
-                    },
-                ],
-                attributes: [
-                    {
-                        dateValues: ["2024-01-15", "2024-12-31"],
-                        id: "494123",
-                        name: "Compliance/ELD",
-                        numberValues: [867, 5309],
-                        stringValues: ["HQ", "Leased"],
-                    },
-                ],
-                category: "PREVENTIVE",
-                closingNotes: "Everything was fixed without issues.",
-                completedAtTime: "2019-06-13T19:08:25Z",
-                createdAtTime: "2019-06-13T19:08:25Z",
-                createdByUserId: "1234",
-                description: "The vehicle is not starting.",
-                discount: {
-                    basisPoints: 500,
-                    money: {
-                        amount: "94.01",
-                        currency: "usd",
-                    },
-                },
-                dueAtTime: "2019-06-13T19:08:25Z",
-                engineHours: 91823,
-                id: "5",
-                invoiceNumber: "123456",
-                items: [
-                    {
-                        id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                        type: "DVIR",
-                    },
-                ],
-                maintenanceSite: {
-                    name: "LAX Service Bay 3",
-                    placeExternalIds: {
-                        "Blanditiis laborum.": "Quis nesciunt excepturi voluptatem.",
-                        "Occaecati repellendus.": "Adipisci velit nihil.",
-                        "Placeat id.": "Totam ipsum quaerat.",
-                    },
-                    placeId: "123456",
-                },
-                odometerMeters: 91823,
-                poNumber: "123456",
-                priority: "High",
-                serviceTaskInstances: [
-                    {
-                        assignees: [
-                            {
-                                userId: "67890",
-                            },
-                        ],
-                        id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                        laborHourlyCost: {
-                            amount: "94.01",
-                            currency: "usd",
-                        },
-                        laborTimeMinutes: 60,
-                        notes: "Replaced gasket; will revisit next service.",
-                        parts: [
-                            {
-                                costCentsOverride: 1000,
-                                id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                                partId: "P0077",
-                                quantity: 2.5,
-                            },
-                        ],
-                        partsCost: {
-                            amount: "94.01",
-                            currency: "usd",
-                        },
-                        serviceTaskId: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                        status: "Unknown",
-                    },
-                ],
-                startedAtTime: "2019-06-13T19:08:25Z",
-                status: "Assigned",
-                tax: {
-                    basisPoints: 700,
-                    money: {
-                        amount: "94.01",
-                        currency: "usd",
-                    },
-                },
-                unallocatedLabor: {
-                    cost: {
-                        amount: "94.01",
-                        currency: "usd",
-                    },
-                    timeMinutes: 60,
-                },
-                updatedAtTime: "2019-06-13T19:08:25Z",
-                vendorUuid: "5523a39f-42ef-4820-83d0-dfe73dbe7853",
-                workOrderTemplateIds: [
-                    "5523a39f-42ef-4820-83d0-dfe73dbe7853",
-                    "5523a39f-42ef-4820-83d0-dfe73dbe7853",
-                    "5523a39f-42ef-4820-83d0-dfe73dbe7853",
-                ],
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("patchWorkOrders (2)", async () => {
@@ -2064,6 +1765,7 @@ describe("WorkOrdersClient", () => {
         });
         const rawRequestBody = { id: "id" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/work-orders")
@@ -2090,6 +1792,7 @@ describe("WorkOrdersClient", () => {
         });
         const rawRequestBody = { id: "id" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/work-orders")
@@ -2116,6 +1819,7 @@ describe("WorkOrdersClient", () => {
         });
         const rawRequestBody = { id: "id" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/work-orders")
@@ -2142,6 +1846,7 @@ describe("WorkOrdersClient", () => {
         });
         const rawRequestBody = { id: "id" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/work-orders")
@@ -2168,6 +1873,7 @@ describe("WorkOrdersClient", () => {
         });
         const rawRequestBody = { id: "id" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/work-orders")
@@ -2194,6 +1900,7 @@ describe("WorkOrdersClient", () => {
         });
         const rawRequestBody = { id: "id" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/work-orders")
@@ -2220,6 +1927,7 @@ describe("WorkOrdersClient", () => {
         });
         const rawRequestBody = { id: "id" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/work-orders")
@@ -2246,6 +1954,7 @@ describe("WorkOrdersClient", () => {
         });
         const rawRequestBody = { id: "id" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/work-orders")
@@ -2272,6 +1981,7 @@ describe("WorkOrdersClient", () => {
         });
         const rawRequestBody = { id: "id" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/work-orders")
@@ -2298,6 +2008,7 @@ describe("WorkOrdersClient", () => {
         });
         const rawRequestBody = { id: "id" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/work-orders")
@@ -2376,6 +2087,7 @@ describe("WorkOrdersClient", () => {
                         {
                             assignees: [{ userId: "67890" }],
                             id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
+                            laborCost: { amount: "94.01", currency: "usd" },
                             laborHourlyCost: { amount: "94.01", currency: "usd" },
                             laborTimeMinutes: 60,
                             notes: "Replaced gasket; will revisit next service.",
@@ -2383,13 +2095,21 @@ describe("WorkOrdersClient", () => {
                                 {
                                     costCentsOverride: 1000,
                                     id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
+                                    maintenanceSiteId: "5523a39f-42ef-4820-83d0-dfe73dbe7853",
                                     partId: "P0077",
                                     quantity: 2.5,
+                                    requestedQuantity: 5,
                                 },
                             ],
                             partsCost: { amount: "94.01", currency: "usd" },
                             serviceTaskId: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
                             status: "Unknown",
+                            subtasks: [
+                                {
+                                    form: { formSubmissionUuid: "5523a39f-42ef-4820-83d0-dfe73dbe7853" },
+                                    procedure: { isCompleted: false, name: "Inspect brakes" },
+                                },
+                            ],
                             timeEntries: [
                                 {
                                     clockInAtTime: "2026-05-11T14:00:00Z",
@@ -2400,6 +2120,7 @@ describe("WorkOrdersClient", () => {
                             ],
                         },
                     ],
+                    shopId: "shop-10482",
                     startedAtTime: "2019-06-13T19:08:25Z",
                     status: "Assigned",
                     tax: { basisPoints: 700, money: { amount: "94.01", currency: "usd" } },
@@ -2409,11 +2130,14 @@ describe("WorkOrdersClient", () => {
                     workOrderTemplateIds: [
                         "5523a39f-42ef-4820-83d0-dfe73dbe7853",
                         "5523a39f-42ef-4820-83d0-dfe73dbe7853",
+                        "5523a39f-42ef-4820-83d0-dfe73dbe7853",
+                        "5523a39f-42ef-4820-83d0-dfe73dbe7853",
                     ],
                 },
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/maintenance/work-orders/stream")
@@ -2425,137 +2149,7 @@ describe("WorkOrdersClient", () => {
         const response = await client.workOrders.streamWorkOrders({
             startTime: "startTime",
         });
-        expect(response).toEqual({
-            data: [
-                {
-                    archivedAtTime: "2019-06-13T19:08:25Z",
-                    assetId: "12443",
-                    assignedUserId: "1234",
-                    assignees: [
-                        {
-                            userId: "67890",
-                        },
-                    ],
-                    attachments: [
-                        {
-                            id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                            processingStatus: "unknown",
-                            url: "https://samsara-forms-submission-media-uploads.s3.us-west-2.amazonaws.com/123456",
-                            urlExpiresAt: "2019-06-13T19:08:25Z",
-                        },
-                    ],
-                    attributes: [
-                        {
-                            dateValues: ["2024-01-15", "2024-12-31"],
-                            id: "494123",
-                            name: "Compliance/ELD",
-                            numberValues: [867, 5309],
-                            stringValues: ["HQ", "Leased"],
-                        },
-                    ],
-                    category: "PREVENTIVE",
-                    closingNotes: "Everything was fixed without issues.",
-                    completedAtTime: "2019-06-13T19:08:25Z",
-                    createdAtTime: "2019-06-13T19:08:25Z",
-                    createdByUserId: "1234",
-                    description: "The vehicle is not starting.",
-                    discount: {
-                        basisPoints: 500,
-                        money: {
-                            amount: "94.01",
-                            currency: "usd",
-                        },
-                    },
-                    dueAtTime: "2019-06-13T19:08:25Z",
-                    engineHours: 91823,
-                    externalId: "WO-10482",
-                    id: "5",
-                    invoiceNumber: "123456",
-                    items: [
-                        {
-                            id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                            type: "DVIR",
-                        },
-                    ],
-                    maintenanceSite: {
-                        name: "LAX Service Bay 3",
-                        placeExternalIds: {
-                            "Blanditiis laborum.": "Quis nesciunt excepturi voluptatem.",
-                            "Occaecati repellendus.": "Adipisci velit nihil.",
-                            "Placeat id.": "Totam ipsum quaerat.",
-                        },
-                        placeId: "123456",
-                    },
-                    odometerMeters: 91823,
-                    poNumber: "123456",
-                    priority: "High",
-                    serviceTaskInstances: [
-                        {
-                            assignees: [
-                                {
-                                    userId: "67890",
-                                },
-                            ],
-                            id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                            laborHourlyCost: {
-                                amount: "94.01",
-                                currency: "usd",
-                            },
-                            laborTimeMinutes: 60,
-                            notes: "Replaced gasket; will revisit next service.",
-                            parts: [
-                                {
-                                    costCentsOverride: 1000,
-                                    id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                                    partId: "P0077",
-                                    quantity: 2.5,
-                                },
-                            ],
-                            partsCost: {
-                                amount: "94.01",
-                                currency: "usd",
-                            },
-                            serviceTaskId: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                            status: "Unknown",
-                            timeEntries: [
-                                {
-                                    clockInAtTime: "2026-05-11T14:00:00Z",
-                                    clockOutAtTime: "2026-05-11T15:30:00Z",
-                                    driverId: "12345",
-                                    userId: "67890",
-                                },
-                            ],
-                        },
-                    ],
-                    startedAtTime: "2019-06-13T19:08:25Z",
-                    status: "Assigned",
-                    tax: {
-                        basisPoints: 700,
-                        money: {
-                            amount: "94.01",
-                            currency: "usd",
-                        },
-                    },
-                    unallocatedLabor: {
-                        cost: {
-                            amount: "94.01",
-                            currency: "usd",
-                        },
-                        timeMinutes: 60,
-                    },
-                    updatedAtTime: "2019-06-13T19:08:25Z",
-                    vendorUuid: "5523a39f-42ef-4820-83d0-dfe73dbe7853",
-                    workOrderTemplateIds: [
-                        "5523a39f-42ef-4820-83d0-dfe73dbe7853",
-                        "5523a39f-42ef-4820-83d0-dfe73dbe7853",
-                    ],
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("streamWorkOrders (2)", async () => {
@@ -2568,6 +2162,7 @@ describe("WorkOrdersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/work-orders/stream")
@@ -2593,6 +2188,7 @@ describe("WorkOrdersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/work-orders/stream")
@@ -2618,6 +2214,7 @@ describe("WorkOrdersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/work-orders/stream")
@@ -2643,6 +2240,7 @@ describe("WorkOrdersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/work-orders/stream")
@@ -2668,6 +2266,7 @@ describe("WorkOrdersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/work-orders/stream")
@@ -2693,6 +2292,7 @@ describe("WorkOrdersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/work-orders/stream")
@@ -2718,6 +2318,7 @@ describe("WorkOrdersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/work-orders/stream")
@@ -2743,6 +2344,7 @@ describe("WorkOrdersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/work-orders/stream")
@@ -2768,6 +2370,7 @@ describe("WorkOrdersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/work-orders/stream")
@@ -2793,6 +2396,7 @@ describe("WorkOrdersClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/work-orders/stream")

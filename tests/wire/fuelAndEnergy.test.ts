@@ -32,6 +32,7 @@ describe("FuelAndEnergyClient", () => {
             },
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/fleet/reports/drivers/fuel-energy")
@@ -44,33 +45,7 @@ describe("FuelAndEnergyClient", () => {
             startDate: "startDate",
             endDate: "endDate",
         });
-        expect(response).toEqual({
-            data: {
-                driverReports: [
-                    {
-                        distanceTraveledMeters: 1384000,
-                        driver: {
-                            id: "45646",
-                            name: "Driver Bob",
-                        },
-                        efficiencyMpge: 21.4,
-                        energyUsedKwh: 73.2,
-                        engineIdleTimeDurationMs: 4320000,
-                        engineRunTimeDurationMs: 576000,
-                        estCarbonEmissionsKg: 22.7,
-                        estFuelEnergyCost: {
-                            amount: 94.01,
-                            currencyCode: "USD",
-                        },
-                        fuelConsumedMl: 162773,
-                    },
-                ],
-            },
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getFuelEnergyDriverReports (2)", async () => {
@@ -83,6 +58,7 @@ describe("FuelAndEnergyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/reports/drivers/fuel-energy")
@@ -109,6 +85,7 @@ describe("FuelAndEnergyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/reports/drivers/fuel-energy")
@@ -135,6 +112,7 @@ describe("FuelAndEnergyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/reports/drivers/fuel-energy")
@@ -161,6 +139,7 @@ describe("FuelAndEnergyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/reports/drivers/fuel-energy")
@@ -187,6 +166,7 @@ describe("FuelAndEnergyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/reports/drivers/fuel-energy")
@@ -213,6 +193,7 @@ describe("FuelAndEnergyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/reports/drivers/fuel-energy")
@@ -239,6 +220,7 @@ describe("FuelAndEnergyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/reports/drivers/fuel-energy")
@@ -265,6 +247,7 @@ describe("FuelAndEnergyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/reports/drivers/fuel-energy")
@@ -291,6 +274,7 @@ describe("FuelAndEnergyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/reports/drivers/fuel-energy")
@@ -317,6 +301,7 @@ describe("FuelAndEnergyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/reports/drivers/fuel-energy")
@@ -360,6 +345,7 @@ describe("FuelAndEnergyClient", () => {
             },
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/fleet/reports/vehicles/fuel-energy")
@@ -372,34 +358,7 @@ describe("FuelAndEnergyClient", () => {
             startDate: "startDate",
             endDate: "endDate",
         });
-        expect(response).toEqual({
-            data: {
-                vehicleReports: [
-                    {
-                        distanceTraveledMeters: 1384000,
-                        efficiencyMpge: 21.4,
-                        energyUsedKwh: 73.2,
-                        engineIdleTimeDurationMs: 4320000,
-                        engineRunTimeDurationMs: 576000,
-                        estCarbonEmissionsKg: 22.7,
-                        estFuelEnergyCost: {
-                            amount: 94.01,
-                            currencyCode: "USD",
-                        },
-                        fuelConsumedMl: 162773,
-                        vehicle: {
-                            energyType: "fuel",
-                            id: "494123",
-                            name: "Fleet Truck #1",
-                        },
-                    },
-                ],
-            },
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getFuelEnergyVehicleReports (2)", async () => {
@@ -412,6 +371,7 @@ describe("FuelAndEnergyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/reports/vehicles/fuel-energy")
@@ -438,6 +398,7 @@ describe("FuelAndEnergyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/reports/vehicles/fuel-energy")
@@ -464,6 +425,7 @@ describe("FuelAndEnergyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/reports/vehicles/fuel-energy")
@@ -490,6 +452,7 @@ describe("FuelAndEnergyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/reports/vehicles/fuel-energy")
@@ -516,6 +479,7 @@ describe("FuelAndEnergyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/reports/vehicles/fuel-energy")
@@ -542,6 +506,7 @@ describe("FuelAndEnergyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/reports/vehicles/fuel-energy")
@@ -568,6 +533,7 @@ describe("FuelAndEnergyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/reports/vehicles/fuel-energy")
@@ -594,6 +560,7 @@ describe("FuelAndEnergyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/reports/vehicles/fuel-energy")
@@ -620,6 +587,7 @@ describe("FuelAndEnergyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/reports/vehicles/fuel-energy")
@@ -646,6 +614,7 @@ describe("FuelAndEnergyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/reports/vehicles/fuel-energy")
@@ -678,6 +647,7 @@ describe("FuelAndEnergyClient", () => {
             transactionTime: "2022-07-13T14:20:50.52-07:00",
         };
         const rawResponseBody = { data: { uuid: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7" } };
+
         server
             .mockEndpoint()
             .post("/fuel-purchase")
@@ -697,11 +667,7 @@ describe("FuelAndEnergyClient", () => {
             transactionReference: "5454534",
             transactionTime: "2022-07-13T14:20:50.52-07:00",
         });
-        expect(response).toEqual({
-            data: {
-                uuid: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("postFuelPurchase (2)", async () => {
@@ -720,6 +686,7 @@ describe("FuelAndEnergyClient", () => {
             transactionTime: "transactionTime",
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fuel-purchase")
@@ -759,6 +726,7 @@ describe("FuelAndEnergyClient", () => {
             transactionTime: "transactionTime",
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fuel-purchase")
@@ -798,6 +766,7 @@ describe("FuelAndEnergyClient", () => {
             transactionTime: "transactionTime",
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fuel-purchase")
@@ -837,6 +806,7 @@ describe("FuelAndEnergyClient", () => {
             transactionTime: "transactionTime",
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fuel-purchase")
@@ -876,6 +846,7 @@ describe("FuelAndEnergyClient", () => {
             transactionTime: "transactionTime",
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fuel-purchase")
@@ -915,6 +886,7 @@ describe("FuelAndEnergyClient", () => {
             transactionTime: "transactionTime",
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fuel-purchase")
@@ -954,6 +926,7 @@ describe("FuelAndEnergyClient", () => {
             transactionTime: "transactionTime",
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fuel-purchase")
@@ -993,6 +966,7 @@ describe("FuelAndEnergyClient", () => {
             transactionTime: "transactionTime",
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fuel-purchase")
@@ -1032,6 +1006,7 @@ describe("FuelAndEnergyClient", () => {
             transactionTime: "transactionTime",
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fuel-purchase")
@@ -1071,6 +1046,7 @@ describe("FuelAndEnergyClient", () => {
             transactionTime: "transactionTime",
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fuel-purchase")
@@ -1138,6 +1114,7 @@ describe("FuelAndEnergyClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/preferred-stations")
@@ -1147,55 +1124,7 @@ describe("FuelAndEnergyClient", () => {
             .build();
 
         const response = await client.fuelAndEnergy.listPreferredStations();
-        expect(response).toEqual({
-            data: [
-                {
-                    address: {
-                        city: "Green River",
-                        country: "US",
-                        line1: "8901 US Hwy 374",
-                        postalCode: "82935",
-                        state: "WY",
-                    },
-                    discounts: [
-                        {
-                            discount: {
-                                amount: "640.2",
-                                currency: "usd",
-                            },
-                            discountPercent: "3.5",
-                            discountType: "centsPerUnit",
-                            fuelType: "gasoline",
-                        },
-                    ],
-                    externalIds: {
-                        key: "value",
-                    },
-                    id: "sta_abc123",
-                    latitude: 41.5168,
-                    longitude: -109.471,
-                    name: "Pilot Travel Center #432",
-                    prices: [
-                        {
-                            fuelType: "gasoline",
-                            grossPrice: {
-                                amount: "640.2",
-                                currency: "usd",
-                            },
-                            netPrice: {
-                                amount: "640.2",
-                                currency: "usd",
-                            },
-                            volumeUnit: "liter",
-                        },
-                    ],
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("listPreferredStations (2)", async () => {
@@ -1208,6 +1137,7 @@ describe("FuelAndEnergyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/preferred-stations")
@@ -1231,6 +1161,7 @@ describe("FuelAndEnergyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/preferred-stations")
@@ -1254,6 +1185,7 @@ describe("FuelAndEnergyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/preferred-stations")
@@ -1277,6 +1209,7 @@ describe("FuelAndEnergyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/preferred-stations")
@@ -1300,6 +1233,7 @@ describe("FuelAndEnergyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/preferred-stations")
@@ -1323,6 +1257,7 @@ describe("FuelAndEnergyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/preferred-stations")
@@ -1346,6 +1281,7 @@ describe("FuelAndEnergyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/preferred-stations")
@@ -1369,6 +1305,7 @@ describe("FuelAndEnergyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/preferred-stations")
@@ -1392,6 +1329,7 @@ describe("FuelAndEnergyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/preferred-stations")
@@ -1415,6 +1353,7 @@ describe("FuelAndEnergyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/preferred-stations")
@@ -1473,6 +1412,7 @@ describe("FuelAndEnergyClient", () => {
                 ],
             },
         };
+
         server
             .mockEndpoint()
             .post("/preferred-stations")
@@ -1494,49 +1434,7 @@ describe("FuelAndEnergyClient", () => {
             },
             name: "Station #432",
         });
-        expect(response).toEqual({
-            data: {
-                address: {
-                    city: "Green River",
-                    country: "US",
-                    line1: "8901 US Hwy 374",
-                    postalCode: "82935",
-                    state: "WY",
-                },
-                discounts: [
-                    {
-                        discount: {
-                            amount: "640.2",
-                            currency: "usd",
-                        },
-                        discountPercent: "3.5",
-                        discountType: "centsPerUnit",
-                        fuelType: "gasoline",
-                    },
-                ],
-                externalIds: {
-                    key: "value",
-                },
-                id: "sta_abc123",
-                latitude: 41.5168,
-                longitude: -109.471,
-                name: "Pilot Travel Center #432",
-                prices: [
-                    {
-                        fuelType: "gasoline",
-                        grossPrice: {
-                            amount: "640.2",
-                            currency: "usd",
-                        },
-                        netPrice: {
-                            amount: "640.2",
-                            currency: "usd",
-                        },
-                        volumeUnit: "liter",
-                    },
-                ],
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("postPreferredStation (2)", async () => {
@@ -1553,6 +1451,7 @@ describe("FuelAndEnergyClient", () => {
             name: "name",
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/preferred-stations")
@@ -1592,6 +1491,7 @@ describe("FuelAndEnergyClient", () => {
             name: "name",
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/preferred-stations")
@@ -1631,6 +1531,7 @@ describe("FuelAndEnergyClient", () => {
             name: "name",
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/preferred-stations")
@@ -1670,6 +1571,7 @@ describe("FuelAndEnergyClient", () => {
             name: "name",
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/preferred-stations")
@@ -1709,6 +1611,7 @@ describe("FuelAndEnergyClient", () => {
             name: "name",
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/preferred-stations")
@@ -1748,6 +1651,7 @@ describe("FuelAndEnergyClient", () => {
             name: "name",
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/preferred-stations")
@@ -1787,6 +1691,7 @@ describe("FuelAndEnergyClient", () => {
             name: "name",
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/preferred-stations")
@@ -1826,6 +1731,7 @@ describe("FuelAndEnergyClient", () => {
             name: "name",
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/preferred-stations")
@@ -1865,6 +1771,7 @@ describe("FuelAndEnergyClient", () => {
             name: "name",
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/preferred-stations")
@@ -1904,6 +1811,7 @@ describe("FuelAndEnergyClient", () => {
             name: "name",
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/preferred-stations")
@@ -1956,6 +1864,7 @@ describe("FuelAndEnergyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/preferred-stations")
@@ -1981,6 +1890,7 @@ describe("FuelAndEnergyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/preferred-stations")
@@ -2006,6 +1916,7 @@ describe("FuelAndEnergyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/preferred-stations")
@@ -2031,6 +1942,7 @@ describe("FuelAndEnergyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/preferred-stations")
@@ -2056,6 +1968,7 @@ describe("FuelAndEnergyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/preferred-stations")
@@ -2081,6 +1994,7 @@ describe("FuelAndEnergyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/preferred-stations")
@@ -2106,6 +2020,7 @@ describe("FuelAndEnergyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/preferred-stations")
@@ -2131,6 +2046,7 @@ describe("FuelAndEnergyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/preferred-stations")
@@ -2156,6 +2072,7 @@ describe("FuelAndEnergyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/preferred-stations")
@@ -2181,6 +2098,7 @@ describe("FuelAndEnergyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/preferred-stations")
@@ -2237,6 +2155,7 @@ describe("FuelAndEnergyClient", () => {
                 ],
             },
         };
+
         server
             .mockEndpoint()
             .patch("/preferred-stations")
@@ -2249,49 +2168,7 @@ describe("FuelAndEnergyClient", () => {
         const response = await client.fuelAndEnergy.patchPreferredStation({
             id: "id",
         });
-        expect(response).toEqual({
-            data: {
-                address: {
-                    city: "Green River",
-                    country: "US",
-                    line1: "8901 US Hwy 374",
-                    postalCode: "82935",
-                    state: "WY",
-                },
-                discounts: [
-                    {
-                        discount: {
-                            amount: "640.2",
-                            currency: "usd",
-                        },
-                        discountPercent: "3.5",
-                        discountType: "centsPerUnit",
-                        fuelType: "gasoline",
-                    },
-                ],
-                externalIds: {
-                    key: "value",
-                },
-                id: "sta_abc123",
-                latitude: 41.5168,
-                longitude: -109.471,
-                name: "Pilot Travel Center #432",
-                prices: [
-                    {
-                        fuelType: "gasoline",
-                        grossPrice: {
-                            amount: "640.2",
-                            currency: "usd",
-                        },
-                        netPrice: {
-                            amount: "640.2",
-                            currency: "usd",
-                        },
-                        volumeUnit: "liter",
-                    },
-                ],
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("patchPreferredStation (2)", async () => {
@@ -2304,6 +2181,7 @@ describe("FuelAndEnergyClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/preferred-stations")
@@ -2330,6 +2208,7 @@ describe("FuelAndEnergyClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/preferred-stations")
@@ -2356,6 +2235,7 @@ describe("FuelAndEnergyClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/preferred-stations")
@@ -2382,6 +2262,7 @@ describe("FuelAndEnergyClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/preferred-stations")
@@ -2408,6 +2289,7 @@ describe("FuelAndEnergyClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/preferred-stations")
@@ -2434,6 +2316,7 @@ describe("FuelAndEnergyClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/preferred-stations")
@@ -2460,6 +2343,7 @@ describe("FuelAndEnergyClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/preferred-stations")
@@ -2486,6 +2370,7 @@ describe("FuelAndEnergyClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/preferred-stations")
@@ -2512,6 +2397,7 @@ describe("FuelAndEnergyClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/preferred-stations")
@@ -2538,6 +2424,7 @@ describe("FuelAndEnergyClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/preferred-stations")
@@ -2595,6 +2482,7 @@ describe("FuelAndEnergyClient", () => {
                 ],
             },
         };
+
         server
             .mockEndpoint()
             .get("/preferred-stations/id")
@@ -2606,49 +2494,7 @@ describe("FuelAndEnergyClient", () => {
         const response = await client.fuelAndEnergy.getPreferredStation({
             id: "id",
         });
-        expect(response).toEqual({
-            data: {
-                address: {
-                    city: "Green River",
-                    country: "US",
-                    line1: "8901 US Hwy 374",
-                    postalCode: "82935",
-                    state: "WY",
-                },
-                discounts: [
-                    {
-                        discount: {
-                            amount: "640.2",
-                            currency: "usd",
-                        },
-                        discountPercent: "3.5",
-                        discountType: "centsPerUnit",
-                        fuelType: "gasoline",
-                    },
-                ],
-                externalIds: {
-                    key: "value",
-                },
-                id: "sta_abc123",
-                latitude: 41.5168,
-                longitude: -109.471,
-                name: "Pilot Travel Center #432",
-                prices: [
-                    {
-                        fuelType: "gasoline",
-                        grossPrice: {
-                            amount: "640.2",
-                            currency: "usd",
-                        },
-                        netPrice: {
-                            amount: "640.2",
-                            currency: "usd",
-                        },
-                        volumeUnit: "liter",
-                    },
-                ],
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getPreferredStation (2)", async () => {
@@ -2661,6 +2507,7 @@ describe("FuelAndEnergyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/preferred-stations/id")
@@ -2686,6 +2533,7 @@ describe("FuelAndEnergyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/preferred-stations/id")
@@ -2711,6 +2559,7 @@ describe("FuelAndEnergyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/preferred-stations/id")
@@ -2736,6 +2585,7 @@ describe("FuelAndEnergyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/preferred-stations/id")
@@ -2761,6 +2611,7 @@ describe("FuelAndEnergyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/preferred-stations/id")
@@ -2786,6 +2637,7 @@ describe("FuelAndEnergyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/preferred-stations/id")
@@ -2811,6 +2663,7 @@ describe("FuelAndEnergyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/preferred-stations/id")
@@ -2836,6 +2689,7 @@ describe("FuelAndEnergyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/preferred-stations/id")
@@ -2861,6 +2715,7 @@ describe("FuelAndEnergyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/preferred-stations/id")
@@ -2886,6 +2741,7 @@ describe("FuelAndEnergyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/preferred-stations/id")

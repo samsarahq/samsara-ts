@@ -15,6 +15,7 @@ describe("PreventiveMaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { data: { key: "value" } };
+
         server
             .mockEndpoint()
             .post("/maintenance/preventive/resolve")
@@ -25,11 +26,7 @@ describe("PreventiveMaintenanceClient", () => {
             .build();
 
         const response = await client.preventiveMaintenance.resolvePreventiveMaintenance();
-        expect(response).toEqual({
-            data: {
-                key: "value",
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("resolvePreventiveMaintenance (2)", async () => {
@@ -42,6 +39,7 @@ describe("PreventiveMaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/preventive/resolve")
@@ -66,6 +64,7 @@ describe("PreventiveMaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/preventive/resolve")
@@ -90,6 +89,7 @@ describe("PreventiveMaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/preventive/resolve")
@@ -114,6 +114,7 @@ describe("PreventiveMaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/preventive/resolve")
@@ -138,6 +139,7 @@ describe("PreventiveMaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/preventive/resolve")
@@ -162,6 +164,7 @@ describe("PreventiveMaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/preventive/resolve")
@@ -186,6 +189,7 @@ describe("PreventiveMaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/preventive/resolve")
@@ -210,6 +214,7 @@ describe("PreventiveMaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/preventive/resolve")
@@ -234,6 +239,7 @@ describe("PreventiveMaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/preventive/resolve")
@@ -258,6 +264,7 @@ describe("PreventiveMaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/maintenance/preventive/resolve")
@@ -290,12 +297,14 @@ describe("PreventiveMaintenanceClient", () => {
                     engineHourInterval: 250,
                     id: "281474976710656",
                     linkedSchedules: [{ id: "281474976710656" }],
+                    scheduleType: "B",
                     title: "Engine oil and filter change",
                     workOrderTemplateId: "281474976710656",
                 },
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/maintenance/preventive/schedules")
@@ -307,28 +316,7 @@ describe("PreventiveMaintenanceClient", () => {
         const response = await client.preventiveMaintenance.listPreventiveMaintenanceSchedules({
             ids: "281474976710656",
         });
-        expect(response).toEqual({
-            data: [
-                {
-                    dateIntervalMs: 7776000000,
-                    description: "Replace engine oil and oil filter, then inspect belts and hoses.",
-                    distanceInterval: 8046720,
-                    engineHourInterval: 250,
-                    id: "281474976710656",
-                    linkedSchedules: [
-                        {
-                            id: "281474976710656",
-                        },
-                    ],
-                    title: "Engine oil and filter change",
-                    workOrderTemplateId: "281474976710656",
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("listPreventiveMaintenanceSchedules (2)", async () => {
@@ -341,6 +329,7 @@ describe("PreventiveMaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/preventive/schedules")
@@ -364,6 +353,7 @@ describe("PreventiveMaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/preventive/schedules")
@@ -387,6 +377,7 @@ describe("PreventiveMaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/preventive/schedules")
@@ -410,6 +401,7 @@ describe("PreventiveMaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/preventive/schedules")
@@ -433,6 +425,7 @@ describe("PreventiveMaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/preventive/schedules")
@@ -456,6 +449,7 @@ describe("PreventiveMaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/preventive/schedules")
@@ -479,6 +473,7 @@ describe("PreventiveMaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/preventive/schedules")
@@ -502,6 +497,7 @@ describe("PreventiveMaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/preventive/schedules")
@@ -525,6 +521,7 @@ describe("PreventiveMaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/preventive/schedules")
@@ -548,6 +545,7 @@ describe("PreventiveMaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/preventive/schedules")
@@ -592,6 +590,7 @@ describe("PreventiveMaintenanceClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/maintenance/preventive/upcoming")
@@ -601,37 +600,7 @@ describe("PreventiveMaintenanceClient", () => {
             .build();
 
         const response = await client.preventiveMaintenance.listUpcomingPreventiveMaintenance();
-        expect(response).toEqual({
-            data: [
-                {
-                    asset: {
-                        id: "281474976710656",
-                    },
-                    currentEngineHours: 4120,
-                    currentOdometer: 120700800,
-                    dueInDays: 45,
-                    dueInEngineHours: 130,
-                    dueInOdometer: 4828032,
-                    lastResolvedAt: "2026-05-14T09:30:00Z",
-                    lastResolvedAtEngineHours: 4000,
-                    lastResolvedAtOdometer: 117482112,
-                    nextEngineHours: 4250,
-                    nextOdometer: 125528832,
-                    nextTime: "2026-10-11T09:30:00Z",
-                    schedule: {
-                        id: "281474976710656",
-                    },
-                    status: "unknown",
-                    workOrder: {
-                        id: "281474976710656",
-                    },
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("listUpcomingPreventiveMaintenance (2)", async () => {
@@ -644,6 +613,7 @@ describe("PreventiveMaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/preventive/upcoming")
@@ -667,6 +637,7 @@ describe("PreventiveMaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/preventive/upcoming")
@@ -690,6 +661,7 @@ describe("PreventiveMaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/preventive/upcoming")
@@ -713,6 +685,7 @@ describe("PreventiveMaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/preventive/upcoming")
@@ -736,6 +709,7 @@ describe("PreventiveMaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/preventive/upcoming")
@@ -759,6 +733,7 @@ describe("PreventiveMaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/preventive/upcoming")
@@ -782,6 +757,7 @@ describe("PreventiveMaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/preventive/upcoming")
@@ -805,6 +781,7 @@ describe("PreventiveMaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/preventive/upcoming")
@@ -828,6 +805,7 @@ describe("PreventiveMaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/preventive/upcoming")
@@ -851,6 +829,7 @@ describe("PreventiveMaintenanceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/maintenance/preventive/upcoming")
@@ -896,6 +875,7 @@ describe("PreventiveMaintenanceClient", () => {
                 workOrder: { id: "281474976710656" },
             },
         };
+
         server
             .mockEndpoint()
             .patch("/maintenance/preventive/upcoming")
@@ -906,35 +886,7 @@ describe("PreventiveMaintenanceClient", () => {
             .build();
 
         const response = await client.preventiveMaintenance.updateUpcomingPreventiveMaintenance();
-        expect(response).toEqual({
-            data: {
-                asset: {
-                    id: "281474976710656",
-                },
-                currentEngineHours: 4120,
-                currentOdometer: 120700800,
-                currentOdometerMiles: 75000,
-                dueInDays: 45,
-                dueInEngineHours: 130,
-                dueInOdometer: 4828032,
-                dueInOdometerMiles: 3000,
-                lastResolvedAt: "2026-05-14T09:30:00Z",
-                lastResolvedAtEngineHours: 4000,
-                lastResolvedAtOdometer: 117482112,
-                nextEngineHours: 4250,
-                nextOdometer: 125528832,
-                nextOdometerMiles: 78000,
-                nextTime: "2026-10-11T09:30:00Z",
-                priority: 45,
-                schedule: {
-                    id: "281474976710656",
-                },
-                status: "unknown",
-                workOrder: {
-                    id: "281474976710656",
-                },
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("updateUpcomingPreventiveMaintenance (2)", async () => {
@@ -947,6 +899,7 @@ describe("PreventiveMaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/preventive/upcoming")
@@ -971,6 +924,7 @@ describe("PreventiveMaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/preventive/upcoming")
@@ -995,6 +949,7 @@ describe("PreventiveMaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/preventive/upcoming")
@@ -1019,6 +974,7 @@ describe("PreventiveMaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/preventive/upcoming")
@@ -1043,6 +999,7 @@ describe("PreventiveMaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/preventive/upcoming")
@@ -1067,6 +1024,7 @@ describe("PreventiveMaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/preventive/upcoming")
@@ -1091,6 +1049,7 @@ describe("PreventiveMaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/preventive/upcoming")
@@ -1115,6 +1074,7 @@ describe("PreventiveMaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/preventive/upcoming")
@@ -1139,6 +1099,7 @@ describe("PreventiveMaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/preventive/upcoming")
@@ -1163,6 +1124,7 @@ describe("PreventiveMaintenanceClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/maintenance/preventive/upcoming")

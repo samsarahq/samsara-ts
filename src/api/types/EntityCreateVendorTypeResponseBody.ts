@@ -3,47 +3,33 @@
 import type * as Samsara from "../index.js";
 
 /**
- * Vendor object
+ * vendor object
  */
 export interface EntityCreateVendorTypeResponseBody {
-    /** Address of the vendor. */
-    address?: string | undefined;
     /** Assets this vendor can service. Empty replaces inherited selections; null clears the setting. */
     assetAttributeSelections?:
-        | Samsara.CreateVendorEntityVendorVendorAssetAttributeSelectionTypeResponseBody[]
+        | Samsara.CreateVendorGroupEntityVendorProfileVendorAssetAttributeSelectionTypeResponseBody[]
         | undefined;
-    /** People to contact at the vendor. */
-    contacts?: Samsara.CreateVendorEntityVendorVendorContactTypeResponseBody[] | undefined;
-    defaultLaborRatePerHour?: Samsara.CreateVendorEntityVendorVendorHourlyMoneyTypeResponseBody | undefined;
-    /** Email addresses for the vendor. */
-    emailAddresses?: string[] | undefined;
-    /** External identifier for the vendor from an external system. */
-    externalId?: string | undefined;
-    /** Customer-supplied external identifiers for the vendor, interchangeable with id in filters. Only included in the response when includeExternalIds is set. */
-    externalIds?: Samsara.CreateVendorEntityVendorVendorExternalIdTypeResponseBody[] | undefined;
-    /** Internal unique identifier for the vendor. */
+    /** Time when the vendor profile was created. */
+    createdAtTime?: string | undefined;
+    defaultLaborRatePerHour?: Samsara.CreateVendorGroupEntityVendorProfileVendorHourlyMoneyTypeResponseBody | undefined;
+    /** External identifiers belonging to this parent vendor. */
+    externalIds?: Samsara.CreateVendorGroupEntityVendorProfileVendorGroupExternalIdTypeResponseBody[] | undefined;
+    /** Unique identifier for the vendor profile. Leave blank to create a profile. */
     id?: string | undefined;
-    /** Whether this vendor provides mobile service. When unset, the profile or system default applies. */
+    /** Whether vendor locations inherit mobile service as their default. */
     isMobile?: boolean | undefined;
-    /** Whether this vendor location is preferred. When unset, the profile or system default applies. */
+    /** Default preferred status inherited by vendor locations. */
     isPreferred?: boolean | undefined;
-    /** Name of the vendor. */
+    /** Name of the vendor profile. */
     name?: string | undefined;
-    /** Additional notes about the vendor. */
-    notes?: string | undefined;
-    /** Free-text AP/ERP payee identifier for the vendor. Not a reference to a Samsara entity. */
-    payeeId?: string | undefined;
-    /** Phone numbers for the vendor. */
-    phoneNumbers?: string[] | undefined;
-    placeId?: Samsara.EntityCreateVendorPlaceRefTypeResponseBody | undefined;
-    /** Description of services provided by the vendor. */
-    servicesProvided?: string | undefined;
+    primaryCorporateContact?:
+        | Samsara.CreateVendorGroupEntityVendorProfileVendorGroupPrimaryCorporateContactTypeResponseBody
+        | undefined;
     /** Own lifecycle status. Defaults to active. Unknown is read-only.  Valid values: `active`, `inactive`, `unknown` */
     status?: EntityCreateVendorTypeResponseBody.Status | undefined;
-    /** Vendor group ID. Null removes membership while preserving explicit overrides. */
-    vendorGroupId?: string | undefined;
-    /** User-defined identifier for the vendor. */
-    vendorId?: string | undefined;
+    /** Time when the vendor profile was last updated. */
+    updatedAtTime?: string | undefined;
 }
 
 export namespace EntityCreateVendorTypeResponseBody {

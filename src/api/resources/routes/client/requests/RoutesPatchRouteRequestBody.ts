@@ -13,6 +13,7 @@ export interface RoutesPatchRouteRequestBody {
     id: string;
     /** ID of the driver. Can be either a unique Samsara ID or an [external ID](https://developers.samsara.com/docs/external-ids) for the driver. Set to null to unassign the driver from the route. */
     driverId?: string | null;
+    equipmentProfile?: Samsara.RouteEquipmentProfileObjectRequestBody;
     /** A map of external ids */
     externalIds?: Record<string, string>;
     /** Name for the route */

@@ -3,5 +3,5 @@
 import type * as Samsara from "../index.js";
 
 export interface WorkOrdersPostWorkOrdersResponseBody {
-    data: Samsara.WorkOrderObjectResponseBody;
+    data: Samsara.WorkOrderObjectV20261112ResponseBody;
 }

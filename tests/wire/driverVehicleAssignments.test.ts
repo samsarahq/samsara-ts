@@ -29,6 +29,7 @@ describe("DriverVehicleAssignmentsClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/fleet/driver-vehicle-assignments")
@@ -40,32 +41,7 @@ describe("DriverVehicleAssignmentsClient", () => {
         const response = await client.driverVehicleAssignments.getDriverVehicleAssignments({
             filterBy: "drivers",
         });
-        expect(response).toEqual({
-            data: [
-                {
-                    assignedAtTime: "2019-06-13T19:08:25Z",
-                    assignmentType: "invalid",
-                    driver: {
-                        id: "45646",
-                        name: "Driver Bob",
-                    },
-                    endTime: "2019-06-13T19:08:25Z",
-                    isPassenger: true,
-                    metadata: {
-                        sourceName: "ExternalSourceName",
-                    },
-                    startTime: "2019-06-13T19:08:25Z",
-                    vehicle: {
-                        id: "494123",
-                        name: "Fleet Truck #1",
-                    },
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getDriverVehicleAssignments (2)", async () => {
@@ -78,6 +54,7 @@ describe("DriverVehicleAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/driver-vehicle-assignments")
@@ -103,6 +80,7 @@ describe("DriverVehicleAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/driver-vehicle-assignments")
@@ -128,6 +106,7 @@ describe("DriverVehicleAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/driver-vehicle-assignments")
@@ -153,6 +132,7 @@ describe("DriverVehicleAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/driver-vehicle-assignments")
@@ -178,6 +158,7 @@ describe("DriverVehicleAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/driver-vehicle-assignments")
@@ -203,6 +184,7 @@ describe("DriverVehicleAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/driver-vehicle-assignments")
@@ -228,6 +210,7 @@ describe("DriverVehicleAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/driver-vehicle-assignments")
@@ -253,6 +236,7 @@ describe("DriverVehicleAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/driver-vehicle-assignments")
@@ -278,6 +262,7 @@ describe("DriverVehicleAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/driver-vehicle-assignments")
@@ -303,6 +288,7 @@ describe("DriverVehicleAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/driver-vehicle-assignments")
@@ -328,6 +314,7 @@ describe("DriverVehicleAssignmentsClient", () => {
         });
         const rawRequestBody = { driverId: "494123", vehicleId: "281474978683353" };
         const rawResponseBody = { data: { message: "Driver assignment was successfully submitted" } };
+
         server
             .mockEndpoint()
             .post("/fleet/driver-vehicle-assignments")
@@ -341,11 +328,7 @@ describe("DriverVehicleAssignmentsClient", () => {
             driverId: "494123",
             vehicleId: "281474978683353",
         });
-        expect(response).toEqual({
-            data: {
-                message: "Driver assignment was successfully submitted",
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createDriverVehicleAssignment (2)", async () => {
@@ -358,6 +341,7 @@ describe("DriverVehicleAssignmentsClient", () => {
         });
         const rawRequestBody = { driverId: "driverId", vehicleId: "vehicleId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/driver-vehicle-assignments")
@@ -385,6 +369,7 @@ describe("DriverVehicleAssignmentsClient", () => {
         });
         const rawRequestBody = { driverId: "driverId", vehicleId: "vehicleId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/driver-vehicle-assignments")
@@ -412,6 +397,7 @@ describe("DriverVehicleAssignmentsClient", () => {
         });
         const rawRequestBody = { driverId: "driverId", vehicleId: "vehicleId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/driver-vehicle-assignments")
@@ -439,6 +425,7 @@ describe("DriverVehicleAssignmentsClient", () => {
         });
         const rawRequestBody = { driverId: "driverId", vehicleId: "vehicleId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/driver-vehicle-assignments")
@@ -466,6 +453,7 @@ describe("DriverVehicleAssignmentsClient", () => {
         });
         const rawRequestBody = { driverId: "driverId", vehicleId: "vehicleId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/driver-vehicle-assignments")
@@ -493,6 +481,7 @@ describe("DriverVehicleAssignmentsClient", () => {
         });
         const rawRequestBody = { driverId: "driverId", vehicleId: "vehicleId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/driver-vehicle-assignments")
@@ -520,6 +509,7 @@ describe("DriverVehicleAssignmentsClient", () => {
         });
         const rawRequestBody = { driverId: "driverId", vehicleId: "vehicleId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/driver-vehicle-assignments")
@@ -547,6 +537,7 @@ describe("DriverVehicleAssignmentsClient", () => {
         });
         const rawRequestBody = { driverId: "driverId", vehicleId: "vehicleId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/driver-vehicle-assignments")
@@ -574,6 +565,7 @@ describe("DriverVehicleAssignmentsClient", () => {
         });
         const rawRequestBody = { driverId: "driverId", vehicleId: "vehicleId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/driver-vehicle-assignments")
@@ -601,6 +593,7 @@ describe("DriverVehicleAssignmentsClient", () => {
         });
         const rawRequestBody = { driverId: "driverId", vehicleId: "vehicleId" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/fleet/driver-vehicle-assignments")
@@ -626,7 +619,7 @@ describe("DriverVehicleAssignmentsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { vehicleId: "281474978683353" };
+        const rawRequestBody = {};
 
         server
             .mockEndpoint()
@@ -636,9 +629,7 @@ describe("DriverVehicleAssignmentsClient", () => {
             .statusCode(200)
             .build();
 
-        const response = await client.driverVehicleAssignments.deleteDriverVehicleAssignments({
-            vehicleId: "281474978683353",
-        });
+        const response = await client.driverVehicleAssignments.deleteDriverVehicleAssignments();
         expect(response).toEqual(undefined);
     });
 
@@ -650,8 +641,9 @@ describe("DriverVehicleAssignmentsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { vehicleId: "vehicleId" };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/fleet/driver-vehicle-assignments")
@@ -662,9 +654,7 @@ describe("DriverVehicleAssignmentsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.driverVehicleAssignments.deleteDriverVehicleAssignments({
-                vehicleId: "vehicleId",
-            });
+            return await client.driverVehicleAssignments.deleteDriverVehicleAssignments();
         }).rejects.toThrow(Samsara.UnauthorizedError);
     });
 
@@ -676,8 +666,9 @@ describe("DriverVehicleAssignmentsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { vehicleId: "vehicleId" };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/fleet/driver-vehicle-assignments")
@@ -688,9 +679,7 @@ describe("DriverVehicleAssignmentsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.driverVehicleAssignments.deleteDriverVehicleAssignments({
-                vehicleId: "vehicleId",
-            });
+            return await client.driverVehicleAssignments.deleteDriverVehicleAssignments();
         }).rejects.toThrow(Samsara.NotFoundError);
     });
 
@@ -702,8 +691,9 @@ describe("DriverVehicleAssignmentsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { vehicleId: "vehicleId" };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/fleet/driver-vehicle-assignments")
@@ -714,9 +704,7 @@ describe("DriverVehicleAssignmentsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.driverVehicleAssignments.deleteDriverVehicleAssignments({
-                vehicleId: "vehicleId",
-            });
+            return await client.driverVehicleAssignments.deleteDriverVehicleAssignments();
         }).rejects.toThrow(Samsara.MethodNotAllowedError);
     });
 
@@ -728,8 +716,9 @@ describe("DriverVehicleAssignmentsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { vehicleId: "vehicleId" };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/fleet/driver-vehicle-assignments")
@@ -740,9 +729,7 @@ describe("DriverVehicleAssignmentsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.driverVehicleAssignments.deleteDriverVehicleAssignments({
-                vehicleId: "vehicleId",
-            });
+            return await client.driverVehicleAssignments.deleteDriverVehicleAssignments();
         }).rejects.toThrow(Samsara.ContentTooLargeError);
     });
 
@@ -754,8 +741,9 @@ describe("DriverVehicleAssignmentsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { vehicleId: "vehicleId" };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/fleet/driver-vehicle-assignments")
@@ -766,9 +754,7 @@ describe("DriverVehicleAssignmentsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.driverVehicleAssignments.deleteDriverVehicleAssignments({
-                vehicleId: "vehicleId",
-            });
+            return await client.driverVehicleAssignments.deleteDriverVehicleAssignments();
         }).rejects.toThrow(Samsara.TooManyRequestsError);
     });
 
@@ -780,8 +766,9 @@ describe("DriverVehicleAssignmentsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { vehicleId: "vehicleId" };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/fleet/driver-vehicle-assignments")
@@ -792,9 +779,7 @@ describe("DriverVehicleAssignmentsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.driverVehicleAssignments.deleteDriverVehicleAssignments({
-                vehicleId: "vehicleId",
-            });
+            return await client.driverVehicleAssignments.deleteDriverVehicleAssignments();
         }).rejects.toThrow(Samsara.InternalServerError);
     });
 
@@ -806,8 +791,9 @@ describe("DriverVehicleAssignmentsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { vehicleId: "vehicleId" };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/fleet/driver-vehicle-assignments")
@@ -818,9 +804,7 @@ describe("DriverVehicleAssignmentsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.driverVehicleAssignments.deleteDriverVehicleAssignments({
-                vehicleId: "vehicleId",
-            });
+            return await client.driverVehicleAssignments.deleteDriverVehicleAssignments();
         }).rejects.toThrow(Samsara.NotImplementedError);
     });
 
@@ -832,8 +816,9 @@ describe("DriverVehicleAssignmentsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { vehicleId: "vehicleId" };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/fleet/driver-vehicle-assignments")
@@ -844,9 +829,7 @@ describe("DriverVehicleAssignmentsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.driverVehicleAssignments.deleteDriverVehicleAssignments({
-                vehicleId: "vehicleId",
-            });
+            return await client.driverVehicleAssignments.deleteDriverVehicleAssignments();
         }).rejects.toThrow(Samsara.BadGatewayError);
     });
 
@@ -858,8 +841,9 @@ describe("DriverVehicleAssignmentsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { vehicleId: "vehicleId" };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/fleet/driver-vehicle-assignments")
@@ -870,9 +854,7 @@ describe("DriverVehicleAssignmentsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.driverVehicleAssignments.deleteDriverVehicleAssignments({
-                vehicleId: "vehicleId",
-            });
+            return await client.driverVehicleAssignments.deleteDriverVehicleAssignments();
         }).rejects.toThrow(Samsara.ServiceUnavailableError);
     });
 
@@ -884,8 +866,9 @@ describe("DriverVehicleAssignmentsClient", () => {
             version: "2025-06-11",
             environment: server.baseUrl,
         });
-        const rawRequestBody = { vehicleId: "vehicleId" };
+        const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/fleet/driver-vehicle-assignments")
@@ -896,9 +879,7 @@ describe("DriverVehicleAssignmentsClient", () => {
             .build();
 
         await expect(async () => {
-            return await client.driverVehicleAssignments.deleteDriverVehicleAssignments({
-                vehicleId: "vehicleId",
-            });
+            return await client.driverVehicleAssignments.deleteDriverVehicleAssignments();
         }).rejects.toThrow(Samsara.GatewayTimeoutError);
     });
 
@@ -912,6 +893,7 @@ describe("DriverVehicleAssignmentsClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { data: { message: "Driver assignment was successfully updated" } };
+
         server
             .mockEndpoint()
             .patch("/fleet/driver-vehicle-assignments")
@@ -922,11 +904,7 @@ describe("DriverVehicleAssignmentsClient", () => {
             .build();
 
         const response = await client.driverVehicleAssignments.updateDriverVehicleAssignment();
-        expect(response).toEqual({
-            data: {
-                message: "Driver assignment was successfully updated",
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("updateDriverVehicleAssignment (2)", async () => {
@@ -939,6 +917,7 @@ describe("DriverVehicleAssignmentsClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/fleet/driver-vehicle-assignments")
@@ -963,6 +942,7 @@ describe("DriverVehicleAssignmentsClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/fleet/driver-vehicle-assignments")
@@ -987,6 +967,7 @@ describe("DriverVehicleAssignmentsClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/fleet/driver-vehicle-assignments")
@@ -1011,6 +992,7 @@ describe("DriverVehicleAssignmentsClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/fleet/driver-vehicle-assignments")
@@ -1035,6 +1017,7 @@ describe("DriverVehicleAssignmentsClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/fleet/driver-vehicle-assignments")
@@ -1059,6 +1042,7 @@ describe("DriverVehicleAssignmentsClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/fleet/driver-vehicle-assignments")
@@ -1083,6 +1067,7 @@ describe("DriverVehicleAssignmentsClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/fleet/driver-vehicle-assignments")
@@ -1107,6 +1092,7 @@ describe("DriverVehicleAssignmentsClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/fleet/driver-vehicle-assignments")
@@ -1131,6 +1117,7 @@ describe("DriverVehicleAssignmentsClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/fleet/driver-vehicle-assignments")
@@ -1155,6 +1142,7 @@ describe("DriverVehicleAssignmentsClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/fleet/driver-vehicle-assignments")

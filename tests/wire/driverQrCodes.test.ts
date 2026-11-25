@@ -16,25 +16,19 @@ describe("DriverQrCodesClient", () => {
 
         const rawResponseBody = {
             data: [
-                { driverId: 1000000, qrCodeLink: "qrCodeLink" },
-                { driverId: 1000000, qrCodeLink: "qrCodeLink" },
+                {
+                    driverId: 494123,
+                    qrCodeLink: "https://cloud.samsara.com/qr_code/18979ef6-663e-446b-8d5a-0ff0781b8bab",
+                },
             ],
         };
+
         server.mockEndpoint().get("/drivers/qr-codes").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
-        const response = await client.driverQrCodes.getDriversQrCodes();
-        expect(response).toEqual({
-            data: [
-                {
-                    driverId: 1000000,
-                    qrCodeLink: "qrCodeLink",
-                },
-                {
-                    driverId: 1000000,
-                    qrCodeLink: "qrCodeLink",
-                },
-            ],
+        const response = await client.driverQrCodes.getDriversQrCodes({
+            driverIds: ["driverIds"],
         });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getDriversQrCodes (2)", async () => {
@@ -47,6 +41,7 @@ describe("DriverQrCodesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/drivers/qr-codes").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -64,6 +59,7 @@ describe("DriverQrCodesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/drivers/qr-codes").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -81,6 +77,7 @@ describe("DriverQrCodesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/drivers/qr-codes").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -98,6 +95,7 @@ describe("DriverQrCodesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/drivers/qr-codes").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -115,6 +113,7 @@ describe("DriverQrCodesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/drivers/qr-codes").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -132,6 +131,7 @@ describe("DriverQrCodesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/drivers/qr-codes").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -149,6 +149,7 @@ describe("DriverQrCodesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/drivers/qr-codes").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -166,6 +167,7 @@ describe("DriverQrCodesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/drivers/qr-codes").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -183,6 +185,7 @@ describe("DriverQrCodesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/drivers/qr-codes").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -200,6 +203,7 @@ describe("DriverQrCodesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/drivers/qr-codes").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -222,6 +226,7 @@ describe("DriverQrCodesClient", () => {
                 qrCodeLink: "https://cloud.samsara.com/qr_code/18979ef6-663e-446b-8d5a-0ff0781b8bab",
             },
         };
+
         server
             .mockEndpoint()
             .post("/drivers/qr-codes")
@@ -234,12 +239,7 @@ describe("DriverQrCodesClient", () => {
         const response = await client.driverQrCodes.createDriverQrCode({
             driverId: 494123,
         });
-        expect(response).toEqual({
-            data: {
-                driverId: 494123,
-                qrCodeLink: "https://cloud.samsara.com/qr_code/18979ef6-663e-446b-8d5a-0ff0781b8bab",
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createDriverQrCode (2)", async () => {
@@ -252,6 +252,7 @@ describe("DriverQrCodesClient", () => {
         });
         const rawRequestBody = { driverId: 1000000 };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/drivers/qr-codes")
@@ -278,6 +279,7 @@ describe("DriverQrCodesClient", () => {
         });
         const rawRequestBody = { driverId: 1000000 };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/drivers/qr-codes")
@@ -304,6 +306,7 @@ describe("DriverQrCodesClient", () => {
         });
         const rawRequestBody = { driverId: 1000000 };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/drivers/qr-codes")
@@ -330,6 +333,7 @@ describe("DriverQrCodesClient", () => {
         });
         const rawRequestBody = { driverId: 1000000 };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/drivers/qr-codes")
@@ -356,6 +360,7 @@ describe("DriverQrCodesClient", () => {
         });
         const rawRequestBody = { driverId: 1000000 };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/drivers/qr-codes")
@@ -382,6 +387,7 @@ describe("DriverQrCodesClient", () => {
         });
         const rawRequestBody = { driverId: 1000000 };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/drivers/qr-codes")
@@ -408,6 +414,7 @@ describe("DriverQrCodesClient", () => {
         });
         const rawRequestBody = { driverId: 1000000 };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/drivers/qr-codes")
@@ -434,6 +441,7 @@ describe("DriverQrCodesClient", () => {
         });
         const rawRequestBody = { driverId: 1000000 };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/drivers/qr-codes")
@@ -460,6 +468,7 @@ describe("DriverQrCodesClient", () => {
         });
         const rawRequestBody = { driverId: 1000000 };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/drivers/qr-codes")
@@ -486,6 +495,7 @@ describe("DriverQrCodesClient", () => {
         });
         const rawRequestBody = { driverId: 1000000 };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/drivers/qr-codes")
@@ -536,6 +546,7 @@ describe("DriverQrCodesClient", () => {
         });
         const rawRequestBody = { driverId: 1000000 };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/drivers/qr-codes")
@@ -562,6 +573,7 @@ describe("DriverQrCodesClient", () => {
         });
         const rawRequestBody = { driverId: 1000000 };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/drivers/qr-codes")
@@ -588,6 +600,7 @@ describe("DriverQrCodesClient", () => {
         });
         const rawRequestBody = { driverId: 1000000 };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/drivers/qr-codes")
@@ -614,6 +627,7 @@ describe("DriverQrCodesClient", () => {
         });
         const rawRequestBody = { driverId: 1000000 };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/drivers/qr-codes")
@@ -640,6 +654,7 @@ describe("DriverQrCodesClient", () => {
         });
         const rawRequestBody = { driverId: 1000000 };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/drivers/qr-codes")
@@ -666,6 +681,7 @@ describe("DriverQrCodesClient", () => {
         });
         const rawRequestBody = { driverId: 1000000 };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/drivers/qr-codes")
@@ -692,6 +708,7 @@ describe("DriverQrCodesClient", () => {
         });
         const rawRequestBody = { driverId: 1000000 };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/drivers/qr-codes")
@@ -718,6 +735,7 @@ describe("DriverQrCodesClient", () => {
         });
         const rawRequestBody = { driverId: 1000000 };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/drivers/qr-codes")
@@ -744,6 +762,7 @@ describe("DriverQrCodesClient", () => {
         });
         const rawRequestBody = { driverId: 1000000 };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/drivers/qr-codes")
@@ -770,6 +789,7 @@ describe("DriverQrCodesClient", () => {
         });
         const rawRequestBody = { driverId: 1000000 };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/drivers/qr-codes")

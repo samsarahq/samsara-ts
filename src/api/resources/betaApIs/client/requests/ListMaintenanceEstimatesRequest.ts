@@ -9,7 +9,7 @@ export interface ListMaintenanceEstimatesRequest {
     ids?: string | string[];
     /** Up to 10 comma-separated numeric WO IDs. Bounds indexed-query fanout and authorization work. */
     workOrderIds?: string | string[];
-    /** Up to 10 comma-separated vendor-location identifiers; narrows the primary selection. */
+    /** Up to 10 comma-separated vendor-location identifiers; narrows the primary selection. Resolve locations via GET /fleet/maintenance/vendor-locations. */
     vendorIds?: string | string[];
     /** Cursor returned by the preceding response; retain the same filters. */
     after?: string;

@@ -6,17 +6,18 @@
 export interface CampaignItemStateCountResponseObjectResponseBody {
     /** Number of items in the state. */
     count: number;
-    /** State of the counted items.  Valid values: `pending`, `hold`, `ready`, `workOrderCreated`, `complete`, `dismissed`, `cancelled`, `unknown` */
+    /** State of the counted items.  Valid values: `pending`, `hold`, `ready`, `workOrderCreated`, `workOrderCanceled`, `complete`, `dismissed`, `cancelled`, `unknown` */
     state: CampaignItemStateCountResponseObjectResponseBody.State;
 }
 
 export namespace CampaignItemStateCountResponseObjectResponseBody {
-    /** State of the counted items.  Valid values: `pending`, `hold`, `ready`, `workOrderCreated`, `complete`, `dismissed`, `cancelled`, `unknown` */
+    /** State of the counted items.  Valid values: `pending`, `hold`, `ready`, `workOrderCreated`, `workOrderCanceled`, `complete`, `dismissed`, `cancelled`, `unknown` */
     export const State = {
         Pending: "pending",
         Hold: "hold",
         Ready: "ready",
         WorkOrderCreated: "workOrderCreated",
+        WorkOrderCanceled: "workOrderCanceled",
         Complete: "complete",
         Dismissed: "dismissed",
         Cancelled: "cancelled",

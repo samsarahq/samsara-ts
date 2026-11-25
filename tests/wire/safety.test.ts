@@ -20,785 +20,13 @@ describe("SafetyClient", () => {
                     asset: {
                         attributes: [
                             {
-                                dateValues: ["dateValues", "dateValues"],
-                                id: "id",
-                                name: "name",
-                                numberValues: [1.1, 1.1],
-                                stringValues: ["stringValues", "stringValues"],
-                            },
-                            {
-                                dateValues: ["dateValues", "dateValues"],
-                                id: "id",
-                                name: "name",
-                                numberValues: [1.1, 1.1],
-                                stringValues: ["stringValues", "stringValues"],
+                                dateValues: ["2024-01-15", "2024-12-31"],
+                                id: "494123",
+                                name: "Compliance/ELD",
+                                numberValues: [867, 5309],
+                                stringValues: ["HQ", "Leased"],
                             },
                         ],
-                        externalIds: { externalIds: "externalIds" },
-                        id: "id",
-                        name: "name",
-                        tags: [
-                            { id: "id", name: "name", parentTagId: "parentTagId" },
-                            { id: "id", name: "name", parentTagId: "parentTagId" },
-                        ],
-                        type: "uncategorized",
-                        vin: "vin",
-                    },
-                    assignedCoach: "assignedCoach",
-                    behaviorLabels: [
-                        { label: "Acceleration", source: "automated" },
-                        { label: "Acceleration", source: "automated" },
-                    ],
-                    contextLabels: [
-                        { authorId: "authorId", createdAtTime: "createdAtTime", name: "name" },
-                        { authorId: "authorId", createdAtTime: "createdAtTime", name: "name" },
-                    ],
-                    createdAtTime: "createdAtTime",
-                    detectedStreams: [
-                        {
-                            auxcamSerial: "auxcamSerial",
-                            cameraRole: "leftMirrorMount",
-                            input: "dashcamRoadFacing",
-                            url: "url",
-                        },
-                        {
-                            auxcamSerial: "auxcamSerial",
-                            cameraRole: "leftMirrorMount",
-                            input: "dashcamRoadFacing",
-                            url: "url",
-                        },
-                    ],
-                    dismissalReason: { code: "incorrect", comment: "comment" },
-                    driver: {
-                        attributes: [
-                            {
-                                dateValues: ["dateValues", "dateValues"],
-                                id: "id",
-                                name: "name",
-                                numberValues: [1.1, 1.1],
-                                stringValues: ["stringValues", "stringValues"],
-                            },
-                            {
-                                dateValues: ["dateValues", "dateValues"],
-                                id: "id",
-                                name: "name",
-                                numberValues: [1.1, 1.1],
-                                stringValues: ["stringValues", "stringValues"],
-                            },
-                        ],
-                        externalIds: { externalIds: "externalIds" },
-                        id: "id",
-                        name: "name",
-                        tags: [
-                            { id: "id", name: "name", parentTagId: "parentTagId" },
-                            { id: "id", name: "name", parentTagId: "parentTagId" },
-                        ],
-                    },
-                    endMs: "endMs",
-                    eventState: "unknown",
-                    id: "id",
-                    inboxEventUrl: "inboxEventUrl",
-                    incidentReportUrl: "incidentReportUrl",
-                    location: {
-                        accuracyMeters: 1.1,
-                        address: {
-                            city: "city",
-                            country: "country",
-                            neighborhood: "neighborhood",
-                            pointOfInterest: "pointOfInterest",
-                            postalCode: "postalCode",
-                            state: "state",
-                            street: "street",
-                            streetNumber: "streetNumber",
-                        },
-                        geofence: { externalIds: { externalIds: "externalIds" }, id: "id" },
-                        headingDegrees: 1000000,
-                        latitude: 1.1,
-                        longitude: 1.1,
-                    },
-                    maxAccelerationGForce: 1.1,
-                    media: [
-                        {
-                            auxcamSerial: "auxcamSerial",
-                            cameraRole: "leftMirrorMount",
-                            input: "dashcamRoadFacing",
-                            url: "url",
-                        },
-                        {
-                            auxcamSerial: "auxcamSerial",
-                            cameraRole: "leftMirrorMount",
-                            input: "dashcamRoadFacing",
-                            url: "url",
-                        },
-                    ],
-                    speedingMetadata: {
-                        maxSpeedKilometersPerHour: 1000000,
-                        postedSpeedLimitKilometersPerHour: 1000000,
-                    },
-                    startMs: "startMs",
-                    tripEndTime: "tripEndTime",
-                    tripStartTime: "tripStartTime",
-                    updatedAtTime: "updatedAtTime",
-                    updatedByUserId: "updatedByUserId",
-                },
-                {
-                    asset: {
-                        attributes: [
-                            {
-                                dateValues: ["dateValues", "dateValues"],
-                                id: "id",
-                                name: "name",
-                                numberValues: [1.1, 1.1],
-                                stringValues: ["stringValues", "stringValues"],
-                            },
-                            {
-                                dateValues: ["dateValues", "dateValues"],
-                                id: "id",
-                                name: "name",
-                                numberValues: [1.1, 1.1],
-                                stringValues: ["stringValues", "stringValues"],
-                            },
-                        ],
-                        externalIds: { externalIds: "externalIds" },
-                        id: "id",
-                        name: "name",
-                        tags: [
-                            { id: "id", name: "name", parentTagId: "parentTagId" },
-                            { id: "id", name: "name", parentTagId: "parentTagId" },
-                        ],
-                        type: "uncategorized",
-                        vin: "vin",
-                    },
-                    assignedCoach: "assignedCoach",
-                    behaviorLabels: [
-                        { label: "Acceleration", source: "automated" },
-                        { label: "Acceleration", source: "automated" },
-                    ],
-                    contextLabels: [
-                        { authorId: "authorId", createdAtTime: "createdAtTime", name: "name" },
-                        { authorId: "authorId", createdAtTime: "createdAtTime", name: "name" },
-                    ],
-                    createdAtTime: "createdAtTime",
-                    detectedStreams: [
-                        {
-                            auxcamSerial: "auxcamSerial",
-                            cameraRole: "leftMirrorMount",
-                            input: "dashcamRoadFacing",
-                            url: "url",
-                        },
-                        {
-                            auxcamSerial: "auxcamSerial",
-                            cameraRole: "leftMirrorMount",
-                            input: "dashcamRoadFacing",
-                            url: "url",
-                        },
-                    ],
-                    dismissalReason: { code: "incorrect", comment: "comment" },
-                    driver: {
-                        attributes: [
-                            {
-                                dateValues: ["dateValues", "dateValues"],
-                                id: "id",
-                                name: "name",
-                                numberValues: [1.1, 1.1],
-                                stringValues: ["stringValues", "stringValues"],
-                            },
-                            {
-                                dateValues: ["dateValues", "dateValues"],
-                                id: "id",
-                                name: "name",
-                                numberValues: [1.1, 1.1],
-                                stringValues: ["stringValues", "stringValues"],
-                            },
-                        ],
-                        externalIds: { externalIds: "externalIds" },
-                        id: "id",
-                        name: "name",
-                        tags: [
-                            { id: "id", name: "name", parentTagId: "parentTagId" },
-                            { id: "id", name: "name", parentTagId: "parentTagId" },
-                        ],
-                    },
-                    endMs: "endMs",
-                    eventState: "unknown",
-                    id: "id",
-                    inboxEventUrl: "inboxEventUrl",
-                    incidentReportUrl: "incidentReportUrl",
-                    location: {
-                        accuracyMeters: 1.1,
-                        address: {
-                            city: "city",
-                            country: "country",
-                            neighborhood: "neighborhood",
-                            pointOfInterest: "pointOfInterest",
-                            postalCode: "postalCode",
-                            state: "state",
-                            street: "street",
-                            streetNumber: "streetNumber",
-                        },
-                        geofence: { externalIds: { externalIds: "externalIds" }, id: "id" },
-                        headingDegrees: 1000000,
-                        latitude: 1.1,
-                        longitude: 1.1,
-                    },
-                    maxAccelerationGForce: 1.1,
-                    media: [
-                        {
-                            auxcamSerial: "auxcamSerial",
-                            cameraRole: "leftMirrorMount",
-                            input: "dashcamRoadFacing",
-                            url: "url",
-                        },
-                        {
-                            auxcamSerial: "auxcamSerial",
-                            cameraRole: "leftMirrorMount",
-                            input: "dashcamRoadFacing",
-                            url: "url",
-                        },
-                    ],
-                    speedingMetadata: {
-                        maxSpeedKilometersPerHour: 1000000,
-                        postedSpeedLimitKilometersPerHour: 1000000,
-                    },
-                    startMs: "startMs",
-                    tripEndTime: "tripEndTime",
-                    tripStartTime: "tripStartTime",
-                    updatedAtTime: "updatedAtTime",
-                    updatedByUserId: "updatedByUserId",
-                },
-            ],
-            pagination: { endCursor: "endCursor", hasNextPage: true },
-        };
-        server.mockEndpoint().get("/safety-events").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
-
-        const response = await client.safety.getSafetyEventsV2();
-        expect(response).toEqual({
-            data: [
-                {
-                    asset: {
-                        attributes: [
-                            {
-                                dateValues: ["dateValues", "dateValues"],
-                                id: "id",
-                                name: "name",
-                                numberValues: [1.1, 1.1],
-                                stringValues: ["stringValues", "stringValues"],
-                            },
-                            {
-                                dateValues: ["dateValues", "dateValues"],
-                                id: "id",
-                                name: "name",
-                                numberValues: [1.1, 1.1],
-                                stringValues: ["stringValues", "stringValues"],
-                            },
-                        ],
-                        externalIds: {
-                            externalIds: "externalIds",
-                        },
-                        id: "id",
-                        name: "name",
-                        tags: [
-                            {
-                                id: "id",
-                                name: "name",
-                                parentTagId: "parentTagId",
-                            },
-                            {
-                                id: "id",
-                                name: "name",
-                                parentTagId: "parentTagId",
-                            },
-                        ],
-                        type: "uncategorized",
-                        vin: "vin",
-                    },
-                    assignedCoach: "assignedCoach",
-                    behaviorLabels: [
-                        {
-                            label: "Acceleration",
-                            source: "automated",
-                        },
-                        {
-                            label: "Acceleration",
-                            source: "automated",
-                        },
-                    ],
-                    contextLabels: [
-                        {
-                            authorId: "authorId",
-                            createdAtTime: "createdAtTime",
-                            name: "name",
-                        },
-                        {
-                            authorId: "authorId",
-                            createdAtTime: "createdAtTime",
-                            name: "name",
-                        },
-                    ],
-                    createdAtTime: "createdAtTime",
-                    detectedStreams: [
-                        {
-                            auxcamSerial: "auxcamSerial",
-                            cameraRole: "leftMirrorMount",
-                            input: "dashcamRoadFacing",
-                            url: "url",
-                        },
-                        {
-                            auxcamSerial: "auxcamSerial",
-                            cameraRole: "leftMirrorMount",
-                            input: "dashcamRoadFacing",
-                            url: "url",
-                        },
-                    ],
-                    dismissalReason: {
-                        code: "incorrect",
-                        comment: "comment",
-                    },
-                    driver: {
-                        attributes: [
-                            {
-                                dateValues: ["dateValues", "dateValues"],
-                                id: "id",
-                                name: "name",
-                                numberValues: [1.1, 1.1],
-                                stringValues: ["stringValues", "stringValues"],
-                            },
-                            {
-                                dateValues: ["dateValues", "dateValues"],
-                                id: "id",
-                                name: "name",
-                                numberValues: [1.1, 1.1],
-                                stringValues: ["stringValues", "stringValues"],
-                            },
-                        ],
-                        externalIds: {
-                            externalIds: "externalIds",
-                        },
-                        id: "id",
-                        name: "name",
-                        tags: [
-                            {
-                                id: "id",
-                                name: "name",
-                                parentTagId: "parentTagId",
-                            },
-                            {
-                                id: "id",
-                                name: "name",
-                                parentTagId: "parentTagId",
-                            },
-                        ],
-                    },
-                    endMs: "endMs",
-                    eventState: "unknown",
-                    id: "id",
-                    inboxEventUrl: "inboxEventUrl",
-                    incidentReportUrl: "incidentReportUrl",
-                    location: {
-                        accuracyMeters: 1.1,
-                        address: {
-                            city: "city",
-                            country: "country",
-                            neighborhood: "neighborhood",
-                            pointOfInterest: "pointOfInterest",
-                            postalCode: "postalCode",
-                            state: "state",
-                            street: "street",
-                            streetNumber: "streetNumber",
-                        },
-                        geofence: {
-                            externalIds: {
-                                externalIds: "externalIds",
-                            },
-                            id: "id",
-                        },
-                        headingDegrees: 1000000,
-                        latitude: 1.1,
-                        longitude: 1.1,
-                    },
-                    maxAccelerationGForce: 1.1,
-                    media: [
-                        {
-                            auxcamSerial: "auxcamSerial",
-                            cameraRole: "leftMirrorMount",
-                            input: "dashcamRoadFacing",
-                            url: "url",
-                        },
-                        {
-                            auxcamSerial: "auxcamSerial",
-                            cameraRole: "leftMirrorMount",
-                            input: "dashcamRoadFacing",
-                            url: "url",
-                        },
-                    ],
-                    speedingMetadata: {
-                        maxSpeedKilometersPerHour: 1000000,
-                        postedSpeedLimitKilometersPerHour: 1000000,
-                    },
-                    startMs: "startMs",
-                    tripEndTime: "tripEndTime",
-                    tripStartTime: "tripStartTime",
-                    updatedAtTime: "updatedAtTime",
-                    updatedByUserId: "updatedByUserId",
-                },
-                {
-                    asset: {
-                        attributes: [
-                            {
-                                dateValues: ["dateValues", "dateValues"],
-                                id: "id",
-                                name: "name",
-                                numberValues: [1.1, 1.1],
-                                stringValues: ["stringValues", "stringValues"],
-                            },
-                            {
-                                dateValues: ["dateValues", "dateValues"],
-                                id: "id",
-                                name: "name",
-                                numberValues: [1.1, 1.1],
-                                stringValues: ["stringValues", "stringValues"],
-                            },
-                        ],
-                        externalIds: {
-                            externalIds: "externalIds",
-                        },
-                        id: "id",
-                        name: "name",
-                        tags: [
-                            {
-                                id: "id",
-                                name: "name",
-                                parentTagId: "parentTagId",
-                            },
-                            {
-                                id: "id",
-                                name: "name",
-                                parentTagId: "parentTagId",
-                            },
-                        ],
-                        type: "uncategorized",
-                        vin: "vin",
-                    },
-                    assignedCoach: "assignedCoach",
-                    behaviorLabels: [
-                        {
-                            label: "Acceleration",
-                            source: "automated",
-                        },
-                        {
-                            label: "Acceleration",
-                            source: "automated",
-                        },
-                    ],
-                    contextLabels: [
-                        {
-                            authorId: "authorId",
-                            createdAtTime: "createdAtTime",
-                            name: "name",
-                        },
-                        {
-                            authorId: "authorId",
-                            createdAtTime: "createdAtTime",
-                            name: "name",
-                        },
-                    ],
-                    createdAtTime: "createdAtTime",
-                    detectedStreams: [
-                        {
-                            auxcamSerial: "auxcamSerial",
-                            cameraRole: "leftMirrorMount",
-                            input: "dashcamRoadFacing",
-                            url: "url",
-                        },
-                        {
-                            auxcamSerial: "auxcamSerial",
-                            cameraRole: "leftMirrorMount",
-                            input: "dashcamRoadFacing",
-                            url: "url",
-                        },
-                    ],
-                    dismissalReason: {
-                        code: "incorrect",
-                        comment: "comment",
-                    },
-                    driver: {
-                        attributes: [
-                            {
-                                dateValues: ["dateValues", "dateValues"],
-                                id: "id",
-                                name: "name",
-                                numberValues: [1.1, 1.1],
-                                stringValues: ["stringValues", "stringValues"],
-                            },
-                            {
-                                dateValues: ["dateValues", "dateValues"],
-                                id: "id",
-                                name: "name",
-                                numberValues: [1.1, 1.1],
-                                stringValues: ["stringValues", "stringValues"],
-                            },
-                        ],
-                        externalIds: {
-                            externalIds: "externalIds",
-                        },
-                        id: "id",
-                        name: "name",
-                        tags: [
-                            {
-                                id: "id",
-                                name: "name",
-                                parentTagId: "parentTagId",
-                            },
-                            {
-                                id: "id",
-                                name: "name",
-                                parentTagId: "parentTagId",
-                            },
-                        ],
-                    },
-                    endMs: "endMs",
-                    eventState: "unknown",
-                    id: "id",
-                    inboxEventUrl: "inboxEventUrl",
-                    incidentReportUrl: "incidentReportUrl",
-                    location: {
-                        accuracyMeters: 1.1,
-                        address: {
-                            city: "city",
-                            country: "country",
-                            neighborhood: "neighborhood",
-                            pointOfInterest: "pointOfInterest",
-                            postalCode: "postalCode",
-                            state: "state",
-                            street: "street",
-                            streetNumber: "streetNumber",
-                        },
-                        geofence: {
-                            externalIds: {
-                                externalIds: "externalIds",
-                            },
-                            id: "id",
-                        },
-                        headingDegrees: 1000000,
-                        latitude: 1.1,
-                        longitude: 1.1,
-                    },
-                    maxAccelerationGForce: 1.1,
-                    media: [
-                        {
-                            auxcamSerial: "auxcamSerial",
-                            cameraRole: "leftMirrorMount",
-                            input: "dashcamRoadFacing",
-                            url: "url",
-                        },
-                        {
-                            auxcamSerial: "auxcamSerial",
-                            cameraRole: "leftMirrorMount",
-                            input: "dashcamRoadFacing",
-                            url: "url",
-                        },
-                    ],
-                    speedingMetadata: {
-                        maxSpeedKilometersPerHour: 1000000,
-                        postedSpeedLimitKilometersPerHour: 1000000,
-                    },
-                    startMs: "startMs",
-                    tripEndTime: "tripEndTime",
-                    tripStartTime: "tripStartTime",
-                    updatedAtTime: "updatedAtTime",
-                    updatedByUserId: "updatedByUserId",
-                },
-            ],
-            pagination: {
-                endCursor: "endCursor",
-                hasNextPage: true,
-            },
-        });
-    });
-
-    test("getSafetyEventsV2 (2)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server.mockEndpoint().get("/safety-events").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
-
-        await expect(async () => {
-            return await client.safety.getSafetyEventsV2();
-        }).rejects.toThrow(Samsara.UnauthorizedError);
-    });
-
-    test("getSafetyEventsV2 (3)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server.mockEndpoint().get("/safety-events").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
-
-        await expect(async () => {
-            return await client.safety.getSafetyEventsV2();
-        }).rejects.toThrow(Samsara.NotFoundError);
-    });
-
-    test("getSafetyEventsV2 (4)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server.mockEndpoint().get("/safety-events").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
-
-        await expect(async () => {
-            return await client.safety.getSafetyEventsV2();
-        }).rejects.toThrow(Samsara.MethodNotAllowedError);
-    });
-
-    test("getSafetyEventsV2 (5)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server.mockEndpoint().get("/safety-events").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
-
-        await expect(async () => {
-            return await client.safety.getSafetyEventsV2();
-        }).rejects.toThrow(Samsara.ContentTooLargeError);
-    });
-
-    test("getSafetyEventsV2 (6)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server.mockEndpoint().get("/safety-events").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
-
-        await expect(async () => {
-            return await client.safety.getSafetyEventsV2();
-        }).rejects.toThrow(Samsara.TooManyRequestsError);
-    });
-
-    test("getSafetyEventsV2 (7)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server.mockEndpoint().get("/safety-events").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
-
-        await expect(async () => {
-            return await client.safety.getSafetyEventsV2();
-        }).rejects.toThrow(Samsara.InternalServerError);
-    });
-
-    test("getSafetyEventsV2 (8)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server.mockEndpoint().get("/safety-events").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
-
-        await expect(async () => {
-            return await client.safety.getSafetyEventsV2();
-        }).rejects.toThrow(Samsara.NotImplementedError);
-    });
-
-    test("getSafetyEventsV2 (9)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server.mockEndpoint().get("/safety-events").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
-
-        await expect(async () => {
-            return await client.safety.getSafetyEventsV2();
-        }).rejects.toThrow(Samsara.BadGatewayError);
-    });
-
-    test("getSafetyEventsV2 (10)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server.mockEndpoint().get("/safety-events").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
-
-        await expect(async () => {
-            return await client.safety.getSafetyEventsV2();
-        }).rejects.toThrow(Samsara.ServiceUnavailableError);
-    });
-
-    test("getSafetyEventsV2 (11)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = { key: "value" };
-        server.mockEndpoint().get("/safety-events").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
-
-        await expect(async () => {
-            return await client.safety.getSafetyEventsV2();
-        }).rejects.toThrow(Samsara.GatewayTimeoutError);
-    });
-
-    test("getSafetyEventsV2Stream (1)", async () => {
-        const server = mockServerPool.createServer();
-        const client = new SamsaraClient({
-            maxRetries: 0,
-            token: "test",
-            version: "2025-06-11",
-            environment: server.baseUrl,
-        });
-
-        const rawResponseBody = {
-            data: [
-                {
-                    asset: {
                         id: "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590,6caeb9c0-7e3d-49ae-a015-45c2f68fed4c",
                         name: "MyAsset-1234",
                         tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
@@ -819,6 +47,15 @@ describe("SafetyClient", () => {
                     ],
                     dismissalReason: { comment: "minorEvent" },
                     driver: {
+                        attributes: [
+                            {
+                                dateValues: ["2024-01-15", "2024-12-31"],
+                                id: "494123",
+                                name: "Compliance/ELD",
+                                numberValues: [867, 5309],
+                                stringValues: ["HQ", "Leased"],
+                            },
+                        ],
                         id: "0987",
                         name: "Driver Name",
                         tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
@@ -828,92 +65,19 @@ describe("SafetyClient", () => {
                     id: "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590,6caeb9c0-7e3d-49ae-a015-45c2f68fed4c",
                     inboxEventUrl: "https://cloud.samsara.com/",
                     incidentReportUrl: "https://cloud.samsara.com/",
-                    location: { accuracyMeters: 5.801, headingDegrees: 120, latitude: 37.7749, longitude: 137.2719 },
-                    maxAccelerationGForce: 1,
-                    media: [
-                        {
-                            auxcamSerial: "ABC123",
-                            input: "dashcamRoadFacing",
-                            url: "https://samsara-driver-media-upload.s3.us-west-2.amazonaws.com/123456",
-                        },
-                    ],
-                    speedingMetadata: {
-                        maxSpeedKilometersPerHour: 4263146179671302700,
-                        postedSpeedLimitKilometersPerHour: 3315899840082544600,
-                    },
-                    startMs: "2023-01-27T07:01:25Z",
-                    tripEndTime: "2023-01-27T07:06:25Z",
-                    tripStartTime: "2023-01-27T07:06:25Z",
-                    updatedAtTime: "2023-01-27T10:04:20Z",
-                    updatedByUserId: "0987",
-                },
-            ],
-            pagination: { endCursor: "MjkY", hasNextPage: true },
-        };
-        server
-            .mockEndpoint()
-            .get("/safety-events/stream")
-            .respondWith()
-            .statusCode(200)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        const response = await client.safety.getSafetyEventsV2Stream({
-            startTime: "startTime",
-        });
-        expect(response).toEqual({
-            data: [
-                {
-                    asset: {
-                        id: "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590,6caeb9c0-7e3d-49ae-a015-45c2f68fed4c",
-                        name: "MyAsset-1234",
-                        tags: [
-                            {
-                                id: "3914",
-                                name: "East Coast",
-                                parentTagId: "4815",
-                            },
-                        ],
-                        vin: "1GBJ6P1B2HV112765",
-                    },
-                    assignedCoach: "0987",
-                    behaviorLabels: [{}],
-                    contextLabels: [
-                        {
-                            authorId: "1234",
-                            createdAtTime: "2023-01-27T07:06:25Z",
-                            name: "Moderate Traffic",
-                        },
-                    ],
-                    createdAtTime: "2023-01-27T07:06:25Z",
-                    detectedStreams: [
-                        {
-                            auxcamSerial: "ABC123",
-                            input: "dashcamRoadFacing",
-                            url: "https://samsara-driver-media-upload.s3.us-west-2.amazonaws.com/123456",
-                        },
-                    ],
-                    dismissalReason: {
-                        comment: "minorEvent",
-                    },
-                    driver: {
-                        id: "0987",
-                        name: "Driver Name",
-                        tags: [
-                            {
-                                id: "3914",
-                                name: "East Coast",
-                                parentTagId: "4815",
-                            },
-                        ],
-                    },
-                    endMs: "2023-01-27T07:06:25Z",
-                    eventState: "unknown",
-                    id: "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590,6caeb9c0-7e3d-49ae-a015-45c2f68fed4c",
-                    inboxEventUrl: "https://cloud.samsara.com/",
-                    incidentReportUrl: "https://cloud.samsara.com/",
                     location: {
                         accuracyMeters: 5.801,
+                        address: {
+                            city: "New York",
+                            country: "USA",
+                            neighborhood: "Mission District",
+                            pointOfInterest: "The Eiffel Tower",
+                            postalCode: "10010",
+                            state: "New York",
+                            street: "Main Street",
+                            streetNumber: "16",
+                        },
+                        geofence: { id: "12345" },
                         headingDegrees: 120,
                         latitude: 37.7749,
                         longitude: 137.2719,
@@ -927,8 +91,8 @@ describe("SafetyClient", () => {
                         },
                     ],
                     speedingMetadata: {
-                        maxSpeedKilometersPerHour: 4263146179671302700,
-                        postedSpeedLimitKilometersPerHour: 3315899840082544600,
+                        maxSpeedKilometersPerHour: 5007476316850668000,
+                        postedSpeedLimitKilometersPerHour: 3317241163671180300,
                     },
                     startMs: "2023-01-27T07:01:25Z",
                     tripEndTime: "2023-01-27T07:06:25Z",
@@ -937,11 +101,308 @@ describe("SafetyClient", () => {
                     updatedByUserId: "0987",
                 },
             ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
+            pagination: { endCursor: "MjkY", hasNextPage: true },
+        };
+
+        server.mockEndpoint().get("/safety-events").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
+
+        const response = await client.safety.getSafetyEventsV2({
+            safetyEventIds: ["safetyEventIds"],
         });
+        expect(response).toEqual(rawResponseBody);
+    });
+
+    test("getSafetyEventsV2 (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server.mockEndpoint().get("/safety-events").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.safety.getSafetyEventsV2();
+        }).rejects.toThrow(Samsara.UnauthorizedError);
+    });
+
+    test("getSafetyEventsV2 (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server.mockEndpoint().get("/safety-events").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.safety.getSafetyEventsV2();
+        }).rejects.toThrow(Samsara.NotFoundError);
+    });
+
+    test("getSafetyEventsV2 (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server.mockEndpoint().get("/safety-events").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.safety.getSafetyEventsV2();
+        }).rejects.toThrow(Samsara.MethodNotAllowedError);
+    });
+
+    test("getSafetyEventsV2 (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server.mockEndpoint().get("/safety-events").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.safety.getSafetyEventsV2();
+        }).rejects.toThrow(Samsara.ContentTooLargeError);
+    });
+
+    test("getSafetyEventsV2 (6)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server.mockEndpoint().get("/safety-events").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.safety.getSafetyEventsV2();
+        }).rejects.toThrow(Samsara.TooManyRequestsError);
+    });
+
+    test("getSafetyEventsV2 (7)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server.mockEndpoint().get("/safety-events").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.safety.getSafetyEventsV2();
+        }).rejects.toThrow(Samsara.InternalServerError);
+    });
+
+    test("getSafetyEventsV2 (8)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server.mockEndpoint().get("/safety-events").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.safety.getSafetyEventsV2();
+        }).rejects.toThrow(Samsara.NotImplementedError);
+    });
+
+    test("getSafetyEventsV2 (9)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server.mockEndpoint().get("/safety-events").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.safety.getSafetyEventsV2();
+        }).rejects.toThrow(Samsara.BadGatewayError);
+    });
+
+    test("getSafetyEventsV2 (10)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server.mockEndpoint().get("/safety-events").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.safety.getSafetyEventsV2();
+        }).rejects.toThrow(Samsara.ServiceUnavailableError);
+    });
+
+    test("getSafetyEventsV2 (11)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = { key: "value" };
+
+        server.mockEndpoint().get("/safety-events").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
+
+        await expect(async () => {
+            return await client.safety.getSafetyEventsV2();
+        }).rejects.toThrow(Samsara.GatewayTimeoutError);
+    });
+
+    test("getSafetyEventsV2Stream (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new SamsaraClient({
+            maxRetries: 0,
+            token: "test",
+            version: "2025-06-11",
+            environment: server.baseUrl,
+        });
+
+        const rawResponseBody = {
+            data: [
+                {
+                    asset: {
+                        attributes: [
+                            {
+                                dateValues: ["2024-01-15", "2024-12-31"],
+                                id: "494123",
+                                name: "Compliance/ELD",
+                                numberValues: [867, 5309],
+                                stringValues: ["HQ", "Leased"],
+                            },
+                        ],
+                        id: "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590,6caeb9c0-7e3d-49ae-a015-45c2f68fed4c",
+                        name: "MyAsset-1234",
+                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                        vin: "1GBJ6P1B2HV112765",
+                    },
+                    assignedCoach: "0987",
+                    behaviorLabels: [{}],
+                    contextLabels: [
+                        { authorId: "1234", createdAtTime: "2023-01-27T07:06:25Z", name: "Moderate Traffic" },
+                    ],
+                    createdAtTime: "2023-01-27T07:06:25Z",
+                    detectedStreams: [
+                        {
+                            auxcamSerial: "ABC123",
+                            input: "dashcamRoadFacing",
+                            url: "https://samsara-driver-media-upload.s3.us-west-2.amazonaws.com/123456",
+                        },
+                    ],
+                    dismissalReason: { comment: "minorEvent" },
+                    driver: {
+                        attributes: [
+                            {
+                                dateValues: ["2024-01-15", "2024-12-31"],
+                                id: "494123",
+                                name: "Compliance/ELD",
+                                numberValues: [867, 5309],
+                                stringValues: ["HQ", "Leased"],
+                            },
+                        ],
+                        id: "0987",
+                        name: "Driver Name",
+                        tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
+                    },
+                    endMs: "2023-01-27T07:06:25Z",
+                    eventState: "unknown",
+                    id: "bb2ff5ab-30ad-49ec-9d2d-55ec30bbf590,6caeb9c0-7e3d-49ae-a015-45c2f68fed4c",
+                    inboxEventUrl: "https://cloud.samsara.com/",
+                    incidentReportUrl: "https://cloud.samsara.com/",
+                    location: {
+                        accuracyMeters: 5.801,
+                        address: {
+                            city: "New York",
+                            country: "USA",
+                            neighborhood: "Mission District",
+                            pointOfInterest: "The Eiffel Tower",
+                            postalCode: "10010",
+                            state: "New York",
+                            street: "Main Street",
+                            streetNumber: "16",
+                        },
+                        geofence: { id: "12345" },
+                        headingDegrees: 120,
+                        latitude: 37.7749,
+                        longitude: 137.2719,
+                    },
+                    maxAccelerationGForce: 1,
+                    media: [
+                        {
+                            auxcamSerial: "ABC123",
+                            input: "dashcamRoadFacing",
+                            url: "https://samsara-driver-media-upload.s3.us-west-2.amazonaws.com/123456",
+                        },
+                    ],
+                    speedingMetadata: {
+                        maxSpeedKilometersPerHour: 5007476316850668000,
+                        postedSpeedLimitKilometersPerHour: 3317241163671180300,
+                    },
+                    startMs: "2023-01-27T07:01:25Z",
+                    tripEndTime: "2023-01-27T07:06:25Z",
+                    tripStartTime: "2023-01-27T07:06:25Z",
+                    updatedAtTime: "2023-01-27T10:04:20Z",
+                    updatedByUserId: "0987",
+                },
+            ],
+            pagination: { endCursor: "MjkY", hasNextPage: true },
+        };
+
+        server
+            .mockEndpoint()
+            .get("/safety-events/stream")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.safety.getSafetyEventsV2Stream({
+            startTime: "startTime",
+        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getSafetyEventsV2Stream (2)", async () => {
@@ -954,6 +415,7 @@ describe("SafetyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/safety-events/stream")
@@ -979,6 +441,7 @@ describe("SafetyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/safety-events/stream")
@@ -1004,6 +467,7 @@ describe("SafetyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/safety-events/stream")
@@ -1029,6 +493,7 @@ describe("SafetyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/safety-events/stream")
@@ -1054,6 +519,7 @@ describe("SafetyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/safety-events/stream")
@@ -1079,6 +545,7 @@ describe("SafetyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/safety-events/stream")
@@ -1104,6 +571,7 @@ describe("SafetyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/safety-events/stream")
@@ -1129,6 +597,7 @@ describe("SafetyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/safety-events/stream")
@@ -1154,6 +623,7 @@ describe("SafetyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/safety-events/stream")
@@ -1179,6 +649,7 @@ describe("SafetyClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/safety-events/stream")
@@ -1217,6 +688,7 @@ describe("SafetyClient", () => {
             totalHarshEventCount: 3,
             totalTimeDrivenMs: 19708293,
         };
+
         server
             .mockEndpoint()
             .get("/v1/fleet/drivers/1000000/safety/score")
@@ -1230,26 +702,7 @@ describe("SafetyClient", () => {
             startMs: 1000000,
             endMs: 1000000,
         });
-        expect(response).toEqual({
-            crashCount: 0,
-            driverId: 1234,
-            harshAccelCount: 1,
-            harshBrakingCount: 2,
-            harshEvents: [
-                {
-                    harshEventType: "Harsh Braking",
-                    timestampMs: 1535590776000,
-                    vehicleId: 212014918086169,
-                },
-            ],
-            harshTurningCount: 0,
-            safetyScore: 97,
-            safetyScoreRank: "26",
-            timeOverSpeedLimitMs: 3769,
-            totalDistanceDrivenMeters: 291836,
-            totalHarshEventCount: 3,
-            totalTimeDrivenMs: 19708293,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("V1getVehicleSafetyScore", async () => {
@@ -1275,6 +728,7 @@ describe("SafetyClient", () => {
             totalTimeDrivenMs: 19708293,
             vehicleId: 4321,
         };
+
         server
             .mockEndpoint()
             .get("/v1/fleet/vehicles/1000000/safety/score")
@@ -1288,25 +742,6 @@ describe("SafetyClient", () => {
             startMs: 1000000,
             endMs: 1000000,
         });
-        expect(response).toEqual({
-            crashCount: 0,
-            harshAccelCount: 1,
-            harshBrakingCount: 2,
-            harshEvents: [
-                {
-                    harshEventType: "Harsh Braking",
-                    timestampMs: 1535590776000,
-                    vehicleId: 212014918086169,
-                },
-            ],
-            harshTurningCount: 0,
-            safetyScore: 97,
-            safetyScoreRank: "26",
-            timeOverSpeedLimitMs: 3769,
-            totalDistanceDrivenMeters: 291836,
-            totalHarshEventCount: 3,
-            totalTimeDrivenMs: 19708293,
-            vehicleId: 4321,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 });

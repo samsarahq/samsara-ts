@@ -25,6 +25,7 @@ describe("CoachingClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/coaching/driver-coach-assignments")
@@ -34,22 +35,7 @@ describe("CoachingClient", () => {
             .build();
 
         const response = await client.coaching.getDriverCoachAssignment();
-        expect(response).toEqual({
-            data: [
-                {
-                    coachId: "45646",
-                    createdAtTime: "2019-06-13T19:08:25Z",
-                    driver: {
-                        driverId: "0987",
-                    },
-                    updatedAtTime: "2019-06-13T19:08:25Z",
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getDriverCoachAssignment (2)", async () => {
@@ -62,6 +48,7 @@ describe("CoachingClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/coaching/driver-coach-assignments")
@@ -85,6 +72,7 @@ describe("CoachingClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/coaching/driver-coach-assignments")
@@ -108,6 +96,7 @@ describe("CoachingClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/coaching/driver-coach-assignments")
@@ -131,6 +120,7 @@ describe("CoachingClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/coaching/driver-coach-assignments")
@@ -154,6 +144,7 @@ describe("CoachingClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/coaching/driver-coach-assignments")
@@ -177,6 +168,7 @@ describe("CoachingClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/coaching/driver-coach-assignments")
@@ -200,6 +192,7 @@ describe("CoachingClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/coaching/driver-coach-assignments")
@@ -223,6 +216,7 @@ describe("CoachingClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/coaching/driver-coach-assignments")
@@ -246,6 +240,7 @@ describe("CoachingClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/coaching/driver-coach-assignments")
@@ -269,6 +264,7 @@ describe("CoachingClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/coaching/driver-coach-assignments")
@@ -299,6 +295,7 @@ describe("CoachingClient", () => {
                 updatedAtTime: "2019-06-13T19:08:25Z",
             },
         };
+
         server
             .mockEndpoint()
             .put("/coaching/driver-coach-assignments")
@@ -310,14 +307,7 @@ describe("CoachingClient", () => {
         const response = await client.coaching.putDriverCoachAssignment({
             driverId: "driverId",
         });
-        expect(response).toEqual({
-            data: {
-                coachId: "45646",
-                createdAtTime: "2019-06-13T19:08:25Z",
-                driverId: "45646",
-                updatedAtTime: "2019-06-13T19:08:25Z",
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("putDriverCoachAssignment (2)", async () => {
@@ -330,6 +320,7 @@ describe("CoachingClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/coaching/driver-coach-assignments")
@@ -355,6 +346,7 @@ describe("CoachingClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/coaching/driver-coach-assignments")
@@ -380,6 +372,7 @@ describe("CoachingClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/coaching/driver-coach-assignments")
@@ -405,6 +398,7 @@ describe("CoachingClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/coaching/driver-coach-assignments")
@@ -430,6 +424,7 @@ describe("CoachingClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/coaching/driver-coach-assignments")
@@ -455,6 +450,7 @@ describe("CoachingClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/coaching/driver-coach-assignments")
@@ -480,6 +476,7 @@ describe("CoachingClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/coaching/driver-coach-assignments")
@@ -505,6 +502,7 @@ describe("CoachingClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/coaching/driver-coach-assignments")
@@ -530,6 +528,7 @@ describe("CoachingClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/coaching/driver-coach-assignments")
@@ -555,6 +554,7 @@ describe("CoachingClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .put("/coaching/driver-coach-assignments")
@@ -595,6 +595,8 @@ describe("CoachingClient", () => {
                                     },
                                 },
                             ],
+                            createdAtTime: "2019-06-13T19:08:25Z",
+                            dueAtTime: "2019-06-13T19:08:25Z",
                             id: "f5271458-21f9-4a9f-a290-780c6d8840ff",
                             lastCoachedTime: "2019-06-13T19:08:25Z",
                             note: "Need to wear seatbelt even for short trips.",
@@ -609,11 +611,13 @@ describe("CoachingClient", () => {
                     id: "f5271458-21f9-4a9f-a290-780c6d8840ff",
                     sessionNote: "Need to wear seatbelt even for short trips.",
                     sessionStatus: "unknown",
+                    sessionType: "driverSelfOneOff",
                     updatedAtTime: "2019-06-13T19:08:25Z",
                 },
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/coaching/sessions/stream")
@@ -625,46 +629,7 @@ describe("CoachingClient", () => {
         const response = await client.coaching.getCoachingSessions({
             startTime: "2024-01-15T09:30:00Z",
         });
-        expect(response).toEqual({
-            data: [
-                {
-                    assignedCoachId: "45646",
-                    behaviors: [
-                        {
-                            coachableBehaviorType: "acceleration",
-                            coachableEvents: [
-                                {
-                                    id: "f5271458-21f9-4a9f-a290-780c6d8840ff",
-                                    linkage: {
-                                        sourceId: "f5271458-21f9-4a9f-a290-780c6d8840ff",
-                                        sourceType: "safetyEvent",
-                                    },
-                                },
-                            ],
-                            id: "f5271458-21f9-4a9f-a290-780c6d8840ff",
-                            lastCoachedTime: "2019-06-13T19:08:25Z",
-                            note: "Need to wear seatbelt even for short trips.",
-                            updatedAtTime: "2019-06-13T19:08:25Z",
-                        },
-                    ],
-                    coachingType: "fullySharedWithManager",
-                    completedAtTime: "2019-06-13T19:08:25Z",
-                    completedCoachId: "45646",
-                    driver: {
-                        driverId: "0987",
-                    },
-                    dueAtTime: "2019-06-13T19:08:25Z",
-                    id: "f5271458-21f9-4a9f-a290-780c6d8840ff",
-                    sessionNote: "Need to wear seatbelt even for short trips.",
-                    sessionStatus: "unknown",
-                    updatedAtTime: "2019-06-13T19:08:25Z",
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getCoachingSessions (2)", async () => {
@@ -677,6 +642,7 @@ describe("CoachingClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/coaching/sessions/stream")
@@ -702,6 +668,7 @@ describe("CoachingClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/coaching/sessions/stream")
@@ -727,6 +694,7 @@ describe("CoachingClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/coaching/sessions/stream")
@@ -752,6 +720,7 @@ describe("CoachingClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/coaching/sessions/stream")
@@ -777,6 +746,7 @@ describe("CoachingClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/coaching/sessions/stream")
@@ -802,6 +772,7 @@ describe("CoachingClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/coaching/sessions/stream")
@@ -827,6 +798,7 @@ describe("CoachingClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/coaching/sessions/stream")
@@ -852,6 +824,7 @@ describe("CoachingClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/coaching/sessions/stream")
@@ -877,6 +850,7 @@ describe("CoachingClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/coaching/sessions/stream")
@@ -902,6 +876,7 @@ describe("CoachingClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/coaching/sessions/stream")

@@ -14,17 +14,17 @@ export interface CampaignItemResponseObjectResponseBody {
     createdAtTime: string;
     /** Reason the item was dismissed, when `state` is `dismissed`. */
     dismissedReason?: string | undefined;
-    /** The state the item behaves as. Equal to `state`, except `suspended` for an open item (`pending`, `hold`, `ready`) on a campaign that is in `draft` or `onHold`, where the item is kept off work orders until the campaign is active.  Valid values: `pending`, `hold`, `ready`, `workOrderCreated`, `complete`, `dismissed`, `cancelled`, `suspended`, `unknown` */
+    /** The state the item behaves as. Equal to `state`, except `suspended` for an open item (`pending`, `hold`, `ready`) on a campaign that is in `draft` or `onHold`, where the item is kept off work orders until the campaign is active.  Valid values: `pending`, `hold`, `ready`, `workOrderCreated`, `workOrderCanceled`, `complete`, `dismissed`, `cancelled`, `suspended`, `unknown` */
     effectiveState: CampaignItemResponseObjectResponseBody.EffectiveState;
     /** Unique ID of the campaign item. */
     id: string;
     /** ID of the work order that materialized from this item, if any. Uses the same ID as the Work Orders API. */
     linkedWorkOrderId?: string | undefined;
-    /** How the asset joined the campaign. Items added through this API are `api`.  Valid values: `api`, `targeting`, `manual`, `csv`, `assistant`, `unknown` */
+    /** How the asset joined the campaign. Items added through this API are `api`.  Valid values: `api`, `targeting`, `manual`, `csv`, `assistant`, `nhtsa`, `unknown` */
     sourceBasis: CampaignItemResponseObjectResponseBody.SourceBasis;
     /** Opaque reference to the source feed row, supplied when the item was ingested, for external reconciliation. */
     sourceRef?: string | undefined;
-    /** Stored lifecycle state of the item. Defaults to `unknown` when the state is not recognized.  Valid values: `pending`, `hold`, `ready`, `workOrderCreated`, `complete`, `dismissed`, `cancelled`, `unknown` */
+    /** Stored lifecycle state of the item. Defaults to `unknown` when the state is not recognized.  Valid values: `pending`, `hold`, `ready`, `workOrderCreated`, `workOrderCanceled`, `complete`, `dismissed`, `cancelled`, `unknown` */
     state: CampaignItemResponseObjectResponseBody.State;
     /** Time the item entered its current state, in RFC 3339 format. */
     stateSinceTime: string;
@@ -33,12 +33,13 @@ export interface CampaignItemResponseObjectResponseBody {
 }
 
 export namespace CampaignItemResponseObjectResponseBody {
-    /** The state the item behaves as. Equal to `state`, except `suspended` for an open item (`pending`, `hold`, `ready`) on a campaign that is in `draft` or `onHold`, where the item is kept off work orders until the campaign is active.  Valid values: `pending`, `hold`, `ready`, `workOrderCreated`, `complete`, `dismissed`, `cancelled`, `suspended`, `unknown` */
+    /** The state the item behaves as. Equal to `state`, except `suspended` for an open item (`pending`, `hold`, `ready`) on a campaign that is in `draft` or `onHold`, where the item is kept off work orders until the campaign is active.  Valid values: `pending`, `hold`, `ready`, `workOrderCreated`, `workOrderCanceled`, `complete`, `dismissed`, `cancelled`, `suspended`, `unknown` */
     export const EffectiveState = {
         Pending: "pending",
         Hold: "hold",
         Ready: "ready",
         WorkOrderCreated: "workOrderCreated",
+        WorkOrderCanceled: "workOrderCanceled",
         Complete: "complete",
         Dismissed: "dismissed",
         Cancelled: "cancelled",
@@ -46,22 +47,24 @@ export namespace CampaignItemResponseObjectResponseBody {
         Unknown: "unknown",
     } as const;
     export type EffectiveState = (typeof EffectiveState)[keyof typeof EffectiveState];
-    /** How the asset joined the campaign. Items added through this API are `api`.  Valid values: `api`, `targeting`, `manual`, `csv`, `assistant`, `unknown` */
+    /** How the asset joined the campaign. Items added through this API are `api`.  Valid values: `api`, `targeting`, `manual`, `csv`, `assistant`, `nhtsa`, `unknown` */
     export const SourceBasis = {
         Api: "api",
         Targeting: "targeting",
         Manual: "manual",
         Csv: "csv",
         Assistant: "assistant",
+        Nhtsa: "nhtsa",
         Unknown: "unknown",
     } as const;
     export type SourceBasis = (typeof SourceBasis)[keyof typeof SourceBasis];
-    /** Stored lifecycle state of the item. Defaults to `unknown` when the state is not recognized.  Valid values: `pending`, `hold`, `ready`, `workOrderCreated`, `complete`, `dismissed`, `cancelled`, `unknown` */
+    /** Stored lifecycle state of the item. Defaults to `unknown` when the state is not recognized.  Valid values: `pending`, `hold`, `ready`, `workOrderCreated`, `workOrderCanceled`, `complete`, `dismissed`, `cancelled`, `unknown` */
     export const State = {
         Pending: "pending",
         Hold: "hold",
         Ready: "ready",
         WorkOrderCreated: "workOrderCreated",
+        WorkOrderCanceled: "workOrderCanceled",
         Complete: "complete",
         Dismissed: "dismissed",
         Cancelled: "cancelled",

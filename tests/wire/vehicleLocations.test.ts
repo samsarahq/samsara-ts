@@ -21,6 +21,7 @@ describe("VehicleLocationsClient", () => {
                         heading: 120,
                         latitude: 122.142,
                         longitude: -93.343,
+                        reverseGeo: { formattedLocation: "16 N Fair Oaks Ave, Pasadena, CA 91103" },
                         speed: 48.3,
                         time: "2020-01-27T07:06:25Z",
                     },
@@ -29,6 +30,7 @@ describe("VehicleLocationsClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/fleet/vehicles/locations")
@@ -38,25 +40,7 @@ describe("VehicleLocationsClient", () => {
             .build();
 
         const response = await client.vehicleLocations.getVehicleLocations();
-        expect(response).toEqual({
-            data: [
-                {
-                    id: "112",
-                    location: {
-                        heading: 120,
-                        latitude: 122.142,
-                        longitude: -93.343,
-                        speed: 48.3,
-                        time: "2020-01-27T07:06:25Z",
-                    },
-                    name: "Truck A7",
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getVehicleLocationsFeed", async () => {
@@ -77,6 +61,7 @@ describe("VehicleLocationsClient", () => {
                             heading: 120,
                             latitude: 122.142,
                             longitude: -93.343,
+                            reverseGeo: { formattedLocation: "16 N Fair Oaks Ave, Pasadena, CA 91103" },
                             speed: 48.3,
                             time: "2020-01-27T07:06:25Z",
                         },
@@ -86,6 +71,7 @@ describe("VehicleLocationsClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/fleet/vehicles/locations/feed")
@@ -95,27 +81,7 @@ describe("VehicleLocationsClient", () => {
             .build();
 
         const response = await client.vehicleLocations.getVehicleLocationsFeed();
-        expect(response).toEqual({
-            data: [
-                {
-                    id: "112",
-                    locations: [
-                        {
-                            heading: 120,
-                            latitude: 122.142,
-                            longitude: -93.343,
-                            speed: 48.3,
-                            time: "2020-01-27T07:06:25Z",
-                        },
-                    ],
-                    name: "Truck A7",
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getVehicleLocationsHistory", async () => {
@@ -136,6 +102,7 @@ describe("VehicleLocationsClient", () => {
                             heading: 120,
                             latitude: 122.142,
                             longitude: -93.343,
+                            reverseGeo: { formattedLocation: "16 N Fair Oaks Ave, Pasadena, CA 91103" },
                             speed: 48.3,
                             time: "2020-01-27T07:06:25Z",
                         },
@@ -145,6 +112,7 @@ describe("VehicleLocationsClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/fleet/vehicles/locations/history")
@@ -157,26 +125,6 @@ describe("VehicleLocationsClient", () => {
             startTime: "startTime",
             endTime: "endTime",
         });
-        expect(response).toEqual({
-            data: [
-                {
-                    id: "112",
-                    locations: [
-                        {
-                            heading: 120,
-                            latitude: 122.142,
-                            longitude: -93.343,
-                            speed: 48.3,
-                            time: "2020-01-27T07:06:25Z",
-                        },
-                    ],
-                    name: "Truck A7",
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 });

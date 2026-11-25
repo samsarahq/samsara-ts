@@ -6,4 +6,5 @@ export * from "./GetJobsRequestStatus.js";
 export * from "./GetPlaceGeofenceRequestSizeOrder.js";
 export * from "./GetQualificationRecordsStreamRequestEntityType.js";
 export * from "./GetQualificationTypesRequestEntityType.js";
+export * from "./GetRecallMatchedAssetsRequestOrder.js";
 export * from "./ListDriverWorkflowsRequestWorkflowType.js";

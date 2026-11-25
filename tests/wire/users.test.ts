@@ -17,21 +17,11 @@ describe("UsersClient", () => {
             data: [{ id: "8a9371af-82d1-4158-bf91-4ecc8d3a114c", name: "Full Admin" }],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server.mockEndpoint().get("/user-roles").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.users.listUserRoles();
-        expect(response).toEqual({
-            data: [
-                {
-                    id: "8a9371af-82d1-4158-bf91-4ecc8d3a114c",
-                    name: "Full Admin",
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("listUsers", async () => {
@@ -50,33 +40,22 @@ describe("UsersClient", () => {
                     email: "user@company.com",
                     id: "123",
                     name: "Bob Smith",
-                    roles: [{ expireAt: "2025-08-13T19:08:25Z" }],
-                },
-            ],
-            pagination: { endCursor: "MjkY", hasNextPage: true },
-        };
-        server.mockEndpoint().get("/users").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
-
-        const response = await client.users.listUsers();
-        expect(response).toEqual({
-            data: [
-                {
-                    authType: "default",
-                    email: "user@company.com",
-                    id: "123",
-                    name: "Bob Smith",
                     roles: [
                         {
                             expireAt: "2025-08-13T19:08:25Z",
+                            role: { id: "8a9371af-82d1-4158-bf91-4ecc8d3a114c", name: "Full Admin" },
+                            tag: { id: "3914", name: "East Coast", parentTagId: "4815" },
                         },
                     ],
                 },
             ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+            pagination: { endCursor: "MjkY", hasNextPage: true },
+        };
+
+        server.mockEndpoint().get("/users").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
+
+        const response = await client.users.listUsers();
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createUser", async () => {
@@ -99,9 +78,16 @@ describe("UsersClient", () => {
                 email: "user@company.com",
                 id: "123",
                 name: "Bob Smith",
-                roles: [{ expireAt: "2025-08-13T19:08:25Z" }],
+                roles: [
+                    {
+                        expireAt: "2025-08-13T19:08:25Z",
+                        role: { id: "8a9371af-82d1-4158-bf91-4ecc8d3a114c", name: "Full Admin" },
+                        tag: { id: "3914", name: "East Coast", parentTagId: "4815" },
+                    },
+                ],
             },
         };
+
         server
             .mockEndpoint()
             .post("/users")
@@ -121,19 +107,7 @@ describe("UsersClient", () => {
                 },
             ],
         });
-        expect(response).toEqual({
-            data: {
-                authType: "default",
-                email: "user@company.com",
-                id: "123",
-                name: "Bob Smith",
-                roles: [
-                    {
-                        expireAt: "2025-08-13T19:08:25Z",
-                    },
-                ],
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getUser", async () => {
@@ -151,27 +125,22 @@ describe("UsersClient", () => {
                 email: "user@company.com",
                 id: "123",
                 name: "Bob Smith",
-                roles: [{ expireAt: "2025-08-13T19:08:25Z" }],
+                roles: [
+                    {
+                        expireAt: "2025-08-13T19:08:25Z",
+                        role: { id: "8a9371af-82d1-4158-bf91-4ecc8d3a114c", name: "Full Admin" },
+                        tag: { id: "3914", name: "East Coast", parentTagId: "4815" },
+                    },
+                ],
             },
         };
+
         server.mockEndpoint().get("/users/id").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.users.getUser({
             id: "id",
         });
-        expect(response).toEqual({
-            data: {
-                authType: "default",
-                email: "user@company.com",
-                id: "123",
-                name: "Bob Smith",
-                roles: [
-                    {
-                        expireAt: "2025-08-13T19:08:25Z",
-                    },
-                ],
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("delete", async () => {
@@ -206,9 +175,16 @@ describe("UsersClient", () => {
                 email: "user@company.com",
                 id: "123",
                 name: "Bob Smith",
-                roles: [{ expireAt: "2025-08-13T19:08:25Z" }],
+                roles: [
+                    {
+                        expireAt: "2025-08-13T19:08:25Z",
+                        role: { id: "8a9371af-82d1-4158-bf91-4ecc8d3a114c", name: "Full Admin" },
+                        tag: { id: "3914", name: "East Coast", parentTagId: "4815" },
+                    },
+                ],
             },
         };
+
         server
             .mockEndpoint()
             .patch("/users/id")
@@ -221,18 +197,6 @@ describe("UsersClient", () => {
         const response = await client.users.updateUser({
             id: "id",
         });
-        expect(response).toEqual({
-            data: {
-                authType: "default",
-                email: "user@company.com",
-                id: "123",
-                name: "Bob Smith",
-                roles: [
-                    {
-                        expireAt: "2025-08-13T19:08:25Z",
-                    },
-                ],
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 });

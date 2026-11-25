@@ -3,7 +3,8 @@
 /**
  * @example
  *     {
- *         startTime: "startTime"
+ *         startTime: "startTime",
+ *         agentIds: ["agentIds"]
  *     }
  */
 export interface GetVoiceSessionsStreamRequest {

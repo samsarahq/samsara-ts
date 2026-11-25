@@ -5,7 +5,8 @@ import type * as Samsara from "../../../../index.js";
 /**
  * @example
  *     {
- *         startTime: "startTime"
+ *         startTime: "startTime",
+ *         ids: ["ids"]
  *     }
  */
 export interface GetTripsRequest {

@@ -34,6 +34,37 @@ export interface EntityPartDefinitionsServiceUpdatePartRequestBody {
     /** The preferred vendor's part number for this part definition. */
     preferredVendorPartNumber?: string;
     unitCost?: Samsara.UpdatePartEntityPartDefinitionMoneyInputTypeRequestBody;
+    /** Unit of measure for the part.  Valid values: `Unknown`, `Each`, `Set`, `Pack`, `Box`, `Pound`, `Kilogram`, `Ounce`, `Liter`, `Milliliter`, `Gallon`, `Quart`, `FluidOunce`, `Inch`, `Foot`, `Meter`, `Yard`, `SquareFoot`, `SquareMeter`, `Pint`, `Hundred`, `Roll` */
+    unitOfMeasureType?: EntityPartDefinitionsServiceUpdatePartRequestBody.UnitOfMeasureType;
     /** VMRS code associated with the part definition. */
     vmrsCode?: string;
+}
+
+export namespace EntityPartDefinitionsServiceUpdatePartRequestBody {
+    /** Unit of measure for the part.  Valid values: `Unknown`, `Each`, `Set`, `Pack`, `Box`, `Pound`, `Kilogram`, `Ounce`, `Liter`, `Milliliter`, `Gallon`, `Quart`, `FluidOunce`, `Inch`, `Foot`, `Meter`, `Yard`, `SquareFoot`, `SquareMeter`, `Pint`, `Hundred`, `Roll` */
+    export const UnitOfMeasureType = {
+        Unknown: "Unknown",
+        Each: "Each",
+        Set: "Set",
+        Pack: "Pack",
+        Box: "Box",
+        Pound: "Pound",
+        Kilogram: "Kilogram",
+        Ounce: "Ounce",
+        Liter: "Liter",
+        Milliliter: "Milliliter",
+        Gallon: "Gallon",
+        Quart: "Quart",
+        FluidOunce: "FluidOunce",
+        Inch: "Inch",
+        Foot: "Foot",
+        Meter: "Meter",
+        Yard: "Yard",
+        SquareFoot: "SquareFoot",
+        SquareMeter: "SquareMeter",
+        Pint: "Pint",
+        Hundred: "Hundred",
+        Roll: "Roll",
+    } as const;
+    export type UnitOfMeasureType = (typeof UnitOfMeasureType)[keyof typeof UnitOfMeasureType];
 }

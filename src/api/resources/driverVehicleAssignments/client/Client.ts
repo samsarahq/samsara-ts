@@ -102,7 +102,13 @@ export class DriverVehicleAssignmentsClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .add("driverIds", _queryParams.driverIds, { style: "comma" })
+                .add("vehicleIds", _queryParams.vehicleIds, { style: "comma" })
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -213,7 +219,7 @@ export class DriverVehicleAssignmentsClient {
             method: "POST",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: request,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
@@ -269,7 +275,7 @@ export class DriverVehicleAssignmentsClient {
     }
 
     /**
-     * Delete driver assignments that were created using the `POST fleet/driver-vehicle-assignments` endpoint for the requested vehicle in the requested time range.
+     * Delete driver assignments that were created using the `POST fleet/driver-vehicle-assignments` endpoint. Identify the assignments either with vehicleId and an optional time range, or with metadata.sourceName alone.
      *
      *  <b>Rate limit:</b> 100 requests/min (learn more about rate limits <a href="https://developers.samsara.com/docs/rate-limits" target="_blank">here</a>).
      *
@@ -293,19 +299,17 @@ export class DriverVehicleAssignmentsClient {
      * @throws {@link Samsara.GatewayTimeoutError}
      *
      * @example
-     *     await client.driverVehicleAssignments.deleteDriverVehicleAssignments({
-     *         vehicleId: "281474978683353"
-     *     })
+     *     await client.driverVehicleAssignments.deleteDriverVehicleAssignments()
      */
     public deleteDriverVehicleAssignments(
-        request: Samsara.DriverVehicleAssignmentsV2DeleteDriverVehicleAssignmentsRequestBody,
+        request: Samsara.DriverVehicleAssignmentsV2DeleteDriverVehicleAssignmentsRequestBody = {},
         requestOptions?: DriverVehicleAssignmentsClient.RequestOptions,
     ): core.HttpResponsePromise<void> {
         return core.HttpResponsePromise.fromPromise(this.__deleteDriverVehicleAssignments(request, requestOptions));
     }
 
     private async __deleteDriverVehicleAssignments(
-        request: Samsara.DriverVehicleAssignmentsV2DeleteDriverVehicleAssignmentsRequestBody,
+        request: Samsara.DriverVehicleAssignmentsV2DeleteDriverVehicleAssignmentsRequestBody = {},
         requestOptions?: DriverVehicleAssignmentsClient.RequestOptions,
     ): Promise<core.WithRawResponse<void>> {
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
@@ -325,7 +329,7 @@ export class DriverVehicleAssignmentsClient {
             method: "DELETE",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: request,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
@@ -432,7 +436,7 @@ export class DriverVehicleAssignmentsClient {
             method: "PATCH",
             headers: _headers,
             contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
             requestType: "json",
             body: request,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,

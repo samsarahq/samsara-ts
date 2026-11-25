@@ -28,6 +28,7 @@ describe("CarbCtcClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/fleet/carb-ctc/vehicles")
@@ -37,23 +38,7 @@ describe("CarbCtcClient", () => {
             .build();
 
         const response = await client.carbCtc.listCarbCtcVehicles();
-        expect(response).toEqual({
-            data: [
-                {
-                    enrollmentId: "550e8400-e29b-41d4-a716-446655440000",
-                    enrollmentVin: "1HGCM82633A123456",
-                    id: "12345",
-                    lastCollectionAtTime: "2024-06-15T08:00:00Z",
-                    nextCollectionAtTime: "2024-12-15T00:00:00Z",
-                    testStatus: "notScheduled",
-                    testStatusDetails: "Response from CARB CTC: Vehicle PASSED emissions scan.",
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("listCarbCtcVehicles (2)", async () => {
@@ -66,6 +51,7 @@ describe("CarbCtcClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/carb-ctc/vehicles")
@@ -89,6 +75,7 @@ describe("CarbCtcClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/carb-ctc/vehicles")
@@ -112,6 +99,7 @@ describe("CarbCtcClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/carb-ctc/vehicles")
@@ -135,6 +123,7 @@ describe("CarbCtcClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/carb-ctc/vehicles")
@@ -158,6 +147,7 @@ describe("CarbCtcClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/carb-ctc/vehicles")
@@ -181,6 +171,7 @@ describe("CarbCtcClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/carb-ctc/vehicles")
@@ -204,6 +195,7 @@ describe("CarbCtcClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/carb-ctc/vehicles")
@@ -227,6 +219,7 @@ describe("CarbCtcClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/carb-ctc/vehicles")
@@ -250,6 +243,7 @@ describe("CarbCtcClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/carb-ctc/vehicles")
@@ -273,6 +267,7 @@ describe("CarbCtcClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/carb-ctc/vehicles")
@@ -308,6 +303,7 @@ describe("CarbCtcClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/fleet/carb-ctc/vehicles/history")
@@ -319,22 +315,7 @@ describe("CarbCtcClient", () => {
         const response = await client.carbCtc.listCarbCtcVehicleHistory({
             vehicleIds: "vehicleIds",
         });
-        expect(response).toEqual({
-            data: [
-                {
-                    enrollmentId: "550e8400-e29b-41d4-a716-446655440000",
-                    enrollmentVin: "1HGCM82633A123456",
-                    happenedAtTime: "2024-06-15T08:00:00Z",
-                    id: "12345",
-                    testResult: "pass",
-                    testResultDetails: "Response from CARB CTC: Vehicle PASSED emissions scan.",
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("listCarbCtcVehicleHistory (2)", async () => {
@@ -347,6 +328,7 @@ describe("CarbCtcClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/carb-ctc/vehicles/history")
@@ -372,6 +354,7 @@ describe("CarbCtcClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/carb-ctc/vehicles/history")
@@ -397,6 +380,7 @@ describe("CarbCtcClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/carb-ctc/vehicles/history")
@@ -422,6 +406,7 @@ describe("CarbCtcClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/carb-ctc/vehicles/history")
@@ -447,6 +432,7 @@ describe("CarbCtcClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/carb-ctc/vehicles/history")
@@ -472,6 +458,7 @@ describe("CarbCtcClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/carb-ctc/vehicles/history")
@@ -497,6 +484,7 @@ describe("CarbCtcClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/carb-ctc/vehicles/history")
@@ -522,6 +510,7 @@ describe("CarbCtcClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/carb-ctc/vehicles/history")
@@ -547,6 +536,7 @@ describe("CarbCtcClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/carb-ctc/vehicles/history")
@@ -572,6 +562,7 @@ describe("CarbCtcClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/carb-ctc/vehicles/history")

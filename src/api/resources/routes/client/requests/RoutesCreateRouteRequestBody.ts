@@ -12,6 +12,7 @@ import type * as Samsara from "../../../../index.js";
 export interface RoutesCreateRouteRequestBody {
     /** ID of the driver. Can be either a unique Samsara ID or an [external ID](https://developers.samsara.com/docs/external-ids) for the driver. */
     driverId?: string;
+    equipmentProfile?: Samsara.RouteEquipmentProfileObjectRequestBody;
     /** A map of external ids */
     externalIds?: Record<string, string>;
     /** Name for the route */

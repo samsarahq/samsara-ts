@@ -2,7 +2,9 @@
 
 /**
  * @example
- *     {}
+ *     {
+ *         driverIds: ["driverIds"]
+ *     }
  */
 export interface GetDriversQrCodesRequest {
     /** String of comma separated driver IDs. List of driver - QR codes for specified driver(s) will be returned. */

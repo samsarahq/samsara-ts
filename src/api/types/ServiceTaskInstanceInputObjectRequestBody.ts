@@ -16,6 +16,8 @@ export interface ServiceTaskInstanceInputObjectRequestBody {
     /** Parts for the service task. */
     parts?: Samsara.PartInstanceInputObjectRequestBody[] | undefined;
     partsCost?: Samsara.WorkOrderMoneyObjectRequestBody | undefined;
+    /** Complete stored procedure list for an existing service task, in the order GET returns procedures inside subtasks. That order sorts by rank. Omit to leave procedures unchanged. Each name must match the stored procedure at the same rank position. Names may repeat, so the match is positional. Only isCompleted is applied. Forms and procedure metadata are preserved, including the stored procedure order. Rejected when the service task has no stored procedures, including on create. */
+    procedures?: Samsara.ServiceTaskProcedureInputObjectRequestBody[] | undefined;
     /** ID of the service task. */
     serviceTaskId: string;
     /** The status of the service task.  Valid values: `Unknown`, `Open`, `In Progress`, `On Hold`, `Completed` */

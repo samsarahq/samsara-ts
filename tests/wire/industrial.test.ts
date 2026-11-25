@@ -21,6 +21,13 @@ describe("IndustrialClient", () => {
                     dataOutputs: [
                         {
                             dataGroup: "Control Pressure",
+                            dataInput: {
+                                dataGroup: "Pressure",
+                                id: "123456",
+                                lastPoint: { time: "2020-01-27T07:06:25Z", value: 1992.0506 },
+                                name: "Digital Input 1",
+                                units: "PSI",
+                            },
                             deviceId: "123",
                             id: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                             name: "Digital Output 1",
@@ -43,57 +50,11 @@ describe("IndustrialClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server.mockEndpoint().get("/industrial/assets").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.industrial.getIndustrialAssets();
-        expect(response).toEqual({
-            data: [
-                {
-                    customMetadata: {
-                        manufacturer: "Samsara",
-                        serialNumber: "123ABC",
-                    },
-                    dataOutputs: [
-                        {
-                            dataGroup: "Control Pressure",
-                            deviceId: "123",
-                            id: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-                            name: "Digital Output 1",
-                        },
-                    ],
-                    id: "123abcde-4567-8910-1112-fghi1314jklm",
-                    isRunning: true,
-                    location: {
-                        formattedAddress: "350 Rhode Island St, San Francisco CA, 94103",
-                        latitude: 37.765363,
-                        longitude: -122.403098,
-                    },
-                    locationDataInput: {
-                        id: "id",
-                    },
-                    locationType: "point",
-                    name: "name",
-                    parentAsset: {
-                        id: "123abcde-4567-8910-1112-fghi1314jklm",
-                        name: "name",
-                    },
-                    runningStatusDataInput: {
-                        id: "12345",
-                    },
-                    tags: [
-                        {
-                            id: "3914",
-                            name: "East Coast",
-                            parentTagId: "4815",
-                        },
-                    ],
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createIndustrialAsset", async () => {
@@ -111,6 +72,13 @@ describe("IndustrialClient", () => {
                 dataOutputs: [
                     {
                         dataGroup: "Control Pressure",
+                        dataInput: {
+                            dataGroup: "Pressure",
+                            id: "123456",
+                            lastPoint: { time: "2020-01-27T07:06:25Z", value: 1992.0506 },
+                            name: "Digital Input 1",
+                            units: "PSI",
+                        },
                         deviceId: "123",
                         id: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                         name: "Digital Output 1",
@@ -131,6 +99,7 @@ describe("IndustrialClient", () => {
                 tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
             },
         };
+
         server
             .mockEndpoint()
             .post("/industrial/assets")
@@ -143,48 +112,7 @@ describe("IndustrialClient", () => {
         const response = await client.industrial.createIndustrialAsset({
             name: "name",
         });
-        expect(response).toEqual({
-            data: {
-                customMetadata: {
-                    manufacturer: "Samsara",
-                    serialNumber: "123ABC",
-                },
-                dataOutputs: [
-                    {
-                        dataGroup: "Control Pressure",
-                        deviceId: "123",
-                        id: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-                        name: "Digital Output 1",
-                    },
-                ],
-                id: "123abcde-4567-8910-1112-fghi1314jklm",
-                isRunning: true,
-                location: {
-                    formattedAddress: "350 Rhode Island St, San Francisco CA, 94103",
-                    latitude: 37.765363,
-                    longitude: -122.403098,
-                },
-                locationDataInput: {
-                    id: "id",
-                },
-                locationType: "point",
-                name: "name",
-                parentAsset: {
-                    id: "123abcde-4567-8910-1112-fghi1314jklm",
-                    name: "name",
-                },
-                runningStatusDataInput: {
-                    id: "12345",
-                },
-                tags: [
-                    {
-                        id: "3914",
-                        name: "East Coast",
-                        parentTagId: "4815",
-                    },
-                ],
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("patchIndustrialAsset", async () => {
@@ -202,6 +130,13 @@ describe("IndustrialClient", () => {
                 dataOutputs: [
                     {
                         dataGroup: "Control Pressure",
+                        dataInput: {
+                            dataGroup: "Pressure",
+                            id: "123456",
+                            lastPoint: { time: "2020-01-27T07:06:25Z", value: 1992.0506 },
+                            name: "Digital Input 1",
+                            units: "PSI",
+                        },
                         deviceId: "123",
                         id: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
                         name: "Digital Output 1",
@@ -222,6 +157,7 @@ describe("IndustrialClient", () => {
                 tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
             },
         };
+
         server
             .mockEndpoint()
             .patch("/industrial/assets/id")
@@ -234,48 +170,7 @@ describe("IndustrialClient", () => {
         const response = await client.industrial.patchIndustrialAsset({
             id: "id",
         });
-        expect(response).toEqual({
-            data: {
-                customMetadata: {
-                    manufacturer: "Samsara",
-                    serialNumber: "123ABC",
-                },
-                dataOutputs: [
-                    {
-                        dataGroup: "Control Pressure",
-                        deviceId: "123",
-                        id: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-                        name: "Digital Output 1",
-                    },
-                ],
-                id: "123abcde-4567-8910-1112-fghi1314jklm",
-                isRunning: true,
-                location: {
-                    formattedAddress: "350 Rhode Island St, San Francisco CA, 94103",
-                    latitude: 37.765363,
-                    longitude: -122.403098,
-                },
-                locationDataInput: {
-                    id: "id",
-                },
-                locationType: "point",
-                name: "name",
-                parentAsset: {
-                    id: "123abcde-4567-8910-1112-fghi1314jklm",
-                    name: "name",
-                },
-                runningStatusDataInput: {
-                    id: "12345",
-                },
-                tags: [
-                    {
-                        id: "3914",
-                        name: "East Coast",
-                        parentTagId: "4815",
-                    },
-                ],
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("patchAssetDataOutputs (1)", async () => {
@@ -296,6 +191,7 @@ describe("IndustrialClient", () => {
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .patch("/industrial/assets/id/data-outputs")
@@ -311,15 +207,7 @@ describe("IndustrialClient", () => {
                 key: "value",
             },
         });
-        expect(response).toEqual({
-            data: [
-                {
-                    errorMessage: "Failed to write to Device: GFRV-43N-VGX",
-                    id: "8a9371af-82d1-4158-bf91-4ecc8d3a114c",
-                    statusCode: 200,
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("patchAssetDataOutputs (2)", async () => {
@@ -332,6 +220,7 @@ describe("IndustrialClient", () => {
         });
         const rawRequestBody = { values: { values: { key: "value" } } };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/industrial/assets/id/data-outputs")
@@ -363,6 +252,7 @@ describe("IndustrialClient", () => {
         });
         const rawRequestBody = { values: { values: { key: "value" } } };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/industrial/assets/id/data-outputs")
@@ -394,6 +284,7 @@ describe("IndustrialClient", () => {
         });
         const rawRequestBody = { values: { values: { key: "value" } } };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/industrial/assets/id/data-outputs")
@@ -425,6 +316,7 @@ describe("IndustrialClient", () => {
         });
         const rawRequestBody = { values: { values: { key: "value" } } };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/industrial/assets/id/data-outputs")
@@ -456,6 +348,7 @@ describe("IndustrialClient", () => {
         });
         const rawRequestBody = { values: { values: { key: "value" } } };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/industrial/assets/id/data-outputs")
@@ -487,6 +380,7 @@ describe("IndustrialClient", () => {
         });
         const rawRequestBody = { values: { values: { key: "value" } } };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/industrial/assets/id/data-outputs")
@@ -518,6 +412,7 @@ describe("IndustrialClient", () => {
         });
         const rawRequestBody = { values: { values: { key: "value" } } };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/industrial/assets/id/data-outputs")
@@ -549,6 +444,7 @@ describe("IndustrialClient", () => {
         });
         const rawRequestBody = { values: { values: { key: "value" } } };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/industrial/assets/id/data-outputs")
@@ -580,6 +476,7 @@ describe("IndustrialClient", () => {
         });
         const rawRequestBody = { values: { values: { key: "value" } } };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/industrial/assets/id/data-outputs")
@@ -611,6 +508,7 @@ describe("IndustrialClient", () => {
         });
         const rawRequestBody = { values: { values: { key: "value" } } };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/industrial/assets/id/data-outputs")
@@ -653,6 +551,7 @@ describe("IndustrialClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/industrial/data-inputs")
@@ -662,21 +561,7 @@ describe("IndustrialClient", () => {
             .build();
 
         const response = await client.industrial.getDataInputs();
-        expect(response).toEqual({
-            data: [
-                {
-                    assetId: "74771078-5edb-4733-88f2-7242f520d1f1",
-                    dataGroup: "Flow",
-                    id: "id",
-                    name: "Pump Flow",
-                    units: "Gallons Per Minute",
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getDataInputDataSnapshot", async () => {
@@ -693,7 +578,25 @@ describe("IndustrialClient", () => {
                 {
                     fftSpectraPoint: { time: "2020-01-27T07:06:25Z" },
                     j1939D1StatusPoint: { time: "2020-01-27T07:06:25Z" },
-                    locationPoint: { time: "2020-01-27T07:06:25Z" },
+                    locationPoint: {
+                        gpsLocation: {
+                            formattedAddress: "350 Rhode Island St, San Francisco CA, 94103",
+                            gpsMetersPerSecond: 35.5,
+                            headingDegrees: 91.2,
+                            latitude: 42.44817,
+                            longitude: -71.224716,
+                            place: {
+                                city: "San Francisco",
+                                houseNumber: "350",
+                                neighborhood: "Castro",
+                                poi: "400",
+                                postcode: "94103",
+                                state: "CA",
+                                street: "Rhode Island",
+                            },
+                        },
+                        time: "2020-01-27T07:06:25Z",
+                    },
                     numberPoint: { time: "2020-01-27T07:06:25Z", value: 1992.0506 },
                     stringPoint: { time: "2020-01-27T07:06:25Z", value: "On" },
                     assetId: "74771078-5edb-4733-88f2-7242f520d1f1",
@@ -705,6 +608,7 @@ describe("IndustrialClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/industrial/data-inputs/data-points")
@@ -714,38 +618,7 @@ describe("IndustrialClient", () => {
             .build();
 
         const response = await client.industrial.getDataInputDataSnapshot();
-        expect(response).toEqual({
-            data: [
-                {
-                    fftSpectraPoint: {
-                        time: "2020-01-27T07:06:25Z",
-                    },
-                    j1939D1StatusPoint: {
-                        time: "2020-01-27T07:06:25Z",
-                    },
-                    locationPoint: {
-                        time: "2020-01-27T07:06:25Z",
-                    },
-                    numberPoint: {
-                        time: "2020-01-27T07:06:25Z",
-                        value: 1992.0506,
-                    },
-                    stringPoint: {
-                        time: "2020-01-27T07:06:25Z",
-                        value: "On",
-                    },
-                    assetId: "74771078-5edb-4733-88f2-7242f520d1f1",
-                    dataGroup: "Flow",
-                    id: "id",
-                    name: "Pump Flow",
-                    units: "Gallons Per Minute",
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getDataInputDataFeed", async () => {
@@ -762,7 +635,27 @@ describe("IndustrialClient", () => {
                 {
                     fftSpectraPoints: [{ time: "2020-01-27T07:06:25Z" }],
                     j1939D1StatusPoints: [{ time: "2020-01-27T07:06:25Z" }],
-                    locationPoints: [{ time: "2020-01-27T07:06:25Z" }],
+                    locationPoints: [
+                        {
+                            gpsLocation: {
+                                formattedAddress: "350 Rhode Island St, San Francisco CA, 94103",
+                                gpsMetersPerSecond: 35.5,
+                                headingDegrees: 91.2,
+                                latitude: 42.44817,
+                                longitude: -71.224716,
+                                place: {
+                                    city: "San Francisco",
+                                    houseNumber: "350",
+                                    neighborhood: "Castro",
+                                    poi: "400",
+                                    postcode: "94103",
+                                    state: "CA",
+                                    street: "Rhode Island",
+                                },
+                            },
+                            time: "2020-01-27T07:06:25Z",
+                        },
+                    ],
                     numberPoints: [{ time: "2020-01-27T07:06:25Z", value: 1992.0506 }],
                     stringPoints: [{ time: "2020-01-27T07:06:25Z", value: "On" }],
                     assetId: "74771078-5edb-4733-88f2-7242f520d1f1",
@@ -774,6 +667,7 @@ describe("IndustrialClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/industrial/data-inputs/data-points/feed")
@@ -783,48 +677,7 @@ describe("IndustrialClient", () => {
             .build();
 
         const response = await client.industrial.getDataInputDataFeed();
-        expect(response).toEqual({
-            data: [
-                {
-                    fftSpectraPoints: [
-                        {
-                            time: "2020-01-27T07:06:25Z",
-                        },
-                    ],
-                    j1939D1StatusPoints: [
-                        {
-                            time: "2020-01-27T07:06:25Z",
-                        },
-                    ],
-                    locationPoints: [
-                        {
-                            time: "2020-01-27T07:06:25Z",
-                        },
-                    ],
-                    numberPoints: [
-                        {
-                            time: "2020-01-27T07:06:25Z",
-                            value: 1992.0506,
-                        },
-                    ],
-                    stringPoints: [
-                        {
-                            time: "2020-01-27T07:06:25Z",
-                            value: "On",
-                        },
-                    ],
-                    assetId: "74771078-5edb-4733-88f2-7242f520d1f1",
-                    dataGroup: "Flow",
-                    id: "id",
-                    name: "Pump Flow",
-                    units: "Gallons Per Minute",
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getDataInputDataHistory", async () => {
@@ -841,7 +694,27 @@ describe("IndustrialClient", () => {
                 {
                     fftSpectraPoints: [{ time: "2020-01-27T07:06:25Z" }],
                     j1939D1StatusPoints: [{ time: "2020-01-27T07:06:25Z" }],
-                    locationPoints: [{ time: "2020-01-27T07:06:25Z" }],
+                    locationPoints: [
+                        {
+                            gpsLocation: {
+                                formattedAddress: "350 Rhode Island St, San Francisco CA, 94103",
+                                gpsMetersPerSecond: 35.5,
+                                headingDegrees: 91.2,
+                                latitude: 42.44817,
+                                longitude: -71.224716,
+                                place: {
+                                    city: "San Francisco",
+                                    houseNumber: "350",
+                                    neighborhood: "Castro",
+                                    poi: "400",
+                                    postcode: "94103",
+                                    state: "CA",
+                                    street: "Rhode Island",
+                                },
+                            },
+                            time: "2020-01-27T07:06:25Z",
+                        },
+                    ],
                     numberPoints: [{ time: "2020-01-27T07:06:25Z", value: 1992.0506 }],
                     stringPoints: [{ time: "2020-01-27T07:06:25Z", value: "On" }],
                     assetId: "74771078-5edb-4733-88f2-7242f520d1f1",
@@ -853,6 +726,7 @@ describe("IndustrialClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/industrial/data-inputs/data-points/history")
@@ -865,48 +739,7 @@ describe("IndustrialClient", () => {
             startTime: "startTime",
             endTime: "endTime",
         });
-        expect(response).toEqual({
-            data: [
-                {
-                    fftSpectraPoints: [
-                        {
-                            time: "2020-01-27T07:06:25Z",
-                        },
-                    ],
-                    j1939D1StatusPoints: [
-                        {
-                            time: "2020-01-27T07:06:25Z",
-                        },
-                    ],
-                    locationPoints: [
-                        {
-                            time: "2020-01-27T07:06:25Z",
-                        },
-                    ],
-                    numberPoints: [
-                        {
-                            time: "2020-01-27T07:06:25Z",
-                            value: 1992.0506,
-                        },
-                    ],
-                    stringPoints: [
-                        {
-                            time: "2020-01-27T07:06:25Z",
-                            value: "On",
-                        },
-                    ],
-                    assetId: "74771078-5edb-4733-88f2-7242f520d1f1",
-                    dataGroup: "Flow",
-                    id: "id",
-                    name: "Pump Flow",
-                    units: "Gallons Per Minute",
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("V1getCameras", async () => {
@@ -921,6 +754,7 @@ describe("IndustrialClient", () => {
         const rawResponseBody = [
             { cameraId: 1234512345999, cameraName: "Line 32", ethernetIp: "10.1.2.34", wifiIp: "10.1.2.35" },
         ];
+
         server
             .mockEndpoint()
             .get("/v1/industrial/vision/cameras")
@@ -930,14 +764,7 @@ describe("IndustrialClient", () => {
             .build();
 
         const response = await client.industrial.v1GetCameras();
-        expect(response).toEqual([
-            {
-                cameraId: 1234512345999,
-                cameraName: "Line 32",
-                ethernetIp: "10.1.2.34",
-                wifiIp: "10.1.2.35",
-            },
-        ]);
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("V1getVisionProgramsByCamera", async () => {
@@ -950,6 +777,7 @@ describe("IndustrialClient", () => {
         });
 
         const rawResponseBody = [{ programId: 1, programName: "Barcode verification program" }];
+
         server
             .mockEndpoint()
             .get("/v1/industrial/vision/cameras/1000000/programs")
@@ -961,12 +789,7 @@ describe("IndustrialClient", () => {
         const response = await client.industrial.v1GetVisionProgramsByCamera({
             camera_id: 1000000,
         });
-        expect(response).toEqual([
-            {
-                programId: 1,
-                programName: "Barcode verification program",
-            },
-        ]);
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("V1getVisionLatestRunCamera", async () => {
@@ -985,7 +808,70 @@ describe("IndustrialClient", () => {
                 {
                     captureAtMs: 1553811994730,
                     result: "PASS",
-                    stepResults: [{ name: "Chicken Caesar Label", result: "PASS" }],
+                    stepResults: [
+                        {
+                            angleCheck: {
+                                angleConfigured: { high: 150, low: 90 },
+                                angleFound: 60,
+                                endStepName: "Edge 2",
+                                startStepName: "Edge 1",
+                            },
+                            barcode: [{ contents: "10855639004823", matchString: "10855639004823", type: "EAN8" }],
+                            booleanLogic: { operator: "AND", steps: [{ name: "Expiration Date", result: "PASS" }] },
+                            caliper: {
+                                angleRange: { high: 360, low: 0 },
+                                contrastRange: { high: 100, low: 50 },
+                                distanceFound: 555.55,
+                                maxDistance: 1000,
+                                minDistance: 500,
+                                sharpnessRange: { high: 100, low: 80 },
+                                straightnessRange: { high: 100, low: 80 },
+                                unit: "Millimeters",
+                            },
+                            contour: { angleDegrees: 0, angleTolerance: 50, matchPercentage: 46, matchThreshold: 18 },
+                            distance: {
+                                endStepName: "Bottom Right Square",
+                                enforceOffsetAngleRange: true,
+                                maxDistance: 900,
+                                maxOffsetAngle: 90,
+                                minDistance: 1500,
+                                minOffsetAngle: 45,
+                                offsetAngleFound: 50,
+                                startStepName: "Top Left Square",
+                                unit: "Millimeters",
+                            },
+                            expirationDate: { dateOffset: 1, foundDate: "06/13/2019", matchDate: "06/13/2019" },
+                            findCopies: { angleTolerance: 10, foundCount: 1, maxCount: 5, minCount: 1, threshold: 70 },
+                            findEdge: {
+                                angleFound: 90,
+                                angleRange: { high: 360, low: 0 },
+                                contrastRange: { high: 100, low: 50 },
+                                filterPolarity: "ANY",
+                                sharpnessPercent: 95,
+                                sharpnessRange: { high: 100, low: 80 },
+                                straightnessFound: 95,
+                                straightnessRange: { high: 100, low: 80 },
+                            },
+                            findShapes: { foundCount: 1, maxCount: 5, minCount: 1 },
+                            fixture: { coordinates: { x: 10, y: 10 }, found: true, rotationDegrees: 90 },
+                            labelMatch: { score: 10, threshold: 10 },
+                            name: "Chicken Caesar Label",
+                            presenceAbsence: {
+                                blueRange: { high: 150, low: 90 },
+                                checkForAbsence: true,
+                                grayscaleRange: { high: 100, low: 20 },
+                                greenRange: { high: 150, low: 90 },
+                                hueRange: { high: 100, low: 20 },
+                                redRange: { high: 150, low: 90 },
+                                saturationRange: { high: 50, low: 10 },
+                                score: 50,
+                                threshold: 50,
+                                valueRange: { high: 50, low: 10 },
+                            },
+                            result: "PASS",
+                            textMatch: { foundText: "ABCD", matchString: "ABCD" },
+                        },
+                    ],
                 },
             ],
             isOngoing: true,
@@ -993,6 +879,7 @@ describe("IndustrialClient", () => {
             runSummary: { itemsPerMinute: 0.1, noReadCount: 0, rejectCount: 0, successCount: 181 },
             startedAtMs: 1553808606097,
         };
+
         server
             .mockEndpoint()
             .get("/v1/industrial/vision/run/camera/1000000")
@@ -1004,34 +891,7 @@ describe("IndustrialClient", () => {
         const response = await client.industrial.v1GetVisionLatestRunCamera({
             camera_id: 1000000,
         });
-        expect(response).toEqual({
-            cameraId: 1234512345123,
-            endedAtMs: 0,
-            inspectionResults: [
-                {
-                    captureAtMs: 1553811994730,
-                    result: "PASS",
-                    stepResults: [
-                        {
-                            name: "Chicken Caesar Label",
-                            result: "PASS",
-                        },
-                    ],
-                },
-            ],
-            isOngoing: true,
-            program: {
-                id: 1,
-                name: "Barcode verification program",
-            },
-            runSummary: {
-                itemsPerMinute: 0.1,
-                noReadCount: 0,
-                rejectCount: 0,
-                successCount: 181,
-            },
-            startedAtMs: 1553808606097,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("V1getVisionRuns", async () => {
@@ -1054,6 +914,7 @@ describe("IndustrialClient", () => {
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .get("/v1/industrial/vision/runs")
@@ -1065,22 +926,7 @@ describe("IndustrialClient", () => {
         const response = await client.industrial.v1GetVisionRuns({
             durationMs: 1000000,
         });
-        expect(response).toEqual({
-            visionRuns: [
-                {
-                    deviceId: 1234512345123,
-                    endedAtMs: 0,
-                    programId: 1,
-                    reportMetadata: {
-                        itemsPerMinute: 0.1,
-                        noReadCount: 181,
-                        rejectCount: 0,
-                        successCount: 181,
-                    },
-                    startedAtMs: 1553808606097,
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getVisionRunsByCamera", async () => {
@@ -1101,6 +947,7 @@ describe("IndustrialClient", () => {
                 startedAtMs: 1553808606097,
             },
         ];
+
         server
             .mockEndpoint()
             .get("/v1/industrial/vision/runs/1000000")
@@ -1113,23 +960,7 @@ describe("IndustrialClient", () => {
             camera_id: 1000000,
             durationMs: 1000000,
         });
-        expect(response).toEqual([
-            {
-                deviceId: 1234512345123,
-                endedAtMs: 0,
-                program: {
-                    id: 1,
-                    name: "Barcode verification program",
-                },
-                reportMetadata: {
-                    itemsPerMinute: 0.1,
-                    noReadCount: 0,
-                    rejectCount: 0,
-                    successCount: 181,
-                },
-                startedAtMs: 1553808606097,
-            },
-        ]);
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("V1getVisionRunsByCameraAndProgram", async () => {
@@ -1150,11 +981,75 @@ describe("IndustrialClient", () => {
                 {
                     captureAtMs: 1553811994730,
                     result: "PASS",
-                    stepResults: [{ name: "Chicken Caesar Label", result: "PASS" }],
+                    stepResults: [
+                        {
+                            angleCheck: {
+                                angleConfigured: { high: 150, low: 90 },
+                                angleFound: 60,
+                                endStepName: "Edge 2",
+                                startStepName: "Edge 1",
+                            },
+                            barcode: [{ contents: "10855639004823", matchString: "10855639004823", type: "EAN8" }],
+                            booleanLogic: { operator: "AND", steps: [{ name: "Expiration Date", result: "PASS" }] },
+                            caliper: {
+                                angleRange: { high: 360, low: 0 },
+                                contrastRange: { high: 100, low: 50 },
+                                distanceFound: 555.55,
+                                maxDistance: 1000,
+                                minDistance: 500,
+                                sharpnessRange: { high: 100, low: 80 },
+                                straightnessRange: { high: 100, low: 80 },
+                                unit: "Millimeters",
+                            },
+                            contour: { angleDegrees: 0, angleTolerance: 50, matchPercentage: 46, matchThreshold: 18 },
+                            distance: {
+                                endStepName: "Bottom Right Square",
+                                enforceOffsetAngleRange: true,
+                                maxDistance: 900,
+                                maxOffsetAngle: 90,
+                                minDistance: 1500,
+                                minOffsetAngle: 45,
+                                offsetAngleFound: 50,
+                                startStepName: "Top Left Square",
+                                unit: "Millimeters",
+                            },
+                            expirationDate: { dateOffset: 1, foundDate: "06/13/2019", matchDate: "06/13/2019" },
+                            findCopies: { angleTolerance: 10, foundCount: 1, maxCount: 5, minCount: 1, threshold: 70 },
+                            findEdge: {
+                                angleFound: 90,
+                                angleRange: { high: 360, low: 0 },
+                                contrastRange: { high: 100, low: 50 },
+                                filterPolarity: "ANY",
+                                sharpnessPercent: 95,
+                                sharpnessRange: { high: 100, low: 80 },
+                                straightnessFound: 95,
+                                straightnessRange: { high: 100, low: 80 },
+                            },
+                            findShapes: { foundCount: 1, maxCount: 5, minCount: 1 },
+                            fixture: { coordinates: { x: 10, y: 10 }, found: true, rotationDegrees: 90 },
+                            labelMatch: { score: 10, threshold: 10 },
+                            name: "Chicken Caesar Label",
+                            presenceAbsence: {
+                                blueRange: { high: 150, low: 90 },
+                                checkForAbsence: true,
+                                grayscaleRange: { high: 100, low: 20 },
+                                greenRange: { high: 150, low: 90 },
+                                hueRange: { high: 100, low: 20 },
+                                redRange: { high: 150, low: 90 },
+                                saturationRange: { high: 50, low: 10 },
+                                score: 50,
+                                threshold: 50,
+                                valueRange: { high: 50, low: 10 },
+                            },
+                            result: "PASS",
+                            textMatch: { foundText: "ABCD", matchString: "ABCD" },
+                        },
+                    ],
                 },
             ],
             startedAtMs: 1553808606097,
         };
+
         server
             .mockEndpoint()
             .get("/v1/industrial/vision/runs/1000000/1000000/1000000")
@@ -1168,30 +1063,7 @@ describe("IndustrialClient", () => {
             program_id: 1000000,
             started_at_ms: 1000000,
         });
-        expect(response).toEqual({
-            deviceId: 1234512345123,
-            endedAtMs: 0,
-            programId: 1,
-            reportMetadata: {
-                itemsPerMinute: 0.1,
-                noReadCount: 0,
-                rejectCount: 0,
-                successCount: 181,
-            },
-            results: [
-                {
-                    captureAtMs: 1553811994730,
-                    result: "PASS",
-                    stepResults: [
-                        {
-                            name: "Chicken Caesar Label",
-                            result: "PASS",
-                        },
-                    ],
-                },
-            ],
-            startedAtMs: 1553808606097,
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("V1getMachinesHistory", async () => {
@@ -1208,6 +1080,7 @@ describe("IndustrialClient", () => {
                 { id: 1, name: "1/3 HP Motor", vibrations: [{ X: 0.01, Y: 1.23, Z: 2.55, time: 1453449599999 }] },
             ],
         };
+
         server
             .mockEndpoint()
             .post("/v1/machines/history")
@@ -1221,22 +1094,7 @@ describe("IndustrialClient", () => {
             endMs: 1462881998034,
             startMs: 1462878398034,
         });
-        expect(response).toEqual({
-            machines: [
-                {
-                    id: 1,
-                    name: "1/3 HP Motor",
-                    vibrations: [
-                        {
-                            X: 0.01,
-                            Y: 1.23,
-                            Z: 2.55,
-                            time: 1453449599999,
-                        },
-                    ],
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("V1getMachines", async () => {
@@ -1251,17 +1109,10 @@ describe("IndustrialClient", () => {
         const rawResponseBody = {
             machines: [{ id: 123, name: "Freezer ABC", notes: "This is in the left hallway behind the conveyor belt" }],
         };
+
         server.mockEndpoint().post("/v1/machines/list").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.industrial.v1GetMachines();
-        expect(response).toEqual({
-            machines: [
-                {
-                    id: 123,
-                    name: "Freezer ABC",
-                    notes: "This is in the left hallway behind the conveyor belt",
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 });

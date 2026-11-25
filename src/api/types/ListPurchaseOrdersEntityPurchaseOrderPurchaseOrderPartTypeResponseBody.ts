@@ -14,6 +14,8 @@ export interface ListPurchaseOrdersEntityPurchaseOrderPurchaseOrderPartTypeRespo
     /** Stable identifier for the purchase order line. */
     lineItemId?: string | undefined;
     partSamsara?: Samsara.EntityListPurchaseOrdersPartDefinitionRefTypeResponseBody | undefined;
+    partsRequest?: Samsara.EntityListPurchaseOrdersRequisitionRefTypeResponseBody | undefined;
+    partsRequestLine?: Samsara.EntityListPurchaseOrdersRequisitionLineRefTypeResponseBody | undefined;
     place?: Samsara.EntityListPurchaseOrdersPlaceRefTypeResponseBody | undefined;
     /** Quantity ordered on this line. */
     quantityOrdered?: number | undefined;

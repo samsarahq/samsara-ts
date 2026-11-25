@@ -27,37 +27,11 @@ describe("EquipmentClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server.mockEndpoint().get("/fleet/equipment").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.equipment.listEquipment();
-        expect(response).toEqual({
-            data: [
-                {
-                    assetSerial: "1FUJA6BD31LJ09646",
-                    externalIds: {
-                        maintenanceId: "250020",
-                        payrollId: "ABFS18600",
-                    },
-                    id: "112",
-                    installedGateway: {
-                        model: "Ag26",
-                    },
-                    name: "Crane A7",
-                    notes: "These are notes about this given equipment.",
-                    tags: [
-                        {
-                            id: "3914",
-                            name: "East Coast",
-                            parentTagId: "4815",
-                        },
-                    ],
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getEquipmentLocations", async () => {
@@ -85,6 +59,7 @@ describe("EquipmentClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/fleet/equipment/locations")
@@ -94,25 +69,7 @@ describe("EquipmentClient", () => {
             .build();
 
         const response = await client.equipment.getEquipmentLocations();
-        expect(response).toEqual({
-            data: [
-                {
-                    id: "112",
-                    location: {
-                        heading: 120,
-                        latitude: 122.142,
-                        longitude: -93.343,
-                        speed: 48.3,
-                        time: "2020-01-27T07:06:25Z",
-                    },
-                    name: "Crane A7",
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getEquipmentLocationsFeed", async () => {
@@ -142,6 +99,7 @@ describe("EquipmentClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/fleet/equipment/locations/feed")
@@ -151,27 +109,7 @@ describe("EquipmentClient", () => {
             .build();
 
         const response = await client.equipment.getEquipmentLocationsFeed();
-        expect(response).toEqual({
-            data: [
-                {
-                    id: "112",
-                    locations: [
-                        {
-                            heading: 120,
-                            latitude: 122.142,
-                            longitude: -93.343,
-                            speed: 48.3,
-                            time: "2020-01-27T07:06:25Z",
-                        },
-                    ],
-                    name: "Crane A7",
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getEquipmentLocationsHistory", async () => {
@@ -201,6 +139,7 @@ describe("EquipmentClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/fleet/equipment/locations/history")
@@ -213,27 +152,7 @@ describe("EquipmentClient", () => {
             startTime: "startTime",
             endTime: "endTime",
         });
-        expect(response).toEqual({
-            data: [
-                {
-                    id: "112",
-                    locations: [
-                        {
-                            heading: 120,
-                            latitude: 122.142,
-                            longitude: -93.343,
-                            speed: 48.3,
-                            time: "2020-01-27T07:06:25Z",
-                        },
-                    ],
-                    name: "Crane A7",
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getEquipmentStats", async () => {
@@ -248,54 +167,32 @@ describe("EquipmentClient", () => {
         const rawResponseBody = {
             data: [
                 {
-                    engineRpm: { time: "time", value: 1000000 },
-                    engineSeconds: { time: "time", value: 1000000 },
-                    engineState: { time: "time", value: "Off" },
-                    engineTotalIdleTimeMinutes: { time: "time", value: 1000000 },
-                    fuelPercent: { time: "time", value: 1000000 },
-                    gatewayEngineSeconds: { time: "time", value: 1000000 },
-                    gatewayEngineState: { time: "time", value: "Off" },
+                    engineRpm: { time: "2019-05-03T04:30:31Z", value: 1800 },
+                    engineSeconds: { time: "2019-05-03T04:30:31Z", value: 22374000 },
+                    engineState: { time: "2019-05-03T04:30:31Z", value: "Off" },
+                    engineTotalIdleTimeMinutes: { time: "2019-05-03T04:30:31Z", value: 1000 },
+                    fuelPercent: { time: "2019-05-03T04:30:31Z", value: 54 },
+                    gatewayEngineSeconds: { time: "2019-05-03T04:30:31Z", value: 22374000 },
+                    gatewayEngineState: { time: "2019-05-03T04:30:31Z", value: "Off" },
                     gps: {
-                        address: { id: "id", name: "name" },
-                        headingDegrees: 1.1,
-                        latitude: 1.1,
-                        longitude: 1.1,
-                        reverseGeo: { formattedLocation: "formattedLocation" },
-                        speedMilesPerHour: 1.1,
-                        time: "time",
+                        address: { id: "123", name: "Main Distribution Warehouse" },
+                        headingDegrees: 120,
+                        latitude: 122.142,
+                        longitude: -93.343,
+                        reverseGeo: { formattedLocation: "16 N Fair Oaks Ave, Pasadena, CA 91103" },
+                        speedMilesPerHour: 48.3,
+                        time: "2020-01-27T07:06:25Z",
                     },
-                    gpsOdometerMeters: { time: "time", value: 1000000 },
-                    id: "id",
-                    name: "name",
-                    obdEngineSeconds: { time: "time", value: 1000000 },
-                    obdEngineState: { time: "time", value: "Off" },
-                },
-                {
-                    engineRpm: { time: "time", value: 1000000 },
-                    engineSeconds: { time: "time", value: 1000000 },
-                    engineState: { time: "time", value: "Off" },
-                    engineTotalIdleTimeMinutes: { time: "time", value: 1000000 },
-                    fuelPercent: { time: "time", value: 1000000 },
-                    gatewayEngineSeconds: { time: "time", value: 1000000 },
-                    gatewayEngineState: { time: "time", value: "Off" },
-                    gps: {
-                        address: { id: "id", name: "name" },
-                        headingDegrees: 1.1,
-                        latitude: 1.1,
-                        longitude: 1.1,
-                        reverseGeo: { formattedLocation: "formattedLocation" },
-                        speedMilesPerHour: 1.1,
-                        time: "time",
-                    },
-                    gpsOdometerMeters: { time: "time", value: 1000000 },
-                    id: "id",
-                    name: "name",
-                    obdEngineSeconds: { time: "time", value: 1000000 },
-                    obdEngineState: { time: "time", value: "Off" },
+                    gpsOdometerMeters: { time: "2019-05-03T04:30:31Z", value: 3200 },
+                    id: "112",
+                    name: "Crane A7",
+                    obdEngineSeconds: { time: "2019-05-03T04:30:31Z", value: 22374000 },
+                    obdEngineState: { time: "2019-05-03T04:30:31Z", value: "Off" },
                 },
             ],
-            pagination: { endCursor: "endCursor", hasNextPage: true },
+            pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/fleet/equipment/stats")
@@ -304,131 +201,10 @@ describe("EquipmentClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.equipment.getEquipmentStats();
-        expect(response).toEqual({
-            data: [
-                {
-                    engineRpm: {
-                        time: "time",
-                        value: 1000000,
-                    },
-                    engineSeconds: {
-                        time: "time",
-                        value: 1000000,
-                    },
-                    engineState: {
-                        time: "time",
-                        value: "Off",
-                    },
-                    engineTotalIdleTimeMinutes: {
-                        time: "time",
-                        value: 1000000,
-                    },
-                    fuelPercent: {
-                        time: "time",
-                        value: 1000000,
-                    },
-                    gatewayEngineSeconds: {
-                        time: "time",
-                        value: 1000000,
-                    },
-                    gatewayEngineState: {
-                        time: "time",
-                        value: "Off",
-                    },
-                    gps: {
-                        address: {
-                            id: "id",
-                            name: "name",
-                        },
-                        headingDegrees: 1.1,
-                        latitude: 1.1,
-                        longitude: 1.1,
-                        reverseGeo: {
-                            formattedLocation: "formattedLocation",
-                        },
-                        speedMilesPerHour: 1.1,
-                        time: "time",
-                    },
-                    gpsOdometerMeters: {
-                        time: "time",
-                        value: 1000000,
-                    },
-                    id: "id",
-                    name: "name",
-                    obdEngineSeconds: {
-                        time: "time",
-                        value: 1000000,
-                    },
-                    obdEngineState: {
-                        time: "time",
-                        value: "Off",
-                    },
-                },
-                {
-                    engineRpm: {
-                        time: "time",
-                        value: 1000000,
-                    },
-                    engineSeconds: {
-                        time: "time",
-                        value: 1000000,
-                    },
-                    engineState: {
-                        time: "time",
-                        value: "Off",
-                    },
-                    engineTotalIdleTimeMinutes: {
-                        time: "time",
-                        value: 1000000,
-                    },
-                    fuelPercent: {
-                        time: "time",
-                        value: 1000000,
-                    },
-                    gatewayEngineSeconds: {
-                        time: "time",
-                        value: 1000000,
-                    },
-                    gatewayEngineState: {
-                        time: "time",
-                        value: "Off",
-                    },
-                    gps: {
-                        address: {
-                            id: "id",
-                            name: "name",
-                        },
-                        headingDegrees: 1.1,
-                        latitude: 1.1,
-                        longitude: 1.1,
-                        reverseGeo: {
-                            formattedLocation: "formattedLocation",
-                        },
-                        speedMilesPerHour: 1.1,
-                        time: "time",
-                    },
-                    gpsOdometerMeters: {
-                        time: "time",
-                        value: 1000000,
-                    },
-                    id: "id",
-                    name: "name",
-                    obdEngineSeconds: {
-                        time: "time",
-                        value: 1000000,
-                    },
-                    obdEngineState: {
-                        time: "time",
-                        value: "Off",
-                    },
-                },
-            ],
-            pagination: {
-                endCursor: "endCursor",
-                hasNextPage: true,
-            },
+        const response = await client.equipment.getEquipmentStats({
+            types: ["gatewayEngineStates"],
         });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getEquipmentStatsFeed", async () => {
@@ -443,144 +219,35 @@ describe("EquipmentClient", () => {
         const rawResponseBody = {
             data: [
                 {
-                    engineRpm: [
-                        { time: "time", value: 1000000 },
-                        { time: "time", value: 1000000 },
-                    ],
-                    engineSeconds: [
-                        { time: "time", value: 1000000 },
-                        { time: "time", value: 1000000 },
-                    ],
-                    engineStates: [
-                        { time: "time", value: "Off" },
-                        { time: "time", value: "Off" },
-                    ],
-                    engineTotalIdleTimeMinutes: [
-                        { time: "time", value: 1000000 },
-                        { time: "time", value: 1000000 },
-                    ],
-                    fuelPercents: [
-                        { time: "time", value: 1000000 },
-                        { time: "time", value: 1000000 },
-                    ],
-                    gatewayEngineSeconds: [
-                        { time: "time", value: 1000000 },
-                        { time: "time", value: 1000000 },
-                    ],
-                    gatewayEngineStates: [
-                        { time: "time", value: "Off" },
-                        { time: "time", value: "Off" },
-                    ],
-                    gatewayJ1939EngineSeconds: [
-                        { time: "time", value: 1000000 },
-                        { time: "time", value: 1000000 },
-                    ],
+                    engineRpm: [{ time: "2019-05-03T04:30:31Z", value: 1800 }],
+                    engineSeconds: [{ time: "2019-05-03T04:30:31Z", value: 22374000 }],
+                    engineStates: [{ time: "2019-05-03T04:30:31Z", value: "Off" }],
+                    engineTotalIdleTimeMinutes: [{ time: "2019-05-03T04:30:31Z", value: 1000 }],
+                    fuelPercents: [{ time: "2019-05-03T04:30:31Z", value: 54 }],
+                    gatewayEngineSeconds: [{ time: "2019-05-03T04:30:31Z", value: 22374000 }],
+                    gatewayEngineStates: [{ time: "2019-05-03T04:30:31Z", value: "Off" }],
+                    gatewayJ1939EngineSeconds: [{ time: "2019-05-03T04:30:31Z", value: 22374000 }],
                     gps: [
                         {
-                            address: { id: "id", name: "name" },
-                            headingDegrees: 1.1,
-                            latitude: 1.1,
-                            longitude: 1.1,
-                            reverseGeo: { formattedLocation: "formattedLocation" },
-                            speedMilesPerHour: 1.1,
-                            time: "time",
-                        },
-                        {
-                            address: { id: "id", name: "name" },
-                            headingDegrees: 1.1,
-                            latitude: 1.1,
-                            longitude: 1.1,
-                            reverseGeo: { formattedLocation: "formattedLocation" },
-                            speedMilesPerHour: 1.1,
-                            time: "time",
+                            address: { id: "123", name: "Main Distribution Warehouse" },
+                            headingDegrees: 120,
+                            latitude: 122.142,
+                            longitude: -93.343,
+                            reverseGeo: { formattedLocation: "16 N Fair Oaks Ave, Pasadena, CA 91103" },
+                            speedMilesPerHour: 48.3,
+                            time: "2020-01-27T07:06:25Z",
                         },
                     ],
-                    gpsOdometerMeters: [
-                        { time: "time", value: 1000000 },
-                        { time: "time", value: 1000000 },
-                    ],
-                    id: "id",
-                    name: "name",
-                    obdEngineSeconds: [
-                        { time: "time", value: 1000000 },
-                        { time: "time", value: 1000000 },
-                    ],
-                    obdEngineStates: [
-                        { time: "time", value: "Off" },
-                        { time: "time", value: "Off" },
-                    ],
-                },
-                {
-                    engineRpm: [
-                        { time: "time", value: 1000000 },
-                        { time: "time", value: 1000000 },
-                    ],
-                    engineSeconds: [
-                        { time: "time", value: 1000000 },
-                        { time: "time", value: 1000000 },
-                    ],
-                    engineStates: [
-                        { time: "time", value: "Off" },
-                        { time: "time", value: "Off" },
-                    ],
-                    engineTotalIdleTimeMinutes: [
-                        { time: "time", value: 1000000 },
-                        { time: "time", value: 1000000 },
-                    ],
-                    fuelPercents: [
-                        { time: "time", value: 1000000 },
-                        { time: "time", value: 1000000 },
-                    ],
-                    gatewayEngineSeconds: [
-                        { time: "time", value: 1000000 },
-                        { time: "time", value: 1000000 },
-                    ],
-                    gatewayEngineStates: [
-                        { time: "time", value: "Off" },
-                        { time: "time", value: "Off" },
-                    ],
-                    gatewayJ1939EngineSeconds: [
-                        { time: "time", value: 1000000 },
-                        { time: "time", value: 1000000 },
-                    ],
-                    gps: [
-                        {
-                            address: { id: "id", name: "name" },
-                            headingDegrees: 1.1,
-                            latitude: 1.1,
-                            longitude: 1.1,
-                            reverseGeo: { formattedLocation: "formattedLocation" },
-                            speedMilesPerHour: 1.1,
-                            time: "time",
-                        },
-                        {
-                            address: { id: "id", name: "name" },
-                            headingDegrees: 1.1,
-                            latitude: 1.1,
-                            longitude: 1.1,
-                            reverseGeo: { formattedLocation: "formattedLocation" },
-                            speedMilesPerHour: 1.1,
-                            time: "time",
-                        },
-                    ],
-                    gpsOdometerMeters: [
-                        { time: "time", value: 1000000 },
-                        { time: "time", value: 1000000 },
-                    ],
-                    id: "id",
-                    name: "name",
-                    obdEngineSeconds: [
-                        { time: "time", value: 1000000 },
-                        { time: "time", value: 1000000 },
-                    ],
-                    obdEngineStates: [
-                        { time: "time", value: "Off" },
-                        { time: "time", value: "Off" },
-                    ],
+                    gpsOdometerMeters: [{ time: "2019-05-03T04:30:31Z", value: 3200 }],
+                    id: "112",
+                    name: "Crane A7",
+                    obdEngineSeconds: [{ time: "2019-05-03T04:30:31Z", value: 22374000 }],
+                    obdEngineStates: [{ time: "2019-05-03T04:30:31Z", value: "Off" }],
                 },
             ],
-            pagination: { endCursor: "endCursor", hasNextPage: true },
+            pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/fleet/equipment/stats/feed")
@@ -589,303 +256,10 @@ describe("EquipmentClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.equipment.getEquipmentStatsFeed();
-        expect(response).toEqual({
-            data: [
-                {
-                    engineRpm: [
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                    ],
-                    engineSeconds: [
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                    ],
-                    engineStates: [
-                        {
-                            time: "time",
-                            value: "Off",
-                        },
-                        {
-                            time: "time",
-                            value: "Off",
-                        },
-                    ],
-                    engineTotalIdleTimeMinutes: [
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                    ],
-                    fuelPercents: [
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                    ],
-                    gatewayEngineSeconds: [
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                    ],
-                    gatewayEngineStates: [
-                        {
-                            time: "time",
-                            value: "Off",
-                        },
-                        {
-                            time: "time",
-                            value: "Off",
-                        },
-                    ],
-                    gatewayJ1939EngineSeconds: [
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                    ],
-                    gps: [
-                        {
-                            address: {
-                                id: "id",
-                                name: "name",
-                            },
-                            headingDegrees: 1.1,
-                            latitude: 1.1,
-                            longitude: 1.1,
-                            reverseGeo: {
-                                formattedLocation: "formattedLocation",
-                            },
-                            speedMilesPerHour: 1.1,
-                            time: "time",
-                        },
-                        {
-                            address: {
-                                id: "id",
-                                name: "name",
-                            },
-                            headingDegrees: 1.1,
-                            latitude: 1.1,
-                            longitude: 1.1,
-                            reverseGeo: {
-                                formattedLocation: "formattedLocation",
-                            },
-                            speedMilesPerHour: 1.1,
-                            time: "time",
-                        },
-                    ],
-                    gpsOdometerMeters: [
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                    ],
-                    id: "id",
-                    name: "name",
-                    obdEngineSeconds: [
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                    ],
-                    obdEngineStates: [
-                        {
-                            time: "time",
-                            value: "Off",
-                        },
-                        {
-                            time: "time",
-                            value: "Off",
-                        },
-                    ],
-                },
-                {
-                    engineRpm: [
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                    ],
-                    engineSeconds: [
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                    ],
-                    engineStates: [
-                        {
-                            time: "time",
-                            value: "Off",
-                        },
-                        {
-                            time: "time",
-                            value: "Off",
-                        },
-                    ],
-                    engineTotalIdleTimeMinutes: [
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                    ],
-                    fuelPercents: [
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                    ],
-                    gatewayEngineSeconds: [
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                    ],
-                    gatewayEngineStates: [
-                        {
-                            time: "time",
-                            value: "Off",
-                        },
-                        {
-                            time: "time",
-                            value: "Off",
-                        },
-                    ],
-                    gatewayJ1939EngineSeconds: [
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                    ],
-                    gps: [
-                        {
-                            address: {
-                                id: "id",
-                                name: "name",
-                            },
-                            headingDegrees: 1.1,
-                            latitude: 1.1,
-                            longitude: 1.1,
-                            reverseGeo: {
-                                formattedLocation: "formattedLocation",
-                            },
-                            speedMilesPerHour: 1.1,
-                            time: "time",
-                        },
-                        {
-                            address: {
-                                id: "id",
-                                name: "name",
-                            },
-                            headingDegrees: 1.1,
-                            latitude: 1.1,
-                            longitude: 1.1,
-                            reverseGeo: {
-                                formattedLocation: "formattedLocation",
-                            },
-                            speedMilesPerHour: 1.1,
-                            time: "time",
-                        },
-                    ],
-                    gpsOdometerMeters: [
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                    ],
-                    id: "id",
-                    name: "name",
-                    obdEngineSeconds: [
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                    ],
-                    obdEngineStates: [
-                        {
-                            time: "time",
-                            value: "Off",
-                        },
-                        {
-                            time: "time",
-                            value: "Off",
-                        },
-                    ],
-                },
-            ],
-            pagination: {
-                endCursor: "endCursor",
-                hasNextPage: true,
-            },
+        const response = await client.equipment.getEquipmentStatsFeed({
+            types: ["gatewayEngineStates"],
         });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getEquipmentStatsHistory", async () => {
@@ -900,144 +274,35 @@ describe("EquipmentClient", () => {
         const rawResponseBody = {
             data: [
                 {
-                    engineRpm: [
-                        { time: "time", value: 1000000 },
-                        { time: "time", value: 1000000 },
-                    ],
-                    engineSeconds: [
-                        { time: "time", value: 1000000 },
-                        { time: "time", value: 1000000 },
-                    ],
-                    engineStates: [
-                        { time: "time", value: "Off" },
-                        { time: "time", value: "Off" },
-                    ],
-                    engineTotalIdleTimeMinutes: [
-                        { time: "time", value: 1000000 },
-                        { time: "time", value: 1000000 },
-                    ],
-                    fuelPercents: [
-                        { time: "time", value: 1000000 },
-                        { time: "time", value: 1000000 },
-                    ],
-                    gatewayEngineSeconds: [
-                        { time: "time", value: 1000000 },
-                        { time: "time", value: 1000000 },
-                    ],
-                    gatewayEngineStates: [
-                        { time: "time", value: "Off" },
-                        { time: "time", value: "Off" },
-                    ],
-                    gatewayJ1939EngineSeconds: [
-                        { time: "time", value: 1000000 },
-                        { time: "time", value: 1000000 },
-                    ],
+                    engineRpm: [{ time: "2019-05-03T04:30:31Z", value: 1800 }],
+                    engineSeconds: [{ time: "2019-05-03T04:30:31Z", value: 22374000 }],
+                    engineStates: [{ time: "2019-05-03T04:30:31Z", value: "Off" }],
+                    engineTotalIdleTimeMinutes: [{ time: "2019-05-03T04:30:31Z", value: 1000 }],
+                    fuelPercents: [{ time: "2019-05-03T04:30:31Z", value: 54 }],
+                    gatewayEngineSeconds: [{ time: "2019-05-03T04:30:31Z", value: 22374000 }],
+                    gatewayEngineStates: [{ time: "2019-05-03T04:30:31Z", value: "Off" }],
+                    gatewayJ1939EngineSeconds: [{ time: "2019-05-03T04:30:31Z", value: 22374000 }],
                     gps: [
                         {
-                            address: { id: "id", name: "name" },
-                            headingDegrees: 1.1,
-                            latitude: 1.1,
-                            longitude: 1.1,
-                            reverseGeo: { formattedLocation: "formattedLocation" },
-                            speedMilesPerHour: 1.1,
-                            time: "time",
-                        },
-                        {
-                            address: { id: "id", name: "name" },
-                            headingDegrees: 1.1,
-                            latitude: 1.1,
-                            longitude: 1.1,
-                            reverseGeo: { formattedLocation: "formattedLocation" },
-                            speedMilesPerHour: 1.1,
-                            time: "time",
+                            address: { id: "123", name: "Main Distribution Warehouse" },
+                            headingDegrees: 120,
+                            latitude: 122.142,
+                            longitude: -93.343,
+                            reverseGeo: { formattedLocation: "16 N Fair Oaks Ave, Pasadena, CA 91103" },
+                            speedMilesPerHour: 48.3,
+                            time: "2020-01-27T07:06:25Z",
                         },
                     ],
-                    gpsOdometerMeters: [
-                        { time: "time", value: 1000000 },
-                        { time: "time", value: 1000000 },
-                    ],
-                    id: "id",
-                    name: "name",
-                    obdEngineSeconds: [
-                        { time: "time", value: 1000000 },
-                        { time: "time", value: 1000000 },
-                    ],
-                    obdEngineStates: [
-                        { time: "time", value: "Off" },
-                        { time: "time", value: "Off" },
-                    ],
-                },
-                {
-                    engineRpm: [
-                        { time: "time", value: 1000000 },
-                        { time: "time", value: 1000000 },
-                    ],
-                    engineSeconds: [
-                        { time: "time", value: 1000000 },
-                        { time: "time", value: 1000000 },
-                    ],
-                    engineStates: [
-                        { time: "time", value: "Off" },
-                        { time: "time", value: "Off" },
-                    ],
-                    engineTotalIdleTimeMinutes: [
-                        { time: "time", value: 1000000 },
-                        { time: "time", value: 1000000 },
-                    ],
-                    fuelPercents: [
-                        { time: "time", value: 1000000 },
-                        { time: "time", value: 1000000 },
-                    ],
-                    gatewayEngineSeconds: [
-                        { time: "time", value: 1000000 },
-                        { time: "time", value: 1000000 },
-                    ],
-                    gatewayEngineStates: [
-                        { time: "time", value: "Off" },
-                        { time: "time", value: "Off" },
-                    ],
-                    gatewayJ1939EngineSeconds: [
-                        { time: "time", value: 1000000 },
-                        { time: "time", value: 1000000 },
-                    ],
-                    gps: [
-                        {
-                            address: { id: "id", name: "name" },
-                            headingDegrees: 1.1,
-                            latitude: 1.1,
-                            longitude: 1.1,
-                            reverseGeo: { formattedLocation: "formattedLocation" },
-                            speedMilesPerHour: 1.1,
-                            time: "time",
-                        },
-                        {
-                            address: { id: "id", name: "name" },
-                            headingDegrees: 1.1,
-                            latitude: 1.1,
-                            longitude: 1.1,
-                            reverseGeo: { formattedLocation: "formattedLocation" },
-                            speedMilesPerHour: 1.1,
-                            time: "time",
-                        },
-                    ],
-                    gpsOdometerMeters: [
-                        { time: "time", value: 1000000 },
-                        { time: "time", value: 1000000 },
-                    ],
-                    id: "id",
-                    name: "name",
-                    obdEngineSeconds: [
-                        { time: "time", value: 1000000 },
-                        { time: "time", value: 1000000 },
-                    ],
-                    obdEngineStates: [
-                        { time: "time", value: "Off" },
-                        { time: "time", value: "Off" },
-                    ],
+                    gpsOdometerMeters: [{ time: "2019-05-03T04:30:31Z", value: 3200 }],
+                    id: "112",
+                    name: "Crane A7",
+                    obdEngineSeconds: [{ time: "2019-05-03T04:30:31Z", value: 22374000 }],
+                    obdEngineStates: [{ time: "2019-05-03T04:30:31Z", value: "Off" }],
                 },
             ],
-            pagination: { endCursor: "endCursor", hasNextPage: true },
+            pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/fleet/equipment/stats/history")
@@ -1049,303 +314,9 @@ describe("EquipmentClient", () => {
         const response = await client.equipment.getEquipmentStatsHistory({
             startTime: "startTime",
             endTime: "endTime",
+            types: ["gatewayEngineStates"],
         });
-        expect(response).toEqual({
-            data: [
-                {
-                    engineRpm: [
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                    ],
-                    engineSeconds: [
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                    ],
-                    engineStates: [
-                        {
-                            time: "time",
-                            value: "Off",
-                        },
-                        {
-                            time: "time",
-                            value: "Off",
-                        },
-                    ],
-                    engineTotalIdleTimeMinutes: [
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                    ],
-                    fuelPercents: [
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                    ],
-                    gatewayEngineSeconds: [
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                    ],
-                    gatewayEngineStates: [
-                        {
-                            time: "time",
-                            value: "Off",
-                        },
-                        {
-                            time: "time",
-                            value: "Off",
-                        },
-                    ],
-                    gatewayJ1939EngineSeconds: [
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                    ],
-                    gps: [
-                        {
-                            address: {
-                                id: "id",
-                                name: "name",
-                            },
-                            headingDegrees: 1.1,
-                            latitude: 1.1,
-                            longitude: 1.1,
-                            reverseGeo: {
-                                formattedLocation: "formattedLocation",
-                            },
-                            speedMilesPerHour: 1.1,
-                            time: "time",
-                        },
-                        {
-                            address: {
-                                id: "id",
-                                name: "name",
-                            },
-                            headingDegrees: 1.1,
-                            latitude: 1.1,
-                            longitude: 1.1,
-                            reverseGeo: {
-                                formattedLocation: "formattedLocation",
-                            },
-                            speedMilesPerHour: 1.1,
-                            time: "time",
-                        },
-                    ],
-                    gpsOdometerMeters: [
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                    ],
-                    id: "id",
-                    name: "name",
-                    obdEngineSeconds: [
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                    ],
-                    obdEngineStates: [
-                        {
-                            time: "time",
-                            value: "Off",
-                        },
-                        {
-                            time: "time",
-                            value: "Off",
-                        },
-                    ],
-                },
-                {
-                    engineRpm: [
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                    ],
-                    engineSeconds: [
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                    ],
-                    engineStates: [
-                        {
-                            time: "time",
-                            value: "Off",
-                        },
-                        {
-                            time: "time",
-                            value: "Off",
-                        },
-                    ],
-                    engineTotalIdleTimeMinutes: [
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                    ],
-                    fuelPercents: [
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                    ],
-                    gatewayEngineSeconds: [
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                    ],
-                    gatewayEngineStates: [
-                        {
-                            time: "time",
-                            value: "Off",
-                        },
-                        {
-                            time: "time",
-                            value: "Off",
-                        },
-                    ],
-                    gatewayJ1939EngineSeconds: [
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                    ],
-                    gps: [
-                        {
-                            address: {
-                                id: "id",
-                                name: "name",
-                            },
-                            headingDegrees: 1.1,
-                            latitude: 1.1,
-                            longitude: 1.1,
-                            reverseGeo: {
-                                formattedLocation: "formattedLocation",
-                            },
-                            speedMilesPerHour: 1.1,
-                            time: "time",
-                        },
-                        {
-                            address: {
-                                id: "id",
-                                name: "name",
-                            },
-                            headingDegrees: 1.1,
-                            latitude: 1.1,
-                            longitude: 1.1,
-                            reverseGeo: {
-                                formattedLocation: "formattedLocation",
-                            },
-                            speedMilesPerHour: 1.1,
-                            time: "time",
-                        },
-                    ],
-                    gpsOdometerMeters: [
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                    ],
-                    id: "id",
-                    name: "name",
-                    obdEngineSeconds: [
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                        {
-                            time: "time",
-                            value: 1000000,
-                        },
-                    ],
-                    obdEngineStates: [
-                        {
-                            time: "time",
-                            value: "Off",
-                        },
-                        {
-                            time: "time",
-                            value: "Off",
-                        },
-                    ],
-                },
-            ],
-            pagination: {
-                endCursor: "endCursor",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getEquipment", async () => {
@@ -1368,6 +339,7 @@ describe("EquipmentClient", () => {
                 tags: [{ id: "3914", name: "East Coast", parentTagId: "4815" }],
             },
         };
+
         server
             .mockEndpoint()
             .get("/fleet/equipment/id")
@@ -1379,28 +351,6 @@ describe("EquipmentClient", () => {
         const response = await client.equipment.getEquipment({
             id: "id",
         });
-        expect(response).toEqual({
-            data: {
-                assetSerial: "1FUJA6BD31LJ09646",
-                externalIds: {
-                    maintenanceId: "250020",
-                    payrollId: "ABFS18600",
-                },
-                id: "112",
-                installedGateway: {
-                    model: "Ag26",
-                    serial: "serial",
-                },
-                name: "Crane A7",
-                notes: "These are notes about this given equipment.",
-                tags: [
-                    {
-                        id: "3914",
-                        name: "East Coast",
-                        parentTagId: "4815",
-                    },
-                ],
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 });

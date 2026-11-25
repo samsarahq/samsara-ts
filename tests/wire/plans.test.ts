@@ -24,6 +24,7 @@ describe("PlansClient", () => {
                 updatedAt: "2024-04-10T10:30:00Z",
             },
         };
+
         server
             .mockEndpoint()
             .post("/hub/plan")
@@ -37,16 +38,7 @@ describe("PlansClient", () => {
             hubId: "550e8400-e29b-41d4-a716-446655440000",
             name: "Weekly Plan - Week 15",
         });
-        expect(response).toEqual({
-            data: {
-                createdAt: "2024-04-10T10:30:00Z",
-                hubId: "550e8400-e29b-41d4-a716-446655440000",
-                id: "950e8400-e29b-41d4-a716-446655440005",
-                name: "Weekly Plan - Week 15",
-                shiftStartTime: "2024-04-15T09:00:00Z",
-                updatedAt: "2024-04-10T10:30:00Z",
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createHubPlan (2)", async () => {
@@ -59,6 +51,7 @@ describe("PlansClient", () => {
         });
         const rawRequestBody = { hubId: "hubId", name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/hub/plan")
@@ -86,6 +79,7 @@ describe("PlansClient", () => {
         });
         const rawRequestBody = { hubId: "hubId", name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/hub/plan")
@@ -113,6 +107,7 @@ describe("PlansClient", () => {
         });
         const rawRequestBody = { hubId: "hubId", name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/hub/plan")
@@ -140,6 +135,7 @@ describe("PlansClient", () => {
         });
         const rawRequestBody = { hubId: "hubId", name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/hub/plan")
@@ -167,6 +163,7 @@ describe("PlansClient", () => {
         });
         const rawRequestBody = { hubId: "hubId", name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/hub/plan")
@@ -194,6 +191,7 @@ describe("PlansClient", () => {
         });
         const rawRequestBody = { hubId: "hubId", name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/hub/plan")
@@ -221,6 +219,7 @@ describe("PlansClient", () => {
         });
         const rawRequestBody = { hubId: "hubId", name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/hub/plan")
@@ -248,6 +247,7 @@ describe("PlansClient", () => {
         });
         const rawRequestBody = { hubId: "hubId", name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/hub/plan")
@@ -275,6 +275,7 @@ describe("PlansClient", () => {
         });
         const rawRequestBody = { hubId: "hubId", name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/hub/plan")
@@ -302,6 +303,7 @@ describe("PlansClient", () => {
         });
         const rawRequestBody = { hubId: "hubId", name: "name" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/hub/plan")
@@ -372,11 +374,16 @@ describe("PlansClient", () => {
                     priority: 1,
                     quantities: [{ capacityId: "850e8400-e29b-41d4-a716-446655440003", quantity: 25.5 }],
                     routeId: "950e8400-e29b-41d4-a716-446655440005",
-                    skillsRequired: ["650e8400-e29b-41d4-a716-446655440001", "650e8400-e29b-41d4-a716-446655440001"],
+                    skillsRequired: [
+                        "650e8400-e29b-41d4-a716-446655440001",
+                        "650e8400-e29b-41d4-a716-446655440001",
+                        "650e8400-e29b-41d4-a716-446655440001",
+                    ],
                     updatedAtTime: "2024-04-10T11:30:00Z",
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .post("/hub/plan/orders")
@@ -395,58 +402,7 @@ describe("PlansClient", () => {
                 },
             ],
         });
-        expect(response).toEqual({
-            data: [
-                {
-                    createdAtTime: "2024-04-10T11:30:00Z",
-                    customProperties: [
-                        {
-                            customPropertyId: "750e8400-e29b-41d4-a716-446655440004",
-                            name: "CustomerType",
-                            value: "Premium",
-                        },
-                    ],
-                    customerOrderId: "ORDER-2024-001",
-                    delivery: {
-                        address: "123 Business Way, San Francisco",
-                        appointmentWindow: {
-                            endTime: "2024-04-10T17:00:00Z",
-                            startTime: "2024-04-10T09:00:00Z",
-                        },
-                        customerLocationId: "LOC-123",
-                        latitude: 37.7749,
-                        longitude: -122.4194,
-                        notes: "Use main entrance",
-                        serviceTimeSeconds: 600,
-                    },
-                    hubId: "550e8400-e29b-41d4-a716-446655440000",
-                    id: "a50e8400-e29b-41d4-a716-446655440006",
-                    pickup: {
-                        address: "123 Business Way, San Francisco",
-                        appointmentWindow: {
-                            endTime: "2024-04-10T17:00:00Z",
-                            startTime: "2024-04-10T09:00:00Z",
-                        },
-                        customerLocationId: "LOC-123",
-                        latitude: 37.7749,
-                        longitude: -122.4194,
-                        notes: "Use main entrance",
-                        serviceTimeSeconds: 600,
-                    },
-                    planId: "650e8400-e29b-41d4-a716-446655440023",
-                    priority: 1,
-                    quantities: [
-                        {
-                            capacityId: "850e8400-e29b-41d4-a716-446655440003",
-                            quantity: 25.5,
-                        },
-                    ],
-                    routeId: "950e8400-e29b-41d4-a716-446655440005",
-                    skillsRequired: ["650e8400-e29b-41d4-a716-446655440001", "650e8400-e29b-41d4-a716-446655440001"],
-                    updatedAtTime: "2024-04-10T11:30:00Z",
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createPlanOrders (2)", async () => {
@@ -464,6 +420,7 @@ describe("PlansClient", () => {
             ],
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/hub/plan/orders")
@@ -506,6 +463,7 @@ describe("PlansClient", () => {
             ],
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/hub/plan/orders")
@@ -548,6 +506,7 @@ describe("PlansClient", () => {
             ],
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/hub/plan/orders")
@@ -590,6 +549,7 @@ describe("PlansClient", () => {
             ],
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/hub/plan/orders")
@@ -632,6 +592,7 @@ describe("PlansClient", () => {
             ],
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/hub/plan/orders")
@@ -674,6 +635,7 @@ describe("PlansClient", () => {
             ],
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/hub/plan/orders")
@@ -716,6 +678,7 @@ describe("PlansClient", () => {
             ],
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/hub/plan/orders")
@@ -758,6 +721,7 @@ describe("PlansClient", () => {
             ],
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/hub/plan/orders")
@@ -800,6 +764,7 @@ describe("PlansClient", () => {
             ],
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/hub/plan/orders")
@@ -842,6 +807,7 @@ describe("PlansClient", () => {
             ],
         };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/hub/plan/orders")
@@ -891,27 +857,13 @@ describe("PlansClient", () => {
             ],
             pagination: { endCursor: "YXJyYXljb25uZWN0aW9uOjEwMA==", hasNextPage: false },
         };
+
         server.mockEndpoint().get("/hub/plans").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.plans.listHubPlans({
             hubId: "hubId",
         });
-        expect(response).toEqual({
-            data: [
-                {
-                    createdAt: "2024-04-10T10:30:00Z",
-                    hubId: "550e8400-e29b-41d4-a716-446655440000",
-                    id: "950e8400-e29b-41d4-a716-446655440005",
-                    name: "Weekly Plan - Week 15",
-                    shiftStartTime: "2024-04-15T09:00:00Z",
-                    updatedAt: "2024-04-10T10:30:00Z",
-                },
-            ],
-            pagination: {
-                endCursor: "YXJyYXljb25uZWN0aW9uOjEwMA==",
-                hasNextPage: false,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("listHubPlans (2)", async () => {
@@ -924,6 +876,7 @@ describe("PlansClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/hub/plans").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -943,6 +896,7 @@ describe("PlansClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/hub/plans").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -962,6 +916,7 @@ describe("PlansClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/hub/plans").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -981,6 +936,7 @@ describe("PlansClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/hub/plans").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1000,6 +956,7 @@ describe("PlansClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/hub/plans").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1019,6 +976,7 @@ describe("PlansClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/hub/plans").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1038,6 +996,7 @@ describe("PlansClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/hub/plans").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1057,6 +1016,7 @@ describe("PlansClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/hub/plans").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1076,6 +1036,7 @@ describe("PlansClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/hub/plans").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -1095,6 +1056,7 @@ describe("PlansClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/hub/plans").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
 
         await expect(async () => {

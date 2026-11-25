@@ -25,6 +25,8 @@ export interface CoachingSessionsResponseResponseBody {
     sessionNote?: string | undefined;
     /** Status for the coaching session.  Valid values: `unknown`, `upcoming`, `completed`, `deleted` */
     sessionStatus: CoachingSessionsResponseResponseBody.SessionStatus;
+    /** Type of the coaching session. This is distinct from coachingType, which is the share type. Returned as unknown when the session has no valid type.  Valid values: `driverSelfOneOff`, `driverSelfSession`, `oneOff`, `session`, `unknown` */
+    sessionType?: CoachingSessionsResponseResponseBody.SessionType | undefined;
     /** Time coaching session was updated in UTC. */
     updatedAtTime: string;
 }
@@ -47,4 +49,13 @@ export namespace CoachingSessionsResponseResponseBody {
         Deleted: "deleted",
     } as const;
     export type SessionStatus = (typeof SessionStatus)[keyof typeof SessionStatus];
+    /** Type of the coaching session. This is distinct from coachingType, which is the share type. Returned as unknown when the session has no valid type.  Valid values: `driverSelfOneOff`, `driverSelfSession`, `oneOff`, `session`, `unknown` */
+    export const SessionType = {
+        DriverSelfOneOff: "driverSelfOneOff",
+        DriverSelfSession: "driverSelfSession",
+        OneOff: "oneOff",
+        Session: "session",
+        Unknown: "unknown",
+    } as const;
+    export type SessionType = (typeof SessionType)[keyof typeof SessionType];
 }

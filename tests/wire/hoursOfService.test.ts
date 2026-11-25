@@ -17,6 +17,16 @@ describe("HoursOfServiceClient", () => {
         const rawResponseBody = {
             data: [
                 {
+                    clocks: {
+                        break: { timeUntilBreakDurationMs: 28800000 },
+                        cycle: {
+                            cycleRemainingDurationMs: 252000000,
+                            cycleStartedAtTime: "2020-01-27T07:06:25Z",
+                            cycleTomorrowDurationMs: 252000000,
+                        },
+                        drive: { driveRemainingDurationMs: 39600000 },
+                        shift: { shiftRemainingDurationMs: 50400000 },
+                    },
                     currentVehicle: {
                         ExternalIds: { maintenanceId: "250020", payrollId: "ABFS18600" },
                         id: "123456789",
@@ -28,35 +38,11 @@ describe("HoursOfServiceClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server.mockEndpoint().get("/fleet/hos/clocks").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.hoursOfService.getHosClocks();
-        expect(response).toEqual({
-            data: [
-                {
-                    currentVehicle: {
-                        ExternalIds: {
-                            maintenanceId: "250020",
-                            payrollId: "ABFS18600",
-                        },
-                        id: "123456789",
-                        name: "Midwest Truck #4",
-                    },
-                    driver: {
-                        id: "88668",
-                        name: "Susan Bob",
-                    },
-                    violations: {
-                        cycleViolationDurationMs: 39600000,
-                        shiftDrivingViolationDurationMs: 39600000,
-                    },
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getHosDailyLogs (1)", async () => {
@@ -76,65 +62,8 @@ describe("HoursOfServiceClient", () => {
                         personalConveyanceDistanceMeters: 27358,
                         yardMoveDistanceMeters: 1287,
                     },
-                    driver: { id: "45646", name: "Driver Bob", timezone: "America/Los_Angeles" },
-                    dutyStatusDurations: {
-                        activeDurationMs: 38825000,
-                        driveDurationMs: 31970000,
-                        offDutyDurationMs: 20555000,
-                        onDutyDurationMs: 5423000,
-                        personalConveyanceDurationMs: 4358000,
-                        sleeperBerthDurationMs: 27020000,
-                        waitingTimeDurationMs: 1560000,
-                        yardMoveDurationMs: 1432000,
-                    },
-                    endTime: "2019-06-20T19:08:25Z",
-                    logMetaData: {
-                        adverseDrivingClaimed: true,
-                        bigDayClaimed: false,
-                        carrierFormattedAddress: "1990 Alameda Street, San Francisco, CA 94103",
-                        carrierName: "Carrier Name",
-                        carrierUsDotNumber: 1234,
-                        certifiedAtTime: "2020-01-01T06:00:00Z",
-                        homeTerminalFormattedAddress: "1990 Alameda Street, San Francisco, CA 94103",
-                        homeTerminalName: "Home Terminal Name",
-                        isCertified: false,
-                        isUsShortHaulActive: true,
-                        shippingDocs: "Delivery 123, chips and soda",
-                        trailerNames: ["10293", "Trailer ID 1"],
-                    },
-                    pendingDutyStatusDurations: {
-                        activeDurationMs: 38825000,
-                        driveDurationMs: 31970000,
-                        offDutyDurationMs: 20555000,
-                        onDutyDurationMs: 5423000,
-                        personalConveyanceDurationMs: 4358000,
-                        sleeperBerthDurationMs: 27020000,
-                        waitingTimeDurationMs: 1560000,
-                        yardMoveDurationMs: 1432000,
-                    },
-                    startTime: "2019-06-13T19:08:25Z",
-                },
-            ],
-            pagination: { endCursor: "MjkY", hasNextPage: true },
-        };
-        server
-            .mockEndpoint()
-            .get("/fleet/hos/daily-logs")
-            .respondWith()
-            .statusCode(200)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        const response = await client.hoursOfService.getHosDailyLogs();
-        expect(response).toEqual({
-            data: [
-                {
-                    distanceTraveled: {
-                        driveDistanceMeters: 796625,
-                        personalConveyanceDistanceMeters: 27358,
-                        yardMoveDistanceMeters: 1287,
-                    },
                     driver: {
+                        eldSettings: { rulesets: [{ jurisdiction: "AR" }] },
                         id: "45646",
                         name: "Driver Bob",
                         timezone: "America/Los_Angeles",
@@ -163,6 +92,14 @@ describe("HoursOfServiceClient", () => {
                         isUsShortHaulActive: true,
                         shippingDocs: "Delivery 123, chips and soda",
                         trailerNames: ["10293", "Trailer ID 1"],
+                        vehicles: [
+                            {
+                                id: "494123",
+                                licensePlate: "6SAM123",
+                                name: "Fleet Truck #1",
+                                vehicleVin: "1GBJ6P1B2HV112765",
+                            },
+                        ],
                     },
                     pendingDutyStatusDurations: {
                         activeDurationMs: 38825000,
@@ -177,11 +114,19 @@ describe("HoursOfServiceClient", () => {
                     startTime: "2019-06-13T19:08:25Z",
                 },
             ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+            pagination: { endCursor: "MjkY", hasNextPage: true },
+        };
+
+        server
+            .mockEndpoint()
+            .get("/fleet/hos/daily-logs")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.hoursOfService.getHosDailyLogs();
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getHosDailyLogs (2)", async () => {
@@ -194,6 +139,7 @@ describe("HoursOfServiceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/hos/daily-logs")
@@ -217,6 +163,7 @@ describe("HoursOfServiceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/hos/daily-logs")
@@ -240,6 +187,7 @@ describe("HoursOfServiceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/hos/daily-logs")
@@ -263,6 +211,7 @@ describe("HoursOfServiceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/hos/daily-logs")
@@ -286,6 +235,7 @@ describe("HoursOfServiceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/hos/daily-logs")
@@ -309,6 +259,7 @@ describe("HoursOfServiceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/hos/daily-logs")
@@ -332,6 +283,7 @@ describe("HoursOfServiceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/hos/daily-logs")
@@ -355,6 +307,7 @@ describe("HoursOfServiceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/hos/daily-logs")
@@ -378,6 +331,7 @@ describe("HoursOfServiceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/hos/daily-logs")
@@ -401,6 +355,7 @@ describe("HoursOfServiceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/hos/daily-logs")
@@ -429,44 +384,27 @@ describe("HoursOfServiceClient", () => {
                     driver: { id: "88668", name: "Susan Bob" },
                     hosLogs: [
                         {
+                            codrivers: [{ id: "88668", name: "Susan Bob" }],
                             logEndTime: "2020-01-27T07:06:25Z",
                             logRecordedLocation: { latitude: 122.142, longitude: -93.343 },
                             logStartTime: "2020-01-27T07:06:25Z",
                             remark: "Lunch Break",
+                            vehicle: {
+                                ExternalIds: { maintenanceId: "250020", payrollId: "ABFS18600" },
+                                id: "123456789",
+                                name: "Midwest Truck #4",
+                            },
                         },
                     ],
                 },
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server.mockEndpoint().get("/fleet/hos/logs").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.hoursOfService.getHosLogs();
-        expect(response).toEqual({
-            data: [
-                {
-                    driver: {
-                        id: "88668",
-                        name: "Susan Bob",
-                    },
-                    hosLogs: [
-                        {
-                            logEndTime: "2020-01-27T07:06:25Z",
-                            logRecordedLocation: {
-                                latitude: 122.142,
-                                longitude: -93.343,
-                            },
-                            logStartTime: "2020-01-27T07:06:25Z",
-                            remark: "Lunch Break",
-                        },
-                    ],
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getHosViolations (1)", async () => {
@@ -495,6 +433,7 @@ describe("HoursOfServiceClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/fleet/hos/violations")
@@ -504,32 +443,7 @@ describe("HoursOfServiceClient", () => {
             .build();
 
         const response = await client.hoursOfService.getHosViolations();
-        expect(response).toEqual({
-            data: [
-                {
-                    violations: [
-                        {
-                            day: {
-                                endTime: "2019-06-14T12:00:00Z",
-                                startTime: "2019-06-13T12:00:00Z",
-                            },
-                            description: "Daily Off-Duty Time (Canada South-10 hours)",
-                            driver: {
-                                id: "45646",
-                                name: "Driver Bob",
-                            },
-                            durationMs: 31970000,
-                            type: "NONE",
-                            violationStartTime: "2019-06-13T19:08:25Z",
-                        },
-                    ],
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getHosViolations (2)", async () => {
@@ -542,6 +456,7 @@ describe("HoursOfServiceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/hos/violations")
@@ -565,6 +480,7 @@ describe("HoursOfServiceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/hos/violations")
@@ -588,6 +504,7 @@ describe("HoursOfServiceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/hos/violations")
@@ -611,6 +528,7 @@ describe("HoursOfServiceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/hos/violations")
@@ -634,6 +552,7 @@ describe("HoursOfServiceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/hos/violations")
@@ -657,6 +576,7 @@ describe("HoursOfServiceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/hos/violations")
@@ -680,6 +600,7 @@ describe("HoursOfServiceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/hos/violations")
@@ -703,6 +624,7 @@ describe("HoursOfServiceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/hos/violations")
@@ -726,6 +648,7 @@ describe("HoursOfServiceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/hos/violations")
@@ -749,6 +672,7 @@ describe("HoursOfServiceClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/fleet/hos/violations")
@@ -785,6 +709,7 @@ describe("HoursOfServiceClient", () => {
                 trailerNames: ["10293", "Trailer ID 1"],
             },
         };
+
         server
             .mockEndpoint()
             .patch("/hos/daily-logs/log-meta-data")
@@ -799,20 +724,7 @@ describe("HoursOfServiceClient", () => {
             driverID: "driverID",
             shippingDocs: "ShippingID1, ShippingID2",
         });
-        expect(response).toEqual({
-            data: {
-                adverseDrivingClaimed: false,
-                bigDayClaimed: false,
-                carrierFormattedAddress: "1990 Alameda Street, San Francisco, CA 94103",
-                carrierName: "Carrier Name",
-                carrierUsDotNumber: 1234,
-                homeTerminalFormattedAddress: "1990 Alameda Street, San Francisco, CA 94103",
-                homeTerminalName: "Home Terminal Name",
-                isCertified: true,
-                isUsShortHaulActive: false,
-                trailerNames: ["10293", "Trailer ID 1"],
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("updateShippingDocs (2)", async () => {
@@ -825,6 +737,7 @@ describe("HoursOfServiceClient", () => {
         });
         const rawRequestBody = { shippingDocs: "shippingDocs" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/hos/daily-logs/log-meta-data")
@@ -853,6 +766,7 @@ describe("HoursOfServiceClient", () => {
         });
         const rawRequestBody = { shippingDocs: "shippingDocs" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/hos/daily-logs/log-meta-data")
@@ -881,6 +795,7 @@ describe("HoursOfServiceClient", () => {
         });
         const rawRequestBody = { shippingDocs: "shippingDocs" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/hos/daily-logs/log-meta-data")
@@ -909,6 +824,7 @@ describe("HoursOfServiceClient", () => {
         });
         const rawRequestBody = { shippingDocs: "shippingDocs" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/hos/daily-logs/log-meta-data")
@@ -937,6 +853,7 @@ describe("HoursOfServiceClient", () => {
         });
         const rawRequestBody = { shippingDocs: "shippingDocs" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/hos/daily-logs/log-meta-data")
@@ -965,6 +882,7 @@ describe("HoursOfServiceClient", () => {
         });
         const rawRequestBody = { shippingDocs: "shippingDocs" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/hos/daily-logs/log-meta-data")
@@ -993,6 +911,7 @@ describe("HoursOfServiceClient", () => {
         });
         const rawRequestBody = { shippingDocs: "shippingDocs" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/hos/daily-logs/log-meta-data")
@@ -1021,6 +940,7 @@ describe("HoursOfServiceClient", () => {
         });
         const rawRequestBody = { shippingDocs: "shippingDocs" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/hos/daily-logs/log-meta-data")
@@ -1049,6 +969,7 @@ describe("HoursOfServiceClient", () => {
         });
         const rawRequestBody = { shippingDocs: "shippingDocs" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/hos/daily-logs/log-meta-data")
@@ -1077,6 +998,7 @@ describe("HoursOfServiceClient", () => {
         });
         const rawRequestBody = { shippingDocs: "shippingDocs" };
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/hos/daily-logs/log-meta-data")
@@ -1141,6 +1063,7 @@ describe("HoursOfServiceClient", () => {
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .get("/v1/fleet/hos_authentication_logs")
@@ -1154,17 +1077,6 @@ describe("HoursOfServiceClient", () => {
             startMs: 1000000,
             endMs: 1000000,
         });
-        expect(response).toEqual({
-            authenticationLogs: [
-                {
-                    actionType: "signin",
-                    address: "THIS FIELD MAY NOT BE POPULATED",
-                    addressName: "THIS FIELD MAY NOT BE POPULATED",
-                    city: "THIS FIELD MAY NOT BE POPULATED",
-                    happenedAtMs: 1462881998034,
-                    state: "THIS FIELD MAY NOT BE POPULATED",
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 });

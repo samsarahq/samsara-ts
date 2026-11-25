@@ -35,7 +35,9 @@ export class VehicleStatsClient {
      * @param {VehicleStatsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.vehicleStats.getVehicleStats()
+     *     await client.vehicleStats.getVehicleStats({
+     *         types: ["ambientAirTemperatureMilliC"]
+     *     })
      */
     public getVehicleStats(
         request: Samsara.GetVehicleStatsRequest = {},
@@ -73,7 +75,15 @@ export class VehicleStatsClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .add("parentTagIds", _queryParams.parentTagIds, { style: "comma" })
+                .add("tagIds", _queryParams.tagIds, { style: "comma" })
+                .add("vehicleIds", _queryParams.vehicleIds, { style: "comma" })
+                .add("types", _queryParams.types, { style: "comma" })
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -114,7 +124,9 @@ export class VehicleStatsClient {
      * @param {VehicleStatsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.vehicleStats.getVehicleStatsFeed()
+     *     await client.vehicleStats.getVehicleStatsFeed({
+     *         types: ["ambientAirTemperatureMilliC"]
+     *     })
      */
     public getVehicleStatsFeed(
         request: Samsara.GetVehicleStatsFeedRequest = {},
@@ -156,7 +168,16 @@ export class VehicleStatsClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .add("parentTagIds", _queryParams.parentTagIds, { style: "comma" })
+                .add("tagIds", _queryParams.tagIds, { style: "comma" })
+                .add("vehicleIds", _queryParams.vehicleIds, { style: "comma" })
+                .add("types", _queryParams.types, { style: "comma" })
+                .add("decorations", _queryParams.decorations, { style: "comma" })
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -193,7 +214,8 @@ export class VehicleStatsClient {
      * @example
      *     await client.vehicleStats.getVehicleStatsHistory({
      *         startTime: "startTime",
-     *         endTime: "endTime"
+     *         endTime: "endTime",
+     *         types: ["ambientAirTemperatureMilliC"]
      *     })
      */
     public getVehicleStatsHistory(
@@ -238,7 +260,16 @@ export class VehicleStatsClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .add("parentTagIds", _queryParams.parentTagIds, { style: "comma" })
+                .add("tagIds", _queryParams.tagIds, { style: "comma" })
+                .add("vehicleIds", _queryParams.vehicleIds, { style: "comma" })
+                .add("types", _queryParams.types, { style: "comma" })
+                .add("decorations", _queryParams.decorations, { style: "comma" })
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,

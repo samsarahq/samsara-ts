@@ -17,25 +17,20 @@ describe("TrainingAssignmentsClient", () => {
         const rawResponseBody = {
             data: [
                 {
-                    course: { id: "id", revisionId: "revisionId" },
-                    createdAtTime: "2024-01-15T09:30:00Z",
-                    createdById: "createdById",
-                    dueAtTime: "2024-01-15T09:30:00Z",
-                    id: "id",
+                    course: {
+                        id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
+                        revisionId: "1214a1fa-f0c6-408b-bf85-51dc3bc71ac7",
+                    },
+                    createdAtTime: "2019-06-13T19:08:25Z",
+                    createdById: "user-4392",
+                    dueAtTime: "2019-06-13T19:08:25Z",
+                    id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
                     isExistingAssignment: true,
-                    learner: { id: "id", type: "unknown" },
-                },
-                {
-                    course: { id: "id", revisionId: "revisionId" },
-                    createdAtTime: "2024-01-15T09:30:00Z",
-                    createdById: "createdById",
-                    dueAtTime: "2024-01-15T09:30:00Z",
-                    id: "id",
-                    isExistingAssignment: true,
-                    learner: { id: "id", type: "unknown" },
+                    learner: { id: "938172", type: "unknown" },
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .post("/training-assignments")
@@ -47,41 +42,9 @@ describe("TrainingAssignmentsClient", () => {
         const response = await client.trainingAssignments.postTrainingAssignments({
             courseId: "courseId",
             dueAtTime: "dueAtTime",
+            learnerIds: ["learnerIds"],
         });
-        expect(response).toEqual({
-            data: [
-                {
-                    course: {
-                        id: "id",
-                        revisionId: "revisionId",
-                    },
-                    createdAtTime: "2024-01-15T09:30:00Z",
-                    createdById: "createdById",
-                    dueAtTime: "2024-01-15T09:30:00Z",
-                    id: "id",
-                    isExistingAssignment: true,
-                    learner: {
-                        id: "id",
-                        type: "unknown",
-                    },
-                },
-                {
-                    course: {
-                        id: "id",
-                        revisionId: "revisionId",
-                    },
-                    createdAtTime: "2024-01-15T09:30:00Z",
-                    createdById: "createdById",
-                    dueAtTime: "2024-01-15T09:30:00Z",
-                    id: "id",
-                    isExistingAssignment: true,
-                    learner: {
-                        id: "id",
-                        type: "unknown",
-                    },
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("postTrainingAssignments (2)", async () => {
@@ -94,6 +57,7 @@ describe("TrainingAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/training-assignments")
@@ -120,6 +84,7 @@ describe("TrainingAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/training-assignments")
@@ -146,6 +111,7 @@ describe("TrainingAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/training-assignments")
@@ -172,6 +138,7 @@ describe("TrainingAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/training-assignments")
@@ -198,6 +165,7 @@ describe("TrainingAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/training-assignments")
@@ -224,6 +192,7 @@ describe("TrainingAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/training-assignments")
@@ -250,6 +219,7 @@ describe("TrainingAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/training-assignments")
@@ -276,6 +246,7 @@ describe("TrainingAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/training-assignments")
@@ -302,6 +273,7 @@ describe("TrainingAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/training-assignments")
@@ -328,6 +300,7 @@ describe("TrainingAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/training-assignments")
@@ -355,7 +328,9 @@ describe("TrainingAssignmentsClient", () => {
 
         server.mockEndpoint().delete("/training-assignments").respondWith().statusCode(200).build();
 
-        const response = await client.trainingAssignments.deleteTrainingAssignments();
+        const response = await client.trainingAssignments.deleteTrainingAssignments({
+            ids: ["ids"],
+        });
         expect(response).toEqual(undefined);
     });
 
@@ -369,6 +344,7 @@ describe("TrainingAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/training-assignments")
@@ -392,6 +368,7 @@ describe("TrainingAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/training-assignments")
@@ -415,6 +392,7 @@ describe("TrainingAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/training-assignments")
@@ -438,6 +416,7 @@ describe("TrainingAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/training-assignments")
@@ -461,6 +440,7 @@ describe("TrainingAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/training-assignments")
@@ -484,6 +464,7 @@ describe("TrainingAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/training-assignments")
@@ -507,6 +488,7 @@ describe("TrainingAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/training-assignments")
@@ -530,6 +512,7 @@ describe("TrainingAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/training-assignments")
@@ -553,6 +536,7 @@ describe("TrainingAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/training-assignments")
@@ -576,6 +560,7 @@ describe("TrainingAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .delete("/training-assignments")
@@ -601,43 +586,29 @@ describe("TrainingAssignmentsClient", () => {
         const rawResponseBody = {
             data: [
                 {
-                    completedAtTime: "2024-01-15T09:30:00Z",
-                    course: { id: "id", revisionId: "revisionId" },
-                    createdAtTime: "2024-01-15T09:30:00Z",
-                    createdById: "createdById",
-                    deletedAtTime: "2024-01-15T09:30:00Z",
-                    dueAtTime: "2024-01-15T09:30:00Z",
-                    durationMinutes: 1000000,
-                    id: "id",
+                    completedAtTime: "2019-06-13T19:08:25Z",
+                    course: {
+                        id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
+                        revisionId: "1214a1fa-f0c6-408b-bf85-51dc3bc71ac7",
+                    },
+                    createdAtTime: "2019-06-13T19:08:25Z",
+                    createdById: "user-4392",
+                    deletedAtTime: "2019-06-13T19:08:25Z",
+                    dueAtTime: "2019-06-13T19:08:25Z",
+                    durationMinutes: 1590488180977115400,
+                    id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
                     isCompletedLate: true,
                     isOverdue: true,
-                    learner: { id: "id", type: "unknown" },
-                    scorePercent: 1.1,
-                    startedAtTime: "2024-01-15T09:30:00Z",
+                    learner: { id: "938172", type: "unknown" },
+                    scorePercent: 0.3127833256817915,
+                    startedAtTime: "2019-06-13T19:08:25Z",
                     status: "notStarted",
-                    updatedAtTime: "2024-01-15T09:30:00Z",
-                    updatedById: "updatedById",
-                },
-                {
-                    completedAtTime: "2024-01-15T09:30:00Z",
-                    course: { id: "id", revisionId: "revisionId" },
-                    createdAtTime: "2024-01-15T09:30:00Z",
-                    createdById: "createdById",
-                    deletedAtTime: "2024-01-15T09:30:00Z",
-                    dueAtTime: "2024-01-15T09:30:00Z",
-                    durationMinutes: 1000000,
-                    id: "id",
-                    isCompletedLate: true,
-                    isOverdue: true,
-                    learner: { id: "id", type: "unknown" },
-                    scorePercent: 1.1,
-                    startedAtTime: "2024-01-15T09:30:00Z",
-                    status: "notStarted",
-                    updatedAtTime: "2024-01-15T09:30:00Z",
-                    updatedById: "updatedById",
+                    updatedAtTime: "2019-06-13T19:08:25Z",
+                    updatedById: "user-3112",
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .patch("/training-assignments")
@@ -647,60 +618,10 @@ describe("TrainingAssignmentsClient", () => {
             .build();
 
         const response = await client.trainingAssignments.patchTrainingAssignments({
+            ids: ["ids"],
             dueAtTime: "dueAtTime",
         });
-        expect(response).toEqual({
-            data: [
-                {
-                    completedAtTime: "2024-01-15T09:30:00Z",
-                    course: {
-                        id: "id",
-                        revisionId: "revisionId",
-                    },
-                    createdAtTime: "2024-01-15T09:30:00Z",
-                    createdById: "createdById",
-                    deletedAtTime: "2024-01-15T09:30:00Z",
-                    dueAtTime: "2024-01-15T09:30:00Z",
-                    durationMinutes: 1000000,
-                    id: "id",
-                    isCompletedLate: true,
-                    isOverdue: true,
-                    learner: {
-                        id: "id",
-                        type: "unknown",
-                    },
-                    scorePercent: 1.1,
-                    startedAtTime: "2024-01-15T09:30:00Z",
-                    status: "notStarted",
-                    updatedAtTime: "2024-01-15T09:30:00Z",
-                    updatedById: "updatedById",
-                },
-                {
-                    completedAtTime: "2024-01-15T09:30:00Z",
-                    course: {
-                        id: "id",
-                        revisionId: "revisionId",
-                    },
-                    createdAtTime: "2024-01-15T09:30:00Z",
-                    createdById: "createdById",
-                    deletedAtTime: "2024-01-15T09:30:00Z",
-                    dueAtTime: "2024-01-15T09:30:00Z",
-                    durationMinutes: 1000000,
-                    id: "id",
-                    isCompletedLate: true,
-                    isOverdue: true,
-                    learner: {
-                        id: "id",
-                        type: "unknown",
-                    },
-                    scorePercent: 1.1,
-                    startedAtTime: "2024-01-15T09:30:00Z",
-                    status: "notStarted",
-                    updatedAtTime: "2024-01-15T09:30:00Z",
-                    updatedById: "updatedById",
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("patchTrainingAssignments (2)", async () => {
@@ -713,6 +634,7 @@ describe("TrainingAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/training-assignments")
@@ -738,6 +660,7 @@ describe("TrainingAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/training-assignments")
@@ -763,6 +686,7 @@ describe("TrainingAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/training-assignments")
@@ -788,6 +712,7 @@ describe("TrainingAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/training-assignments")
@@ -813,6 +738,7 @@ describe("TrainingAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/training-assignments")
@@ -838,6 +764,7 @@ describe("TrainingAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/training-assignments")
@@ -863,6 +790,7 @@ describe("TrainingAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/training-assignments")
@@ -888,6 +816,7 @@ describe("TrainingAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/training-assignments")
@@ -913,6 +842,7 @@ describe("TrainingAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/training-assignments")
@@ -938,6 +868,7 @@ describe("TrainingAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/training-assignments")
@@ -974,12 +905,12 @@ describe("TrainingAssignmentsClient", () => {
                     createdById: "user-4392",
                     deletedAtTime: "2019-06-13T19:08:25Z",
                     dueAtTime: "2019-06-13T19:08:25Z",
-                    durationMinutes: 8499960619502581000,
+                    durationMinutes: 1590488180977115400,
                     id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
                     isCompletedLate: true,
                     isOverdue: true,
                     learner: { id: "938172", type: "unknown" },
-                    scorePercent: 0.008239265796686357,
+                    scorePercent: 0.3127833256817915,
                     startedAtTime: "2019-06-13T19:08:25Z",
                     status: "notStarted",
                     updatedAtTime: "2019-06-13T19:08:25Z",
@@ -988,6 +919,7 @@ describe("TrainingAssignmentsClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/training-assignments/stream")
@@ -999,38 +931,7 @@ describe("TrainingAssignmentsClient", () => {
         const response = await client.trainingAssignments.getTrainingAssignmentsStream({
             startTime: "startTime",
         });
-        expect(response).toEqual({
-            data: [
-                {
-                    completedAtTime: "2019-06-13T19:08:25Z",
-                    course: {
-                        id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                        revisionId: "1214a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                    },
-                    createdAtTime: "2019-06-13T19:08:25Z",
-                    createdById: "user-4392",
-                    deletedAtTime: "2019-06-13T19:08:25Z",
-                    dueAtTime: "2019-06-13T19:08:25Z",
-                    durationMinutes: 8499960619502581000,
-                    id: "9814a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                    isCompletedLate: true,
-                    isOverdue: true,
-                    learner: {
-                        id: "938172",
-                        type: "unknown",
-                    },
-                    scorePercent: 0.008239265796686357,
-                    startedAtTime: "2019-06-13T19:08:25Z",
-                    status: "notStarted",
-                    updatedAtTime: "2019-06-13T19:08:25Z",
-                    updatedById: "user-3112",
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getTrainingAssignmentsStream (2)", async () => {
@@ -1043,6 +944,7 @@ describe("TrainingAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/training-assignments/stream")
@@ -1068,6 +970,7 @@ describe("TrainingAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/training-assignments/stream")
@@ -1093,6 +996,7 @@ describe("TrainingAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/training-assignments/stream")
@@ -1118,6 +1022,7 @@ describe("TrainingAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/training-assignments/stream")
@@ -1143,6 +1048,7 @@ describe("TrainingAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/training-assignments/stream")
@@ -1168,6 +1074,7 @@ describe("TrainingAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/training-assignments/stream")
@@ -1193,6 +1100,7 @@ describe("TrainingAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/training-assignments/stream")
@@ -1218,6 +1126,7 @@ describe("TrainingAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/training-assignments/stream")
@@ -1243,6 +1152,7 @@ describe("TrainingAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/training-assignments/stream")
@@ -1268,6 +1178,7 @@ describe("TrainingAssignmentsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/training-assignments/stream")

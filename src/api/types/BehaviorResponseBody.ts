@@ -10,6 +10,12 @@ export interface BehaviorResponseBody {
     coachableBehaviorType: BehaviorResponseBody.CoachableBehaviorType;
     /** Object references for the coachableEvents within the behavior. Returned when includeCoachableEvents is 'true'. Capped at 100 coachable events per Coaching session. For sessions where coachable events exceed 100, please visit the Samsara dashboard to address this coaching session. Corresponds to the following unique identifiers: Non-Speeding Safety events - unique Samsara ID of the safety event as 'vehicleId - eventMS'. Speeding events - unique UUID of the event. Day of HOS Violations - unique Samsara ID of the day of violations as '{driverId},{date}'. Idling events - unique UUID of the event. */
     coachableEvents?: Samsara.CoachableEventResponseBody[] | undefined;
+    /** Coaching status for the behavior. Returned as unknown when the behavior has no valid status.  Valid values: `completed`, `dismissed`, `disputed`, `incomplete`, `opened`, `unknown` */
+    coachingStatus?: BehaviorResponseBody.CoachingStatus | undefined;
+    /** Time the coaching behavior was created in UTC. Omitted when the behavior has no created time. */
+    createdAtTime?: string | undefined;
+    /** Time the coaching behavior is due in UTC. This is the behavior due date. It is distinct from the coaching session dueAtTime. Omitted when the behavior has no due date. */
+    dueAtTime?: string | undefined;
     /** Unique ID for the coaching behavior. */
     id: string;
     /** Time of last coached date for the same behavior label. */
@@ -67,4 +73,14 @@ export namespace BehaviorResponseBody {
         YawControlEngineControlActivated: "yawControlEngineControlActivated",
     } as const;
     export type CoachableBehaviorType = (typeof CoachableBehaviorType)[keyof typeof CoachableBehaviorType];
+    /** Coaching status for the behavior. Returned as unknown when the behavior has no valid status.  Valid values: `completed`, `dismissed`, `disputed`, `incomplete`, `opened`, `unknown` */
+    export const CoachingStatus = {
+        Completed: "completed",
+        Dismissed: "dismissed",
+        Disputed: "disputed",
+        Incomplete: "incomplete",
+        Opened: "opened",
+        Unknown: "unknown",
+    } as const;
+    export type CoachingStatus = (typeof CoachingStatus)[keyof typeof CoachingStatus];
 }

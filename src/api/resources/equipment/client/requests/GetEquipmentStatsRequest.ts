@@ -4,7 +4,9 @@ import type * as Samsara from "../../../../index.js";
 
 /**
  * @example
- *     {}
+ *     {
+ *         types: ["gatewayEngineStates"]
+ *     }
  */
 export interface GetEquipmentStatsRequest {
     /** If specified, this should be the endCursor value from the previous page of results. When present, this request will return the next page of results that occur immediately after the previous page of results. */

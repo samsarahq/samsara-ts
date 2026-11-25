@@ -3,6 +3,7 @@
 /**
  * @example
  *     {
+ *         peripheralIds: ["peripheralIds"],
  *         startTime: "startTime"
  *     }
  */

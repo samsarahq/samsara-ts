@@ -4,7 +4,8 @@
  * @example
  *     {
  *         courseId: "courseId",
- *         dueAtTime: "dueAtTime"
+ *         dueAtTime: "dueAtTime",
+ *         learnerIds: ["learnerIds"]
  *     }
  */
 export interface PostTrainingAssignmentsRequest {

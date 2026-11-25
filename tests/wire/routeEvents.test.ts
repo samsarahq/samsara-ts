@@ -32,6 +32,7 @@ describe("RouteEventsClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint()
             .get("/route-events/stream")
@@ -41,40 +42,7 @@ describe("RouteEventsClient", () => {
             .build();
 
         const response = await client.routeEvents.getRouteEventsStream();
-        expect(response).toEqual({
-            data: [
-                {
-                    eventDetails: {
-                        stopEtaUpdated: {
-                            etaMs: "1640995200000",
-                            etaUpdatedAtMs: "1640995100000",
-                        },
-                        stopTaskCompleted: {
-                            taskId: "789",
-                            taskType: "form",
-                        },
-                        stopTaskSkipped: {
-                            taskId: "789",
-                            taskType: "form",
-                        },
-                    },
-                    eventTime: "2019-06-13T19:08:25Z",
-                    eventType: "stopArrived",
-                    happenedAtTime: "2019-06-13T19:08:25Z",
-                    id: "550e8400-e29b-41d4-a716-446655440000",
-                    route: {
-                        id: "494123",
-                    },
-                    stop: {
-                        id: "141414",
-                    },
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getRouteEventsStream (2)", async () => {
@@ -87,6 +55,7 @@ describe("RouteEventsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/route-events/stream")
@@ -110,6 +79,7 @@ describe("RouteEventsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/route-events/stream")
@@ -133,6 +103,7 @@ describe("RouteEventsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/route-events/stream")
@@ -156,6 +127,7 @@ describe("RouteEventsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/route-events/stream")
@@ -179,6 +151,7 @@ describe("RouteEventsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/route-events/stream")
@@ -202,6 +175,7 @@ describe("RouteEventsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/route-events/stream")
@@ -225,6 +199,7 @@ describe("RouteEventsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/route-events/stream")
@@ -248,6 +223,7 @@ describe("RouteEventsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/route-events/stream")
@@ -271,6 +247,7 @@ describe("RouteEventsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/route-events/stream")
@@ -294,6 +271,7 @@ describe("RouteEventsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/route-events/stream")

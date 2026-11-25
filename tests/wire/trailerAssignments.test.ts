@@ -28,6 +28,7 @@ describe("TrailerAssignmentsClient", () => {
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .get("/v1/fleet/trailers/assignments")
@@ -37,27 +38,7 @@ describe("TrailerAssignmentsClient", () => {
             .build();
 
         const response = await client.trailerAssignments.v1GetAllTrailerAssignments();
-        expect(response).toEqual({
-            pagination: {
-                endCursor: "MTU5MTEzNjA2OTU0MzQ3",
-                hasNextPage: true,
-                hasPrevPage: true,
-                startCursor: "MTU5MTEzNjA2OTU0MzQ3",
-            },
-            trailers: [
-                {
-                    trailerAssignments: [
-                        {
-                            driverId: 2047,
-                            endMs: 1462881998034,
-                            startMs: 1462878398034,
-                        },
-                    ],
-                    id: 2041,
-                    name: "myTrailer",
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("V1getFleetTrailerAssignments", async () => {
@@ -74,6 +55,7 @@ describe("TrailerAssignmentsClient", () => {
             id: 2041,
             name: "myTrailer",
         };
+
         server
             .mockEndpoint()
             .get("/v1/fleet/trailers/1000000/assignments")
@@ -85,16 +67,6 @@ describe("TrailerAssignmentsClient", () => {
         const response = await client.trailerAssignments.v1GetFleetTrailerAssignments({
             trailerId: 1000000,
         });
-        expect(response).toEqual({
-            trailerAssignments: [
-                {
-                    driverId: 2047,
-                    endMs: 1462881998034,
-                    startMs: 1462878398034,
-                },
-            ],
-            id: 2041,
-            name: "myTrailer",
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 });

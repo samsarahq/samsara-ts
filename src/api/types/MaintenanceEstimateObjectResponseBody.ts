@@ -38,7 +38,7 @@ export interface MaintenanceEstimateObjectResponseBody {
     total?: Samsara.MaintenanceEstimateMoneyResponseBody | undefined;
     /** Latest public content or lifecycle change. */
     updatedAtTime: string;
-    /** Vendor location ID. */
+    /** Vendor location ID. Resolve the location via GET /fleet/maintenance/vendor-locations. */
     vendorId?: string | undefined;
     /** Monotonic change counter including lifecycle and attachment updates. */
     version: number;

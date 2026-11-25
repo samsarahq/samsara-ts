@@ -30,62 +30,11 @@ describe("TagsClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server.mockEndpoint().get("/tags").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.tags.listTags();
-        expect(response).toEqual({
-            data: [
-                {
-                    addresses: [
-                        {
-                            id: "23502866574",
-                            name: "Driver Don",
-                        },
-                    ],
-                    assets: [
-                        {
-                            id: "23502866574",
-                            name: "Driver Don",
-                        },
-                    ],
-                    drivers: [
-                        {
-                            id: "23502866574",
-                            name: "Driver Don",
-                        },
-                    ],
-                    machines: [
-                        {
-                            id: "23502866574",
-                            name: "Driver Don",
-                        },
-                    ],
-                    parentTag: {
-                        id: "23502866574",
-                        name: "US West Vehicles",
-                    },
-                    sensors: [
-                        {
-                            id: "23502866574",
-                            name: "Driver Don",
-                        },
-                    ],
-                    vehicles: [
-                        {
-                            id: "23502866574",
-                            name: "Driver Don",
-                        },
-                    ],
-                    id: "342417",
-                    name: "California",
-                    parentTagId: "4815",
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createTag", async () => {
@@ -111,6 +60,7 @@ describe("TagsClient", () => {
                 parentTagId: "4815",
             },
         };
+
         server
             .mockEndpoint()
             .post("/tags")
@@ -123,53 +73,7 @@ describe("TagsClient", () => {
         const response = await client.tags.createTag({
             name: "California",
         });
-        expect(response).toEqual({
-            data: {
-                addresses: [
-                    {
-                        id: "23502866574",
-                        name: "Driver Don",
-                    },
-                ],
-                assets: [
-                    {
-                        id: "23502866574",
-                        name: "Driver Don",
-                    },
-                ],
-                drivers: [
-                    {
-                        id: "23502866574",
-                        name: "Driver Don",
-                    },
-                ],
-                machines: [
-                    {
-                        id: "23502866574",
-                        name: "Driver Don",
-                    },
-                ],
-                parentTag: {
-                    id: "23502866574",
-                    name: "US West Vehicles",
-                },
-                sensors: [
-                    {
-                        id: "23502866574",
-                        name: "Driver Don",
-                    },
-                ],
-                vehicles: [
-                    {
-                        id: "23502866574",
-                        name: "Driver Don",
-                    },
-                ],
-                id: "342417",
-                name: "California",
-                parentTagId: "4815",
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getTag", async () => {
@@ -195,58 +99,13 @@ describe("TagsClient", () => {
                 parentTagId: "4815",
             },
         };
+
         server.mockEndpoint().get("/tags/id").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.tags.getTag({
             id: "id",
         });
-        expect(response).toEqual({
-            data: {
-                addresses: [
-                    {
-                        id: "23502866574",
-                        name: "Driver Don",
-                    },
-                ],
-                assets: [
-                    {
-                        id: "23502866574",
-                        name: "Driver Don",
-                    },
-                ],
-                drivers: [
-                    {
-                        id: "23502866574",
-                        name: "Driver Don",
-                    },
-                ],
-                machines: [
-                    {
-                        id: "23502866574",
-                        name: "Driver Don",
-                    },
-                ],
-                parentTag: {
-                    id: "23502866574",
-                    name: "US West Vehicles",
-                },
-                sensors: [
-                    {
-                        id: "23502866574",
-                        name: "Driver Don",
-                    },
-                ],
-                vehicles: [
-                    {
-                        id: "23502866574",
-                        name: "Driver Don",
-                    },
-                ],
-                id: "342417",
-                name: "California",
-                parentTagId: "4815",
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("replaceTag", async () => {
@@ -272,6 +131,7 @@ describe("TagsClient", () => {
                 parentTagId: "4815",
             },
         };
+
         server
             .mockEndpoint()
             .put("/tags/id")
@@ -284,53 +144,7 @@ describe("TagsClient", () => {
         const response = await client.tags.replaceTag({
             id: "id",
         });
-        expect(response).toEqual({
-            data: {
-                addresses: [
-                    {
-                        id: "23502866574",
-                        name: "Driver Don",
-                    },
-                ],
-                assets: [
-                    {
-                        id: "23502866574",
-                        name: "Driver Don",
-                    },
-                ],
-                drivers: [
-                    {
-                        id: "23502866574",
-                        name: "Driver Don",
-                    },
-                ],
-                machines: [
-                    {
-                        id: "23502866574",
-                        name: "Driver Don",
-                    },
-                ],
-                parentTag: {
-                    id: "23502866574",
-                    name: "US West Vehicles",
-                },
-                sensors: [
-                    {
-                        id: "23502866574",
-                        name: "Driver Don",
-                    },
-                ],
-                vehicles: [
-                    {
-                        id: "23502866574",
-                        name: "Driver Don",
-                    },
-                ],
-                id: "342417",
-                name: "California",
-                parentTagId: "4815",
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("delete", async () => {
@@ -373,6 +187,7 @@ describe("TagsClient", () => {
                 parentTagId: "4815",
             },
         };
+
         server
             .mockEndpoint()
             .patch("/tags/id")
@@ -385,52 +200,6 @@ describe("TagsClient", () => {
         const response = await client.tags.patchTag({
             id: "id",
         });
-        expect(response).toEqual({
-            data: {
-                addresses: [
-                    {
-                        id: "23502866574",
-                        name: "Driver Don",
-                    },
-                ],
-                assets: [
-                    {
-                        id: "23502866574",
-                        name: "Driver Don",
-                    },
-                ],
-                drivers: [
-                    {
-                        id: "23502866574",
-                        name: "Driver Don",
-                    },
-                ],
-                machines: [
-                    {
-                        id: "23502866574",
-                        name: "Driver Don",
-                    },
-                ],
-                parentTag: {
-                    id: "23502866574",
-                    name: "US West Vehicles",
-                },
-                sensors: [
-                    {
-                        id: "23502866574",
-                        name: "Driver Don",
-                    },
-                ],
-                vehicles: [
-                    {
-                        id: "23502866574",
-                        name: "Driver Don",
-                    },
-                ],
-                id: "342417",
-                name: "California",
-                parentTagId: "4815",
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 });

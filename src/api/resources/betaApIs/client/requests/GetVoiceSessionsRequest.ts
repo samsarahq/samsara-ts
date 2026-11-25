@@ -2,7 +2,9 @@
 
 /**
  * @example
- *     {}
+ *     {
+ *         ids: ["ids"]
+ *     }
  */
 export interface GetVoiceSessionsRequest {
     /** Required, comma-separated list of voice session IDs to fetch full details for. Up to 100 session IDs per call. IDs that are not found are omitted from the response. */

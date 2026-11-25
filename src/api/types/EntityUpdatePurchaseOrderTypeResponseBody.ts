@@ -33,7 +33,7 @@ export interface EntityUpdatePurchaseOrderTypeResponseBody {
         | undefined;
     /** Parts ordered on the purchase order. */
     parts?:
-        | Samsara.UpdatePurchaseOrderEntityPurchaseOrderPurchaseOrderPartPublicVarianteafe48Db3764TypeResponseBody[]
+        | Samsara.UpdatePurchaseOrderEntityPurchaseOrderPurchaseOrderPartPublicVariant70F45D818DacTypeResponseBody[]
         | undefined;
     /** Customer-visible purchase order number. */
     poNumber?: string | undefined;

@@ -13,8 +13,10 @@ export interface WorkOrdersPostWorkOrdersRequestBody {
     archivedAtTime?: string;
     /** The ID of the asset. Either a Samsara ID or an external ID in `key:value` form, for example `vin:1HGCM82633A004352`. */
     assetId: string;
-    /** The ID of the assigned mechanic. */
+    /** The ID of the assigned mechanic. Mutually exclusive with assignedUserIds. */
     assignedUserId?: string;
+    /** Dashboard users assigned to the work order. Mutually exclusive with assignedUserId. The first ID is the primary assignee returned in assignedUserId. Send an empty array to create the work order with no assignee. A list with more than one ID is accepted only when multi-assignee is enabled for the organization. */
+    assignedUserIds?: string[];
     /** A list of custom fields (attributes) to assign to the work order. Each entry requires the attribute `id`. Use `stringValues` for text, single-select, and multi-select attributes, `numberValues` for number attributes, and `dateValues` (YYYY-MM-DD) for date attributes. For single-select and multi-select attributes, send the text of a defined option. The request is rejected if any attribute or value is invalid. Only available for organizations with work order custom fields enabled. */
     attributes?: Samsara.GoaAttributeTinyRequestBody[];
     /** The category of the work order */
@@ -46,12 +48,14 @@ export interface WorkOrdersPostWorkOrdersRequestBody {
     priority?: WorkOrdersPostWorkOrdersRequestBody.Priority;
     /** Service Tasks for the work order. */
     serviceTaskInstances?: Samsara.ServiceTaskInstanceInputObjectRequestBody[];
+    /** ID of the shop associated with the work order. Omit to create the work order without a shop. This is independent of the maintenance site (`placeId`). */
+    shopId?: string;
     /** The historical time work started on the work order, in RFC 3339 format. Is automatically set when the status is an in-progress status and this field is not provided. */
     startedAtTime?: string;
     /** The initial user-selectable status of the work order. Defaults to Open when not provided. Estimate workflow statuses are system-managed and cannot be set directly.  Valid values: `Assigned`, `Cancelled`, `Closed`, `Completed`, `Estimate`, `In Progress`, `On Hold`, `Open`, `Pending Approval`, `Pending Parts`, `Planning` */
     status?: WorkOrdersPostWorkOrdersRequestBody.Status;
     tax?: Samsara.WorkOrderTaxCreateObjectRequestBody;
-    /** The vendor UUID for the work order. */
+    /** The vendor location UUID for the work order. Resolve the location via GET /fleet/maintenance/vendor-locations. */
     vendorUuid?: string;
 }
 

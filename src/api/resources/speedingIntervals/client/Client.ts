@@ -48,6 +48,7 @@ export class SpeedingIntervalsClient {
      *
      * @example
      *     await client.speedingIntervals.getSpeedingIntervals({
+     *         assetIds: ["assetIds"],
      *         startTime: "startTime"
      *     })
      */
@@ -67,9 +68,9 @@ export class SpeedingIntervalsClient {
             assetIds,
             startTime,
             endTime,
-            queryBy: queryBy != null ? queryBy : undefined,
-            includeAsset,
-            includeDriverId,
+            queryBy: (queryBy != null ? queryBy : undefined) ?? "updatedAtTime",
+            includeAsset: includeAsset ?? "false",
+            includeDriverId: includeDriverId ?? "false",
             after,
             severityLevels,
         };
@@ -89,7 +90,13 @@ export class SpeedingIntervalsClient {
             ),
             method: "GET",
             headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .add("assetIds", _queryParams.assetIds, { style: "comma" })
+                .add("severityLevels", _queryParams.severityLevels, { style: "comma" })
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,

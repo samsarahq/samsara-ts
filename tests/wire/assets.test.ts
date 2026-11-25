@@ -46,6 +46,7 @@ describe("AssetsClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint({ once: false })
             .get("/assets")
@@ -54,49 +55,7 @@ describe("AssetsClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const expected = {
-            data: [
-                {
-                    attributes: [
-                        {
-                            dateValues: ["2024-01-15", "2024-12-31"],
-                            id: "494123",
-                            name: "Compliance/ELD",
-                            numberValues: [867, 5309],
-                            stringValues: ["HQ", "Leased"],
-                        },
-                    ],
-                    createdAtTime: "2020-01-27T07:06:25Z",
-                    externalIds: {
-                        key: "value",
-                    },
-                    id: "12345",
-                    licensePlate: "XHK1234",
-                    make: "Bobcat",
-                    model: "S630 T4",
-                    name: "MyAsset-1234",
-                    notes: "These are notes.",
-                    readingsIngestionEnabled: false,
-                    regulationMode: "mixed",
-                    serialNumber: "LN016251",
-                    tags: [
-                        {
-                            id: "3914",
-                            name: "East Coast",
-                            parentTagId: "4815",
-                        },
-                    ],
-                    type: "uncategorized",
-                    updatedAtTime: "2020-01-27T07:06:25Z",
-                    vin: "1FUJBBCKXCLBZ1234",
-                    year: 2015,
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        };
+        const expected = rawResponseBody;
         const page = await client.assets.list();
 
         expect(expected.data).toEqual(page.data);
@@ -115,6 +74,7 @@ describe("AssetsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/assets").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -132,6 +92,7 @@ describe("AssetsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/assets").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -149,6 +110,7 @@ describe("AssetsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/assets").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -166,6 +128,7 @@ describe("AssetsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/assets").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -183,6 +146,7 @@ describe("AssetsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/assets").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -200,6 +164,7 @@ describe("AssetsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/assets").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -217,6 +182,7 @@ describe("AssetsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/assets").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -234,6 +200,7 @@ describe("AssetsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/assets").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -251,6 +218,7 @@ describe("AssetsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/assets").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -268,6 +236,7 @@ describe("AssetsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/assets").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -313,6 +282,7 @@ describe("AssetsClient", () => {
                 year: 2015,
             },
         };
+
         server
             .mockEndpoint()
             .post("/assets")
@@ -323,43 +293,7 @@ describe("AssetsClient", () => {
             .build();
 
         const response = await client.assets.createAsset();
-        expect(response).toEqual({
-            data: {
-                attributes: [
-                    {
-                        dateValues: ["2024-01-15", "2024-12-31"],
-                        id: "494123",
-                        name: "Compliance/ELD",
-                        numberValues: [867, 5309],
-                        stringValues: ["HQ", "Leased"],
-                    },
-                ],
-                createdAtTime: "2020-01-27T07:06:25Z",
-                externalIds: {
-                    key: "value",
-                },
-                id: "12345",
-                licensePlate: "XHK1234",
-                make: "Bobcat",
-                model: "S630 T4",
-                name: "MyAsset-1234",
-                notes: "These are notes.",
-                readingsIngestionEnabled: false,
-                regulationMode: "mixed",
-                serialNumber: "LN016251",
-                tags: [
-                    {
-                        id: "3914",
-                        name: "East Coast",
-                        parentTagId: "4815",
-                    },
-                ],
-                type: "uncategorized",
-                updatedAtTime: "2020-01-27T07:06:25Z",
-                vin: "1FUJBBCKXCLBZ1234",
-                year: 2015,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("createAsset (2)", async () => {
@@ -372,6 +306,7 @@ describe("AssetsClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/assets")
@@ -396,6 +331,7 @@ describe("AssetsClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/assets")
@@ -420,6 +356,7 @@ describe("AssetsClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/assets")
@@ -444,6 +381,7 @@ describe("AssetsClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/assets")
@@ -468,6 +406,7 @@ describe("AssetsClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/assets")
@@ -492,6 +431,7 @@ describe("AssetsClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/assets")
@@ -516,6 +456,7 @@ describe("AssetsClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/assets")
@@ -540,6 +481,7 @@ describe("AssetsClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/assets")
@@ -564,6 +506,7 @@ describe("AssetsClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/assets")
@@ -588,6 +531,7 @@ describe("AssetsClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .post("/assets")
@@ -629,6 +573,7 @@ describe("AssetsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().delete("/assets").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -648,6 +593,7 @@ describe("AssetsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().delete("/assets").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -667,6 +613,7 @@ describe("AssetsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().delete("/assets").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -686,6 +633,7 @@ describe("AssetsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().delete("/assets").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -705,6 +653,7 @@ describe("AssetsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().delete("/assets").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -724,6 +673,7 @@ describe("AssetsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().delete("/assets").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -743,6 +693,7 @@ describe("AssetsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().delete("/assets").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -762,6 +713,7 @@ describe("AssetsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().delete("/assets").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -781,6 +733,7 @@ describe("AssetsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().delete("/assets").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -800,6 +753,7 @@ describe("AssetsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().delete("/assets").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -847,6 +801,7 @@ describe("AssetsClient", () => {
                 year: 2015,
             },
         };
+
         server
             .mockEndpoint()
             .patch("/assets")
@@ -859,43 +814,7 @@ describe("AssetsClient", () => {
         const response = await client.assets.updateAsset({
             id: "id",
         });
-        expect(response).toEqual({
-            data: {
-                attributes: [
-                    {
-                        dateValues: ["2024-01-15", "2024-12-31"],
-                        id: "494123",
-                        name: "Compliance/ELD",
-                        numberValues: [867, 5309],
-                        stringValues: ["HQ", "Leased"],
-                    },
-                ],
-                createdAtTime: "2020-01-27T07:06:25Z",
-                externalIds: {
-                    key: "value",
-                },
-                id: "12345",
-                licensePlate: "XHK1234",
-                make: "Bobcat",
-                model: "S630 T4",
-                name: "MyAsset-1234",
-                notes: "These are notes.",
-                readingsIngestionEnabled: false,
-                regulationMode: "mixed",
-                serialNumber: "LN016251",
-                tags: [
-                    {
-                        id: "3914",
-                        name: "East Coast",
-                        parentTagId: "4815",
-                    },
-                ],
-                type: "uncategorized",
-                updatedAtTime: "2020-01-27T07:06:25Z",
-                vin: "1FUJBBCKXCLBZ1234",
-                year: 2015,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("updateAsset (2)", async () => {
@@ -908,6 +827,7 @@ describe("AssetsClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/assets")
@@ -934,6 +854,7 @@ describe("AssetsClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/assets")
@@ -960,6 +881,7 @@ describe("AssetsClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/assets")
@@ -986,6 +908,7 @@ describe("AssetsClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/assets")
@@ -1012,6 +935,7 @@ describe("AssetsClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/assets")
@@ -1038,6 +962,7 @@ describe("AssetsClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/assets")
@@ -1064,6 +989,7 @@ describe("AssetsClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/assets")
@@ -1090,6 +1016,7 @@ describe("AssetsClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/assets")
@@ -1116,6 +1043,7 @@ describe("AssetsClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/assets")
@@ -1142,6 +1070,7 @@ describe("AssetsClient", () => {
         });
         const rawRequestBody = {};
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .patch("/assets")
@@ -1193,6 +1122,7 @@ describe("AssetsClient", () => {
                 startCursor: "MTU5MTEzNjA2OTU0MzQ3",
             },
         };
+
         server
             .mockEndpoint()
             .get("/v1/fleet/assets/locations")
@@ -1202,34 +1132,7 @@ describe("AssetsClient", () => {
             .build();
 
         const response = await client.assets.v1GetAllAssetCurrentLocations();
-        expect(response).toEqual({
-            assets: [
-                {
-                    assetSerialNumber: "8dka2810",
-                    cable: {
-                        assetType: "Thermo King",
-                    },
-                    engineHours: 104,
-                    id: 1,
-                    location: [
-                        {
-                            latitude: 37,
-                            location: "525 York, San Francisco, CA",
-                            longitude: -122.7,
-                            speedMilesPerHour: 35,
-                            timeMs: 12314151,
-                        },
-                    ],
-                    name: "Trailer 123",
-                },
-            ],
-            pagination: {
-                endCursor: "MTU5MTEzNjA2OTU0MzQ3",
-                hasNextPage: true,
-                hasPrevPage: true,
-                startCursor: "MTU5MTEzNjA2OTU0MzQ3",
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("V1getAssetsReefers", async () => {
@@ -1242,7 +1145,35 @@ describe("AssetsClient", () => {
         });
 
         const rawResponseBody = {
-            data: [{ assetType: "Thermo King", id: 1, name: "Reefer 123" }],
+            data: [
+                {
+                    assetType: "Thermo King",
+                    id: 1,
+                    name: "Reefer 123",
+                    reeferStats: {
+                        ambientAirTemperature: [{ changedAtMs: 1453449599999, tempInMilliC: 31110 }],
+                        dischargeAirTemperature: [{ changedAtMs: 1453449599999, tempInMilliC: 31110 }],
+                        engineHours: [{ changedAtMs: 1453449599999, engineHours: 1200 }],
+                        fuelPercentage: [{ changedAtMs: 1453449599999, fuelPercentage: 99 }],
+                        powerStatus: [{ changedAtMs: 1453449599999 }],
+                        reeferAlarms: [
+                            {
+                                alarms: [
+                                    {
+                                        alarmCode: 102,
+                                        description: "Check Return Air Sensor",
+                                        operatorAction: "Check and repair at end of trip",
+                                        severity: 1,
+                                    },
+                                ],
+                                changedAtMs: 1453449599999,
+                            },
+                        ],
+                        returnAirTemperature: [{ changedAtMs: 1453449599999, tempInMilliC: 31110 }],
+                        setPoint: [{ changedAtMs: 1453449599999, tempInMilliC: 31110 }],
+                    },
+                },
+            ],
             pagination: {
                 endCursor: "MTU5MTEzNjA2OTU0MzQ3",
                 hasNextPage: true,
@@ -1250,6 +1181,7 @@ describe("AssetsClient", () => {
                 startCursor: "MTU5MTEzNjA2OTU0MzQ3",
             },
         };
+
         server
             .mockEndpoint()
             .get("/v1/fleet/assets/reefers")
@@ -1262,21 +1194,7 @@ describe("AssetsClient", () => {
             startMs: 1000000,
             endMs: 1000000,
         });
-        expect(response).toEqual({
-            data: [
-                {
-                    assetType: "Thermo King",
-                    id: 1,
-                    name: "Reefer 123",
-                },
-            ],
-            pagination: {
-                endCursor: "MTU5MTEzNjA2OTU0MzQ3",
-                hasNextPage: true,
-                hasPrevPage: true,
-                startCursor: "MTU5MTEzNjA2OTU0MzQ3",
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getAssetLocation (1)", async () => {
@@ -1299,6 +1217,7 @@ describe("AssetsClient", () => {
                 },
             ],
         };
+
         server
             .mockEndpoint()
             .get("/v1/fleet/assets/1000000/locations")
@@ -1310,17 +1229,7 @@ describe("AssetsClient", () => {
         const response = await client.assets.getAssetLocation({
             assetId: 1000000,
         });
-        expect(response).toEqual({
-            locations: [
-                {
-                    latitude: 37,
-                    location: "525 York, San Francisco, CA",
-                    longitude: -122.7,
-                    speedMilesPerHour: 35,
-                    time: 12314151,
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getAssetLocation (2)", async () => {
@@ -1333,6 +1242,7 @@ describe("AssetsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/v1/fleet/assets/1000000/locations")
@@ -1358,6 +1268,7 @@ describe("AssetsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/v1/fleet/assets/1000000/locations")
@@ -1383,6 +1294,7 @@ describe("AssetsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/v1/fleet/assets/1000000/locations")
@@ -1408,6 +1320,7 @@ describe("AssetsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/v1/fleet/assets/1000000/locations")
@@ -1433,6 +1346,7 @@ describe("AssetsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/v1/fleet/assets/1000000/locations")
@@ -1458,6 +1372,7 @@ describe("AssetsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/v1/fleet/assets/1000000/locations")
@@ -1483,6 +1398,7 @@ describe("AssetsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/v1/fleet/assets/1000000/locations")
@@ -1508,6 +1424,7 @@ describe("AssetsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/v1/fleet/assets/1000000/locations")
@@ -1533,6 +1450,7 @@ describe("AssetsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/v1/fleet/assets/1000000/locations")
@@ -1558,6 +1476,7 @@ describe("AssetsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/v1/fleet/assets/1000000/locations")
@@ -1587,7 +1506,19 @@ describe("AssetsClient", () => {
             id: 1,
             name: "Reefer 123",
             reeferStats: {
-                alarms: [{ changedAtMs: 1453449599999 }],
+                alarms: [
+                    {
+                        alarms: [
+                            {
+                                alarmCode: 102,
+                                description: "Check Return Air Sensor",
+                                operatorAction: "Check and repair at end of trip",
+                                severity: 1,
+                            },
+                        ],
+                        changedAtMs: 1453449599999,
+                    },
+                ],
                 engineHours: [{ changedAtMs: 1453449599999, engineHours: 1200 }],
                 fuelPercentages: [{ changedAtMs: 1453449599999, fuelPercentage: 99 }],
                 powerStatus: [{ changedAtMs: 1453449599999, status: "Active (Continuous)" }],
@@ -1595,6 +1526,7 @@ describe("AssetsClient", () => {
                 setPoint: [{ changedAtMs: 1453449599999, tempInMilliC: 31110 }],
             },
         };
+
         server
             .mockEndpoint()
             .get("/v1/fleet/assets/1000000/reefer")
@@ -1608,48 +1540,7 @@ describe("AssetsClient", () => {
             startMs: 1000000,
             endMs: 1000000,
         });
-        expect(response).toEqual({
-            assetType: "Thermo King",
-            id: 1,
-            name: "Reefer 123",
-            reeferStats: {
-                alarms: [
-                    {
-                        changedAtMs: 1453449599999,
-                    },
-                ],
-                engineHours: [
-                    {
-                        changedAtMs: 1453449599999,
-                        engineHours: 1200,
-                    },
-                ],
-                fuelPercentages: [
-                    {
-                        changedAtMs: 1453449599999,
-                        fuelPercentage: 99,
-                    },
-                ],
-                powerStatus: [
-                    {
-                        changedAtMs: 1453449599999,
-                        status: "Active (Continuous)",
-                    },
-                ],
-                returnAirTemp: [
-                    {
-                        changedAtMs: 1453449599999,
-                        tempInMilliC: 31110,
-                    },
-                ],
-                setPoint: [
-                    {
-                        changedAtMs: 1453449599999,
-                        tempInMilliC: 31110,
-                    },
-                ],
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getAssetReefer (2)", async () => {
@@ -1662,6 +1553,7 @@ describe("AssetsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/v1/fleet/assets/1000000/reefer")
@@ -1689,6 +1581,7 @@ describe("AssetsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/v1/fleet/assets/1000000/reefer")
@@ -1716,6 +1609,7 @@ describe("AssetsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/v1/fleet/assets/1000000/reefer")
@@ -1743,6 +1637,7 @@ describe("AssetsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/v1/fleet/assets/1000000/reefer")
@@ -1770,6 +1665,7 @@ describe("AssetsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/v1/fleet/assets/1000000/reefer")
@@ -1797,6 +1693,7 @@ describe("AssetsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/v1/fleet/assets/1000000/reefer")
@@ -1824,6 +1721,7 @@ describe("AssetsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/v1/fleet/assets/1000000/reefer")
@@ -1851,6 +1749,7 @@ describe("AssetsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/v1/fleet/assets/1000000/reefer")
@@ -1878,6 +1777,7 @@ describe("AssetsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/v1/fleet/assets/1000000/reefer")
@@ -1905,6 +1805,7 @@ describe("AssetsClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server
             .mockEndpoint()
             .get("/v1/fleet/assets/1000000/reefer")
@@ -1940,6 +1841,7 @@ describe("AssetsClient", () => {
                 time: 12314151,
             },
         ];
+
         server
             .mockEndpoint()
             .get("/v1/fleet/assets/1000000/locations")
@@ -1953,15 +1855,7 @@ describe("AssetsClient", () => {
             startMs: 1000000,
             endMs: 1000000,
         });
-        expect(response).toEqual([
-            {
-                latitude: 37,
-                location: "525 York, San Francisco, CA",
-                longitude: -122.7,
-                speedMilesPerHour: 35,
-                time: 12314151,
-            },
-        ]);
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("V1getAssetReefer", async () => {
@@ -1978,7 +1872,19 @@ describe("AssetsClient", () => {
             id: 1,
             name: "Reefer 123",
             reeferStats: {
-                alarms: [{ changedAtMs: 1453449599999 }],
+                alarms: [
+                    {
+                        alarms: [
+                            {
+                                alarmCode: 102,
+                                description: "Check Return Air Sensor",
+                                operatorAction: "Check and repair at end of trip",
+                                severity: 1,
+                            },
+                        ],
+                        changedAtMs: 1453449599999,
+                    },
+                ],
                 engineHours: [{ changedAtMs: 1453449599999, engineHours: 1200 }],
                 fuelPercentage: [{ changedAtMs: 1453449599999, fuelPercentage: 99 }],
                 powerStatus: [{ changedAtMs: 1453449599999, status: "Active (Continuous)" }],
@@ -1986,6 +1892,7 @@ describe("AssetsClient", () => {
                 setPoint: [{ changedAtMs: 1453449599999, tempInMilliC: 31110 }],
             },
         };
+
         server
             .mockEndpoint()
             .get("/v1/fleet/assets/1000000/reefer")
@@ -1999,48 +1906,7 @@ describe("AssetsClient", () => {
             startMs: 1000000,
             endMs: 1000000,
         });
-        expect(response).toEqual({
-            assetType: "Thermo King",
-            id: 1,
-            name: "Reefer 123",
-            reeferStats: {
-                alarms: [
-                    {
-                        changedAtMs: 1453449599999,
-                    },
-                ],
-                engineHours: [
-                    {
-                        changedAtMs: 1453449599999,
-                        engineHours: 1200,
-                    },
-                ],
-                fuelPercentage: [
-                    {
-                        changedAtMs: 1453449599999,
-                        fuelPercentage: 99,
-                    },
-                ],
-                powerStatus: [
-                    {
-                        changedAtMs: 1453449599999,
-                        status: "Active (Continuous)",
-                    },
-                ],
-                returnAirTemp: [
-                    {
-                        changedAtMs: 1453449599999,
-                        tempInMilliC: 31110,
-                    },
-                ],
-                setPoint: [
-                    {
-                        changedAtMs: 1453449599999,
-                        tempInMilliC: 31110,
-                    },
-                ],
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("get", async () => {

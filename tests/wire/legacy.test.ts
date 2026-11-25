@@ -25,22 +25,10 @@ describe("LegacyClient", () => {
                 },
             ],
         };
+
         server.mockEndpoint().get("/v1/fleet/assets").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.legacy.v1GetAllAssets();
-        expect(response).toEqual({
-            assets: [
-                {
-                    assetSerialNumber: "SNTEST123",
-                    cable: {
-                        assetType: "Thermo King",
-                    },
-                    engineHours: 104,
-                    id: 1,
-                    name: "Trailer 123",
-                    vehicleId: 2,
-                },
-            ],
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 });

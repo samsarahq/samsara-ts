@@ -53,6 +53,20 @@ describe("VehiclesClient", () => {
                     name: "Fleet Truck #1",
                     notes: "These are notes about this given vehicle.",
                     sensorConfiguration: {
+                        areas: [
+                            {
+                                cargoSensors: [
+                                    { id: "12345", mac: "00:00:5e:00:53:af", name: "Rear temperature sensor" },
+                                ],
+                                humiditySensors: [
+                                    { id: "12345", mac: "00:00:5e:00:53:af", name: "Rear temperature sensor" },
+                                ],
+                                position: "back",
+                                temperatureSensors: [
+                                    { id: "12345", mac: "00:00:5e:00:53:af", name: "Rear temperature sensor" },
+                                ],
+                            },
+                        ],
                         doors: [
                             {
                                 position: "back",
@@ -75,6 +89,7 @@ describe("VehiclesClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server
             .mockEndpoint({ once: false })
             .get("/fleet/vehicles")
@@ -83,88 +98,7 @@ describe("VehiclesClient", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const expected = {
-            data: [
-                {
-                    attributes: [
-                        {
-                            dateValues: ["2024-01-15", "2024-12-31"],
-                            id: "494123",
-                            name: "Compliance/ELD",
-                            numberValues: [867, 5309],
-                            stringValues: ["HQ", "Leased"],
-                        },
-                    ],
-                    auxInputType1: "boom",
-                    auxInputType10: "boom",
-                    auxInputType11: "boom",
-                    auxInputType12: "boom",
-                    auxInputType13: "boom",
-                    auxInputType2: "boom",
-                    auxInputType3: "boom",
-                    auxInputType4: "boom",
-                    auxInputType5: "boom",
-                    auxInputType6: "boom",
-                    auxInputType7: "boom",
-                    auxInputType8: "boom",
-                    auxInputType9: "boom",
-                    cameraSerial: "CNCK-VT8-XA8",
-                    createdAtTime: "1985-01-04T16:06:40Z",
-                    esn: "56349811",
-                    externalIds: {
-                        key: "value",
-                    },
-                    gateway: {
-                        model: "AG15",
-                        serial: "GFRV-43N-VGX",
-                    },
-                    harshAccelerationSettingType: "off",
-                    id: "494123",
-                    isRemotePrivacyButtonEnabled: true,
-                    licensePlate: "6SAM123",
-                    make: "Ford",
-                    model: "F150",
-                    name: "Fleet Truck #1",
-                    notes: "These are notes about this given vehicle.",
-                    sensorConfiguration: {
-                        doors: [
-                            {
-                                position: "back",
-                                sensor: {
-                                    id: "12345",
-                                    mac: "00:00:5e:00:53:af",
-                                    name: "Rear temperature sensor",
-                                },
-                            },
-                        ],
-                    },
-                    serial: "VG12345",
-                    staticAssignedDriver: {
-                        id: "0987",
-                        name: "Driver Name",
-                    },
-                    tags: [
-                        {
-                            id: "3914",
-                            name: "East Coast",
-                            parentTagId: "4815",
-                        },
-                    ],
-                    updatedAtTime: "1996-05-08T14:10:51Z",
-                    vehicleRegulationMode: "regulated",
-                    vehicleType: "unset",
-                    vehicleWeight: 1000,
-                    vehicleWeightInKilograms: 1000,
-                    vehicleWeightInPounds: 2200,
-                    vin: "1GBJ6P1B2HV112765",
-                    year: "2008",
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        };
+        const expected = rawResponseBody;
         const page = await client.vehicles.list();
 
         expect(expected.data).toEqual(page.data);
@@ -183,6 +117,7 @@ describe("VehiclesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/vehicles").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -200,6 +135,7 @@ describe("VehiclesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/vehicles").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -217,6 +153,7 @@ describe("VehiclesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/vehicles").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -234,6 +171,7 @@ describe("VehiclesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/vehicles").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -251,6 +189,7 @@ describe("VehiclesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/vehicles").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -268,6 +207,7 @@ describe("VehiclesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/vehicles").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -285,6 +225,7 @@ describe("VehiclesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/vehicles").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -302,6 +243,7 @@ describe("VehiclesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/vehicles").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -319,6 +261,7 @@ describe("VehiclesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/vehicles").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -336,6 +279,7 @@ describe("VehiclesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/fleet/vehicles").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -390,75 +334,13 @@ describe("VehiclesClient", () => {
                 year: "2008",
             },
         };
+
         server.mockEndpoint().get("/fleet/vehicles/id").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.vehicles.get({
             id: "id",
         });
-        expect(response).toEqual({
-            data: {
-                attributes: [
-                    {
-                        id: "123e4567-e89b-12d3-a456-426614174000",
-                        name: "License Certifications",
-                    },
-                ],
-                auxInputType1: "boom",
-                auxInputType10: "boom",
-                auxInputType11: "boom",
-                auxInputType12: "boom",
-                auxInputType13: "boom",
-                auxInputType2: "boom",
-                auxInputType3: "boom",
-                auxInputType4: "boom",
-                auxInputType5: "boom",
-                auxInputType6: "boom",
-                auxInputType7: "boom",
-                auxInputType8: "boom",
-                auxInputType9: "boom",
-                cameraSerial: "CNCK-VT8-XA8",
-                esn: "11223344",
-                externalIds: {
-                    maintenanceId: "250020",
-                    payrollId: "ABFS18600",
-                },
-                gateway: {
-                    model: "VG34",
-                    serial: "ABCD-123-XYZ",
-                },
-                grossVehicleWeight: {
-                    unit: "lb",
-                    weight: 1000,
-                },
-                harshAccelerationSettingType: "passengerCar",
-                id: "112",
-                licensePlate: "XHK1234",
-                make: "Ford",
-                model: "F150",
-                name: "Truck A7",
-                notes: "These are notes about this given vehicle.",
-                sensorConfiguration: {
-                    areas: [{}],
-                    doors: [{}],
-                },
-                serial: "VG12345",
-                staticAssignedDriver: {
-                    id: "88668",
-                    name: "Susan Bob",
-                },
-                tags: [
-                    {
-                        id: "3914",
-                        name: "East Coast",
-                        parentTagId: "4815",
-                    },
-                ],
-                vehicleRegulationMode: "regulated",
-                vehicleType: "truck",
-                vin: "1FUJA6BD31LJ09646",
-                year: "2008",
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("update", async () => {
@@ -508,6 +390,7 @@ describe("VehiclesClient", () => {
                 year: "2008",
             },
         };
+
         server
             .mockEndpoint()
             .patch("/fleet/vehicles/id")
@@ -520,69 +403,6 @@ describe("VehiclesClient", () => {
         const response = await client.vehicles.update({
             id: "id",
         });
-        expect(response).toEqual({
-            data: {
-                attributes: [
-                    {
-                        id: "123e4567-e89b-12d3-a456-426614174000",
-                        name: "License Certifications",
-                    },
-                ],
-                auxInputType1: "boom",
-                auxInputType10: "boom",
-                auxInputType11: "boom",
-                auxInputType12: "boom",
-                auxInputType13: "boom",
-                auxInputType2: "boom",
-                auxInputType3: "boom",
-                auxInputType4: "boom",
-                auxInputType5: "boom",
-                auxInputType6: "boom",
-                auxInputType7: "boom",
-                auxInputType8: "boom",
-                auxInputType9: "boom",
-                cameraSerial: "CNCK-VT8-XA8",
-                esn: "11223344",
-                externalIds: {
-                    maintenanceId: "250020",
-                    payrollId: "ABFS18600",
-                },
-                gateway: {
-                    model: "VG34",
-                    serial: "ABCD-123-XYZ",
-                },
-                grossVehicleWeight: {
-                    unit: "lb",
-                    weight: 1000,
-                },
-                harshAccelerationSettingType: "passengerCar",
-                id: "112",
-                licensePlate: "XHK1234",
-                make: "Ford",
-                model: "F150",
-                name: "Truck A7",
-                notes: "These are notes about this given vehicle.",
-                sensorConfiguration: {
-                    areas: [{}],
-                    doors: [{}],
-                },
-                serial: "VG12345",
-                staticAssignedDriver: {
-                    id: "88668",
-                    name: "Susan Bob",
-                },
-                tags: [
-                    {
-                        id: "3914",
-                        name: "East Coast",
-                        parentTagId: "4815",
-                    },
-                ],
-                vehicleRegulationMode: "regulated",
-                vehicleType: "truck",
-                vin: "1FUJA6BD31LJ09646",
-                year: "2008",
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 });

@@ -24,19 +24,10 @@ describe("OrganizationInfoClient", () => {
                 name: "Charlie's Dining Services",
             },
         };
+
         server.mockEndpoint().get("/me").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.organizationInfo.getOrganizationInfo();
-        expect(response).toEqual({
-            data: {
-                carrierSettings: {
-                    carrierName: "Acme Inc.",
-                    dotNumber: 98231,
-                    mainOfficeAddress: "1234 Pear St., Scranton, PA 62814",
-                },
-                id: "123",
-                name: "Charlie's Dining Services",
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 });

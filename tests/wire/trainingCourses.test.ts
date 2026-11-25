@@ -29,35 +29,11 @@ describe("TrainingCoursesClient", () => {
             ],
             pagination: { endCursor: "MjkY", hasNextPage: true },
         };
+
         server.mockEndpoint().get("/training-courses").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.trainingCourses.getTrainingCourses();
-        expect(response).toEqual({
-            data: [
-                {
-                    category: {
-                        id: "a4db8702-79d5-4396-a717-e301d52ecc11",
-                        name: "Samsara Driver App",
-                    },
-                    description: "Training for how to operate a wheel loader.",
-                    estimatedTimeToCompleteMinutes: 30,
-                    id: "a4db8702-79d5-4396-a717-e301d52ecc11",
-                    labels: [
-                        {
-                            name: "safety",
-                            type: "accel",
-                        },
-                    ],
-                    revisionId: "1214a1fa-f0c6-408b-bf85-51dc3bc71ac7",
-                    status: "published",
-                    title: "Wheel Loader",
-                },
-            ],
-            pagination: {
-                endCursor: "MjkY",
-                hasNextPage: true,
-            },
-        });
+        expect(response).toEqual(rawResponseBody);
     });
 
     test("getTrainingCourses (2)", async () => {
@@ -70,6 +46,7 @@ describe("TrainingCoursesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/training-courses").respondWith().statusCode(401).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -87,6 +64,7 @@ describe("TrainingCoursesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/training-courses").respondWith().statusCode(404).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -104,6 +82,7 @@ describe("TrainingCoursesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/training-courses").respondWith().statusCode(405).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -121,6 +100,7 @@ describe("TrainingCoursesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/training-courses").respondWith().statusCode(413).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -138,6 +118,7 @@ describe("TrainingCoursesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/training-courses").respondWith().statusCode(429).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -155,6 +136,7 @@ describe("TrainingCoursesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/training-courses").respondWith().statusCode(500).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -172,6 +154,7 @@ describe("TrainingCoursesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/training-courses").respondWith().statusCode(501).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -189,6 +172,7 @@ describe("TrainingCoursesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/training-courses").respondWith().statusCode(502).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -206,6 +190,7 @@ describe("TrainingCoursesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/training-courses").respondWith().statusCode(503).jsonBody(rawResponseBody).build();
 
         await expect(async () => {
@@ -223,6 +208,7 @@ describe("TrainingCoursesClient", () => {
         });
 
         const rawResponseBody = { key: "value" };
+
         server.mockEndpoint().get("/training-courses").respondWith().statusCode(504).jsonBody(rawResponseBody).build();
 
         await expect(async () => {

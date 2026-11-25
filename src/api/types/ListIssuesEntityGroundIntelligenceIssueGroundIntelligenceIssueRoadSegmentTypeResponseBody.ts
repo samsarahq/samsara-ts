@@ -4,6 +4,10 @@
  * ListIssuesEntityGroundIntelligenceIssueGroundIntelligenceIssueRoadSegment object
  */
 export interface ListIssuesEntityGroundIntelligenceIssueGroundIntelligenceIssueRoadSegmentTypeResponseBody {
+    /** Read-only Base Maps Overture road-class slug for the matched road segment (for example, motorway or residential), when available. Sourced from basemapsservice; not writable via update. */
+    roadClass?: string | undefined;
     /** Road name associated with this issue, when available. */
     roadName?: string | undefined;
+    /** Read-only Base Maps Overture surface slug covering the issue's snapped position (for example, paved or gravel), when available. Sourced from basemapsservice; not writable via update. */
+    roadSurface?: string | undefined;
 }
